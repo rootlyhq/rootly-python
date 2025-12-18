@@ -43,6 +43,8 @@ class Alert:
         external_id (Union[None, Unset, str]): External ID
         external_url (Union[None, Unset, str]): External Url
         alert_urgency_id (Union[None, Unset, str]): The ID of the alert urgency
+        group_leader_alert_id (Union[None, Unset, str]): The ID of the group leader alert
+        is_group_leader_alert (Union[None, Unset, bool]): Whether the alert is a group leader alert
         labels (Union[Unset, list[Union['AlertLabelsItemType0', None]]]):
         data (Union['AlertDataType0', None, Unset]): Additional data
         deduplication_key (Union[None, Unset, str]): Alerts sharing the same deduplication key are treated as a single
@@ -67,6 +69,8 @@ class Alert:
     external_id: Union[None, Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
     alert_urgency_id: Union[None, Unset, str] = UNSET
+    group_leader_alert_id: Union[None, Unset, str] = UNSET
+    is_group_leader_alert: Union[None, Unset, bool] = UNSET
     labels: Union[Unset, list[Union["AlertLabelsItemType0", None]]] = UNSET
     data: Union["AlertDataType0", None, Unset] = UNSET
     deduplication_key: Union[None, Unset, str] = UNSET
@@ -166,6 +170,18 @@ class Alert:
         else:
             alert_urgency_id = self.alert_urgency_id
 
+        group_leader_alert_id: Union[None, Unset, str]
+        if isinstance(self.group_leader_alert_id, Unset):
+            group_leader_alert_id = UNSET
+        else:
+            group_leader_alert_id = self.group_leader_alert_id
+
+        is_group_leader_alert: Union[None, Unset, bool]
+        if isinstance(self.is_group_leader_alert, Unset):
+            is_group_leader_alert = UNSET
+        else:
+            is_group_leader_alert = self.is_group_leader_alert
+
         labels: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
@@ -236,6 +252,10 @@ class Alert:
             field_dict["external_url"] = external_url
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
+        if group_leader_alert_id is not UNSET:
+            field_dict["group_leader_alert_id"] = group_leader_alert_id
+        if is_group_leader_alert is not UNSET:
+            field_dict["is_group_leader_alert"] = is_group_leader_alert
         if labels is not UNSET:
             field_dict["labels"] = labels
         if data is not UNSET:
@@ -387,6 +407,24 @@ class Alert:
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
+        def _parse_group_leader_alert_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        group_leader_alert_id = _parse_group_leader_alert_id(d.pop("group_leader_alert_id", UNSET))
+
+        def _parse_is_group_leader_alert(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        is_group_leader_alert = _parse_is_group_leader_alert(d.pop("is_group_leader_alert", UNSET))
+
         labels = []
         _labels = d.pop("labels", UNSET)
         for labels_item_data in _labels or []:
@@ -476,6 +514,8 @@ class Alert:
             external_id=external_id,
             external_url=external_url,
             alert_urgency_id=alert_urgency_id,
+            group_leader_alert_id=group_leader_alert_id,
+            is_group_leader_alert=is_group_leader_alert,
             labels=labels,
             data=data,
             deduplication_key=deduplication_key,

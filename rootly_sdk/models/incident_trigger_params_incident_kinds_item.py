@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 IncidentTriggerParamsIncidentKindsItem = Literal[
-    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "test", "test_sub"
+    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "scheduled_sub", "test", "test_sub"
 ]
 
 INCIDENT_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[IncidentTriggerParamsIncidentKindsItem] = {
@@ -11,6 +11,7 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[IncidentTriggerParamsInc
     "normal",
     "normal_sub",
     "scheduled",
+    "scheduled_sub",
     "test",
     "test_sub",
 }

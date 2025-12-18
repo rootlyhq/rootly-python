@@ -1,12 +1,19 @@
 from typing import Literal, cast
 
 NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField = Literal[
-    "alert_external_url", "alert_title", "external_id", "notification_target_id", "notification_target_type", "state"
+    "alert_description",
+    "alert_external_url",
+    "alert_title",
+    "external_id",
+    "notification_target_id",
+    "notification_target_type",
+    "state",
 ]
 
 NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCEABLE_ATTRIBUTES_TYPE_0_FIELD_MAPPINGS_ATTRIBUTES_ITEM_FIELD_VALUES: set[
     NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField
 ] = {
+    "alert_description",
     "alert_external_url",
     "alert_title",
     "external_id",

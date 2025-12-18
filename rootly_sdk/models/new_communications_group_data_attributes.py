@@ -10,14 +10,11 @@ from ..models.new_communications_group_data_attributes_condition_type import (
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.new_communications_group_data_attributes_communication_external_group_members_attributes_type_0_item import (
-        NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item,
+    from ..models.new_communications_group_data_attributes_communication_external_group_members_type_0_item import (
+        NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item,
     )
-    from ..models.new_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item import (
-        NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item,
-    )
-    from ..models.new_communications_group_data_attributes_communication_group_members_attributes_type_0_item import (
-        NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item,
+    from ..models.new_communications_group_data_attributes_communication_group_conditions_type_0_item import (
+        NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item,
     )
 
 
@@ -35,16 +32,13 @@ class NewCommunicationsGroupDataAttributes:
         condition_type (Union[Unset, NewCommunicationsGroupDataAttributesConditionType]): Condition type
         sms_channel (Union[None, Unset, bool]): SMS channel enabled
         email_channel (Union[None, Unset, bool]): Email channel enabled
+        member_ids (Union[None, Unset, list[int]]): Array of member user IDs
         slack_channel_ids (Union[None, Unset, list[str]]): Array of Slack channel IDs
-        communication_group_conditions_attributes (Union[None, Unset,
-            list['NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item']]): Group conditions
+        communication_group_conditions (Union[None, Unset,
+            list['NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item']]): Group conditions attributes
+        communication_external_group_members (Union[None, Unset,
+            list['NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item']]): External group members
             attributes
-        communication_group_members_attributes (Union[None, Unset,
-            list['NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item']]): Group members
-            attributes
-        communication_external_group_members_attributes (Union[None, Unset,
-            list['NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item']]): External
-            group members attributes
     """
 
     name: str
@@ -54,15 +48,13 @@ class NewCommunicationsGroupDataAttributes:
     condition_type: Union[Unset, NewCommunicationsGroupDataAttributesConditionType] = UNSET
     sms_channel: Union[None, Unset, bool] = UNSET
     email_channel: Union[None, Unset, bool] = UNSET
+    member_ids: Union[None, Unset, list[int]] = UNSET
     slack_channel_ids: Union[None, Unset, list[str]] = UNSET
-    communication_group_conditions_attributes: Union[
-        None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item"]
+    communication_group_conditions: Union[
+        None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item"]
     ] = UNSET
-    communication_group_members_attributes: Union[
-        None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item"]
-    ] = UNSET
-    communication_external_group_members_attributes: Union[
-        None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item"]
+    communication_external_group_members: Union[
+        None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item"]
     ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -98,6 +90,15 @@ class NewCommunicationsGroupDataAttributes:
         else:
             email_channel = self.email_channel
 
+        member_ids: Union[None, Unset, list[int]]
+        if isinstance(self.member_ids, Unset):
+            member_ids = UNSET
+        elif isinstance(self.member_ids, list):
+            member_ids = self.member_ids
+
+        else:
+            member_ids = self.member_ids
+
         slack_channel_ids: Union[None, Unset, list[str]]
         if isinstance(self.slack_channel_ids, Unset):
             slack_channel_ids = UNSET
@@ -107,53 +108,31 @@ class NewCommunicationsGroupDataAttributes:
         else:
             slack_channel_ids = self.slack_channel_ids
 
-        communication_group_conditions_attributes: Union[None, Unset, list[dict[str, Any]]]
-        if isinstance(self.communication_group_conditions_attributes, Unset):
-            communication_group_conditions_attributes = UNSET
-        elif isinstance(self.communication_group_conditions_attributes, list):
-            communication_group_conditions_attributes = []
-            for (
-                communication_group_conditions_attributes_type_0_item_data
-            ) in self.communication_group_conditions_attributes:
-                communication_group_conditions_attributes_type_0_item = (
-                    communication_group_conditions_attributes_type_0_item_data.to_dict()
-                )
-                communication_group_conditions_attributes.append(communication_group_conditions_attributes_type_0_item)
+        communication_group_conditions: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.communication_group_conditions, Unset):
+            communication_group_conditions = UNSET
+        elif isinstance(self.communication_group_conditions, list):
+            communication_group_conditions = []
+            for communication_group_conditions_type_0_item_data in self.communication_group_conditions:
+                communication_group_conditions_type_0_item = communication_group_conditions_type_0_item_data.to_dict()
+                communication_group_conditions.append(communication_group_conditions_type_0_item)
 
         else:
-            communication_group_conditions_attributes = self.communication_group_conditions_attributes
+            communication_group_conditions = self.communication_group_conditions
 
-        communication_group_members_attributes: Union[None, Unset, list[dict[str, Any]]]
-        if isinstance(self.communication_group_members_attributes, Unset):
-            communication_group_members_attributes = UNSET
-        elif isinstance(self.communication_group_members_attributes, list):
-            communication_group_members_attributes = []
-            for communication_group_members_attributes_type_0_item_data in self.communication_group_members_attributes:
-                communication_group_members_attributes_type_0_item = (
-                    communication_group_members_attributes_type_0_item_data.to_dict()
+        communication_external_group_members: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.communication_external_group_members, Unset):
+            communication_external_group_members = UNSET
+        elif isinstance(self.communication_external_group_members, list):
+            communication_external_group_members = []
+            for communication_external_group_members_type_0_item_data in self.communication_external_group_members:
+                communication_external_group_members_type_0_item = (
+                    communication_external_group_members_type_0_item_data.to_dict()
                 )
-                communication_group_members_attributes.append(communication_group_members_attributes_type_0_item)
+                communication_external_group_members.append(communication_external_group_members_type_0_item)
 
         else:
-            communication_group_members_attributes = self.communication_group_members_attributes
-
-        communication_external_group_members_attributes: Union[None, Unset, list[dict[str, Any]]]
-        if isinstance(self.communication_external_group_members_attributes, Unset):
-            communication_external_group_members_attributes = UNSET
-        elif isinstance(self.communication_external_group_members_attributes, list):
-            communication_external_group_members_attributes = []
-            for (
-                communication_external_group_members_attributes_type_0_item_data
-            ) in self.communication_external_group_members_attributes:
-                communication_external_group_members_attributes_type_0_item = (
-                    communication_external_group_members_attributes_type_0_item_data.to_dict()
-                )
-                communication_external_group_members_attributes.append(
-                    communication_external_group_members_attributes_type_0_item
-                )
-
-        else:
-            communication_external_group_members_attributes = self.communication_external_group_members_attributes
+            communication_external_group_members = self.communication_external_group_members
 
         field_dict: dict[str, Any] = {}
 
@@ -173,29 +152,24 @@ class NewCommunicationsGroupDataAttributes:
             field_dict["sms_channel"] = sms_channel
         if email_channel is not UNSET:
             field_dict["email_channel"] = email_channel
+        if member_ids is not UNSET:
+            field_dict["member_ids"] = member_ids
         if slack_channel_ids is not UNSET:
             field_dict["slack_channel_ids"] = slack_channel_ids
-        if communication_group_conditions_attributes is not UNSET:
-            field_dict["communication_group_conditions_attributes"] = communication_group_conditions_attributes
-        if communication_group_members_attributes is not UNSET:
-            field_dict["communication_group_members_attributes"] = communication_group_members_attributes
-        if communication_external_group_members_attributes is not UNSET:
-            field_dict["communication_external_group_members_attributes"] = (
-                communication_external_group_members_attributes
-            )
+        if communication_group_conditions is not UNSET:
+            field_dict["communication_group_conditions"] = communication_group_conditions
+        if communication_external_group_members is not UNSET:
+            field_dict["communication_external_group_members"] = communication_external_group_members
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.new_communications_group_data_attributes_communication_external_group_members_attributes_type_0_item import (
-            NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item,
+        from ..models.new_communications_group_data_attributes_communication_external_group_members_type_0_item import (
+            NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item,
         )
-        from ..models.new_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item import (
-            NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item,
-        )
-        from ..models.new_communications_group_data_attributes_communication_group_members_attributes_type_0_item import (
-            NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item,
+        from ..models.new_communications_group_data_attributes_communication_group_conditions_type_0_item import (
+            NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item,
         )
 
         d = dict(src_dict)
@@ -246,6 +220,23 @@ class NewCommunicationsGroupDataAttributes:
 
         email_channel = _parse_email_channel(d.pop("email_channel", UNSET))
 
+        def _parse_member_ids(data: object) -> Union[None, Unset, list[int]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                member_ids_type_0 = cast(list[int], data)
+
+                return member_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list[int]], data)
+
+        member_ids = _parse_member_ids(d.pop("member_ids", UNSET))
+
         def _parse_slack_channel_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
@@ -263,11 +254,9 @@ class NewCommunicationsGroupDataAttributes:
 
         slack_channel_ids = _parse_slack_channel_ids(d.pop("slack_channel_ids", UNSET))
 
-        def _parse_communication_group_conditions_attributes(
+        def _parse_communication_group_conditions(
             data: object,
-        ) -> Union[
-            None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item"]
-        ]:
+        ) -> Union[None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -275,42 +264,32 @@ class NewCommunicationsGroupDataAttributes:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                communication_group_conditions_attributes_type_0 = []
-                _communication_group_conditions_attributes_type_0 = data
-                for (
-                    communication_group_conditions_attributes_type_0_item_data
-                ) in _communication_group_conditions_attributes_type_0:
-                    communication_group_conditions_attributes_type_0_item = (
-                        NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item.from_dict(
-                            communication_group_conditions_attributes_type_0_item_data
+                communication_group_conditions_type_0 = []
+                _communication_group_conditions_type_0 = data
+                for communication_group_conditions_type_0_item_data in _communication_group_conditions_type_0:
+                    communication_group_conditions_type_0_item = (
+                        NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item.from_dict(
+                            communication_group_conditions_type_0_item_data
                         )
                     )
 
-                    communication_group_conditions_attributes_type_0.append(
-                        communication_group_conditions_attributes_type_0_item
-                    )
+                    communication_group_conditions_type_0.append(communication_group_conditions_type_0_item)
 
-                return communication_group_conditions_attributes_type_0
+                return communication_group_conditions_type_0
             except:  # noqa: E722
                 pass
             return cast(
-                Union[
-                    None,
-                    Unset,
-                    list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item"],
-                ],
+                Union[None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item"]],
                 data,
             )
 
-        communication_group_conditions_attributes = _parse_communication_group_conditions_attributes(
-            d.pop("communication_group_conditions_attributes", UNSET)
+        communication_group_conditions = _parse_communication_group_conditions(
+            d.pop("communication_group_conditions", UNSET)
         )
 
-        def _parse_communication_group_members_attributes(
+        def _parse_communication_external_group_members(
             data: object,
-        ) -> Union[
-            None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item"]
-        ]:
+        ) -> Union[None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -318,78 +297,31 @@ class NewCommunicationsGroupDataAttributes:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                communication_group_members_attributes_type_0 = []
-                _communication_group_members_attributes_type_0 = data
+                communication_external_group_members_type_0 = []
+                _communication_external_group_members_type_0 = data
                 for (
-                    communication_group_members_attributes_type_0_item_data
-                ) in _communication_group_members_attributes_type_0:
-                    communication_group_members_attributes_type_0_item = (
-                        NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item.from_dict(
-                            communication_group_members_attributes_type_0_item_data
+                    communication_external_group_members_type_0_item_data
+                ) in _communication_external_group_members_type_0:
+                    communication_external_group_members_type_0_item = (
+                        NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item.from_dict(
+                            communication_external_group_members_type_0_item_data
                         )
                     )
 
-                    communication_group_members_attributes_type_0.append(
-                        communication_group_members_attributes_type_0_item
-                    )
+                    communication_external_group_members_type_0.append(communication_external_group_members_type_0_item)
 
-                return communication_group_members_attributes_type_0
+                return communication_external_group_members_type_0
             except:  # noqa: E722
                 pass
             return cast(
                 Union[
-                    None,
-                    Unset,
-                    list["NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item"],
+                    None, Unset, list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item"]
                 ],
                 data,
             )
 
-        communication_group_members_attributes = _parse_communication_group_members_attributes(
-            d.pop("communication_group_members_attributes", UNSET)
-        )
-
-        def _parse_communication_external_group_members_attributes(
-            data: object,
-        ) -> Union[
-            None,
-            Unset,
-            list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item"],
-        ]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, list):
-                    raise TypeError()
-                communication_external_group_members_attributes_type_0 = []
-                _communication_external_group_members_attributes_type_0 = data
-                for (
-                    communication_external_group_members_attributes_type_0_item_data
-                ) in _communication_external_group_members_attributes_type_0:
-                    communication_external_group_members_attributes_type_0_item = NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item.from_dict(
-                        communication_external_group_members_attributes_type_0_item_data
-                    )
-
-                    communication_external_group_members_attributes_type_0.append(
-                        communication_external_group_members_attributes_type_0_item
-                    )
-
-                return communication_external_group_members_attributes_type_0
-            except:  # noqa: E722
-                pass
-            return cast(
-                Union[
-                    None,
-                    Unset,
-                    list["NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item"],
-                ],
-                data,
-            )
-
-        communication_external_group_members_attributes = _parse_communication_external_group_members_attributes(
-            d.pop("communication_external_group_members_attributes", UNSET)
+        communication_external_group_members = _parse_communication_external_group_members(
+            d.pop("communication_external_group_members", UNSET)
         )
 
         new_communications_group_data_attributes = cls(
@@ -400,10 +332,10 @@ class NewCommunicationsGroupDataAttributes:
             condition_type=condition_type,
             sms_channel=sms_channel,
             email_channel=email_channel,
+            member_ids=member_ids,
             slack_channel_ids=slack_channel_ids,
-            communication_group_conditions_attributes=communication_group_conditions_attributes,
-            communication_group_members_attributes=communication_group_members_attributes,
-            communication_external_group_members_attributes=communication_external_group_members_attributes,
+            communication_group_conditions=communication_group_conditions,
+            communication_external_group_members=communication_external_group_members,
         )
 
         return new_communications_group_data_attributes

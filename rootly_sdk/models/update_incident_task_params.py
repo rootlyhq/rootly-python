@@ -29,10 +29,10 @@ class UpdateIncidentTaskParams:
         status (Union[None, Unset, str]):
         severity_id (Union[None, Unset, str]):
         incident_type_ids (Union[None, Unset, list[str]]):
-        service_ids (Union[None, Unset, list[str]]):
-        functionality_ids (Union[None, Unset, list[str]]):
+        service_ids (Union[None, Unset, list[str]]): Array of service UUIDs
+        functionality_ids (Union[None, Unset, list[str]]): Array of functionality UUIDs
         environment_ids (Union[None, Unset, list[str]]):
-        group_ids (Union[None, Unset, list[str]]):
+        group_ids (Union[None, Unset, list[str]]): Array of group/team UUIDs
         started_at (Union[None, Unset, str]):
         detected_at (Union[None, Unset, str]):
         acknowledged_at (Union[None, Unset, str]):
@@ -40,7 +40,7 @@ class UpdateIncidentTaskParams:
         resolved_at (Union[None, Unset, str]):
         private (Union[Unset, bool]):
         custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
-            valid JSON
+            valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
     """
 
     incident_id: str

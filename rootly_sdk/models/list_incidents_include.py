@@ -2,6 +2,7 @@ from typing import Literal, cast
 
 ListIncidentsInclude = Literal[
     "action_items",
+    "alerts",
     "causes",
     "custom_field_selections",
     "environments",
@@ -20,6 +21,7 @@ ListIncidentsInclude = Literal[
 
 LIST_INCIDENTS_INCLUDE_VALUES: set[ListIncidentsInclude] = {
     "action_items",
+    "alerts",
     "causes",
     "custom_field_selections",
     "environments",

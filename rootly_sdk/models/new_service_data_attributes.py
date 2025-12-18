@@ -60,8 +60,11 @@ class NewServiceDataAttributes:
         service_ids (Union[None, Unset, list[str]]): Services dependent on this service
         owner_group_ids (Union[None, Unset, list[str]]): Owner Teams associated with this service
         owner_user_ids (Union[None, Unset, list[int]]): Owner Users associated with this service
+        kubernetes_deployment_name (Union[None, Unset, str]): The Kubernetes deployment name associated to this service.
+            eg: namespace/deployment-name
         alerts_email_enabled (Union[None, Unset, bool]): Enable alerts through email
         alert_urgency_id (Union[None, Unset, str]): The alert urgency id of the service
+        escalation_policy_id (Union[None, Unset, str]): The escalation policy id of the service
         slack_channels (Union[None, Unset, list['NewServiceDataAttributesSlackChannelsType0Item']]): Slack Channels
             associated with this service
         slack_aliases (Union[None, Unset, list['NewServiceDataAttributesSlackAliasesType0Item']]): Slack Aliases
@@ -97,8 +100,10 @@ class NewServiceDataAttributes:
     service_ids: Union[None, Unset, list[str]] = UNSET
     owner_group_ids: Union[None, Unset, list[str]] = UNSET
     owner_user_ids: Union[None, Unset, list[int]] = UNSET
+    kubernetes_deployment_name: Union[None, Unset, str] = UNSET
     alerts_email_enabled: Union[None, Unset, bool] = UNSET
     alert_urgency_id: Union[None, Unset, str] = UNSET
+    escalation_policy_id: Union[None, Unset, str] = UNSET
     slack_channels: Union[None, Unset, list["NewServiceDataAttributesSlackChannelsType0Item"]] = UNSET
     slack_aliases: Union[None, Unset, list["NewServiceDataAttributesSlackAliasesType0Item"]] = UNSET
     alert_broadcast_enabled: Union[None, Unset, bool] = UNSET
@@ -261,6 +266,12 @@ class NewServiceDataAttributes:
         else:
             owner_user_ids = self.owner_user_ids
 
+        kubernetes_deployment_name: Union[None, Unset, str]
+        if isinstance(self.kubernetes_deployment_name, Unset):
+            kubernetes_deployment_name = UNSET
+        else:
+            kubernetes_deployment_name = self.kubernetes_deployment_name
+
         alerts_email_enabled: Union[None, Unset, bool]
         if isinstance(self.alerts_email_enabled, Unset):
             alerts_email_enabled = UNSET
@@ -272,6 +283,12 @@ class NewServiceDataAttributes:
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
+
+        escalation_policy_id: Union[None, Unset, str]
+        if isinstance(self.escalation_policy_id, Unset):
+            escalation_policy_id = UNSET
+        else:
+            escalation_policy_id = self.escalation_policy_id
 
         slack_channels: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.slack_channels, Unset):
@@ -376,10 +393,14 @@ class NewServiceDataAttributes:
             field_dict["owner_group_ids"] = owner_group_ids
         if owner_user_ids is not UNSET:
             field_dict["owner_user_ids"] = owner_user_ids
+        if kubernetes_deployment_name is not UNSET:
+            field_dict["kubernetes_deployment_name"] = kubernetes_deployment_name
         if alerts_email_enabled is not UNSET:
             field_dict["alerts_email_enabled"] = alerts_email_enabled
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
+        if escalation_policy_id is not UNSET:
+            field_dict["escalation_policy_id"] = escalation_policy_id
         if slack_channels is not UNSET:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
@@ -649,6 +670,15 @@ class NewServiceDataAttributes:
 
         owner_user_ids = _parse_owner_user_ids(d.pop("owner_user_ids", UNSET))
 
+        def _parse_kubernetes_deployment_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        kubernetes_deployment_name = _parse_kubernetes_deployment_name(d.pop("kubernetes_deployment_name", UNSET))
+
         def _parse_alerts_email_enabled(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
@@ -666,6 +696,15 @@ class NewServiceDataAttributes:
             return cast(Union[None, Unset, str], data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
+
+        def _parse_escalation_policy_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        escalation_policy_id = _parse_escalation_policy_id(d.pop("escalation_policy_id", UNSET))
 
         def _parse_slack_channels(
             data: object,
@@ -801,8 +840,10 @@ class NewServiceDataAttributes:
             service_ids=service_ids,
             owner_group_ids=owner_group_ids,
             owner_user_ids=owner_user_ids,
+            kubernetes_deployment_name=kubernetes_deployment_name,
             alerts_email_enabled=alerts_email_enabled,
             alert_urgency_id=alert_urgency_id,
+            escalation_policy_id=escalation_policy_id,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
             alert_broadcast_enabled=alert_broadcast_enabled,

@@ -19,10 +19,18 @@ def _get_kwargs(
     filterseverity: Union[Unset, str] = UNSET,
     filtertype: Union[Unset, str] = UNSET,
     filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
     filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
     filtercreated_atgt: Union[Unset, str] = UNSET,
     filtercreated_atgte: Union[Unset, str] = UNSET,
     filtercreated_atlt: Union[Unset, str] = UNSET,
@@ -59,13 +67,29 @@ def _get_kwargs(
 
     params["filter[user_id]"] = filteruser_id
 
+    params["filter[types]"] = filtertypes
+
+    params["filter[type_ids]"] = filtertype_ids
+
     params["filter[environments]"] = filterenvironments
+
+    params["filter[environment_ids]"] = filterenvironment_ids
 
     params["filter[functionalities]"] = filterfunctionalities
 
+    params["filter[functionality_ids]"] = filterfunctionality_ids
+
     params["filter[services]"] = filterservices
 
+    params["filter[service_ids]"] = filterservice_ids
+
     params["filter[teams]"] = filterteams
+
+    params["filter[team_ids]"] = filterteam_ids
+
+    params["filter[causes]"] = filtercauses
+
+    params["filter[cause_ids]"] = filtercause_ids
 
     params["filter[created_at][gt]"] = filtercreated_atgt
 
@@ -148,10 +172,18 @@ def sync_detailed(
     filterseverity: Union[Unset, str] = UNSET,
     filtertype: Union[Unset, str] = UNSET,
     filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
     filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
     filtercreated_atgt: Union[Unset, str] = UNSET,
     filtercreated_atgte: Union[Unset, str] = UNSET,
     filtercreated_atlt: Union[Unset, str] = UNSET,
@@ -183,10 +215,18 @@ def sync_detailed(
         filterseverity (Union[Unset, str]):
         filtertype (Union[Unset, str]):
         filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
         filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
         filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
         filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
         filtercreated_atgt (Union[Unset, str]):
         filtercreated_atgte (Union[Unset, str]):
         filtercreated_atlt (Union[Unset, str]):
@@ -222,10 +262,18 @@ def sync_detailed(
         filterseverity=filterseverity,
         filtertype=filtertype,
         filteruser_id=filteruser_id,
+        filtertypes=filtertypes,
+        filtertype_ids=filtertype_ids,
         filterenvironments=filterenvironments,
+        filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
+        filterfunctionality_ids=filterfunctionality_ids,
         filterservices=filterservices,
+        filterservice_ids=filterservice_ids,
         filterteams=filterteams,
+        filterteam_ids=filterteam_ids,
+        filtercauses=filtercauses,
+        filtercause_ids=filtercause_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -263,10 +311,18 @@ def sync(
     filterseverity: Union[Unset, str] = UNSET,
     filtertype: Union[Unset, str] = UNSET,
     filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
     filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
     filtercreated_atgt: Union[Unset, str] = UNSET,
     filtercreated_atgte: Union[Unset, str] = UNSET,
     filtercreated_atlt: Union[Unset, str] = UNSET,
@@ -298,10 +354,18 @@ def sync(
         filterseverity (Union[Unset, str]):
         filtertype (Union[Unset, str]):
         filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
         filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
         filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
         filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
         filtercreated_atgt (Union[Unset, str]):
         filtercreated_atgte (Union[Unset, str]):
         filtercreated_atlt (Union[Unset, str]):
@@ -338,10 +402,18 @@ def sync(
         filterseverity=filterseverity,
         filtertype=filtertype,
         filteruser_id=filteruser_id,
+        filtertypes=filtertypes,
+        filtertype_ids=filtertype_ids,
         filterenvironments=filterenvironments,
+        filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
+        filterfunctionality_ids=filterfunctionality_ids,
         filterservices=filterservices,
+        filterservice_ids=filterservice_ids,
         filterteams=filterteams,
+        filterteam_ids=filterteam_ids,
+        filtercauses=filtercauses,
+        filtercause_ids=filtercause_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -373,10 +445,18 @@ async def asyncio_detailed(
     filterseverity: Union[Unset, str] = UNSET,
     filtertype: Union[Unset, str] = UNSET,
     filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
     filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
     filtercreated_atgt: Union[Unset, str] = UNSET,
     filtercreated_atgte: Union[Unset, str] = UNSET,
     filtercreated_atlt: Union[Unset, str] = UNSET,
@@ -408,10 +488,18 @@ async def asyncio_detailed(
         filterseverity (Union[Unset, str]):
         filtertype (Union[Unset, str]):
         filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
         filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
         filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
         filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
         filtercreated_atgt (Union[Unset, str]):
         filtercreated_atgte (Union[Unset, str]):
         filtercreated_atlt (Union[Unset, str]):
@@ -447,10 +535,18 @@ async def asyncio_detailed(
         filterseverity=filterseverity,
         filtertype=filtertype,
         filteruser_id=filteruser_id,
+        filtertypes=filtertypes,
+        filtertype_ids=filtertype_ids,
         filterenvironments=filterenvironments,
+        filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
+        filterfunctionality_ids=filterfunctionality_ids,
         filterservices=filterservices,
+        filterservice_ids=filterservice_ids,
         filterteams=filterteams,
+        filterteam_ids=filterteam_ids,
+        filtercauses=filtercauses,
+        filtercause_ids=filtercause_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -486,10 +582,18 @@ async def asyncio(
     filterseverity: Union[Unset, str] = UNSET,
     filtertype: Union[Unset, str] = UNSET,
     filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
     filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
     filtercreated_atgt: Union[Unset, str] = UNSET,
     filtercreated_atgte: Union[Unset, str] = UNSET,
     filtercreated_atlt: Union[Unset, str] = UNSET,
@@ -521,10 +625,18 @@ async def asyncio(
         filterseverity (Union[Unset, str]):
         filtertype (Union[Unset, str]):
         filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
         filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
         filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
         filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
         filtercreated_atgt (Union[Unset, str]):
         filtercreated_atgte (Union[Unset, str]):
         filtercreated_atlt (Union[Unset, str]):
@@ -562,10 +674,18 @@ async def asyncio(
             filterseverity=filterseverity,
             filtertype=filtertype,
             filteruser_id=filteruser_id,
+            filtertypes=filtertypes,
+            filtertype_ids=filtertype_ids,
             filterenvironments=filterenvironments,
+            filterenvironment_ids=filterenvironment_ids,
             filterfunctionalities=filterfunctionalities,
+            filterfunctionality_ids=filterfunctionality_ids,
             filterservices=filterservices,
+            filterservice_ids=filterservice_ids,
             filterteams=filterteams,
+            filterteam_ids=filterteam_ids,
+            filtercauses=filtercauses,
+            filtercause_ids=filtercause_ids,
             filtercreated_atgt=filtercreated_atgt,
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,

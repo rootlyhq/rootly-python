@@ -1,11 +1,10 @@
 from typing import Literal, cast
 
-HeartbeatIntervalUnit = Literal["hours", "minutes", "seconds"]
+HeartbeatIntervalUnit = Literal["hours", "minutes"]
 
 HEARTBEAT_INTERVAL_UNIT_VALUES: set[HeartbeatIntervalUnit] = {
     "hours",
     "minutes",
-    "seconds",
 }
 
 

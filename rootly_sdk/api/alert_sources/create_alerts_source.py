@@ -38,6 +38,11 @@ def _parse_response(
 
         return response_201
 
+    if response.status_code == 400:
+        response_400 = ErrorsList.from_dict(response.json())
+
+        return response_400
+
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 

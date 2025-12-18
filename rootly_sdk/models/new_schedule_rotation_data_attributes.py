@@ -19,6 +19,9 @@ if TYPE_CHECKING:
     from ..models.new_schedule_rotation_data_attributes_active_time_attributes_item import (
         NewScheduleRotationDataAttributesActiveTimeAttributesItem,
     )
+    from ..models.new_schedule_rotation_data_attributes_schedule_rotation_members_type_0_item import (
+        NewScheduleRotationDataAttributesScheduleRotationMembersType0Item,
+    )
     from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
         NewScheduleRotationDataAttributesScheduleRotationableAttributesType0,
     )
@@ -57,6 +60,9 @@ class NewScheduleRotationDataAttributes:
             created after this time.
         end_time (Union[None, Unset, datetime.date]): ISO8601 date and time when rotation ends. Shifts will only be
             created before this time.
+        schedule_rotation_members (Union[None, Unset,
+            list['NewScheduleRotationDataAttributesScheduleRotationMembersType0Item']]): You can only add schedule rotation
+            members if your account has schedule nesting feature enabled
     """
 
     name: str
@@ -75,6 +81,9 @@ class NewScheduleRotationDataAttributes:
     time_zone: Union[Unset, str] = "Etc/UTC"
     start_time: Union[None, Unset, datetime.date] = UNSET
     end_time: Union[None, Unset, datetime.date] = UNSET
+    schedule_rotation_members: Union[
+        None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]
+    ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
@@ -145,6 +154,18 @@ class NewScheduleRotationDataAttributes:
         else:
             end_time = self.end_time
 
+        schedule_rotation_members: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.schedule_rotation_members, Unset):
+            schedule_rotation_members = UNSET
+        elif isinstance(self.schedule_rotation_members, list):
+            schedule_rotation_members = []
+            for schedule_rotation_members_type_0_item_data in self.schedule_rotation_members:
+                schedule_rotation_members_type_0_item = schedule_rotation_members_type_0_item_data.to_dict()
+                schedule_rotation_members.append(schedule_rotation_members_type_0_item)
+
+        else:
+            schedule_rotation_members = self.schedule_rotation_members
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -170,6 +191,8 @@ class NewScheduleRotationDataAttributes:
             field_dict["start_time"] = start_time
         if end_time is not UNSET:
             field_dict["end_time"] = end_time
+        if schedule_rotation_members is not UNSET:
+            field_dict["schedule_rotation_members"] = schedule_rotation_members
 
         return field_dict
 
@@ -177,6 +200,9 @@ class NewScheduleRotationDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.new_schedule_rotation_data_attributes_active_time_attributes_item import (
             NewScheduleRotationDataAttributesActiveTimeAttributesItem,
+        )
+        from ..models.new_schedule_rotation_data_attributes_schedule_rotation_members_type_0_item import (
+            NewScheduleRotationDataAttributesScheduleRotationMembersType0Item,
         )
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
             NewScheduleRotationDataAttributesScheduleRotationableAttributesType0,
@@ -306,6 +332,36 @@ class NewScheduleRotationDataAttributes:
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
+        def _parse_schedule_rotation_members(
+            data: object,
+        ) -> Union[None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                schedule_rotation_members_type_0 = []
+                _schedule_rotation_members_type_0 = data
+                for schedule_rotation_members_type_0_item_data in _schedule_rotation_members_type_0:
+                    schedule_rotation_members_type_0_item = (
+                        NewScheduleRotationDataAttributesScheduleRotationMembersType0Item.from_dict(
+                            schedule_rotation_members_type_0_item_data
+                        )
+                    )
+
+                    schedule_rotation_members_type_0.append(schedule_rotation_members_type_0_item)
+
+                return schedule_rotation_members_type_0
+            except:  # noqa: E722
+                pass
+            return cast(
+                Union[None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]], data
+            )
+
+        schedule_rotation_members = _parse_schedule_rotation_members(d.pop("schedule_rotation_members", UNSET))
+
         new_schedule_rotation_data_attributes = cls(
             name=name,
             schedule_rotationable_type=schedule_rotationable_type,
@@ -318,6 +374,7 @@ class NewScheduleRotationDataAttributes:
             time_zone=time_zone,
             start_time=start_time,
             end_time=end_time,
+            schedule_rotation_members=schedule_rotation_members,
         )
 
         return new_schedule_rotation_data_attributes

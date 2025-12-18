@@ -6,41 +6,50 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item")
+T = TypeVar("T", bound="UpdateScheduleDataAttributesSlackChannelType0")
 
 
 @_attrs_define
-class NewCommunicationsGroupDataAttributesCommunicationGroupMembersAttributesType0Item:
+class UpdateScheduleDataAttributesSlackChannelType0:
     """
     Attributes:
-        user_id (Union[Unset, int]): User ID
+        id (Union[Unset, str]): Slack channel ID
+        name (Union[Unset, str]): Slack channel name
     """
 
-    user_id: Union[Unset, int] = UNSET
+    id: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user_id = self.user_id
+        id = self.id
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if user_id is not UNSET:
-            field_dict["user_id"] = user_id
+        if id is not UNSET:
+            field_dict["id"] = id
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        user_id = d.pop("user_id", UNSET)
+        id = d.pop("id", UNSET)
 
-        new_communications_group_data_attributes_communication_group_members_attributes_type_0_item = cls(
-            user_id=user_id,
+        name = d.pop("name", UNSET)
+
+        update_schedule_data_attributes_slack_channel_type_0 = cls(
+            id=id,
+            name=name,
         )
 
-        new_communications_group_data_attributes_communication_group_members_attributes_type_0_item.additional_properties = d
-        return new_communications_group_data_attributes_communication_group_members_attributes_type_0_item
+        update_schedule_data_attributes_slack_channel_type_0.additional_properties = d
+        return update_schedule_data_attributes_slack_channel_type_0
 
     @property
     def additional_keys(self) -> list[str]:

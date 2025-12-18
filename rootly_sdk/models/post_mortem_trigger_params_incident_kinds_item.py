@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 PostMortemTriggerParamsIncidentKindsItem = Literal[
-    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "test", "test_sub"
+    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "scheduled_sub", "test", "test_sub"
 ]
 
 POST_MORTEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[PostMortemTriggerParamsIncidentKindsItem] = {
@@ -11,6 +11,7 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[PostMortemTriggerPara
     "normal",
     "normal_sub",
     "scheduled",
+    "scheduled_sub",
     "test",
     "test_sub",
 }

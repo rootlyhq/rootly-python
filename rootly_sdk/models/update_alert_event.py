@@ -13,7 +13,8 @@ T = TypeVar("T", bound="UpdateAlertEvent")
 
 @_attrs_define
 class UpdateAlertEvent:
-    """
+    """Update an alert event. Note: Only alert events with kind='note' can be updated. You cannot change the kind field.
+
     Attributes:
         data (UpdateAlertEventData):
     """

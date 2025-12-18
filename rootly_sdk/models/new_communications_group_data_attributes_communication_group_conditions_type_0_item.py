@@ -4,23 +4,21 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item_property_type import (
-    UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0ItemPropertyType,
-    check_update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item_property_type,
+from ..models.new_communications_group_data_attributes_communication_group_conditions_type_0_item_property_type import (
+    NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType,
+    check_new_communications_group_data_attributes_communication_group_conditions_type_0_item_property_type,
 )
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item")
+T = TypeVar("T", bound="NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item")
 
 
 @_attrs_define
-class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0Item:
+class NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item:
     """
     Attributes:
-        id (Union[None, Unset, str]): ID of the condition
         property_type (Union[Unset,
-            UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0ItemPropertyType]): Property
-            type
+            NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType]): Property type
         service_ids (Union[None, Unset, list[str]]): Array of service IDs
         severity_ids (Union[None, Unset, list[str]]): Array of severity IDs
         functionality_ids (Union[None, Unset, list[str]]): Array of functionality IDs
@@ -28,9 +26,8 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
         incident_type_ids (Union[None, Unset, list[str]]): Array of incident type IDs
     """
 
-    id: Union[None, Unset, str] = UNSET
     property_type: Union[
-        Unset, UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0ItemPropertyType
+        Unset, NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType
     ] = UNSET
     service_ids: Union[None, Unset, list[str]] = UNSET
     severity_ids: Union[None, Unset, list[str]] = UNSET
@@ -40,12 +37,6 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        else:
-            id = self.id
-
         property_type: Union[Unset, str] = UNSET
         if not isinstance(self.property_type, Unset):
             property_type = self.property_type
@@ -98,8 +89,6 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
         if property_type is not UNSET:
             field_dict["property_type"] = property_type
         if service_ids is not UNSET:
@@ -118,25 +107,17 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-
-        def _parse_id(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        id = _parse_id(d.pop("id", UNSET))
-
         _property_type = d.pop("property_type", UNSET)
         property_type: Union[
-            Unset, UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttributesType0ItemPropertyType
+            Unset, NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType
         ]
         if isinstance(_property_type, Unset):
             property_type = UNSET
         else:
-            property_type = check_update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item_property_type(
-                _property_type
+            property_type = (
+                check_new_communications_group_data_attributes_communication_group_conditions_type_0_item_property_type(
+                    _property_type
+                )
             )
 
         def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
@@ -224,8 +205,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 
-        update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item = cls(
-            id=id,
+        new_communications_group_data_attributes_communication_group_conditions_type_0_item = cls(
             property_type=property_type,
             service_ids=service_ids,
             severity_ids=severity_ids,
@@ -234,8 +214,8 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsAttribu
             incident_type_ids=incident_type_ids,
         )
 
-        update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item.additional_properties = d
-        return update_communications_group_data_attributes_communication_group_conditions_attributes_type_0_item
+        new_communications_group_data_attributes_communication_group_conditions_type_0_item.additional_properties = d
+        return new_communications_group_data_attributes_communication_group_conditions_type_0_item
 
     @property
     def additional_keys(self) -> list[str]:

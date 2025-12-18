@@ -1,8 +1,9 @@
 from typing import Literal, cast
 
-ListShiftsInclude = Literal["shift_override", "user"]
+ListShiftsInclude = Literal["assignee", "shift_override", "user"]
 
 LIST_SHIFTS_INCLUDE_VALUES: set[ListShiftsInclude] = {
+    "assignee",
     "shift_override",
     "user",
 }

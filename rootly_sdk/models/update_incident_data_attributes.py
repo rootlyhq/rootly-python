@@ -59,6 +59,9 @@ class UpdateIncidentDataAttributes:
         resolved_at (Union[None, Unset, str]): Date of resolution
         closed_at (Union[None, Unset, str]): Date of closure
         cancelled_at (Union[None, Unset, str]): Date of cancellation
+        mitigation_message (Union[None, Unset, str]): How was the incident mitigated?
+        resolution_message (Union[None, Unset, str]): How was the incident resolved?
+        cancellation_message (Union[None, Unset, str]): Why was the incident cancelled?
     """
 
     title: Union[None, Unset, str] = UNSET
@@ -94,6 +97,9 @@ class UpdateIncidentDataAttributes:
     resolved_at: Union[None, Unset, str] = UNSET
     closed_at: Union[None, Unset, str] = UNSET
     cancelled_at: Union[None, Unset, str] = UNSET
+    mitigation_message: Union[None, Unset, str] = UNSET
+    resolution_message: Union[None, Unset, str] = UNSET
+    cancellation_message: Union[None, Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_incident_data_attributes_labels_type_0 import UpdateIncidentDataAttributesLabelsType0
@@ -315,6 +321,24 @@ class UpdateIncidentDataAttributes:
         else:
             cancelled_at = self.cancelled_at
 
+        mitigation_message: Union[None, Unset, str]
+        if isinstance(self.mitigation_message, Unset):
+            mitigation_message = UNSET
+        else:
+            mitigation_message = self.mitigation_message
+
+        resolution_message: Union[None, Unset, str]
+        if isinstance(self.resolution_message, Unset):
+            resolution_message = UNSET
+        else:
+            resolution_message = self.resolution_message
+
+        cancellation_message: Union[None, Unset, str]
+        if isinstance(self.cancellation_message, Unset):
+            cancellation_message = UNSET
+        else:
+            cancellation_message = self.cancellation_message
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -384,6 +408,12 @@ class UpdateIncidentDataAttributes:
             field_dict["closed_at"] = closed_at
         if cancelled_at is not UNSET:
             field_dict["cancelled_at"] = cancelled_at
+        if mitigation_message is not UNSET:
+            field_dict["mitigation_message"] = mitigation_message
+        if resolution_message is not UNSET:
+            field_dict["resolution_message"] = resolution_message
+        if cancellation_message is not UNSET:
+            field_dict["cancellation_message"] = cancellation_message
 
         return field_dict
 
@@ -750,6 +780,33 @@ class UpdateIncidentDataAttributes:
 
         cancelled_at = _parse_cancelled_at(d.pop("cancelled_at", UNSET))
 
+        def _parse_mitigation_message(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        mitigation_message = _parse_mitigation_message(d.pop("mitigation_message", UNSET))
+
+        def _parse_resolution_message(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        resolution_message = _parse_resolution_message(d.pop("resolution_message", UNSET))
+
+        def _parse_cancellation_message(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        cancellation_message = _parse_cancellation_message(d.pop("cancellation_message", UNSET))
+
         update_incident_data_attributes = cls(
             title=title,
             kind=kind,
@@ -784,6 +841,9 @@ class UpdateIncidentDataAttributes:
             resolved_at=resolved_at,
             closed_at=closed_at,
             cancelled_at=cancelled_at,
+            mitigation_message=mitigation_message,
+            resolution_message=resolution_message,
+            cancellation_message=cancellation_message,
         )
 
         return update_incident_data_attributes

@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-12-18
+
+### Added
+- New Status API endpoints (`get_status`, `list_statuses`)
+- New task type: Create sub-incident (`CreateSubIncidentTaskParams`)
+- OpenAI chat completion reasoning parameters (`reasoning_effort`, `reasoning_summary`)
+- Alert trigger params now support alert field conditions
+- Schedule rotation member management with member type support
+- Schedule Slack channel configuration
+
+### Changed
+- Regenerated client from latest OpenAPI specification
+- Simplified communications group models structure
+
+### Removed
+- Deprecated communications group member and condition attribute models
+
+### Known Issues
+- Escalation path endpoints not generated due to OpenAPI schema issues with union types in `rules_item`
+
 ## [1.0.1] - 2025-10-16
 
 ### Changed

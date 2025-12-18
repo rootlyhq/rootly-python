@@ -26,6 +26,7 @@ class OverrideShift:
         created_at (Union[Unset, str]): Date of creation
         updated_at (Union[Unset, str]): Date of last update
         shift_override (Union[Unset, ShiftOverrideResponse]):
+        user_id (Union[Unset, int]): Override shift user
         user (Union[Unset, UserResponse]):
     """
 
@@ -37,6 +38,7 @@ class OverrideShift:
     created_at: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     shift_override: Union[Unset, "ShiftOverrideResponse"] = UNSET
+    user_id: Union[Unset, int] = UNSET
     user: Union[Unset, "UserResponse"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -60,6 +62,8 @@ class OverrideShift:
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()
 
+        user_id = self.user_id
+
         user: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
@@ -81,6 +85,8 @@ class OverrideShift:
             field_dict["updated_at"] = updated_at
         if shift_override is not UNSET:
             field_dict["shift_override"] = shift_override
+        if user_id is not UNSET:
+            field_dict["user_id"] = user_id
         if user is not UNSET:
             field_dict["user"] = user
 
@@ -118,6 +124,8 @@ class OverrideShift:
         else:
             shift_override = ShiftOverrideResponse.from_dict(_shift_override)
 
+        user_id = d.pop("user_id", UNSET)
+
         _user = d.pop("user", UNSET)
         user: Union[Unset, UserResponse]
         if isinstance(_user, Unset):
@@ -134,6 +142,7 @@ class OverrideShift:
             created_at=created_at,
             updated_at=updated_at,
             shift_override=shift_override,
+            user_id=user_id,
             user=user,
         )
 

@@ -1,57 +1,37 @@
-# Rootly Python SDK
+# rootly
+A client library for accessing Rootly API v1
 
-A Python client library for accessing the [Rootly API v1](https://rootly.com/). This SDK provides both synchronous and asynchronous interfaces for interacting with Rootly's incident management platform.
-
-[![PyPI version](https://badge.fury.io/py/rootly.svg)](https://badge.fury.io/py/rootly)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-
-## Installation
-
-```bash
-pip install rootly
-```
-
-## Quick Start
-
-### Basic Usage
-
+## Usage
 First, create a client:
 
 ```python
 from rootly_sdk import Client
 
-client = Client(base_url="https://api.rootly.com")
+client = Client(base_url="https://api.example.com")
 ```
 
-### Authentication
-
-For endpoints that require authentication, use `AuthenticatedClient`:
+If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
 
 ```python
 from rootly_sdk import AuthenticatedClient
 
-client = AuthenticatedClient(
-    base_url="https://api.rootly.com",
-    token="your-api-token"
-)
+client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
 ```
 
-### Making API Calls
+Now call your endpoint and use your models:
 
 ```python
 from rootly_sdk.models import MyDataModel
 from rootly_sdk.api.my_tag import get_my_data_model
 from rootly_sdk.types import Response
 
-# Simple synchronous call
 with client as client:
     my_data: MyDataModel = get_my_data_model.sync(client=client)
-
-    # Or get detailed response (includes status_code, headers, etc.)
+    # or if you need more info (e.g. status_code)
     response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
 ```
 
-### Async Usage
+Or do the same thing with an async version:
 
 ```python
 from rootly_sdk.models import MyDataModel
@@ -63,184 +43,82 @@ async with client as client:
     response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
 ```
 
-## Advanced Configuration
-
-### SSL Certificate Verification
-
-By default, the client verifies SSL certificates. For internal APIs with custom certificates:
+By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
 
 ```python
 client = AuthenticatedClient(
-    base_url="https://internal-api.example.com",
-    token="your-api-token",
+    base_url="https://internal_api.example.com", 
+    token="SuperSecretToken",
     verify_ssl="/path/to/certificate_bundle.pem",
 )
 ```
 
-**Warning:** Disabling SSL verification is a security risk and should only be used in development:
+You can also disable certificate validation altogether, but beware that **this is a security risk**.
 
 ```python
 client = AuthenticatedClient(
-    base_url="https://internal-api.example.com",
-    token="your-api-token",
+    base_url="https://internal_api.example.com", 
+    token="SuperSecretToken", 
     verify_ssl=False
 )
 ```
 
-### Custom HTTP Client Configuration
+Things to know:
+1. Every path/method combo becomes a Python module with four functions:
+    1. `sync`: Blocking request that returns parsed data (if successful) or `None`
+    1. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
+    1. `asyncio`: Like `sync` but async instead of blocking
+    1. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
 
-You can customize the underlying `httpx.Client` with event hooks and other options:
+1. All path/query params, and bodies become method arguments.
+1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
+1. Any endpoint which did not have a tag will be in `rootly_sdk.api.default`
+
+## Advanced customizations
+
+There are more settings on the generated `Client` class which let you control more runtime behavior, check out the docstring on that class for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
 
 ```python
 from rootly_sdk import Client
 
 def log_request(request):
-    print(f"Request: {request.method} {request.url}")
+    print(f"Request event hook: {request.method} {request.url} - Waiting for response")
 
 def log_response(response):
-    print(f"Response: {response.request.method} {response.request.url} - Status {response.status_code}")
+    request = response.request
+    print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
 
 client = Client(
-    base_url="https://api.rootly.com",
-    httpx_args={
-        "event_hooks": {
-            "request": [log_request],
-            "response": [log_response]
-        }
-    },
+    base_url="https://api.example.com",
+    httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
 )
+
+# Or get the underlying httpx client to modify directly with client.get_httpx_client() or client.get_async_httpx_client()
 ```
 
-Access the underlying httpx client directly:
-
-```python
-# Synchronous client
-httpx_client = client.get_httpx_client()
-
-# Asynchronous client
-async_httpx_client = client.get_async_httpx_client()
-```
-
-Set a custom httpx client (note: this overrides base_url and other settings):
+You can even set the httpx client directly, but beware that this will override any existing settings (e.g., base_url):
 
 ```python
 import httpx
 from rootly_sdk import Client
 
-client = Client(base_url="https://api.rootly.com")
-client.set_httpx_client(
-    httpx.Client(
-        base_url="https://api.rootly.com",
-        proxies="http://localhost:8030"
-    )
+client = Client(
+    base_url="https://api.example.com",
 )
+# Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
+client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
 ```
 
-## API Structure
+## Building / publishing this package
+This project uses [Poetry](https://python-poetry.org/) to manage dependencies  and packaging.  Here are the basics:
+1. Update the metadata in pyproject.toml (e.g. authors, version)
+1. If you're using a private repository, configure it with Poetry
+    1. `poetry config repositories.<your-repository-name> <url-to-your-repository>`
+    1. `poetry config http-basic.<your-repository-name> <username> <password>`
+1. Publish the client with `poetry publish --build -r <your-repository-name>` or, if for public PyPI, just `poetry publish --build`
 
-The SDK is structured as follows:
-
-1. **Four function variants per endpoint:**
-   - `sync`: Blocking request returning parsed data or `None`
-   - `sync_detailed`: Blocking request returning full `Response` object
-   - `asyncio`: Async version of `sync`
-   - `asyncio_detailed`: Async version of `sync_detailed`
-
-2. **Module organization:**
-   - Path/query parameters and request bodies become function arguments
-   - Endpoints are grouped by their first OpenAPI tag (e.g., `rootly_sdk.api.incidents`)
-   - Untagged endpoints are in `rootly_sdk.api.default`
-
-## Development
-
-### Requirements
-
-- Python 3.9 or higher
-- [uv](https://github.com/astral-sh/uv) (recommended) or pip
-
-### Installation for Development
-
-```bash
-# Clone the repository
-git clone https://github.com/rootlyhq/rootly-python.git
-cd rootly-python
-
-# Install in editable mode
-pip install -e .
-```
-
-### Regenerating the Client
-
-To regenerate the client from the latest OpenAPI specification:
-
-```bash
-openapi-python-client generate \
-  --url https://rootly-heroku.s3.amazonaws.com/swagger/v1/swagger.json \
-  --no-fail-on-warning \
-  --output-path . \
-  --overwrite \
-  --config tools/config.yaml
-```
-
-### Building the Package
-
-```bash
-# Install build tools
-pip install uv
-uv pip install build
-
-# Build distribution files
-python -m build
-```
-
-### Running Tests
-
-```bash
-# Verify SDK imports successfully
-python -c "import rootly_sdk; print('SDK imports successfully')"
-```
-
-## Publishing
-
-### Automated Publishing via GitHub Actions (Recommended)
-
-1. Update the version in `pyproject.toml`
-2. Update `CHANGELOG.md` with release notes
-3. Create and push a git tag:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
-4. GitHub Actions will automatically build and publish to PyPI
-
-See [.github/PUBLISHING.md](.github/PUBLISHING.md) for detailed publishing instructions.
-
-### Manual Publishing
-
-If you need to publish manually:
-
-```bash
-# Install dependencies
-pip install uv
-uv pip install build twine
-
-# Build the package
-python -m build
-
-# Publish to PyPI
-twine upload dist/*
-```
-
-## Dependencies
-
-- [httpx](https://www.python-httpx.org/) >= 0.20.0, < 0.29.0 - HTTP client
-- [attrs](https://www.attrs.org/) >= 22.2.0 - Data classes
-- [python-dateutil](https://dateutil.readthedocs.io/) >= 2.8.0 - Date parsing
-
-## License
-
-Apache 2.0
-
-## Support
-
-For issues, questions, or contributions, please visit the [GitHub repository](https://github.com/rootlyhq/rootly-python).
+If you want to install this client into another project without publishing it (e.g. for development) then:
+1. If that project **is using Poetry**, you can simply do `poetry add <path-to-this-client>` from that project
+1. If that project is not using Poetry:
+    1. Build a wheel with `poetry build -f wheel`
+    1. Install that wheel from the other project `pip install <path-to-wheel>`

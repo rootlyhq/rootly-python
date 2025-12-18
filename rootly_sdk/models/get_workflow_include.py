@@ -1,8 +1,9 @@
 from typing import Literal, cast
 
-GetWorkflowInclude = Literal["form_field_conditions", "genius_tasks", "genius_workflow_runs"]
+GetWorkflowInclude = Literal["alert_field_conditions", "form_field_conditions", "genius_tasks", "genius_workflow_runs"]
 
 GET_WORKFLOW_INCLUDE_VALUES: set[GetWorkflowInclude] = {
+    "alert_field_conditions",
     "form_field_conditions",
     "genius_tasks",
     "genius_workflow_runs",

@@ -78,6 +78,18 @@ def sync_detailed(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
+    ## Asynchronous Rule Creation
+
+    For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
+    to improve performance. When enabled, rule updates happen in the background.
+
+    **Important**: When async processing is enabled, the rules list in the API response will not be up-
+    to-date immediately after update. You should refetch the alert route after a few minutes to get the
+    updated rules.
+
+    If you experience slow operations when managing alert routes with many rules, contact Rootly
+    customer support to enable asynchronous rule processing for your organization.
+
     Args:
         id (str):
         body (UpdateAlertRoute):
@@ -114,6 +126,18 @@ def sync(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
+    ## Asynchronous Rule Creation
+
+    For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
+    to improve performance. When enabled, rule updates happen in the background.
+
+    **Important**: When async processing is enabled, the rules list in the API response will not be up-
+    to-date immediately after update. You should refetch the alert route after a few minutes to get the
+    updated rules.
+
+    If you experience slow operations when managing alert routes with many rules, contact Rootly
+    customer support to enable asynchronous rule processing for your organization.
+
     Args:
         id (str):
         body (UpdateAlertRoute):
@@ -144,6 +168,18 @@ async def asyncio_detailed(
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
+
+    ## Asynchronous Rule Creation
+
+    For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
+    to improve performance. When enabled, rule updates happen in the background.
+
+    **Important**: When async processing is enabled, the rules list in the API response will not be up-
+    to-date immediately after update. You should refetch the alert route after a few minutes to get the
+    updated rules.
+
+    If you experience slow operations when managing alert routes with many rules, contact Rootly
+    customer support to enable asynchronous rule processing for your organization.
 
     Args:
         id (str):
@@ -178,6 +214,18 @@ async def asyncio(
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
+
+    ## Asynchronous Rule Creation
+
+    For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
+    to improve performance. When enabled, rule updates happen in the background.
+
+    **Important**: When async processing is enabled, the rules list in the API response will not be up-
+    to-date immediately after update. You should refetch the alert route after a few minutes to get the
+    updated rules.
+
+    If you experience slow operations when managing alert routes with many rules, contact Rootly
+    customer support to enable asynchronous rule processing for your organization.
 
     Args:
         id (str):

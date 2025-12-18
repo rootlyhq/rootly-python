@@ -69,11 +69,13 @@ def sync_detailed(
 ) -> Response[Union[AlertEventResponse, ErrorsList]]:
     """Update alert event
 
-     Updates a specific alert event
+     Updates a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    updated. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
-        body (UpdateAlertEvent):
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -103,11 +105,13 @@ def sync(
 ) -> Optional[Union[AlertEventResponse, ErrorsList]]:
     """Update alert event
 
-     Updates a specific alert event
+     Updates a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    updated. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
-        body (UpdateAlertEvent):
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,11 +136,13 @@ async def asyncio_detailed(
 ) -> Response[Union[AlertEventResponse, ErrorsList]]:
     """Update alert event
 
-     Updates a specific alert event
+     Updates a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    updated. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
-        body (UpdateAlertEvent):
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,11 +170,13 @@ async def asyncio(
 ) -> Optional[Union[AlertEventResponse, ErrorsList]]:
     """Update alert event
 
-     Updates a specific alert event
+     Updates a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    updated. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
-        body (UpdateAlertEvent):
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

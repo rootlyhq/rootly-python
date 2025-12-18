@@ -22,13 +22,13 @@ class CreateIncidentTaskParams:
         summary (Union[Unset, str]): The incident summary
         severity_id (Union[Unset, str]):
         incident_type_ids (Union[Unset, list[str]]):
-        service_ids (Union[Unset, list[str]]):
-        functionality_ids (Union[Unset, list[str]]):
+        service_ids (Union[Unset, list[str]]): Array of service UUIDs
+        functionality_ids (Union[Unset, list[str]]): Array of functionality UUIDs
         environment_ids (Union[Unset, list[str]]):
-        group_ids (Union[Unset, list[str]]):
+        group_ids (Union[Unset, list[str]]): Array of group/team UUIDs
         private (Union[Unset, bool]):
         custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
-            valid JSON
+            valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
     """
 
     title: str

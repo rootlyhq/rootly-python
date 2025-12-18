@@ -13,8 +13,8 @@ T = TypeVar("T", bound="NewScheduleDataAttributesSlackUserGroup")
 class NewScheduleDataAttributesSlackUserGroup:
     """
     Attributes:
-        id (Union[Unset, str]): Slack channel ID
-        name (Union[Unset, str]): Slack channel name
+        id (Union[Unset, str]): Slack user group ID
+        name (Union[Unset, str]): Slack user group name
     """
 
     id: Union[Unset, str] = UNSET

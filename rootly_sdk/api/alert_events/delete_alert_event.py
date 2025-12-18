@@ -56,7 +56,8 @@ def sync_detailed(
 ) -> Response[Union[Any, ErrorsList]]:
     """Delete alert event
 
-     Deletes a specific alert event
+     Deletes a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    deleted. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
@@ -87,7 +88,8 @@ def sync(
 ) -> Optional[Union[Any, ErrorsList]]:
     """Delete alert event
 
-     Deletes a specific alert event
+     Deletes a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    deleted. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
@@ -113,7 +115,8 @@ async def asyncio_detailed(
 ) -> Response[Union[Any, ErrorsList]]:
     """Delete alert event
 
-     Deletes a specific alert event
+     Deletes a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    deleted. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):
@@ -142,7 +145,8 @@ async def asyncio(
 ) -> Optional[Union[Any, ErrorsList]]:
     """Delete alert event
 
-     Deletes a specific alert event
+     Deletes a specific alert event. Only alert events with kind 'note' (user-created notes) can be
+    deleted. System-generated events are immutable to maintain audit trail integrity.
 
     Args:
         id (str):

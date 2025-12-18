@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 NewIncidentDataAttributesKind = Literal[
-    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "test", "test_sub"
+    "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "scheduled_sub", "test", "test_sub"
 ]
 
 NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES: set[NewIncidentDataAttributesKind] = {
@@ -11,6 +11,7 @@ NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES: set[NewIncidentDataAttributesKind] = {
     "normal",
     "normal_sub",
     "scheduled",
+    "scheduled_sub",
     "test",
     "test_sub",
 }

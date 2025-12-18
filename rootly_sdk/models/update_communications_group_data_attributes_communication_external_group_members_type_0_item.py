@@ -6,11 +6,11 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item")
+T = TypeVar("T", bound="UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item")
 
 
 @_attrs_define
-class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAttributesType0Item:
+class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item:
     """
     Attributes:
         id (Union[None, Unset, str]): ID of the external group member
@@ -71,15 +71,15 @@ class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersAt
 
         phone_number = d.pop("phone_number", UNSET)
 
-        update_communications_group_data_attributes_communication_external_group_members_attributes_type_0_item = cls(
+        update_communications_group_data_attributes_communication_external_group_members_type_0_item = cls(
             id=id,
             name=name,
             email=email,
             phone_number=phone_number,
         )
 
-        update_communications_group_data_attributes_communication_external_group_members_attributes_type_0_item.additional_properties = d
-        return update_communications_group_data_attributes_communication_external_group_members_attributes_type_0_item
+        update_communications_group_data_attributes_communication_external_group_members_type_0_item.additional_properties = d
+        return update_communications_group_data_attributes_communication_external_group_members_type_0_item
 
     @property
     def additional_keys(self) -> list[str]:

@@ -17,9 +17,6 @@ if TYPE_CHECKING:
     from ..models.communications_group_communication_group_conditions_type_0_item import (
         CommunicationsGroupCommunicationGroupConditionsType0Item,
     )
-    from ..models.communications_group_communication_group_members_type_0_item import (
-        CommunicationsGroupCommunicationGroupMembersType0Item,
-    )
 
 
 T = TypeVar("T", bound="CommunicationsGroup")
@@ -40,9 +37,9 @@ class CommunicationsGroup:
         updated_at (str): Date of last update
         description (Union[None, Unset, str]): The description of the communications group
         communication_group_conditions (Union[None, Unset,
-            list['CommunicationsGroupCommunicationGroupConditionsType0Item']]): Group conditions
-        communication_group_members (Union[None, Unset, list['CommunicationsGroupCommunicationGroupMembersType0Item']]):
-            Group members
+            list['CommunicationsGroupCommunicationGroupConditionsType0Item']]): Group conditions attributes
+        member_ids (Union[None, Unset, list[int]]): Array of member user IDs
+        slack_channel_ids (Union[None, Unset, list[str]]): Array of Slack channel IDs
         communication_external_group_members (Union[None, Unset,
             list['CommunicationsGroupCommunicationExternalGroupMembersType0Item']]): External group members
     """
@@ -60,9 +57,8 @@ class CommunicationsGroup:
     communication_group_conditions: Union[
         None, Unset, list["CommunicationsGroupCommunicationGroupConditionsType0Item"]
     ] = UNSET
-    communication_group_members: Union[None, Unset, list["CommunicationsGroupCommunicationGroupMembersType0Item"]] = (
-        UNSET
-    )
+    member_ids: Union[None, Unset, list[int]] = UNSET
+    slack_channel_ids: Union[None, Unset, list[str]] = UNSET
     communication_external_group_members: Union[
         None, Unset, list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]
     ] = UNSET
@@ -105,17 +101,23 @@ class CommunicationsGroup:
         else:
             communication_group_conditions = self.communication_group_conditions
 
-        communication_group_members: Union[None, Unset, list[dict[str, Any]]]
-        if isinstance(self.communication_group_members, Unset):
-            communication_group_members = UNSET
-        elif isinstance(self.communication_group_members, list):
-            communication_group_members = []
-            for communication_group_members_type_0_item_data in self.communication_group_members:
-                communication_group_members_type_0_item = communication_group_members_type_0_item_data.to_dict()
-                communication_group_members.append(communication_group_members_type_0_item)
+        member_ids: Union[None, Unset, list[int]]
+        if isinstance(self.member_ids, Unset):
+            member_ids = UNSET
+        elif isinstance(self.member_ids, list):
+            member_ids = self.member_ids
 
         else:
-            communication_group_members = self.communication_group_members
+            member_ids = self.member_ids
+
+        slack_channel_ids: Union[None, Unset, list[str]]
+        if isinstance(self.slack_channel_ids, Unset):
+            slack_channel_ids = UNSET
+        elif isinstance(self.slack_channel_ids, list):
+            slack_channel_ids = self.slack_channel_ids
+
+        else:
+            slack_channel_ids = self.slack_channel_ids
 
         communication_external_group_members: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.communication_external_group_members, Unset):
@@ -150,8 +152,10 @@ class CommunicationsGroup:
             field_dict["description"] = description
         if communication_group_conditions is not UNSET:
             field_dict["communication_group_conditions"] = communication_group_conditions
-        if communication_group_members is not UNSET:
-            field_dict["communication_group_members"] = communication_group_members
+        if member_ids is not UNSET:
+            field_dict["member_ids"] = member_ids
+        if slack_channel_ids is not UNSET:
+            field_dict["slack_channel_ids"] = slack_channel_ids
         if communication_external_group_members is not UNSET:
             field_dict["communication_external_group_members"] = communication_external_group_members
 
@@ -164,9 +168,6 @@ class CommunicationsGroup:
         )
         from ..models.communications_group_communication_group_conditions_type_0_item import (
             CommunicationsGroupCommunicationGroupConditionsType0Item,
-        )
-        from ..models.communications_group_communication_group_members_type_0_item import (
-            CommunicationsGroupCommunicationGroupMembersType0Item,
         )
 
         d = dict(src_dict)
@@ -227,9 +228,7 @@ class CommunicationsGroup:
             d.pop("communication_group_conditions", UNSET)
         )
 
-        def _parse_communication_group_members(
-            data: object,
-        ) -> Union[None, Unset, list["CommunicationsGroupCommunicationGroupMembersType0Item"]]:
+        def _parse_member_ids(data: object) -> Union[None, Unset, list[int]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -237,23 +236,31 @@ class CommunicationsGroup:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                communication_group_members_type_0 = []
-                _communication_group_members_type_0 = data
-                for communication_group_members_type_0_item_data in _communication_group_members_type_0:
-                    communication_group_members_type_0_item = (
-                        CommunicationsGroupCommunicationGroupMembersType0Item.from_dict(
-                            communication_group_members_type_0_item_data
-                        )
-                    )
+                member_ids_type_0 = cast(list[int], data)
 
-                    communication_group_members_type_0.append(communication_group_members_type_0_item)
-
-                return communication_group_members_type_0
+                return member_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CommunicationsGroupCommunicationGroupMembersType0Item"]], data)
+            return cast(Union[None, Unset, list[int]], data)
 
-        communication_group_members = _parse_communication_group_members(d.pop("communication_group_members", UNSET))
+        member_ids = _parse_member_ids(d.pop("member_ids", UNSET))
+
+        def _parse_slack_channel_ids(data: object) -> Union[None, Unset, list[str]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                slack_channel_ids_type_0 = cast(list[str], data)
+
+                return slack_channel_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list[str]], data)
+
+        slack_channel_ids = _parse_slack_channel_ids(d.pop("slack_channel_ids", UNSET))
 
         def _parse_communication_external_group_members(
             data: object,
@@ -299,7 +306,8 @@ class CommunicationsGroup:
             updated_at=updated_at,
             description=description,
             communication_group_conditions=communication_group_conditions,
-            communication_group_members=communication_group_members,
+            member_ids=member_ids,
+            slack_channel_ids=slack_channel_ids,
             communication_external_group_members=communication_external_group_members,
         )
 

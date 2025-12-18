@@ -58,6 +58,7 @@ if TYPE_CHECKING:
     from ..models.create_sharepoint_page_task_params import CreateSharepointPageTaskParams
     from ..models.create_shortcut_task_task_params import CreateShortcutTaskTaskParams
     from ..models.create_slack_channel_task_params import CreateSlackChannelTaskParams
+    from ..models.create_sub_incident_task_params import CreateSubIncidentTaskParams
     from ..models.create_trello_card_task_params import CreateTrelloCardTaskParams
     from ..models.create_watsonx_chat_completion_task_params import CreateWatsonxChatCompletionTaskParams
     from ..models.create_webex_meeting_task_params import CreateWebexMeetingTaskParams
@@ -151,10 +152,10 @@ class UpdateWorkflowTaskDataAttributes:
             'CreateOpenaiChatCompletionTaskParams', 'CreateOpsgenieAlertTaskParams', 'CreateOutlookEventTaskParams',
             'CreatePagerdutyStatusUpdateTaskParams', 'CreatePagertreeAlertTaskParams', 'CreateQuipPageTaskParams',
             'CreateServiceNowIncidentTaskParams', 'CreateSharepointPageTaskParams', 'CreateShortcutTaskTaskParams',
-            'CreateSlackChannelTaskParams', 'CreateTrelloCardTaskParams', 'CreateWatsonxChatCompletionTaskParams',
-            'CreateWebexMeetingTaskParams', 'CreateZendeskJiraLinkTaskParams', 'CreateZendeskTicketTaskParams',
-            'CreateZoomMeetingTaskParams', 'GetAlertsTaskParams', 'GetPulsesTaskParams', 'HttpClientTaskParams',
-            'InviteToMicrosoftTeamsChannelTaskParams', 'InviteToSlackChannelOpsgenieTaskParams',
+            'CreateSlackChannelTaskParams', 'CreateSubIncidentTaskParams', 'CreateTrelloCardTaskParams',
+            'CreateWatsonxChatCompletionTaskParams', 'CreateWebexMeetingTaskParams', 'CreateZendeskJiraLinkTaskParams',
+            'CreateZendeskTicketTaskParams', 'CreateZoomMeetingTaskParams', 'GetAlertsTaskParams', 'GetPulsesTaskParams',
+            'HttpClientTaskParams', 'InviteToMicrosoftTeamsChannelTaskParams', 'InviteToSlackChannelOpsgenieTaskParams',
             'InviteToSlackChannelRootlyTaskParams', 'InviteToSlackChannelVictorOpsTaskParams',
             'PageOpsgenieOnCallRespondersTaskParams', 'PagePagerdutyOnCallRespondersTaskParams',
             'PageRootlyOnCallRespondersTaskParams', 'PrintTaskParams', 'PublishIncidentTaskParams', 'RedisClientTaskParams',
@@ -232,6 +233,7 @@ class UpdateWorkflowTaskDataAttributes:
         "CreateSharepointPageTaskParams",
         "CreateShortcutTaskTaskParams",
         "CreateSlackChannelTaskParams",
+        "CreateSubIncidentTaskParams",
         "CreateTrelloCardTaskParams",
         "CreateWatsonxChatCompletionTaskParams",
         "CreateWebexMeetingTaskParams",
@@ -351,6 +353,7 @@ class UpdateWorkflowTaskDataAttributes:
         from ..models.create_sharepoint_page_task_params import CreateSharepointPageTaskParams
         from ..models.create_shortcut_task_task_params import CreateShortcutTaskTaskParams
         from ..models.create_slack_channel_task_params import CreateSlackChannelTaskParams
+        from ..models.create_sub_incident_task_params import CreateSubIncidentTaskParams
         from ..models.create_trello_card_task_params import CreateTrelloCardTaskParams
         from ..models.create_watsonx_chat_completion_task_params import CreateWatsonxChatCompletionTaskParams
         from ..models.create_webex_meeting_task_params import CreateWebexMeetingTaskParams
@@ -498,6 +501,8 @@ class UpdateWorkflowTaskDataAttributes:
         elif isinstance(self.task_params, CreateGoToMeetingTaskParams):
             task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, CreateIncidentTaskParams):
+            task_params = self.task_params.to_dict()
+        elif isinstance(self.task_params, CreateSubIncidentTaskParams):
             task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, CreateIncidentPostmortemTaskParams):
             task_params = self.task_params.to_dict()
@@ -726,6 +731,7 @@ class UpdateWorkflowTaskDataAttributes:
         from ..models.create_sharepoint_page_task_params import CreateSharepointPageTaskParams
         from ..models.create_shortcut_task_task_params import CreateShortcutTaskTaskParams
         from ..models.create_slack_channel_task_params import CreateSlackChannelTaskParams
+        from ..models.create_sub_incident_task_params import CreateSubIncidentTaskParams
         from ..models.create_trello_card_task_params import CreateTrelloCardTaskParams
         from ..models.create_watsonx_chat_completion_task_params import CreateWatsonxChatCompletionTaskParams
         from ..models.create_webex_meeting_task_params import CreateWebexMeetingTaskParams
@@ -853,6 +859,7 @@ class UpdateWorkflowTaskDataAttributes:
             "CreateSharepointPageTaskParams",
             "CreateShortcutTaskTaskParams",
             "CreateSlackChannelTaskParams",
+            "CreateSubIncidentTaskParams",
             "CreateTrelloCardTaskParams",
             "CreateWatsonxChatCompletionTaskParams",
             "CreateWebexMeetingTaskParams",
@@ -1219,7 +1226,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_39 = CreateIncidentPostmortemTaskParams.from_dict(data)
+                task_params_type_39 = CreateSubIncidentTaskParams.from_dict(data)
 
                 return task_params_type_39
             except:  # noqa: E722
@@ -1227,7 +1234,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_40 = CreateJiraIssueTaskParams.from_dict(data)
+                task_params_type_40 = CreateIncidentPostmortemTaskParams.from_dict(data)
 
                 return task_params_type_40
             except:  # noqa: E722
@@ -1235,7 +1242,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_41 = CreateJiraSubtaskTaskParams.from_dict(data)
+                task_params_type_41 = CreateJiraIssueTaskParams.from_dict(data)
 
                 return task_params_type_41
             except:  # noqa: E722
@@ -1243,7 +1250,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_42 = CreateLinearIssueTaskParams.from_dict(data)
+                task_params_type_42 = CreateJiraSubtaskTaskParams.from_dict(data)
 
                 return task_params_type_42
             except:  # noqa: E722
@@ -1251,7 +1258,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_43 = CreateLinearSubtaskIssueTaskParams.from_dict(data)
+                task_params_type_43 = CreateLinearIssueTaskParams.from_dict(data)
 
                 return task_params_type_43
             except:  # noqa: E722
@@ -1259,7 +1266,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_44 = CreateLinearIssueCommentTaskParams.from_dict(data)
+                task_params_type_44 = CreateLinearSubtaskIssueTaskParams.from_dict(data)
 
                 return task_params_type_44
             except:  # noqa: E722
@@ -1267,7 +1274,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_45 = CreateMicrosoftTeamsMeetingTaskParams.from_dict(data)
+                task_params_type_45 = CreateLinearIssueCommentTaskParams.from_dict(data)
 
                 return task_params_type_45
             except:  # noqa: E722
@@ -1275,7 +1282,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_46 = CreateMicrosoftTeamsChannelTaskParams.from_dict(data)
+                task_params_type_46 = CreateMicrosoftTeamsMeetingTaskParams.from_dict(data)
 
                 return task_params_type_46
             except:  # noqa: E722
@@ -1283,7 +1290,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_47 = CreateMicrosoftTeamsChatTaskParams.from_dict(data)
+                task_params_type_47 = CreateMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_47
             except:  # noqa: E722
@@ -1291,15 +1298,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_49 = ArchiveMicrosoftTeamsChannelsTaskParams.from_dict(data)
+                task_params_type_48 = CreateMicrosoftTeamsChatTaskParams.from_dict(data)
 
-                return task_params_type_49
+                return task_params_type_48
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_50 = RenameMicrosoftTeamsChannelTaskParams.from_dict(data)
+                task_params_type_50 = ArchiveMicrosoftTeamsChannelsTaskParams.from_dict(data)
 
                 return task_params_type_50
             except:  # noqa: E722
@@ -1307,7 +1314,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_51 = InviteToMicrosoftTeamsChannelTaskParams.from_dict(data)
+                task_params_type_51 = RenameMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_51
             except:  # noqa: E722
@@ -1315,7 +1322,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_52 = CreateNotionPageTaskParams.from_dict(data)
+                task_params_type_52 = InviteToMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_52
             except:  # noqa: E722
@@ -1323,15 +1330,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_55 = UpdateNotionPageTaskParams.from_dict(data)
+                task_params_type_53 = CreateNotionPageTaskParams.from_dict(data)
 
-                return task_params_type_55
+                return task_params_type_53
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_56 = CreateServiceNowIncidentTaskParams.from_dict(data)
+                task_params_type_56 = UpdateNotionPageTaskParams.from_dict(data)
 
                 return task_params_type_56
             except:  # noqa: E722
@@ -1339,15 +1346,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_58 = CreateShortcutTaskTaskParams.from_dict(data)
+                task_params_type_57 = CreateServiceNowIncidentTaskParams.from_dict(data)
 
-                return task_params_type_58
+                return task_params_type_57
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_59 = CreateTrelloCardTaskParams.from_dict(data)
+                task_params_type_59 = CreateShortcutTaskTaskParams.from_dict(data)
 
                 return task_params_type_59
             except:  # noqa: E722
@@ -1355,7 +1362,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_60 = CreateWebexMeetingTaskParams.from_dict(data)
+                task_params_type_60 = CreateTrelloCardTaskParams.from_dict(data)
 
                 return task_params_type_60
             except:  # noqa: E722
@@ -1363,7 +1370,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_61 = CreateZendeskTicketTaskParams.from_dict(data)
+                task_params_type_61 = CreateWebexMeetingTaskParams.from_dict(data)
 
                 return task_params_type_61
             except:  # noqa: E722
@@ -1371,7 +1378,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_62 = CreateZendeskJiraLinkTaskParams.from_dict(data)
+                task_params_type_62 = CreateZendeskTicketTaskParams.from_dict(data)
 
                 return task_params_type_62
             except:  # noqa: E722
@@ -1379,7 +1386,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_63 = CreateClickupTaskTaskParams.from_dict(data)
+                task_params_type_63 = CreateZendeskJiraLinkTaskParams.from_dict(data)
 
                 return task_params_type_63
             except:  # noqa: E722
@@ -1387,7 +1394,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_64 = CreateMotionTaskTaskParams.from_dict(data)
+                task_params_type_64 = CreateClickupTaskTaskParams.from_dict(data)
 
                 return task_params_type_64
             except:  # noqa: E722
@@ -1395,7 +1402,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_65 = CreateZoomMeetingTaskParams.from_dict(data)
+                task_params_type_65 = CreateMotionTaskTaskParams.from_dict(data)
 
                 return task_params_type_65
             except:  # noqa: E722
@@ -1403,15 +1410,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_68 = GetPulsesTaskParams.from_dict(data)
+                task_params_type_66 = CreateZoomMeetingTaskParams.from_dict(data)
 
-                return task_params_type_68
+                return task_params_type_66
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_69 = GetAlertsTaskParams.from_dict(data)
+                task_params_type_69 = GetPulsesTaskParams.from_dict(data)
 
                 return task_params_type_69
             except:  # noqa: E722
@@ -1419,7 +1426,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_70 = HttpClientTaskParams.from_dict(data)
+                task_params_type_70 = GetAlertsTaskParams.from_dict(data)
 
                 return task_params_type_70
             except:  # noqa: E722
@@ -1427,7 +1434,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_71 = InviteToSlackChannelOpsgenieTaskParams.from_dict(data)
+                task_params_type_71 = HttpClientTaskParams.from_dict(data)
 
                 return task_params_type_71
             except:  # noqa: E722
@@ -1435,7 +1442,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_72 = InviteToSlackChannelRootlyTaskParams.from_dict(data)
+                task_params_type_72 = InviteToSlackChannelOpsgenieTaskParams.from_dict(data)
 
                 return task_params_type_72
             except:  # noqa: E722
@@ -1443,15 +1450,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_75 = InviteToSlackChannelVictorOpsTaskParams.from_dict(data)
+                task_params_type_73 = InviteToSlackChannelRootlyTaskParams.from_dict(data)
 
-                return task_params_type_75
+                return task_params_type_73
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_76 = PageOpsgenieOnCallRespondersTaskParams.from_dict(data)
+                task_params_type_76 = InviteToSlackChannelVictorOpsTaskParams.from_dict(data)
 
                 return task_params_type_76
             except:  # noqa: E722
@@ -1459,7 +1466,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_77 = CreateOpsgenieAlertTaskParams.from_dict(data)
+                task_params_type_77 = PageOpsgenieOnCallRespondersTaskParams.from_dict(data)
 
                 return task_params_type_77
             except:  # noqa: E722
@@ -1467,7 +1474,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_78 = UpdateOpsgenieAlertTaskParams.from_dict(data)
+                task_params_type_78 = CreateOpsgenieAlertTaskParams.from_dict(data)
 
                 return task_params_type_78
             except:  # noqa: E722
@@ -1475,7 +1482,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_79 = UpdateOpsgenieIncidentTaskParams.from_dict(data)
+                task_params_type_79 = UpdateOpsgenieAlertTaskParams.from_dict(data)
 
                 return task_params_type_79
             except:  # noqa: E722
@@ -1483,7 +1490,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_80 = PageRootlyOnCallRespondersTaskParams.from_dict(data)
+                task_params_type_80 = UpdateOpsgenieIncidentTaskParams.from_dict(data)
 
                 return task_params_type_80
             except:  # noqa: E722
@@ -1491,7 +1498,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_81 = PagePagerdutyOnCallRespondersTaskParams.from_dict(data)
+                task_params_type_81 = PageRootlyOnCallRespondersTaskParams.from_dict(data)
 
                 return task_params_type_81
             except:  # noqa: E722
@@ -1499,15 +1506,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_83 = UpdateVictorOpsIncidentTaskParams.from_dict(data)
+                task_params_type_82 = PagePagerdutyOnCallRespondersTaskParams.from_dict(data)
 
-                return task_params_type_83
+                return task_params_type_82
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_84 = PrintTaskParams.from_dict(data)
+                task_params_type_84 = UpdateVictorOpsIncidentTaskParams.from_dict(data)
 
                 return task_params_type_84
             except:  # noqa: E722
@@ -1515,7 +1522,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_85 = PublishIncidentTaskParams.from_dict(data)
+                task_params_type_85 = PrintTaskParams.from_dict(data)
 
                 return task_params_type_85
             except:  # noqa: E722
@@ -1523,7 +1530,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_86 = RedisClientTaskParams.from_dict(data)
+                task_params_type_86 = PublishIncidentTaskParams.from_dict(data)
 
                 return task_params_type_86
             except:  # noqa: E722
@@ -1531,7 +1538,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_87 = RenameSlackChannelTaskParams.from_dict(data)
+                task_params_type_87 = RedisClientTaskParams.from_dict(data)
 
                 return task_params_type_87
             except:  # noqa: E722
@@ -1539,7 +1546,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_88 = ChangeSlackChannelPrivacyTaskParams.from_dict(data)
+                task_params_type_88 = RenameSlackChannelTaskParams.from_dict(data)
 
                 return task_params_type_88
             except:  # noqa: E722
@@ -1547,7 +1554,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_89 = RunCommandHerokuTaskParams.from_dict(data)
+                task_params_type_89 = ChangeSlackChannelPrivacyTaskParams.from_dict(data)
 
                 return task_params_type_89
             except:  # noqa: E722
@@ -1555,7 +1562,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_90 = SendEmailTaskParams.from_dict(data)
+                task_params_type_90 = RunCommandHerokuTaskParams.from_dict(data)
 
                 return task_params_type_90
             except:  # noqa: E722
@@ -1563,7 +1570,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_91 = SendDashboardReportTaskParams.from_dict(data)
+                task_params_type_91 = SendEmailTaskParams.from_dict(data)
 
                 return task_params_type_91
             except:  # noqa: E722
@@ -1571,7 +1578,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_92 = CreateSlackChannelTaskParams.from_dict(data)
+                task_params_type_92 = SendDashboardReportTaskParams.from_dict(data)
 
                 return task_params_type_92
             except:  # noqa: E722
@@ -1579,15 +1586,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_94 = SendSmsTaskParams.from_dict(data)
+                task_params_type_93 = CreateSlackChannelTaskParams.from_dict(data)
 
-                return task_params_type_94
+                return task_params_type_93
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_95 = SendWhatsappMessageTaskParams.from_dict(data)
+                task_params_type_95 = SendSmsTaskParams.from_dict(data)
 
                 return task_params_type_95
             except:  # noqa: E722
@@ -1595,7 +1602,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_96 = SnapshotDatadogGraphTaskParams.from_dict(data)
+                task_params_type_96 = SendWhatsappMessageTaskParams.from_dict(data)
 
                 return task_params_type_96
             except:  # noqa: E722
@@ -1603,7 +1610,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_97 = SnapshotGrafanaDashboardTaskParams.from_dict(data)
+                task_params_type_97 = SnapshotDatadogGraphTaskParams.from_dict(data)
 
                 return task_params_type_97
             except:  # noqa: E722
@@ -1611,7 +1618,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_98 = SnapshotLookerLookTaskParams.from_dict(data)
+                task_params_type_98 = SnapshotGrafanaDashboardTaskParams.from_dict(data)
 
                 return task_params_type_98
             except:  # noqa: E722
@@ -1619,7 +1626,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_99 = SnapshotNewRelicGraphTaskParams.from_dict(data)
+                task_params_type_99 = SnapshotLookerLookTaskParams.from_dict(data)
 
                 return task_params_type_99
             except:  # noqa: E722
@@ -1627,7 +1634,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_100 = TweetTwitterMessageTaskParams.from_dict(data)
+                task_params_type_100 = SnapshotNewRelicGraphTaskParams.from_dict(data)
 
                 return task_params_type_100
             except:  # noqa: E722
@@ -1635,7 +1642,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_101 = UpdateAirtableTableRecordTaskParams.from_dict(data)
+                task_params_type_101 = TweetTwitterMessageTaskParams.from_dict(data)
 
                 return task_params_type_101
             except:  # noqa: E722
@@ -1643,7 +1650,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_102 = UpdateAsanaTaskTaskParams.from_dict(data)
+                task_params_type_102 = UpdateAirtableTableRecordTaskParams.from_dict(data)
 
                 return task_params_type_102
             except:  # noqa: E722
@@ -1651,7 +1658,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_103 = UpdateGithubIssueTaskParams.from_dict(data)
+                task_params_type_103 = UpdateAsanaTaskTaskParams.from_dict(data)
 
                 return task_params_type_103
             except:  # noqa: E722
@@ -1659,7 +1666,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_104 = UpdateGitlabIssueTaskParams.from_dict(data)
+                task_params_type_104 = UpdateGithubIssueTaskParams.from_dict(data)
 
                 return task_params_type_104
             except:  # noqa: E722
@@ -1667,7 +1674,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_105 = UpdateIncidentTaskParams.from_dict(data)
+                task_params_type_105 = UpdateGitlabIssueTaskParams.from_dict(data)
 
                 return task_params_type_105
             except:  # noqa: E722
@@ -1675,7 +1682,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_106 = UpdateIncidentPostmortemTaskParams.from_dict(data)
+                task_params_type_106 = UpdateIncidentTaskParams.from_dict(data)
 
                 return task_params_type_106
             except:  # noqa: E722
@@ -1683,7 +1690,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_107 = UpdateJiraIssueTaskParams.from_dict(data)
+                task_params_type_107 = UpdateIncidentPostmortemTaskParams.from_dict(data)
 
                 return task_params_type_107
             except:  # noqa: E722
@@ -1691,7 +1698,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_108 = UpdateLinearIssueTaskParams.from_dict(data)
+                task_params_type_108 = UpdateJiraIssueTaskParams.from_dict(data)
 
                 return task_params_type_108
             except:  # noqa: E722
@@ -1699,7 +1706,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_109 = UpdateServiceNowIncidentTaskParams.from_dict(data)
+                task_params_type_109 = UpdateLinearIssueTaskParams.from_dict(data)
 
                 return task_params_type_109
             except:  # noqa: E722
@@ -1707,7 +1714,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_110 = UpdateShortcutStoryTaskParams.from_dict(data)
+                task_params_type_110 = UpdateServiceNowIncidentTaskParams.from_dict(data)
 
                 return task_params_type_110
             except:  # noqa: E722
@@ -1715,7 +1722,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_111 = UpdateShortcutTaskTaskParams.from_dict(data)
+                task_params_type_111 = UpdateShortcutStoryTaskParams.from_dict(data)
 
                 return task_params_type_111
             except:  # noqa: E722
@@ -1723,7 +1730,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_112 = UpdateSlackChannelTopicTaskParams.from_dict(data)
+                task_params_type_112 = UpdateShortcutTaskTaskParams.from_dict(data)
 
                 return task_params_type_112
             except:  # noqa: E722
@@ -1731,7 +1738,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_113 = UpdateStatusTaskParams.from_dict(data)
+                task_params_type_113 = UpdateSlackChannelTopicTaskParams.from_dict(data)
 
                 return task_params_type_113
             except:  # noqa: E722
@@ -1739,7 +1746,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_114 = UpdateIncidentStatusTimestampTaskParams.from_dict(data)
+                task_params_type_114 = UpdateStatusTaskParams.from_dict(data)
 
                 return task_params_type_114
             except:  # noqa: E722
@@ -1747,7 +1754,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_115 = UpdateTrelloCardTaskParams.from_dict(data)
+                task_params_type_115 = UpdateIncidentStatusTimestampTaskParams.from_dict(data)
 
                 return task_params_type_115
             except:  # noqa: E722
@@ -1755,7 +1762,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_116 = UpdateClickupTaskTaskParams.from_dict(data)
+                task_params_type_116 = UpdateTrelloCardTaskParams.from_dict(data)
 
                 return task_params_type_116
             except:  # noqa: E722
@@ -1763,7 +1770,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_117 = UpdateMotionTaskTaskParams.from_dict(data)
+                task_params_type_117 = UpdateClickupTaskTaskParams.from_dict(data)
 
                 return task_params_type_117
             except:  # noqa: E722
@@ -1771,7 +1778,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_118 = UpdateZendeskTicketTaskParams.from_dict(data)
+                task_params_type_118 = UpdateMotionTaskTaskParams.from_dict(data)
 
                 return task_params_type_118
             except:  # noqa: E722
@@ -1779,7 +1786,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_119 = UpdateAttachedAlertsTaskParams.from_dict(data)
+                task_params_type_119 = UpdateZendeskTicketTaskParams.from_dict(data)
 
                 return task_params_type_119
             except:  # noqa: E722
@@ -1787,7 +1794,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_120 = TriggerWorkflowTaskParams.from_dict(data)
+                task_params_type_120 = UpdateAttachedAlertsTaskParams.from_dict(data)
 
                 return task_params_type_120
             except:  # noqa: E722
@@ -1795,15 +1802,15 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_122 = CreateOpenaiChatCompletionTaskParams.from_dict(data)
+                task_params_type_121 = TriggerWorkflowTaskParams.from_dict(data)
 
-                return task_params_type_122
+                return task_params_type_121
             except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_123 = CreateWatsonxChatCompletionTaskParams.from_dict(data)
+                task_params_type_123 = CreateOpenaiChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_123
             except:  # noqa: E722
@@ -1811,7 +1818,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_124 = CreateGoogleGeminiChatCompletionTaskParams.from_dict(data)
+                task_params_type_124 = CreateWatsonxChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_124
             except:  # noqa: E722
@@ -1819,7 +1826,7 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_125 = CreateMistralChatCompletionTaskParams.from_dict(data)
+                task_params_type_125 = CreateGoogleGeminiChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_125
             except:  # noqa: E722
@@ -1827,9 +1834,17 @@ class UpdateWorkflowTaskDataAttributes:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_126 = CreateAnthropicChatCompletionTaskParams.from_dict(data)
+                task_params_type_126 = CreateMistralChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_126
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_127 = CreateAnthropicChatCompletionTaskParams.from_dict(data)
+
+                return task_params_type_127
             except:  # noqa: E722
                 pass
             return cast(
@@ -1886,6 +1901,7 @@ class UpdateWorkflowTaskDataAttributes:
                     "CreateSharepointPageTaskParams",
                     "CreateShortcutTaskTaskParams",
                     "CreateSlackChannelTaskParams",
+                    "CreateSubIncidentTaskParams",
                     "CreateTrelloCardTaskParams",
                     "CreateWatsonxChatCompletionTaskParams",
                     "CreateWebexMeetingTaskParams",

@@ -6,50 +6,51 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="CommunicationsGroupCommunicationGroupConditionsType0ItemPropertiesType0Item")
+T = TypeVar("T", bound="ScheduleSlackChannelType0")
 
 
 @_attrs_define
-class CommunicationsGroupCommunicationGroupConditionsType0ItemPropertiesType0Item:
-    """
+class ScheduleSlackChannelType0:
+    """Synced slack channel of the schedule
+
     Attributes:
-        name (Union[Unset, str]):
-        id (Union[Unset, str]):
+        id (Union[Unset, str]): Slack channel ID
+        name (Union[Unset, str]): Slack channel name
     """
 
-    name: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
         id = self.id
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
         if id is not UNSET:
             field_dict["id"] = id
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
-
         id = d.pop("id", UNSET)
 
-        communications_group_communication_group_conditions_type_0_item_properties_type_0_item = cls(
-            name=name,
+        name = d.pop("name", UNSET)
+
+        schedule_slack_channel_type_0 = cls(
             id=id,
+            name=name,
         )
 
-        communications_group_communication_group_conditions_type_0_item_properties_type_0_item.additional_properties = d
-        return communications_group_communication_group_conditions_type_0_item_properties_type_0_item
+        schedule_slack_channel_type_0.additional_properties = d
+        return schedule_slack_channel_type_0
 
     @property
     def additional_keys(self) -> list[str]:
