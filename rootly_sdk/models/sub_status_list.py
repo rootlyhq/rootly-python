@@ -6,6 +6,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.links import Links
+    from ..models.meta import Meta
     from ..models.sub_status_list_data_item import SubStatusListDataItem
 
 
@@ -18,10 +19,12 @@ class SubStatusList:
     Attributes:
         data (list['SubStatusListDataItem']):
         links (Links):
+        meta (Meta):
     """
 
     data: list["SubStatusListDataItem"]
     links: "Links"
+    meta: "Meta"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,12 +35,15 @@ class SubStatusList:
 
         links = self.links.to_dict()
 
+        meta = self.meta.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "data": data,
                 "links": links,
+                "meta": meta,
             }
         )
 
@@ -46,6 +52,7 @@ class SubStatusList:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.links import Links
+        from ..models.meta import Meta
         from ..models.sub_status_list_data_item import SubStatusListDataItem
 
         d = dict(src_dict)
@@ -58,9 +65,12 @@ class SubStatusList:
 
         links = Links.from_dict(d.pop("links"))
 
+        meta = Meta.from_dict(d.pop("meta"))
+
         sub_status_list = cls(
             data=data,
             links=links,
+            meta=meta,
         )
 
         sub_status_list.additional_properties = d

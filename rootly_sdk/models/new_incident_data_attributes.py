@@ -42,6 +42,8 @@ class NewIncidentDataAttributes:
         functionality_ids (Union[None, Unset, list[str]]): The Functionality ID's to attach to the incident
         group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the incident
         cause_ids (Union[None, Unset, list[str]]): The Cause ID's to attach to the incident
+        muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
+            for these services will still be triggered and attached to the incident, but won't page responders.
         labels (Union['NewIncidentDataAttributesLabelsType0', None, Unset]): Labels to attach to the incidents. eg:
             {"platform":"osx", "version": "1.29"}
         slack_channel_name (Union[None, Unset, str]): Slack channel name
@@ -81,6 +83,7 @@ class NewIncidentDataAttributes:
     functionality_ids: Union[None, Unset, list[str]] = UNSET
     group_ids: Union[None, Unset, list[str]] = UNSET
     cause_ids: Union[None, Unset, list[str]] = UNSET
+    muted_service_ids: Union[None, Unset, list[str]] = UNSET
     labels: Union["NewIncidentDataAttributesLabelsType0", None, Unset] = UNSET
     slack_channel_name: Union[None, Unset, str] = UNSET
     slack_channel_id: Union[None, Unset, str] = UNSET
@@ -219,6 +222,15 @@ class NewIncidentDataAttributes:
 
         else:
             cause_ids = self.cause_ids
+
+        muted_service_ids: Union[None, Unset, list[str]]
+        if isinstance(self.muted_service_ids, Unset):
+            muted_service_ids = UNSET
+        elif isinstance(self.muted_service_ids, list):
+            muted_service_ids = self.muted_service_ids
+
+        else:
+            muted_service_ids = self.muted_service_ids
 
         labels: Union[None, Unset, dict[str, Any]]
         if isinstance(self.labels, Unset):
@@ -374,6 +386,8 @@ class NewIncidentDataAttributes:
             field_dict["group_ids"] = group_ids
         if cause_ids is not UNSET:
             field_dict["cause_ids"] = cause_ids
+        if muted_service_ids is not UNSET:
+            field_dict["muted_service_ids"] = muted_service_ids
         if labels is not UNSET:
             field_dict["labels"] = labels
         if slack_channel_name is not UNSET:
@@ -621,6 +635,23 @@ class NewIncidentDataAttributes:
 
         cause_ids = _parse_cause_ids(d.pop("cause_ids", UNSET))
 
+        def _parse_muted_service_ids(data: object) -> Union[None, Unset, list[str]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                muted_service_ids_type_0 = cast(list[str], data)
+
+                return muted_service_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list[str]], data)
+
+        muted_service_ids = _parse_muted_service_ids(d.pop("muted_service_ids", UNSET))
+
         def _parse_labels(data: object) -> Union["NewIncidentDataAttributesLabelsType0", None, Unset]:
             if data is None:
                 return data
@@ -825,6 +856,7 @@ class NewIncidentDataAttributes:
             functionality_ids=functionality_ids,
             group_ids=group_ids,
             cause_ids=cause_ids,
+            muted_service_ids=muted_service_ids,
             labels=labels,
             slack_channel_name=slack_channel_name,
             slack_channel_id=slack_channel_id,

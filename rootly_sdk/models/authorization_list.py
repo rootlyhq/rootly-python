@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 if TYPE_CHECKING:
     from ..models.authorization_list_data_item import AuthorizationListDataItem
     from ..models.links import Links
+    from ..models.meta import Meta
 
 
 T = TypeVar("T", bound="AuthorizationList")
@@ -18,10 +19,12 @@ class AuthorizationList:
     Attributes:
         data (list['AuthorizationListDataItem']):
         links (Links):
+        meta (Meta):
     """
 
     data: list["AuthorizationListDataItem"]
     links: "Links"
+    meta: "Meta"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,12 +35,15 @@ class AuthorizationList:
 
         links = self.links.to_dict()
 
+        meta = self.meta.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "data": data,
                 "links": links,
+                "meta": meta,
             }
         )
 
@@ -47,6 +53,7 @@ class AuthorizationList:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.authorization_list_data_item import AuthorizationListDataItem
         from ..models.links import Links
+        from ..models.meta import Meta
 
         d = dict(src_dict)
         data = []
@@ -58,9 +65,12 @@ class AuthorizationList:
 
         links = Links.from_dict(d.pop("links"))
 
+        meta = Meta.from_dict(d.pop("meta"))
+
         authorization_list = cls(
             data=data,
             links=links,
+            meta=meta,
         )
 
         authorization_list.additional_properties = d

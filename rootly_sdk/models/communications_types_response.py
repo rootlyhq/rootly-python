@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.communications_types_response_data_item import CommunicationsTypesResponseDataItem
     from ..models.links import Links
+    from ..models.meta import Meta
 
 
 T = TypeVar("T", bound="CommunicationsTypesResponse")
@@ -20,10 +21,12 @@ class CommunicationsTypesResponse:
     Attributes:
         data (list['CommunicationsTypesResponseDataItem']):
         links (Union[Unset, Links]):
+        meta (Union[Unset, Meta]):
     """
 
     data: list["CommunicationsTypesResponseDataItem"]
     links: Union[Unset, "Links"] = UNSET
+    meta: Union[Unset, "Meta"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +39,10 @@ class CommunicationsTypesResponse:
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
+        meta: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.meta, Unset):
+            meta = self.meta.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -45,6 +52,8 @@ class CommunicationsTypesResponse:
         )
         if links is not UNSET:
             field_dict["links"] = links
+        if meta is not UNSET:
+            field_dict["meta"] = meta
 
         return field_dict
 
@@ -52,6 +61,7 @@ class CommunicationsTypesResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.communications_types_response_data_item import CommunicationsTypesResponseDataItem
         from ..models.links import Links
+        from ..models.meta import Meta
 
         d = dict(src_dict)
         data = []
@@ -68,9 +78,17 @@ class CommunicationsTypesResponse:
         else:
             links = Links.from_dict(_links)
 
+        _meta = d.pop("meta", UNSET)
+        meta: Union[Unset, Meta]
+        if isinstance(_meta, Unset):
+            meta = UNSET
+        else:
+            meta = Meta.from_dict(_meta)
+
         communications_types_response = cls(
             data=data,
             links=links,
+            meta=meta,
         )
 
         communications_types_response.additional_properties = d

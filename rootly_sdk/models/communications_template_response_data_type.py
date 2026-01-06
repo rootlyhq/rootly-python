@@ -1,9 +1,9 @@
 from typing import Literal, cast
 
-CommunicationsTemplateResponseDataType = Literal["communications-templates"]
+CommunicationsTemplateResponseDataType = Literal["communications_templates"]
 
 COMMUNICATIONS_TEMPLATE_RESPONSE_DATA_TYPE_VALUES: set[CommunicationsTemplateResponseDataType] = {
-    "communications-templates",
+    "communications_templates",
 }
 
 

@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.links import Links
+    from ..models.meta import Meta
     from ..models.webhooks_endpoint_list_data_item import WebhooksEndpointListDataItem
 
 
@@ -20,10 +21,12 @@ class WebhooksEndpointList:
     Attributes:
         data (list['WebhooksEndpointListDataItem']):
         links (Union[Unset, Links]):
+        meta (Union[Unset, Meta]):
     """
 
     data: list["WebhooksEndpointListDataItem"]
     links: Union[Unset, "Links"] = UNSET
+    meta: Union[Unset, "Meta"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +39,10 @@ class WebhooksEndpointList:
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
+        meta: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.meta, Unset):
+            meta = self.meta.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -45,12 +52,15 @@ class WebhooksEndpointList:
         )
         if links is not UNSET:
             field_dict["links"] = links
+        if meta is not UNSET:
+            field_dict["meta"] = meta
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.links import Links
+        from ..models.meta import Meta
         from ..models.webhooks_endpoint_list_data_item import WebhooksEndpointListDataItem
 
         d = dict(src_dict)
@@ -68,9 +78,17 @@ class WebhooksEndpointList:
         else:
             links = Links.from_dict(_links)
 
+        _meta = d.pop("meta", UNSET)
+        meta: Union[Unset, Meta]
+        if isinstance(_meta, Unset):
+            meta = UNSET
+        else:
+            meta = Meta.from_dict(_meta)
+
         webhooks_endpoint_list = cls(
             data=data,
             links=links,
+            meta=meta,
         )
 
         webhooks_endpoint_list.additional_properties = d

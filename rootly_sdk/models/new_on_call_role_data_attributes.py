@@ -3,6 +3,18 @@ from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
+from ..models.new_on_call_role_data_attributes_alert_fields_permissions_item import (
+    NewOnCallRoleDataAttributesAlertFieldsPermissionsItem,
+    check_new_on_call_role_data_attributes_alert_fields_permissions_item,
+)
+from ..models.new_on_call_role_data_attributes_alert_groups_permissions_item import (
+    NewOnCallRoleDataAttributesAlertGroupsPermissionsItem,
+    check_new_on_call_role_data_attributes_alert_groups_permissions_item,
+)
+from ..models.new_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
+    NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem,
+    check_new_on_call_role_data_attributes_alert_routing_rules_permissions_item,
+)
 from ..models.new_on_call_role_data_attributes_alert_sources_permissions_item import (
     NewOnCallRoleDataAttributesAlertSourcesPermissionsItem,
     check_new_on_call_role_data_attributes_alert_sources_permissions_item,
@@ -51,6 +63,14 @@ from ..models.new_on_call_role_data_attributes_live_call_routing_permissions_ite
     NewOnCallRoleDataAttributesLiveCallRoutingPermissionsItem,
     check_new_on_call_role_data_attributes_live_call_routing_permissions_item,
 )
+from ..models.new_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
+    NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem,
+    check_new_on_call_role_data_attributes_on_call_readiness_report_permissions_item,
+)
+from ..models.new_on_call_role_data_attributes_on_call_roles_permissions_item import (
+    NewOnCallRoleDataAttributesOnCallRolesPermissionsItem,
+    check_new_on_call_role_data_attributes_on_call_roles_permissions_item,
+)
 from ..models.new_on_call_role_data_attributes_schedule_override_permissions_item import (
     NewOnCallRoleDataAttributesScheduleOverridePermissionsItem,
     check_new_on_call_role_data_attributes_schedule_override_permissions_item,
@@ -84,6 +104,13 @@ class NewOnCallRoleDataAttributes:
         slug (Union[Unset, str]): The role slug.
         system_role (Union[Unset, str]): The kind of role (user and custom type roles are only editable) Default:
             'custom'.
+        alert_fields_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem]]):
+        alert_groups_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertGroupsPermissionsItem]]):
+        alert_routing_rules_permissions (Union[Unset,
+            list[NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem]]):
+        on_call_readiness_report_permissions (Union[Unset,
+            list[NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem]]):
+        on_call_roles_permissions (Union[Unset, list[NewOnCallRoleDataAttributesOnCallRolesPermissionsItem]]):
         alert_sources_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertSourcesPermissionsItem]]):
         alert_urgency_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertUrgencyPermissionsItem]]):
         alerts_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertsPermissionsItem]]):
@@ -107,6 +134,15 @@ class NewOnCallRoleDataAttributes:
     name: str
     slug: Union[Unset, str] = UNSET
     system_role: Union[Unset, str] = "custom"
+    alert_fields_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem]] = UNSET
+    alert_groups_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertGroupsPermissionsItem]] = UNSET
+    alert_routing_rules_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem]] = (
+        UNSET
+    )
+    on_call_readiness_report_permissions: Union[
+        Unset, list[NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem]
+    ] = UNSET
+    on_call_roles_permissions: Union[Unset, list[NewOnCallRoleDataAttributesOnCallRolesPermissionsItem]] = UNSET
     alert_sources_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertSourcesPermissionsItem]] = UNSET
     alert_urgency_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertUrgencyPermissionsItem]] = UNSET
     alerts_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertsPermissionsItem]] = UNSET
@@ -135,6 +171,41 @@ class NewOnCallRoleDataAttributes:
         slug = self.slug
 
         system_role = self.system_role
+
+        alert_fields_permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.alert_fields_permissions, Unset):
+            alert_fields_permissions = []
+            for alert_fields_permissions_item_data in self.alert_fields_permissions:
+                alert_fields_permissions_item: str = alert_fields_permissions_item_data
+                alert_fields_permissions.append(alert_fields_permissions_item)
+
+        alert_groups_permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.alert_groups_permissions, Unset):
+            alert_groups_permissions = []
+            for alert_groups_permissions_item_data in self.alert_groups_permissions:
+                alert_groups_permissions_item: str = alert_groups_permissions_item_data
+                alert_groups_permissions.append(alert_groups_permissions_item)
+
+        alert_routing_rules_permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.alert_routing_rules_permissions, Unset):
+            alert_routing_rules_permissions = []
+            for alert_routing_rules_permissions_item_data in self.alert_routing_rules_permissions:
+                alert_routing_rules_permissions_item: str = alert_routing_rules_permissions_item_data
+                alert_routing_rules_permissions.append(alert_routing_rules_permissions_item)
+
+        on_call_readiness_report_permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.on_call_readiness_report_permissions, Unset):
+            on_call_readiness_report_permissions = []
+            for on_call_readiness_report_permissions_item_data in self.on_call_readiness_report_permissions:
+                on_call_readiness_report_permissions_item: str = on_call_readiness_report_permissions_item_data
+                on_call_readiness_report_permissions.append(on_call_readiness_report_permissions_item)
+
+        on_call_roles_permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.on_call_roles_permissions, Unset):
+            on_call_roles_permissions = []
+            for on_call_roles_permissions_item_data in self.on_call_roles_permissions:
+                on_call_roles_permissions_item: str = on_call_roles_permissions_item_data
+                on_call_roles_permissions.append(on_call_roles_permissions_item)
 
         alert_sources_permissions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.alert_sources_permissions, Unset):
@@ -266,6 +337,16 @@ class NewOnCallRoleDataAttributes:
             field_dict["slug"] = slug
         if system_role is not UNSET:
             field_dict["system_role"] = system_role
+        if alert_fields_permissions is not UNSET:
+            field_dict["alert_fields_permissions"] = alert_fields_permissions
+        if alert_groups_permissions is not UNSET:
+            field_dict["alert_groups_permissions"] = alert_groups_permissions
+        if alert_routing_rules_permissions is not UNSET:
+            field_dict["alert_routing_rules_permissions"] = alert_routing_rules_permissions
+        if on_call_readiness_report_permissions is not UNSET:
+            field_dict["on_call_readiness_report_permissions"] = on_call_readiness_report_permissions
+        if on_call_roles_permissions is not UNSET:
+            field_dict["on_call_roles_permissions"] = on_call_roles_permissions
         if alert_sources_permissions is not UNSET:
             field_dict["alert_sources_permissions"] = alert_sources_permissions
         if alert_urgency_permissions is not UNSET:
@@ -311,6 +392,55 @@ class NewOnCallRoleDataAttributes:
         slug = d.pop("slug", UNSET)
 
         system_role = d.pop("system_role", UNSET)
+
+        alert_fields_permissions = []
+        _alert_fields_permissions = d.pop("alert_fields_permissions", UNSET)
+        for alert_fields_permissions_item_data in _alert_fields_permissions or []:
+            alert_fields_permissions_item = check_new_on_call_role_data_attributes_alert_fields_permissions_item(
+                alert_fields_permissions_item_data
+            )
+
+            alert_fields_permissions.append(alert_fields_permissions_item)
+
+        alert_groups_permissions = []
+        _alert_groups_permissions = d.pop("alert_groups_permissions", UNSET)
+        for alert_groups_permissions_item_data in _alert_groups_permissions or []:
+            alert_groups_permissions_item = check_new_on_call_role_data_attributes_alert_groups_permissions_item(
+                alert_groups_permissions_item_data
+            )
+
+            alert_groups_permissions.append(alert_groups_permissions_item)
+
+        alert_routing_rules_permissions = []
+        _alert_routing_rules_permissions = d.pop("alert_routing_rules_permissions", UNSET)
+        for alert_routing_rules_permissions_item_data in _alert_routing_rules_permissions or []:
+            alert_routing_rules_permissions_item = (
+                check_new_on_call_role_data_attributes_alert_routing_rules_permissions_item(
+                    alert_routing_rules_permissions_item_data
+                )
+            )
+
+            alert_routing_rules_permissions.append(alert_routing_rules_permissions_item)
+
+        on_call_readiness_report_permissions = []
+        _on_call_readiness_report_permissions = d.pop("on_call_readiness_report_permissions", UNSET)
+        for on_call_readiness_report_permissions_item_data in _on_call_readiness_report_permissions or []:
+            on_call_readiness_report_permissions_item = (
+                check_new_on_call_role_data_attributes_on_call_readiness_report_permissions_item(
+                    on_call_readiness_report_permissions_item_data
+                )
+            )
+
+            on_call_readiness_report_permissions.append(on_call_readiness_report_permissions_item)
+
+        on_call_roles_permissions = []
+        _on_call_roles_permissions = d.pop("on_call_roles_permissions", UNSET)
+        for on_call_roles_permissions_item_data in _on_call_roles_permissions or []:
+            on_call_roles_permissions_item = check_new_on_call_role_data_attributes_on_call_roles_permissions_item(
+                on_call_roles_permissions_item_data
+            )
+
+            on_call_roles_permissions.append(on_call_roles_permissions_item)
 
         alert_sources_permissions = []
         _alert_sources_permissions = d.pop("alert_sources_permissions", UNSET)
@@ -475,6 +605,11 @@ class NewOnCallRoleDataAttributes:
             name=name,
             slug=slug,
             system_role=system_role,
+            alert_fields_permissions=alert_fields_permissions,
+            alert_groups_permissions=alert_groups_permissions,
+            alert_routing_rules_permissions=alert_routing_rules_permissions,
+            on_call_readiness_report_permissions=on_call_readiness_report_permissions,
+            on_call_roles_permissions=on_call_roles_permissions,
             alert_sources_permissions=alert_sources_permissions,
             alert_urgency_permissions=alert_urgency_permissions,
             alerts_permissions=alerts_permissions,

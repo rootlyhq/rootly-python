@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootly"
-version = "1.1.0"
+version = "v1"
 description = "A client library for accessing Rootly API v1"
 authors = []
 readme = "README.md"
@@ -11,9 +11,9 @@ include = ["CHANGELOG.md", "rootly_sdk/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-httpx = ">=0.24.0,<0.29.0"
-attrs = ">=24.1.0"
-python-dateutil = "^2.9.0"
+httpx = ">=0.23.0,<0.29.0"
+attrs = ">=22.2.0"
+python-dateutil = "^2.8.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

@@ -1154,6 +1154,7 @@ from .live_call_router_response import LiveCallRouterResponse
 from .live_call_router_response_data import LiveCallRouterResponseData
 from .live_call_router_response_data_type import LiveCallRouterResponseDataType
 from .live_call_router_waiting_music_url import LiveCallRouterWaitingMusicUrl
+from .meta import Meta
 from .mitigate_incident import MitigateIncident
 from .mitigate_incident_data import MitigateIncidentData
 from .mitigate_incident_data_attributes import MitigateIncidentDataAttributes
@@ -1645,6 +1646,15 @@ from .new_live_call_router_data_type import NewLiveCallRouterDataType
 from .new_on_call_role import NewOnCallRole
 from .new_on_call_role_data import NewOnCallRoleData
 from .new_on_call_role_data_attributes import NewOnCallRoleDataAttributes
+from .new_on_call_role_data_attributes_alert_fields_permissions_item import (
+    NewOnCallRoleDataAttributesAlertFieldsPermissionsItem,
+)
+from .new_on_call_role_data_attributes_alert_groups_permissions_item import (
+    NewOnCallRoleDataAttributesAlertGroupsPermissionsItem,
+)
+from .new_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
+    NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem,
+)
 from .new_on_call_role_data_attributes_alert_sources_permissions_item import (
     NewOnCallRoleDataAttributesAlertSourcesPermissionsItem,
 )
@@ -1674,6 +1684,12 @@ from .new_on_call_role_data_attributes_invitations_permissions_item import (
 )
 from .new_on_call_role_data_attributes_live_call_routing_permissions_item import (
     NewOnCallRoleDataAttributesLiveCallRoutingPermissionsItem,
+)
+from .new_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
+    NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem,
+)
+from .new_on_call_role_data_attributes_on_call_roles_permissions_item import (
+    NewOnCallRoleDataAttributesOnCallRolesPermissionsItem,
 )
 from .new_on_call_role_data_attributes_schedule_override_permissions_item import (
     NewOnCallRoleDataAttributesScheduleOverridePermissionsItem,
@@ -1959,6 +1975,9 @@ from .new_workflow_task_data import NewWorkflowTaskData
 from .new_workflow_task_data_attributes import NewWorkflowTaskDataAttributes
 from .new_workflow_task_data_type import NewWorkflowTaskDataType
 from .on_call_role import OnCallRole
+from .on_call_role_alert_fields_permissions_item import OnCallRoleAlertFieldsPermissionsItem
+from .on_call_role_alert_groups_permissions_item import OnCallRoleAlertGroupsPermissionsItem
+from .on_call_role_alert_routing_rules_permissions_item import OnCallRoleAlertRoutingRulesPermissionsItem
 from .on_call_role_alert_sources_permissions_item import OnCallRoleAlertSourcesPermissionsItem
 from .on_call_role_alert_urgency_permissions_item import OnCallRoleAlertUrgencyPermissionsItem
 from .on_call_role_alerts_permissions_item import OnCallRoleAlertsPermissionsItem
@@ -1974,6 +1993,8 @@ from .on_call_role_list import OnCallRoleList
 from .on_call_role_list_data_item import OnCallRoleListDataItem
 from .on_call_role_list_data_item_type import OnCallRoleListDataItemType
 from .on_call_role_live_call_routing_permissions_item import OnCallRoleLiveCallRoutingPermissionsItem
+from .on_call_role_on_call_readiness_report_permissions_item import OnCallRoleOnCallReadinessReportPermissionsItem
+from .on_call_role_on_call_roles_permissions_item import OnCallRoleOnCallRolesPermissionsItem
 from .on_call_role_relationship import OnCallRoleRelationship
 from .on_call_role_relationship_data_type_0 import OnCallRoleRelationshipDataType0
 from .on_call_role_relationship_data_type_0_type import OnCallRoleRelationshipDataType0Type
@@ -3002,6 +3023,15 @@ from .update_notion_page_task_params_task_type import UpdateNotionPageTaskParams
 from .update_on_call_role import UpdateOnCallRole
 from .update_on_call_role_data import UpdateOnCallRoleData
 from .update_on_call_role_data_attributes import UpdateOnCallRoleDataAttributes
+from .update_on_call_role_data_attributes_alert_fields_permissions_item import (
+    UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem,
+)
+from .update_on_call_role_data_attributes_alert_groups_permissions_item import (
+    UpdateOnCallRoleDataAttributesAlertGroupsPermissionsItem,
+)
+from .update_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
+    UpdateOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem,
+)
 from .update_on_call_role_data_attributes_alert_sources_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem,
 )
@@ -3037,6 +3067,12 @@ from .update_on_call_role_data_attributes_invitations_permissions_item import (
 )
 from .update_on_call_role_data_attributes_live_call_routing_permissions_item import (
     UpdateOnCallRoleDataAttributesLiveCallRoutingPermissionsItem,
+)
+from .update_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
+    UpdateOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem,
+)
+from .update_on_call_role_data_attributes_on_call_roles_permissions_item import (
+    UpdateOnCallRoleDataAttributesOnCallRolesPermissionsItem,
 )
 from .update_on_call_role_data_attributes_schedule_override_permissions_item import (
     UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem,
@@ -4461,6 +4497,7 @@ __all__ = (
     "LiveCallRouterResponseData",
     "LiveCallRouterResponseDataType",
     "LiveCallRouterWaitingMusicUrl",
+    "Meta",
     "MitigateIncident",
     "MitigateIncidentData",
     "MitigateIncidentDataAttributes",
@@ -4812,6 +4849,9 @@ __all__ = (
     "NewOnCallRole",
     "NewOnCallRoleData",
     "NewOnCallRoleDataAttributes",
+    "NewOnCallRoleDataAttributesAlertFieldsPermissionsItem",
+    "NewOnCallRoleDataAttributesAlertGroupsPermissionsItem",
+    "NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem",
     "NewOnCallRoleDataAttributesAlertSourcesPermissionsItem",
     "NewOnCallRoleDataAttributesAlertsPermissionsItem",
     "NewOnCallRoleDataAttributesAlertUrgencyPermissionsItem",
@@ -4824,6 +4864,8 @@ __all__ = (
     "NewOnCallRoleDataAttributesIntegrationsPermissionsItem",
     "NewOnCallRoleDataAttributesInvitationsPermissionsItem",
     "NewOnCallRoleDataAttributesLiveCallRoutingPermissionsItem",
+    "NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem",
+    "NewOnCallRoleDataAttributesOnCallRolesPermissionsItem",
     "NewOnCallRoleDataAttributesScheduleOverridePermissionsItem",
     "NewOnCallRoleDataAttributesSchedulesPermissionsItem",
     "NewOnCallRoleDataAttributesServicesPermissionsItem",
@@ -5046,6 +5088,9 @@ __all__ = (
     "NewWorkflowTaskDataAttributes",
     "NewWorkflowTaskDataType",
     "OnCallRole",
+    "OnCallRoleAlertFieldsPermissionsItem",
+    "OnCallRoleAlertGroupsPermissionsItem",
+    "OnCallRoleAlertRoutingRulesPermissionsItem",
     "OnCallRoleAlertSourcesPermissionsItem",
     "OnCallRoleAlertsPermissionsItem",
     "OnCallRoleAlertUrgencyPermissionsItem",
@@ -5061,6 +5106,8 @@ __all__ = (
     "OnCallRoleListDataItem",
     "OnCallRoleListDataItemType",
     "OnCallRoleLiveCallRoutingPermissionsItem",
+    "OnCallRoleOnCallReadinessReportPermissionsItem",
+    "OnCallRoleOnCallRolesPermissionsItem",
     "OnCallRoleRelationship",
     "OnCallRoleRelationshipDataType0",
     "OnCallRoleRelationshipDataType0Type",
@@ -5855,6 +5902,9 @@ __all__ = (
     "UpdateOnCallRole",
     "UpdateOnCallRoleData",
     "UpdateOnCallRoleDataAttributes",
+    "UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem",
+    "UpdateOnCallRoleDataAttributesAlertGroupsPermissionsItem",
+    "UpdateOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem",
     "UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem",
     "UpdateOnCallRoleDataAttributesAlertsPermissionsItem",
     "UpdateOnCallRoleDataAttributesAlertUrgencyPermissionsItem",
@@ -5867,6 +5917,8 @@ __all__ = (
     "UpdateOnCallRoleDataAttributesIntegrationsPermissionsItem",
     "UpdateOnCallRoleDataAttributesInvitationsPermissionsItem",
     "UpdateOnCallRoleDataAttributesLiveCallRoutingPermissionsItem",
+    "UpdateOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem",
+    "UpdateOnCallRoleDataAttributesOnCallRolesPermissionsItem",
     "UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem",
     "UpdateOnCallRoleDataAttributesSchedulesPermissionsItem",
     "UpdateOnCallRoleDataAttributesServicesPermissionsItem",

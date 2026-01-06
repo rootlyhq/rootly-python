@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,16 +12,17 @@ class UpdateAlertDataAttributesLabelsItemType0:
     """
     Attributes:
         key (str): Key of the tag
-        value (str): Value of the tag
+        value (Union[bool, float, str]): Value of the tag
     """
 
     key: str
-    value: str
+    value: Union[bool, float, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         key = self.key
 
+        value: Union[bool, float, str]
         value = self.value
 
         field_dict: dict[str, Any] = {}
@@ -40,7 +41,10 @@ class UpdateAlertDataAttributesLabelsItemType0:
         d = dict(src_dict)
         key = d.pop("key")
 
-        value = d.pop("value")
+        def _parse_value(data: object) -> Union[bool, float, str]:
+            return cast(Union[bool, float, str], data)
+
+        value = _parse_value(d.pop("value"))
 
         update_alert_data_attributes_labels_item_type_0 = cls(
             key=key,

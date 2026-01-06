@@ -6,6 +6,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.links import Links
+    from ..models.meta import Meta
     from ..models.status_page_template_list_data_item import StatusPageTemplateListDataItem
 
 
@@ -18,10 +19,12 @@ class StatusPageTemplateList:
     Attributes:
         data (list['StatusPageTemplateListDataItem']):
         links (Links):
+        meta (Meta):
     """
 
     data: list["StatusPageTemplateListDataItem"]
     links: "Links"
+    meta: "Meta"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,12 +35,15 @@ class StatusPageTemplateList:
 
         links = self.links.to_dict()
 
+        meta = self.meta.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "data": data,
                 "links": links,
+                "meta": meta,
             }
         )
 
@@ -46,6 +52,7 @@ class StatusPageTemplateList:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.links import Links
+        from ..models.meta import Meta
         from ..models.status_page_template_list_data_item import StatusPageTemplateListDataItem
 
         d = dict(src_dict)
@@ -58,9 +65,12 @@ class StatusPageTemplateList:
 
         links = Links.from_dict(d.pop("links"))
 
+        meta = Meta.from_dict(d.pop("meta"))
+
         status_page_template_list = cls(
             data=data,
             links=links,
+            meta=meta,
         )
 
         status_page_template_list.additional_properties = d

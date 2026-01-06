@@ -44,8 +44,8 @@ class NewLiveCallRouterDataAttributes:
         phone_number (str): You can select a phone number using
             [generate_phone_number](#//api/v1/live_call_routers/generate_phone_number) API and pass that phone number here
             to register
+        voicemail_greeting (str): The voicemail greeting of the live_call_router
         enabled (Union[Unset, bool]): Whether the live_call_router is enabled
-        voicemail_greeting (Union[Unset, str]): The voicemail greeting of the live_call_router
         caller_greeting (Union[Unset, str]): The caller greeting message of the live_call_router
         waiting_music_url (Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl]): The waiting music URL of the
             live_call_router
@@ -69,8 +69,8 @@ class NewLiveCallRouterDataAttributes:
     country_code: NewLiveCallRouterDataAttributesCountryCode
     phone_type: NewLiveCallRouterDataAttributesPhoneType
     phone_number: str
+    voicemail_greeting: str
     enabled: Union[Unset, bool] = UNSET
-    voicemail_greeting: Union[Unset, str] = UNSET
     caller_greeting: Union[Unset, str] = UNSET
     waiting_music_url: Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl] = UNSET
     sent_to_voicemail_delay: Union[Unset, int] = UNSET
@@ -95,9 +95,9 @@ class NewLiveCallRouterDataAttributes:
 
         phone_number = self.phone_number
 
-        enabled = self.enabled
-
         voicemail_greeting = self.voicemail_greeting
+
+        enabled = self.enabled
 
         caller_greeting = self.caller_greeting
 
@@ -137,12 +137,11 @@ class NewLiveCallRouterDataAttributes:
                 "country_code": country_code,
                 "phone_type": phone_type,
                 "phone_number": phone_number,
+                "voicemail_greeting": voicemail_greeting,
             }
         )
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if voicemail_greeting is not UNSET:
-            field_dict["voicemail_greeting"] = voicemail_greeting
         if caller_greeting is not UNSET:
             field_dict["caller_greeting"] = caller_greeting
         if waiting_music_url is not UNSET:
@@ -186,9 +185,9 @@ class NewLiveCallRouterDataAttributes:
 
         phone_number = d.pop("phone_number")
 
-        enabled = d.pop("enabled", UNSET)
+        voicemail_greeting = d.pop("voicemail_greeting")
 
-        voicemail_greeting = d.pop("voicemail_greeting", UNSET)
+        enabled = d.pop("enabled", UNSET)
 
         caller_greeting = d.pop("caller_greeting", UNSET)
 
@@ -233,8 +232,8 @@ class NewLiveCallRouterDataAttributes:
             country_code=country_code,
             phone_type=phone_type,
             phone_number=phone_number,
-            enabled=enabled,
             voicemail_greeting=voicemail_greeting,
+            enabled=enabled,
             caller_greeting=caller_greeting,
             waiting_music_url=waiting_music_url,
             sent_to_voicemail_delay=sent_to_voicemail_delay,

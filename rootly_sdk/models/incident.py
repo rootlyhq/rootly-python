@@ -137,6 +137,8 @@ class Incident:
         cancellation_message (Union[None, Unset, str]): Why was the incident cancelled?
         scheduled_for (Union[None, Unset, str]): Date of when the maintenance begins
         scheduled_until (Union[None, Unset, str]): Date of when the maintenance ends
+        muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
+            for these services will still be triggered and attached to the incident, but won't page responders.
         retrospective_progress_status (Union[Unset, IncidentRetrospectiveProgressStatus]): The status of the
             retrospective progress
         in_triage_by (Union['IncidentInTriageByType0', None, Unset]): The user who triaged the incident
@@ -257,6 +259,7 @@ class Incident:
     cancellation_message: Union[None, Unset, str] = UNSET
     scheduled_for: Union[None, Unset, str] = UNSET
     scheduled_until: Union[None, Unset, str] = UNSET
+    muted_service_ids: Union[None, Unset, list[str]] = UNSET
     retrospective_progress_status: Union[Unset, IncidentRetrospectiveProgressStatus] = UNSET
     in_triage_by: Union["IncidentInTriageByType0", None, Unset] = UNSET
     started_by: Union["IncidentStartedByType0", None, Unset] = UNSET
@@ -899,6 +902,15 @@ class Incident:
         else:
             scheduled_until = self.scheduled_until
 
+        muted_service_ids: Union[None, Unset, list[str]]
+        if isinstance(self.muted_service_ids, Unset):
+            muted_service_ids = UNSET
+        elif isinstance(self.muted_service_ids, list):
+            muted_service_ids = self.muted_service_ids
+
+        else:
+            muted_service_ids = self.muted_service_ids
+
         retrospective_progress_status: Union[Unset, str] = UNSET
         if not isinstance(self.retrospective_progress_status, Unset):
             retrospective_progress_status = self.retrospective_progress_status
@@ -1205,6 +1217,8 @@ class Incident:
             field_dict["scheduled_for"] = scheduled_for
         if scheduled_until is not UNSET:
             field_dict["scheduled_until"] = scheduled_until
+        if muted_service_ids is not UNSET:
+            field_dict["muted_service_ids"] = muted_service_ids
         if retrospective_progress_status is not UNSET:
             field_dict["retrospective_progress_status"] = retrospective_progress_status
         if in_triage_by is not UNSET:
@@ -2207,6 +2221,23 @@ class Incident:
 
         scheduled_until = _parse_scheduled_until(d.pop("scheduled_until", UNSET))
 
+        def _parse_muted_service_ids(data: object) -> Union[None, Unset, list[str]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                muted_service_ids_type_0 = cast(list[str], data)
+
+                return muted_service_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list[str]], data)
+
+        muted_service_ids = _parse_muted_service_ids(d.pop("muted_service_ids", UNSET))
+
         _retrospective_progress_status = d.pop("retrospective_progress_status", UNSET)
         retrospective_progress_status: Union[Unset, IncidentRetrospectiveProgressStatus]
         if isinstance(_retrospective_progress_status, Unset):
@@ -2491,6 +2522,7 @@ class Incident:
             cancellation_message=cancellation_message,
             scheduled_for=scheduled_for,
             scheduled_until=scheduled_until,
+            muted_service_ids=muted_service_ids,
             retrospective_progress_status=retrospective_progress_status,
             in_triage_by=in_triage_by,
             started_by=started_by,

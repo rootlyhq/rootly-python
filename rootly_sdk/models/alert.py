@@ -1,8 +1,10 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.alert_noise import AlertNoise, check_alert_noise
 from ..models.alert_source import AlertSource, check_alert_source
@@ -25,6 +27,7 @@ T = TypeVar("T", bound="Alert")
 class Alert:
     """
     Attributes:
+        short_id (str): Human-readable short identifier for the alert
         source (AlertSource): The source of the alert
         summary (str): The summary of the alert
         created_at (str): Date of creation
@@ -51,8 +54,11 @@ class Alert:
             alert.
         alert_field_values_attributes (Union[Unset, list[Union['AlertAlertFieldValuesAttributesItemType0', None]]]):
             Custom alert field values to create with the alert
+        started_at (Union[None, Unset, datetime.datetime]): When the alert started
+        ended_at (Union[None, Unset, datetime.datetime]): When the alert ended
     """
 
+    short_id: str
     source: AlertSource
     summary: str
     created_at: str
@@ -75,12 +81,16 @@ class Alert:
     data: Union["AlertDataType0", None, Unset] = UNSET
     deduplication_key: Union[None, Unset, str] = UNSET
     alert_field_values_attributes: Union[Unset, list[Union["AlertAlertFieldValuesAttributesItemType0", None]]] = UNSET
+    started_at: Union[None, Unset, datetime.datetime] = UNSET
+    ended_at: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.alert_alert_field_values_attributes_item_type_0 import AlertAlertFieldValuesAttributesItemType0
         from ..models.alert_data_type_0 import AlertDataType0
         from ..models.alert_labels_item_type_0 import AlertLabelsItemType0
+
+        short_id = self.short_id
 
         source: str = self.source
 
@@ -218,10 +228,27 @@ class Alert:
                     alert_field_values_attributes_item = alert_field_values_attributes_item_data
                 alert_field_values_attributes.append(alert_field_values_attributes_item)
 
+        started_at: Union[None, Unset, str]
+        if isinstance(self.started_at, Unset):
+            started_at = UNSET
+        elif isinstance(self.started_at, datetime.datetime):
+            started_at = self.started_at.isoformat()
+        else:
+            started_at = self.started_at
+
+        ended_at: Union[None, Unset, str]
+        if isinstance(self.ended_at, Unset):
+            ended_at = UNSET
+        elif isinstance(self.ended_at, datetime.datetime):
+            ended_at = self.ended_at.isoformat()
+        else:
+            ended_at = self.ended_at
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "short_id": short_id,
                 "source": source,
                 "summary": summary,
                 "created_at": created_at,
@@ -264,6 +291,10 @@ class Alert:
             field_dict["deduplication_key"] = deduplication_key
         if alert_field_values_attributes is not UNSET:
             field_dict["alert_field_values_attributes"] = alert_field_values_attributes
+        if started_at is not UNSET:
+            field_dict["started_at"] = started_at
+        if ended_at is not UNSET:
+            field_dict["ended_at"] = ended_at
 
         return field_dict
 
@@ -277,6 +308,8 @@ class Alert:
         from ..models.team import Team
 
         d = dict(src_dict)
+        short_id = d.pop("short_id")
+
         source = check_alert_source(d.pop("source"))
 
         summary = d.pop("summary")
@@ -497,7 +530,42 @@ class Alert:
 
             alert_field_values_attributes.append(alert_field_values_attributes_item)
 
+        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                started_at_type_0 = isoparse(data)
+
+                return started_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        started_at = _parse_started_at(d.pop("started_at", UNSET))
+
+        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ended_at_type_0 = isoparse(data)
+
+                return ended_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
+
         alert = cls(
+            short_id=short_id,
             source=source,
             summary=summary,
             created_at=created_at,
@@ -520,6 +588,8 @@ class Alert:
             data=data,
             deduplication_key=deduplication_key,
             alert_field_values_attributes=alert_field_values_attributes,
+            started_at=started_at,
+            ended_at=ended_at,
         )
 
         alert.additional_properties = d

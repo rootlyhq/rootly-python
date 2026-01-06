@@ -1,181 +1,112 @@
 # rootly
 A client library for accessing Rootly API v1
 
-## Installation
+## Usage
+First, create a client:
 
-```bash
-pip install rootly
+```python
+from rootly_sdk import Client
+
+client = Client(base_url="https://api.example.com")
 ```
 
-## Quick Start
+If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
 
 ```python
 from rootly_sdk import AuthenticatedClient
 
-client = AuthenticatedClient(
-    base_url="https://api.rootly.com",
-    token="YOUR_API_TOKEN"
-)
+client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
 ```
 
-Get your API token from **Settings > API Keys** in your [Rootly Dashboard](https://rootly.com/account/api_keys).
-
-## Examples
-
-### List Incidents
+Now call your endpoint and use your models:
 
 ```python
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.incidents import list_incidents
-
-client = AuthenticatedClient(base_url="https://api.rootly.com", token="YOUR_API_TOKEN")
-
-with client as client:
-    response = list_incidents.sync(client=client)
-    for incident in response.data:
-        print(f"{incident.attributes.title} - {incident.attributes.status}")
-```
-
-### Create an Incident
-
-```python
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.incidents import create_incident
-from rootly_sdk.models import NewIncident, NewIncidentData, NewIncidentDataAttributes
-
-client = AuthenticatedClient(base_url="https://api.rootly.com", token="YOUR_API_TOKEN")
-
-with client as client:
-    incident = create_incident.sync(
-        client=client,
-        body=NewIncident(
-            data=NewIncidentData(
-                type="incidents",
-                attributes=NewIncidentDataAttributes(
-                    title="Database connection issues",
-                    summary="Users experiencing slow queries and timeouts",
-                )
-            )
-        )
-    )
-    print(f"Created incident: {incident.data.id}")
-```
-
-### List Services
-
-```python
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.services import list_services
-
-client = AuthenticatedClient(base_url="https://api.rootly.com", token="YOUR_API_TOKEN")
-
-with client as client:
-    response = list_services.sync(client=client)
-    for service in response.data:
-        print(f"{service.attributes.name} - {service.attributes.slug}")
-```
-
-### List On-Call Schedules
-
-```python
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.schedules import list_schedules
-
-client = AuthenticatedClient(base_url="https://api.rootly.com", token="YOUR_API_TOKEN")
-
-with client as client:
-    response = list_schedules.sync(client=client)
-    for schedule in response.data:
-        print(f"{schedule.attributes.name}")
-```
-
-### Async Usage
-
-```python
-import asyncio
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.incidents import list_incidents
-
-async def main():
-    client = AuthenticatedClient(base_url="https://api.rootly.com", token="YOUR_API_TOKEN")
-
-    async with client as client:
-        response = await list_incidents.asyncio(client=client)
-        for incident in response.data:
-            print(f"{incident.attributes.title}")
-
-asyncio.run(main())
-```
-
-### Get Detailed Response
-
-```python
-from rootly_sdk import AuthenticatedClient
-from rootly_sdk.api.incidents import list_incidents
+from rootly_sdk.models import MyDataModel
+from rootly_sdk.api.my_tag import get_my_data_model
 from rootly_sdk.types import Response
 
 with client as client:
-    response: Response = list_incidents.sync_detailed(client=client)
-    print(f"Status: {response.status_code}")
-    print(f"Headers: {response.headers}")
-    if response.parsed:
-        print(f"Incidents: {len(response.parsed.data)}")
+    my_data: MyDataModel = get_my_data_model.sync(client=client)
+    # or if you need more info (e.g. status_code)
+    response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
 ```
 
-## API Reference
+Or do the same thing with an async version:
 
-Every endpoint becomes a Python module with four functions:
+```python
+from rootly_sdk.models import MyDataModel
+from rootly_sdk.api.my_tag import get_my_data_model
+from rootly_sdk.types import Response
 
-| Function | Description |
-|----------|-------------|
-| `sync` | Blocking request that returns parsed data (if successful) or `None` |
-| `sync_detailed` | Blocking request that returns a `Response` with status code, headers, and parsed data |
-| `asyncio` | Async version of `sync` |
-| `asyncio_detailed` | Async version of `sync_detailed` |
+async with client as client:
+    my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
+    response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
+```
 
-All path/query params and request bodies become method arguments.
-
-## Advanced Configuration
-
-### Custom SSL Certificates
+By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
 
 ```python
 client = AuthenticatedClient(
-    base_url="https://api.rootly.com",
-    token="YOUR_API_TOKEN",
+    base_url="https://internal_api.example.com", 
+    token="SuperSecretToken",
     verify_ssl="/path/to/certificate_bundle.pem",
 )
 ```
 
-### Request/Response Logging
+You can also disable certificate validation altogether, but beware that **this is a security risk**.
 
 ```python
-from rootly_sdk import AuthenticatedClient
-
-def log_request(request):
-    print(f"Request: {request.method} {request.url}")
-
-def log_response(response):
-    print(f"Response: {response.status_code}")
-
 client = AuthenticatedClient(
-    base_url="https://api.rootly.com",
-    token="YOUR_API_TOKEN",
-    httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
+    base_url="https://internal_api.example.com", 
+    token="SuperSecretToken", 
+    verify_ssl=False
 )
 ```
 
-### Custom httpx Client
+Things to know:
+1. Every path/method combo becomes a Python module with four functions:
+    1. `sync`: Blocking request that returns parsed data (if successful) or `None`
+    1. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
+    1. `asyncio`: Like `sync` but async instead of blocking
+    1. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
+
+1. All path/query params, and bodies become method arguments.
+1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
+1. Any endpoint which did not have a tag will be in `rootly_sdk.api.default`
+
+## Advanced customizations
+
+There are more settings on the generated `Client` class which let you control more runtime behavior, check out the docstring on that class for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
+
+```python
+from rootly_sdk import Client
+
+def log_request(request):
+    print(f"Request event hook: {request.method} {request.url} - Waiting for response")
+
+def log_response(response):
+    request = response.request
+    print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
+
+client = Client(
+    base_url="https://api.example.com",
+    httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
+)
+
+# Or get the underlying httpx client to modify directly with client.get_httpx_client() or client.get_async_httpx_client()
+```
+
+You can even set the httpx client directly, but beware that this will override any existing settings (e.g., base_url):
 
 ```python
 import httpx
-from rootly_sdk import AuthenticatedClient
+from rootly_sdk import Client
 
-client = AuthenticatedClient(
-    base_url="https://api.rootly.com",
-    token="YOUR_API_TOKEN",
+client = Client(
+    base_url="https://api.example.com",
 )
-client.set_httpx_client(httpx.Client(base_url="https://api.rootly.com", proxies="http://localhost:8030"))
+# Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
+client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
 ```
 
 ## Building / publishing this package

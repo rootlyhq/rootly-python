@@ -39,6 +39,8 @@ class UpdateIncidentDataAttributes:
         incident_type_ids (Union[None, Unset, list[str]]): The Incident Type ID's to attach to the incident
         service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the incident
         functionality_ids (Union[None, Unset, list[str]]): The Functionality ID's to attach to the incident
+        muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
+            for these services will still be triggered and attached to the incident, but won't page responders.
         group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the incident
         cause_ids (Union[None, Unset, list[str]]): The Cause ID's to attach to the incident
         labels (Union['UpdateIncidentDataAttributesLabelsType0', None, Unset]): Labels to attach to the incidents. eg:
@@ -78,6 +80,7 @@ class UpdateIncidentDataAttributes:
     incident_type_ids: Union[None, Unset, list[str]] = UNSET
     service_ids: Union[None, Unset, list[str]] = UNSET
     functionality_ids: Union[None, Unset, list[str]] = UNSET
+    muted_service_ids: Union[None, Unset, list[str]] = UNSET
     group_ids: Union[None, Unset, list[str]] = UNSET
     cause_ids: Union[None, Unset, list[str]] = UNSET
     labels: Union["UpdateIncidentDataAttributesLabelsType0", None, Unset] = UNSET
@@ -198,6 +201,15 @@ class UpdateIncidentDataAttributes:
 
         else:
             functionality_ids = self.functionality_ids
+
+        muted_service_ids: Union[None, Unset, list[str]]
+        if isinstance(self.muted_service_ids, Unset):
+            muted_service_ids = UNSET
+        elif isinstance(self.muted_service_ids, list):
+            muted_service_ids = self.muted_service_ids
+
+        else:
+            muted_service_ids = self.muted_service_ids
 
         group_ids: Union[None, Unset, list[str]]
         if isinstance(self.group_ids, Unset):
@@ -370,6 +382,8 @@ class UpdateIncidentDataAttributes:
             field_dict["service_ids"] = service_ids
         if functionality_ids is not UNSET:
             field_dict["functionality_ids"] = functionality_ids
+        if muted_service_ids is not UNSET:
+            field_dict["muted_service_ids"] = muted_service_ids
         if group_ids is not UNSET:
             field_dict["group_ids"] = group_ids
         if cause_ids is not UNSET:
@@ -584,6 +598,23 @@ class UpdateIncidentDataAttributes:
             return cast(Union[None, Unset, list[str]], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
+
+        def _parse_muted_service_ids(data: object) -> Union[None, Unset, list[str]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                muted_service_ids_type_0 = cast(list[str], data)
+
+                return muted_service_ids_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list[str]], data)
+
+        muted_service_ids = _parse_muted_service_ids(d.pop("muted_service_ids", UNSET))
 
         def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
@@ -822,6 +853,7 @@ class UpdateIncidentDataAttributes:
             incident_type_ids=incident_type_ids,
             service_ids=service_ids,
             functionality_ids=functionality_ids,
+            muted_service_ids=muted_service_ids,
             group_ids=group_ids,
             cause_ids=cause_ids,
             labels=labels,

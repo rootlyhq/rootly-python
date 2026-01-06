@@ -18,21 +18,21 @@ class NewScheduleDataAttributes:
     """
     Attributes:
         name (str): The name of the schedule
+        owner_user_id (int): ID of the owner of the schedule
         description (Union[None, Unset, str]): The description of the schedule
         all_time_coverage (Union[None, Unset, bool]): 24/7 coverage of the schedule
         slack_user_group (Union[Unset, NewScheduleDataAttributesSlackUserGroup]):
         slack_channel (Union['NewScheduleDataAttributesSlackChannelType0', None, Unset]):
         owner_group_ids (Union[Unset, list[str]]): Owning teams.
-        owner_user_id (Union[None, Unset, int]): ID of the owner of the schedule
     """
 
     name: str
+    owner_user_id: int
     description: Union[None, Unset, str] = UNSET
     all_time_coverage: Union[None, Unset, bool] = UNSET
     slack_user_group: Union[Unset, "NewScheduleDataAttributesSlackUserGroup"] = UNSET
     slack_channel: Union["NewScheduleDataAttributesSlackChannelType0", None, Unset] = UNSET
     owner_group_ids: Union[Unset, list[str]] = UNSET
-    owner_user_id: Union[None, Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_schedule_data_attributes_slack_channel_type_0 import (
@@ -40,6 +40,8 @@ class NewScheduleDataAttributes:
         )
 
         name = self.name
+
+        owner_user_id = self.owner_user_id
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -69,17 +71,12 @@ class NewScheduleDataAttributes:
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
-        owner_user_id: Union[None, Unset, int]
-        if isinstance(self.owner_user_id, Unset):
-            owner_user_id = UNSET
-        else:
-            owner_user_id = self.owner_user_id
-
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
             {
                 "name": name,
+                "owner_user_id": owner_user_id,
             }
         )
         if description is not UNSET:
@@ -92,8 +89,6 @@ class NewScheduleDataAttributes:
             field_dict["slack_channel"] = slack_channel
         if owner_group_ids is not UNSET:
             field_dict["owner_group_ids"] = owner_group_ids
-        if owner_user_id is not UNSET:
-            field_dict["owner_user_id"] = owner_user_id
 
         return field_dict
 
@@ -106,6 +101,8 @@ class NewScheduleDataAttributes:
 
         d = dict(src_dict)
         name = d.pop("name")
+
+        owner_user_id = d.pop("owner_user_id")
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -151,23 +148,14 @@ class NewScheduleDataAttributes:
 
         owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
 
-        def _parse_owner_user_id(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        owner_user_id = _parse_owner_user_id(d.pop("owner_user_id", UNSET))
-
         new_schedule_data_attributes = cls(
             name=name,
+            owner_user_id=owner_user_id,
             description=description,
             all_time_coverage=all_time_coverage,
             slack_user_group=slack_user_group,
             slack_channel=slack_channel,
             owner_group_ids=owner_group_ids,
-            owner_user_id=owner_user_id,
         )
 
         return new_schedule_data_attributes
