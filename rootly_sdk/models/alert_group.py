@@ -21,14 +21,16 @@ class AlertGroup:
     Attributes:
         name (str): The name of the alert group
         description (Union[None, str]): The description of the alert group
-        slug (str): The slug of the alert group
         condition_type (str): Grouping condition for the alert group
         time_window (int): Time window for the alert grouping
         created_at (str): Date of creation
         updated_at (str): Date of last update
         deleted_at (Union[None, str]): Date or deletion
-        group_by_alert_title (Union[Unset, bool]): Whether the alerts are grouped by title or not
-        group_by_alert_urgency (Union[Unset, bool]): Whether the alerts are grouped by urgency or not
+        slug (Union[Unset, str]): The slug of the alert group
+        group_by_alert_title (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by title or not. This
+            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
+        group_by_alert_urgency (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by urgency or not. This
+            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
         targets (Union[Unset, list['AlertGroupTargetsItem']]):
         attributes (Union[Unset, list['AlertGroupAttributesItem']]): This field is deprecated. Please use the
             `conditions` field instead, `attributes` will be removed in the future.
@@ -37,12 +39,12 @@ class AlertGroup:
 
     name: str
     description: Union[None, str]
-    slug: str
     condition_type: str
     time_window: int
     created_at: str
     updated_at: str
     deleted_at: Union[None, str]
+    slug: Union[Unset, str] = UNSET
     group_by_alert_title: Union[Unset, bool] = UNSET
     group_by_alert_urgency: Union[Unset, bool] = UNSET
     targets: Union[Unset, list["AlertGroupTargetsItem"]] = UNSET
@@ -56,8 +58,6 @@ class AlertGroup:
         description: Union[None, str]
         description = self.description
 
-        slug = self.slug
-
         condition_type = self.condition_type
 
         time_window = self.time_window
@@ -68,6 +68,8 @@ class AlertGroup:
 
         deleted_at: Union[None, str]
         deleted_at = self.deleted_at
+
+        slug = self.slug
 
         group_by_alert_title = self.group_by_alert_title
 
@@ -100,7 +102,6 @@ class AlertGroup:
             {
                 "name": name,
                 "description": description,
-                "slug": slug,
                 "condition_type": condition_type,
                 "time_window": time_window,
                 "created_at": created_at,
@@ -108,6 +109,8 @@ class AlertGroup:
                 "deleted_at": deleted_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if group_by_alert_title is not UNSET:
             field_dict["group_by_alert_title"] = group_by_alert_title
         if group_by_alert_urgency is not UNSET:
@@ -137,8 +140,6 @@ class AlertGroup:
 
         description = _parse_description(d.pop("description"))
 
-        slug = d.pop("slug")
-
         condition_type = d.pop("condition_type")
 
         time_window = d.pop("time_window")
@@ -153,6 +154,8 @@ class AlertGroup:
             return cast(Union[None, str], data)
 
         deleted_at = _parse_deleted_at(d.pop("deleted_at"))
+
+        slug = d.pop("slug", UNSET)
 
         group_by_alert_title = d.pop("group_by_alert_title", UNSET)
 
@@ -182,12 +185,12 @@ class AlertGroup:
         alert_group = cls(
             name=name,
             description=description,
-            slug=slug,
             condition_type=condition_type,
             time_window=time_window,
             created_at=created_at,
             updated_at=updated_at,
             deleted_at=deleted_at,
+            slug=slug,
             group_by_alert_title=group_by_alert_title,
             group_by_alert_urgency=group_by_alert_urgency,
             targets=targets,

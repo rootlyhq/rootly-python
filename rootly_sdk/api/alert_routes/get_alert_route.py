@@ -66,6 +66,14 @@ def sync_detailed(
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
 
+    ## Optional Parameters
+
+    - **show_nested_ids** (query parameter): When set to `true`, the response will include IDs for all
+    nested resources (destinations, condition_groups, conditions). This is useful when you need to
+    reference these nested resources for updates or deletions via PATCH requests.
+
+    Example: `GET /v1/alert_routes/{id}?show_nested_ids=true`
+
     Args:
         id (str):
 
@@ -98,6 +106,14 @@ def sync(
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
 
+    ## Optional Parameters
+
+    - **show_nested_ids** (query parameter): When set to `true`, the response will include IDs for all
+    nested resources (destinations, condition_groups, conditions). This is useful when you need to
+    reference these nested resources for updates or deletions via PATCH requests.
+
+    Example: `GET /v1/alert_routes/{id}?show_nested_ids=true`
+
     Args:
         id (str):
 
@@ -124,6 +140,14 @@ async def asyncio_detailed(
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
+
+    ## Optional Parameters
+
+    - **show_nested_ids** (query parameter): When set to `true`, the response will include IDs for all
+    nested resources (destinations, condition_groups, conditions). This is useful when you need to
+    reference these nested resources for updates or deletions via PATCH requests.
+
+    Example: `GET /v1/alert_routes/{id}?show_nested_ids=true`
 
     Args:
         id (str):
@@ -154,6 +178,14 @@ async def asyncio(
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
+
+    ## Optional Parameters
+
+    - **show_nested_ids** (query parameter): When set to `true`, the response will include IDs for all
+    nested resources (destinations, condition_groups, conditions). This is useful when you need to
+    reference these nested resources for updates or deletions via PATCH requests.
+
+    Example: `GET /v1/alert_routes/{id}?show_nested_ids=true`
 
     Args:
         id (str):

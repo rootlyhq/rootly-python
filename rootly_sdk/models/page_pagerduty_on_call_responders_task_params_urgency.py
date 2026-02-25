@@ -10,8 +10,10 @@ PAGE_PAGERDUTY_ON_CALL_RESPONDERS_TASK_PARAMS_URGENCY_VALUES: set[PagePagerdutyO
 
 
 def check_page_pagerduty_on_call_responders_task_params_urgency(
-    value: str,
-) -> PagePagerdutyOnCallRespondersTaskParamsUrgency:
+    value: str | None,
+) -> PagePagerdutyOnCallRespondersTaskParamsUrgency | None:
+    if value is None:
+        return None
     if value in PAGE_PAGERDUTY_ON_CALL_RESPONDERS_TASK_PARAMS_URGENCY_VALUES:
         return cast(PagePagerdutyOnCallRespondersTaskParamsUrgency, value)
     raise TypeError(

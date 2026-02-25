@@ -7,7 +7,9 @@ UPDATE_INCIDENT_PERMISSION_SET_DATA_TYPE_VALUES: set[UpdateIncidentPermissionSet
 }
 
 
-def check_update_incident_permission_set_data_type(value: str) -> UpdateIncidentPermissionSetDataType:
+def check_update_incident_permission_set_data_type(value: str | None) -> UpdateIncidentPermissionSetDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_DATA_TYPE_VALUES:
         return cast(UpdateIncidentPermissionSetDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_PERMISSION_SET_DATA_TYPE_VALUES!r}")

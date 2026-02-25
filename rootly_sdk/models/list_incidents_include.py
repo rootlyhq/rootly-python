@@ -39,7 +39,9 @@ LIST_INCIDENTS_INCLUDE_VALUES: set[ListIncidentsInclude] = {
 }
 
 
-def check_list_incidents_include(value: str) -> ListIncidentsInclude:
+def check_list_incidents_include(value: str | None) -> ListIncidentsInclude | None:
+    if value is None:
+        return None
     if value in LIST_INCIDENTS_INCLUDE_VALUES:
         return cast(ListIncidentsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_INCIDENTS_INCLUDE_VALUES!r}")

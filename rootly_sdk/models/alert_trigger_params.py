@@ -36,6 +36,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.alert_trigger_params_alert_field_conditions_item import AlertTriggerParamsAlertFieldConditionsItem
+    from ..models.alert_trigger_params_alert_payload_conditions import AlertTriggerParamsAlertPayloadConditions
 
 
 T = TypeVar("T", bound="AlertTriggerParams")
@@ -62,6 +63,7 @@ class AlertTriggerParams:
         alert_payload (Union[Unset, list[str]]):
         alert_query_payload (Union[None, Unset, str]): You can use jsonpath syntax. eg: $.incident.teams[*]
         alert_field_conditions (Union[Unset, list['AlertTriggerParamsAlertFieldConditionsItem']]):
+        alert_payload_conditions (Union[Unset, AlertTriggerParamsAlertPayloadConditions]):
     """
 
     trigger_type: AlertTriggerParamsTriggerType
@@ -81,6 +83,7 @@ class AlertTriggerParams:
     alert_payload: Union[Unset, list[str]] = UNSET
     alert_query_payload: Union[None, Unset, str] = UNSET
     alert_field_conditions: Union[Unset, list["AlertTriggerParamsAlertFieldConditionsItem"]] = UNSET
+    alert_payload_conditions: Union[Unset, "AlertTriggerParamsAlertPayloadConditions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -150,6 +153,10 @@ class AlertTriggerParams:
                 alert_field_conditions_item = alert_field_conditions_item_data.to_dict()
                 alert_field_conditions.append(alert_field_conditions_item)
 
+        alert_payload_conditions: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.alert_payload_conditions, Unset):
+            alert_payload_conditions = self.alert_payload_conditions.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -189,12 +196,15 @@ class AlertTriggerParams:
             field_dict["alert_query_payload"] = alert_query_payload
         if alert_field_conditions is not UNSET:
             field_dict["alert_field_conditions"] = alert_field_conditions
+        if alert_payload_conditions is not UNSET:
+            field_dict["alert_payload_conditions"] = alert_payload_conditions
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.alert_trigger_params_alert_field_conditions_item import AlertTriggerParamsAlertFieldConditionsItem
+        from ..models.alert_trigger_params_alert_payload_conditions import AlertTriggerParamsAlertPayloadConditions
 
         d = dict(src_dict)
         trigger_type = check_alert_trigger_params_trigger_type(d.pop("trigger_type"))
@@ -275,6 +285,13 @@ class AlertTriggerParams:
 
             alert_field_conditions.append(alert_field_conditions_item)
 
+        _alert_payload_conditions = d.pop("alert_payload_conditions", UNSET)
+        alert_payload_conditions: Union[Unset, AlertTriggerParamsAlertPayloadConditions]
+        if isinstance(_alert_payload_conditions, Unset):
+            alert_payload_conditions = UNSET
+        else:
+            alert_payload_conditions = AlertTriggerParamsAlertPayloadConditions.from_dict(_alert_payload_conditions)
+
         alert_trigger_params = cls(
             trigger_type=trigger_type,
             triggers=triggers,
@@ -293,6 +310,7 @@ class AlertTriggerParams:
             alert_payload=alert_payload,
             alert_query_payload=alert_query_payload,
             alert_field_conditions=alert_field_conditions,
+            alert_payload_conditions=alert_payload_conditions,
         )
 
         alert_trigger_params.additional_properties = d

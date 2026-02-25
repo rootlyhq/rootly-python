@@ -22,6 +22,9 @@ class IncidentFormFieldSelection:
         selected_service_ids (Union[Unset, list[str]]):
         selected_functionality_ids (Union[Unset, list[str]]):
         selected_user_ids (Union[Unset, list[int]]):
+        selected_environment_ids (Union[Unset, list[str]]):
+        selected_cause_ids (Union[Unset, list[str]]):
+        selected_incident_type_ids (Union[Unset, list[str]]):
     """
 
     incident_id: str
@@ -33,6 +36,9 @@ class IncidentFormFieldSelection:
     selected_service_ids: Union[Unset, list[str]] = UNSET
     selected_functionality_ids: Union[Unset, list[str]] = UNSET
     selected_user_ids: Union[Unset, list[int]] = UNSET
+    selected_environment_ids: Union[Unset, list[str]] = UNSET
+    selected_cause_ids: Union[Unset, list[str]] = UNSET
+    selected_incident_type_ids: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +76,18 @@ class IncidentFormFieldSelection:
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
+        selected_environment_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_environment_ids, Unset):
+            selected_environment_ids = self.selected_environment_ids
+
+        selected_cause_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_cause_ids, Unset):
+            selected_cause_ids = self.selected_cause_ids
+
+        selected_incident_type_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_incident_type_ids, Unset):
+            selected_incident_type_ids = self.selected_incident_type_ids
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -92,6 +110,12 @@ class IncidentFormFieldSelection:
             field_dict["selected_functionality_ids"] = selected_functionality_ids
         if selected_user_ids is not UNSET:
             field_dict["selected_user_ids"] = selected_user_ids
+        if selected_environment_ids is not UNSET:
+            field_dict["selected_environment_ids"] = selected_environment_ids
+        if selected_cause_ids is not UNSET:
+            field_dict["selected_cause_ids"] = selected_cause_ids
+        if selected_incident_type_ids is not UNSET:
+            field_dict["selected_incident_type_ids"] = selected_incident_type_ids
 
         return field_dict
 
@@ -123,6 +147,12 @@ class IncidentFormFieldSelection:
 
         selected_user_ids = cast(list[int], d.pop("selected_user_ids", UNSET))
 
+        selected_environment_ids = cast(list[str], d.pop("selected_environment_ids", UNSET))
+
+        selected_cause_ids = cast(list[str], d.pop("selected_cause_ids", UNSET))
+
+        selected_incident_type_ids = cast(list[str], d.pop("selected_incident_type_ids", UNSET))
+
         incident_form_field_selection = cls(
             incident_id=incident_id,
             form_field_id=form_field_id,
@@ -133,6 +163,9 @@ class IncidentFormFieldSelection:
             selected_service_ids=selected_service_ids,
             selected_functionality_ids=selected_functionality_ids,
             selected_user_ids=selected_user_ids,
+            selected_environment_ids=selected_environment_ids,
+            selected_cause_ids=selected_cause_ids,
+            selected_incident_type_ids=selected_incident_type_ids,
         )
 
         incident_form_field_selection.additional_properties = d

@@ -7,6 +7,7 @@ AlertEventAction = Literal[
     "attached",
     "called",
     "created",
+    "deferred",
     "emailed",
     "escalated",
     "escalation_policy_paged",
@@ -15,6 +16,7 @@ AlertEventAction = Literal[
     "muted",
     "not_marked",
     "notified",
+    "open",
     "opened",
     "paged",
     "removed",
@@ -35,6 +37,7 @@ ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
     "attached",
     "called",
     "created",
+    "deferred",
     "emailed",
     "escalated",
     "escalation_policy_paged",
@@ -43,6 +46,7 @@ ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
     "muted",
     "not_marked",
     "notified",
+    "open",
     "opened",
     "paged",
     "removed",
@@ -57,7 +61,9 @@ ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
 }
 
 
-def check_alert_event_action(value: str) -> AlertEventAction:
+def check_alert_event_action(value: str | None) -> AlertEventAction | None:
+    if value is None:
+        return None
     if value in ALERT_EVENT_ACTION_VALUES:
         return cast(AlertEventAction, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_EVENT_ACTION_VALUES!r}")

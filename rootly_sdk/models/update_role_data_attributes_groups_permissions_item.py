@@ -11,8 +11,10 @@ UPDATE_ROLE_DATA_ATTRIBUTES_GROUPS_PERMISSIONS_ITEM_VALUES: set[UpdateRoleDataAt
 
 
 def check_update_role_data_attributes_groups_permissions_item(
-    value: str,
-) -> UpdateRoleDataAttributesGroupsPermissionsItem:
+    value: str | None,
+) -> UpdateRoleDataAttributesGroupsPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_GROUPS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateRoleDataAttributesGroupsPermissionsItem, value)
     raise TypeError(

@@ -9,7 +9,9 @@ UPDATE_PAGERDUTY_INCIDENT_TASK_PARAMS_STATUS_VALUES: set[UpdatePagerdutyIncident
 }
 
 
-def check_update_pagerduty_incident_task_params_status(value: str) -> UpdatePagerdutyIncidentTaskParamsStatus:
+def check_update_pagerduty_incident_task_params_status(value: str | None) -> UpdatePagerdutyIncidentTaskParamsStatus | None:
+    if value is None:
+        return None
     if value in UPDATE_PAGERDUTY_INCIDENT_TASK_PARAMS_STATUS_VALUES:
         return cast(UpdatePagerdutyIncidentTaskParamsStatus, value)
     raise TypeError(

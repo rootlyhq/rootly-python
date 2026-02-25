@@ -8,8 +8,10 @@ INCIDENT_PERMISSION_SET_RESOURCE_RESPONSE_DATA_TYPE_VALUES: set[IncidentPermissi
 
 
 def check_incident_permission_set_resource_response_data_type(
-    value: str,
-) -> IncidentPermissionSetResourceResponseDataType:
+    value: str | None,
+) -> IncidentPermissionSetResourceResponseDataType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_RESOURCE_RESPONSE_DATA_TYPE_VALUES:
         return cast(IncidentPermissionSetResourceResponseDataType, value)
     raise TypeError(

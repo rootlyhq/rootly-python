@@ -10,7 +10,9 @@ UPDATE_GITLAB_ISSUE_TASK_PARAMS_ISSUE_TYPE_VALUES: set[UpdateGitlabIssueTaskPara
 }
 
 
-def check_update_gitlab_issue_task_params_issue_type(value: str) -> UpdateGitlabIssueTaskParamsIssueType:
+def check_update_gitlab_issue_task_params_issue_type(value: str | None) -> UpdateGitlabIssueTaskParamsIssueType | None:
+    if value is None:
+        return None
     if value in UPDATE_GITLAB_ISSUE_TASK_PARAMS_ISSUE_TYPE_VALUES:
         return cast(UpdateGitlabIssueTaskParamsIssueType, value)
     raise TypeError(

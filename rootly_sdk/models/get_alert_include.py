@@ -39,7 +39,9 @@ GET_ALERT_INCLUDE_VALUES: set[GetAlertInclude] = {
 }
 
 
-def check_get_alert_include(value: str) -> GetAlertInclude:
+def check_get_alert_include(value: str | None) -> GetAlertInclude | None:
+    if value is None:
+        return None
     if value in GET_ALERT_INCLUDE_VALUES:
         return cast(GetAlertInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_ALERT_INCLUDE_VALUES!r}")

@@ -10,7 +10,9 @@ ROLE_RETROSPECTIVE_PERMISSIONS_ITEM_VALUES: set[RoleRetrospectivePermissionsItem
 }
 
 
-def check_role_retrospective_permissions_item(value: str) -> RoleRetrospectivePermissionsItem:
+def check_role_retrospective_permissions_item(value: str | None) -> RoleRetrospectivePermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_RETROSPECTIVE_PERMISSIONS_ITEM_VALUES:
         return cast(RoleRetrospectivePermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_RETROSPECTIVE_PERMISSIONS_ITEM_VALUES!r}")

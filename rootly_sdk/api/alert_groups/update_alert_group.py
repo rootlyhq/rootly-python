@@ -70,7 +70,9 @@ def sync_detailed(
 ) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
-     Update a specific alert group by id
+     Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
+    consider using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         id (Union[UUID, str]):
@@ -104,7 +106,9 @@ def sync(
 ) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
-     Update a specific alert group by id
+     Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
+    consider using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         id (Union[UUID, str]):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
 ) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
-     Update a specific alert group by id
+     Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
+    consider using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         id (Union[UUID, str]):
@@ -165,7 +171,9 @@ async def asyncio(
 ) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
-     Update a specific alert group by id
+     Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
+    consider using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         id (Union[UUID, str]):

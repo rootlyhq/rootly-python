@@ -7,7 +7,9 @@ ON_CALL_ROLE_RELATIONSHIP_DATA_TYPE_0_TYPE_VALUES: set[OnCallRoleRelationshipDat
 }
 
 
-def check_on_call_role_relationship_data_type_0_type(value: str) -> OnCallRoleRelationshipDataType0Type:
+def check_on_call_role_relationship_data_type_0_type(value: str | None) -> OnCallRoleRelationshipDataType0Type | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_RELATIONSHIP_DATA_TYPE_0_TYPE_VALUES:
         return cast(OnCallRoleRelationshipDataType0Type, value)
     raise TypeError(

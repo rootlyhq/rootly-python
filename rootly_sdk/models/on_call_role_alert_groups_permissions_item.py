@@ -10,7 +10,9 @@ ON_CALL_ROLE_ALERT_GROUPS_PERMISSIONS_ITEM_VALUES: set[OnCallRoleAlertGroupsPerm
 }
 
 
-def check_on_call_role_alert_groups_permissions_item(value: str) -> OnCallRoleAlertGroupsPermissionsItem:
+def check_on_call_role_alert_groups_permissions_item(value: str | None) -> OnCallRoleAlertGroupsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_ALERT_GROUPS_PERMISSIONS_ITEM_VALUES:
         return cast(OnCallRoleAlertGroupsPermissionsItem, value)
     raise TypeError(

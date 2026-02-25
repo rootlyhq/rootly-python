@@ -11,8 +11,10 @@ ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_KIND_
 
 
 def check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_kind(
-    value: str,
-) -> AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind:
+    value: str | None,
+) -> AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_KIND_VALUES:
         return cast(AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind, value)
     raise TypeError(

@@ -9,8 +9,10 @@ NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES: set[NewAlertRoutin
 
 
 def check_new_alert_routing_rule_data_attributes_condition_type(
-    value: str,
-) -> NewAlertRoutingRuleDataAttributesConditionType:
+    value: str | None,
+) -> NewAlertRoutingRuleDataAttributesConditionType | None:
+    if value is None:
+        return None
     if value in NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:
         return cast(NewAlertRoutingRuleDataAttributesConditionType, value)
     raise TypeError(

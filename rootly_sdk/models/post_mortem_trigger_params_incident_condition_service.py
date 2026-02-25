@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 PostMortemTriggerParamsIncidentConditionService = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SERVICE_VALUES: set[PostMortemTriggerParamsIncidentConditionService] = {
@@ -10,6 +10,7 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SERVICE_VALUES: set[PostMortemTrig
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -17,8 +18,10 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SERVICE_VALUES: set[PostMortemTrig
 
 
 def check_post_mortem_trigger_params_incident_condition_service(
-    value: str,
-) -> PostMortemTriggerParamsIncidentConditionService:
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentConditionService | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SERVICE_VALUES:
         return cast(PostMortemTriggerParamsIncidentConditionService, value)
     raise TypeError(

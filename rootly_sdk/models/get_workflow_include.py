@@ -10,7 +10,9 @@ GET_WORKFLOW_INCLUDE_VALUES: set[GetWorkflowInclude] = {
 }
 
 
-def check_get_workflow_include(value: str) -> GetWorkflowInclude:
+def check_get_workflow_include(value: str | None) -> GetWorkflowInclude | None:
+    if value is None:
+        return None
     if value in GET_WORKFLOW_INCLUDE_VALUES:
         return cast(GetWorkflowInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_WORKFLOW_INCLUDE_VALUES!r}")

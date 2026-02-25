@@ -7,7 +7,9 @@ NEW_USER_NOTIFICATION_RULE_DATA_TYPE_VALUES: set[NewUserNotificationRuleDataType
 }
 
 
-def check_new_user_notification_rule_data_type(value: str) -> NewUserNotificationRuleDataType:
+def check_new_user_notification_rule_data_type(value: str | None) -> NewUserNotificationRuleDataType | None:
+    if value is None:
+        return None
     if value in NEW_USER_NOTIFICATION_RULE_DATA_TYPE_VALUES:
         return cast(NewUserNotificationRuleDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_USER_NOTIFICATION_RULE_DATA_TYPE_VALUES!r}")

@@ -39,6 +39,8 @@ regenerate:
 		--output-path . \
 		--overwrite \
 		--config tools/config.yaml
+	@echo "Applying nullable enum fix..."
+	@python tools/fix_nullable_enums.py
 
 test:
 	python -c "import rootly_sdk; print('SDK imports successfully')"

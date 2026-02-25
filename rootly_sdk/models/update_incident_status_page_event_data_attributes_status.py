@@ -18,8 +18,10 @@ UPDATE_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_VALUES: set[
 
 
 def check_update_incident_status_page_event_data_attributes_status(
-    value: str,
-) -> UpdateIncidentStatusPageEventDataAttributesStatus:
+    value: str | None,
+) -> UpdateIncidentStatusPageEventDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(UpdateIncidentStatusPageEventDataAttributesStatus, value)
     raise TypeError(

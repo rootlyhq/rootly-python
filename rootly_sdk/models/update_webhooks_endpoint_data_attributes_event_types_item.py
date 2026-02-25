@@ -68,8 +68,10 @@ UPDATE_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES: set[
 
 
 def check_update_webhooks_endpoint_data_attributes_event_types_item(
-    value: str,
-) -> UpdateWebhooksEndpointDataAttributesEventTypesItem:
+    value: str | None,
+) -> UpdateWebhooksEndpointDataAttributesEventTypesItem | None:
+    if value is None:
+        return None
     if value in UPDATE_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES:
         return cast(UpdateWebhooksEndpointDataAttributesEventTypesItem, value)
     raise TypeError(

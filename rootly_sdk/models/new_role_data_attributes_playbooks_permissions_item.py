@@ -11,8 +11,10 @@ NEW_ROLE_DATA_ATTRIBUTES_PLAYBOOKS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAttri
 
 
 def check_new_role_data_attributes_playbooks_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesPlaybooksPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesPlaybooksPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_PLAYBOOKS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesPlaybooksPermissionsItem, value)
     raise TypeError(

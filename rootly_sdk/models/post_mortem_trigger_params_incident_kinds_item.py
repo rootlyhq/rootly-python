@@ -17,7 +17,9 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[PostMortemTriggerPara
 }
 
 
-def check_post_mortem_trigger_params_incident_kinds_item(value: str) -> PostMortemTriggerParamsIncidentKindsItem:
+def check_post_mortem_trigger_params_incident_kinds_item(value: str | None) -> PostMortemTriggerParamsIncidentKindsItem | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES:
         return cast(PostMortemTriggerParamsIncidentKindsItem, value)
     raise TypeError(

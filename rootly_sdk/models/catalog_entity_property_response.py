@@ -13,9 +13,11 @@ T = TypeVar("T", bound="CatalogEntityPropertyResponse")
 
 @_attrs_define
 class CatalogEntityPropertyResponse:
-    """
-    Attributes:
-        data (CatalogEntityPropertyResponseData):
+    """**Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or native catalog
+    endpoints (teams, services, functionalities, incident_types, causes, environments) to retrieve field values instead.
+
+        Attributes:
+            data (CatalogEntityPropertyResponseData):
     """
 
     data: "CatalogEntityPropertyResponseData"

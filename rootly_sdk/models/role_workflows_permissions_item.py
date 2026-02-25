@@ -10,7 +10,9 @@ ROLE_WORKFLOWS_PERMISSIONS_ITEM_VALUES: set[RoleWorkflowsPermissionsItem] = {
 }
 
 
-def check_role_workflows_permissions_item(value: str) -> RoleWorkflowsPermissionsItem:
+def check_role_workflows_permissions_item(value: str | None) -> RoleWorkflowsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_WORKFLOWS_PERMISSIONS_ITEM_VALUES:
         return cast(RoleWorkflowsPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_WORKFLOWS_PERMISSIONS_ITEM_VALUES!r}")

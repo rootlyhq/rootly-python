@@ -1,10 +1,16 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.communications_template_communication_template_stages_type_0_item_data import (
+        CommunicationsTemplateCommunicationTemplateStagesType0ItemData,
+    )
+
 
 T = TypeVar("T", bound="CommunicationsTemplateCommunicationTemplateStagesType0Item")
 
@@ -13,119 +19,41 @@ T = TypeVar("T", bound="CommunicationsTemplateCommunicationTemplateStagesType0It
 class CommunicationsTemplateCommunicationTemplateStagesType0Item:
     """
     Attributes:
-        id (Union[Unset, str]): ID of the communication template stage
-        communication_stage_id (Union[Unset, str]): The communication stage ID
-        sms_content (Union[None, Unset, str]): SMS content for the stage
-        email_subject (Union[None, Unset, str]): Email subject for the stage
-        email_body (Union[None, Unset, str]): Email body for the stage
-        slack_content (Union[None, Unset, str]): Slack content for the stage
+        data (Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemData]):
     """
 
-    id: Union[Unset, str] = UNSET
-    communication_stage_id: Union[Unset, str] = UNSET
-    sms_content: Union[None, Unset, str] = UNSET
-    email_subject: Union[None, Unset, str] = UNSET
-    email_body: Union[None, Unset, str] = UNSET
-    slack_content: Union[None, Unset, str] = UNSET
+    data: Union[Unset, "CommunicationsTemplateCommunicationTemplateStagesType0ItemData"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id = self.id
-
-        communication_stage_id = self.communication_stage_id
-
-        sms_content: Union[None, Unset, str]
-        if isinstance(self.sms_content, Unset):
-            sms_content = UNSET
-        else:
-            sms_content = self.sms_content
-
-        email_subject: Union[None, Unset, str]
-        if isinstance(self.email_subject, Unset):
-            email_subject = UNSET
-        else:
-            email_subject = self.email_subject
-
-        email_body: Union[None, Unset, str]
-        if isinstance(self.email_body, Unset):
-            email_body = UNSET
-        else:
-            email_body = self.email_body
-
-        slack_content: Union[None, Unset, str]
-        if isinstance(self.slack_content, Unset):
-            slack_content = UNSET
-        else:
-            slack_content = self.slack_content
+        data: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.data, Unset):
+            data = self.data.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
-        if communication_stage_id is not UNSET:
-            field_dict["communication_stage_id"] = communication_stage_id
-        if sms_content is not UNSET:
-            field_dict["sms_content"] = sms_content
-        if email_subject is not UNSET:
-            field_dict["email_subject"] = email_subject
-        if email_body is not UNSET:
-            field_dict["email_body"] = email_body
-        if slack_content is not UNSET:
-            field_dict["slack_content"] = slack_content
+        if data is not UNSET:
+            field_dict["data"] = data
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.communications_template_communication_template_stages_type_0_item_data import (
+            CommunicationsTemplateCommunicationTemplateStagesType0ItemData,
+        )
+
         d = dict(src_dict)
-        id = d.pop("id", UNSET)
-
-        communication_stage_id = d.pop("communication_stage_id", UNSET)
-
-        def _parse_sms_content(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        sms_content = _parse_sms_content(d.pop("sms_content", UNSET))
-
-        def _parse_email_subject(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        email_subject = _parse_email_subject(d.pop("email_subject", UNSET))
-
-        def _parse_email_body(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        email_body = _parse_email_body(d.pop("email_body", UNSET))
-
-        def _parse_slack_content(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        slack_content = _parse_slack_content(d.pop("slack_content", UNSET))
+        _data = d.pop("data", UNSET)
+        data: Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemData]
+        if isinstance(_data, Unset):
+            data = UNSET
+        else:
+            data = CommunicationsTemplateCommunicationTemplateStagesType0ItemData.from_dict(_data)
 
         communications_template_communication_template_stages_type_0_item = cls(
-            id=id,
-            communication_stage_id=communication_stage_id,
-            sms_content=sms_content,
-            email_subject=email_subject,
-            email_body=email_body,
-            slack_content=slack_content,
+            data=data,
         )
 
         communications_template_communication_template_stages_type_0_item.additional_properties = d

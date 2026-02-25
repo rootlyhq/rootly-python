@@ -7,7 +7,9 @@ RETROSPECTIVE_CONFIGURATION_LIST_DATA_ITEM_TYPE_VALUES: set[RetrospectiveConfigu
 }
 
 
-def check_retrospective_configuration_list_data_item_type(value: str) -> RetrospectiveConfigurationListDataItemType:
+def check_retrospective_configuration_list_data_item_type(value: str | None) -> RetrospectiveConfigurationListDataItemType | None:
+    if value is None:
+        return None
     if value in RETROSPECTIVE_CONFIGURATION_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(RetrospectiveConfigurationListDataItemType, value)
     raise TypeError(

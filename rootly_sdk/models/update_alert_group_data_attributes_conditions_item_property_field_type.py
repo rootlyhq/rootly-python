@@ -12,8 +12,10 @@ UPDATE_ALERT_GROUP_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_FIELD_TYPE_VALUES: s
 
 
 def check_update_alert_group_data_attributes_conditions_item_property_field_type(
-    value: str,
-) -> UpdateAlertGroupDataAttributesConditionsItemPropertyFieldType:
+    value: str | None,
+) -> UpdateAlertGroupDataAttributesConditionsItemPropertyFieldType | None:
+    if value is None:
+        return None
     if value in UPDATE_ALERT_GROUP_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_FIELD_TYPE_VALUES:
         return cast(UpdateAlertGroupDataAttributesConditionsItemPropertyFieldType, value)
     raise TypeError(

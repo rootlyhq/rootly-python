@@ -13,8 +13,10 @@ ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_STRATEGY_VALUES: set[
 
 
 def check_escalation_policy_level_paging_strategy_configuration_strategy(
-    value: str,
-) -> EscalationPolicyLevelPagingStrategyConfigurationStrategy:
+    value: str | None,
+) -> EscalationPolicyLevelPagingStrategyConfigurationStrategy | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_STRATEGY_VALUES:
         return cast(EscalationPolicyLevelPagingStrategyConfigurationStrategy, value)
     raise TypeError(

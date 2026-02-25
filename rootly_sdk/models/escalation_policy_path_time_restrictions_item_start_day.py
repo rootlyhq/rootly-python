@@ -18,8 +18,10 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_START_DAY_VALUES: set[
 
 
 def check_escalation_policy_path_time_restrictions_item_start_day(
-    value: str,
-) -> EscalationPolicyPathTimeRestrictionsItemStartDay:
+    value: str | None,
+) -> EscalationPolicyPathTimeRestrictionsItemStartDay | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_START_DAY_VALUES:
         return cast(EscalationPolicyPathTimeRestrictionsItemStartDay, value)
     raise TypeError(

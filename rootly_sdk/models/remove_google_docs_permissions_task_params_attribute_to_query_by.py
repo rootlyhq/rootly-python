@@ -12,8 +12,10 @@ REMOVE_GOOGLE_DOCS_PERMISSIONS_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES: set[
 
 
 def check_remove_google_docs_permissions_task_params_attribute_to_query_by(
-    value: str,
-) -> RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy:
+    value: str | None,
+) -> RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy | None:
+    if value is None:
+        return None
     if value in REMOVE_GOOGLE_DOCS_PERMISSIONS_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
         return cast(RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy, value)
     raise TypeError(

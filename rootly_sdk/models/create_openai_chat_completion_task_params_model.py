@@ -11,7 +11,7 @@ T = TypeVar("T", bound="CreateOpenaiChatCompletionTaskParamsModel")
 
 @_attrs_define
 class CreateOpenaiChatCompletionTaskParamsModel:
-    """The OpenAI model. eg: gpt-4o-mini
+    """The OpenAI model. eg: gpt-5-nano
 
     Attributes:
         id (Union[Unset, str]):

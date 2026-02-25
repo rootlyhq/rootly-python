@@ -13,7 +13,9 @@ SCHEDULE_ROTATION_ACTIVE_DAYS_ITEM_VALUES: set[ScheduleRotationActiveDaysItem] =
 }
 
 
-def check_schedule_rotation_active_days_item(value: str) -> ScheduleRotationActiveDaysItem:
+def check_schedule_rotation_active_days_item(value: str | None) -> ScheduleRotationActiveDaysItem | None:
+    if value is None:
+        return None
     if value in SCHEDULE_ROTATION_ACTIVE_DAYS_ITEM_VALUES:
         return cast(ScheduleRotationActiveDaysItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SCHEDULE_ROTATION_ACTIVE_DAYS_ITEM_VALUES!r}")

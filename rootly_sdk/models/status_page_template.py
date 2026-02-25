@@ -19,6 +19,7 @@ class StatusPageTemplate:
         body (str): Description of the event the template will populate
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        update_title (Union[None, Unset, str]): Title that will be used for the status page update
         update_status (Union[None, Unset, str]): Status of the event the template will populate
         kind (Union[Unset, StatusPageTemplateKind]): The kind of the status page template
         should_notify_subscribers (Union[None, Unset, bool]): Controls if incident subscribers should be notified
@@ -31,6 +32,7 @@ class StatusPageTemplate:
     body: str
     created_at: str
     updated_at: str
+    update_title: Union[None, Unset, str] = UNSET
     update_status: Union[None, Unset, str] = UNSET
     kind: Union[Unset, StatusPageTemplateKind] = UNSET
     should_notify_subscribers: Union[None, Unset, bool] = UNSET
@@ -48,6 +50,12 @@ class StatusPageTemplate:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        update_title: Union[None, Unset, str]
+        if isinstance(self.update_title, Unset):
+            update_title = UNSET
+        else:
+            update_title = self.update_title
 
         update_status: Union[None, Unset, str]
         if isinstance(self.update_status, Unset):
@@ -84,6 +92,8 @@ class StatusPageTemplate:
                 "updated_at": updated_at,
             }
         )
+        if update_title is not UNSET:
+            field_dict["update_title"] = update_title
         if update_status is not UNSET:
             field_dict["update_status"] = update_status
         if kind is not UNSET:
@@ -109,6 +119,15 @@ class StatusPageTemplate:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        def _parse_update_title(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        update_title = _parse_update_title(d.pop("update_title", UNSET))
 
         def _parse_update_status(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -152,6 +171,7 @@ class StatusPageTemplate:
             body=body,
             created_at=created_at,
             updated_at=updated_at,
+            update_title=update_title,
             update_status=update_status,
             kind=kind,
             should_notify_subscribers=should_notify_subscribers,

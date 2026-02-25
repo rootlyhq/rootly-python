@@ -16,8 +16,10 @@ SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_1_HANDOFF_DAY_VALUES: se
 
 
 def check_schedule_rotation_schedule_rotationable_attributes_type_1_handoff_day(
-    value: str,
-) -> ScheduleRotationScheduleRotationableAttributesType1HandoffDay:
+    value: str | None,
+) -> ScheduleRotationScheduleRotationableAttributesType1HandoffDay | None:
+    if value is None:
+        return None
     if value in SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_1_HANDOFF_DAY_VALUES:
         return cast(ScheduleRotationScheduleRotationableAttributesType1HandoffDay, value)
     raise TypeError(

@@ -12,7 +12,9 @@ WORKFLOW_GROUP_KIND_VALUES: set[WorkflowGroupKind] = {
 }
 
 
-def check_workflow_group_kind(value: str) -> WorkflowGroupKind:
+def check_workflow_group_kind(value: str | None) -> WorkflowGroupKind | None:
+    if value is None:
+        return None
     if value in WORKFLOW_GROUP_KIND_VALUES:
         return cast(WorkflowGroupKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WORKFLOW_GROUP_KIND_VALUES!r}")

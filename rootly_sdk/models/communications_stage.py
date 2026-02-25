@@ -14,25 +14,23 @@ class CommunicationsStage:
     """
     Attributes:
         name (str): The name of the communications stage
-        slug (str): The slug of the communications stage
         position (Union[None, int]): Position of the communications stage
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        slug (Union[Unset, str]): The slug of the communications stage
         description (Union[None, Unset, str]): The description of the communications stage
     """
 
     name: str
-    slug: str
     position: Union[None, int]
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         position: Union[None, int]
         position = self.position
@@ -40,6 +38,8 @@ class CommunicationsStage:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -52,12 +52,13 @@ class CommunicationsStage:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "position": position,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -67,8 +68,6 @@ class CommunicationsStage:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         def _parse_position(data: object) -> Union[None, int]:
             if data is None:
@@ -81,6 +80,8 @@ class CommunicationsStage:
 
         updated_at = d.pop("updated_at")
 
+        slug = d.pop("slug", UNSET)
+
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -92,10 +93,10 @@ class CommunicationsStage:
 
         communications_stage = cls(
             name=name,
-            slug=slug,
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
         )
 

@@ -24,8 +24,10 @@ UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_WAITING_MUSIC_URL_VALUES: set[
 
 
 def check_update_live_call_router_data_attributes_waiting_music_url(
-    value: str,
-) -> UpdateLiveCallRouterDataAttributesWaitingMusicUrl:
+    value: str | None,
+) -> UpdateLiveCallRouterDataAttributesWaitingMusicUrl | None:
+    if value is None:
+        return None
     if value in UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_WAITING_MUSIC_URL_VALUES:
         return cast(UpdateLiveCallRouterDataAttributesWaitingMusicUrl, value)
     raise TypeError(

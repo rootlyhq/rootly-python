@@ -11,7 +11,9 @@ UPDATE_DASHBOARD_DATA_ATTRIBUTES_COLOR_VALUES: set[UpdateDashboardDataAttributes
 }
 
 
-def check_update_dashboard_data_attributes_color(value: str) -> UpdateDashboardDataAttributesColor:
+def check_update_dashboard_data_attributes_color(value: str | None) -> UpdateDashboardDataAttributesColor | None:
+    if value is None:
+        return None
     if value in UPDATE_DASHBOARD_DATA_ATTRIBUTES_COLOR_VALUES:
         return cast(UpdateDashboardDataAttributesColor, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_DASHBOARD_DATA_ATTRIBUTES_COLOR_VALUES!r}")

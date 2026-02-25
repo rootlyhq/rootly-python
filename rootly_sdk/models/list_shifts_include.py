@@ -9,7 +9,9 @@ LIST_SHIFTS_INCLUDE_VALUES: set[ListShiftsInclude] = {
 }
 
 
-def check_list_shifts_include(value: str) -> ListShiftsInclude:
+def check_list_shifts_include(value: str | None) -> ListShiftsInclude | None:
+    if value is None:
+        return None
     if value in LIST_SHIFTS_INCLUDE_VALUES:
         return cast(ListShiftsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_SHIFTS_INCLUDE_VALUES!r}")

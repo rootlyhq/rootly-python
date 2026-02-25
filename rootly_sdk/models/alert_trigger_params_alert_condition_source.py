@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 AlertTriggerParamsAlertConditionSource = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 ALERT_TRIGGER_PARAMS_ALERT_CONDITION_SOURCE_VALUES: set[AlertTriggerParamsAlertConditionSource] = {
@@ -10,13 +10,16 @@ ALERT_TRIGGER_PARAMS_ALERT_CONDITION_SOURCE_VALUES: set[AlertTriggerParamsAlertC
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
 }
 
 
-def check_alert_trigger_params_alert_condition_source(value: str) -> AlertTriggerParamsAlertConditionSource:
+def check_alert_trigger_params_alert_condition_source(value: str | None) -> AlertTriggerParamsAlertConditionSource | None:
+    if value is None:
+        return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_CONDITION_SOURCE_VALUES:
         return cast(AlertTriggerParamsAlertConditionSource, value)
     raise TypeError(

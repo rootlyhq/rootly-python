@@ -15,8 +15,10 @@ UPDATE_INCIDENT_PERMISSION_SET_RESOURCE_DATA_ATTRIBUTES_KIND_VALUES: set[
 
 
 def check_update_incident_permission_set_resource_data_attributes_kind(
-    value: str,
-) -> UpdateIncidentPermissionSetResourceDataAttributesKind:
+    value: str | None,
+) -> UpdateIncidentPermissionSetResourceDataAttributesKind | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_RESOURCE_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(UpdateIncidentPermissionSetResourceDataAttributesKind, value)
     raise TypeError(

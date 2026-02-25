@@ -14,27 +14,25 @@ class CommunicationsType:
     """
     Attributes:
         name (str): The name of the communications type
-        slug (str): The slug of the communications type
         color (Union[None, str]): The color of the communications type
         position (int): Position of the communications type
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        slug (Union[Unset, str]): The slug of the communications type
         description (Union[None, Unset, str]): The description of the communications type
     """
 
     name: str
-    slug: str
     color: Union[None, str]
     position: int
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         color: Union[None, str]
         color = self.color
@@ -44,6 +42,8 @@ class CommunicationsType:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -56,13 +56,14 @@ class CommunicationsType:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "color": color,
                 "position": position,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -72,8 +73,6 @@ class CommunicationsType:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         def _parse_color(data: object) -> Union[None, str]:
             if data is None:
@@ -88,6 +87,8 @@ class CommunicationsType:
 
         updated_at = d.pop("updated_at")
 
+        slug = d.pop("slug", UNSET)
+
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -99,11 +100,11 @@ class CommunicationsType:
 
         communications_type = cls(
             name=name,
-            slug=slug,
             color=color,
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
         )
 

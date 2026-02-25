@@ -112,7 +112,11 @@ def sync_detailed(
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
-     List Catalog Entity Properties
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    List Catalog Entity Properties.
 
     Args:
         catalog_entity_id (str):
@@ -173,7 +177,11 @@ def sync(
 ) -> Optional[CatalogEntityPropertyList]:
     """List catalog properties
 
-     List Catalog Entity Properties
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    List Catalog Entity Properties.
 
     Args:
         catalog_entity_id (str):
@@ -229,7 +237,11 @@ async def asyncio_detailed(
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
-     List Catalog Entity Properties
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    List Catalog Entity Properties.
 
     Args:
         catalog_entity_id (str):
@@ -288,7 +300,11 @@ async def asyncio(
 ) -> Optional[CatalogEntityPropertyList]:
     """List catalog properties
 
-     List Catalog Entity Properties
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    List Catalog Entity Properties.
 
     Args:
         catalog_entity_id (str):

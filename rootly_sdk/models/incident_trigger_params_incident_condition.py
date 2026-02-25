@@ -9,7 +9,9 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES: set[IncidentTriggerParamsInci
 }
 
 
-def check_incident_trigger_params_incident_condition(value: str) -> IncidentTriggerParamsIncidentCondition:
+def check_incident_trigger_params_incident_condition(value: str | None) -> IncidentTriggerParamsIncidentCondition | None:
+    if value is None:
+        return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES:
         return cast(IncidentTriggerParamsIncidentCondition, value)
     raise TypeError(

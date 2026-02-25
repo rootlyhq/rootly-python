@@ -13,8 +13,10 @@ NEW_ON_CALL_ROLE_DATA_ATTRIBUTES_SCHEDULES_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_new_on_call_role_data_attributes_schedules_permissions_item(
-    value: str,
-) -> NewOnCallRoleDataAttributesSchedulesPermissionsItem:
+    value: str | None,
+) -> NewOnCallRoleDataAttributesSchedulesPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ON_CALL_ROLE_DATA_ATTRIBUTES_SCHEDULES_PERMISSIONS_ITEM_VALUES:
         return cast(NewOnCallRoleDataAttributesSchedulesPermissionsItem, value)
     raise TypeError(

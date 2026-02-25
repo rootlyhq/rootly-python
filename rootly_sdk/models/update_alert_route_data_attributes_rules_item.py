@@ -1,6 +1,5 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,7 +25,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
         name (str): The name of the alert routing rule
         destinations (list['UpdateAlertRouteDataAttributesRulesItemDestinationsItem']):
         condition_groups (list['UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem']):
-        id (Union[Unset, UUID]): The ID of the alert routing rule (for updates)
         position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
         fallback_rule (Union[Unset, bool]): Whether this is a fallback rule
     """
@@ -34,7 +32,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
     name: str
     destinations: list["UpdateAlertRouteDataAttributesRulesItemDestinationsItem"]
     condition_groups: list["UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem"]
-    id: Union[Unset, UUID] = UNSET
     position: Union[Unset, int] = UNSET
     fallback_rule: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,10 +49,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
             condition_groups_item = condition_groups_item_data.to_dict()
             condition_groups.append(condition_groups_item)
 
-        id: Union[Unset, str] = UNSET
-        if not isinstance(self.id, Unset):
-            id = str(self.id)
-
         position = self.position
 
         fallback_rule = self.fallback_rule
@@ -69,8 +62,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
                 "condition_groups": condition_groups,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if position is not UNSET:
             field_dict["position"] = position
         if fallback_rule is not UNSET:
@@ -108,13 +99,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
 
             condition_groups.append(condition_groups_item)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = UUID(_id)
-
         position = d.pop("position", UNSET)
 
         fallback_rule = d.pop("fallback_rule", UNSET)
@@ -123,7 +107,6 @@ class UpdateAlertRouteDataAttributesRulesItem:
             name=name,
             destinations=destinations,
             condition_groups=condition_groups,
-            id=id,
             position=position,
             fallback_rule=fallback_rule,
         )

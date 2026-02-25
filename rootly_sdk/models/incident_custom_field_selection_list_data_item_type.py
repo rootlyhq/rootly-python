@@ -8,8 +8,10 @@ INCIDENT_CUSTOM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentCustomFi
 
 
 def check_incident_custom_field_selection_list_data_item_type(
-    value: str,
-) -> IncidentCustomFieldSelectionListDataItemType:
+    value: str | None,
+) -> IncidentCustomFieldSelectionListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_CUSTOM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentCustomFieldSelectionListDataItemType, value)
     raise TypeError(

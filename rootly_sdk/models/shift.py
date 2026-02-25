@@ -1,15 +1,10 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.shift_override_response import ShiftOverrideResponse
-    from ..models.user_response import UserResponse
-
 
 T = TypeVar("T", bound="Shift")
 
@@ -23,8 +18,7 @@ class Shift:
         starts_at (str): Start datetime of shift
         ends_at (str): End datetime of shift
         is_override (bool): Denotes shift is an override shift
-        shift_override (Union[Unset, ShiftOverrideResponse]):
-        user (Union[Unset, UserResponse]):
+        user_id (Union[None, Unset, int]): ID of user on shift
     """
 
     schedule_id: str
@@ -32,8 +26,7 @@ class Shift:
     starts_at: str
     ends_at: str
     is_override: bool
-    shift_override: Union[Unset, "ShiftOverrideResponse"] = UNSET
-    user: Union[Unset, "UserResponse"] = UNSET
+    user_id: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,13 +41,11 @@ class Shift:
 
         is_override = self.is_override
 
-        shift_override: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.shift_override, Unset):
-            shift_override = self.shift_override.to_dict()
-
-        user: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.user, Unset):
-            user = self.user.to_dict()
+        user_id: Union[None, Unset, int]
+        if isinstance(self.user_id, Unset):
+            user_id = UNSET
+        else:
+            user_id = self.user_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -67,18 +58,13 @@ class Shift:
                 "is_override": is_override,
             }
         )
-        if shift_override is not UNSET:
-            field_dict["shift_override"] = shift_override
-        if user is not UNSET:
-            field_dict["user"] = user
+        if user_id is not UNSET:
+            field_dict["user_id"] = user_id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.shift_override_response import ShiftOverrideResponse
-        from ..models.user_response import UserResponse
-
         d = dict(src_dict)
         schedule_id = d.pop("schedule_id")
 
@@ -95,19 +81,14 @@ class Shift:
 
         is_override = d.pop("is_override")
 
-        _shift_override = d.pop("shift_override", UNSET)
-        shift_override: Union[Unset, ShiftOverrideResponse]
-        if isinstance(_shift_override, Unset):
-            shift_override = UNSET
-        else:
-            shift_override = ShiftOverrideResponse.from_dict(_shift_override)
+        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
 
-        _user = d.pop("user", UNSET)
-        user: Union[Unset, UserResponse]
-        if isinstance(_user, Unset):
-            user = UNSET
-        else:
-            user = UserResponse.from_dict(_user)
+        user_id = _parse_user_id(d.pop("user_id", UNSET))
 
         shift = cls(
             schedule_id=schedule_id,
@@ -115,8 +96,7 @@ class Shift:
             starts_at=starts_at,
             ends_at=ends_at,
             is_override=is_override,
-            shift_override=shift_override,
-            user=user,
+            user_id=user_id,
         )
 
         shift.additional_properties = d

@@ -15,8 +15,10 @@ CREATE_GOOGLE_MEETING_TASK_PARAMS_CONFERENCE_SOLUTION_KEY_VALUES: set[
 
 
 def check_create_google_meeting_task_params_conference_solution_key(
-    value: str,
-) -> CreateGoogleMeetingTaskParamsConferenceSolutionKey:
+    value: str | None,
+) -> CreateGoogleMeetingTaskParamsConferenceSolutionKey | None:
+    if value is None:
+        return None
     if value in CREATE_GOOGLE_MEETING_TASK_PARAMS_CONFERENCE_SOLUTION_KEY_VALUES:
         return cast(CreateGoogleMeetingTaskParamsConferenceSolutionKey, value)
     raise TypeError(

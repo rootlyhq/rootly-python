@@ -13,8 +13,10 @@ UPDATE_INCIDENT_PERMISSION_SET_DATA_ATTRIBUTES_PRIVATE_INCIDENT_PERMISSIONS_ITEM
 
 
 def check_update_incident_permission_set_data_attributes_private_incident_permissions_item(
-    value: str,
-) -> UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem:
+    value: str | None,
+) -> UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_DATA_ATTRIBUTES_PRIVATE_INCIDENT_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem, value)
     raise TypeError(

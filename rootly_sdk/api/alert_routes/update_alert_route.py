@@ -78,7 +78,7 @@ def sync_detailed(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
-    ## Asynchronous Rule Creation
+    ### Asynchronous Rule Creation
 
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
@@ -126,7 +126,7 @@ def sync(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
-    ## Asynchronous Rule Creation
+    ### Asynchronous Rule Creation
 
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
@@ -169,7 +169,7 @@ async def asyncio_detailed(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
-    ## Asynchronous Rule Creation
+    ### Asynchronous Rule Creation
 
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
@@ -215,7 +215,7 @@ async def asyncio(
     Routing. If you're unsure whether you have access to this feature, please contact Rootly customer
     support.**
 
-    ## Asynchronous Rule Creation
+    ### Asynchronous Rule Creation
 
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.

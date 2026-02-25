@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.service_alert_broadcast_channel_type_0 import ServiceAlertBroadcastChannelType0
+    from ..models.service_fields_type_0_item import ServiceFieldsType0Item
     from ..models.service_incident_broadcast_channel_type_0 import ServiceIncidentBroadcastChannelType0
     from ..models.service_slack_aliases_type_0_item import ServiceSlackAliasesType0Item
     from ..models.service_slack_channels_type_0_item import ServiceSlackChannelsType0Item
@@ -64,6 +65,7 @@ class Service:
         incident_broadcast_enabled (Union[None, Unset, bool]): Enable incidents to be broadcasted to a specific channel
         incident_broadcast_channel (Union['ServiceIncidentBroadcastChannelType0', None, Unset]): Slack channel to
             broadcast incidents to
+        fields (Union[None, Unset, list['ServiceFieldsType0Item']]): Array of field values for this service.
     """
 
     name: str
@@ -100,6 +102,7 @@ class Service:
     alert_broadcast_channel: Union["ServiceAlertBroadcastChannelType0", None, Unset] = UNSET
     incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
     incident_broadcast_channel: Union["ServiceIncidentBroadcastChannelType0", None, Unset] = UNSET
+    fields: Union[None, Unset, list["ServiceFieldsType0Item"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -325,6 +328,18 @@ class Service:
         else:
             incident_broadcast_channel = self.incident_broadcast_channel
 
+        fields: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.fields, Unset):
+            fields = UNSET
+        elif isinstance(self.fields, list):
+            fields = []
+            for fields_type_0_item_data in self.fields:
+                fields_type_0_item = fields_type_0_item_data.to_dict()
+                fields.append(fields_type_0_item)
+
+        else:
+            fields = self.fields
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -396,12 +411,15 @@ class Service:
             field_dict["incident_broadcast_enabled"] = incident_broadcast_enabled
         if incident_broadcast_channel is not UNSET:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.service_alert_broadcast_channel_type_0 import ServiceAlertBroadcastChannelType0
+        from ..models.service_fields_type_0_item import ServiceFieldsType0Item
         from ..models.service_incident_broadcast_channel_type_0 import ServiceIncidentBroadcastChannelType0
         from ..models.service_slack_aliases_type_0_item import ServiceSlackAliasesType0Item
         from ..models.service_slack_channels_type_0_item import ServiceSlackChannelsType0Item
@@ -771,6 +789,28 @@ class Service:
 
         incident_broadcast_channel = _parse_incident_broadcast_channel(d.pop("incident_broadcast_channel", UNSET))
 
+        def _parse_fields(data: object) -> Union[None, Unset, list["ServiceFieldsType0Item"]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                fields_type_0 = []
+                _fields_type_0 = data
+                for fields_type_0_item_data in _fields_type_0:
+                    fields_type_0_item = ServiceFieldsType0Item.from_dict(fields_type_0_item_data)
+
+                    fields_type_0.append(fields_type_0_item)
+
+                return fields_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list["ServiceFieldsType0Item"]], data)
+
+        fields = _parse_fields(d.pop("fields", UNSET))
+
         service = cls(
             name=name,
             created_at=created_at,
@@ -806,6 +846,7 @@ class Service:
             alert_broadcast_channel=alert_broadcast_channel,
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
+            fields=fields,
         )
 
         service.additional_properties = d

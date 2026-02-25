@@ -11,8 +11,10 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_POST_MORTEM_STATUSES_ITEM_VALUES: set[
 
 
 def check_post_mortem_trigger_params_incident_post_mortem_statuses_item(
-    value: str,
-) -> PostMortemTriggerParamsIncidentPostMortemStatusesItem:
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentPostMortemStatusesItem | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_POST_MORTEM_STATUSES_ITEM_VALUES:
         return cast(PostMortemTriggerParamsIncidentPostMortemStatusesItem, value)
     raise TypeError(

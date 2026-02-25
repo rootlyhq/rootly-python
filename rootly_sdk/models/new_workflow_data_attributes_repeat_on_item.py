@@ -13,7 +13,9 @@ NEW_WORKFLOW_DATA_ATTRIBUTES_REPEAT_ON_ITEM_VALUES: set[NewWorkflowDataAttribute
 }
 
 
-def check_new_workflow_data_attributes_repeat_on_item(value: str) -> NewWorkflowDataAttributesRepeatOnItem:
+def check_new_workflow_data_attributes_repeat_on_item(value: str | None) -> NewWorkflowDataAttributesRepeatOnItem | None:
+    if value is None:
+        return None
     if value in NEW_WORKFLOW_DATA_ATTRIBUTES_REPEAT_ON_ITEM_VALUES:
         return cast(NewWorkflowDataAttributesRepeatOnItem, value)
     raise TypeError(

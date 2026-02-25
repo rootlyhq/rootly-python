@@ -15,11 +15,13 @@ T = TypeVar("T", bound="CatalogEntityPropertyList")
 
 @_attrs_define
 class CatalogEntityPropertyList:
-    """
-    Attributes:
-        data (list['CatalogEntityPropertyListDataItem']):
-        links (Links):
-        meta (Meta):
+    """**Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or native catalog
+    endpoints (teams, services, functionalities, incident_types, causes, environments) to retrieve field values instead.
+
+        Attributes:
+            data (list['CatalogEntityPropertyListDataItem']):
+            links (Links):
+            meta (Meta):
     """
 
     data: list["CatalogEntityPropertyListDataItem"]

@@ -10,7 +10,7 @@ T = TypeVar("T", bound="NewRetrospectiveProcessDataAttributesRetrospectiveProces
 class NewRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0:
     """
     Attributes:
-        severity_ids (list[str]): Severity ID's for retrospective process matching criteria
+        severity_ids (list[str]): Severity IDs for retrospective process matching criteria
     """
 
     severity_ids: list[str]

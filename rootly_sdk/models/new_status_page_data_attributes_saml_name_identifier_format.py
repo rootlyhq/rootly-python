@@ -18,8 +18,10 @@ NEW_STATUS_PAGE_DATA_ATTRIBUTES_SAML_NAME_IDENTIFIER_FORMAT_VALUES: set[
 
 
 def check_new_status_page_data_attributes_saml_name_identifier_format(
-    value: str,
-) -> NewStatusPageDataAttributesSamlNameIdentifierFormat:
+    value: str | None,
+) -> NewStatusPageDataAttributesSamlNameIdentifierFormat | None:
+    if value is None:
+        return None
     if value in NEW_STATUS_PAGE_DATA_ATTRIBUTES_SAML_NAME_IDENTIFIER_FORMAT_VALUES:
         return cast(NewStatusPageDataAttributesSamlNameIdentifierFormat, value)
     raise TypeError(

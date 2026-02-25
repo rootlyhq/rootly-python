@@ -8,8 +8,10 @@ REMOVE_GOOGLE_DOCS_PERMISSIONS_TASK_PARAMS_TASK_TYPE_VALUES: set[RemoveGoogleDoc
 
 
 def check_remove_google_docs_permissions_task_params_task_type(
-    value: str,
-) -> RemoveGoogleDocsPermissionsTaskParamsTaskType:
+    value: str | None,
+) -> RemoveGoogleDocsPermissionsTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in REMOVE_GOOGLE_DOCS_PERMISSIONS_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(RemoveGoogleDocsPermissionsTaskParamsTaskType, value)
     raise TypeError(

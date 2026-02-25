@@ -26,14 +26,15 @@ T = TypeVar("T", bound="UpdateEscalationPolicyLevelDataAttributes")
 class UpdateEscalationPolicyLevelDataAttributes:
     """
     Attributes:
-        delay (Union[Unset, int]): Delay before notification targets will be alerted.
+        delay (Union[Unset, int]): Delay before notifying targets in the next Escalation Level.
         position (Union[Unset, int]): Position of the escalation policy level
         escalation_policy_path_id (Union[None, Unset, str]): The ID of the dynamic escalation policy path the level will
             belong to. If nothing is specified it will add the level to your default path.
         paging_strategy_configuration_strategy (Union[Unset,
-            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy]):
+            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy]):  Default: 'default'.
         paging_strategy_configuration_schedule_strategy (Union[Unset,
-            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy]):
+            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy]):  Default:
+            'on_call_only'.
         notification_target_params (Union[Unset,
             list[Union['UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0', None]]]): Escalation
             level's notification targets
@@ -44,10 +45,10 @@ class UpdateEscalationPolicyLevelDataAttributes:
     escalation_policy_path_id: Union[None, Unset, str] = UNSET
     paging_strategy_configuration_strategy: Union[
         Unset, UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
-    ] = UNSET
+    ] = "default"
     paging_strategy_configuration_schedule_strategy: Union[
         Unset, UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
-    ] = UNSET
+    ] = "on_call_only"
     notification_target_params: Union[
         Unset, list[Union["UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0", None]]
     ] = UNSET

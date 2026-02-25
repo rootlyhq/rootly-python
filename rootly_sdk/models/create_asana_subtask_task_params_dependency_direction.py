@@ -9,8 +9,10 @@ CREATE_ASANA_SUBTASK_TASK_PARAMS_DEPENDENCY_DIRECTION_VALUES: set[CreateAsanaSub
 
 
 def check_create_asana_subtask_task_params_dependency_direction(
-    value: str,
-) -> CreateAsanaSubtaskTaskParamsDependencyDirection:
+    value: str | None,
+) -> CreateAsanaSubtaskTaskParamsDependencyDirection | None:
+    if value is None:
+        return None
     if value in CREATE_ASANA_SUBTASK_TASK_PARAMS_DEPENDENCY_DIRECTION_VALUES:
         return cast(CreateAsanaSubtaskTaskParamsDependencyDirection, value)
     raise TypeError(

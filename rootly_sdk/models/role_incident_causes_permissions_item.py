@@ -10,7 +10,9 @@ ROLE_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES: set[RoleIncidentCausesPermissionsI
 }
 
 
-def check_role_incident_causes_permissions_item(value: str) -> RoleIncidentCausesPermissionsItem:
+def check_role_incident_causes_permissions_item(value: str | None) -> RoleIncidentCausesPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES:
         return cast(RoleIncidentCausesPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES!r}")

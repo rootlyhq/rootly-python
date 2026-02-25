@@ -12,7 +12,9 @@ CREATE_OPSGENIE_ALERT_TASK_PARAMS_PRIORITY_VALUES: set[CreateOpsgenieAlertTaskPa
 }
 
 
-def check_create_opsgenie_alert_task_params_priority(value: str) -> CreateOpsgenieAlertTaskParamsPriority:
+def check_create_opsgenie_alert_task_params_priority(value: str | None) -> CreateOpsgenieAlertTaskParamsPriority | None:
+    if value is None:
+        return None
     if value in CREATE_OPSGENIE_ALERT_TASK_PARAMS_PRIORITY_VALUES:
         return cast(CreateOpsgenieAlertTaskParamsPriority, value)
     raise TypeError(

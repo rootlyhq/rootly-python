@@ -17,8 +17,8 @@ if TYPE_CHECKING:
     from ..models.new_dashboard_panel_data_attributes_params_datasets_item_filter_item import (
         NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem,
     )
-    from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1 import (
-        NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1,
+    from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0 import (
+        NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0,
     )
 
 
@@ -32,14 +32,14 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
         name (Union[None, Unset, str]):
         collection (Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemCollection]):
         filter_ (Union[Unset, list['NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem']]):
-        group_by (Union['NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1', None, Unset, str]):
+        group_by (Union['NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0', None, Unset, str]):
         aggregate (Union['NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0', None, Unset]):
     """
 
     name: Union[None, Unset, str] = UNSET
     collection: Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemCollection] = UNSET
     filter_: Union[Unset, list["NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem"]] = UNSET
-    group_by: Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1", None, Unset, str] = UNSET
+    group_by: Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str] = UNSET
     aggregate: Union["NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -47,8 +47,8 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
         from ..models.new_dashboard_panel_data_attributes_params_datasets_item_aggregate_type_0 import (
             NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0,
         )
-        from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1 import (
-            NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1,
+        from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0 import (
+            NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0,
         )
 
         name: Union[None, Unset, str]
@@ -71,7 +71,7 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
         group_by: Union[None, Unset, dict[str, Any], str]
         if isinstance(self.group_by, Unset):
             group_by = UNSET
-        elif isinstance(self.group_by, NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1):
+        elif isinstance(self.group_by, NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0):
             group_by = self.group_by.to_dict()
         else:
             group_by = self.group_by
@@ -108,8 +108,8 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
         from ..models.new_dashboard_panel_data_attributes_params_datasets_item_filter_item import (
             NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem,
         )
-        from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1 import (
-            NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1,
+        from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0 import (
+            NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0,
         )
 
         d = dict(src_dict)
@@ -139,7 +139,7 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
 
         def _parse_group_by(
             data: object,
-        ) -> Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1", None, Unset, str]:
+        ) -> Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -147,12 +147,16 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                group_by_type_1 = NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1.from_dict(data)
+                group_by_type_1_type_0 = NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0.from_dict(
+                    data
+                )
 
-                return group_by_type_1
+                return group_by_type_1_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1", None, Unset, str], data)
+            return cast(
+                Union["NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str], data
+            )
 
         group_by = _parse_group_by(d.pop("group_by", UNSET))
 

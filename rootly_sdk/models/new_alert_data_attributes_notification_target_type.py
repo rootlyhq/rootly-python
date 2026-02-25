@@ -11,8 +11,10 @@ NEW_ALERT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES: set[NewAlertDataAttri
 
 
 def check_new_alert_data_attributes_notification_target_type(
-    value: str,
-) -> NewAlertDataAttributesNotificationTargetType:
+    value: str | None,
+) -> NewAlertDataAttributesNotificationTargetType | None:
+    if value is None:
+        return None
     if value in NEW_ALERT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES:
         return cast(NewAlertDataAttributesNotificationTargetType, value)
     raise TypeError(

@@ -2,11 +2,17 @@ from typing import Literal, cast
 
 AuditItemType = Literal[
     "ApiKey",
+    "Catalog",
+    "CatalogEntity",
+    "CatalogEntityProperty",
+    "CatalogField",
     "Cause",
     "CustomField",
     "CustomFieldOption",
     "CustomForm",
     "Dashboard",
+    "EdgeConnector",
+    "EdgeConnector::Action",
     "Environment",
     "EscalationPolicy",
     "EscalationPolicyPath",
@@ -42,11 +48,17 @@ AuditItemType = Literal[
 
 AUDIT_ITEM_TYPE_VALUES: set[AuditItemType] = {
     "ApiKey",
+    "Catalog",
+    "CatalogEntity",
+    "CatalogEntityProperty",
+    "CatalogField",
     "Cause",
     "CustomField",
     "CustomFieldOption",
     "CustomForm",
     "Dashboard",
+    "EdgeConnector",
+    "EdgeConnector::Action",
     "Environment",
     "EscalationPolicy",
     "EscalationPolicyPath",
@@ -81,7 +93,9 @@ AUDIT_ITEM_TYPE_VALUES: set[AuditItemType] = {
 }
 
 
-def check_audit_item_type(value: str) -> AuditItemType:
+def check_audit_item_type(value: str | None) -> AuditItemType | None:
+    if value is None:
+        return None
     if value in AUDIT_ITEM_TYPE_VALUES:
         return cast(AuditItemType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AUDIT_ITEM_TYPE_VALUES!r}")

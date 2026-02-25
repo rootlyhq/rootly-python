@@ -101,7 +101,6 @@ class NewOnCallRoleDataAttributes:
     """
     Attributes:
         name (str): The role name.
-        slug (Union[Unset, str]): The role slug.
         system_role (Union[Unset, str]): The kind of role (user and custom type roles are only editable) Default:
             'custom'.
         alert_fields_permissions (Union[Unset, list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem]]):
@@ -132,7 +131,6 @@ class NewOnCallRoleDataAttributes:
     """
 
     name: str
-    slug: Union[Unset, str] = UNSET
     system_role: Union[Unset, str] = "custom"
     alert_fields_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem]] = UNSET
     alert_groups_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertGroupsPermissionsItem]] = UNSET
@@ -167,8 +165,6 @@ class NewOnCallRoleDataAttributes:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         system_role = self.system_role
 
@@ -333,8 +329,6 @@ class NewOnCallRoleDataAttributes:
                 "name": name,
             }
         )
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if system_role is not UNSET:
             field_dict["system_role"] = system_role
         if alert_fields_permissions is not UNSET:
@@ -388,8 +382,6 @@ class NewOnCallRoleDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug", UNSET)
 
         system_role = d.pop("system_role", UNSET)
 
@@ -603,7 +595,6 @@ class NewOnCallRoleDataAttributes:
 
         new_on_call_role_data_attributes = cls(
             name=name,
-            slug=slug,
             system_role=system_role,
             alert_fields_permissions=alert_fields_permissions,
             alert_groups_permissions=alert_groups_permissions,

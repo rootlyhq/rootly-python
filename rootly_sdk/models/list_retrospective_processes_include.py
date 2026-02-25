@@ -10,7 +10,9 @@ LIST_RETROSPECTIVE_PROCESSES_INCLUDE_VALUES: set[ListRetrospectiveProcessesInclu
 }
 
 
-def check_list_retrospective_processes_include(value: str) -> ListRetrospectiveProcessesInclude:
+def check_list_retrospective_processes_include(value: str | None) -> ListRetrospectiveProcessesInclude | None:
+    if value is None:
+        return None
     if value in LIST_RETROSPECTIVE_PROCESSES_INCLUDE_VALUES:
         return cast(ListRetrospectiveProcessesInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_RETROSPECTIVE_PROCESSES_INCLUDE_VALUES!r}")

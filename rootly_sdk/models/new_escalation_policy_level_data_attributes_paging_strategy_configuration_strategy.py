@@ -15,8 +15,10 @@ NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_STRATE
 
 
 def check_new_escalation_policy_level_data_attributes_paging_strategy_configuration_strategy(
-    value: str,
-) -> NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy:
+    value: str | None,
+) -> NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy | None:
+    if value is None:
+        return None
     if value in NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_STRATEGY_VALUES:
         return cast(NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy, value)
     raise TypeError(

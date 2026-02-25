@@ -24,8 +24,10 @@ UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES: set[
 
 
 def check_update_custom_field_data_attributes_required_type_0_item(
-    value: str,
-) -> UpdateCustomFieldDataAttributesRequiredType0Item:
+    value: str | None,
+) -> UpdateCustomFieldDataAttributesRequiredType0Item | None:
+    if value is None:
+        return None
     if value in UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES:
         return cast(UpdateCustomFieldDataAttributesRequiredType0Item, value)
     raise TypeError(

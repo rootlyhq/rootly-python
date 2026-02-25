@@ -13,8 +13,10 @@ UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_2
 
 
 def check_update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_2_handoff_day(
-    value: str,
-) -> UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2HandoffDay:
+    value: str | None,
+) -> UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2HandoffDay | None:
+    if value is None:
+        return None
     if value in UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_2_HANDOFF_DAY_VALUES:
         return cast(UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2HandoffDay, value)
     raise TypeError(

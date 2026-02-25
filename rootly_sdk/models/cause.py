@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cause_fields_item import CauseFieldsItem
+
 
 T = TypeVar("T", bound="Cause")
 
@@ -19,6 +23,7 @@ class Cause:
         slug (Union[Unset, str]): The slug of the cause
         description (Union[None, Unset, str]): The description of the cause
         position (Union[None, Unset, int]): Position of the cause
+        fields (Union[Unset, list['CauseFieldsItem']]): Array of field values for this cause.
     """
 
     name: str
@@ -27,6 +32,7 @@ class Cause:
     slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     position: Union[None, Unset, int] = UNSET
+    fields: Union[Unset, list["CauseFieldsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,6 +56,13 @@ class Cause:
         else:
             position = self.position
 
+        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fields, Unset):
+            fields = []
+            for fields_item_data in self.fields:
+                fields_item = fields_item_data.to_dict()
+                fields.append(fields_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -65,11 +78,15 @@ class Cause:
             field_dict["description"] = description
         if position is not UNSET:
             field_dict["position"] = position
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.cause_fields_item import CauseFieldsItem
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -97,6 +114,13 @@ class Cause:
 
         position = _parse_position(d.pop("position", UNSET))
 
+        fields = []
+        _fields = d.pop("fields", UNSET)
+        for fields_item_data in _fields or []:
+            fields_item = CauseFieldsItem.from_dict(fields_item_data)
+
+            fields.append(fields_item)
+
         cause = cls(
             name=name,
             created_at=created_at,
@@ -104,6 +128,7 @@ class Cause:
             slug=slug,
             description=description,
             position=position,
+            fields=fields,
         )
 
         cause.additional_properties = d

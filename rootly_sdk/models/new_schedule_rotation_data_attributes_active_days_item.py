@@ -14,8 +14,10 @@ NEW_SCHEDULE_ROTATION_DATA_ATTRIBUTES_ACTIVE_DAYS_ITEM_VALUES: set[NewScheduleRo
 
 
 def check_new_schedule_rotation_data_attributes_active_days_item(
-    value: str,
-) -> NewScheduleRotationDataAttributesActiveDaysItem:
+    value: str | None,
+) -> NewScheduleRotationDataAttributesActiveDaysItem | None:
+    if value is None:
+        return None
     if value in NEW_SCHEDULE_ROTATION_DATA_ATTRIBUTES_ACTIVE_DAYS_ITEM_VALUES:
         return cast(NewScheduleRotationDataAttributesActiveDaysItem, value)
     raise TypeError(

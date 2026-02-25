@@ -7,7 +7,9 @@ UPDATE_INCIDENT_CUSTOM_FIELD_SELECTION_DATA_TYPE_VALUES: set[UpdateIncidentCusto
 }
 
 
-def check_update_incident_custom_field_selection_data_type(value: str) -> UpdateIncidentCustomFieldSelectionDataType:
+def check_update_incident_custom_field_selection_data_type(value: str | None) -> UpdateIncidentCustomFieldSelectionDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_CUSTOM_FIELD_SELECTION_DATA_TYPE_VALUES:
         return cast(UpdateIncidentCustomFieldSelectionDataType, value)
     raise TypeError(

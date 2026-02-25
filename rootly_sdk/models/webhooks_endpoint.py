@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -8,6 +8,7 @@ from ..models.webhooks_endpoint_event_types_item import (
     WebhooksEndpointEventTypesItem,
     check_webhooks_endpoint_event_types_item,
 )
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="WebhooksEndpoint")
 
@@ -17,29 +18,27 @@ class WebhooksEndpoint:
     """
     Attributes:
         name (str): The name of the endpoint
-        slug (str): The slug of the endpoint
         url (str): The URL of the endpoint.
         event_types (list[WebhooksEndpointEventTypesItem]):
         secret (str): The webhook signing secret used to verify webhook requests.
         enabled (bool):
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        slug (Union[Unset, str]): The slug of the endpoint
     """
 
     name: str
-    slug: str
     url: str
     event_types: list[WebhooksEndpointEventTypesItem]
     secret: str
     enabled: bool
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         url = self.url
 
@@ -56,12 +55,13 @@ class WebhooksEndpoint:
 
         updated_at = self.updated_at
 
+        slug = self.slug
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "url": url,
                 "event_types": event_types,
                 "secret": secret,
@@ -70,6 +70,8 @@ class WebhooksEndpoint:
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
 
         return field_dict
 
@@ -77,8 +79,6 @@ class WebhooksEndpoint:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         url = d.pop("url")
 
@@ -97,15 +97,17 @@ class WebhooksEndpoint:
 
         updated_at = d.pop("updated_at")
 
+        slug = d.pop("slug", UNSET)
+
         webhooks_endpoint = cls(
             name=name,
-            slug=slug,
             url=url,
             event_types=event_types,
             secret=secret,
             enabled=enabled,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
         )
 
         webhooks_endpoint.additional_properties = d

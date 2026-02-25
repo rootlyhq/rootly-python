@@ -7,7 +7,9 @@ UPDATE_FORM_FIELD_POSITION_DATA_TYPE_VALUES: set[UpdateFormFieldPositionDataType
 }
 
 
-def check_update_form_field_position_data_type(value: str) -> UpdateFormFieldPositionDataType:
+def check_update_form_field_position_data_type(value: str | None) -> UpdateFormFieldPositionDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_FORM_FIELD_POSITION_DATA_TYPE_VALUES:
         return cast(UpdateFormFieldPositionDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_POSITION_DATA_TYPE_VALUES!r}")

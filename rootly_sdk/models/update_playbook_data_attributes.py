@@ -15,12 +15,12 @@ class UpdatePlaybookDataAttributes:
         title (Union[Unset, str]): The title of the playbook
         summary (Union[None, Unset, str]): The summary of the playbook
         external_url (Union[None, Unset, str]): The external url of the playbook
-        severity_ids (Union[None, Unset, list[str]]): The Severity ID's to attach to the incident
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the incident
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the incident
-        functionality_ids (Union[None, Unset, list[str]]): The Functionality ID's to attach to the incident
-        group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the incident
-        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type ID's to attach to the incident
+        severity_ids (Union[None, Unset, list[str]]): The Severity IDs to attach to the incident
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the incident
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the incident
+        functionality_ids (Union[None, Unset, list[str]]): The Functionality IDs to attach to the incident
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the incident
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the incident
     """
 
     title: Union[Unset, str] = UNSET

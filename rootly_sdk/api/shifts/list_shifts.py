@@ -14,8 +14,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     include: Union[Unset, ListShiftsInclude] = UNSET,
-    to: Union[Unset, str] = UNSET,
     from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
     user_ids: Union[Unset, list[int]] = UNSET,
     schedule_ids: Union[Unset, list[str]] = UNSET,
 ) -> dict[str, Any]:
@@ -27,9 +27,9 @@ def _get_kwargs(
 
     params["include"] = json_include
 
-    params["to"] = to
-
     params["from"] = from_
+
+    params["to"] = to
 
     json_user_ids: Union[Unset, list[int]] = UNSET
     if not isinstance(user_ids, Unset):
@@ -88,8 +88,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: Union[Unset, ListShiftsInclude] = UNSET,
-    to: Union[Unset, str] = UNSET,
     from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
     user_ids: Union[Unset, list[int]] = UNSET,
     schedule_ids: Union[Unset, list[str]] = UNSET,
 ) -> Response[Union[ErrorsList, ShiftList]]:
@@ -99,8 +99,8 @@ def sync_detailed(
 
     Args:
         include (Union[Unset, ListShiftsInclude]):
-        to (Union[Unset, str]):
         from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
         user_ids (Union[Unset, list[int]]):
         schedule_ids (Union[Unset, list[str]]):
 
@@ -114,8 +114,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         include=include,
-        to=to,
         from_=from_,
+        to=to,
         user_ids=user_ids,
         schedule_ids=schedule_ids,
     )
@@ -131,8 +131,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     include: Union[Unset, ListShiftsInclude] = UNSET,
-    to: Union[Unset, str] = UNSET,
     from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
     user_ids: Union[Unset, list[int]] = UNSET,
     schedule_ids: Union[Unset, list[str]] = UNSET,
 ) -> Optional[Union[ErrorsList, ShiftList]]:
@@ -142,8 +142,8 @@ def sync(
 
     Args:
         include (Union[Unset, ListShiftsInclude]):
-        to (Union[Unset, str]):
         from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
         user_ids (Union[Unset, list[int]]):
         schedule_ids (Union[Unset, list[str]]):
 
@@ -158,8 +158,8 @@ def sync(
     return sync_detailed(
         client=client,
         include=include,
-        to=to,
         from_=from_,
+        to=to,
         user_ids=user_ids,
         schedule_ids=schedule_ids,
     ).parsed
@@ -169,8 +169,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     include: Union[Unset, ListShiftsInclude] = UNSET,
-    to: Union[Unset, str] = UNSET,
     from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
     user_ids: Union[Unset, list[int]] = UNSET,
     schedule_ids: Union[Unset, list[str]] = UNSET,
 ) -> Response[Union[ErrorsList, ShiftList]]:
@@ -180,8 +180,8 @@ async def asyncio_detailed(
 
     Args:
         include (Union[Unset, ListShiftsInclude]):
-        to (Union[Unset, str]):
         from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
         user_ids (Union[Unset, list[int]]):
         schedule_ids (Union[Unset, list[str]]):
 
@@ -195,8 +195,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         include=include,
-        to=to,
         from_=from_,
+        to=to,
         user_ids=user_ids,
         schedule_ids=schedule_ids,
     )
@@ -210,8 +210,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     include: Union[Unset, ListShiftsInclude] = UNSET,
-    to: Union[Unset, str] = UNSET,
     from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
     user_ids: Union[Unset, list[int]] = UNSET,
     schedule_ids: Union[Unset, list[str]] = UNSET,
 ) -> Optional[Union[ErrorsList, ShiftList]]:
@@ -221,8 +221,8 @@ async def asyncio(
 
     Args:
         include (Union[Unset, ListShiftsInclude]):
-        to (Union[Unset, str]):
         from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
         user_ids (Union[Unset, list[int]]):
         schedule_ids (Union[Unset, list[str]]):
 
@@ -238,8 +238,8 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             include=include,
-            to=to,
             from_=from_,
+            to=to,
             user_ids=user_ids,
             schedule_ids=schedule_ids,
         )

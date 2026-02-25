@@ -8,8 +8,10 @@ INCIDENT_PERMISSION_SET_BOOLEAN_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentPermissi
 
 
 def check_incident_permission_set_boolean_list_data_item_type(
-    value: str,
-) -> IncidentPermissionSetBooleanListDataItemType:
+    value: str | None,
+) -> IncidentPermissionSetBooleanListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_BOOLEAN_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentPermissionSetBooleanListDataItemType, value)
     raise TypeError(

@@ -25,6 +25,7 @@ AlertResponseDataSource = Literal[
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -70,6 +71,7 @@ ALERT_RESPONSE_DATA_SOURCE_VALUES: set[AlertResponseDataSource] = {
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -91,7 +93,9 @@ ALERT_RESPONSE_DATA_SOURCE_VALUES: set[AlertResponseDataSource] = {
 }
 
 
-def check_alert_response_data_source(value: str) -> AlertResponseDataSource:
+def check_alert_response_data_source(value: str | None) -> AlertResponseDataSource | None:
+    if value is None:
+        return None
     if value in ALERT_RESPONSE_DATA_SOURCE_VALUES:
         return cast(AlertResponseDataSource, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_RESPONSE_DATA_SOURCE_VALUES!r}")

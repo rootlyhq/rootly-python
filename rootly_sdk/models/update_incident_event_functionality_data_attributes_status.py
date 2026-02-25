@@ -12,8 +12,10 @@ UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_ATTRIBUTES_STATUS_VALUES: set[
 
 
 def check_update_incident_event_functionality_data_attributes_status(
-    value: str,
-) -> UpdateIncidentEventFunctionalityDataAttributesStatus:
+    value: str | None,
+) -> UpdateIncidentEventFunctionalityDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(UpdateIncidentEventFunctionalityDataAttributesStatus, value)
     raise TypeError(

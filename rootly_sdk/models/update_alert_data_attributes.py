@@ -34,9 +34,9 @@ class UpdateAlertDataAttributes:
         source (Union[Unset, UpdateAlertDataAttributesSource]): The source of the alert
         summary (Union[Unset, str]): The summary of the alert
         description (Union[None, Unset, str]): The description of the alert
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the alert
-        group_ids (Union[None, Unset, list[str]]): The Group ID's to attach to the alert
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the alert
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the alert
+        group_ids (Union[None, Unset, list[str]]): The Group IDs to attach to the alert
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the alert
         started_at (Union[None, Unset, datetime.datetime]): Alert start datetime
         ended_at (Union[None, Unset, datetime.datetime]): Alert end datetime
         external_id (Union[None, Unset, str]): External ID

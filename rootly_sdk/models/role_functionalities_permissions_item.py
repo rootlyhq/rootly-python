@@ -10,7 +10,9 @@ ROLE_FUNCTIONALITIES_PERMISSIONS_ITEM_VALUES: set[RoleFunctionalitiesPermissions
 }
 
 
-def check_role_functionalities_permissions_item(value: str) -> RoleFunctionalitiesPermissionsItem:
+def check_role_functionalities_permissions_item(value: str | None) -> RoleFunctionalitiesPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_FUNCTIONALITIES_PERMISSIONS_ITEM_VALUES:
         return cast(RoleFunctionalitiesPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_FUNCTIONALITIES_PERMISSIONS_ITEM_VALUES!r}")

@@ -10,7 +10,9 @@ ON_CALL_ROLE_LIVE_CALL_ROUTING_PERMISSIONS_ITEM_VALUES: set[OnCallRoleLiveCallRo
 }
 
 
-def check_on_call_role_live_call_routing_permissions_item(value: str) -> OnCallRoleLiveCallRoutingPermissionsItem:
+def check_on_call_role_live_call_routing_permissions_item(value: str | None) -> OnCallRoleLiveCallRoutingPermissionsItem | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_LIVE_CALL_ROUTING_PERMISSIONS_ITEM_VALUES:
         return cast(OnCallRoleLiveCallRoutingPermissionsItem, value)
     raise TypeError(

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from ..models.update_linear_issue_task_params_labels_item import UpdateLinearIssueTaskParamsLabelsItem
     from ..models.update_linear_issue_task_params_priority import UpdateLinearIssueTaskParamsPriority
     from ..models.update_linear_issue_task_params_project import UpdateLinearIssueTaskParamsProject
-    from ..models.update_linear_issue_task_params_state import UpdateLinearIssueTaskParamsState
+    from ..models.update_linear_issue_task_params_state_type_0 import UpdateLinearIssueTaskParamsStateType0
 
 
 T = TypeVar("T", bound="UpdateLinearIssueTaskParams")
@@ -28,7 +28,7 @@ class UpdateLinearIssueTaskParams:
         task_type (Union[Unset, UpdateLinearIssueTaskParamsTaskType]):
         title (Union[Unset, str]): The issue title
         description (Union[Unset, str]): The issue description
-        state (Union[Unset, UpdateLinearIssueTaskParamsState]): The state id and display name
+        state (Union['UpdateLinearIssueTaskParamsStateType0', None, Unset]): The state id and display name
         project (Union[Unset, UpdateLinearIssueTaskParamsProject]): The project id and display name
         labels (Union[Unset, list['UpdateLinearIssueTaskParamsLabelsItem']]):
         priority (Union[Unset, UpdateLinearIssueTaskParamsPriority]): The priority id and display name
@@ -39,7 +39,7 @@ class UpdateLinearIssueTaskParams:
     task_type: Union[Unset, UpdateLinearIssueTaskParamsTaskType] = UNSET
     title: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    state: Union[Unset, "UpdateLinearIssueTaskParamsState"] = UNSET
+    state: Union["UpdateLinearIssueTaskParamsStateType0", None, Unset] = UNSET
     project: Union[Unset, "UpdateLinearIssueTaskParamsProject"] = UNSET
     labels: Union[Unset, list["UpdateLinearIssueTaskParamsLabelsItem"]] = UNSET
     priority: Union[Unset, "UpdateLinearIssueTaskParamsPriority"] = UNSET
@@ -47,6 +47,8 @@ class UpdateLinearIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_linear_issue_task_params_state_type_0 import UpdateLinearIssueTaskParamsStateType0
+
         issue_id = self.issue_id
 
         task_type: Union[Unset, str] = UNSET
@@ -57,9 +59,13 @@ class UpdateLinearIssueTaskParams:
 
         description = self.description
 
-        state: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.state, Unset):
+        state: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.state, Unset):
+            state = UNSET
+        elif isinstance(self.state, UpdateLinearIssueTaskParamsStateType0):
             state = self.state.to_dict()
+        else:
+            state = self.state
 
         project: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.project, Unset):
@@ -109,7 +115,7 @@ class UpdateLinearIssueTaskParams:
         from ..models.update_linear_issue_task_params_labels_item import UpdateLinearIssueTaskParamsLabelsItem
         from ..models.update_linear_issue_task_params_priority import UpdateLinearIssueTaskParamsPriority
         from ..models.update_linear_issue_task_params_project import UpdateLinearIssueTaskParamsProject
-        from ..models.update_linear_issue_task_params_state import UpdateLinearIssueTaskParamsState
+        from ..models.update_linear_issue_task_params_state_type_0 import UpdateLinearIssueTaskParamsStateType0
 
         d = dict(src_dict)
         issue_id = d.pop("issue_id")
@@ -125,12 +131,22 @@ class UpdateLinearIssueTaskParams:
 
         description = d.pop("description", UNSET)
 
-        _state = d.pop("state", UNSET)
-        state: Union[Unset, UpdateLinearIssueTaskParamsState]
-        if isinstance(_state, Unset):
-            state = UNSET
-        else:
-            state = UpdateLinearIssueTaskParamsState.from_dict(_state)
+        def _parse_state(data: object) -> Union["UpdateLinearIssueTaskParamsStateType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                state_type_0 = UpdateLinearIssueTaskParamsStateType0.from_dict(data)
+
+                return state_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["UpdateLinearIssueTaskParamsStateType0", None, Unset], data)
+
+        state = _parse_state(d.pop("state", UNSET))
 
         _project = d.pop("project", UNSET)
         project: Union[Unset, UpdateLinearIssueTaskParamsProject]

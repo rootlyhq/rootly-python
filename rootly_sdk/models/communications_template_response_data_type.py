@@ -7,7 +7,9 @@ COMMUNICATIONS_TEMPLATE_RESPONSE_DATA_TYPE_VALUES: set[CommunicationsTemplateRes
 }
 
 
-def check_communications_template_response_data_type(value: str) -> CommunicationsTemplateResponseDataType:
+def check_communications_template_response_data_type(value: str | None) -> CommunicationsTemplateResponseDataType | None:
+    if value is None:
+        return None
     if value in COMMUNICATIONS_TEMPLATE_RESPONSE_DATA_TYPE_VALUES:
         return cast(CommunicationsTemplateResponseDataType, value)
     raise TypeError(

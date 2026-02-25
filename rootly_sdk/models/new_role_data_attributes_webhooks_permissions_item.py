@@ -11,8 +11,10 @@ NEW_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAttrib
 
 
 def check_new_role_data_attributes_webhooks_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesWebhooksPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesWebhooksPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesWebhooksPermissionsItem, value)
     raise TypeError(

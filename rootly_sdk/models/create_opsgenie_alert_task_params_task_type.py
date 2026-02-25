@@ -7,7 +7,9 @@ CREATE_OPSGENIE_ALERT_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateOpsgenieAlertTaskP
 }
 
 
-def check_create_opsgenie_alert_task_params_task_type(value: str) -> CreateOpsgenieAlertTaskParamsTaskType:
+def check_create_opsgenie_alert_task_params_task_type(value: str | None) -> CreateOpsgenieAlertTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_OPSGENIE_ALERT_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateOpsgenieAlertTaskParamsTaskType, value)
     raise TypeError(

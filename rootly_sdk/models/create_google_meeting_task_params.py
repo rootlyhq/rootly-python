@@ -8,6 +8,10 @@ from ..models.create_google_meeting_task_params_conference_solution_key import (
     CreateGoogleMeetingTaskParamsConferenceSolutionKey,
     check_create_google_meeting_task_params_conference_solution_key,
 )
+from ..models.create_google_meeting_task_params_recording_mode import (
+    CreateGoogleMeetingTaskParamsRecordingMode,
+    check_create_google_meeting_task_params_recording_mode,
+)
 from ..models.create_google_meeting_task_params_task_type import (
     CreateGoogleMeetingTaskParamsTaskType,
     check_create_google_meeting_task_params_task_type,
@@ -34,6 +38,8 @@ class CreateGoogleMeetingTaskParams:
             the video conference type attached to the meeting
         record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
             and summary from your meeting
+        recording_mode (Union[Unset, CreateGoogleMeetingTaskParamsRecordingMode]): The video layout for the bot's
+            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
         post_to_incident_timeline (Union[Unset, bool]):
         post_to_slack_channels (Union[Unset, list['CreateGoogleMeetingTaskParamsPostToSlackChannelsItem']]):
     """
@@ -43,6 +49,7 @@ class CreateGoogleMeetingTaskParams:
     task_type: Union[Unset, CreateGoogleMeetingTaskParamsTaskType] = UNSET
     conference_solution_key: Union[Unset, CreateGoogleMeetingTaskParamsConferenceSolutionKey] = UNSET
     record_meeting: Union[Unset, bool] = UNSET
+    recording_mode: Union[Unset, CreateGoogleMeetingTaskParamsRecordingMode] = UNSET
     post_to_incident_timeline: Union[Unset, bool] = UNSET
     post_to_slack_channels: Union[Unset, list["CreateGoogleMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -63,6 +70,10 @@ class CreateGoogleMeetingTaskParams:
             conference_solution_key = self.conference_solution_key
 
         record_meeting = self.record_meeting
+
+        recording_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.recording_mode, Unset):
+            recording_mode = self.recording_mode
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
@@ -87,6 +98,8 @@ class CreateGoogleMeetingTaskParams:
             field_dict["conference_solution_key"] = conference_solution_key
         if record_meeting is not UNSET:
             field_dict["record_meeting"] = record_meeting
+        if recording_mode is not UNSET:
+            field_dict["recording_mode"] = recording_mode
         if post_to_incident_timeline is not UNSET:
             field_dict["post_to_incident_timeline"] = post_to_incident_timeline
         if post_to_slack_channels is not UNSET:
@@ -134,6 +147,13 @@ class CreateGoogleMeetingTaskParams:
 
         record_meeting = d.pop("record_meeting", UNSET)
 
+        _recording_mode = d.pop("recording_mode", UNSET)
+        recording_mode: Union[Unset, CreateGoogleMeetingTaskParamsRecordingMode]
+        if isinstance(_recording_mode, Unset):
+            recording_mode = UNSET
+        else:
+            recording_mode = check_create_google_meeting_task_params_recording_mode(_recording_mode)
+
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
         post_to_slack_channels = []
@@ -151,6 +171,7 @@ class CreateGoogleMeetingTaskParams:
             task_type=task_type,
             conference_solution_key=conference_solution_key,
             record_meeting=record_meeting,
+            recording_mode=recording_mode,
             post_to_incident_timeline=post_to_incident_timeline,
             post_to_slack_channels=post_to_slack_channels,
         )

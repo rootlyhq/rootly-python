@@ -22,8 +22,10 @@ NEW_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES: set[NewCustomField
 
 
 def check_new_custom_field_data_attributes_required_type_0_item(
-    value: str,
-) -> NewCustomFieldDataAttributesRequiredType0Item:
+    value: str | None,
+) -> NewCustomFieldDataAttributesRequiredType0Item | None:
+    if value is None:
+        return None
     if value in NEW_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES:
         return cast(NewCustomFieldDataAttributesRequiredType0Item, value)
     raise TypeError(

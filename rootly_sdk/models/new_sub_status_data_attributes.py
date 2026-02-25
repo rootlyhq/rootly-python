@@ -18,14 +18,12 @@ class NewSubStatusDataAttributes:
     Attributes:
         name (str):
         parent_status (NewSubStatusDataAttributesParentStatus):
-        slug (Union[Unset, str]):
         description (Union[None, Unset, str]):
         position (Union[None, Unset, int]):
     """
 
     name: str
     parent_status: NewSubStatusDataAttributesParentStatus
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     position: Union[None, Unset, int] = UNSET
 
@@ -33,8 +31,6 @@ class NewSubStatusDataAttributes:
         name = self.name
 
         parent_status: str = self.parent_status
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -56,8 +52,6 @@ class NewSubStatusDataAttributes:
                 "parent_status": parent_status,
             }
         )
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if position is not UNSET:
@@ -71,8 +65,6 @@ class NewSubStatusDataAttributes:
         name = d.pop("name")
 
         parent_status = check_new_sub_status_data_attributes_parent_status(d.pop("parent_status"))
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -95,7 +87,6 @@ class NewSubStatusDataAttributes:
         new_sub_status_data_attributes = cls(
             name=name,
             parent_status=parent_status,
-            slug=slug,
             description=description,
             position=position,
         )

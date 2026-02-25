@@ -13,8 +13,10 @@ UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_SCHEDULES_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_update_on_call_role_data_attributes_schedules_permissions_item(
-    value: str,
-) -> UpdateOnCallRoleDataAttributesSchedulesPermissionsItem:
+    value: str | None,
+) -> UpdateOnCallRoleDataAttributesSchedulesPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_SCHEDULES_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateOnCallRoleDataAttributesSchedulesPermissionsItem, value)
     raise TypeError(

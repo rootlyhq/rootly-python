@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..models.update_team_data_attributes_alert_broadcast_channel_type_0 import (
         UpdateTeamDataAttributesAlertBroadcastChannelType0,
     )
+    from ..models.update_team_data_attributes_fields_item import UpdateTeamDataAttributesFieldsItem
     from ..models.update_team_data_attributes_incident_broadcast_channel_type_0 import (
         UpdateTeamDataAttributesIncidentBroadcastChannelType0,
     )
@@ -59,6 +60,7 @@ class UpdateTeamDataAttributes:
             channel to broadcast incidents to
         auto_add_members_when_attached (Union[None, Unset, bool]): Auto add members to incident channel when team is
             attached
+        fields (Union[Unset, list['UpdateTeamDataAttributesFieldsItem']]): Array of field values for this team.
     """
 
     name: Union[Unset, str] = UNSET
@@ -86,6 +88,7 @@ class UpdateTeamDataAttributes:
     incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
     incident_broadcast_channel: Union["UpdateTeamDataAttributesIncidentBroadcastChannelType0", None, Unset] = UNSET
     auto_add_members_when_attached: Union[None, Unset, bool] = UNSET
+    fields: Union[Unset, list["UpdateTeamDataAttributesFieldsItem"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_team_data_attributes_alert_broadcast_channel_type_0 import (
@@ -266,6 +269,13 @@ class UpdateTeamDataAttributes:
         else:
             auto_add_members_when_attached = self.auto_add_members_when_attached
 
+        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fields, Unset):
+            fields = []
+            for fields_item_data in self.fields:
+                fields_item = fields_item_data.to_dict()
+                fields.append(fields_item)
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -319,6 +329,8 @@ class UpdateTeamDataAttributes:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
         if auto_add_members_when_attached is not UNSET:
             field_dict["auto_add_members_when_attached"] = auto_add_members_when_attached
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
@@ -327,6 +339,7 @@ class UpdateTeamDataAttributes:
         from ..models.update_team_data_attributes_alert_broadcast_channel_type_0 import (
             UpdateTeamDataAttributesAlertBroadcastChannelType0,
         )
+        from ..models.update_team_data_attributes_fields_item import UpdateTeamDataAttributesFieldsItem
         from ..models.update_team_data_attributes_incident_broadcast_channel_type_0 import (
             UpdateTeamDataAttributesIncidentBroadcastChannelType0,
         )
@@ -638,6 +651,13 @@ class UpdateTeamDataAttributes:
             d.pop("auto_add_members_when_attached", UNSET)
         )
 
+        fields = []
+        _fields = d.pop("fields", UNSET)
+        for fields_item_data in _fields or []:
+            fields_item = UpdateTeamDataAttributesFieldsItem.from_dict(fields_item_data)
+
+            fields.append(fields_item)
+
         update_team_data_attributes = cls(
             name=name,
             description=description,
@@ -664,6 +684,7 @@ class UpdateTeamDataAttributes:
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
             auto_add_members_when_attached=auto_add_members_when_attached,
+            fields=fields,
         )
 
         return update_team_data_attributes

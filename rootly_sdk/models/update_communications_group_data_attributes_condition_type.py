@@ -11,8 +11,10 @@ UPDATE_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES: set[
 
 
 def check_update_communications_group_data_attributes_condition_type(
-    value: str,
-) -> UpdateCommunicationsGroupDataAttributesConditionType:
+    value: str | None,
+) -> UpdateCommunicationsGroupDataAttributesConditionType | None:
+    if value is None:
+        return None
     if value in UPDATE_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:
         return cast(UpdateCommunicationsGroupDataAttributesConditionType, value)
     raise TypeError(

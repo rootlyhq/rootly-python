@@ -7,7 +7,9 @@ SCHEDULE_ROTATION_RESPONSE_DATA_TYPE_VALUES: set[ScheduleRotationResponseDataTyp
 }
 
 
-def check_schedule_rotation_response_data_type(value: str) -> ScheduleRotationResponseDataType:
+def check_schedule_rotation_response_data_type(value: str | None) -> ScheduleRotationResponseDataType | None:
+    if value is None:
+        return None
     if value in SCHEDULE_ROTATION_RESPONSE_DATA_TYPE_VALUES:
         return cast(ScheduleRotationResponseDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SCHEDULE_ROTATION_RESPONSE_DATA_TYPE_VALUES!r}")

@@ -13,8 +13,10 @@ INCIDENT_PERMISSION_SET_PRIVATE_INCIDENT_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_incident_permission_set_private_incident_permissions_item(
-    value: str,
-) -> IncidentPermissionSetPrivateIncidentPermissionsItem:
+    value: str | None,
+) -> IncidentPermissionSetPrivateIncidentPermissionsItem | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_PRIVATE_INCIDENT_PERMISSIONS_ITEM_VALUES:
         return cast(IncidentPermissionSetPrivateIncidentPermissionsItem, value)
     raise TypeError(

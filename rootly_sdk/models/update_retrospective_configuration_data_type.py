@@ -7,7 +7,9 @@ UPDATE_RETROSPECTIVE_CONFIGURATION_DATA_TYPE_VALUES: set[UpdateRetrospectiveConf
 }
 
 
-def check_update_retrospective_configuration_data_type(value: str) -> UpdateRetrospectiveConfigurationDataType:
+def check_update_retrospective_configuration_data_type(value: str | None) -> UpdateRetrospectiveConfigurationDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_RETROSPECTIVE_CONFIGURATION_DATA_TYPE_VALUES:
         return cast(UpdateRetrospectiveConfigurationDataType, value)
     raise TypeError(

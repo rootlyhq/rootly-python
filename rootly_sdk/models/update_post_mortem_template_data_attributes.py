@@ -18,7 +18,8 @@ class UpdatePostMortemTemplateDataAttributes:
     Attributes:
         name (Union[Unset, str]): The name of the postmortem template
         default (Union[None, Unset, bool]): Default selected template when editing a postmortem
-        content (Union[Unset, str]): The postmortem template. Liquid syntax is supported
+        content (Union[Unset, str]): The postmortem template. Supports TipTap blocks (followup and timeline components),
+            Liquid syntax, and HTML. Will be sanitized and applied to both content and content_html fields.
         format_ (Union[Unset, UpdatePostMortemTemplateDataAttributesFormat]): The format of the input Default: 'html'.
     """
 

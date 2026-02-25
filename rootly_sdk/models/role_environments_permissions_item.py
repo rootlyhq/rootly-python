@@ -10,7 +10,9 @@ ROLE_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES: set[RoleEnvironmentsPermissionsItem] 
 }
 
 
-def check_role_environments_permissions_item(value: str) -> RoleEnvironmentsPermissionsItem:
+def check_role_environments_permissions_item(value: str | None) -> RoleEnvironmentsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES:
         return cast(RoleEnvironmentsPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES!r}")

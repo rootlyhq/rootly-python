@@ -14,15 +14,12 @@ class NewCustomFormDataAttributes:
     Attributes:
         name (str): The name of the custom form.
         command (str): The Slack command used to trigger this form.
-        slug (Union[Unset, str]): The custom form slug. Add this to form_field.shown or form_field.required to associate
-            form fields with custom forms.
         description (Union[None, Unset, str]):
         enabled (Union[Unset, bool]):
     """
 
     name: str
     command: str
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
 
@@ -30,8 +27,6 @@ class NewCustomFormDataAttributes:
         name = self.name
 
         command = self.command
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -49,8 +44,6 @@ class NewCustomFormDataAttributes:
                 "command": command,
             }
         )
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -64,8 +57,6 @@ class NewCustomFormDataAttributes:
         name = d.pop("name")
 
         command = d.pop("command")
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -81,7 +72,6 @@ class NewCustomFormDataAttributes:
         new_custom_form_data_attributes = cls(
             name=name,
             command=command,
-            slug=slug,
             description=description,
             enabled=enabled,
         )

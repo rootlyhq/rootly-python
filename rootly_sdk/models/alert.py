@@ -38,11 +38,11 @@ class Alert:
         services (Union[Unset, list['Service']]): Services attached to the alert
         groups (Union[Unset, list['Team']]): Groups attached to the alert
         environments (Union[Unset, list['Environment']]): Environments attached to the alert
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the alert. If your organization has
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the alert. If your organization has
             On-Call enabled and your notification target is a Service. This field will be automatically set for you.
-        group_ids (Union[None, Unset, list[str]]): The Group ID's to attach to the alert. If your organization has On-
+        group_ids (Union[None, Unset, list[str]]): The Group IDs to attach to the alert. If your organization has On-
             Call enabled and your notification target is a Group. This field will be automatically set for you.
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the alert
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the alert
         external_id (Union[None, Unset, str]): External ID
         external_url (Union[None, Unset, str]): External Url
         alert_urgency_id (Union[None, Unset, str]): The ID of the alert urgency

@@ -18,12 +18,15 @@ if TYPE_CHECKING:
     from ..models.escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
     from ..models.escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
     from ..models.escalation_policy_path_rules_item_type_2 import EscalationPolicyPathRulesItemType2
-    from ..models.escalation_policy_path_rules_item_type_3_type_0 import EscalationPolicyPathRulesItemType3Type0
-    from ..models.escalation_policy_path_rules_item_type_3_type_1 import EscalationPolicyPathRulesItemType3Type1
-    from ..models.escalation_policy_path_rules_item_type_3_type_2 import EscalationPolicyPathRulesItemType3Type2
+    from ..models.escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
     from ..models.escalation_policy_path_rules_item_type_4_type_0 import EscalationPolicyPathRulesItemType4Type0
     from ..models.escalation_policy_path_rules_item_type_4_type_1 import EscalationPolicyPathRulesItemType4Type1
     from ..models.escalation_policy_path_rules_item_type_4_type_2 import EscalationPolicyPathRulesItemType4Type2
+    from ..models.escalation_policy_path_rules_item_type_4_type_3 import EscalationPolicyPathRulesItemType4Type3
+    from ..models.escalation_policy_path_rules_item_type_5_type_0 import EscalationPolicyPathRulesItemType5Type0
+    from ..models.escalation_policy_path_rules_item_type_5_type_1 import EscalationPolicyPathRulesItemType5Type1
+    from ..models.escalation_policy_path_rules_item_type_5_type_2 import EscalationPolicyPathRulesItemType5Type2
+    from ..models.escalation_policy_path_rules_item_type_5_type_3 import EscalationPolicyPathRulesItemType5Type3
     from ..models.escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
 
 
@@ -47,10 +50,11 @@ class EscalationPolicyPath:
         created_at (Union[Unset, str]): Date of creation
         updated_at (Union[Unset, str]): Date of last update
         rules (Union[Unset, list[Union['EscalationPolicyPathRulesItemType0', 'EscalationPolicyPathRulesItemType1',
-            'EscalationPolicyPathRulesItemType2', 'EscalationPolicyPathRulesItemType3Type0',
-            'EscalationPolicyPathRulesItemType3Type1', 'EscalationPolicyPathRulesItemType3Type2',
+            'EscalationPolicyPathRulesItemType2', 'EscalationPolicyPathRulesItemType3',
             'EscalationPolicyPathRulesItemType4Type0', 'EscalationPolicyPathRulesItemType4Type1',
-            'EscalationPolicyPathRulesItemType4Type2']]]): Escalation path rules
+            'EscalationPolicyPathRulesItemType4Type2', 'EscalationPolicyPathRulesItemType4Type3',
+            'EscalationPolicyPathRulesItemType5Type0', 'EscalationPolicyPathRulesItemType5Type1',
+            'EscalationPolicyPathRulesItemType5Type2', 'EscalationPolicyPathRulesItemType5Type3']]]): Escalation path rules
         time_restriction_time_zone (Union[Unset, EscalationPolicyPathTimeRestrictionTimeZone]): Time zone used for time
             restrictions.
         time_restrictions (Union[Unset, list['EscalationPolicyPathTimeRestrictionsItem']]): If time restrictions are
@@ -75,12 +79,15 @@ class EscalationPolicyPath:
                 "EscalationPolicyPathRulesItemType0",
                 "EscalationPolicyPathRulesItemType1",
                 "EscalationPolicyPathRulesItemType2",
-                "EscalationPolicyPathRulesItemType3Type0",
-                "EscalationPolicyPathRulesItemType3Type1",
-                "EscalationPolicyPathRulesItemType3Type2",
+                "EscalationPolicyPathRulesItemType3",
                 "EscalationPolicyPathRulesItemType4Type0",
                 "EscalationPolicyPathRulesItemType4Type1",
                 "EscalationPolicyPathRulesItemType4Type2",
+                "EscalationPolicyPathRulesItemType4Type3",
+                "EscalationPolicyPathRulesItemType5Type0",
+                "EscalationPolicyPathRulesItemType5Type1",
+                "EscalationPolicyPathRulesItemType5Type2",
+                "EscalationPolicyPathRulesItemType5Type3",
             ]
         ],
     ] = UNSET
@@ -92,11 +99,14 @@ class EscalationPolicyPath:
         from ..models.escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
         from ..models.escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
         from ..models.escalation_policy_path_rules_item_type_2 import EscalationPolicyPathRulesItemType2
-        from ..models.escalation_policy_path_rules_item_type_3_type_0 import EscalationPolicyPathRulesItemType3Type0
-        from ..models.escalation_policy_path_rules_item_type_3_type_1 import EscalationPolicyPathRulesItemType3Type1
-        from ..models.escalation_policy_path_rules_item_type_3_type_2 import EscalationPolicyPathRulesItemType3Type2
+        from ..models.escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
         from ..models.escalation_policy_path_rules_item_type_4_type_0 import EscalationPolicyPathRulesItemType4Type0
         from ..models.escalation_policy_path_rules_item_type_4_type_1 import EscalationPolicyPathRulesItemType4Type1
+        from ..models.escalation_policy_path_rules_item_type_4_type_2 import EscalationPolicyPathRulesItemType4Type2
+        from ..models.escalation_policy_path_rules_item_type_4_type_3 import EscalationPolicyPathRulesItemType4Type3
+        from ..models.escalation_policy_path_rules_item_type_5_type_0 import EscalationPolicyPathRulesItemType5Type0
+        from ..models.escalation_policy_path_rules_item_type_5_type_1 import EscalationPolicyPathRulesItemType5Type1
+        from ..models.escalation_policy_path_rules_item_type_5_type_2 import EscalationPolicyPathRulesItemType5Type2
 
         name = self.name
 
@@ -135,15 +145,21 @@ class EscalationPolicyPath:
                     rules_item = rules_item_data.to_dict()
                 elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType2):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType3Type0):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType3Type1):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType3Type2):
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType3):
                     rules_item = rules_item_data.to_dict()
                 elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType4Type0):
                     rules_item = rules_item_data.to_dict()
                 elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType4Type1):
+                    rules_item = rules_item_data.to_dict()
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType4Type2):
+                    rules_item = rules_item_data.to_dict()
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType4Type3):
+                    rules_item = rules_item_data.to_dict()
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType5Type0):
+                    rules_item = rules_item_data.to_dict()
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType5Type1):
+                    rules_item = rules_item_data.to_dict()
+                elif isinstance(rules_item_data, EscalationPolicyPathRulesItemType5Type2):
                     rules_item = rules_item_data.to_dict()
                 else:
                     rules_item = rules_item_data.to_dict()
@@ -197,12 +213,15 @@ class EscalationPolicyPath:
         from ..models.escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
         from ..models.escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
         from ..models.escalation_policy_path_rules_item_type_2 import EscalationPolicyPathRulesItemType2
-        from ..models.escalation_policy_path_rules_item_type_3_type_0 import EscalationPolicyPathRulesItemType3Type0
-        from ..models.escalation_policy_path_rules_item_type_3_type_1 import EscalationPolicyPathRulesItemType3Type1
-        from ..models.escalation_policy_path_rules_item_type_3_type_2 import EscalationPolicyPathRulesItemType3Type2
+        from ..models.escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
         from ..models.escalation_policy_path_rules_item_type_4_type_0 import EscalationPolicyPathRulesItemType4Type0
         from ..models.escalation_policy_path_rules_item_type_4_type_1 import EscalationPolicyPathRulesItemType4Type1
         from ..models.escalation_policy_path_rules_item_type_4_type_2 import EscalationPolicyPathRulesItemType4Type2
+        from ..models.escalation_policy_path_rules_item_type_4_type_3 import EscalationPolicyPathRulesItemType4Type3
+        from ..models.escalation_policy_path_rules_item_type_5_type_0 import EscalationPolicyPathRulesItemType5Type0
+        from ..models.escalation_policy_path_rules_item_type_5_type_1 import EscalationPolicyPathRulesItemType5Type1
+        from ..models.escalation_policy_path_rules_item_type_5_type_2 import EscalationPolicyPathRulesItemType5Type2
+        from ..models.escalation_policy_path_rules_item_type_5_type_3 import EscalationPolicyPathRulesItemType5Type3
         from ..models.escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
 
         d = dict(src_dict)
@@ -253,12 +272,15 @@ class EscalationPolicyPath:
                 "EscalationPolicyPathRulesItemType0",
                 "EscalationPolicyPathRulesItemType1",
                 "EscalationPolicyPathRulesItemType2",
-                "EscalationPolicyPathRulesItemType3Type0",
-                "EscalationPolicyPathRulesItemType3Type1",
-                "EscalationPolicyPathRulesItemType3Type2",
+                "EscalationPolicyPathRulesItemType3",
                 "EscalationPolicyPathRulesItemType4Type0",
                 "EscalationPolicyPathRulesItemType4Type1",
                 "EscalationPolicyPathRulesItemType4Type2",
+                "EscalationPolicyPathRulesItemType4Type3",
+                "EscalationPolicyPathRulesItemType5Type0",
+                "EscalationPolicyPathRulesItemType5Type1",
+                "EscalationPolicyPathRulesItemType5Type2",
+                "EscalationPolicyPathRulesItemType5Type3",
             ]:
                 try:
                     if not isinstance(data, dict):
@@ -287,25 +309,9 @@ class EscalationPolicyPath:
                 try:
                     if not isinstance(data, dict):
                         raise TypeError()
-                    rules_item_type_3_type_0 = EscalationPolicyPathRulesItemType3Type0.from_dict(data)
+                    rules_item_type_3 = EscalationPolicyPathRulesItemType3.from_dict(data)
 
-                    return rules_item_type_3_type_0
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_3_type_1 = EscalationPolicyPathRulesItemType3Type1.from_dict(data)
-
-                    return rules_item_type_3_type_1
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_3_type_2 = EscalationPolicyPathRulesItemType3Type2.from_dict(data)
-
-                    return rules_item_type_3_type_2
+                    return rules_item_type_3
                 except:  # noqa: E722
                     pass
                 try:
@@ -324,11 +330,51 @@ class EscalationPolicyPath:
                     return rules_item_type_4_type_1
                 except:  # noqa: E722
                     pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    rules_item_type_4_type_2 = EscalationPolicyPathRulesItemType4Type2.from_dict(data)
+
+                    return rules_item_type_4_type_2
+                except:  # noqa: E722
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    rules_item_type_4_type_3 = EscalationPolicyPathRulesItemType4Type3.from_dict(data)
+
+                    return rules_item_type_4_type_3
+                except:  # noqa: E722
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    rules_item_type_5_type_0 = EscalationPolicyPathRulesItemType5Type0.from_dict(data)
+
+                    return rules_item_type_5_type_0
+                except:  # noqa: E722
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    rules_item_type_5_type_1 = EscalationPolicyPathRulesItemType5Type1.from_dict(data)
+
+                    return rules_item_type_5_type_1
+                except:  # noqa: E722
+                    pass
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    rules_item_type_5_type_2 = EscalationPolicyPathRulesItemType5Type2.from_dict(data)
+
+                    return rules_item_type_5_type_2
+                except:  # noqa: E722
+                    pass
                 if not isinstance(data, dict):
                     raise TypeError()
-                rules_item_type_4_type_2 = EscalationPolicyPathRulesItemType4Type2.from_dict(data)
+                rules_item_type_5_type_3 = EscalationPolicyPathRulesItemType5Type3.from_dict(data)
 
-                return rules_item_type_4_type_2
+                return rules_item_type_5_type_3
 
             rules_item = _parse_rules_item(rules_item_data)
 

@@ -7,7 +7,9 @@ FORM_FIELD_PLACEMENT_CONDITION_RESPONSE_DATA_TYPE_VALUES: set[FormFieldPlacement
 }
 
 
-def check_form_field_placement_condition_response_data_type(value: str) -> FormFieldPlacementConditionResponseDataType:
+def check_form_field_placement_condition_response_data_type(value: str | None) -> FormFieldPlacementConditionResponseDataType | None:
+    if value is None:
+        return None
     if value in FORM_FIELD_PLACEMENT_CONDITION_RESPONSE_DATA_TYPE_VALUES:
         return cast(FormFieldPlacementConditionResponseDataType, value)
     raise TypeError(

@@ -16,8 +16,10 @@ NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES: set[
 
 
 def check_new_dashboard_panel_data_attributes_params_datasets_item_collection(
-    value: str,
-) -> NewDashboardPanelDataAttributesParamsDatasetsItemCollection:
+    value: str | None,
+) -> NewDashboardPanelDataAttributesParamsDatasetsItemCollection | None:
+    if value is None:
+        return None
     if value in NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES:
         return cast(NewDashboardPanelDataAttributesParamsDatasetsItemCollection, value)
     raise TypeError(

@@ -7,7 +7,9 @@ TWEET_TWITTER_MESSAGE_TASK_PARAMS_TASK_TYPE_VALUES: set[TweetTwitterMessageTaskP
 }
 
 
-def check_tweet_twitter_message_task_params_task_type(value: str) -> TweetTwitterMessageTaskParamsTaskType:
+def check_tweet_twitter_message_task_params_task_type(value: str | None) -> TweetTwitterMessageTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in TWEET_TWITTER_MESSAGE_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(TweetTwitterMessageTaskParamsTaskType, value)
     raise TypeError(

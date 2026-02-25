@@ -13,8 +13,10 @@ ESCALATION_POLICY_PATH_RULES_ITEM_TYPE_4_TYPE_2_OPERATOR_VALUES: set[
 
 
 def check_escalation_policy_path_rules_item_type_4_type_2_operator(
-    value: str,
-) -> EscalationPolicyPathRulesItemType4Type2Operator:
+    value: str | None,
+) -> EscalationPolicyPathRulesItemType4Type2Operator | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_PATH_RULES_ITEM_TYPE_4_TYPE_2_OPERATOR_VALUES:
         return cast(EscalationPolicyPathRulesItemType4Type2Operator, value)
     raise TypeError(

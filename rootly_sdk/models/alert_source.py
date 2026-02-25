@@ -25,6 +25,7 @@ AlertSource = Literal[
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -70,6 +71,7 @@ ALERT_SOURCE_VALUES: set[AlertSource] = {
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -91,7 +93,9 @@ ALERT_SOURCE_VALUES: set[AlertSource] = {
 }
 
 
-def check_alert_source(value: str) -> AlertSource:
+def check_alert_source(value: str | None) -> AlertSource | None:
+    if value is None:
+        return None
     if value in ALERT_SOURCE_VALUES:
         return cast(AlertSource, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_SOURCE_VALUES!r}")

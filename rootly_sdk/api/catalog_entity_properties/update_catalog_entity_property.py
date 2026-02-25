@@ -69,11 +69,18 @@ def sync_detailed(
 ) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Update a Catalog Entity Property
 
-     Update a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
+    or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
+    to set field values instead.
+
+    Update a specific Catalog Entity Property by id.
 
     Args:
         id (str):
-        body (UpdateCatalogEntityProperty):
+        body (UpdateCatalogEntityProperty): **Deprecated:** This endpoint is deprecated, please
+            use the `fields` attribute on catalog entities or native catalog endpoints (teams,
+            services, functionalities, incident_types, causes, environments) to set field values
+            instead.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -103,11 +110,18 @@ def sync(
 ) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Update a Catalog Entity Property
 
-     Update a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
+    or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
+    to set field values instead.
+
+    Update a specific Catalog Entity Property by id.
 
     Args:
         id (str):
-        body (UpdateCatalogEntityProperty):
+        body (UpdateCatalogEntityProperty): **Deprecated:** This endpoint is deprecated, please
+            use the `fields` attribute on catalog entities or native catalog endpoints (teams,
+            services, functionalities, incident_types, causes, environments) to set field values
+            instead.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,11 +146,18 @@ async def asyncio_detailed(
 ) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Update a Catalog Entity Property
 
-     Update a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
+    or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
+    to set field values instead.
+
+    Update a specific Catalog Entity Property by id.
 
     Args:
         id (str):
-        body (UpdateCatalogEntityProperty):
+        body (UpdateCatalogEntityProperty): **Deprecated:** This endpoint is deprecated, please
+            use the `fields` attribute on catalog entities or native catalog endpoints (teams,
+            services, functionalities, incident_types, causes, environments) to set field values
+            instead.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,11 +185,18 @@ async def asyncio(
 ) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Update a Catalog Entity Property
 
-     Update a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
+    or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
+    to set field values instead.
+
+    Update a specific Catalog Entity Property by id.
 
     Args:
         id (str):
-        body (UpdateCatalogEntityProperty):
+        body (UpdateCatalogEntityProperty): **Deprecated:** This endpoint is deprecated, please
+            use the `fields` attribute on catalog entities or native catalog endpoints (teams,
+            services, functionalities, incident_types, causes, environments) to set field values
+            instead.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -12,9 +12,9 @@ T = TypeVar("T", bound="UpdateRetrospectiveConfigurationDataAttributes")
 class UpdateRetrospectiveConfigurationDataAttributes:
     """
     Attributes:
-        severity_ids (Union[None, Unset, list[str]]): The Severity ID's to attach to the retrospective configuration
-        group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the retrospective configuration
-        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type ID's to attach to the retrospective
+        severity_ids (Union[None, Unset, list[str]]): The Severity IDs to attach to the retrospective configuration
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the retrospective configuration
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the retrospective
             configuration
     """
 

@@ -11,8 +11,10 @@ UPDATE_ROLE_DATA_ATTRIBUTES_SERVICES_PERMISSIONS_ITEM_VALUES: set[UpdateRoleData
 
 
 def check_update_role_data_attributes_services_permissions_item(
-    value: str,
-) -> UpdateRoleDataAttributesServicesPermissionsItem:
+    value: str | None,
+) -> UpdateRoleDataAttributesServicesPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_SERVICES_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateRoleDataAttributesServicesPermissionsItem, value)
     raise TypeError(

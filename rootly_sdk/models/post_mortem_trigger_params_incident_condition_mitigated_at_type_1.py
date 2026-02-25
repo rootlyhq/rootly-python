@@ -11,8 +11,10 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_MITIGATED_AT_TYPE_1_VALUES: set[
 
 
 def check_post_mortem_trigger_params_incident_condition_mitigated_at_type_1(
-    value: str,
-) -> PostMortemTriggerParamsIncidentConditionMitigatedAtType1:
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentConditionMitigatedAtType1 | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_MITIGATED_AT_TYPE_1_VALUES:
         return cast(PostMortemTriggerParamsIncidentConditionMitigatedAtType1, value)
     raise TypeError(

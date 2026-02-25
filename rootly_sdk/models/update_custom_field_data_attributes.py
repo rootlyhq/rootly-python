@@ -21,7 +21,6 @@ class UpdateCustomFieldDataAttributes:
     """
     Attributes:
         label (Union[Unset, str]): The name of the custom_field
-        slug (Union[Unset, str]): The slug of the custom_field
         description (Union[None, Unset, str]): The description of the custom_field
         shown (Union[Unset, list[UpdateCustomFieldDataAttributesShownItem]]):
         required (Union[None, Unset, list[UpdateCustomFieldDataAttributesRequiredType0Item]]):
@@ -30,7 +29,6 @@ class UpdateCustomFieldDataAttributes:
     """
 
     label: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     shown: Union[Unset, list[UpdateCustomFieldDataAttributesShownItem]] = UNSET
     required: Union[None, Unset, list[UpdateCustomFieldDataAttributesRequiredType0Item]] = UNSET
@@ -39,8 +37,6 @@ class UpdateCustomFieldDataAttributes:
 
     def to_dict(self) -> dict[str, Any]:
         label = self.label
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -80,8 +76,6 @@ class UpdateCustomFieldDataAttributes:
         field_dict.update({})
         if label is not UNSET:
             field_dict["label"] = label
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if shown is not UNSET:
@@ -99,8 +93,6 @@ class UpdateCustomFieldDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         label = d.pop("label", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -155,7 +147,6 @@ class UpdateCustomFieldDataAttributes:
 
         update_custom_field_data_attributes = cls(
             label=label,
-            slug=slug,
             description=description,
             shown=shown,
             required=required,

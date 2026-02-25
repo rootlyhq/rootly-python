@@ -23,7 +23,9 @@ DASHBOARD_PANEL_PARAMS_DISPLAY_VALUES: set[DashboardPanelParamsDisplay] = {
 }
 
 
-def check_dashboard_panel_params_display(value: str) -> DashboardPanelParamsDisplay:
+def check_dashboard_panel_params_display(value: str | None) -> DashboardPanelParamsDisplay | None:
+    if value is None:
+        return None
     if value in DASHBOARD_PANEL_PARAMS_DISPLAY_VALUES:
         return cast(DashboardPanelParamsDisplay, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {DASHBOARD_PANEL_PARAMS_DISPLAY_VALUES!r}")

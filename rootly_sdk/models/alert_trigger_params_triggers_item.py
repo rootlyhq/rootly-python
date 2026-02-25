@@ -8,7 +8,9 @@ ALERT_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES: set[AlertTriggerParamsTriggersItem] =
 }
 
 
-def check_alert_trigger_params_triggers_item(value: str) -> AlertTriggerParamsTriggersItem:
+def check_alert_trigger_params_triggers_item(value: str | None) -> AlertTriggerParamsTriggersItem | None:
+    if value is None:
+        return None
     if value in ALERT_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES:
         return cast(AlertTriggerParamsTriggersItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES!r}")

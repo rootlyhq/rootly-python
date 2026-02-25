@@ -4,6 +4,10 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.create_webex_meeting_task_params_recording_mode import (
+    CreateWebexMeetingTaskParamsRecordingMode,
+    check_create_webex_meeting_task_params_recording_mode,
+)
 from ..models.create_webex_meeting_task_params_task_type import (
     CreateWebexMeetingTaskParamsTaskType,
     check_create_webex_meeting_task_params_task_type,
@@ -28,6 +32,8 @@ class CreateWebexMeetingTaskParams:
         password (Union[Unset, str]): The meeting password
         record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
             and summary from your meeting
+        recording_mode (Union[Unset, CreateWebexMeetingTaskParamsRecordingMode]): The video layout for the bot's
+            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
         post_to_incident_timeline (Union[Unset, bool]):
         post_to_slack_channels (Union[Unset, list['CreateWebexMeetingTaskParamsPostToSlackChannelsItem']]):
     """
@@ -36,6 +42,7 @@ class CreateWebexMeetingTaskParams:
     task_type: Union[Unset, CreateWebexMeetingTaskParamsTaskType] = UNSET
     password: Union[Unset, str] = UNSET
     record_meeting: Union[Unset, bool] = UNSET
+    recording_mode: Union[Unset, CreateWebexMeetingTaskParamsRecordingMode] = UNSET
     post_to_incident_timeline: Union[Unset, bool] = UNSET
     post_to_slack_channels: Union[Unset, list["CreateWebexMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -50,6 +57,10 @@ class CreateWebexMeetingTaskParams:
         password = self.password
 
         record_meeting = self.record_meeting
+
+        recording_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.recording_mode, Unset):
+            recording_mode = self.recording_mode
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
@@ -73,6 +84,8 @@ class CreateWebexMeetingTaskParams:
             field_dict["password"] = password
         if record_meeting is not UNSET:
             field_dict["record_meeting"] = record_meeting
+        if recording_mode is not UNSET:
+            field_dict["recording_mode"] = recording_mode
         if post_to_incident_timeline is not UNSET:
             field_dict["post_to_incident_timeline"] = post_to_incident_timeline
         if post_to_slack_channels is not UNSET:
@@ -100,6 +113,13 @@ class CreateWebexMeetingTaskParams:
 
         record_meeting = d.pop("record_meeting", UNSET)
 
+        _recording_mode = d.pop("recording_mode", UNSET)
+        recording_mode: Union[Unset, CreateWebexMeetingTaskParamsRecordingMode]
+        if isinstance(_recording_mode, Unset):
+            recording_mode = UNSET
+        else:
+            recording_mode = check_create_webex_meeting_task_params_recording_mode(_recording_mode)
+
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
         post_to_slack_channels = []
@@ -116,6 +136,7 @@ class CreateWebexMeetingTaskParams:
             task_type=task_type,
             password=password,
             record_meeting=record_meeting,
+            recording_mode=recording_mode,
             post_to_incident_timeline=post_to_incident_timeline,
             post_to_slack_channels=post_to_slack_channels,
         )

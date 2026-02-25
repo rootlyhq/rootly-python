@@ -16,8 +16,10 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_END_DAY_VALUES: set[EscalationPoli
 
 
 def check_escalation_policy_path_time_restrictions_item_end_day(
-    value: str,
-) -> EscalationPolicyPathTimeRestrictionsItemEndDay:
+    value: str | None,
+) -> EscalationPolicyPathTimeRestrictionsItemEndDay | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_END_DAY_VALUES:
         return cast(EscalationPolicyPathTimeRestrictionsItemEndDay, value)
     raise TypeError(

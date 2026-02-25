@@ -9,8 +9,10 @@ UPDATE_ON_CALL_SHADOW_DATA_ATTRIBUTES_SHADOWABLE_TYPE_VALUES: set[UpdateOnCallSh
 
 
 def check_update_on_call_shadow_data_attributes_shadowable_type(
-    value: str,
-) -> UpdateOnCallShadowDataAttributesShadowableType:
+    value: str | None,
+) -> UpdateOnCallShadowDataAttributesShadowableType | None:
+    if value is None:
+        return None
     if value in UPDATE_ON_CALL_SHADOW_DATA_ATTRIBUTES_SHADOWABLE_TYPE_VALUES:
         return cast(UpdateOnCallShadowDataAttributesShadowableType, value)
     raise TypeError(

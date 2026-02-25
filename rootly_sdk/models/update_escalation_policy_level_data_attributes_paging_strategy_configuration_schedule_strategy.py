@@ -13,8 +13,10 @@ UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_SCH
 
 
 def check_update_escalation_policy_level_data_attributes_paging_strategy_configuration_schedule_strategy(
-    value: str,
-) -> UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy:
+    value: str | None,
+) -> UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy | None:
+    if value is None:
+        return None
     if value in UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_SCHEDULE_STRATEGY_VALUES:
         return cast(UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy, value)
     raise TypeError(

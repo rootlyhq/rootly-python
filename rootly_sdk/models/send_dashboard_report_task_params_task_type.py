@@ -7,7 +7,9 @@ SEND_DASHBOARD_REPORT_TASK_PARAMS_TASK_TYPE_VALUES: set[SendDashboardReportTaskP
 }
 
 
-def check_send_dashboard_report_task_params_task_type(value: str) -> SendDashboardReportTaskParamsTaskType:
+def check_send_dashboard_report_task_params_task_type(value: str | None) -> SendDashboardReportTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in SEND_DASHBOARD_REPORT_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(SendDashboardReportTaskParamsTaskType, value)
     raise TypeError(

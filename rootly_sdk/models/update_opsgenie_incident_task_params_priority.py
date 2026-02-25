@@ -12,7 +12,9 @@ UPDATE_OPSGENIE_INCIDENT_TASK_PARAMS_PRIORITY_VALUES: set[UpdateOpsgenieIncident
 }
 
 
-def check_update_opsgenie_incident_task_params_priority(value: str) -> UpdateOpsgenieIncidentTaskParamsPriority:
+def check_update_opsgenie_incident_task_params_priority(value: str | None) -> UpdateOpsgenieIncidentTaskParamsPriority | None:
+    if value is None:
+        return None
     if value in UPDATE_OPSGENIE_INCIDENT_TASK_PARAMS_PRIORITY_VALUES:
         return cast(UpdateOpsgenieIncidentTaskParamsPriority, value)
     raise TypeError(

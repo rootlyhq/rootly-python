@@ -14,7 +14,8 @@ T = TypeVar("T", bound="NewCatalogEntityPropertyDataAttributes")
 
 @_attrs_define
 class NewCatalogEntityPropertyDataAttributes:
-    """
+    """Maximum of 50 values allowed per catalog field.
+
     Attributes:
         catalog_field_id (str):
         key (NewCatalogEntityPropertyDataAttributesKey):

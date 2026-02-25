@@ -17,7 +17,9 @@ NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES: set[NewIncidentDataAttributesKind] = {
 }
 
 
-def check_new_incident_data_attributes_kind(value: str) -> NewIncidentDataAttributesKind:
+def check_new_incident_data_attributes_kind(value: str | None) -> NewIncidentDataAttributesKind | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(NewIncidentDataAttributesKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES!r}")

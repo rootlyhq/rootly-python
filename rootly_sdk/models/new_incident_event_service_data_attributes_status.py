@@ -9,7 +9,9 @@ NEW_INCIDENT_EVENT_SERVICE_DATA_ATTRIBUTES_STATUS_VALUES: set[NewIncidentEventSe
 }
 
 
-def check_new_incident_event_service_data_attributes_status(value: str) -> NewIncidentEventServiceDataAttributesStatus:
+def check_new_incident_event_service_data_attributes_status(value: str | None) -> NewIncidentEventServiceDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_EVENT_SERVICE_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(NewIncidentEventServiceDataAttributesStatus, value)
     raise TypeError(

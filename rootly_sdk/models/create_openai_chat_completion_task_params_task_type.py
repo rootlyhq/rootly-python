@@ -8,8 +8,10 @@ CREATE_OPENAI_CHAT_COMPLETION_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateOpenaiChat
 
 
 def check_create_openai_chat_completion_task_params_task_type(
-    value: str,
-) -> CreateOpenaiChatCompletionTaskParamsTaskType:
+    value: str | None,
+) -> CreateOpenaiChatCompletionTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_OPENAI_CHAT_COMPLETION_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateOpenaiChatCompletionTaskParamsTaskType, value)
     raise TypeError(

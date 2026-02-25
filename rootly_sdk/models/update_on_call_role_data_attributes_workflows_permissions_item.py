@@ -13,8 +13,10 @@ UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_WORKFLOWS_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_update_on_call_role_data_attributes_workflows_permissions_item(
-    value: str,
-) -> UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem:
+    value: str | None,
+) -> UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_WORKFLOWS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem, value)
     raise TypeError(

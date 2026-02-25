@@ -101,7 +101,6 @@ class UpdateOnCallRoleDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]): The role name.
-        slug (Union[Unset, str]): The role slug.
         system_role (Union[Unset, str]): The kind of role (user and custom type roles are only editable) Default:
             'custom'.
         alert_sources_permissions (Union[Unset, list[UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem]]):
@@ -134,7 +133,6 @@ class UpdateOnCallRoleDataAttributes:
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     system_role: Union[Unset, str] = "custom"
     alert_sources_permissions: Union[Unset, list[UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem]] = UNSET
     alert_urgency_permissions: Union[Unset, list[UpdateOnCallRoleDataAttributesAlertUrgencyPermissionsItem]] = UNSET
@@ -171,8 +169,6 @@ class UpdateOnCallRoleDataAttributes:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         system_role = self.system_role
 
@@ -335,8 +331,6 @@ class UpdateOnCallRoleDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if system_role is not UNSET:
             field_dict["system_role"] = system_role
         if alert_sources_permissions is not UNSET:
@@ -390,8 +384,6 @@ class UpdateOnCallRoleDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         system_role = d.pop("system_role", UNSET)
 
@@ -605,7 +597,6 @@ class UpdateOnCallRoleDataAttributes:
 
         update_on_call_role_data_attributes = cls(
             name=name,
-            slug=slug,
             system_role=system_role,
             alert_sources_permissions=alert_sources_permissions,
             alert_urgency_permissions=alert_urgency_permissions,

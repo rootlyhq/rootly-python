@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 IncidentTriggerParamsIncidentConditionVisibility = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VISIBILITY_VALUES: set[IncidentTriggerParamsIncidentConditionVisibility] = {
@@ -10,6 +10,7 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VISIBILITY_VALUES: set[IncidentTrigge
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -17,8 +18,10 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VISIBILITY_VALUES: set[IncidentTrigge
 
 
 def check_incident_trigger_params_incident_condition_visibility(
-    value: str,
-) -> IncidentTriggerParamsIncidentConditionVisibility:
+    value: str | None,
+) -> IncidentTriggerParamsIncidentConditionVisibility | None:
+    if value is None:
+        return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_VISIBILITY_VALUES:
         return cast(IncidentTriggerParamsIncidentConditionVisibility, value)
     raise TypeError(

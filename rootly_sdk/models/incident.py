@@ -35,12 +35,12 @@ class Incident:
     """
     Attributes:
         title (str): The title of the incident
-        slug (str): The slug of the incident
         created_at (str): Date of creation
         updated_at (str): Date of last update
         id (Union[Unset, str]): Unique ID of the incident
         sequential_id (Union[Unset, int]): Sequential ID of the incident
         kind (Union[Unset, str]): The kind of the incident
+        slug (Union[Unset, str]): The slug of the incident
         parent_incident_id (Union[None, Unset, str]): ID of parent incident
         duplicate_incident_id (Union[None, Unset, str]): ID of duplicated incident
         summary (Union[None, Unset, str]): The summary of the incident
@@ -158,12 +158,12 @@ class Incident:
     """
 
     title: str
-    slug: str
     created_at: str
     updated_at: str
     id: Union[Unset, str] = UNSET
     sequential_id: Union[Unset, int] = UNSET
     kind: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     parent_incident_id: Union[None, Unset, str] = UNSET
     duplicate_incident_id: Union[None, Unset, str] = UNSET
     summary: Union[None, Unset, str] = UNSET
@@ -289,8 +289,6 @@ class Incident:
 
         title = self.title
 
-        slug = self.slug
-
         created_at = self.created_at
 
         updated_at = self.updated_at
@@ -300,6 +298,8 @@ class Incident:
         sequential_id = self.sequential_id
 
         kind = self.kind
+
+        slug = self.slug
 
         parent_incident_id: Union[None, Unset, str]
         if isinstance(self.parent_incident_id, Unset):
@@ -1016,7 +1016,6 @@ class Incident:
         field_dict.update(
             {
                 "title": title,
-                "slug": slug,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
@@ -1027,6 +1026,8 @@ class Incident:
             field_dict["sequential_id"] = sequential_id
         if kind is not UNSET:
             field_dict["kind"] = kind
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if parent_incident_id is not UNSET:
             field_dict["parent_incident_id"] = parent_incident_id
         if duplicate_incident_id is not UNSET:
@@ -1272,8 +1273,6 @@ class Incident:
         d = dict(src_dict)
         title = d.pop("title")
 
-        slug = d.pop("slug")
-
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
@@ -1283,6 +1282,8 @@ class Incident:
         sequential_id = d.pop("sequential_id", UNSET)
 
         kind = d.pop("kind", UNSET)
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_parent_incident_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -2421,12 +2422,12 @@ class Incident:
 
         incident = cls(
             title=title,
-            slug=slug,
             created_at=created_at,
             updated_at=updated_at,
             id=id,
             sequential_id=sequential_id,
             kind=kind,
+            slug=slug,
             parent_incident_id=parent_incident_id,
             duplicate_incident_id=duplicate_incident_id,
             summary=summary,

@@ -8,6 +8,10 @@ from ..models.user_notification_rule_enabled_contact_types_item import (
     UserNotificationRuleEnabledContactTypesItem,
     check_user_notification_rule_enabled_contact_types_item,
 )
+from ..models.user_notification_rule_notification_type import (
+    UserNotificationRuleNotificationType,
+    check_user_notification_rule_notification_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UserNotificationRule")
@@ -26,6 +30,8 @@ class UserNotificationRule:
         user_device_id (Union[None, Unset, str]): User device to which notification to be sent
         enabled_contact_types (Union[Unset, list[UserNotificationRuleEnabledContactTypesItem]]): Contact types for which
             notification needs to be enabled
+        notification_type (Union[Unset, UserNotificationRuleNotificationType]): Type of notification rule (audible or
+            quiet). Audible notifications use sound/vibration to alert users, while quiet notifications are silent.
         created_at (Union[Unset, str]): Date of creation
         updated_at (Union[Unset, str]): Date of last update
     """
@@ -38,6 +44,7 @@ class UserNotificationRule:
     user_sms_number_id: Union[None, Unset, str] = UNSET
     user_device_id: Union[None, Unset, str] = UNSET
     enabled_contact_types: Union[Unset, list[UserNotificationRuleEnabledContactTypesItem]] = UNSET
+    notification_type: Union[Unset, UserNotificationRuleNotificationType] = UNSET
     created_at: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -88,6 +95,10 @@ class UserNotificationRule:
                 enabled_contact_types_item: str = enabled_contact_types_item_data
                 enabled_contact_types.append(enabled_contact_types_item)
 
+        notification_type: Union[Unset, str] = UNSET
+        if not isinstance(self.notification_type, Unset):
+            notification_type = self.notification_type
+
         created_at = self.created_at
 
         updated_at = self.updated_at
@@ -111,6 +122,8 @@ class UserNotificationRule:
             field_dict["user_device_id"] = user_device_id
         if enabled_contact_types is not UNSET:
             field_dict["enabled_contact_types"] = enabled_contact_types
+        if notification_type is not UNSET:
+            field_dict["notification_type"] = notification_type
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if updated_at is not UNSET:
@@ -186,6 +199,13 @@ class UserNotificationRule:
 
             enabled_contact_types.append(enabled_contact_types_item)
 
+        _notification_type = d.pop("notification_type", UNSET)
+        notification_type: Union[Unset, UserNotificationRuleNotificationType]
+        if isinstance(_notification_type, Unset):
+            notification_type = UNSET
+        else:
+            notification_type = check_user_notification_rule_notification_type(_notification_type)
+
         created_at = d.pop("created_at", UNSET)
 
         updated_at = d.pop("updated_at", UNSET)
@@ -199,6 +219,7 @@ class UserNotificationRule:
             user_sms_number_id=user_sms_number_id,
             user_device_id=user_device_id,
             enabled_contact_types=enabled_contact_types,
+            notification_type=notification_type,
             created_at=created_at,
             updated_at=updated_at,
         )

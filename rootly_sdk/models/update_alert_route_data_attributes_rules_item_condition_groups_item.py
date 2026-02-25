@@ -1,6 +1,5 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,12 +20,10 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem:
     """
     Attributes:
         conditions (list['UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem']):
-        id (Union[Unset, UUID]): The ID of the condition group (for updates)
         position (Union[Unset, int]): The position of the condition group
     """
 
     conditions: list["UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem"]
-    id: Union[Unset, UUID] = UNSET
     position: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,10 +32,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem:
         for conditions_item_data in self.conditions:
             conditions_item = conditions_item_data.to_dict()
             conditions.append(conditions_item)
-
-        id: Union[Unset, str] = UNSET
-        if not isinstance(self.id, Unset):
-            id = str(self.id)
 
         position = self.position
 
@@ -49,8 +42,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem:
                 "conditions": conditions,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if position is not UNSET:
             field_dict["position"] = position
 
@@ -72,18 +63,10 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem:
 
             conditions.append(conditions_item)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = UUID(_id)
-
         position = d.pop("position", UNSET)
 
         update_alert_route_data_attributes_rules_item_condition_groups_item = cls(
             conditions=conditions,
-            id=id,
             position=position,
         )
 

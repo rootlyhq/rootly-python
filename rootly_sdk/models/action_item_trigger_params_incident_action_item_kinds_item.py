@@ -11,8 +11,10 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_KINDS_ITEM_VALUES: set[
 
 
 def check_action_item_trigger_params_incident_action_item_kinds_item(
-    value: str,
-) -> ActionItemTriggerParamsIncidentActionItemKindsItem:
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentActionItemKindsItem | None:
+    if value is None:
+        return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_KINDS_ITEM_VALUES:
         return cast(ActionItemTriggerParamsIncidentActionItemKindsItem, value)
     raise TypeError(

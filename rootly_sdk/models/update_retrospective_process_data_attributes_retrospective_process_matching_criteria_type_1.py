@@ -10,7 +10,7 @@ T = TypeVar("T", bound="UpdateRetrospectiveProcessDataAttributesRetrospectivePro
 class UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1:
     """
     Attributes:
-        group_ids (list[str]): Team ID's for retrospective process matching criteria
+        group_ids (list[str]): Team IDs for retrospective process matching criteria
     """
 
     group_ids: list[str]

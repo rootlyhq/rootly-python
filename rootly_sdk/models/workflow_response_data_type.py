@@ -7,7 +7,9 @@ WORKFLOW_RESPONSE_DATA_TYPE_VALUES: set[WorkflowResponseDataType] = {
 }
 
 
-def check_workflow_response_data_type(value: str) -> WorkflowResponseDataType:
+def check_workflow_response_data_type(value: str | None) -> WorkflowResponseDataType | None:
+    if value is None:
+        return None
     if value in WORKFLOW_RESPONSE_DATA_TYPE_VALUES:
         return cast(WorkflowResponseDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WORKFLOW_RESPONSE_DATA_TYPE_VALUES!r}")

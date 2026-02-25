@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NewTeamDataAttributesAlertBroadcastChannelType0")
 
@@ -13,11 +15,11 @@ class NewTeamDataAttributesAlertBroadcastChannelType0:
 
     Attributes:
         id (str): Slack channel ID
-        name (str): Slack channel name
+        name (Union[Unset, str]): Slack channel name
     """
 
     id: str
-    name: str
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,9 +32,10 @@ class NewTeamDataAttributesAlertBroadcastChannelType0:
         field_dict.update(
             {
                 "id": id,
-                "name": name,
             }
         )
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
@@ -41,7 +44,7 @@ class NewTeamDataAttributesAlertBroadcastChannelType0:
         d = dict(src_dict)
         id = d.pop("id")
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
         new_team_data_attributes_alert_broadcast_channel_type_0 = cls(
             id=id,

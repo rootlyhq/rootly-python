@@ -7,7 +7,9 @@ NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES: set[NewScheduleRotationActive
 }
 
 
-def check_new_schedule_rotation_active_day_data_type(value: str) -> NewScheduleRotationActiveDayDataType:
+def check_new_schedule_rotation_active_day_data_type(value: str | None) -> NewScheduleRotationActiveDayDataType | None:
+    if value is None:
+        return None
     if value in NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES:
         return cast(NewScheduleRotationActiveDayDataType, value)
     raise TypeError(

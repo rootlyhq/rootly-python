@@ -10,8 +10,10 @@ ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_CONDI
 
 
 def check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type(
-    value: str,
-) -> AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType:
+    value: str | None,
+) -> AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES:
         return cast(AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType, value)
     raise TypeError(

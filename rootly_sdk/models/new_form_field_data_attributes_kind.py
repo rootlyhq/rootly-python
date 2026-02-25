@@ -67,7 +67,9 @@ NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES: set[NewFormFieldDataAttributesKind] 
 }
 
 
-def check_new_form_field_data_attributes_kind(value: str) -> NewFormFieldDataAttributesKind:
+def check_new_form_field_data_attributes_kind(value: str | None) -> NewFormFieldDataAttributesKind | None:
+    if value is None:
+        return None
     if value in NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(NewFormFieldDataAttributesKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES!r}")

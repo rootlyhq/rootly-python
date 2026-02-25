@@ -8,7 +8,9 @@ FORM_FIELD_PLACEMENT_PLACEMENT_OPERATOR_VALUES: set[FormFieldPlacementPlacementO
 }
 
 
-def check_form_field_placement_placement_operator(value: str) -> FormFieldPlacementPlacementOperator:
+def check_form_field_placement_placement_operator(value: str | None) -> FormFieldPlacementPlacementOperator | None:
+    if value is None:
+        return None
     if value in FORM_FIELD_PLACEMENT_PLACEMENT_OPERATOR_VALUES:
         return cast(FormFieldPlacementPlacementOperator, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FORM_FIELD_PLACEMENT_PLACEMENT_OPERATOR_VALUES!r}")

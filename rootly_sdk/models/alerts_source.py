@@ -53,7 +53,8 @@ class AlertsSource:
         resolution_rule_attributes (Union['AlertsSourceResolutionRuleAttributesType0', None, Unset]): Provide additional
             attributes for email alerts source
         alert_source_fields_attributes (Union[Unset, list['AlertsSourceAlertSourceFieldsAttributesItem']]): List of
-            alert fields to be added to the alert source
+            alert fields to be added to the alert source. Note: This attribute requires the alert field feature to be
+            enabled on your account. Contact Rootly customer support if you need assistance with this feature.
         email (Union[None, Unset, str]): The email generated for email alert sources
         webhook_endpoint (Union[None, Unset, str]): The webhook URL generated for non-email alert sources
     """

@@ -8,8 +8,10 @@ NEW_AUTHORIZATION_DATA_ATTRIBUTES_AUTHORIZABLE_TYPE_VALUES: set[NewAuthorization
 
 
 def check_new_authorization_data_attributes_authorizable_type(
-    value: str,
-) -> NewAuthorizationDataAttributesAuthorizableType:
+    value: str | None,
+) -> NewAuthorizationDataAttributesAuthorizableType | None:
+    if value is None:
+        return None
     if value in NEW_AUTHORIZATION_DATA_ATTRIBUTES_AUTHORIZABLE_TYPE_VALUES:
         return cast(NewAuthorizationDataAttributesAuthorizableType, value)
     raise TypeError(

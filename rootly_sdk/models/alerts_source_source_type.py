@@ -49,7 +49,9 @@ ALERTS_SOURCE_SOURCE_TYPE_VALUES: set[AlertsSourceSourceType] = {
 }
 
 
-def check_alerts_source_source_type(value: str) -> AlertsSourceSourceType:
+def check_alerts_source_source_type(value: str | None) -> AlertsSourceSourceType | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_SOURCE_TYPE_VALUES:
         return cast(AlertsSourceSourceType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_SOURCE_TYPE_VALUES!r}")

@@ -37,9 +37,9 @@ class NewAlertGroupDataAttributesConditionsItem:
         property_field_values (Union[Unset, list[str]]): The values of the property field. Need to be passed if the
             property field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is
             'alert_urgency'
-        alert_urgency_ids (Union[None, Unset, list[str]]): The Alert Urgency ID's to check in the condition. Only need
-            to be set when the property field type is 'attribute', the property field name is 'alert_urgency' and the
-            property field condition type is 'is_one_of' or 'is_not_one_of'
+        alert_urgency_ids (Union[None, Unset, list[str]]): The Alert Urgency IDs to check in the condition. Only need to
+            be set when the property field type is 'attribute', the property field name is 'alert_urgency' and the property
+            field condition type is 'is_one_of' or 'is_not_one_of'
         conditionable_type (Union[Unset, NewAlertGroupDataAttributesConditionsItemConditionableType]): The type of the
             conditionable
         conditionable_id (Union[Unset, str]): The ID of the conditionable. If conditionable_type is AlertField, this is

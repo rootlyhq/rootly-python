@@ -8,8 +8,10 @@ ON_CALL_ROLE_ON_CALL_READINESS_REPORT_PERMISSIONS_ITEM_VALUES: set[OnCallRoleOnC
 
 
 def check_on_call_role_on_call_readiness_report_permissions_item(
-    value: str,
-) -> OnCallRoleOnCallReadinessReportPermissionsItem:
+    value: str | None,
+) -> OnCallRoleOnCallReadinessReportPermissionsItem | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_ON_CALL_READINESS_REPORT_PERMISSIONS_ITEM_VALUES:
         return cast(OnCallRoleOnCallReadinessReportPermissionsItem, value)
     raise TypeError(

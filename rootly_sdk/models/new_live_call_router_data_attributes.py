@@ -45,6 +45,8 @@ class NewLiveCallRouterDataAttributes:
             [generate_phone_number](#//api/v1/live_call_routers/generate_phone_number) API and pass that phone number here
             to register
         voicemail_greeting (str): The voicemail greeting of the live_call_router
+        paging_targets (list['NewLiveCallRouterDataAttributesPagingTargetsItem']): Paging targets that callers can
+            select from when this live call router is configured as a phone tree.
         enabled (Union[Unset, bool]): Whether the live_call_router is enabled
         caller_greeting (Union[Unset, str]): The caller greeting message of the live_call_router
         waiting_music_url (Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl]): The waiting music URL of the
@@ -59,8 +61,6 @@ class NewLiveCallRouterDataAttributes:
         alert_urgency_id (Union[Unset, str]): This is used in escalation paths to determine who to page
         calling_tree_prompt (Union[Unset, str]): The audio instructions callers will hear when they call this number,
             prompting them to select from available options to route their call
-        paging_targets (Union[Unset, list['NewLiveCallRouterDataAttributesPagingTargetsItem']]): Paging targets that
-            callers can select from when this live call router is configured as a phone tree.
         escalation_policy_trigger_params (Union[Unset, NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams]):
     """
 
@@ -70,6 +70,7 @@ class NewLiveCallRouterDataAttributes:
     phone_type: NewLiveCallRouterDataAttributesPhoneType
     phone_number: str
     voicemail_greeting: str
+    paging_targets: list["NewLiveCallRouterDataAttributesPagingTargetsItem"]
     enabled: Union[Unset, bool] = UNSET
     caller_greeting: Union[Unset, str] = UNSET
     waiting_music_url: Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl] = UNSET
@@ -79,7 +80,6 @@ class NewLiveCallRouterDataAttributes:
     should_auto_resolve_alert_on_call_end: Union[Unset, bool] = UNSET
     alert_urgency_id: Union[Unset, str] = UNSET
     calling_tree_prompt: Union[Unset, str] = UNSET
-    paging_targets: Union[Unset, list["NewLiveCallRouterDataAttributesPagingTargetsItem"]] = UNSET
     escalation_policy_trigger_params: Union[Unset, "NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams"] = (
         UNSET
     )
@@ -96,6 +96,11 @@ class NewLiveCallRouterDataAttributes:
         phone_number = self.phone_number
 
         voicemail_greeting = self.voicemail_greeting
+
+        paging_targets = []
+        for paging_targets_item_data in self.paging_targets:
+            paging_targets_item = paging_targets_item_data.to_dict()
+            paging_targets.append(paging_targets_item)
 
         enabled = self.enabled
 
@@ -117,13 +122,6 @@ class NewLiveCallRouterDataAttributes:
 
         calling_tree_prompt = self.calling_tree_prompt
 
-        paging_targets: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.paging_targets, Unset):
-            paging_targets = []
-            for paging_targets_item_data in self.paging_targets:
-                paging_targets_item = paging_targets_item_data.to_dict()
-                paging_targets.append(paging_targets_item)
-
         escalation_policy_trigger_params: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.escalation_policy_trigger_params, Unset):
             escalation_policy_trigger_params = self.escalation_policy_trigger_params.to_dict()
@@ -138,6 +136,7 @@ class NewLiveCallRouterDataAttributes:
                 "phone_type": phone_type,
                 "phone_number": phone_number,
                 "voicemail_greeting": voicemail_greeting,
+                "paging_targets": paging_targets,
             }
         )
         if enabled is not UNSET:
@@ -158,8 +157,6 @@ class NewLiveCallRouterDataAttributes:
             field_dict["alert_urgency_id"] = alert_urgency_id
         if calling_tree_prompt is not UNSET:
             field_dict["calling_tree_prompt"] = calling_tree_prompt
-        if paging_targets is not UNSET:
-            field_dict["paging_targets"] = paging_targets
         if escalation_policy_trigger_params is not UNSET:
             field_dict["escalation_policy_trigger_params"] = escalation_policy_trigger_params
 
@@ -187,6 +184,13 @@ class NewLiveCallRouterDataAttributes:
 
         voicemail_greeting = d.pop("voicemail_greeting")
 
+        paging_targets = []
+        _paging_targets = d.pop("paging_targets")
+        for paging_targets_item_data in _paging_targets:
+            paging_targets_item = NewLiveCallRouterDataAttributesPagingTargetsItem.from_dict(paging_targets_item_data)
+
+            paging_targets.append(paging_targets_item)
+
         enabled = d.pop("enabled", UNSET)
 
         caller_greeting = d.pop("caller_greeting", UNSET)
@@ -210,13 +214,6 @@ class NewLiveCallRouterDataAttributes:
 
         calling_tree_prompt = d.pop("calling_tree_prompt", UNSET)
 
-        paging_targets = []
-        _paging_targets = d.pop("paging_targets", UNSET)
-        for paging_targets_item_data in _paging_targets or []:
-            paging_targets_item = NewLiveCallRouterDataAttributesPagingTargetsItem.from_dict(paging_targets_item_data)
-
-            paging_targets.append(paging_targets_item)
-
         _escalation_policy_trigger_params = d.pop("escalation_policy_trigger_params", UNSET)
         escalation_policy_trigger_params: Union[Unset, NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams]
         if isinstance(_escalation_policy_trigger_params, Unset):
@@ -233,6 +230,7 @@ class NewLiveCallRouterDataAttributes:
             phone_type=phone_type,
             phone_number=phone_number,
             voicemail_greeting=voicemail_greeting,
+            paging_targets=paging_targets,
             enabled=enabled,
             caller_greeting=caller_greeting,
             waiting_music_url=waiting_music_url,
@@ -242,7 +240,6 @@ class NewLiveCallRouterDataAttributes:
             should_auto_resolve_alert_on_call_end=should_auto_resolve_alert_on_call_end,
             alert_urgency_id=alert_urgency_id,
             calling_tree_prompt=calling_tree_prompt,
-            paging_targets=paging_targets,
             escalation_policy_trigger_params=escalation_policy_trigger_params,
         )
 

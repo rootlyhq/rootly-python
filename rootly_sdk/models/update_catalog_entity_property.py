@@ -13,9 +13,11 @@ T = TypeVar("T", bound="UpdateCatalogEntityProperty")
 
 @_attrs_define
 class UpdateCatalogEntityProperty:
-    """
-    Attributes:
-        data (UpdateCatalogEntityPropertyData):
+    """**Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities or native catalog
+    endpoints (teams, services, functionalities, incident_types, causes, environments) to set field values instead.
+
+        Attributes:
+            data (UpdateCatalogEntityPropertyData):
     """
 
     data: "UpdateCatalogEntityPropertyData"

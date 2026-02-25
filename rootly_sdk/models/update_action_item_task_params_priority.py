@@ -9,7 +9,9 @@ UPDATE_ACTION_ITEM_TASK_PARAMS_PRIORITY_VALUES: set[UpdateActionItemTaskParamsPr
 }
 
 
-def check_update_action_item_task_params_priority(value: str) -> UpdateActionItemTaskParamsPriority:
+def check_update_action_item_task_params_priority(value: str | None) -> UpdateActionItemTaskParamsPriority | None:
+    if value is None:
+        return None
     if value in UPDATE_ACTION_ITEM_TASK_PARAMS_PRIORITY_VALUES:
         return cast(UpdateActionItemTaskParamsPriority, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ACTION_ITEM_TASK_PARAMS_PRIORITY_VALUES!r}")

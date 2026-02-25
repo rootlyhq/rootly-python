@@ -12,8 +12,10 @@ NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PAGING_TARGETS_ITEM_TYPE_VALUES: set[
 
 
 def check_new_live_call_router_data_attributes_paging_targets_item_type(
-    value: str,
-) -> NewLiveCallRouterDataAttributesPagingTargetsItemType:
+    value: str | None,
+) -> NewLiveCallRouterDataAttributesPagingTargetsItemType | None:
+    if value is None:
+        return None
     if value in NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PAGING_TARGETS_ITEM_TYPE_VALUES:
         return cast(NewLiveCallRouterDataAttributesPagingTargetsItemType, value)
     raise TypeError(

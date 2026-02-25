@@ -13,8 +13,10 @@ NEW_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES: set[
 
 
 def check_new_form_field_placement_condition_data_attributes_comparison(
-    value: str,
-) -> NewFormFieldPlacementConditionDataAttributesComparison:
+    value: str | None,
+) -> NewFormFieldPlacementConditionDataAttributesComparison | None:
+    if value is None:
+        return None
     if value in NEW_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES:
         return cast(NewFormFieldPlacementConditionDataAttributesComparison, value)
     raise TypeError(

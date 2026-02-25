@@ -7,7 +7,9 @@ INCIDENT_STATUS_PAGE_EVENT_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentStatusPageEve
 }
 
 
-def check_incident_status_page_event_list_data_item_type(value: str) -> IncidentStatusPageEventListDataItemType:
+def check_incident_status_page_event_list_data_item_type(value: str | None) -> IncidentStatusPageEventListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_STATUS_PAGE_EVENT_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentStatusPageEventListDataItemType, value)
     raise TypeError(

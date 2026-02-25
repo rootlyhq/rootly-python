@@ -41,7 +41,9 @@ FORM_FIELD_POSITION_FORM_VALUES: set[FormFieldPositionForm] = {
 }
 
 
-def check_form_field_position_form(value: str) -> FormFieldPositionForm:
+def check_form_field_position_form(value: str | None) -> FormFieldPositionForm | None:
+    if value is None:
+        return None
     if value in FORM_FIELD_POSITION_FORM_VALUES:
         return cast(FormFieldPositionForm, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FORM_FIELD_POSITION_FORM_VALUES!r}")

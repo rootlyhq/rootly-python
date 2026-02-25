@@ -11,8 +11,10 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_TYPE_1_VALUES: set[
 
 
 def check_post_mortem_trigger_params_incident_condition_summary_type_1(
-    value: str,
-) -> PostMortemTriggerParamsIncidentConditionSummaryType1:
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentConditionSummaryType1 | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_TYPE_1_VALUES:
         return cast(PostMortemTriggerParamsIncidentConditionSummaryType1, value)
     raise TypeError(

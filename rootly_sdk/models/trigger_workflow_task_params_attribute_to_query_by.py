@@ -45,7 +45,9 @@ TRIGGER_WORKFLOW_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES: set[TriggerWorkflowTa
 }
 
 
-def check_trigger_workflow_task_params_attribute_to_query_by(value: str) -> TriggerWorkflowTaskParamsAttributeToQueryBy:
+def check_trigger_workflow_task_params_attribute_to_query_by(value: str | None) -> TriggerWorkflowTaskParamsAttributeToQueryBy | None:
+    if value is None:
+        return None
     if value in TRIGGER_WORKFLOW_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
         return cast(TriggerWorkflowTaskParamsAttributeToQueryBy, value)
     raise TypeError(

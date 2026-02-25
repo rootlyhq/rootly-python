@@ -8,8 +8,10 @@ INCIDENT_PERMISSION_SET_BOOLEAN_RESPONSE_DATA_TYPE_VALUES: set[IncidentPermissio
 
 
 def check_incident_permission_set_boolean_response_data_type(
-    value: str,
-) -> IncidentPermissionSetBooleanResponseDataType:
+    value: str | None,
+) -> IncidentPermissionSetBooleanResponseDataType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_BOOLEAN_RESPONSE_DATA_TYPE_VALUES:
         return cast(IncidentPermissionSetBooleanResponseDataType, value)
     raise TypeError(

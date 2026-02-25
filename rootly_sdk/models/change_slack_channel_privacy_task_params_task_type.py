@@ -7,7 +7,9 @@ CHANGE_SLACK_CHANNEL_PRIVACY_TASK_PARAMS_TASK_TYPE_VALUES: set[ChangeSlackChanne
 }
 
 
-def check_change_slack_channel_privacy_task_params_task_type(value: str) -> ChangeSlackChannelPrivacyTaskParamsTaskType:
+def check_change_slack_channel_privacy_task_params_task_type(value: str | None) -> ChangeSlackChannelPrivacyTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CHANGE_SLACK_CHANNEL_PRIVACY_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(ChangeSlackChannelPrivacyTaskParamsTaskType, value)
     raise TypeError(

@@ -16,7 +16,9 @@ UPDATE_CATALOG_DATA_ATTRIBUTES_ICON_VALUES: set[UpdateCatalogDataAttributesIcon]
 }
 
 
-def check_update_catalog_data_attributes_icon(value: str) -> UpdateCatalogDataAttributesIcon:
+def check_update_catalog_data_attributes_icon(value: str | None) -> UpdateCatalogDataAttributesIcon | None:
+    if value is None:
+        return None
     if value in UPDATE_CATALOG_DATA_ATTRIBUTES_ICON_VALUES:
         return cast(UpdateCatalogDataAttributesIcon, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_CATALOG_DATA_ATTRIBUTES_ICON_VALUES!r}")

@@ -75,7 +75,11 @@ def sync_detailed(
 ) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Retrieves a Catalog Entity Property
 
-     Retrieves a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    Retrieves a specific Catalog Entity Property by id.
 
     Args:
         id (str):
@@ -109,7 +113,11 @@ def sync(
 ) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Retrieves a Catalog Entity Property
 
-     Retrieves a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    Retrieves a specific Catalog Entity Property by id.
 
     Args:
         id (str):
@@ -138,7 +146,11 @@ async def asyncio_detailed(
 ) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Retrieves a Catalog Entity Property
 
-     Retrieves a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    Retrieves a specific Catalog Entity Property by id.
 
     Args:
         id (str):
@@ -170,7 +182,11 @@ async def asyncio(
 ) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
     """Retrieves a Catalog Entity Property
 
-     Retrieves a specific Catalog Entity Property by id
+     **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
+    native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
+    retrieve field values instead.
+
+    Retrieves a specific Catalog Entity Property by id.
 
     Args:
         id (str):

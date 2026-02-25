@@ -9,8 +9,10 @@ UPDATE_CATALOG_ENTITY_PROPERTY_DATA_ATTRIBUTES_KEY_VALUES: set[UpdateCatalogEnti
 
 
 def check_update_catalog_entity_property_data_attributes_key(
-    value: str,
-) -> UpdateCatalogEntityPropertyDataAttributesKey:
+    value: str | None,
+) -> UpdateCatalogEntityPropertyDataAttributesKey | None:
+    if value is None:
+        return None
     if value in UPDATE_CATALOG_ENTITY_PROPERTY_DATA_ATTRIBUTES_KEY_VALUES:
         return cast(UpdateCatalogEntityPropertyDataAttributesKey, value)
     raise TypeError(

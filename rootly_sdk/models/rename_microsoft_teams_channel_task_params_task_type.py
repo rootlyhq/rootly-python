@@ -8,8 +8,10 @@ RENAME_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_TASK_TYPE_VALUES: set[RenameMicrosoft
 
 
 def check_rename_microsoft_teams_channel_task_params_task_type(
-    value: str,
-) -> RenameMicrosoftTeamsChannelTaskParamsTaskType:
+    value: str | None,
+) -> RenameMicrosoftTeamsChannelTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in RENAME_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(RenameMicrosoftTeamsChannelTaskParamsTaskType, value)
     raise TypeError(

@@ -10,8 +10,10 @@ NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CON
 
 
 def check_new_alerts_source_data_attributes_alert_source_urgency_rules_attributes_item_conditionable_type(
-    value: str,
-) -> NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType:
+    value: str | None,
+) -> NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType | None:
+    if value is None:
+        return None
     if value in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES:
         return cast(NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType, value)
     raise TypeError(

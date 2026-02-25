@@ -22,18 +22,18 @@ class IncidentPermissionSet:
     """
     Attributes:
         name (str): The incident permission set name.
-        slug (str): The incident permission set slug.
         created_at (str):
         updated_at (str):
+        slug (Union[Unset, str]): The incident permission set slug.
         description (Union[None, Unset, str]): The incident permission set description.
         private_incident_permissions (Union[Unset, list[IncidentPermissionSetPrivateIncidentPermissionsItem]]):
         public_incident_permissions (Union[Unset, list[IncidentPermissionSetPublicIncidentPermissionsItem]]):
     """
 
     name: str
-    slug: str
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     private_incident_permissions: Union[Unset, list[IncidentPermissionSetPrivateIncidentPermissionsItem]] = UNSET
     public_incident_permissions: Union[Unset, list[IncidentPermissionSetPublicIncidentPermissionsItem]] = UNSET
@@ -42,11 +42,11 @@ class IncidentPermissionSet:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -73,11 +73,12 @@ class IncidentPermissionSet:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if private_incident_permissions is not UNSET:
@@ -92,11 +93,11 @@ class IncidentPermissionSet:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -127,9 +128,9 @@ class IncidentPermissionSet:
 
         incident_permission_set = cls(
             name=name,
-            slug=slug,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
             private_incident_permissions=private_incident_permissions,
             public_incident_permissions=public_incident_permissions,

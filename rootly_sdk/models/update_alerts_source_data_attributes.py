@@ -60,7 +60,8 @@ class UpdateAlertsSourceDataAttributes:
             Unset]): Provide additional attributes for email alerts source
         alert_source_fields_attributes (Union[Unset,
             list['UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem']]): List of alert fields to be added to
-            the alert source
+            the alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact
+            Rootly customer support if you need assistance with this feature.
     """
 
     name: Union[Unset, str] = UNSET

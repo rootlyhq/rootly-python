@@ -8,8 +8,10 @@ WORKFLOW_CUSTOM_FIELD_SELECTION_RESPONSE_DATA_TYPE_VALUES: set[WorkflowCustomFie
 
 
 def check_workflow_custom_field_selection_response_data_type(
-    value: str,
-) -> WorkflowCustomFieldSelectionResponseDataType:
+    value: str | None,
+) -> WorkflowCustomFieldSelectionResponseDataType | None:
+    if value is None:
+        return None
     if value in WORKFLOW_CUSTOM_FIELD_SELECTION_RESPONSE_DATA_TYPE_VALUES:
         return cast(WorkflowCustomFieldSelectionResponseDataType, value)
     raise TypeError(

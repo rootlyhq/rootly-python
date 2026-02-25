@@ -12,7 +12,9 @@ LIST_CATALOG_ENTITIES_SORT_VALUES: set[ListCatalogEntitiesSort] = {
 }
 
 
-def check_list_catalog_entities_sort(value: str) -> ListCatalogEntitiesSort:
+def check_list_catalog_entities_sort(value: str | None) -> ListCatalogEntitiesSort | None:
+    if value is None:
+        return None
     if value in LIST_CATALOG_ENTITIES_SORT_VALUES:
         return cast(ListCatalogEntitiesSort, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CATALOG_ENTITIES_SORT_VALUES!r}")

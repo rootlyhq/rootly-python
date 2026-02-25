@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.functionality_fields_type_0_item import FunctionalityFieldsType0Item
     from ..models.functionality_slack_aliases_type_0_item import FunctionalitySlackAliasesType0Item
     from ..models.functionality_slack_channels_type_0_item import FunctionalitySlackChannelsType0Item
 
@@ -43,6 +44,7 @@ class Functionality:
             this functionality
         slack_aliases (Union[None, Unset, list['FunctionalitySlackAliasesType0Item']]): Slack Aliases associated with
             this functionality
+        fields (Union[None, Unset, list['FunctionalityFieldsType0Item']]): Array of field values for this functionality.
     """
 
     name: str
@@ -67,6 +69,7 @@ class Functionality:
     owner_user_ids: Union[None, Unset, list[int]] = UNSET
     slack_channels: Union[None, Unset, list["FunctionalitySlackChannelsType0Item"]] = UNSET
     slack_aliases: Union[None, Unset, list["FunctionalitySlackAliasesType0Item"]] = UNSET
+    fields: Union[None, Unset, list["FunctionalityFieldsType0Item"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -213,6 +216,18 @@ class Functionality:
         else:
             slack_aliases = self.slack_aliases
 
+        fields: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.fields, Unset):
+            fields = UNSET
+        elif isinstance(self.fields, list):
+            fields = []
+            for fields_type_0_item_data in self.fields:
+                fields_type_0_item = fields_type_0_item_data.to_dict()
+                fields.append(fields_type_0_item)
+
+        else:
+            fields = self.fields
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -260,11 +275,14 @@ class Functionality:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
             field_dict["slack_aliases"] = slack_aliases
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.functionality_fields_type_0_item import FunctionalityFieldsType0Item
         from ..models.functionality_slack_aliases_type_0_item import FunctionalitySlackAliasesType0Item
         from ..models.functionality_slack_channels_type_0_item import FunctionalitySlackChannelsType0Item
 
@@ -509,6 +527,28 @@ class Functionality:
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
+        def _parse_fields(data: object) -> Union[None, Unset, list["FunctionalityFieldsType0Item"]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                fields_type_0 = []
+                _fields_type_0 = data
+                for fields_type_0_item_data in _fields_type_0:
+                    fields_type_0_item = FunctionalityFieldsType0Item.from_dict(fields_type_0_item_data)
+
+                    fields_type_0.append(fields_type_0_item)
+
+                return fields_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list["FunctionalityFieldsType0Item"]], data)
+
+        fields = _parse_fields(d.pop("fields", UNSET))
+
         functionality = cls(
             name=name,
             created_at=created_at,
@@ -532,6 +572,7 @@ class Functionality:
             owner_user_ids=owner_user_ids,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
+            fields=fields,
         )
 
         functionality.additional_properties = d

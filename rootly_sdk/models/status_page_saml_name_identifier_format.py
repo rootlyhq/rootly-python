@@ -15,7 +15,9 @@ STATUS_PAGE_SAML_NAME_IDENTIFIER_FORMAT_VALUES: set[StatusPageSamlNameIdentifier
 }
 
 
-def check_status_page_saml_name_identifier_format(value: str) -> StatusPageSamlNameIdentifierFormat:
+def check_status_page_saml_name_identifier_format(value: str | None) -> StatusPageSamlNameIdentifierFormat | None:
+    if value is None:
+        return None
     if value in STATUS_PAGE_SAML_NAME_IDENTIFIER_FORMAT_VALUES:
         return cast(StatusPageSamlNameIdentifierFormat, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_SAML_NAME_IDENTIFIER_FORMAT_VALUES!r}")

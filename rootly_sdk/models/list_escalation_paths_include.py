@@ -7,7 +7,9 @@ LIST_ESCALATION_PATHS_INCLUDE_VALUES: set[ListEscalationPathsInclude] = {
 }
 
 
-def check_list_escalation_paths_include(value: str) -> ListEscalationPathsInclude:
+def check_list_escalation_paths_include(value: str | None) -> ListEscalationPathsInclude | None:
+    if value is None:
+        return None
     if value in LIST_ESCALATION_PATHS_INCLUDE_VALUES:
         return cast(ListEscalationPathsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ESCALATION_PATHS_INCLUDE_VALUES!r}")

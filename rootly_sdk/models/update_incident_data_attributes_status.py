@@ -29,7 +29,9 @@ UPDATE_INCIDENT_DATA_ATTRIBUTES_STATUS_VALUES: set[UpdateIncidentDataAttributesS
 }
 
 
-def check_update_incident_data_attributes_status(value: str) -> UpdateIncidentDataAttributesStatus:
+def check_update_incident_data_attributes_status(value: str | None) -> UpdateIncidentDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(UpdateIncidentDataAttributesStatus, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_DATA_ATTRIBUTES_STATUS_VALUES!r}")

@@ -7,7 +7,9 @@ INCIDENT_PERMISSION_SET_RESPONSE_DATA_TYPE_VALUES: set[IncidentPermissionSetResp
 }
 
 
-def check_incident_permission_set_response_data_type(value: str) -> IncidentPermissionSetResponseDataType:
+def check_incident_permission_set_response_data_type(value: str | None) -> IncidentPermissionSetResponseDataType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_RESPONSE_DATA_TYPE_VALUES:
         return cast(IncidentPermissionSetResponseDataType, value)
     raise TypeError(

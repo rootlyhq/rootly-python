@@ -13,8 +13,10 @@ UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_update_on_call_role_data_attributes_webhooks_permissions_item(
-    value: str,
-) -> UpdateOnCallRoleDataAttributesWebhooksPermissionsItem:
+    value: str | None,
+) -> UpdateOnCallRoleDataAttributesWebhooksPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateOnCallRoleDataAttributesWebhooksPermissionsItem, value)
     raise TypeError(

@@ -25,6 +25,7 @@ NewAlertDataAttributesSource = Literal[
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -70,6 +71,7 @@ NEW_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES: set[NewAlertDataAttributesSource] = {
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -91,7 +93,9 @@ NEW_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES: set[NewAlertDataAttributesSource] = {
 }
 
 
-def check_new_alert_data_attributes_source(value: str) -> NewAlertDataAttributesSource:
+def check_new_alert_data_attributes_source(value: str | None) -> NewAlertDataAttributesSource | None:
+    if value is None:
+        return None
     if value in NEW_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES:
         return cast(NewAlertDataAttributesSource, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES!r}")

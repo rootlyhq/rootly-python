@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 WorkflowCustomFieldSelectionIncidentCondition = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES: set[WorkflowCustomFieldSelectionIncidentCondition] = {
@@ -10,6 +10,7 @@ WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES: set[WorkflowCustomFie
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -17,8 +18,10 @@ WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES: set[WorkflowCustomFie
 
 
 def check_workflow_custom_field_selection_incident_condition(
-    value: str,
-) -> WorkflowCustomFieldSelectionIncidentCondition:
+    value: str | None,
+) -> WorkflowCustomFieldSelectionIncidentCondition | None:
+    if value is None:
+        return None
     if value in WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES:
         return cast(WorkflowCustomFieldSelectionIncidentCondition, value)
     raise TypeError(

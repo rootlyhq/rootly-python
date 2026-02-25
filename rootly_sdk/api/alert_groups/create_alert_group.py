@@ -72,7 +72,9 @@ def sync_detailed(
 ) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Creates an alert group
 
-     Creates a new alert group
+     Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
+    using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         body (NewAlertGroup):
@@ -103,7 +105,9 @@ def sync(
 ) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Creates an alert group
 
-     Creates a new alert group
+     Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
+    using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         body (NewAlertGroup):
@@ -129,7 +133,9 @@ async def asyncio_detailed(
 ) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Creates an alert group
 
-     Creates a new alert group
+     Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
+    using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         body (NewAlertGroup):
@@ -158,7 +164,9 @@ async def asyncio(
 ) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Creates an alert group
 
-     Creates a new alert group
+     Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
+    using the advanced alert grouping with `conditions` field instead of the legacy
+    `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
         body (NewAlertGroup):

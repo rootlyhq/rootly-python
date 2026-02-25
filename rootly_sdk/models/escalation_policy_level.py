@@ -28,15 +28,16 @@ class EscalationPolicyLevel:
     """
     Attributes:
         escalation_policy_id (str): The ID of the escalation policy
-        delay (int): Delay before notification targets will be alerted.
+        delay (int): Delay before notifying targets in the next Escalation Level.
         position (int): Position of the escalation policy level
         notification_target_params (list[Union['EscalationPolicyLevelNotificationTargetParamsItemType0', None]]):
             Escalation level's notification targets
         escalation_policy_path_id (Union[None, Unset, str]): The ID of the dynamic escalation policy path the level will
             belong to. If nothing is specified it will add the level to your default path.
         paging_strategy_configuration_strategy (Union[Unset, EscalationPolicyLevelPagingStrategyConfigurationStrategy]):
+            Default: 'default'.
         paging_strategy_configuration_schedule_strategy (Union[Unset,
-            EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy]):
+            EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy]):  Default: 'on_call_only'.
         created_at (Union[Unset, str]): Date of creation
         updated_at (Union[Unset, str]): Date of last update
     """
@@ -47,11 +48,11 @@ class EscalationPolicyLevel:
     notification_target_params: list[Union["EscalationPolicyLevelNotificationTargetParamsItemType0", None]]
     escalation_policy_path_id: Union[None, Unset, str] = UNSET
     paging_strategy_configuration_strategy: Union[Unset, EscalationPolicyLevelPagingStrategyConfigurationStrategy] = (
-        UNSET
+        "default"
     )
     paging_strategy_configuration_schedule_strategy: Union[
         Unset, EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy
-    ] = UNSET
+    ] = "on_call_only"
     created_at: Union[Unset, str] = UNSET
     updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

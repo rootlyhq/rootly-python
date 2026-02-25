@@ -11,8 +11,10 @@ DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_FILTER_ITEM_OPERATION_VALUES: set[
 
 
 def check_dashboard_panel_params_datasets_item_filter_item_operation(
-    value: str,
-) -> DashboardPanelParamsDatasetsItemFilterItemOperation:
+    value: str | None,
+) -> DashboardPanelParamsDatasetsItemFilterItemOperation | None:
+    if value is None:
+        return None
     if value in DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_FILTER_ITEM_OPERATION_VALUES:
         return cast(DashboardPanelParamsDatasetsItemFilterItemOperation, value)
     raise TypeError(

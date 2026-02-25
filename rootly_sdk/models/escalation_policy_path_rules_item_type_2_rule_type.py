@@ -7,7 +7,9 @@ ESCALATION_POLICY_PATH_RULES_ITEM_TYPE_2_RULE_TYPE_VALUES: set[EscalationPolicyP
 }
 
 
-def check_escalation_policy_path_rules_item_type_2_rule_type(value: str) -> EscalationPolicyPathRulesItemType2RuleType:
+def check_escalation_policy_path_rules_item_type_2_rule_type(value: str | None) -> EscalationPolicyPathRulesItemType2RuleType | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_PATH_RULES_ITEM_TYPE_2_RULE_TYPE_VALUES:
         return cast(EscalationPolicyPathRulesItemType2RuleType, value)
     raise TypeError(

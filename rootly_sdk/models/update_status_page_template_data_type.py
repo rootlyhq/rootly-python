@@ -7,7 +7,9 @@ UPDATE_STATUS_PAGE_TEMPLATE_DATA_TYPE_VALUES: set[UpdateStatusPageTemplateDataTy
 }
 
 
-def check_update_status_page_template_data_type(value: str) -> UpdateStatusPageTemplateDataType:
+def check_update_status_page_template_data_type(value: str | None) -> UpdateStatusPageTemplateDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_STATUS_PAGE_TEMPLATE_DATA_TYPE_VALUES:
         return cast(UpdateStatusPageTemplateDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_STATUS_PAGE_TEMPLATE_DATA_TYPE_VALUES!r}")

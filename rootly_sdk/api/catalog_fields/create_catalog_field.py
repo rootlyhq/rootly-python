@@ -78,7 +78,7 @@ def sync_detailed(
 
     Args:
         catalog_id (str):
-        body (NewCatalogField):
+        body (NewCatalogField): A catalog can have a maximum of 50 fields.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,7 +112,7 @@ def sync(
 
     Args:
         catalog_id (str):
-        body (NewCatalogField):
+        body (NewCatalogField): A catalog can have a maximum of 50 fields.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,7 +141,7 @@ async def asyncio_detailed(
 
     Args:
         catalog_id (str):
-        body (NewCatalogField):
+        body (NewCatalogField): A catalog can have a maximum of 50 fields.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,7 +173,7 @@ async def asyncio(
 
     Args:
         catalog_id (str):
-        body (NewCatalogField):
+        body (NewCatalogField): A catalog can have a maximum of 50 fields.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -35,6 +35,8 @@ class NewFormFieldDataAttributes:
         show_on_incident_details (Union[Unset, bool]): Whether the form field is shown on the incident details panel
         enabled (Union[Unset, bool]): Whether the form field is enabled
         default_values (Union[Unset, list[str]]):
+        auto_set_by_catalog_field_id (Union[None, Unset, str]): Catalog field ID to auto-set this form field. Only
+            reference-kind catalog fields are supported.
     """
 
     kind: NewFormFieldDataAttributesKind
@@ -48,6 +50,7 @@ class NewFormFieldDataAttributes:
     show_on_incident_details: Union[Unset, bool] = UNSET
     enabled: Union[Unset, bool] = UNSET
     default_values: Union[Unset, list[str]] = UNSET
+    auto_set_by_catalog_field_id: Union[None, Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         kind: str = self.kind
@@ -90,6 +93,12 @@ class NewFormFieldDataAttributes:
         if not isinstance(self.default_values, Unset):
             default_values = self.default_values
 
+        auto_set_by_catalog_field_id: Union[None, Unset, str]
+        if isinstance(self.auto_set_by_catalog_field_id, Unset):
+            auto_set_by_catalog_field_id = UNSET
+        else:
+            auto_set_by_catalog_field_id = self.auto_set_by_catalog_field_id
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -116,6 +125,8 @@ class NewFormFieldDataAttributes:
             field_dict["enabled"] = enabled
         if default_values is not UNSET:
             field_dict["default_values"] = default_values
+        if auto_set_by_catalog_field_id is not UNSET:
+            field_dict["auto_set_by_catalog_field_id"] = auto_set_by_catalog_field_id
 
         return field_dict
 
@@ -168,6 +179,15 @@ class NewFormFieldDataAttributes:
 
         default_values = cast(list[str], d.pop("default_values", UNSET))
 
+        def _parse_auto_set_by_catalog_field_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        auto_set_by_catalog_field_id = _parse_auto_set_by_catalog_field_id(d.pop("auto_set_by_catalog_field_id", UNSET))
+
         new_form_field_data_attributes = cls(
             kind=kind,
             name=name,
@@ -180,6 +200,7 @@ class NewFormFieldDataAttributes:
             show_on_incident_details=show_on_incident_details,
             enabled=enabled,
             default_values=default_values,
+            auto_set_by_catalog_field_id=auto_set_by_catalog_field_id,
         )
 
         return new_form_field_data_attributes

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..models.update_service_data_attributes_alert_broadcast_channel_type_0 import (
         UpdateServiceDataAttributesAlertBroadcastChannelType0,
     )
+    from ..models.update_service_data_attributes_fields_item import UpdateServiceDataAttributesFieldsItem
     from ..models.update_service_data_attributes_incident_broadcast_channel_type_0 import (
         UpdateServiceDataAttributesIncidentBroadcastChannelType0,
     )
@@ -67,6 +68,7 @@ class UpdateServiceDataAttributes:
         incident_broadcast_enabled (Union[None, Unset, bool]): Enable incidents to be broadcasted to a specific channel
         incident_broadcast_channel (Union['UpdateServiceDataAttributesIncidentBroadcastChannelType0', None, Unset]):
             Slack channel to broadcast incidents to
+        fields (Union[Unset, list['UpdateServiceDataAttributesFieldsItem']]): Array of field values for this service.
     """
 
     name: Union[Unset, str] = UNSET
@@ -99,6 +101,7 @@ class UpdateServiceDataAttributes:
     alert_broadcast_channel: Union["UpdateServiceDataAttributesAlertBroadcastChannelType0", None, Unset] = UNSET
     incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
     incident_broadcast_channel: Union["UpdateServiceDataAttributesIncidentBroadcastChannelType0", None, Unset] = UNSET
+    fields: Union[Unset, list["UpdateServiceDataAttributesFieldsItem"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_service_data_attributes_alert_broadcast_channel_type_0 import (
@@ -315,6 +318,13 @@ class UpdateServiceDataAttributes:
         else:
             incident_broadcast_channel = self.incident_broadcast_channel
 
+        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fields, Unset):
+            fields = []
+            for fields_item_data in self.fields:
+                fields_item = fields_item_data.to_dict()
+                fields.append(fields_item)
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -378,6 +388,8 @@ class UpdateServiceDataAttributes:
             field_dict["incident_broadcast_enabled"] = incident_broadcast_enabled
         if incident_broadcast_channel is not UNSET:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
@@ -386,6 +398,7 @@ class UpdateServiceDataAttributes:
         from ..models.update_service_data_attributes_alert_broadcast_channel_type_0 import (
             UpdateServiceDataAttributesAlertBroadcastChannelType0,
         )
+        from ..models.update_service_data_attributes_fields_item import UpdateServiceDataAttributesFieldsItem
         from ..models.update_service_data_attributes_incident_broadcast_channel_type_0 import (
             UpdateServiceDataAttributesIncidentBroadcastChannelType0,
         )
@@ -756,6 +769,13 @@ class UpdateServiceDataAttributes:
 
         incident_broadcast_channel = _parse_incident_broadcast_channel(d.pop("incident_broadcast_channel", UNSET))
 
+        fields = []
+        _fields = d.pop("fields", UNSET)
+        for fields_item_data in _fields or []:
+            fields_item = UpdateServiceDataAttributesFieldsItem.from_dict(fields_item_data)
+
+            fields.append(fields_item)
+
         update_service_data_attributes = cls(
             name=name,
             description=description,
@@ -787,6 +807,7 @@ class UpdateServiceDataAttributes:
             alert_broadcast_channel=alert_broadcast_channel,
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
+            fields=fields,
         )
 
         return update_service_data_attributes

@@ -74,7 +74,8 @@ def sync_detailed(
 ) -> Response[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
-     Creates a new override shift from provided data
+     Creates a new override shift from provided data. If any existing override shifts overlap with the
+    specified time range, they will be automatically deleted and replaced by the new override.
 
     Args:
         schedule_id (str):
@@ -108,7 +109,8 @@ def sync(
 ) -> Optional[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
-     Creates a new override shift from provided data
+     Creates a new override shift from provided data. If any existing override shifts overlap with the
+    specified time range, they will be automatically deleted and replaced by the new override.
 
     Args:
         schedule_id (str):
@@ -137,7 +139,8 @@ async def asyncio_detailed(
 ) -> Response[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
-     Creates a new override shift from provided data
+     Creates a new override shift from provided data. If any existing override shifts overlap with the
+    specified time range, they will be automatically deleted and replaced by the new override.
 
     Args:
         schedule_id (str):
@@ -169,7 +172,8 @@ async def asyncio(
 ) -> Optional[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
-     Creates a new override shift from provided data
+     Creates a new override shift from provided data. If any existing override shifts overlap with the
+    specified time range, they will be automatically deleted and replaced by the new override.
 
     Args:
         schedule_id (str):

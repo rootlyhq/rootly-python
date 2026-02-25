@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 IncidentTriggerParamsIncidentConditionFunctionality = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_FUNCTIONALITY_VALUES: set[
@@ -12,6 +12,7 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_FUNCTIONALITY_VALUES: set[
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -19,8 +20,10 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_FUNCTIONALITY_VALUES: set[
 
 
 def check_incident_trigger_params_incident_condition_functionality(
-    value: str,
-) -> IncidentTriggerParamsIncidentConditionFunctionality:
+    value: str | None,
+) -> IncidentTriggerParamsIncidentConditionFunctionality | None:
+    if value is None:
+        return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_FUNCTIONALITY_VALUES:
         return cast(IncidentTriggerParamsIncidentConditionFunctionality, value)
     raise TypeError(

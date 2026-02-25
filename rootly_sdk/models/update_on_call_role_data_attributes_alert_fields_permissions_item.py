@@ -13,8 +13,10 @@ UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_ALERT_FIELDS_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_update_on_call_role_data_attributes_alert_fields_permissions_item(
-    value: str,
-) -> UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem:
+    value: str | None,
+) -> UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ON_CALL_ROLE_DATA_ATTRIBUTES_ALERT_FIELDS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem, value)
     raise TypeError(

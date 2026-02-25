@@ -10,7 +10,7 @@ T = TypeVar("T", bound="RetrospectiveProcessRetrospectiveProcessMatchingCriteria
 class RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2:
     """
     Attributes:
-        incident_type_ids (list[str]): Incident type ID's for retrospective process matching criteria
+        incident_type_ids (list[str]): Incident type IDs for retrospective process matching criteria
     """
 
     incident_type_ids: list[str]

@@ -12,7 +12,9 @@ LIST_WORKFLOWS_SORT_VALUES: set[ListWorkflowsSort] = {
 }
 
 
-def check_list_workflows_sort(value: str) -> ListWorkflowsSort:
+def check_list_workflows_sort(value: str | None) -> ListWorkflowsSort | None:
+    if value is None:
+        return None
     if value in LIST_WORKFLOWS_SORT_VALUES:
         return cast(ListWorkflowsSort, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_WORKFLOWS_SORT_VALUES!r}")

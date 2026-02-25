@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,7 +9,6 @@ from ..models.update_alert_route_data_attributes_rules_item_destinations_item_ta
     UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType,
     check_update_alert_route_data_attributes_rules_item_destinations_item_target_type,
 )
-from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UpdateAlertRouteDataAttributesRulesItemDestinationsItem")
 
@@ -20,22 +19,16 @@ class UpdateAlertRouteDataAttributesRulesItemDestinationsItem:
     Attributes:
         target_type (UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType): The type of the target
         target_id (UUID): The ID of the target
-        id (Union[Unset, UUID]): The ID of the target (for updates)
     """
 
     target_type: UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType
     target_id: UUID
-    id: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         target_type: str = self.target_type
 
         target_id = str(self.target_id)
-
-        id: Union[Unset, str] = UNSET
-        if not isinstance(self.id, Unset):
-            id = str(self.id)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -45,8 +38,6 @@ class UpdateAlertRouteDataAttributesRulesItemDestinationsItem:
                 "target_id": target_id,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
 
         return field_dict
 
@@ -59,17 +50,9 @@ class UpdateAlertRouteDataAttributesRulesItemDestinationsItem:
 
         target_id = UUID(d.pop("target_id"))
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = UUID(_id)
-
         update_alert_route_data_attributes_rules_item_destinations_item = cls(
             target_type=target_type,
             target_id=target_id,
-            id=id,
         )
 
         update_alert_route_data_attributes_rules_item_destinations_item.additional_properties = d

@@ -11,8 +11,10 @@ UPDATE_ROLE_DATA_ATTRIBUTES_WORKFLOWS_PERMISSIONS_ITEM_VALUES: set[UpdateRoleDat
 
 
 def check_update_role_data_attributes_workflows_permissions_item(
-    value: str,
-) -> UpdateRoleDataAttributesWorkflowsPermissionsItem:
+    value: str | None,
+) -> UpdateRoleDataAttributesWorkflowsPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_WORKFLOWS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateRoleDataAttributesWorkflowsPermissionsItem, value)
     raise TypeError(

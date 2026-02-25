@@ -17,6 +17,7 @@ def _get_kwargs(
     filtersearch: Union[Unset, str] = UNSET,
     filterstatuses: Union[Unset, str] = UNSET,
     filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
     sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -32,6 +33,8 @@ def _get_kwargs(
     params["filter[statuses]"] = filterstatuses
 
     params["filter[source_types]"] = filtersource_types
+
+    params["filter[name]"] = filtername
 
     params["sort"] = sort
 
@@ -80,6 +83,7 @@ def sync_detailed(
     filtersearch: Union[Unset, str] = UNSET,
     filterstatuses: Union[Unset, str] = UNSET,
     filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
     sort: Union[Unset, str] = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
@@ -93,6 +97,7 @@ def sync_detailed(
         filtersearch (Union[Unset, str]):
         filterstatuses (Union[Unset, str]):
         filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
         sort (Union[Unset, str]):
 
     Raises:
@@ -110,6 +115,7 @@ def sync_detailed(
         filtersearch=filtersearch,
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
+        filtername=filtername,
         sort=sort,
     )
 
@@ -129,6 +135,7 @@ def sync(
     filtersearch: Union[Unset, str] = UNSET,
     filterstatuses: Union[Unset, str] = UNSET,
     filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
     sort: Union[Unset, str] = UNSET,
 ) -> Optional[AlertsSourceList]:
     """List alert sources
@@ -142,6 +149,7 @@ def sync(
         filtersearch (Union[Unset, str]):
         filterstatuses (Union[Unset, str]):
         filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
         sort (Union[Unset, str]):
 
     Raises:
@@ -160,6 +168,7 @@ def sync(
         filtersearch=filtersearch,
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
+        filtername=filtername,
         sort=sort,
     ).parsed
 
@@ -173,6 +182,7 @@ async def asyncio_detailed(
     filtersearch: Union[Unset, str] = UNSET,
     filterstatuses: Union[Unset, str] = UNSET,
     filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
     sort: Union[Unset, str] = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
@@ -186,6 +196,7 @@ async def asyncio_detailed(
         filtersearch (Union[Unset, str]):
         filterstatuses (Union[Unset, str]):
         filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
         sort (Union[Unset, str]):
 
     Raises:
@@ -203,6 +214,7 @@ async def asyncio_detailed(
         filtersearch=filtersearch,
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
+        filtername=filtername,
         sort=sort,
     )
 
@@ -220,6 +232,7 @@ async def asyncio(
     filtersearch: Union[Unset, str] = UNSET,
     filterstatuses: Union[Unset, str] = UNSET,
     filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
     sort: Union[Unset, str] = UNSET,
 ) -> Optional[AlertsSourceList]:
     """List alert sources
@@ -233,6 +246,7 @@ async def asyncio(
         filtersearch (Union[Unset, str]):
         filterstatuses (Union[Unset, str]):
         filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
         sort (Union[Unset, str]):
 
     Raises:
@@ -252,6 +266,7 @@ async def asyncio(
             filtersearch=filtersearch,
             filterstatuses=filterstatuses,
             filtersource_types=filtersource_types,
+            filtername=filtername,
             sort=sort,
         )
     ).parsed

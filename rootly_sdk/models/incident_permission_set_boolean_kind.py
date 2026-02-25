@@ -31,7 +31,9 @@ INCIDENT_PERMISSION_SET_BOOLEAN_KIND_VALUES: set[IncidentPermissionSetBooleanKin
 }
 
 
-def check_incident_permission_set_boolean_kind(value: str) -> IncidentPermissionSetBooleanKind:
+def check_incident_permission_set_boolean_kind(value: str | None) -> IncidentPermissionSetBooleanKind | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_BOOLEAN_KIND_VALUES:
         return cast(IncidentPermissionSetBooleanKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_PERMISSION_SET_BOOLEAN_KIND_VALUES!r}")

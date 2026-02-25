@@ -13,8 +13,10 @@ PAGE_OPSGENIE_ON_CALL_RESPONDERS_TASK_PARAMS_PRIORITY_VALUES: set[PageOpsgenieOn
 
 
 def check_page_opsgenie_on_call_responders_task_params_priority(
-    value: str,
-) -> PageOpsgenieOnCallRespondersTaskParamsPriority:
+    value: str | None,
+) -> PageOpsgenieOnCallRespondersTaskParamsPriority | None:
+    if value is None:
+        return None
     if value in PAGE_OPSGENIE_ON_CALL_RESPONDERS_TASK_PARAMS_PRIORITY_VALUES:
         return cast(PageOpsgenieOnCallRespondersTaskParamsPriority, value)
     raise TypeError(

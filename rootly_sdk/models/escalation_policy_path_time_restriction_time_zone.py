@@ -65,7 +65,6 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -147,7 +146,6 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -197,7 +195,6 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -248,7 +245,6 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -357,7 +353,6 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -439,7 +434,6 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -489,7 +483,6 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -540,7 +533,6 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -585,7 +577,9 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
 }
 
 
-def check_escalation_policy_path_time_restriction_time_zone(value: str) -> EscalationPolicyPathTimeRestrictionTimeZone:
+def check_escalation_policy_path_time_restriction_time_zone(value: str | None) -> EscalationPolicyPathTimeRestrictionTimeZone | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES:
         return cast(EscalationPolicyPathTimeRestrictionTimeZone, value)
     raise TypeError(

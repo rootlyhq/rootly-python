@@ -67,7 +67,9 @@ UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES: set[UpdateFormFieldDataAttributes
 }
 
 
-def check_update_form_field_data_attributes_kind(value: str) -> UpdateFormFieldDataAttributesKind:
+def check_update_form_field_data_attributes_kind(value: str | None) -> UpdateFormFieldDataAttributesKind | None:
+    if value is None:
+        return None
     if value in UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(UpdateFormFieldDataAttributesKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES!r}")

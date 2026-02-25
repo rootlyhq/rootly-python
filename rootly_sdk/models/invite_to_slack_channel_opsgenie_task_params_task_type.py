@@ -8,8 +8,10 @@ INVITE_TO_SLACK_CHANNEL_OPSGENIE_TASK_PARAMS_TASK_TYPE_VALUES: set[InviteToSlack
 
 
 def check_invite_to_slack_channel_opsgenie_task_params_task_type(
-    value: str,
-) -> InviteToSlackChannelOpsgenieTaskParamsTaskType:
+    value: str | None,
+) -> InviteToSlackChannelOpsgenieTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in INVITE_TO_SLACK_CHANNEL_OPSGENIE_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(InviteToSlackChannelOpsgenieTaskParamsTaskType, value)
     raise TypeError(

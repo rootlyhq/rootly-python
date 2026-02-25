@@ -9,7 +9,9 @@ ALERT_ROUTING_RULE_TARGET_TYPE_0_TARGET_TYPE_VALUES: set[AlertRoutingRuleTargetT
 }
 
 
-def check_alert_routing_rule_target_type_0_target_type(value: str) -> AlertRoutingRuleTargetType0TargetType:
+def check_alert_routing_rule_target_type_0_target_type(value: str | None) -> AlertRoutingRuleTargetType0TargetType | None:
+    if value is None:
+        return None
     if value in ALERT_ROUTING_RULE_TARGET_TYPE_0_TARGET_TYPE_VALUES:
         return cast(AlertRoutingRuleTargetType0TargetType, value)
     raise TypeError(

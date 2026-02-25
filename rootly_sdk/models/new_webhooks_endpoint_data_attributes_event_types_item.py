@@ -66,8 +66,10 @@ NEW_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES: set[NewWebhooksEn
 
 
 def check_new_webhooks_endpoint_data_attributes_event_types_item(
-    value: str,
-) -> NewWebhooksEndpointDataAttributesEventTypesItem:
+    value: str | None,
+) -> NewWebhooksEndpointDataAttributesEventTypesItem | None:
+    if value is None:
+        return None
     if value in NEW_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES:
         return cast(NewWebhooksEndpointDataAttributesEventTypesItem, value)
     raise TypeError(

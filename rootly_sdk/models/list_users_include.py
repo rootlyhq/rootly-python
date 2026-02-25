@@ -16,7 +16,9 @@ LIST_USERS_INCLUDE_VALUES: set[ListUsersInclude] = {
 }
 
 
-def check_list_users_include(value: str) -> ListUsersInclude:
+def check_list_users_include(value: str | None) -> ListUsersInclude | None:
+    if value is None:
+        return None
     if value in LIST_USERS_INCLUDE_VALUES:
         return cast(ListUsersInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_USERS_INCLUDE_VALUES!r}")

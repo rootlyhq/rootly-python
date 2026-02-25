@@ -39,7 +39,9 @@ GET_INCIDENT_INCLUDE_VALUES: set[GetIncidentInclude] = {
 }
 
 
-def check_get_incident_include(value: str) -> GetIncidentInclude:
+def check_get_incident_include(value: str | None) -> GetIncidentInclude | None:
+    if value is None:
+        return None
     if value in GET_INCIDENT_INCLUDE_VALUES:
         return cast(GetIncidentInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_INCIDENT_INCLUDE_VALUES!r}")

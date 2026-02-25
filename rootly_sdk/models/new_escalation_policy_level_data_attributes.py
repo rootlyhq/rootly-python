@@ -30,11 +30,11 @@ class NewEscalationPolicyLevelDataAttributes:
         notification_target_params
             (list[Union['NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0', None]]): Escalation
             level's notification targets
-        delay (Union[Unset, int]): Delay before notification targets will be alerted.
+        delay (Union[Unset, int]): Delay before notifying targets in the next Escalation Level.
         paging_strategy_configuration_strategy (Union[Unset,
-            NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy]):
+            NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy]):  Default: 'default'.
         paging_strategy_configuration_schedule_strategy (Union[Unset,
-            NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy]):
+            NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy]):  Default: 'on_call_only'.
         escalation_policy_path_id (Union[None, Unset, str]): The ID of the dynamic escalation policy path the level will
             belong to. If nothing is specified it will add the level to your default path.
     """
@@ -46,10 +46,10 @@ class NewEscalationPolicyLevelDataAttributes:
     delay: Union[Unset, int] = UNSET
     paging_strategy_configuration_strategy: Union[
         Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
-    ] = UNSET
+    ] = "default"
     paging_strategy_configuration_schedule_strategy: Union[
         Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
-    ] = UNSET
+    ] = "on_call_only"
     escalation_policy_path_id: Union[None, Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:

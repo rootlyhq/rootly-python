@@ -13,7 +13,8 @@ T = TypeVar("T", bound="NewCatalogField")
 
 @_attrs_define
 class NewCatalogField:
-    """
+    """A catalog can have a maximum of 50 fields.
+
     Attributes:
         data (NewCatalogFieldData):
     """

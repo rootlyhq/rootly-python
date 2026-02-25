@@ -11,8 +11,10 @@ UPDATE_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_STATUS_VALUES: set[UpdateIncidentAct
 
 
 def check_update_incident_action_item_data_attributes_status(
-    value: str,
-) -> UpdateIncidentActionItemDataAttributesStatus:
+    value: str | None,
+) -> UpdateIncidentActionItemDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(UpdateIncidentActionItemDataAttributesStatus, value)
     raise TypeError(

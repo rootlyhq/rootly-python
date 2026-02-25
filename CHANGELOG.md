@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-02-25
+
+### Fixed
+- Nullable enum properties now correctly handle `null` values from the API ([#1405](https://github.com/openapi-generators/openapi-python-client/issues/1405))
+  - Added post-generation fix script (`tools/fix_nullable_enums.py`) to patch enum check functions
+  - Resolves `TypeError: Unexpected value None` when API returns null for nullable enum fields like `conditionable_type`
+
+### Added
+- New incident list filters: `filter[functionality_names]`, `filter[service_names]`, `filter[team_names]`
+- New workflow task types:
+  - `AddMicrosoftTeamsChatTabTaskParams` - Add tabs to Microsoft Teams chats
+  - `SendMicrosoftTeamsChatMessageTaskParams` - Send messages to Microsoft Teams chats
+  - `UpdateConfluencePageTaskParams` - Update Confluence pages
+  - `UpdateDatadogNotebookTaskParams` - Update Datadog notebooks
+  - `UpdateDropboxPaperPageTaskParams` - Update Dropbox Paper pages
+  - `UpdateQuipPageTaskParams` - Update Quip pages
+  - `UpdateSharepointPageTaskParams` - Update SharePoint pages
+- Alert route and alert group endpoint enhancements
+
+### Changed
+- Regenerated client from latest OpenAPI specification
+- Updated Makefile to automatically apply nullable enum fix after regeneration
+
+### Deprecated
+- Catalog Entity Property endpoints - use `fields` attribute on catalog entities or native catalog endpoints instead
+
 ## [1.1.0] - 2025-12-18
 
 ### Added

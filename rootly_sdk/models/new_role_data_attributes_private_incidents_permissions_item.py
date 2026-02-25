@@ -13,8 +13,10 @@ NEW_ROLE_DATA_ATTRIBUTES_PRIVATE_INCIDENTS_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_new_role_data_attributes_private_incidents_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesPrivateIncidentsPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesPrivateIncidentsPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_PRIVATE_INCIDENTS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesPrivateIncidentsPermissionsItem, value)
     raise TypeError(

@@ -29,7 +29,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         property_field_condition_type
             (UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType):
         property_field_type (UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType):
-        id (Union[Unset, UUID]): The ID of the condition (for updates)
         property_field_name (Union[Unset, str]): The name of the property field
         property_field_value (Union[None, Unset, str]): The value of the property field
         property_field_values (Union[None, Unset, list[str]]):
@@ -44,7 +43,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType
     )
     property_field_type: UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType
-    id: Union[Unset, UUID] = UNSET
     property_field_name: Union[Unset, str] = UNSET
     property_field_value: Union[None, Unset, str] = UNSET
     property_field_values: Union[None, Unset, list[str]] = UNSET
@@ -59,10 +57,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         property_field_condition_type: str = self.property_field_condition_type
 
         property_field_type: str = self.property_field_type
-
-        id: Union[Unset, str] = UNSET
-        if not isinstance(self.id, Unset):
-            id = str(self.id)
 
         property_field_name = self.property_field_name
 
@@ -110,8 +104,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 "property_field_type": property_field_type,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if property_field_name is not UNSET:
             field_dict["property_field_name"] = property_field_name
         if property_field_value is not UNSET:
@@ -137,13 +129,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         property_field_type = check_update_alert_route_data_attributes_rules_item_condition_groups_item_conditions_item_property_field_type(
             d.pop("property_field_type")
         )
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = UUID(_id)
 
         property_field_name = d.pop("property_field_name", UNSET)
 
@@ -221,7 +206,6 @@ class UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         update_alert_route_data_attributes_rules_item_condition_groups_item_conditions_item = cls(
             property_field_condition_type=property_field_condition_type,
             property_field_type=property_field_type,
-            id=id,
             property_field_name=property_field_name,
             property_field_value=property_field_value,
             property_field_values=property_field_values,

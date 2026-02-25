@@ -28,8 +28,10 @@ ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES: set[
 
 
 def check_alert_group_conditions_item_property_field_condition_type(
-    value: str,
-) -> AlertGroupConditionsItemPropertyFieldConditionType:
+    value: str | None,
+) -> AlertGroupConditionsItemPropertyFieldConditionType | None:
+    if value is None:
+        return None
     if value in ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
         return cast(AlertGroupConditionsItemPropertyFieldConditionType, value)
     raise TypeError(

@@ -13,8 +13,10 @@ NEW_ON_CALL_ROLE_DATA_ATTRIBUTES_ALERT_SOURCES_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_new_on_call_role_data_attributes_alert_sources_permissions_item(
-    value: str,
-) -> NewOnCallRoleDataAttributesAlertSourcesPermissionsItem:
+    value: str | None,
+) -> NewOnCallRoleDataAttributesAlertSourcesPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ON_CALL_ROLE_DATA_ATTRIBUTES_ALERT_SOURCES_PERMISSIONS_ITEM_VALUES:
         return cast(NewOnCallRoleDataAttributesAlertSourcesPermissionsItem, value)
     raise TypeError(

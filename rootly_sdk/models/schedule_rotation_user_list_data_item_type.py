@@ -7,7 +7,9 @@ SCHEDULE_ROTATION_USER_LIST_DATA_ITEM_TYPE_VALUES: set[ScheduleRotationUserListD
 }
 
 
-def check_schedule_rotation_user_list_data_item_type(value: str) -> ScheduleRotationUserListDataItemType:
+def check_schedule_rotation_user_list_data_item_type(value: str | None) -> ScheduleRotationUserListDataItemType | None:
+    if value is None:
+        return None
     if value in SCHEDULE_ROTATION_USER_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(ScheduleRotationUserListDataItemType, value)
     raise TypeError(

@@ -7,7 +7,9 @@ RETROSPECTIVE_CONFIGURATION_RESPONSE_DATA_TYPE_VALUES: set[RetrospectiveConfigur
 }
 
 
-def check_retrospective_configuration_response_data_type(value: str) -> RetrospectiveConfigurationResponseDataType:
+def check_retrospective_configuration_response_data_type(value: str | None) -> RetrospectiveConfigurationResponseDataType | None:
+    if value is None:
+        return None
     if value in RETROSPECTIVE_CONFIGURATION_RESPONSE_DATA_TYPE_VALUES:
         return cast(RetrospectiveConfigurationResponseDataType, value)
     raise TypeError(

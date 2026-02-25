@@ -16,8 +16,10 @@ NEW_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_VALUES: set[NewIncidentSta
 
 
 def check_new_incident_status_page_event_data_attributes_status(
-    value: str,
-) -> NewIncidentStatusPageEventDataAttributesStatus:
+    value: str | None,
+) -> NewIncidentStatusPageEventDataAttributesStatus | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_VALUES:
         return cast(NewIncidentStatusPageEventDataAttributesStatus, value)
     raise TypeError(

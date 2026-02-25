@@ -21,7 +21,9 @@ LIVE_CALL_ROUTER_WAITING_MUSIC_URL_VALUES: set[LiveCallRouterWaitingMusicUrl] = 
 }
 
 
-def check_live_call_router_waiting_music_url(value: str) -> LiveCallRouterWaitingMusicUrl:
+def check_live_call_router_waiting_music_url(value: str | None) -> LiveCallRouterWaitingMusicUrl | None:
+    if value is None:
+        return None
     if value in LIVE_CALL_ROUTER_WAITING_MUSIC_URL_VALUES:
         return cast(LiveCallRouterWaitingMusicUrl, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIVE_CALL_ROUTER_WAITING_MUSIC_URL_VALUES!r}")

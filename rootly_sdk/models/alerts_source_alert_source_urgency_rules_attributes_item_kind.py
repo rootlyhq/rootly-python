@@ -11,8 +11,10 @@ ALERTS_SOURCE_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_KIND_VALUES: set[
 
 
 def check_alerts_source_alert_source_urgency_rules_attributes_item_kind(
-    value: str,
-) -> AlertsSourceAlertSourceUrgencyRulesAttributesItemKind:
+    value: str | None,
+) -> AlertsSourceAlertSourceUrgencyRulesAttributesItemKind | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_KIND_VALUES:
         return cast(AlertsSourceAlertSourceUrgencyRulesAttributesItemKind, value)
     raise TypeError(

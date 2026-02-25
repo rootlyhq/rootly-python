@@ -29,7 +29,6 @@ class NewWorkflowDataAttributes:
     """
     Attributes:
         name (str): The title of the workflow
-        slug (Union[Unset, str]): The slug of the workflow
         description (Union[None, Unset, str]): The description of the workflow
         command (Union[None, Unset, str]): Workflow command
         command_feedback_enabled (Union[None, Unset, bool]): This will notify you back when the workflow is starting
@@ -62,7 +61,6 @@ class NewWorkflowDataAttributes:
     """
 
     name: str
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     command: Union[None, Unset, str] = UNSET
     command_feedback_enabled: Union[None, Unset, bool] = UNSET
@@ -102,8 +100,6 @@ class NewWorkflowDataAttributes:
         from ..models.pulse_trigger_params import PulseTriggerParams
 
         name = self.name
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -225,8 +221,6 @@ class NewWorkflowDataAttributes:
                 "name": name,
             }
         )
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if command is not UNSET:
@@ -288,8 +282,6 @@ class NewWorkflowDataAttributes:
 
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -452,7 +444,6 @@ class NewWorkflowDataAttributes:
 
         new_workflow_data_attributes = cls(
             name=name,
-            slug=slug,
             description=description,
             command=command,
             command_feedback_enabled=command_feedback_enabled,

@@ -79,9 +79,9 @@ class Role:
     """
     Attributes:
         name (str): The role name.
-        slug (str): The role slug.
         created_at (str):
         updated_at (str):
+        slug (Union[Unset, str]): The role slug.
         incident_permission_set_id (Union[None, Unset, str]): Associated incident permissions set.
         is_deletable (Union[Unset, bool]): Whether the role can be deleted.
         is_editable (Union[Unset, bool]): Whether the role can be edited.
@@ -114,9 +114,9 @@ class Role:
     """
 
     name: str
-    slug: str
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     incident_permission_set_id: Union[None, Unset, str] = UNSET
     is_deletable: Union[Unset, bool] = UNSET
     is_editable: Union[Unset, bool] = UNSET
@@ -151,11 +151,11 @@ class Role:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         incident_permission_set_id: Union[None, Unset, str]
         if isinstance(self.incident_permission_set_id, Unset):
@@ -354,11 +354,12 @@ class Role:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if incident_permission_set_id is not UNSET:
             field_dict["incident_permission_set_id"] = incident_permission_set_id
         if is_deletable is not UNSET:
@@ -425,11 +426,11 @@ class Role:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_incident_permission_set_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -642,9 +643,9 @@ class Role:
 
         role = cls(
             name=name,
-            slug=slug,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             incident_permission_set_id=incident_permission_set_id,
             is_deletable=is_deletable,
             is_editable=is_editable,

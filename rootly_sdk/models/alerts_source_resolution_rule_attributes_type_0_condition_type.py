@@ -11,8 +11,10 @@ ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITION_TYPE_VALUES: set[
 
 
 def check_alerts_source_resolution_rule_attributes_type_0_condition_type(
-    value: str,
-) -> AlertsSourceResolutionRuleAttributesType0ConditionType:
+    value: str | None,
+) -> AlertsSourceResolutionRuleAttributesType0ConditionType | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITION_TYPE_VALUES:
         return cast(AlertsSourceResolutionRuleAttributesType0ConditionType, value)
     raise TypeError(

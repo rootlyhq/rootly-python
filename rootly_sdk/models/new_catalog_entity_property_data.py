@@ -21,7 +21,7 @@ class NewCatalogEntityPropertyData:
     """
     Attributes:
         type_ (NewCatalogEntityPropertyDataType):
-        attributes (NewCatalogEntityPropertyDataAttributes):
+        attributes (NewCatalogEntityPropertyDataAttributes): Maximum of 50 values allowed per catalog field.
     """
 
     type_: NewCatalogEntityPropertyDataType

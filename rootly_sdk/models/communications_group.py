@@ -27,7 +27,6 @@ class CommunicationsGroup:
     """
     Attributes:
         name (str): The name of the communications group
-        slug (str): The slug of the communications group
         communication_type_id (str): The communication type ID
         is_private (bool): Whether the group is private
         condition_type (CommunicationsGroupConditionType): Condition type
@@ -35,6 +34,7 @@ class CommunicationsGroup:
         email_channel (bool): Email channel enabled
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        slug (Union[Unset, str]): The slug of the communications group
         description (Union[None, Unset, str]): The description of the communications group
         communication_group_conditions (Union[None, Unset,
             list['CommunicationsGroupCommunicationGroupConditionsType0Item']]): Group conditions attributes
@@ -45,7 +45,6 @@ class CommunicationsGroup:
     """
 
     name: str
-    slug: str
     communication_type_id: str
     is_private: bool
     condition_type: CommunicationsGroupConditionType
@@ -53,6 +52,7 @@ class CommunicationsGroup:
     email_channel: bool
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     communication_group_conditions: Union[
         None, Unset, list["CommunicationsGroupCommunicationGroupConditionsType0Item"]
@@ -67,8 +67,6 @@ class CommunicationsGroup:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         communication_type_id = self.communication_type_id
 
         is_private = self.is_private
@@ -82,6 +80,8 @@ class CommunicationsGroup:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -138,7 +138,6 @@ class CommunicationsGroup:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "communication_type_id": communication_type_id,
                 "is_private": is_private,
                 "condition_type": condition_type,
@@ -148,6 +147,8 @@ class CommunicationsGroup:
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if communication_group_conditions is not UNSET:
@@ -173,8 +174,6 @@ class CommunicationsGroup:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         communication_type_id = d.pop("communication_type_id")
 
         is_private = d.pop("is_private")
@@ -188,6 +187,8 @@ class CommunicationsGroup:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -296,7 +297,6 @@ class CommunicationsGroup:
 
         communications_group = cls(
             name=name,
-            slug=slug,
             communication_type_id=communication_type_id,
             is_private=is_private,
             condition_type=condition_type,
@@ -304,6 +304,7 @@ class CommunicationsGroup:
             email_channel=email_channel,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
             communication_group_conditions=communication_group_conditions,
             member_ids=member_ids,

@@ -7,7 +7,9 @@ CREATE_SHORTCUT_TASK_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateShortcutTaskTaskPar
 }
 
 
-def check_create_shortcut_task_task_params_task_type(value: str) -> CreateShortcutTaskTaskParamsTaskType:
+def check_create_shortcut_task_task_params_task_type(value: str | None) -> CreateShortcutTaskTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_SHORTCUT_TASK_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateShortcutTaskTaskParamsTaskType, value)
     raise TypeError(

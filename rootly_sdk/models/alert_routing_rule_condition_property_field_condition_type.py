@@ -26,8 +26,10 @@ ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_CONDITION_TYPE_VALUES: set[
 
 
 def check_alert_routing_rule_condition_property_field_condition_type(
-    value: str,
-) -> AlertRoutingRuleConditionPropertyFieldConditionType:
+    value: str | None,
+) -> AlertRoutingRuleConditionPropertyFieldConditionType | None:
+    if value is None:
+        return None
     if value in ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
         return cast(AlertRoutingRuleConditionPropertyFieldConditionType, value)
     raise TypeError(

@@ -7,7 +7,9 @@ LIST_DASHBOARDS_INCLUDE_VALUES: set[ListDashboardsInclude] = {
 }
 
 
-def check_list_dashboards_include(value: str) -> ListDashboardsInclude:
+def check_list_dashboards_include(value: str | None) -> ListDashboardsInclude | None:
+    if value is None:
+        return None
     if value in LIST_DASHBOARDS_INCLUDE_VALUES:
         return cast(ListDashboardsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_DASHBOARDS_INCLUDE_VALUES!r}")

@@ -10,7 +10,9 @@ ROLE_AUDITS_PERMISSIONS_ITEM_VALUES: set[RoleAuditsPermissionsItem] = {
 }
 
 
-def check_role_audits_permissions_item(value: str) -> RoleAuditsPermissionsItem:
+def check_role_audits_permissions_item(value: str | None) -> RoleAuditsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_AUDITS_PERMISSIONS_ITEM_VALUES:
         return cast(RoleAuditsPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_AUDITS_PERMISSIONS_ITEM_VALUES!r}")

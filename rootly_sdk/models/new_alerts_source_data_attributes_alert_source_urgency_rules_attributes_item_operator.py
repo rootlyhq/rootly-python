@@ -15,8 +15,10 @@ NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_OPE
 
 
 def check_new_alerts_source_data_attributes_alert_source_urgency_rules_attributes_item_operator(
-    value: str,
-) -> NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator:
+    value: str | None,
+) -> NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator | None:
+    if value is None:
+        return None
     if value in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_OPERATOR_VALUES:
         return cast(NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator, value)
     raise TypeError(

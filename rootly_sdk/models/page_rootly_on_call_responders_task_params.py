@@ -32,29 +32,31 @@ T = TypeVar("T", bound="PageRootlyOnCallRespondersTaskParams")
 class PageRootlyOnCallRespondersTaskParams:
     """
     Attributes:
+        alert_urgency_id (str): Alert urgency ID
         summary (str): Alert title
         task_type (Union[Unset, PageRootlyOnCallRespondersTaskParamsTaskType]):
         escalation_policy_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget]):
         service_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsServiceTarget]):
         user_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsUserTarget]):
         group_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsGroupTarget]):
-        alert_urgency_id (Union[Unset, str]): Alert urgency ID
         description (Union[Unset, str]): Alert description
         escalation_note (Union[Unset, str]):
     """
 
+    alert_urgency_id: str
     summary: str
     task_type: Union[Unset, PageRootlyOnCallRespondersTaskParamsTaskType] = UNSET
     escalation_policy_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget"] = UNSET
     service_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsServiceTarget"] = UNSET
     user_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsUserTarget"] = UNSET
     group_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsGroupTarget"] = UNSET
-    alert_urgency_id: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     escalation_note: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        alert_urgency_id = self.alert_urgency_id
+
         summary = self.summary
 
         task_type: Union[Unset, str] = UNSET
@@ -77,8 +79,6 @@ class PageRootlyOnCallRespondersTaskParams:
         if not isinstance(self.group_target, Unset):
             group_target = self.group_target.to_dict()
 
-        alert_urgency_id = self.alert_urgency_id
-
         description = self.description
 
         escalation_note = self.escalation_note
@@ -87,6 +87,7 @@ class PageRootlyOnCallRespondersTaskParams:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "alert_urgency_id": alert_urgency_id,
                 "summary": summary,
             }
         )
@@ -100,8 +101,6 @@ class PageRootlyOnCallRespondersTaskParams:
             field_dict["user_target"] = user_target
         if group_target is not UNSET:
             field_dict["group_target"] = group_target
-        if alert_urgency_id is not UNSET:
-            field_dict["alert_urgency_id"] = alert_urgency_id
         if description is not UNSET:
             field_dict["description"] = description
         if escalation_note is not UNSET:
@@ -125,6 +124,8 @@ class PageRootlyOnCallRespondersTaskParams:
         )
 
         d = dict(src_dict)
+        alert_urgency_id = d.pop("alert_urgency_id")
+
         summary = d.pop("summary")
 
         _task_type = d.pop("task_type", UNSET)
@@ -164,20 +165,18 @@ class PageRootlyOnCallRespondersTaskParams:
         else:
             group_target = PageRootlyOnCallRespondersTaskParamsGroupTarget.from_dict(_group_target)
 
-        alert_urgency_id = d.pop("alert_urgency_id", UNSET)
-
         description = d.pop("description", UNSET)
 
         escalation_note = d.pop("escalation_note", UNSET)
 
         page_rootly_on_call_responders_task_params = cls(
+            alert_urgency_id=alert_urgency_id,
             summary=summary,
             task_type=task_type,
             escalation_policy_target=escalation_policy_target,
             service_target=service_target,
             user_target=user_target,
             group_target=group_target,
-            alert_urgency_id=alert_urgency_id,
             description=description,
             escalation_note=escalation_note,
         )

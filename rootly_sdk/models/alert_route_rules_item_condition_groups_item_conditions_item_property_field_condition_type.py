@@ -26,8 +26,10 @@ ALERT_ROUTE_RULES_ITEM_CONDITION_GROUPS_ITEM_CONDITIONS_ITEM_PROPERTY_FIELD_COND
 
 
 def check_alert_route_rules_item_condition_groups_item_conditions_item_property_field_condition_type(
-    value: str,
-) -> AlertRouteRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType:
+    value: str | None,
+) -> AlertRouteRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType | None:
+    if value is None:
+        return None
     if value in ALERT_ROUTE_RULES_ITEM_CONDITION_GROUPS_ITEM_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
         return cast(AlertRouteRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType, value)
     raise TypeError(

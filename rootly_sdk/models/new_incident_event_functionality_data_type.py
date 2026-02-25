@@ -7,7 +7,9 @@ NEW_INCIDENT_EVENT_FUNCTIONALITY_DATA_TYPE_VALUES: set[NewIncidentEventFunctiona
 }
 
 
-def check_new_incident_event_functionality_data_type(value: str) -> NewIncidentEventFunctionalityDataType:
+def check_new_incident_event_functionality_data_type(value: str | None) -> NewIncidentEventFunctionalityDataType | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_EVENT_FUNCTIONALITY_DATA_TYPE_VALUES:
         return cast(NewIncidentEventFunctionalityDataType, value)
     raise TypeError(

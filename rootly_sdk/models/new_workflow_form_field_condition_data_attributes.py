@@ -27,6 +27,9 @@ class NewWorkflowFormFieldConditionDataAttributes:
         selected_option_ids (Union[Unset, list[str]]):
         selected_service_ids (Union[Unset, list[str]]):
         selected_user_ids (Union[Unset, list[int]]):
+        selected_cause_ids (Union[Unset, list[str]]):
+        selected_environment_ids (Union[Unset, list[str]]):
+        selected_incident_type_ids (Union[Unset, list[str]]):
     """
 
     form_field_id: str
@@ -39,6 +42,9 @@ class NewWorkflowFormFieldConditionDataAttributes:
     selected_option_ids: Union[Unset, list[str]] = UNSET
     selected_service_ids: Union[Unset, list[str]] = UNSET
     selected_user_ids: Union[Unset, list[int]] = UNSET
+    selected_cause_ids: Union[Unset, list[str]] = UNSET
+    selected_environment_ids: Union[Unset, list[str]] = UNSET
+    selected_incident_type_ids: Union[Unset, list[str]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
@@ -75,6 +81,18 @@ class NewWorkflowFormFieldConditionDataAttributes:
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
+        selected_cause_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_cause_ids, Unset):
+            selected_cause_ids = self.selected_cause_ids
+
+        selected_environment_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_environment_ids, Unset):
+            selected_environment_ids = self.selected_environment_ids
+
+        selected_incident_type_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.selected_incident_type_ids, Unset):
+            selected_incident_type_ids = self.selected_incident_type_ids
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -99,6 +117,12 @@ class NewWorkflowFormFieldConditionDataAttributes:
             field_dict["selected_service_ids"] = selected_service_ids
         if selected_user_ids is not UNSET:
             field_dict["selected_user_ids"] = selected_user_ids
+        if selected_cause_ids is not UNSET:
+            field_dict["selected_cause_ids"] = selected_cause_ids
+        if selected_environment_ids is not UNSET:
+            field_dict["selected_environment_ids"] = selected_environment_ids
+        if selected_incident_type_ids is not UNSET:
+            field_dict["selected_incident_type_ids"] = selected_incident_type_ids
 
         return field_dict
 
@@ -127,6 +151,12 @@ class NewWorkflowFormFieldConditionDataAttributes:
 
         selected_user_ids = cast(list[int], d.pop("selected_user_ids", UNSET))
 
+        selected_cause_ids = cast(list[str], d.pop("selected_cause_ids", UNSET))
+
+        selected_environment_ids = cast(list[str], d.pop("selected_environment_ids", UNSET))
+
+        selected_incident_type_ids = cast(list[str], d.pop("selected_incident_type_ids", UNSET))
+
         new_workflow_form_field_condition_data_attributes = cls(
             form_field_id=form_field_id,
             incident_condition=incident_condition,
@@ -138,6 +168,9 @@ class NewWorkflowFormFieldConditionDataAttributes:
             selected_option_ids=selected_option_ids,
             selected_service_ids=selected_service_ids,
             selected_user_ids=selected_user_ids,
+            selected_cause_ids=selected_cause_ids,
+            selected_environment_ids=selected_environment_ids,
+            selected_incident_type_ids=selected_incident_type_ids,
         )
 
         return new_workflow_form_field_condition_data_attributes

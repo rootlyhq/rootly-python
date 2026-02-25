@@ -34,8 +34,10 @@ UPDATE_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_ATTRIBUTES_KIND_VALUES: set[
 
 
 def check_update_incident_permission_set_boolean_data_attributes_kind(
-    value: str,
-) -> UpdateIncidentPermissionSetBooleanDataAttributesKind:
+    value: str | None,
+) -> UpdateIncidentPermissionSetBooleanDataAttributesKind | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(UpdateIncidentPermissionSetBooleanDataAttributesKind, value)
     raise TypeError(

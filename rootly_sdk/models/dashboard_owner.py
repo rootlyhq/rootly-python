@@ -8,7 +8,9 @@ DASHBOARD_OWNER_VALUES: set[DashboardOwner] = {
 }
 
 
-def check_dashboard_owner(value: str) -> DashboardOwner:
+def check_dashboard_owner(value: str | None) -> DashboardOwner | None:
+    if value is None:
+        return None
     if value in DASHBOARD_OWNER_VALUES:
         return cast(DashboardOwner, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {DASHBOARD_OWNER_VALUES!r}")

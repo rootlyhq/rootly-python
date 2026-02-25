@@ -20,32 +20,34 @@ class FormField:
         input_kind (FormFieldInputKind): The input kind of the form field
         value_kind (FormFieldValueKind): The value kind of the form field
         name (str): The name of the form field
-        slug (str): The slug of the form field
         shown (list[str]):
         required (list[str]):
         default_values (list[str]):
         created_at (str): Date of creation
         updated_at (str): Date of last update
         value_kind_catalog_id (Union[None, Unset, str]): The ID of the catalog used when value_kind is `catalog_entity`
+        slug (Union[Unset, str]): The slug of the form field
         description (Union[None, Unset, str]): The description of the form field
         show_on_incident_details (Union[Unset, bool]): Whether the form field is shown on the incident details panel
         enabled (Union[Unset, bool]): Whether the form field is enabled
+        auto_set_by_catalog_field_id (Union[None, Unset, str]): Catalog field ID to auto-set this form field.
     """
 
     kind: FormFieldKind
     input_kind: FormFieldInputKind
     value_kind: FormFieldValueKind
     name: str
-    slug: str
     shown: list[str]
     required: list[str]
     default_values: list[str]
     created_at: str
     updated_at: str
     value_kind_catalog_id: Union[None, Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     show_on_incident_details: Union[Unset, bool] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    auto_set_by_catalog_field_id: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,8 +58,6 @@ class FormField:
         value_kind: str = self.value_kind
 
         name = self.name
-
-        slug = self.slug
 
         shown = self.shown
 
@@ -75,6 +75,8 @@ class FormField:
         else:
             value_kind_catalog_id = self.value_kind_catalog_id
 
+        slug = self.slug
+
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
@@ -85,6 +87,12 @@ class FormField:
 
         enabled = self.enabled
 
+        auto_set_by_catalog_field_id: Union[None, Unset, str]
+        if isinstance(self.auto_set_by_catalog_field_id, Unset):
+            auto_set_by_catalog_field_id = UNSET
+        else:
+            auto_set_by_catalog_field_id = self.auto_set_by_catalog_field_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -93,7 +101,6 @@ class FormField:
                 "input_kind": input_kind,
                 "value_kind": value_kind,
                 "name": name,
-                "slug": slug,
                 "shown": shown,
                 "required": required,
                 "default_values": default_values,
@@ -103,12 +110,16 @@ class FormField:
         )
         if value_kind_catalog_id is not UNSET:
             field_dict["value_kind_catalog_id"] = value_kind_catalog_id
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if show_on_incident_details is not UNSET:
             field_dict["show_on_incident_details"] = show_on_incident_details
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if auto_set_by_catalog_field_id is not UNSET:
+            field_dict["auto_set_by_catalog_field_id"] = auto_set_by_catalog_field_id
 
         return field_dict
 
@@ -122,8 +133,6 @@ class FormField:
         value_kind = check_form_field_value_kind(d.pop("value_kind"))
 
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         shown = cast(list[str], d.pop("shown"))
 
@@ -144,6 +153,8 @@ class FormField:
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
+        slug = d.pop("slug", UNSET)
+
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -157,21 +168,31 @@ class FormField:
 
         enabled = d.pop("enabled", UNSET)
 
+        def _parse_auto_set_by_catalog_field_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        auto_set_by_catalog_field_id = _parse_auto_set_by_catalog_field_id(d.pop("auto_set_by_catalog_field_id", UNSET))
+
         form_field = cls(
             kind=kind,
             input_kind=input_kind,
             value_kind=value_kind,
             name=name,
-            slug=slug,
             shown=shown,
             required=required,
             default_values=default_values,
             created_at=created_at,
             updated_at=updated_at,
             value_kind_catalog_id=value_kind_catalog_id,
+            slug=slug,
             description=description,
             show_on_incident_details=show_on_incident_details,
             enabled=enabled,
+            auto_set_by_catalog_field_id=auto_set_by_catalog_field_id,
         )
 
         form_field.additional_properties = d

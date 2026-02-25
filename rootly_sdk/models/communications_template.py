@@ -21,10 +21,10 @@ class CommunicationsTemplate:
     """
     Attributes:
         name (str): The name of the communications template
-        slug (str): The slug of the communications template
         position (Union[None, int]): Position of the communications template
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        slug (Union[Unset, str]): The slug of the communications template
         description (Union[None, Unset, str]): The description of the communications template
         communication_type_id (Union[Unset, str]): The communication type ID
         communication_template_stages (Union[None, Unset,
@@ -33,10 +33,10 @@ class CommunicationsTemplate:
     """
 
     name: str
-    slug: str
     position: Union[None, int]
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     communication_type_id: Union[Unset, str] = UNSET
     communication_template_stages: Union[
@@ -48,14 +48,14 @@ class CommunicationsTemplate:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         position: Union[None, int]
         position = self.position
 
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -86,12 +86,13 @@ class CommunicationsTemplate:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "position": position,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if communication_type_id is not UNSET:
@@ -113,8 +114,6 @@ class CommunicationsTemplate:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         def _parse_position(data: object) -> Union[None, int]:
             if data is None:
                 return data
@@ -125,6 +124,8 @@ class CommunicationsTemplate:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -176,10 +177,10 @@ class CommunicationsTemplate:
 
         communications_template = cls(
             name=name,
-            slug=slug,
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
             communication_type_id=communication_type_id,
             communication_template_stages=communication_template_stages,

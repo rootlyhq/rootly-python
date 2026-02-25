@@ -10,7 +10,9 @@ ROLE_BILLING_PERMISSIONS_ITEM_VALUES: set[RoleBillingPermissionsItem] = {
 }
 
 
-def check_role_billing_permissions_item(value: str) -> RoleBillingPermissionsItem:
+def check_role_billing_permissions_item(value: str | None) -> RoleBillingPermissionsItem | None:
+    if value is None:
+        return None
     if value in ROLE_BILLING_PERMISSIONS_ITEM_VALUES:
         return cast(RoleBillingPermissionsItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_BILLING_PERMISSIONS_ITEM_VALUES!r}")

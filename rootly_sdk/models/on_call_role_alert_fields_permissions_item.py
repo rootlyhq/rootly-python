@@ -10,7 +10,9 @@ ON_CALL_ROLE_ALERT_FIELDS_PERMISSIONS_ITEM_VALUES: set[OnCallRoleAlertFieldsPerm
 }
 
 
-def check_on_call_role_alert_fields_permissions_item(value: str) -> OnCallRoleAlertFieldsPermissionsItem:
+def check_on_call_role_alert_fields_permissions_item(value: str | None) -> OnCallRoleAlertFieldsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_ALERT_FIELDS_PERMISSIONS_ITEM_VALUES:
         return cast(OnCallRoleAlertFieldsPermissionsItem, value)
     raise TypeError(

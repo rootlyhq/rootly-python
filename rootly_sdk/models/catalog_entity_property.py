@@ -11,14 +11,16 @@ T = TypeVar("T", bound="CatalogEntityProperty")
 
 @_attrs_define
 class CatalogEntityProperty:
-    """
-    Attributes:
-        catalog_entity_id (str):
-        catalog_field_id (str):
-        key (CatalogEntityPropertyKey):
-        value (str):
-        created_at (str):
-        updated_at (str):
+    """**Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or native catalog
+    endpoints (teams, services, functionalities, incident_types, causes, environments) to retrieve field values instead.
+
+        Attributes:
+            catalog_entity_id (str):
+            catalog_field_id (str):
+            key (CatalogEntityPropertyKey):
+            value (str):
+            created_at (str):
+            updated_at (str):
     """
 
     catalog_entity_id: str

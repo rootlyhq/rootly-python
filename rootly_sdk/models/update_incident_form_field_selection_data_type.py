@@ -7,7 +7,9 @@ UPDATE_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES: set[UpdateIncidentFormFie
 }
 
 
-def check_update_incident_form_field_selection_data_type(value: str) -> UpdateIncidentFormFieldSelectionDataType:
+def check_update_incident_form_field_selection_data_type(value: str | None) -> UpdateIncidentFormFieldSelectionDataType | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES:
         return cast(UpdateIncidentFormFieldSelectionDataType, value)
     raise TypeError(

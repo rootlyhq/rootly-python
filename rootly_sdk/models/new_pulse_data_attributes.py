@@ -22,8 +22,8 @@ class NewPulseDataAttributes:
     Attributes:
         summary (str): The summary of the pulse
         source (Union[None, Unset, str]): The source of the pulse (eg: k8s)
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the pulse
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the pulse
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the pulse
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the pulse
         started_at (Union[None, Unset, datetime.datetime]): Pulse start datetime
         ended_at (Union[None, Unset, datetime.datetime]): Pulse end datetime
         external_url (Union[None, Unset, str]): The external url of the pulse

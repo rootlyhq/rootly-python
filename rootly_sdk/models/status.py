@@ -14,27 +14,25 @@ class Status:
     """
     Attributes:
         name (str):
-        slug (str):
         color (str):
         enabled (bool):
         created_at (str):
         updated_at (str):
+        slug (Union[Unset, str]):
         description (Union[None, Unset, str]):
     """
 
     name: str
-    slug: str
     color: str
     enabled: bool
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         color = self.color
 
@@ -43,6 +41,8 @@ class Status:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -55,13 +55,14 @@ class Status:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "color": color,
                 "enabled": enabled,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -72,8 +73,6 @@ class Status:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         color = d.pop("color")
 
         enabled = d.pop("enabled")
@@ -81,6 +80,8 @@ class Status:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -93,11 +94,11 @@ class Status:
 
         status = cls(
             name=name,
-            slug=slug,
             color=color,
             enabled=enabled,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
         )
 

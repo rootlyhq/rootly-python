@@ -4,6 +4,7 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.catalog_field_catalog_type import CatalogFieldCatalogType, check_catalog_field_catalog_type
 from ..models.catalog_field_kind import CatalogFieldKind, check_catalog_field_kind
 from ..types import UNSET, Unset
 
@@ -14,34 +15,37 @@ T = TypeVar("T", bound="CatalogField")
 class CatalogField:
     """
     Attributes:
-        catalog_id (str):
+        catalog_id (Union[None, str]):
         name (str):
-        slug (str):
         kind (CatalogFieldKind):
         multiple (bool): Whether the attribute accepts multiple values.
         position (Union[None, int]): Default position of the item when displayed in a list.
         created_at (str):
         updated_at (str):
+        slug (Union[Unset, str]):
         kind_catalog_id (Union[None, Unset, str]): Restricts values to items of specified catalog.
+        required (Union[Unset, bool]): Whether the field is required.
+        catalog_type (Union[Unset, CatalogFieldCatalogType]): The type of catalog the field belongs to.
     """
 
-    catalog_id: str
+    catalog_id: Union[None, str]
     name: str
-    slug: str
     kind: CatalogFieldKind
     multiple: bool
     position: Union[None, int]
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     kind_catalog_id: Union[None, Unset, str] = UNSET
+    required: Union[Unset, bool] = UNSET
+    catalog_type: Union[Unset, CatalogFieldCatalogType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        catalog_id: Union[None, str]
         catalog_id = self.catalog_id
 
         name = self.name
-
-        slug = self.slug
 
         kind: str = self.kind
 
@@ -54,11 +58,19 @@ class CatalogField:
 
         updated_at = self.updated_at
 
+        slug = self.slug
+
         kind_catalog_id: Union[None, Unset, str]
         if isinstance(self.kind_catalog_id, Unset):
             kind_catalog_id = UNSET
         else:
             kind_catalog_id = self.kind_catalog_id
+
+        required = self.required
+
+        catalog_type: Union[Unset, str] = UNSET
+        if not isinstance(self.catalog_type, Unset):
+            catalog_type = self.catalog_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -66,7 +78,6 @@ class CatalogField:
             {
                 "catalog_id": catalog_id,
                 "name": name,
-                "slug": slug,
                 "kind": kind,
                 "multiple": multiple,
                 "position": position,
@@ -74,19 +85,29 @@ class CatalogField:
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if kind_catalog_id is not UNSET:
             field_dict["kind_catalog_id"] = kind_catalog_id
+        if required is not UNSET:
+            field_dict["required"] = required
+        if catalog_type is not UNSET:
+            field_dict["catalog_type"] = catalog_type
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        catalog_id = d.pop("catalog_id")
+
+        def _parse_catalog_id(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        catalog_id = _parse_catalog_id(d.pop("catalog_id"))
 
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         kind = check_catalog_field_kind(d.pop("kind"))
 
@@ -103,6 +124,8 @@ class CatalogField:
 
         updated_at = d.pop("updated_at")
 
+        slug = d.pop("slug", UNSET)
+
         def _parse_kind_catalog_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -112,16 +135,27 @@ class CatalogField:
 
         kind_catalog_id = _parse_kind_catalog_id(d.pop("kind_catalog_id", UNSET))
 
+        required = d.pop("required", UNSET)
+
+        _catalog_type = d.pop("catalog_type", UNSET)
+        catalog_type: Union[Unset, CatalogFieldCatalogType]
+        if isinstance(_catalog_type, Unset):
+            catalog_type = UNSET
+        else:
+            catalog_type = check_catalog_field_catalog_type(_catalog_type)
+
         catalog_field = cls(
             catalog_id=catalog_id,
             name=name,
-            slug=slug,
             kind=kind,
             multiple=multiple,
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             kind_catalog_id=kind_catalog_id,
+            required=required,
+            catalog_type=catalog_type,
         )
 
         catalog_field.additional_properties = d

@@ -20,8 +20,10 @@ UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_TYPE_VALUES: set[
 
 
 def check_update_schedule_rotation_data_attributes_schedule_rotationable_type(
-    value: str,
-) -> UpdateScheduleRotationDataAttributesScheduleRotationableType:
+    value: str | None,
+) -> UpdateScheduleRotationDataAttributesScheduleRotationableType | None:
+    if value is None:
+        return None
     if value in UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_TYPE_VALUES:
         return cast(UpdateScheduleRotationDataAttributesScheduleRotationableType, value)
     raise TypeError(

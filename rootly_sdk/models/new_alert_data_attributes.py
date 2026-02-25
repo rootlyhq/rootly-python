@@ -41,11 +41,11 @@ class NewAlertDataAttributes:
         status (Union[Unset, NewAlertDataAttributesStatus]): Only available for organizations with Rootly On-Call
             enabled. Can be one of open, triggered.
         description (Union[None, Unset, str]): The description of the alert
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the alert. If your organization has
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the alert. If your organization has
             On-Call enabled and your notification target is a Service. This field will be automatically set for you.
-        group_ids (Union[None, Unset, list[str]]): The Group ID's to attach to the alert. If your organization has On-
+        group_ids (Union[None, Unset, list[str]]): The Group IDs to attach to the alert. If your organization has On-
             Call enabled and your notification target is a Group. This field will be automatically set for you.
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the alert
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the alert
         started_at (Union[None, Unset, datetime.datetime]): Alert start datetime
         ended_at (Union[None, Unset, datetime.datetime]): Alert end datetime
         external_id (Union[None, Unset, str]): External ID

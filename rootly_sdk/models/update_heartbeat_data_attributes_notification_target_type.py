@@ -13,8 +13,10 @@ UPDATE_HEARTBEAT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES: set[
 
 
 def check_update_heartbeat_data_attributes_notification_target_type(
-    value: str,
-) -> UpdateHeartbeatDataAttributesNotificationTargetType:
+    value: str | None,
+) -> UpdateHeartbeatDataAttributesNotificationTargetType | None:
+    if value is None:
+        return None
     if value in UPDATE_HEARTBEAT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES:
         return cast(UpdateHeartbeatDataAttributesNotificationTargetType, value)
     raise TypeError(

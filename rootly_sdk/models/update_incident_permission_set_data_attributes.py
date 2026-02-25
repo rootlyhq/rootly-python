@@ -21,7 +21,6 @@ class UpdateIncidentPermissionSetDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]): The incident permission set name.
-        slug (Union[Unset, str]): The incident permission set slug.
         description (Union[None, Unset, str]): The incident permission set description.
         private_incident_permissions (Union[Unset,
             list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]]):
@@ -30,7 +29,6 @@ class UpdateIncidentPermissionSetDataAttributes:
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     private_incident_permissions: Union[
         Unset, list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]
@@ -41,8 +39,6 @@ class UpdateIncidentPermissionSetDataAttributes:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -69,8 +65,6 @@ class UpdateIncidentPermissionSetDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if private_incident_permissions is not UNSET:
@@ -84,8 +78,6 @@ class UpdateIncidentPermissionSetDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -120,7 +112,6 @@ class UpdateIncidentPermissionSetDataAttributes:
 
         update_incident_permission_set_data_attributes = cls(
             name=name,
-            slug=slug,
             description=description,
             private_incident_permissions=private_incident_permissions,
             public_incident_permissions=public_incident_permissions,

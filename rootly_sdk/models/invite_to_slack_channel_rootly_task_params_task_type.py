@@ -8,8 +8,10 @@ INVITE_TO_SLACK_CHANNEL_ROOTLY_TASK_PARAMS_TASK_TYPE_VALUES: set[InviteToSlackCh
 
 
 def check_invite_to_slack_channel_rootly_task_params_task_type(
-    value: str,
-) -> InviteToSlackChannelRootlyTaskParamsTaskType:
+    value: str | None,
+) -> InviteToSlackChannelRootlyTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in INVITE_TO_SLACK_CHANNEL_ROOTLY_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(InviteToSlackChannelRootlyTaskParamsTaskType, value)
     raise TypeError(

@@ -15,7 +15,9 @@ GET_PLAYBOOK_INCLUDE_VALUES: set[GetPlaybookInclude] = {
 }
 
 
-def check_get_playbook_include(value: str) -> GetPlaybookInclude:
+def check_get_playbook_include(value: str | None) -> GetPlaybookInclude | None:
+    if value is None:
+        return None
     if value in GET_PLAYBOOK_INCLUDE_VALUES:
         return cast(GetPlaybookInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_PLAYBOOK_INCLUDE_VALUES!r}")

@@ -11,8 +11,10 @@ NEW_AUTHORIZATION_DATA_ATTRIBUTES_PERMISSIONS_ITEM_VALUES: set[NewAuthorizationD
 
 
 def check_new_authorization_data_attributes_permissions_item(
-    value: str,
-) -> NewAuthorizationDataAttributesPermissionsItem:
+    value: str | None,
+) -> NewAuthorizationDataAttributesPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_AUTHORIZATION_DATA_ATTRIBUTES_PERMISSIONS_ITEM_VALUES:
         return cast(NewAuthorizationDataAttributesPermissionsItem, value)
     raise TypeError(

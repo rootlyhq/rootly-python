@@ -11,8 +11,10 @@ UPDATE_FORM_FIELD_PLACEMENT_DATA_ATTRIBUTES_PLACEMENT_OPERATOR_VALUES: set[
 
 
 def check_update_form_field_placement_data_attributes_placement_operator(
-    value: str,
-) -> UpdateFormFieldPlacementDataAttributesPlacementOperator:
+    value: str | None,
+) -> UpdateFormFieldPlacementDataAttributesPlacementOperator | None:
+    if value is None:
+        return None
     if value in UPDATE_FORM_FIELD_PLACEMENT_DATA_ATTRIBUTES_PLACEMENT_OPERATOR_VALUES:
         return cast(UpdateFormFieldPlacementDataAttributesPlacementOperator, value)
     raise TypeError(

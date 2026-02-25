@@ -11,8 +11,10 @@ UPDATE_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES: set[UpdateRoleData
 
 
 def check_update_role_data_attributes_webhooks_permissions_item(
-    value: str,
-) -> UpdateRoleDataAttributesWebhooksPermissionsItem:
+    value: str | None,
+) -> UpdateRoleDataAttributesWebhooksPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_WEBHOOKS_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateRoleDataAttributesWebhooksPermissionsItem, value)
     raise TypeError(

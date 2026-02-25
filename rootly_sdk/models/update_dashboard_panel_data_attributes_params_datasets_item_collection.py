@@ -16,8 +16,10 @@ UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES: s
 
 
 def check_update_dashboard_panel_data_attributes_params_datasets_item_collection(
-    value: str,
-) -> UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection:
+    value: str | None,
+) -> UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection | None:
+    if value is None:
+        return None
     if value in UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES:
         return cast(UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection, value)
     raise TypeError(

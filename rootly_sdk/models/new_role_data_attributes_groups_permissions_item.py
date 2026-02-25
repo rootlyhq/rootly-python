@@ -10,7 +10,9 @@ NEW_ROLE_DATA_ATTRIBUTES_GROUPS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAttribut
 }
 
 
-def check_new_role_data_attributes_groups_permissions_item(value: str) -> NewRoleDataAttributesGroupsPermissionsItem:
+def check_new_role_data_attributes_groups_permissions_item(value: str | None) -> NewRoleDataAttributesGroupsPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_GROUPS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesGroupsPermissionsItem, value)
     raise TypeError(

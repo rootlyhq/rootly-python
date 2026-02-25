@@ -34,15 +34,15 @@ class UpdateIncidentDataAttributes:
             cannot be undone Default: False.
         severity_id (Union[None, Unset, str]): The Severity ID to attach to the incident
         public_title (Union[None, Unset, str]): The public title of the incident
-        alert_ids (Union[None, Unset, list[str]]): The Alert ID's to attach to the incident
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the incident
-        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type ID's to attach to the incident
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the incident
-        functionality_ids (Union[None, Unset, list[str]]): The Functionality ID's to attach to the incident
+        alert_ids (Union[None, Unset, list[str]]): The Alert IDs to attach to the incident
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the incident
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the incident
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the incident
+        functionality_ids (Union[None, Unset, list[str]]): The Functionality IDs to attach to the incident
         muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
             for these services will still be triggered and attached to the incident, but won't page responders.
-        group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the incident
-        cause_ids (Union[None, Unset, list[str]]): The Cause ID's to attach to the incident
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the incident
+        cause_ids (Union[None, Unset, list[str]]): The Cause IDs to attach to the incident
         labels (Union['UpdateIncidentDataAttributesLabelsType0', None, Unset]): Labels to attach to the incidents. eg:
             {"platform":"osx", "version": "1.29"}
         slack_channel_id (Union[None, Unset, str]): Slack channel id
@@ -51,6 +51,9 @@ class UpdateIncidentDataAttributes:
         slack_channel_archived (Union[None, Unset, bool]): Whether the Slack channel is archived
         google_drive_parent_id (Union[None, Unset, str]): Google Drive parent folder ID
         google_drive_url (Union[None, Unset, str]): Google Drive URL
+        jira_issue_key (Union[None, Unset, str]): Jira issue key
+        jira_issue_id (Union[None, Unset, str]): Jira issue ID
+        jira_issue_url (Union[None, Unset, str]): Jira issue URL
         scheduled_for (Union[None, Unset, str]): Date of when the maintenance begins
         scheduled_until (Union[None, Unset, str]): Date of when the maintenance ends
         in_triage_at (Union[None, Unset, str]): Date of triage
@@ -90,6 +93,9 @@ class UpdateIncidentDataAttributes:
     slack_channel_archived: Union[None, Unset, bool] = UNSET
     google_drive_parent_id: Union[None, Unset, str] = UNSET
     google_drive_url: Union[None, Unset, str] = UNSET
+    jira_issue_key: Union[None, Unset, str] = UNSET
+    jira_issue_id: Union[None, Unset, str] = UNSET
+    jira_issue_url: Union[None, Unset, str] = UNSET
     scheduled_for: Union[None, Unset, str] = UNSET
     scheduled_until: Union[None, Unset, str] = UNSET
     in_triage_at: Union[None, Unset, str] = UNSET
@@ -273,6 +279,24 @@ class UpdateIncidentDataAttributes:
         else:
             google_drive_url = self.google_drive_url
 
+        jira_issue_key: Union[None, Unset, str]
+        if isinstance(self.jira_issue_key, Unset):
+            jira_issue_key = UNSET
+        else:
+            jira_issue_key = self.jira_issue_key
+
+        jira_issue_id: Union[None, Unset, str]
+        if isinstance(self.jira_issue_id, Unset):
+            jira_issue_id = UNSET
+        else:
+            jira_issue_id = self.jira_issue_id
+
+        jira_issue_url: Union[None, Unset, str]
+        if isinstance(self.jira_issue_url, Unset):
+            jira_issue_url = UNSET
+        else:
+            jira_issue_url = self.jira_issue_url
+
         scheduled_for: Union[None, Unset, str]
         if isinstance(self.scheduled_for, Unset):
             scheduled_for = UNSET
@@ -402,6 +426,12 @@ class UpdateIncidentDataAttributes:
             field_dict["google_drive_parent_id"] = google_drive_parent_id
         if google_drive_url is not UNSET:
             field_dict["google_drive_url"] = google_drive_url
+        if jira_issue_key is not UNSET:
+            field_dict["jira_issue_key"] = jira_issue_key
+        if jira_issue_id is not UNSET:
+            field_dict["jira_issue_id"] = jira_issue_id
+        if jira_issue_url is not UNSET:
+            field_dict["jira_issue_url"] = jira_issue_url
         if scheduled_for is not UNSET:
             field_dict["scheduled_for"] = scheduled_for
         if scheduled_until is not UNSET:
@@ -721,6 +751,33 @@ class UpdateIncidentDataAttributes:
 
         google_drive_url = _parse_google_drive_url(d.pop("google_drive_url", UNSET))
 
+        def _parse_jira_issue_key(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_key = _parse_jira_issue_key(d.pop("jira_issue_key", UNSET))
+
+        def _parse_jira_issue_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_id = _parse_jira_issue_id(d.pop("jira_issue_id", UNSET))
+
+        def _parse_jira_issue_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
+
         def _parse_scheduled_for(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -863,6 +920,9 @@ class UpdateIncidentDataAttributes:
             slack_channel_archived=slack_channel_archived,
             google_drive_parent_id=google_drive_parent_id,
             google_drive_url=google_drive_url,
+            jira_issue_key=jira_issue_key,
+            jira_issue_id=jira_issue_id,
+            jira_issue_url=jira_issue_url,
             scheduled_for=scheduled_for,
             scheduled_until=scheduled_until,
             in_triage_at=in_triage_at,

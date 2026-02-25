@@ -7,7 +7,9 @@ NEW_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES: set[NewIncidentFormFieldSele
 }
 
 
-def check_new_incident_form_field_selection_data_type(value: str) -> NewIncidentFormFieldSelectionDataType:
+def check_new_incident_form_field_selection_data_type(value: str | None) -> NewIncidentFormFieldSelectionDataType | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES:
         return cast(NewIncidentFormFieldSelectionDataType, value)
     raise TypeError(

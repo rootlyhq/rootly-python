@@ -7,7 +7,9 @@ CREATE_SLACK_CHANNEL_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateSlackChannelTaskPar
 }
 
 
-def check_create_slack_channel_task_params_task_type(value: str) -> CreateSlackChannelTaskParamsTaskType:
+def check_create_slack_channel_task_params_task_type(value: str | None) -> CreateSlackChannelTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_SLACK_CHANNEL_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateSlackChannelTaskParamsTaskType, value)
     raise TypeError(

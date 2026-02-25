@@ -102,9 +102,9 @@ class OnCallRole:
     """
     Attributes:
         name (str): The role name.
-        slug (str): The role slug.
         created_at (str):
         updated_at (str):
+        slug (Union[Unset, str]): The role slug.
         system_role (Union[Unset, str]): The kind of role Default: 'custom'.
         alert_sources_permissions (Union[Unset, list[OnCallRoleAlertSourcesPermissionsItem]]):
         alert_urgency_permissions (Union[Unset, list[OnCallRoleAlertUrgencyPermissionsItem]]):
@@ -131,9 +131,9 @@ class OnCallRole:
     """
 
     name: str
-    slug: str
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     system_role: Union[Unset, str] = "custom"
     alert_sources_permissions: Union[Unset, list[OnCallRoleAlertSourcesPermissionsItem]] = UNSET
     alert_urgency_permissions: Union[Unset, list[OnCallRoleAlertUrgencyPermissionsItem]] = UNSET
@@ -162,11 +162,11 @@ class OnCallRole:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         system_role = self.system_role
 
@@ -329,11 +329,12 @@ class OnCallRole:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if system_role is not UNSET:
             field_dict["system_role"] = system_role
         if alert_sources_permissions is not UNSET:
@@ -388,11 +389,11 @@ class OnCallRole:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         system_role = d.pop("system_role", UNSET)
 
@@ -578,9 +579,9 @@ class OnCallRole:
 
         on_call_role = cls(
             name=name,
-            slug=slug,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             system_role=system_role,
             alert_sources_permissions=alert_sources_permissions,
             alert_urgency_permissions=alert_urgency_permissions,

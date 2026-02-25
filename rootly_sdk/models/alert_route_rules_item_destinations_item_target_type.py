@@ -10,8 +10,10 @@ ALERT_ROUTE_RULES_ITEM_DESTINATIONS_ITEM_TARGET_TYPE_VALUES: set[AlertRouteRules
 
 
 def check_alert_route_rules_item_destinations_item_target_type(
-    value: str,
-) -> AlertRouteRulesItemDestinationsItemTargetType:
+    value: str | None,
+) -> AlertRouteRulesItemDestinationsItemTargetType | None:
+    if value is None:
+        return None
     if value in ALERT_ROUTE_RULES_ITEM_DESTINATIONS_ITEM_TARGET_TYPE_VALUES:
         return cast(AlertRouteRulesItemDestinationsItemTargetType, value)
     raise TypeError(

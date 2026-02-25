@@ -16,8 +16,10 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_DAYS_TYPE_0_ITEM_
 
 
 def check_update_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item(
-    value: str,
-) -> UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item:
+    value: str | None,
+) -> UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item | None:
+    if value is None:
+        return None
     if value in UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_DAYS_TYPE_0_ITEM_VALUES:
         return cast(UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item, value)
     raise TypeError(

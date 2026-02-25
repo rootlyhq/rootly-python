@@ -36,10 +36,12 @@ class NewAlertGroupDataAttributes:
         targets (Union[Unset, list['NewAlertGroupDataAttributesTargetsItem']]):
         attributes (Union[Unset, list['NewAlertGroupDataAttributesAttributesItem']]): This field is deprecated. Please
             use the `conditions` field instead, `attributes` will be removed in the future.
-        group_by_alert_title (Union[Unset, NewAlertGroupDataAttributesGroupByAlertTitle]): Whether the alerts should be
-            grouped by titles.
-        group_by_alert_urgency (Union[Unset, NewAlertGroupDataAttributesGroupByAlertUrgency]): Whether the alerts should
-            be grouped by urgencies.
+        group_by_alert_title (Union[Unset, NewAlertGroupDataAttributesGroupByAlertTitle]): [DEPRECATED] Whether the
+            alerts should be grouped by titles. This field is deprecated. Please use the `conditions` field with advanced
+            alert grouping instead.
+        group_by_alert_urgency (Union[Unset, NewAlertGroupDataAttributesGroupByAlertUrgency]): [DEPRECATED] Whether the
+            alerts should be grouped by urgencies. This field is deprecated. Please use the `conditions` field with advanced
+            alert grouping instead.
         condition_type (Union[Unset, NewAlertGroupDataAttributesConditionType]): Group alerts when ANY or ALL of the
             fields are matching.
         conditions (Union[Unset, list['NewAlertGroupDataAttributesConditionsItem']]):

@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.incident_type_fields_item import IncidentTypeFieldsItem
     from ..models.incident_type_slack_aliases_type_0_item import IncidentTypeSlackAliasesType0Item
     from ..models.incident_type_slack_channels_type_0_item import IncidentTypeSlackChannelsType0Item
 
@@ -30,6 +31,7 @@ class IncidentType:
             this incident type
         slack_aliases (Union[None, Unset, list['IncidentTypeSlackAliasesType0Item']]): Slack Aliases associated with
             this incident type
+        fields (Union[Unset, list['IncidentTypeFieldsItem']]): Array of field values for this incident type.
     """
 
     name: str
@@ -42,6 +44,7 @@ class IncidentType:
     notify_emails: Union[None, Unset, list[str]] = UNSET
     slack_channels: Union[None, Unset, list["IncidentTypeSlackChannelsType0Item"]] = UNSET
     slack_aliases: Union[None, Unset, list["IncidentTypeSlackAliasesType0Item"]] = UNSET
+    fields: Union[Unset, list["IncidentTypeFieldsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,6 +107,13 @@ class IncidentType:
         else:
             slack_aliases = self.slack_aliases
 
+        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fields, Unset):
+            fields = []
+            for fields_item_data in self.fields:
+                fields_item = fields_item_data.to_dict()
+                fields.append(fields_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -127,11 +137,14 @@ class IncidentType:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
             field_dict["slack_aliases"] = slack_aliases
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.incident_type_fields_item import IncidentTypeFieldsItem
         from ..models.incident_type_slack_aliases_type_0_item import IncidentTypeSlackAliasesType0Item
         from ..models.incident_type_slack_channels_type_0_item import IncidentTypeSlackChannelsType0Item
 
@@ -236,6 +249,13 @@ class IncidentType:
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
+        fields = []
+        _fields = d.pop("fields", UNSET)
+        for fields_item_data in _fields or []:
+            fields_item = IncidentTypeFieldsItem.from_dict(fields_item_data)
+
+            fields.append(fields_item)
+
         incident_type = cls(
             name=name,
             created_at=created_at,
@@ -247,6 +267,7 @@ class IncidentType:
             notify_emails=notify_emails,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
+            fields=fields,
         )
 
         incident_type.additional_properties = d

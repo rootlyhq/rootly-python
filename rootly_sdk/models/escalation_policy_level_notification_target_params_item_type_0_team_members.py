@@ -12,8 +12,10 @@ ESCALATION_POLICY_LEVEL_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TEAM_MEMBERS_VALU
 
 
 def check_escalation_policy_level_notification_target_params_item_type_0_team_members(
-    value: str,
-) -> EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers:
+    value: str | None,
+) -> EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_LEVEL_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TEAM_MEMBERS_VALUES:
         return cast(EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers, value)
     raise TypeError(

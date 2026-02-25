@@ -7,7 +7,9 @@ INCIDENT_ROLE_TASK_RESPONSE_DATA_TYPE_VALUES: set[IncidentRoleTaskResponseDataTy
 }
 
 
-def check_incident_role_task_response_data_type(value: str) -> IncidentRoleTaskResponseDataType:
+def check_incident_role_task_response_data_type(value: str | None) -> IncidentRoleTaskResponseDataType | None:
+    if value is None:
+        return None
     if value in INCIDENT_ROLE_TASK_RESPONSE_DATA_TYPE_VALUES:
         return cast(IncidentRoleTaskResponseDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_ROLE_TASK_RESPONSE_DATA_TYPE_VALUES!r}")

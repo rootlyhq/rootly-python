@@ -7,7 +7,9 @@ CREATE_ZENDESK_JIRA_LINK_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateZendeskJiraLink
 }
 
 
-def check_create_zendesk_jira_link_task_params_task_type(value: str) -> CreateZendeskJiraLinkTaskParamsTaskType:
+def check_create_zendesk_jira_link_task_params_task_type(value: str | None) -> CreateZendeskJiraLinkTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_ZENDESK_JIRA_LINK_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateZendeskJiraLinkTaskParamsTaskType, value)
     raise TypeError(

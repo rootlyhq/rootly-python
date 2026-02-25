@@ -7,7 +7,9 @@ NEW_FORM_FIELD_PLACEMENT_CONDITION_DATA_TYPE_VALUES: set[NewFormFieldPlacementCo
 }
 
 
-def check_new_form_field_placement_condition_data_type(value: str) -> NewFormFieldPlacementConditionDataType:
+def check_new_form_field_placement_condition_data_type(value: str | None) -> NewFormFieldPlacementConditionDataType | None:
+    if value is None:
+        return None
     if value in NEW_FORM_FIELD_PLACEMENT_CONDITION_DATA_TYPE_VALUES:
         return cast(NewFormFieldPlacementConditionDataType, value)
     raise TypeError(

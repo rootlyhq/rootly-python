@@ -6,6 +6,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.new_environment_data_attributes_fields_item import NewEnvironmentDataAttributesFieldsItem
     from ..models.new_environment_data_attributes_slack_aliases_type_0_item import (
         NewEnvironmentDataAttributesSlackAliasesType0Item,
     )
@@ -30,6 +31,8 @@ class NewEnvironmentDataAttributes:
             associated with this environment
         slack_aliases (Union[None, Unset, list['NewEnvironmentDataAttributesSlackAliasesType0Item']]): Slack Aliases
             associated with this environment
+        fields (Union[Unset, list['NewEnvironmentDataAttributesFieldsItem']]): Array of field values for this
+            environment.
     """
 
     name: str
@@ -39,6 +42,7 @@ class NewEnvironmentDataAttributes:
     notify_emails: Union[None, Unset, list[str]] = UNSET
     slack_channels: Union[None, Unset, list["NewEnvironmentDataAttributesSlackChannelsType0Item"]] = UNSET
     slack_aliases: Union[None, Unset, list["NewEnvironmentDataAttributesSlackAliasesType0Item"]] = UNSET
+    fields: Union[Unset, list["NewEnvironmentDataAttributesFieldsItem"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -94,6 +98,13 @@ class NewEnvironmentDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
+        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fields, Unset):
+            fields = []
+            for fields_item_data in self.fields:
+                fields_item = fields_item_data.to_dict()
+                fields.append(fields_item)
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -113,11 +124,14 @@ class NewEnvironmentDataAttributes:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
             field_dict["slack_aliases"] = slack_aliases
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.new_environment_data_attributes_fields_item import NewEnvironmentDataAttributesFieldsItem
         from ..models.new_environment_data_attributes_slack_aliases_type_0_item import (
             NewEnvironmentDataAttributesSlackAliasesType0Item,
         )
@@ -224,6 +238,13 @@ class NewEnvironmentDataAttributes:
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
+        fields = []
+        _fields = d.pop("fields", UNSET)
+        for fields_item_data in _fields or []:
+            fields_item = NewEnvironmentDataAttributesFieldsItem.from_dict(fields_item_data)
+
+            fields.append(fields_item)
+
         new_environment_data_attributes = cls(
             name=name,
             description=description,
@@ -232,6 +253,7 @@ class NewEnvironmentDataAttributes:
             notify_emails=notify_emails,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
+            fields=fields,
         )
 
         return new_environment_data_attributes

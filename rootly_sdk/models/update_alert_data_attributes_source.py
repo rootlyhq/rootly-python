@@ -25,6 +25,7 @@ UpdateAlertDataAttributesSource = Literal[
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -70,6 +71,7 @@ UPDATE_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES: set[UpdateAlertDataAttributesSource]
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -91,7 +93,9 @@ UPDATE_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES: set[UpdateAlertDataAttributesSource]
 }
 
 
-def check_update_alert_data_attributes_source(value: str) -> UpdateAlertDataAttributesSource:
+def check_update_alert_data_attributes_source(value: str | None) -> UpdateAlertDataAttributesSource | None:
+    if value is None:
+        return None
     if value in UPDATE_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES:
         return cast(UpdateAlertDataAttributesSource, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ALERT_DATA_ATTRIBUTES_SOURCE_VALUES!r}")

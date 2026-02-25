@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 ActionItemTriggerParamsIncidentConditionKind = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_KIND_VALUES: set[ActionItemTriggerParamsIncidentConditionKind] = {
@@ -10,6 +10,7 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_KIND_VALUES: set[ActionItemTrigger
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -17,8 +18,10 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_KIND_VALUES: set[ActionItemTrigger
 
 
 def check_action_item_trigger_params_incident_condition_kind(
-    value: str,
-) -> ActionItemTriggerParamsIncidentConditionKind:
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentConditionKind | None:
+    if value is None:
+        return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_KIND_VALUES:
         return cast(ActionItemTriggerParamsIncidentConditionKind, value)
     raise TypeError(

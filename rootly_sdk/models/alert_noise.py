@@ -8,7 +8,9 @@ ALERT_NOISE_VALUES: set[AlertNoise] = {
 }
 
 
-def check_alert_noise(value: str) -> AlertNoise:
+def check_alert_noise(value: str | None) -> AlertNoise | None:
+    if value is None:
+        return None
     if value in ALERT_NOISE_VALUES:
         return cast(AlertNoise, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_NOISE_VALUES!r}")

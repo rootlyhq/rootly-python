@@ -8,7 +8,9 @@ LIST_CATALOG_ENTITIES_INCLUDE_VALUES: set[ListCatalogEntitiesInclude] = {
 }
 
 
-def check_list_catalog_entities_include(value: str) -> ListCatalogEntitiesInclude:
+def check_list_catalog_entities_include(value: str | None) -> ListCatalogEntitiesInclude | None:
+    if value is None:
+        return None
     if value in LIST_CATALOG_ENTITIES_INCLUDE_VALUES:
         return cast(ListCatalogEntitiesInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CATALOG_ENTITIES_INCLUDE_VALUES!r}")

@@ -16,8 +16,10 @@ NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_ATTRIBUTES_DAY_NAME_VALUES: set[
 
 
 def check_new_schedule_rotation_active_day_data_attributes_day_name(
-    value: str,
-) -> NewScheduleRotationActiveDayDataAttributesDayName:
+    value: str | None,
+) -> NewScheduleRotationActiveDayDataAttributesDayName | None:
+    if value is None:
+        return None
     if value in NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_ATTRIBUTES_DAY_NAME_VALUES:
         return cast(NewScheduleRotationActiveDayDataAttributesDayName, value)
     raise TypeError(

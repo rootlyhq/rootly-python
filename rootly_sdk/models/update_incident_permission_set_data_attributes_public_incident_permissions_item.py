@@ -13,8 +13,10 @@ UPDATE_INCIDENT_PERMISSION_SET_DATA_ATTRIBUTES_PUBLIC_INCIDENT_PERMISSIONS_ITEM_
 
 
 def check_update_incident_permission_set_data_attributes_public_incident_permissions_item(
-    value: str,
-) -> UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem:
+    value: str | None,
+) -> UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_DATA_ATTRIBUTES_PUBLIC_INCIDENT_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem, value)
     raise TypeError(

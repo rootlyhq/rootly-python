@@ -41,7 +41,9 @@ NEW_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES: set[NewFormFieldPositionDat
 }
 
 
-def check_new_form_field_position_data_attributes_form(value: str) -> NewFormFieldPositionDataAttributesForm:
+def check_new_form_field_position_data_attributes_form(value: str | None) -> NewFormFieldPositionDataAttributesForm | None:
+    if value is None:
+        return None
     if value in NEW_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES:
         return cast(NewFormFieldPositionDataAttributesForm, value)
     raise TypeError(

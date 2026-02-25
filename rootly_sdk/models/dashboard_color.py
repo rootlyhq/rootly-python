@@ -11,7 +11,9 @@ DASHBOARD_COLOR_VALUES: set[DashboardColor] = {
 }
 
 
-def check_dashboard_color(value: str) -> DashboardColor:
+def check_dashboard_color(value: str | None) -> DashboardColor | None:
+    if value is None:
+        return None
     if value in DASHBOARD_COLOR_VALUES:
         return cast(DashboardColor, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {DASHBOARD_COLOR_VALUES!r}")

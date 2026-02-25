@@ -13,8 +13,10 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_STATUSES_ITEM_VALUES: set[
 
 
 def check_action_item_trigger_params_incident_action_item_statuses_item(
-    value: str,
-) -> ActionItemTriggerParamsIncidentActionItemStatusesItem:
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentActionItemStatusesItem | None:
+    if value is None:
+        return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_STATUSES_ITEM_VALUES:
         return cast(ActionItemTriggerParamsIncidentActionItemStatusesItem, value)
     raise TypeError(

@@ -18,7 +18,9 @@ UPDATE_FORM_FIELD_DATA_ATTRIBUTES_INPUT_KIND_VALUES: set[UpdateFormFieldDataAttr
 }
 
 
-def check_update_form_field_data_attributes_input_kind(value: str) -> UpdateFormFieldDataAttributesInputKind:
+def check_update_form_field_data_attributes_input_kind(value: str | None) -> UpdateFormFieldDataAttributesInputKind | None:
+    if value is None:
+        return None
     if value in UPDATE_FORM_FIELD_DATA_ATTRIBUTES_INPUT_KIND_VALUES:
         return cast(UpdateFormFieldDataAttributesInputKind, value)
     raise TypeError(

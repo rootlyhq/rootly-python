@@ -65,7 +65,9 @@ WEBHOOKS_ENDPOINT_EVENT_TYPES_ITEM_VALUES: set[WebhooksEndpointEventTypesItem] =
 }
 
 
-def check_webhooks_endpoint_event_types_item(value: str) -> WebhooksEndpointEventTypesItem:
+def check_webhooks_endpoint_event_types_item(value: str | None) -> WebhooksEndpointEventTypesItem | None:
+    if value is None:
+        return None
     if value in WEBHOOKS_ENDPOINT_EVENT_TYPES_ITEM_VALUES:
         return cast(WebhooksEndpointEventTypesItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WEBHOOKS_ENDPOINT_EVENT_TYPES_ITEM_VALUES!r}")

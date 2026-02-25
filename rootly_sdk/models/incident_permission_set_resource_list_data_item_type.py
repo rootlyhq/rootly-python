@@ -8,8 +8,10 @@ INCIDENT_PERMISSION_SET_RESOURCE_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentPermiss
 
 
 def check_incident_permission_set_resource_list_data_item_type(
-    value: str,
-) -> IncidentPermissionSetResourceListDataItemType:
+    value: str | None,
+) -> IncidentPermissionSetResourceListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_RESOURCE_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentPermissionSetResourceListDataItemType, value)
     raise TypeError(

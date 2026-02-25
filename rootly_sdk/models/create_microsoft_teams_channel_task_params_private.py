@@ -10,8 +10,10 @@ CREATE_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_PRIVATE_VALUES: set[CreateMicrosoftTe
 
 
 def check_create_microsoft_teams_channel_task_params_private(
-    value: str,
-) -> CreateMicrosoftTeamsChannelTaskParamsPrivate:
+    value: str | None,
+) -> CreateMicrosoftTeamsChannelTaskParamsPrivate | None:
+    if value is None:
+        return None
     if value in CREATE_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_PRIVATE_VALUES:
         return cast(CreateMicrosoftTeamsChannelTaskParamsPrivate, value)
     raise TypeError(

@@ -8,8 +8,10 @@ RETROSPECTIVE_PROCESS_GROUP_STEP_RESPONSE_DATA_TYPE_VALUES: set[RetrospectivePro
 
 
 def check_retrospective_process_group_step_response_data_type(
-    value: str,
-) -> RetrospectiveProcessGroupStepResponseDataType:
+    value: str | None,
+) -> RetrospectiveProcessGroupStepResponseDataType | None:
+    if value is None:
+        return None
     if value in RETROSPECTIVE_PROCESS_GROUP_STEP_RESPONSE_DATA_TYPE_VALUES:
         return cast(RetrospectiveProcessGroupStepResponseDataType, value)
     raise TypeError(

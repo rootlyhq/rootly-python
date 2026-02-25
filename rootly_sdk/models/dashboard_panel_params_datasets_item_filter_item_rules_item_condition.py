@@ -21,8 +21,10 @@ DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_FILTER_ITEM_RULES_ITEM_CONDITION_VALUES: se
 
 
 def check_dashboard_panel_params_datasets_item_filter_item_rules_item_condition(
-    value: str,
-) -> DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition:
+    value: str | None,
+) -> DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition | None:
+    if value is None:
+        return None
     if value in DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_FILTER_ITEM_RULES_ITEM_CONDITION_VALUES:
         return cast(DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition, value)
     raise TypeError(

@@ -11,8 +11,10 @@ ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_REFERENCE_KIND_VALUES
 
 
 def check_alerts_source_resolution_rule_attributes_type_0_identifier_reference_kind(
-    value: str,
-) -> AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind:
+    value: str | None,
+) -> AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind | None:
+    if value is None:
+        return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_REFERENCE_KIND_VALUES:
         return cast(AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind, value)
     raise TypeError(

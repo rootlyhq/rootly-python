@@ -7,7 +7,9 @@ INCIDENT_PERMISSION_SET_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentPermissionSetLis
 }
 
 
-def check_incident_permission_set_list_data_item_type(value: str) -> IncidentPermissionSetListDataItemType:
+def check_incident_permission_set_list_data_item_type(value: str | None) -> IncidentPermissionSetListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentPermissionSetListDataItemType, value)
     raise TypeError(

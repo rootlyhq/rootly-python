@@ -38,8 +38,10 @@ UPDATE_ACTION_ITEM_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES: set[UpdateActionIte
 
 
 def check_update_action_item_task_params_attribute_to_query_by(
-    value: str,
-) -> UpdateActionItemTaskParamsAttributeToQueryBy:
+    value: str | None,
+) -> UpdateActionItemTaskParamsAttributeToQueryBy | None:
+    if value is None:
+        return None
     if value in UPDATE_ACTION_ITEM_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
         return cast(UpdateActionItemTaskParamsAttributeToQueryBy, value)
     raise TypeError(

@@ -109,8 +109,9 @@ class UpdateRoleDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]): The role name.
-        slug (Union[Unset, str]): The role slug.
         incident_permission_set_id (Union[None, Unset, str]): Associated incident permissions set.
+        is_deletable (Union[Unset, bool]): Whether the role can be deleted.
+        is_editable (Union[Unset, bool]): Whether the role can be edited.
         api_keys_permissions (Union[Unset, list[UpdateRoleDataAttributesApiKeysPermissionsItem]]):
         audits_permissions (Union[Unset, list[UpdateRoleDataAttributesAuditsPermissionsItem]]):
         billing_permissions (Union[Unset, list[UpdateRoleDataAttributesBillingPermissionsItem]]):
@@ -138,8 +139,9 @@ class UpdateRoleDataAttributes:
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     incident_permission_set_id: Union[None, Unset, str] = UNSET
+    is_deletable: Union[Unset, bool] = UNSET
+    is_editable: Union[Unset, bool] = UNSET
     api_keys_permissions: Union[Unset, list[UpdateRoleDataAttributesApiKeysPermissionsItem]] = UNSET
     audits_permissions: Union[Unset, list[UpdateRoleDataAttributesAuditsPermissionsItem]] = UNSET
     billing_permissions: Union[Unset, list[UpdateRoleDataAttributesBillingPermissionsItem]] = UNSET
@@ -168,13 +170,15 @@ class UpdateRoleDataAttributes:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug = self.slug
-
         incident_permission_set_id: Union[None, Unset, str]
         if isinstance(self.incident_permission_set_id, Unset):
             incident_permission_set_id = UNSET
         else:
             incident_permission_set_id = self.incident_permission_set_id
+
+        is_deletable = self.is_deletable
+
+        is_editable = self.is_editable
 
         api_keys_permissions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.api_keys_permissions, Unset):
@@ -349,10 +353,12 @@ class UpdateRoleDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if incident_permission_set_id is not UNSET:
             field_dict["incident_permission_set_id"] = incident_permission_set_id
+        if is_deletable is not UNSET:
+            field_dict["is_deletable"] = is_deletable
+        if is_editable is not UNSET:
+            field_dict["is_editable"] = is_editable
         if api_keys_permissions is not UNSET:
             field_dict["api_keys_permissions"] = api_keys_permissions
         if audits_permissions is not UNSET:
@@ -409,8 +415,6 @@ class UpdateRoleDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        slug = d.pop("slug", UNSET)
-
         def _parse_incident_permission_set_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -419,6 +423,10 @@ class UpdateRoleDataAttributes:
             return cast(Union[None, Unset, str], data)
 
         incident_permission_set_id = _parse_incident_permission_set_id(d.pop("incident_permission_set_id", UNSET))
+
+        is_deletable = d.pop("is_deletable", UNSET)
+
+        is_editable = d.pop("is_editable", UNSET)
 
         api_keys_permissions = []
         _api_keys_permissions = d.pop("api_keys_permissions", UNSET)
@@ -638,8 +646,9 @@ class UpdateRoleDataAttributes:
 
         update_role_data_attributes = cls(
             name=name,
-            slug=slug,
             incident_permission_set_id=incident_permission_set_id,
+            is_deletable=is_deletable,
+            is_editable=is_editable,
             api_keys_permissions=api_keys_permissions,
             audits_permissions=audits_permissions,
             billing_permissions=billing_permissions,

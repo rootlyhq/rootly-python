@@ -10,7 +10,9 @@ INCIDENT_PERMISSION_SET_RESOURCE_KIND_VALUES: set[IncidentPermissionSetResourceK
 }
 
 
-def check_incident_permission_set_resource_kind(value: str) -> IncidentPermissionSetResourceKind:
+def check_incident_permission_set_resource_kind(value: str | None) -> IncidentPermissionSetResourceKind | None:
+    if value is None:
+        return None
     if value in INCIDENT_PERMISSION_SET_RESOURCE_KIND_VALUES:
         return cast(IncidentPermissionSetResourceKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_PERMISSION_SET_RESOURCE_KIND_VALUES!r}")

@@ -8,8 +8,10 @@ UPDATE_INCIDENT_STATUS_TIMESTAMP_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateInciden
 
 
 def check_update_incident_status_timestamp_task_params_task_type(
-    value: str,
-) -> UpdateIncidentStatusTimestampTaskParamsTaskType:
+    value: str | None,
+) -> UpdateIncidentStatusTimestampTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_STATUS_TIMESTAMP_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(UpdateIncidentStatusTimestampTaskParamsTaskType, value)
     raise TypeError(

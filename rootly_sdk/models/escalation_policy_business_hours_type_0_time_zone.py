@@ -65,7 +65,6 @@ EscalationPolicyBusinessHoursType0TimeZone = Literal[
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -147,7 +146,6 @@ EscalationPolicyBusinessHoursType0TimeZone = Literal[
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -197,7 +195,6 @@ EscalationPolicyBusinessHoursType0TimeZone = Literal[
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -248,7 +245,6 @@ EscalationPolicyBusinessHoursType0TimeZone = Literal[
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -357,7 +353,6 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -439,7 +434,6 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -489,7 +483,6 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -540,7 +533,6 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -585,7 +577,9 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
 }
 
 
-def check_escalation_policy_business_hours_type_0_time_zone(value: str) -> EscalationPolicyBusinessHoursType0TimeZone:
+def check_escalation_policy_business_hours_type_0_time_zone(value: str | None) -> EscalationPolicyBusinessHoursType0TimeZone | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
         return cast(EscalationPolicyBusinessHoursType0TimeZone, value)
     raise TypeError(

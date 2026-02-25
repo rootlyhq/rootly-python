@@ -10,7 +10,9 @@ ON_CALL_ROLE_INTEGRATIONS_PERMISSIONS_ITEM_VALUES: set[OnCallRoleIntegrationsPer
 }
 
 
-def check_on_call_role_integrations_permissions_item(value: str) -> OnCallRoleIntegrationsPermissionsItem:
+def check_on_call_role_integrations_permissions_item(value: str | None) -> OnCallRoleIntegrationsPermissionsItem | None:
+    if value is None:
+        return None
     if value in ON_CALL_ROLE_INTEGRATIONS_PERMISSIONS_ITEM_VALUES:
         return cast(OnCallRoleIntegrationsPermissionsItem, value)
     raise TypeError(

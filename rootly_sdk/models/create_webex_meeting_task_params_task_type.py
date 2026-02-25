@@ -7,7 +7,9 @@ CREATE_WEBEX_MEETING_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateWebexMeetingTaskPar
 }
 
 
-def check_create_webex_meeting_task_params_task_type(value: str) -> CreateWebexMeetingTaskParamsTaskType:
+def check_create_webex_meeting_task_params_task_type(value: str | None) -> CreateWebexMeetingTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in CREATE_WEBEX_MEETING_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(CreateWebexMeetingTaskParamsTaskType, value)
     raise TypeError(

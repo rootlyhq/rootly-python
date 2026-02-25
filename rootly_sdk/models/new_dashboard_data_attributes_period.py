@@ -9,7 +9,9 @@ NEW_DASHBOARD_DATA_ATTRIBUTES_PERIOD_VALUES: set[NewDashboardDataAttributesPerio
 }
 
 
-def check_new_dashboard_data_attributes_period(value: str) -> NewDashboardDataAttributesPeriod:
+def check_new_dashboard_data_attributes_period(value: str | None) -> NewDashboardDataAttributesPeriod | None:
+    if value is None:
+        return None
     if value in NEW_DASHBOARD_DATA_ATTRIBUTES_PERIOD_VALUES:
         return cast(NewDashboardDataAttributesPeriod, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_DATA_ATTRIBUTES_PERIOD_VALUES!r}")

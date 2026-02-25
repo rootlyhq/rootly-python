@@ -11,8 +11,10 @@ UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_CONDITIONED_VALUES: set[
 
 
 def check_update_form_field_placement_condition_data_attributes_conditioned(
-    value: str,
-) -> UpdateFormFieldPlacementConditionDataAttributesConditioned:
+    value: str | None,
+) -> UpdateFormFieldPlacementConditionDataAttributesConditioned | None:
+    if value is None:
+        return None
     if value in UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_CONDITIONED_VALUES:
         return cast(UpdateFormFieldPlacementConditionDataAttributesConditioned, value)
     raise TypeError(

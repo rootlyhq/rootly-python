@@ -11,8 +11,10 @@ NEW_ROLE_DATA_ATTRIBUTES_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAt
 
 
 def check_new_role_data_attributes_environments_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesEnvironmentsPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesEnvironmentsPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesEnvironmentsPermissionsItem, value)
     raise TypeError(

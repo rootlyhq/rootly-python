@@ -19,7 +19,6 @@ class CustomField:
     """
     Attributes:
         label (str): The name of the custom_field
-        slug (str): The slug of the custom_field
         shown (list[CustomFieldShownItem]):
         required (Union[None, list[CustomFieldRequiredType0Item]]):
         position (int): The position of the custom_field
@@ -27,12 +26,12 @@ class CustomField:
         updated_at (str): Date of last update
         kind (Union[Unset, str]): The kind of the custom_field
         enabled (Union[Unset, bool]): Whether the custom_field is enabled
+        slug (Union[Unset, str]): The slug of the custom_field
         description (Union[None, Unset, str]): The description of the custom_field
         default (Union[None, Unset, str]): The default value for text field kinds
     """
 
     label: str
-    slug: str
     shown: list[CustomFieldShownItem]
     required: Union[None, list[CustomFieldRequiredType0Item]]
     position: int
@@ -40,14 +39,13 @@ class CustomField:
     updated_at: str
     kind: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     default: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         label = self.label
-
-        slug = self.slug
 
         shown = []
         for shown_item_data in self.shown:
@@ -74,6 +72,8 @@ class CustomField:
 
         enabled = self.enabled
 
+        slug = self.slug
+
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
@@ -91,7 +91,6 @@ class CustomField:
         field_dict.update(
             {
                 "label": label,
-                "slug": slug,
                 "shown": shown,
                 "required": required,
                 "position": position,
@@ -103,6 +102,8 @@ class CustomField:
             field_dict["kind"] = kind
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if default is not UNSET:
@@ -114,8 +115,6 @@ class CustomField:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         label = d.pop("label")
-
-        slug = d.pop("slug")
 
         shown = []
         _shown = d.pop("shown")
@@ -154,6 +153,8 @@ class CustomField:
 
         enabled = d.pop("enabled", UNSET)
 
+        slug = d.pop("slug", UNSET)
+
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -174,7 +175,6 @@ class CustomField:
 
         custom_field = cls(
             label=label,
-            slug=slug,
             shown=shown,
             required=required,
             position=position,
@@ -182,6 +182,7 @@ class CustomField:
             updated_at=updated_at,
             kind=kind,
             enabled=enabled,
+            slug=slug,
             description=description,
             default=default,
         )

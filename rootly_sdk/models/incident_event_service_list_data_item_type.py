@@ -7,7 +7,9 @@ INCIDENT_EVENT_SERVICE_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentEventServiceListD
 }
 
 
-def check_incident_event_service_list_data_item_type(value: str) -> IncidentEventServiceListDataItemType:
+def check_incident_event_service_list_data_item_type(value: str | None) -> IncidentEventServiceListDataItemType | None:
+    if value is None:
+        return None
     if value in INCIDENT_EVENT_SERVICE_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(IncidentEventServiceListDataItemType, value)
     raise TypeError(

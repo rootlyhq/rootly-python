@@ -65,7 +65,6 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -147,7 +146,6 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -197,7 +195,6 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -248,7 +245,6 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -359,7 +355,6 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Asia/Magadan",
     "Asia/Muscat",
     "Asia/Novosibirsk",
-    "Asia/Rangoon",
     "Asia/Riyadh",
     "Asia/Seoul",
     "Asia/Shanghai",
@@ -441,7 +436,6 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Europe/Helsinki",
     "Europe/Istanbul",
     "Europe/Kaliningrad",
-    "Europe/Kiev",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -491,7 +485,6 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Krasnoyarsk",
     "Kuala Lumpur",
     "Kuwait",
-    "Kyiv",
     "La Paz",
     "Lima",
     "Lisbon",
@@ -542,7 +535,6 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Pretoria",
     "Puerto Rico",
     "Quito",
-    "Rangoon",
     "Riga",
     "Riyadh",
     "Rome",
@@ -588,8 +580,10 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
 
 
 def check_update_escalation_policy_data_attributes_business_hours_type_0_time_zone(
-    value: str,
-) -> UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone:
+    value: str | None,
+) -> UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone | None:
+    if value is None:
+        return None
     if value in UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
         return cast(UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone, value)
     raise TypeError(

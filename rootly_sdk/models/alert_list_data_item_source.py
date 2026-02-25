@@ -25,6 +25,7 @@ AlertListDataItemSource = Literal[
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -70,6 +71,7 @@ ALERT_LIST_DATA_ITEM_SOURCE_VALUES: set[AlertListDataItemSource] = {
     "linear",
     "live_call_routing",
     "manual",
+    "mobile",
     "monte_carlo",
     "nagios",
     "new_relic",
@@ -91,7 +93,9 @@ ALERT_LIST_DATA_ITEM_SOURCE_VALUES: set[AlertListDataItemSource] = {
 }
 
 
-def check_alert_list_data_item_source(value: str) -> AlertListDataItemSource:
+def check_alert_list_data_item_source(value: str | None) -> AlertListDataItemSource | None:
+    if value is None:
+        return None
     if value in ALERT_LIST_DATA_ITEM_SOURCE_VALUES:
         return cast(AlertListDataItemSource, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_LIST_DATA_ITEM_SOURCE_VALUES!r}")

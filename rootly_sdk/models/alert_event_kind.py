@@ -5,6 +5,7 @@ AlertEventKind = Literal[
     "alert_grouping",
     "alert_routing",
     "alert_urgency",
+    "deferral",
     "informational",
     "maintenance",
     "noise",
@@ -19,6 +20,7 @@ ALERT_EVENT_KIND_VALUES: set[AlertEventKind] = {
     "alert_grouping",
     "alert_routing",
     "alert_urgency",
+    "deferral",
     "informational",
     "maintenance",
     "noise",
@@ -29,7 +31,9 @@ ALERT_EVENT_KIND_VALUES: set[AlertEventKind] = {
 }
 
 
-def check_alert_event_kind(value: str) -> AlertEventKind:
+def check_alert_event_kind(value: str | None) -> AlertEventKind | None:
+    if value is None:
+        return None
     if value in ALERT_EVENT_KIND_VALUES:
         return cast(AlertEventKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_EVENT_KIND_VALUES!r}")

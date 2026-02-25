@@ -11,8 +11,10 @@ NEW_ROLE_DATA_ATTRIBUTES_FORM_FIELDS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAtt
 
 
 def check_new_role_data_attributes_form_fields_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesFormFieldsPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesFormFieldsPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_FORM_FIELDS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesFormFieldsPermissionsItem, value)
     raise TypeError(

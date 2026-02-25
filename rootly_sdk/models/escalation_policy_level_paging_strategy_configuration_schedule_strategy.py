@@ -11,8 +11,10 @@ ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_SCHEDULE_STRATEGY_VALUES: 
 
 
 def check_escalation_policy_level_paging_strategy_configuration_schedule_strategy(
-    value: str,
-) -> EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy:
+    value: str | None,
+) -> EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy | None:
+    if value is None:
+        return None
     if value in ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_SCHEDULE_STRATEGY_VALUES:
         return cast(EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy, value)
     raise TypeError(

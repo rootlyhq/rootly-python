@@ -67,7 +67,9 @@ FORM_FIELD_KIND_VALUES: set[FormFieldKind] = {
 }
 
 
-def check_form_field_kind(value: str) -> FormFieldKind:
+def check_form_field_kind(value: str | None) -> FormFieldKind | None:
+    if value is None:
+        return None
     if value in FORM_FIELD_KIND_VALUES:
         return cast(FormFieldKind, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FORM_FIELD_KIND_VALUES!r}")

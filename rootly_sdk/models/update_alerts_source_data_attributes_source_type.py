@@ -49,7 +49,9 @@ UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCE_TYPE_VALUES: set[UpdateAlertsSourceD
 }
 
 
-def check_update_alerts_source_data_attributes_source_type(value: str) -> UpdateAlertsSourceDataAttributesSourceType:
+def check_update_alerts_source_data_attributes_source_type(value: str | None) -> UpdateAlertsSourceDataAttributesSourceType | None:
+    if value is None:
+        return None
     if value in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCE_TYPE_VALUES:
         return cast(UpdateAlertsSourceDataAttributesSourceType, value)
     raise TypeError(

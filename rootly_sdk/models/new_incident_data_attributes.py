@@ -35,13 +35,13 @@ class NewIncidentDataAttributes:
             Api Key
         severity_id (Union[None, Unset, str]): The Severity ID to attach to the incident
         public_title (Union[None, Unset, str]): The public title of the incident
-        alert_ids (Union[None, Unset, list[str]]): The Alert ID's to attach to the incident
-        environment_ids (Union[None, Unset, list[str]]): The Environment ID's to attach to the incident
-        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type ID's to attach to the incident
-        service_ids (Union[None, Unset, list[str]]): The Service ID's to attach to the incident
-        functionality_ids (Union[None, Unset, list[str]]): The Functionality ID's to attach to the incident
-        group_ids (Union[None, Unset, list[str]]): The Team ID's to attach to the incident
-        cause_ids (Union[None, Unset, list[str]]): The Cause ID's to attach to the incident
+        alert_ids (Union[None, Unset, list[str]]): The Alert IDs to attach to the incident
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the incident
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the incident
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the incident
+        functionality_ids (Union[None, Unset, list[str]]): The Functionality IDs to attach to the incident
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the incident
+        cause_ids (Union[None, Unset, list[str]]): The Cause IDs to attach to the incident
         muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
             for these services will still be triggered and attached to the incident, but won't page responders.
         labels (Union['NewIncidentDataAttributesLabelsType0', None, Unset]): Labels to attach to the incidents. eg:
@@ -52,6 +52,9 @@ class NewIncidentDataAttributes:
         slack_channel_archived (Union[None, Unset, bool]): Whether the Slack channel is archived
         google_drive_parent_id (Union[None, Unset, str]): Google Drive parent folder ID
         google_drive_url (Union[None, Unset, str]): Google Drive URL
+        jira_issue_key (Union[None, Unset, str]): Jira issue key
+        jira_issue_id (Union[None, Unset, str]): Jira issue ID
+        jira_issue_url (Union[None, Unset, str]): Jira issue URL
         notify_emails (Union[None, Unset, list[str]]): Emails you want to notify
         status (Union[Unset, NewIncidentDataAttributesStatus]): The status of the incident
         url (Union[Unset, str]): The url to the incident
@@ -91,6 +94,9 @@ class NewIncidentDataAttributes:
     slack_channel_archived: Union[None, Unset, bool] = UNSET
     google_drive_parent_id: Union[None, Unset, str] = UNSET
     google_drive_url: Union[None, Unset, str] = UNSET
+    jira_issue_key: Union[None, Unset, str] = UNSET
+    jira_issue_id: Union[None, Unset, str] = UNSET
+    jira_issue_url: Union[None, Unset, str] = UNSET
     notify_emails: Union[None, Unset, list[str]] = UNSET
     status: Union[Unset, NewIncidentDataAttributesStatus] = UNSET
     url: Union[Unset, str] = UNSET
@@ -276,6 +282,24 @@ class NewIncidentDataAttributes:
         else:
             google_drive_url = self.google_drive_url
 
+        jira_issue_key: Union[None, Unset, str]
+        if isinstance(self.jira_issue_key, Unset):
+            jira_issue_key = UNSET
+        else:
+            jira_issue_key = self.jira_issue_key
+
+        jira_issue_id: Union[None, Unset, str]
+        if isinstance(self.jira_issue_id, Unset):
+            jira_issue_id = UNSET
+        else:
+            jira_issue_id = self.jira_issue_id
+
+        jira_issue_url: Union[None, Unset, str]
+        if isinstance(self.jira_issue_url, Unset):
+            jira_issue_url = UNSET
+        else:
+            jira_issue_url = self.jira_issue_url
+
         notify_emails: Union[None, Unset, list[str]]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
@@ -402,6 +426,12 @@ class NewIncidentDataAttributes:
             field_dict["google_drive_parent_id"] = google_drive_parent_id
         if google_drive_url is not UNSET:
             field_dict["google_drive_url"] = google_drive_url
+        if jira_issue_key is not UNSET:
+            field_dict["jira_issue_key"] = jira_issue_key
+        if jira_issue_id is not UNSET:
+            field_dict["jira_issue_id"] = jira_issue_id
+        if jira_issue_url is not UNSET:
+            field_dict["jira_issue_url"] = jira_issue_url
         if notify_emails is not UNSET:
             field_dict["notify_emails"] = notify_emails
         if status is not UNSET:
@@ -723,6 +753,33 @@ class NewIncidentDataAttributes:
 
         google_drive_url = _parse_google_drive_url(d.pop("google_drive_url", UNSET))
 
+        def _parse_jira_issue_key(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_key = _parse_jira_issue_key(d.pop("jira_issue_key", UNSET))
+
+        def _parse_jira_issue_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_id = _parse_jira_issue_id(d.pop("jira_issue_id", UNSET))
+
+        def _parse_jira_issue_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
+
         def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
@@ -864,6 +921,9 @@ class NewIncidentDataAttributes:
             slack_channel_archived=slack_channel_archived,
             google_drive_parent_id=google_drive_parent_id,
             google_drive_url=google_drive_url,
+            jira_issue_key=jira_issue_key,
+            jira_issue_id=jira_issue_id,
+            jira_issue_url=jira_issue_url,
             notify_emails=notify_emails,
             status=status,
             url=url,

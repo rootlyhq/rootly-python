@@ -8,8 +8,10 @@ WORKFLOW_CUSTOM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES: set[WorkflowCustomFi
 
 
 def check_workflow_custom_field_selection_list_data_item_type(
-    value: str,
-) -> WorkflowCustomFieldSelectionListDataItemType:
+    value: str | None,
+) -> WorkflowCustomFieldSelectionListDataItemType | None:
+    if value is None:
+        return None
     if value in WORKFLOW_CUSTOM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(WorkflowCustomFieldSelectionListDataItemType, value)
     raise TypeError(

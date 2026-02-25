@@ -16,7 +16,9 @@ GET_USER_INCLUDE_VALUES: set[GetUserInclude] = {
 }
 
 
-def check_get_user_include(value: str) -> GetUserInclude:
+def check_get_user_include(value: str | None) -> GetUserInclude | None:
+    if value is None:
+        return None
     if value in GET_USER_INCLUDE_VALUES:
         return cast(GetUserInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_USER_INCLUDE_VALUES!r}")

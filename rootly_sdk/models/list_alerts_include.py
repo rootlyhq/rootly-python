@@ -39,7 +39,9 @@ LIST_ALERTS_INCLUDE_VALUES: set[ListAlertsInclude] = {
 }
 
 
-def check_list_alerts_include(value: str) -> ListAlertsInclude:
+def check_list_alerts_include(value: str | None) -> ListAlertsInclude | None:
+    if value is None:
+        return None
     if value in LIST_ALERTS_INCLUDE_VALUES:
         return cast(ListAlertsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ALERTS_INCLUDE_VALUES!r}")

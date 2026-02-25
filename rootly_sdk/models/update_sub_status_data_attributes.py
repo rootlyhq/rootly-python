@@ -13,20 +13,16 @@ class UpdateSubStatusDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
         description (Union[None, Unset, str]):
         position (Union[None, Unset, int]):
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     position: Union[None, Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -45,8 +41,6 @@ class UpdateSubStatusDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if position is not UNSET:
@@ -58,8 +52,6 @@ class UpdateSubStatusDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -81,7 +73,6 @@ class UpdateSubStatusDataAttributes:
 
         update_sub_status_data_attributes = cls(
             name=name,
-            slug=slug,
             description=description,
             position=position,
         )

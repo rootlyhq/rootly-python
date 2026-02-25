@@ -9,7 +9,9 @@ NEW_INCIDENT_ROLE_TASK_DATA_ATTRIBUTES_PRIORITY_VALUES: set[NewIncidentRoleTaskD
 }
 
 
-def check_new_incident_role_task_data_attributes_priority(value: str) -> NewIncidentRoleTaskDataAttributesPriority:
+def check_new_incident_role_task_data_attributes_priority(value: str | None) -> NewIncidentRoleTaskDataAttributesPriority | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_ROLE_TASK_DATA_ATTRIBUTES_PRIORITY_VALUES:
         return cast(NewIncidentRoleTaskDataAttributesPriority, value)
     raise TypeError(

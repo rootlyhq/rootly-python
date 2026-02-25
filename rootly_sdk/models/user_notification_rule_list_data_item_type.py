@@ -7,7 +7,9 @@ USER_NOTIFICATION_RULE_LIST_DATA_ITEM_TYPE_VALUES: set[UserNotificationRuleListD
 }
 
 
-def check_user_notification_rule_list_data_item_type(value: str) -> UserNotificationRuleListDataItemType:
+def check_user_notification_rule_list_data_item_type(value: str | None) -> UserNotificationRuleListDataItemType | None:
+    if value is None:
+        return None
     if value in USER_NOTIFICATION_RULE_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(UserNotificationRuleListDataItemType, value)
     raise TypeError(

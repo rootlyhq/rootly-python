@@ -3,6 +3,10 @@ from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
+from ..models.update_catalog_field_data_attributes_catalog_type import (
+    UpdateCatalogFieldDataAttributesCatalogType,
+    check_update_catalog_field_data_attributes_catalog_type,
+)
 from ..models.update_catalog_field_data_attributes_kind import (
     UpdateCatalogFieldDataAttributesKind,
     check_update_catalog_field_data_attributes_kind,
@@ -17,22 +21,23 @@ class UpdateCatalogFieldDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
         kind (Union[Unset, UpdateCatalogFieldDataAttributesKind]):
         kind_catalog_id (Union[None, Unset, str]): Restricts values to items of specified catalog.
         position (Union[None, Unset, int]): Default position of the item when displayed in a list.
+        required (Union[Unset, bool]): Whether the field is required.
+        catalog_type (Union[Unset, UpdateCatalogFieldDataAttributesCatalogType]): The type of catalog the field belongs
+            to.
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     kind: Union[Unset, UpdateCatalogFieldDataAttributesKind] = UNSET
     kind_catalog_id: Union[None, Unset, str] = UNSET
     position: Union[None, Unset, int] = UNSET
+    required: Union[Unset, bool] = UNSET
+    catalog_type: Union[Unset, UpdateCatalogFieldDataAttributesCatalogType] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         kind: Union[Unset, str] = UNSET
         if not isinstance(self.kind, Unset):
@@ -50,19 +55,27 @@ class UpdateCatalogFieldDataAttributes:
         else:
             position = self.position
 
+        required = self.required
+
+        catalog_type: Union[Unset, str] = UNSET
+        if not isinstance(self.catalog_type, Unset):
+            catalog_type = self.catalog_type
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if kind is not UNSET:
             field_dict["kind"] = kind
         if kind_catalog_id is not UNSET:
             field_dict["kind_catalog_id"] = kind_catalog_id
         if position is not UNSET:
             field_dict["position"] = position
+        if required is not UNSET:
+            field_dict["required"] = required
+        if catalog_type is not UNSET:
+            field_dict["catalog_type"] = catalog_type
 
         return field_dict
 
@@ -70,8 +83,6 @@ class UpdateCatalogFieldDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         _kind = d.pop("kind", UNSET)
         kind: Union[Unset, UpdateCatalogFieldDataAttributesKind]
@@ -98,12 +109,22 @@ class UpdateCatalogFieldDataAttributes:
 
         position = _parse_position(d.pop("position", UNSET))
 
+        required = d.pop("required", UNSET)
+
+        _catalog_type = d.pop("catalog_type", UNSET)
+        catalog_type: Union[Unset, UpdateCatalogFieldDataAttributesCatalogType]
+        if isinstance(_catalog_type, Unset):
+            catalog_type = UNSET
+        else:
+            catalog_type = check_update_catalog_field_data_attributes_catalog_type(_catalog_type)
+
         update_catalog_field_data_attributes = cls(
             name=name,
-            slug=slug,
             kind=kind,
             kind_catalog_id=kind_catalog_id,
             position=position,
+            required=required,
+            catalog_type=catalog_type,
         )
 
         return update_catalog_field_data_attributes

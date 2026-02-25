@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 WorkflowFormFieldConditionIncidentCondition = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 WORKFLOW_FORM_FIELD_CONDITION_INCIDENT_CONDITION_VALUES: set[WorkflowFormFieldConditionIncidentCondition] = {
@@ -10,13 +10,16 @@ WORKFLOW_FORM_FIELD_CONDITION_INCIDENT_CONDITION_VALUES: set[WorkflowFormFieldCo
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
 }
 
 
-def check_workflow_form_field_condition_incident_condition(value: str) -> WorkflowFormFieldConditionIncidentCondition:
+def check_workflow_form_field_condition_incident_condition(value: str | None) -> WorkflowFormFieldConditionIncidentCondition | None:
+    if value is None:
+        return None
     if value in WORKFLOW_FORM_FIELD_CONDITION_INCIDENT_CONDITION_VALUES:
         return cast(WorkflowFormFieldConditionIncidentCondition, value)
     raise TypeError(

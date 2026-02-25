@@ -22,7 +22,9 @@ class CatalogEntityPropertyListDataItem:
     Attributes:
         id (str): Unique ID of the catalog_entity_property
         type_ (CatalogEntityPropertyListDataItemType):
-        attributes (CatalogEntityProperty):
+        attributes (CatalogEntityProperty): **Deprecated:** This endpoint is deprecated, please use `include=fields` on
+            catalog entities or native catalog endpoints (teams, services, functionalities, incident_types, causes,
+            environments) to retrieve field values instead.
     """
 
     id: str

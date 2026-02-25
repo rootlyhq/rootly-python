@@ -60,7 +60,8 @@ class NewAlertsSourceDataAttributes:
             Provide additional attributes for email alerts source
         alert_source_fields_attributes (Union[Unset,
             list['NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem']]): List of alert fields to be added to the
-            alert source
+            alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact
+            Rootly customer support if you need assistance with this feature.
     """
 
     name: str

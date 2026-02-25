@@ -12,8 +12,10 @@ UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_ESCALATION_POLICY_TRIGGER_PARAMS_TYPE_VA
 
 
 def check_update_live_call_router_data_attributes_escalation_policy_trigger_params_type(
-    value: str,
-) -> UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType:
+    value: str | None,
+) -> UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType | None:
+    if value is None:
+        return None
     if value in UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_ESCALATION_POLICY_TRIGGER_PARAMS_TYPE_VALUES:
         return cast(UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType, value)
     raise TypeError(

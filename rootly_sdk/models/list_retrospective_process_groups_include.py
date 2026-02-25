@@ -7,7 +7,9 @@ LIST_RETROSPECTIVE_PROCESS_GROUPS_INCLUDE_VALUES: set[ListRetrospectiveProcessGr
 }
 
 
-def check_list_retrospective_process_groups_include(value: str) -> ListRetrospectiveProcessGroupsInclude:
+def check_list_retrospective_process_groups_include(value: str | None) -> ListRetrospectiveProcessGroupsInclude | None:
+    if value is None:
+        return None
     if value in LIST_RETROSPECTIVE_PROCESS_GROUPS_INCLUDE_VALUES:
         return cast(ListRetrospectiveProcessGroupsInclude, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_RETROSPECTIVE_PROCESS_GROUPS_INCLUDE_VALUES!r}")

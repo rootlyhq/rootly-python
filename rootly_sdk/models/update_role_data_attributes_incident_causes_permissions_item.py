@@ -13,8 +13,10 @@ UPDATE_ROLE_DATA_ATTRIBUTES_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES: set[
 
 
 def check_update_role_data_attributes_incident_causes_permissions_item(
-    value: str,
-) -> UpdateRoleDataAttributesIncidentCausesPermissionsItem:
+    value: str | None,
+) -> UpdateRoleDataAttributesIncidentCausesPermissionsItem | None:
+    if value is None:
+        return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES:
         return cast(UpdateRoleDataAttributesIncidentCausesPermissionsItem, value)
     raise TypeError(

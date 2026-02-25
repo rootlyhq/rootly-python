@@ -7,7 +7,9 @@ UPDATE_ZENDESK_TICKET_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateZendeskTicketTaskP
 }
 
 
-def check_update_zendesk_ticket_task_params_task_type(value: str) -> UpdateZendeskTicketTaskParamsTaskType:
+def check_update_zendesk_ticket_task_params_task_type(value: str | None) -> UpdateZendeskTicketTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in UPDATE_ZENDESK_TICKET_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(UpdateZendeskTicketTaskParamsTaskType, value)
     raise TypeError(

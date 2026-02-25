@@ -47,7 +47,9 @@ UPDATE_INCIDENT_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES: set[UpdateIncidentTask
 }
 
 
-def check_update_incident_task_params_attribute_to_query_by(value: str) -> UpdateIncidentTaskParamsAttributeToQueryBy:
+def check_update_incident_task_params_attribute_to_query_by(value: str | None) -> UpdateIncidentTaskParamsAttributeToQueryBy | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
         return cast(UpdateIncidentTaskParamsAttributeToQueryBy, value)
     raise TypeError(

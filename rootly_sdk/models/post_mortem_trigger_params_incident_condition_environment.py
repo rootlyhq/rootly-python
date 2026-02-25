@@ -1,7 +1,7 @@
 from typing import Literal, cast
 
 PostMortemTriggerParamsIncidentConditionEnvironment = Literal[
-    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "NONE", "SET", "UNSET"
+    "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
 ]
 
 POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_ENVIRONMENT_VALUES: set[
@@ -12,6 +12,7 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_ENVIRONMENT_VALUES: set[
     "CONTAINS_ALL",
     "CONTAINS_NONE",
     "IS",
+    "IS NOT",
     "NONE",
     "SET",
     "UNSET",
@@ -19,8 +20,10 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_ENVIRONMENT_VALUES: set[
 
 
 def check_post_mortem_trigger_params_incident_condition_environment(
-    value: str,
-) -> PostMortemTriggerParamsIncidentConditionEnvironment:
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentConditionEnvironment | None:
+    if value is None:
+        return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_ENVIRONMENT_VALUES:
         return cast(PostMortemTriggerParamsIncidentConditionEnvironment, value)
     raise TypeError(

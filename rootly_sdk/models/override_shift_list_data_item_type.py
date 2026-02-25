@@ -7,7 +7,9 @@ OVERRIDE_SHIFT_LIST_DATA_ITEM_TYPE_VALUES: set[OverrideShiftListDataItemType] = 
 }
 
 
-def check_override_shift_list_data_item_type(value: str) -> OverrideShiftListDataItemType:
+def check_override_shift_list_data_item_type(value: str | None) -> OverrideShiftListDataItemType | None:
+    if value is None:
+        return None
     if value in OVERRIDE_SHIFT_LIST_DATA_ITEM_TYPE_VALUES:
         return cast(OverrideShiftListDataItemType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {OVERRIDE_SHIFT_LIST_DATA_ITEM_TYPE_VALUES!r}")

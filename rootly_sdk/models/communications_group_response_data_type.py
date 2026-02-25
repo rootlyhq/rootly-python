@@ -7,7 +7,9 @@ COMMUNICATIONS_GROUP_RESPONSE_DATA_TYPE_VALUES: set[CommunicationsGroupResponseD
 }
 
 
-def check_communications_group_response_data_type(value: str) -> CommunicationsGroupResponseDataType:
+def check_communications_group_response_data_type(value: str | None) -> CommunicationsGroupResponseDataType | None:
+    if value is None:
+        return None
     if value in COMMUNICATIONS_GROUP_RESPONSE_DATA_TYPE_VALUES:
         return cast(CommunicationsGroupResponseDataType, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {COMMUNICATIONS_GROUP_RESPONSE_DATA_TYPE_VALUES!r}")

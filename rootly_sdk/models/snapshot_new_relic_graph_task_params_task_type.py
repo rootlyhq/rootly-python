@@ -7,7 +7,9 @@ SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES: set[SnapshotNewRelicGraph
 }
 
 
-def check_snapshot_new_relic_graph_task_params_task_type(value: str) -> SnapshotNewRelicGraphTaskParamsTaskType:
+def check_snapshot_new_relic_graph_task_params_task_type(value: str | None) -> SnapshotNewRelicGraphTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(SnapshotNewRelicGraphTaskParamsTaskType, value)
     raise TypeError(

@@ -9,7 +9,9 @@ UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PHONE_TYPE_VALUES: set[UpdateLiveCallRou
 }
 
 
-def check_update_live_call_router_data_attributes_phone_type(value: str) -> UpdateLiveCallRouterDataAttributesPhoneType:
+def check_update_live_call_router_data_attributes_phone_type(value: str | None) -> UpdateLiveCallRouterDataAttributesPhoneType | None:
+    if value is None:
+        return None
     if value in UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PHONE_TYPE_VALUES:
         return cast(UpdateLiveCallRouterDataAttributesPhoneType, value)
     raise TypeError(

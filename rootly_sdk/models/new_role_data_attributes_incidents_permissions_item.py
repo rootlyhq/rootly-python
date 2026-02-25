@@ -11,8 +11,10 @@ NEW_ROLE_DATA_ATTRIBUTES_INCIDENTS_PERMISSIONS_ITEM_VALUES: set[NewRoleDataAttri
 
 
 def check_new_role_data_attributes_incidents_permissions_item(
-    value: str,
-) -> NewRoleDataAttributesIncidentsPermissionsItem:
+    value: str | None,
+) -> NewRoleDataAttributesIncidentsPermissionsItem | None:
+    if value is None:
+        return None
     if value in NEW_ROLE_DATA_ATTRIBUTES_INCIDENTS_PERMISSIONS_ITEM_VALUES:
         return cast(NewRoleDataAttributesIncidentsPermissionsItem, value)
     raise TypeError(

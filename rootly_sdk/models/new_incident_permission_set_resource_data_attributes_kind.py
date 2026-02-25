@@ -13,8 +13,10 @@ NEW_INCIDENT_PERMISSION_SET_RESOURCE_DATA_ATTRIBUTES_KIND_VALUES: set[
 
 
 def check_new_incident_permission_set_resource_data_attributes_kind(
-    value: str,
-) -> NewIncidentPermissionSetResourceDataAttributesKind:
+    value: str | None,
+) -> NewIncidentPermissionSetResourceDataAttributesKind | None:
+    if value is None:
+        return None
     if value in NEW_INCIDENT_PERMISSION_SET_RESOURCE_DATA_ATTRIBUTES_KIND_VALUES:
         return cast(NewIncidentPermissionSetResourceDataAttributesKind, value)
     raise TypeError(

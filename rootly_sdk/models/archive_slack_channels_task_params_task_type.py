@@ -7,7 +7,9 @@ ARCHIVE_SLACK_CHANNELS_TASK_PARAMS_TASK_TYPE_VALUES: set[ArchiveSlackChannelsTas
 }
 
 
-def check_archive_slack_channels_task_params_task_type(value: str) -> ArchiveSlackChannelsTaskParamsTaskType:
+def check_archive_slack_channels_task_params_task_type(value: str | None) -> ArchiveSlackChannelsTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in ARCHIVE_SLACK_CHANNELS_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(ArchiveSlackChannelsTaskParamsTaskType, value)
     raise TypeError(

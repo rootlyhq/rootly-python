@@ -17,26 +17,27 @@ class NewPostMortemTemplateDataAttributes:
     """
     Attributes:
         name (str): The name of the postmortem template
-        content (str): The postmortem template. Liquid syntax is supported
         default (Union[None, Unset, bool]): Default selected template when editing a postmortem
+        content (Union[Unset, str]): The postmortem template. Supports TipTap blocks (followup and timeline components),
+            Liquid syntax, and HTML. Will be sanitized and applied to both content and content_html fields.
         format_ (Union[Unset, NewPostMortemTemplateDataAttributesFormat]): The format of the input Default: 'html'.
     """
 
     name: str
-    content: str
     default: Union[None, Unset, bool] = UNSET
+    content: Union[Unset, str] = UNSET
     format_: Union[Unset, NewPostMortemTemplateDataAttributesFormat] = "html"
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        content = self.content
 
         default: Union[None, Unset, bool]
         if isinstance(self.default, Unset):
             default = UNSET
         else:
             default = self.default
+
+        content = self.content
 
         format_: Union[Unset, str] = UNSET
         if not isinstance(self.format_, Unset):
@@ -47,11 +48,12 @@ class NewPostMortemTemplateDataAttributes:
         field_dict.update(
             {
                 "name": name,
-                "content": content,
             }
         )
         if default is not UNSET:
             field_dict["default"] = default
+        if content is not UNSET:
+            field_dict["content"] = content
         if format_ is not UNSET:
             field_dict["format"] = format_
 
@@ -62,8 +64,6 @@ class NewPostMortemTemplateDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        content = d.pop("content")
-
         def _parse_default(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
@@ -72,6 +72,8 @@ class NewPostMortemTemplateDataAttributes:
             return cast(Union[None, Unset, bool], data)
 
         default = _parse_default(d.pop("default", UNSET))
+
+        content = d.pop("content", UNSET)
 
         _format_ = d.pop("format", UNSET)
         format_: Union[Unset, NewPostMortemTemplateDataAttributesFormat]
@@ -82,8 +84,8 @@ class NewPostMortemTemplateDataAttributes:
 
         new_post_mortem_template_data_attributes = cls(
             name=name,
-            content=content,
             default=default,
+            content=content,
             format_=format_,
         )
 

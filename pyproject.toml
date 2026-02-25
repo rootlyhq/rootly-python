@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rootly"
-version = "v1"
+version = "1.1.1"
 description = "A client library for accessing Rootly API v1"
 authors = []
 readme = "README.md"

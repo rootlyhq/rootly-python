@@ -7,7 +7,9 @@ SNAPSHOT_LOOKER_LOOK_TASK_PARAMS_TASK_TYPE_VALUES: set[SnapshotLookerLookTaskPar
 }
 
 
-def check_snapshot_looker_look_task_params_task_type(value: str) -> SnapshotLookerLookTaskParamsTaskType:
+def check_snapshot_looker_look_task_params_task_type(value: str | None) -> SnapshotLookerLookTaskParamsTaskType | None:
+    if value is None:
+        return None
     if value in SNAPSHOT_LOOKER_LOOK_TASK_PARAMS_TASK_TYPE_VALUES:
         return cast(SnapshotLookerLookTaskParamsTaskType, value)
     raise TypeError(

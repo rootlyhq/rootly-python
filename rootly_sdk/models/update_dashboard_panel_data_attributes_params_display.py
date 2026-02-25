@@ -24,8 +24,10 @@ UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DISPLAY_VALUES: set[UpdateDashboar
 
 
 def check_update_dashboard_panel_data_attributes_params_display(
-    value: str,
-) -> UpdateDashboardPanelDataAttributesParamsDisplay:
+    value: str | None,
+) -> UpdateDashboardPanelDataAttributesParamsDisplay | None:
+    if value is None:
+        return None
     if value in UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DISPLAY_VALUES:
         return cast(UpdateDashboardPanelDataAttributesParamsDisplay, value)
     raise TypeError(

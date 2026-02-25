@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
+    from ..models.team_fields_type_0_item import TeamFieldsType0Item
     from ..models.team_incident_broadcast_channel_type_0 import TeamIncidentBroadcastChannelType0
     from ..models.team_slack_aliases_type_0_item import TeamSlackAliasesType0Item
     from ..models.team_slack_channels_type_0_item import TeamSlackChannelsType0Item
@@ -55,6 +56,7 @@ class Team:
             incidents to
         auto_add_members_when_attached (Union[None, Unset, bool]): Auto add members to incident channel when team is
             attached
+        fields (Union[None, Unset, list['TeamFieldsType0Item']]): Array of field values for this team.
     """
 
     name: str
@@ -86,6 +88,7 @@ class Team:
     incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
     incident_broadcast_channel: Union["TeamIncidentBroadcastChannelType0", None, Unset] = UNSET
     auto_add_members_when_attached: Union[None, Unset, bool] = UNSET
+    fields: Union[None, Unset, list["TeamFieldsType0Item"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -275,6 +278,18 @@ class Team:
         else:
             auto_add_members_when_attached = self.auto_add_members_when_attached
 
+        fields: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.fields, Unset):
+            fields = UNSET
+        elif isinstance(self.fields, list):
+            fields = []
+            for fields_type_0_item_data in self.fields:
+                fields_type_0_item = fields_type_0_item_data.to_dict()
+                fields.append(fields_type_0_item)
+
+        else:
+            fields = self.fields
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -336,12 +351,15 @@ class Team:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
         if auto_add_members_when_attached is not UNSET:
             field_dict["auto_add_members_when_attached"] = auto_add_members_when_attached
+        if fields is not UNSET:
+            field_dict["fields"] = fields
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
+        from ..models.team_fields_type_0_item import TeamFieldsType0Item
         from ..models.team_incident_broadcast_channel_type_0 import TeamIncidentBroadcastChannelType0
         from ..models.team_slack_aliases_type_0_item import TeamSlackAliasesType0Item
         from ..models.team_slack_channels_type_0_item import TeamSlackChannelsType0Item
@@ -648,6 +666,28 @@ class Team:
             d.pop("auto_add_members_when_attached", UNSET)
         )
 
+        def _parse_fields(data: object) -> Union[None, Unset, list["TeamFieldsType0Item"]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                fields_type_0 = []
+                _fields_type_0 = data
+                for fields_type_0_item_data in _fields_type_0:
+                    fields_type_0_item = TeamFieldsType0Item.from_dict(fields_type_0_item_data)
+
+                    fields_type_0.append(fields_type_0_item)
+
+                return fields_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list["TeamFieldsType0Item"]], data)
+
+        fields = _parse_fields(d.pop("fields", UNSET))
+
         team = cls(
             name=name,
             created_at=created_at,
@@ -678,6 +718,7 @@ class Team:
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
             auto_add_members_when_attached=auto_add_members_when_attached,
+            fields=fields,
         )
 
         team.additional_properties = d

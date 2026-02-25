@@ -10,8 +10,10 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITIONAL_INACTIVITY_TYPE_1_VALUES: set[
 
 
 def check_action_item_trigger_params_incident_conditional_inactivity_type_1(
-    value: str,
-) -> ActionItemTriggerParamsIncidentConditionalInactivityType1:
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentConditionalInactivityType1 | None:
+    if value is None:
+        return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITIONAL_INACTIVITY_TYPE_1_VALUES:
         return cast(ActionItemTriggerParamsIncidentConditionalInactivityType1, value)
     raise TypeError(

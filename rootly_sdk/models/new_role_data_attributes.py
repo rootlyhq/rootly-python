@@ -117,7 +117,6 @@ class NewRoleDataAttributes:
     """
     Attributes:
         name (str): The role name.
-        slug (Union[Unset, str]): The role slug.
         incident_permission_set_id (Union[None, Unset, str]): Associated incident permissions set.
         alerts_permissions (Union[Unset, list[NewRoleDataAttributesAlertsPermissionsItem]]):
         api_keys_permissions (Union[Unset, list[NewRoleDataAttributesApiKeysPermissionsItem]]):
@@ -148,7 +147,6 @@ class NewRoleDataAttributes:
     """
 
     name: str
-    slug: Union[Unset, str] = UNSET
     incident_permission_set_id: Union[None, Unset, str] = UNSET
     alerts_permissions: Union[Unset, list[NewRoleDataAttributesAlertsPermissionsItem]] = UNSET
     api_keys_permissions: Union[Unset, list[NewRoleDataAttributesApiKeysPermissionsItem]] = UNSET
@@ -179,8 +177,6 @@ class NewRoleDataAttributes:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         incident_permission_set_id: Union[None, Unset, str]
         if isinstance(self.incident_permission_set_id, Unset):
@@ -377,8 +373,6 @@ class NewRoleDataAttributes:
                 "name": name,
             }
         )
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if incident_permission_set_id is not UNSET:
             field_dict["incident_permission_set_id"] = incident_permission_set_id
         if alerts_permissions is not UNSET:
@@ -440,8 +434,6 @@ class NewRoleDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name")
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_incident_permission_set_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -686,7 +678,6 @@ class NewRoleDataAttributes:
 
         new_role_data_attributes = cls(
             name=name,
-            slug=slug,
             incident_permission_set_id=incident_permission_set_id,
             alerts_permissions=alerts_permissions,
             api_keys_permissions=api_keys_permissions,

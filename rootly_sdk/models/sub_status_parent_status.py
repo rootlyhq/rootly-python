@@ -27,7 +27,9 @@ SUB_STATUS_PARENT_STATUS_VALUES: set[SubStatusParentStatus] = {
 }
 
 
-def check_sub_status_parent_status(value: str) -> SubStatusParentStatus:
+def check_sub_status_parent_status(value: str | None) -> SubStatusParentStatus | None:
+    if value is None:
+        return None
     if value in SUB_STATUS_PARENT_STATUS_VALUES:
         return cast(SubStatusParentStatus, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SUB_STATUS_PARENT_STATUS_VALUES!r}")

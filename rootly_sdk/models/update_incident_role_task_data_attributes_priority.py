@@ -10,8 +10,10 @@ UPDATE_INCIDENT_ROLE_TASK_DATA_ATTRIBUTES_PRIORITY_VALUES: set[UpdateIncidentRol
 
 
 def check_update_incident_role_task_data_attributes_priority(
-    value: str,
-) -> UpdateIncidentRoleTaskDataAttributesPriority:
+    value: str | None,
+) -> UpdateIncidentRoleTaskDataAttributesPriority | None:
+    if value is None:
+        return None
     if value in UPDATE_INCIDENT_ROLE_TASK_DATA_ATTRIBUTES_PRIORITY_VALUES:
         return cast(UpdateIncidentRoleTaskDataAttributesPriority, value)
     raise TypeError(

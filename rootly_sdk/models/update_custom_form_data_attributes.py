@@ -13,23 +13,18 @@ class UpdateCustomFormDataAttributes:
     """
     Attributes:
         name (Union[Unset, str]): The name of the custom form.
-        slug (Union[Unset, str]): The custom form slug. Add this to form_field.shown or form_field.required to associate
-            form fields with custom forms.
         description (Union[None, Unset, str]):
         enabled (Union[Unset, bool]):
         command (Union[Unset, str]): The Slack command used to trigger this form.
     """
 
     name: Union[Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     command: Union[Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -46,8 +41,6 @@ class UpdateCustomFormDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
-        if slug is not UNSET:
-            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -61,8 +54,6 @@ class UpdateCustomFormDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
-
-        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -79,7 +70,6 @@ class UpdateCustomFormDataAttributes:
 
         update_custom_form_data_attributes = cls(
             name=name,
-            slug=slug,
             description=description,
             enabled=enabled,
             command=command,

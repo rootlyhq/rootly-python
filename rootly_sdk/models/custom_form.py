@@ -14,28 +14,26 @@ class CustomForm:
     """
     Attributes:
         name (str): The name of the custom form.
-        slug (str): The custom form slug. Add this to form_field.shown or form_field.required to associate form fields
-            with custom forms.
         enabled (bool):
         command (str): The Slack command used to trigger this form.
         created_at (str): Date of creation.
         updated_at (str): Date of last update.
+        slug (Union[Unset, str]): The custom form slug. Add this to form_field.shown or form_field.required to associate
+            form fields with custom forms.
         description (Union[None, Unset, str]):
     """
 
     name: str
-    slug: str
     enabled: bool
     command: str
     created_at: str
     updated_at: str
+    slug: Union[Unset, str] = UNSET
     description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        slug = self.slug
 
         enabled = self.enabled
 
@@ -44,6 +42,8 @@ class CustomForm:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        slug = self.slug
 
         description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
@@ -56,13 +56,14 @@ class CustomForm:
         field_dict.update(
             {
                 "name": name,
-                "slug": slug,
                 "enabled": enabled,
                 "command": command,
                 "created_at": created_at,
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -73,8 +74,6 @@ class CustomForm:
         d = dict(src_dict)
         name = d.pop("name")
 
-        slug = d.pop("slug")
-
         enabled = d.pop("enabled")
 
         command = d.pop("command")
@@ -82,6 +81,8 @@ class CustomForm:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        slug = d.pop("slug", UNSET)
 
         def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -94,11 +95,11 @@ class CustomForm:
 
         custom_form = cls(
             name=name,
-            slug=slug,
             enabled=enabled,
             command=command,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
         )
 

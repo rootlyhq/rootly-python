@@ -31,7 +31,7 @@ class UpdateIncidentPostMortemDataAttributes:
         show_groups_impacted (Union[Unset, bool]): Show groups impacted of the incident retrospective
         show_alerts_attached (Union[Unset, bool]): Show alerts attached to the incident
         show_action_items (Union[Unset, bool]): Show action items (follow-ups) in the incident retrospective
-        cause_ids (Union[None, Unset, list[str]]): The Cause ID's to attach to the incident retrospective
+        cause_ids (Union[None, Unset, list[str]]): The Cause IDs to attach to the incident retrospective
     """
 
     title: Union[Unset, str] = UNSET

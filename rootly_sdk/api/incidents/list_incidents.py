@@ -29,10 +29,13 @@ def _get_kwargs(
     filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
     filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterfunctionality_names: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
     filterservice_ids: Union[Unset, str] = UNSET,
+    filterservice_names: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
     filterteam_ids: Union[Unset, str] = UNSET,
+    filterteam_names: Union[Unset, str] = UNSET,
     filtercause: Union[Unset, str] = UNSET,
     filtercause_ids: Union[Unset, str] = UNSET,
     filtercustom_field_selected_option_ids: Union[Unset, str] = UNSET,
@@ -109,13 +112,19 @@ def _get_kwargs(
 
     params["filter[functionality_ids]"] = filterfunctionality_ids
 
+    params["filter[functionality_names]"] = filterfunctionality_names
+
     params["filter[services]"] = filterservices
 
     params["filter[service_ids]"] = filterservice_ids
 
+    params["filter[service_names]"] = filterservice_names
+
     params["filter[teams]"] = filterteams
 
     params["filter[team_ids]"] = filterteam_ids
+
+    params["filter[team_names]"] = filterteam_names
 
     params["filter[cause]"] = filtercause
 
@@ -258,10 +267,13 @@ def sync_detailed(
     filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
     filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterfunctionality_names: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
     filterservice_ids: Union[Unset, str] = UNSET,
+    filterservice_names: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
     filterteam_ids: Union[Unset, str] = UNSET,
+    filterteam_names: Union[Unset, str] = UNSET,
     filtercause: Union[Unset, str] = UNSET,
     filtercause_ids: Union[Unset, str] = UNSET,
     filtercustom_field_selected_option_ids: Union[Unset, str] = UNSET,
@@ -325,10 +337,13 @@ def sync_detailed(
         filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
         filterfunctionality_ids (Union[Unset, str]):
+        filterfunctionality_names (Union[Unset, str]):
         filterservices (Union[Unset, str]):
         filterservice_ids (Union[Unset, str]):
+        filterservice_names (Union[Unset, str]):
         filterteams (Union[Unset, str]):
         filterteam_ids (Union[Unset, str]):
+        filterteam_names (Union[Unset, str]):
         filtercause (Union[Unset, str]):
         filtercause_ids (Union[Unset, str]):
         filtercustom_field_selected_option_ids (Union[Unset, str]):
@@ -396,10 +411,13 @@ def sync_detailed(
         filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
         filterfunctionality_ids=filterfunctionality_ids,
+        filterfunctionality_names=filterfunctionality_names,
         filterservices=filterservices,
         filterservice_ids=filterservice_ids,
+        filterservice_names=filterservice_names,
         filterteams=filterteams,
         filterteam_ids=filterteam_ids,
+        filterteam_names=filterteam_names,
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
@@ -469,10 +487,13 @@ def sync(
     filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
     filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterfunctionality_names: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
     filterservice_ids: Union[Unset, str] = UNSET,
+    filterservice_names: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
     filterteam_ids: Union[Unset, str] = UNSET,
+    filterteam_names: Union[Unset, str] = UNSET,
     filtercause: Union[Unset, str] = UNSET,
     filtercause_ids: Union[Unset, str] = UNSET,
     filtercustom_field_selected_option_ids: Union[Unset, str] = UNSET,
@@ -536,10 +557,13 @@ def sync(
         filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
         filterfunctionality_ids (Union[Unset, str]):
+        filterfunctionality_names (Union[Unset, str]):
         filterservices (Union[Unset, str]):
         filterservice_ids (Union[Unset, str]):
+        filterservice_names (Union[Unset, str]):
         filterteams (Union[Unset, str]):
         filterteam_ids (Union[Unset, str]):
+        filterteam_names (Union[Unset, str]):
         filtercause (Union[Unset, str]):
         filtercause_ids (Union[Unset, str]):
         filtercustom_field_selected_option_ids (Union[Unset, str]):
@@ -608,10 +632,13 @@ def sync(
         filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
         filterfunctionality_ids=filterfunctionality_ids,
+        filterfunctionality_names=filterfunctionality_names,
         filterservices=filterservices,
         filterservice_ids=filterservice_ids,
+        filterservice_names=filterservice_names,
         filterteams=filterteams,
         filterteam_ids=filterteam_ids,
+        filterteam_names=filterteam_names,
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
@@ -675,10 +702,13 @@ async def asyncio_detailed(
     filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
     filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterfunctionality_names: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
     filterservice_ids: Union[Unset, str] = UNSET,
+    filterservice_names: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
     filterteam_ids: Union[Unset, str] = UNSET,
+    filterteam_names: Union[Unset, str] = UNSET,
     filtercause: Union[Unset, str] = UNSET,
     filtercause_ids: Union[Unset, str] = UNSET,
     filtercustom_field_selected_option_ids: Union[Unset, str] = UNSET,
@@ -742,10 +772,13 @@ async def asyncio_detailed(
         filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
         filterfunctionality_ids (Union[Unset, str]):
+        filterfunctionality_names (Union[Unset, str]):
         filterservices (Union[Unset, str]):
         filterservice_ids (Union[Unset, str]):
+        filterservice_names (Union[Unset, str]):
         filterteams (Union[Unset, str]):
         filterteam_ids (Union[Unset, str]):
+        filterteam_names (Union[Unset, str]):
         filtercause (Union[Unset, str]):
         filtercause_ids (Union[Unset, str]):
         filtercustom_field_selected_option_ids (Union[Unset, str]):
@@ -813,10 +846,13 @@ async def asyncio_detailed(
         filterenvironment_ids=filterenvironment_ids,
         filterfunctionalities=filterfunctionalities,
         filterfunctionality_ids=filterfunctionality_ids,
+        filterfunctionality_names=filterfunctionality_names,
         filterservices=filterservices,
         filterservice_ids=filterservice_ids,
+        filterservice_names=filterservice_names,
         filterteams=filterteams,
         filterteam_ids=filterteam_ids,
+        filterteam_names=filterteam_names,
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
@@ -884,10 +920,13 @@ async def asyncio(
     filterenvironment_ids: Union[Unset, str] = UNSET,
     filterfunctionalities: Union[Unset, str] = UNSET,
     filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterfunctionality_names: Union[Unset, str] = UNSET,
     filterservices: Union[Unset, str] = UNSET,
     filterservice_ids: Union[Unset, str] = UNSET,
+    filterservice_names: Union[Unset, str] = UNSET,
     filterteams: Union[Unset, str] = UNSET,
     filterteam_ids: Union[Unset, str] = UNSET,
+    filterteam_names: Union[Unset, str] = UNSET,
     filtercause: Union[Unset, str] = UNSET,
     filtercause_ids: Union[Unset, str] = UNSET,
     filtercustom_field_selected_option_ids: Union[Unset, str] = UNSET,
@@ -951,10 +990,13 @@ async def asyncio(
         filterenvironment_ids (Union[Unset, str]):
         filterfunctionalities (Union[Unset, str]):
         filterfunctionality_ids (Union[Unset, str]):
+        filterfunctionality_names (Union[Unset, str]):
         filterservices (Union[Unset, str]):
         filterservice_ids (Union[Unset, str]):
+        filterservice_names (Union[Unset, str]):
         filterteams (Union[Unset, str]):
         filterteam_ids (Union[Unset, str]):
+        filterteam_names (Union[Unset, str]):
         filtercause (Union[Unset, str]):
         filtercause_ids (Union[Unset, str]):
         filtercustom_field_selected_option_ids (Union[Unset, str]):
@@ -1024,10 +1066,13 @@ async def asyncio(
             filterenvironment_ids=filterenvironment_ids,
             filterfunctionalities=filterfunctionalities,
             filterfunctionality_ids=filterfunctionality_ids,
+            filterfunctionality_names=filterfunctionality_names,
             filterservices=filterservices,
             filterservice_ids=filterservice_ids,
+            filterservice_names=filterservice_names,
             filterteams=filterteams,
             filterteam_ids=filterteam_ids,
+            filterteam_names=filterteam_names,
             filtercause=filtercause,
             filtercause_ids=filtercause_ids,
             filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,

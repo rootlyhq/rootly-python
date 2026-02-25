@@ -29,7 +29,7 @@ T = TypeVar("T", bound="CreateOpenaiChatCompletionTaskParams")
 class CreateOpenaiChatCompletionTaskParams:
     """
     Attributes:
-        model (CreateOpenaiChatCompletionTaskParamsModel): The OpenAI model. eg: gpt-4o-mini
+        model (CreateOpenaiChatCompletionTaskParamsModel): The OpenAI model. eg: gpt-5-nano
         prompt (str): The prompt to send to OpenAI
         task_type (Union[Unset, CreateOpenaiChatCompletionTaskParamsTaskType]):
         system_prompt (Union[Unset, str]): The system prompt to send to OpenAI (optional)

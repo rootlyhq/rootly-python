@@ -23,7 +23,9 @@ CUSTOM_FIELD_SHOWN_ITEM_VALUES: set[CustomFieldShownItem] = {
 }
 
 
-def check_custom_field_shown_item(value: str) -> CustomFieldShownItem:
+def check_custom_field_shown_item(value: str | None) -> CustomFieldShownItem | None:
+    if value is None:
+        return None
     if value in CUSTOM_FIELD_SHOWN_ITEM_VALUES:
         return cast(CustomFieldShownItem, value)
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CUSTOM_FIELD_SHOWN_ITEM_VALUES!r}")
