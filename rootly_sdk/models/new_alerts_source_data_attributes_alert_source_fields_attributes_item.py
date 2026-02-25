@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,14 +18,14 @@ class NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem:
             for evaluation
     """
 
-    alert_field_id: Union[Unset, str] = UNSET
-    template_body: Union[None, Unset, str] = UNSET
+    alert_field_id: Unset | str = UNSET
+    template_body: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         alert_field_id = self.alert_field_id
 
-        template_body: Union[None, Unset, str]
+        template_body: None | Unset | str
         if isinstance(self.template_body, Unset):
             template_body = UNSET
         else:
@@ -46,12 +46,12 @@ class NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem:
         d = dict(src_dict)
         alert_field_id = d.pop("alert_field_id", UNSET)
 
-        def _parse_template_body(data: object) -> Union[None, Unset, str]:
+        def _parse_template_body(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         template_body = _parse_template_body(d.pop("template_body", UNSET))
 

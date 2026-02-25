@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -44,13 +44,13 @@ class CreateOpenaiChatCompletionTaskParams:
 
     model: "CreateOpenaiChatCompletionTaskParamsModel"
     prompt: str
-    task_type: Union[Unset, CreateOpenaiChatCompletionTaskParamsTaskType] = UNSET
-    system_prompt: Union[Unset, str] = UNSET
-    temperature: Union[Unset, float] = UNSET
-    max_tokens: Union[Unset, int] = UNSET
-    top_p: Union[Unset, float] = UNSET
-    reasoning_effort: Union[Unset, CreateOpenaiChatCompletionTaskParamsReasoningEffort] = UNSET
-    reasoning_summary: Union[Unset, CreateOpenaiChatCompletionTaskParamsReasoningSummary] = UNSET
+    task_type: Unset | CreateOpenaiChatCompletionTaskParamsTaskType = UNSET
+    system_prompt: Unset | str = UNSET
+    temperature: Unset | float = UNSET
+    max_tokens: Unset | int = UNSET
+    top_p: Unset | float = UNSET
+    reasoning_effort: Unset | CreateOpenaiChatCompletionTaskParamsReasoningEffort = UNSET
+    reasoning_summary: Unset | CreateOpenaiChatCompletionTaskParamsReasoningSummary = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,7 +58,7 @@ class CreateOpenaiChatCompletionTaskParams:
 
         prompt = self.prompt
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,11 +70,11 @@ class CreateOpenaiChatCompletionTaskParams:
 
         top_p = self.top_p
 
-        reasoning_effort: Union[Unset, str] = UNSET
+        reasoning_effort: Unset | str = UNSET
         if not isinstance(self.reasoning_effort, Unset):
             reasoning_effort = self.reasoning_effort
 
-        reasoning_summary: Union[Unset, str] = UNSET
+        reasoning_summary: Unset | str = UNSET
         if not isinstance(self.reasoning_summary, Unset):
             reasoning_summary = self.reasoning_summary
 
@@ -113,7 +113,7 @@ class CreateOpenaiChatCompletionTaskParams:
         prompt = d.pop("prompt")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateOpenaiChatCompletionTaskParamsTaskType]
+        task_type: Unset | CreateOpenaiChatCompletionTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -128,14 +128,14 @@ class CreateOpenaiChatCompletionTaskParams:
         top_p = d.pop("top_p", UNSET)
 
         _reasoning_effort = d.pop("reasoning_effort", UNSET)
-        reasoning_effort: Union[Unset, CreateOpenaiChatCompletionTaskParamsReasoningEffort]
+        reasoning_effort: Unset | CreateOpenaiChatCompletionTaskParamsReasoningEffort
         if isinstance(_reasoning_effort, Unset):
             reasoning_effort = UNSET
         else:
             reasoning_effort = check_create_openai_chat_completion_task_params_reasoning_effort(_reasoning_effort)
 
         _reasoning_summary = d.pop("reasoning_summary", UNSET)
-        reasoning_summary: Union[Unset, CreateOpenaiChatCompletionTaskParamsReasoningSummary]
+        reasoning_summary: Unset | CreateOpenaiChatCompletionTaskParamsReasoningSummary
         if isinstance(_reasoning_summary, Unset):
             reasoning_summary = UNSET
         else:

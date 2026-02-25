@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityPropertyResponse.from_dict(response.json())
 
@@ -41,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Delete a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -90,7 +90,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Delete a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -120,7 +120,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Delete a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -153,7 +153,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Delete a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities

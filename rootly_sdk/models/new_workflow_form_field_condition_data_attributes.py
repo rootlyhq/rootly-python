@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -34,17 +34,17 @@ class NewWorkflowFormFieldConditionDataAttributes:
 
     form_field_id: str
     incident_condition: NewWorkflowFormFieldConditionDataAttributesIncidentCondition = "ANY"
-    workflow_id: Union[Unset, str] = UNSET
-    values: Union[Unset, list[str]] = UNSET
-    selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
-    selected_functionality_ids: Union[Unset, list[str]] = UNSET
-    selected_group_ids: Union[Unset, list[str]] = UNSET
-    selected_option_ids: Union[Unset, list[str]] = UNSET
-    selected_service_ids: Union[Unset, list[str]] = UNSET
-    selected_user_ids: Union[Unset, list[int]] = UNSET
-    selected_cause_ids: Union[Unset, list[str]] = UNSET
-    selected_environment_ids: Union[Unset, list[str]] = UNSET
-    selected_incident_type_ids: Union[Unset, list[str]] = UNSET
+    workflow_id: Unset | str = UNSET
+    values: Unset | list[str] = UNSET
+    selected_catalog_entity_ids: Unset | list[str] = UNSET
+    selected_functionality_ids: Unset | list[str] = UNSET
+    selected_group_ids: Unset | list[str] = UNSET
+    selected_option_ids: Unset | list[str] = UNSET
+    selected_service_ids: Unset | list[str] = UNSET
+    selected_user_ids: Unset | list[int] = UNSET
+    selected_cause_ids: Unset | list[str] = UNSET
+    selected_environment_ids: Unset | list[str] = UNSET
+    selected_incident_type_ids: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
@@ -53,43 +53,43 @@ class NewWorkflowFormFieldConditionDataAttributes:
 
         workflow_id = self.workflow_id
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
+        selected_catalog_entity_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_catalog_entity_ids, Unset):
             selected_catalog_entity_ids = self.selected_catalog_entity_ids
 
-        selected_functionality_ids: Union[Unset, list[str]] = UNSET
+        selected_functionality_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_functionality_ids, Unset):
             selected_functionality_ids = self.selected_functionality_ids
 
-        selected_group_ids: Union[Unset, list[str]] = UNSET
+        selected_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_group_ids, Unset):
             selected_group_ids = self.selected_group_ids
 
-        selected_option_ids: Union[Unset, list[str]] = UNSET
+        selected_option_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
-        selected_service_ids: Union[Unset, list[str]] = UNSET
+        selected_service_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_service_ids, Unset):
             selected_service_ids = self.selected_service_ids
 
-        selected_user_ids: Union[Unset, list[int]] = UNSET
+        selected_user_ids: Unset | list[int] = UNSET
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
-        selected_cause_ids: Union[Unset, list[str]] = UNSET
+        selected_cause_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_cause_ids, Unset):
             selected_cause_ids = self.selected_cause_ids
 
-        selected_environment_ids: Union[Unset, list[str]] = UNSET
+        selected_environment_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_environment_ids, Unset):
             selected_environment_ids = self.selected_environment_ids
 
-        selected_incident_type_ids: Union[Unset, list[str]] = UNSET
+        selected_incident_type_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_incident_type_ids, Unset):
             selected_incident_type_ids = self.selected_incident_type_ids
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentCustomFieldSelectionResponse | None:
     if response.status_code == 200:
         response_200 = IncidentCustomFieldSelectionResponse.from_dict(response.json())
 
@@ -41,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentCustomFieldSelectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+) -> Response[ErrorsList | IncidentCustomFieldSelectionResponse]:
     """[DEPRECATED] Retrieves an incident custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific incident custom field selection
@@ -87,7 +87,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+) -> ErrorsList | IncidentCustomFieldSelectionResponse | None:
     """[DEPRECATED] Retrieves an incident custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific incident custom field selection
@@ -114,7 +114,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+) -> Response[ErrorsList | IncidentCustomFieldSelectionResponse]:
     """[DEPRECATED] Retrieves an incident custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific incident custom field selection
@@ -144,7 +144,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]:
+) -> ErrorsList | IncidentCustomFieldSelectionResponse | None:
     """[DEPRECATED] Retrieves an incident custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific incident custom field selection

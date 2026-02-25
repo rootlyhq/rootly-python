@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,9 +30,7 @@ class NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
 
     id: str
     type_: NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type
-    team_members: Union[Unset, NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers] = (
-        UNSET
-    )
+    team_members: Unset | NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +38,7 @@ class NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
 
         type_: str = self.type_
 
-        team_members: Union[Unset, str] = UNSET
+        team_members: Unset | str = UNSET
         if not isinstance(self.team_members, Unset):
             team_members = self.team_members
 
@@ -67,7 +65,7 @@ class NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
         )
 
         _team_members = d.pop("team_members", UNSET)
-        team_members: Union[Unset, NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers]
+        team_members: Unset | NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers
         if isinstance(_team_members, Unset):
             team_members = UNSET
         else:

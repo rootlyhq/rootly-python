@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,19 +11,19 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterseverity: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterseverity: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -64,7 +64,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[SeverityList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SeverityList | None:
     if response.status_code == 200:
         response_200 = SeverityList.from_dict(response.json())
 
@@ -76,7 +76,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SeverityList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SeverityList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -88,19 +88,19 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterseverity: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterseverity: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[SeverityList]:
     """List severities
 
@@ -155,20 +155,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterseverity: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[SeverityList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterseverity: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> SeverityList | None:
     """List severities
 
      List severities
@@ -217,19 +217,19 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterseverity: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterseverity: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[SeverityList]:
     """List severities
 
@@ -282,20 +282,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterseverity: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[SeverityList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterseverity: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> SeverityList | None:
     """List severities
 
      List severities

@@ -32,12 +32,12 @@ class Audit:
 
     event: str
     created_at: str
-    item_type: Union[Unset, AuditItemType] = UNSET
+    item_type: Unset | AuditItemType = UNSET
     object_: Union["AuditObjectType0", None, Unset] = UNSET
     object_changes: Union["AuditObjectChangesType0", None, Unset] = UNSET
-    user_id: Union[None, Unset, int] = UNSET
-    item_id: Union[None, Unset, str] = UNSET
-    id: Union[None, Unset, int] = UNSET
+    user_id: None | Unset | int = UNSET
+    item_id: None | Unset | str = UNSET
+    id: None | Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,11 +48,11 @@ class Audit:
 
         created_at = self.created_at
 
-        item_type: Union[Unset, str] = UNSET
+        item_type: Unset | str = UNSET
         if not isinstance(self.item_type, Unset):
             item_type = self.item_type
 
-        object_: Union[None, Unset, dict[str, Any]]
+        object_: None | Unset | dict[str, Any]
         if isinstance(self.object_, Unset):
             object_ = UNSET
         elif isinstance(self.object_, AuditObjectType0):
@@ -60,7 +60,7 @@ class Audit:
         else:
             object_ = self.object_
 
-        object_changes: Union[None, Unset, dict[str, Any]]
+        object_changes: None | Unset | dict[str, Any]
         if isinstance(self.object_changes, Unset):
             object_changes = UNSET
         elif isinstance(self.object_changes, AuditObjectChangesType0):
@@ -68,19 +68,19 @@ class Audit:
         else:
             object_changes = self.object_changes
 
-        user_id: Union[None, Unset, int]
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        item_id: Union[None, Unset, str]
+        item_id: None | Unset | str
         if isinstance(self.item_id, Unset):
             item_id = UNSET
         else:
             item_id = self.item_id
 
-        id: Union[None, Unset, int]
+        id: None | Unset | int
         if isinstance(self.id, Unset):
             id = UNSET
         else:
@@ -120,7 +120,7 @@ class Audit:
         created_at = d.pop("created_at")
 
         _item_type = d.pop("item_type", UNSET)
-        item_type: Union[Unset, AuditItemType]
+        item_type: Unset | AuditItemType
         if isinstance(_item_type, Unset):
             item_type = UNSET
         else:
@@ -160,30 +160,30 @@ class Audit:
 
         object_changes = _parse_object_changes(d.pop("object_changes", UNSET))
 
-        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_item_id(data: object) -> Union[None, Unset, str]:
+        def _parse_item_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         item_id = _parse_item_id(d.pop("item_id", UNSET))
 
-        def _parse_id(data: object) -> Union[None, Unset, int]:
+        def _parse_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         id = _parse_id(d.pop("id", UNSET))
 

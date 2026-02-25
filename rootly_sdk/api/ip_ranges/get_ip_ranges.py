@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -18,9 +18,7 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[IpRangesResponse]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IpRangesResponse | None:
     if response.status_code == 200:
         response_200 = IpRangesResponse.from_dict(response.json())
 
@@ -32,9 +30,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[IpRangesResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IpRangesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +67,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Optional[IpRangesResponse]:
+) -> IpRangesResponse | None:
     """Retrieves IP ranges
 
      Retrieves the IP ranges for rootly.com services
@@ -115,7 +111,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Optional[IpRangesResponse]:
+) -> IpRangesResponse | None:
     """Retrieves IP ranges
 
      Retrieves the IP ranges for rootly.com services

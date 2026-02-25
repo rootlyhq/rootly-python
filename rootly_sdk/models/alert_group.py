@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -38,24 +38,24 @@ class AlertGroup:
     """
 
     name: str
-    description: Union[None, str]
+    description: None | str
     condition_type: str
     time_window: int
     created_at: str
     updated_at: str
-    deleted_at: Union[None, str]
-    slug: Union[Unset, str] = UNSET
-    group_by_alert_title: Union[Unset, bool] = UNSET
-    group_by_alert_urgency: Union[Unset, bool] = UNSET
-    targets: Union[Unset, list["AlertGroupTargetsItem"]] = UNSET
-    attributes: Union[Unset, list["AlertGroupAttributesItem"]] = UNSET
-    conditions: Union[Unset, list["AlertGroupConditionsItem"]] = UNSET
+    deleted_at: None | str
+    slug: Unset | str = UNSET
+    group_by_alert_title: Unset | bool = UNSET
+    group_by_alert_urgency: Unset | bool = UNSET
+    targets: Unset | list["AlertGroupTargetsItem"] = UNSET
+    attributes: Unset | list["AlertGroupAttributesItem"] = UNSET
+    conditions: Unset | list["AlertGroupConditionsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, str]
+        description: None | str
         description = self.description
 
         condition_type = self.condition_type
@@ -66,7 +66,7 @@ class AlertGroup:
 
         updated_at = self.updated_at
 
-        deleted_at: Union[None, str]
+        deleted_at: None | str
         deleted_at = self.deleted_at
 
         slug = self.slug
@@ -75,21 +75,21 @@ class AlertGroup:
 
         group_by_alert_urgency = self.group_by_alert_urgency
 
-        targets: Union[Unset, list[dict[str, Any]]] = UNSET
+        targets: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.targets, Unset):
             targets = []
             for targets_item_data in self.targets:
                 targets_item = targets_item_data.to_dict()
                 targets.append(targets_item)
 
-        attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = []
             for attributes_item_data in self.attributes:
                 attributes_item = attributes_item_data.to_dict()
                 attributes.append(attributes_item)
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -133,10 +133,10 @@ class AlertGroup:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, str]:
+        def _parse_description(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         description = _parse_description(d.pop("description"))
 
@@ -148,10 +148,10 @@ class AlertGroup:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_deleted_at(data: object) -> Union[None, str]:
+        def _parse_deleted_at(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         deleted_at = _parse_deleted_at(d.pop("deleted_at"))
 

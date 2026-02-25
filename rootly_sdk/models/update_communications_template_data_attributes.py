@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -27,18 +27,18 @@ class UpdateCommunicationsTemplateDataAttributes:
             stages attributes
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    communication_type_id: Union[Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    communication_template_stages_attributes: Union[
-        None, Unset, list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"]
-    ] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    communication_type_id: Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    communication_template_stages_attributes: (
+        None | Unset | list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"]
+    ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -46,13 +46,13 @@ class UpdateCommunicationsTemplateDataAttributes:
 
         communication_type_id = self.communication_type_id
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        communication_template_stages_attributes: Union[None, Unset, list[dict[str, Any]]]
+        communication_template_stages_attributes: None | Unset | list[dict[str, Any]]
         if isinstance(self.communication_template_stages_attributes, Unset):
             communication_template_stages_attributes = UNSET
         elif isinstance(self.communication_template_stages_attributes, list):
@@ -93,33 +93,33 @@ class UpdateCommunicationsTemplateDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         communication_type_id = d.pop("communication_type_id", UNSET)
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         def _parse_communication_template_stages_attributes(
             data: object,
-        ) -> Union[
-            None,
-            Unset,
-            list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"],
-        ]:
+        ) -> (
+            None
+            | Unset
+            | list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"]
+        ):
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -144,11 +144,9 @@ class UpdateCommunicationsTemplateDataAttributes:
             except:  # noqa: E722
                 pass
             return cast(
-                Union[
-                    None,
-                    Unset,
-                    list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"],
-                ],
+                None
+                | Unset
+                | list["UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"],
                 data,
             )
 

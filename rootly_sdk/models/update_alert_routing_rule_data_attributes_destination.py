@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -22,16 +22,16 @@ class UpdateAlertRoutingRuleDataAttributesDestination:
         target_id (Union[Unset, UUID]): The ID of the target
     """
 
-    target_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesDestinationTargetType] = UNSET
-    target_id: Union[Unset, UUID] = UNSET
+    target_type: Unset | UpdateAlertRoutingRuleDataAttributesDestinationTargetType = UNSET
+    target_id: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        target_type: Union[Unset, str] = UNSET
+        target_type: Unset | str = UNSET
         if not isinstance(self.target_type, Unset):
             target_type = self.target_type
 
-        target_id: Union[Unset, str] = UNSET
+        target_id: Unset | str = UNSET
         if not isinstance(self.target_id, Unset):
             target_id = str(self.target_id)
 
@@ -49,14 +49,14 @@ class UpdateAlertRoutingRuleDataAttributesDestination:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _target_type = d.pop("target_type", UNSET)
-        target_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesDestinationTargetType]
+        target_type: Unset | UpdateAlertRoutingRuleDataAttributesDestinationTargetType
         if isinstance(_target_type, Unset):
             target_type = UNSET
         else:
             target_type = check_update_alert_routing_rule_data_attributes_destination_target_type(_target_type)
 
         _target_id = d.pop("target_id", UNSET)
-        target_id: Union[Unset, UUID]
+        target_id: Unset | UUID
         if isinstance(_target_id, Unset):
             target_id = UNSET
         else:

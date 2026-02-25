@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -50,26 +50,26 @@ class Functionality:
     name: str
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    public_description: Union[None, Unset, str] = UNSET
-    notify_emails: Union[None, Unset, list[str]] = UNSET
-    color: Union[None, Unset, str] = UNSET
-    backstage_id: Union[None, Unset, str] = UNSET
-    external_id: Union[None, Unset, str] = UNSET
-    pagerduty_id: Union[None, Unset, str] = UNSET
-    opsgenie_id: Union[None, Unset, str] = UNSET
-    opsgenie_team_id: Union[None, Unset, str] = UNSET
-    cortex_id: Union[None, Unset, str] = UNSET
-    service_now_ci_sys_id: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    environment_ids: Union[None, Unset, list[str]] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    owner_group_ids: Union[None, Unset, list[str]] = UNSET
-    owner_user_ids: Union[None, Unset, list[int]] = UNSET
-    slack_channels: Union[None, Unset, list["FunctionalitySlackChannelsType0Item"]] = UNSET
-    slack_aliases: Union[None, Unset, list["FunctionalitySlackAliasesType0Item"]] = UNSET
-    fields: Union[None, Unset, list["FunctionalityFieldsType0Item"]] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    notify_emails: None | Unset | list[str] = UNSET
+    color: None | Unset | str = UNSET
+    backstage_id: None | Unset | str = UNSET
+    external_id: None | Unset | str = UNSET
+    pagerduty_id: None | Unset | str = UNSET
+    opsgenie_id: None | Unset | str = UNSET
+    opsgenie_team_id: None | Unset | str = UNSET
+    cortex_id: None | Unset | str = UNSET
+    service_now_ci_sys_id: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    owner_group_ids: None | Unset | list[str] = UNSET
+    owner_user_ids: None | Unset | list[int] = UNSET
+    slack_channels: None | Unset | list["FunctionalitySlackChannelsType0Item"] = UNSET
+    slack_aliases: None | Unset | list["FunctionalitySlackAliasesType0Item"] = UNSET
+    fields: None | Unset | list["FunctionalityFieldsType0Item"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -81,19 +81,19 @@ class Functionality:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: Union[None, Unset, str]
+        public_description: None | Unset | str
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        notify_emails: Union[None, Unset, list[str]]
+        notify_emails: None | Unset | list[str]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -102,61 +102,61 @@ class Functionality:
         else:
             notify_emails = self.notify_emails
 
-        color: Union[None, Unset, str]
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        backstage_id: Union[None, Unset, str]
+        backstage_id: None | Unset | str
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: Union[None, Unset, str]
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        pagerduty_id: Union[None, Unset, str]
+        pagerduty_id: None | Unset | str
         if isinstance(self.pagerduty_id, Unset):
             pagerduty_id = UNSET
         else:
             pagerduty_id = self.pagerduty_id
 
-        opsgenie_id: Union[None, Unset, str]
+        opsgenie_id: None | Unset | str
         if isinstance(self.opsgenie_id, Unset):
             opsgenie_id = UNSET
         else:
             opsgenie_id = self.opsgenie_id
 
-        opsgenie_team_id: Union[None, Unset, str]
+        opsgenie_team_id: None | Unset | str
         if isinstance(self.opsgenie_team_id, Unset):
             opsgenie_team_id = UNSET
         else:
             opsgenie_team_id = self.opsgenie_team_id
 
-        cortex_id: Union[None, Unset, str]
+        cortex_id: None | Unset | str
         if isinstance(self.cortex_id, Unset):
             cortex_id = UNSET
         else:
             cortex_id = self.cortex_id
 
-        service_now_ci_sys_id: Union[None, Unset, str]
+        service_now_ci_sys_id: None | Unset | str
         if isinstance(self.service_now_ci_sys_id, Unset):
             service_now_ci_sys_id = UNSET
         else:
             service_now_ci_sys_id = self.service_now_ci_sys_id
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        environment_ids: Union[None, Unset, list[str]]
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -165,7 +165,7 @@ class Functionality:
         else:
             environment_ids = self.environment_ids
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -174,7 +174,7 @@ class Functionality:
         else:
             service_ids = self.service_ids
 
-        owner_group_ids: Union[None, Unset, list[str]]
+        owner_group_ids: None | Unset | list[str]
         if isinstance(self.owner_group_ids, Unset):
             owner_group_ids = UNSET
         elif isinstance(self.owner_group_ids, list):
@@ -183,7 +183,7 @@ class Functionality:
         else:
             owner_group_ids = self.owner_group_ids
 
-        owner_user_ids: Union[None, Unset, list[int]]
+        owner_user_ids: None | Unset | list[int]
         if isinstance(self.owner_user_ids, Unset):
             owner_user_ids = UNSET
         elif isinstance(self.owner_user_ids, list):
@@ -192,7 +192,7 @@ class Functionality:
         else:
             owner_user_ids = self.owner_user_ids
 
-        slack_channels: Union[None, Unset, list[dict[str, Any]]]
+        slack_channels: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -204,7 +204,7 @@ class Functionality:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
+        slack_aliases: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -216,7 +216,7 @@ class Functionality:
         else:
             slack_aliases = self.slack_aliases
 
-        fields: Union[None, Unset, list[dict[str, Any]]]
+        fields: None | Unset | list[dict[str, Any]]
         if isinstance(self.fields, Unset):
             fields = UNSET
         elif isinstance(self.fields, list):
@@ -295,25 +295,25 @@ class Functionality:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> Union[None, Unset, str]:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -326,92 +326,92 @@ class Functionality:
                 return notify_emails_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
-        def _parse_color(data: object) -> Union[None, Unset, str]:
+        def _parse_color(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_backstage_id(data: object) -> Union[None, Unset, str]:
+        def _parse_backstage_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> Union[None, Unset, str]:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_pagerduty_id(data: object) -> Union[None, Unset, str]:
+        def _parse_pagerduty_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         pagerduty_id = _parse_pagerduty_id(d.pop("pagerduty_id", UNSET))
 
-        def _parse_opsgenie_id(data: object) -> Union[None, Unset, str]:
+        def _parse_opsgenie_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         opsgenie_id = _parse_opsgenie_id(d.pop("opsgenie_id", UNSET))
 
-        def _parse_opsgenie_team_id(data: object) -> Union[None, Unset, str]:
+        def _parse_opsgenie_team_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         opsgenie_team_id = _parse_opsgenie_team_id(d.pop("opsgenie_team_id", UNSET))
 
-        def _parse_cortex_id(data: object) -> Union[None, Unset, str]:
+        def _parse_cortex_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         cortex_id = _parse_cortex_id(d.pop("cortex_id", UNSET))
 
-        def _parse_service_now_ci_sys_id(data: object) -> Union[None, Unset, str]:
+        def _parse_service_now_ci_sys_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         service_now_ci_sys_id = _parse_service_now_ci_sys_id(d.pop("service_now_ci_sys_id", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -424,11 +424,11 @@ class Functionality:
                 return environment_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -441,11 +441,11 @@ class Functionality:
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_owner_group_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_owner_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -458,11 +458,11 @@ class Functionality:
                 return owner_group_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         owner_group_ids = _parse_owner_group_ids(d.pop("owner_group_ids", UNSET))
 
-        def _parse_owner_user_ids(data: object) -> Union[None, Unset, list[int]]:
+        def _parse_owner_user_ids(data: object) -> None | Unset | list[int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -475,11 +475,11 @@ class Functionality:
                 return owner_user_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[int]], data)
+            return cast(None | Unset | list[int], data)
 
         owner_user_ids = _parse_owner_user_ids(d.pop("owner_user_ids", UNSET))
 
-        def _parse_slack_channels(data: object) -> Union[None, Unset, list["FunctionalitySlackChannelsType0Item"]]:
+        def _parse_slack_channels(data: object) -> None | Unset | list["FunctionalitySlackChannelsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -499,11 +499,11 @@ class Functionality:
                 return slack_channels_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["FunctionalitySlackChannelsType0Item"]], data)
+            return cast(None | Unset | list["FunctionalitySlackChannelsType0Item"], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
-        def _parse_slack_aliases(data: object) -> Union[None, Unset, list["FunctionalitySlackAliasesType0Item"]]:
+        def _parse_slack_aliases(data: object) -> None | Unset | list["FunctionalitySlackAliasesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -523,11 +523,11 @@ class Functionality:
                 return slack_aliases_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["FunctionalitySlackAliasesType0Item"]], data)
+            return cast(None | Unset | list["FunctionalitySlackAliasesType0Item"], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
-        def _parse_fields(data: object) -> Union[None, Unset, list["FunctionalityFieldsType0Item"]]:
+        def _parse_fields(data: object) -> None | Unset | list["FunctionalityFieldsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -545,7 +545,7 @@ class Functionality:
                 return fields_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["FunctionalityFieldsType0Item"]], data)
+            return cast(None | Unset | list["FunctionalityFieldsType0Item"], data)
 
         fields = _parse_fields(d.pop("fields", UNSET))
 

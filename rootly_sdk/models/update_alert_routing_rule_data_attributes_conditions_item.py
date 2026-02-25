@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -38,38 +38,38 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
             condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is 'alert_urgency'
     """
 
-    id: Union[Unset, UUID] = UNSET
-    property_field_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType] = UNSET
-    property_field_name: Union[Unset, str] = UNSET
-    property_field_condition_type: Union[
-        Unset, UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
-    ] = UNSET
-    property_field_value: Union[None, Unset, str] = UNSET
-    property_field_values: Union[Unset, list[str]] = UNSET
+    id: Unset | UUID = UNSET
+    property_field_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType = UNSET
+    property_field_name: Unset | str = UNSET
+    property_field_condition_type: (
+        Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
+    ) = UNSET
+    property_field_value: None | Unset | str = UNSET
+    property_field_values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        property_field_type: Union[Unset, str] = UNSET
+        property_field_type: Unset | str = UNSET
         if not isinstance(self.property_field_type, Unset):
             property_field_type = self.property_field_type
 
         property_field_name = self.property_field_name
 
-        property_field_condition_type: Union[Unset, str] = UNSET
+        property_field_condition_type: Unset | str = UNSET
         if not isinstance(self.property_field_condition_type, Unset):
             property_field_condition_type = self.property_field_condition_type
 
-        property_field_value: Union[None, Unset, str]
+        property_field_value: None | Unset | str
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: Union[Unset, list[str]] = UNSET
+        property_field_values: Unset | list[str] = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
@@ -95,14 +95,14 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _property_field_type = d.pop("property_field_type", UNSET)
-        property_field_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType]
+        property_field_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType
         if isinstance(_property_field_type, Unset):
             property_field_type = UNSET
         else:
@@ -113,9 +113,9 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
         property_field_name = d.pop("property_field_name", UNSET)
 
         _property_field_condition_type = d.pop("property_field_condition_type", UNSET)
-        property_field_condition_type: Union[
-            Unset, UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
-        ]
+        property_field_condition_type: (
+            Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
+        )
         if isinstance(_property_field_condition_type, Unset):
             property_field_condition_type = UNSET
         else:
@@ -125,12 +125,12 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
                 )
             )
 
-        def _parse_property_field_value(data: object) -> Union[None, Unset, str]:
+        def _parse_property_field_value(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 

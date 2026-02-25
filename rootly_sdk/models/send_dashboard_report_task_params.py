@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,10 +30,10 @@ class SendDashboardReportTaskParams:
     dashboard_ids: list[str]
     to: list[str]
     subject: str
-    body: Union[None, str]
-    task_type: Union[Unset, SendDashboardReportTaskParamsTaskType] = UNSET
-    from_: Union[Unset, str] = "Rootly <workflows@rootly.com>"
-    preheader: Union[None, Unset, str] = UNSET
+    body: None | str
+    task_type: Unset | SendDashboardReportTaskParamsTaskType = UNSET
+    from_: Unset | str = "Rootly <workflows@rootly.com>"
+    preheader: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,16 +43,16 @@ class SendDashboardReportTaskParams:
 
         subject = self.subject
 
-        body: Union[None, str]
+        body: None | str
         body = self.body
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         from_ = self.from_
 
-        preheader: Union[None, Unset, str]
+        preheader: None | Unset | str
         if isinstance(self.preheader, Unset):
             preheader = UNSET
         else:
@@ -86,15 +86,15 @@ class SendDashboardReportTaskParams:
 
         subject = d.pop("subject")
 
-        def _parse_body(data: object) -> Union[None, str]:
+        def _parse_body(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         body = _parse_body(d.pop("body"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, SendDashboardReportTaskParamsTaskType]
+        task_type: Unset | SendDashboardReportTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -102,12 +102,12 @@ class SendDashboardReportTaskParams:
 
         from_ = d.pop("from", UNSET)
 
-        def _parse_preheader(data: object) -> Union[None, Unset, str]:
+        def _parse_preheader(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         preheader = _parse_preheader(d.pop("preheader", UNSET))
 

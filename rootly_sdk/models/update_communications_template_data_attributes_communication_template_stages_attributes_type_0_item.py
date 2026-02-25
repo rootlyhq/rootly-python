@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,39 +20,39 @@ class UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttri
         slack_content (Union[None, Unset, str]): Slack content for the stage
     """
 
-    id: Union[None, Unset, str] = UNSET
-    sms_content: Union[None, Unset, str] = UNSET
-    email_subject: Union[None, Unset, str] = UNSET
-    email_body: Union[None, Unset, str] = UNSET
-    slack_content: Union[None, Unset, str] = UNSET
+    id: None | Unset | str = UNSET
+    sms_content: None | Unset | str = UNSET
+    email_subject: None | Unset | str = UNSET
+    email_body: None | Unset | str = UNSET
+    slack_content: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[None, Unset, str]
+        id: None | Unset | str
         if isinstance(self.id, Unset):
             id = UNSET
         else:
             id = self.id
 
-        sms_content: Union[None, Unset, str]
+        sms_content: None | Unset | str
         if isinstance(self.sms_content, Unset):
             sms_content = UNSET
         else:
             sms_content = self.sms_content
 
-        email_subject: Union[None, Unset, str]
+        email_subject: None | Unset | str
         if isinstance(self.email_subject, Unset):
             email_subject = UNSET
         else:
             email_subject = self.email_subject
 
-        email_body: Union[None, Unset, str]
+        email_body: None | Unset | str
         if isinstance(self.email_body, Unset):
             email_body = UNSET
         else:
             email_body = self.email_body
 
-        slack_content: Union[None, Unset, str]
+        slack_content: None | Unset | str
         if isinstance(self.slack_content, Unset):
             slack_content = UNSET
         else:
@@ -78,48 +78,48 @@ class UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttri
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> Union[None, Unset, str]:
+        def _parse_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         id = _parse_id(d.pop("id", UNSET))
 
-        def _parse_sms_content(data: object) -> Union[None, Unset, str]:
+        def _parse_sms_content(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         sms_content = _parse_sms_content(d.pop("sms_content", UNSET))
 
-        def _parse_email_subject(data: object) -> Union[None, Unset, str]:
+        def _parse_email_subject(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         email_subject = _parse_email_subject(d.pop("email_subject", UNSET))
 
-        def _parse_email_body(data: object) -> Union[None, Unset, str]:
+        def _parse_email_body(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         email_body = _parse_email_body(d.pop("email_body", UNSET))
 
-        def _parse_slack_content(data: object) -> Union[None, Unset, str]:
+        def _parse_slack_content(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slack_content = _parse_slack_content(d.pop("slack_content", UNSET))
 

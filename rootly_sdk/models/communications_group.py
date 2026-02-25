@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -52,16 +52,16 @@ class CommunicationsGroup:
     email_channel: bool
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    communication_group_conditions: Union[
-        None, Unset, list["CommunicationsGroupCommunicationGroupConditionsType0Item"]
-    ] = UNSET
-    member_ids: Union[None, Unset, list[int]] = UNSET
-    slack_channel_ids: Union[None, Unset, list[str]] = UNSET
-    communication_external_group_members: Union[
-        None, Unset, list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]
-    ] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    communication_group_conditions: None | Unset | list["CommunicationsGroupCommunicationGroupConditionsType0Item"] = (
+        UNSET
+    )
+    member_ids: None | Unset | list[int] = UNSET
+    slack_channel_ids: None | Unset | list[str] = UNSET
+    communication_external_group_members: (
+        None | Unset | list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]
+    ) = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -83,13 +83,13 @@ class CommunicationsGroup:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        communication_group_conditions: Union[None, Unset, list[dict[str, Any]]]
+        communication_group_conditions: None | Unset | list[dict[str, Any]]
         if isinstance(self.communication_group_conditions, Unset):
             communication_group_conditions = UNSET
         elif isinstance(self.communication_group_conditions, list):
@@ -101,7 +101,7 @@ class CommunicationsGroup:
         else:
             communication_group_conditions = self.communication_group_conditions
 
-        member_ids: Union[None, Unset, list[int]]
+        member_ids: None | Unset | list[int]
         if isinstance(self.member_ids, Unset):
             member_ids = UNSET
         elif isinstance(self.member_ids, list):
@@ -110,7 +110,7 @@ class CommunicationsGroup:
         else:
             member_ids = self.member_ids
 
-        slack_channel_ids: Union[None, Unset, list[str]]
+        slack_channel_ids: None | Unset | list[str]
         if isinstance(self.slack_channel_ids, Unset):
             slack_channel_ids = UNSET
         elif isinstance(self.slack_channel_ids, list):
@@ -119,7 +119,7 @@ class CommunicationsGroup:
         else:
             slack_channel_ids = self.slack_channel_ids
 
-        communication_external_group_members: Union[None, Unset, list[dict[str, Any]]]
+        communication_external_group_members: None | Unset | list[dict[str, Any]]
         if isinstance(self.communication_external_group_members, Unset):
             communication_external_group_members = UNSET
         elif isinstance(self.communication_external_group_members, list):
@@ -190,18 +190,18 @@ class CommunicationsGroup:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         def _parse_communication_group_conditions(
             data: object,
-        ) -> Union[None, Unset, list["CommunicationsGroupCommunicationGroupConditionsType0Item"]]:
+        ) -> None | Unset | list["CommunicationsGroupCommunicationGroupConditionsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -223,13 +223,13 @@ class CommunicationsGroup:
                 return communication_group_conditions_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CommunicationsGroupCommunicationGroupConditionsType0Item"]], data)
+            return cast(None | Unset | list["CommunicationsGroupCommunicationGroupConditionsType0Item"], data)
 
         communication_group_conditions = _parse_communication_group_conditions(
             d.pop("communication_group_conditions", UNSET)
         )
 
-        def _parse_member_ids(data: object) -> Union[None, Unset, list[int]]:
+        def _parse_member_ids(data: object) -> None | Unset | list[int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -242,11 +242,11 @@ class CommunicationsGroup:
                 return member_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[int]], data)
+            return cast(None | Unset | list[int], data)
 
         member_ids = _parse_member_ids(d.pop("member_ids", UNSET))
 
-        def _parse_slack_channel_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_slack_channel_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -259,13 +259,13 @@ class CommunicationsGroup:
                 return slack_channel_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         slack_channel_ids = _parse_slack_channel_ids(d.pop("slack_channel_ids", UNSET))
 
         def _parse_communication_external_group_members(
             data: object,
-        ) -> Union[None, Unset, list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]]:
+        ) -> None | Unset | list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -289,7 +289,7 @@ class CommunicationsGroup:
                 return communication_external_group_members_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"]], data)
+            return cast(None | Unset | list["CommunicationsGroupCommunicationExternalGroupMembersType0Item"], data)
 
         communication_external_group_members = _parse_communication_external_group_members(
             d.pop("communication_external_group_members", UNSET)

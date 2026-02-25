@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -50,13 +50,13 @@ class Heartbeat:
     email_address: str
     created_at: str
     updated_at: str
-    description: Union[None, Unset, str] = UNSET
-    alert_description: Union[None, Unset, str] = UNSET
-    alert_urgency_id: Union[None, Unset, str] = UNSET
-    ping_url: Union[None, Unset, str] = UNSET
-    secret: Union[None, Unset, str] = UNSET
-    last_pinged_at: Union[None, Unset, str] = UNSET
-    expires_at: Union[None, Unset, str] = UNSET
+    description: None | Unset | str = UNSET
+    alert_description: None | Unset | str = UNSET
+    alert_urgency_id: None | Unset | str = UNSET
+    ping_url: None | Unset | str = UNSET
+    secret: None | Unset | str = UNSET
+    last_pinged_at: None | Unset | str = UNSET
+    expires_at: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,43 +82,43 @@ class Heartbeat:
 
         updated_at = self.updated_at
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        alert_description: Union[None, Unset, str]
+        alert_description: None | Unset | str
         if isinstance(self.alert_description, Unset):
             alert_description = UNSET
         else:
             alert_description = self.alert_description
 
-        alert_urgency_id: Union[None, Unset, str]
+        alert_urgency_id: None | Unset | str
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        ping_url: Union[None, Unset, str]
+        ping_url: None | Unset | str
         if isinstance(self.ping_url, Unset):
             ping_url = UNSET
         else:
             ping_url = self.ping_url
 
-        secret: Union[None, Unset, str]
+        secret: None | Unset | str
         if isinstance(self.secret, Unset):
             secret = UNSET
         else:
             secret = self.secret
 
-        last_pinged_at: Union[None, Unset, str]
+        last_pinged_at: None | Unset | str
         if isinstance(self.last_pinged_at, Unset):
             last_pinged_at = UNSET
         else:
             last_pinged_at = self.last_pinged_at
 
-        expires_at: Union[None, Unset, str]
+        expires_at: None | Unset | str
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         else:
@@ -183,66 +183,66 @@ class Heartbeat:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_alert_description(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_description = _parse_alert_description(d.pop("alert_description", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
-        def _parse_ping_url(data: object) -> Union[None, Unset, str]:
+        def _parse_ping_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ping_url = _parse_ping_url(d.pop("ping_url", UNSET))
 
-        def _parse_secret(data: object) -> Union[None, Unset, str]:
+        def _parse_secret(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         secret = _parse_secret(d.pop("secret", UNSET))
 
-        def _parse_last_pinged_at(data: object) -> Union[None, Unset, str]:
+        def _parse_last_pinged_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         last_pinged_at = _parse_last_pinged_at(d.pop("last_pinged_at", UNSET))
 
-        def _parse_expires_at(data: object) -> Union[None, Unset, str]:
+        def _parse_expires_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 

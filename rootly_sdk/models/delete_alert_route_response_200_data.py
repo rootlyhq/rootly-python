@@ -22,8 +22,8 @@ class DeleteAlertRouteResponse200Data:
         attributes (Union[Unset, DeleteAlertRouteResponse200DataAttributes]):
     """
 
-    id: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | str = UNSET
     attributes: Union[Unset, "DeleteAlertRouteResponse200DataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,7 +32,7 @@ class DeleteAlertRouteResponse200Data:
 
         type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -58,7 +58,7 @@ class DeleteAlertRouteResponse200Data:
         type_ = d.pop("type", UNSET)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, DeleteAlertRouteResponse200DataAttributes]
+        attributes: Unset | DeleteAlertRouteResponse200DataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

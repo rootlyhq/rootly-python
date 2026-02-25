@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | EscalationPolicyPathResponse | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyPathResponse.from_dict(response.json())
 
@@ -41,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | EscalationPolicyPathResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
+) -> Response[ErrorsList | EscalationPolicyPathResponse]:
     """Delete an escalation path
 
      Delete a specific escalation path by id
@@ -86,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
+) -> ErrorsList | EscalationPolicyPathResponse | None:
     """Delete an escalation path
 
      Delete a specific escalation path by id
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
+) -> Response[ErrorsList | EscalationPolicyPathResponse]:
     """Delete an escalation path
 
      Delete a specific escalation path by id
@@ -141,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
+) -> ErrorsList | EscalationPolicyPathResponse | None:
     """Delete an escalation path
 
      Delete a specific escalation path by id

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -25,24 +25,24 @@ class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
         target_id (Union[Unset, UUID]): The ID of the target
     """
 
-    id: Union[Unset, UUID] = UNSET
-    field_destroy: Union[Unset, bool] = UNSET
-    target_type: Union[Unset, PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType] = UNSET
-    target_id: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    field_destroy: Unset | bool = UNSET
+    target_type: Unset | PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType = UNSET
+    target_id: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         field_destroy = self.field_destroy
 
-        target_type: Union[Unset, str] = UNSET
+        target_type: Unset | str = UNSET
         if not isinstance(self.target_type, Unset):
             target_type = self.target_type
 
-        target_id: Union[Unset, str] = UNSET
+        target_id: Unset | str = UNSET
         if not isinstance(self.target_id, Unset):
             target_id = str(self.target_id)
 
@@ -64,7 +64,7 @@ class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -73,14 +73,14 @@ class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
         field_destroy = d.pop("_destroy", UNSET)
 
         _target_type = d.pop("target_type", UNSET)
-        target_type: Union[Unset, PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType]
+        target_type: Unset | PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType
         if isinstance(_target_type, Unset):
             target_type = UNSET
         else:
             target_type = check_patch_alert_route_data_attributes_rules_item_destinations_item_target_type(_target_type)
 
         _target_id = d.pop("target_id", UNSET)
-        target_id: Union[Unset, UUID]
+        target_id: Unset | UUID
         if isinstance(_target_id, Unset):
             target_id = UNSET
         else:

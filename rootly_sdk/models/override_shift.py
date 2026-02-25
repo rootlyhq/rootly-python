@@ -31,21 +31,21 @@ class OverrideShift:
     """
 
     schedule_id: str
-    rotation_id: Union[None, str]
+    rotation_id: None | str
     starts_at: str
     ends_at: str
     is_override: bool
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     shift_override: Union[Unset, "ShiftOverrideResponse"] = UNSET
-    user_id: Union[Unset, int] = UNSET
+    user_id: Unset | int = UNSET
     user: Union[Unset, "UserResponse"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         schedule_id = self.schedule_id
 
-        rotation_id: Union[None, str]
+        rotation_id: None | str
         rotation_id = self.rotation_id
 
         starts_at = self.starts_at
@@ -58,13 +58,13 @@ class OverrideShift:
 
         updated_at = self.updated_at
 
-        shift_override: Union[Unset, dict[str, Any]] = UNSET
+        shift_override: Unset | dict[str, Any] = UNSET
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()
 
         user_id = self.user_id
 
-        user: Union[Unset, dict[str, Any]] = UNSET
+        user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
@@ -100,10 +100,10 @@ class OverrideShift:
         d = dict(src_dict)
         schedule_id = d.pop("schedule_id")
 
-        def _parse_rotation_id(data: object) -> Union[None, str]:
+        def _parse_rotation_id(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         rotation_id = _parse_rotation_id(d.pop("rotation_id"))
 
@@ -118,7 +118,7 @@ class OverrideShift:
         updated_at = d.pop("updated_at", UNSET)
 
         _shift_override = d.pop("shift_override", UNSET)
-        shift_override: Union[Unset, ShiftOverrideResponse]
+        shift_override: Unset | ShiftOverrideResponse
         if isinstance(_shift_override, Unset):
             shift_override = UNSET
         else:
@@ -127,7 +127,7 @@ class OverrideShift:
         user_id = d.pop("user_id", UNSET)
 
         _user = d.pop("user", UNSET)
-        user: Union[Unset, UserResponse]
+        user: Unset | UserResponse
         if isinstance(_user, Unset):
             user = UNSET
         else:

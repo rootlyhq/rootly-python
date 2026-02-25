@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     custom_field_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtervalue: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtervalue: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -41,9 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[CustomFieldOptionList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldOptionList | None:
     if response.status_code == 200:
         response_200 = CustomFieldOptionList.from_dict(response.json())
 
@@ -56,7 +54,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[CustomFieldOptionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -70,11 +68,11 @@ def sync_detailed(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtervalue: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtervalue: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
 ) -> Response[CustomFieldOptionList]:
     """[DEPRECATED] List custom field options
 
@@ -116,12 +114,12 @@ def sync(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtervalue: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-) -> Optional[CustomFieldOptionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtervalue: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+) -> CustomFieldOptionList | None:
     """[DEPRECATED] List custom field options
 
      [DEPRECATED] Use form field endpoints instead. List custom field options
@@ -157,11 +155,11 @@ async def asyncio_detailed(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtervalue: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtervalue: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
 ) -> Response[CustomFieldOptionList]:
     """[DEPRECATED] List custom field options
 
@@ -201,12 +199,12 @@ async def asyncio(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtervalue: Union[Unset, str] = UNSET,
-    filtercolor: Union[Unset, str] = UNSET,
-) -> Optional[CustomFieldOptionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtervalue: Unset | str = UNSET,
+    filtercolor: Unset | str = UNSET,
+) -> CustomFieldOptionList | None:
     """[DEPRECATED] List custom field options
 
      [DEPRECATED] Use form field endpoints instead. List custom field options

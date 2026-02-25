@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,7 +23,7 @@ class SendSmsTaskParams:
     phone_numbers: list[str]
     name: str
     content: str
-    task_type: Union[Unset, SendSmsTaskParamsTaskType] = UNSET
+    task_type: Unset | SendSmsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,7 +33,7 @@ class SendSmsTaskParams:
 
         content = self.content
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -61,7 +61,7 @@ class SendSmsTaskParams:
         content = d.pop("content")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, SendSmsTaskParamsTaskType]
+        task_type: Unset | SendSmsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

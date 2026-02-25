@@ -36,12 +36,12 @@ class Pulse:
     summary: str
     created_at: str
     updated_at: str
-    source: Union[None, Unset, str] = UNSET
-    services: Union[Unset, list["Service"]] = UNSET
-    environments: Union[Unset, list["Environment"]] = UNSET
-    external_url: Union[None, Unset, str] = UNSET
-    labels: Union[Unset, list[Union["PulseLabelsItemType0", None]]] = UNSET
-    refs: Union[Unset, list[Union["PulseRefsItemType0", None]]] = UNSET
+    source: None | Unset | str = UNSET
+    services: Unset | list["Service"] = UNSET
+    environments: Unset | list["Environment"] = UNSET
+    external_url: None | Unset | str = UNSET
+    labels: Unset | list[Union["PulseLabelsItemType0", None]] = UNSET
+    refs: Unset | list[Union["PulseRefsItemType0", None]] = UNSET
     data: Union["PulseDataType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -56,55 +56,55 @@ class Pulse:
 
         updated_at = self.updated_at
 
-        source: Union[None, Unset, str]
+        source: None | Unset | str
         if isinstance(self.source, Unset):
             source = UNSET
         else:
             source = self.source
 
-        services: Union[Unset, list[dict[str, Any]]] = UNSET
+        services: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.services, Unset):
             services = []
             for services_item_data in self.services:
                 services_item = services_item_data.to_dict()
                 services.append(services_item)
 
-        environments: Union[Unset, list[dict[str, Any]]] = UNSET
+        environments: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.environments, Unset):
             environments = []
             for environments_item_data in self.environments:
                 environments_item = environments_item_data.to_dict()
                 environments.append(environments_item)
 
-        external_url: Union[None, Unset, str]
+        external_url: None | Unset | str
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        labels: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
+        labels: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: Union[None, dict[str, Any]]
+                labels_item: None | dict[str, Any]
                 if isinstance(labels_item_data, PulseLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        refs: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
+        refs: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
-                refs_item: Union[None, dict[str, Any]]
+                refs_item: None | dict[str, Any]
                 if isinstance(refs_item_data, PulseRefsItemType0):
                     refs_item = refs_item_data.to_dict()
                 else:
                     refs_item = refs_item_data
                 refs.append(refs_item)
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, PulseDataType0):
@@ -153,12 +153,12 @@ class Pulse:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_source(data: object) -> Union[None, Unset, str]:
+        def _parse_source(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         source = _parse_source(d.pop("source", UNSET))
 
@@ -176,12 +176,12 @@ class Pulse:
 
             environments.append(environments_item)
 
-        def _parse_external_url(data: object) -> Union[None, Unset, str]:
+        def _parse_external_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 

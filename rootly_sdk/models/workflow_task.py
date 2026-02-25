@@ -321,7 +321,7 @@ class WorkflowTask:
     created_at: str
     updated_at: str
     enabled: bool = True
-    name: Union[Unset, str] = UNSET
+    name: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -450,7 +450,7 @@ class WorkflowTask:
 
         workflow_id = self.workflow_id
 
-        task_params: Union[Any, dict[str, Any]]
+        task_params: Any | dict[str, Any]
         if isinstance(self.task_params, AddActionItemTaskParams):
             task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, UpdateActionItemTaskParams):

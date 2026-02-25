@@ -36,14 +36,14 @@ class UpdateLinearIssueTaskParams:
     """
 
     issue_id: str
-    task_type: Union[Unset, UpdateLinearIssueTaskParamsTaskType] = UNSET
-    title: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateLinearIssueTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
     state: Union["UpdateLinearIssueTaskParamsStateType0", None, Unset] = UNSET
     project: Union[Unset, "UpdateLinearIssueTaskParamsProject"] = UNSET
-    labels: Union[Unset, list["UpdateLinearIssueTaskParamsLabelsItem"]] = UNSET
+    labels: Unset | list["UpdateLinearIssueTaskParamsLabelsItem"] = UNSET
     priority: Union[Unset, "UpdateLinearIssueTaskParamsPriority"] = UNSET
-    assign_user_email: Union[Unset, str] = UNSET
+    assign_user_email: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,7 +51,7 @@ class UpdateLinearIssueTaskParams:
 
         issue_id = self.issue_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,7 +59,7 @@ class UpdateLinearIssueTaskParams:
 
         description = self.description
 
-        state: Union[None, Unset, dict[str, Any]]
+        state: None | Unset | dict[str, Any]
         if isinstance(self.state, Unset):
             state = UNSET
         elif isinstance(self.state, UpdateLinearIssueTaskParamsStateType0):
@@ -67,18 +67,18 @@ class UpdateLinearIssueTaskParams:
         else:
             state = self.state
 
-        project: Union[Unset, dict[str, Any]] = UNSET
+        project: Unset | dict[str, Any] = UNSET
         if not isinstance(self.project, Unset):
             project = self.project.to_dict()
 
-        labels: Union[Unset, list[dict[str, Any]]] = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
@@ -121,7 +121,7 @@ class UpdateLinearIssueTaskParams:
         issue_id = d.pop("issue_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateLinearIssueTaskParamsTaskType]
+        task_type: Unset | UpdateLinearIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -149,7 +149,7 @@ class UpdateLinearIssueTaskParams:
         state = _parse_state(d.pop("state", UNSET))
 
         _project = d.pop("project", UNSET)
-        project: Union[Unset, UpdateLinearIssueTaskParamsProject]
+        project: Unset | UpdateLinearIssueTaskParamsProject
         if isinstance(_project, Unset):
             project = UNSET
         else:
@@ -163,7 +163,7 @@ class UpdateLinearIssueTaskParams:
             labels.append(labels_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, UpdateLinearIssueTaskParamsPriority]
+        priority: Unset | UpdateLinearIssueTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

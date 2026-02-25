@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -20,8 +20,8 @@ def _get_kwargs() -> dict[str, Any]:
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserResponse | None:
     if response.status_code == 200:
         response_200 = UserResponse.from_dict(response.json())
 
@@ -39,8 +39,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,7 +52,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserResponse]]:
+) -> Response[ErrorsList | UserResponse]:
     """Get current user
 
      Get current user
@@ -77,7 +77,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserResponse]]:
+) -> ErrorsList | UserResponse | None:
     """Get current user
 
      Get current user
@@ -98,7 +98,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserResponse]]:
+) -> Response[ErrorsList | UserResponse]:
     """Get current user
 
      Get current user
@@ -121,7 +121,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserResponse]]:
+) -> ErrorsList | UserResponse | None:
     """Get current user
 
      Get current user

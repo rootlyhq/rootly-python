@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserEmailAddressResponse | None:
     if response.status_code == 200:
         response_200 = UserEmailAddressResponse.from_dict(response.json())
 
@@ -61,8 +61,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +76,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateUserEmailAddress,
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     """Update user email address
 
      Updates a user email address
@@ -110,7 +110,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateUserEmailAddress,
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> ErrorsList | UserEmailAddressResponse | None:
     """Update user email address
 
      Updates a user email address
@@ -139,7 +139,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateUserEmailAddress,
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     """Update user email address
 
      Updates a user email address
@@ -171,7 +171,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateUserEmailAddress,
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> ErrorsList | UserEmailAddressResponse | None:
     """Update user email address
 
      Updates a user email address

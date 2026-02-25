@@ -28,34 +28,34 @@ class DashboardPanelParams:
         datasets (Union[Unset, list['DashboardPanelParamsDatasetsItem']]):
     """
 
-    display: Union[Unset, DashboardPanelParamsDisplay] = UNSET
-    description: Union[Unset, str] = UNSET
-    table_fields: Union[Unset, list[str]] = UNSET
+    display: Unset | DashboardPanelParamsDisplay = UNSET
+    description: Unset | str = UNSET
+    table_fields: Unset | list[str] = UNSET
     legend: Union[Unset, "DashboardPanelParamsLegend"] = UNSET
     datalabels: Union[Unset, "DashboardPanelParamsDatalabels"] = UNSET
-    datasets: Union[Unset, list["DashboardPanelParamsDatasetsItem"]] = UNSET
+    datasets: Unset | list["DashboardPanelParamsDatasetsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        display: Union[Unset, str] = UNSET
+        display: Unset | str = UNSET
         if not isinstance(self.display, Unset):
             display = self.display
 
         description = self.description
 
-        table_fields: Union[Unset, list[str]] = UNSET
+        table_fields: Unset | list[str] = UNSET
         if not isinstance(self.table_fields, Unset):
             table_fields = self.table_fields
 
-        legend: Union[Unset, dict[str, Any]] = UNSET
+        legend: Unset | dict[str, Any] = UNSET
         if not isinstance(self.legend, Unset):
             legend = self.legend.to_dict()
 
-        datalabels: Union[Unset, dict[str, Any]] = UNSET
+        datalabels: Unset | dict[str, Any] = UNSET
         if not isinstance(self.datalabels, Unset):
             datalabels = self.datalabels.to_dict()
 
-        datasets: Union[Unset, list[dict[str, Any]]] = UNSET
+        datasets: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.datasets, Unset):
             datasets = []
             for datasets_item_data in self.datasets:
@@ -88,7 +88,7 @@ class DashboardPanelParams:
 
         d = dict(src_dict)
         _display = d.pop("display", UNSET)
-        display: Union[Unset, DashboardPanelParamsDisplay]
+        display: Unset | DashboardPanelParamsDisplay
         if isinstance(_display, Unset):
             display = UNSET
         else:
@@ -99,14 +99,14 @@ class DashboardPanelParams:
         table_fields = cast(list[str], d.pop("table_fields", UNSET))
 
         _legend = d.pop("legend", UNSET)
-        legend: Union[Unset, DashboardPanelParamsLegend]
+        legend: Unset | DashboardPanelParamsLegend
         if isinstance(_legend, Unset):
             legend = UNSET
         else:
             legend = DashboardPanelParamsLegend.from_dict(_legend)
 
         _datalabels = d.pop("datalabels", UNSET)
-        datalabels: Union[Unset, DashboardPanelParamsDatalabels]
+        datalabels: Unset | DashboardPanelParamsDatalabels
         if isinstance(_datalabels, Unset):
             datalabels = UNSET
         else:

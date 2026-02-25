@@ -26,19 +26,19 @@ class UpdateEdgeConnectorBodyData:
         attributes (Union[Unset, UpdateEdgeConnectorBodyDataAttributes]):
     """
 
-    type_: Union[Unset, UpdateEdgeConnectorBodyDataType] = UNSET
-    id: Union[Unset, str] = UNSET
+    type_: Unset | UpdateEdgeConnectorBodyDataType = UNSET
+    id: Unset | str = UNSET
     attributes: Union[Unset, "UpdateEdgeConnectorBodyDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
         id = self.id
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -60,7 +60,7 @@ class UpdateEdgeConnectorBodyData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, UpdateEdgeConnectorBodyDataType]
+        type_: Unset | UpdateEdgeConnectorBodyDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
@@ -69,7 +69,7 @@ class UpdateEdgeConnectorBodyData:
         id = d.pop("id", UNSET)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, UpdateEdgeConnectorBodyDataAttributes]
+        attributes: Unset | UpdateEdgeConnectorBodyDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

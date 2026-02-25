@@ -71,37 +71,37 @@ class UpdateServiceDataAttributes:
         fields (Union[Unset, list['UpdateServiceDataAttributesFieldsItem']]): Array of field values for this service.
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    public_description: Union[None, Unset, str] = UNSET
-    notify_emails: Union[None, Unset, list[str]] = UNSET
-    color: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    backstage_id: Union[None, Unset, str] = UNSET
-    external_id: Union[None, Unset, str] = UNSET
-    pagerduty_id: Union[None, Unset, str] = UNSET
-    opsgenie_id: Union[None, Unset, str] = UNSET
-    cortex_id: Union[None, Unset, str] = UNSET
-    service_now_ci_sys_id: Union[None, Unset, str] = UNSET
-    github_repository_name: Union[None, Unset, str] = UNSET
-    github_repository_branch: Union[None, Unset, str] = UNSET
-    gitlab_repository_name: Union[None, Unset, str] = UNSET
-    gitlab_repository_branch: Union[None, Unset, str] = UNSET
-    environment_ids: Union[None, Unset, list[str]] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    owner_group_ids: Union[None, Unset, list[str]] = UNSET
-    owner_user_ids: Union[None, Unset, list[int]] = UNSET
-    alerts_email_enabled: Union[None, Unset, bool] = UNSET
-    alert_urgency_id: Union[None, Unset, str] = UNSET
-    escalation_policy_id: Union[None, Unset, str] = UNSET
-    kubernetes_deployment_name: Union[None, Unset, str] = UNSET
-    slack_channels: Union[None, Unset, list["UpdateServiceDataAttributesSlackChannelsType0Item"]] = UNSET
-    slack_aliases: Union[None, Unset, list["UpdateServiceDataAttributesSlackAliasesType0Item"]] = UNSET
-    alert_broadcast_enabled: Union[None, Unset, bool] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    notify_emails: None | Unset | list[str] = UNSET
+    color: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    backstage_id: None | Unset | str = UNSET
+    external_id: None | Unset | str = UNSET
+    pagerduty_id: None | Unset | str = UNSET
+    opsgenie_id: None | Unset | str = UNSET
+    cortex_id: None | Unset | str = UNSET
+    service_now_ci_sys_id: None | Unset | str = UNSET
+    github_repository_name: None | Unset | str = UNSET
+    github_repository_branch: None | Unset | str = UNSET
+    gitlab_repository_name: None | Unset | str = UNSET
+    gitlab_repository_branch: None | Unset | str = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    owner_group_ids: None | Unset | list[str] = UNSET
+    owner_user_ids: None | Unset | list[int] = UNSET
+    alerts_email_enabled: None | Unset | bool = UNSET
+    alert_urgency_id: None | Unset | str = UNSET
+    escalation_policy_id: None | Unset | str = UNSET
+    kubernetes_deployment_name: None | Unset | str = UNSET
+    slack_channels: None | Unset | list["UpdateServiceDataAttributesSlackChannelsType0Item"] = UNSET
+    slack_aliases: None | Unset | list["UpdateServiceDataAttributesSlackAliasesType0Item"] = UNSET
+    alert_broadcast_enabled: None | Unset | bool = UNSET
     alert_broadcast_channel: Union["UpdateServiceDataAttributesAlertBroadcastChannelType0", None, Unset] = UNSET
-    incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
+    incident_broadcast_enabled: None | Unset | bool = UNSET
     incident_broadcast_channel: Union["UpdateServiceDataAttributesIncidentBroadcastChannelType0", None, Unset] = UNSET
-    fields: Union[Unset, list["UpdateServiceDataAttributesFieldsItem"]] = UNSET
+    fields: Unset | list["UpdateServiceDataAttributesFieldsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_service_data_attributes_alert_broadcast_channel_type_0 import (
@@ -113,19 +113,19 @@ class UpdateServiceDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: Union[None, Unset, str]
+        public_description: None | Unset | str
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        notify_emails: Union[None, Unset, list[str]]
+        notify_emails: None | Unset | list[str]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -134,79 +134,79 @@ class UpdateServiceDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        color: Union[None, Unset, str]
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        backstage_id: Union[None, Unset, str]
+        backstage_id: None | Unset | str
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: Union[None, Unset, str]
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        pagerduty_id: Union[None, Unset, str]
+        pagerduty_id: None | Unset | str
         if isinstance(self.pagerduty_id, Unset):
             pagerduty_id = UNSET
         else:
             pagerduty_id = self.pagerduty_id
 
-        opsgenie_id: Union[None, Unset, str]
+        opsgenie_id: None | Unset | str
         if isinstance(self.opsgenie_id, Unset):
             opsgenie_id = UNSET
         else:
             opsgenie_id = self.opsgenie_id
 
-        cortex_id: Union[None, Unset, str]
+        cortex_id: None | Unset | str
         if isinstance(self.cortex_id, Unset):
             cortex_id = UNSET
         else:
             cortex_id = self.cortex_id
 
-        service_now_ci_sys_id: Union[None, Unset, str]
+        service_now_ci_sys_id: None | Unset | str
         if isinstance(self.service_now_ci_sys_id, Unset):
             service_now_ci_sys_id = UNSET
         else:
             service_now_ci_sys_id = self.service_now_ci_sys_id
 
-        github_repository_name: Union[None, Unset, str]
+        github_repository_name: None | Unset | str
         if isinstance(self.github_repository_name, Unset):
             github_repository_name = UNSET
         else:
             github_repository_name = self.github_repository_name
 
-        github_repository_branch: Union[None, Unset, str]
+        github_repository_branch: None | Unset | str
         if isinstance(self.github_repository_branch, Unset):
             github_repository_branch = UNSET
         else:
             github_repository_branch = self.github_repository_branch
 
-        gitlab_repository_name: Union[None, Unset, str]
+        gitlab_repository_name: None | Unset | str
         if isinstance(self.gitlab_repository_name, Unset):
             gitlab_repository_name = UNSET
         else:
             gitlab_repository_name = self.gitlab_repository_name
 
-        gitlab_repository_branch: Union[None, Unset, str]
+        gitlab_repository_branch: None | Unset | str
         if isinstance(self.gitlab_repository_branch, Unset):
             gitlab_repository_branch = UNSET
         else:
             gitlab_repository_branch = self.gitlab_repository_branch
 
-        environment_ids: Union[None, Unset, list[str]]
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -215,7 +215,7 @@ class UpdateServiceDataAttributes:
         else:
             environment_ids = self.environment_ids
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -224,7 +224,7 @@ class UpdateServiceDataAttributes:
         else:
             service_ids = self.service_ids
 
-        owner_group_ids: Union[None, Unset, list[str]]
+        owner_group_ids: None | Unset | list[str]
         if isinstance(self.owner_group_ids, Unset):
             owner_group_ids = UNSET
         elif isinstance(self.owner_group_ids, list):
@@ -233,7 +233,7 @@ class UpdateServiceDataAttributes:
         else:
             owner_group_ids = self.owner_group_ids
 
-        owner_user_ids: Union[None, Unset, list[int]]
+        owner_user_ids: None | Unset | list[int]
         if isinstance(self.owner_user_ids, Unset):
             owner_user_ids = UNSET
         elif isinstance(self.owner_user_ids, list):
@@ -242,31 +242,31 @@ class UpdateServiceDataAttributes:
         else:
             owner_user_ids = self.owner_user_ids
 
-        alerts_email_enabled: Union[None, Unset, bool]
+        alerts_email_enabled: None | Unset | bool
         if isinstance(self.alerts_email_enabled, Unset):
             alerts_email_enabled = UNSET
         else:
             alerts_email_enabled = self.alerts_email_enabled
 
-        alert_urgency_id: Union[None, Unset, str]
+        alert_urgency_id: None | Unset | str
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        escalation_policy_id: Union[None, Unset, str]
+        escalation_policy_id: None | Unset | str
         if isinstance(self.escalation_policy_id, Unset):
             escalation_policy_id = UNSET
         else:
             escalation_policy_id = self.escalation_policy_id
 
-        kubernetes_deployment_name: Union[None, Unset, str]
+        kubernetes_deployment_name: None | Unset | str
         if isinstance(self.kubernetes_deployment_name, Unset):
             kubernetes_deployment_name = UNSET
         else:
             kubernetes_deployment_name = self.kubernetes_deployment_name
 
-        slack_channels: Union[None, Unset, list[dict[str, Any]]]
+        slack_channels: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -278,7 +278,7 @@ class UpdateServiceDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
+        slack_aliases: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -290,13 +290,13 @@ class UpdateServiceDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
-        alert_broadcast_enabled: Union[None, Unset, bool]
+        alert_broadcast_enabled: None | Unset | bool
         if isinstance(self.alert_broadcast_enabled, Unset):
             alert_broadcast_enabled = UNSET
         else:
             alert_broadcast_enabled = self.alert_broadcast_enabled
 
-        alert_broadcast_channel: Union[None, Unset, dict[str, Any]]
+        alert_broadcast_channel: None | Unset | dict[str, Any]
         if isinstance(self.alert_broadcast_channel, Unset):
             alert_broadcast_channel = UNSET
         elif isinstance(self.alert_broadcast_channel, UpdateServiceDataAttributesAlertBroadcastChannelType0):
@@ -304,13 +304,13 @@ class UpdateServiceDataAttributes:
         else:
             alert_broadcast_channel = self.alert_broadcast_channel
 
-        incident_broadcast_enabled: Union[None, Unset, bool]
+        incident_broadcast_enabled: None | Unset | bool
         if isinstance(self.incident_broadcast_enabled, Unset):
             incident_broadcast_enabled = UNSET
         else:
             incident_broadcast_enabled = self.incident_broadcast_enabled
 
-        incident_broadcast_channel: Union[None, Unset, dict[str, Any]]
+        incident_broadcast_channel: None | Unset | dict[str, Any]
         if isinstance(self.incident_broadcast_channel, Unset):
             incident_broadcast_channel = UNSET
         elif isinstance(self.incident_broadcast_channel, UpdateServiceDataAttributesIncidentBroadcastChannelType0):
@@ -318,7 +318,7 @@ class UpdateServiceDataAttributes:
         else:
             incident_broadcast_channel = self.incident_broadcast_channel
 
-        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        fields: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.fields, Unset):
             fields = []
             for fields_item_data in self.fields:
@@ -412,25 +412,25 @@ class UpdateServiceDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> Union[None, Unset, str]:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -443,119 +443,119 @@ class UpdateServiceDataAttributes:
                 return notify_emails_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
-        def _parse_color(data: object) -> Union[None, Unset, str]:
+        def _parse_color(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_backstage_id(data: object) -> Union[None, Unset, str]:
+        def _parse_backstage_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> Union[None, Unset, str]:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_pagerduty_id(data: object) -> Union[None, Unset, str]:
+        def _parse_pagerduty_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         pagerduty_id = _parse_pagerduty_id(d.pop("pagerduty_id", UNSET))
 
-        def _parse_opsgenie_id(data: object) -> Union[None, Unset, str]:
+        def _parse_opsgenie_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         opsgenie_id = _parse_opsgenie_id(d.pop("opsgenie_id", UNSET))
 
-        def _parse_cortex_id(data: object) -> Union[None, Unset, str]:
+        def _parse_cortex_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         cortex_id = _parse_cortex_id(d.pop("cortex_id", UNSET))
 
-        def _parse_service_now_ci_sys_id(data: object) -> Union[None, Unset, str]:
+        def _parse_service_now_ci_sys_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         service_now_ci_sys_id = _parse_service_now_ci_sys_id(d.pop("service_now_ci_sys_id", UNSET))
 
-        def _parse_github_repository_name(data: object) -> Union[None, Unset, str]:
+        def _parse_github_repository_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         github_repository_name = _parse_github_repository_name(d.pop("github_repository_name", UNSET))
 
-        def _parse_github_repository_branch(data: object) -> Union[None, Unset, str]:
+        def _parse_github_repository_branch(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         github_repository_branch = _parse_github_repository_branch(d.pop("github_repository_branch", UNSET))
 
-        def _parse_gitlab_repository_name(data: object) -> Union[None, Unset, str]:
+        def _parse_gitlab_repository_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         gitlab_repository_name = _parse_gitlab_repository_name(d.pop("gitlab_repository_name", UNSET))
 
-        def _parse_gitlab_repository_branch(data: object) -> Union[None, Unset, str]:
+        def _parse_gitlab_repository_branch(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         gitlab_repository_branch = _parse_gitlab_repository_branch(d.pop("gitlab_repository_branch", UNSET))
 
-        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -568,11 +568,11 @@ class UpdateServiceDataAttributes:
                 return environment_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -585,11 +585,11 @@ class UpdateServiceDataAttributes:
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_owner_group_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_owner_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -602,11 +602,11 @@ class UpdateServiceDataAttributes:
                 return owner_group_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         owner_group_ids = _parse_owner_group_ids(d.pop("owner_group_ids", UNSET))
 
-        def _parse_owner_user_ids(data: object) -> Union[None, Unset, list[int]]:
+        def _parse_owner_user_ids(data: object) -> None | Unset | list[int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -619,49 +619,49 @@ class UpdateServiceDataAttributes:
                 return owner_user_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[int]], data)
+            return cast(None | Unset | list[int], data)
 
         owner_user_ids = _parse_owner_user_ids(d.pop("owner_user_ids", UNSET))
 
-        def _parse_alerts_email_enabled(data: object) -> Union[None, Unset, bool]:
+        def _parse_alerts_email_enabled(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         alerts_email_enabled = _parse_alerts_email_enabled(d.pop("alerts_email_enabled", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
-        def _parse_escalation_policy_id(data: object) -> Union[None, Unset, str]:
+        def _parse_escalation_policy_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         escalation_policy_id = _parse_escalation_policy_id(d.pop("escalation_policy_id", UNSET))
 
-        def _parse_kubernetes_deployment_name(data: object) -> Union[None, Unset, str]:
+        def _parse_kubernetes_deployment_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         kubernetes_deployment_name = _parse_kubernetes_deployment_name(d.pop("kubernetes_deployment_name", UNSET))
 
         def _parse_slack_channels(
             data: object,
-        ) -> Union[None, Unset, list["UpdateServiceDataAttributesSlackChannelsType0Item"]]:
+        ) -> None | Unset | list["UpdateServiceDataAttributesSlackChannelsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -681,13 +681,13 @@ class UpdateServiceDataAttributes:
                 return slack_channels_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["UpdateServiceDataAttributesSlackChannelsType0Item"]], data)
+            return cast(None | Unset | list["UpdateServiceDataAttributesSlackChannelsType0Item"], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
         def _parse_slack_aliases(
             data: object,
-        ) -> Union[None, Unset, list["UpdateServiceDataAttributesSlackAliasesType0Item"]]:
+        ) -> None | Unset | list["UpdateServiceDataAttributesSlackAliasesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -707,16 +707,16 @@ class UpdateServiceDataAttributes:
                 return slack_aliases_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["UpdateServiceDataAttributesSlackAliasesType0Item"]], data)
+            return cast(None | Unset | list["UpdateServiceDataAttributesSlackAliasesType0Item"], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
-        def _parse_alert_broadcast_enabled(data: object) -> Union[None, Unset, bool]:
+        def _parse_alert_broadcast_enabled(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         alert_broadcast_enabled = _parse_alert_broadcast_enabled(d.pop("alert_broadcast_enabled", UNSET))
 
@@ -739,12 +739,12 @@ class UpdateServiceDataAttributes:
 
         alert_broadcast_channel = _parse_alert_broadcast_channel(d.pop("alert_broadcast_channel", UNSET))
 
-        def _parse_incident_broadcast_enabled(data: object) -> Union[None, Unset, bool]:
+        def _parse_incident_broadcast_enabled(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         incident_broadcast_enabled = _parse_incident_broadcast_enabled(d.pop("incident_broadcast_enabled", UNSET))
 

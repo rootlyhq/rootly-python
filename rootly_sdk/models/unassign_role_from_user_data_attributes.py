@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -16,8 +16,8 @@ class UnassignRoleFromUserDataAttributes:
         incident_role_id (Union[Unset, str]): ID of the incident role
     """
 
-    user_id: Union[Unset, str] = UNSET
-    incident_role_id: Union[Unset, str] = UNSET
+    user_id: Unset | str = UNSET
+    incident_role_id: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         user_id = self.user_id

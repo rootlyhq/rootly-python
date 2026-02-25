@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -38,9 +38,9 @@ class FormFieldPlacement:
     form: str
     position: int
     required: bool
-    required_operator: Union[Unset, FormFieldPlacementRequiredOperator] = UNSET
-    placement_operator: Union[Unset, FormFieldPlacementPlacementOperator] = UNSET
-    non_editable: Union[Unset, bool] = UNSET
+    required_operator: Unset | FormFieldPlacementRequiredOperator = UNSET
+    placement_operator: Unset | FormFieldPlacementPlacementOperator = UNSET
+    non_editable: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,11 +54,11 @@ class FormFieldPlacement:
 
         required = self.required
 
-        required_operator: Union[Unset, str] = UNSET
+        required_operator: Unset | str = UNSET
         if not isinstance(self.required_operator, Unset):
             required_operator = self.required_operator
 
-        placement_operator: Union[Unset, str] = UNSET
+        placement_operator: Unset | str = UNSET
         if not isinstance(self.placement_operator, Unset):
             placement_operator = self.placement_operator
 
@@ -98,14 +98,14 @@ class FormFieldPlacement:
         required = d.pop("required")
 
         _required_operator = d.pop("required_operator", UNSET)
-        required_operator: Union[Unset, FormFieldPlacementRequiredOperator]
+        required_operator: Unset | FormFieldPlacementRequiredOperator
         if isinstance(_required_operator, Unset):
             required_operator = UNSET
         else:
             required_operator = check_form_field_placement_required_operator(_required_operator)
 
         _placement_operator = d.pop("placement_operator", UNSET)
-        placement_operator: Union[Unset, FormFieldPlacementPlacementOperator]
+        placement_operator: Unset | FormFieldPlacementPlacementOperator
         if isinstance(_placement_operator, Unset):
             placement_operator = UNSET
         else:

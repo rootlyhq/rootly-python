@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,8 +13,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    to: Union[Unset, str] = UNSET,
-    from_: Union[Unset, str] = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -33,9 +33,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, ShiftList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | ShiftList | None:
     if response.status_code == 200:
         response_200 = ShiftList.from_dict(response.json())
 
@@ -53,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, ShiftList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ShiftList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,9 +65,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: Union[Unset, str] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, ShiftList]]:
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
+) -> Response[ErrorsList | ShiftList]:
     """Retrieves a schedule shifts
 
      Retrieves schedule shifts
@@ -104,9 +102,9 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: Union[Unset, str] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, ShiftList]]:
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
+) -> ErrorsList | ShiftList | None:
     """Retrieves a schedule shifts
 
      Retrieves schedule shifts
@@ -136,9 +134,9 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: Union[Unset, str] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, ShiftList]]:
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
+) -> Response[ErrorsList | ShiftList]:
     """Retrieves a schedule shifts
 
      Retrieves schedule shifts
@@ -171,9 +169,9 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: Union[Unset, str] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, ShiftList]]:
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
+) -> ErrorsList | ShiftList | None:
     """Retrieves a schedule shifts
 
      Retrieves schedule shifts

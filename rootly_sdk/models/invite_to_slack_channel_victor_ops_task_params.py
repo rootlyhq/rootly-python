@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,7 +31,7 @@ class InviteToSlackChannelVictorOpsTaskParams:
 
     channels: list["InviteToSlackChannelVictorOpsTaskParamsChannelsItem"]
     team: "InviteToSlackChannelVictorOpsTaskParamsTeam"
-    task_type: Union[Unset, InviteToSlackChannelVictorOpsTaskParamsTaskType] = UNSET
+    task_type: Unset | InviteToSlackChannelVictorOpsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +42,7 @@ class InviteToSlackChannelVictorOpsTaskParams:
 
         team = self.team.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -79,7 +79,7 @@ class InviteToSlackChannelVictorOpsTaskParams:
         team = InviteToSlackChannelVictorOpsTaskParamsTeam.from_dict(d.pop("team"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, InviteToSlackChannelVictorOpsTaskParamsTaskType]
+        task_type: Unset | InviteToSlackChannelVictorOpsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

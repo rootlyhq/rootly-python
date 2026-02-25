@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, FormSetResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | FormSetResponse | None:
     if response.status_code == 201:
         response_201 = FormSetResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, FormSetResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | FormSetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormSet,
-) -> Response[Union[ErrorsList, FormSetResponse]]:
+) -> Response[ErrorsList | FormSetResponse]:
     """Creates a Form Set
 
      Creates a new form_set from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewFormSet,
-) -> Optional[Union[ErrorsList, FormSetResponse]]:
+) -> ErrorsList | FormSetResponse | None:
     """Creates a Form Set
 
      Creates a new form_set from provided data
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormSet,
-) -> Response[Union[ErrorsList, FormSetResponse]]:
+) -> Response[ErrorsList | FormSetResponse]:
     """Creates a Form Set
 
      Creates a new form_set from provided data
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewFormSet,
-) -> Optional[Union[ErrorsList, FormSetResponse]]:
+) -> ErrorsList | FormSetResponse | None:
     """Creates a Form Set
 
      Creates a new form_set from provided data

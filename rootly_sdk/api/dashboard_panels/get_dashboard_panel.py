@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,9 +12,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    range_: Union[Unset, str] = UNSET,
-    period: Union[Unset, str] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
+    range_: Unset | str = UNSET,
+    period: Unset | str = UNSET,
+    time_zone: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -35,9 +35,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[DashboardPanelResponse]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardPanelResponse | None:
     if response.status_code == 200:
         response_200 = DashboardPanelResponse.from_dict(response.json())
 
@@ -50,7 +48,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[DashboardPanelResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -64,9 +62,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: Union[Unset, str] = UNSET,
-    period: Union[Unset, str] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
+    range_: Unset | str = UNSET,
+    period: Unset | str = UNSET,
+    time_zone: Unset | str = UNSET,
 ) -> Response[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
@@ -104,10 +102,10 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: Union[Unset, str] = UNSET,
-    period: Union[Unset, str] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-) -> Optional[DashboardPanelResponse]:
+    range_: Unset | str = UNSET,
+    period: Unset | str = UNSET,
+    time_zone: Unset | str = UNSET,
+) -> DashboardPanelResponse | None:
     """Retrieves a dashboard panel
 
      Retrieves a specific dashboard panel by id
@@ -139,9 +137,9 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: Union[Unset, str] = UNSET,
-    period: Union[Unset, str] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
+    range_: Unset | str = UNSET,
+    period: Unset | str = UNSET,
+    time_zone: Unset | str = UNSET,
 ) -> Response[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
@@ -177,10 +175,10 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: Union[Unset, str] = UNSET,
-    period: Union[Unset, str] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-) -> Optional[DashboardPanelResponse]:
+    range_: Unset | str = UNSET,
+    period: Unset | str = UNSET,
+    time_zone: Unset | str = UNSET,
+) -> DashboardPanelResponse | None:
     """Retrieves a dashboard panel
 
      Retrieves a specific dashboard panel by id

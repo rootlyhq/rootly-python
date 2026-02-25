@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,9 +24,9 @@ class CreateEdgeConnectorActionBodyActionMetadata:
         parameters (Union[Unset, list['CreateEdgeConnectorActionBodyActionMetadataParametersItem']]):
     """
 
-    description: Union[Unset, str] = UNSET
-    timeout: Union[Unset, int] = UNSET
-    parameters: Union[Unset, list["CreateEdgeConnectorActionBodyActionMetadataParametersItem"]] = UNSET
+    description: Unset | str = UNSET
+    timeout: Unset | int = UNSET
+    parameters: Unset | list["CreateEdgeConnectorActionBodyActionMetadataParametersItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,7 +34,7 @@ class CreateEdgeConnectorActionBodyActionMetadata:
 
         timeout = self.timeout
 
-        parameters: Union[Unset, list[dict[str, Any]]] = UNSET
+        parameters: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.parameters, Unset):
             parameters = []
             for parameters_item_data in self.parameters:

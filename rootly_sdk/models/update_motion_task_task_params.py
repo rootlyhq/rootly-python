@@ -32,19 +32,19 @@ class UpdateMotionTaskTaskParams:
     """
 
     task_id: str
-    task_type: Union[Unset, UpdateMotionTaskTaskParamsTaskType] = UNSET
-    title: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    labels: Union[Unset, list[str]] = UNSET
+    task_type: Unset | UpdateMotionTaskTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | list[str] = UNSET
     priority: Union[Unset, "UpdateMotionTaskTaskParamsPriority"] = UNSET
-    duration: Union[Unset, str] = UNSET
-    due_date: Union[Unset, str] = UNSET
+    duration: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         task_id = self.task_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -52,11 +52,11 @@ class UpdateMotionTaskTaskParams:
 
         description = self.description
 
-        labels: Union[Unset, list[str]] = UNSET
+        labels: Unset | list[str] = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
@@ -96,7 +96,7 @@ class UpdateMotionTaskTaskParams:
         task_id = d.pop("task_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateMotionTaskTaskParamsTaskType]
+        task_type: Unset | UpdateMotionTaskTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -109,7 +109,7 @@ class UpdateMotionTaskTaskParams:
         labels = cast(list[str], d.pop("labels", UNSET))
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, UpdateMotionTaskTaskParamsPriority]
+        priority: Unset | UpdateMotionTaskTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

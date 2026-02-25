@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -17,16 +17,16 @@ class UpdateAlertUrgencyDataAttributes:
         position (Union[None, Unset, int]): Position of the alert urgency
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
+    name: Unset | str = UNSET
+    description: Unset | str = UNSET
+    position: None | Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         description = self.description
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -51,12 +51,12 @@ class UpdateAlertUrgencyDataAttributes:
 
         description = d.pop("description", UNSET)
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

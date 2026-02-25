@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -147,219 +147,219 @@ class NewRoleDataAttributes:
     """
 
     name: str
-    incident_permission_set_id: Union[None, Unset, str] = UNSET
-    alerts_permissions: Union[Unset, list[NewRoleDataAttributesAlertsPermissionsItem]] = UNSET
-    api_keys_permissions: Union[Unset, list[NewRoleDataAttributesApiKeysPermissionsItem]] = UNSET
-    audits_permissions: Union[Unset, list[NewRoleDataAttributesAuditsPermissionsItem]] = UNSET
-    billing_permissions: Union[Unset, list[NewRoleDataAttributesBillingPermissionsItem]] = UNSET
-    environments_permissions: Union[Unset, list[NewRoleDataAttributesEnvironmentsPermissionsItem]] = UNSET
-    form_fields_permissions: Union[Unset, list[NewRoleDataAttributesFormFieldsPermissionsItem]] = UNSET
-    functionalities_permissions: Union[Unset, list[NewRoleDataAttributesFunctionalitiesPermissionsItem]] = UNSET
-    groups_permissions: Union[Unset, list[NewRoleDataAttributesGroupsPermissionsItem]] = UNSET
-    incident_causes_permissions: Union[Unset, list[NewRoleDataAttributesIncidentCausesPermissionsItem]] = UNSET
-    incident_feedbacks_permissions: Union[Unset, list[NewRoleDataAttributesIncidentFeedbacksPermissionsItem]] = UNSET
-    incident_roles_permissions: Union[Unset, list[NewRoleDataAttributesIncidentRolesPermissionsItem]] = UNSET
-    incident_types_permissions: Union[Unset, list[NewRoleDataAttributesIncidentTypesPermissionsItem]] = UNSET
-    incidents_permissions: Union[Unset, list[NewRoleDataAttributesIncidentsPermissionsItem]] = UNSET
-    integrations_permissions: Union[Unset, list[NewRoleDataAttributesIntegrationsPermissionsItem]] = UNSET
-    invitations_permissions: Union[Unset, list[NewRoleDataAttributesInvitationsPermissionsItem]] = UNSET
-    playbooks_permissions: Union[Unset, list[NewRoleDataAttributesPlaybooksPermissionsItem]] = UNSET
-    private_incidents_permissions: Union[Unset, list[NewRoleDataAttributesPrivateIncidentsPermissionsItem]] = UNSET
-    pulses_permissions: Union[Unset, list[NewRoleDataAttributesPulsesPermissionsItem]] = UNSET
-    retrospective_permissions: Union[Unset, list[NewRoleDataAttributesRetrospectivePermissionsItem]] = UNSET
-    roles_permissions: Union[Unset, list[NewRoleDataAttributesRolesPermissionsItem]] = UNSET
-    secrets_permissions: Union[Unset, list[NewRoleDataAttributesSecretsPermissionsItem]] = UNSET
-    services_permissions: Union[Unset, list[NewRoleDataAttributesServicesPermissionsItem]] = UNSET
-    severities_permissions: Union[Unset, list[NewRoleDataAttributesSeveritiesPermissionsItem]] = UNSET
-    status_pages_permissions: Union[Unset, list[NewRoleDataAttributesStatusPagesPermissionsItem]] = UNSET
-    webhooks_permissions: Union[Unset, list[NewRoleDataAttributesWebhooksPermissionsItem]] = UNSET
-    workflows_permissions: Union[Unset, list[NewRoleDataAttributesWorkflowsPermissionsItem]] = UNSET
+    incident_permission_set_id: None | Unset | str = UNSET
+    alerts_permissions: Unset | list[NewRoleDataAttributesAlertsPermissionsItem] = UNSET
+    api_keys_permissions: Unset | list[NewRoleDataAttributesApiKeysPermissionsItem] = UNSET
+    audits_permissions: Unset | list[NewRoleDataAttributesAuditsPermissionsItem] = UNSET
+    billing_permissions: Unset | list[NewRoleDataAttributesBillingPermissionsItem] = UNSET
+    environments_permissions: Unset | list[NewRoleDataAttributesEnvironmentsPermissionsItem] = UNSET
+    form_fields_permissions: Unset | list[NewRoleDataAttributesFormFieldsPermissionsItem] = UNSET
+    functionalities_permissions: Unset | list[NewRoleDataAttributesFunctionalitiesPermissionsItem] = UNSET
+    groups_permissions: Unset | list[NewRoleDataAttributesGroupsPermissionsItem] = UNSET
+    incident_causes_permissions: Unset | list[NewRoleDataAttributesIncidentCausesPermissionsItem] = UNSET
+    incident_feedbacks_permissions: Unset | list[NewRoleDataAttributesIncidentFeedbacksPermissionsItem] = UNSET
+    incident_roles_permissions: Unset | list[NewRoleDataAttributesIncidentRolesPermissionsItem] = UNSET
+    incident_types_permissions: Unset | list[NewRoleDataAttributesIncidentTypesPermissionsItem] = UNSET
+    incidents_permissions: Unset | list[NewRoleDataAttributesIncidentsPermissionsItem] = UNSET
+    integrations_permissions: Unset | list[NewRoleDataAttributesIntegrationsPermissionsItem] = UNSET
+    invitations_permissions: Unset | list[NewRoleDataAttributesInvitationsPermissionsItem] = UNSET
+    playbooks_permissions: Unset | list[NewRoleDataAttributesPlaybooksPermissionsItem] = UNSET
+    private_incidents_permissions: Unset | list[NewRoleDataAttributesPrivateIncidentsPermissionsItem] = UNSET
+    pulses_permissions: Unset | list[NewRoleDataAttributesPulsesPermissionsItem] = UNSET
+    retrospective_permissions: Unset | list[NewRoleDataAttributesRetrospectivePermissionsItem] = UNSET
+    roles_permissions: Unset | list[NewRoleDataAttributesRolesPermissionsItem] = UNSET
+    secrets_permissions: Unset | list[NewRoleDataAttributesSecretsPermissionsItem] = UNSET
+    services_permissions: Unset | list[NewRoleDataAttributesServicesPermissionsItem] = UNSET
+    severities_permissions: Unset | list[NewRoleDataAttributesSeveritiesPermissionsItem] = UNSET
+    status_pages_permissions: Unset | list[NewRoleDataAttributesStatusPagesPermissionsItem] = UNSET
+    webhooks_permissions: Unset | list[NewRoleDataAttributesWebhooksPermissionsItem] = UNSET
+    workflows_permissions: Unset | list[NewRoleDataAttributesWorkflowsPermissionsItem] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        incident_permission_set_id: Union[None, Unset, str]
+        incident_permission_set_id: None | Unset | str
         if isinstance(self.incident_permission_set_id, Unset):
             incident_permission_set_id = UNSET
         else:
             incident_permission_set_id = self.incident_permission_set_id
 
-        alerts_permissions: Union[Unset, list[str]] = UNSET
+        alerts_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alerts_permissions, Unset):
             alerts_permissions = []
             for alerts_permissions_item_data in self.alerts_permissions:
                 alerts_permissions_item: str = alerts_permissions_item_data
                 alerts_permissions.append(alerts_permissions_item)
 
-        api_keys_permissions: Union[Unset, list[str]] = UNSET
+        api_keys_permissions: Unset | list[str] = UNSET
         if not isinstance(self.api_keys_permissions, Unset):
             api_keys_permissions = []
             for api_keys_permissions_item_data in self.api_keys_permissions:
                 api_keys_permissions_item: str = api_keys_permissions_item_data
                 api_keys_permissions.append(api_keys_permissions_item)
 
-        audits_permissions: Union[Unset, list[str]] = UNSET
+        audits_permissions: Unset | list[str] = UNSET
         if not isinstance(self.audits_permissions, Unset):
             audits_permissions = []
             for audits_permissions_item_data in self.audits_permissions:
                 audits_permissions_item: str = audits_permissions_item_data
                 audits_permissions.append(audits_permissions_item)
 
-        billing_permissions: Union[Unset, list[str]] = UNSET
+        billing_permissions: Unset | list[str] = UNSET
         if not isinstance(self.billing_permissions, Unset):
             billing_permissions = []
             for billing_permissions_item_data in self.billing_permissions:
                 billing_permissions_item: str = billing_permissions_item_data
                 billing_permissions.append(billing_permissions_item)
 
-        environments_permissions: Union[Unset, list[str]] = UNSET
+        environments_permissions: Unset | list[str] = UNSET
         if not isinstance(self.environments_permissions, Unset):
             environments_permissions = []
             for environments_permissions_item_data in self.environments_permissions:
                 environments_permissions_item: str = environments_permissions_item_data
                 environments_permissions.append(environments_permissions_item)
 
-        form_fields_permissions: Union[Unset, list[str]] = UNSET
+        form_fields_permissions: Unset | list[str] = UNSET
         if not isinstance(self.form_fields_permissions, Unset):
             form_fields_permissions = []
             for form_fields_permissions_item_data in self.form_fields_permissions:
                 form_fields_permissions_item: str = form_fields_permissions_item_data
                 form_fields_permissions.append(form_fields_permissions_item)
 
-        functionalities_permissions: Union[Unset, list[str]] = UNSET
+        functionalities_permissions: Unset | list[str] = UNSET
         if not isinstance(self.functionalities_permissions, Unset):
             functionalities_permissions = []
             for functionalities_permissions_item_data in self.functionalities_permissions:
                 functionalities_permissions_item: str = functionalities_permissions_item_data
                 functionalities_permissions.append(functionalities_permissions_item)
 
-        groups_permissions: Union[Unset, list[str]] = UNSET
+        groups_permissions: Unset | list[str] = UNSET
         if not isinstance(self.groups_permissions, Unset):
             groups_permissions = []
             for groups_permissions_item_data in self.groups_permissions:
                 groups_permissions_item: str = groups_permissions_item_data
                 groups_permissions.append(groups_permissions_item)
 
-        incident_causes_permissions: Union[Unset, list[str]] = UNSET
+        incident_causes_permissions: Unset | list[str] = UNSET
         if not isinstance(self.incident_causes_permissions, Unset):
             incident_causes_permissions = []
             for incident_causes_permissions_item_data in self.incident_causes_permissions:
                 incident_causes_permissions_item: str = incident_causes_permissions_item_data
                 incident_causes_permissions.append(incident_causes_permissions_item)
 
-        incident_feedbacks_permissions: Union[Unset, list[str]] = UNSET
+        incident_feedbacks_permissions: Unset | list[str] = UNSET
         if not isinstance(self.incident_feedbacks_permissions, Unset):
             incident_feedbacks_permissions = []
             for incident_feedbacks_permissions_item_data in self.incident_feedbacks_permissions:
                 incident_feedbacks_permissions_item: str = incident_feedbacks_permissions_item_data
                 incident_feedbacks_permissions.append(incident_feedbacks_permissions_item)
 
-        incident_roles_permissions: Union[Unset, list[str]] = UNSET
+        incident_roles_permissions: Unset | list[str] = UNSET
         if not isinstance(self.incident_roles_permissions, Unset):
             incident_roles_permissions = []
             for incident_roles_permissions_item_data in self.incident_roles_permissions:
                 incident_roles_permissions_item: str = incident_roles_permissions_item_data
                 incident_roles_permissions.append(incident_roles_permissions_item)
 
-        incident_types_permissions: Union[Unset, list[str]] = UNSET
+        incident_types_permissions: Unset | list[str] = UNSET
         if not isinstance(self.incident_types_permissions, Unset):
             incident_types_permissions = []
             for incident_types_permissions_item_data in self.incident_types_permissions:
                 incident_types_permissions_item: str = incident_types_permissions_item_data
                 incident_types_permissions.append(incident_types_permissions_item)
 
-        incidents_permissions: Union[Unset, list[str]] = UNSET
+        incidents_permissions: Unset | list[str] = UNSET
         if not isinstance(self.incidents_permissions, Unset):
             incidents_permissions = []
             for incidents_permissions_item_data in self.incidents_permissions:
                 incidents_permissions_item: str = incidents_permissions_item_data
                 incidents_permissions.append(incidents_permissions_item)
 
-        integrations_permissions: Union[Unset, list[str]] = UNSET
+        integrations_permissions: Unset | list[str] = UNSET
         if not isinstance(self.integrations_permissions, Unset):
             integrations_permissions = []
             for integrations_permissions_item_data in self.integrations_permissions:
                 integrations_permissions_item: str = integrations_permissions_item_data
                 integrations_permissions.append(integrations_permissions_item)
 
-        invitations_permissions: Union[Unset, list[str]] = UNSET
+        invitations_permissions: Unset | list[str] = UNSET
         if not isinstance(self.invitations_permissions, Unset):
             invitations_permissions = []
             for invitations_permissions_item_data in self.invitations_permissions:
                 invitations_permissions_item: str = invitations_permissions_item_data
                 invitations_permissions.append(invitations_permissions_item)
 
-        playbooks_permissions: Union[Unset, list[str]] = UNSET
+        playbooks_permissions: Unset | list[str] = UNSET
         if not isinstance(self.playbooks_permissions, Unset):
             playbooks_permissions = []
             for playbooks_permissions_item_data in self.playbooks_permissions:
                 playbooks_permissions_item: str = playbooks_permissions_item_data
                 playbooks_permissions.append(playbooks_permissions_item)
 
-        private_incidents_permissions: Union[Unset, list[str]] = UNSET
+        private_incidents_permissions: Unset | list[str] = UNSET
         if not isinstance(self.private_incidents_permissions, Unset):
             private_incidents_permissions = []
             for private_incidents_permissions_item_data in self.private_incidents_permissions:
                 private_incidents_permissions_item: str = private_incidents_permissions_item_data
                 private_incidents_permissions.append(private_incidents_permissions_item)
 
-        pulses_permissions: Union[Unset, list[str]] = UNSET
+        pulses_permissions: Unset | list[str] = UNSET
         if not isinstance(self.pulses_permissions, Unset):
             pulses_permissions = []
             for pulses_permissions_item_data in self.pulses_permissions:
                 pulses_permissions_item: str = pulses_permissions_item_data
                 pulses_permissions.append(pulses_permissions_item)
 
-        retrospective_permissions: Union[Unset, list[str]] = UNSET
+        retrospective_permissions: Unset | list[str] = UNSET
         if not isinstance(self.retrospective_permissions, Unset):
             retrospective_permissions = []
             for retrospective_permissions_item_data in self.retrospective_permissions:
                 retrospective_permissions_item: str = retrospective_permissions_item_data
                 retrospective_permissions.append(retrospective_permissions_item)
 
-        roles_permissions: Union[Unset, list[str]] = UNSET
+        roles_permissions: Unset | list[str] = UNSET
         if not isinstance(self.roles_permissions, Unset):
             roles_permissions = []
             for roles_permissions_item_data in self.roles_permissions:
                 roles_permissions_item: str = roles_permissions_item_data
                 roles_permissions.append(roles_permissions_item)
 
-        secrets_permissions: Union[Unset, list[str]] = UNSET
+        secrets_permissions: Unset | list[str] = UNSET
         if not isinstance(self.secrets_permissions, Unset):
             secrets_permissions = []
             for secrets_permissions_item_data in self.secrets_permissions:
                 secrets_permissions_item: str = secrets_permissions_item_data
                 secrets_permissions.append(secrets_permissions_item)
 
-        services_permissions: Union[Unset, list[str]] = UNSET
+        services_permissions: Unset | list[str] = UNSET
         if not isinstance(self.services_permissions, Unset):
             services_permissions = []
             for services_permissions_item_data in self.services_permissions:
                 services_permissions_item: str = services_permissions_item_data
                 services_permissions.append(services_permissions_item)
 
-        severities_permissions: Union[Unset, list[str]] = UNSET
+        severities_permissions: Unset | list[str] = UNSET
         if not isinstance(self.severities_permissions, Unset):
             severities_permissions = []
             for severities_permissions_item_data in self.severities_permissions:
                 severities_permissions_item: str = severities_permissions_item_data
                 severities_permissions.append(severities_permissions_item)
 
-        status_pages_permissions: Union[Unset, list[str]] = UNSET
+        status_pages_permissions: Unset | list[str] = UNSET
         if not isinstance(self.status_pages_permissions, Unset):
             status_pages_permissions = []
             for status_pages_permissions_item_data in self.status_pages_permissions:
                 status_pages_permissions_item: str = status_pages_permissions_item_data
                 status_pages_permissions.append(status_pages_permissions_item)
 
-        webhooks_permissions: Union[Unset, list[str]] = UNSET
+        webhooks_permissions: Unset | list[str] = UNSET
         if not isinstance(self.webhooks_permissions, Unset):
             webhooks_permissions = []
             for webhooks_permissions_item_data in self.webhooks_permissions:
                 webhooks_permissions_item: str = webhooks_permissions_item_data
                 webhooks_permissions.append(webhooks_permissions_item)
 
-        workflows_permissions: Union[Unset, list[str]] = UNSET
+        workflows_permissions: Unset | list[str] = UNSET
         if not isinstance(self.workflows_permissions, Unset):
             workflows_permissions = []
             for workflows_permissions_item_data in self.workflows_permissions:
@@ -435,12 +435,12 @@ class NewRoleDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_incident_permission_set_id(data: object) -> Union[None, Unset, str]:
+        def _parse_incident_permission_set_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         incident_permission_set_id = _parse_incident_permission_set_id(d.pop("incident_permission_set_id", UNSET))
 

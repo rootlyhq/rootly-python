@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,30 +26,30 @@ class CatalogEntity:
     """
 
     name: str
-    position: Union[None, int]
+    position: None | int
     created_at: str
     updated_at: str
-    description: Union[None, Unset, str] = UNSET
-    fields: Union[Unset, list["CatalogEntityFieldsItem"]] = UNSET
+    description: None | Unset | str = UNSET
+    fields: Unset | list["CatalogEntityFieldsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        position: Union[None, int]
+        position: None | int
         position = self.position
 
         created_at = self.created_at
 
         updated_at = self.updated_at
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        fields: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.fields, Unset):
             fields = []
             for fields_item_data in self.fields:
@@ -80,10 +80,10 @@ class CatalogEntity:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_position(data: object) -> Union[None, int]:
+        def _parse_position(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(Union[None, int], data)
+            return cast(None | int, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -91,12 +91,12 @@ class CatalogEntity:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

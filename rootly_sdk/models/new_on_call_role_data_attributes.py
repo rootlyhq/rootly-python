@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -131,191 +131,185 @@ class NewOnCallRoleDataAttributes:
     """
 
     name: str
-    system_role: Union[Unset, str] = "custom"
-    alert_fields_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem]] = UNSET
-    alert_groups_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertGroupsPermissionsItem]] = UNSET
-    alert_routing_rules_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem]] = (
-        UNSET
-    )
-    on_call_readiness_report_permissions: Union[
-        Unset, list[NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem]
-    ] = UNSET
-    on_call_roles_permissions: Union[Unset, list[NewOnCallRoleDataAttributesOnCallRolesPermissionsItem]] = UNSET
-    alert_sources_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertSourcesPermissionsItem]] = UNSET
-    alert_urgency_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertUrgencyPermissionsItem]] = UNSET
-    alerts_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAlertsPermissionsItem]] = UNSET
-    api_keys_permissions: Union[Unset, list[NewOnCallRoleDataAttributesApiKeysPermissionsItem]] = UNSET
-    audits_permissions: Union[Unset, list[NewOnCallRoleDataAttributesAuditsPermissionsItem]] = UNSET
-    contacts_permissions: Union[Unset, list[NewOnCallRoleDataAttributesContactsPermissionsItem]] = UNSET
-    escalation_policies_permissions: Union[
-        Unset, list[NewOnCallRoleDataAttributesEscalationPoliciesPermissionsItem]
-    ] = UNSET
-    groups_permissions: Union[Unset, list[NewOnCallRoleDataAttributesGroupsPermissionsItem]] = UNSET
-    heartbeats_permissions: Union[Unset, list[NewOnCallRoleDataAttributesHeartbeatsPermissionsItem]] = UNSET
-    integrations_permissions: Union[Unset, list[NewOnCallRoleDataAttributesIntegrationsPermissionsItem]] = UNSET
-    invitations_permissions: Union[Unset, list[NewOnCallRoleDataAttributesInvitationsPermissionsItem]] = UNSET
-    live_call_routing_permissions: Union[Unset, list[NewOnCallRoleDataAttributesLiveCallRoutingPermissionsItem]] = UNSET
-    schedule_override_permissions: Union[Unset, list[NewOnCallRoleDataAttributesScheduleOverridePermissionsItem]] = (
-        UNSET
-    )
-    schedules_permissions: Union[Unset, list[NewOnCallRoleDataAttributesSchedulesPermissionsItem]] = UNSET
-    services_permissions: Union[Unset, list[NewOnCallRoleDataAttributesServicesPermissionsItem]] = UNSET
-    webhooks_permissions: Union[Unset, list[NewOnCallRoleDataAttributesWebhooksPermissionsItem]] = UNSET
-    workflows_permissions: Union[Unset, list[NewOnCallRoleDataAttributesWorkflowsPermissionsItem]] = UNSET
+    system_role: Unset | str = "custom"
+    alert_fields_permissions: Unset | list[NewOnCallRoleDataAttributesAlertFieldsPermissionsItem] = UNSET
+    alert_groups_permissions: Unset | list[NewOnCallRoleDataAttributesAlertGroupsPermissionsItem] = UNSET
+    alert_routing_rules_permissions: Unset | list[NewOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem] = UNSET
+    on_call_readiness_report_permissions: (
+        Unset | list[NewOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem]
+    ) = UNSET
+    on_call_roles_permissions: Unset | list[NewOnCallRoleDataAttributesOnCallRolesPermissionsItem] = UNSET
+    alert_sources_permissions: Unset | list[NewOnCallRoleDataAttributesAlertSourcesPermissionsItem] = UNSET
+    alert_urgency_permissions: Unset | list[NewOnCallRoleDataAttributesAlertUrgencyPermissionsItem] = UNSET
+    alerts_permissions: Unset | list[NewOnCallRoleDataAttributesAlertsPermissionsItem] = UNSET
+    api_keys_permissions: Unset | list[NewOnCallRoleDataAttributesApiKeysPermissionsItem] = UNSET
+    audits_permissions: Unset | list[NewOnCallRoleDataAttributesAuditsPermissionsItem] = UNSET
+    contacts_permissions: Unset | list[NewOnCallRoleDataAttributesContactsPermissionsItem] = UNSET
+    escalation_policies_permissions: Unset | list[NewOnCallRoleDataAttributesEscalationPoliciesPermissionsItem] = UNSET
+    groups_permissions: Unset | list[NewOnCallRoleDataAttributesGroupsPermissionsItem] = UNSET
+    heartbeats_permissions: Unset | list[NewOnCallRoleDataAttributesHeartbeatsPermissionsItem] = UNSET
+    integrations_permissions: Unset | list[NewOnCallRoleDataAttributesIntegrationsPermissionsItem] = UNSET
+    invitations_permissions: Unset | list[NewOnCallRoleDataAttributesInvitationsPermissionsItem] = UNSET
+    live_call_routing_permissions: Unset | list[NewOnCallRoleDataAttributesLiveCallRoutingPermissionsItem] = UNSET
+    schedule_override_permissions: Unset | list[NewOnCallRoleDataAttributesScheduleOverridePermissionsItem] = UNSET
+    schedules_permissions: Unset | list[NewOnCallRoleDataAttributesSchedulesPermissionsItem] = UNSET
+    services_permissions: Unset | list[NewOnCallRoleDataAttributesServicesPermissionsItem] = UNSET
+    webhooks_permissions: Unset | list[NewOnCallRoleDataAttributesWebhooksPermissionsItem] = UNSET
+    workflows_permissions: Unset | list[NewOnCallRoleDataAttributesWorkflowsPermissionsItem] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         system_role = self.system_role
 
-        alert_fields_permissions: Union[Unset, list[str]] = UNSET
+        alert_fields_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alert_fields_permissions, Unset):
             alert_fields_permissions = []
             for alert_fields_permissions_item_data in self.alert_fields_permissions:
                 alert_fields_permissions_item: str = alert_fields_permissions_item_data
                 alert_fields_permissions.append(alert_fields_permissions_item)
 
-        alert_groups_permissions: Union[Unset, list[str]] = UNSET
+        alert_groups_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alert_groups_permissions, Unset):
             alert_groups_permissions = []
             for alert_groups_permissions_item_data in self.alert_groups_permissions:
                 alert_groups_permissions_item: str = alert_groups_permissions_item_data
                 alert_groups_permissions.append(alert_groups_permissions_item)
 
-        alert_routing_rules_permissions: Union[Unset, list[str]] = UNSET
+        alert_routing_rules_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alert_routing_rules_permissions, Unset):
             alert_routing_rules_permissions = []
             for alert_routing_rules_permissions_item_data in self.alert_routing_rules_permissions:
                 alert_routing_rules_permissions_item: str = alert_routing_rules_permissions_item_data
                 alert_routing_rules_permissions.append(alert_routing_rules_permissions_item)
 
-        on_call_readiness_report_permissions: Union[Unset, list[str]] = UNSET
+        on_call_readiness_report_permissions: Unset | list[str] = UNSET
         if not isinstance(self.on_call_readiness_report_permissions, Unset):
             on_call_readiness_report_permissions = []
             for on_call_readiness_report_permissions_item_data in self.on_call_readiness_report_permissions:
                 on_call_readiness_report_permissions_item: str = on_call_readiness_report_permissions_item_data
                 on_call_readiness_report_permissions.append(on_call_readiness_report_permissions_item)
 
-        on_call_roles_permissions: Union[Unset, list[str]] = UNSET
+        on_call_roles_permissions: Unset | list[str] = UNSET
         if not isinstance(self.on_call_roles_permissions, Unset):
             on_call_roles_permissions = []
             for on_call_roles_permissions_item_data in self.on_call_roles_permissions:
                 on_call_roles_permissions_item: str = on_call_roles_permissions_item_data
                 on_call_roles_permissions.append(on_call_roles_permissions_item)
 
-        alert_sources_permissions: Union[Unset, list[str]] = UNSET
+        alert_sources_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alert_sources_permissions, Unset):
             alert_sources_permissions = []
             for alert_sources_permissions_item_data in self.alert_sources_permissions:
                 alert_sources_permissions_item: str = alert_sources_permissions_item_data
                 alert_sources_permissions.append(alert_sources_permissions_item)
 
-        alert_urgency_permissions: Union[Unset, list[str]] = UNSET
+        alert_urgency_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alert_urgency_permissions, Unset):
             alert_urgency_permissions = []
             for alert_urgency_permissions_item_data in self.alert_urgency_permissions:
                 alert_urgency_permissions_item: str = alert_urgency_permissions_item_data
                 alert_urgency_permissions.append(alert_urgency_permissions_item)
 
-        alerts_permissions: Union[Unset, list[str]] = UNSET
+        alerts_permissions: Unset | list[str] = UNSET
         if not isinstance(self.alerts_permissions, Unset):
             alerts_permissions = []
             for alerts_permissions_item_data in self.alerts_permissions:
                 alerts_permissions_item: str = alerts_permissions_item_data
                 alerts_permissions.append(alerts_permissions_item)
 
-        api_keys_permissions: Union[Unset, list[str]] = UNSET
+        api_keys_permissions: Unset | list[str] = UNSET
         if not isinstance(self.api_keys_permissions, Unset):
             api_keys_permissions = []
             for api_keys_permissions_item_data in self.api_keys_permissions:
                 api_keys_permissions_item: str = api_keys_permissions_item_data
                 api_keys_permissions.append(api_keys_permissions_item)
 
-        audits_permissions: Union[Unset, list[str]] = UNSET
+        audits_permissions: Unset | list[str] = UNSET
         if not isinstance(self.audits_permissions, Unset):
             audits_permissions = []
             for audits_permissions_item_data in self.audits_permissions:
                 audits_permissions_item: str = audits_permissions_item_data
                 audits_permissions.append(audits_permissions_item)
 
-        contacts_permissions: Union[Unset, list[str]] = UNSET
+        contacts_permissions: Unset | list[str] = UNSET
         if not isinstance(self.contacts_permissions, Unset):
             contacts_permissions = []
             for contacts_permissions_item_data in self.contacts_permissions:
                 contacts_permissions_item: str = contacts_permissions_item_data
                 contacts_permissions.append(contacts_permissions_item)
 
-        escalation_policies_permissions: Union[Unset, list[str]] = UNSET
+        escalation_policies_permissions: Unset | list[str] = UNSET
         if not isinstance(self.escalation_policies_permissions, Unset):
             escalation_policies_permissions = []
             for escalation_policies_permissions_item_data in self.escalation_policies_permissions:
                 escalation_policies_permissions_item: str = escalation_policies_permissions_item_data
                 escalation_policies_permissions.append(escalation_policies_permissions_item)
 
-        groups_permissions: Union[Unset, list[str]] = UNSET
+        groups_permissions: Unset | list[str] = UNSET
         if not isinstance(self.groups_permissions, Unset):
             groups_permissions = []
             for groups_permissions_item_data in self.groups_permissions:
                 groups_permissions_item: str = groups_permissions_item_data
                 groups_permissions.append(groups_permissions_item)
 
-        heartbeats_permissions: Union[Unset, list[str]] = UNSET
+        heartbeats_permissions: Unset | list[str] = UNSET
         if not isinstance(self.heartbeats_permissions, Unset):
             heartbeats_permissions = []
             for heartbeats_permissions_item_data in self.heartbeats_permissions:
                 heartbeats_permissions_item: str = heartbeats_permissions_item_data
                 heartbeats_permissions.append(heartbeats_permissions_item)
 
-        integrations_permissions: Union[Unset, list[str]] = UNSET
+        integrations_permissions: Unset | list[str] = UNSET
         if not isinstance(self.integrations_permissions, Unset):
             integrations_permissions = []
             for integrations_permissions_item_data in self.integrations_permissions:
                 integrations_permissions_item: str = integrations_permissions_item_data
                 integrations_permissions.append(integrations_permissions_item)
 
-        invitations_permissions: Union[Unset, list[str]] = UNSET
+        invitations_permissions: Unset | list[str] = UNSET
         if not isinstance(self.invitations_permissions, Unset):
             invitations_permissions = []
             for invitations_permissions_item_data in self.invitations_permissions:
                 invitations_permissions_item: str = invitations_permissions_item_data
                 invitations_permissions.append(invitations_permissions_item)
 
-        live_call_routing_permissions: Union[Unset, list[str]] = UNSET
+        live_call_routing_permissions: Unset | list[str] = UNSET
         if not isinstance(self.live_call_routing_permissions, Unset):
             live_call_routing_permissions = []
             for live_call_routing_permissions_item_data in self.live_call_routing_permissions:
                 live_call_routing_permissions_item: str = live_call_routing_permissions_item_data
                 live_call_routing_permissions.append(live_call_routing_permissions_item)
 
-        schedule_override_permissions: Union[Unset, list[str]] = UNSET
+        schedule_override_permissions: Unset | list[str] = UNSET
         if not isinstance(self.schedule_override_permissions, Unset):
             schedule_override_permissions = []
             for schedule_override_permissions_item_data in self.schedule_override_permissions:
                 schedule_override_permissions_item: str = schedule_override_permissions_item_data
                 schedule_override_permissions.append(schedule_override_permissions_item)
 
-        schedules_permissions: Union[Unset, list[str]] = UNSET
+        schedules_permissions: Unset | list[str] = UNSET
         if not isinstance(self.schedules_permissions, Unset):
             schedules_permissions = []
             for schedules_permissions_item_data in self.schedules_permissions:
                 schedules_permissions_item: str = schedules_permissions_item_data
                 schedules_permissions.append(schedules_permissions_item)
 
-        services_permissions: Union[Unset, list[str]] = UNSET
+        services_permissions: Unset | list[str] = UNSET
         if not isinstance(self.services_permissions, Unset):
             services_permissions = []
             for services_permissions_item_data in self.services_permissions:
                 services_permissions_item: str = services_permissions_item_data
                 services_permissions.append(services_permissions_item)
 
-        webhooks_permissions: Union[Unset, list[str]] = UNSET
+        webhooks_permissions: Unset | list[str] = UNSET
         if not isinstance(self.webhooks_permissions, Unset):
             webhooks_permissions = []
             for webhooks_permissions_item_data in self.webhooks_permissions:
                 webhooks_permissions_item: str = webhooks_permissions_item_data
                 webhooks_permissions.append(webhooks_permissions_item)
 
-        workflows_permissions: Union[Unset, list[str]] = UNSET
+        workflows_permissions: Unset | list[str] = UNSET
         if not isinstance(self.workflows_permissions, Unset):
             workflows_permissions = []
             for workflows_permissions_item_data in self.workflows_permissions:

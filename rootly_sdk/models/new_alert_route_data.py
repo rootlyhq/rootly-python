@@ -22,16 +22,16 @@ class NewAlertRouteData:
         attributes (Union[Unset, NewAlertRouteDataAttributes]):
     """
 
-    type_: Union[Unset, NewAlertRouteDataType] = UNSET
+    type_: Unset | NewAlertRouteDataType = UNSET
     attributes: Union[Unset, "NewAlertRouteDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -51,14 +51,14 @@ class NewAlertRouteData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, NewAlertRouteDataType]
+        type_: Unset | NewAlertRouteDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_new_alert_route_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, NewAlertRouteDataAttributes]
+        attributes: Unset | NewAlertRouteDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

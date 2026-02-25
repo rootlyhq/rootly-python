@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -21,18 +21,18 @@ class UpdateFormSetConditionDataAttributes:
         values (Union[Unset, list[str]]): The values for comparison.
     """
 
-    form_field_id: Union[Unset, str] = UNSET
-    comparison: Union[Unset, UpdateFormSetConditionDataAttributesComparison] = UNSET
-    values: Union[Unset, list[str]] = UNSET
+    form_field_id: Unset | str = UNSET
+    comparison: Unset | UpdateFormSetConditionDataAttributesComparison = UNSET
+    values: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
 
-        comparison: Union[Unset, str] = UNSET
+        comparison: Unset | str = UNSET
         if not isinstance(self.comparison, Unset):
             comparison = self.comparison
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -54,7 +54,7 @@ class UpdateFormSetConditionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _comparison = d.pop("comparison", UNSET)
-        comparison: Union[Unset, UpdateFormSetConditionDataAttributesComparison]
+        comparison: Unset | UpdateFormSetConditionDataAttributesComparison
         if isinstance(_comparison, Unset):
             comparison = UNSET
         else:

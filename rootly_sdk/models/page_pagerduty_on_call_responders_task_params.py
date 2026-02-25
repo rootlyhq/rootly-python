@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -49,38 +49,38 @@ class PagePagerdutyOnCallRespondersTaskParams:
     """
 
     service: "PagePagerdutyOnCallRespondersTaskParamsService"
-    task_type: Union[Unset, PagePagerdutyOnCallRespondersTaskParamsTaskType] = UNSET
-    escalation_policies: Union[Unset, list["PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem"]] = UNSET
-    users: Union[Unset, list["PagePagerdutyOnCallRespondersTaskParamsUsersItem"]] = UNSET
-    title: Union[None, Unset, str] = UNSET
-    message: Union[Unset, str] = UNSET
-    urgency: Union[Unset, PagePagerdutyOnCallRespondersTaskParamsUrgency] = "high"
-    priority: Union[Unset, str] = UNSET
-    create_new_incident_on_conflict: Union[Unset, bool] = False
+    task_type: Unset | PagePagerdutyOnCallRespondersTaskParamsTaskType = UNSET
+    escalation_policies: Unset | list["PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem"] = UNSET
+    users: Unset | list["PagePagerdutyOnCallRespondersTaskParamsUsersItem"] = UNSET
+    title: None | Unset | str = UNSET
+    message: Unset | str = UNSET
+    urgency: Unset | PagePagerdutyOnCallRespondersTaskParamsUrgency = "high"
+    priority: Unset | str = UNSET
+    create_new_incident_on_conflict: Unset | bool = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         service = self.service.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        escalation_policies: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.escalation_policies, Unset):
             escalation_policies = []
             for escalation_policies_item_data in self.escalation_policies:
                 escalation_policies_item = escalation_policies_item_data.to_dict()
                 escalation_policies.append(escalation_policies_item)
 
-        users: Union[Unset, list[dict[str, Any]]] = UNSET
+        users: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        title: Union[None, Unset, str]
+        title: None | Unset | str
         if isinstance(self.title, Unset):
             title = UNSET
         else:
@@ -88,7 +88,7 @@ class PagePagerdutyOnCallRespondersTaskParams:
 
         message = self.message
 
-        urgency: Union[Unset, str] = UNSET
+        urgency: Unset | str = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
@@ -138,7 +138,7 @@ class PagePagerdutyOnCallRespondersTaskParams:
         service = PagePagerdutyOnCallRespondersTaskParamsService.from_dict(d.pop("service"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, PagePagerdutyOnCallRespondersTaskParamsTaskType]
+        task_type: Unset | PagePagerdutyOnCallRespondersTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -160,19 +160,19 @@ class PagePagerdutyOnCallRespondersTaskParams:
 
             users.append(users_item)
 
-        def _parse_title(data: object) -> Union[None, Unset, str]:
+        def _parse_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
         message = d.pop("message", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: Union[Unset, PagePagerdutyOnCallRespondersTaskParamsUrgency]
+        urgency: Unset | PagePagerdutyOnCallRespondersTaskParamsUrgency
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:

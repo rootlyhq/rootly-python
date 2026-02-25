@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -21,14 +21,14 @@ class UpdateWebhooksEndpointDataAttributes:
         enabled (Union[Unset, bool]):
     """
 
-    name: Union[Unset, str] = UNSET
-    event_types: Union[Unset, list[UpdateWebhooksEndpointDataAttributesEventTypesItem]] = UNSET
-    enabled: Union[Unset, bool] = UNSET
+    name: Unset | str = UNSET
+    event_types: Unset | list[UpdateWebhooksEndpointDataAttributesEventTypesItem] = UNSET
+    enabled: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        event_types: Union[Unset, list[str]] = UNSET
+        event_types: Unset | list[str] = UNSET
         if not isinstance(self.event_types, Unset):
             event_types = []
             for event_types_item_data in self.event_types:

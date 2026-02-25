@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,8 +32,8 @@ class UpdateAlertRouteDataAttributesRulesItem:
     name: str
     destinations: list["UpdateAlertRouteDataAttributesRulesItemDestinationsItem"]
     condition_groups: list["UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem"]
-    position: Union[Unset, int] = UNSET
-    fallback_rule: Union[Unset, bool] = UNSET
+    position: Unset | int = UNSET
+    fallback_rule: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

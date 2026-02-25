@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
     if response.status_code == 200:
         response_200 = WorkflowCustomFieldSelectionResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowCustomFieldSelection,
-) -> Response[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
     """[DEPRECATED] Update a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Update a specific workflow custom field selection by
@@ -101,7 +101,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowCustomFieldSelection,
-) -> Optional[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
     """[DEPRECATED] Update a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Update a specific workflow custom field selection by
@@ -131,7 +131,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowCustomFieldSelection,
-) -> Response[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
     """[DEPRECATED] Update a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Update a specific workflow custom field selection by
@@ -164,7 +164,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowCustomFieldSelection,
-) -> Optional[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]:
+) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
     """[DEPRECATED] Update a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Update a specific workflow custom field selection by

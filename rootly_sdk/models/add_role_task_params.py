@@ -26,21 +26,21 @@ class AddRoleTaskParams:
     """
 
     incident_role_id: str
-    task_type: Union[Unset, AddRoleTaskParamsTaskType] = UNSET
-    assigned_to_user_id: Union[Unset, str] = UNSET
+    task_type: Unset | AddRoleTaskParamsTaskType = UNSET
+    assigned_to_user_id: Unset | str = UNSET
     assigned_to_user: Union[Unset, "AddRoleTaskParamsAssignedToUser"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         incident_role_id = self.incident_role_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         assigned_to_user_id = self.assigned_to_user_id
 
-        assigned_to_user: Union[Unset, dict[str, Any]] = UNSET
+        assigned_to_user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.assigned_to_user, Unset):
             assigned_to_user = self.assigned_to_user.to_dict()
 
@@ -68,7 +68,7 @@ class AddRoleTaskParams:
         incident_role_id = d.pop("incident_role_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AddRoleTaskParamsTaskType]
+        task_type: Unset | AddRoleTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -77,7 +77,7 @@ class AddRoleTaskParams:
         assigned_to_user_id = d.pop("assigned_to_user_id", UNSET)
 
         _assigned_to_user = d.pop("assigned_to_user", UNSET)
-        assigned_to_user: Union[Unset, AddRoleTaskParamsAssignedToUser]
+        assigned_to_user: Unset | AddRoleTaskParamsAssignedToUser
         if isinstance(_assigned_to_user, Unset):
             assigned_to_user = UNSET
         else:

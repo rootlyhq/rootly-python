@@ -35,19 +35,19 @@ class UpdateZendeskTicketTaskParams:
     """
 
     ticket_id: str
-    task_type: Union[Unset, UpdateZendeskTicketTaskParamsTaskType] = UNSET
-    subject: Union[Unset, str] = UNSET
-    tags: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateZendeskTicketTaskParamsTaskType = UNSET
+    subject: Unset | str = UNSET
+    tags: Unset | str = UNSET
     priority: Union[Unset, "UpdateZendeskTicketTaskParamsPriority"] = UNSET
     completion: Union[Unset, "UpdateZendeskTicketTaskParamsCompletion"] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
-    ticket_payload: Union[None, Unset, str] = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
+    ticket_payload: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         ticket_id = self.ticket_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -55,21 +55,21 @@ class UpdateZendeskTicketTaskParams:
 
         tags = self.tags
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        completion: Union[Unset, dict[str, Any]] = UNSET
+        completion: Unset | dict[str, Any] = UNSET
         if not isinstance(self.completion, Unset):
             completion = self.completion.to_dict()
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        ticket_payload: Union[None, Unset, str]
+        ticket_payload: None | Unset | str
         if isinstance(self.ticket_payload, Unset):
             ticket_payload = UNSET
         else:
@@ -108,7 +108,7 @@ class UpdateZendeskTicketTaskParams:
         ticket_id = d.pop("ticket_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateZendeskTicketTaskParamsTaskType]
+        task_type: Unset | UpdateZendeskTicketTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -119,34 +119,34 @@ class UpdateZendeskTicketTaskParams:
         tags = d.pop("tags", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, UpdateZendeskTicketTaskParamsPriority]
+        priority: Unset | UpdateZendeskTicketTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = UpdateZendeskTicketTaskParamsPriority.from_dict(_priority)
 
         _completion = d.pop("completion", UNSET)
-        completion: Union[Unset, UpdateZendeskTicketTaskParamsCompletion]
+        completion: Unset | UpdateZendeskTicketTaskParamsCompletion
         if isinstance(_completion, Unset):
             completion = UNSET
         else:
             completion = UpdateZendeskTicketTaskParamsCompletion.from_dict(_completion)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        def _parse_ticket_payload(data: object) -> Union[None, Unset, str]:
+        def _parse_ticket_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ticket_payload = _parse_ticket_payload(d.pop("ticket_payload", UNSET))
 

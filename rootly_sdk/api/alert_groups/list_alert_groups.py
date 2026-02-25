@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,7 +11,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -28,9 +28,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AlertGroupList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertGroupList | None:
     if response.status_code == 200:
         response_200 = AlertGroupList.from_dict(response.json())
 
@@ -42,9 +40,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AlertGroupList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertGroupList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,7 +52,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
@@ -87,8 +83,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[AlertGroupList]:
+    include: Unset | str = UNSET,
+) -> AlertGroupList | None:
     """List alert groups
 
      List alert groups
@@ -113,7 +109,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
@@ -142,8 +138,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[AlertGroupList]:
+    include: Unset | str = UNSET,
+) -> AlertGroupList | None:
     """List alert groups
 
      List alert groups

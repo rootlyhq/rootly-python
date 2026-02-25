@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,17 +11,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercommunication_type_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercommunication_type_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -59,8 +59,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[CommunicationsTemplatesResponse]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CommunicationsTemplatesResponse | None:
     if response.status_code == 200:
         response_200 = CommunicationsTemplatesResponse.from_dict(response.json())
 
@@ -73,7 +73,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[CommunicationsTemplatesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -86,17 +86,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercommunication_type_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercommunication_type_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[CommunicationsTemplatesResponse]:
     """Lists communications templates
 
@@ -147,18 +147,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercommunication_type_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[CommunicationsTemplatesResponse]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercommunication_type_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> CommunicationsTemplatesResponse | None:
     """Lists communications templates
 
      Lists communications templates
@@ -203,17 +203,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercommunication_type_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercommunication_type_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[CommunicationsTemplatesResponse]:
     """Lists communications templates
 
@@ -262,18 +262,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercommunication_type_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[CommunicationsTemplatesResponse]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercommunication_type_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> CommunicationsTemplatesResponse | None:
     """Lists communications templates
 
      Lists communications templates

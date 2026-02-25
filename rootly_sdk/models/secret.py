@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,10 +25,10 @@ class Secret:
     name: str
     created_at: str
     updated_at: str
-    secret: Union[Unset, str] = UNSET
-    hashicorp_vault_mount: Union[Unset, str] = UNSET
-    hashicorp_vault_path: Union[None, Unset, str] = UNSET
-    hashicorp_vault_version: Union[Unset, int] = UNSET
+    secret: Unset | str = UNSET
+    hashicorp_vault_mount: Unset | str = UNSET
+    hashicorp_vault_path: None | Unset | str = UNSET
+    hashicorp_vault_version: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +42,7 @@ class Secret:
 
         hashicorp_vault_mount = self.hashicorp_vault_mount
 
-        hashicorp_vault_path: Union[None, Unset, str]
+        hashicorp_vault_path: None | Unset | str
         if isinstance(self.hashicorp_vault_path, Unset):
             hashicorp_vault_path = UNSET
         else:
@@ -83,12 +83,12 @@ class Secret:
 
         hashicorp_vault_mount = d.pop("hashicorp_vault_mount", UNSET)
 
-        def _parse_hashicorp_vault_path(data: object) -> Union[None, Unset, str]:
+        def _parse_hashicorp_vault_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         hashicorp_vault_path = _parse_hashicorp_vault_path(d.pop("hashicorp_vault_path", UNSET))
 

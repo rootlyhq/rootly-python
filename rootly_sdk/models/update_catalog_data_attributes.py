@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -22,25 +22,25 @@ class UpdateCatalogDataAttributes:
         position (Union[None, Unset, int]): Default position of the catalog when displayed in a list.
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    icon: Union[Unset, UpdateCatalogDataAttributesIcon] = UNSET
-    position: Union[None, Unset, int] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    icon: Unset | UpdateCatalogDataAttributesIcon = UNSET
+    position: None | Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        icon: Union[Unset, str] = UNSET
+        icon: Unset | str = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -65,28 +65,28 @@ class UpdateCatalogDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: Union[Unset, UpdateCatalogDataAttributesIcon]
+        icon: Unset | UpdateCatalogDataAttributesIcon
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_update_catalog_data_attributes_icon(_icon)
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

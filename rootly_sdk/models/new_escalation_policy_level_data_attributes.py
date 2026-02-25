@@ -43,14 +43,14 @@ class NewEscalationPolicyLevelDataAttributes:
     notification_target_params: list[
         Union["NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0", None]
     ]
-    delay: Union[Unset, int] = UNSET
-    paging_strategy_configuration_strategy: Union[
-        Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
-    ] = "default"
-    paging_strategy_configuration_schedule_strategy: Union[
-        Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
-    ] = "on_call_only"
-    escalation_policy_path_id: Union[None, Unset, str] = UNSET
+    delay: Unset | int = UNSET
+    paging_strategy_configuration_strategy: (
+        Unset | NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
+    ) = "default"
+    paging_strategy_configuration_schedule_strategy: (
+        Unset | NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
+    ) = "on_call_only"
+    escalation_policy_path_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_escalation_policy_level_data_attributes_notification_target_params_item_type_0 import (
@@ -61,7 +61,7 @@ class NewEscalationPolicyLevelDataAttributes:
 
         notification_target_params = []
         for notification_target_params_item_data in self.notification_target_params:
-            notification_target_params_item: Union[None, dict[str, Any]]
+            notification_target_params_item: None | dict[str, Any]
             if isinstance(
                 notification_target_params_item_data,
                 NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0,
@@ -73,15 +73,15 @@ class NewEscalationPolicyLevelDataAttributes:
 
         delay = self.delay
 
-        paging_strategy_configuration_strategy: Union[Unset, str] = UNSET
+        paging_strategy_configuration_strategy: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = self.paging_strategy_configuration_strategy
 
-        paging_strategy_configuration_schedule_strategy: Union[Unset, str] = UNSET
+        paging_strategy_configuration_schedule_strategy: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = self.paging_strategy_configuration_schedule_strategy
 
-        escalation_policy_path_id: Union[None, Unset, str]
+        escalation_policy_path_id: None | Unset | str
         if isinstance(self.escalation_policy_path_id, Unset):
             escalation_policy_path_id = UNSET
         else:
@@ -149,9 +149,9 @@ class NewEscalationPolicyLevelDataAttributes:
         delay = d.pop("delay", UNSET)
 
         _paging_strategy_configuration_strategy = d.pop("paging_strategy_configuration_strategy", UNSET)
-        paging_strategy_configuration_strategy: Union[
-            Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
-        ]
+        paging_strategy_configuration_strategy: (
+            Unset | NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
+        )
         if isinstance(_paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = UNSET
         else:
@@ -164,9 +164,9 @@ class NewEscalationPolicyLevelDataAttributes:
         _paging_strategy_configuration_schedule_strategy = d.pop(
             "paging_strategy_configuration_schedule_strategy", UNSET
         )
-        paging_strategy_configuration_schedule_strategy: Union[
-            Unset, NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
-        ]
+        paging_strategy_configuration_schedule_strategy: (
+            Unset | NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
+        )
         if isinstance(_paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = UNSET
         else:
@@ -176,12 +176,12 @@ class NewEscalationPolicyLevelDataAttributes:
                 )
             )
 
-        def _parse_escalation_policy_path_id(data: object) -> Union[None, Unset, str]:
+        def _parse_escalation_policy_path_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         escalation_policy_path_id = _parse_escalation_policy_path_id(d.pop("escalation_policy_path_id", UNSET))
 

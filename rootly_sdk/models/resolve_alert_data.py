@@ -22,16 +22,16 @@ class ResolveAlertData:
         attributes (Union[Unset, ResolveAlertDataAttributes]):
     """
 
-    type_: Union[Unset, ResolveAlertDataType] = UNSET
+    type_: Unset | ResolveAlertDataType = UNSET
     attributes: Union[Unset, "ResolveAlertDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -51,14 +51,14 @@ class ResolveAlertData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, ResolveAlertDataType]
+        type_: Unset | ResolveAlertDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_resolve_alert_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, ResolveAlertDataAttributes]
+        attributes: Unset | ResolveAlertDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

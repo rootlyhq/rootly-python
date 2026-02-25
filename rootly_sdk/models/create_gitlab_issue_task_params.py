@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -36,11 +36,11 @@ class CreateGitlabIssueTaskParams:
 
     title: str
     repository: "CreateGitlabIssueTaskParamsRepository"
-    task_type: Union[Unset, CreateGitlabIssueTaskParamsTaskType] = UNSET
-    issue_type: Union[Unset, CreateGitlabIssueTaskParamsIssueType] = UNSET
-    description: Union[Unset, str] = UNSET
-    labels: Union[Unset, str] = UNSET
-    due_date: Union[Unset, str] = UNSET
+    task_type: Unset | CreateGitlabIssueTaskParamsTaskType = UNSET
+    issue_type: Unset | CreateGitlabIssueTaskParamsIssueType = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,11 +48,11 @@ class CreateGitlabIssueTaskParams:
 
         repository = self.repository.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        issue_type: Union[Unset, str] = UNSET
+        issue_type: Unset | str = UNSET
         if not isinstance(self.issue_type, Unset):
             issue_type = self.issue_type
 
@@ -93,14 +93,14 @@ class CreateGitlabIssueTaskParams:
         repository = CreateGitlabIssueTaskParamsRepository.from_dict(d.pop("repository"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateGitlabIssueTaskParamsTaskType]
+        task_type: Unset | CreateGitlabIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_gitlab_issue_task_params_task_type(_task_type)
 
         _issue_type = d.pop("issue_type", UNSET)
-        issue_type: Union[Unset, CreateGitlabIssueTaskParamsIssueType]
+        issue_type: Unset | CreateGitlabIssueTaskParamsIssueType
         if isinstance(_issue_type, Unset):
             issue_type = UNSET
         else:

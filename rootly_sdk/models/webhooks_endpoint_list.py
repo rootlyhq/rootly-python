@@ -35,11 +35,11 @@ class WebhooksEndpointList:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        links: Union[Unset, dict[str, Any]] = UNSET
+        links: Unset | dict[str, Any] = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        meta: Union[Unset, dict[str, Any]] = UNSET
+        meta: Unset | dict[str, Any] = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
@@ -72,14 +72,14 @@ class WebhooksEndpointList:
             data.append(data_item)
 
         _links = d.pop("links", UNSET)
-        links: Union[Unset, Links]
+        links: Unset | Links
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = Links.from_dict(_links)
 
         _meta = d.pop("meta", UNSET)
-        meta: Union[Unset, Meta]
+        meta: Unset | Meta
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

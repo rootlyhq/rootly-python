@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -48,12 +48,12 @@ class NewAlertGroupDataAttributesConditionsItem:
 
     property_field_type: NewAlertGroupDataAttributesConditionsItemPropertyFieldType
     property_field_condition_type: NewAlertGroupDataAttributesConditionsItemPropertyFieldConditionType
-    property_field_name: Union[Unset, str] = UNSET
-    property_field_value: Union[Unset, str] = UNSET
-    property_field_values: Union[Unset, list[str]] = UNSET
-    alert_urgency_ids: Union[None, Unset, list[str]] = UNSET
-    conditionable_type: Union[Unset, NewAlertGroupDataAttributesConditionsItemConditionableType] = UNSET
-    conditionable_id: Union[Unset, str] = UNSET
+    property_field_name: Unset | str = UNSET
+    property_field_value: Unset | str = UNSET
+    property_field_values: Unset | list[str] = UNSET
+    alert_urgency_ids: None | Unset | list[str] = UNSET
+    conditionable_type: Unset | NewAlertGroupDataAttributesConditionsItemConditionableType = UNSET
+    conditionable_id: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,11 +65,11 @@ class NewAlertGroupDataAttributesConditionsItem:
 
         property_field_value = self.property_field_value
 
-        property_field_values: Union[Unset, list[str]] = UNSET
+        property_field_values: Unset | list[str] = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
-        alert_urgency_ids: Union[None, Unset, list[str]]
+        alert_urgency_ids: None | Unset | list[str]
         if isinstance(self.alert_urgency_ids, Unset):
             alert_urgency_ids = UNSET
         elif isinstance(self.alert_urgency_ids, list):
@@ -78,7 +78,7 @@ class NewAlertGroupDataAttributesConditionsItem:
         else:
             alert_urgency_ids = self.alert_urgency_ids
 
-        conditionable_type: Union[Unset, str] = UNSET
+        conditionable_type: Unset | str = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
@@ -126,7 +126,7 @@ class NewAlertGroupDataAttributesConditionsItem:
 
         property_field_values = cast(list[str], d.pop("property_field_values", UNSET))
 
-        def _parse_alert_urgency_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_alert_urgency_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -139,12 +139,12 @@ class NewAlertGroupDataAttributesConditionsItem:
                 return alert_urgency_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         alert_urgency_ids = _parse_alert_urgency_ids(d.pop("alert_urgency_ids", UNSET))
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
-        conditionable_type: Union[Unset, NewAlertGroupDataAttributesConditionsItemConditionableType]
+        conditionable_type: Unset | NewAlertGroupDataAttributesConditionsItemConditionableType
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
         else:

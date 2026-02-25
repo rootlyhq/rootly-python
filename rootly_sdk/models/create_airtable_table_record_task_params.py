@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,8 +31,8 @@ class CreateAirtableTableRecordTaskParams:
 
     base: "CreateAirtableTableRecordTaskParamsBase"
     table: "CreateAirtableTableRecordTaskParamsTable"
-    task_type: Union[Unset, CreateAirtableTableRecordTaskParamsTaskType] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    task_type: Unset | CreateAirtableTableRecordTaskParamsTaskType = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,11 +40,11 @@ class CreateAirtableTableRecordTaskParams:
 
         table = self.table.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -76,18 +76,18 @@ class CreateAirtableTableRecordTaskParams:
         table = CreateAirtableTableRecordTaskParamsTable.from_dict(d.pop("table"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateAirtableTableRecordTaskParamsTaskType]
+        task_type: Unset | CreateAirtableTableRecordTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_airtable_table_record_task_params_task_type(_task_type)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

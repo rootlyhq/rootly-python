@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -38,25 +38,25 @@ class UpdatePagerdutyIncidentTaskParams:
     """
 
     pagerduty_incident_id: str
-    task_type: Union[Unset, UpdatePagerdutyIncidentTaskParamsTaskType] = UNSET
-    title: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdatePagerdutyIncidentTaskParamsStatus] = UNSET
-    resolution: Union[Unset, str] = UNSET
-    escalation_level: Union[Unset, int] = UNSET
-    urgency: Union[Unset, UpdatePagerdutyIncidentTaskParamsUrgency] = UNSET
-    priority: Union[Unset, str] = UNSET
+    task_type: Unset | UpdatePagerdutyIncidentTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    status: Unset | UpdatePagerdutyIncidentTaskParamsStatus = UNSET
+    resolution: Unset | str = UNSET
+    escalation_level: Unset | int = UNSET
+    urgency: Unset | UpdatePagerdutyIncidentTaskParamsUrgency = UNSET
+    priority: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         pagerduty_incident_id = self.pagerduty_incident_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         title = self.title
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -64,7 +64,7 @@ class UpdatePagerdutyIncidentTaskParams:
 
         escalation_level = self.escalation_level
 
-        urgency: Union[Unset, str] = UNSET
+        urgency: Unset | str = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
@@ -100,7 +100,7 @@ class UpdatePagerdutyIncidentTaskParams:
         pagerduty_incident_id = d.pop("pagerduty_incident_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdatePagerdutyIncidentTaskParamsTaskType]
+        task_type: Unset | UpdatePagerdutyIncidentTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -109,7 +109,7 @@ class UpdatePagerdutyIncidentTaskParams:
         title = d.pop("title", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdatePagerdutyIncidentTaskParamsStatus]
+        status: Unset | UpdatePagerdutyIncidentTaskParamsStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -120,7 +120,7 @@ class UpdatePagerdutyIncidentTaskParams:
         escalation_level = d.pop("escalation_level", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: Union[Unset, UpdatePagerdutyIncidentTaskParamsUrgency]
+        urgency: Unset | UpdatePagerdutyIncidentTaskParamsUrgency
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:

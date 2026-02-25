@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserEmailAddressResponse | None:
     if response.status_code == 200:
         response_200 = UserEmailAddressResponse.from_dict(response.json())
 
@@ -46,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +60,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     """Delete user email address
 
      Deletes a user email address
@@ -91,7 +91,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> ErrorsList | UserEmailAddressResponse | None:
     """Delete user email address
 
      Deletes a user email address
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> Response[ErrorsList | UserEmailAddressResponse]:
     """Delete user email address
 
      Deletes a user email address
@@ -146,7 +146,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserEmailAddressResponse]]:
+) -> ErrorsList | UserEmailAddressResponse | None:
     """Delete user email address
 
      Deletes a user email address

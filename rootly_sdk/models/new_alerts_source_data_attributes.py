@@ -65,22 +65,20 @@ class NewAlertsSourceDataAttributes:
     """
 
     name: str
-    source_type: Union[Unset, NewAlertsSourceDataAttributesSourceType] = UNSET
-    alert_urgency_id: Union[Unset, str] = UNSET
-    deduplicate_alerts_by_key: Union[Unset, bool] = UNSET
-    deduplication_key_kind: Union[Unset, NewAlertsSourceDataAttributesDeduplicationKeyKind] = UNSET
-    deduplication_key_path: Union[None, Unset, str] = UNSET
-    deduplication_key_regexp: Union[None, Unset, str] = UNSET
-    owner_group_ids: Union[Unset, list[str]] = UNSET
+    source_type: Unset | NewAlertsSourceDataAttributesSourceType = UNSET
+    alert_urgency_id: Unset | str = UNSET
+    deduplicate_alerts_by_key: Unset | bool = UNSET
+    deduplication_key_kind: Unset | NewAlertsSourceDataAttributesDeduplicationKeyKind = UNSET
+    deduplication_key_path: None | Unset | str = UNSET
+    deduplication_key_regexp: None | Unset | str = UNSET
+    owner_group_ids: Unset | list[str] = UNSET
     alert_template_attributes: Union["NewAlertsSourceDataAttributesAlertTemplateAttributesType0", None, Unset] = UNSET
-    alert_source_urgency_rules_attributes: Union[
-        Unset, list["NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem"]
-    ] = UNSET
+    alert_source_urgency_rules_attributes: (
+        Unset | list["NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem"]
+    ) = UNSET
     sourceable_attributes: Union["NewAlertsSourceDataAttributesSourceableAttributesType0", None, Unset] = UNSET
     resolution_rule_attributes: Union["NewAlertsSourceDataAttributesResolutionRuleAttributesType0", None, Unset] = UNSET
-    alert_source_fields_attributes: Union[
-        Unset, list["NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem"]
-    ] = UNSET
+    alert_source_fields_attributes: Unset | list["NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_alerts_source_data_attributes_alert_template_attributes_type_0 import (
@@ -95,7 +93,7 @@ class NewAlertsSourceDataAttributes:
 
         name = self.name
 
-        source_type: Union[Unset, str] = UNSET
+        source_type: Unset | str = UNSET
         if not isinstance(self.source_type, Unset):
             source_type = self.source_type
 
@@ -103,27 +101,27 @@ class NewAlertsSourceDataAttributes:
 
         deduplicate_alerts_by_key = self.deduplicate_alerts_by_key
 
-        deduplication_key_kind: Union[Unset, str] = UNSET
+        deduplication_key_kind: Unset | str = UNSET
         if not isinstance(self.deduplication_key_kind, Unset):
             deduplication_key_kind = self.deduplication_key_kind
 
-        deduplication_key_path: Union[None, Unset, str]
+        deduplication_key_path: None | Unset | str
         if isinstance(self.deduplication_key_path, Unset):
             deduplication_key_path = UNSET
         else:
             deduplication_key_path = self.deduplication_key_path
 
-        deduplication_key_regexp: Union[None, Unset, str]
+        deduplication_key_regexp: None | Unset | str
         if isinstance(self.deduplication_key_regexp, Unset):
             deduplication_key_regexp = UNSET
         else:
             deduplication_key_regexp = self.deduplication_key_regexp
 
-        owner_group_ids: Union[Unset, list[str]] = UNSET
+        owner_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
-        alert_template_attributes: Union[None, Unset, dict[str, Any]]
+        alert_template_attributes: None | Unset | dict[str, Any]
         if isinstance(self.alert_template_attributes, Unset):
             alert_template_attributes = UNSET
         elif isinstance(self.alert_template_attributes, NewAlertsSourceDataAttributesAlertTemplateAttributesType0):
@@ -131,14 +129,14 @@ class NewAlertsSourceDataAttributes:
         else:
             alert_template_attributes = self.alert_template_attributes
 
-        alert_source_urgency_rules_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        alert_source_urgency_rules_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.alert_source_urgency_rules_attributes, Unset):
             alert_source_urgency_rules_attributes = []
             for alert_source_urgency_rules_attributes_item_data in self.alert_source_urgency_rules_attributes:
                 alert_source_urgency_rules_attributes_item = alert_source_urgency_rules_attributes_item_data.to_dict()
                 alert_source_urgency_rules_attributes.append(alert_source_urgency_rules_attributes_item)
 
-        sourceable_attributes: Union[None, Unset, dict[str, Any]]
+        sourceable_attributes: None | Unset | dict[str, Any]
         if isinstance(self.sourceable_attributes, Unset):
             sourceable_attributes = UNSET
         elif isinstance(self.sourceable_attributes, NewAlertsSourceDataAttributesSourceableAttributesType0):
@@ -146,7 +144,7 @@ class NewAlertsSourceDataAttributes:
         else:
             sourceable_attributes = self.sourceable_attributes
 
-        resolution_rule_attributes: Union[None, Unset, dict[str, Any]]
+        resolution_rule_attributes: None | Unset | dict[str, Any]
         if isinstance(self.resolution_rule_attributes, Unset):
             resolution_rule_attributes = UNSET
         elif isinstance(self.resolution_rule_attributes, NewAlertsSourceDataAttributesResolutionRuleAttributesType0):
@@ -154,7 +152,7 @@ class NewAlertsSourceDataAttributes:
         else:
             resolution_rule_attributes = self.resolution_rule_attributes
 
-        alert_source_fields_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        alert_source_fields_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.alert_source_fields_attributes, Unset):
             alert_source_fields_attributes = []
             for alert_source_fields_attributes_item_data in self.alert_source_fields_attributes:
@@ -217,7 +215,7 @@ class NewAlertsSourceDataAttributes:
         name = d.pop("name")
 
         _source_type = d.pop("source_type", UNSET)
-        source_type: Union[Unset, NewAlertsSourceDataAttributesSourceType]
+        source_type: Unset | NewAlertsSourceDataAttributesSourceType
         if isinstance(_source_type, Unset):
             source_type = UNSET
         else:
@@ -228,7 +226,7 @@ class NewAlertsSourceDataAttributes:
         deduplicate_alerts_by_key = d.pop("deduplicate_alerts_by_key", UNSET)
 
         _deduplication_key_kind = d.pop("deduplication_key_kind", UNSET)
-        deduplication_key_kind: Union[Unset, NewAlertsSourceDataAttributesDeduplicationKeyKind]
+        deduplication_key_kind: Unset | NewAlertsSourceDataAttributesDeduplicationKeyKind
         if isinstance(_deduplication_key_kind, Unset):
             deduplication_key_kind = UNSET
         else:
@@ -236,21 +234,21 @@ class NewAlertsSourceDataAttributes:
                 _deduplication_key_kind
             )
 
-        def _parse_deduplication_key_path(data: object) -> Union[None, Unset, str]:
+        def _parse_deduplication_key_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         deduplication_key_path = _parse_deduplication_key_path(d.pop("deduplication_key_path", UNSET))
 
-        def _parse_deduplication_key_regexp(data: object) -> Union[None, Unset, str]:
+        def _parse_deduplication_key_regexp(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         deduplication_key_regexp = _parse_deduplication_key_regexp(d.pop("deduplication_key_regexp", UNSET))
 

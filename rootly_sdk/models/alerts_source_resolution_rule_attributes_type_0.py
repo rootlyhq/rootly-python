@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -49,52 +49,50 @@ class AlertsSourceResolutionRuleAttributesType0:
             List of conditions to evaluate for auto resolution
     """
 
-    enabled: Union[Unset, bool] = UNSET
-    condition_type: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionType] = UNSET
-    identifier_matchable_type: Union[Unset, AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType] = UNSET
-    identifier_matchable_id: Union[None, Unset, str] = UNSET
-    identifier_reference_kind: Union[Unset, AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind] = UNSET
-    identifier_json_path: Union[None, Unset, str] = UNSET
-    identifier_value_regex: Union[None, Unset, str] = UNSET
-    conditions_attributes: Union[Unset, list["AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem"]] = (
-        UNSET
-    )
+    enabled: Unset | bool = UNSET
+    condition_type: Unset | AlertsSourceResolutionRuleAttributesType0ConditionType = UNSET
+    identifier_matchable_type: Unset | AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType = UNSET
+    identifier_matchable_id: None | Unset | str = UNSET
+    identifier_reference_kind: Unset | AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind = UNSET
+    identifier_json_path: None | Unset | str = UNSET
+    identifier_value_regex: None | Unset | str = UNSET
+    conditions_attributes: Unset | list["AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         enabled = self.enabled
 
-        condition_type: Union[Unset, str] = UNSET
+        condition_type: Unset | str = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        identifier_matchable_type: Union[Unset, str] = UNSET
+        identifier_matchable_type: Unset | str = UNSET
         if not isinstance(self.identifier_matchable_type, Unset):
             identifier_matchable_type = self.identifier_matchable_type
 
-        identifier_matchable_id: Union[None, Unset, str]
+        identifier_matchable_id: None | Unset | str
         if isinstance(self.identifier_matchable_id, Unset):
             identifier_matchable_id = UNSET
         else:
             identifier_matchable_id = self.identifier_matchable_id
 
-        identifier_reference_kind: Union[Unset, str] = UNSET
+        identifier_reference_kind: Unset | str = UNSET
         if not isinstance(self.identifier_reference_kind, Unset):
             identifier_reference_kind = self.identifier_reference_kind
 
-        identifier_json_path: Union[None, Unset, str]
+        identifier_json_path: None | Unset | str
         if isinstance(self.identifier_json_path, Unset):
             identifier_json_path = UNSET
         else:
             identifier_json_path = self.identifier_json_path
 
-        identifier_value_regex: Union[None, Unset, str]
+        identifier_value_regex: None | Unset | str
         if isinstance(self.identifier_value_regex, Unset):
             identifier_value_regex = UNSET
         else:
             identifier_value_regex = self.identifier_value_regex
 
-        conditions_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions_attributes, Unset):
             conditions_attributes = []
             for conditions_attributes_item_data in self.conditions_attributes:
@@ -133,14 +131,14 @@ class AlertsSourceResolutionRuleAttributesType0:
         enabled = d.pop("enabled", UNSET)
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionType]
+        condition_type: Unset | AlertsSourceResolutionRuleAttributesType0ConditionType
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:
             condition_type = check_alerts_source_resolution_rule_attributes_type_0_condition_type(_condition_type)
 
         _identifier_matchable_type = d.pop("identifier_matchable_type", UNSET)
-        identifier_matchable_type: Union[Unset, AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType]
+        identifier_matchable_type: Unset | AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType
         if isinstance(_identifier_matchable_type, Unset):
             identifier_matchable_type = UNSET
         else:
@@ -148,17 +146,17 @@ class AlertsSourceResolutionRuleAttributesType0:
                 _identifier_matchable_type
             )
 
-        def _parse_identifier_matchable_id(data: object) -> Union[None, Unset, str]:
+        def _parse_identifier_matchable_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         identifier_matchable_id = _parse_identifier_matchable_id(d.pop("identifier_matchable_id", UNSET))
 
         _identifier_reference_kind = d.pop("identifier_reference_kind", UNSET)
-        identifier_reference_kind: Union[Unset, AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind]
+        identifier_reference_kind: Unset | AlertsSourceResolutionRuleAttributesType0IdentifierReferenceKind
         if isinstance(_identifier_reference_kind, Unset):
             identifier_reference_kind = UNSET
         else:
@@ -166,21 +164,21 @@ class AlertsSourceResolutionRuleAttributesType0:
                 _identifier_reference_kind
             )
 
-        def _parse_identifier_json_path(data: object) -> Union[None, Unset, str]:
+        def _parse_identifier_json_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         identifier_json_path = _parse_identifier_json_path(d.pop("identifier_json_path", UNSET))
 
-        def _parse_identifier_value_regex(data: object) -> Union[None, Unset, str]:
+        def _parse_identifier_value_regex(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         identifier_value_regex = _parse_identifier_value_regex(d.pop("identifier_value_regex", UNSET))
 

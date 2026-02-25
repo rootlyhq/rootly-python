@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -21,8 +21,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[WebhooksDeliveryResponse]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> WebhooksDeliveryResponse | None:
     if response.status_code == 200:
         response_200 = WebhooksDeliveryResponse.from_dict(response.json())
 
@@ -35,7 +35,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[WebhooksDeliveryResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -80,7 +80,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[WebhooksDeliveryResponse]:
+) -> WebhooksDeliveryResponse | None:
     """Retries a webhook delivery
 
      Retries a webhook delivery
@@ -135,7 +135,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[WebhooksDeliveryResponse]:
+) -> WebhooksDeliveryResponse | None:
     """Retries a webhook delivery
 
      Retries a webhook delivery

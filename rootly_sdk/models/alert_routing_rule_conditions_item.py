@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -37,8 +37,8 @@ class AlertRoutingRuleConditionsItem:
     property_field_type: AlertRoutingRuleConditionsItemPropertyFieldType
     property_field_name: str
     property_field_condition_type: AlertRoutingRuleConditionsItemPropertyFieldConditionType
-    property_field_value: Union[None, Unset, str] = UNSET
-    property_field_values: Union[Unset, list[str]] = UNSET
+    property_field_value: None | Unset | str = UNSET
+    property_field_values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,13 +48,13 @@ class AlertRoutingRuleConditionsItem:
 
         property_field_condition_type: str = self.property_field_condition_type
 
-        property_field_value: Union[None, Unset, str]
+        property_field_value: None | Unset | str
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: Union[Unset, list[str]] = UNSET
+        property_field_values: Unset | list[str] = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
@@ -85,12 +85,12 @@ class AlertRoutingRuleConditionsItem:
             d.pop("property_field_condition_type")
         )
 
-        def _parse_property_field_value(data: object) -> Union[None, Unset, str]:
+        def _parse_property_field_value(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 

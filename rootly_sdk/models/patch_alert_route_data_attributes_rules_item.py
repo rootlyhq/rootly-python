@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -32,17 +32,17 @@ class PatchAlertRouteDataAttributesRulesItem:
         condition_groups (Union[Unset, list['PatchAlertRouteDataAttributesRulesItemConditionGroupsItem']]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    field_destroy: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    fallback_rule: Union[Unset, bool] = UNSET
-    destinations: Union[Unset, list["PatchAlertRouteDataAttributesRulesItemDestinationsItem"]] = UNSET
-    condition_groups: Union[Unset, list["PatchAlertRouteDataAttributesRulesItemConditionGroupsItem"]] = UNSET
+    id: Unset | UUID = UNSET
+    field_destroy: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    position: Unset | int = UNSET
+    fallback_rule: Unset | bool = UNSET
+    destinations: Unset | list["PatchAlertRouteDataAttributesRulesItemDestinationsItem"] = UNSET
+    condition_groups: Unset | list["PatchAlertRouteDataAttributesRulesItemConditionGroupsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -54,14 +54,14 @@ class PatchAlertRouteDataAttributesRulesItem:
 
         fallback_rule = self.fallback_rule
 
-        destinations: Union[Unset, list[dict[str, Any]]] = UNSET
+        destinations: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.destinations, Unset):
             destinations = []
             for destinations_item_data in self.destinations:
                 destinations_item = destinations_item_data.to_dict()
                 destinations.append(destinations_item)
 
-        condition_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        condition_groups: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.condition_groups, Unset):
             condition_groups = []
             for condition_groups_item_data in self.condition_groups:
@@ -99,7 +99,7 @@ class PatchAlertRouteDataAttributesRulesItem:
 
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:

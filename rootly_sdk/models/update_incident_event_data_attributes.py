@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -21,13 +21,13 @@ class UpdateIncidentEventDataAttributes:
             item
     """
 
-    event: Union[Unset, str] = UNSET
-    visibility: Union[Unset, UpdateIncidentEventDataAttributesVisibility] = UNSET
+    event: Unset | str = UNSET
+    visibility: Unset | UpdateIncidentEventDataAttributesVisibility = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
-        visibility: Union[Unset, str] = UNSET
+        visibility: Unset | str = UNSET
         if not isinstance(self.visibility, Unset):
             visibility = self.visibility
 
@@ -47,7 +47,7 @@ class UpdateIncidentEventDataAttributes:
         event = d.pop("event", UNSET)
 
         _visibility = d.pop("visibility", UNSET)
-        visibility: Union[Unset, UpdateIncidentEventDataAttributesVisibility]
+        visibility: Unset | UpdateIncidentEventDataAttributesVisibility
         if isinstance(_visibility, Unset):
             visibility = UNSET
         else:

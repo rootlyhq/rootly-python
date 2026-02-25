@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -39,33 +39,33 @@ class UpdateFormFieldDataAttributes:
             reference-kind catalog fields are supported.
     """
 
-    kind: Union[Unset, UpdateFormFieldDataAttributesKind] = UNSET
-    input_kind: Union[Unset, UpdateFormFieldDataAttributesInputKind] = UNSET
-    value_kind: Union[Unset, UpdateFormFieldDataAttributesValueKind] = UNSET
-    value_kind_catalog_id: Union[None, Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    shown: Union[Unset, list[str]] = UNSET
-    required: Union[Unset, list[str]] = UNSET
-    show_on_incident_details: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    default_values: Union[Unset, list[str]] = UNSET
-    auto_set_by_catalog_field_id: Union[None, Unset, str] = UNSET
+    kind: Unset | UpdateFormFieldDataAttributesKind = UNSET
+    input_kind: Unset | UpdateFormFieldDataAttributesInputKind = UNSET
+    value_kind: Unset | UpdateFormFieldDataAttributesValueKind = UNSET
+    value_kind_catalog_id: None | Unset | str = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    shown: Unset | list[str] = UNSET
+    required: Unset | list[str] = UNSET
+    show_on_incident_details: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
+    default_values: Unset | list[str] = UNSET
+    auto_set_by_catalog_field_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        input_kind: Union[Unset, str] = UNSET
+        input_kind: Unset | str = UNSET
         if not isinstance(self.input_kind, Unset):
             input_kind = self.input_kind
 
-        value_kind: Union[Unset, str] = UNSET
+        value_kind: Unset | str = UNSET
         if not isinstance(self.value_kind, Unset):
             value_kind = self.value_kind
 
-        value_kind_catalog_id: Union[None, Unset, str]
+        value_kind_catalog_id: None | Unset | str
         if isinstance(self.value_kind_catalog_id, Unset):
             value_kind_catalog_id = UNSET
         else:
@@ -73,17 +73,17 @@ class UpdateFormFieldDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        shown: Union[Unset, list[str]] = UNSET
+        shown: Unset | list[str] = UNSET
         if not isinstance(self.shown, Unset):
             shown = self.shown
 
-        required: Union[Unset, list[str]] = UNSET
+        required: Unset | list[str] = UNSET
         if not isinstance(self.required, Unset):
             required = self.required
 
@@ -91,11 +91,11 @@ class UpdateFormFieldDataAttributes:
 
         enabled = self.enabled
 
-        default_values: Union[Unset, list[str]] = UNSET
+        default_values: Unset | list[str] = UNSET
         if not isinstance(self.default_values, Unset):
             default_values = self.default_values
 
-        auto_set_by_catalog_field_id: Union[None, Unset, str]
+        auto_set_by_catalog_field_id: None | Unset | str
         if isinstance(self.auto_set_by_catalog_field_id, Unset):
             auto_set_by_catalog_field_id = UNSET
         else:
@@ -135,43 +135,43 @@ class UpdateFormFieldDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateFormFieldDataAttributesKind]
+        kind: Unset | UpdateFormFieldDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_update_form_field_data_attributes_kind(_kind)
 
         _input_kind = d.pop("input_kind", UNSET)
-        input_kind: Union[Unset, UpdateFormFieldDataAttributesInputKind]
+        input_kind: Unset | UpdateFormFieldDataAttributesInputKind
         if isinstance(_input_kind, Unset):
             input_kind = UNSET
         else:
             input_kind = check_update_form_field_data_attributes_input_kind(_input_kind)
 
         _value_kind = d.pop("value_kind", UNSET)
-        value_kind: Union[Unset, UpdateFormFieldDataAttributesValueKind]
+        value_kind: Unset | UpdateFormFieldDataAttributesValueKind
         if isinstance(_value_kind, Unset):
             value_kind = UNSET
         else:
             value_kind = check_update_form_field_data_attributes_value_kind(_value_kind)
 
-        def _parse_value_kind_catalog_id(data: object) -> Union[None, Unset, str]:
+        def _parse_value_kind_catalog_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -185,12 +185,12 @@ class UpdateFormFieldDataAttributes:
 
         default_values = cast(list[str], d.pop("default_values", UNSET))
 
-        def _parse_auto_set_by_catalog_field_id(data: object) -> Union[None, Unset, str]:
+        def _parse_auto_set_by_catalog_field_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         auto_set_by_catalog_field_id = _parse_auto_set_by_catalog_field_id(d.pop("auto_set_by_catalog_field_id", UNSET))
 

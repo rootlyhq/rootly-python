@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -12,7 +12,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
@@ -23,8 +23,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertFieldResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertFieldResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertFieldResponse.from_dict(response.json())
 
@@ -47,8 +47,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertFieldResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertFieldResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,10 +58,10 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AlertFieldResponse, ErrorsList]]:
+) -> Response[AlertFieldResponse | ErrorsList]:
     """Delete an alert field
 
      Delete a specific alert field by id
@@ -89,10 +89,10 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AlertFieldResponse, ErrorsList]]:
+) -> AlertFieldResponse | ErrorsList | None:
     """Delete an alert field
 
      Delete a specific alert field by id
@@ -115,10 +115,10 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[AlertFieldResponse, ErrorsList]]:
+) -> Response[AlertFieldResponse | ErrorsList]:
     """Delete an alert field
 
      Delete a specific alert field by id
@@ -144,10 +144,10 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[AlertFieldResponse, ErrorsList]]:
+) -> AlertFieldResponse | ErrorsList | None:
     """Delete an alert field
 
      Delete a specific alert field by id

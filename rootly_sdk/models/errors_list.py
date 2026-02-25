@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,11 +20,11 @@ class ErrorsList:
         errors (Union[Unset, list['ErrorsListErrorsItem']]):
     """
 
-    errors: Union[Unset, list["ErrorsListErrorsItem"]] = UNSET
+    errors: Unset | list["ErrorsListErrorsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        errors: Union[Unset, list[dict[str, Any]]] = UNSET
+        errors: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.errors, Unset):
             errors = []
             for errors_item_data in self.errors:

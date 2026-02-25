@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -47,20 +47,20 @@ class UpdateAlertGroupDataAttributes:
         conditions (Union[Unset, list['UpdateAlertGroupDataAttributesConditionsItem']]):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    time_window: Union[Unset, int] = UNSET
-    targets: Union[Unset, list["UpdateAlertGroupDataAttributesTargetsItem"]] = UNSET
-    attributes: Union[Unset, list["UpdateAlertGroupDataAttributesAttributesItem"]] = UNSET
-    group_by_alert_title: Union[Unset, UpdateAlertGroupDataAttributesGroupByAlertTitle] = UNSET
-    group_by_alert_urgency: Union[Unset, UpdateAlertGroupDataAttributesGroupByAlertUrgency] = UNSET
-    condition_type: Union[Unset, UpdateAlertGroupDataAttributesConditionType] = UNSET
-    conditions: Union[Unset, list["UpdateAlertGroupDataAttributesConditionsItem"]] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    time_window: Unset | int = UNSET
+    targets: Unset | list["UpdateAlertGroupDataAttributesTargetsItem"] = UNSET
+    attributes: Unset | list["UpdateAlertGroupDataAttributesAttributesItem"] = UNSET
+    group_by_alert_title: Unset | UpdateAlertGroupDataAttributesGroupByAlertTitle = UNSET
+    group_by_alert_urgency: Unset | UpdateAlertGroupDataAttributesGroupByAlertUrgency = UNSET
+    condition_type: Unset | UpdateAlertGroupDataAttributesConditionType = UNSET
+    conditions: Unset | list["UpdateAlertGroupDataAttributesConditionsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -68,33 +68,33 @@ class UpdateAlertGroupDataAttributes:
 
         time_window = self.time_window
 
-        targets: Union[Unset, list[dict[str, Any]]] = UNSET
+        targets: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.targets, Unset):
             targets = []
             for targets_item_data in self.targets:
                 targets_item = targets_item_data.to_dict()
                 targets.append(targets_item)
 
-        attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = []
             for attributes_item_data in self.attributes:
                 attributes_item = attributes_item_data.to_dict()
                 attributes.append(attributes_item)
 
-        group_by_alert_title: Union[Unset, int] = UNSET
+        group_by_alert_title: Unset | int = UNSET
         if not isinstance(self.group_by_alert_title, Unset):
             group_by_alert_title = self.group_by_alert_title
 
-        group_by_alert_urgency: Union[Unset, int] = UNSET
+        group_by_alert_urgency: Unset | int = UNSET
         if not isinstance(self.group_by_alert_urgency, Unset):
             group_by_alert_urgency = self.group_by_alert_urgency
 
-        condition_type: Union[Unset, str] = UNSET
+        condition_type: Unset | str = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -138,12 +138,12 @@ class UpdateAlertGroupDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -164,14 +164,14 @@ class UpdateAlertGroupDataAttributes:
             attributes.append(attributes_item)
 
         _group_by_alert_title = d.pop("group_by_alert_title", UNSET)
-        group_by_alert_title: Union[Unset, UpdateAlertGroupDataAttributesGroupByAlertTitle]
+        group_by_alert_title: Unset | UpdateAlertGroupDataAttributesGroupByAlertTitle
         if isinstance(_group_by_alert_title, Unset):
             group_by_alert_title = UNSET
         else:
             group_by_alert_title = check_update_alert_group_data_attributes_group_by_alert_title(_group_by_alert_title)
 
         _group_by_alert_urgency = d.pop("group_by_alert_urgency", UNSET)
-        group_by_alert_urgency: Union[Unset, UpdateAlertGroupDataAttributesGroupByAlertUrgency]
+        group_by_alert_urgency: Unset | UpdateAlertGroupDataAttributesGroupByAlertUrgency
         if isinstance(_group_by_alert_urgency, Unset):
             group_by_alert_urgency = UNSET
         else:
@@ -180,7 +180,7 @@ class UpdateAlertGroupDataAttributes:
             )
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: Union[Unset, UpdateAlertGroupDataAttributesConditionType]
+        condition_type: Unset | UpdateAlertGroupDataAttributesConditionType
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:

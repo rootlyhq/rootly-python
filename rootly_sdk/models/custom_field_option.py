@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,8 +27,8 @@ class CustomFieldOption:
     position: int
     created_at: str
     updated_at: str
-    custom_field_id: Union[Unset, int] = UNSET
-    default: Union[Unset, bool] = UNSET
+    custom_field_id: Unset | int = UNSET
+    default: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

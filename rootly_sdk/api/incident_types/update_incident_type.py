@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     body: UpdateIncidentType,
 ) -> dict[str, Any]:
@@ -33,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentTypeResponse | None:
     if response.status_code == 200:
         response_200 = IncidentTypeResponse.from_dict(response.json())
 
@@ -52,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentTypeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,11 +63,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentType,
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+) -> Response[ErrorsList | IncidentTypeResponse]:
     """Update an incident type
 
      Update a specific incident_type by id
@@ -97,11 +97,11 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentType,
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+) -> ErrorsList | IncidentTypeResponse | None:
     """Update an incident type
 
      Update a specific incident_type by id
@@ -126,11 +126,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentType,
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+) -> Response[ErrorsList | IncidentTypeResponse]:
     """Update an incident type
 
      Update a specific incident_type by id
@@ -158,11 +158,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentType,
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+) -> ErrorsList | IncidentTypeResponse | None:
     """Update an incident type
 
      Update a specific incident_type by id

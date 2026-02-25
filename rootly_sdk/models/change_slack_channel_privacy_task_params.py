@@ -31,18 +31,18 @@ class ChangeSlackChannelPrivacyTaskParams:
     """
 
     privacy: ChangeSlackChannelPrivacyTaskParamsPrivacy
-    task_type: Union[Unset, ChangeSlackChannelPrivacyTaskParamsTaskType] = UNSET
+    task_type: Unset | ChangeSlackChannelPrivacyTaskParamsTaskType = UNSET
     channel: Union[Unset, "ChangeSlackChannelPrivacyTaskParamsChannel"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         privacy: str = self.privacy
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        channel: Union[Unset, dict[str, Any]] = UNSET
+        channel: Unset | dict[str, Any] = UNSET
         if not isinstance(self.channel, Unset):
             channel = self.channel.to_dict()
 
@@ -68,14 +68,14 @@ class ChangeSlackChannelPrivacyTaskParams:
         privacy = check_change_slack_channel_privacy_task_params_privacy(d.pop("privacy"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, ChangeSlackChannelPrivacyTaskParamsTaskType]
+        task_type: Unset | ChangeSlackChannelPrivacyTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_change_slack_channel_privacy_task_params_task_type(_task_type)
 
         _channel = d.pop("channel", UNSET)
-        channel: Union[Unset, ChangeSlackChannelPrivacyTaskParamsChannel]
+        channel: Unset | ChangeSlackChannelPrivacyTaskParamsChannel
         if isinstance(_channel, Unset):
             channel = UNSET
         else:

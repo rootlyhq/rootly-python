@@ -69,101 +69,101 @@ class UpdateIncidentDataAttributes:
         cancellation_message (Union[None, Unset, str]): Why was the incident cancelled?
     """
 
-    title: Union[None, Unset, str] = UNSET
-    kind: Union[Unset, UpdateIncidentDataAttributesKind] = "normal"
-    parent_incident_id: Union[None, Unset, str] = UNSET
-    duplicate_incident_id: Union[None, Unset, str] = UNSET
-    summary: Union[None, Unset, str] = UNSET
-    status: Union[Unset, UpdateIncidentDataAttributesStatus] = UNSET
-    private: Union[None, Unset, bool] = False
-    severity_id: Union[None, Unset, str] = UNSET
-    public_title: Union[None, Unset, str] = UNSET
-    alert_ids: Union[None, Unset, list[str]] = UNSET
-    environment_ids: Union[None, Unset, list[str]] = UNSET
-    incident_type_ids: Union[None, Unset, list[str]] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    functionality_ids: Union[None, Unset, list[str]] = UNSET
-    muted_service_ids: Union[None, Unset, list[str]] = UNSET
-    group_ids: Union[None, Unset, list[str]] = UNSET
-    cause_ids: Union[None, Unset, list[str]] = UNSET
+    title: None | Unset | str = UNSET
+    kind: Unset | UpdateIncidentDataAttributesKind = "normal"
+    parent_incident_id: None | Unset | str = UNSET
+    duplicate_incident_id: None | Unset | str = UNSET
+    summary: None | Unset | str = UNSET
+    status: Unset | UpdateIncidentDataAttributesStatus = UNSET
+    private: None | Unset | bool = False
+    severity_id: None | Unset | str = UNSET
+    public_title: None | Unset | str = UNSET
+    alert_ids: None | Unset | list[str] = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    incident_type_ids: None | Unset | list[str] = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    functionality_ids: None | Unset | list[str] = UNSET
+    muted_service_ids: None | Unset | list[str] = UNSET
+    group_ids: None | Unset | list[str] = UNSET
+    cause_ids: None | Unset | list[str] = UNSET
     labels: Union["UpdateIncidentDataAttributesLabelsType0", None, Unset] = UNSET
-    slack_channel_id: Union[None, Unset, str] = UNSET
-    slack_channel_name: Union[None, Unset, str] = UNSET
-    slack_channel_url: Union[None, Unset, str] = UNSET
-    slack_channel_archived: Union[None, Unset, bool] = UNSET
-    google_drive_parent_id: Union[None, Unset, str] = UNSET
-    google_drive_url: Union[None, Unset, str] = UNSET
-    jira_issue_key: Union[None, Unset, str] = UNSET
-    jira_issue_id: Union[None, Unset, str] = UNSET
-    jira_issue_url: Union[None, Unset, str] = UNSET
-    scheduled_for: Union[None, Unset, str] = UNSET
-    scheduled_until: Union[None, Unset, str] = UNSET
-    in_triage_at: Union[None, Unset, str] = UNSET
-    started_at: Union[None, Unset, str] = UNSET
-    detected_at: Union[None, Unset, str] = UNSET
-    acknowledged_at: Union[None, Unset, str] = UNSET
-    mitigated_at: Union[None, Unset, str] = UNSET
-    resolved_at: Union[None, Unset, str] = UNSET
-    closed_at: Union[None, Unset, str] = UNSET
-    cancelled_at: Union[None, Unset, str] = UNSET
-    mitigation_message: Union[None, Unset, str] = UNSET
-    resolution_message: Union[None, Unset, str] = UNSET
-    cancellation_message: Union[None, Unset, str] = UNSET
+    slack_channel_id: None | Unset | str = UNSET
+    slack_channel_name: None | Unset | str = UNSET
+    slack_channel_url: None | Unset | str = UNSET
+    slack_channel_archived: None | Unset | bool = UNSET
+    google_drive_parent_id: None | Unset | str = UNSET
+    google_drive_url: None | Unset | str = UNSET
+    jira_issue_key: None | Unset | str = UNSET
+    jira_issue_id: None | Unset | str = UNSET
+    jira_issue_url: None | Unset | str = UNSET
+    scheduled_for: None | Unset | str = UNSET
+    scheduled_until: None | Unset | str = UNSET
+    in_triage_at: None | Unset | str = UNSET
+    started_at: None | Unset | str = UNSET
+    detected_at: None | Unset | str = UNSET
+    acknowledged_at: None | Unset | str = UNSET
+    mitigated_at: None | Unset | str = UNSET
+    resolved_at: None | Unset | str = UNSET
+    closed_at: None | Unset | str = UNSET
+    cancelled_at: None | Unset | str = UNSET
+    mitigation_message: None | Unset | str = UNSET
+    resolution_message: None | Unset | str = UNSET
+    cancellation_message: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_incident_data_attributes_labels_type_0 import UpdateIncidentDataAttributesLabelsType0
 
-        title: Union[None, Unset, str]
+        title: None | Unset | str
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        parent_incident_id: Union[None, Unset, str]
+        parent_incident_id: None | Unset | str
         if isinstance(self.parent_incident_id, Unset):
             parent_incident_id = UNSET
         else:
             parent_incident_id = self.parent_incident_id
 
-        duplicate_incident_id: Union[None, Unset, str]
+        duplicate_incident_id: None | Unset | str
         if isinstance(self.duplicate_incident_id, Unset):
             duplicate_incident_id = UNSET
         else:
             duplicate_incident_id = self.duplicate_incident_id
 
-        summary: Union[None, Unset, str]
+        summary: None | Unset | str
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
             summary = self.summary
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        private: Union[None, Unset, bool]
+        private: None | Unset | bool
         if isinstance(self.private, Unset):
             private = UNSET
         else:
             private = self.private
 
-        severity_id: Union[None, Unset, str]
+        severity_id: None | Unset | str
         if isinstance(self.severity_id, Unset):
             severity_id = UNSET
         else:
             severity_id = self.severity_id
 
-        public_title: Union[None, Unset, str]
+        public_title: None | Unset | str
         if isinstance(self.public_title, Unset):
             public_title = UNSET
         else:
             public_title = self.public_title
 
-        alert_ids: Union[None, Unset, list[str]]
+        alert_ids: None | Unset | list[str]
         if isinstance(self.alert_ids, Unset):
             alert_ids = UNSET
         elif isinstance(self.alert_ids, list):
@@ -172,7 +172,7 @@ class UpdateIncidentDataAttributes:
         else:
             alert_ids = self.alert_ids
 
-        environment_ids: Union[None, Unset, list[str]]
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -181,7 +181,7 @@ class UpdateIncidentDataAttributes:
         else:
             environment_ids = self.environment_ids
 
-        incident_type_ids: Union[None, Unset, list[str]]
+        incident_type_ids: None | Unset | list[str]
         if isinstance(self.incident_type_ids, Unset):
             incident_type_ids = UNSET
         elif isinstance(self.incident_type_ids, list):
@@ -190,7 +190,7 @@ class UpdateIncidentDataAttributes:
         else:
             incident_type_ids = self.incident_type_ids
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -199,7 +199,7 @@ class UpdateIncidentDataAttributes:
         else:
             service_ids = self.service_ids
 
-        functionality_ids: Union[None, Unset, list[str]]
+        functionality_ids: None | Unset | list[str]
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -208,7 +208,7 @@ class UpdateIncidentDataAttributes:
         else:
             functionality_ids = self.functionality_ids
 
-        muted_service_ids: Union[None, Unset, list[str]]
+        muted_service_ids: None | Unset | list[str]
         if isinstance(self.muted_service_ids, Unset):
             muted_service_ids = UNSET
         elif isinstance(self.muted_service_ids, list):
@@ -217,7 +217,7 @@ class UpdateIncidentDataAttributes:
         else:
             muted_service_ids = self.muted_service_ids
 
-        group_ids: Union[None, Unset, list[str]]
+        group_ids: None | Unset | list[str]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -226,7 +226,7 @@ class UpdateIncidentDataAttributes:
         else:
             group_ids = self.group_ids
 
-        cause_ids: Union[None, Unset, list[str]]
+        cause_ids: None | Unset | list[str]
         if isinstance(self.cause_ids, Unset):
             cause_ids = UNSET
         elif isinstance(self.cause_ids, list):
@@ -235,7 +235,7 @@ class UpdateIncidentDataAttributes:
         else:
             cause_ids = self.cause_ids
 
-        labels: Union[None, Unset, dict[str, Any]]
+        labels: None | Unset | dict[str, Any]
         if isinstance(self.labels, Unset):
             labels = UNSET
         elif isinstance(self.labels, UpdateIncidentDataAttributesLabelsType0):
@@ -243,133 +243,133 @@ class UpdateIncidentDataAttributes:
         else:
             labels = self.labels
 
-        slack_channel_id: Union[None, Unset, str]
+        slack_channel_id: None | Unset | str
         if isinstance(self.slack_channel_id, Unset):
             slack_channel_id = UNSET
         else:
             slack_channel_id = self.slack_channel_id
 
-        slack_channel_name: Union[None, Unset, str]
+        slack_channel_name: None | Unset | str
         if isinstance(self.slack_channel_name, Unset):
             slack_channel_name = UNSET
         else:
             slack_channel_name = self.slack_channel_name
 
-        slack_channel_url: Union[None, Unset, str]
+        slack_channel_url: None | Unset | str
         if isinstance(self.slack_channel_url, Unset):
             slack_channel_url = UNSET
         else:
             slack_channel_url = self.slack_channel_url
 
-        slack_channel_archived: Union[None, Unset, bool]
+        slack_channel_archived: None | Unset | bool
         if isinstance(self.slack_channel_archived, Unset):
             slack_channel_archived = UNSET
         else:
             slack_channel_archived = self.slack_channel_archived
 
-        google_drive_parent_id: Union[None, Unset, str]
+        google_drive_parent_id: None | Unset | str
         if isinstance(self.google_drive_parent_id, Unset):
             google_drive_parent_id = UNSET
         else:
             google_drive_parent_id = self.google_drive_parent_id
 
-        google_drive_url: Union[None, Unset, str]
+        google_drive_url: None | Unset | str
         if isinstance(self.google_drive_url, Unset):
             google_drive_url = UNSET
         else:
             google_drive_url = self.google_drive_url
 
-        jira_issue_key: Union[None, Unset, str]
+        jira_issue_key: None | Unset | str
         if isinstance(self.jira_issue_key, Unset):
             jira_issue_key = UNSET
         else:
             jira_issue_key = self.jira_issue_key
 
-        jira_issue_id: Union[None, Unset, str]
+        jira_issue_id: None | Unset | str
         if isinstance(self.jira_issue_id, Unset):
             jira_issue_id = UNSET
         else:
             jira_issue_id = self.jira_issue_id
 
-        jira_issue_url: Union[None, Unset, str]
+        jira_issue_url: None | Unset | str
         if isinstance(self.jira_issue_url, Unset):
             jira_issue_url = UNSET
         else:
             jira_issue_url = self.jira_issue_url
 
-        scheduled_for: Union[None, Unset, str]
+        scheduled_for: None | Unset | str
         if isinstance(self.scheduled_for, Unset):
             scheduled_for = UNSET
         else:
             scheduled_for = self.scheduled_for
 
-        scheduled_until: Union[None, Unset, str]
+        scheduled_until: None | Unset | str
         if isinstance(self.scheduled_until, Unset):
             scheduled_until = UNSET
         else:
             scheduled_until = self.scheduled_until
 
-        in_triage_at: Union[None, Unset, str]
+        in_triage_at: None | Unset | str
         if isinstance(self.in_triage_at, Unset):
             in_triage_at = UNSET
         else:
             in_triage_at = self.in_triage_at
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        detected_at: Union[None, Unset, str]
+        detected_at: None | Unset | str
         if isinstance(self.detected_at, Unset):
             detected_at = UNSET
         else:
             detected_at = self.detected_at
 
-        acknowledged_at: Union[None, Unset, str]
+        acknowledged_at: None | Unset | str
         if isinstance(self.acknowledged_at, Unset):
             acknowledged_at = UNSET
         else:
             acknowledged_at = self.acknowledged_at
 
-        mitigated_at: Union[None, Unset, str]
+        mitigated_at: None | Unset | str
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: Union[None, Unset, str]
+        resolved_at: None | Unset | str
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
             resolved_at = self.resolved_at
 
-        closed_at: Union[None, Unset, str]
+        closed_at: None | Unset | str
         if isinstance(self.closed_at, Unset):
             closed_at = UNSET
         else:
             closed_at = self.closed_at
 
-        cancelled_at: Union[None, Unset, str]
+        cancelled_at: None | Unset | str
         if isinstance(self.cancelled_at, Unset):
             cancelled_at = UNSET
         else:
             cancelled_at = self.cancelled_at
 
-        mitigation_message: Union[None, Unset, str]
+        mitigation_message: None | Unset | str
         if isinstance(self.mitigation_message, Unset):
             mitigation_message = UNSET
         else:
             mitigation_message = self.mitigation_message
 
-        resolution_message: Union[None, Unset, str]
+        resolution_message: None | Unset | str
         if isinstance(self.resolution_message, Unset):
             resolution_message = UNSET
         else:
             resolution_message = self.resolution_message
 
-        cancellation_message: Union[None, Unset, str]
+        cancellation_message: None | Unset | str
         if isinstance(self.cancellation_message, Unset):
             cancellation_message = UNSET
         else:
@@ -467,84 +467,84 @@ class UpdateIncidentDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_title(data: object) -> Union[None, Unset, str]:
+        def _parse_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateIncidentDataAttributesKind]
+        kind: Unset | UpdateIncidentDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_update_incident_data_attributes_kind(_kind)
 
-        def _parse_parent_incident_id(data: object) -> Union[None, Unset, str]:
+        def _parse_parent_incident_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         parent_incident_id = _parse_parent_incident_id(d.pop("parent_incident_id", UNSET))
 
-        def _parse_duplicate_incident_id(data: object) -> Union[None, Unset, str]:
+        def _parse_duplicate_incident_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         duplicate_incident_id = _parse_duplicate_incident_id(d.pop("duplicate_incident_id", UNSET))
 
-        def _parse_summary(data: object) -> Union[None, Unset, str]:
+        def _parse_summary(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateIncidentDataAttributesStatus]
+        status: Unset | UpdateIncidentDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_data_attributes_status(_status)
 
-        def _parse_private(data: object) -> Union[None, Unset, bool]:
+        def _parse_private(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         private = _parse_private(d.pop("private", UNSET))
 
-        def _parse_severity_id(data: object) -> Union[None, Unset, str]:
+        def _parse_severity_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         severity_id = _parse_severity_id(d.pop("severity_id", UNSET))
 
-        def _parse_public_title(data: object) -> Union[None, Unset, str]:
+        def _parse_public_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         public_title = _parse_public_title(d.pop("public_title", UNSET))
 
-        def _parse_alert_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_alert_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -557,11 +557,11 @@ class UpdateIncidentDataAttributes:
                 return alert_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         alert_ids = _parse_alert_ids(d.pop("alert_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -574,11 +574,11 @@ class UpdateIncidentDataAttributes:
                 return environment_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_incident_type_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_incident_type_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -591,11 +591,11 @@ class UpdateIncidentDataAttributes:
                 return incident_type_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -608,11 +608,11 @@ class UpdateIncidentDataAttributes:
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_functionality_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -625,11 +625,11 @@ class UpdateIncidentDataAttributes:
                 return functionality_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_muted_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_muted_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -642,11 +642,11 @@ class UpdateIncidentDataAttributes:
                 return muted_service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         muted_service_ids = _parse_muted_service_ids(d.pop("muted_service_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -659,11 +659,11 @@ class UpdateIncidentDataAttributes:
                 return group_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_cause_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_cause_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -676,7 +676,7 @@ class UpdateIncidentDataAttributes:
                 return cause_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         cause_ids = _parse_cause_ids(d.pop("cause_ids", UNSET))
 
@@ -697,201 +697,201 @@ class UpdateIncidentDataAttributes:
 
         labels = _parse_labels(d.pop("labels", UNSET))
 
-        def _parse_slack_channel_id(data: object) -> Union[None, Unset, str]:
+        def _parse_slack_channel_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slack_channel_id = _parse_slack_channel_id(d.pop("slack_channel_id", UNSET))
 
-        def _parse_slack_channel_name(data: object) -> Union[None, Unset, str]:
+        def _parse_slack_channel_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slack_channel_name = _parse_slack_channel_name(d.pop("slack_channel_name", UNSET))
 
-        def _parse_slack_channel_url(data: object) -> Union[None, Unset, str]:
+        def _parse_slack_channel_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slack_channel_url = _parse_slack_channel_url(d.pop("slack_channel_url", UNSET))
 
-        def _parse_slack_channel_archived(data: object) -> Union[None, Unset, bool]:
+        def _parse_slack_channel_archived(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         slack_channel_archived = _parse_slack_channel_archived(d.pop("slack_channel_archived", UNSET))
 
-        def _parse_google_drive_parent_id(data: object) -> Union[None, Unset, str]:
+        def _parse_google_drive_parent_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         google_drive_parent_id = _parse_google_drive_parent_id(d.pop("google_drive_parent_id", UNSET))
 
-        def _parse_google_drive_url(data: object) -> Union[None, Unset, str]:
+        def _parse_google_drive_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         google_drive_url = _parse_google_drive_url(d.pop("google_drive_url", UNSET))
 
-        def _parse_jira_issue_key(data: object) -> Union[None, Unset, str]:
+        def _parse_jira_issue_key(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         jira_issue_key = _parse_jira_issue_key(d.pop("jira_issue_key", UNSET))
 
-        def _parse_jira_issue_id(data: object) -> Union[None, Unset, str]:
+        def _parse_jira_issue_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         jira_issue_id = _parse_jira_issue_id(d.pop("jira_issue_id", UNSET))
 
-        def _parse_jira_issue_url(data: object) -> Union[None, Unset, str]:
+        def _parse_jira_issue_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
 
-        def _parse_scheduled_for(data: object) -> Union[None, Unset, str]:
+        def _parse_scheduled_for(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         scheduled_for = _parse_scheduled_for(d.pop("scheduled_for", UNSET))
 
-        def _parse_scheduled_until(data: object) -> Union[None, Unset, str]:
+        def _parse_scheduled_until(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         scheduled_until = _parse_scheduled_until(d.pop("scheduled_until", UNSET))
 
-        def _parse_in_triage_at(data: object) -> Union[None, Unset, str]:
+        def _parse_in_triage_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         in_triage_at = _parse_in_triage_at(d.pop("in_triage_at", UNSET))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, str]:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_detected_at(data: object) -> Union[None, Unset, str]:
+        def _parse_detected_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         detected_at = _parse_detected_at(d.pop("detected_at", UNSET))
 
-        def _parse_acknowledged_at(data: object) -> Union[None, Unset, str]:
+        def _parse_acknowledged_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         acknowledged_at = _parse_acknowledged_at(d.pop("acknowledged_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> Union[None, Unset, str]:
+        def _parse_mitigated_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> Union[None, Unset, str]:
+        def _parse_resolved_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
-        def _parse_closed_at(data: object) -> Union[None, Unset, str]:
+        def _parse_closed_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         closed_at = _parse_closed_at(d.pop("closed_at", UNSET))
 
-        def _parse_cancelled_at(data: object) -> Union[None, Unset, str]:
+        def _parse_cancelled_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         cancelled_at = _parse_cancelled_at(d.pop("cancelled_at", UNSET))
 
-        def _parse_mitigation_message(data: object) -> Union[None, Unset, str]:
+        def _parse_mitigation_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         mitigation_message = _parse_mitigation_message(d.pop("mitigation_message", UNSET))
 
-        def _parse_resolution_message(data: object) -> Union[None, Unset, str]:
+        def _parse_resolution_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         resolution_message = _parse_resolution_message(d.pop("resolution_message", UNSET))
 
-        def _parse_cancellation_message(data: object) -> Union[None, Unset, str]:
+        def _parse_cancellation_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         cancellation_message = _parse_cancellation_message(d.pop("cancellation_message", UNSET))
 

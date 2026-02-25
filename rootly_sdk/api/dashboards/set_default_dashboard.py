@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -12,7 +12,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -23,8 +23,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[DashboardResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DashboardResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = DashboardResponse.from_dict(response.json())
 
@@ -42,8 +42,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[DashboardResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DashboardResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,10 +53,10 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DashboardResponse, ErrorsList]]:
+) -> Response[DashboardResponse | ErrorsList]:
     """Sets dashboard to user default
 
      Sets dashboard to user default
@@ -84,10 +84,10 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DashboardResponse, ErrorsList]]:
+) -> DashboardResponse | ErrorsList | None:
     """Sets dashboard to user default
 
      Sets dashboard to user default
@@ -110,10 +110,10 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DashboardResponse, ErrorsList]]:
+) -> Response[DashboardResponse | ErrorsList]:
     """Sets dashboard to user default
 
      Sets dashboard to user default
@@ -139,10 +139,10 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DashboardResponse, ErrorsList]]:
+) -> DashboardResponse | ErrorsList | None:
     """Sets dashboard to user default
 
      Sets dashboard to user default

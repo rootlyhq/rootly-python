@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,36 +25,36 @@ class NewEdgeConnectorActionActionMetadataParametersType0Item:
         options (Union[None, Unset, list[str]]):
     """
 
-    name: Union[Unset, str] = UNSET
-    type_: Union[Unset, NewEdgeConnectorActionActionMetadataParametersType0ItemType] = UNSET
-    required: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    default: Union[None, Unset, str] = UNSET
-    options: Union[None, Unset, list[str]] = UNSET
+    name: Unset | str = UNSET
+    type_: Unset | NewEdgeConnectorActionActionMetadataParametersType0ItemType = UNSET
+    required: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    default: None | Unset | str = UNSET
+    options: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
         required = self.required
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        default: Union[None, Unset, str]
+        default: None | Unset | str
         if isinstance(self.default, Unset):
             default = UNSET
         else:
             default = self.default
 
-        options: Union[None, Unset, list[str]]
+        options: None | Unset | list[str]
         if isinstance(self.options, Unset):
             options = UNSET
         elif isinstance(self.options, list):
@@ -87,7 +87,7 @@ class NewEdgeConnectorActionActionMetadataParametersType0Item:
         name = d.pop("name", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, NewEdgeConnectorActionActionMetadataParametersType0ItemType]
+        type_: Unset | NewEdgeConnectorActionActionMetadataParametersType0ItemType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
@@ -95,25 +95,25 @@ class NewEdgeConnectorActionActionMetadataParametersType0Item:
 
         required = d.pop("required", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_default(data: object) -> Union[None, Unset, str]:
+        def _parse_default(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
-        def _parse_options(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_options(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -126,7 +126,7 @@ class NewEdgeConnectorActionActionMetadataParametersType0Item:
                 return options_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         options = _parse_options(d.pop("options", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,7 +20,7 @@ class WebhooksDelivery:
 
     endpoint_id: str
     payload: str
-    delivered_at: Union[None, str]
+    delivered_at: None | str
     created_at: str
     updated_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -30,7 +30,7 @@ class WebhooksDelivery:
 
         payload = self.payload
 
-        delivered_at: Union[None, str]
+        delivered_at: None | str
         delivered_at = self.delivered_at
 
         created_at = self.created_at
@@ -58,10 +58,10 @@ class WebhooksDelivery:
 
         payload = d.pop("payload")
 
-        def _parse_delivered_at(data: object) -> Union[None, str]:
+        def _parse_delivered_at(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         delivered_at = _parse_delivered_at(d.pop("delivered_at"))
 

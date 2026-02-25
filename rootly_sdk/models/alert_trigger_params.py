@@ -67,93 +67,93 @@ class AlertTriggerParams:
     """
 
     trigger_type: AlertTriggerParamsTriggerType
-    triggers: Union[Unset, list[AlertTriggerParamsTriggersItem]] = UNSET
-    alert_condition: Union[Unset, AlertTriggerParamsAlertCondition] = UNSET
-    alert_condition_source: Union[Unset, AlertTriggerParamsAlertConditionSource] = "ANY"
-    alert_condition_source_use_regexp: Union[Unset, bool] = False
-    alert_sources: Union[Unset, list[str]] = UNSET
-    alert_condition_label: Union[Unset, AlertTriggerParamsAlertConditionLabel] = "ANY"
-    alert_condition_label_use_regexp: Union[Unset, bool] = False
-    alert_condition_status: Union[Unset, AlertTriggerParamsAlertConditionStatus] = "ANY"
-    alert_condition_status_use_regexp: Union[Unset, bool] = False
-    alert_statuses: Union[Unset, list[str]] = UNSET
-    alert_labels: Union[Unset, list[str]] = UNSET
-    alert_condition_payload: Union[Unset, AlertTriggerParamsAlertConditionPayload] = "ANY"
-    alert_condition_payload_use_regexp: Union[Unset, bool] = False
-    alert_payload: Union[Unset, list[str]] = UNSET
-    alert_query_payload: Union[None, Unset, str] = UNSET
-    alert_field_conditions: Union[Unset, list["AlertTriggerParamsAlertFieldConditionsItem"]] = UNSET
+    triggers: Unset | list[AlertTriggerParamsTriggersItem] = UNSET
+    alert_condition: Unset | AlertTriggerParamsAlertCondition = UNSET
+    alert_condition_source: Unset | AlertTriggerParamsAlertConditionSource = "ANY"
+    alert_condition_source_use_regexp: Unset | bool = False
+    alert_sources: Unset | list[str] = UNSET
+    alert_condition_label: Unset | AlertTriggerParamsAlertConditionLabel = "ANY"
+    alert_condition_label_use_regexp: Unset | bool = False
+    alert_condition_status: Unset | AlertTriggerParamsAlertConditionStatus = "ANY"
+    alert_condition_status_use_regexp: Unset | bool = False
+    alert_statuses: Unset | list[str] = UNSET
+    alert_labels: Unset | list[str] = UNSET
+    alert_condition_payload: Unset | AlertTriggerParamsAlertConditionPayload = "ANY"
+    alert_condition_payload_use_regexp: Unset | bool = False
+    alert_payload: Unset | list[str] = UNSET
+    alert_query_payload: None | Unset | str = UNSET
+    alert_field_conditions: Unset | list["AlertTriggerParamsAlertFieldConditionsItem"] = UNSET
     alert_payload_conditions: Union[Unset, "AlertTriggerParamsAlertPayloadConditions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Union[Unset, list[str]] = UNSET
+        triggers: Unset | list[str] = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = []
             for triggers_item_data in self.triggers:
                 triggers_item: str = triggers_item_data
                 triggers.append(triggers_item)
 
-        alert_condition: Union[Unset, str] = UNSET
+        alert_condition: Unset | str = UNSET
         if not isinstance(self.alert_condition, Unset):
             alert_condition = self.alert_condition
 
-        alert_condition_source: Union[Unset, str] = UNSET
+        alert_condition_source: Unset | str = UNSET
         if not isinstance(self.alert_condition_source, Unset):
             alert_condition_source = self.alert_condition_source
 
         alert_condition_source_use_regexp = self.alert_condition_source_use_regexp
 
-        alert_sources: Union[Unset, list[str]] = UNSET
+        alert_sources: Unset | list[str] = UNSET
         if not isinstance(self.alert_sources, Unset):
             alert_sources = self.alert_sources
 
-        alert_condition_label: Union[Unset, str] = UNSET
+        alert_condition_label: Unset | str = UNSET
         if not isinstance(self.alert_condition_label, Unset):
             alert_condition_label = self.alert_condition_label
 
         alert_condition_label_use_regexp = self.alert_condition_label_use_regexp
 
-        alert_condition_status: Union[Unset, str] = UNSET
+        alert_condition_status: Unset | str = UNSET
         if not isinstance(self.alert_condition_status, Unset):
             alert_condition_status = self.alert_condition_status
 
         alert_condition_status_use_regexp = self.alert_condition_status_use_regexp
 
-        alert_statuses: Union[Unset, list[str]] = UNSET
+        alert_statuses: Unset | list[str] = UNSET
         if not isinstance(self.alert_statuses, Unset):
             alert_statuses = self.alert_statuses
 
-        alert_labels: Union[Unset, list[str]] = UNSET
+        alert_labels: Unset | list[str] = UNSET
         if not isinstance(self.alert_labels, Unset):
             alert_labels = self.alert_labels
 
-        alert_condition_payload: Union[Unset, str] = UNSET
+        alert_condition_payload: Unset | str = UNSET
         if not isinstance(self.alert_condition_payload, Unset):
             alert_condition_payload = self.alert_condition_payload
 
         alert_condition_payload_use_regexp = self.alert_condition_payload_use_regexp
 
-        alert_payload: Union[Unset, list[str]] = UNSET
+        alert_payload: Unset | list[str] = UNSET
         if not isinstance(self.alert_payload, Unset):
             alert_payload = self.alert_payload
 
-        alert_query_payload: Union[None, Unset, str]
+        alert_query_payload: None | Unset | str
         if isinstance(self.alert_query_payload, Unset):
             alert_query_payload = UNSET
         else:
             alert_query_payload = self.alert_query_payload
 
-        alert_field_conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        alert_field_conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.alert_field_conditions, Unset):
             alert_field_conditions = []
             for alert_field_conditions_item_data in self.alert_field_conditions:
                 alert_field_conditions_item = alert_field_conditions_item_data.to_dict()
                 alert_field_conditions.append(alert_field_conditions_item)
 
-        alert_payload_conditions: Union[Unset, dict[str, Any]] = UNSET
+        alert_payload_conditions: Unset | dict[str, Any] = UNSET
         if not isinstance(self.alert_payload_conditions, Unset):
             alert_payload_conditions = self.alert_payload_conditions.to_dict()
 
@@ -217,14 +217,14 @@ class AlertTriggerParams:
             triggers.append(triggers_item)
 
         _alert_condition = d.pop("alert_condition", UNSET)
-        alert_condition: Union[Unset, AlertTriggerParamsAlertCondition]
+        alert_condition: Unset | AlertTriggerParamsAlertCondition
         if isinstance(_alert_condition, Unset):
             alert_condition = UNSET
         else:
             alert_condition = check_alert_trigger_params_alert_condition(_alert_condition)
 
         _alert_condition_source = d.pop("alert_condition_source", UNSET)
-        alert_condition_source: Union[Unset, AlertTriggerParamsAlertConditionSource]
+        alert_condition_source: Unset | AlertTriggerParamsAlertConditionSource
         if isinstance(_alert_condition_source, Unset):
             alert_condition_source = UNSET
         else:
@@ -235,7 +235,7 @@ class AlertTriggerParams:
         alert_sources = cast(list[str], d.pop("alert_sources", UNSET))
 
         _alert_condition_label = d.pop("alert_condition_label", UNSET)
-        alert_condition_label: Union[Unset, AlertTriggerParamsAlertConditionLabel]
+        alert_condition_label: Unset | AlertTriggerParamsAlertConditionLabel
         if isinstance(_alert_condition_label, Unset):
             alert_condition_label = UNSET
         else:
@@ -244,7 +244,7 @@ class AlertTriggerParams:
         alert_condition_label_use_regexp = d.pop("alert_condition_label_use_regexp", UNSET)
 
         _alert_condition_status = d.pop("alert_condition_status", UNSET)
-        alert_condition_status: Union[Unset, AlertTriggerParamsAlertConditionStatus]
+        alert_condition_status: Unset | AlertTriggerParamsAlertConditionStatus
         if isinstance(_alert_condition_status, Unset):
             alert_condition_status = UNSET
         else:
@@ -257,7 +257,7 @@ class AlertTriggerParams:
         alert_labels = cast(list[str], d.pop("alert_labels", UNSET))
 
         _alert_condition_payload = d.pop("alert_condition_payload", UNSET)
-        alert_condition_payload: Union[Unset, AlertTriggerParamsAlertConditionPayload]
+        alert_condition_payload: Unset | AlertTriggerParamsAlertConditionPayload
         if isinstance(_alert_condition_payload, Unset):
             alert_condition_payload = UNSET
         else:
@@ -267,12 +267,12 @@ class AlertTriggerParams:
 
         alert_payload = cast(list[str], d.pop("alert_payload", UNSET))
 
-        def _parse_alert_query_payload(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_query_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_query_payload = _parse_alert_query_payload(d.pop("alert_query_payload", UNSET))
 
@@ -286,7 +286,7 @@ class AlertTriggerParams:
             alert_field_conditions.append(alert_field_conditions_item)
 
         _alert_payload_conditions = d.pop("alert_payload_conditions", UNSET)
-        alert_payload_conditions: Union[Unset, AlertTriggerParamsAlertPayloadConditions]
+        alert_payload_conditions: Unset | AlertTriggerParamsAlertPayloadConditions
         if isinstance(_alert_payload_conditions, Unset):
             alert_payload_conditions = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, ScheduleRotationResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | ScheduleRotationResponse | None:
     if response.status_code == 201:
         response_201 = ScheduleRotationResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, ScheduleRotationResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ScheduleRotationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotation,
-) -> Response[Union[ErrorsList, ScheduleRotationResponse]]:
+) -> Response[ErrorsList | ScheduleRotationResponse]:
     """Creates a schedule rotation
 
      Creates a new schedule rotation from provided data
@@ -105,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotation,
-) -> Optional[Union[ErrorsList, ScheduleRotationResponse]]:
+) -> ErrorsList | ScheduleRotationResponse | None:
     """Creates a schedule rotation
 
      Creates a new schedule rotation from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotation,
-) -> Response[Union[ErrorsList, ScheduleRotationResponse]]:
+) -> Response[ErrorsList | ScheduleRotationResponse]:
     """Creates a schedule rotation
 
      Creates a new schedule rotation from provided data
@@ -166,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotation,
-) -> Optional[Union[ErrorsList, ScheduleRotationResponse]]:
+) -> ErrorsList | ScheduleRotationResponse | None:
     """Creates a schedule rotation
 
      Creates a new schedule rotation from provided data

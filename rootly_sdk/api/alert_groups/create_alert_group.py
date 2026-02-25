@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertGroupResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertGroupResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertGroupResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertGroup,
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+) -> Response[AlertGroupResponse | ErrorsList]:
     """Creates an alert group
 
      Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
@@ -102,7 +102,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewAlertGroup,
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+) -> AlertGroupResponse | ErrorsList | None:
     """Creates an alert group
 
      Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertGroup,
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+) -> Response[AlertGroupResponse | ErrorsList]:
     """Creates an alert group
 
      Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAlertGroup,
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+) -> AlertGroupResponse | ErrorsList | None:
     """Creates an alert group
 
      Creates a new alert group. **Note**: For enhanced functionality and future compatibility, consider

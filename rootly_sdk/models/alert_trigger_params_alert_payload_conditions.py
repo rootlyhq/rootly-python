@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,16 +27,16 @@ class AlertTriggerParamsAlertPayloadConditions:
         conditions (Union[Unset, list['AlertTriggerParamsAlertPayloadConditionsConditionsItem']]):
     """
 
-    logic: Union[Unset, AlertTriggerParamsAlertPayloadConditionsLogic] = UNSET
-    conditions: Union[Unset, list["AlertTriggerParamsAlertPayloadConditionsConditionsItem"]] = UNSET
+    logic: Unset | AlertTriggerParamsAlertPayloadConditionsLogic = UNSET
+    conditions: Unset | list["AlertTriggerParamsAlertPayloadConditionsConditionsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        logic: Union[Unset, str] = UNSET
+        logic: Unset | str = UNSET
         if not isinstance(self.logic, Unset):
             logic = self.logic
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -61,7 +61,7 @@ class AlertTriggerParamsAlertPayloadConditions:
 
         d = dict(src_dict)
         _logic = d.pop("logic", UNSET)
-        logic: Union[Unset, AlertTriggerParamsAlertPayloadConditionsLogic]
+        logic: Unset | AlertTriggerParamsAlertPayloadConditionsLogic
         if isinstance(_logic, Unset):
             logic = UNSET
         else:

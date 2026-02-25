@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,8 +29,8 @@ class AlertEvent:
     source: str
     created_at: str
     updated_at: str
-    user_id: Union[None, Unset, int] = UNSET
-    details: Union[None, Unset, str] = UNSET
+    user_id: None | Unset | int = UNSET
+    details: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +44,13 @@ class AlertEvent:
 
         updated_at = self.updated_at
 
-        user_id: Union[None, Unset, int]
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        details: Union[None, Unset, str]
+        details: None | Unset | str
         if isinstance(self.details, Unset):
             details = UNSET
         else:
@@ -87,21 +87,21 @@ class AlertEvent:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_details(data: object) -> Union[None, Unset, str]:
+        def _parse_details(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         details = _parse_details(d.pop("details", UNSET))
 

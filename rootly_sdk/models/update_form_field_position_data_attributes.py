@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -21,14 +21,14 @@ class UpdateFormFieldPositionDataAttributes:
         position (Union[Unset, int]): The position of the form_field_position
     """
 
-    form_field_id: Union[Unset, str] = UNSET
-    form: Union[Unset, UpdateFormFieldPositionDataAttributesForm] = UNSET
-    position: Union[Unset, int] = UNSET
+    form_field_id: Unset | str = UNSET
+    form: Unset | UpdateFormFieldPositionDataAttributesForm = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
 
-        form: Union[Unset, str] = UNSET
+        form: Unset | str = UNSET
         if not isinstance(self.form, Unset):
             form = self.form
 
@@ -52,7 +52,7 @@ class UpdateFormFieldPositionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _form = d.pop("form", UNSET)
-        form: Union[Unset, UpdateFormFieldPositionDataAttributesForm]
+        form: Unset | UpdateFormFieldPositionDataAttributesForm
         if isinstance(_form, Unset):
             form = UNSET
         else:

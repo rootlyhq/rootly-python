@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,15 +11,15 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -52,7 +52,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[ScheduleList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ScheduleList | None:
     if response.status_code == 200:
         response_200 = ScheduleList.from_dict(response.json())
 
@@ -64,7 +64,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ScheduleList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ScheduleList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,15 +76,15 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[ScheduleList]:
     """List schedules
 
@@ -131,16 +131,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[ScheduleList]:
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> ScheduleList | None:
     """List schedules
 
      List schedules
@@ -181,15 +181,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[ScheduleList]:
     """List schedules
 
@@ -234,16 +234,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[ScheduleList]:
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> ScheduleList | None:
     """List schedules
 
      List schedules

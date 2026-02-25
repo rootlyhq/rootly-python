@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -19,9 +19,9 @@ class NewCustomFieldOptionDataAttributes:
     """
 
     value: str
-    color: Union[Unset, str] = UNSET
-    default: Union[Unset, bool] = UNSET
-    position: Union[Unset, int] = UNSET
+    color: Unset | str = UNSET
+    default: Unset | bool = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         value = self.value

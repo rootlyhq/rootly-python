@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -181,131 +181,123 @@ class ActionItemTriggerParams:
     """
 
     trigger_type: ActionItemTriggerParamsTriggerType
-    triggers: Union[Unset, list[str]] = UNSET
-    incident_visibilities: Union[Unset, list[bool]] = UNSET
-    incident_kinds: Union[Unset, list[ActionItemTriggerParamsIncidentKindsItem]] = UNSET
-    incident_statuses: Union[Unset, list[ActionItemTriggerParamsIncidentStatusesItem]] = UNSET
-    incident_inactivity_duration: Union[None, Unset, str] = UNSET
-    incident_condition: Union[Unset, ActionItemTriggerParamsIncidentCondition] = "ALL"
-    incident_condition_visibility: Union[Unset, ActionItemTriggerParamsIncidentConditionVisibility] = "ANY"
-    incident_condition_kind: Union[Unset, ActionItemTriggerParamsIncidentConditionKind] = "IS"
-    incident_condition_status: Union[Unset, ActionItemTriggerParamsIncidentConditionStatus] = "ANY"
-    incident_condition_sub_status: Union[Unset, ActionItemTriggerParamsIncidentConditionSubStatus] = "ANY"
-    incident_condition_environment: Union[Unset, ActionItemTriggerParamsIncidentConditionEnvironment] = "ANY"
-    incident_condition_severity: Union[Unset, ActionItemTriggerParamsIncidentConditionSeverity] = "ANY"
-    incident_condition_incident_type: Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentType] = "ANY"
-    incident_condition_incident_roles: Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentRoles] = "ANY"
-    incident_condition_service: Union[Unset, ActionItemTriggerParamsIncidentConditionService] = "ANY"
-    incident_condition_functionality: Union[Unset, ActionItemTriggerParamsIncidentConditionFunctionality] = "ANY"
-    incident_condition_group: Union[Unset, ActionItemTriggerParamsIncidentConditionGroup] = "ANY"
-    incident_condition_summary: Union[ActionItemTriggerParamsIncidentConditionSummaryType1, None, Unset] = UNSET
-    incident_condition_started_at: Union[ActionItemTriggerParamsIncidentConditionStartedAtType1, None, Unset] = UNSET
-    incident_condition_detected_at: Union[ActionItemTriggerParamsIncidentConditionDetectedAtType1, None, Unset] = UNSET
-    incident_condition_acknowledged_at: Union[
-        ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1, None, Unset
-    ] = UNSET
-    incident_condition_mitigated_at: Union[ActionItemTriggerParamsIncidentConditionMitigatedAtType1, None, Unset] = (
+    triggers: Unset | list[str] = UNSET
+    incident_visibilities: Unset | list[bool] = UNSET
+    incident_kinds: Unset | list[ActionItemTriggerParamsIncidentKindsItem] = UNSET
+    incident_statuses: Unset | list[ActionItemTriggerParamsIncidentStatusesItem] = UNSET
+    incident_inactivity_duration: None | Unset | str = UNSET
+    incident_condition: Unset | ActionItemTriggerParamsIncidentCondition = "ALL"
+    incident_condition_visibility: Unset | ActionItemTriggerParamsIncidentConditionVisibility = "ANY"
+    incident_condition_kind: Unset | ActionItemTriggerParamsIncidentConditionKind = "IS"
+    incident_condition_status: Unset | ActionItemTriggerParamsIncidentConditionStatus = "ANY"
+    incident_condition_sub_status: Unset | ActionItemTriggerParamsIncidentConditionSubStatus = "ANY"
+    incident_condition_environment: Unset | ActionItemTriggerParamsIncidentConditionEnvironment = "ANY"
+    incident_condition_severity: Unset | ActionItemTriggerParamsIncidentConditionSeverity = "ANY"
+    incident_condition_incident_type: Unset | ActionItemTriggerParamsIncidentConditionIncidentType = "ANY"
+    incident_condition_incident_roles: Unset | ActionItemTriggerParamsIncidentConditionIncidentRoles = "ANY"
+    incident_condition_service: Unset | ActionItemTriggerParamsIncidentConditionService = "ANY"
+    incident_condition_functionality: Unset | ActionItemTriggerParamsIncidentConditionFunctionality = "ANY"
+    incident_condition_group: Unset | ActionItemTriggerParamsIncidentConditionGroup = "ANY"
+    incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset = UNSET
+    incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset = UNSET
+    incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset = UNSET
+    incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset = (
         UNSET
     )
-    incident_condition_resolved_at: Union[ActionItemTriggerParamsIncidentConditionResolvedAtType1, None, Unset] = UNSET
-    incident_conditional_inactivity: Union[ActionItemTriggerParamsIncidentConditionalInactivityType1, None, Unset] = (
-        UNSET
-    )
-    incident_action_item_condition: Union[Unset, ActionItemTriggerParamsIncidentActionItemCondition] = UNSET
-    incident_action_item_condition_kind: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionKind] = "ANY"
-    incident_action_item_kinds: Union[Unset, list[ActionItemTriggerParamsIncidentActionItemKindsItem]] = UNSET
-    incident_action_item_condition_status: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionStatus] = (
-        "ANY"
-    )
-    incident_action_item_statuses: Union[Unset, list[ActionItemTriggerParamsIncidentActionItemStatusesItem]] = UNSET
-    incident_action_item_condition_priority: Union[
-        Unset, ActionItemTriggerParamsIncidentActionItemConditionPriority
-    ] = "ANY"
-    incident_action_item_priorities: Union[Unset, list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem]] = UNSET
-    incident_action_item_condition_group: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionGroup] = "ANY"
-    incident_action_item_group_ids: Union[Unset, list[str]] = UNSET
+    incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset = UNSET
+    incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset = UNSET
+    incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset = UNSET
+    incident_action_item_condition: Unset | ActionItemTriggerParamsIncidentActionItemCondition = UNSET
+    incident_action_item_condition_kind: Unset | ActionItemTriggerParamsIncidentActionItemConditionKind = "ANY"
+    incident_action_item_kinds: Unset | list[ActionItemTriggerParamsIncidentActionItemKindsItem] = UNSET
+    incident_action_item_condition_status: Unset | ActionItemTriggerParamsIncidentActionItemConditionStatus = "ANY"
+    incident_action_item_statuses: Unset | list[ActionItemTriggerParamsIncidentActionItemStatusesItem] = UNSET
+    incident_action_item_condition_priority: Unset | ActionItemTriggerParamsIncidentActionItemConditionPriority = "ANY"
+    incident_action_item_priorities: Unset | list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem] = UNSET
+    incident_action_item_condition_group: Unset | ActionItemTriggerParamsIncidentActionItemConditionGroup = "ANY"
+    incident_action_item_group_ids: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Union[Unset, list[str]] = UNSET
+        triggers: Unset | list[str] = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = self.triggers
 
-        incident_visibilities: Union[Unset, list[bool]] = UNSET
+        incident_visibilities: Unset | list[bool] = UNSET
         if not isinstance(self.incident_visibilities, Unset):
             incident_visibilities = self.incident_visibilities
 
-        incident_kinds: Union[Unset, list[str]] = UNSET
+        incident_kinds: Unset | list[str] = UNSET
         if not isinstance(self.incident_kinds, Unset):
             incident_kinds = []
             for incident_kinds_item_data in self.incident_kinds:
                 incident_kinds_item: str = incident_kinds_item_data
                 incident_kinds.append(incident_kinds_item)
 
-        incident_statuses: Union[Unset, list[str]] = UNSET
+        incident_statuses: Unset | list[str] = UNSET
         if not isinstance(self.incident_statuses, Unset):
             incident_statuses = []
             for incident_statuses_item_data in self.incident_statuses:
                 incident_statuses_item: str = incident_statuses_item_data
                 incident_statuses.append(incident_statuses_item)
 
-        incident_inactivity_duration: Union[None, Unset, str]
+        incident_inactivity_duration: None | Unset | str
         if isinstance(self.incident_inactivity_duration, Unset):
             incident_inactivity_duration = UNSET
         else:
             incident_inactivity_duration = self.incident_inactivity_duration
 
-        incident_condition: Union[Unset, str] = UNSET
+        incident_condition: Unset | str = UNSET
         if not isinstance(self.incident_condition, Unset):
             incident_condition = self.incident_condition
 
-        incident_condition_visibility: Union[Unset, str] = UNSET
+        incident_condition_visibility: Unset | str = UNSET
         if not isinstance(self.incident_condition_visibility, Unset):
             incident_condition_visibility = self.incident_condition_visibility
 
-        incident_condition_kind: Union[Unset, str] = UNSET
+        incident_condition_kind: Unset | str = UNSET
         if not isinstance(self.incident_condition_kind, Unset):
             incident_condition_kind = self.incident_condition_kind
 
-        incident_condition_status: Union[Unset, str] = UNSET
+        incident_condition_status: Unset | str = UNSET
         if not isinstance(self.incident_condition_status, Unset):
             incident_condition_status = self.incident_condition_status
 
-        incident_condition_sub_status: Union[Unset, str] = UNSET
+        incident_condition_sub_status: Unset | str = UNSET
         if not isinstance(self.incident_condition_sub_status, Unset):
             incident_condition_sub_status = self.incident_condition_sub_status
 
-        incident_condition_environment: Union[Unset, str] = UNSET
+        incident_condition_environment: Unset | str = UNSET
         if not isinstance(self.incident_condition_environment, Unset):
             incident_condition_environment = self.incident_condition_environment
 
-        incident_condition_severity: Union[Unset, str] = UNSET
+        incident_condition_severity: Unset | str = UNSET
         if not isinstance(self.incident_condition_severity, Unset):
             incident_condition_severity = self.incident_condition_severity
 
-        incident_condition_incident_type: Union[Unset, str] = UNSET
+        incident_condition_incident_type: Unset | str = UNSET
         if not isinstance(self.incident_condition_incident_type, Unset):
             incident_condition_incident_type = self.incident_condition_incident_type
 
-        incident_condition_incident_roles: Union[Unset, str] = UNSET
+        incident_condition_incident_roles: Unset | str = UNSET
         if not isinstance(self.incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = self.incident_condition_incident_roles
 
-        incident_condition_service: Union[Unset, str] = UNSET
+        incident_condition_service: Unset | str = UNSET
         if not isinstance(self.incident_condition_service, Unset):
             incident_condition_service = self.incident_condition_service
 
-        incident_condition_functionality: Union[Unset, str] = UNSET
+        incident_condition_functionality: Unset | str = UNSET
         if not isinstance(self.incident_condition_functionality, Unset):
             incident_condition_functionality = self.incident_condition_functionality
 
-        incident_condition_group: Union[Unset, str] = UNSET
+        incident_condition_group: Unset | str = UNSET
         if not isinstance(self.incident_condition_group, Unset):
             incident_condition_group = self.incident_condition_group
 
-        incident_condition_summary: Union[None, Unset, str]
+        incident_condition_summary: None | Unset | str
         if isinstance(self.incident_condition_summary, Unset):
             incident_condition_summary = UNSET
         elif isinstance(self.incident_condition_summary, str):
@@ -313,7 +305,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_summary = self.incident_condition_summary
 
-        incident_condition_started_at: Union[None, Unset, str]
+        incident_condition_started_at: None | Unset | str
         if isinstance(self.incident_condition_started_at, Unset):
             incident_condition_started_at = UNSET
         elif isinstance(self.incident_condition_started_at, str):
@@ -321,7 +313,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_started_at = self.incident_condition_started_at
 
-        incident_condition_detected_at: Union[None, Unset, str]
+        incident_condition_detected_at: None | Unset | str
         if isinstance(self.incident_condition_detected_at, Unset):
             incident_condition_detected_at = UNSET
         elif isinstance(self.incident_condition_detected_at, str):
@@ -329,7 +321,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_detected_at = self.incident_condition_detected_at
 
-        incident_condition_acknowledged_at: Union[None, Unset, str]
+        incident_condition_acknowledged_at: None | Unset | str
         if isinstance(self.incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = UNSET
         elif isinstance(self.incident_condition_acknowledged_at, str):
@@ -337,7 +329,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
 
-        incident_condition_mitigated_at: Union[None, Unset, str]
+        incident_condition_mitigated_at: None | Unset | str
         if isinstance(self.incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = UNSET
         elif isinstance(self.incident_condition_mitigated_at, str):
@@ -345,7 +337,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_mitigated_at = self.incident_condition_mitigated_at
 
-        incident_condition_resolved_at: Union[None, Unset, str]
+        incident_condition_resolved_at: None | Unset | str
         if isinstance(self.incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = UNSET
         elif isinstance(self.incident_condition_resolved_at, str):
@@ -353,7 +345,7 @@ class ActionItemTriggerParams:
         else:
             incident_condition_resolved_at = self.incident_condition_resolved_at
 
-        incident_conditional_inactivity: Union[None, Unset, str]
+        incident_conditional_inactivity: None | Unset | str
         if isinstance(self.incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = UNSET
         elif isinstance(self.incident_conditional_inactivity, str):
@@ -361,48 +353,48 @@ class ActionItemTriggerParams:
         else:
             incident_conditional_inactivity = self.incident_conditional_inactivity
 
-        incident_action_item_condition: Union[Unset, str] = UNSET
+        incident_action_item_condition: Unset | str = UNSET
         if not isinstance(self.incident_action_item_condition, Unset):
             incident_action_item_condition = self.incident_action_item_condition
 
-        incident_action_item_condition_kind: Union[Unset, str] = UNSET
+        incident_action_item_condition_kind: Unset | str = UNSET
         if not isinstance(self.incident_action_item_condition_kind, Unset):
             incident_action_item_condition_kind = self.incident_action_item_condition_kind
 
-        incident_action_item_kinds: Union[Unset, list[str]] = UNSET
+        incident_action_item_kinds: Unset | list[str] = UNSET
         if not isinstance(self.incident_action_item_kinds, Unset):
             incident_action_item_kinds = []
             for incident_action_item_kinds_item_data in self.incident_action_item_kinds:
                 incident_action_item_kinds_item: str = incident_action_item_kinds_item_data
                 incident_action_item_kinds.append(incident_action_item_kinds_item)
 
-        incident_action_item_condition_status: Union[Unset, str] = UNSET
+        incident_action_item_condition_status: Unset | str = UNSET
         if not isinstance(self.incident_action_item_condition_status, Unset):
             incident_action_item_condition_status = self.incident_action_item_condition_status
 
-        incident_action_item_statuses: Union[Unset, list[str]] = UNSET
+        incident_action_item_statuses: Unset | list[str] = UNSET
         if not isinstance(self.incident_action_item_statuses, Unset):
             incident_action_item_statuses = []
             for incident_action_item_statuses_item_data in self.incident_action_item_statuses:
                 incident_action_item_statuses_item: str = incident_action_item_statuses_item_data
                 incident_action_item_statuses.append(incident_action_item_statuses_item)
 
-        incident_action_item_condition_priority: Union[Unset, str] = UNSET
+        incident_action_item_condition_priority: Unset | str = UNSET
         if not isinstance(self.incident_action_item_condition_priority, Unset):
             incident_action_item_condition_priority = self.incident_action_item_condition_priority
 
-        incident_action_item_priorities: Union[Unset, list[str]] = UNSET
+        incident_action_item_priorities: Unset | list[str] = UNSET
         if not isinstance(self.incident_action_item_priorities, Unset):
             incident_action_item_priorities = []
             for incident_action_item_priorities_item_data in self.incident_action_item_priorities:
                 incident_action_item_priorities_item: str = incident_action_item_priorities_item_data
                 incident_action_item_priorities.append(incident_action_item_priorities_item)
 
-        incident_action_item_condition_group: Union[Unset, str] = UNSET
+        incident_action_item_condition_group: Unset | str = UNSET
         if not isinstance(self.incident_action_item_condition_group, Unset):
             incident_action_item_condition_group = self.incident_action_item_condition_group
 
-        incident_action_item_group_ids: Union[Unset, list[str]] = UNSET
+        incident_action_item_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.incident_action_item_group_ids, Unset):
             incident_action_item_group_ids = self.incident_action_item_group_ids
 
@@ -507,24 +499,24 @@ class ActionItemTriggerParams:
 
             incident_statuses.append(incident_statuses_item)
 
-        def _parse_incident_inactivity_duration(data: object) -> Union[None, Unset, str]:
+        def _parse_incident_inactivity_duration(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         incident_inactivity_duration = _parse_incident_inactivity_duration(d.pop("incident_inactivity_duration", UNSET))
 
         _incident_condition = d.pop("incident_condition", UNSET)
-        incident_condition: Union[Unset, ActionItemTriggerParamsIncidentCondition]
+        incident_condition: Unset | ActionItemTriggerParamsIncidentCondition
         if isinstance(_incident_condition, Unset):
             incident_condition = UNSET
         else:
             incident_condition = check_action_item_trigger_params_incident_condition(_incident_condition)
 
         _incident_condition_visibility = d.pop("incident_condition_visibility", UNSET)
-        incident_condition_visibility: Union[Unset, ActionItemTriggerParamsIncidentConditionVisibility]
+        incident_condition_visibility: Unset | ActionItemTriggerParamsIncidentConditionVisibility
         if isinstance(_incident_condition_visibility, Unset):
             incident_condition_visibility = UNSET
         else:
@@ -533,14 +525,14 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_kind = d.pop("incident_condition_kind", UNSET)
-        incident_condition_kind: Union[Unset, ActionItemTriggerParamsIncidentConditionKind]
+        incident_condition_kind: Unset | ActionItemTriggerParamsIncidentConditionKind
         if isinstance(_incident_condition_kind, Unset):
             incident_condition_kind = UNSET
         else:
             incident_condition_kind = check_action_item_trigger_params_incident_condition_kind(_incident_condition_kind)
 
         _incident_condition_status = d.pop("incident_condition_status", UNSET)
-        incident_condition_status: Union[Unset, ActionItemTriggerParamsIncidentConditionStatus]
+        incident_condition_status: Unset | ActionItemTriggerParamsIncidentConditionStatus
         if isinstance(_incident_condition_status, Unset):
             incident_condition_status = UNSET
         else:
@@ -549,7 +541,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_sub_status = d.pop("incident_condition_sub_status", UNSET)
-        incident_condition_sub_status: Union[Unset, ActionItemTriggerParamsIncidentConditionSubStatus]
+        incident_condition_sub_status: Unset | ActionItemTriggerParamsIncidentConditionSubStatus
         if isinstance(_incident_condition_sub_status, Unset):
             incident_condition_sub_status = UNSET
         else:
@@ -558,7 +550,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_environment = d.pop("incident_condition_environment", UNSET)
-        incident_condition_environment: Union[Unset, ActionItemTriggerParamsIncidentConditionEnvironment]
+        incident_condition_environment: Unset | ActionItemTriggerParamsIncidentConditionEnvironment
         if isinstance(_incident_condition_environment, Unset):
             incident_condition_environment = UNSET
         else:
@@ -567,7 +559,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_severity = d.pop("incident_condition_severity", UNSET)
-        incident_condition_severity: Union[Unset, ActionItemTriggerParamsIncidentConditionSeverity]
+        incident_condition_severity: Unset | ActionItemTriggerParamsIncidentConditionSeverity
         if isinstance(_incident_condition_severity, Unset):
             incident_condition_severity = UNSET
         else:
@@ -576,7 +568,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_incident_type = d.pop("incident_condition_incident_type", UNSET)
-        incident_condition_incident_type: Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentType]
+        incident_condition_incident_type: Unset | ActionItemTriggerParamsIncidentConditionIncidentType
         if isinstance(_incident_condition_incident_type, Unset):
             incident_condition_incident_type = UNSET
         else:
@@ -585,7 +577,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_incident_roles = d.pop("incident_condition_incident_roles", UNSET)
-        incident_condition_incident_roles: Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentRoles]
+        incident_condition_incident_roles: Unset | ActionItemTriggerParamsIncidentConditionIncidentRoles
         if isinstance(_incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = UNSET
         else:
@@ -594,7 +586,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_service = d.pop("incident_condition_service", UNSET)
-        incident_condition_service: Union[Unset, ActionItemTriggerParamsIncidentConditionService]
+        incident_condition_service: Unset | ActionItemTriggerParamsIncidentConditionService
         if isinstance(_incident_condition_service, Unset):
             incident_condition_service = UNSET
         else:
@@ -603,7 +595,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_functionality = d.pop("incident_condition_functionality", UNSET)
-        incident_condition_functionality: Union[Unset, ActionItemTriggerParamsIncidentConditionFunctionality]
+        incident_condition_functionality: Unset | ActionItemTriggerParamsIncidentConditionFunctionality
         if isinstance(_incident_condition_functionality, Unset):
             incident_condition_functionality = UNSET
         else:
@@ -612,7 +604,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_group = d.pop("incident_condition_group", UNSET)
-        incident_condition_group: Union[Unset, ActionItemTriggerParamsIncidentConditionGroup]
+        incident_condition_group: Unset | ActionItemTriggerParamsIncidentConditionGroup
         if isinstance(_incident_condition_group, Unset):
             incident_condition_group = UNSET
         else:
@@ -622,7 +614,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_condition_summary(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionSummaryType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -637,13 +629,13 @@ class ActionItemTriggerParams:
                 return incident_condition_summary_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionSummaryType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset, data)
 
         incident_condition_summary = _parse_incident_condition_summary(d.pop("incident_condition_summary", UNSET))
 
         def _parse_incident_condition_started_at(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionStartedAtType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -658,7 +650,7 @@ class ActionItemTriggerParams:
                 return incident_condition_started_at_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionStartedAtType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset, data)
 
         incident_condition_started_at = _parse_incident_condition_started_at(
             d.pop("incident_condition_started_at", UNSET)
@@ -666,7 +658,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_condition_detected_at(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionDetectedAtType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -681,7 +673,7 @@ class ActionItemTriggerParams:
                 return incident_condition_detected_at_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionDetectedAtType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset, data)
 
         incident_condition_detected_at = _parse_incident_condition_detected_at(
             d.pop("incident_condition_detected_at", UNSET)
@@ -689,7 +681,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_condition_acknowledged_at(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -704,7 +696,7 @@ class ActionItemTriggerParams:
                 return incident_condition_acknowledged_at_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset, data)
 
         incident_condition_acknowledged_at = _parse_incident_condition_acknowledged_at(
             d.pop("incident_condition_acknowledged_at", UNSET)
@@ -712,7 +704,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_condition_mitigated_at(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionMitigatedAtType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -727,7 +719,7 @@ class ActionItemTriggerParams:
                 return incident_condition_mitigated_at_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionMitigatedAtType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset, data)
 
         incident_condition_mitigated_at = _parse_incident_condition_mitigated_at(
             d.pop("incident_condition_mitigated_at", UNSET)
@@ -735,7 +727,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_condition_resolved_at(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionResolvedAtType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -750,7 +742,7 @@ class ActionItemTriggerParams:
                 return incident_condition_resolved_at_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionResolvedAtType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset, data)
 
         incident_condition_resolved_at = _parse_incident_condition_resolved_at(
             d.pop("incident_condition_resolved_at", UNSET)
@@ -758,7 +750,7 @@ class ActionItemTriggerParams:
 
         def _parse_incident_conditional_inactivity(
             data: object,
-        ) -> Union[ActionItemTriggerParamsIncidentConditionalInactivityType1, None, Unset]:
+        ) -> ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -773,14 +765,14 @@ class ActionItemTriggerParams:
                 return incident_conditional_inactivity_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[ActionItemTriggerParamsIncidentConditionalInactivityType1, None, Unset], data)
+            return cast(ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset, data)
 
         incident_conditional_inactivity = _parse_incident_conditional_inactivity(
             d.pop("incident_conditional_inactivity", UNSET)
         )
 
         _incident_action_item_condition = d.pop("incident_action_item_condition", UNSET)
-        incident_action_item_condition: Union[Unset, ActionItemTriggerParamsIncidentActionItemCondition]
+        incident_action_item_condition: Unset | ActionItemTriggerParamsIncidentActionItemCondition
         if isinstance(_incident_action_item_condition, Unset):
             incident_action_item_condition = UNSET
         else:
@@ -789,7 +781,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_action_item_condition_kind = d.pop("incident_action_item_condition_kind", UNSET)
-        incident_action_item_condition_kind: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionKind]
+        incident_action_item_condition_kind: Unset | ActionItemTriggerParamsIncidentActionItemConditionKind
         if isinstance(_incident_action_item_condition_kind, Unset):
             incident_action_item_condition_kind = UNSET
         else:
@@ -807,7 +799,7 @@ class ActionItemTriggerParams:
             incident_action_item_kinds.append(incident_action_item_kinds_item)
 
         _incident_action_item_condition_status = d.pop("incident_action_item_condition_status", UNSET)
-        incident_action_item_condition_status: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionStatus]
+        incident_action_item_condition_status: Unset | ActionItemTriggerParamsIncidentActionItemConditionStatus
         if isinstance(_incident_action_item_condition_status, Unset):
             incident_action_item_condition_status = UNSET
         else:
@@ -827,9 +819,7 @@ class ActionItemTriggerParams:
             incident_action_item_statuses.append(incident_action_item_statuses_item)
 
         _incident_action_item_condition_priority = d.pop("incident_action_item_condition_priority", UNSET)
-        incident_action_item_condition_priority: Union[
-            Unset, ActionItemTriggerParamsIncidentActionItemConditionPriority
-        ]
+        incident_action_item_condition_priority: Unset | ActionItemTriggerParamsIncidentActionItemConditionPriority
         if isinstance(_incident_action_item_condition_priority, Unset):
             incident_action_item_condition_priority = UNSET
         else:
@@ -851,7 +841,7 @@ class ActionItemTriggerParams:
             incident_action_item_priorities.append(incident_action_item_priorities_item)
 
         _incident_action_item_condition_group = d.pop("incident_action_item_condition_group", UNSET)
-        incident_action_item_condition_group: Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionGroup]
+        incident_action_item_condition_group: Unset | ActionItemTriggerParamsIncidentActionItemConditionGroup
         if isinstance(_incident_action_item_condition_group, Unset):
             incident_action_item_condition_group = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -14,13 +14,13 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListRetrospectiveProcessesInclude = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -42,8 +42,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RetrospectiveProcessList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RetrospectiveProcessList | None:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessList.from_dict(response.json())
 
@@ -56,7 +56,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RetrospectiveProcessList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -69,9 +69,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListRetrospectiveProcessesInclude = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[RetrospectiveProcessList]:
     """List retrospective processes
 
@@ -106,10 +106,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[RetrospectiveProcessList]:
+    include: Unset | ListRetrospectiveProcessesInclude = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> RetrospectiveProcessList | None:
     """List retrospective processes
 
      List retrospective processes
@@ -138,9 +138,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListRetrospectiveProcessesInclude = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[RetrospectiveProcessList]:
     """List retrospective processes
 
@@ -173,10 +173,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[RetrospectiveProcessList]:
+    include: Unset | ListRetrospectiveProcessesInclude = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> RetrospectiveProcessList | None:
     """List retrospective processes
 
      List retrospective processes

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -27,14 +27,14 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItem:
         conditions (Union[Unset, list['PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem']]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    field_destroy: Union[Unset, bool] = UNSET
-    position: Union[Unset, int] = UNSET
-    conditions: Union[Unset, list["PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem"]] = UNSET
+    id: Unset | UUID = UNSET
+    field_destroy: Unset | bool = UNSET
+    position: Unset | int = UNSET
+    conditions: Unset | list["PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -42,7 +42,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItem:
 
         position = self.position
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -71,7 +71,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItem:
 
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,9 +12,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     workflow_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -36,8 +36,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[WorkflowFormFieldConditionList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> WorkflowFormFieldConditionList | None:
     if response.status_code == 200:
         response_200 = WorkflowFormFieldConditionList.from_dict(response.json())
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[WorkflowFormFieldConditionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -64,9 +64,9 @@ def sync_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[WorkflowFormFieldConditionList]:
     """List workflow form field conditions
 
@@ -104,10 +104,10 @@ def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[WorkflowFormFieldConditionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> WorkflowFormFieldConditionList | None:
     """List workflow form field conditions
 
      List workflow form field conditions
@@ -139,9 +139,9 @@ async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[WorkflowFormFieldConditionList]:
     """List workflow form field conditions
 
@@ -177,10 +177,10 @@ async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[WorkflowFormFieldConditionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> WorkflowFormFieldConditionList | None:
     """List workflow form field conditions
 
      List workflow form field conditions

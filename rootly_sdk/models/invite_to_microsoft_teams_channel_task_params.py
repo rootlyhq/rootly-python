@@ -32,7 +32,7 @@ class InviteToMicrosoftTeamsChannelTaskParams:
 
     channel: "InviteToMicrosoftTeamsChannelTaskParamsChannel"
     emails: str
-    task_type: Union[Unset, InviteToMicrosoftTeamsChannelTaskParamsTaskType] = UNSET
+    task_type: Unset | InviteToMicrosoftTeamsChannelTaskParamsTaskType = UNSET
     team: Union[Unset, "InviteToMicrosoftTeamsChannelTaskParamsTeam"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,11 +41,11 @@ class InviteToMicrosoftTeamsChannelTaskParams:
 
         emails = self.emails
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        team: Union[Unset, dict[str, Any]] = UNSET
+        team: Unset | dict[str, Any] = UNSET
         if not isinstance(self.team, Unset):
             team = self.team.to_dict()
 
@@ -79,14 +79,14 @@ class InviteToMicrosoftTeamsChannelTaskParams:
         emails = d.pop("emails")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, InviteToMicrosoftTeamsChannelTaskParamsTaskType]
+        task_type: Unset | InviteToMicrosoftTeamsChannelTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_invite_to_microsoft_teams_channel_task_params_task_type(_task_type)
 
         _team = d.pop("team", UNSET)
-        team: Union[Unset, InviteToMicrosoftTeamsChannelTaskParamsTeam]
+        team: Unset | InviteToMicrosoftTeamsChannelTaskParamsTeam
         if isinstance(_team, Unset):
             team = UNSET
         else:

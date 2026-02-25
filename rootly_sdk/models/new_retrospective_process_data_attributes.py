@@ -36,7 +36,7 @@ class NewRetrospectiveProcessDataAttributes:
 
     name: str
     copy_from: str
-    description: Union[None, Unset, str] = UNSET
+    description: None | Unset | str = UNSET
     retrospective_process_matching_criteria: Union[
         "NewRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0",
         "NewRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1",
@@ -56,13 +56,13 @@ class NewRetrospectiveProcessDataAttributes:
 
         copy_from = self.copy_from
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        retrospective_process_matching_criteria: Union[Unset, dict[str, Any]]
+        retrospective_process_matching_criteria: Unset | dict[str, Any]
         if isinstance(self.retrospective_process_matching_criteria, Unset):
             retrospective_process_matching_criteria = UNSET
         elif isinstance(
@@ -110,12 +110,12 @@ class NewRetrospectiveProcessDataAttributes:
 
         copy_from = d.pop("copy_from")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

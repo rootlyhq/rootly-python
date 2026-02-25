@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,23 +22,23 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0:
         cumulative (Union[None, Unset, bool]):
     """
 
-    operation: Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation] = UNSET
-    key: Union[None, Unset, str] = UNSET
-    cumulative: Union[None, Unset, bool] = UNSET
+    operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation = UNSET
+    key: None | Unset | str = UNSET
+    cumulative: None | Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Union[Unset, str] = UNSET
+        operation: Unset | str = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        key: Union[None, Unset, str]
+        key: None | Unset | str
         if isinstance(self.key, Unset):
             key = UNSET
         else:
             key = self.key
 
-        cumulative: Union[None, Unset, bool]
+        cumulative: None | Unset | bool
         if isinstance(self.cumulative, Unset):
             cumulative = UNSET
         else:
@@ -60,7 +60,7 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation]
+        operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
@@ -68,21 +68,21 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0:
                 _operation
             )
 
-        def _parse_key(data: object) -> Union[None, Unset, str]:
+        def _parse_key(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         key = _parse_key(d.pop("key", UNSET))
 
-        def _parse_cumulative(data: object) -> Union[None, Unset, bool]:
+        def _parse_cumulative(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         cumulative = _parse_cumulative(d.pop("cumulative", UNSET))
 

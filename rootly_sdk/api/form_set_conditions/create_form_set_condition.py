@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, FormSetConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | FormSetConditionResponse | None:
     if response.status_code == 201:
         response_201 = FormSetConditionResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, FormSetConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | FormSetConditionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormSetCondition,
-) -> Response[Union[ErrorsList, FormSetConditionResponse]]:
+) -> Response[ErrorsList | FormSetConditionResponse]:
     """Creates a Form Set Condition
 
      Creates a new form_set_condition from provided data
@@ -105,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewFormSetCondition,
-) -> Optional[Union[ErrorsList, FormSetConditionResponse]]:
+) -> ErrorsList | FormSetConditionResponse | None:
     """Creates a Form Set Condition
 
      Creates a new form_set_condition from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormSetCondition,
-) -> Response[Union[ErrorsList, FormSetConditionResponse]]:
+) -> Response[ErrorsList | FormSetConditionResponse]:
     """Creates a Form Set Condition
 
      Creates a new form_set_condition from provided data
@@ -166,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewFormSetCondition,
-) -> Optional[Union[ErrorsList, FormSetConditionResponse]]:
+) -> ErrorsList | FormSetConditionResponse | None:
     """Creates a Form Set Condition
 
      Creates a new form_set_condition from provided data

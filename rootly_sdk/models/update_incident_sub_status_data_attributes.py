@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -19,16 +19,16 @@ class UpdateIncidentSubStatusDataAttributes:
         assigned_by_user_id (Union[None, Unset, int]):
     """
 
-    sub_status_id: Union[Unset, str] = UNSET
-    assigned_at: Union[Unset, str] = UNSET
-    assigned_by_user_id: Union[None, Unset, int] = UNSET
+    sub_status_id: Unset | str = UNSET
+    assigned_at: Unset | str = UNSET
+    assigned_by_user_id: None | Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         sub_status_id = self.sub_status_id
 
         assigned_at = self.assigned_at
 
-        assigned_by_user_id: Union[None, Unset, int]
+        assigned_by_user_id: None | Unset | int
         if isinstance(self.assigned_by_user_id, Unset):
             assigned_by_user_id = UNSET
         else:
@@ -53,12 +53,12 @@ class UpdateIncidentSubStatusDataAttributes:
 
         assigned_at = d.pop("assigned_at", UNSET)
 
-        def _parse_assigned_by_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_assigned_by_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         assigned_by_user_id = _parse_assigned_by_user_id(d.pop("assigned_by_user_id", UNSET))
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
     if response.status_code == 201:
         response_201 = WorkflowFormFieldConditionResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -129,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
+) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data

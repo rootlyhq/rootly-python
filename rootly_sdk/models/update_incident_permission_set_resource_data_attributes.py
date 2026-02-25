@@ -29,14 +29,14 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
         severity_params (Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesSeverityParams]):
     """
 
-    kind: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesKind] = UNSET
-    private: Union[Unset, bool] = UNSET
-    resource_id: Union[Unset, str] = UNSET
-    resource_type: Union[Unset, str] = UNSET
+    kind: Unset | UpdateIncidentPermissionSetResourceDataAttributesKind = UNSET
+    private: Unset | bool = UNSET
+    resource_id: Unset | str = UNSET
+    resource_type: Unset | str = UNSET
     severity_params: Union[Unset, "UpdateIncidentPermissionSetResourceDataAttributesSeverityParams"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -46,7 +46,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
 
         resource_type = self.resource_type
 
-        severity_params: Union[Unset, dict[str, Any]] = UNSET
+        severity_params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -74,7 +74,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
 
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesKind]
+        kind: Unset | UpdateIncidentPermissionSetResourceDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -87,7 +87,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
         resource_type = d.pop("resource_type", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesSeverityParams]
+        severity_params: Unset | UpdateIncidentPermissionSetResourceDataAttributesSeverityParams
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

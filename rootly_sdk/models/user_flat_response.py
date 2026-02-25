@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,11 +29,11 @@ class UserFlatResponse:
     email: str
     created_at: str
     updated_at: str
-    first_name: Union[None, Unset, str] = UNSET
-    last_name: Union[None, Unset, str] = UNSET
-    full_name: Union[None, Unset, str] = UNSET
-    full_name_with_team: Union[None, Unset, str] = UNSET
-    time_zone: Union[None, Unset, str] = UNSET
+    first_name: None | Unset | str = UNSET
+    last_name: None | Unset | str = UNSET
+    full_name: None | Unset | str = UNSET
+    full_name_with_team: None | Unset | str = UNSET
+    time_zone: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,31 +45,31 @@ class UserFlatResponse:
 
         updated_at = self.updated_at
 
-        first_name: Union[None, Unset, str]
+        first_name: None | Unset | str
         if isinstance(self.first_name, Unset):
             first_name = UNSET
         else:
             first_name = self.first_name
 
-        last_name: Union[None, Unset, str]
+        last_name: None | Unset | str
         if isinstance(self.last_name, Unset):
             last_name = UNSET
         else:
             last_name = self.last_name
 
-        full_name: Union[None, Unset, str]
+        full_name: None | Unset | str
         if isinstance(self.full_name, Unset):
             full_name = UNSET
         else:
             full_name = self.full_name
 
-        full_name_with_team: Union[None, Unset, str]
+        full_name_with_team: None | Unset | str
         if isinstance(self.full_name_with_team, Unset):
             full_name_with_team = UNSET
         else:
             full_name_with_team = self.full_name_with_team
 
-        time_zone: Union[None, Unset, str]
+        time_zone: None | Unset | str
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -109,48 +109,48 @@ class UserFlatResponse:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_first_name(data: object) -> Union[None, Unset, str]:
+        def _parse_first_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         first_name = _parse_first_name(d.pop("first_name", UNSET))
 
-        def _parse_last_name(data: object) -> Union[None, Unset, str]:
+        def _parse_last_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         last_name = _parse_last_name(d.pop("last_name", UNSET))
 
-        def _parse_full_name(data: object) -> Union[None, Unset, str]:
+        def _parse_full_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         full_name = _parse_full_name(d.pop("full_name", UNSET))
 
-        def _parse_full_name_with_team(data: object) -> Union[None, Unset, str]:
+        def _parse_full_name_with_team(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         full_name_with_team = _parse_full_name_with_team(d.pop("full_name_with_team", UNSET))
 
-        def _parse_time_zone(data: object) -> Union[None, Unset, str]:
+        def _parse_time_zone(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 

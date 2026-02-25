@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -50,8 +50,8 @@ class TriggerWorkflowTaskParams:
     workflow: "TriggerWorkflowTaskParamsWorkflow"
     kind: TriggerWorkflowTaskParamsKind = "incident"
     attribute_to_query_by: TriggerWorkflowTaskParamsAttributeToQueryBy = "id"
-    task_type: Union[Unset, TriggerWorkflowTaskParamsTaskType] = UNSET
-    check_workflow_conditions: Union[Unset, bool] = UNSET
+    task_type: Unset | TriggerWorkflowTaskParamsTaskType = UNSET
+    check_workflow_conditions: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,7 +63,7 @@ class TriggerWorkflowTaskParams:
 
         workflow = self.workflow.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -101,7 +101,7 @@ class TriggerWorkflowTaskParams:
         workflow = TriggerWorkflowTaskParamsWorkflow.from_dict(d.pop("workflow"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, TriggerWorkflowTaskParamsTaskType]
+        task_type: Unset | TriggerWorkflowTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = CatalogEntityPropertyResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -111,7 +111,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -146,7 +146,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities

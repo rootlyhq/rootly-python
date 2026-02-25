@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -15,10 +15,10 @@ class MitigateIncidentDataAttributes:
         mitigation_message (Union[None, Unset, str]): How was the incident mitigated?
     """
 
-    mitigation_message: Union[None, Unset, str] = UNSET
+    mitigation_message: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        mitigation_message: Union[None, Unset, str]
+        mitigation_message: None | Unset | str
         if isinstance(self.mitigation_message, Unset):
             mitigation_message = UNSET
         else:
@@ -36,12 +36,12 @@ class MitigateIncidentDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_mitigation_message(data: object) -> Union[None, Unset, str]:
+        def _parse_mitigation_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         mitigation_message = _parse_mitigation_message(d.pop("mitigation_message", UNSET))
 

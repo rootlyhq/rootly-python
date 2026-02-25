@@ -45,13 +45,13 @@ class PageRootlyOnCallRespondersTaskParams:
 
     alert_urgency_id: str
     summary: str
-    task_type: Union[Unset, PageRootlyOnCallRespondersTaskParamsTaskType] = UNSET
+    task_type: Unset | PageRootlyOnCallRespondersTaskParamsTaskType = UNSET
     escalation_policy_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget"] = UNSET
     service_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsServiceTarget"] = UNSET
     user_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsUserTarget"] = UNSET
     group_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsGroupTarget"] = UNSET
-    description: Union[Unset, str] = UNSET
-    escalation_note: Union[Unset, str] = UNSET
+    description: Unset | str = UNSET
+    escalation_note: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,23 +59,23 @@ class PageRootlyOnCallRespondersTaskParams:
 
         summary = self.summary
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policy_target: Union[Unset, dict[str, Any]] = UNSET
+        escalation_policy_target: Unset | dict[str, Any] = UNSET
         if not isinstance(self.escalation_policy_target, Unset):
             escalation_policy_target = self.escalation_policy_target.to_dict()
 
-        service_target: Union[Unset, dict[str, Any]] = UNSET
+        service_target: Unset | dict[str, Any] = UNSET
         if not isinstance(self.service_target, Unset):
             service_target = self.service_target.to_dict()
 
-        user_target: Union[Unset, dict[str, Any]] = UNSET
+        user_target: Unset | dict[str, Any] = UNSET
         if not isinstance(self.user_target, Unset):
             user_target = self.user_target.to_dict()
 
-        group_target: Union[Unset, dict[str, Any]] = UNSET
+        group_target: Unset | dict[str, Any] = UNSET
         if not isinstance(self.group_target, Unset):
             group_target = self.group_target.to_dict()
 
@@ -129,14 +129,14 @@ class PageRootlyOnCallRespondersTaskParams:
         summary = d.pop("summary")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, PageRootlyOnCallRespondersTaskParamsTaskType]
+        task_type: Unset | PageRootlyOnCallRespondersTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_page_rootly_on_call_responders_task_params_task_type(_task_type)
 
         _escalation_policy_target = d.pop("escalation_policy_target", UNSET)
-        escalation_policy_target: Union[Unset, PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget]
+        escalation_policy_target: Unset | PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget
         if isinstance(_escalation_policy_target, Unset):
             escalation_policy_target = UNSET
         else:
@@ -145,21 +145,21 @@ class PageRootlyOnCallRespondersTaskParams:
             )
 
         _service_target = d.pop("service_target", UNSET)
-        service_target: Union[Unset, PageRootlyOnCallRespondersTaskParamsServiceTarget]
+        service_target: Unset | PageRootlyOnCallRespondersTaskParamsServiceTarget
         if isinstance(_service_target, Unset):
             service_target = UNSET
         else:
             service_target = PageRootlyOnCallRespondersTaskParamsServiceTarget.from_dict(_service_target)
 
         _user_target = d.pop("user_target", UNSET)
-        user_target: Union[Unset, PageRootlyOnCallRespondersTaskParamsUserTarget]
+        user_target: Unset | PageRootlyOnCallRespondersTaskParamsUserTarget
         if isinstance(_user_target, Unset):
             user_target = UNSET
         else:
             user_target = PageRootlyOnCallRespondersTaskParamsUserTarget.from_dict(_user_target)
 
         _group_target = d.pop("group_target", UNSET)
-        group_target: Union[Unset, PageRootlyOnCallRespondersTaskParamsGroupTarget]
+        group_target: Unset | PageRootlyOnCallRespondersTaskParamsGroupTarget
         if isinstance(_group_target, Unset):
             group_target = UNSET
         else:

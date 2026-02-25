@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -24,28 +24,28 @@ class UpdateIncidentStatusPageEventDataAttributes:
             update Default: False.
     """
 
-    event: Union[Unset, str] = UNSET
-    status_page_id: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdateIncidentStatusPageEventDataAttributesStatus] = UNSET
-    notify_subscribers: Union[None, Unset, bool] = False
-    should_tweet: Union[None, Unset, bool] = False
+    event: Unset | str = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus = UNSET
+    notify_subscribers: None | Unset | bool = False
+    should_tweet: None | Unset | bool = False
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
         status_page_id = self.status_page_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: Union[None, Unset, bool]
+        notify_subscribers: None | Unset | bool
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: Union[None, Unset, bool]
+        should_tweet: None | Unset | bool
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
@@ -75,27 +75,27 @@ class UpdateIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateIncidentStatusPageEventDataAttributesStatus]
+        status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> Union[None, Unset, bool]:
+        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> Union[None, Unset, bool]:
+        def _parse_should_tweet(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 

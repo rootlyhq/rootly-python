@@ -186,10 +186,10 @@ class UpdateWorkflowTaskDataAttributes:
             'UpdateVictorOpsIncidentTaskParams', 'UpdateZendeskTicketTaskParams', Any, Unset]):
     """
 
-    name: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    skip_on_failure: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = True
+    name: Unset | str = UNSET
+    position: Unset | int = UNSET
+    skip_on_failure: Unset | bool = UNSET
+    enabled: Unset | bool = True
     task_params: Union[
         "AddActionItemTaskParams",
         "AddMicrosoftTeamsChatTabTaskParams",
@@ -449,7 +449,7 @@ class UpdateWorkflowTaskDataAttributes:
 
         enabled = self.enabled
 
-        task_params: Union[Any, Unset, dict[str, Any]]
+        task_params: Any | Unset | dict[str, Any]
         if isinstance(self.task_params, Unset):
             task_params = UNSET
         elif isinstance(self.task_params, AddActionItemTaskParams):

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserEmailAddressList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserEmailAddressList | None:
     if response.status_code == 200:
         response_200 = UserEmailAddressList.from_dict(response.json())
 
@@ -46,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserEmailAddressList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserEmailAddressList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +60,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserEmailAddressList]]:
+) -> Response[ErrorsList | UserEmailAddressList]:
     """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
@@ -91,7 +91,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserEmailAddressList]]:
+) -> ErrorsList | UserEmailAddressList | None:
     """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserEmailAddressList]]:
+) -> Response[ErrorsList | UserEmailAddressList]:
     """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
@@ -146,7 +146,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserEmailAddressList]]:
+) -> ErrorsList | UserEmailAddressList | None:
     """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user

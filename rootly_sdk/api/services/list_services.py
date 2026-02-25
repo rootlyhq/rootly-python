@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,23 +11,23 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterbackstage_id: Union[Unset, str] = UNSET,
-    filtercortex_id: Union[Unset, str] = UNSET,
-    filteropslevel_id: Union[Unset, str] = UNSET,
-    filterexternal_id: Union[Unset, str] = UNSET,
-    filteralert_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filterincident_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterbackstage_id: Unset | str = UNSET,
+    filtercortex_id: Unset | str = UNSET,
+    filteropslevel_id: Unset | str = UNSET,
+    filterexternal_id: Unset | str = UNSET,
+    filteralert_broadcast_enabled: Unset | bool = UNSET,
+    filterincident_broadcast_enabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -76,7 +76,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[ServiceList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ServiceList | None:
     if response.status_code == 200:
         response_200 = ServiceList.from_dict(response.json())
 
@@ -88,7 +88,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ServiceList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ServiceList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -100,23 +100,23 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterbackstage_id: Union[Unset, str] = UNSET,
-    filtercortex_id: Union[Unset, str] = UNSET,
-    filteropslevel_id: Union[Unset, str] = UNSET,
-    filterexternal_id: Union[Unset, str] = UNSET,
-    filteralert_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filterincident_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterbackstage_id: Unset | str = UNSET,
+    filtercortex_id: Unset | str = UNSET,
+    filteropslevel_id: Unset | str = UNSET,
+    filterexternal_id: Unset | str = UNSET,
+    filteralert_broadcast_enabled: Unset | bool = UNSET,
+    filterincident_broadcast_enabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[ServiceList]:
     """List services
 
@@ -179,24 +179,24 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterbackstage_id: Union[Unset, str] = UNSET,
-    filtercortex_id: Union[Unset, str] = UNSET,
-    filteropslevel_id: Union[Unset, str] = UNSET,
-    filterexternal_id: Union[Unset, str] = UNSET,
-    filteralert_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filterincident_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[ServiceList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterbackstage_id: Unset | str = UNSET,
+    filtercortex_id: Unset | str = UNSET,
+    filteropslevel_id: Unset | str = UNSET,
+    filterexternal_id: Unset | str = UNSET,
+    filteralert_broadcast_enabled: Unset | bool = UNSET,
+    filterincident_broadcast_enabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> ServiceList | None:
     """List services
 
      List services
@@ -253,23 +253,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterbackstage_id: Union[Unset, str] = UNSET,
-    filtercortex_id: Union[Unset, str] = UNSET,
-    filteropslevel_id: Union[Unset, str] = UNSET,
-    filterexternal_id: Union[Unset, str] = UNSET,
-    filteralert_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filterincident_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterbackstage_id: Unset | str = UNSET,
+    filtercortex_id: Unset | str = UNSET,
+    filteropslevel_id: Unset | str = UNSET,
+    filterexternal_id: Unset | str = UNSET,
+    filteralert_broadcast_enabled: Unset | bool = UNSET,
+    filterincident_broadcast_enabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[ServiceList]:
     """List services
 
@@ -330,24 +330,24 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterbackstage_id: Union[Unset, str] = UNSET,
-    filtercortex_id: Union[Unset, str] = UNSET,
-    filteropslevel_id: Union[Unset, str] = UNSET,
-    filterexternal_id: Union[Unset, str] = UNSET,
-    filteralert_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filterincident_broadcast_enabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[ServiceList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterbackstage_id: Unset | str = UNSET,
+    filtercortex_id: Unset | str = UNSET,
+    filteropslevel_id: Unset | str = UNSET,
+    filterexternal_id: Unset | str = UNSET,
+    filteralert_broadcast_enabled: Unset | bool = UNSET,
+    filterincident_broadcast_enabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> ServiceList | None:
     """List services
 
      List services

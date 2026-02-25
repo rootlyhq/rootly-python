@@ -25,16 +25,16 @@ class NewScheduleRotationUserData:
         attributes (Union[Unset, NewScheduleRotationUserDataAttributes]):
     """
 
-    type_: Union[Unset, NewScheduleRotationUserDataType] = UNSET
+    type_: Unset | NewScheduleRotationUserDataType = UNSET
     attributes: Union[Unset, "NewScheduleRotationUserDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +54,14 @@ class NewScheduleRotationUserData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, NewScheduleRotationUserDataType]
+        type_: Unset | NewScheduleRotationUserDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_new_schedule_rotation_user_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, NewScheduleRotationUserDataAttributes]
+        attributes: Unset | NewScheduleRotationUserDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[DashboardPanelResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DashboardPanelResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = DashboardPanelResponse.from_dict(response.json())
 
@@ -41,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[DashboardPanelResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DashboardPanelResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DashboardPanelResponse, ErrorsList]]:
+) -> Response[DashboardPanelResponse | ErrorsList]:
     """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
@@ -86,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DashboardPanelResponse, ErrorsList]]:
+) -> DashboardPanelResponse | ErrorsList | None:
     """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DashboardPanelResponse, ErrorsList]]:
+) -> Response[DashboardPanelResponse | ErrorsList]:
     """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
@@ -141,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DashboardPanelResponse, ErrorsList]]:
+) -> DashboardPanelResponse | ErrorsList | None:
     """Duplicates a dashboard panel
 
      Duplicates a dashboard panel

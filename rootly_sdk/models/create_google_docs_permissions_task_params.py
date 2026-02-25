@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,9 +26,9 @@ class CreateGoogleDocsPermissionsTaskParams:
 
     file_id: str
     permissions: str
-    task_type: Union[Unset, CreateGoogleDocsPermissionsTaskParamsTaskType] = UNSET
-    send_notification_email: Union[Unset, bool] = UNSET
-    email_message: Union[None, Unset, str] = UNSET
+    task_type: Unset | CreateGoogleDocsPermissionsTaskParamsTaskType = UNSET
+    send_notification_email: Unset | bool = UNSET
+    email_message: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,13 +36,13 @@ class CreateGoogleDocsPermissionsTaskParams:
 
         permissions = self.permissions
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         send_notification_email = self.send_notification_email
 
-        email_message: Union[None, Unset, str]
+        email_message: None | Unset | str
         if isinstance(self.email_message, Unset):
             email_message = UNSET
         else:
@@ -73,7 +73,7 @@ class CreateGoogleDocsPermissionsTaskParams:
         permissions = d.pop("permissions")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateGoogleDocsPermissionsTaskParamsTaskType]
+        task_type: Unset | CreateGoogleDocsPermissionsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -81,12 +81,12 @@ class CreateGoogleDocsPermissionsTaskParams:
 
         send_notification_email = d.pop("send_notification_email", UNSET)
 
-        def _parse_email_message(data: object) -> Union[None, Unset, str]:
+        def _parse_email_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         email_message = _parse_email_message(d.pop("email_message", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,10 +21,10 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
             matching severity
     """
 
-    fully_enabled: Union[Unset, bool] = True
-    create_enabled: Union[Unset, bool] = False
-    applies_to_unassigned: Union[Unset, bool] = True
-    severity_ids: Union[None, Unset, list[str]] = UNSET
+    fully_enabled: Unset | bool = True
+    create_enabled: Unset | bool = False
+    applies_to_unassigned: Unset | bool = True
+    severity_ids: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,7 +34,7 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
 
         applies_to_unassigned = self.applies_to_unassigned
 
-        severity_ids: Union[None, Unset, list[str]]
+        severity_ids: None | Unset | list[str]
         if isinstance(self.severity_ids, Unset):
             severity_ids = UNSET
         elif isinstance(self.severity_ids, list):
@@ -66,7 +66,7 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
 
         applies_to_unassigned = d.pop("applies_to_unassigned", UNSET)
 
-        def _parse_severity_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_severity_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -79,7 +79,7 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
                 return severity_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         severity_ids = _parse_severity_ids(d.pop("severity_ids", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -16,8 +16,8 @@ class UpdateScheduleRotationUserDataAttributes:
         position (Union[Unset, int]): Position of the user inside rotation
     """
 
-    user_id: Union[Unset, int] = UNSET
-    position: Union[Unset, int] = UNSET
+    user_id: Unset | int = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         user_id = self.user_id

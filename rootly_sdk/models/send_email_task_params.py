@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,15 +33,15 @@ class SendEmailTaskParams:
 
     to: list[str]
     subject: str
-    body: Union[None, str]
-    task_type: Union[Unset, SendEmailTaskParamsTaskType] = UNSET
-    from_: Union[Unset, str] = "Rootly <workflows@rootly.com>"
-    cc: Union[Unset, list[str]] = UNSET
-    bcc: Union[Unset, list[str]] = UNSET
-    preheader: Union[None, Unset, str] = UNSET
-    include_header: Union[Unset, bool] = UNSET
-    include_footer: Union[Unset, bool] = UNSET
-    custom_logo_url: Union[None, Unset, str] = UNSET
+    body: None | str
+    task_type: Unset | SendEmailTaskParamsTaskType = UNSET
+    from_: Unset | str = "Rootly <workflows@rootly.com>"
+    cc: Unset | list[str] = UNSET
+    bcc: Unset | list[str] = UNSET
+    preheader: None | Unset | str = UNSET
+    include_header: Unset | bool = UNSET
+    include_footer: Unset | bool = UNSET
+    custom_logo_url: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,24 +49,24 @@ class SendEmailTaskParams:
 
         subject = self.subject
 
-        body: Union[None, str]
+        body: None | str
         body = self.body
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         from_ = self.from_
 
-        cc: Union[Unset, list[str]] = UNSET
+        cc: Unset | list[str] = UNSET
         if not isinstance(self.cc, Unset):
             cc = self.cc
 
-        bcc: Union[Unset, list[str]] = UNSET
+        bcc: Unset | list[str] = UNSET
         if not isinstance(self.bcc, Unset):
             bcc = self.bcc
 
-        preheader: Union[None, Unset, str]
+        preheader: None | Unset | str
         if isinstance(self.preheader, Unset):
             preheader = UNSET
         else:
@@ -76,7 +76,7 @@ class SendEmailTaskParams:
 
         include_footer = self.include_footer
 
-        custom_logo_url: Union[None, Unset, str]
+        custom_logo_url: None | Unset | str
         if isinstance(self.custom_logo_url, Unset):
             custom_logo_url = UNSET
         else:
@@ -117,15 +117,15 @@ class SendEmailTaskParams:
 
         subject = d.pop("subject")
 
-        def _parse_body(data: object) -> Union[None, str]:
+        def _parse_body(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         body = _parse_body(d.pop("body"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, SendEmailTaskParamsTaskType]
+        task_type: Unset | SendEmailTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -137,12 +137,12 @@ class SendEmailTaskParams:
 
         bcc = cast(list[str], d.pop("bcc", UNSET))
 
-        def _parse_preheader(data: object) -> Union[None, Unset, str]:
+        def _parse_preheader(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         preheader = _parse_preheader(d.pop("preheader", UNSET))
 
@@ -150,12 +150,12 @@ class SendEmailTaskParams:
 
         include_footer = d.pop("include_footer", UNSET)
 
-        def _parse_custom_logo_url(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_logo_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_logo_url = _parse_custom_logo_url(d.pop("custom_logo_url", UNSET))
 

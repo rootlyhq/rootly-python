@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -15,7 +15,7 @@ class UpdateUserEmailAddressDataAttributes:
         email (Union[Unset, str]): Email address
     """
 
-    email: Union[Unset, str] = UNSET
+    email: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         email = self.email

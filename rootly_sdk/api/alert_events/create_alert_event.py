@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertEventResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertEventResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertEventResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertEventResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertEventResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent,
-) -> Response[Union[AlertEventResponse, ErrorsList]]:
+) -> Response[AlertEventResponse | ErrorsList]:
     """Create alert event
 
      Creates a new alert event
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent,
-) -> Optional[Union[AlertEventResponse, ErrorsList]]:
+) -> AlertEventResponse | ErrorsList | None:
     """Create alert event
 
      Creates a new alert event
@@ -129,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent,
-) -> Response[Union[AlertEventResponse, ErrorsList]]:
+) -> Response[AlertEventResponse | ErrorsList]:
     """Create alert event
 
      Creates a new alert event
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent,
-) -> Optional[Union[AlertEventResponse, ErrorsList]]:
+) -> AlertEventResponse | ErrorsList | None:
     """Create alert event
 
      Creates a new alert event

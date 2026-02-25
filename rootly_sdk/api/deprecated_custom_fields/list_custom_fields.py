@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,28 +13,28 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, ListCustomFieldsInclude] = UNSET,
-    sort: Union[Unset, ListCustomFieldsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterlabel: Union[Unset, str] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCustomFieldsInclude = UNSET,
+    sort: Unset | ListCustomFieldsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterlabel: Unset | str = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Union[Unset, str] = UNSET
+    json_sort: Unset | str = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -71,9 +71,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[CustomFieldList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldList | None:
     if response.status_code == 200:
         response_200 = CustomFieldList.from_dict(response.json())
 
@@ -85,9 +83,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[CustomFieldList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CustomFieldList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -99,18 +95,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCustomFieldsInclude] = UNSET,
-    sort: Union[Unset, ListCustomFieldsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterlabel: Union[Unset, str] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCustomFieldsInclude = UNSET,
+    sort: Unset | ListCustomFieldsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterlabel: Unset | str = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[CustomFieldList]:
     """[DEPRECATED] List Custom Fields
 
@@ -163,19 +159,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCustomFieldsInclude] = UNSET,
-    sort: Union[Unset, ListCustomFieldsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterlabel: Union[Unset, str] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[CustomFieldList]:
+    include: Unset | ListCustomFieldsInclude = UNSET,
+    sort: Unset | ListCustomFieldsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterlabel: Unset | str = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> CustomFieldList | None:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
@@ -222,18 +218,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCustomFieldsInclude] = UNSET,
-    sort: Union[Unset, ListCustomFieldsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterlabel: Union[Unset, str] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCustomFieldsInclude = UNSET,
+    sort: Unset | ListCustomFieldsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterlabel: Unset | str = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[CustomFieldList]:
     """[DEPRECATED] List Custom Fields
 
@@ -284,19 +280,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCustomFieldsInclude] = UNSET,
-    sort: Union[Unset, ListCustomFieldsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filterlabel: Union[Unset, str] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[CustomFieldList]:
+    include: Unset | ListCustomFieldsInclude = UNSET,
+    sort: Unset | ListCustomFieldsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterslug: Unset | str = UNSET,
+    filterlabel: Unset | str = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> CustomFieldList | None:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields

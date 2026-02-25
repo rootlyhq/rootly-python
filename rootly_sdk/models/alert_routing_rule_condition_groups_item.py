@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -29,20 +29,20 @@ class AlertRoutingRuleConditionGroupsItem:
     """
 
     position: int
-    id: Union[Unset, UUID] = UNSET
-    conditions: Union[Unset, list["AlertRoutingRuleConditionGroupsItemConditionsItem"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    id: Unset | UUID = UNSET
+    conditions: Unset | list["AlertRoutingRuleConditionGroupsItemConditionsItem"] = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         position = self.position
 
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -81,7 +81,7 @@ class AlertRoutingRuleConditionGroupsItem:
         position = d.pop("position")
 
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:

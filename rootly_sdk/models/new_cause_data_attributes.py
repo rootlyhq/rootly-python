@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -23,26 +23,26 @@ class NewCauseDataAttributes:
     """
 
     name: str
-    description: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    fields: Union[Unset, list["NewCauseDataAttributesFieldsItem"]] = UNSET
+    description: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    fields: Unset | list["NewCauseDataAttributesFieldsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        fields: Union[Unset, list[dict[str, Any]]] = UNSET
+        fields: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.fields, Unset):
             fields = []
             for fields_item_data in self.fields:
@@ -72,21 +72,21 @@ class NewCauseDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

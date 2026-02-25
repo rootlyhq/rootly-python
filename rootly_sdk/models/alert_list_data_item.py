@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,7 +28,7 @@ class AlertListDataItem:
     id: str
     type_: AlertListDataItemType
     attributes: "Alert"
-    source: Union[Unset, AlertListDataItemSource] = UNSET
+    source: Unset | AlertListDataItemSource = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +38,7 @@ class AlertListDataItem:
 
         attributes = self.attributes.to_dict()
 
-        source: Union[Unset, str] = UNSET
+        source: Unset | str = UNSET
         if not isinstance(self.source, Unset):
             source = self.source
 
@@ -68,7 +68,7 @@ class AlertListDataItem:
         attributes = Alert.from_dict(d.pop("attributes"))
 
         _source = d.pop("source", UNSET)
-        source: Union[Unset, AlertListDataItemSource]
+        source: Unset | AlertListDataItemSource
         if isinstance(_source, Unset):
             source = UNSET
         else:

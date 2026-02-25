@@ -26,7 +26,7 @@ class ShiftRelationshipsUser:
     def to_dict(self) -> dict[str, Any]:
         from ..models.shift_relationships_user_data_type_0 import ShiftRelationshipsUserDataType0
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, ShiftRelationshipsUserDataType0):

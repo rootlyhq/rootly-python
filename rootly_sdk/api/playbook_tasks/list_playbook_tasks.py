@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,9 +12,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     playbook_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -35,9 +35,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PlaybookTaskList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PlaybookTaskList | None:
     if response.status_code == 200:
         response_200 = PlaybookTaskList.from_dict(response.json())
 
@@ -49,9 +47,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[PlaybookTaskList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PlaybookTaskList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,9 +60,9 @@ def sync_detailed(
     playbook_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[PlaybookTaskList]:
     """List playbook tasks
 
@@ -104,10 +100,10 @@ def sync(
     playbook_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[PlaybookTaskList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> PlaybookTaskList | None:
     """List playbook tasks
 
      List playbook tasks
@@ -139,9 +135,9 @@ async def asyncio_detailed(
     playbook_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[PlaybookTaskList]:
     """List playbook tasks
 
@@ -177,10 +173,10 @@ async def asyncio(
     playbook_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[PlaybookTaskList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> PlaybookTaskList | None:
     """List playbook tasks
 
      List playbook tasks

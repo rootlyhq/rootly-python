@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -31,13 +31,13 @@ class UpdateFormFieldPlacementDataAttributes:
         non_editable (Union[Unset, bool]): Whether the field is read-only and cannot be edited by users.
     """
 
-    form_set_id: Union[Unset, str] = UNSET
-    form: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    required: Union[Unset, bool] = UNSET
-    required_operator: Union[Unset, UpdateFormFieldPlacementDataAttributesRequiredOperator] = UNSET
-    placement_operator: Union[Unset, UpdateFormFieldPlacementDataAttributesPlacementOperator] = UNSET
-    non_editable: Union[Unset, bool] = UNSET
+    form_set_id: Unset | str = UNSET
+    form: Unset | str = UNSET
+    position: Unset | int = UNSET
+    required: Unset | bool = UNSET
+    required_operator: Unset | UpdateFormFieldPlacementDataAttributesRequiredOperator = UNSET
+    placement_operator: Unset | UpdateFormFieldPlacementDataAttributesPlacementOperator = UNSET
+    non_editable: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_set_id = self.form_set_id
@@ -48,11 +48,11 @@ class UpdateFormFieldPlacementDataAttributes:
 
         required = self.required
 
-        required_operator: Union[Unset, str] = UNSET
+        required_operator: Unset | str = UNSET
         if not isinstance(self.required_operator, Unset):
             required_operator = self.required_operator
 
-        placement_operator: Union[Unset, str] = UNSET
+        placement_operator: Unset | str = UNSET
         if not isinstance(self.placement_operator, Unset):
             placement_operator = self.placement_operator
 
@@ -90,14 +90,14 @@ class UpdateFormFieldPlacementDataAttributes:
         required = d.pop("required", UNSET)
 
         _required_operator = d.pop("required_operator", UNSET)
-        required_operator: Union[Unset, UpdateFormFieldPlacementDataAttributesRequiredOperator]
+        required_operator: Unset | UpdateFormFieldPlacementDataAttributesRequiredOperator
         if isinstance(_required_operator, Unset):
             required_operator = UNSET
         else:
             required_operator = check_update_form_field_placement_data_attributes_required_operator(_required_operator)
 
         _placement_operator = d.pop("placement_operator", UNSET)
-        placement_operator: Union[Unset, UpdateFormFieldPlacementDataAttributesPlacementOperator]
+        placement_operator: Unset | UpdateFormFieldPlacementDataAttributesPlacementOperator
         if isinstance(_placement_operator, Unset):
             placement_operator = UNSET
         else:

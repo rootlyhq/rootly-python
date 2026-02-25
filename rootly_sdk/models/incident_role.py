@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,13 +28,13 @@ class IncidentRole:
     name: str
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    summary: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    optional: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    allow_multi_user_assignment: Union[Unset, bool] = UNSET
+    slug: Unset | str = UNSET
+    summary: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    optional: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
+    allow_multi_user_assignment: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,19 +46,19 @@ class IncidentRole:
 
         slug = self.slug
 
-        summary: Union[None, Unset, str]
+        summary: None | Unset | str
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
             summary = self.summary
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -107,30 +107,30 @@ class IncidentRole:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_summary(data: object) -> Union[None, Unset, str]:
+        def _parse_summary(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

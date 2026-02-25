@@ -29,7 +29,7 @@ class RestartIncidentData:
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -53,7 +53,7 @@ class RestartIncidentData:
         type_ = check_restart_incident_data_type(d.pop("type"))
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, RestartIncidentDataAttributes]
+        attributes: Unset | RestartIncidentDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

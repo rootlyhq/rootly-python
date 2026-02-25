@@ -26,19 +26,19 @@ class UpdateEdgeConnectorActionAction:
         metadata (Union[Unset, UpdateEdgeConnectorActionActionMetadata]):
     """
 
-    name: Union[Unset, str] = UNSET
-    action_type: Union[Unset, UpdateEdgeConnectorActionActionActionType] = UNSET
+    name: Unset | str = UNSET
+    action_type: Unset | UpdateEdgeConnectorActionActionActionType = UNSET
     metadata: Union[Unset, "UpdateEdgeConnectorActionActionMetadata"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        action_type: Union[Unset, str] = UNSET
+        action_type: Unset | str = UNSET
         if not isinstance(self.action_type, Unset):
             action_type = self.action_type
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: Unset | dict[str, Any] = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -62,14 +62,14 @@ class UpdateEdgeConnectorActionAction:
         name = d.pop("name", UNSET)
 
         _action_type = d.pop("action_type", UNSET)
-        action_type: Union[Unset, UpdateEdgeConnectorActionActionActionType]
+        action_type: Unset | UpdateEdgeConnectorActionActionActionType
         if isinstance(_action_type, Unset):
             action_type = UNSET
         else:
             action_type = check_update_edge_connector_action_action_action_type(_action_type)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, UpdateEdgeConnectorActionActionMetadata]
+        metadata: Unset | UpdateEdgeConnectorActionActionMetadata
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

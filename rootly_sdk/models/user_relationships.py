@@ -27,11 +27,11 @@ class UserRelationships:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        role: Union[Unset, dict[str, Any]] = UNSET
+        role: Unset | dict[str, Any] = UNSET
         if not isinstance(self.role, Unset):
             role = self.role.to_dict()
 
-        on_call_role: Union[Unset, dict[str, Any]] = UNSET
+        on_call_role: Unset | dict[str, Any] = UNSET
         if not isinstance(self.on_call_role, Unset):
             on_call_role = self.on_call_role.to_dict()
 
@@ -52,14 +52,14 @@ class UserRelationships:
 
         d = dict(src_dict)
         _role = d.pop("role", UNSET)
-        role: Union[Unset, RoleRelationship]
+        role: Unset | RoleRelationship
         if isinstance(_role, Unset):
             role = UNSET
         else:
             role = RoleRelationship.from_dict(_role)
 
         _on_call_role = d.pop("on_call_role", UNSET)
-        on_call_role: Union[Unset, OnCallRoleRelationship]
+        on_call_role: Unset | OnCallRoleRelationship
         if isinstance(_on_call_role, Unset):
             on_call_role = UNSET
         else:

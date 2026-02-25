@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -25,29 +25,29 @@ class UpdateIncidentRetrospectiveStepDataAttributes:
             step
     """
 
-    title: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    due_date: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    skippable: Union[Unset, bool] = UNSET
-    status: Union[Unset, UpdateIncidentRetrospectiveStepDataAttributesStatus] = UNSET
+    title: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    due_date: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    skippable: Unset | bool = UNSET
+    status: Unset | UpdateIncidentRetrospectiveStepDataAttributesStatus = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         else:
             due_date = self.due_date
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -55,7 +55,7 @@ class UpdateIncidentRetrospectiveStepDataAttributes:
 
         skippable = self.skippable
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -82,37 +82,37 @@ class UpdateIncidentRetrospectiveStepDataAttributes:
         d = dict(src_dict)
         title = d.pop("title", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, str]:
+        def _parse_due_date(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         skippable = d.pop("skippable", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateIncidentRetrospectiveStepDataAttributesStatus]
+        status: Unset | UpdateIncidentRetrospectiveStepDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

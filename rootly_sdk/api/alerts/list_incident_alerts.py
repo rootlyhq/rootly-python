@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,11 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
+    include: Unset | ListIncidentAlertsInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -34,7 +34,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[AlertList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertList | None:
     if response.status_code == 200:
         response_200 = AlertList.from_dict(response.json())
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AlertList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +59,7 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
+    include: Unset | ListIncidentAlertsInclude = UNSET,
 ) -> Response[AlertList]:
     """List Incident alerts
 
@@ -93,8 +93,8 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
-) -> Optional[AlertList]:
+    include: Unset | ListIncidentAlertsInclude = UNSET,
+) -> AlertList | None:
     """List Incident alerts
 
      List incident alerts
@@ -122,7 +122,7 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
+    include: Unset | ListIncidentAlertsInclude = UNSET,
 ) -> Response[AlertList]:
     """List Incident alerts
 
@@ -154,8 +154,8 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
-) -> Optional[AlertList]:
+    include: Unset | ListIncidentAlertsInclude = UNSET,
+) -> AlertList | None:
     """List Incident alerts
 
      List incident alerts

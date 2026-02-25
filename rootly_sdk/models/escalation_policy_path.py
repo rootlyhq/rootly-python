@@ -65,16 +65,16 @@ class EscalationPolicyPath:
     default: bool
     notification_type: str
     escalation_policy_id: str
-    repeat: Union[None, bool]
-    repeat_count: Union[None, int]
-    match_mode: Union[Unset, EscalationPolicyPathMatchMode] = UNSET
-    position: Union[Unset, int] = UNSET
-    initial_delay: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
-    rules: Union[
-        Unset,
-        list[
+    repeat: None | bool
+    repeat_count: None | int
+    match_mode: Unset | EscalationPolicyPathMatchMode = UNSET
+    position: Unset | int = UNSET
+    initial_delay: Unset | int = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
+    rules: (
+        Unset
+        | list[
             Union[
                 "EscalationPolicyPathRulesItemType0",
                 "EscalationPolicyPathRulesItemType1",
@@ -89,10 +89,10 @@ class EscalationPolicyPath:
                 "EscalationPolicyPathRulesItemType5Type2",
                 "EscalationPolicyPathRulesItemType5Type3",
             ]
-        ],
-    ] = UNSET
-    time_restriction_time_zone: Union[Unset, EscalationPolicyPathTimeRestrictionTimeZone] = UNSET
-    time_restrictions: Union[Unset, list["EscalationPolicyPathTimeRestrictionsItem"]] = UNSET
+        ]
+    ) = UNSET
+    time_restriction_time_zone: Unset | EscalationPolicyPathTimeRestrictionTimeZone = UNSET
+    time_restrictions: Unset | list["EscalationPolicyPathTimeRestrictionsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -116,13 +116,13 @@ class EscalationPolicyPath:
 
         escalation_policy_id = self.escalation_policy_id
 
-        repeat: Union[None, bool]
+        repeat: None | bool
         repeat = self.repeat
 
-        repeat_count: Union[None, int]
+        repeat_count: None | int
         repeat_count = self.repeat_count
 
-        match_mode: Union[Unset, str] = UNSET
+        match_mode: Unset | str = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
@@ -134,7 +134,7 @@ class EscalationPolicyPath:
 
         updated_at = self.updated_at
 
-        rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        rules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
@@ -166,11 +166,11 @@ class EscalationPolicyPath:
 
                 rules.append(rules_item)
 
-        time_restriction_time_zone: Union[Unset, str] = UNSET
+        time_restriction_time_zone: Unset | str = UNSET
         if not isinstance(self.time_restriction_time_zone, Unset):
             time_restriction_time_zone = self.time_restriction_time_zone
 
-        time_restrictions: Union[Unset, list[dict[str, Any]]] = UNSET
+        time_restrictions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.time_restrictions, Unset):
             time_restrictions = []
             for time_restrictions_item_data in self.time_restrictions:
@@ -233,22 +233,22 @@ class EscalationPolicyPath:
 
         escalation_policy_id = d.pop("escalation_policy_id")
 
-        def _parse_repeat(data: object) -> Union[None, bool]:
+        def _parse_repeat(data: object) -> None | bool:
             if data is None:
                 return data
-            return cast(Union[None, bool], data)
+            return cast(None | bool, data)
 
         repeat = _parse_repeat(d.pop("repeat"))
 
-        def _parse_repeat_count(data: object) -> Union[None, int]:
+        def _parse_repeat_count(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(Union[None, int], data)
+            return cast(None | int, data)
 
         repeat_count = _parse_repeat_count(d.pop("repeat_count"))
 
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: Union[Unset, EscalationPolicyPathMatchMode]
+        match_mode: Unset | EscalationPolicyPathMatchMode
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
@@ -381,7 +381,7 @@ class EscalationPolicyPath:
             rules.append(rules_item)
 
         _time_restriction_time_zone = d.pop("time_restriction_time_zone", UNSET)
-        time_restriction_time_zone: Union[Unset, EscalationPolicyPathTimeRestrictionTimeZone]
+        time_restriction_time_zone: Unset | EscalationPolicyPathTimeRestrictionTimeZone
         if isinstance(_time_restriction_time_zone, Unset):
             time_restriction_time_zone = UNSET
         else:

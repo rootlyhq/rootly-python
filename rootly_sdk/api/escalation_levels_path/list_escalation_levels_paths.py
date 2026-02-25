@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,9 +12,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     escalation_policy_path_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -36,8 +36,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[EscalationPolicyLevelList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> EscalationPolicyLevelList | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyLevelList.from_dict(response.json())
 
@@ -50,7 +50,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[EscalationPolicyLevelList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -64,9 +64,9 @@ def sync_detailed(
     escalation_policy_path_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyLevelList]:
     """List escalation levels for an Escalation Path
 
@@ -104,10 +104,10 @@ def sync(
     escalation_policy_path_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[EscalationPolicyLevelList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> EscalationPolicyLevelList | None:
     """List escalation levels for an Escalation Path
 
      List escalation levels
@@ -139,9 +139,9 @@ async def asyncio_detailed(
     escalation_policy_path_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyLevelList]:
     """List escalation levels for an Escalation Path
 
@@ -177,10 +177,10 @@ async def asyncio(
     escalation_policy_path_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[EscalationPolicyLevelList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> EscalationPolicyLevelList | None:
     """List escalation levels for an Escalation Path
 
      List escalation levels

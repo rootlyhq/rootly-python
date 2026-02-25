@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,10 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     user_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,8 +39,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[UserNotificationRuleList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> UserNotificationRuleList | None:
     if response.status_code == 200:
         response_200 = UserNotificationRuleList.from_dict(response.json())
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[UserNotificationRuleList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -67,10 +67,10 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[UserNotificationRuleList]:
     """List user notification rules
 
@@ -110,11 +110,11 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[UserNotificationRuleList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
+) -> UserNotificationRuleList | None:
     """List user notification rules
 
      List user notification rules
@@ -148,10 +148,10 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[UserNotificationRuleList]:
     """List user notification rules
 
@@ -189,11 +189,11 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[UserNotificationRuleList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
+) -> UserNotificationRuleList | None:
     """List user notification rules
 
      List user notification rules

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -41,47 +41,47 @@ class NewFormFieldDataAttributes:
 
     kind: NewFormFieldDataAttributesKind
     name: str
-    input_kind: Union[Unset, NewFormFieldDataAttributesInputKind] = UNSET
-    value_kind: Union[Unset, NewFormFieldDataAttributesValueKind] = UNSET
-    value_kind_catalog_id: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    shown: Union[Unset, list[str]] = UNSET
-    required: Union[Unset, list[str]] = UNSET
-    show_on_incident_details: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    default_values: Union[Unset, list[str]] = UNSET
-    auto_set_by_catalog_field_id: Union[None, Unset, str] = UNSET
+    input_kind: Unset | NewFormFieldDataAttributesInputKind = UNSET
+    value_kind: Unset | NewFormFieldDataAttributesValueKind = UNSET
+    value_kind_catalog_id: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    shown: Unset | list[str] = UNSET
+    required: Unset | list[str] = UNSET
+    show_on_incident_details: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
+    default_values: Unset | list[str] = UNSET
+    auto_set_by_catalog_field_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         kind: str = self.kind
 
         name = self.name
 
-        input_kind: Union[Unset, str] = UNSET
+        input_kind: Unset | str = UNSET
         if not isinstance(self.input_kind, Unset):
             input_kind = self.input_kind
 
-        value_kind: Union[Unset, str] = UNSET
+        value_kind: Unset | str = UNSET
         if not isinstance(self.value_kind, Unset):
             value_kind = self.value_kind
 
-        value_kind_catalog_id: Union[None, Unset, str]
+        value_kind_catalog_id: None | Unset | str
         if isinstance(self.value_kind_catalog_id, Unset):
             value_kind_catalog_id = UNSET
         else:
             value_kind_catalog_id = self.value_kind_catalog_id
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        shown: Union[Unset, list[str]] = UNSET
+        shown: Unset | list[str] = UNSET
         if not isinstance(self.shown, Unset):
             shown = self.shown
 
-        required: Union[Unset, list[str]] = UNSET
+        required: Unset | list[str] = UNSET
         if not isinstance(self.required, Unset):
             required = self.required
 
@@ -89,11 +89,11 @@ class NewFormFieldDataAttributes:
 
         enabled = self.enabled
 
-        default_values: Union[Unset, list[str]] = UNSET
+        default_values: Unset | list[str] = UNSET
         if not isinstance(self.default_values, Unset):
             default_values = self.default_values
 
-        auto_set_by_catalog_field_id: Union[None, Unset, str]
+        auto_set_by_catalog_field_id: None | Unset | str
         if isinstance(self.auto_set_by_catalog_field_id, Unset):
             auto_set_by_catalog_field_id = UNSET
         else:
@@ -138,34 +138,34 @@ class NewFormFieldDataAttributes:
         name = d.pop("name")
 
         _input_kind = d.pop("input_kind", UNSET)
-        input_kind: Union[Unset, NewFormFieldDataAttributesInputKind]
+        input_kind: Unset | NewFormFieldDataAttributesInputKind
         if isinstance(_input_kind, Unset):
             input_kind = UNSET
         else:
             input_kind = check_new_form_field_data_attributes_input_kind(_input_kind)
 
         _value_kind = d.pop("value_kind", UNSET)
-        value_kind: Union[Unset, NewFormFieldDataAttributesValueKind]
+        value_kind: Unset | NewFormFieldDataAttributesValueKind
         if isinstance(_value_kind, Unset):
             value_kind = UNSET
         else:
             value_kind = check_new_form_field_data_attributes_value_kind(_value_kind)
 
-        def _parse_value_kind_catalog_id(data: object) -> Union[None, Unset, str]:
+        def _parse_value_kind_catalog_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -179,12 +179,12 @@ class NewFormFieldDataAttributes:
 
         default_values = cast(list[str], d.pop("default_values", UNSET))
 
-        def _parse_auto_set_by_catalog_field_id(data: object) -> Union[None, Unset, str]:
+        def _parse_auto_set_by_catalog_field_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         auto_set_by_catalog_field_id = _parse_auto_set_by_catalog_field_id(d.pop("auto_set_by_catalog_field_id", UNSET))
 

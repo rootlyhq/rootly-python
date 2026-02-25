@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,26 +11,26 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterpriority: Union[Unset, str] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filterincident_status: Union[Unset, str] = UNSET,
-    filterincident_created_atgt: Union[Unset, str] = UNSET,
-    filterincident_created_atgte: Union[Unset, str] = UNSET,
-    filterincident_created_atlt: Union[Unset, str] = UNSET,
-    filterincident_created_atlte: Union[Unset, str] = UNSET,
-    filterdue_dategt: Union[Unset, str] = UNSET,
-    filterdue_dategte: Union[Unset, str] = UNSET,
-    filterdue_datelt: Union[Unset, str] = UNSET,
-    filterdue_datelte: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterpriority: Unset | str = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filterincident_status: Unset | str = UNSET,
+    filterincident_created_atgt: Unset | str = UNSET,
+    filterincident_created_atgte: Unset | str = UNSET,
+    filterincident_created_atlt: Unset | str = UNSET,
+    filterincident_created_atlte: Unset | str = UNSET,
+    filterdue_dategt: Unset | str = UNSET,
+    filterdue_dategte: Unset | str = UNSET,
+    filterdue_datelt: Unset | str = UNSET,
+    filterdue_datelte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -85,9 +85,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[IncidentActionItemList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentActionItemList | None:
     if response.status_code == 200:
         response_200 = IncidentActionItemList.from_dict(response.json())
 
@@ -100,7 +98,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[IncidentActionItemList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -113,26 +111,26 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterpriority: Union[Unset, str] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filterincident_status: Union[Unset, str] = UNSET,
-    filterincident_created_atgt: Union[Unset, str] = UNSET,
-    filterincident_created_atgte: Union[Unset, str] = UNSET,
-    filterincident_created_atlt: Union[Unset, str] = UNSET,
-    filterincident_created_atlte: Union[Unset, str] = UNSET,
-    filterdue_dategt: Union[Unset, str] = UNSET,
-    filterdue_dategte: Union[Unset, str] = UNSET,
-    filterdue_datelt: Union[Unset, str] = UNSET,
-    filterdue_datelte: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterpriority: Unset | str = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filterincident_status: Unset | str = UNSET,
+    filterincident_created_atgt: Unset | str = UNSET,
+    filterincident_created_atgte: Unset | str = UNSET,
+    filterincident_created_atlt: Unset | str = UNSET,
+    filterincident_created_atlte: Unset | str = UNSET,
+    filterdue_dategt: Unset | str = UNSET,
+    filterdue_dategte: Unset | str = UNSET,
+    filterdue_datelt: Unset | str = UNSET,
+    filterdue_datelte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
@@ -201,27 +199,27 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterpriority: Union[Unset, str] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filterincident_status: Union[Unset, str] = UNSET,
-    filterincident_created_atgt: Union[Unset, str] = UNSET,
-    filterincident_created_atgte: Union[Unset, str] = UNSET,
-    filterincident_created_atlt: Union[Unset, str] = UNSET,
-    filterincident_created_atlte: Union[Unset, str] = UNSET,
-    filterdue_dategt: Union[Unset, str] = UNSET,
-    filterdue_dategte: Union[Unset, str] = UNSET,
-    filterdue_datelt: Union[Unset, str] = UNSET,
-    filterdue_datelte: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[IncidentActionItemList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterpriority: Unset | str = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filterincident_status: Unset | str = UNSET,
+    filterincident_created_atgt: Unset | str = UNSET,
+    filterincident_created_atgte: Unset | str = UNSET,
+    filterincident_created_atlt: Unset | str = UNSET,
+    filterincident_created_atlte: Unset | str = UNSET,
+    filterdue_dategt: Unset | str = UNSET,
+    filterdue_dategte: Unset | str = UNSET,
+    filterdue_datelt: Unset | str = UNSET,
+    filterdue_datelte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> IncidentActionItemList | None:
     """List all action items for an organization
 
      List all action items for an organization
@@ -284,26 +282,26 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterpriority: Union[Unset, str] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filterincident_status: Union[Unset, str] = UNSET,
-    filterincident_created_atgt: Union[Unset, str] = UNSET,
-    filterincident_created_atgte: Union[Unset, str] = UNSET,
-    filterincident_created_atlt: Union[Unset, str] = UNSET,
-    filterincident_created_atlte: Union[Unset, str] = UNSET,
-    filterdue_dategt: Union[Unset, str] = UNSET,
-    filterdue_dategte: Union[Unset, str] = UNSET,
-    filterdue_datelt: Union[Unset, str] = UNSET,
-    filterdue_datelte: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterpriority: Unset | str = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filterincident_status: Unset | str = UNSET,
+    filterincident_created_atgt: Unset | str = UNSET,
+    filterincident_created_atgte: Unset | str = UNSET,
+    filterincident_created_atlt: Unset | str = UNSET,
+    filterincident_created_atlte: Unset | str = UNSET,
+    filterdue_dategt: Unset | str = UNSET,
+    filterdue_dategte: Unset | str = UNSET,
+    filterdue_datelt: Unset | str = UNSET,
+    filterdue_datelte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
@@ -370,27 +368,27 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterkind: Union[Unset, str] = UNSET,
-    filterpriority: Union[Unset, str] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filterincident_status: Union[Unset, str] = UNSET,
-    filterincident_created_atgt: Union[Unset, str] = UNSET,
-    filterincident_created_atgte: Union[Unset, str] = UNSET,
-    filterincident_created_atlt: Union[Unset, str] = UNSET,
-    filterincident_created_atlte: Union[Unset, str] = UNSET,
-    filterdue_dategt: Union[Unset, str] = UNSET,
-    filterdue_dategte: Union[Unset, str] = UNSET,
-    filterdue_datelt: Union[Unset, str] = UNSET,
-    filterdue_datelte: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[IncidentActionItemList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filterpriority: Unset | str = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filterincident_status: Unset | str = UNSET,
+    filterincident_created_atgt: Unset | str = UNSET,
+    filterincident_created_atgte: Unset | str = UNSET,
+    filterincident_created_atlt: Unset | str = UNSET,
+    filterincident_created_atlte: Unset | str = UNSET,
+    filterdue_dategt: Unset | str = UNSET,
+    filterdue_dategte: Unset | str = UNSET,
+    filterdue_datelt: Unset | str = UNSET,
+    filterdue_datelte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> IncidentActionItemList | None:
     """List all action items for an organization
 
      List all action items for an organization

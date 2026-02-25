@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,13 +13,13 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
-    include: Union[Unset, GetCatalogEntityInclude] = UNSET,
+    include: Unset | GetCatalogEntityInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -37,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogEntityResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogEntityResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,11 +67,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityInclude] = UNSET,
-) -> Response[Union[CatalogEntityResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityInclude = UNSET,
+) -> Response[CatalogEntityResponse | ErrorsList]:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
@@ -101,11 +101,11 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityInclude] = UNSET,
-) -> Optional[Union[CatalogEntityResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityInclude = UNSET,
+) -> CatalogEntityResponse | ErrorsList | None:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
@@ -130,11 +130,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityInclude] = UNSET,
-) -> Response[Union[CatalogEntityResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityInclude = UNSET,
+) -> Response[CatalogEntityResponse | ErrorsList]:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
@@ -162,11 +162,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityInclude] = UNSET,
-) -> Optional[Union[CatalogEntityResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityInclude = UNSET,
+) -> CatalogEntityResponse | ErrorsList | None:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id

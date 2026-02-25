@@ -30,15 +30,15 @@ class ShiftRelationships:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        shift_override: Union[Unset, dict[str, Any]] = UNSET
+        shift_override: Unset | dict[str, Any] = UNSET
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()
 
-        user: Union[Unset, dict[str, Any]] = UNSET
+        user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
-        assignee: Union[Unset, dict[str, Any]] = UNSET
+        assignee: Unset | dict[str, Any] = UNSET
         if not isinstance(self.assignee, Unset):
             assignee = self.assignee.to_dict()
 
@@ -62,21 +62,21 @@ class ShiftRelationships:
 
         d = dict(src_dict)
         _shift_override = d.pop("shift_override", UNSET)
-        shift_override: Union[Unset, ShiftRelationshipsShiftOverride]
+        shift_override: Unset | ShiftRelationshipsShiftOverride
         if isinstance(_shift_override, Unset):
             shift_override = UNSET
         else:
             shift_override = ShiftRelationshipsShiftOverride.from_dict(_shift_override)
 
         _user = d.pop("user", UNSET)
-        user: Union[Unset, ShiftRelationshipsUser]
+        user: Unset | ShiftRelationshipsUser
         if isinstance(_user, Unset):
             user = UNSET
         else:
             user = ShiftRelationshipsUser.from_dict(_user)
 
         _assignee = d.pop("assignee", UNSET)
-        assignee: Union[Unset, ShiftRelationshipsAssignee]
+        assignee: Unset | ShiftRelationshipsAssignee
         if isinstance(_assignee, Unset):
             assignee = UNSET
         else:

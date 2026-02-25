@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -38,40 +38,40 @@ class NewSeverityDataAttributes:
     """
 
     name: str
-    description: Union[None, Unset, str] = UNSET
-    severity: Union[Unset, NewSeverityDataAttributesSeverity] = UNSET
-    color: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    notify_emails: Union[None, Unset, list[str]] = UNSET
-    slack_channels: Union[None, Unset, list["NewSeverityDataAttributesSlackChannelsType0Item"]] = UNSET
-    slack_aliases: Union[None, Unset, list["NewSeverityDataAttributesSlackAliasesType0Item"]] = UNSET
+    description: None | Unset | str = UNSET
+    severity: Unset | NewSeverityDataAttributesSeverity = UNSET
+    color: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    notify_emails: None | Unset | list[str] = UNSET
+    slack_channels: None | Unset | list["NewSeverityDataAttributesSlackChannelsType0Item"] = UNSET
+    slack_aliases: None | Unset | list["NewSeverityDataAttributesSlackAliasesType0Item"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        severity: Union[Unset, str] = UNSET
+        severity: Unset | str = UNSET
         if not isinstance(self.severity, Unset):
             severity = self.severity
 
-        color: Union[None, Unset, str]
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        notify_emails: Union[None, Unset, list[str]]
+        notify_emails: None | Unset | list[str]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -80,7 +80,7 @@ class NewSeverityDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        slack_channels: Union[None, Unset, list[dict[str, Any]]]
+        slack_channels: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -92,7 +92,7 @@ class NewSeverityDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
+        slack_aliases: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -140,41 +140,41 @@ class NewSeverityDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _severity = d.pop("severity", UNSET)
-        severity: Union[Unset, NewSeverityDataAttributesSeverity]
+        severity: Unset | NewSeverityDataAttributesSeverity
         if isinstance(_severity, Unset):
             severity = UNSET
         else:
             severity = check_new_severity_data_attributes_severity(_severity)
 
-        def _parse_color(data: object) -> Union[None, Unset, str]:
+        def _parse_color(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -187,13 +187,13 @@ class NewSeverityDataAttributes:
                 return notify_emails_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
         def _parse_slack_channels(
             data: object,
-        ) -> Union[None, Unset, list["NewSeverityDataAttributesSlackChannelsType0Item"]]:
+        ) -> None | Unset | list["NewSeverityDataAttributesSlackChannelsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -213,13 +213,13 @@ class NewSeverityDataAttributes:
                 return slack_channels_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["NewSeverityDataAttributesSlackChannelsType0Item"]], data)
+            return cast(None | Unset | list["NewSeverityDataAttributesSlackChannelsType0Item"], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
         def _parse_slack_aliases(
             data: object,
-        ) -> Union[None, Unset, list["NewSeverityDataAttributesSlackAliasesType0Item"]]:
+        ) -> None | Unset | list["NewSeverityDataAttributesSlackAliasesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -239,7 +239,7 @@ class NewSeverityDataAttributes:
                 return slack_aliases_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["NewSeverityDataAttributesSlackAliasesType0Item"]], data)
+            return cast(None | Unset | list["NewSeverityDataAttributesSlackAliasesType0Item"], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 

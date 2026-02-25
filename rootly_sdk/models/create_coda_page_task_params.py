@@ -34,20 +34,20 @@ class CreateCodaPageTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateCodaPageTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
-    subtitle: Union[Unset, str] = UNSET
-    content: Union[Unset, str] = UNSET
+    task_type: Unset | CreateCodaPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    subtitle: Unset | str = UNSET
+    content: Unset | str = UNSET
     template: Union[Unset, "CreateCodaPageTaskParamsTemplate"] = UNSET
-    folder_id: Union[Unset, str] = UNSET
+    folder_id: Unset | str = UNSET
     doc: Union[Unset, "CreateCodaPageTaskParamsDoc"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,13 +59,13 @@ class CreateCodaPageTaskParams:
 
         content = self.content
 
-        template: Union[Unset, dict[str, Any]] = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
         folder_id = self.folder_id
 
-        doc: Union[Unset, dict[str, Any]] = UNSET
+        doc: Unset | dict[str, Any] = UNSET
         if not isinstance(self.doc, Unset):
             doc = self.doc.to_dict()
 
@@ -104,7 +104,7 @@ class CreateCodaPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateCodaPageTaskParamsTaskType]
+        task_type: Unset | CreateCodaPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -119,7 +119,7 @@ class CreateCodaPageTaskParams:
         content = d.pop("content", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Union[Unset, CreateCodaPageTaskParamsTemplate]
+        template: Unset | CreateCodaPageTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:
@@ -128,7 +128,7 @@ class CreateCodaPageTaskParams:
         folder_id = d.pop("folder_id", UNSET)
 
         _doc = d.pop("doc", UNSET)
-        doc: Union[Unset, CreateCodaPageTaskParamsDoc]
+        doc: Unset | CreateCodaPageTaskParamsDoc
         if isinstance(_doc, Unset):
             doc = UNSET
         else:

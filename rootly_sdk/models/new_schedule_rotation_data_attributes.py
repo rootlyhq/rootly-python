@@ -73,17 +73,17 @@ class NewScheduleRotationDataAttributes:
         "NewScheduleRotationDataAttributesScheduleRotationableAttributesType2",
         "NewScheduleRotationDataAttributesScheduleRotationableAttributesType3",
     ]
-    position: Union[Unset, int] = UNSET
-    active_all_week: Union[Unset, bool] = True
-    active_days: Union[Unset, list[NewScheduleRotationDataAttributesActiveDaysItem]] = UNSET
-    active_time_type: Union[Unset, str] = UNSET
-    active_time_attributes: Union[Unset, list["NewScheduleRotationDataAttributesActiveTimeAttributesItem"]] = UNSET
-    time_zone: Union[Unset, str] = "Etc/UTC"
-    start_time: Union[None, Unset, datetime.date] = UNSET
-    end_time: Union[None, Unset, datetime.date] = UNSET
-    schedule_rotation_members: Union[
-        None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]
-    ] = UNSET
+    position: Unset | int = UNSET
+    active_all_week: Unset | bool = True
+    active_days: Unset | list[NewScheduleRotationDataAttributesActiveDaysItem] = UNSET
+    active_time_type: Unset | str = UNSET
+    active_time_attributes: Unset | list["NewScheduleRotationDataAttributesActiveTimeAttributesItem"] = UNSET
+    time_zone: Unset | str = "Etc/UTC"
+    start_time: None | Unset | datetime.date = UNSET
+    end_time: None | Unset | datetime.date = UNSET
+    schedule_rotation_members: (
+        None | Unset | list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]
+    ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
@@ -120,7 +120,7 @@ class NewScheduleRotationDataAttributes:
 
         active_all_week = self.active_all_week
 
-        active_days: Union[Unset, list[str]] = UNSET
+        active_days: Unset | list[str] = UNSET
         if not isinstance(self.active_days, Unset):
             active_days = []
             for active_days_item_data in self.active_days:
@@ -129,7 +129,7 @@ class NewScheduleRotationDataAttributes:
 
         active_time_type = self.active_time_type
 
-        active_time_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        active_time_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.active_time_attributes, Unset):
             active_time_attributes = []
             for active_time_attributes_item_data in self.active_time_attributes:
@@ -138,7 +138,7 @@ class NewScheduleRotationDataAttributes:
 
         time_zone = self.time_zone
 
-        start_time: Union[None, Unset, str]
+        start_time: None | Unset | str
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         elif isinstance(self.start_time, datetime.date):
@@ -146,7 +146,7 @@ class NewScheduleRotationDataAttributes:
         else:
             start_time = self.start_time
 
-        end_time: Union[None, Unset, str]
+        end_time: None | Unset | str
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         elif isinstance(self.end_time, datetime.date):
@@ -154,7 +154,7 @@ class NewScheduleRotationDataAttributes:
         else:
             end_time = self.end_time
 
-        schedule_rotation_members: Union[None, Unset, list[dict[str, Any]]]
+        schedule_rotation_members: None | Unset | list[dict[str, Any]]
         if isinstance(self.schedule_rotation_members, Unset):
             schedule_rotation_members = UNSET
         elif isinstance(self.schedule_rotation_members, list):
@@ -298,7 +298,7 @@ class NewScheduleRotationDataAttributes:
 
         time_zone = d.pop("time_zone", UNSET)
 
-        def _parse_start_time(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_start_time(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -311,11 +311,11 @@ class NewScheduleRotationDataAttributes:
                 return start_time_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_end_time(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -328,13 +328,13 @@ class NewScheduleRotationDataAttributes:
                 return end_time_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
         def _parse_schedule_rotation_members(
             data: object,
-        ) -> Union[None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]]:
+        ) -> None | Unset | list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -356,9 +356,7 @@ class NewScheduleRotationDataAttributes:
                 return schedule_rotation_members_type_0
             except:  # noqa: E722
                 pass
-            return cast(
-                Union[None, Unset, list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"]], data
-            )
+            return cast(None | Unset | list["NewScheduleRotationDataAttributesScheduleRotationMembersType0Item"], data)
 
         schedule_rotation_members = _parse_schedule_rotation_members(d.pop("schedule_rotation_members", UNSET))
 

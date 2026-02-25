@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -29,17 +29,17 @@ class UpdateScheduleRotationActiveDayDataAttributes:
             per day
     """
 
-    day_name: Union[Unset, UpdateScheduleRotationActiveDayDataAttributesDayName] = UNSET
-    active_time_attributes: Union[
-        Unset, list["UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem"]
-    ] = UNSET
+    day_name: Unset | UpdateScheduleRotationActiveDayDataAttributesDayName = UNSET
+    active_time_attributes: Unset | list["UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem"] = (
+        UNSET
+    )
 
     def to_dict(self) -> dict[str, Any]:
-        day_name: Union[Unset, str] = UNSET
+        day_name: Unset | str = UNSET
         if not isinstance(self.day_name, Unset):
             day_name = self.day_name
 
-        active_time_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        active_time_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.active_time_attributes, Unset):
             active_time_attributes = []
             for active_time_attributes_item_data in self.active_time_attributes:
@@ -64,7 +64,7 @@ class UpdateScheduleRotationActiveDayDataAttributes:
 
         d = dict(src_dict)
         _day_name = d.pop("day_name", UNSET)
-        day_name: Union[Unset, UpdateScheduleRotationActiveDayDataAttributesDayName]
+        day_name: Unset | UpdateScheduleRotationActiveDayDataAttributesDayName
         if isinstance(_day_name, Unset):
             day_name = UNSET
         else:

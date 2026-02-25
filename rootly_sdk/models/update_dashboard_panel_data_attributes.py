@@ -24,7 +24,7 @@ class UpdateDashboardPanelDataAttributes:
         position (Union['UpdateDashboardPanelDataAttributesPositionType0', None, Unset]):
     """
 
-    name: Union[None, Unset, str] = UNSET
+    name: None | Unset | str = UNSET
     params: Union[Unset, "UpdateDashboardPanelDataAttributesParams"] = UNSET
     position: Union["UpdateDashboardPanelDataAttributesPositionType0", None, Unset] = UNSET
 
@@ -33,17 +33,17 @@ class UpdateDashboardPanelDataAttributes:
             UpdateDashboardPanelDataAttributesPositionType0,
         )
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        params: Union[Unset, dict[str, Any]] = UNSET
+        params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.params, Unset):
             params = self.params.to_dict()
 
-        position: Union[None, Unset, dict[str, Any]]
+        position: None | Unset | dict[str, Any]
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, UpdateDashboardPanelDataAttributesPositionType0):
@@ -72,17 +72,17 @@ class UpdateDashboardPanelDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
         _params = d.pop("params", UNSET)
-        params: Union[Unset, UpdateDashboardPanelDataAttributesParams]
+        params: Unset | UpdateDashboardPanelDataAttributesParams
         if isinstance(_params, Unset):
             params = UNSET
         else:

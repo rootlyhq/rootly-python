@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentEventFunctionalityResponse | None:
     if response.status_code == 200:
         response_200 = IncidentEventFunctionalityResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentEventFunctionality,
-) -> Response[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
     """Update an incident event
 
      Update a specific incident event functionality by id
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentEventFunctionality,
-) -> Optional[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+) -> ErrorsList | IncidentEventFunctionalityResponse | None:
     """Update an incident event
 
      Update a specific incident event functionality by id
@@ -129,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentEventFunctionality,
-) -> Response[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
     """Update an incident event
 
      Update a specific incident event functionality by id
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentEventFunctionality,
-) -> Optional[Union[ErrorsList, IncidentEventFunctionalityResponse]]:
+) -> ErrorsList | IncidentEventFunctionalityResponse | None:
     """Update an incident event
 
      Update a specific incident event functionality by id

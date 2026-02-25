@@ -26,27 +26,27 @@ class NewWorkflowRunDataAttributesType1:
     """
 
     incident_id: str
-    immediate: Union[None, Unset, bool] = True
-    check_conditions: Union[None, Unset, bool] = False
+    immediate: None | Unset | bool = True
+    check_conditions: None | Unset | bool = False
     context: Union[Unset, "NewWorkflowRunDataAttributesType1Context"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         incident_id = self.incident_id
 
-        immediate: Union[None, Unset, bool]
+        immediate: None | Unset | bool
         if isinstance(self.immediate, Unset):
             immediate = UNSET
         else:
             immediate = self.immediate
 
-        check_conditions: Union[None, Unset, bool]
+        check_conditions: None | Unset | bool
         if isinstance(self.check_conditions, Unset):
             check_conditions = UNSET
         else:
             check_conditions = self.check_conditions
 
-        context: Union[Unset, dict[str, Any]] = UNSET
+        context: Unset | dict[str, Any] = UNSET
         if not isinstance(self.context, Unset):
             context = self.context.to_dict()
 
@@ -73,26 +73,26 @@ class NewWorkflowRunDataAttributesType1:
         d = dict(src_dict)
         incident_id = d.pop("incident_id")
 
-        def _parse_immediate(data: object) -> Union[None, Unset, bool]:
+        def _parse_immediate(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         immediate = _parse_immediate(d.pop("immediate", UNSET))
 
-        def _parse_check_conditions(data: object) -> Union[None, Unset, bool]:
+        def _parse_check_conditions(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         check_conditions = _parse_check_conditions(d.pop("check_conditions", UNSET))
 
         _context = d.pop("context", UNSET)
-        context: Union[Unset, NewWorkflowRunDataAttributesType1Context]
+        context: Unset | NewWorkflowRunDataAttributesType1Context
         if isinstance(_context, Unset):
             context = UNSET
         else:

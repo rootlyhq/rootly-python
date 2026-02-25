@@ -34,19 +34,19 @@ class CreateClickupTaskTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateClickupTaskTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
-    tags: Union[Unset, str] = UNSET
+    task_type: Unset | CreateClickupTaskTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
+    tags: Unset | str = UNSET
     priority: Union[Unset, "CreateClickupTaskTaskParamsPriority"] = UNSET
-    due_date: Union[Unset, str] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
-    task_payload: Union[None, Unset, str] = UNSET
+    due_date: Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
+    task_payload: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,19 +54,19 @@ class CreateClickupTaskTaskParams:
 
         tags = self.tags
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
         due_date = self.due_date
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        task_payload: Union[None, Unset, str]
+        task_payload: None | Unset | str
         if isinstance(self.task_payload, Unset):
             task_payload = UNSET
         else:
@@ -104,7 +104,7 @@ class CreateClickupTaskTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateClickupTaskTaskParamsTaskType]
+        task_type: Unset | CreateClickupTaskTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -115,7 +115,7 @@ class CreateClickupTaskTaskParams:
         tags = d.pop("tags", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, CreateClickupTaskTaskParamsPriority]
+        priority: Unset | CreateClickupTaskTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
@@ -123,21 +123,21 @@ class CreateClickupTaskTaskParams:
 
         due_date = d.pop("due_date", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        def _parse_task_payload(data: object) -> Union[None, Unset, str]:
+        def _parse_task_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         task_payload = _parse_task_payload(d.pop("task_payload", UNSET))
 

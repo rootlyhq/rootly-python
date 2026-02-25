@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,16 +27,16 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem:
         rules (Union[Unset, list['NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem']]):
     """
 
-    operation: Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation] = UNSET
-    rules: Union[Unset, list["NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem"]] = UNSET
+    operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation = UNSET
+    rules: Unset | list["NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Union[Unset, str] = UNSET
+        operation: Unset | str = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        rules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
@@ -61,7 +61,7 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem:
 
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation]
+        operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation
         if isinstance(_operation, Unset):
             operation = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     body: UpdateAlertGroup,
 ) -> dict[str, Any]:
@@ -33,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertGroupResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertGroupResponse.from_dict(response.json())
 
@@ -52,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertGroupResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,11 +63,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+) -> Response[AlertGroupResponse | ErrorsList]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -99,11 +99,11 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+) -> AlertGroupResponse | ErrorsList | None:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -130,11 +130,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Response[Union[AlertGroupResponse, ErrorsList]]:
+) -> Response[AlertGroupResponse | ErrorsList]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -164,11 +164,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
+) -> AlertGroupResponse | ErrorsList | None:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,

@@ -33,26 +33,26 @@ class CreateMicrosoftTeamsChannelTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType] = UNSET
+    task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType = UNSET
     team: Union[Unset, "CreateMicrosoftTeamsChannelTaskParamsTeam"] = UNSET
-    description: Union[Unset, str] = UNSET
-    private: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate] = "auto"
+    description: Unset | str = UNSET
+    private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate = "auto"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        team: Union[Unset, dict[str, Any]] = UNSET
+        team: Unset | dict[str, Any] = UNSET
         if not isinstance(self.team, Unset):
             team = self.team.to_dict()
 
         description = self.description
 
-        private: Union[Unset, str] = UNSET
+        private: Unset | str = UNSET
         if not isinstance(self.private, Unset):
             private = self.private
 
@@ -82,14 +82,14 @@ class CreateMicrosoftTeamsChannelTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType]
+        task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_microsoft_teams_channel_task_params_task_type(_task_type)
 
         _team = d.pop("team", UNSET)
-        team: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTeam]
+        team: Unset | CreateMicrosoftTeamsChannelTaskParamsTeam
         if isinstance(_team, Unset):
             team = UNSET
         else:
@@ -98,7 +98,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         description = d.pop("description", UNSET)
 
         _private = d.pop("private", UNSET)
-        private: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate]
+        private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate
         if isinstance(_private, Unset):
             private = UNSET
         else:

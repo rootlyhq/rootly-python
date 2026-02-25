@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentStatusPageEventResponse | None:
     if response.status_code == 200:
         response_200 = IncidentStatusPageEventResponse.from_dict(response.json())
 
@@ -41,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentStatusPageEventResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+) -> Response[ErrorsList | IncidentStatusPageEventResponse]:
     """Retrieves an incident status page event
 
      Retrieves a specific incident_status_page_event by id
@@ -86,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+) -> ErrorsList | IncidentStatusPageEventResponse | None:
     """Retrieves an incident status page event
 
      Retrieves a specific incident_status_page_event by id
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+) -> Response[ErrorsList | IncidentStatusPageEventResponse]:
     """Retrieves an incident status page event
 
      Retrieves a specific incident_status_page_event by id
@@ -141,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, IncidentStatusPageEventResponse]]:
+) -> ErrorsList | IncidentStatusPageEventResponse | None:
     """Retrieves an incident status page event
 
      Retrieves a specific incident_status_page_event by id

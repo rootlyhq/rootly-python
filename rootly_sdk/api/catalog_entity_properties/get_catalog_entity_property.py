@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -16,11 +16,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Union[Unset, GetCatalogEntityPropertyInclude] = UNSET,
+    include: Unset | GetCatalogEntityPropertyInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -38,8 +38,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityPropertyResponse.from_dict(response.json())
 
@@ -57,8 +57,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +71,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityPropertyInclude] = UNSET,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityPropertyInclude = UNSET,
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -109,8 +109,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityPropertyInclude] = UNSET,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityPropertyInclude = UNSET,
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -142,8 +142,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityPropertyInclude] = UNSET,
-) -> Response[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityPropertyInclude = UNSET,
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -178,8 +178,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetCatalogEntityPropertyInclude] = UNSET,
-) -> Optional[Union[CatalogEntityPropertyResponse, ErrorsList]]:
+    include: Unset | GetCatalogEntityPropertyInclude = UNSET,
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or

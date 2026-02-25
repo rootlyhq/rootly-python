@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -37,20 +37,20 @@ class NewDashboardDataAttributes:
 
     name: str
     owner: NewDashboardDataAttributesOwner
-    description: Union[None, Unset, str] = UNSET
-    public: Union[Unset, bool] = UNSET
-    range_: Union[None, Unset, str] = UNSET
-    auto_refresh: Union[Unset, bool] = UNSET
-    color: Union[Unset, NewDashboardDataAttributesColor] = UNSET
-    icon: Union[Unset, str] = UNSET
-    period: Union[Unset, NewDashboardDataAttributesPeriod] = UNSET
+    description: None | Unset | str = UNSET
+    public: Unset | bool = UNSET
+    range_: None | Unset | str = UNSET
+    auto_refresh: Unset | bool = UNSET
+    color: Unset | NewDashboardDataAttributesColor = UNSET
+    icon: Unset | str = UNSET
+    period: Unset | NewDashboardDataAttributesPeriod = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         owner: str = self.owner
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -58,7 +58,7 @@ class NewDashboardDataAttributes:
 
         public = self.public
 
-        range_: Union[None, Unset, str]
+        range_: None | Unset | str
         if isinstance(self.range_, Unset):
             range_ = UNSET
         else:
@@ -66,13 +66,13 @@ class NewDashboardDataAttributes:
 
         auto_refresh = self.auto_refresh
 
-        color: Union[Unset, str] = UNSET
+        color: Unset | str = UNSET
         if not isinstance(self.color, Unset):
             color = self.color
 
         icon = self.icon
 
-        period: Union[Unset, str] = UNSET
+        period: Unset | str = UNSET
         if not isinstance(self.period, Unset):
             period = self.period
 
@@ -108,30 +108,30 @@ class NewDashboardDataAttributes:
 
         owner = check_new_dashboard_data_attributes_owner(d.pop("owner"))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         public = d.pop("public", UNSET)
 
-        def _parse_range_(data: object) -> Union[None, Unset, str]:
+        def _parse_range_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         range_ = _parse_range_(d.pop("range", UNSET))
 
         auto_refresh = d.pop("auto_refresh", UNSET)
 
         _color = d.pop("color", UNSET)
-        color: Union[Unset, NewDashboardDataAttributesColor]
+        color: Unset | NewDashboardDataAttributesColor
         if isinstance(_color, Unset):
             color = UNSET
         else:
@@ -140,7 +140,7 @@ class NewDashboardDataAttributes:
         icon = d.pop("icon", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, NewDashboardDataAttributesPeriod]
+        period: Unset | NewDashboardDataAttributesPeriod
         if isinstance(_period, Unset):
             period = UNSET
         else:

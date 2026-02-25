@@ -37,12 +37,12 @@ class CreateSharepointPageTaskParams:
     title: str
     site: "CreateSharepointPageTaskParamsSite"
     drive: "CreateSharepointPageTaskParamsDrive"
-    task_type: Union[Unset, CreateSharepointPageTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
+    task_type: Unset | CreateSharepointPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
     parent_folder: Union[Unset, "CreateSharepointPageTaskParamsParentFolder"] = UNSET
-    content: Union[Unset, str] = UNSET
-    template_id: Union[Unset, str] = UNSET
+    content: Unset | str = UNSET
+    template_id: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +52,7 @@ class CreateSharepointPageTaskParams:
 
         drive = self.drive.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -60,7 +60,7 @@ class CreateSharepointPageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        parent_folder: Union[Unset, dict[str, Any]] = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -106,7 +106,7 @@ class CreateSharepointPageTaskParams:
         drive = CreateSharepointPageTaskParamsDrive.from_dict(d.pop("drive"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateSharepointPageTaskParamsTaskType]
+        task_type: Unset | CreateSharepointPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -117,7 +117,7 @@ class CreateSharepointPageTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: Union[Unset, CreateSharepointPageTaskParamsParentFolder]
+        parent_folder: Unset | CreateSharepointPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertRoutingRuleResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertRoutingRuleResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertRoutingRuleResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertRoutingRuleResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertRoutingRuleResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
-) -> Response[Union[AlertRoutingRuleResponse, ErrorsList]]:
+) -> Response[AlertRoutingRuleResponse | ErrorsList]:
     """Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
@@ -102,7 +102,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
-) -> Optional[Union[AlertRoutingRuleResponse, ErrorsList]]:
+) -> AlertRoutingRuleResponse | ErrorsList | None:
     """Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
@@ -130,7 +130,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
-) -> Response[Union[AlertRoutingRuleResponse, ErrorsList]]:
+) -> Response[AlertRoutingRuleResponse | ErrorsList]:
     """Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
-) -> Optional[Union[AlertRoutingRuleResponse, ErrorsList]]:
+) -> AlertRoutingRuleResponse | ErrorsList | None:
     """Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing

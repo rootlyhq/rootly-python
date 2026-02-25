@@ -37,10 +37,10 @@ class CreateTrelloCardTaskParams:
     title: str
     board: "CreateTrelloCardTaskParamsBoard"
     list_: "CreateTrelloCardTaskParamsList"
-    task_type: Union[Unset, CreateTrelloCardTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
-    due_date: Union[Unset, str] = UNSET
-    labels: Union[Unset, list["CreateTrelloCardTaskParamsLabelsItem"]] = UNSET
+    task_type: Unset | CreateTrelloCardTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
+    due_date: Unset | str = UNSET
+    labels: Unset | list["CreateTrelloCardTaskParamsLabelsItem"] = UNSET
     archivation: Union[Unset, "CreateTrelloCardTaskParamsArchivation"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -51,7 +51,7 @@ class CreateTrelloCardTaskParams:
 
         list_ = self.list_.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,14 +59,14 @@ class CreateTrelloCardTaskParams:
 
         due_date = self.due_date
 
-        labels: Union[Unset, list[dict[str, Any]]] = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        archivation: Union[Unset, dict[str, Any]] = UNSET
+        archivation: Unset | dict[str, Any] = UNSET
         if not isinstance(self.archivation, Unset):
             archivation = self.archivation.to_dict()
 
@@ -107,7 +107,7 @@ class CreateTrelloCardTaskParams:
         list_ = CreateTrelloCardTaskParamsList.from_dict(d.pop("list"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateTrelloCardTaskParamsTaskType]
+        task_type: Unset | CreateTrelloCardTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -125,7 +125,7 @@ class CreateTrelloCardTaskParams:
             labels.append(labels_item)
 
         _archivation = d.pop("archivation", UNSET)
-        archivation: Union[Unset, CreateTrelloCardTaskParamsArchivation]
+        archivation: Unset | CreateTrelloCardTaskParamsArchivation
         if isinstance(_archivation, Unset):
             archivation = UNSET
         else:

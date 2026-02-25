@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -46,21 +46,21 @@ class CreateZoomMeetingTaskParams:
     """
 
     topic: str
-    task_type: Union[Unset, CreateZoomMeetingTaskParamsTaskType] = UNSET
-    password: Union[Unset, str] = UNSET
-    create_as_email: Union[Unset, str] = UNSET
-    alternative_hosts: Union[Unset, list[str]] = UNSET
-    auto_recording: Union[Unset, CreateZoomMeetingTaskParamsAutoRecording] = "none"
-    record_meeting: Union[Unset, bool] = UNSET
-    recording_mode: Union[Unset, CreateZoomMeetingTaskParamsRecordingMode] = UNSET
-    post_to_incident_timeline: Union[Unset, bool] = UNSET
-    post_to_slack_channels: Union[Unset, list["CreateZoomMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
+    task_type: Unset | CreateZoomMeetingTaskParamsTaskType = UNSET
+    password: Unset | str = UNSET
+    create_as_email: Unset | str = UNSET
+    alternative_hosts: Unset | list[str] = UNSET
+    auto_recording: Unset | CreateZoomMeetingTaskParamsAutoRecording = "none"
+    record_meeting: Unset | bool = UNSET
+    recording_mode: Unset | CreateZoomMeetingTaskParamsRecordingMode = UNSET
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["CreateZoomMeetingTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         topic = self.topic
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -68,23 +68,23 @@ class CreateZoomMeetingTaskParams:
 
         create_as_email = self.create_as_email
 
-        alternative_hosts: Union[Unset, list[str]] = UNSET
+        alternative_hosts: Unset | list[str] = UNSET
         if not isinstance(self.alternative_hosts, Unset):
             alternative_hosts = self.alternative_hosts
 
-        auto_recording: Union[Unset, str] = UNSET
+        auto_recording: Unset | str = UNSET
         if not isinstance(self.auto_recording, Unset):
             auto_recording = self.auto_recording
 
         record_meeting = self.record_meeting
 
-        recording_mode: Union[Unset, str] = UNSET
+        recording_mode: Unset | str = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -129,7 +129,7 @@ class CreateZoomMeetingTaskParams:
         topic = d.pop("topic")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateZoomMeetingTaskParamsTaskType]
+        task_type: Unset | CreateZoomMeetingTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -142,7 +142,7 @@ class CreateZoomMeetingTaskParams:
         alternative_hosts = cast(list[str], d.pop("alternative_hosts", UNSET))
 
         _auto_recording = d.pop("auto_recording", UNSET)
-        auto_recording: Union[Unset, CreateZoomMeetingTaskParamsAutoRecording]
+        auto_recording: Unset | CreateZoomMeetingTaskParamsAutoRecording
         if isinstance(_auto_recording, Unset):
             auto_recording = UNSET
         else:
@@ -151,7 +151,7 @@ class CreateZoomMeetingTaskParams:
         record_meeting = d.pop("record_meeting", UNSET)
 
         _recording_mode = d.pop("recording_mode", UNSET)
-        recording_mode: Union[Unset, CreateZoomMeetingTaskParamsRecordingMode]
+        recording_mode: Unset | CreateZoomMeetingTaskParamsRecordingMode
         if isinstance(_recording_mode, Unset):
             recording_mode = UNSET
         else:

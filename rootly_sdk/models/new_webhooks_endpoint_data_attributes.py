@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -25,9 +25,9 @@ class NewWebhooksEndpointDataAttributes:
 
     name: str
     url: str
-    secret: Union[Unset, str] = UNSET
-    event_types: Union[Unset, list[NewWebhooksEndpointDataAttributesEventTypesItem]] = UNSET
-    enabled: Union[Unset, bool] = UNSET
+    secret: Unset | str = UNSET
+    event_types: Unset | list[NewWebhooksEndpointDataAttributesEventTypesItem] = UNSET
+    enabled: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -36,7 +36,7 @@ class NewWebhooksEndpointDataAttributes:
 
         secret = self.secret
 
-        event_types: Union[Unset, list[str]] = UNSET
+        event_types: Unset | list[str] = UNSET
         if not isinstance(self.event_types, Unset):
             event_types = []
             for event_types_item_data in self.event_types:

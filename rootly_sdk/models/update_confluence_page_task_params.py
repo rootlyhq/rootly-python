@@ -30,17 +30,17 @@ class UpdateConfluencePageTaskParams:
     """
 
     file_id: str
-    task_type: Union[Unset, UpdateConfluencePageTaskParamsTaskType] = UNSET
-    title: Union[Unset, str] = UNSET
-    content: Union[Unset, str] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateConfluencePageTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    content: Unset | str = UNSET
+    post_mortem_template_id: Unset | str = UNSET
     template: Union[Unset, "UpdateConfluencePageTaskParamsTemplate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -50,7 +50,7 @@ class UpdateConfluencePageTaskParams:
 
         post_mortem_template_id = self.post_mortem_template_id
 
-        template: Union[Unset, dict[str, Any]] = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -82,7 +82,7 @@ class UpdateConfluencePageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateConfluencePageTaskParamsTaskType]
+        task_type: Unset | UpdateConfluencePageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -95,7 +95,7 @@ class UpdateConfluencePageTaskParams:
         post_mortem_template_id = d.pop("post_mortem_template_id", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Union[Unset, UpdateConfluencePageTaskParamsTemplate]
+        template: Unset | UpdateConfluencePageTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:

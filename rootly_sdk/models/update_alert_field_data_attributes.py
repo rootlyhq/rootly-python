@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -15,7 +15,7 @@ class UpdateAlertFieldDataAttributes:
         name (Union[Unset, str]): The name of the alert field
     """
 
-    name: Union[Unset, str] = UNSET
+    name: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name

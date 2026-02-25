@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,27 +13,27 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, ListWorkflowsInclude] = UNSET,
-    sort: Union[Unset, ListWorkflowsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListWorkflowsInclude = UNSET,
+    sort: Unset | ListWorkflowsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Union[Unset, str] = UNSET
+    json_sort: Unset | str = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -68,7 +68,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[WorkflowList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowList | None:
     if response.status_code == 200:
         response_200 = WorkflowList.from_dict(response.json())
 
@@ -80,7 +80,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[WorkflowList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WorkflowList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,17 +92,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListWorkflowsInclude] = UNSET,
-    sort: Union[Unset, ListWorkflowsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListWorkflowsInclude = UNSET,
+    sort: Unset | ListWorkflowsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[WorkflowList]:
     """List workflows
 
@@ -153,18 +153,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListWorkflowsInclude] = UNSET,
-    sort: Union[Unset, ListWorkflowsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[WorkflowList]:
+    include: Unset | ListWorkflowsInclude = UNSET,
+    sort: Unset | ListWorkflowsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> WorkflowList | None:
     """List workflows
 
      List workflows
@@ -209,17 +209,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListWorkflowsInclude] = UNSET,
-    sort: Union[Unset, ListWorkflowsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListWorkflowsInclude = UNSET,
+    sort: Unset | ListWorkflowsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[WorkflowList]:
     """List workflows
 
@@ -268,18 +268,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListWorkflowsInclude] = UNSET,
-    sort: Union[Unset, ListWorkflowsSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[WorkflowList]:
+    include: Unset | ListWorkflowsInclude = UNSET,
+    sort: Unset | ListWorkflowsSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> WorkflowList | None:
     """List workflows
 
      List workflows

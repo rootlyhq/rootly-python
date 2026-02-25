@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,12 +23,12 @@ class NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttribu
             evaluation
     """
 
-    field: Union[Unset, NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField] = UNSET
-    json_path: Union[Unset, str] = UNSET
+    field: Unset | NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField = UNSET
+    json_path: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field: Union[Unset, str] = UNSET
+        field: Unset | str = UNSET
         if not isinstance(self.field, Unset):
             field = self.field
 
@@ -48,7 +48,7 @@ class NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttribu
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _field = d.pop("field", UNSET)
-        field: Union[Unset, NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField]
+        field: Unset | NewAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField
         if isinstance(_field, Unset):
             field = UNSET
         else:

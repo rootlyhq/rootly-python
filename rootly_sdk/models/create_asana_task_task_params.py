@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -45,13 +45,13 @@ class CreateAsanaTaskTaskParams:
     projects: list["CreateAsanaTaskTaskParamsProjectsItem"]
     title: str
     completion: "CreateAsanaTaskTaskParamsCompletion"
-    task_type: Union[Unset, CreateAsanaTaskTaskParamsTaskType] = UNSET
-    notes: Union[Unset, str] = UNSET
-    assign_user_email: Union[Unset, str] = UNSET
-    due_date: Union[Unset, str] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
-    dependency_direction: Union[Unset, CreateAsanaTaskTaskParamsDependencyDirection] = "blocking"
-    dependent_task_ids: Union[None, Unset, list[str]] = UNSET
+    task_type: Unset | CreateAsanaTaskTaskParamsTaskType = UNSET
+    notes: Unset | str = UNSET
+    assign_user_email: Unset | str = UNSET
+    due_date: Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
+    dependency_direction: Unset | CreateAsanaTaskTaskParamsDependencyDirection = "blocking"
+    dependent_task_ids: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,7 +66,7 @@ class CreateAsanaTaskTaskParams:
 
         completion = self.completion.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -76,17 +76,17 @@ class CreateAsanaTaskTaskParams:
 
         due_date = self.due_date
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        dependency_direction: Union[Unset, str] = UNSET
+        dependency_direction: Unset | str = UNSET
         if not isinstance(self.dependency_direction, Unset):
             dependency_direction = self.dependency_direction
 
-        dependent_task_ids: Union[None, Unset, list[str]]
+        dependent_task_ids: None | Unset | list[str]
         if isinstance(self.dependent_task_ids, Unset):
             dependent_task_ids = UNSET
         elif isinstance(self.dependent_task_ids, list):
@@ -143,7 +143,7 @@ class CreateAsanaTaskTaskParams:
         completion = CreateAsanaTaskTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateAsanaTaskTaskParamsTaskType]
+        task_type: Unset | CreateAsanaTaskTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -155,23 +155,23 @@ class CreateAsanaTaskTaskParams:
 
         due_date = d.pop("due_date", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
         _dependency_direction = d.pop("dependency_direction", UNSET)
-        dependency_direction: Union[Unset, CreateAsanaTaskTaskParamsDependencyDirection]
+        dependency_direction: Unset | CreateAsanaTaskTaskParamsDependencyDirection
         if isinstance(_dependency_direction, Unset):
             dependency_direction = UNSET
         else:
             dependency_direction = check_create_asana_task_task_params_dependency_direction(_dependency_direction)
 
-        def _parse_dependent_task_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_dependent_task_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -184,7 +184,7 @@ class CreateAsanaTaskTaskParams:
                 return dependent_task_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         dependent_task_ids = _parse_dependent_task_ids(d.pop("dependent_task_ids", UNSET))
 

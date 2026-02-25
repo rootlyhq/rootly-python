@@ -26,7 +26,7 @@ class RoleRelationship:
     def to_dict(self) -> dict[str, Any]:
         from ..models.role_relationship_data_type_0 import RoleRelationshipDataType0
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, RoleRelationshipDataType0):

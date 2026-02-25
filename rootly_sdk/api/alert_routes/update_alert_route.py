@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertRouteResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertRouteResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertRouteResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertRouteResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertRouteResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateAlertRoute,
-) -> Response[Union[AlertRouteResponse, ErrorsList]]:
+) -> Response[AlertRouteResponse | ErrorsList]:
     """Update an alert route
 
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -119,7 +119,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateAlertRoute,
-) -> Optional[Union[AlertRouteResponse, ErrorsList]]:
+) -> AlertRouteResponse | ErrorsList | None:
     """Update an alert route
 
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -162,7 +162,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateAlertRoute,
-) -> Response[Union[AlertRouteResponse, ErrorsList]]:
+) -> Response[AlertRouteResponse | ErrorsList]:
     """Update an alert route
 
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -208,7 +208,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateAlertRoute,
-) -> Optional[Union[AlertRouteResponse, ErrorsList]]:
+) -> AlertRouteResponse | ErrorsList | None:
     """Update an alert route
 
      Update a specific alert route by id. **Note: This endpoint requires access to Advanced Alert

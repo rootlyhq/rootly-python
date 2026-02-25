@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, PostMortemTemplateResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | PostMortemTemplateResponse | None:
     if response.status_code == 201:
         response_201 = PostMortemTemplateResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, PostMortemTemplateResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | PostMortemTemplateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewPostMortemTemplate,
-) -> Response[Union[ErrorsList, PostMortemTemplateResponse]]:
+) -> Response[ErrorsList | PostMortemTemplateResponse]:
     """Creates a retrospective template
 
      Creates a new Retrospective Template from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewPostMortemTemplate,
-) -> Optional[Union[ErrorsList, PostMortemTemplateResponse]]:
+) -> ErrorsList | PostMortemTemplateResponse | None:
     """Creates a retrospective template
 
      Creates a new Retrospective Template from provided data
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewPostMortemTemplate,
-) -> Response[Union[ErrorsList, PostMortemTemplateResponse]]:
+) -> Response[ErrorsList | PostMortemTemplateResponse]:
     """Creates a retrospective template
 
      Creates a new Retrospective Template from provided data
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewPostMortemTemplate,
-) -> Optional[Union[ErrorsList, PostMortemTemplateResponse]]:
+) -> ErrorsList | PostMortemTemplateResponse | None:
     """Creates a retrospective template
 
      Creates a new Retrospective Template from provided data

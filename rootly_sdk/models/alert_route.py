@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -27,9 +27,9 @@ class AlertRoute:
 
     name: str
     alerts_source_ids: list[UUID]
-    enabled: Union[Unset, bool] = UNSET
-    owning_team_ids: Union[Unset, list[UUID]] = UNSET
-    rules: Union[Unset, list["AlertRouteRulesItem"]] = UNSET
+    enabled: Unset | bool = UNSET
+    owning_team_ids: Unset | list[UUID] = UNSET
+    rules: Unset | list["AlertRouteRulesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,14 +42,14 @@ class AlertRoute:
 
         enabled = self.enabled
 
-        owning_team_ids: Union[Unset, list[str]] = UNSET
+        owning_team_ids: Unset | list[str] = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
                 owning_team_ids_item = str(owning_team_ids_item_data)
                 owning_team_ids.append(owning_team_ids_item)
 
-        rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        rules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:

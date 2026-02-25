@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,18 +27,18 @@ class DashboardPanelParamsDatasetsItemFilterItemRulesItem:
         value (Union[Unset, str]):
     """
 
-    operation: Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation] = UNSET
-    condition: Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition] = UNSET
-    key: Union[Unset, str] = UNSET
-    value: Union[Unset, str] = UNSET
+    operation: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation = UNSET
+    condition: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition = UNSET
+    key: Unset | str = UNSET
+    value: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Union[Unset, str] = UNSET
+        operation: Unset | str = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        condition: Union[Unset, str] = UNSET
+        condition: Unset | str = UNSET
         if not isinstance(self.condition, Unset):
             condition = self.condition
 
@@ -64,14 +64,14 @@ class DashboardPanelParamsDatasetsItemFilterItemRulesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation]
+        operation: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
             operation = check_dashboard_panel_params_datasets_item_filter_item_rules_item_operation(_operation)
 
         _condition = d.pop("condition", UNSET)
-        condition: Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition]
+        condition: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition
         if isinstance(_condition, Unset):
             condition = UNSET
         else:

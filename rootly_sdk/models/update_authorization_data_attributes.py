@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -19,10 +19,10 @@ class UpdateAuthorizationDataAttributes:
         permissions (Union[Unset, list[UpdateAuthorizationDataAttributesPermissionsItem]]):
     """
 
-    permissions: Union[Unset, list[UpdateAuthorizationDataAttributesPermissionsItem]] = UNSET
+    permissions: Unset | list[UpdateAuthorizationDataAttributesPermissionsItem] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        permissions: Union[Unset, list[str]] = UNSET
+        permissions: Unset | list[str] = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = []
             for permissions_item_data in self.permissions:

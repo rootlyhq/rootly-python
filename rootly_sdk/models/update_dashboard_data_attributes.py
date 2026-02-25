@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -35,32 +35,32 @@ class UpdateDashboardDataAttributes:
         period (Union[Unset, UpdateDashboardDataAttributesPeriod]): The grouping period for dashboard panel data
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    owner: Union[Unset, UpdateDashboardDataAttributesOwner] = UNSET
-    public: Union[Unset, bool] = UNSET
-    range_: Union[None, Unset, str] = UNSET
-    auto_refresh: Union[Unset, bool] = UNSET
-    color: Union[Unset, UpdateDashboardDataAttributesColor] = UNSET
-    icon: Union[Unset, str] = UNSET
-    period: Union[Unset, UpdateDashboardDataAttributesPeriod] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    owner: Unset | UpdateDashboardDataAttributesOwner = UNSET
+    public: Unset | bool = UNSET
+    range_: None | Unset | str = UNSET
+    auto_refresh: Unset | bool = UNSET
+    color: Unset | UpdateDashboardDataAttributesColor = UNSET
+    icon: Unset | str = UNSET
+    period: Unset | UpdateDashboardDataAttributesPeriod = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        owner: Union[Unset, str] = UNSET
+        owner: Unset | str = UNSET
         if not isinstance(self.owner, Unset):
             owner = self.owner
 
         public = self.public
 
-        range_: Union[None, Unset, str]
+        range_: None | Unset | str
         if isinstance(self.range_, Unset):
             range_ = UNSET
         else:
@@ -68,13 +68,13 @@ class UpdateDashboardDataAttributes:
 
         auto_refresh = self.auto_refresh
 
-        color: Union[Unset, str] = UNSET
+        color: Unset | str = UNSET
         if not isinstance(self.color, Unset):
             color = self.color
 
         icon = self.icon
 
-        period: Union[Unset, str] = UNSET
+        period: Unset | str = UNSET
         if not isinstance(self.period, Unset):
             period = self.period
 
@@ -107,17 +107,17 @@ class UpdateDashboardDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _owner = d.pop("owner", UNSET)
-        owner: Union[Unset, UpdateDashboardDataAttributesOwner]
+        owner: Unset | UpdateDashboardDataAttributesOwner
         if isinstance(_owner, Unset):
             owner = UNSET
         else:
@@ -125,19 +125,19 @@ class UpdateDashboardDataAttributes:
 
         public = d.pop("public", UNSET)
 
-        def _parse_range_(data: object) -> Union[None, Unset, str]:
+        def _parse_range_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         range_ = _parse_range_(d.pop("range", UNSET))
 
         auto_refresh = d.pop("auto_refresh", UNSET)
 
         _color = d.pop("color", UNSET)
-        color: Union[Unset, UpdateDashboardDataAttributesColor]
+        color: Unset | UpdateDashboardDataAttributesColor
         if isinstance(_color, Unset):
             color = UNSET
         else:
@@ -146,7 +146,7 @@ class UpdateDashboardDataAttributes:
         icon = d.pop("icon", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, UpdateDashboardDataAttributesPeriod]
+        period: Unset | UpdateDashboardDataAttributesPeriod
         if isinstance(_period, Unset):
             period = UNSET
         else:

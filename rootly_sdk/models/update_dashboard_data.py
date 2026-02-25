@@ -22,16 +22,16 @@ class UpdateDashboardData:
         attributes (Union[Unset, UpdateDashboardDataAttributes]):
     """
 
-    type_: Union[Unset, UpdateDashboardDataType] = UNSET
+    type_: Unset | UpdateDashboardDataType = UNSET
     attributes: Union[Unset, "UpdateDashboardDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -51,14 +51,14 @@ class UpdateDashboardData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, UpdateDashboardDataType]
+        type_: Unset | UpdateDashboardDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_update_dashboard_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, UpdateDashboardDataAttributes]
+        attributes: Unset | UpdateDashboardDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
