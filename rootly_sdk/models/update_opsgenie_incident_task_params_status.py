@@ -10,7 +10,9 @@ UPDATE_OPSGENIE_INCIDENT_TASK_PARAMS_STATUS_VALUES: set[UpdateOpsgenieIncidentTa
 }
 
 
-def check_update_opsgenie_incident_task_params_status(value: str | None) -> UpdateOpsgenieIncidentTaskParamsStatus | None:
+def check_update_opsgenie_incident_task_params_status(
+    value: str | None,
+) -> UpdateOpsgenieIncidentTaskParamsStatus | None:
     if value is None:
         return None
     if value in UPDATE_OPSGENIE_INCIDENT_TASK_PARAMS_STATUS_VALUES:

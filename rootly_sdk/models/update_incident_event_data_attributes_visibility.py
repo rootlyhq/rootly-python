@@ -8,7 +8,9 @@ UPDATE_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES: set[UpdateIncidentEvent
 }
 
 
-def check_update_incident_event_data_attributes_visibility(value: str | None) -> UpdateIncidentEventDataAttributesVisibility | None:
+def check_update_incident_event_data_attributes_visibility(
+    value: str | None,
+) -> UpdateIncidentEventDataAttributesVisibility | None:
     if value is None:
         return None
     if value in UPDATE_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES:

@@ -17,7 +17,9 @@ UPDATE_FORM_FIELD_DATA_ATTRIBUTES_VALUE_KIND_VALUES: set[UpdateFormFieldDataAttr
 }
 
 
-def check_update_form_field_data_attributes_value_kind(value: str | None) -> UpdateFormFieldDataAttributesValueKind | None:
+def check_update_form_field_data_attributes_value_kind(
+    value: str | None,
+) -> UpdateFormFieldDataAttributesValueKind | None:
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_DATA_ATTRIBUTES_VALUE_KIND_VALUES:

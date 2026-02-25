@@ -8,7 +8,9 @@ NEW_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES: set[NewIncidentEventDataAt
 }
 
 
-def check_new_incident_event_data_attributes_visibility(value: str | None) -> NewIncidentEventDataAttributesVisibility | None:
+def check_new_incident_event_data_attributes_visibility(
+    value: str | None,
+) -> NewIncidentEventDataAttributesVisibility | None:
     if value is None:
         return None
     if value in NEW_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES:

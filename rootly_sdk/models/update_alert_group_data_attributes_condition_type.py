@@ -8,7 +8,9 @@ UPDATE_ALERT_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES: set[UpdateAlertGroupDa
 }
 
 
-def check_update_alert_group_data_attributes_condition_type(value: str | None) -> UpdateAlertGroupDataAttributesConditionType | None:
+def check_update_alert_group_data_attributes_condition_type(
+    value: str | None,
+) -> UpdateAlertGroupDataAttributesConditionType | None:
     if value is None:
         return None
     if value in UPDATE_ALERT_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:

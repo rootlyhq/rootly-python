@@ -7,7 +7,9 @@ SNAPSHOT_GRAFANA_DASHBOARD_TASK_PARAMS_TASK_TYPE_VALUES: set[SnapshotGrafanaDash
 }
 
 
-def check_snapshot_grafana_dashboard_task_params_task_type(value: str | None) -> SnapshotGrafanaDashboardTaskParamsTaskType | None:
+def check_snapshot_grafana_dashboard_task_params_task_type(
+    value: str | None,
+) -> SnapshotGrafanaDashboardTaskParamsTaskType | None:
     if value is None:
         return None
     if value in SNAPSHOT_GRAFANA_DASHBOARD_TASK_PARAMS_TASK_TYPE_VALUES:

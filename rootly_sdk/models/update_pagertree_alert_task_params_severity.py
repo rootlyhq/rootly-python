@@ -11,7 +11,9 @@ UPDATE_PAGERTREE_ALERT_TASK_PARAMS_SEVERITY_VALUES: set[UpdatePagertreeAlertTask
 }
 
 
-def check_update_pagertree_alert_task_params_severity(value: str | None) -> UpdatePagertreeAlertTaskParamsSeverity | None:
+def check_update_pagertree_alert_task_params_severity(
+    value: str | None,
+) -> UpdatePagertreeAlertTaskParamsSeverity | None:
     if value is None:
         return None
     if value in UPDATE_PAGERTREE_ALERT_TASK_PARAMS_SEVERITY_VALUES:

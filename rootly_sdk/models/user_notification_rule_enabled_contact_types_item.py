@@ -12,7 +12,9 @@ USER_NOTIFICATION_RULE_ENABLED_CONTACT_TYPES_ITEM_VALUES: set[UserNotificationRu
 }
 
 
-def check_user_notification_rule_enabled_contact_types_item(value: str | None) -> UserNotificationRuleEnabledContactTypesItem | None:
+def check_user_notification_rule_enabled_contact_types_item(
+    value: str | None,
+) -> UserNotificationRuleEnabledContactTypesItem | None:
     if value is None:
         return None
     if value in USER_NOTIFICATION_RULE_ENABLED_CONTACT_TYPES_ITEM_VALUES:

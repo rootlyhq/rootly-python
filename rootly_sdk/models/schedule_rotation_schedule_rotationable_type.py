@@ -17,7 +17,9 @@ SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_TYPE_VALUES: set[ScheduleRotationSchedul
 }
 
 
-def check_schedule_rotation_schedule_rotationable_type(value: str | None) -> ScheduleRotationScheduleRotationableType | None:
+def check_schedule_rotation_schedule_rotationable_type(
+    value: str | None,
+) -> ScheduleRotationScheduleRotationableType | None:
     if value is None:
         return None
     if value in SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_TYPE_VALUES:

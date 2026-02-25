@@ -7,7 +7,9 @@ UPDATE_RETROSPECTIVE_PROCESS_GROUP_STEP_DATA_TYPE_VALUES: set[UpdateRetrospectiv
 }
 
 
-def check_update_retrospective_process_group_step_data_type(value: str | None) -> UpdateRetrospectiveProcessGroupStepDataType | None:
+def check_update_retrospective_process_group_step_data_type(
+    value: str | None,
+) -> UpdateRetrospectiveProcessGroupStepDataType | None:
     if value is None:
         return None
     if value in UPDATE_RETROSPECTIVE_PROCESS_GROUP_STEP_DATA_TYPE_VALUES:

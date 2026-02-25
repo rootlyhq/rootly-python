@@ -7,7 +7,9 @@ COMMUNICATIONS_STAGES_RESPONSE_DATA_ITEM_TYPE_VALUES: set[CommunicationsStagesRe
 }
 
 
-def check_communications_stages_response_data_item_type(value: str | None) -> CommunicationsStagesResponseDataItemType | None:
+def check_communications_stages_response_data_item_type(
+    value: str | None,
+) -> CommunicationsStagesResponseDataItemType | None:
     if value is None:
         return None
     if value in COMMUNICATIONS_STAGES_RESPONSE_DATA_ITEM_TYPE_VALUES:

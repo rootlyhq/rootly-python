@@ -577,7 +577,9 @@ ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES: set[EscalationPolicyBu
 }
 
 
-def check_escalation_policy_business_hours_type_0_time_zone(value: str | None) -> EscalationPolicyBusinessHoursType0TimeZone | None:
+def check_escalation_policy_business_hours_type_0_time_zone(
+    value: str | None,
+) -> EscalationPolicyBusinessHoursType0TimeZone | None:
     if value is None:
         return None
     if value in ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:

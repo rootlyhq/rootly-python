@@ -8,7 +8,9 @@ UPDATE_EDGE_CONNECTOR_BODY_DATA_ATTRIBUTES_STATUS_VALUES: set[UpdateEdgeConnecto
 }
 
 
-def check_update_edge_connector_body_data_attributes_status(value: str | None) -> UpdateEdgeConnectorBodyDataAttributesStatus | None:
+def check_update_edge_connector_body_data_attributes_status(
+    value: str | None,
+) -> UpdateEdgeConnectorBodyDataAttributesStatus | None:
     if value is None:
         return None
     if value in UPDATE_EDGE_CONNECTOR_BODY_DATA_ATTRIBUTES_STATUS_VALUES:

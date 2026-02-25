@@ -7,7 +7,9 @@ RETROSPECTIVE_PROCESS_GROUP_RESPONSE_DATA_TYPE_VALUES: set[RetrospectiveProcessG
 }
 
 
-def check_retrospective_process_group_response_data_type(value: str | None) -> RetrospectiveProcessGroupResponseDataType | None:
+def check_retrospective_process_group_response_data_type(
+    value: str | None,
+) -> RetrospectiveProcessGroupResponseDataType | None:
     if value is None:
         return None
     if value in RETROSPECTIVE_PROCESS_GROUP_RESPONSE_DATA_TYPE_VALUES:

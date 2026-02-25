@@ -8,7 +8,9 @@ NEW_ALERT_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES: set[NewAlertGroupDataAttr
 }
 
 
-def check_new_alert_group_data_attributes_condition_type(value: str | None) -> NewAlertGroupDataAttributesConditionType | None:
+def check_new_alert_group_data_attributes_condition_type(
+    value: str | None,
+) -> NewAlertGroupDataAttributesConditionType | None:
     if value is None:
         return None
     if value in NEW_ALERT_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:

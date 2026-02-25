@@ -15,7 +15,9 @@ UPDATE_CATALOG_FIELD_DATA_ATTRIBUTES_CATALOG_TYPE_VALUES: set[UpdateCatalogField
 }
 
 
-def check_update_catalog_field_data_attributes_catalog_type(value: str | None) -> UpdateCatalogFieldDataAttributesCatalogType | None:
+def check_update_catalog_field_data_attributes_catalog_type(
+    value: str | None,
+) -> UpdateCatalogFieldDataAttributesCatalogType | None:
     if value is None:
         return None
     if value in UPDATE_CATALOG_FIELD_DATA_ATTRIBUTES_CATALOG_TYPE_VALUES:

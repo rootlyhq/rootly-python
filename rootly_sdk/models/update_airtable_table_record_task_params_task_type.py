@@ -7,7 +7,9 @@ UPDATE_AIRTABLE_TABLE_RECORD_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateAirtableTab
 }
 
 
-def check_update_airtable_table_record_task_params_task_type(value: str | None) -> UpdateAirtableTableRecordTaskParamsTaskType | None:
+def check_update_airtable_table_record_task_params_task_type(
+    value: str | None,
+) -> UpdateAirtableTableRecordTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_AIRTABLE_TABLE_RECORD_TASK_PARAMS_TASK_TYPE_VALUES:

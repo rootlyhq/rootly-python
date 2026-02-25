@@ -17,7 +17,9 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_STATUS_VALUES: set[IncidentTriggerPar
 }
 
 
-def check_incident_trigger_params_incident_condition_status(value: str | None) -> IncidentTriggerParamsIncidentConditionStatus | None:
+def check_incident_trigger_params_incident_condition_status(
+    value: str | None,
+) -> IncidentTriggerParamsIncidentConditionStatus | None:
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_STATUS_VALUES:

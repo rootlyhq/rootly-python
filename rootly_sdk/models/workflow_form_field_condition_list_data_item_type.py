@@ -7,7 +7,9 @@ WORKFLOW_FORM_FIELD_CONDITION_LIST_DATA_ITEM_TYPE_VALUES: set[WorkflowFormFieldC
 }
 
 
-def check_workflow_form_field_condition_list_data_item_type(value: str | None) -> WorkflowFormFieldConditionListDataItemType | None:
+def check_workflow_form_field_condition_list_data_item_type(
+    value: str | None,
+) -> WorkflowFormFieldConditionListDataItemType | None:
     if value is None:
         return None
     if value in WORKFLOW_FORM_FIELD_CONDITION_LIST_DATA_ITEM_TYPE_VALUES:

@@ -31,7 +31,9 @@ NEW_EDGE_CONNECTOR_ACTION_ACTION_METADATA_ICON_VALUES: set[NewEdgeConnectorActio
 }
 
 
-def check_new_edge_connector_action_action_metadata_icon(value: str | None) -> NewEdgeConnectorActionActionMetadataIcon | None:
+def check_new_edge_connector_action_action_metadata_icon(
+    value: str | None,
+) -> NewEdgeConnectorActionActionMetadataIcon | None:
     if value is None:
         return None
     if value in NEW_EDGE_CONNECTOR_ACTION_ACTION_METADATA_ICON_VALUES:

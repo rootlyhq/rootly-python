@@ -10,7 +10,9 @@ ON_CALL_ROLE_ALERT_SOURCES_PERMISSIONS_ITEM_VALUES: set[OnCallRoleAlertSourcesPe
 }
 
 
-def check_on_call_role_alert_sources_permissions_item(value: str | None) -> OnCallRoleAlertSourcesPermissionsItem | None:
+def check_on_call_role_alert_sources_permissions_item(
+    value: str | None,
+) -> OnCallRoleAlertSourcesPermissionsItem | None:
     if value is None:
         return None
     if value in ON_CALL_ROLE_ALERT_SOURCES_PERMISSIONS_ITEM_VALUES:

@@ -7,7 +7,9 @@ SNAPSHOT_DATADOG_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES: set[SnapshotDatadogGraphTas
 }
 
 
-def check_snapshot_datadog_graph_task_params_task_type(value: str | None) -> SnapshotDatadogGraphTaskParamsTaskType | None:
+def check_snapshot_datadog_graph_task_params_task_type(
+    value: str | None,
+) -> SnapshotDatadogGraphTaskParamsTaskType | None:
     if value is None:
         return None
     if value in SNAPSHOT_DATADOG_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES:

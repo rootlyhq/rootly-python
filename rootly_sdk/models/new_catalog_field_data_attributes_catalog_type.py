@@ -15,7 +15,9 @@ NEW_CATALOG_FIELD_DATA_ATTRIBUTES_CATALOG_TYPE_VALUES: set[NewCatalogFieldDataAt
 }
 
 
-def check_new_catalog_field_data_attributes_catalog_type(value: str | None) -> NewCatalogFieldDataAttributesCatalogType | None:
+def check_new_catalog_field_data_attributes_catalog_type(
+    value: str | None,
+) -> NewCatalogFieldDataAttributesCatalogType | None:
     if value is None:
         return None
     if value in NEW_CATALOG_FIELD_DATA_ATTRIBUTES_CATALOG_TYPE_VALUES:

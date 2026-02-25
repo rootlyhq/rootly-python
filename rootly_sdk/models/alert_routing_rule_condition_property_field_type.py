@@ -8,7 +8,9 @@ ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_TYPE_VALUES: set[AlertRoutingRuleCon
 }
 
 
-def check_alert_routing_rule_condition_property_field_type(value: str | None) -> AlertRoutingRuleConditionPropertyFieldType | None:
+def check_alert_routing_rule_condition_property_field_type(
+    value: str | None,
+) -> AlertRoutingRuleConditionPropertyFieldType | None:
     if value is None:
         return None
     if value in ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_TYPE_VALUES:

@@ -10,7 +10,9 @@ CREATE_ZOOM_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES: set[CreateZoomMeetingTask
 }
 
 
-def check_create_zoom_meeting_task_params_recording_mode(value: str | None) -> CreateZoomMeetingTaskParamsRecordingMode | None:
+def check_create_zoom_meeting_task_params_recording_mode(
+    value: str | None,
+) -> CreateZoomMeetingTaskParamsRecordingMode | None:
     if value is None:
         return None
     if value in CREATE_ZOOM_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES:

@@ -7,7 +7,9 @@ COMMUNICATIONS_TEMPLATES_RESPONSE_DATA_ITEM_TYPE_VALUES: set[CommunicationsTempl
 }
 
 
-def check_communications_templates_response_data_item_type(value: str | None) -> CommunicationsTemplatesResponseDataItemType | None:
+def check_communications_templates_response_data_item_type(
+    value: str | None,
+) -> CommunicationsTemplatesResponseDataItemType | None:
     if value is None:
         return None
     if value in COMMUNICATIONS_TEMPLATES_RESPONSE_DATA_ITEM_TYPE_VALUES:

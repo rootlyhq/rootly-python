@@ -7,7 +7,9 @@ WORKFLOW_FORM_FIELD_CONDITION_RESPONSE_DATA_TYPE_VALUES: set[WorkflowFormFieldCo
 }
 
 
-def check_workflow_form_field_condition_response_data_type(value: str | None) -> WorkflowFormFieldConditionResponseDataType | None:
+def check_workflow_form_field_condition_response_data_type(
+    value: str | None,
+) -> WorkflowFormFieldConditionResponseDataType | None:
     if value is None:
         return None
     if value in WORKFLOW_FORM_FIELD_CONDITION_RESPONSE_DATA_TYPE_VALUES:

@@ -7,7 +7,9 @@ UPDATE_INCIDENT_RETROSPECTIVE_STEP_DATA_TYPE_VALUES: set[UpdateIncidentRetrospec
 }
 
 
-def check_update_incident_retrospective_step_data_type(value: str | None) -> UpdateIncidentRetrospectiveStepDataType | None:
+def check_update_incident_retrospective_step_data_type(
+    value: str | None,
+) -> UpdateIncidentRetrospectiveStepDataType | None:
     if value is None:
         return None
     if value in UPDATE_INCIDENT_RETROSPECTIVE_STEP_DATA_TYPE_VALUES:

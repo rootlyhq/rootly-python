@@ -9,7 +9,9 @@ ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_TYPE_VALUES: set[AlertGroupConditions
 }
 
 
-def check_alert_group_conditions_item_property_field_type(value: str | None) -> AlertGroupConditionsItemPropertyFieldType | None:
+def check_alert_group_conditions_item_property_field_type(
+    value: str | None,
+) -> AlertGroupConditionsItemPropertyFieldType | None:
     if value is None:
         return None
     if value in ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_TYPE_VALUES:

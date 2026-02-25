@@ -17,7 +17,9 @@ PULSE_TRIGGER_PARAMS_PULSE_CONDITION_SOURCE_VALUES: set[PulseTriggerParamsPulseC
 }
 
 
-def check_pulse_trigger_params_pulse_condition_source(value: str | None) -> PulseTriggerParamsPulseConditionSource | None:
+def check_pulse_trigger_params_pulse_condition_source(
+    value: str | None,
+) -> PulseTriggerParamsPulseConditionSource | None:
     if value is None:
         return None
     if value in PULSE_TRIGGER_PARAMS_PULSE_CONDITION_SOURCE_VALUES:

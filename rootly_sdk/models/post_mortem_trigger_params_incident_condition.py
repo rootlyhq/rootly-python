@@ -9,7 +9,9 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES: set[PostMortemTriggerParam
 }
 
 
-def check_post_mortem_trigger_params_incident_condition(value: str | None) -> PostMortemTriggerParamsIncidentCondition | None:
+def check_post_mortem_trigger_params_incident_condition(
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentCondition | None:
     if value is None:
         return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES:

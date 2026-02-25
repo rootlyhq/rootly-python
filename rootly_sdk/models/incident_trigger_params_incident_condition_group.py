@@ -17,7 +17,9 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_GROUP_VALUES: set[IncidentTriggerPara
 }
 
 
-def check_incident_trigger_params_incident_condition_group(value: str | None) -> IncidentTriggerParamsIncidentConditionGroup | None:
+def check_incident_trigger_params_incident_condition_group(
+    value: str | None,
+) -> IncidentTriggerParamsIncidentConditionGroup | None:
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_GROUP_VALUES:

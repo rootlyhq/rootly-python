@@ -7,7 +7,9 @@ ALERT_GROUP_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES: set[AlertGroupConditionsI
 }
 
 
-def check_alert_group_conditions_item_conditionable_type(value: str | None) -> AlertGroupConditionsItemConditionableType | None:
+def check_alert_group_conditions_item_conditionable_type(
+    value: str | None,
+) -> AlertGroupConditionsItemConditionableType | None:
     if value is None:
         return None
     if value in ALERT_GROUP_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES:

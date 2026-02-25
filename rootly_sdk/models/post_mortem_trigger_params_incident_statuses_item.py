@@ -29,7 +29,9 @@ POST_MORTEM_TRIGGER_PARAMS_INCIDENT_STATUSES_ITEM_VALUES: set[PostMortemTriggerP
 }
 
 
-def check_post_mortem_trigger_params_incident_statuses_item(value: str | None) -> PostMortemTriggerParamsIncidentStatusesItem | None:
+def check_post_mortem_trigger_params_incident_statuses_item(
+    value: str | None,
+) -> PostMortemTriggerParamsIncidentStatusesItem | None:
     if value is None:
         return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_STATUSES_ITEM_VALUES:

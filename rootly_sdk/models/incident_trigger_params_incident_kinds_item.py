@@ -17,7 +17,9 @@ INCIDENT_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[IncidentTriggerParamsInc
 }
 
 
-def check_incident_trigger_params_incident_kinds_item(value: str | None) -> IncidentTriggerParamsIncidentKindsItem | None:
+def check_incident_trigger_params_incident_kinds_item(
+    value: str | None,
+) -> IncidentTriggerParamsIncidentKindsItem | None:
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES:

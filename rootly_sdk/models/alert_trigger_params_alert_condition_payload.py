@@ -17,7 +17,9 @@ ALERT_TRIGGER_PARAMS_ALERT_CONDITION_PAYLOAD_VALUES: set[AlertTriggerParamsAlert
 }
 
 
-def check_alert_trigger_params_alert_condition_payload(value: str | None) -> AlertTriggerParamsAlertConditionPayload | None:
+def check_alert_trigger_params_alert_condition_payload(
+    value: str | None,
+) -> AlertTriggerParamsAlertConditionPayload | None:
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_CONDITION_PAYLOAD_VALUES:

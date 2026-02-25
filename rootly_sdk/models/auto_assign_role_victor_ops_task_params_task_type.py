@@ -7,7 +7,9 @@ AUTO_ASSIGN_ROLE_VICTOR_OPS_TASK_PARAMS_TASK_TYPE_VALUES: set[AutoAssignRoleVict
 }
 
 
-def check_auto_assign_role_victor_ops_task_params_task_type(value: str | None) -> AutoAssignRoleVictorOpsTaskParamsTaskType | None:
+def check_auto_assign_role_victor_ops_task_params_task_type(
+    value: str | None,
+) -> AutoAssignRoleVictorOpsTaskParamsTaskType | None:
     if value is None:
         return None
     if value in AUTO_ASSIGN_ROLE_VICTOR_OPS_TASK_PARAMS_TASK_TYPE_VALUES:

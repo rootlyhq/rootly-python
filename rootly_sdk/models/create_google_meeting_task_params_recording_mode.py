@@ -10,7 +10,9 @@ CREATE_GOOGLE_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES: set[CreateGoogleMeeting
 }
 
 
-def check_create_google_meeting_task_params_recording_mode(value: str | None) -> CreateGoogleMeetingTaskParamsRecordingMode | None:
+def check_create_google_meeting_task_params_recording_mode(
+    value: str | None,
+) -> CreateGoogleMeetingTaskParamsRecordingMode | None:
     if value is None:
         return None
     if value in CREATE_GOOGLE_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES:

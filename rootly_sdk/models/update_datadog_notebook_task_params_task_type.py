@@ -7,7 +7,9 @@ UPDATE_DATADOG_NOTEBOOK_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateDatadogNotebookT
 }
 
 
-def check_update_datadog_notebook_task_params_task_type(value: str | None) -> UpdateDatadogNotebookTaskParamsTaskType | None:
+def check_update_datadog_notebook_task_params_task_type(
+    value: str | None,
+) -> UpdateDatadogNotebookTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_DATADOG_NOTEBOOK_TASK_PARAMS_TASK_TYPE_VALUES:

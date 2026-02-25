@@ -8,7 +8,9 @@ FORM_FIELD_PLACEMENT_CONDITION_CONDITIONED_VALUES: set[FormFieldPlacementConditi
 }
 
 
-def check_form_field_placement_condition_conditioned(value: str | None) -> FormFieldPlacementConditionConditioned | None:
+def check_form_field_placement_condition_conditioned(
+    value: str | None,
+) -> FormFieldPlacementConditionConditioned | None:
     if value is None:
         return None
     if value in FORM_FIELD_PLACEMENT_CONDITION_CONDITIONED_VALUES:

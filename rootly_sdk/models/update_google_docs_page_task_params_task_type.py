@@ -7,7 +7,9 @@ UPDATE_GOOGLE_DOCS_PAGE_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateGoogleDocsPageTa
 }
 
 
-def check_update_google_docs_page_task_params_task_type(value: str | None) -> UpdateGoogleDocsPageTaskParamsTaskType | None:
+def check_update_google_docs_page_task_params_task_type(
+    value: str | None,
+) -> UpdateGoogleDocsPageTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_GOOGLE_DOCS_PAGE_TASK_PARAMS_TASK_TYPE_VALUES:

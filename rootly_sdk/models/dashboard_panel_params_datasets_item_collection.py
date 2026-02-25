@@ -13,7 +13,9 @@ DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_COLLECTION_VALUES: set[DashboardPanelParams
 }
 
 
-def check_dashboard_panel_params_datasets_item_collection(value: str | None) -> DashboardPanelParamsDatasetsItemCollection | None:
+def check_dashboard_panel_params_datasets_item_collection(
+    value: str | None,
+) -> DashboardPanelParamsDatasetsItemCollection | None:
     if value is None:
         return None
     if value in DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_COLLECTION_VALUES:

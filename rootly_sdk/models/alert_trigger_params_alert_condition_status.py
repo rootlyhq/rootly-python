@@ -17,7 +17,9 @@ ALERT_TRIGGER_PARAMS_ALERT_CONDITION_STATUS_VALUES: set[AlertTriggerParamsAlertC
 }
 
 
-def check_alert_trigger_params_alert_condition_status(value: str | None) -> AlertTriggerParamsAlertConditionStatus | None:
+def check_alert_trigger_params_alert_condition_status(
+    value: str | None,
+) -> AlertTriggerParamsAlertConditionStatus | None:
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_CONDITION_STATUS_VALUES:

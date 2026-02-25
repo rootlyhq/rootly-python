@@ -577,7 +577,9 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
 }
 
 
-def check_escalation_policy_path_time_restriction_time_zone(value: str | None) -> EscalationPolicyPathTimeRestrictionTimeZone | None:
+def check_escalation_policy_path_time_restriction_time_zone(
+    value: str | None,
+) -> EscalationPolicyPathTimeRestrictionTimeZone | None:
     if value is None:
         return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES:

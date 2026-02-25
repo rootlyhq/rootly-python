@@ -7,7 +7,9 @@ UPDATE_SERVICE_NOW_INCIDENT_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateServiceNowIn
 }
 
 
-def check_update_service_now_incident_task_params_task_type(value: str | None) -> UpdateServiceNowIncidentTaskParamsTaskType | None:
+def check_update_service_now_incident_task_params_task_type(
+    value: str | None,
+) -> UpdateServiceNowIncidentTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_SERVICE_NOW_INCIDENT_TASK_PARAMS_TASK_TYPE_VALUES:

@@ -7,7 +7,9 @@ UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_TYPE_VALUES: set[UpdateIncidentEventFun
 }
 
 
-def check_update_incident_event_functionality_data_type(value: str | None) -> UpdateIncidentEventFunctionalityDataType | None:
+def check_update_incident_event_functionality_data_type(
+    value: str | None,
+) -> UpdateIncidentEventFunctionalityDataType | None:
     if value is None:
         return None
     if value in UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_TYPE_VALUES:

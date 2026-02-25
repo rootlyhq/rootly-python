@@ -7,7 +7,9 @@ UPDATE_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES: set[UpdateWorkflowFormFie
 }
 
 
-def check_update_workflow_form_field_condition_data_type(value: str | None) -> UpdateWorkflowFormFieldConditionDataType | None:
+def check_update_workflow_form_field_condition_data_type(
+    value: str | None,
+) -> UpdateWorkflowFormFieldConditionDataType | None:
     if value is None:
         return None
     if value in UPDATE_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES:

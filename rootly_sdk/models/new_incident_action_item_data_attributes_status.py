@@ -10,7 +10,9 @@ NEW_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_STATUS_VALUES: set[NewIncidentActionIte
 }
 
 
-def check_new_incident_action_item_data_attributes_status(value: str | None) -> NewIncidentActionItemDataAttributesStatus | None:
+def check_new_incident_action_item_data_attributes_status(
+    value: str | None,
+) -> NewIncidentActionItemDataAttributesStatus | None:
     if value is None:
         return None
     if value in NEW_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_STATUS_VALUES:

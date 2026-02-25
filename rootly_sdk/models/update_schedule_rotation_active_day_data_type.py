@@ -7,7 +7,9 @@ UPDATE_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES: set[UpdateScheduleRotation
 }
 
 
-def check_update_schedule_rotation_active_day_data_type(value: str | None) -> UpdateScheduleRotationActiveDayDataType | None:
+def check_update_schedule_rotation_active_day_data_type(
+    value: str | None,
+) -> UpdateScheduleRotationActiveDayDataType | None:
     if value is None:
         return None
     if value in UPDATE_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES:

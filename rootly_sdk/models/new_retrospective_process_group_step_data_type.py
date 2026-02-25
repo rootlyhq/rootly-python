@@ -7,7 +7,9 @@ NEW_RETROSPECTIVE_PROCESS_GROUP_STEP_DATA_TYPE_VALUES: set[NewRetrospectiveProce
 }
 
 
-def check_new_retrospective_process_group_step_data_type(value: str | None) -> NewRetrospectiveProcessGroupStepDataType | None:
+def check_new_retrospective_process_group_step_data_type(
+    value: str | None,
+) -> NewRetrospectiveProcessGroupStepDataType | None:
     if value is None:
         return None
     if value in NEW_RETROSPECTIVE_PROCESS_GROUP_STEP_DATA_TYPE_VALUES:

@@ -7,7 +7,9 @@ CATALOG_ENTITY_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES: set[CatalogEntityPropertyLis
 }
 
 
-def check_catalog_entity_property_list_data_item_type(value: str | None) -> CatalogEntityPropertyListDataItemType | None:
+def check_catalog_entity_property_list_data_item_type(
+    value: str | None,
+) -> CatalogEntityPropertyListDataItemType | None:
     if value is None:
         return None
     if value in CATALOG_ENTITY_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES:

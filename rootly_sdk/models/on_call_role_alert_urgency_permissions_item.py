@@ -10,7 +10,9 @@ ON_CALL_ROLE_ALERT_URGENCY_PERMISSIONS_ITEM_VALUES: set[OnCallRoleAlertUrgencyPe
 }
 
 
-def check_on_call_role_alert_urgency_permissions_item(value: str | None) -> OnCallRoleAlertUrgencyPermissionsItem | None:
+def check_on_call_role_alert_urgency_permissions_item(
+    value: str | None,
+) -> OnCallRoleAlertUrgencyPermissionsItem | None:
     if value is None:
         return None
     if value in ON_CALL_ROLE_ALERT_URGENCY_PERMISSIONS_ITEM_VALUES:

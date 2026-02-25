@@ -23,7 +23,9 @@ UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_SHOWN_ITEM_VALUES: set[UpdateCustomFieldData
 }
 
 
-def check_update_custom_field_data_attributes_shown_item(value: str | None) -> UpdateCustomFieldDataAttributesShownItem | None:
+def check_update_custom_field_data_attributes_shown_item(
+    value: str | None,
+) -> UpdateCustomFieldDataAttributesShownItem | None:
     if value is None:
         return None
     if value in UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_SHOWN_ITEM_VALUES:

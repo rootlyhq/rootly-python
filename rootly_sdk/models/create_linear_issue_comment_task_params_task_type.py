@@ -7,7 +7,9 @@ CREATE_LINEAR_ISSUE_COMMENT_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateLinearIssueC
 }
 
 
-def check_create_linear_issue_comment_task_params_task_type(value: str | None) -> CreateLinearIssueCommentTaskParamsTaskType | None:
+def check_create_linear_issue_comment_task_params_task_type(
+    value: str | None,
+) -> CreateLinearIssueCommentTaskParamsTaskType | None:
     if value is None:
         return None
     if value in CREATE_LINEAR_ISSUE_COMMENT_TASK_PARAMS_TASK_TYPE_VALUES:

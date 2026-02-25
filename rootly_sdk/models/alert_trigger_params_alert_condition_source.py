@@ -17,7 +17,9 @@ ALERT_TRIGGER_PARAMS_ALERT_CONDITION_SOURCE_VALUES: set[AlertTriggerParamsAlertC
 }
 
 
-def check_alert_trigger_params_alert_condition_source(value: str | None) -> AlertTriggerParamsAlertConditionSource | None:
+def check_alert_trigger_params_alert_condition_source(
+    value: str | None,
+) -> AlertTriggerParamsAlertConditionSource | None:
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_CONDITION_SOURCE_VALUES:

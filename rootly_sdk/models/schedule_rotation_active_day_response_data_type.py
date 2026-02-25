@@ -7,7 +7,9 @@ SCHEDULE_ROTATION_ACTIVE_DAY_RESPONSE_DATA_TYPE_VALUES: set[ScheduleRotationActi
 }
 
 
-def check_schedule_rotation_active_day_response_data_type(value: str | None) -> ScheduleRotationActiveDayResponseDataType | None:
+def check_schedule_rotation_active_day_response_data_type(
+    value: str | None,
+) -> ScheduleRotationActiveDayResponseDataType | None:
     if value is None:
         return None
     if value in SCHEDULE_ROTATION_ACTIVE_DAY_RESPONSE_DATA_TYPE_VALUES:

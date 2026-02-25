@@ -7,7 +7,9 @@ CREATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES: set[CreateDropboxPaperPa
 }
 
 
-def check_create_dropbox_paper_page_task_params_task_type(value: str | None) -> CreateDropboxPaperPageTaskParamsTaskType | None:
+def check_create_dropbox_paper_page_task_params_task_type(
+    value: str | None,
+) -> CreateDropboxPaperPageTaskParamsTaskType | None:
     if value is None:
         return None
     if value in CREATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES:

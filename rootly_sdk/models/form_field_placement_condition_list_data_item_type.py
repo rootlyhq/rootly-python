@@ -7,7 +7,9 @@ FORM_FIELD_PLACEMENT_CONDITION_LIST_DATA_ITEM_TYPE_VALUES: set[FormFieldPlacemen
 }
 
 
-def check_form_field_placement_condition_list_data_item_type(value: str | None) -> FormFieldPlacementConditionListDataItemType | None:
+def check_form_field_placement_condition_list_data_item_type(
+    value: str | None,
+) -> FormFieldPlacementConditionListDataItemType | None:
     if value is None:
         return None
     if value in FORM_FIELD_PLACEMENT_CONDITION_LIST_DATA_ITEM_TYPE_VALUES:

@@ -7,7 +7,9 @@ UPDATE_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_TYPE_VALUES: set[UpdateIncidentPermi
 }
 
 
-def check_update_incident_permission_set_boolean_data_type(value: str | None) -> UpdateIncidentPermissionSetBooleanDataType | None:
+def check_update_incident_permission_set_boolean_data_type(
+    value: str | None,
+) -> UpdateIncidentPermissionSetBooleanDataType | None:
     if value is None:
         return None
     if value in UPDATE_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_TYPE_VALUES:

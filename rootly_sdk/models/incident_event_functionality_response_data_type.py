@@ -7,7 +7,9 @@ INCIDENT_EVENT_FUNCTIONALITY_RESPONSE_DATA_TYPE_VALUES: set[IncidentEventFunctio
 }
 
 
-def check_incident_event_functionality_response_data_type(value: str | None) -> IncidentEventFunctionalityResponseDataType | None:
+def check_incident_event_functionality_response_data_type(
+    value: str | None,
+) -> IncidentEventFunctionalityResponseDataType | None:
     if value is None:
         return None
     if value in INCIDENT_EVENT_FUNCTIONALITY_RESPONSE_DATA_TYPE_VALUES:

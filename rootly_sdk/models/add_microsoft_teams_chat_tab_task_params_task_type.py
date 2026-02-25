@@ -7,7 +7,9 @@ ADD_MICROSOFT_TEAMS_CHAT_TAB_TASK_PARAMS_TASK_TYPE_VALUES: set[AddMicrosoftTeams
 }
 
 
-def check_add_microsoft_teams_chat_tab_task_params_task_type(value: str | None) -> AddMicrosoftTeamsChatTabTaskParamsTaskType | None:
+def check_add_microsoft_teams_chat_tab_task_params_task_type(
+    value: str | None,
+) -> AddMicrosoftTeamsChatTabTaskParamsTaskType | None:
     if value is None:
         return None
     if value in ADD_MICROSOFT_TEAMS_CHAT_TAB_TASK_PARAMS_TASK_TYPE_VALUES:

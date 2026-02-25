@@ -7,7 +7,9 @@ AUTO_ASSIGN_ROLE_ROOTLY_TASK_PARAMS_TASK_TYPE_VALUES: set[AutoAssignRoleRootlyTa
 }
 
 
-def check_auto_assign_role_rootly_task_params_task_type(value: str | None) -> AutoAssignRoleRootlyTaskParamsTaskType | None:
+def check_auto_assign_role_rootly_task_params_task_type(
+    value: str | None,
+) -> AutoAssignRoleRootlyTaskParamsTaskType | None:
     if value is None:
         return None
     if value in AUTO_ASSIGN_ROLE_ROOTLY_TASK_PARAMS_TASK_TYPE_VALUES:

@@ -8,7 +8,9 @@ UPDATE_EDGE_CONNECTOR_EDGE_CONNECTOR_STATUS_VALUES: set[UpdateEdgeConnectorEdgeC
 }
 
 
-def check_update_edge_connector_edge_connector_status(value: str | None) -> UpdateEdgeConnectorEdgeConnectorStatus | None:
+def check_update_edge_connector_edge_connector_status(
+    value: str | None,
+) -> UpdateEdgeConnectorEdgeConnectorStatus | None:
     if value is None:
         return None
     if value in UPDATE_EDGE_CONNECTOR_EDGE_CONNECTOR_STATUS_VALUES:

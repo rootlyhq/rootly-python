@@ -7,7 +7,9 @@ AUTO_ASSIGN_ROLE_OPSGENIE_TASK_PARAMS_TASK_TYPE_VALUES: set[AutoAssignRoleOpsgen
 }
 
 
-def check_auto_assign_role_opsgenie_task_params_task_type(value: str | None) -> AutoAssignRoleOpsgenieTaskParamsTaskType | None:
+def check_auto_assign_role_opsgenie_task_params_task_type(
+    value: str | None,
+) -> AutoAssignRoleOpsgenieTaskParamsTaskType | None:
     if value is None:
         return None
     if value in AUTO_ASSIGN_ROLE_OPSGENIE_TASK_PARAMS_TASK_TYPE_VALUES:

@@ -17,7 +17,9 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES: set[ActionItemTriggerPara
 }
 
 
-def check_action_item_trigger_params_incident_kinds_item(value: str | None) -> ActionItemTriggerParamsIncidentKindsItem | None:
+def check_action_item_trigger_params_incident_kinds_item(
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentKindsItem | None:
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES:

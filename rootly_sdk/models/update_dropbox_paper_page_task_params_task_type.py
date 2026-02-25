@@ -7,7 +7,9 @@ UPDATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateDropboxPaperPa
 }
 
 
-def check_update_dropbox_paper_page_task_params_task_type(value: str | None) -> UpdateDropboxPaperPageTaskParamsTaskType | None:
+def check_update_dropbox_paper_page_task_params_task_type(
+    value: str | None,
+) -> UpdateDropboxPaperPageTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES:

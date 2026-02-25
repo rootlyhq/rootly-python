@@ -17,7 +17,9 @@ PULSE_TRIGGER_PARAMS_PULSE_CONDITION_PAYLOAD_VALUES: set[PulseTriggerParamsPulse
 }
 
 
-def check_pulse_trigger_params_pulse_condition_payload(value: str | None) -> PulseTriggerParamsPulseConditionPayload | None:
+def check_pulse_trigger_params_pulse_condition_payload(
+    value: str | None,
+) -> PulseTriggerParamsPulseConditionPayload | None:
     if value is None:
         return None
     if value in PULSE_TRIGGER_PARAMS_PULSE_CONDITION_PAYLOAD_VALUES:

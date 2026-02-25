@@ -9,7 +9,9 @@ UPDATE_HEARTBEAT_DATA_ATTRIBUTES_INTERVAL_UNIT_VALUES: set[UpdateHeartbeatDataAt
 }
 
 
-def check_update_heartbeat_data_attributes_interval_unit(value: str | None) -> UpdateHeartbeatDataAttributesIntervalUnit | None:
+def check_update_heartbeat_data_attributes_interval_unit(
+    value: str | None,
+) -> UpdateHeartbeatDataAttributesIntervalUnit | None:
     if value is None:
         return None
     if value in UPDATE_HEARTBEAT_DATA_ATTRIBUTES_INTERVAL_UNIT_VALUES:

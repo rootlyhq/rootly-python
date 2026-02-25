@@ -7,7 +7,9 @@ NEW_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES: set[NewWorkflowFormFieldCond
 }
 
 
-def check_new_workflow_form_field_condition_data_type(value: str | None) -> NewWorkflowFormFieldConditionDataType | None:
+def check_new_workflow_form_field_condition_data_type(
+    value: str | None,
+) -> NewWorkflowFormFieldConditionDataType | None:
     if value is None:
         return None
     if value in NEW_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES:

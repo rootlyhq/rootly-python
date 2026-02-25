@@ -7,7 +7,9 @@ INCIDENT_FORM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentFormFieldS
 }
 
 
-def check_incident_form_field_selection_list_data_item_type(value: str | None) -> IncidentFormFieldSelectionListDataItemType | None:
+def check_incident_form_field_selection_list_data_item_type(
+    value: str | None,
+) -> IncidentFormFieldSelectionListDataItemType | None:
     if value is None:
         return None
     if value in INCIDENT_FORM_FIELD_SELECTION_LIST_DATA_ITEM_TYPE_VALUES:

@@ -17,7 +17,9 @@ WORKFLOW_FORM_FIELD_CONDITION_INCIDENT_CONDITION_VALUES: set[WorkflowFormFieldCo
 }
 
 
-def check_workflow_form_field_condition_incident_condition(value: str | None) -> WorkflowFormFieldConditionIncidentCondition | None:
+def check_workflow_form_field_condition_incident_condition(
+    value: str | None,
+) -> WorkflowFormFieldConditionIncidentCondition | None:
     if value is None:
         return None
     if value in WORKFLOW_FORM_FIELD_CONDITION_INCIDENT_CONDITION_VALUES:

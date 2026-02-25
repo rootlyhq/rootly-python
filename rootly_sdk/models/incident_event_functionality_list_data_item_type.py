@@ -7,7 +7,9 @@ INCIDENT_EVENT_FUNCTIONALITY_LIST_DATA_ITEM_TYPE_VALUES: set[IncidentEventFuncti
 }
 
 
-def check_incident_event_functionality_list_data_item_type(value: str | None) -> IncidentEventFunctionalityListDataItemType | None:
+def check_incident_event_functionality_list_data_item_type(
+    value: str | None,
+) -> IncidentEventFunctionalityListDataItemType | None:
     if value is None:
         return None
     if value in INCIDENT_EVENT_FUNCTIONALITY_LIST_DATA_ITEM_TYPE_VALUES:

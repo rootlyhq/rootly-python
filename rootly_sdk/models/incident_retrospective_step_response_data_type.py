@@ -7,7 +7,9 @@ INCIDENT_RETROSPECTIVE_STEP_RESPONSE_DATA_TYPE_VALUES: set[IncidentRetrospective
 }
 
 
-def check_incident_retrospective_step_response_data_type(value: str | None) -> IncidentRetrospectiveStepResponseDataType | None:
+def check_incident_retrospective_step_response_data_type(
+    value: str | None,
+) -> IncidentRetrospectiveStepResponseDataType | None:
     if value is None:
         return None
     if value in INCIDENT_RETROSPECTIVE_STEP_RESPONSE_DATA_TYPE_VALUES:

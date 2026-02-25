@@ -7,7 +7,9 @@ UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_TYPE_VALUES: set[UpdateFormFieldPlace
 }
 
 
-def check_update_form_field_placement_condition_data_type(value: str | None) -> UpdateFormFieldPlacementConditionDataType | None:
+def check_update_form_field_placement_condition_data_type(
+    value: str | None,
+) -> UpdateFormFieldPlacementConditionDataType | None:
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_TYPE_VALUES:

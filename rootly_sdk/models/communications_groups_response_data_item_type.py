@@ -7,7 +7,9 @@ COMMUNICATIONS_GROUPS_RESPONSE_DATA_ITEM_TYPE_VALUES: set[CommunicationsGroupsRe
 }
 
 
-def check_communications_groups_response_data_item_type(value: str | None) -> CommunicationsGroupsResponseDataItemType | None:
+def check_communications_groups_response_data_item_type(
+    value: str | None,
+) -> CommunicationsGroupsResponseDataItemType | None:
     if value is None:
         return None
     if value in COMMUNICATIONS_GROUPS_RESPONSE_DATA_ITEM_TYPE_VALUES:

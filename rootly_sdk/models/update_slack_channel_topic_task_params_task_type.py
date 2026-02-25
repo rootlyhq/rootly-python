@@ -7,7 +7,9 @@ UPDATE_SLACK_CHANNEL_TOPIC_TASK_PARAMS_TASK_TYPE_VALUES: set[UpdateSlackChannelT
 }
 
 
-def check_update_slack_channel_topic_task_params_task_type(value: str | None) -> UpdateSlackChannelTopicTaskParamsTaskType | None:
+def check_update_slack_channel_topic_task_params_task_type(
+    value: str | None,
+) -> UpdateSlackChannelTopicTaskParamsTaskType | None:
     if value is None:
         return None
     if value in UPDATE_SLACK_CHANNEL_TOPIC_TASK_PARAMS_TASK_TYPE_VALUES:

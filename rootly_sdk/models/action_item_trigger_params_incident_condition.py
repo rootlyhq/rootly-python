@@ -9,7 +9,9 @@ ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES: set[ActionItemTriggerParam
 }
 
 
-def check_action_item_trigger_params_incident_condition(value: str | None) -> ActionItemTriggerParamsIncidentCondition | None:
+def check_action_item_trigger_params_incident_condition(
+    value: str | None,
+) -> ActionItemTriggerParamsIncidentCondition | None:
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_VALUES:
