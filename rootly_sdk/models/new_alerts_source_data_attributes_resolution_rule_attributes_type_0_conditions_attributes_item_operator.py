@@ -17,8 +17,10 @@ NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_A
 
 
 def check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item_operator(
-    value: str,
-) -> NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator:
+    value: str | None,
+) -> NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator | None:
+    if value is None:
+        return None
     if (
         value
         in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_OPERATOR_VALUES

@@ -10,8 +10,10 @@ UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_
 
 
 def check_update_alerts_source_data_attributes_alert_source_urgency_rules_attributes_item_conditionable_type(
-    value: str,
-) -> UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType:
+    value: str | None,
+) -> UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType | None:
+    if value is None:
+        return None
     if (
         value
         in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES

@@ -12,8 +12,10 @@ UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITION
 
 
 def check_update_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type(
-    value: str,
-) -> UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType:
+    value: str | None,
+) -> UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | None:
+    if value is None:
+        return None
     if (
         value
         in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES

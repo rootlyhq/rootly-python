@@ -14,8 +14,10 @@ UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_3
 
 
 def check_update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3_shift_length_unit(
-    value: str,
-) -> UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit:
+    value: str | None,
+) -> UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit | None:
+    if value is None:
+        return None
     if (
         value
         in UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_3_SHIFT_LENGTH_UNIT_VALUES

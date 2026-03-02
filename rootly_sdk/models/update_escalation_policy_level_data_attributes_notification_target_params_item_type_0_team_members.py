@@ -14,8 +14,10 @@ UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_T
 
 
 def check_update_escalation_policy_level_data_attributes_notification_target_params_item_type_0_team_members(
-    value: str,
-) -> UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers:
+    value: str | None,
+) -> UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers | None:
+    if value is None:
+        return None
     if (
         value
         in UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TEAM_MEMBERS_VALUES

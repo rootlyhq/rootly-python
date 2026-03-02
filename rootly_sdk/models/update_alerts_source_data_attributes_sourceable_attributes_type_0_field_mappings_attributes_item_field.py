@@ -24,8 +24,10 @@ UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCEABLE_ATTRIBUTES_TYPE_0_FIELD_MAPPINGS
 
 
 def check_update_alerts_source_data_attributes_sourceable_attributes_type_0_field_mappings_attributes_item_field(
-    value: str,
-) -> UpdateAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField:
+    value: str | None,
+) -> UpdateAlertsSourceDataAttributesSourceableAttributesType0FieldMappingsAttributesItemField | None:
+    if value is None:
+        return None
     if (
         value
         in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCEABLE_ATTRIBUTES_TYPE_0_FIELD_MAPPINGS_ATTRIBUTES_ITEM_FIELD_VALUES

@@ -53,17 +53,21 @@ def fix_check_function(content: str) -> str | None:
         return None
 
     # Now add the None check after the function definition
-    # Find "if value in " and add None check before it
+    # Find "if value in " or "if (" (multi-line condition) and add None check before it
     lines = content.split("\n")
     new_lines = []
+    none_check_added = False
 
     for i, line in enumerate(lines):
-        # Look for the first "if value in" after a check function
-        if "    if value in " in line:
-            # Check if previous non-empty line is the function signature end or another statement
-            # Add the None check
-            new_lines.append("    if value is None:")
-            new_lines.append("        return None")
+        # Look for the first "if value in" (single-line) or "if (" (multi-line) after a check function
+        if not none_check_added:
+            if "    if value in " in line or (
+                line.strip() == "if (" and i + 1 < len(lines) and "value" in lines[i + 1]
+            ):
+                # Add the None check before this line
+                new_lines.append("    if value is None:")
+                new_lines.append("        return None")
+                none_check_added = True
         new_lines.append(line)
 
     return "\n".join(new_lines)
@@ -73,8 +77,12 @@ def process_file(filepath: Path) -> bool:
     """Process a single file. Returns True if modified."""
     content = filepath.read_text()
 
-    # Only process files with check_ functions that have "if value in"
-    if "def check_" not in content or "if value in " not in content:
+    # Only process files with check_ functions
+    if "def check_" not in content:
+        return False
+
+    # Must have either "if value in " or "if (" (multi-line condition)
+    if "if value in " not in content and "if (" not in content:
         return False
 
     fixed = fix_check_function(content)

@@ -16,8 +16,10 @@ NEW_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_COMMUNICATION_GROUP_CONDITIONS_TYPE_0_I
 
 
 def check_new_communications_group_data_attributes_communication_group_conditions_type_0_item_property_type(
-    value: str,
-) -> NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType:
+    value: str | None,
+) -> NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType | None:
+    if value is None:
+        return None
     if (
         value
         in NEW_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_COMMUNICATION_GROUP_CONDITIONS_TYPE_0_ITEM_PROPERTY_TYPE_VALUES

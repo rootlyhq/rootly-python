@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2025-03-02
+
+### Fixed
+- Fix nullable enum handling for UPDATE path models (e.g., `UpdateAlertsSourceDataAttributes`)
+  - The v1.2.0 fix only covered GET/list response models, not update request models
+  - Updated `fix_nullable_enums.py` to handle multi-line `if (value in ...)` patterns
+
 ## [1.2.0] - 2025-02-25
 
 ### Fixed
