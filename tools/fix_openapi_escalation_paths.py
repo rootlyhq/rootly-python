@@ -6,8 +6,6 @@ openapi-python-client cannot handle inline oneOf variants with properties/requir
 but no $ref. This script extracts each rule variant into a named component schema
 and replaces inline definitions with $ref pointers.
 
-Also fixes upstream bug where urgency_ids array is missing items definition.
-
 Run after downloading swagger.json, before generating:
     python tools/fix_openapi_escalation_paths.py tools/swagger.json
 
@@ -53,11 +51,6 @@ def fix_spec(data: dict) -> int:
 
         ref_name = RULE_NAMES[rule_type]
         variant["type"] = "object"
-
-        for prop in variant.get("properties", {}).values():
-            if prop.get("type") == "array" and "items" not in prop:
-                prop["items"] = {"type": "string"}
-
         schemas[ref_name] = variant
         extracted += 1
 
