@@ -36,9 +36,7 @@ def fix_spec(data: dict) -> int:
         print("new_escalation_policy_path not found in spec")
         return 1
 
-    source_items = (
-        source_schema["properties"]["data"]["properties"]["attributes"]["properties"]["rules"]["items"]
-    )
+    source_items = source_schema["properties"]["data"]["properties"]["attributes"]["properties"]["rules"]["items"]
 
     if "oneOf" not in source_items and "anyOf" not in source_items:
         print("No oneOf/anyOf found in rules items")
