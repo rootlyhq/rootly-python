@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Regenerated client from latest OpenAPI specification
 - **BREAKING**: Catalog Fields renamed to Catalog Properties across all endpoints and models
-- Minimum Python version bumped to 3.10 in generated code (SDK still supports 3.9 via pyproject.toml)
+- **BREAKING**: Minimum Python version bumped to 3.10
 
 ### Removed
 - Catalog Fields endpoints and models (replaced by Catalog Properties)
@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Applied nullable enum fix to 1,348 model files via `tools/fix_nullable_enums.py`
-- Escalation path endpoints now fully generated — added `tools/fix_openapi_escalation_paths.py` to patch inline `oneOf` variants into named `$ref` schemas and fix missing array `items` definitions
+- Escalation path endpoints now fully generated — added `tools/fix_openapi_escalation_paths.py` to patch inline `oneOf` variants into named `$ref` schemas ([upstream bug](https://github.com/openapi-generators/openapi-python-client/issues/1428))
 
 ## [1.2.1] - 2025-03-02
 
