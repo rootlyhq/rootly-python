@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,24 +23,24 @@ T = TypeVar("T", bound="DashboardPanelParamsDatasetsItemFilterItemRulesItem")
 class DashboardPanelParamsDatasetsItemFilterItemRulesItem:
     """
     Attributes:
-        operation (Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation]):
-        condition (Union[Unset, DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition]):
-        key (Union[Unset, str]):
-        value (Union[Unset, str]):
+        operation (DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation | Unset):
+        condition (DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition | Unset):
+        key (str | Unset):
+        value (str | Unset):
     """
 
-    operation: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation = UNSET
-    condition: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition = UNSET
-    key: Unset | str = UNSET
-    value: Unset | str = UNSET
+    operation: DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation | Unset = UNSET
+    condition: DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition | Unset = UNSET
+    key: str | Unset = UNSET
+    value: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Unset | str = UNSET
+        operation: str | Unset = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        condition: Unset | str = UNSET
+        condition: str | Unset = UNSET
         if not isinstance(self.condition, Unset):
             condition = self.condition
 
@@ -64,14 +66,14 @@ class DashboardPanelParamsDatasetsItemFilterItemRulesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation
+        operation: DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation | Unset
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
             operation = check_dashboard_panel_params_datasets_item_filter_item_rules_item_operation(_operation)
 
         _condition = d.pop("condition", UNSET)
-        condition: Unset | DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition
+        condition: DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition | Unset
         if isinstance(_condition, Unset):
             condition = UNSET
         else:

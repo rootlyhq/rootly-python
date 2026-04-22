@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -23,26 +25,26 @@ T = TypeVar("T", bound="PatchAlertRouteDataAttributesRulesItem")
 class PatchAlertRouteDataAttributesRulesItem:
     """
     Attributes:
-        id (Union[Unset, UUID]): The ID of the alert routing rule. Required for updating or deleting existing rules.
-        field_destroy (Union[Unset, bool]): Set to true to delete this rule. When true, only the id field is required.
-        name (Union[Unset, str]): The name of the alert routing rule
-        position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
-        fallback_rule (Union[Unset, bool]): Whether this is a fallback rule
-        destinations (Union[Unset, list['PatchAlertRouteDataAttributesRulesItemDestinationsItem']]):
-        condition_groups (Union[Unset, list['PatchAlertRouteDataAttributesRulesItemConditionGroupsItem']]):
+        id (UUID | Unset): The ID of the alert routing rule. Required for updating or deleting existing rules.
+        field_destroy (bool | Unset): Set to true to delete this rule. When true, only the id field is required.
+        name (str | Unset): The name of the alert routing rule
+        position (int | Unset): The position of the alert routing rule for ordering evaluation
+        fallback_rule (bool | Unset): Whether this is a fallback rule Default: False.
+        destinations (list[PatchAlertRouteDataAttributesRulesItemDestinationsItem] | Unset):
+        condition_groups (list[PatchAlertRouteDataAttributesRulesItemConditionGroupsItem] | Unset):
     """
 
-    id: Unset | UUID = UNSET
-    field_destroy: Unset | bool = UNSET
-    name: Unset | str = UNSET
-    position: Unset | int = UNSET
-    fallback_rule: Unset | bool = UNSET
-    destinations: Unset | list["PatchAlertRouteDataAttributesRulesItemDestinationsItem"] = UNSET
-    condition_groups: Unset | list["PatchAlertRouteDataAttributesRulesItemConditionGroupsItem"] = UNSET
+    id: UUID | Unset = UNSET
+    field_destroy: bool | Unset = UNSET
+    name: str | Unset = UNSET
+    position: int | Unset = UNSET
+    fallback_rule: bool | Unset = False
+    destinations: list[PatchAlertRouteDataAttributesRulesItemDestinationsItem] | Unset = UNSET
+    condition_groups: list[PatchAlertRouteDataAttributesRulesItemConditionGroupsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Unset | str = UNSET
+        id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -54,14 +56,14 @@ class PatchAlertRouteDataAttributesRulesItem:
 
         fallback_rule = self.fallback_rule
 
-        destinations: Unset | list[dict[str, Any]] = UNSET
+        destinations: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.destinations, Unset):
             destinations = []
             for destinations_item_data in self.destinations:
                 destinations_item = destinations_item_data.to_dict()
                 destinations.append(destinations_item)
 
-        condition_groups: Unset | list[dict[str, Any]] = UNSET
+        condition_groups: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.condition_groups, Unset):
             condition_groups = []
             for condition_groups_item_data in self.condition_groups:
@@ -99,7 +101,7 @@ class PatchAlertRouteDataAttributesRulesItem:
 
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Unset | UUID
+        id: UUID | Unset
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -113,21 +115,27 @@ class PatchAlertRouteDataAttributesRulesItem:
 
         fallback_rule = d.pop("fallback_rule", UNSET)
 
-        destinations = []
         _destinations = d.pop("destinations", UNSET)
-        for destinations_item_data in _destinations or []:
-            destinations_item = PatchAlertRouteDataAttributesRulesItemDestinationsItem.from_dict(destinations_item_data)
+        destinations: list[PatchAlertRouteDataAttributesRulesItemDestinationsItem] | Unset = UNSET
+        if _destinations is not UNSET:
+            destinations = []
+            for destinations_item_data in _destinations:
+                destinations_item = PatchAlertRouteDataAttributesRulesItemDestinationsItem.from_dict(
+                    destinations_item_data
+                )
 
-            destinations.append(destinations_item)
+                destinations.append(destinations_item)
 
-        condition_groups = []
         _condition_groups = d.pop("condition_groups", UNSET)
-        for condition_groups_item_data in _condition_groups or []:
-            condition_groups_item = PatchAlertRouteDataAttributesRulesItemConditionGroupsItem.from_dict(
-                condition_groups_item_data
-            )
+        condition_groups: list[PatchAlertRouteDataAttributesRulesItemConditionGroupsItem] | Unset = UNSET
+        if _condition_groups is not UNSET:
+            condition_groups = []
+            for condition_groups_item_data in _condition_groups:
+                condition_groups_item = PatchAlertRouteDataAttributesRulesItemConditionGroupsItem.from_dict(
+                    condition_groups_item_data
+                )
 
-            condition_groups.append(condition_groups_item)
+                condition_groups.append(condition_groups_item)
 
         patch_alert_route_data_attributes_rules_item = cls(
             id=id,

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,6 +15,9 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.page_rootly_on_call_responders_task_params_escalation_policy_target import (
         PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget,
+    )
+    from ..models.page_rootly_on_call_responders_task_params_functionality_target import (
+        PageRootlyOnCallRespondersTaskParamsFunctionalityTarget,
     )
     from ..models.page_rootly_on_call_responders_task_params_group_target import (
         PageRootlyOnCallRespondersTaskParamsGroupTarget,
@@ -34,24 +39,26 @@ class PageRootlyOnCallRespondersTaskParams:
     Attributes:
         alert_urgency_id (str): Alert urgency ID
         summary (str): Alert title
-        task_type (Union[Unset, PageRootlyOnCallRespondersTaskParamsTaskType]):
-        escalation_policy_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget]):
-        service_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsServiceTarget]):
-        user_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsUserTarget]):
-        group_target (Union[Unset, PageRootlyOnCallRespondersTaskParamsGroupTarget]):
-        description (Union[Unset, str]): Alert description
-        escalation_note (Union[Unset, str]):
+        task_type (PageRootlyOnCallRespondersTaskParamsTaskType | Unset):
+        escalation_policy_target (PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget | Unset):
+        service_target (PageRootlyOnCallRespondersTaskParamsServiceTarget | Unset):
+        user_target (PageRootlyOnCallRespondersTaskParamsUserTarget | Unset):
+        group_target (PageRootlyOnCallRespondersTaskParamsGroupTarget | Unset):
+        functionality_target (PageRootlyOnCallRespondersTaskParamsFunctionalityTarget | Unset):
+        description (str | Unset): Alert description
+        escalation_note (str | Unset):
     """
 
     alert_urgency_id: str
     summary: str
-    task_type: Unset | PageRootlyOnCallRespondersTaskParamsTaskType = UNSET
-    escalation_policy_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget"] = UNSET
-    service_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsServiceTarget"] = UNSET
-    user_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsUserTarget"] = UNSET
-    group_target: Union[Unset, "PageRootlyOnCallRespondersTaskParamsGroupTarget"] = UNSET
-    description: Unset | str = UNSET
-    escalation_note: Unset | str = UNSET
+    task_type: PageRootlyOnCallRespondersTaskParamsTaskType | Unset = UNSET
+    escalation_policy_target: PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget | Unset = UNSET
+    service_target: PageRootlyOnCallRespondersTaskParamsServiceTarget | Unset = UNSET
+    user_target: PageRootlyOnCallRespondersTaskParamsUserTarget | Unset = UNSET
+    group_target: PageRootlyOnCallRespondersTaskParamsGroupTarget | Unset = UNSET
+    functionality_target: PageRootlyOnCallRespondersTaskParamsFunctionalityTarget | Unset = UNSET
+    description: str | Unset = UNSET
+    escalation_note: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,25 +66,29 @@ class PageRootlyOnCallRespondersTaskParams:
 
         summary = self.summary
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policy_target: Unset | dict[str, Any] = UNSET
+        escalation_policy_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.escalation_policy_target, Unset):
             escalation_policy_target = self.escalation_policy_target.to_dict()
 
-        service_target: Unset | dict[str, Any] = UNSET
+        service_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.service_target, Unset):
             service_target = self.service_target.to_dict()
 
-        user_target: Unset | dict[str, Any] = UNSET
+        user_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user_target, Unset):
             user_target = self.user_target.to_dict()
 
-        group_target: Unset | dict[str, Any] = UNSET
+        group_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.group_target, Unset):
             group_target = self.group_target.to_dict()
+
+        functionality_target: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.functionality_target, Unset):
+            functionality_target = self.functionality_target.to_dict()
 
         description = self.description
 
@@ -101,6 +112,8 @@ class PageRootlyOnCallRespondersTaskParams:
             field_dict["user_target"] = user_target
         if group_target is not UNSET:
             field_dict["group_target"] = group_target
+        if functionality_target is not UNSET:
+            field_dict["functionality_target"] = functionality_target
         if description is not UNSET:
             field_dict["description"] = description
         if escalation_note is not UNSET:
@@ -112,6 +125,9 @@ class PageRootlyOnCallRespondersTaskParams:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.page_rootly_on_call_responders_task_params_escalation_policy_target import (
             PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget,
+        )
+        from ..models.page_rootly_on_call_responders_task_params_functionality_target import (
+            PageRootlyOnCallRespondersTaskParamsFunctionalityTarget,
         )
         from ..models.page_rootly_on_call_responders_task_params_group_target import (
             PageRootlyOnCallRespondersTaskParamsGroupTarget,
@@ -129,14 +145,14 @@ class PageRootlyOnCallRespondersTaskParams:
         summary = d.pop("summary")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | PageRootlyOnCallRespondersTaskParamsTaskType
+        task_type: PageRootlyOnCallRespondersTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_page_rootly_on_call_responders_task_params_task_type(_task_type)
 
         _escalation_policy_target = d.pop("escalation_policy_target", UNSET)
-        escalation_policy_target: Unset | PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget
+        escalation_policy_target: PageRootlyOnCallRespondersTaskParamsEscalationPolicyTarget | Unset
         if isinstance(_escalation_policy_target, Unset):
             escalation_policy_target = UNSET
         else:
@@ -145,25 +161,34 @@ class PageRootlyOnCallRespondersTaskParams:
             )
 
         _service_target = d.pop("service_target", UNSET)
-        service_target: Unset | PageRootlyOnCallRespondersTaskParamsServiceTarget
+        service_target: PageRootlyOnCallRespondersTaskParamsServiceTarget | Unset
         if isinstance(_service_target, Unset):
             service_target = UNSET
         else:
             service_target = PageRootlyOnCallRespondersTaskParamsServiceTarget.from_dict(_service_target)
 
         _user_target = d.pop("user_target", UNSET)
-        user_target: Unset | PageRootlyOnCallRespondersTaskParamsUserTarget
+        user_target: PageRootlyOnCallRespondersTaskParamsUserTarget | Unset
         if isinstance(_user_target, Unset):
             user_target = UNSET
         else:
             user_target = PageRootlyOnCallRespondersTaskParamsUserTarget.from_dict(_user_target)
 
         _group_target = d.pop("group_target", UNSET)
-        group_target: Unset | PageRootlyOnCallRespondersTaskParamsGroupTarget
+        group_target: PageRootlyOnCallRespondersTaskParamsGroupTarget | Unset
         if isinstance(_group_target, Unset):
             group_target = UNSET
         else:
             group_target = PageRootlyOnCallRespondersTaskParamsGroupTarget.from_dict(_group_target)
+
+        _functionality_target = d.pop("functionality_target", UNSET)
+        functionality_target: PageRootlyOnCallRespondersTaskParamsFunctionalityTarget | Unset
+        if isinstance(_functionality_target, Unset):
+            functionality_target = UNSET
+        else:
+            functionality_target = PageRootlyOnCallRespondersTaskParamsFunctionalityTarget.from_dict(
+                _functionality_target
+            )
 
         description = d.pop("description", UNSET)
 
@@ -177,6 +202,7 @@ class PageRootlyOnCallRespondersTaskParams:
             service_target=service_target,
             user_target=user_target,
             group_target=group_target,
+            functionality_target=functionality_target,
             description=description,
             escalation_note=escalation_note,
         )

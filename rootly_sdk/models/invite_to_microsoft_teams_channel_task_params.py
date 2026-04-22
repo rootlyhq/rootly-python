@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,14 +28,14 @@ class InviteToMicrosoftTeamsChannelTaskParams:
     Attributes:
         channel (InviteToMicrosoftTeamsChannelTaskParamsChannel):
         emails (str): Comma separated list of emails to invite
-        task_type (Union[Unset, InviteToMicrosoftTeamsChannelTaskParamsTaskType]):
-        team (Union[Unset, InviteToMicrosoftTeamsChannelTaskParamsTeam]):
+        task_type (InviteToMicrosoftTeamsChannelTaskParamsTaskType | Unset):
+        team (InviteToMicrosoftTeamsChannelTaskParamsTeam | Unset):
     """
 
-    channel: "InviteToMicrosoftTeamsChannelTaskParamsChannel"
+    channel: InviteToMicrosoftTeamsChannelTaskParamsChannel
     emails: str
-    task_type: Unset | InviteToMicrosoftTeamsChannelTaskParamsTaskType = UNSET
-    team: Union[Unset, "InviteToMicrosoftTeamsChannelTaskParamsTeam"] = UNSET
+    task_type: InviteToMicrosoftTeamsChannelTaskParamsTaskType | Unset = UNSET
+    team: InviteToMicrosoftTeamsChannelTaskParamsTeam | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,11 +43,11 @@ class InviteToMicrosoftTeamsChannelTaskParams:
 
         emails = self.emails
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        team: Unset | dict[str, Any] = UNSET
+        team: dict[str, Any] | Unset = UNSET
         if not isinstance(self.team, Unset):
             team = self.team.to_dict()
 
@@ -79,14 +81,14 @@ class InviteToMicrosoftTeamsChannelTaskParams:
         emails = d.pop("emails")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | InviteToMicrosoftTeamsChannelTaskParamsTaskType
+        task_type: InviteToMicrosoftTeamsChannelTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_invite_to_microsoft_teams_channel_task_params_task_type(_task_type)
 
         _team = d.pop("team", UNSET)
-        team: Unset | InviteToMicrosoftTeamsChannelTaskParamsTeam
+        team: InviteToMicrosoftTeamsChannelTaskParamsTeam | Unset
         if isinstance(_team, Unset):
             team = UNSET
         else:

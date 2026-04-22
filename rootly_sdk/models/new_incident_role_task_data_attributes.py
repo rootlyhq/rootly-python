@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,28 +19,28 @@ class NewIncidentRoleTaskDataAttributes:
     """
     Attributes:
         task (str): The task of the incident task
-        incident_role_id (Union[Unset, str]):
-        description (Union[None, Unset, str]): The description of the incident task
-        priority (Union[Unset, NewIncidentRoleTaskDataAttributesPriority]): The priority of the incident task
+        incident_role_id (str | Unset):
+        description (None | str | Unset): The description of the incident task
+        priority (NewIncidentRoleTaskDataAttributesPriority | Unset): The priority of the incident task
     """
 
     task: str
-    incident_role_id: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    priority: Unset | NewIncidentRoleTaskDataAttributesPriority = UNSET
+    incident_role_id: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    priority: NewIncidentRoleTaskDataAttributesPriority | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         task = self.task
 
         incident_role_id = self.incident_role_id
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        priority: Unset | str = UNSET
+        priority: str | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
@@ -65,17 +67,17 @@ class NewIncidentRoleTaskDataAttributes:
 
         incident_role_id = d.pop("incident_role_id", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | NewIncidentRoleTaskDataAttributesPriority
+        priority: NewIncidentRoleTaskDataAttributesPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

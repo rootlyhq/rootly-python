@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -7,7 +9,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.environment_fields_type_0_item import EnvironmentFieldsType0Item
+    from ..models.environment_properties_type_0_item import EnvironmentPropertiesType0Item
     from ..models.environment_slack_aliases_type_0_item import EnvironmentSlackAliasesType0Item
     from ..models.environment_slack_channels_type_0_item import EnvironmentSlackChannelsType0Item
 
@@ -22,29 +24,29 @@ class Environment:
         name (str): The name of the environment
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (Union[Unset, str]): The slug of the environment
-        description (Union[None, Unset, str]): The description of the environment
-        notify_emails (Union[None, Unset, list[str]]): Emails attached to the environment
-        color (Union[None, Unset, str]): The hex color of the environment
-        position (Union[None, Unset, int]): Position of the environment
-        slack_channels (Union[None, Unset, list['EnvironmentSlackChannelsType0Item']]): Slack Channels associated with
-            this environment
-        slack_aliases (Union[None, Unset, list['EnvironmentSlackAliasesType0Item']]): Slack Aliases associated with this
+        slug (str | Unset): The slug of the environment
+        description (None | str | Unset): The description of the environment
+        notify_emails (list[str] | None | Unset): Emails attached to the environment
+        color (None | str | Unset): The hex color of the environment
+        position (int | None | Unset): Position of the environment
+        slack_channels (list[EnvironmentSlackChannelsType0Item] | None | Unset): Slack Channels associated with this
             environment
-        fields (Union[None, Unset, list['EnvironmentFieldsType0Item']]): Array of field values for this environment.
+        slack_aliases (list[EnvironmentSlackAliasesType0Item] | None | Unset): Slack Aliases associated with this
+            environment
+        properties (list[EnvironmentPropertiesType0Item] | None | Unset): Array of property values for this environment.
     """
 
     name: str
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    notify_emails: None | Unset | list[str] = UNSET
-    color: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    slack_channels: None | Unset | list["EnvironmentSlackChannelsType0Item"] = UNSET
-    slack_aliases: None | Unset | list["EnvironmentSlackAliasesType0Item"] = UNSET
-    fields: None | Unset | list["EnvironmentFieldsType0Item"] = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    notify_emails: list[str] | None | Unset = UNSET
+    color: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    slack_channels: list[EnvironmentSlackChannelsType0Item] | None | Unset = UNSET
+    slack_aliases: list[EnvironmentSlackAliasesType0Item] | None | Unset = UNSET
+    properties: list[EnvironmentPropertiesType0Item] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,13 +58,13 @@ class Environment:
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        notify_emails: None | Unset | list[str]
+        notify_emails: list[str] | None | Unset
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -71,19 +73,19 @@ class Environment:
         else:
             notify_emails = self.notify_emails
 
-        color: None | Unset | str
+        color: None | str | Unset
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        slack_channels: None | Unset | list[dict[str, Any]]
+        slack_channels: list[dict[str, Any]] | None | Unset
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -95,7 +97,7 @@ class Environment:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: None | Unset | list[dict[str, Any]]
+        slack_aliases: list[dict[str, Any]] | None | Unset
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -107,17 +109,17 @@ class Environment:
         else:
             slack_aliases = self.slack_aliases
 
-        fields: None | Unset | list[dict[str, Any]]
-        if isinstance(self.fields, Unset):
-            fields = UNSET
-        elif isinstance(self.fields, list):
-            fields = []
-            for fields_type_0_item_data in self.fields:
-                fields_type_0_item = fields_type_0_item_data.to_dict()
-                fields.append(fields_type_0_item)
+        properties: list[dict[str, Any]] | None | Unset
+        if isinstance(self.properties, Unset):
+            properties = UNSET
+        elif isinstance(self.properties, list):
+            properties = []
+            for properties_type_0_item_data in self.properties:
+                properties_type_0_item = properties_type_0_item_data.to_dict()
+                properties.append(properties_type_0_item)
 
         else:
-            fields = self.fields
+            properties = self.properties
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -142,14 +144,14 @@ class Environment:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
             field_dict["slack_aliases"] = slack_aliases
-        if fields is not UNSET:
-            field_dict["fields"] = fields
+        if properties is not UNSET:
+            field_dict["properties"] = properties
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.environment_fields_type_0_item import EnvironmentFieldsType0Item
+        from ..models.environment_properties_type_0_item import EnvironmentPropertiesType0Item
         from ..models.environment_slack_aliases_type_0_item import EnvironmentSlackAliasesType0Item
         from ..models.environment_slack_channels_type_0_item import EnvironmentSlackChannelsType0Item
 
@@ -162,16 +164,16 @@ class Environment:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
+        def _parse_notify_emails(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -182,31 +184,31 @@ class Environment:
                 notify_emails_type_0 = cast(list[str], data)
 
                 return notify_emails_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
-        def _parse_color(data: object) -> None | Unset | str:
+        def _parse_color(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_slack_channels(data: object) -> None | Unset | list["EnvironmentSlackChannelsType0Item"]:
+        def _parse_slack_channels(data: object) -> list[EnvironmentSlackChannelsType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -224,13 +226,13 @@ class Environment:
                     slack_channels_type_0.append(slack_channels_type_0_item)
 
                 return slack_channels_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["EnvironmentSlackChannelsType0Item"], data)
+            return cast(list[EnvironmentSlackChannelsType0Item] | None | Unset, data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
-        def _parse_slack_aliases(data: object) -> None | Unset | list["EnvironmentSlackAliasesType0Item"]:
+        def _parse_slack_aliases(data: object) -> list[EnvironmentSlackAliasesType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -248,13 +250,13 @@ class Environment:
                     slack_aliases_type_0.append(slack_aliases_type_0_item)
 
                 return slack_aliases_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["EnvironmentSlackAliasesType0Item"], data)
+            return cast(list[EnvironmentSlackAliasesType0Item] | None | Unset, data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
-        def _parse_fields(data: object) -> None | Unset | list["EnvironmentFieldsType0Item"]:
+        def _parse_properties(data: object) -> list[EnvironmentPropertiesType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -262,19 +264,19 @@ class Environment:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                fields_type_0 = []
-                _fields_type_0 = data
-                for fields_type_0_item_data in _fields_type_0:
-                    fields_type_0_item = EnvironmentFieldsType0Item.from_dict(fields_type_0_item_data)
+                properties_type_0 = []
+                _properties_type_0 = data
+                for properties_type_0_item_data in _properties_type_0:
+                    properties_type_0_item = EnvironmentPropertiesType0Item.from_dict(properties_type_0_item_data)
 
-                    fields_type_0.append(fields_type_0_item)
+                    properties_type_0.append(properties_type_0_item)
 
-                return fields_type_0
-            except:  # noqa: E722
+                return properties_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["EnvironmentFieldsType0Item"], data)
+            return cast(list[EnvironmentPropertiesType0Item] | None | Unset, data)
 
-        fields = _parse_fields(d.pop("fields", UNSET))
+        properties = _parse_properties(d.pop("properties", UNSET))
 
         environment = cls(
             name=name,
@@ -287,7 +289,7 @@ class Environment:
             position=position,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
-            fields=fields,
+            properties=properties,
         )
 
         environment.additional_properties = d

@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -12,12 +13,13 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     custom_field_id: str,
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtervalue: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtervalue: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -34,7 +36,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/custom_fields/{custom_field_id}/options",
+        "url": "/v1/custom_fields/{custom_field_id}/options".format(
+            custom_field_id=quote(str(custom_field_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -68,11 +72,11 @@ def sync_detailed(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtervalue: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtervalue: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
 ) -> Response[CustomFieldOptionList]:
     """[DEPRECATED] List custom field options
 
@@ -80,11 +84,11 @@ def sync_detailed(
 
     Args:
         custom_field_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtervalue (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtervalue (str | Unset):
+        filtercolor (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,11 +118,11 @@ def sync(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtervalue: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtervalue: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
 ) -> CustomFieldOptionList | None:
     """[DEPRECATED] List custom field options
 
@@ -126,11 +130,11 @@ def sync(
 
     Args:
         custom_field_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtervalue (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtervalue (str | Unset):
+        filtercolor (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -155,11 +159,11 @@ async def asyncio_detailed(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtervalue: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtervalue: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
 ) -> Response[CustomFieldOptionList]:
     """[DEPRECATED] List custom field options
 
@@ -167,11 +171,11 @@ async def asyncio_detailed(
 
     Args:
         custom_field_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtervalue (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtervalue (str | Unset):
+        filtercolor (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,11 +203,11 @@ async def asyncio(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtervalue: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtervalue: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
 ) -> CustomFieldOptionList | None:
     """[DEPRECATED] List custom field options
 
@@ -211,11 +215,11 @@ async def asyncio(
 
     Args:
         custom_field_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtervalue (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtervalue (str | Unset):
+        filtercolor (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,20 +25,20 @@ T = TypeVar("T", bound="NewDashboardPanelDataAttributesParamsDatasetsItemFilterI
 class NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem:
     """
     Attributes:
-        operation (Union[Unset, NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation]):
-        rules (Union[Unset, list['NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem']]):
+        operation (NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation | Unset):
+        rules (list[NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem] | Unset):
     """
 
-    operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation = UNSET
-    rules: Unset | list["NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem"] = UNSET
+    operation: NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation | Unset = UNSET
+    rules: list[NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Unset | str = UNSET
+        operation: str | Unset = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        rules: Unset | list[dict[str, Any]] = UNSET
+        rules: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
@@ -61,18 +63,22 @@ class NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem:
 
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Unset | NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation
+        operation: NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemOperation | Unset
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
             operation = check_new_dashboard_panel_data_attributes_params_datasets_item_filter_item_operation(_operation)
 
-        rules = []
         _rules = d.pop("rules", UNSET)
-        for rules_item_data in _rules or []:
-            rules_item = NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem.from_dict(rules_item_data)
+        rules: list[NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem] | Unset = UNSET
+        if _rules is not UNSET:
+            rules = []
+            for rules_item_data in _rules:
+                rules_item = NewDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem.from_dict(
+                    rules_item_data
+                )
 
-            rules.append(rules_item)
+                rules.append(rules_item)
 
         new_dashboard_panel_data_attributes_params_datasets_item_filter_item = cls(
             operation=operation,

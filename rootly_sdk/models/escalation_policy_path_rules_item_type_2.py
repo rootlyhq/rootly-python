@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,6 +14,7 @@ from ..models.escalation_policy_path_rules_item_type_2_rule_type import (
     EscalationPolicyPathRulesItemType2RuleType,
     check_escalation_policy_path_rules_item_type_2_rule_type,
 )
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="EscalationPolicyPathRulesItemType2")
 
@@ -23,13 +26,15 @@ class EscalationPolicyPathRulesItemType2:
         rule_type (EscalationPolicyPathRulesItemType2RuleType): The type of the escalation path rule
         json_path (str): JSON path to extract value from payload
         operator (EscalationPolicyPathRulesItemType2Operator): How JSON path value should be matched
-        value (str): Value with which JSON path value should be matched
+        value (None | str | Unset): Value with which JSON path value should be matched
+        values (list[str] | Unset): Values to match against (for is_one_of / is_not_one_of operators)
     """
 
     rule_type: EscalationPolicyPathRulesItemType2RuleType
     json_path: str
     operator: EscalationPolicyPathRulesItemType2Operator
-    value: str
+    value: None | str | Unset = UNSET
+    values: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,7 +44,15 @@ class EscalationPolicyPathRulesItemType2:
 
         operator: str = self.operator
 
-        value = self.value
+        value: None | str | Unset
+        if isinstance(self.value, Unset):
+            value = UNSET
+        else:
+            value = self.value
+
+        values: list[str] | Unset = UNSET
+        if not isinstance(self.values, Unset):
+            values = self.values
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -48,9 +61,12 @@ class EscalationPolicyPathRulesItemType2:
                 "rule_type": rule_type,
                 "json_path": json_path,
                 "operator": operator,
-                "value": value,
             }
         )
+        if value is not UNSET:
+            field_dict["value"] = value
+        if values is not UNSET:
+            field_dict["values"] = values
 
         return field_dict
 
@@ -63,13 +79,23 @@ class EscalationPolicyPathRulesItemType2:
 
         operator = check_escalation_policy_path_rules_item_type_2_operator(d.pop("operator"))
 
-        value = d.pop("value")
+        def _parse_value(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        value = _parse_value(d.pop("value", UNSET))
+
+        values = cast(list[str], d.pop("values", UNSET))
 
         escalation_policy_path_rules_item_type_2 = cls(
             rule_type=rule_type,
             json_path=json_path,
             operator=operator,
             value=value,
+            values=values,
         )
 
         escalation_policy_path_rules_item_type_2.additional_properties = d

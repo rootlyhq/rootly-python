@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -22,7 +24,7 @@ class UpdateCustomFieldData:
     """
 
     type_: UpdateCustomFieldDataType
-    attributes: "UpdateCustomFieldDataAttributes"
+    attributes: UpdateCustomFieldDataAttributes
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

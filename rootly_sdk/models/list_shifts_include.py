@@ -1,10 +1,11 @@
 from typing import Literal, cast
 
-ListShiftsInclude = Literal["assignee", "shift_override", "user"]
+ListShiftsInclude = Literal["assignee", "shift_override", "shift_shadow", "user"]
 
 LIST_SHIFTS_INCLUDE_VALUES: set[ListShiftsInclude] = {
     "assignee",
     "shift_override",
+    "shift_shadow",
     "user",
 }
 

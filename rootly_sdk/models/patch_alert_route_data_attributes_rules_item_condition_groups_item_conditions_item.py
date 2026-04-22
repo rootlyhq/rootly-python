@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 from uuid import UUID
@@ -26,64 +28,63 @@ T = TypeVar("T", bound="PatchAlertRouteDataAttributesRulesItemConditionGroupsIte
 class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
     """
     Attributes:
-        id (Union[Unset, UUID]): The ID of the condition. Required for updating or deleting existing conditions.
-        field_destroy (Union[Unset, bool]): Set to true to delete this condition
-        property_field_condition_type (Union[Unset,
-            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType]):
-        property_field_name (Union[Unset, str]): The name of the property field
-        property_field_type (Union[Unset,
-            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType]):
-        property_field_value (Union[None, Unset, str]): The value of the property field
-        property_field_values (Union[None, Unset, list[str]]):
-        alert_urgency_ids (Union[None, Unset, list[str]]): The Alert Urgency IDs to check in the condition
-        conditionable_type (Union[Unset,
-            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType]): The type of the
-            conditionable
-        conditionable_id (Union[None, UUID, Unset]): The ID of the conditionable
+        id (UUID | Unset): The ID of the condition. Required for updating or deleting existing conditions.
+        field_destroy (bool | Unset): Set to true to delete this condition
+        property_field_condition_type
+            (PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType | Unset):
+        property_field_name (str | Unset): The name of the property field
+        property_field_type (PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType |
+            Unset):
+        property_field_value (None | str | Unset): The value of the property field
+        property_field_values (list[str] | None | Unset):
+        alert_urgency_ids (list[str] | None | Unset): The Alert Urgency IDs to check in the condition
+        conditionable_type (PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType |
+            Unset): The type of the conditionable
+        conditionable_id (None | Unset | UUID): The ID of the conditionable
     """
 
-    id: Unset | UUID = UNSET
-    field_destroy: Unset | bool = UNSET
+    id: UUID | Unset = UNSET
+    field_destroy: bool | Unset = UNSET
     property_field_condition_type: (
-        Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType
+        PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType | Unset
     ) = UNSET
-    property_field_name: Unset | str = UNSET
+    property_field_name: str | Unset = UNSET
     property_field_type: (
-        Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType
+        PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType | Unset
     ) = UNSET
-    property_field_value: None | Unset | str = UNSET
-    property_field_values: None | Unset | list[str] = UNSET
-    alert_urgency_ids: None | Unset | list[str] = UNSET
+    property_field_value: None | str | Unset = UNSET
+    property_field_values: list[str] | None | Unset = UNSET
+    alert_urgency_ids: list[str] | None | Unset = UNSET
     conditionable_type: (
-        Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
+        PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType | Unset
     ) = UNSET
-    conditionable_id: None | UUID | Unset = UNSET
+    conditionable_id: None | Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Unset | str = UNSET
+        id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         field_destroy = self.field_destroy
 
-        property_field_condition_type: Unset | str = UNSET
+        property_field_condition_type: str | Unset = UNSET
         if not isinstance(self.property_field_condition_type, Unset):
             property_field_condition_type = self.property_field_condition_type
 
         property_field_name = self.property_field_name
 
-        property_field_type: Unset | str = UNSET
+        property_field_type: str | Unset = UNSET
         if not isinstance(self.property_field_type, Unset):
             property_field_type = self.property_field_type
 
-        property_field_value: None | Unset | str
+        property_field_value: None | str | Unset
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: None | Unset | list[str]
+        property_field_values: list[str] | None | Unset
         if isinstance(self.property_field_values, Unset):
             property_field_values = UNSET
         elif isinstance(self.property_field_values, list):
@@ -92,7 +93,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         else:
             property_field_values = self.property_field_values
 
-        alert_urgency_ids: None | Unset | list[str]
+        alert_urgency_ids: list[str] | None | Unset
         if isinstance(self.alert_urgency_ids, Unset):
             alert_urgency_ids = UNSET
         elif isinstance(self.alert_urgency_ids, list):
@@ -101,11 +102,11 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         else:
             alert_urgency_ids = self.alert_urgency_ids
 
-        conditionable_type: Unset | str = UNSET
+        conditionable_type: str | Unset = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
-        conditionable_id: None | Unset | str
+        conditionable_id: None | str | Unset
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         elif isinstance(self.conditionable_id, UUID):
@@ -143,7 +144,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Unset | UUID
+        id: UUID | Unset
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -153,7 +154,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
 
         _property_field_condition_type = d.pop("property_field_condition_type", UNSET)
         property_field_condition_type: (
-            Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType
+            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType | Unset
         )
         if isinstance(_property_field_condition_type, Unset):
             property_field_condition_type = UNSET
@@ -166,7 +167,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
 
         _property_field_type = d.pop("property_field_type", UNSET)
         property_field_type: (
-            Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType
+            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType | Unset
         )
         if isinstance(_property_field_type, Unset):
             property_field_type = UNSET
@@ -175,16 +176,16 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 _property_field_type
             )
 
-        def _parse_property_field_value(data: object) -> None | Unset | str:
+        def _parse_property_field_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 
-        def _parse_property_field_values(data: object) -> None | Unset | list[str]:
+        def _parse_property_field_values(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -195,13 +196,13 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 property_field_values_type_0 = cast(list[str], data)
 
                 return property_field_values_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         property_field_values = _parse_property_field_values(d.pop("property_field_values", UNSET))
 
-        def _parse_alert_urgency_ids(data: object) -> None | Unset | list[str]:
+        def _parse_alert_urgency_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -212,15 +213,15 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 alert_urgency_ids_type_0 = cast(list[str], data)
 
                 return alert_urgency_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         alert_urgency_ids = _parse_alert_urgency_ids(d.pop("alert_urgency_ids", UNSET))
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
         conditionable_type: (
-            Unset | PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
+            PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType | Unset
         )
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
@@ -229,7 +230,7 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 _conditionable_type
             )
 
-        def _parse_conditionable_id(data: object) -> None | UUID | Unset:
+        def _parse_conditionable_id(data: object) -> None | Unset | UUID:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -240,9 +241,9 @@ class PatchAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 conditionable_id_type_0 = UUID(data)
 
                 return conditionable_id_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | UUID | Unset, data)
+            return cast(None | Unset | UUID, data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 

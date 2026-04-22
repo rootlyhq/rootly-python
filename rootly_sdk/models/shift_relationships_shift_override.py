@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="ShiftRelationshipsShiftOverride")
 class ShiftRelationshipsShiftOverride:
     """
     Attributes:
-        data (Union['ShiftRelationshipsShiftOverrideDataType0', None, Unset]):
+        data (None | ShiftRelationshipsShiftOverrideDataType0 | Unset):
     """
 
-    data: Union["ShiftRelationshipsShiftOverrideDataType0", None, Unset] = UNSET
+    data: None | ShiftRelationshipsShiftOverrideDataType0 | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.shift_relationships_shift_override_data_type_0 import ShiftRelationshipsShiftOverrideDataType0
 
-        data: None | Unset | dict[str, Any]
+        data: dict[str, Any] | None | Unset
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, ShiftRelationshipsShiftOverrideDataType0):
@@ -48,7 +50,7 @@ class ShiftRelationshipsShiftOverride:
 
         d = dict(src_dict)
 
-        def _parse_data(data: object) -> Union["ShiftRelationshipsShiftOverrideDataType0", None, Unset]:
+        def _parse_data(data: object) -> None | ShiftRelationshipsShiftOverrideDataType0 | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -59,9 +61,9 @@ class ShiftRelationshipsShiftOverride:
                 data_type_0 = ShiftRelationshipsShiftOverrideDataType0.from_dict(data)
 
                 return data_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["ShiftRelationshipsShiftOverrideDataType0", None, Unset], data)
+            return cast(None | ShiftRelationshipsShiftOverrideDataType0 | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 

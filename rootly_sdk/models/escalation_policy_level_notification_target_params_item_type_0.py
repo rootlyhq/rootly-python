@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -23,13 +25,13 @@ class EscalationPolicyLevelNotificationTargetParamsItemType0:
     Attributes:
         id (str): The ID of notification target
         type_ (EscalationPolicyLevelNotificationTargetParamsItemType0Type): The type of the notification target
-        team_members (Union[Unset, EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers]): For targets with
+        team_members (EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers | Unset): For targets with
             type=team, controls whether to notify admins, all team members, or escalate to team EP.
     """
 
     id: str
     type_: EscalationPolicyLevelNotificationTargetParamsItemType0Type
-    team_members: Unset | EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers = UNSET
+    team_members: EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,7 +39,7 @@ class EscalationPolicyLevelNotificationTargetParamsItemType0:
 
         type_: str = self.type_
 
-        team_members: Unset | str = UNSET
+        team_members: str | Unset = UNSET
         if not isinstance(self.team_members, Unset):
             team_members = self.team_members
 
@@ -62,7 +64,7 @@ class EscalationPolicyLevelNotificationTargetParamsItemType0:
         type_ = check_escalation_policy_level_notification_target_params_item_type_0_type(d.pop("type"))
 
         _team_members = d.pop("team_members", UNSET)
-        team_members: Unset | EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers
+        team_members: EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers | Unset
         if isinstance(_team_members, Unset):
             team_members = UNSET
         else:

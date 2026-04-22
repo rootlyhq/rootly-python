@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,33 +14,33 @@ T = TypeVar("T", bound="UpdateCommunicationsTypeDataAttributes")
 class UpdateCommunicationsTypeDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the communications type
-        description (Union[None, Unset, str]): The description of the communications type
-        color (Union[None, Unset, str]): The color of the communications type
-        position (Union[None, Unset, int]): Position of the communications type
+        name (str | Unset): The name of the communications type
+        description (None | str | Unset): The description of the communications type
+        color (None | str | Unset): The color of the communications type
+        position (int | None | Unset): Position of the communications type
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    color: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    color: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        color: None | Unset | str
+        color: None | str | Unset
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -63,30 +65,30 @@ class UpdateCommunicationsTypeDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_color(data: object) -> None | Unset | str:
+        def _parse_color(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -22,19 +24,19 @@ T = TypeVar("T", bound="UpdateIncidentPermissionSetBooleanDataAttributes")
 class UpdateIncidentPermissionSetBooleanDataAttributes:
     """
     Attributes:
-        kind (Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesKind]):
-        private (Union[Unset, bool]):
-        enabled (Union[Unset, bool]):
-        severity_params (Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams]):
+        kind (UpdateIncidentPermissionSetBooleanDataAttributesKind | Unset):
+        private (bool | Unset):
+        enabled (bool | Unset):
+        severity_params (UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset):
     """
 
-    kind: Unset | UpdateIncidentPermissionSetBooleanDataAttributesKind = UNSET
-    private: Unset | bool = UNSET
-    enabled: Unset | bool = UNSET
-    severity_params: Union[Unset, "UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams"] = UNSET
+    kind: UpdateIncidentPermissionSetBooleanDataAttributesKind | Unset = UNSET
+    private: bool | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    severity_params: UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -42,7 +44,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
 
         enabled = self.enabled
 
-        severity_params: Unset | dict[str, Any] = UNSET
+        severity_params: dict[str, Any] | Unset = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -68,7 +70,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
 
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Unset | UpdateIncidentPermissionSetBooleanDataAttributesKind
+        kind: UpdateIncidentPermissionSetBooleanDataAttributesKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -79,7 +81,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
         enabled = d.pop("enabled", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Unset | UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams
+        severity_params: UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

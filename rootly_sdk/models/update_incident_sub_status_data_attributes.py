@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,23 +14,23 @@ T = TypeVar("T", bound="UpdateIncidentSubStatusDataAttributes")
 class UpdateIncidentSubStatusDataAttributes:
     """
     Attributes:
-        sub_status_id (Union[Unset, str]): Note: To change an incident's sub-status, use the PATCH /incidents/:id
-            endpoint and set the sub_status_id attribute. This endpoint is for modifying the timestamp of when an incident's
-            sub-status was assigned.
-        assigned_at (Union[Unset, str]):
-        assigned_by_user_id (Union[None, Unset, int]):
+        sub_status_id (str | Unset): Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and
+            set the sub_status_id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status
+            was assigned.
+        assigned_at (str | Unset):
+        assigned_by_user_id (int | None | Unset):
     """
 
-    sub_status_id: Unset | str = UNSET
-    assigned_at: Unset | str = UNSET
-    assigned_by_user_id: None | Unset | int = UNSET
+    sub_status_id: str | Unset = UNSET
+    assigned_at: str | Unset = UNSET
+    assigned_by_user_id: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         sub_status_id = self.sub_status_id
 
         assigned_at = self.assigned_at
 
-        assigned_by_user_id: None | Unset | int
+        assigned_by_user_id: int | None | Unset
         if isinstance(self.assigned_by_user_id, Unset):
             assigned_by_user_id = UNSET
         else:
@@ -53,12 +55,12 @@ class UpdateIncidentSubStatusDataAttributes:
 
         assigned_at = d.pop("assigned_at", UNSET)
 
-        def _parse_assigned_by_user_id(data: object) -> None | Unset | int:
+        def _parse_assigned_by_user_id(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         assigned_by_user_id = _parse_assigned_by_user_id(d.pop("assigned_by_user_id", UNSET))
 

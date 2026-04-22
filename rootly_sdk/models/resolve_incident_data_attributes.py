@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,13 +14,13 @@ T = TypeVar("T", bound="ResolveIncidentDataAttributes")
 class ResolveIncidentDataAttributes:
     """
     Attributes:
-        resolution_message (Union[None, Unset, str]): How was the incident resolved?
+        resolution_message (None | str | Unset): How was the incident resolved?
     """
 
-    resolution_message: None | Unset | str = UNSET
+    resolution_message: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        resolution_message: None | Unset | str
+        resolution_message: None | str | Unset
         if isinstance(self.resolution_message, Unset):
             resolution_message = UNSET
         else:
@@ -36,12 +38,12 @@ class ResolveIncidentDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_resolution_message(data: object) -> None | Unset | str:
+        def _parse_resolution_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolution_message = _parse_resolution_message(d.pop("resolution_message", UNSET))
 

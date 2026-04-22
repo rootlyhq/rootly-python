@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="ScheduleRotationActiveDayResponse")
 class ScheduleRotationActiveDayResponse:
     """
     Attributes:
-        data (Union[Unset, ScheduleRotationActiveDayResponseData]):
+        data (ScheduleRotationActiveDayResponseData | Unset):
     """
 
-    data: Union[Unset, "ScheduleRotationActiveDayResponseData"] = UNSET
+    data: ScheduleRotationActiveDayResponseData | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Unset | dict[str, Any] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
@@ -42,7 +44,7 @@ class ScheduleRotationActiveDayResponse:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Unset | ScheduleRotationActiveDayResponseData
+        data: ScheduleRotationActiveDayResponseData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:

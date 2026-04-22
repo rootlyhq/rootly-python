@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,14 +20,14 @@ class IncidentEvent:
         occurred_at (str): Date of occurence
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        visibility (Union[Unset, IncidentEventVisibility]): The visibility of the incident action item
+        visibility (IncidentEventVisibility | Unset): The visibility of the incident action item
     """
 
     event: str
     occurred_at: str
     created_at: str
     updated_at: str
-    visibility: Unset | IncidentEventVisibility = UNSET
+    visibility: IncidentEventVisibility | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,7 +39,7 @@ class IncidentEvent:
 
         updated_at = self.updated_at
 
-        visibility: Unset | str = UNSET
+        visibility: str | Unset = UNSET
         if not isinstance(self.visibility, Unset):
             visibility = self.visibility
 
@@ -68,7 +70,7 @@ class IncidentEvent:
         updated_at = d.pop("updated_at")
 
         _visibility = d.pop("visibility", UNSET)
-        visibility: Unset | IncidentEventVisibility
+        visibility: IncidentEventVisibility | Unset
         if isinstance(_visibility, Unset):
             visibility = UNSET
         else:

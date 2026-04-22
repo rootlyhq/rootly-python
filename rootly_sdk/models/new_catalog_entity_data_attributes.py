@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -6,7 +8,7 @@ from attrs import define as _attrs_define
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.new_catalog_entity_data_attributes_fields_item import NewCatalogEntityDataAttributesFieldsItem
+    from ..models.new_catalog_entity_data_attributes_properties_item import NewCatalogEntityDataAttributesPropertiesItem
 
 
 T = TypeVar("T", bound="NewCatalogEntityDataAttributes")
@@ -17,38 +19,38 @@ class NewCatalogEntityDataAttributes:
     """
     Attributes:
         name (str):
-        description (Union[None, Unset, str]):
-        position (Union[None, Unset, int]): Default position of the item when displayed in a list.
-        fields (Union[Unset, list['NewCatalogEntityDataAttributesFieldsItem']]): Array of field values for this catalog
-            entity
+        description (None | str | Unset):
+        position (int | None | Unset): Default position of the item when displayed in a list.
+        properties (list[NewCatalogEntityDataAttributesPropertiesItem] | Unset): Array of property values for this
+            catalog entity
     """
 
     name: str
-    description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    fields: Unset | list["NewCatalogEntityDataAttributesFieldsItem"] = UNSET
+    description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    properties: list[NewCatalogEntityDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        fields: Unset | list[dict[str, Any]] = UNSET
-        if not isinstance(self.fields, Unset):
-            fields = []
-            for fields_item_data in self.fields:
-                fields_item = fields_item_data.to_dict()
-                fields.append(fields_item)
+        properties: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.properties, Unset):
+            properties = []
+            for properties_item_data in self.properties:
+                properties_item = properties_item_data.to_dict()
+                properties.append(properties_item)
 
         field_dict: dict[str, Any] = {}
 
@@ -61,48 +63,52 @@ class NewCatalogEntityDataAttributes:
             field_dict["description"] = description
         if position is not UNSET:
             field_dict["position"] = position
-        if fields is not UNSET:
-            field_dict["fields"] = fields
+        if properties is not UNSET:
+            field_dict["properties"] = properties
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.new_catalog_entity_data_attributes_fields_item import NewCatalogEntityDataAttributesFieldsItem
+        from ..models.new_catalog_entity_data_attributes_properties_item import (
+            NewCatalogEntityDataAttributesPropertiesItem,
+        )
 
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        fields = []
-        _fields = d.pop("fields", UNSET)
-        for fields_item_data in _fields or []:
-            fields_item = NewCatalogEntityDataAttributesFieldsItem.from_dict(fields_item_data)
+        _properties = d.pop("properties", UNSET)
+        properties: list[NewCatalogEntityDataAttributesPropertiesItem] | Unset = UNSET
+        if _properties is not UNSET:
+            properties = []
+            for properties_item_data in _properties:
+                properties_item = NewCatalogEntityDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-            fields.append(fields_item)
+                properties.append(properties_item)
 
         new_catalog_entity_data_attributes = cls(
             name=name,
             description=description,
             position=position,
-            fields=fields,
+            properties=properties,
         )
 
         return new_catalog_entity_data_attributes

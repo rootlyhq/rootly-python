@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,6 +24,9 @@ if TYPE_CHECKING:
     from ..models.incident_started_by_type_0 import IncidentStartedByType0
     from ..models.incident_type_response import IncidentTypeResponse
     from ..models.incident_user_type_0 import IncidentUserType0
+    from ..models.incident_zoom_meeting_global_dial_in_numbers_type_0_item import (
+        IncidentZoomMeetingGlobalDialInNumbersType0Item,
+    )
     from ..models.service_response import ServiceResponse
     from ..models.severity_response import SeverityResponse
     from ..models.team_response import TeamResponse
@@ -37,244 +42,245 @@ class Incident:
         title (str): The title of the incident
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        id (Union[Unset, str]): Unique ID of the incident
-        sequential_id (Union[Unset, int]): Sequential ID of the incident
-        kind (Union[Unset, str]): The kind of the incident
-        slug (Union[Unset, str]): The slug of the incident
-        parent_incident_id (Union[None, Unset, str]): ID of parent incident
-        duplicate_incident_id (Union[None, Unset, str]): ID of duplicated incident
-        summary (Union[None, Unset, str]): The summary of the incident
-        private (Union[Unset, bool]): The visibility of the incident Default: False.
-        source (Union[None, Unset, str]): The source of the incident
-        status (Union[None, Unset, str]): The status of the incident
-        url (Union[None, Unset, str]): The url to the incident
-        short_url (Union[None, Unset, str]): The short url to the incident
-        public_title (Union[None, Unset, str]): The public title of the incident
-        user (Union['IncidentUserType0', None, Unset]): The user who created the incident
-        severity (Union[Unset, SeverityResponse]):
-        environments (Union[None, Unset, list['EnvironmentResponse']]): The Environments of the incident
-        incident_types (Union[None, Unset, list['IncidentTypeResponse']]): The Incident Types of the incident
-        services (Union[None, Unset, list['ServiceResponse']]): The Services of the incident
-        functionalities (Union[None, Unset, list['FunctionalityResponse']]): The Functionalities of the incident
-        groups (Union[None, Unset, list['TeamResponse']]): The Teams of to the incident
-        labels (Union['IncidentLabelsType0', None, Unset]): Labels to attach to the incidents. eg: {"platform":"osx",
+        id (str | Unset): Unique ID of the incident
+        sequential_id (int | Unset): Sequential ID of the incident
+        kind (str | Unset): The kind of the incident
+        slug (str | Unset): The slug of the incident
+        parent_incident_id (None | str | Unset): ID of parent incident
+        duplicate_incident_id (None | str | Unset): ID of duplicated incident
+        summary (None | str | Unset): The summary of the incident
+        private (bool | Unset): The visibility of the incident Default: False.
+        source (None | str | Unset): The source of the incident
+        status (None | str | Unset): The status of the incident
+        url (None | str | Unset): The url to the incident
+        short_url (None | str | Unset): The short url to the incident
+        public_title (None | str | Unset): The public title of the incident
+        user (IncidentUserType0 | None | Unset): The user who created the incident
+        severity (SeverityResponse | Unset):
+        environments (list[EnvironmentResponse] | None | Unset): The Environments of the incident
+        incident_types (list[IncidentTypeResponse] | None | Unset): The Incident Types of the incident
+        services (list[ServiceResponse] | None | Unset): The Services of the incident
+        functionalities (list[FunctionalityResponse] | None | Unset): The Functionalities of the incident
+        groups (list[TeamResponse] | None | Unset): The Teams of to the incident
+        labels (IncidentLabelsType0 | None | Unset): Labels to attach to the incidents. eg: {"platform":"osx",
             "version": "1.29"}
-        slack_channel_id (Union[None, Unset, str]): Slack channel id
-        slack_channel_name (Union[None, Unset, str]): Slack channel name
-        slack_channel_url (Union[None, Unset, str]): Slack channel url
-        slack_channel_short_url (Union[None, Unset, str]): Slack channel short url
-        slack_channel_deep_link (Union[None, Unset, str]): Slack channel deep link
-        slack_channel_archived (Union[None, Unset, bool]): Whether the Slack channel is archived
-        slack_last_message_ts (Union[None, Unset, str]): Timestamp of last Slack message
-        zoom_meeting_id (Union[None, Unset, str]): Zoom meeting ID
-        zoom_meeting_start_url (Union[None, Unset, str]): Zoom meeting start URL
-        zoom_meeting_join_url (Union[None, Unset, str]): Zoom meeting join URL
-        zoom_meeting_password (Union[None, Unset, str]): Zoom meeting password
-        zoom_meeting_pstn_password (Union[None, Unset, str]): Zoom meeting PSTN password
-        zoom_meeting_h323_password (Union[None, Unset, str]): Zoom meeting H323 password
-        zoom_meeting_global_dial_in_numbers (Union[None, Unset, list[str]]): Zoom meeting global dial-in numbers
-        google_drive_id (Union[None, Unset, str]): Google Drive document ID
-        google_drive_parent_id (Union[None, Unset, str]): Google Drive parent folder ID
-        google_drive_url (Union[None, Unset, str]): Google Drive URL
-        google_meeting_id (Union[None, Unset, str]): Google meeting ID
-        google_meeting_url (Union[None, Unset, str]): Google meeting URL
-        jira_issue_key (Union[None, Unset, str]): Jira issue key
-        jira_issue_id (Union[None, Unset, str]): Jira issue ID
-        jira_issue_url (Union[None, Unset, str]): Jira issue URL
-        github_issue_id (Union[None, Unset, str]): GitHub issue ID
-        github_issue_url (Union[None, Unset, str]): GitHub issue URL
-        gitlab_issue_id (Union[None, Unset, str]): GitLab issue ID
-        gitlab_issue_url (Union[None, Unset, str]): GitLab issue URL
-        asana_task_id (Union[None, Unset, str]): Asana task ID
-        asana_task_url (Union[None, Unset, str]): Asana task URL
-        linear_issue_id (Union[None, Unset, str]): Linear issue ID
-        linear_issue_url (Union[None, Unset, str]): Linear issue URL
-        trello_card_id (Union[None, Unset, str]): Trello card ID
-        trello_card_url (Union[None, Unset, str]): Trello card URL
-        zendesk_ticket_id (Union[None, Unset, str]): Zendesk ticket ID
-        zendesk_ticket_url (Union[None, Unset, str]): Zendesk ticket URL
-        pagerduty_incident_id (Union[None, Unset, str]): PagerDuty incident ID
-        pagerduty_incident_number (Union[None, Unset, str]): PagerDuty incident number
-        pagerduty_incident_url (Union[None, Unset, str]): PagerDuty incident URL
-        opsgenie_incident_id (Union[None, Unset, str]): Opsgenie incident ID
-        opsgenie_incident_url (Union[None, Unset, str]): Opsgenie incident URL
-        opsgenie_alert_id (Union[None, Unset, str]): Opsgenie alert ID
-        opsgenie_alert_url (Union[None, Unset, str]): Opsgenie alert URL
-        service_now_incident_id (Union[None, Unset, str]): ServiceNow incident ID
-        service_now_incident_key (Union[None, Unset, str]): ServiceNow incident key
-        service_now_incident_url (Union[None, Unset, str]): ServiceNow incident URL
-        mattermost_channel_id (Union[None, Unset, str]): Mattermost channel ID
-        mattermost_channel_name (Union[None, Unset, str]): Mattermost channel name
-        mattermost_channel_url (Union[None, Unset, str]): Mattermost channel URL
-        confluence_page_id (Union[None, Unset, str]): Confluence page ID
-        confluence_page_url (Union[None, Unset, str]): Confluence page URL
-        datadog_notebook_id (Union[None, Unset, str]): Datadog notebook ID
-        datadog_notebook_url (Union[None, Unset, str]): Datadog notebook URL
-        shortcut_story_id (Union[None, Unset, str]): Shortcut story ID
-        shortcut_story_url (Union[None, Unset, str]): Shortcut story URL
-        shortcut_task_id (Union[None, Unset, str]): Shortcut task ID
-        shortcut_task_url (Union[None, Unset, str]): Shortcut task URL
-        motion_task_id (Union[None, Unset, str]): Motion task ID
-        motion_task_url (Union[None, Unset, str]): Motion task URL
-        clickup_task_id (Union[None, Unset, str]): ClickUp task ID
-        clickup_task_url (Union[None, Unset, str]): ClickUp task URL
-        victor_ops_incident_id (Union[None, Unset, str]): VictorOps incident ID
-        victor_ops_incident_url (Union[None, Unset, str]): VictorOps incident URL
-        quip_page_id (Union[None, Unset, str]): Quip page ID
-        quip_page_url (Union[None, Unset, str]): Quip page URL
-        sharepoint_page_id (Union[None, Unset, str]): SharePoint page ID
-        sharepoint_page_url (Union[None, Unset, str]): SharePoint page URL
-        airtable_base_key (Union[None, Unset, str]): Airtable base key
-        airtable_table_name (Union[None, Unset, str]): Airtable table name
-        airtable_record_id (Union[None, Unset, str]): Airtable record ID
-        airtable_record_url (Union[None, Unset, str]): Airtable record URL
-        freshservice_ticket_id (Union[None, Unset, str]): Freshservice ticket ID
-        freshservice_ticket_url (Union[None, Unset, str]): Freshservice ticket URL
-        freshservice_task_id (Union[None, Unset, str]): Freshservice task ID
-        freshservice_task_url (Union[None, Unset, str]): Freshservice task URL
-        mitigation_message (Union[None, Unset, str]): How was the incident mitigated?
-        resolution_message (Union[None, Unset, str]): How was the incident resolved?
-        cancellation_message (Union[None, Unset, str]): Why was the incident cancelled?
-        scheduled_for (Union[None, Unset, str]): Date of when the maintenance begins
-        scheduled_until (Union[None, Unset, str]): Date of when the maintenance ends
-        muted_service_ids (Union[None, Unset, list[str]]): The Service IDs to mute alerts for during maintenance. Alerts
-            for these services will still be triggered and attached to the incident, but won't page responders.
-        retrospective_progress_status (Union[Unset, IncidentRetrospectiveProgressStatus]): The status of the
-            retrospective progress
-        in_triage_by (Union['IncidentInTriageByType0', None, Unset]): The user who triaged the incident
-        started_by (Union['IncidentStartedByType0', None, Unset]): The user who started the incident
-        mitigated_by (Union['IncidentMitigatedByType0', None, Unset]): The user who mitigated the incident
-        resolved_by (Union['IncidentResolvedByType0', None, Unset]): The user who resolved the incident
-        closed_by (Union['IncidentClosedByType0', None, Unset]): The user who closed the incident
-        cancelled_by (Union['IncidentCancelledByType0', None, Unset]): The user who cancelled the incident
-        in_triage_at (Union[None, Unset, str]): Date of triage
-        started_at (Union[None, Unset, str]): Date of start
-        detected_at (Union[None, Unset, str]): Date of detection
-        acknowledged_at (Union[None, Unset, str]): Date of acknowledgment
-        mitigated_at (Union[None, Unset, str]): Date of mitigation
-        resolved_at (Union[None, Unset, str]): Date of resolution
-        closed_at (Union[None, Unset, str]): Date of closure
-        cancelled_at (Union[None, Unset, str]): Date of cancellation
+        slack_channel_id (None | str | Unset): Slack channel id
+        slack_channel_name (None | str | Unset): Slack channel name
+        slack_channel_url (None | str | Unset): Slack channel url
+        slack_channel_short_url (None | str | Unset): Slack channel short url
+        slack_channel_deep_link (None | str | Unset): Slack channel deep link
+        slack_channel_archived (bool | None | Unset): Whether the Slack channel is archived
+        slack_last_message_ts (None | str | Unset): Timestamp of last Slack message
+        zoom_meeting_id (None | str | Unset): Zoom meeting ID
+        zoom_meeting_start_url (None | str | Unset): Zoom meeting start URL
+        zoom_meeting_join_url (None | str | Unset): Zoom meeting join URL
+        zoom_meeting_password (None | str | Unset): Zoom meeting password
+        zoom_meeting_pstn_password (None | str | Unset): Zoom meeting PSTN password
+        zoom_meeting_h323_password (None | str | Unset): Zoom meeting H323 password
+        zoom_meeting_global_dial_in_numbers (list[IncidentZoomMeetingGlobalDialInNumbersType0Item] | None | Unset): Zoom
+            meeting global dial-in numbers
+        google_drive_id (None | str | Unset): Google Drive document ID
+        google_drive_parent_id (None | str | Unset): Google Drive parent folder ID
+        google_drive_url (None | str | Unset): Google Drive URL
+        google_meeting_id (None | str | Unset): Google meeting ID
+        google_meeting_url (None | str | Unset): Google meeting URL
+        jira_issue_key (None | str | Unset): Jira issue key
+        jira_issue_id (None | str | Unset): Jira issue ID
+        jira_issue_url (None | str | Unset): Jira issue URL
+        github_issue_id (None | str | Unset): GitHub issue ID
+        github_issue_url (None | str | Unset): GitHub issue URL
+        gitlab_issue_id (None | str | Unset): GitLab issue ID
+        gitlab_issue_url (None | str | Unset): GitLab issue URL
+        asana_task_id (None | str | Unset): Asana task ID
+        asana_task_url (None | str | Unset): Asana task URL
+        linear_issue_id (None | str | Unset): Linear issue ID
+        linear_issue_url (None | str | Unset): Linear issue URL
+        trello_card_id (None | str | Unset): Trello card ID
+        trello_card_url (None | str | Unset): Trello card URL
+        zendesk_ticket_id (None | str | Unset): Zendesk ticket ID
+        zendesk_ticket_url (None | str | Unset): Zendesk ticket URL
+        pagerduty_incident_id (None | str | Unset): PagerDuty incident ID
+        pagerduty_incident_number (None | str | Unset): PagerDuty incident number
+        pagerduty_incident_url (None | str | Unset): PagerDuty incident URL
+        opsgenie_incident_id (None | str | Unset): Opsgenie incident ID
+        opsgenie_incident_url (None | str | Unset): Opsgenie incident URL
+        opsgenie_alert_id (None | str | Unset): Opsgenie alert ID
+        opsgenie_alert_url (None | str | Unset): Opsgenie alert URL
+        service_now_incident_id (None | str | Unset): ServiceNow incident ID
+        service_now_incident_key (None | str | Unset): ServiceNow incident key
+        service_now_incident_url (None | str | Unset): ServiceNow incident URL
+        mattermost_channel_id (None | str | Unset): Mattermost channel ID
+        mattermost_channel_name (None | str | Unset): Mattermost channel name
+        mattermost_channel_url (None | str | Unset): Mattermost channel URL
+        confluence_page_id (None | str | Unset): Confluence page ID
+        confluence_page_url (None | str | Unset): Confluence page URL
+        datadog_notebook_id (None | str | Unset): Datadog notebook ID
+        datadog_notebook_url (None | str | Unset): Datadog notebook URL
+        shortcut_story_id (None | str | Unset): Shortcut story ID
+        shortcut_story_url (None | str | Unset): Shortcut story URL
+        shortcut_task_id (None | str | Unset): Shortcut task ID
+        shortcut_task_url (None | str | Unset): Shortcut task URL
+        motion_task_id (None | str | Unset): Motion task ID
+        motion_task_url (None | str | Unset): Motion task URL
+        clickup_task_id (None | str | Unset): ClickUp task ID
+        clickup_task_url (None | str | Unset): ClickUp task URL
+        victor_ops_incident_id (None | str | Unset): VictorOps incident ID
+        victor_ops_incident_url (None | str | Unset): VictorOps incident URL
+        quip_page_id (None | str | Unset): Quip page ID
+        quip_page_url (None | str | Unset): Quip page URL
+        sharepoint_page_id (None | str | Unset): SharePoint page ID
+        sharepoint_page_url (None | str | Unset): SharePoint page URL
+        airtable_base_key (None | str | Unset): Airtable base key
+        airtable_table_name (None | str | Unset): Airtable table name
+        airtable_record_id (None | str | Unset): Airtable record ID
+        airtable_record_url (None | str | Unset): Airtable record URL
+        freshservice_ticket_id (None | str | Unset): Freshservice ticket ID
+        freshservice_ticket_url (None | str | Unset): Freshservice ticket URL
+        freshservice_task_id (None | str | Unset): Freshservice task ID
+        freshservice_task_url (None | str | Unset): Freshservice task URL
+        mitigation_message (None | str | Unset): How was the incident mitigated?
+        resolution_message (None | str | Unset): How was the incident resolved?
+        cancellation_message (None | str | Unset): Why was the incident cancelled?
+        scheduled_for (None | str | Unset): Date of when the maintenance begins
+        scheduled_until (None | str | Unset): Date of when the maintenance ends
+        muted_service_ids (list[str] | None | Unset): The Service IDs to mute alerts for during maintenance. Alerts for
+            these services will still be triggered and attached to the incident, but won't page responders.
+        retrospective_progress_status (IncidentRetrospectiveProgressStatus | Unset): The status of the retrospective
+            progress
+        in_triage_by (IncidentInTriageByType0 | None | Unset): The user who triaged the incident
+        started_by (IncidentStartedByType0 | None | Unset): The user who started the incident
+        mitigated_by (IncidentMitigatedByType0 | None | Unset): The user who mitigated the incident
+        resolved_by (IncidentResolvedByType0 | None | Unset): The user who resolved the incident
+        closed_by (IncidentClosedByType0 | None | Unset): The user who closed the incident
+        cancelled_by (IncidentCancelledByType0 | None | Unset): The user who cancelled the incident
+        in_triage_at (None | str | Unset): Date of triage
+        started_at (None | str | Unset): Date of start
+        detected_at (None | str | Unset): Date of detection
+        acknowledged_at (None | str | Unset): Date of acknowledgment
+        mitigated_at (None | str | Unset): Date of mitigation
+        resolved_at (None | str | Unset): Date of resolution
+        closed_at (None | str | Unset): Date of closure
+        cancelled_at (None | str | Unset): Date of cancellation
     """
 
     title: str
     created_at: str
     updated_at: str
-    id: Unset | str = UNSET
-    sequential_id: Unset | int = UNSET
-    kind: Unset | str = UNSET
-    slug: Unset | str = UNSET
-    parent_incident_id: None | Unset | str = UNSET
-    duplicate_incident_id: None | Unset | str = UNSET
-    summary: None | Unset | str = UNSET
-    private: Unset | bool = False
-    source: None | Unset | str = UNSET
-    status: None | Unset | str = UNSET
-    url: None | Unset | str = UNSET
-    short_url: None | Unset | str = UNSET
-    public_title: None | Unset | str = UNSET
-    user: Union["IncidentUserType0", None, Unset] = UNSET
-    severity: Union[Unset, "SeverityResponse"] = UNSET
-    environments: None | Unset | list["EnvironmentResponse"] = UNSET
-    incident_types: None | Unset | list["IncidentTypeResponse"] = UNSET
-    services: None | Unset | list["ServiceResponse"] = UNSET
-    functionalities: None | Unset | list["FunctionalityResponse"] = UNSET
-    groups: None | Unset | list["TeamResponse"] = UNSET
-    labels: Union["IncidentLabelsType0", None, Unset] = UNSET
-    slack_channel_id: None | Unset | str = UNSET
-    slack_channel_name: None | Unset | str = UNSET
-    slack_channel_url: None | Unset | str = UNSET
-    slack_channel_short_url: None | Unset | str = UNSET
-    slack_channel_deep_link: None | Unset | str = UNSET
-    slack_channel_archived: None | Unset | bool = UNSET
-    slack_last_message_ts: None | Unset | str = UNSET
-    zoom_meeting_id: None | Unset | str = UNSET
-    zoom_meeting_start_url: None | Unset | str = UNSET
-    zoom_meeting_join_url: None | Unset | str = UNSET
-    zoom_meeting_password: None | Unset | str = UNSET
-    zoom_meeting_pstn_password: None | Unset | str = UNSET
-    zoom_meeting_h323_password: None | Unset | str = UNSET
-    zoom_meeting_global_dial_in_numbers: None | Unset | list[str] = UNSET
-    google_drive_id: None | Unset | str = UNSET
-    google_drive_parent_id: None | Unset | str = UNSET
-    google_drive_url: None | Unset | str = UNSET
-    google_meeting_id: None | Unset | str = UNSET
-    google_meeting_url: None | Unset | str = UNSET
-    jira_issue_key: None | Unset | str = UNSET
-    jira_issue_id: None | Unset | str = UNSET
-    jira_issue_url: None | Unset | str = UNSET
-    github_issue_id: None | Unset | str = UNSET
-    github_issue_url: None | Unset | str = UNSET
-    gitlab_issue_id: None | Unset | str = UNSET
-    gitlab_issue_url: None | Unset | str = UNSET
-    asana_task_id: None | Unset | str = UNSET
-    asana_task_url: None | Unset | str = UNSET
-    linear_issue_id: None | Unset | str = UNSET
-    linear_issue_url: None | Unset | str = UNSET
-    trello_card_id: None | Unset | str = UNSET
-    trello_card_url: None | Unset | str = UNSET
-    zendesk_ticket_id: None | Unset | str = UNSET
-    zendesk_ticket_url: None | Unset | str = UNSET
-    pagerduty_incident_id: None | Unset | str = UNSET
-    pagerduty_incident_number: None | Unset | str = UNSET
-    pagerduty_incident_url: None | Unset | str = UNSET
-    opsgenie_incident_id: None | Unset | str = UNSET
-    opsgenie_incident_url: None | Unset | str = UNSET
-    opsgenie_alert_id: None | Unset | str = UNSET
-    opsgenie_alert_url: None | Unset | str = UNSET
-    service_now_incident_id: None | Unset | str = UNSET
-    service_now_incident_key: None | Unset | str = UNSET
-    service_now_incident_url: None | Unset | str = UNSET
-    mattermost_channel_id: None | Unset | str = UNSET
-    mattermost_channel_name: None | Unset | str = UNSET
-    mattermost_channel_url: None | Unset | str = UNSET
-    confluence_page_id: None | Unset | str = UNSET
-    confluence_page_url: None | Unset | str = UNSET
-    datadog_notebook_id: None | Unset | str = UNSET
-    datadog_notebook_url: None | Unset | str = UNSET
-    shortcut_story_id: None | Unset | str = UNSET
-    shortcut_story_url: None | Unset | str = UNSET
-    shortcut_task_id: None | Unset | str = UNSET
-    shortcut_task_url: None | Unset | str = UNSET
-    motion_task_id: None | Unset | str = UNSET
-    motion_task_url: None | Unset | str = UNSET
-    clickup_task_id: None | Unset | str = UNSET
-    clickup_task_url: None | Unset | str = UNSET
-    victor_ops_incident_id: None | Unset | str = UNSET
-    victor_ops_incident_url: None | Unset | str = UNSET
-    quip_page_id: None | Unset | str = UNSET
-    quip_page_url: None | Unset | str = UNSET
-    sharepoint_page_id: None | Unset | str = UNSET
-    sharepoint_page_url: None | Unset | str = UNSET
-    airtable_base_key: None | Unset | str = UNSET
-    airtable_table_name: None | Unset | str = UNSET
-    airtable_record_id: None | Unset | str = UNSET
-    airtable_record_url: None | Unset | str = UNSET
-    freshservice_ticket_id: None | Unset | str = UNSET
-    freshservice_ticket_url: None | Unset | str = UNSET
-    freshservice_task_id: None | Unset | str = UNSET
-    freshservice_task_url: None | Unset | str = UNSET
-    mitigation_message: None | Unset | str = UNSET
-    resolution_message: None | Unset | str = UNSET
-    cancellation_message: None | Unset | str = UNSET
-    scheduled_for: None | Unset | str = UNSET
-    scheduled_until: None | Unset | str = UNSET
-    muted_service_ids: None | Unset | list[str] = UNSET
-    retrospective_progress_status: Unset | IncidentRetrospectiveProgressStatus = UNSET
-    in_triage_by: Union["IncidentInTriageByType0", None, Unset] = UNSET
-    started_by: Union["IncidentStartedByType0", None, Unset] = UNSET
-    mitigated_by: Union["IncidentMitigatedByType0", None, Unset] = UNSET
-    resolved_by: Union["IncidentResolvedByType0", None, Unset] = UNSET
-    closed_by: Union["IncidentClosedByType0", None, Unset] = UNSET
-    cancelled_by: Union["IncidentCancelledByType0", None, Unset] = UNSET
-    in_triage_at: None | Unset | str = UNSET
-    started_at: None | Unset | str = UNSET
-    detected_at: None | Unset | str = UNSET
-    acknowledged_at: None | Unset | str = UNSET
-    mitigated_at: None | Unset | str = UNSET
-    resolved_at: None | Unset | str = UNSET
-    closed_at: None | Unset | str = UNSET
-    cancelled_at: None | Unset | str = UNSET
+    id: str | Unset = UNSET
+    sequential_id: int | Unset = UNSET
+    kind: str | Unset = UNSET
+    slug: str | Unset = UNSET
+    parent_incident_id: None | str | Unset = UNSET
+    duplicate_incident_id: None | str | Unset = UNSET
+    summary: None | str | Unset = UNSET
+    private: bool | Unset = False
+    source: None | str | Unset = UNSET
+    status: None | str | Unset = UNSET
+    url: None | str | Unset = UNSET
+    short_url: None | str | Unset = UNSET
+    public_title: None | str | Unset = UNSET
+    user: IncidentUserType0 | None | Unset = UNSET
+    severity: SeverityResponse | Unset = UNSET
+    environments: list[EnvironmentResponse] | None | Unset = UNSET
+    incident_types: list[IncidentTypeResponse] | None | Unset = UNSET
+    services: list[ServiceResponse] | None | Unset = UNSET
+    functionalities: list[FunctionalityResponse] | None | Unset = UNSET
+    groups: list[TeamResponse] | None | Unset = UNSET
+    labels: IncidentLabelsType0 | None | Unset = UNSET
+    slack_channel_id: None | str | Unset = UNSET
+    slack_channel_name: None | str | Unset = UNSET
+    slack_channel_url: None | str | Unset = UNSET
+    slack_channel_short_url: None | str | Unset = UNSET
+    slack_channel_deep_link: None | str | Unset = UNSET
+    slack_channel_archived: bool | None | Unset = UNSET
+    slack_last_message_ts: None | str | Unset = UNSET
+    zoom_meeting_id: None | str | Unset = UNSET
+    zoom_meeting_start_url: None | str | Unset = UNSET
+    zoom_meeting_join_url: None | str | Unset = UNSET
+    zoom_meeting_password: None | str | Unset = UNSET
+    zoom_meeting_pstn_password: None | str | Unset = UNSET
+    zoom_meeting_h323_password: None | str | Unset = UNSET
+    zoom_meeting_global_dial_in_numbers: list[IncidentZoomMeetingGlobalDialInNumbersType0Item] | None | Unset = UNSET
+    google_drive_id: None | str | Unset = UNSET
+    google_drive_parent_id: None | str | Unset = UNSET
+    google_drive_url: None | str | Unset = UNSET
+    google_meeting_id: None | str | Unset = UNSET
+    google_meeting_url: None | str | Unset = UNSET
+    jira_issue_key: None | str | Unset = UNSET
+    jira_issue_id: None | str | Unset = UNSET
+    jira_issue_url: None | str | Unset = UNSET
+    github_issue_id: None | str | Unset = UNSET
+    github_issue_url: None | str | Unset = UNSET
+    gitlab_issue_id: None | str | Unset = UNSET
+    gitlab_issue_url: None | str | Unset = UNSET
+    asana_task_id: None | str | Unset = UNSET
+    asana_task_url: None | str | Unset = UNSET
+    linear_issue_id: None | str | Unset = UNSET
+    linear_issue_url: None | str | Unset = UNSET
+    trello_card_id: None | str | Unset = UNSET
+    trello_card_url: None | str | Unset = UNSET
+    zendesk_ticket_id: None | str | Unset = UNSET
+    zendesk_ticket_url: None | str | Unset = UNSET
+    pagerduty_incident_id: None | str | Unset = UNSET
+    pagerduty_incident_number: None | str | Unset = UNSET
+    pagerduty_incident_url: None | str | Unset = UNSET
+    opsgenie_incident_id: None | str | Unset = UNSET
+    opsgenie_incident_url: None | str | Unset = UNSET
+    opsgenie_alert_id: None | str | Unset = UNSET
+    opsgenie_alert_url: None | str | Unset = UNSET
+    service_now_incident_id: None | str | Unset = UNSET
+    service_now_incident_key: None | str | Unset = UNSET
+    service_now_incident_url: None | str | Unset = UNSET
+    mattermost_channel_id: None | str | Unset = UNSET
+    mattermost_channel_name: None | str | Unset = UNSET
+    mattermost_channel_url: None | str | Unset = UNSET
+    confluence_page_id: None | str | Unset = UNSET
+    confluence_page_url: None | str | Unset = UNSET
+    datadog_notebook_id: None | str | Unset = UNSET
+    datadog_notebook_url: None | str | Unset = UNSET
+    shortcut_story_id: None | str | Unset = UNSET
+    shortcut_story_url: None | str | Unset = UNSET
+    shortcut_task_id: None | str | Unset = UNSET
+    shortcut_task_url: None | str | Unset = UNSET
+    motion_task_id: None | str | Unset = UNSET
+    motion_task_url: None | str | Unset = UNSET
+    clickup_task_id: None | str | Unset = UNSET
+    clickup_task_url: None | str | Unset = UNSET
+    victor_ops_incident_id: None | str | Unset = UNSET
+    victor_ops_incident_url: None | str | Unset = UNSET
+    quip_page_id: None | str | Unset = UNSET
+    quip_page_url: None | str | Unset = UNSET
+    sharepoint_page_id: None | str | Unset = UNSET
+    sharepoint_page_url: None | str | Unset = UNSET
+    airtable_base_key: None | str | Unset = UNSET
+    airtable_table_name: None | str | Unset = UNSET
+    airtable_record_id: None | str | Unset = UNSET
+    airtable_record_url: None | str | Unset = UNSET
+    freshservice_ticket_id: None | str | Unset = UNSET
+    freshservice_ticket_url: None | str | Unset = UNSET
+    freshservice_task_id: None | str | Unset = UNSET
+    freshservice_task_url: None | str | Unset = UNSET
+    mitigation_message: None | str | Unset = UNSET
+    resolution_message: None | str | Unset = UNSET
+    cancellation_message: None | str | Unset = UNSET
+    scheduled_for: None | str | Unset = UNSET
+    scheduled_until: None | str | Unset = UNSET
+    muted_service_ids: list[str] | None | Unset = UNSET
+    retrospective_progress_status: IncidentRetrospectiveProgressStatus | Unset = UNSET
+    in_triage_by: IncidentInTriageByType0 | None | Unset = UNSET
+    started_by: IncidentStartedByType0 | None | Unset = UNSET
+    mitigated_by: IncidentMitigatedByType0 | None | Unset = UNSET
+    resolved_by: IncidentResolvedByType0 | None | Unset = UNSET
+    closed_by: IncidentClosedByType0 | None | Unset = UNSET
+    cancelled_by: IncidentCancelledByType0 | None | Unset = UNSET
+    in_triage_at: None | str | Unset = UNSET
+    started_at: None | str | Unset = UNSET
+    detected_at: None | str | Unset = UNSET
+    acknowledged_at: None | str | Unset = UNSET
+    mitigated_at: None | str | Unset = UNSET
+    resolved_at: None | str | Unset = UNSET
+    closed_at: None | str | Unset = UNSET
+    cancelled_at: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -301,19 +307,19 @@ class Incident:
 
         slug = self.slug
 
-        parent_incident_id: None | Unset | str
+        parent_incident_id: None | str | Unset
         if isinstance(self.parent_incident_id, Unset):
             parent_incident_id = UNSET
         else:
             parent_incident_id = self.parent_incident_id
 
-        duplicate_incident_id: None | Unset | str
+        duplicate_incident_id: None | str | Unset
         if isinstance(self.duplicate_incident_id, Unset):
             duplicate_incident_id = UNSET
         else:
             duplicate_incident_id = self.duplicate_incident_id
 
-        summary: None | Unset | str
+        summary: None | str | Unset
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
@@ -321,37 +327,37 @@ class Incident:
 
         private = self.private
 
-        source: None | Unset | str
+        source: None | str | Unset
         if isinstance(self.source, Unset):
             source = UNSET
         else:
             source = self.source
 
-        status: None | Unset | str
+        status: None | str | Unset
         if isinstance(self.status, Unset):
             status = UNSET
         else:
             status = self.status
 
-        url: None | Unset | str
+        url: None | str | Unset
         if isinstance(self.url, Unset):
             url = UNSET
         else:
             url = self.url
 
-        short_url: None | Unset | str
+        short_url: None | str | Unset
         if isinstance(self.short_url, Unset):
             short_url = UNSET
         else:
             short_url = self.short_url
 
-        public_title: None | Unset | str
+        public_title: None | str | Unset
         if isinstance(self.public_title, Unset):
             public_title = UNSET
         else:
             public_title = self.public_title
 
-        user: None | Unset | dict[str, Any]
+        user: dict[str, Any] | None | Unset
         if isinstance(self.user, Unset):
             user = UNSET
         elif isinstance(self.user, IncidentUserType0):
@@ -359,11 +365,11 @@ class Incident:
         else:
             user = self.user
 
-        severity: Unset | dict[str, Any] = UNSET
+        severity: dict[str, Any] | Unset = UNSET
         if not isinstance(self.severity, Unset):
             severity = self.severity.to_dict()
 
-        environments: None | Unset | list[dict[str, Any]]
+        environments: list[dict[str, Any]] | None | Unset
         if isinstance(self.environments, Unset):
             environments = UNSET
         elif isinstance(self.environments, list):
@@ -375,7 +381,7 @@ class Incident:
         else:
             environments = self.environments
 
-        incident_types: None | Unset | list[dict[str, Any]]
+        incident_types: list[dict[str, Any]] | None | Unset
         if isinstance(self.incident_types, Unset):
             incident_types = UNSET
         elif isinstance(self.incident_types, list):
@@ -387,7 +393,7 @@ class Incident:
         else:
             incident_types = self.incident_types
 
-        services: None | Unset | list[dict[str, Any]]
+        services: list[dict[str, Any]] | None | Unset
         if isinstance(self.services, Unset):
             services = UNSET
         elif isinstance(self.services, list):
@@ -399,7 +405,7 @@ class Incident:
         else:
             services = self.services
 
-        functionalities: None | Unset | list[dict[str, Any]]
+        functionalities: list[dict[str, Any]] | None | Unset
         if isinstance(self.functionalities, Unset):
             functionalities = UNSET
         elif isinstance(self.functionalities, list):
@@ -411,7 +417,7 @@ class Incident:
         else:
             functionalities = self.functionalities
 
-        groups: None | Unset | list[dict[str, Any]]
+        groups: list[dict[str, Any]] | None | Unset
         if isinstance(self.groups, Unset):
             groups = UNSET
         elif isinstance(self.groups, list):
@@ -423,7 +429,7 @@ class Incident:
         else:
             groups = self.groups
 
-        labels: None | Unset | dict[str, Any]
+        labels: dict[str, Any] | None | Unset
         if isinstance(self.labels, Unset):
             labels = UNSET
         elif isinstance(self.labels, IncidentLabelsType0):
@@ -431,478 +437,483 @@ class Incident:
         else:
             labels = self.labels
 
-        slack_channel_id: None | Unset | str
+        slack_channel_id: None | str | Unset
         if isinstance(self.slack_channel_id, Unset):
             slack_channel_id = UNSET
         else:
             slack_channel_id = self.slack_channel_id
 
-        slack_channel_name: None | Unset | str
+        slack_channel_name: None | str | Unset
         if isinstance(self.slack_channel_name, Unset):
             slack_channel_name = UNSET
         else:
             slack_channel_name = self.slack_channel_name
 
-        slack_channel_url: None | Unset | str
+        slack_channel_url: None | str | Unset
         if isinstance(self.slack_channel_url, Unset):
             slack_channel_url = UNSET
         else:
             slack_channel_url = self.slack_channel_url
 
-        slack_channel_short_url: None | Unset | str
+        slack_channel_short_url: None | str | Unset
         if isinstance(self.slack_channel_short_url, Unset):
             slack_channel_short_url = UNSET
         else:
             slack_channel_short_url = self.slack_channel_short_url
 
-        slack_channel_deep_link: None | Unset | str
+        slack_channel_deep_link: None | str | Unset
         if isinstance(self.slack_channel_deep_link, Unset):
             slack_channel_deep_link = UNSET
         else:
             slack_channel_deep_link = self.slack_channel_deep_link
 
-        slack_channel_archived: None | Unset | bool
+        slack_channel_archived: bool | None | Unset
         if isinstance(self.slack_channel_archived, Unset):
             slack_channel_archived = UNSET
         else:
             slack_channel_archived = self.slack_channel_archived
 
-        slack_last_message_ts: None | Unset | str
+        slack_last_message_ts: None | str | Unset
         if isinstance(self.slack_last_message_ts, Unset):
             slack_last_message_ts = UNSET
         else:
             slack_last_message_ts = self.slack_last_message_ts
 
-        zoom_meeting_id: None | Unset | str
+        zoom_meeting_id: None | str | Unset
         if isinstance(self.zoom_meeting_id, Unset):
             zoom_meeting_id = UNSET
         else:
             zoom_meeting_id = self.zoom_meeting_id
 
-        zoom_meeting_start_url: None | Unset | str
+        zoom_meeting_start_url: None | str | Unset
         if isinstance(self.zoom_meeting_start_url, Unset):
             zoom_meeting_start_url = UNSET
         else:
             zoom_meeting_start_url = self.zoom_meeting_start_url
 
-        zoom_meeting_join_url: None | Unset | str
+        zoom_meeting_join_url: None | str | Unset
         if isinstance(self.zoom_meeting_join_url, Unset):
             zoom_meeting_join_url = UNSET
         else:
             zoom_meeting_join_url = self.zoom_meeting_join_url
 
-        zoom_meeting_password: None | Unset | str
+        zoom_meeting_password: None | str | Unset
         if isinstance(self.zoom_meeting_password, Unset):
             zoom_meeting_password = UNSET
         else:
             zoom_meeting_password = self.zoom_meeting_password
 
-        zoom_meeting_pstn_password: None | Unset | str
+        zoom_meeting_pstn_password: None | str | Unset
         if isinstance(self.zoom_meeting_pstn_password, Unset):
             zoom_meeting_pstn_password = UNSET
         else:
             zoom_meeting_pstn_password = self.zoom_meeting_pstn_password
 
-        zoom_meeting_h323_password: None | Unset | str
+        zoom_meeting_h323_password: None | str | Unset
         if isinstance(self.zoom_meeting_h323_password, Unset):
             zoom_meeting_h323_password = UNSET
         else:
             zoom_meeting_h323_password = self.zoom_meeting_h323_password
 
-        zoom_meeting_global_dial_in_numbers: None | Unset | list[str]
+        zoom_meeting_global_dial_in_numbers: list[dict[str, Any]] | None | Unset
         if isinstance(self.zoom_meeting_global_dial_in_numbers, Unset):
             zoom_meeting_global_dial_in_numbers = UNSET
         elif isinstance(self.zoom_meeting_global_dial_in_numbers, list):
-            zoom_meeting_global_dial_in_numbers = self.zoom_meeting_global_dial_in_numbers
+            zoom_meeting_global_dial_in_numbers = []
+            for zoom_meeting_global_dial_in_numbers_type_0_item_data in self.zoom_meeting_global_dial_in_numbers:
+                zoom_meeting_global_dial_in_numbers_type_0_item = (
+                    zoom_meeting_global_dial_in_numbers_type_0_item_data.to_dict()
+                )
+                zoom_meeting_global_dial_in_numbers.append(zoom_meeting_global_dial_in_numbers_type_0_item)
 
         else:
             zoom_meeting_global_dial_in_numbers = self.zoom_meeting_global_dial_in_numbers
 
-        google_drive_id: None | Unset | str
+        google_drive_id: None | str | Unset
         if isinstance(self.google_drive_id, Unset):
             google_drive_id = UNSET
         else:
             google_drive_id = self.google_drive_id
 
-        google_drive_parent_id: None | Unset | str
+        google_drive_parent_id: None | str | Unset
         if isinstance(self.google_drive_parent_id, Unset):
             google_drive_parent_id = UNSET
         else:
             google_drive_parent_id = self.google_drive_parent_id
 
-        google_drive_url: None | Unset | str
+        google_drive_url: None | str | Unset
         if isinstance(self.google_drive_url, Unset):
             google_drive_url = UNSET
         else:
             google_drive_url = self.google_drive_url
 
-        google_meeting_id: None | Unset | str
+        google_meeting_id: None | str | Unset
         if isinstance(self.google_meeting_id, Unset):
             google_meeting_id = UNSET
         else:
             google_meeting_id = self.google_meeting_id
 
-        google_meeting_url: None | Unset | str
+        google_meeting_url: None | str | Unset
         if isinstance(self.google_meeting_url, Unset):
             google_meeting_url = UNSET
         else:
             google_meeting_url = self.google_meeting_url
 
-        jira_issue_key: None | Unset | str
+        jira_issue_key: None | str | Unset
         if isinstance(self.jira_issue_key, Unset):
             jira_issue_key = UNSET
         else:
             jira_issue_key = self.jira_issue_key
 
-        jira_issue_id: None | Unset | str
+        jira_issue_id: None | str | Unset
         if isinstance(self.jira_issue_id, Unset):
             jira_issue_id = UNSET
         else:
             jira_issue_id = self.jira_issue_id
 
-        jira_issue_url: None | Unset | str
+        jira_issue_url: None | str | Unset
         if isinstance(self.jira_issue_url, Unset):
             jira_issue_url = UNSET
         else:
             jira_issue_url = self.jira_issue_url
 
-        github_issue_id: None | Unset | str
+        github_issue_id: None | str | Unset
         if isinstance(self.github_issue_id, Unset):
             github_issue_id = UNSET
         else:
             github_issue_id = self.github_issue_id
 
-        github_issue_url: None | Unset | str
+        github_issue_url: None | str | Unset
         if isinstance(self.github_issue_url, Unset):
             github_issue_url = UNSET
         else:
             github_issue_url = self.github_issue_url
 
-        gitlab_issue_id: None | Unset | str
+        gitlab_issue_id: None | str | Unset
         if isinstance(self.gitlab_issue_id, Unset):
             gitlab_issue_id = UNSET
         else:
             gitlab_issue_id = self.gitlab_issue_id
 
-        gitlab_issue_url: None | Unset | str
+        gitlab_issue_url: None | str | Unset
         if isinstance(self.gitlab_issue_url, Unset):
             gitlab_issue_url = UNSET
         else:
             gitlab_issue_url = self.gitlab_issue_url
 
-        asana_task_id: None | Unset | str
+        asana_task_id: None | str | Unset
         if isinstance(self.asana_task_id, Unset):
             asana_task_id = UNSET
         else:
             asana_task_id = self.asana_task_id
 
-        asana_task_url: None | Unset | str
+        asana_task_url: None | str | Unset
         if isinstance(self.asana_task_url, Unset):
             asana_task_url = UNSET
         else:
             asana_task_url = self.asana_task_url
 
-        linear_issue_id: None | Unset | str
+        linear_issue_id: None | str | Unset
         if isinstance(self.linear_issue_id, Unset):
             linear_issue_id = UNSET
         else:
             linear_issue_id = self.linear_issue_id
 
-        linear_issue_url: None | Unset | str
+        linear_issue_url: None | str | Unset
         if isinstance(self.linear_issue_url, Unset):
             linear_issue_url = UNSET
         else:
             linear_issue_url = self.linear_issue_url
 
-        trello_card_id: None | Unset | str
+        trello_card_id: None | str | Unset
         if isinstance(self.trello_card_id, Unset):
             trello_card_id = UNSET
         else:
             trello_card_id = self.trello_card_id
 
-        trello_card_url: None | Unset | str
+        trello_card_url: None | str | Unset
         if isinstance(self.trello_card_url, Unset):
             trello_card_url = UNSET
         else:
             trello_card_url = self.trello_card_url
 
-        zendesk_ticket_id: None | Unset | str
+        zendesk_ticket_id: None | str | Unset
         if isinstance(self.zendesk_ticket_id, Unset):
             zendesk_ticket_id = UNSET
         else:
             zendesk_ticket_id = self.zendesk_ticket_id
 
-        zendesk_ticket_url: None | Unset | str
+        zendesk_ticket_url: None | str | Unset
         if isinstance(self.zendesk_ticket_url, Unset):
             zendesk_ticket_url = UNSET
         else:
             zendesk_ticket_url = self.zendesk_ticket_url
 
-        pagerduty_incident_id: None | Unset | str
+        pagerduty_incident_id: None | str | Unset
         if isinstance(self.pagerduty_incident_id, Unset):
             pagerduty_incident_id = UNSET
         else:
             pagerduty_incident_id = self.pagerduty_incident_id
 
-        pagerduty_incident_number: None | Unset | str
+        pagerduty_incident_number: None | str | Unset
         if isinstance(self.pagerduty_incident_number, Unset):
             pagerduty_incident_number = UNSET
         else:
             pagerduty_incident_number = self.pagerduty_incident_number
 
-        pagerduty_incident_url: None | Unset | str
+        pagerduty_incident_url: None | str | Unset
         if isinstance(self.pagerduty_incident_url, Unset):
             pagerduty_incident_url = UNSET
         else:
             pagerduty_incident_url = self.pagerduty_incident_url
 
-        opsgenie_incident_id: None | Unset | str
+        opsgenie_incident_id: None | str | Unset
         if isinstance(self.opsgenie_incident_id, Unset):
             opsgenie_incident_id = UNSET
         else:
             opsgenie_incident_id = self.opsgenie_incident_id
 
-        opsgenie_incident_url: None | Unset | str
+        opsgenie_incident_url: None | str | Unset
         if isinstance(self.opsgenie_incident_url, Unset):
             opsgenie_incident_url = UNSET
         else:
             opsgenie_incident_url = self.opsgenie_incident_url
 
-        opsgenie_alert_id: None | Unset | str
+        opsgenie_alert_id: None | str | Unset
         if isinstance(self.opsgenie_alert_id, Unset):
             opsgenie_alert_id = UNSET
         else:
             opsgenie_alert_id = self.opsgenie_alert_id
 
-        opsgenie_alert_url: None | Unset | str
+        opsgenie_alert_url: None | str | Unset
         if isinstance(self.opsgenie_alert_url, Unset):
             opsgenie_alert_url = UNSET
         else:
             opsgenie_alert_url = self.opsgenie_alert_url
 
-        service_now_incident_id: None | Unset | str
+        service_now_incident_id: None | str | Unset
         if isinstance(self.service_now_incident_id, Unset):
             service_now_incident_id = UNSET
         else:
             service_now_incident_id = self.service_now_incident_id
 
-        service_now_incident_key: None | Unset | str
+        service_now_incident_key: None | str | Unset
         if isinstance(self.service_now_incident_key, Unset):
             service_now_incident_key = UNSET
         else:
             service_now_incident_key = self.service_now_incident_key
 
-        service_now_incident_url: None | Unset | str
+        service_now_incident_url: None | str | Unset
         if isinstance(self.service_now_incident_url, Unset):
             service_now_incident_url = UNSET
         else:
             service_now_incident_url = self.service_now_incident_url
 
-        mattermost_channel_id: None | Unset | str
+        mattermost_channel_id: None | str | Unset
         if isinstance(self.mattermost_channel_id, Unset):
             mattermost_channel_id = UNSET
         else:
             mattermost_channel_id = self.mattermost_channel_id
 
-        mattermost_channel_name: None | Unset | str
+        mattermost_channel_name: None | str | Unset
         if isinstance(self.mattermost_channel_name, Unset):
             mattermost_channel_name = UNSET
         else:
             mattermost_channel_name = self.mattermost_channel_name
 
-        mattermost_channel_url: None | Unset | str
+        mattermost_channel_url: None | str | Unset
         if isinstance(self.mattermost_channel_url, Unset):
             mattermost_channel_url = UNSET
         else:
             mattermost_channel_url = self.mattermost_channel_url
 
-        confluence_page_id: None | Unset | str
+        confluence_page_id: None | str | Unset
         if isinstance(self.confluence_page_id, Unset):
             confluence_page_id = UNSET
         else:
             confluence_page_id = self.confluence_page_id
 
-        confluence_page_url: None | Unset | str
+        confluence_page_url: None | str | Unset
         if isinstance(self.confluence_page_url, Unset):
             confluence_page_url = UNSET
         else:
             confluence_page_url = self.confluence_page_url
 
-        datadog_notebook_id: None | Unset | str
+        datadog_notebook_id: None | str | Unset
         if isinstance(self.datadog_notebook_id, Unset):
             datadog_notebook_id = UNSET
         else:
             datadog_notebook_id = self.datadog_notebook_id
 
-        datadog_notebook_url: None | Unset | str
+        datadog_notebook_url: None | str | Unset
         if isinstance(self.datadog_notebook_url, Unset):
             datadog_notebook_url = UNSET
         else:
             datadog_notebook_url = self.datadog_notebook_url
 
-        shortcut_story_id: None | Unset | str
+        shortcut_story_id: None | str | Unset
         if isinstance(self.shortcut_story_id, Unset):
             shortcut_story_id = UNSET
         else:
             shortcut_story_id = self.shortcut_story_id
 
-        shortcut_story_url: None | Unset | str
+        shortcut_story_url: None | str | Unset
         if isinstance(self.shortcut_story_url, Unset):
             shortcut_story_url = UNSET
         else:
             shortcut_story_url = self.shortcut_story_url
 
-        shortcut_task_id: None | Unset | str
+        shortcut_task_id: None | str | Unset
         if isinstance(self.shortcut_task_id, Unset):
             shortcut_task_id = UNSET
         else:
             shortcut_task_id = self.shortcut_task_id
 
-        shortcut_task_url: None | Unset | str
+        shortcut_task_url: None | str | Unset
         if isinstance(self.shortcut_task_url, Unset):
             shortcut_task_url = UNSET
         else:
             shortcut_task_url = self.shortcut_task_url
 
-        motion_task_id: None | Unset | str
+        motion_task_id: None | str | Unset
         if isinstance(self.motion_task_id, Unset):
             motion_task_id = UNSET
         else:
             motion_task_id = self.motion_task_id
 
-        motion_task_url: None | Unset | str
+        motion_task_url: None | str | Unset
         if isinstance(self.motion_task_url, Unset):
             motion_task_url = UNSET
         else:
             motion_task_url = self.motion_task_url
 
-        clickup_task_id: None | Unset | str
+        clickup_task_id: None | str | Unset
         if isinstance(self.clickup_task_id, Unset):
             clickup_task_id = UNSET
         else:
             clickup_task_id = self.clickup_task_id
 
-        clickup_task_url: None | Unset | str
+        clickup_task_url: None | str | Unset
         if isinstance(self.clickup_task_url, Unset):
             clickup_task_url = UNSET
         else:
             clickup_task_url = self.clickup_task_url
 
-        victor_ops_incident_id: None | Unset | str
+        victor_ops_incident_id: None | str | Unset
         if isinstance(self.victor_ops_incident_id, Unset):
             victor_ops_incident_id = UNSET
         else:
             victor_ops_incident_id = self.victor_ops_incident_id
 
-        victor_ops_incident_url: None | Unset | str
+        victor_ops_incident_url: None | str | Unset
         if isinstance(self.victor_ops_incident_url, Unset):
             victor_ops_incident_url = UNSET
         else:
             victor_ops_incident_url = self.victor_ops_incident_url
 
-        quip_page_id: None | Unset | str
+        quip_page_id: None | str | Unset
         if isinstance(self.quip_page_id, Unset):
             quip_page_id = UNSET
         else:
             quip_page_id = self.quip_page_id
 
-        quip_page_url: None | Unset | str
+        quip_page_url: None | str | Unset
         if isinstance(self.quip_page_url, Unset):
             quip_page_url = UNSET
         else:
             quip_page_url = self.quip_page_url
 
-        sharepoint_page_id: None | Unset | str
+        sharepoint_page_id: None | str | Unset
         if isinstance(self.sharepoint_page_id, Unset):
             sharepoint_page_id = UNSET
         else:
             sharepoint_page_id = self.sharepoint_page_id
 
-        sharepoint_page_url: None | Unset | str
+        sharepoint_page_url: None | str | Unset
         if isinstance(self.sharepoint_page_url, Unset):
             sharepoint_page_url = UNSET
         else:
             sharepoint_page_url = self.sharepoint_page_url
 
-        airtable_base_key: None | Unset | str
+        airtable_base_key: None | str | Unset
         if isinstance(self.airtable_base_key, Unset):
             airtable_base_key = UNSET
         else:
             airtable_base_key = self.airtable_base_key
 
-        airtable_table_name: None | Unset | str
+        airtable_table_name: None | str | Unset
         if isinstance(self.airtable_table_name, Unset):
             airtable_table_name = UNSET
         else:
             airtable_table_name = self.airtable_table_name
 
-        airtable_record_id: None | Unset | str
+        airtable_record_id: None | str | Unset
         if isinstance(self.airtable_record_id, Unset):
             airtable_record_id = UNSET
         else:
             airtable_record_id = self.airtable_record_id
 
-        airtable_record_url: None | Unset | str
+        airtable_record_url: None | str | Unset
         if isinstance(self.airtable_record_url, Unset):
             airtable_record_url = UNSET
         else:
             airtable_record_url = self.airtable_record_url
 
-        freshservice_ticket_id: None | Unset | str
+        freshservice_ticket_id: None | str | Unset
         if isinstance(self.freshservice_ticket_id, Unset):
             freshservice_ticket_id = UNSET
         else:
             freshservice_ticket_id = self.freshservice_ticket_id
 
-        freshservice_ticket_url: None | Unset | str
+        freshservice_ticket_url: None | str | Unset
         if isinstance(self.freshservice_ticket_url, Unset):
             freshservice_ticket_url = UNSET
         else:
             freshservice_ticket_url = self.freshservice_ticket_url
 
-        freshservice_task_id: None | Unset | str
+        freshservice_task_id: None | str | Unset
         if isinstance(self.freshservice_task_id, Unset):
             freshservice_task_id = UNSET
         else:
             freshservice_task_id = self.freshservice_task_id
 
-        freshservice_task_url: None | Unset | str
+        freshservice_task_url: None | str | Unset
         if isinstance(self.freshservice_task_url, Unset):
             freshservice_task_url = UNSET
         else:
             freshservice_task_url = self.freshservice_task_url
 
-        mitigation_message: None | Unset | str
+        mitigation_message: None | str | Unset
         if isinstance(self.mitigation_message, Unset):
             mitigation_message = UNSET
         else:
             mitigation_message = self.mitigation_message
 
-        resolution_message: None | Unset | str
+        resolution_message: None | str | Unset
         if isinstance(self.resolution_message, Unset):
             resolution_message = UNSET
         else:
             resolution_message = self.resolution_message
 
-        cancellation_message: None | Unset | str
+        cancellation_message: None | str | Unset
         if isinstance(self.cancellation_message, Unset):
             cancellation_message = UNSET
         else:
             cancellation_message = self.cancellation_message
 
-        scheduled_for: None | Unset | str
+        scheduled_for: None | str | Unset
         if isinstance(self.scheduled_for, Unset):
             scheduled_for = UNSET
         else:
             scheduled_for = self.scheduled_for
 
-        scheduled_until: None | Unset | str
+        scheduled_until: None | str | Unset
         if isinstance(self.scheduled_until, Unset):
             scheduled_until = UNSET
         else:
             scheduled_until = self.scheduled_until
 
-        muted_service_ids: None | Unset | list[str]
+        muted_service_ids: list[str] | None | Unset
         if isinstance(self.muted_service_ids, Unset):
             muted_service_ids = UNSET
         elif isinstance(self.muted_service_ids, list):
@@ -911,11 +922,11 @@ class Incident:
         else:
             muted_service_ids = self.muted_service_ids
 
-        retrospective_progress_status: Unset | str = UNSET
+        retrospective_progress_status: str | Unset = UNSET
         if not isinstance(self.retrospective_progress_status, Unset):
             retrospective_progress_status = self.retrospective_progress_status
 
-        in_triage_by: None | Unset | dict[str, Any]
+        in_triage_by: dict[str, Any] | None | Unset
         if isinstance(self.in_triage_by, Unset):
             in_triage_by = UNSET
         elif isinstance(self.in_triage_by, IncidentInTriageByType0):
@@ -923,7 +934,7 @@ class Incident:
         else:
             in_triage_by = self.in_triage_by
 
-        started_by: None | Unset | dict[str, Any]
+        started_by: dict[str, Any] | None | Unset
         if isinstance(self.started_by, Unset):
             started_by = UNSET
         elif isinstance(self.started_by, IncidentStartedByType0):
@@ -931,7 +942,7 @@ class Incident:
         else:
             started_by = self.started_by
 
-        mitigated_by: None | Unset | dict[str, Any]
+        mitigated_by: dict[str, Any] | None | Unset
         if isinstance(self.mitigated_by, Unset):
             mitigated_by = UNSET
         elif isinstance(self.mitigated_by, IncidentMitigatedByType0):
@@ -939,7 +950,7 @@ class Incident:
         else:
             mitigated_by = self.mitigated_by
 
-        resolved_by: None | Unset | dict[str, Any]
+        resolved_by: dict[str, Any] | None | Unset
         if isinstance(self.resolved_by, Unset):
             resolved_by = UNSET
         elif isinstance(self.resolved_by, IncidentResolvedByType0):
@@ -947,7 +958,7 @@ class Incident:
         else:
             resolved_by = self.resolved_by
 
-        closed_by: None | Unset | dict[str, Any]
+        closed_by: dict[str, Any] | None | Unset
         if isinstance(self.closed_by, Unset):
             closed_by = UNSET
         elif isinstance(self.closed_by, IncidentClosedByType0):
@@ -955,7 +966,7 @@ class Incident:
         else:
             closed_by = self.closed_by
 
-        cancelled_by: None | Unset | dict[str, Any]
+        cancelled_by: dict[str, Any] | None | Unset
         if isinstance(self.cancelled_by, Unset):
             cancelled_by = UNSET
         elif isinstance(self.cancelled_by, IncidentCancelledByType0):
@@ -963,49 +974,49 @@ class Incident:
         else:
             cancelled_by = self.cancelled_by
 
-        in_triage_at: None | Unset | str
+        in_triage_at: None | str | Unset
         if isinstance(self.in_triage_at, Unset):
             in_triage_at = UNSET
         else:
             in_triage_at = self.in_triage_at
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        detected_at: None | Unset | str
+        detected_at: None | str | Unset
         if isinstance(self.detected_at, Unset):
             detected_at = UNSET
         else:
             detected_at = self.detected_at
 
-        acknowledged_at: None | Unset | str
+        acknowledged_at: None | str | Unset
         if isinstance(self.acknowledged_at, Unset):
             acknowledged_at = UNSET
         else:
             acknowledged_at = self.acknowledged_at
 
-        mitigated_at: None | Unset | str
+        mitigated_at: None | str | Unset
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: None | Unset | str
+        resolved_at: None | str | Unset
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
             resolved_at = self.resolved_at
 
-        closed_at: None | Unset | str
+        closed_at: None | str | Unset
         if isinstance(self.closed_at, Unset):
             closed_at = UNSET
         else:
             closed_at = self.closed_at
 
-        cancelled_at: None | Unset | str
+        cancelled_at: None | str | Unset
         if isinstance(self.cancelled_at, Unset):
             cancelled_at = UNSET
         else:
@@ -1266,6 +1277,9 @@ class Incident:
         from ..models.incident_started_by_type_0 import IncidentStartedByType0
         from ..models.incident_type_response import IncidentTypeResponse
         from ..models.incident_user_type_0 import IncidentUserType0
+        from ..models.incident_zoom_meeting_global_dial_in_numbers_type_0_item import (
+            IncidentZoomMeetingGlobalDialInNumbersType0Item,
+        )
         from ..models.service_response import ServiceResponse
         from ..models.severity_response import SeverityResponse
         from ..models.team_response import TeamResponse
@@ -1285,81 +1299,81 @@ class Incident:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_parent_incident_id(data: object) -> None | Unset | str:
+        def _parse_parent_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         parent_incident_id = _parse_parent_incident_id(d.pop("parent_incident_id", UNSET))
 
-        def _parse_duplicate_incident_id(data: object) -> None | Unset | str:
+        def _parse_duplicate_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         duplicate_incident_id = _parse_duplicate_incident_id(d.pop("duplicate_incident_id", UNSET))
 
-        def _parse_summary(data: object) -> None | Unset | str:
+        def _parse_summary(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
         private = d.pop("private", UNSET)
 
-        def _parse_source(data: object) -> None | Unset | str:
+        def _parse_source(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         source = _parse_source(d.pop("source", UNSET))
 
-        def _parse_status(data: object) -> None | Unset | str:
+        def _parse_status(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_url(data: object) -> None | Unset | str:
+        def _parse_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         url = _parse_url(d.pop("url", UNSET))
 
-        def _parse_short_url(data: object) -> None | Unset | str:
+        def _parse_short_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         short_url = _parse_short_url(d.pop("short_url", UNSET))
 
-        def _parse_public_title(data: object) -> None | Unset | str:
+        def _parse_public_title(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         public_title = _parse_public_title(d.pop("public_title", UNSET))
 
-        def _parse_user(data: object) -> Union["IncidentUserType0", None, Unset]:
+        def _parse_user(data: object) -> IncidentUserType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1370,20 +1384,20 @@ class Incident:
                 user_type_0 = IncidentUserType0.from_dict(data)
 
                 return user_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentUserType0", None, Unset], data)
+            return cast(IncidentUserType0 | None | Unset, data)
 
         user = _parse_user(d.pop("user", UNSET))
 
         _severity = d.pop("severity", UNSET)
-        severity: Unset | SeverityResponse
+        severity: SeverityResponse | Unset
         if isinstance(_severity, Unset):
             severity = UNSET
         else:
             severity = SeverityResponse.from_dict(_severity)
 
-        def _parse_environments(data: object) -> None | Unset | list["EnvironmentResponse"]:
+        def _parse_environments(data: object) -> list[EnvironmentResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1399,13 +1413,13 @@ class Incident:
                     environments_type_0.append(environments_type_0_item)
 
                 return environments_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["EnvironmentResponse"], data)
+            return cast(list[EnvironmentResponse] | None | Unset, data)
 
         environments = _parse_environments(d.pop("environments", UNSET))
 
-        def _parse_incident_types(data: object) -> None | Unset | list["IncidentTypeResponse"]:
+        def _parse_incident_types(data: object) -> list[IncidentTypeResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1421,13 +1435,13 @@ class Incident:
                     incident_types_type_0.append(incident_types_type_0_item)
 
                 return incident_types_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["IncidentTypeResponse"], data)
+            return cast(list[IncidentTypeResponse] | None | Unset, data)
 
         incident_types = _parse_incident_types(d.pop("incident_types", UNSET))
 
-        def _parse_services(data: object) -> None | Unset | list["ServiceResponse"]:
+        def _parse_services(data: object) -> list[ServiceResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1443,13 +1457,13 @@ class Incident:
                     services_type_0.append(services_type_0_item)
 
                 return services_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["ServiceResponse"], data)
+            return cast(list[ServiceResponse] | None | Unset, data)
 
         services = _parse_services(d.pop("services", UNSET))
 
-        def _parse_functionalities(data: object) -> None | Unset | list["FunctionalityResponse"]:
+        def _parse_functionalities(data: object) -> list[FunctionalityResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1465,13 +1479,13 @@ class Incident:
                     functionalities_type_0.append(functionalities_type_0_item)
 
                 return functionalities_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["FunctionalityResponse"], data)
+            return cast(list[FunctionalityResponse] | None | Unset, data)
 
         functionalities = _parse_functionalities(d.pop("functionalities", UNSET))
 
-        def _parse_groups(data: object) -> None | Unset | list["TeamResponse"]:
+        def _parse_groups(data: object) -> list[TeamResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1487,13 +1501,13 @@ class Incident:
                     groups_type_0.append(groups_type_0_item)
 
                 return groups_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["TeamResponse"], data)
+            return cast(list[TeamResponse] | None | Unset, data)
 
         groups = _parse_groups(d.pop("groups", UNSET))
 
-        def _parse_labels(data: object) -> Union["IncidentLabelsType0", None, Unset]:
+        def _parse_labels(data: object) -> IncidentLabelsType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1504,130 +1518,132 @@ class Incident:
                 labels_type_0 = IncidentLabelsType0.from_dict(data)
 
                 return labels_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentLabelsType0", None, Unset], data)
+            return cast(IncidentLabelsType0 | None | Unset, data)
 
         labels = _parse_labels(d.pop("labels", UNSET))
 
-        def _parse_slack_channel_id(data: object) -> None | Unset | str:
+        def _parse_slack_channel_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_channel_id = _parse_slack_channel_id(d.pop("slack_channel_id", UNSET))
 
-        def _parse_slack_channel_name(data: object) -> None | Unset | str:
+        def _parse_slack_channel_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_channel_name = _parse_slack_channel_name(d.pop("slack_channel_name", UNSET))
 
-        def _parse_slack_channel_url(data: object) -> None | Unset | str:
+        def _parse_slack_channel_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_channel_url = _parse_slack_channel_url(d.pop("slack_channel_url", UNSET))
 
-        def _parse_slack_channel_short_url(data: object) -> None | Unset | str:
+        def _parse_slack_channel_short_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_channel_short_url = _parse_slack_channel_short_url(d.pop("slack_channel_short_url", UNSET))
 
-        def _parse_slack_channel_deep_link(data: object) -> None | Unset | str:
+        def _parse_slack_channel_deep_link(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_channel_deep_link = _parse_slack_channel_deep_link(d.pop("slack_channel_deep_link", UNSET))
 
-        def _parse_slack_channel_archived(data: object) -> None | Unset | bool:
+        def _parse_slack_channel_archived(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         slack_channel_archived = _parse_slack_channel_archived(d.pop("slack_channel_archived", UNSET))
 
-        def _parse_slack_last_message_ts(data: object) -> None | Unset | str:
+        def _parse_slack_last_message_ts(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_last_message_ts = _parse_slack_last_message_ts(d.pop("slack_last_message_ts", UNSET))
 
-        def _parse_zoom_meeting_id(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_id = _parse_zoom_meeting_id(d.pop("zoom_meeting_id", UNSET))
 
-        def _parse_zoom_meeting_start_url(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_start_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_start_url = _parse_zoom_meeting_start_url(d.pop("zoom_meeting_start_url", UNSET))
 
-        def _parse_zoom_meeting_join_url(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_join_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_join_url = _parse_zoom_meeting_join_url(d.pop("zoom_meeting_join_url", UNSET))
 
-        def _parse_zoom_meeting_password(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_password(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_password = _parse_zoom_meeting_password(d.pop("zoom_meeting_password", UNSET))
 
-        def _parse_zoom_meeting_pstn_password(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_pstn_password(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_pstn_password = _parse_zoom_meeting_pstn_password(d.pop("zoom_meeting_pstn_password", UNSET))
 
-        def _parse_zoom_meeting_h323_password(data: object) -> None | Unset | str:
+        def _parse_zoom_meeting_h323_password(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zoom_meeting_h323_password = _parse_zoom_meeting_h323_password(d.pop("zoom_meeting_h323_password", UNSET))
 
-        def _parse_zoom_meeting_global_dial_in_numbers(data: object) -> None | Unset | list[str]:
+        def _parse_zoom_meeting_global_dial_in_numbers(
+            data: object,
+        ) -> list[IncidentZoomMeetingGlobalDialInNumbersType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -1635,594 +1651,603 @@ class Incident:
             try:
                 if not isinstance(data, list):
                     raise TypeError()
-                zoom_meeting_global_dial_in_numbers_type_0 = cast(list[str], data)
+                zoom_meeting_global_dial_in_numbers_type_0 = []
+                _zoom_meeting_global_dial_in_numbers_type_0 = data
+                for zoom_meeting_global_dial_in_numbers_type_0_item_data in _zoom_meeting_global_dial_in_numbers_type_0:
+                    zoom_meeting_global_dial_in_numbers_type_0_item = (
+                        IncidentZoomMeetingGlobalDialInNumbersType0Item.from_dict(
+                            zoom_meeting_global_dial_in_numbers_type_0_item_data
+                        )
+                    )
+
+                    zoom_meeting_global_dial_in_numbers_type_0.append(zoom_meeting_global_dial_in_numbers_type_0_item)
 
                 return zoom_meeting_global_dial_in_numbers_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[IncidentZoomMeetingGlobalDialInNumbersType0Item] | None | Unset, data)
 
         zoom_meeting_global_dial_in_numbers = _parse_zoom_meeting_global_dial_in_numbers(
             d.pop("zoom_meeting_global_dial_in_numbers", UNSET)
         )
 
-        def _parse_google_drive_id(data: object) -> None | Unset | str:
+        def _parse_google_drive_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         google_drive_id = _parse_google_drive_id(d.pop("google_drive_id", UNSET))
 
-        def _parse_google_drive_parent_id(data: object) -> None | Unset | str:
+        def _parse_google_drive_parent_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         google_drive_parent_id = _parse_google_drive_parent_id(d.pop("google_drive_parent_id", UNSET))
 
-        def _parse_google_drive_url(data: object) -> None | Unset | str:
+        def _parse_google_drive_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         google_drive_url = _parse_google_drive_url(d.pop("google_drive_url", UNSET))
 
-        def _parse_google_meeting_id(data: object) -> None | Unset | str:
+        def _parse_google_meeting_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         google_meeting_id = _parse_google_meeting_id(d.pop("google_meeting_id", UNSET))
 
-        def _parse_google_meeting_url(data: object) -> None | Unset | str:
+        def _parse_google_meeting_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         google_meeting_url = _parse_google_meeting_url(d.pop("google_meeting_url", UNSET))
 
-        def _parse_jira_issue_key(data: object) -> None | Unset | str:
+        def _parse_jira_issue_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         jira_issue_key = _parse_jira_issue_key(d.pop("jira_issue_key", UNSET))
 
-        def _parse_jira_issue_id(data: object) -> None | Unset | str:
+        def _parse_jira_issue_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         jira_issue_id = _parse_jira_issue_id(d.pop("jira_issue_id", UNSET))
 
-        def _parse_jira_issue_url(data: object) -> None | Unset | str:
+        def _parse_jira_issue_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
 
-        def _parse_github_issue_id(data: object) -> None | Unset | str:
+        def _parse_github_issue_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         github_issue_id = _parse_github_issue_id(d.pop("github_issue_id", UNSET))
 
-        def _parse_github_issue_url(data: object) -> None | Unset | str:
+        def _parse_github_issue_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         github_issue_url = _parse_github_issue_url(d.pop("github_issue_url", UNSET))
 
-        def _parse_gitlab_issue_id(data: object) -> None | Unset | str:
+        def _parse_gitlab_issue_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         gitlab_issue_id = _parse_gitlab_issue_id(d.pop("gitlab_issue_id", UNSET))
 
-        def _parse_gitlab_issue_url(data: object) -> None | Unset | str:
+        def _parse_gitlab_issue_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         gitlab_issue_url = _parse_gitlab_issue_url(d.pop("gitlab_issue_url", UNSET))
 
-        def _parse_asana_task_id(data: object) -> None | Unset | str:
+        def _parse_asana_task_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         asana_task_id = _parse_asana_task_id(d.pop("asana_task_id", UNSET))
 
-        def _parse_asana_task_url(data: object) -> None | Unset | str:
+        def _parse_asana_task_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         asana_task_url = _parse_asana_task_url(d.pop("asana_task_url", UNSET))
 
-        def _parse_linear_issue_id(data: object) -> None | Unset | str:
+        def _parse_linear_issue_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         linear_issue_id = _parse_linear_issue_id(d.pop("linear_issue_id", UNSET))
 
-        def _parse_linear_issue_url(data: object) -> None | Unset | str:
+        def _parse_linear_issue_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         linear_issue_url = _parse_linear_issue_url(d.pop("linear_issue_url", UNSET))
 
-        def _parse_trello_card_id(data: object) -> None | Unset | str:
+        def _parse_trello_card_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         trello_card_id = _parse_trello_card_id(d.pop("trello_card_id", UNSET))
 
-        def _parse_trello_card_url(data: object) -> None | Unset | str:
+        def _parse_trello_card_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         trello_card_url = _parse_trello_card_url(d.pop("trello_card_url", UNSET))
 
-        def _parse_zendesk_ticket_id(data: object) -> None | Unset | str:
+        def _parse_zendesk_ticket_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zendesk_ticket_id = _parse_zendesk_ticket_id(d.pop("zendesk_ticket_id", UNSET))
 
-        def _parse_zendesk_ticket_url(data: object) -> None | Unset | str:
+        def _parse_zendesk_ticket_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         zendesk_ticket_url = _parse_zendesk_ticket_url(d.pop("zendesk_ticket_url", UNSET))
 
-        def _parse_pagerduty_incident_id(data: object) -> None | Unset | str:
+        def _parse_pagerduty_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pagerduty_incident_id = _parse_pagerduty_incident_id(d.pop("pagerduty_incident_id", UNSET))
 
-        def _parse_pagerduty_incident_number(data: object) -> None | Unset | str:
+        def _parse_pagerduty_incident_number(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pagerduty_incident_number = _parse_pagerduty_incident_number(d.pop("pagerduty_incident_number", UNSET))
 
-        def _parse_pagerduty_incident_url(data: object) -> None | Unset | str:
+        def _parse_pagerduty_incident_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pagerduty_incident_url = _parse_pagerduty_incident_url(d.pop("pagerduty_incident_url", UNSET))
 
-        def _parse_opsgenie_incident_id(data: object) -> None | Unset | str:
+        def _parse_opsgenie_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_incident_id = _parse_opsgenie_incident_id(d.pop("opsgenie_incident_id", UNSET))
 
-        def _parse_opsgenie_incident_url(data: object) -> None | Unset | str:
+        def _parse_opsgenie_incident_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_incident_url = _parse_opsgenie_incident_url(d.pop("opsgenie_incident_url", UNSET))
 
-        def _parse_opsgenie_alert_id(data: object) -> None | Unset | str:
+        def _parse_opsgenie_alert_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_alert_id = _parse_opsgenie_alert_id(d.pop("opsgenie_alert_id", UNSET))
 
-        def _parse_opsgenie_alert_url(data: object) -> None | Unset | str:
+        def _parse_opsgenie_alert_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_alert_url = _parse_opsgenie_alert_url(d.pop("opsgenie_alert_url", UNSET))
 
-        def _parse_service_now_incident_id(data: object) -> None | Unset | str:
+        def _parse_service_now_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         service_now_incident_id = _parse_service_now_incident_id(d.pop("service_now_incident_id", UNSET))
 
-        def _parse_service_now_incident_key(data: object) -> None | Unset | str:
+        def _parse_service_now_incident_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         service_now_incident_key = _parse_service_now_incident_key(d.pop("service_now_incident_key", UNSET))
 
-        def _parse_service_now_incident_url(data: object) -> None | Unset | str:
+        def _parse_service_now_incident_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         service_now_incident_url = _parse_service_now_incident_url(d.pop("service_now_incident_url", UNSET))
 
-        def _parse_mattermost_channel_id(data: object) -> None | Unset | str:
+        def _parse_mattermost_channel_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mattermost_channel_id = _parse_mattermost_channel_id(d.pop("mattermost_channel_id", UNSET))
 
-        def _parse_mattermost_channel_name(data: object) -> None | Unset | str:
+        def _parse_mattermost_channel_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mattermost_channel_name = _parse_mattermost_channel_name(d.pop("mattermost_channel_name", UNSET))
 
-        def _parse_mattermost_channel_url(data: object) -> None | Unset | str:
+        def _parse_mattermost_channel_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mattermost_channel_url = _parse_mattermost_channel_url(d.pop("mattermost_channel_url", UNSET))
 
-        def _parse_confluence_page_id(data: object) -> None | Unset | str:
+        def _parse_confluence_page_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         confluence_page_id = _parse_confluence_page_id(d.pop("confluence_page_id", UNSET))
 
-        def _parse_confluence_page_url(data: object) -> None | Unset | str:
+        def _parse_confluence_page_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         confluence_page_url = _parse_confluence_page_url(d.pop("confluence_page_url", UNSET))
 
-        def _parse_datadog_notebook_id(data: object) -> None | Unset | str:
+        def _parse_datadog_notebook_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         datadog_notebook_id = _parse_datadog_notebook_id(d.pop("datadog_notebook_id", UNSET))
 
-        def _parse_datadog_notebook_url(data: object) -> None | Unset | str:
+        def _parse_datadog_notebook_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         datadog_notebook_url = _parse_datadog_notebook_url(d.pop("datadog_notebook_url", UNSET))
 
-        def _parse_shortcut_story_id(data: object) -> None | Unset | str:
+        def _parse_shortcut_story_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         shortcut_story_id = _parse_shortcut_story_id(d.pop("shortcut_story_id", UNSET))
 
-        def _parse_shortcut_story_url(data: object) -> None | Unset | str:
+        def _parse_shortcut_story_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         shortcut_story_url = _parse_shortcut_story_url(d.pop("shortcut_story_url", UNSET))
 
-        def _parse_shortcut_task_id(data: object) -> None | Unset | str:
+        def _parse_shortcut_task_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         shortcut_task_id = _parse_shortcut_task_id(d.pop("shortcut_task_id", UNSET))
 
-        def _parse_shortcut_task_url(data: object) -> None | Unset | str:
+        def _parse_shortcut_task_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         shortcut_task_url = _parse_shortcut_task_url(d.pop("shortcut_task_url", UNSET))
 
-        def _parse_motion_task_id(data: object) -> None | Unset | str:
+        def _parse_motion_task_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         motion_task_id = _parse_motion_task_id(d.pop("motion_task_id", UNSET))
 
-        def _parse_motion_task_url(data: object) -> None | Unset | str:
+        def _parse_motion_task_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         motion_task_url = _parse_motion_task_url(d.pop("motion_task_url", UNSET))
 
-        def _parse_clickup_task_id(data: object) -> None | Unset | str:
+        def _parse_clickup_task_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         clickup_task_id = _parse_clickup_task_id(d.pop("clickup_task_id", UNSET))
 
-        def _parse_clickup_task_url(data: object) -> None | Unset | str:
+        def _parse_clickup_task_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         clickup_task_url = _parse_clickup_task_url(d.pop("clickup_task_url", UNSET))
 
-        def _parse_victor_ops_incident_id(data: object) -> None | Unset | str:
+        def _parse_victor_ops_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         victor_ops_incident_id = _parse_victor_ops_incident_id(d.pop("victor_ops_incident_id", UNSET))
 
-        def _parse_victor_ops_incident_url(data: object) -> None | Unset | str:
+        def _parse_victor_ops_incident_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         victor_ops_incident_url = _parse_victor_ops_incident_url(d.pop("victor_ops_incident_url", UNSET))
 
-        def _parse_quip_page_id(data: object) -> None | Unset | str:
+        def _parse_quip_page_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         quip_page_id = _parse_quip_page_id(d.pop("quip_page_id", UNSET))
 
-        def _parse_quip_page_url(data: object) -> None | Unset | str:
+        def _parse_quip_page_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         quip_page_url = _parse_quip_page_url(d.pop("quip_page_url", UNSET))
 
-        def _parse_sharepoint_page_id(data: object) -> None | Unset | str:
+        def _parse_sharepoint_page_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         sharepoint_page_id = _parse_sharepoint_page_id(d.pop("sharepoint_page_id", UNSET))
 
-        def _parse_sharepoint_page_url(data: object) -> None | Unset | str:
+        def _parse_sharepoint_page_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         sharepoint_page_url = _parse_sharepoint_page_url(d.pop("sharepoint_page_url", UNSET))
 
-        def _parse_airtable_base_key(data: object) -> None | Unset | str:
+        def _parse_airtable_base_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         airtable_base_key = _parse_airtable_base_key(d.pop("airtable_base_key", UNSET))
 
-        def _parse_airtable_table_name(data: object) -> None | Unset | str:
+        def _parse_airtable_table_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         airtable_table_name = _parse_airtable_table_name(d.pop("airtable_table_name", UNSET))
 
-        def _parse_airtable_record_id(data: object) -> None | Unset | str:
+        def _parse_airtable_record_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         airtable_record_id = _parse_airtable_record_id(d.pop("airtable_record_id", UNSET))
 
-        def _parse_airtable_record_url(data: object) -> None | Unset | str:
+        def _parse_airtable_record_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         airtable_record_url = _parse_airtable_record_url(d.pop("airtable_record_url", UNSET))
 
-        def _parse_freshservice_ticket_id(data: object) -> None | Unset | str:
+        def _parse_freshservice_ticket_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         freshservice_ticket_id = _parse_freshservice_ticket_id(d.pop("freshservice_ticket_id", UNSET))
 
-        def _parse_freshservice_ticket_url(data: object) -> None | Unset | str:
+        def _parse_freshservice_ticket_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         freshservice_ticket_url = _parse_freshservice_ticket_url(d.pop("freshservice_ticket_url", UNSET))
 
-        def _parse_freshservice_task_id(data: object) -> None | Unset | str:
+        def _parse_freshservice_task_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         freshservice_task_id = _parse_freshservice_task_id(d.pop("freshservice_task_id", UNSET))
 
-        def _parse_freshservice_task_url(data: object) -> None | Unset | str:
+        def _parse_freshservice_task_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         freshservice_task_url = _parse_freshservice_task_url(d.pop("freshservice_task_url", UNSET))
 
-        def _parse_mitigation_message(data: object) -> None | Unset | str:
+        def _parse_mitigation_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mitigation_message = _parse_mitigation_message(d.pop("mitigation_message", UNSET))
 
-        def _parse_resolution_message(data: object) -> None | Unset | str:
+        def _parse_resolution_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolution_message = _parse_resolution_message(d.pop("resolution_message", UNSET))
 
-        def _parse_cancellation_message(data: object) -> None | Unset | str:
+        def _parse_cancellation_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         cancellation_message = _parse_cancellation_message(d.pop("cancellation_message", UNSET))
 
-        def _parse_scheduled_for(data: object) -> None | Unset | str:
+        def _parse_scheduled_for(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         scheduled_for = _parse_scheduled_for(d.pop("scheduled_for", UNSET))
 
-        def _parse_scheduled_until(data: object) -> None | Unset | str:
+        def _parse_scheduled_until(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         scheduled_until = _parse_scheduled_until(d.pop("scheduled_until", UNSET))
 
-        def _parse_muted_service_ids(data: object) -> None | Unset | list[str]:
+        def _parse_muted_service_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2233,20 +2258,20 @@ class Incident:
                 muted_service_ids_type_0 = cast(list[str], data)
 
                 return muted_service_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         muted_service_ids = _parse_muted_service_ids(d.pop("muted_service_ids", UNSET))
 
         _retrospective_progress_status = d.pop("retrospective_progress_status", UNSET)
-        retrospective_progress_status: Unset | IncidentRetrospectiveProgressStatus
+        retrospective_progress_status: IncidentRetrospectiveProgressStatus | Unset
         if isinstance(_retrospective_progress_status, Unset):
             retrospective_progress_status = UNSET
         else:
             retrospective_progress_status = check_incident_retrospective_progress_status(_retrospective_progress_status)
 
-        def _parse_in_triage_by(data: object) -> Union["IncidentInTriageByType0", None, Unset]:
+        def _parse_in_triage_by(data: object) -> IncidentInTriageByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2257,13 +2282,13 @@ class Incident:
                 in_triage_by_type_0 = IncidentInTriageByType0.from_dict(data)
 
                 return in_triage_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentInTriageByType0", None, Unset], data)
+            return cast(IncidentInTriageByType0 | None | Unset, data)
 
         in_triage_by = _parse_in_triage_by(d.pop("in_triage_by", UNSET))
 
-        def _parse_started_by(data: object) -> Union["IncidentStartedByType0", None, Unset]:
+        def _parse_started_by(data: object) -> IncidentStartedByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2274,13 +2299,13 @@ class Incident:
                 started_by_type_0 = IncidentStartedByType0.from_dict(data)
 
                 return started_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentStartedByType0", None, Unset], data)
+            return cast(IncidentStartedByType0 | None | Unset, data)
 
         started_by = _parse_started_by(d.pop("started_by", UNSET))
 
-        def _parse_mitigated_by(data: object) -> Union["IncidentMitigatedByType0", None, Unset]:
+        def _parse_mitigated_by(data: object) -> IncidentMitigatedByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2291,13 +2316,13 @@ class Incident:
                 mitigated_by_type_0 = IncidentMitigatedByType0.from_dict(data)
 
                 return mitigated_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentMitigatedByType0", None, Unset], data)
+            return cast(IncidentMitigatedByType0 | None | Unset, data)
 
         mitigated_by = _parse_mitigated_by(d.pop("mitigated_by", UNSET))
 
-        def _parse_resolved_by(data: object) -> Union["IncidentResolvedByType0", None, Unset]:
+        def _parse_resolved_by(data: object) -> IncidentResolvedByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2308,13 +2333,13 @@ class Incident:
                 resolved_by_type_0 = IncidentResolvedByType0.from_dict(data)
 
                 return resolved_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentResolvedByType0", None, Unset], data)
+            return cast(IncidentResolvedByType0 | None | Unset, data)
 
         resolved_by = _parse_resolved_by(d.pop("resolved_by", UNSET))
 
-        def _parse_closed_by(data: object) -> Union["IncidentClosedByType0", None, Unset]:
+        def _parse_closed_by(data: object) -> IncidentClosedByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2325,13 +2350,13 @@ class Incident:
                 closed_by_type_0 = IncidentClosedByType0.from_dict(data)
 
                 return closed_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentClosedByType0", None, Unset], data)
+            return cast(IncidentClosedByType0 | None | Unset, data)
 
         closed_by = _parse_closed_by(d.pop("closed_by", UNSET))
 
-        def _parse_cancelled_by(data: object) -> Union["IncidentCancelledByType0", None, Unset]:
+        def _parse_cancelled_by(data: object) -> IncidentCancelledByType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -2342,81 +2367,81 @@ class Incident:
                 cancelled_by_type_0 = IncidentCancelledByType0.from_dict(data)
 
                 return cancelled_by_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["IncidentCancelledByType0", None, Unset], data)
+            return cast(IncidentCancelledByType0 | None | Unset, data)
 
         cancelled_by = _parse_cancelled_by(d.pop("cancelled_by", UNSET))
 
-        def _parse_in_triage_at(data: object) -> None | Unset | str:
+        def _parse_in_triage_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         in_triage_at = _parse_in_triage_at(d.pop("in_triage_at", UNSET))
 
-        def _parse_started_at(data: object) -> None | Unset | str:
+        def _parse_started_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_detected_at(data: object) -> None | Unset | str:
+        def _parse_detected_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         detected_at = _parse_detected_at(d.pop("detected_at", UNSET))
 
-        def _parse_acknowledged_at(data: object) -> None | Unset | str:
+        def _parse_acknowledged_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         acknowledged_at = _parse_acknowledged_at(d.pop("acknowledged_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> None | Unset | str:
+        def _parse_mitigated_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> None | Unset | str:
+        def _parse_resolved_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
-        def _parse_closed_at(data: object) -> None | Unset | str:
+        def _parse_closed_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         closed_at = _parse_closed_at(d.pop("closed_at", UNSET))
 
-        def _parse_cancelled_at(data: object) -> None | Unset | str:
+        def _parse_cancelled_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         cancelled_at = _parse_cancelled_at(d.pop("cancelled_at", UNSET))
 

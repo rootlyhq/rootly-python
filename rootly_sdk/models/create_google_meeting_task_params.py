@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -31,27 +33,27 @@ T = TypeVar("T", bound="CreateGoogleMeetingTaskParams")
 class CreateGoogleMeetingTaskParams:
     """
     Attributes:
-        summary (Union[None, str]): [DEPRECATED] The meeting summary
-        description (Union[None, str]): [DEPRECATED] The meeting description
-        task_type (Union[Unset, CreateGoogleMeetingTaskParamsTaskType]):
-        conference_solution_key (Union[Unset, CreateGoogleMeetingTaskParamsConferenceSolutionKey]): [DEPRECATED] Sets
-            the video conference type attached to the meeting
-        record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
-            and summary from your meeting
-        recording_mode (Union[Unset, CreateGoogleMeetingTaskParamsRecordingMode]): The video layout for the bot's
-            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
-        post_to_incident_timeline (Union[Unset, bool]):
-        post_to_slack_channels (Union[Unset, list['CreateGoogleMeetingTaskParamsPostToSlackChannelsItem']]):
+        summary (None | str): [DEPRECATED] The meeting summary
+        description (None | str): [DEPRECATED] The meeting description
+        task_type (CreateGoogleMeetingTaskParamsTaskType | Unset):
+        conference_solution_key (CreateGoogleMeetingTaskParamsConferenceSolutionKey | Unset): [DEPRECATED] Sets the
+            video conference type attached to the meeting
+        record_meeting (bool | Unset): Rootly AI will record the meeting and automatically generate a transcript and
+            summary from your meeting
+        recording_mode (CreateGoogleMeetingTaskParamsRecordingMode | Unset): The video layout for the bot's recording
+            (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
+        post_to_incident_timeline (bool | Unset):
+        post_to_slack_channels (list[CreateGoogleMeetingTaskParamsPostToSlackChannelsItem] | Unset):
     """
 
     summary: None | str
     description: None | str
-    task_type: Unset | CreateGoogleMeetingTaskParamsTaskType = UNSET
-    conference_solution_key: Unset | CreateGoogleMeetingTaskParamsConferenceSolutionKey = UNSET
-    record_meeting: Unset | bool = UNSET
-    recording_mode: Unset | CreateGoogleMeetingTaskParamsRecordingMode = UNSET
-    post_to_incident_timeline: Unset | bool = UNSET
-    post_to_slack_channels: Unset | list["CreateGoogleMeetingTaskParamsPostToSlackChannelsItem"] = UNSET
+    task_type: CreateGoogleMeetingTaskParamsTaskType | Unset = UNSET
+    conference_solution_key: CreateGoogleMeetingTaskParamsConferenceSolutionKey | Unset = UNSET
+    record_meeting: bool | Unset = UNSET
+    recording_mode: CreateGoogleMeetingTaskParamsRecordingMode | Unset = UNSET
+    post_to_incident_timeline: bool | Unset = UNSET
+    post_to_slack_channels: list[CreateGoogleMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,23 +63,23 @@ class CreateGoogleMeetingTaskParams:
         description: None | str
         description = self.description
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        conference_solution_key: Unset | str = UNSET
+        conference_solution_key: str | Unset = UNSET
         if not isinstance(self.conference_solution_key, Unset):
             conference_solution_key = self.conference_solution_key
 
         record_meeting = self.record_meeting
 
-        recording_mode: Unset | str = UNSET
+        recording_mode: str | Unset = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -130,14 +132,14 @@ class CreateGoogleMeetingTaskParams:
         description = _parse_description(d.pop("description"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateGoogleMeetingTaskParamsTaskType
+        task_type: CreateGoogleMeetingTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_google_meeting_task_params_task_type(_task_type)
 
         _conference_solution_key = d.pop("conference_solution_key", UNSET)
-        conference_solution_key: Unset | CreateGoogleMeetingTaskParamsConferenceSolutionKey
+        conference_solution_key: CreateGoogleMeetingTaskParamsConferenceSolutionKey | Unset
         if isinstance(_conference_solution_key, Unset):
             conference_solution_key = UNSET
         else:
@@ -148,7 +150,7 @@ class CreateGoogleMeetingTaskParams:
         record_meeting = d.pop("record_meeting", UNSET)
 
         _recording_mode = d.pop("recording_mode", UNSET)
-        recording_mode: Unset | CreateGoogleMeetingTaskParamsRecordingMode
+        recording_mode: CreateGoogleMeetingTaskParamsRecordingMode | Unset
         if isinstance(_recording_mode, Unset):
             recording_mode = UNSET
         else:
@@ -156,14 +158,16 @@ class CreateGoogleMeetingTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = CreateGoogleMeetingTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[CreateGoogleMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = CreateGoogleMeetingTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
 
         create_google_meeting_task_params = cls(
             summary=summary,

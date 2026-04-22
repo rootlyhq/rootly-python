@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="CommunicationsTemplateCommunicationType")
 class CommunicationsTemplateCommunicationType:
     """
     Attributes:
-        id (Union[Unset, str]): ID of the communication type
-        name (Union[Unset, str]): Name of the communication type
+        id (str | Unset): ID of the communication type
+        name (str | Unset): Name of the communication type
     """
 
-    id: Unset | str = UNSET
-    name: Unset | str = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -16,11 +17,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Unset | GetRetrospectiveProcessInclude = UNSET,
+    include: GetRetrospectiveProcessInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -30,7 +32,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/retrospective_processes/{id}",
+        "url": "/v1/retrospective_processes/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -71,7 +75,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetRetrospectiveProcessInclude = UNSET,
+    include: GetRetrospectiveProcessInclude | Unset = UNSET,
 ) -> Response[ErrorsList | RetrospectiveProcessResponse]:
     """Retrieves a retrospective process
 
@@ -79,14 +83,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetRetrospectiveProcessInclude]):
+        include (GetRetrospectiveProcessInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, RetrospectiveProcessResponse]]
+        Response[ErrorsList | RetrospectiveProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +109,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetRetrospectiveProcessInclude = UNSET,
+    include: GetRetrospectiveProcessInclude | Unset = UNSET,
 ) -> ErrorsList | RetrospectiveProcessResponse | None:
     """Retrieves a retrospective process
 
@@ -113,14 +117,14 @@ def sync(
 
     Args:
         id (str):
-        include (Union[Unset, GetRetrospectiveProcessInclude]):
+        include (GetRetrospectiveProcessInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, RetrospectiveProcessResponse]
+        ErrorsList | RetrospectiveProcessResponse
     """
 
     return sync_detailed(
@@ -134,7 +138,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetRetrospectiveProcessInclude = UNSET,
+    include: GetRetrospectiveProcessInclude | Unset = UNSET,
 ) -> Response[ErrorsList | RetrospectiveProcessResponse]:
     """Retrieves a retrospective process
 
@@ -142,14 +146,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetRetrospectiveProcessInclude]):
+        include (GetRetrospectiveProcessInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, RetrospectiveProcessResponse]]
+        Response[ErrorsList | RetrospectiveProcessResponse]
     """
 
     kwargs = _get_kwargs(
@@ -166,7 +170,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetRetrospectiveProcessInclude = UNSET,
+    include: GetRetrospectiveProcessInclude | Unset = UNSET,
 ) -> ErrorsList | RetrospectiveProcessResponse | None:
     """Retrieves a retrospective process
 
@@ -174,14 +178,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (Union[Unset, GetRetrospectiveProcessInclude]):
+        include (GetRetrospectiveProcessInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, RetrospectiveProcessResponse]
+        ErrorsList | RetrospectiveProcessResponse
     """
 
     return (

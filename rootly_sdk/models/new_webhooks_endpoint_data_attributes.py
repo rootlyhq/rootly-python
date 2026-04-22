@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,16 +20,16 @@ class NewWebhooksEndpointDataAttributes:
     Attributes:
         name (str): The name of the endpoint
         url (str): The URL of the endpoint.
-        secret (Union[Unset, str]): The webhook signing secret used to verify webhook requests.
-        event_types (Union[Unset, list[NewWebhooksEndpointDataAttributesEventTypesItem]]):
-        enabled (Union[Unset, bool]):
+        secret (str | Unset): The webhook signing secret used to verify webhook requests.
+        event_types (list[NewWebhooksEndpointDataAttributesEventTypesItem] | Unset):
+        enabled (bool | Unset):
     """
 
     name: str
     url: str
-    secret: Unset | str = UNSET
-    event_types: Unset | list[NewWebhooksEndpointDataAttributesEventTypesItem] = UNSET
-    enabled: Unset | bool = UNSET
+    secret: str | Unset = UNSET
+    event_types: list[NewWebhooksEndpointDataAttributesEventTypesItem] | Unset = UNSET
+    enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -36,7 +38,7 @@ class NewWebhooksEndpointDataAttributes:
 
         secret = self.secret
 
-        event_types: Unset | list[str] = UNSET
+        event_types: list[str] | Unset = UNSET
         if not isinstance(self.event_types, Unset):
             event_types = []
             for event_types_item_data in self.event_types:
@@ -71,12 +73,14 @@ class NewWebhooksEndpointDataAttributes:
 
         secret = d.pop("secret", UNSET)
 
-        event_types = []
         _event_types = d.pop("event_types", UNSET)
-        for event_types_item_data in _event_types or []:
-            event_types_item = check_new_webhooks_endpoint_data_attributes_event_types_item(event_types_item_data)
+        event_types: list[NewWebhooksEndpointDataAttributesEventTypesItem] | Unset = UNSET
+        if _event_types is not UNSET:
+            event_types = []
+            for event_types_item_data in _event_types:
+                event_types_item = check_new_webhooks_endpoint_data_attributes_event_types_item(event_types_item_data)
 
-            event_types.append(event_types_item)
+                event_types.append(event_types_item)
 
         enabled = d.pop("enabled", UNSET)
 

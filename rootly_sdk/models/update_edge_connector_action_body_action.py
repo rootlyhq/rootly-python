@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,24 +23,24 @@ T = TypeVar("T", bound="UpdateEdgeConnectorActionBodyAction")
 class UpdateEdgeConnectorActionBodyAction:
     """
     Attributes:
-        name (Union[Unset, str]):
-        action_type (Union[Unset, UpdateEdgeConnectorActionBodyActionActionType]):
-        metadata (Union[Unset, UpdateEdgeConnectorActionBodyActionMetadata]):
+        name (str | Unset):
+        action_type (UpdateEdgeConnectorActionBodyActionActionType | Unset):
+        metadata (UpdateEdgeConnectorActionBodyActionMetadata | Unset):
     """
 
-    name: Unset | str = UNSET
-    action_type: Unset | UpdateEdgeConnectorActionBodyActionActionType = UNSET
-    metadata: Union[Unset, "UpdateEdgeConnectorActionBodyActionMetadata"] = UNSET
+    name: str | Unset = UNSET
+    action_type: UpdateEdgeConnectorActionBodyActionActionType | Unset = UNSET
+    metadata: UpdateEdgeConnectorActionBodyActionMetadata | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        action_type: Unset | str = UNSET
+        action_type: str | Unset = UNSET
         if not isinstance(self.action_type, Unset):
             action_type = self.action_type
 
-        metadata: Unset | dict[str, Any] = UNSET
+        metadata: dict[str, Any] | Unset = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -64,14 +66,14 @@ class UpdateEdgeConnectorActionBodyAction:
         name = d.pop("name", UNSET)
 
         _action_type = d.pop("action_type", UNSET)
-        action_type: Unset | UpdateEdgeConnectorActionBodyActionActionType
+        action_type: UpdateEdgeConnectorActionBodyActionActionType | Unset
         if isinstance(_action_type, Unset):
             action_type = UNSET
         else:
             action_type = check_update_edge_connector_action_body_action_action_type(_action_type)
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Unset | UpdateEdgeConnectorActionBodyActionMetadata
+        metadata: UpdateEdgeConnectorActionBodyActionMetadata | Unset
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

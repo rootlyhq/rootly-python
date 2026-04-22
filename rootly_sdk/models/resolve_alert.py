@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="ResolveAlert")
 class ResolveAlert:
     """
     Attributes:
-        data (Union[Unset, ResolveAlertData]):
+        data (ResolveAlertData | Unset):
     """
 
-    data: Union[Unset, "ResolveAlertData"] = UNSET
+    data: ResolveAlertData | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Unset | dict[str, Any] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
@@ -42,7 +44,7 @@ class ResolveAlert:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Unset | ResolveAlertData
+        data: ResolveAlertData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,28 +22,28 @@ class CustomField:
     Attributes:
         label (str): The name of the custom_field
         shown (list[CustomFieldShownItem]):
-        required (Union[None, list[CustomFieldRequiredType0Item]]):
+        required (list[CustomFieldRequiredType0Item] | None):
         position (int): The position of the custom_field
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        kind (Union[Unset, str]): The kind of the custom_field
-        enabled (Union[Unset, bool]): Whether the custom_field is enabled
-        slug (Union[Unset, str]): The slug of the custom_field
-        description (Union[None, Unset, str]): The description of the custom_field
-        default (Union[None, Unset, str]): The default value for text field kinds
+        kind (str | Unset): The kind of the custom_field
+        enabled (bool | Unset): Whether the custom_field is enabled
+        slug (str | Unset): The slug of the custom_field
+        description (None | str | Unset): The description of the custom_field
+        default (None | str | Unset): The default value for text field kinds
     """
 
     label: str
     shown: list[CustomFieldShownItem]
-    required: None | list[CustomFieldRequiredType0Item]
+    required: list[CustomFieldRequiredType0Item] | None
     position: int
     created_at: str
     updated_at: str
-    kind: Unset | str = UNSET
-    enabled: Unset | bool = UNSET
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    default: None | Unset | str = UNSET
+    kind: str | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    default: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +54,7 @@ class CustomField:
             shown_item: str = shown_item_data
             shown.append(shown_item)
 
-        required: None | list[str]
+        required: list[str] | None
         if isinstance(self.required, list):
             required = []
             for required_type_0_item_data in self.required:
@@ -74,13 +76,13 @@ class CustomField:
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        default: None | Unset | str
+        default: None | str | Unset
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -123,7 +125,7 @@ class CustomField:
 
             shown.append(shown_item)
 
-        def _parse_required(data: object) -> None | list[CustomFieldRequiredType0Item]:
+        def _parse_required(data: object) -> list[CustomFieldRequiredType0Item] | None:
             if data is None:
                 return data
             try:
@@ -137,9 +139,9 @@ class CustomField:
                     required_type_0.append(required_type_0_item)
 
                 return required_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | list[CustomFieldRequiredType0Item], data)
+            return cast(list[CustomFieldRequiredType0Item] | None, data)
 
         required = _parse_required(d.pop("required"))
 
@@ -155,21 +157,21 @@ class CustomField:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_default(data: object) -> None | Unset | str:
+        def _parse_default(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         default = _parse_default(d.pop("default", UNSET))
 

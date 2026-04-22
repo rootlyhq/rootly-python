@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,23 +30,23 @@ class CreateLinearIssueTaskParams:
         title (str): The issue title
         team (CreateLinearIssueTaskParamsTeam): The team id and display name
         state (CreateLinearIssueTaskParamsState): The state id and display name
-        task_type (Union[Unset, CreateLinearIssueTaskParamsTaskType]):
-        description (Union[Unset, str]): The issue description
-        project (Union[Unset, CreateLinearIssueTaskParamsProject]): The project id and display name
-        labels (Union[Unset, list['CreateLinearIssueTaskParamsLabelsItem']]):
-        priority (Union[Unset, CreateLinearIssueTaskParamsPriority]): The priority id and display name
-        assign_user_email (Union[Unset, str]): The assigned user's email
+        task_type (CreateLinearIssueTaskParamsTaskType | Unset):
+        description (str | Unset): The issue description
+        project (CreateLinearIssueTaskParamsProject | Unset): The project id and display name
+        labels (list[CreateLinearIssueTaskParamsLabelsItem] | Unset):
+        priority (CreateLinearIssueTaskParamsPriority | Unset): The priority id and display name
+        assign_user_email (str | Unset): The assigned user's email
     """
 
     title: str
-    team: "CreateLinearIssueTaskParamsTeam"
-    state: "CreateLinearIssueTaskParamsState"
-    task_type: Unset | CreateLinearIssueTaskParamsTaskType = UNSET
-    description: Unset | str = UNSET
-    project: Union[Unset, "CreateLinearIssueTaskParamsProject"] = UNSET
-    labels: Unset | list["CreateLinearIssueTaskParamsLabelsItem"] = UNSET
-    priority: Union[Unset, "CreateLinearIssueTaskParamsPriority"] = UNSET
-    assign_user_email: Unset | str = UNSET
+    team: CreateLinearIssueTaskParamsTeam
+    state: CreateLinearIssueTaskParamsState
+    task_type: CreateLinearIssueTaskParamsTaskType | Unset = UNSET
+    description: str | Unset = UNSET
+    project: CreateLinearIssueTaskParamsProject | Unset = UNSET
+    labels: list[CreateLinearIssueTaskParamsLabelsItem] | Unset = UNSET
+    priority: CreateLinearIssueTaskParamsPriority | Unset = UNSET
+    assign_user_email: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,24 +56,24 @@ class CreateLinearIssueTaskParams:
 
         state = self.state.to_dict()
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        project: Unset | dict[str, Any] = UNSET
+        project: dict[str, Any] | Unset = UNSET
         if not isinstance(self.project, Unset):
             project = self.project.to_dict()
 
-        labels: Unset | list[dict[str, Any]] = UNSET
+        labels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        priority: Unset | dict[str, Any] = UNSET
+        priority: dict[str, Any] | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
@@ -117,7 +119,7 @@ class CreateLinearIssueTaskParams:
         state = CreateLinearIssueTaskParamsState.from_dict(d.pop("state"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateLinearIssueTaskParamsTaskType
+        task_type: CreateLinearIssueTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -126,21 +128,23 @@ class CreateLinearIssueTaskParams:
         description = d.pop("description", UNSET)
 
         _project = d.pop("project", UNSET)
-        project: Unset | CreateLinearIssueTaskParamsProject
+        project: CreateLinearIssueTaskParamsProject | Unset
         if isinstance(_project, Unset):
             project = UNSET
         else:
             project = CreateLinearIssueTaskParamsProject.from_dict(_project)
 
-        labels = []
         _labels = d.pop("labels", UNSET)
-        for labels_item_data in _labels or []:
-            labels_item = CreateLinearIssueTaskParamsLabelsItem.from_dict(labels_item_data)
+        labels: list[CreateLinearIssueTaskParamsLabelsItem] | Unset = UNSET
+        if _labels is not UNSET:
+            labels = []
+            for labels_item_data in _labels:
+                labels_item = CreateLinearIssueTaskParamsLabelsItem.from_dict(labels_item_data)
 
-            labels.append(labels_item)
+                labels.append(labels_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | CreateLinearIssueTaskParamsPriority
+        priority: CreateLinearIssueTaskParamsPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

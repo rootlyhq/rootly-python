@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,21 +14,21 @@ T = TypeVar("T", bound="UpdateIncidentCustomFieldSelectionDataAttributes")
 class UpdateIncidentCustomFieldSelectionDataAttributes:
     """
     Attributes:
-        value (Union[None, Unset, str]): The selected value for text kind custom fields
-        selected_option_ids (Union[Unset, list[int]]):
+        value (None | str | Unset): The selected value for text kind custom fields
+        selected_option_ids (list[int] | Unset):
     """
 
-    value: None | Unset | str = UNSET
-    selected_option_ids: Unset | list[int] = UNSET
+    value: None | str | Unset = UNSET
+    selected_option_ids: list[int] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        value: None | Unset | str
+        value: None | str | Unset
         if isinstance(self.value, Unset):
             value = UNSET
         else:
             value = self.value
 
-        selected_option_ids: Unset | list[int] = UNSET
+        selected_option_ids: list[int] | Unset = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
@@ -44,12 +46,12 @@ class UpdateIncidentCustomFieldSelectionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_value(data: object) -> None | Unset | str:
+        def _parse_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         value = _parse_value(d.pop("value", UNSET))
 

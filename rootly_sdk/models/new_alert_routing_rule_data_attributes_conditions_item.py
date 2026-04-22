@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -29,18 +31,17 @@ class NewAlertRoutingRuleDataAttributesConditionsItem:
             field name should be supplied in JSON Path syntax.
         property_field_condition_type (NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType): The
             condition type of the property field
-        property_field_value (Union[Unset, str]): The value of the property field. Can be null if the property field
-            condition type is 'is_one_of' or 'is_not_one_of'
-        property_field_values (Union[Unset, list[str]]): The values of the property field. Need to be passed if the
-            property field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is
-            'alert_urgency'
+        property_field_value (str | Unset): The value of the property field. Can be null if the property field condition
+            type is 'is_one_of' or 'is_not_one_of'
+        property_field_values (list[str] | Unset): The values of the property field. Need to be passed if the property
+            field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is 'alert_urgency'
     """
 
     property_field_type: NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType
     property_field_name: str
     property_field_condition_type: NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
-    property_field_value: Unset | str = UNSET
-    property_field_values: Unset | list[str] = UNSET
+    property_field_value: str | Unset = UNSET
+    property_field_values: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +53,7 @@ class NewAlertRoutingRuleDataAttributesConditionsItem:
 
         property_field_value = self.property_field_value
 
-        property_field_values: Unset | list[str] = UNSET
+        property_field_values: list[str] | Unset = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 

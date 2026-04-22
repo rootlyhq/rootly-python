@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,9 +20,9 @@ class FormFieldOption:
         position (int): The position of the form field option
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        id (Union[Unset, str]): Unique ID of the form field option
-        form_field_id (Union[Unset, str]): The ID of the parent custom field
-        default (Union[Unset, bool]):
+        id (str | Unset): Unique ID of the form field option
+        form_field_id (str | Unset): The ID of the parent custom field
+        default (bool | Unset):
     """
 
     value: str
@@ -28,9 +30,9 @@ class FormFieldOption:
     position: int
     created_at: str
     updated_at: str
-    id: Unset | str = UNSET
-    form_field_id: Unset | str = UNSET
-    default: Unset | bool = UNSET
+    id: str | Unset = UNSET
+    form_field_id: str | Unset = UNSET
+    default: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

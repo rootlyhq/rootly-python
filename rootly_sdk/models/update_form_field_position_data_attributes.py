@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -16,19 +18,19 @@ T = TypeVar("T", bound="UpdateFormFieldPositionDataAttributes")
 class UpdateFormFieldPositionDataAttributes:
     """
     Attributes:
-        form_field_id (Union[Unset, str]): The ID of the form field.
-        form (Union[Unset, UpdateFormFieldPositionDataAttributesForm]): The form for the position
-        position (Union[Unset, int]): The position of the form_field_position
+        form_field_id (str | Unset): The ID of the form field.
+        form (UpdateFormFieldPositionDataAttributesForm | Unset): The form for the position
+        position (int | Unset): The position of the form_field_position
     """
 
-    form_field_id: Unset | str = UNSET
-    form: Unset | UpdateFormFieldPositionDataAttributesForm = UNSET
-    position: Unset | int = UNSET
+    form_field_id: str | Unset = UNSET
+    form: UpdateFormFieldPositionDataAttributesForm | Unset = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
 
-        form: Unset | str = UNSET
+        form: str | Unset = UNSET
         if not isinstance(self.form, Unset):
             form = self.form
 
@@ -52,7 +54,7 @@ class UpdateFormFieldPositionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _form = d.pop("form", UNSET)
-        form: Unset | UpdateFormFieldPositionDataAttributesForm
+        form: UpdateFormFieldPositionDataAttributesForm | Unset
         if isinstance(_form, Unset):
             form = UNSET
         else:

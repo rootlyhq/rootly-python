@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -12,10 +13,11 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
-    period: Unset | str = UNSET,
+    period: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["period"] = period
@@ -24,7 +26,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/functionalities/{id}/uptime_chart",
+        "url": "/v1/functionalities/{id}/uptime_chart".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -62,25 +66,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    period: Unset | str = UNSET,
+    period: str | Unset = UNSET,
 ) -> Response[ErrorsList | UptimeChartResponse]:
     """Get functionality uptime chart
 
      Get functionality uptime chart
 
     Args:
-        id (Union[UUID, str]):
-        period (Union[Unset, str]):
+        id (str | UUID):
+        period (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, UptimeChartResponse]]
+        Response[ErrorsList | UptimeChartResponse]
     """
 
     kwargs = _get_kwargs(
@@ -96,25 +100,25 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    period: Unset | str = UNSET,
+    period: str | Unset = UNSET,
 ) -> ErrorsList | UptimeChartResponse | None:
     """Get functionality uptime chart
 
      Get functionality uptime chart
 
     Args:
-        id (Union[UUID, str]):
-        period (Union[Unset, str]):
+        id (str | UUID):
+        period (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, UptimeChartResponse]
+        ErrorsList | UptimeChartResponse
     """
 
     return sync_detailed(
@@ -125,25 +129,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    period: Unset | str = UNSET,
+    period: str | Unset = UNSET,
 ) -> Response[ErrorsList | UptimeChartResponse]:
     """Get functionality uptime chart
 
      Get functionality uptime chart
 
     Args:
-        id (Union[UUID, str]):
-        period (Union[Unset, str]):
+        id (str | UUID):
+        period (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, UptimeChartResponse]]
+        Response[ErrorsList | UptimeChartResponse]
     """
 
     kwargs = _get_kwargs(
@@ -157,25 +161,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    period: Unset | str = UNSET,
+    period: str | Unset = UNSET,
 ) -> ErrorsList | UptimeChartResponse | None:
     """Get functionality uptime chart
 
      Get functionality uptime chart
 
     Args:
-        id (Union[UUID, str]):
-        period (Union[Unset, str]):
+        id (str | UUID):
+        period (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, UptimeChartResponse]
+        ErrorsList | UptimeChartResponse
     """
 
     return (

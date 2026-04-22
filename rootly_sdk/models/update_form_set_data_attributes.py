@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,9 +14,9 @@ T = TypeVar("T", bound="UpdateFormSetDataAttributes")
 class UpdateFormSetDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the form set
-        forms (Union[Unset, list[str]]): The forms included in the form set. Add custom forms using the custom form's
-            `slug` field. Or choose a built-in form: `web_new_incident_form`, `web_update_incident_form`,
+        name (str | Unset): The name of the form set
+        forms (list[str] | Unset): The forms included in the form set. Add custom forms using the custom form's `slug`
+            field. Or choose a built-in form: `web_new_incident_form`, `web_update_incident_form`,
             `web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`,
             `web_incident_cancellation_form`, `web_scheduled_incident_form`, `web_update_scheduled_incident_form`,
             `slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,
@@ -22,13 +24,13 @@ class UpdateFormSetDataAttributes:
             `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`
     """
 
-    name: Unset | str = UNSET
-    forms: Unset | list[str] = UNSET
+    name: str | Unset = UNSET
+    forms: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        forms: Unset | list[str] = UNSET
+        forms: list[str] | Unset = UNSET
         if not isinstance(self.forms, Unset):
             forms = self.forms
 

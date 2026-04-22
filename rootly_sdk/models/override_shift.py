@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,15 +21,15 @@ class OverrideShift:
     """
     Attributes:
         schedule_id (str): ID of schedule
-        rotation_id (Union[None, str]): ID of rotation
+        rotation_id (None | str): ID of rotation
         starts_at (str): Start datetime of shift
         ends_at (str): End datetime of shift
         is_override (bool): Denotes shift is an override shift
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
-        shift_override (Union[Unset, ShiftOverrideResponse]):
-        user_id (Union[Unset, int]): Override shift user
-        user (Union[Unset, UserResponse]):
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
+        shift_override (ShiftOverrideResponse | Unset):
+        user_id (int | Unset): Override shift user
+        user (UserResponse | Unset):
     """
 
     schedule_id: str
@@ -35,11 +37,11 @@ class OverrideShift:
     starts_at: str
     ends_at: str
     is_override: bool
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
-    shift_override: Union[Unset, "ShiftOverrideResponse"] = UNSET
-    user_id: Unset | int = UNSET
-    user: Union[Unset, "UserResponse"] = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    shift_override: ShiftOverrideResponse | Unset = UNSET
+    user_id: int | Unset = UNSET
+    user: UserResponse | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,13 +60,13 @@ class OverrideShift:
 
         updated_at = self.updated_at
 
-        shift_override: Unset | dict[str, Any] = UNSET
+        shift_override: dict[str, Any] | Unset = UNSET
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()
 
         user_id = self.user_id
 
-        user: Unset | dict[str, Any] = UNSET
+        user: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
@@ -118,7 +120,7 @@ class OverrideShift:
         updated_at = d.pop("updated_at", UNSET)
 
         _shift_override = d.pop("shift_override", UNSET)
-        shift_override: Unset | ShiftOverrideResponse
+        shift_override: ShiftOverrideResponse | Unset
         if isinstance(_shift_override, Unset):
             shift_override = UNSET
         else:
@@ -127,7 +129,7 @@ class OverrideShift:
         user_id = d.pop("user_id", UNSET)
 
         _user = d.pop("user", UNSET)
-        user: Unset | UserResponse
+        user: UserResponse | Unset
         if isinstance(_user, Unset):
             user = UNSET
         else:

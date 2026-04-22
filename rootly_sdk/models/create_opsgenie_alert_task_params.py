@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -29,70 +31,70 @@ class CreateOpsgenieAlertTaskParams:
     """
     Attributes:
         message (str): Message of the alert
-        task_type (Union[Unset, CreateOpsgenieAlertTaskParamsTaskType]):
-        description (Union[Unset, str]): Description field of the alert that is generally used to provide a detailed
+        task_type (CreateOpsgenieAlertTaskParamsTaskType | Unset):
+        description (str | Unset): Description field of the alert that is generally used to provide a detailed
             information about the alert
-        teams (Union[Unset, list['CreateOpsgenieAlertTaskParamsTeamsItem']]):
-        users (Union[Unset, list['CreateOpsgenieAlertTaskParamsUsersItem']]):
-        schedules (Union[Unset, list['CreateOpsgenieAlertTaskParamsSchedulesItem']]):
-        escalations (Union[Unset, list['CreateOpsgenieAlertTaskParamsEscalationsItem']]):
-        priority (Union[Unset, CreateOpsgenieAlertTaskParamsPriority]):  Default: 'P1'.
-        details (Union[None, Unset, str]): Details payload. Can contain liquid markup and need to be valid JSON
+        teams (list[CreateOpsgenieAlertTaskParamsTeamsItem] | Unset):
+        users (list[CreateOpsgenieAlertTaskParamsUsersItem] | Unset):
+        schedules (list[CreateOpsgenieAlertTaskParamsSchedulesItem] | Unset):
+        escalations (list[CreateOpsgenieAlertTaskParamsEscalationsItem] | Unset):
+        priority (CreateOpsgenieAlertTaskParamsPriority | Unset):  Default: 'P1'.
+        details (None | str | Unset): Details payload. Can contain liquid markup and need to be valid JSON
     """
 
     message: str
-    task_type: Unset | CreateOpsgenieAlertTaskParamsTaskType = UNSET
-    description: Unset | str = UNSET
-    teams: Unset | list["CreateOpsgenieAlertTaskParamsTeamsItem"] = UNSET
-    users: Unset | list["CreateOpsgenieAlertTaskParamsUsersItem"] = UNSET
-    schedules: Unset | list["CreateOpsgenieAlertTaskParamsSchedulesItem"] = UNSET
-    escalations: Unset | list["CreateOpsgenieAlertTaskParamsEscalationsItem"] = UNSET
-    priority: Unset | CreateOpsgenieAlertTaskParamsPriority = "P1"
-    details: None | Unset | str = UNSET
+    task_type: CreateOpsgenieAlertTaskParamsTaskType | Unset = UNSET
+    description: str | Unset = UNSET
+    teams: list[CreateOpsgenieAlertTaskParamsTeamsItem] | Unset = UNSET
+    users: list[CreateOpsgenieAlertTaskParamsUsersItem] | Unset = UNSET
+    schedules: list[CreateOpsgenieAlertTaskParamsSchedulesItem] | Unset = UNSET
+    escalations: list[CreateOpsgenieAlertTaskParamsEscalationsItem] | Unset = UNSET
+    priority: CreateOpsgenieAlertTaskParamsPriority | Unset = "P1"
+    details: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         message = self.message
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        teams: Unset | list[dict[str, Any]] = UNSET
+        teams: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.teams, Unset):
             teams = []
             for teams_item_data in self.teams:
                 teams_item = teams_item_data.to_dict()
                 teams.append(teams_item)
 
-        users: Unset | list[dict[str, Any]] = UNSET
+        users: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        schedules: Unset | list[dict[str, Any]] = UNSET
+        schedules: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.schedules, Unset):
             schedules = []
             for schedules_item_data in self.schedules:
                 schedules_item = schedules_item_data.to_dict()
                 schedules.append(schedules_item)
 
-        escalations: Unset | list[dict[str, Any]] = UNSET
+        escalations: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.escalations, Unset):
             escalations = []
             for escalations_item_data in self.escalations:
                 escalations_item = escalations_item_data.to_dict()
                 escalations.append(escalations_item)
 
-        priority: Unset | str = UNSET
+        priority: str | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
-        details: None | Unset | str
+        details: None | str | Unset
         if isinstance(self.details, Unset):
             details = UNSET
         else:
@@ -137,7 +139,7 @@ class CreateOpsgenieAlertTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateOpsgenieAlertTaskParamsTaskType
+        task_type: CreateOpsgenieAlertTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -145,47 +147,55 @@ class CreateOpsgenieAlertTaskParams:
 
         description = d.pop("description", UNSET)
 
-        teams = []
         _teams = d.pop("teams", UNSET)
-        for teams_item_data in _teams or []:
-            teams_item = CreateOpsgenieAlertTaskParamsTeamsItem.from_dict(teams_item_data)
+        teams: list[CreateOpsgenieAlertTaskParamsTeamsItem] | Unset = UNSET
+        if _teams is not UNSET:
+            teams = []
+            for teams_item_data in _teams:
+                teams_item = CreateOpsgenieAlertTaskParamsTeamsItem.from_dict(teams_item_data)
 
-            teams.append(teams_item)
+                teams.append(teams_item)
 
-        users = []
         _users = d.pop("users", UNSET)
-        for users_item_data in _users or []:
-            users_item = CreateOpsgenieAlertTaskParamsUsersItem.from_dict(users_item_data)
+        users: list[CreateOpsgenieAlertTaskParamsUsersItem] | Unset = UNSET
+        if _users is not UNSET:
+            users = []
+            for users_item_data in _users:
+                users_item = CreateOpsgenieAlertTaskParamsUsersItem.from_dict(users_item_data)
 
-            users.append(users_item)
+                users.append(users_item)
 
-        schedules = []
         _schedules = d.pop("schedules", UNSET)
-        for schedules_item_data in _schedules or []:
-            schedules_item = CreateOpsgenieAlertTaskParamsSchedulesItem.from_dict(schedules_item_data)
+        schedules: list[CreateOpsgenieAlertTaskParamsSchedulesItem] | Unset = UNSET
+        if _schedules is not UNSET:
+            schedules = []
+            for schedules_item_data in _schedules:
+                schedules_item = CreateOpsgenieAlertTaskParamsSchedulesItem.from_dict(schedules_item_data)
 
-            schedules.append(schedules_item)
+                schedules.append(schedules_item)
 
-        escalations = []
         _escalations = d.pop("escalations", UNSET)
-        for escalations_item_data in _escalations or []:
-            escalations_item = CreateOpsgenieAlertTaskParamsEscalationsItem.from_dict(escalations_item_data)
+        escalations: list[CreateOpsgenieAlertTaskParamsEscalationsItem] | Unset = UNSET
+        if _escalations is not UNSET:
+            escalations = []
+            for escalations_item_data in _escalations:
+                escalations_item = CreateOpsgenieAlertTaskParamsEscalationsItem.from_dict(escalations_item_data)
 
-            escalations.append(escalations_item)
+                escalations.append(escalations_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | CreateOpsgenieAlertTaskParamsPriority
+        priority: CreateOpsgenieAlertTaskParamsPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = check_create_opsgenie_alert_task_params_priority(_priority)
 
-        def _parse_details(data: object) -> None | Unset | str:
+        def _parse_details(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         details = _parse_details(d.pop("details", UNSET))
 

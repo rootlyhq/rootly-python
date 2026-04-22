@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -26,14 +28,14 @@ T = TypeVar("T", bound="InviteToSlackChannelOpsgenieTaskParams")
 class InviteToSlackChannelOpsgenieTaskParams:
     """
     Attributes:
-        channels (list['InviteToSlackChannelOpsgenieTaskParamsChannelsItem']):
+        channels (list[InviteToSlackChannelOpsgenieTaskParamsChannelsItem]):
         schedule (InviteToSlackChannelOpsgenieTaskParamsSchedule):
-        task_type (Union[Unset, InviteToSlackChannelOpsgenieTaskParamsTaskType]):
+        task_type (InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset):
     """
 
-    channels: list["InviteToSlackChannelOpsgenieTaskParamsChannelsItem"]
-    schedule: "InviteToSlackChannelOpsgenieTaskParamsSchedule"
-    task_type: Unset | InviteToSlackChannelOpsgenieTaskParamsTaskType = UNSET
+    channels: list[InviteToSlackChannelOpsgenieTaskParamsChannelsItem]
+    schedule: InviteToSlackChannelOpsgenieTaskParamsSchedule
+    task_type: InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +46,7 @@ class InviteToSlackChannelOpsgenieTaskParams:
 
         schedule = self.schedule.to_dict()
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -81,7 +83,7 @@ class InviteToSlackChannelOpsgenieTaskParams:
         schedule = InviteToSlackChannelOpsgenieTaskParamsSchedule.from_dict(d.pop("schedule"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | InviteToSlackChannelOpsgenieTaskParamsTaskType
+        task_type: InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

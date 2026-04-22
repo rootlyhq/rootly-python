@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -20,17 +22,17 @@ class IncidentPermissionSetBoolean:
         kind (IncidentPermissionSetBooleanKind):
         created_at (str):
         updated_at (str):
-        incident_permission_set_id (Union[Unset, str]):
-        private (Union[Unset, bool]):
-        enabled (Union[Unset, bool]):
+        incident_permission_set_id (str | Unset):
+        private (bool | Unset):
+        enabled (bool | Unset):
     """
 
     kind: IncidentPermissionSetBooleanKind
     created_at: str
     updated_at: str
-    incident_permission_set_id: Unset | str = UNSET
-    private: Unset | bool = UNSET
-    enabled: Unset | bool = UNSET
+    incident_permission_set_id: str | Unset = UNSET
+    private: bool | Unset = UNSET
+    enabled: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

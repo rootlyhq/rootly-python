@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="UpdateEdgeConnectorBodyDataAttributes")
 class UpdateEdgeConnectorBodyDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]):
-        description (Union[Unset, str]):
-        status (Union[Unset, UpdateEdgeConnectorBodyDataAttributesStatus]):
-        subscriptions (Union[Unset, list[str]]):
+        name (str | Unset):
+        description (str | Unset):
+        status (UpdateEdgeConnectorBodyDataAttributesStatus | Unset):
+        subscriptions (list[str] | Unset):
     """
 
-    name: Unset | str = UNSET
-    description: Unset | str = UNSET
-    status: Unset | UpdateEdgeConnectorBodyDataAttributesStatus = UNSET
-    subscriptions: Unset | list[str] = UNSET
+    name: str | Unset = UNSET
+    description: str | Unset = UNSET
+    status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset = UNSET
+    subscriptions: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,11 +36,11 @@ class UpdateEdgeConnectorBodyDataAttributes:
 
         description = self.description
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: Unset | list[str] = UNSET
+        subscriptions: list[str] | Unset = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
@@ -64,7 +66,7 @@ class UpdateEdgeConnectorBodyDataAttributes:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | UpdateEdgeConnectorBodyDataAttributesStatus
+        status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

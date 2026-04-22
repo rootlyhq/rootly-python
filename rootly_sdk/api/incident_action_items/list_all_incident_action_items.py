@@ -11,27 +11,28 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterpriority: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterincident_status: Unset | str = UNSET,
-    filterincident_created_atgt: Unset | str = UNSET,
-    filterincident_created_atgte: Unset | str = UNSET,
-    filterincident_created_atlt: Unset | str = UNSET,
-    filterincident_created_atlte: Unset | str = UNSET,
-    filterdue_dategt: Unset | str = UNSET,
-    filterdue_dategte: Unset | str = UNSET,
-    filterdue_datelt: Unset | str = UNSET,
-    filterdue_datelte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterpriority: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterincident_status: str | Unset = UNSET,
+    filterincident_created_atgt: str | Unset = UNSET,
+    filterincident_created_atgte: str | Unset = UNSET,
+    filterincident_created_atlt: str | Unset = UNSET,
+    filterincident_created_atlte: str | Unset = UNSET,
+    filterdue_dategt: str | Unset = UNSET,
+    filterdue_dategte: str | Unset = UNSET,
+    filterdue_datelt: str | Unset = UNSET,
+    filterdue_datelte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -111,52 +112,52 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterpriority: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterincident_status: Unset | str = UNSET,
-    filterincident_created_atgt: Unset | str = UNSET,
-    filterincident_created_atgte: Unset | str = UNSET,
-    filterincident_created_atlt: Unset | str = UNSET,
-    filterincident_created_atlte: Unset | str = UNSET,
-    filterdue_dategt: Unset | str = UNSET,
-    filterdue_dategte: Unset | str = UNSET,
-    filterdue_datelt: Unset | str = UNSET,
-    filterdue_datelte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterpriority: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterincident_status: str | Unset = UNSET,
+    filterincident_created_atgt: str | Unset = UNSET,
+    filterincident_created_atgte: str | Unset = UNSET,
+    filterincident_created_atlt: str | Unset = UNSET,
+    filterincident_created_atlte: str | Unset = UNSET,
+    filterdue_dategt: str | Unset = UNSET,
+    filterdue_dategte: str | Unset = UNSET,
+    filterdue_datelt: str | Unset = UNSET,
+    filterdue_datelte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterkind (Union[Unset, str]):
-        filterpriority (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterincident_status (Union[Unset, str]):
-        filterincident_created_atgt (Union[Unset, str]):
-        filterincident_created_atgte (Union[Unset, str]):
-        filterincident_created_atlt (Union[Unset, str]):
-        filterincident_created_atlte (Union[Unset, str]):
-        filterdue_dategt (Union[Unset, str]):
-        filterdue_dategte (Union[Unset, str]):
-        filterdue_datelt (Union[Unset, str]):
-        filterdue_datelte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterkind (str | Unset):
+        filterpriority (str | Unset):
+        filterstatus (str | Unset):
+        filterincident_status (str | Unset):
+        filterincident_created_atgt (str | Unset):
+        filterincident_created_atgte (str | Unset):
+        filterincident_created_atlt (str | Unset):
+        filterincident_created_atlte (str | Unset):
+        filterdue_dategt (str | Unset):
+        filterdue_dategte (str | Unset):
+        filterdue_datelt (str | Unset):
+        filterdue_datelte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,52 +200,52 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterpriority: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterincident_status: Unset | str = UNSET,
-    filterincident_created_atgt: Unset | str = UNSET,
-    filterincident_created_atgte: Unset | str = UNSET,
-    filterincident_created_atlt: Unset | str = UNSET,
-    filterincident_created_atlte: Unset | str = UNSET,
-    filterdue_dategt: Unset | str = UNSET,
-    filterdue_dategte: Unset | str = UNSET,
-    filterdue_datelt: Unset | str = UNSET,
-    filterdue_datelte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterpriority: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterincident_status: str | Unset = UNSET,
+    filterincident_created_atgt: str | Unset = UNSET,
+    filterincident_created_atgte: str | Unset = UNSET,
+    filterincident_created_atlt: str | Unset = UNSET,
+    filterincident_created_atlte: str | Unset = UNSET,
+    filterdue_dategt: str | Unset = UNSET,
+    filterdue_dategte: str | Unset = UNSET,
+    filterdue_datelt: str | Unset = UNSET,
+    filterdue_datelte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> IncidentActionItemList | None:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterkind (Union[Unset, str]):
-        filterpriority (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterincident_status (Union[Unset, str]):
-        filterincident_created_atgt (Union[Unset, str]):
-        filterincident_created_atgte (Union[Unset, str]):
-        filterincident_created_atlt (Union[Unset, str]):
-        filterincident_created_atlte (Union[Unset, str]):
-        filterdue_dategt (Union[Unset, str]):
-        filterdue_dategte (Union[Unset, str]):
-        filterdue_datelt (Union[Unset, str]):
-        filterdue_datelte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterkind (str | Unset):
+        filterpriority (str | Unset):
+        filterstatus (str | Unset):
+        filterincident_status (str | Unset):
+        filterincident_created_atgt (str | Unset):
+        filterincident_created_atgte (str | Unset):
+        filterincident_created_atlt (str | Unset):
+        filterincident_created_atlte (str | Unset):
+        filterdue_dategt (str | Unset):
+        filterdue_dategte (str | Unset):
+        filterdue_datelt (str | Unset):
+        filterdue_datelte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -282,52 +283,52 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterpriority: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterincident_status: Unset | str = UNSET,
-    filterincident_created_atgt: Unset | str = UNSET,
-    filterincident_created_atgte: Unset | str = UNSET,
-    filterincident_created_atlt: Unset | str = UNSET,
-    filterincident_created_atlte: Unset | str = UNSET,
-    filterdue_dategt: Unset | str = UNSET,
-    filterdue_dategte: Unset | str = UNSET,
-    filterdue_datelt: Unset | str = UNSET,
-    filterdue_datelte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterpriority: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterincident_status: str | Unset = UNSET,
+    filterincident_created_atgt: str | Unset = UNSET,
+    filterincident_created_atgte: str | Unset = UNSET,
+    filterincident_created_atlt: str | Unset = UNSET,
+    filterincident_created_atlte: str | Unset = UNSET,
+    filterdue_dategt: str | Unset = UNSET,
+    filterdue_dategte: str | Unset = UNSET,
+    filterdue_datelt: str | Unset = UNSET,
+    filterdue_datelte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterkind (Union[Unset, str]):
-        filterpriority (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterincident_status (Union[Unset, str]):
-        filterincident_created_atgt (Union[Unset, str]):
-        filterincident_created_atgte (Union[Unset, str]):
-        filterincident_created_atlt (Union[Unset, str]):
-        filterincident_created_atlte (Union[Unset, str]):
-        filterdue_dategt (Union[Unset, str]):
-        filterdue_dategte (Union[Unset, str]):
-        filterdue_datelt (Union[Unset, str]):
-        filterdue_datelte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterkind (str | Unset):
+        filterpriority (str | Unset):
+        filterstatus (str | Unset):
+        filterincident_status (str | Unset):
+        filterincident_created_atgt (str | Unset):
+        filterincident_created_atgte (str | Unset):
+        filterincident_created_atlt (str | Unset):
+        filterincident_created_atlte (str | Unset):
+        filterdue_dategt (str | Unset):
+        filterdue_dategte (str | Unset):
+        filterdue_datelt (str | Unset):
+        filterdue_datelte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -368,52 +369,52 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterpriority: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterincident_status: Unset | str = UNSET,
-    filterincident_created_atgt: Unset | str = UNSET,
-    filterincident_created_atgte: Unset | str = UNSET,
-    filterincident_created_atlt: Unset | str = UNSET,
-    filterincident_created_atlte: Unset | str = UNSET,
-    filterdue_dategt: Unset | str = UNSET,
-    filterdue_dategte: Unset | str = UNSET,
-    filterdue_datelt: Unset | str = UNSET,
-    filterdue_datelte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterpriority: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterincident_status: str | Unset = UNSET,
+    filterincident_created_atgt: str | Unset = UNSET,
+    filterincident_created_atgte: str | Unset = UNSET,
+    filterincident_created_atlt: str | Unset = UNSET,
+    filterincident_created_atlte: str | Unset = UNSET,
+    filterdue_dategt: str | Unset = UNSET,
+    filterdue_dategte: str | Unset = UNSET,
+    filterdue_datelt: str | Unset = UNSET,
+    filterdue_datelte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> IncidentActionItemList | None:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterkind (Union[Unset, str]):
-        filterpriority (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterincident_status (Union[Unset, str]):
-        filterincident_created_atgt (Union[Unset, str]):
-        filterincident_created_atgte (Union[Unset, str]):
-        filterincident_created_atlt (Union[Unset, str]):
-        filterincident_created_atlte (Union[Unset, str]):
-        filterdue_dategt (Union[Unset, str]):
-        filterdue_dategte (Union[Unset, str]):
-        filterdue_datelt (Union[Unset, str]):
-        filterdue_datelte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterkind (str | Unset):
+        filterpriority (str | Unset):
+        filterstatus (str | Unset):
+        filterincident_status (str | Unset):
+        filterincident_created_atgt (str | Unset):
+        filterincident_created_atgte (str | Unset):
+        filterincident_created_atlt (str | Unset):
+        filterincident_created_atlte (str | Unset):
+        filterdue_dategt (str | Unset):
+        filterdue_dategte (str | Unset):
+        filterdue_datelt (str | Unset):
+        filterdue_datelte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -26,11 +28,11 @@ class FormFieldPlacement:
         form (str): The form this field is placed on.
         position (int): The position of the field placement.
         required (bool): Whether the field is unconditionally required on this form.
-        required_operator (Union[Unset, FormFieldPlacementRequiredOperator]): Logical operator when evaluating multiple
+        required_operator (FormFieldPlacementRequiredOperator | Unset): Logical operator when evaluating multiple
             form_field_placement_conditions with conditioned=required
-        placement_operator (Union[Unset, FormFieldPlacementPlacementOperator]): Logical operator when evaluating
-            multiple form_field_placement_conditions with conditioned=placement
-        non_editable (Union[Unset, bool]): Whether the field is read-only and cannot be edited by users.
+        placement_operator (FormFieldPlacementPlacementOperator | Unset): Logical operator when evaluating multiple
+            form_field_placement_conditions with conditioned=placement
+        non_editable (bool | Unset): Whether the field is read-only and cannot be edited by users.
     """
 
     form_field_id: str
@@ -38,9 +40,9 @@ class FormFieldPlacement:
     form: str
     position: int
     required: bool
-    required_operator: Unset | FormFieldPlacementRequiredOperator = UNSET
-    placement_operator: Unset | FormFieldPlacementPlacementOperator = UNSET
-    non_editable: Unset | bool = UNSET
+    required_operator: FormFieldPlacementRequiredOperator | Unset = UNSET
+    placement_operator: FormFieldPlacementPlacementOperator | Unset = UNSET
+    non_editable: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,11 +56,11 @@ class FormFieldPlacement:
 
         required = self.required
 
-        required_operator: Unset | str = UNSET
+        required_operator: str | Unset = UNSET
         if not isinstance(self.required_operator, Unset):
             required_operator = self.required_operator
 
-        placement_operator: Unset | str = UNSET
+        placement_operator: str | Unset = UNSET
         if not isinstance(self.placement_operator, Unset):
             placement_operator = self.placement_operator
 
@@ -98,14 +100,14 @@ class FormFieldPlacement:
         required = d.pop("required")
 
         _required_operator = d.pop("required_operator", UNSET)
-        required_operator: Unset | FormFieldPlacementRequiredOperator
+        required_operator: FormFieldPlacementRequiredOperator | Unset
         if isinstance(_required_operator, Unset):
             required_operator = UNSET
         else:
             required_operator = check_form_field_placement_required_operator(_required_operator)
 
         _placement_operator = d.pop("placement_operator", UNSET)
-        placement_operator: Unset | FormFieldPlacementPlacementOperator
+        placement_operator: FormFieldPlacementPlacementOperator | Unset
         if isinstance(_placement_operator, Unset):
             placement_operator = UNSET
         else:

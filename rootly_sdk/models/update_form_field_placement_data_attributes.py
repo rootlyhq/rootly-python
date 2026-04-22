@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -20,24 +22,24 @@ T = TypeVar("T", bound="UpdateFormFieldPlacementDataAttributes")
 class UpdateFormFieldPlacementDataAttributes:
     """
     Attributes:
-        form_set_id (Union[Unset, str]): The form set this field is placed in.
-        form (Union[Unset, str]): The form this field is placed on.
-        position (Union[Unset, int]): The position of the field placement.
-        required (Union[Unset, bool]): Whether the field is unconditionally required on this form.
-        required_operator (Union[Unset, UpdateFormFieldPlacementDataAttributesRequiredOperator]): Logical operator when
+        form_set_id (str | Unset): The form set this field is placed in.
+        form (str | Unset): The form this field is placed on.
+        position (int | Unset): The position of the field placement.
+        required (bool | Unset): Whether the field is unconditionally required on this form.
+        required_operator (UpdateFormFieldPlacementDataAttributesRequiredOperator | Unset): Logical operator when
             evaluating multiple form_field_placement_conditions with conditioned=required
-        placement_operator (Union[Unset, UpdateFormFieldPlacementDataAttributesPlacementOperator]): Logical operator
-            when evaluating multiple form_field_placement_conditions with conditioned=placement
-        non_editable (Union[Unset, bool]): Whether the field is read-only and cannot be edited by users.
+        placement_operator (UpdateFormFieldPlacementDataAttributesPlacementOperator | Unset): Logical operator when
+            evaluating multiple form_field_placement_conditions with conditioned=placement
+        non_editable (bool | Unset): Whether the field is read-only and cannot be edited by users.
     """
 
-    form_set_id: Unset | str = UNSET
-    form: Unset | str = UNSET
-    position: Unset | int = UNSET
-    required: Unset | bool = UNSET
-    required_operator: Unset | UpdateFormFieldPlacementDataAttributesRequiredOperator = UNSET
-    placement_operator: Unset | UpdateFormFieldPlacementDataAttributesPlacementOperator = UNSET
-    non_editable: Unset | bool = UNSET
+    form_set_id: str | Unset = UNSET
+    form: str | Unset = UNSET
+    position: int | Unset = UNSET
+    required: bool | Unset = UNSET
+    required_operator: UpdateFormFieldPlacementDataAttributesRequiredOperator | Unset = UNSET
+    placement_operator: UpdateFormFieldPlacementDataAttributesPlacementOperator | Unset = UNSET
+    non_editable: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_set_id = self.form_set_id
@@ -48,11 +50,11 @@ class UpdateFormFieldPlacementDataAttributes:
 
         required = self.required
 
-        required_operator: Unset | str = UNSET
+        required_operator: str | Unset = UNSET
         if not isinstance(self.required_operator, Unset):
             required_operator = self.required_operator
 
-        placement_operator: Unset | str = UNSET
+        placement_operator: str | Unset = UNSET
         if not isinstance(self.placement_operator, Unset):
             placement_operator = self.placement_operator
 
@@ -90,14 +92,14 @@ class UpdateFormFieldPlacementDataAttributes:
         required = d.pop("required", UNSET)
 
         _required_operator = d.pop("required_operator", UNSET)
-        required_operator: Unset | UpdateFormFieldPlacementDataAttributesRequiredOperator
+        required_operator: UpdateFormFieldPlacementDataAttributesRequiredOperator | Unset
         if isinstance(_required_operator, Unset):
             required_operator = UNSET
         else:
             required_operator = check_update_form_field_placement_data_attributes_required_operator(_required_operator)
 
         _placement_operator = d.pop("placement_operator", UNSET)
-        placement_operator: Unset | UpdateFormFieldPlacementDataAttributesPlacementOperator
+        placement_operator: UpdateFormFieldPlacementDataAttributesPlacementOperator | Unset
         if isinstance(_placement_operator, Unset):
             placement_operator = UNSET
         else:

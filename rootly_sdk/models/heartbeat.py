@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -24,19 +26,20 @@ class Heartbeat:
         interval (int):
         interval_unit (HeartbeatIntervalUnit):
         notification_target_id (str):
-        notification_target_type (HeartbeatNotificationTargetType):
+        notification_target_type (HeartbeatNotificationTargetType): The type of the notification target. Please contact
+            support if you encounter issues using `Functionality` as a target type.
         enabled (bool): Whether to trigger alerts when heartbeat is expired.
         status (HeartbeatStatus):
         email_address (str): Email address to receive heartbeat pings.
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        description (Union[None, Unset, str]): The description of the heartbeat
-        alert_description (Union[None, Unset, str]): Description of alerts triggered when heartbeat expires.
-        alert_urgency_id (Union[None, Unset, str]): Urgency of alerts triggered when heartbeat expires.
-        ping_url (Union[None, Unset, str]): URL to receive heartbeat pings.
-        secret (Union[None, Unset, str]): Secret used as bearer token when pinging heartbeat.
-        last_pinged_at (Union[None, Unset, str]): When the heartbeat was last pinged.
-        expires_at (Union[None, Unset, str]): When heartbeat expires
+        description (None | str | Unset): The description of the heartbeat
+        alert_description (None | str | Unset): Description of alerts triggered when heartbeat expires.
+        alert_urgency_id (None | str | Unset): Urgency of alerts triggered when heartbeat expires.
+        ping_url (None | str | Unset): URL to receive heartbeat pings.
+        secret (None | str | Unset): Secret used as bearer token when pinging heartbeat.
+        last_pinged_at (None | str | Unset): When the heartbeat was last pinged.
+        expires_at (None | str | Unset): When heartbeat expires
     """
 
     name: str
@@ -50,13 +53,13 @@ class Heartbeat:
     email_address: str
     created_at: str
     updated_at: str
-    description: None | Unset | str = UNSET
-    alert_description: None | Unset | str = UNSET
-    alert_urgency_id: None | Unset | str = UNSET
-    ping_url: None | Unset | str = UNSET
-    secret: None | Unset | str = UNSET
-    last_pinged_at: None | Unset | str = UNSET
-    expires_at: None | Unset | str = UNSET
+    description: None | str | Unset = UNSET
+    alert_description: None | str | Unset = UNSET
+    alert_urgency_id: None | str | Unset = UNSET
+    ping_url: None | str | Unset = UNSET
+    secret: None | str | Unset = UNSET
+    last_pinged_at: None | str | Unset = UNSET
+    expires_at: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,43 +85,43 @@ class Heartbeat:
 
         updated_at = self.updated_at
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        alert_description: None | Unset | str
+        alert_description: None | str | Unset
         if isinstance(self.alert_description, Unset):
             alert_description = UNSET
         else:
             alert_description = self.alert_description
 
-        alert_urgency_id: None | Unset | str
+        alert_urgency_id: None | str | Unset
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        ping_url: None | Unset | str
+        ping_url: None | str | Unset
         if isinstance(self.ping_url, Unset):
             ping_url = UNSET
         else:
             ping_url = self.ping_url
 
-        secret: None | Unset | str
+        secret: None | str | Unset
         if isinstance(self.secret, Unset):
             secret = UNSET
         else:
             secret = self.secret
 
-        last_pinged_at: None | Unset | str
+        last_pinged_at: None | str | Unset
         if isinstance(self.last_pinged_at, Unset):
             last_pinged_at = UNSET
         else:
             last_pinged_at = self.last_pinged_at
 
-        expires_at: None | Unset | str
+        expires_at: None | str | Unset
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         else:
@@ -183,66 +186,66 @@ class Heartbeat:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_alert_description(data: object) -> None | Unset | str:
+        def _parse_alert_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_description = _parse_alert_description(d.pop("alert_description", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
+        def _parse_alert_urgency_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
-        def _parse_ping_url(data: object) -> None | Unset | str:
+        def _parse_ping_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         ping_url = _parse_ping_url(d.pop("ping_url", UNSET))
 
-        def _parse_secret(data: object) -> None | Unset | str:
+        def _parse_secret(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         secret = _parse_secret(d.pop("secret", UNSET))
 
-        def _parse_last_pinged_at(data: object) -> None | Unset | str:
+        def _parse_last_pinged_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         last_pinged_at = _parse_last_pinged_at(d.pop("last_pinged_at", UNSET))
 
-        def _parse_expires_at(data: object) -> None | Unset | str:
+        def _parse_expires_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 

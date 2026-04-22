@@ -1,11 +1,14 @@
 from typing import Literal, cast
 
-NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType = Literal["escalation_policy", "group", "service"]
+NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType = Literal[
+    "escalation_policy", "functionality", "group", "service"
+]
 
 NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_ESCALATION_POLICY_TRIGGER_PARAMS_TYPE_VALUES: set[
     NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType
 ] = {
     "escalation_policy",
+    "functionality",
     "group",
     "service",
 }

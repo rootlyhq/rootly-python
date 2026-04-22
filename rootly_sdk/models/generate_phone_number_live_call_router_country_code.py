@@ -1,6 +1,6 @@
 from typing import Literal, cast
 
-GeneratePhoneNumberLiveCallRouterCountryCode = Literal["AU", "CA", "DE", "GB", "NL", "NZ", "US"]
+GeneratePhoneNumberLiveCallRouterCountryCode = Literal["AU", "CA", "DE", "GB", "NL", "NZ", "SE", "US"]
 
 GENERATE_PHONE_NUMBER_LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES: set[GeneratePhoneNumberLiveCallRouterCountryCode] = {
     "AU",
@@ -9,6 +9,7 @@ GENERATE_PHONE_NUMBER_LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES: set[GeneratePhoneNum
     "GB",
     "NL",
     "NZ",
+    "SE",
     "US",
 }
 

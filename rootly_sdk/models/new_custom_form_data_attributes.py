@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -14,21 +16,21 @@ class NewCustomFormDataAttributes:
     Attributes:
         name (str): The name of the custom form.
         command (str): The Slack command used to trigger this form.
-        description (Union[None, Unset, str]):
-        enabled (Union[Unset, bool]):
+        description (None | str | Unset):
+        enabled (bool | Unset):
     """
 
     name: str
     command: str
-    description: None | Unset | str = UNSET
-    enabled: Unset | bool = UNSET
+    description: None | str | Unset = UNSET
+    enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         command = self.command
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -58,12 +60,12 @@ class NewCustomFormDataAttributes:
 
         command = d.pop("command")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -13,9 +14,12 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflow_custom_field_selections/{id}",
+        "url": "/v1/workflow_custom_field_selections/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     return _kwargs
@@ -69,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]
+        Response[ErrorsList | WorkflowCustomFieldSelectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, WorkflowCustomFieldSelectionResponse]
+        ErrorsList | WorkflowCustomFieldSelectionResponse
     """
 
     return sync_detailed(
@@ -128,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, WorkflowCustomFieldSelectionResponse]]
+        Response[ErrorsList | WorkflowCustomFieldSelectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,7 +162,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, WorkflowCustomFieldSelectionResponse]
+        ErrorsList | WorkflowCustomFieldSelectionResponse
     """
 
     return (

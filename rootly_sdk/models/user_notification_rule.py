@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -21,81 +23,81 @@ T = TypeVar("T", bound="UserNotificationRule")
 class UserNotificationRule:
     """
     Attributes:
-        user_id (Union[Unset, int]):
-        delay (Union[None, Unset, int]): Delay after which rule gets triggered
-        position (Union[None, Unset, int]): Position of the rule
-        user_email_address_id (Union[None, Unset, str]): User email address to which notification to be sent
-        user_call_number_id (Union[None, Unset, str]): User phone number to which notification to be sent
-        user_sms_number_id (Union[None, Unset, str]): User sms number to which notification to be sent
-        user_device_id (Union[None, Unset, str]): User device to which notification to be sent
-        enabled_contact_types (Union[Unset, list[UserNotificationRuleEnabledContactTypesItem]]): Contact types for which
+        user_id (int | Unset):
+        delay (int | None | Unset): Delay after which rule gets triggered
+        position (int | None | Unset): Position of the rule
+        user_email_address_id (None | str | Unset): User email address to which notification to be sent
+        user_call_number_id (None | str | Unset): User phone number to which notification to be sent
+        user_sms_number_id (None | str | Unset): User sms number to which notification to be sent
+        user_device_id (None | str | Unset): User device to which notification to be sent
+        enabled_contact_types (list[UserNotificationRuleEnabledContactTypesItem] | Unset): Contact types for which
             notification needs to be enabled
-        notification_type (Union[Unset, UserNotificationRuleNotificationType]): Type of notification rule (audible or
-            quiet). Audible notifications use sound/vibration to alert users, while quiet notifications are silent.
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        notification_type (UserNotificationRuleNotificationType | Unset): Type of notification rule (audible or quiet).
+            Audible notifications use sound/vibration to alert users, while quiet notifications are silent.
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
-    user_id: Unset | int = UNSET
-    delay: None | Unset | int = UNSET
-    position: None | Unset | int = UNSET
-    user_email_address_id: None | Unset | str = UNSET
-    user_call_number_id: None | Unset | str = UNSET
-    user_sms_number_id: None | Unset | str = UNSET
-    user_device_id: None | Unset | str = UNSET
-    enabled_contact_types: Unset | list[UserNotificationRuleEnabledContactTypesItem] = UNSET
-    notification_type: Unset | UserNotificationRuleNotificationType = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    user_id: int | Unset = UNSET
+    delay: int | None | Unset = UNSET
+    position: int | None | Unset = UNSET
+    user_email_address_id: None | str | Unset = UNSET
+    user_call_number_id: None | str | Unset = UNSET
+    user_sms_number_id: None | str | Unset = UNSET
+    user_device_id: None | str | Unset = UNSET
+    enabled_contact_types: list[UserNotificationRuleEnabledContactTypesItem] | Unset = UNSET
+    notification_type: UserNotificationRuleNotificationType | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         user_id = self.user_id
 
-        delay: None | Unset | int
+        delay: int | None | Unset
         if isinstance(self.delay, Unset):
             delay = UNSET
         else:
             delay = self.delay
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        user_email_address_id: None | Unset | str
+        user_email_address_id: None | str | Unset
         if isinstance(self.user_email_address_id, Unset):
             user_email_address_id = UNSET
         else:
             user_email_address_id = self.user_email_address_id
 
-        user_call_number_id: None | Unset | str
+        user_call_number_id: None | str | Unset
         if isinstance(self.user_call_number_id, Unset):
             user_call_number_id = UNSET
         else:
             user_call_number_id = self.user_call_number_id
 
-        user_sms_number_id: None | Unset | str
+        user_sms_number_id: None | str | Unset
         if isinstance(self.user_sms_number_id, Unset):
             user_sms_number_id = UNSET
         else:
             user_sms_number_id = self.user_sms_number_id
 
-        user_device_id: None | Unset | str
+        user_device_id: None | str | Unset
         if isinstance(self.user_device_id, Unset):
             user_device_id = UNSET
         else:
             user_device_id = self.user_device_id
 
-        enabled_contact_types: Unset | list[str] = UNSET
+        enabled_contact_types: list[str] | Unset = UNSET
         if not isinstance(self.enabled_contact_types, Unset):
             enabled_contact_types = []
             for enabled_contact_types_item_data in self.enabled_contact_types:
                 enabled_contact_types_item: str = enabled_contact_types_item_data
                 enabled_contact_types.append(enabled_contact_types_item)
 
-        notification_type: Unset | str = UNSET
+        notification_type: str | Unset = UNSET
         if not isinstance(self.notification_type, Unset):
             notification_type = self.notification_type
 
@@ -136,71 +138,73 @@ class UserNotificationRule:
         d = dict(src_dict)
         user_id = d.pop("user_id", UNSET)
 
-        def _parse_delay(data: object) -> None | Unset | int:
+        def _parse_delay(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         delay = _parse_delay(d.pop("delay", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_user_email_address_id(data: object) -> None | Unset | str:
+        def _parse_user_email_address_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         user_email_address_id = _parse_user_email_address_id(d.pop("user_email_address_id", UNSET))
 
-        def _parse_user_call_number_id(data: object) -> None | Unset | str:
+        def _parse_user_call_number_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         user_call_number_id = _parse_user_call_number_id(d.pop("user_call_number_id", UNSET))
 
-        def _parse_user_sms_number_id(data: object) -> None | Unset | str:
+        def _parse_user_sms_number_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         user_sms_number_id = _parse_user_sms_number_id(d.pop("user_sms_number_id", UNSET))
 
-        def _parse_user_device_id(data: object) -> None | Unset | str:
+        def _parse_user_device_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         user_device_id = _parse_user_device_id(d.pop("user_device_id", UNSET))
 
-        enabled_contact_types = []
         _enabled_contact_types = d.pop("enabled_contact_types", UNSET)
-        for enabled_contact_types_item_data in _enabled_contact_types or []:
-            enabled_contact_types_item = check_user_notification_rule_enabled_contact_types_item(
-                enabled_contact_types_item_data
-            )
+        enabled_contact_types: list[UserNotificationRuleEnabledContactTypesItem] | Unset = UNSET
+        if _enabled_contact_types is not UNSET:
+            enabled_contact_types = []
+            for enabled_contact_types_item_data in _enabled_contact_types:
+                enabled_contact_types_item = check_user_notification_rule_enabled_contact_types_item(
+                    enabled_contact_types_item_data
+                )
 
-            enabled_contact_types.append(enabled_contact_types_item)
+                enabled_contact_types.append(enabled_contact_types_item)
 
         _notification_type = d.pop("notification_type", UNSET)
-        notification_type: Unset | UserNotificationRuleNotificationType
+        notification_type: UserNotificationRuleNotificationType | Unset
         if isinstance(_notification_type, Unset):
             notification_type = UNSET
         else:

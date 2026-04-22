@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-04-21
+
+### Added
+- New API Keys endpoints (create, read, update, delete, list, rotate)
+- New SLA endpoints (create, read, update, delete, list)
+- New On-Call endpoints (list on-call users)
+- New On-Call Pay Reports endpoints (create, read, update, delete, list)
+- New Meeting Recordings endpoints (read, list)
+- New Catalog Checklist Templates endpoints (create, read, update, delete, list)
+- New Catalog Entity Checklists endpoints (read, list)
+- New Catalog Properties endpoints (create, read, update, delete, list) — replaces Catalog Fields
+- Catalog property endpoints for causes, environments, functionalities, incident types, services, and teams
+- New incident actions: `detach_from_parent_incident`, `unmark_as_duplicate_incident`
+- New workflow task type: `PageJsmopsOnCallRespondersTaskParams` — page JSM Ops on-call responders
+- New workflow task type: `CreateJsmopsAlertTaskParams` — create JSM Ops alerts
+- New role permission types: catalogs, communication, edge connectors, incident communication, paging, SLAs, sub-statuses
+- Alert trigger params: alert condition urgency support
+- Status page: CNAME records and section ordering support
+- Page Rootly on-call responders: functionality target support
+- GitHub issue task params: issue type and labels support
+- Zoom meeting: global dial-in numbers support
+
+### Changed
+- Regenerated client from latest OpenAPI specification
+- **BREAKING**: Catalog Fields renamed to Catalog Properties across all endpoints and models
+- Minimum Python version bumped to 3.10 in generated code (SDK still supports 3.9 via pyproject.toml)
+
+### Removed
+- Catalog Fields endpoints and models (replaced by Catalog Properties)
+- Some escalation policy path rule type models (consolidated in upstream spec)
+
+### Fixed
+- Applied nullable enum fix to 1,350 model files via `tools/fix_nullable_enums.py`
+
+### Known Issues
+- Escalation path endpoints not generated due to OpenAPI schema issues with union types in `rules_item`
+
 ## [1.2.1] - 2025-03-02
 
 ### Fixed

@@ -12,31 +12,33 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | ListAlertsInclude = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filtergroups: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterended_atgt: Unset | str = UNSET,
-    filterended_atgte: Unset | str = UNSET,
-    filterended_atlt: Unset | str = UNSET,
-    filterended_atlte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: ListAlertsInclude | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filtergroups: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterended_atgt: str | Unset = UNSET,
+    filterended_atgte: str | Unset = UNSET,
+    filterended_atlt: str | Unset = UNSET,
+    filterended_atlte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -78,6 +80,8 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+    params["page[after]"] = pageafter
+
     params["page[number]"] = pagenumber
 
     params["page[size]"] = pagesize
@@ -117,54 +121,56 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListAlertsInclude = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filtergroups: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterended_atgt: Unset | str = UNSET,
-    filterended_atgte: Unset | str = UNSET,
-    filterended_atlt: Unset | str = UNSET,
-    filterended_atlte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: ListAlertsInclude | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filtergroups: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterended_atgt: str | Unset = UNSET,
+    filterended_atgte: str | Unset = UNSET,
+    filterended_atlt: str | Unset = UNSET,
+    filterended_atlte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (Union[Unset, ListAlertsInclude]):
-        filterstatus (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filtergroups (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterended_atgt (Union[Unset, str]):
-        filterended_atgte (Union[Unset, str]):
-        filterended_atlt (Union[Unset, str]):
-        filterended_atlte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (ListAlertsInclude | Unset):
+        filterstatus (str | Unset):
+        filtersource (str | Unset):
+        filterservices (str | Unset):
+        filterenvironments (str | Unset):
+        filtergroups (str | Unset):
+        filterlabels (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterended_atgt (str | Unset):
+        filterended_atgte (str | Unset):
+        filterended_atlt (str | Unset):
+        filterended_atlte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -194,6 +200,7 @@ def sync_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        pageafter=pageafter,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -208,54 +215,56 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListAlertsInclude = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filtergroups: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterended_atgt: Unset | str = UNSET,
-    filterended_atgte: Unset | str = UNSET,
-    filterended_atlt: Unset | str = UNSET,
-    filterended_atlte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: ListAlertsInclude | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filtergroups: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterended_atgt: str | Unset = UNSET,
+    filterended_atgte: str | Unset = UNSET,
+    filterended_atlt: str | Unset = UNSET,
+    filterended_atlte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> AlertList | None:
     """List alerts
 
      List alerts
 
     Args:
-        include (Union[Unset, ListAlertsInclude]):
-        filterstatus (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filtergroups (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterended_atgt (Union[Unset, str]):
-        filterended_atgte (Union[Unset, str]):
-        filterended_atlt (Union[Unset, str]):
-        filterended_atlte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (ListAlertsInclude | Unset):
+        filterstatus (str | Unset):
+        filtersource (str | Unset):
+        filterservices (str | Unset):
+        filterenvironments (str | Unset):
+        filtergroups (str | Unset):
+        filterlabels (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterended_atgt (str | Unset):
+        filterended_atgte (str | Unset):
+        filterended_atlt (str | Unset):
+        filterended_atlte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -286,6 +295,7 @@ def sync(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        pageafter=pageafter,
         pagenumber=pagenumber,
         pagesize=pagesize,
     ).parsed
@@ -294,54 +304,56 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListAlertsInclude = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filtergroups: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterended_atgt: Unset | str = UNSET,
-    filterended_atgte: Unset | str = UNSET,
-    filterended_atlt: Unset | str = UNSET,
-    filterended_atlte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: ListAlertsInclude | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filtergroups: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterended_atgt: str | Unset = UNSET,
+    filterended_atgte: str | Unset = UNSET,
+    filterended_atlt: str | Unset = UNSET,
+    filterended_atlte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (Union[Unset, ListAlertsInclude]):
-        filterstatus (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filtergroups (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterended_atgt (Union[Unset, str]):
-        filterended_atgte (Union[Unset, str]):
-        filterended_atlt (Union[Unset, str]):
-        filterended_atlte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (ListAlertsInclude | Unset):
+        filterstatus (str | Unset):
+        filtersource (str | Unset):
+        filterservices (str | Unset):
+        filterenvironments (str | Unset):
+        filtergroups (str | Unset):
+        filterlabels (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterended_atgt (str | Unset):
+        filterended_atgte (str | Unset):
+        filterended_atlt (str | Unset):
+        filterended_atlte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -371,6 +383,7 @@ async def asyncio_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        pageafter=pageafter,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -383,54 +396,56 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListAlertsInclude = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filtergroups: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterended_atgt: Unset | str = UNSET,
-    filterended_atgte: Unset | str = UNSET,
-    filterended_atlt: Unset | str = UNSET,
-    filterended_atlte: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: ListAlertsInclude | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filtergroups: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterended_atgt: str | Unset = UNSET,
+    filterended_atgte: str | Unset = UNSET,
+    filterended_atlt: str | Unset = UNSET,
+    filterended_atlte: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> AlertList | None:
     """List alerts
 
      List alerts
 
     Args:
-        include (Union[Unset, ListAlertsInclude]):
-        filterstatus (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filtergroups (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterended_atgt (Union[Unset, str]):
-        filterended_atgte (Union[Unset, str]):
-        filterended_atlt (Union[Unset, str]):
-        filterended_atlte (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (ListAlertsInclude | Unset):
+        filterstatus (str | Unset):
+        filtersource (str | Unset):
+        filterservices (str | Unset):
+        filterenvironments (str | Unset):
+        filtergroups (str | Unset):
+        filterlabels (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterended_atgt (str | Unset):
+        filterended_atgte (str | Unset):
+        filterended_atlt (str | Unset):
+        filterended_atlte (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -462,6 +477,7 @@ async def asyncio(
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
             filtercreated_atlte=filtercreated_atlte,
+            pageafter=pageafter,
             pagenumber=pagenumber,
             pagesize=pagesize,
         )

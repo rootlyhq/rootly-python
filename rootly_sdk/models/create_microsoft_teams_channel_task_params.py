@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,33 +28,33 @@ class CreateMicrosoftTeamsChannelTaskParams:
     """
     Attributes:
         title (str): Microsoft Team channel title
-        task_type (Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType]):
-        team (Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTeam]):
-        description (Union[Unset, str]): Microsoft Team channel description
-        private (Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate]):  Default: 'auto'.
+        task_type (CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset):
+        team (CreateMicrosoftTeamsChannelTaskParamsTeam | Unset):
+        description (str | Unset): Microsoft Team channel description
+        private (CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset):  Default: 'auto'.
     """
 
     title: str
-    task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType = UNSET
-    team: Union[Unset, "CreateMicrosoftTeamsChannelTaskParamsTeam"] = UNSET
-    description: Unset | str = UNSET
-    private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate = "auto"
+    task_type: CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset = UNSET
+    team: CreateMicrosoftTeamsChannelTaskParamsTeam | Unset = UNSET
+    description: str | Unset = UNSET
+    private: CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset = "auto"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        team: Unset | dict[str, Any] = UNSET
+        team: dict[str, Any] | Unset = UNSET
         if not isinstance(self.team, Unset):
             team = self.team.to_dict()
 
         description = self.description
 
-        private: Unset | str = UNSET
+        private: str | Unset = UNSET
         if not isinstance(self.private, Unset):
             private = self.private
 
@@ -82,14 +84,14 @@ class CreateMicrosoftTeamsChannelTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType
+        task_type: CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_microsoft_teams_channel_task_params_task_type(_task_type)
 
         _team = d.pop("team", UNSET)
-        team: Unset | CreateMicrosoftTeamsChannelTaskParamsTeam
+        team: CreateMicrosoftTeamsChannelTaskParamsTeam | Unset
         if isinstance(_team, Unset):
             team = UNSET
         else:
@@ -98,7 +100,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         description = d.pop("description", UNSET)
 
         _private = d.pop("private", UNSET)
-        private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate
+        private: CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset
         if isinstance(_private, Unset):
             private = UNSET
         else:

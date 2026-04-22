@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -24,13 +26,13 @@ class AddMicrosoftTeamsChatTabTaskParams:
         chat (AddMicrosoftTeamsChatTabTaskParamsChat):
         title (str): The tab title
         link (str): The tab link
-        task_type (Union[Unset, AddMicrosoftTeamsChatTabTaskParamsTaskType]):
+        task_type (AddMicrosoftTeamsChatTabTaskParamsTaskType | Unset):
     """
 
-    chat: "AddMicrosoftTeamsChatTabTaskParamsChat"
+    chat: AddMicrosoftTeamsChatTabTaskParamsChat
     title: str
     link: str
-    task_type: Unset | AddMicrosoftTeamsChatTabTaskParamsTaskType = UNSET
+    task_type: AddMicrosoftTeamsChatTabTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +42,7 @@ class AddMicrosoftTeamsChatTabTaskParams:
 
         link = self.link
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,7 +72,7 @@ class AddMicrosoftTeamsChatTabTaskParams:
         link = d.pop("link")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | AddMicrosoftTeamsChatTabTaskParamsTaskType
+        task_type: AddMicrosoftTeamsChatTabTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

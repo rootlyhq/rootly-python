@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,40 +22,40 @@ T = TypeVar("T", bound="UpdateIncidentPermissionSetDataAttributes")
 class UpdateIncidentPermissionSetDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The incident permission set name.
-        description (Union[None, Unset, str]): The incident permission set description.
-        private_incident_permissions (Union[Unset,
-            list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]]):
-        public_incident_permissions (Union[Unset,
-            list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]]):
+        name (str | Unset): The incident permission set name.
+        description (None | str | Unset): The incident permission set description.
+        private_incident_permissions (list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] |
+            Unset):
+        public_incident_permissions (list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] |
+            Unset):
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
     private_incident_permissions: (
-        Unset | list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]
+        list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] | Unset
     ) = UNSET
     public_incident_permissions: (
-        Unset | list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]
+        list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] | Unset
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        private_incident_permissions: Unset | list[str] = UNSET
+        private_incident_permissions: list[str] | Unset = UNSET
         if not isinstance(self.private_incident_permissions, Unset):
             private_incident_permissions = []
             for private_incident_permissions_item_data in self.private_incident_permissions:
                 private_incident_permissions_item: str = private_incident_permissions_item_data
                 private_incident_permissions.append(private_incident_permissions_item)
 
-        public_incident_permissions: Unset | list[str] = UNSET
+        public_incident_permissions: list[str] | Unset = UNSET
         if not isinstance(self.public_incident_permissions, Unset):
             public_incident_permissions = []
             for public_incident_permissions_item_data in self.public_incident_permissions:
@@ -79,36 +81,44 @@ class UpdateIncidentPermissionSetDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        private_incident_permissions = []
         _private_incident_permissions = d.pop("private_incident_permissions", UNSET)
-        for private_incident_permissions_item_data in _private_incident_permissions or []:
-            private_incident_permissions_item = (
-                check_update_incident_permission_set_data_attributes_private_incident_permissions_item(
-                    private_incident_permissions_item_data
+        private_incident_permissions: (
+            list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] | Unset
+        ) = UNSET
+        if _private_incident_permissions is not UNSET:
+            private_incident_permissions = []
+            for private_incident_permissions_item_data in _private_incident_permissions:
+                private_incident_permissions_item = (
+                    check_update_incident_permission_set_data_attributes_private_incident_permissions_item(
+                        private_incident_permissions_item_data
+                    )
                 )
-            )
 
-            private_incident_permissions.append(private_incident_permissions_item)
+                private_incident_permissions.append(private_incident_permissions_item)
 
-        public_incident_permissions = []
         _public_incident_permissions = d.pop("public_incident_permissions", UNSET)
-        for public_incident_permissions_item_data in _public_incident_permissions or []:
-            public_incident_permissions_item = (
-                check_update_incident_permission_set_data_attributes_public_incident_permissions_item(
-                    public_incident_permissions_item_data
+        public_incident_permissions: (
+            list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] | Unset
+        ) = UNSET
+        if _public_incident_permissions is not UNSET:
+            public_incident_permissions = []
+            for public_incident_permissions_item_data in _public_incident_permissions:
+                public_incident_permissions_item = (
+                    check_update_incident_permission_set_data_attributes_public_incident_permissions_item(
+                        public_incident_permissions_item_data
+                    )
                 )
-            )
 
-            public_incident_permissions.append(public_incident_permissions_item)
+                public_incident_permissions.append(public_incident_permissions_item)
 
         update_incident_permission_set_data_attributes = cls(
             name=name,

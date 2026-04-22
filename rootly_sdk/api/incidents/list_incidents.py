@@ -13,71 +13,73 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -131,6 +133,8 @@ def _get_kwargs(
     params["filter[cause_ids]"] = filtercause_ids
 
     params["filter[custom_field_selected_option_ids]"] = filtercustom_field_selected_option_ids
+
+    params["filter[slack_channel_id]"] = filterslack_channel_id
 
     params["filter[created_at][gt]"] = filtercreated_atgt
 
@@ -204,13 +208,13 @@ def _get_kwargs(
 
     params["filter[in_triage_at][lte]"] = filterin_triage_atlte
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
     params["sort"] = json_sort
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -251,140 +255,142 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> Response[IncidentList]:
     """List incidents
 
      List incidents
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -421,6 +427,7 @@ def sync_detailed(
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
+        filterslack_channel_id=filterslack_channel_id,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -471,140 +478,142 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> IncidentList | None:
     """List incidents
 
      List incidents
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -642,6 +651,7 @@ def sync(
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
+        filterslack_channel_id=filterslack_channel_id,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -686,140 +696,142 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> Response[IncidentList]:
     """List incidents
 
      List incidents
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -856,6 +868,7 @@ async def asyncio_detailed(
         filtercause=filtercause,
         filtercause_ids=filtercause_ids,
         filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
+        filterslack_channel_id=filterslack_channel_id,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -904,140 +917,142 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> IncidentList | None:
     """List incidents
 
      List incidents
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -1076,6 +1091,7 @@ async def asyncio(
             filtercause=filtercause,
             filtercause_ids=filtercause_ids,
             filtercustom_field_selected_option_ids=filtercustom_field_selected_option_ids,
+            filterslack_channel_id=filterslack_channel_id,
             filtercreated_atgt=filtercreated_atgt,
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,

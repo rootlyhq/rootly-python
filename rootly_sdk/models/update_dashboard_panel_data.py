@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,20 +23,20 @@ T = TypeVar("T", bound="UpdateDashboardPanelData")
 class UpdateDashboardPanelData:
     """
     Attributes:
-        type_ (Union[Unset, UpdateDashboardPanelDataType]):
-        attributes (Union[Unset, UpdateDashboardPanelDataAttributes]):
+        type_ (UpdateDashboardPanelDataType | Unset):
+        attributes (UpdateDashboardPanelDataAttributes | Unset):
     """
 
-    type_: Unset | UpdateDashboardPanelDataType = UNSET
-    attributes: Union[Unset, "UpdateDashboardPanelDataAttributes"] = UNSET
+    type_: UpdateDashboardPanelDataType | Unset = UNSET
+    attributes: UpdateDashboardPanelDataAttributes | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +56,14 @@ class UpdateDashboardPanelData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Unset | UpdateDashboardPanelDataType
+        type_: UpdateDashboardPanelDataType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_update_dashboard_panel_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | UpdateDashboardPanelDataAttributes
+        attributes: UpdateDashboardPanelDataAttributes | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

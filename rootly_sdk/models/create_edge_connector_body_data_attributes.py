@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,15 +20,15 @@ class CreateEdgeConnectorBodyDataAttributes:
     """
     Attributes:
         name (str): Connector name
-        description (Union[Unset, str]): Connector description
-        status (Union[Unset, CreateEdgeConnectorBodyDataAttributesStatus]): Connector status
-        subscriptions (Union[Unset, list[str]]): Array of event types to subscribe to
+        description (str | Unset): Connector description
+        status (CreateEdgeConnectorBodyDataAttributesStatus | Unset): Connector status
+        subscriptions (list[str] | Unset): Array of event types to subscribe to
     """
 
     name: str
-    description: Unset | str = UNSET
-    status: Unset | CreateEdgeConnectorBodyDataAttributesStatus = UNSET
-    subscriptions: Unset | list[str] = UNSET
+    description: str | Unset = UNSET
+    status: CreateEdgeConnectorBodyDataAttributesStatus | Unset = UNSET
+    subscriptions: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,11 +36,11 @@ class CreateEdgeConnectorBodyDataAttributes:
 
         description = self.description
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: Unset | list[str] = UNSET
+        subscriptions: list[str] | Unset = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
@@ -66,7 +68,7 @@ class CreateEdgeConnectorBodyDataAttributes:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | CreateEdgeConnectorBodyDataAttributesStatus
+        status: CreateEdgeConnectorBodyDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

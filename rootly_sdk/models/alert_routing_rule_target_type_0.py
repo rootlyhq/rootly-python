@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -18,7 +20,8 @@ class AlertRoutingRuleTargetType0:
     """The destination target for the alert routing rule
 
     Attributes:
-        target_type (AlertRoutingRuleTargetType0TargetType): The type of the target
+        target_type (AlertRoutingRuleTargetType0TargetType): The type of the target. Please contact support if you
+            encounter issues using `Functionality` as a target type.
         target_id (UUID): The ID of the target
     """
 

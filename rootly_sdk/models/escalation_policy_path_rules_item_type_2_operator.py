@@ -1,12 +1,16 @@
 from typing import Literal, cast
 
-EscalationPolicyPathRulesItemType2Operator = Literal["contains", "does_not_contain", "is", "is_not"]
+EscalationPolicyPathRulesItemType2Operator = Literal[
+    "contains", "does_not_contain", "is", "is_not", "is_not_one_of", "is_one_of"
+]
 
 ESCALATION_POLICY_PATH_RULES_ITEM_TYPE_2_OPERATOR_VALUES: set[EscalationPolicyPathRulesItemType2Operator] = {
     "contains",
     "does_not_contain",
     "is",
     "is_not",
+    "is_not_one_of",
+    "is_one_of",
 }
 
 

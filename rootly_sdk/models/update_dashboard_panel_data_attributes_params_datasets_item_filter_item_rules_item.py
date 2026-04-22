@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,24 +23,24 @@ T = TypeVar("T", bound="UpdateDashboardPanelDataAttributesParamsDatasetsItemFilt
 class UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem:
     """
     Attributes:
-        operation (Union[Unset, UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation]):
-        condition (Union[Unset, UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition]):
-        key (Union[Unset, str]):
-        value (Union[Unset, str]):
+        operation (UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation | Unset):
+        condition (UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition | Unset):
+        key (str | Unset):
+        value (str | Unset):
     """
 
-    operation: Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation = UNSET
-    condition: Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition = UNSET
-    key: Unset | str = UNSET
-    value: Unset | str = UNSET
+    operation: UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation | Unset = UNSET
+    condition: UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition | Unset = UNSET
+    key: str | Unset = UNSET
+    value: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: Unset | str = UNSET
+        operation: str | Unset = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        condition: Unset | str = UNSET
+        condition: str | Unset = UNSET
         if not isinstance(self.condition, Unset):
             condition = self.condition
 
@@ -64,7 +66,7 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation
+        operation: UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation | Unset
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
@@ -75,7 +77,7 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItem:
             )
 
         _condition = d.pop("condition", UNSET)
-        condition: Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition
+        condition: UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemCondition | Unset
         if isinstance(_condition, Unset):
             condition = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -20,25 +22,25 @@ class AlertsSourceSourceableAttributesType0:
     """Provide additional attributes for generic_webhook alerts source
 
     Attributes:
-        auto_resolve (Union[Unset, bool]): Set this to true to auto-resolve alerts based on field_mappings_attributes
+        auto_resolve (bool | Unset): Set this to true to auto-resolve alerts based on field_mappings_attributes
             conditions
-        resolve_state (Union[None, Unset, str]): This value is matched with the value extracted from alerts payload
-            using JSON path in field_mappings_attributes
-        accept_threaded_emails (Union[Unset, bool]): Set this to false to reject threaded emails
-        field_mappings_attributes (Union[Unset,
-            list['AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem']]): Specify rules to auto resolve alerts
+        resolve_state (None | str | Unset): This value is matched with the value extracted from alerts payload using
+            JSON path in field_mappings_attributes
+        accept_threaded_emails (bool | Unset): Set this to false to reject threaded emails
+        field_mappings_attributes (list[AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem] | Unset):
+            Specify rules to auto resolve alerts
     """
 
-    auto_resolve: Unset | bool = UNSET
-    resolve_state: None | Unset | str = UNSET
-    accept_threaded_emails: Unset | bool = UNSET
-    field_mappings_attributes: Unset | list["AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem"] = UNSET
+    auto_resolve: bool | Unset = UNSET
+    resolve_state: None | str | Unset = UNSET
+    accept_threaded_emails: bool | Unset = UNSET
+    field_mappings_attributes: list[AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         auto_resolve = self.auto_resolve
 
-        resolve_state: None | Unset | str
+        resolve_state: None | str | Unset
         if isinstance(self.resolve_state, Unset):
             resolve_state = UNSET
         else:
@@ -46,7 +48,7 @@ class AlertsSourceSourceableAttributesType0:
 
         accept_threaded_emails = self.accept_threaded_emails
 
-        field_mappings_attributes: Unset | list[dict[str, Any]] = UNSET
+        field_mappings_attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.field_mappings_attributes, Unset):
             field_mappings_attributes = []
             for field_mappings_attributes_item_data in self.field_mappings_attributes:
@@ -76,25 +78,31 @@ class AlertsSourceSourceableAttributesType0:
         d = dict(src_dict)
         auto_resolve = d.pop("auto_resolve", UNSET)
 
-        def _parse_resolve_state(data: object) -> None | Unset | str:
+        def _parse_resolve_state(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolve_state = _parse_resolve_state(d.pop("resolve_state", UNSET))
 
         accept_threaded_emails = d.pop("accept_threaded_emails", UNSET)
 
-        field_mappings_attributes = []
         _field_mappings_attributes = d.pop("field_mappings_attributes", UNSET)
-        for field_mappings_attributes_item_data in _field_mappings_attributes or []:
-            field_mappings_attributes_item = AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem.from_dict(
-                field_mappings_attributes_item_data
-            )
+        field_mappings_attributes: list[AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem] | Unset = (
+            UNSET
+        )
+        if _field_mappings_attributes is not UNSET:
+            field_mappings_attributes = []
+            for field_mappings_attributes_item_data in _field_mappings_attributes:
+                field_mappings_attributes_item = (
+                    AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem.from_dict(
+                        field_mappings_attributes_item_data
+                    )
+                )
 
-            field_mappings_attributes.append(field_mappings_attributes_item)
+                field_mappings_attributes.append(field_mappings_attributes_item)
 
         alerts_source_sourceable_attributes_type_0 = cls(
             auto_resolve=auto_resolve,

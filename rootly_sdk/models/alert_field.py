@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,14 +19,14 @@ class AlertField:
         kind (str): The kind of alert field
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (Union[Unset, str]): The slug of the alert field
+        slug (str | Unset): The slug of the alert field
     """
 
     name: str
     kind: str
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
+    slug: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,21 +14,21 @@ T = TypeVar("T", bound="UpdateAlertUrgencyDataAttributes")
 class UpdateAlertUrgencyDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the alert urgency
-        description (Union[Unset, str]): The description of the alert urgency
-        position (Union[None, Unset, int]): Position of the alert urgency
+        name (str | Unset): The name of the alert urgency
+        description (str | Unset): The description of the alert urgency
+        position (int | None | Unset): Position of the alert urgency
     """
 
-    name: Unset | str = UNSET
-    description: Unset | str = UNSET
-    position: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    description: str | Unset = UNSET
+    position: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -51,12 +53,12 @@ class UpdateAlertUrgencyDataAttributes:
 
         description = d.pop("description", UNSET)
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

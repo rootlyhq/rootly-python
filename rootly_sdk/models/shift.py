@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -14,11 +16,12 @@ class Shift:
     """
     Attributes:
         schedule_id (str): ID of schedule
-        rotation_id (Union[None, str]): ID of rotation
+        rotation_id (None | str): ID of rotation
         starts_at (str): Start datetime of shift
         ends_at (str): End datetime of shift
         is_override (bool): Denotes shift is an override shift
-        user_id (Union[None, Unset, int]): ID of user on shift
+        is_shadow (bool): Denotes shift is a shadow shift
+        user_id (int | None | Unset): ID of user on shift
     """
 
     schedule_id: str
@@ -26,7 +29,8 @@ class Shift:
     starts_at: str
     ends_at: str
     is_override: bool
-    user_id: None | Unset | int = UNSET
+    is_shadow: bool
+    user_id: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,7 +45,9 @@ class Shift:
 
         is_override = self.is_override
 
-        user_id: None | Unset | int
+        is_shadow = self.is_shadow
+
+        user_id: int | None | Unset
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
@@ -56,6 +62,7 @@ class Shift:
                 "starts_at": starts_at,
                 "ends_at": ends_at,
                 "is_override": is_override,
+                "is_shadow": is_shadow,
             }
         )
         if user_id is not UNSET:
@@ -81,12 +88,14 @@ class Shift:
 
         is_override = d.pop("is_override")
 
-        def _parse_user_id(data: object) -> None | Unset | int:
+        is_shadow = d.pop("is_shadow")
+
+        def _parse_user_id(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
@@ -96,6 +105,7 @@ class Shift:
             starts_at=starts_at,
             ends_at=ends_at,
             is_override=is_override,
+            is_shadow=is_shadow,
             user_id=user_id,
         )
 

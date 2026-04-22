@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,7 +19,8 @@ class NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams:
     """
     Attributes:
         id (str): The ID of notification target
-        type_ (NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType): The type of the notification target
+        type_ (NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType): The type of the notification target.
+            Please contact support if you encounter issues using `functionality` as a target type.
     """
 
     id: str

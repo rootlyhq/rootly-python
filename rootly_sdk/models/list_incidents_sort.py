@@ -1,11 +1,32 @@
 from typing import Literal, cast
 
-ListIncidentsSort = Literal["-created_at", "-updated_at", "created_at", "updated_at"]
+ListIncidentsSort = Literal[
+    "-created_at",
+    "-in_triage_at",
+    "-mitigated_at",
+    "-resolved_at",
+    "-started_at",
+    "-updated_at",
+    "created_at",
+    "in_triage_at",
+    "mitigated_at",
+    "resolved_at",
+    "started_at",
+    "updated_at",
+]
 
 LIST_INCIDENTS_SORT_VALUES: set[ListIncidentsSort] = {
     "-created_at",
+    "-in_triage_at",
+    "-mitigated_at",
+    "-resolved_at",
+    "-started_at",
     "-updated_at",
     "created_at",
+    "in_triage_at",
+    "mitigated_at",
+    "resolved_at",
+    "started_at",
     "updated_at",
 }
 

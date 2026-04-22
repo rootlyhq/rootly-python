@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -19,22 +21,22 @@ T = TypeVar("T", bound="UpdateScheduleDataAttributes")
 class UpdateScheduleDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the schedule
-        description (Union[None, Unset, str]): The description of the schedule
-        all_time_coverage (Union[None, Unset, bool]): 24/7 coverage of the schedule
-        slack_user_group (Union[Unset, UpdateScheduleDataAttributesSlackUserGroup]):
-        slack_channel (Union['UpdateScheduleDataAttributesSlackChannelType0', None, Unset]):
-        owner_group_ids (Union[Unset, list[str]]): Owning teams.
-        owner_user_id (Union[None, Unset, int]): ID of the owner of the schedule
+        name (str | Unset): The name of the schedule
+        description (None | str | Unset): The description of the schedule
+        all_time_coverage (bool | None | Unset): 24/7 coverage of the schedule
+        slack_user_group (UpdateScheduleDataAttributesSlackUserGroup | Unset):
+        slack_channel (None | Unset | UpdateScheduleDataAttributesSlackChannelType0):
+        owner_group_ids (list[str] | Unset): Owning teams.
+        owner_user_id (int | None | Unset): ID of the owner of the schedule
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    all_time_coverage: None | Unset | bool = UNSET
-    slack_user_group: Union[Unset, "UpdateScheduleDataAttributesSlackUserGroup"] = UNSET
-    slack_channel: Union["UpdateScheduleDataAttributesSlackChannelType0", None, Unset] = UNSET
-    owner_group_ids: Unset | list[str] = UNSET
-    owner_user_id: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    all_time_coverage: bool | None | Unset = UNSET
+    slack_user_group: UpdateScheduleDataAttributesSlackUserGroup | Unset = UNSET
+    slack_channel: None | Unset | UpdateScheduleDataAttributesSlackChannelType0 = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
+    owner_user_id: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_schedule_data_attributes_slack_channel_type_0 import (
@@ -43,23 +45,23 @@ class UpdateScheduleDataAttributes:
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        all_time_coverage: None | Unset | bool
+        all_time_coverage: bool | None | Unset
         if isinstance(self.all_time_coverage, Unset):
             all_time_coverage = UNSET
         else:
             all_time_coverage = self.all_time_coverage
 
-        slack_user_group: Unset | dict[str, Any] = UNSET
+        slack_user_group: dict[str, Any] | Unset = UNSET
         if not isinstance(self.slack_user_group, Unset):
             slack_user_group = self.slack_user_group.to_dict()
 
-        slack_channel: None | Unset | dict[str, Any]
+        slack_channel: dict[str, Any] | None | Unset
         if isinstance(self.slack_channel, Unset):
             slack_channel = UNSET
         elif isinstance(self.slack_channel, UpdateScheduleDataAttributesSlackChannelType0):
@@ -67,11 +69,11 @@ class UpdateScheduleDataAttributes:
         else:
             slack_channel = self.slack_channel
 
-        owner_group_ids: Unset | list[str] = UNSET
+        owner_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
-        owner_user_id: None | Unset | int
+        owner_user_id: int | None | Unset
         if isinstance(self.owner_user_id, Unset):
             owner_user_id = UNSET
         else:
@@ -107,32 +109,32 @@ class UpdateScheduleDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_all_time_coverage(data: object) -> None | Unset | bool:
+        def _parse_all_time_coverage(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         all_time_coverage = _parse_all_time_coverage(d.pop("all_time_coverage", UNSET))
 
         _slack_user_group = d.pop("slack_user_group", UNSET)
-        slack_user_group: Unset | UpdateScheduleDataAttributesSlackUserGroup
+        slack_user_group: UpdateScheduleDataAttributesSlackUserGroup | Unset
         if isinstance(_slack_user_group, Unset):
             slack_user_group = UNSET
         else:
             slack_user_group = UpdateScheduleDataAttributesSlackUserGroup.from_dict(_slack_user_group)
 
-        def _parse_slack_channel(data: object) -> Union["UpdateScheduleDataAttributesSlackChannelType0", None, Unset]:
+        def _parse_slack_channel(data: object) -> None | Unset | UpdateScheduleDataAttributesSlackChannelType0:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -143,20 +145,20 @@ class UpdateScheduleDataAttributes:
                 slack_channel_type_0 = UpdateScheduleDataAttributesSlackChannelType0.from_dict(data)
 
                 return slack_channel_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["UpdateScheduleDataAttributesSlackChannelType0", None, Unset], data)
+            return cast(None | Unset | UpdateScheduleDataAttributesSlackChannelType0, data)
 
         slack_channel = _parse_slack_channel(d.pop("slack_channel", UNSET))
 
         owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
 
-        def _parse_owner_user_id(data: object) -> None | Unset | int:
+        def _parse_owner_user_id(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         owner_user_id = _parse_owner_user_id(d.pop("owner_user_id", UNSET))
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,30 +19,30 @@ T = TypeVar("T", bound="UpdateWorkflowGroupDataAttributes")
 class UpdateWorkflowGroupDataAttributes:
     """
     Attributes:
-        kind (Union[Unset, UpdateWorkflowGroupDataAttributesKind]): The kind of the workflow group
-        name (Union[Unset, str]): The name of the workflow group.
-        description (Union[None, Unset, str]): A description of the workflow group.
-        icon (Union[Unset, str]): An emoji icon displayed next to the workflow group.
-        expanded (Union[Unset, bool]): Whether the group is expanded or collapsed.
-        position (Union[Unset, int]): The position of the workflow group
+        kind (UpdateWorkflowGroupDataAttributesKind | Unset): The kind of the workflow group
+        name (str | Unset): The name of the workflow group.
+        description (None | str | Unset): A description of the workflow group.
+        icon (str | Unset): An emoji icon displayed next to the workflow group.
+        expanded (bool | Unset): Whether the group is expanded or collapsed.
+        position (int | Unset): The position of the workflow group
     """
 
-    kind: Unset | UpdateWorkflowGroupDataAttributesKind = UNSET
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    icon: Unset | str = UNSET
-    expanded: Unset | bool = UNSET
-    position: Unset | int = UNSET
+    kind: UpdateWorkflowGroupDataAttributesKind | Unset = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    icon: str | Unset = UNSET
+    expanded: bool | Unset = UNSET
+    position: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -74,7 +76,7 @@ class UpdateWorkflowGroupDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Unset | UpdateWorkflowGroupDataAttributesKind
+        kind: UpdateWorkflowGroupDataAttributesKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -82,12 +84,12 @@ class UpdateWorkflowGroupDataAttributes:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

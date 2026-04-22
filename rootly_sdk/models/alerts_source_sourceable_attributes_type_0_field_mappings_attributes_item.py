@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,18 +19,18 @@ T = TypeVar("T", bound="AlertsSourceSourceableAttributesType0FieldMappingsAttrib
 class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
     """
     Attributes:
-        field (Union[Unset, AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField]): Select the field on
-            which the condition to be evaluated
-        json_path (Union[Unset, str]): JSON path expression to extract a specific value from the alert's payload for
+        field (AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset): Select the field on which
+            the condition to be evaluated
+        json_path (str | Unset): JSON path expression to extract a specific value from the alert's payload for
             evaluation
     """
 
-    field: Unset | AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField = UNSET
-    json_path: Unset | str = UNSET
+    field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset = UNSET
+    json_path: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field: Unset | str = UNSET
+        field: str | Unset = UNSET
         if not isinstance(self.field, Unset):
             field = self.field
 
@@ -48,7 +50,7 @@ class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _field = d.pop("field", UNSET)
-        field: Unset | AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField
+        field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset
         if isinstance(_field, Unset):
             field = UNSET
         else:

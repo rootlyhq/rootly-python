@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -17,7 +19,8 @@ T = TypeVar("T", bound="NewAlertRoutingRuleDataAttributesDestination")
 class NewAlertRoutingRuleDataAttributesDestination:
     """
     Attributes:
-        target_type (NewAlertRoutingRuleDataAttributesDestinationTargetType): The type of the target
+        target_type (NewAlertRoutingRuleDataAttributesDestinationTargetType): The type of the target. Please contact
+            support if you encounter issues using `Functionality` as a target type.
         target_id (UUID): The ID of the target
     """
 
