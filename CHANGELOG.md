@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0] - 2026-04-21
 
 ### Added
+- New Escalation Paths endpoints (create, read, update, delete, list) with typed rule models (alert urgency, working hour, JSON path, field, service, deferral window)
 - New API Keys endpoints (create, read, update, delete, list, rotate)
 - New SLA endpoints (create, read, update, delete, list)
 - New On-Call endpoints (list on-call users)
@@ -39,10 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Some escalation policy path rule type models (consolidated in upstream spec)
 
 ### Fixed
-- Applied nullable enum fix to 1,350 model files via `tools/fix_nullable_enums.py`
-
-### Known Issues
-- Escalation path endpoints not generated due to OpenAPI schema issues with union types in `rules_item`
+- Applied nullable enum fix to 1,348 model files via `tools/fix_nullable_enums.py`
+- Escalation path endpoints now fully generated — added `tools/fix_openapi_escalation_paths.py` to patch inline `oneOf` variants into named `$ref` schemas and fix missing array `items` definitions
 
 ## [1.2.1] - 2025-03-02
 

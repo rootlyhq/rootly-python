@@ -58,9 +58,11 @@ class NewSlaDataAttributes:
             manager_role_id or manager_user_id.
         manager_user_id (int | None | Unset): The ID of the user responsible for this SLA. Must provide either
             manager_role_id or manager_user_id.
-        assignment_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the assignment deadline
+        assignment_deadline_sub_status_id (None | Unset | UUID): Sub-status for the assignment deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         assignment_skip_weekends (bool | Unset): Whether to skip weekends when calculating the assignment deadline
-        completion_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the completion deadline
+        completion_deadline_sub_status_id (None | Unset | UUID): Sub-status for the completion deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         completion_skip_weekends (bool | Unset): Whether to skip weekends when calculating the completion deadline
         conditions (list[NewSlaDataAttributesConditionsItem] | Unset): Conditions that determine which incidents this
             SLA applies to. Maximum 20.

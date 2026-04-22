@@ -35,11 +35,15 @@ class Sla:
         description (None | str | Unset): A description of the SLA
         position (int | Unset): Position of the SLA for ordering
         entity_type (SlaEntityType | Unset): The entity type this SLA applies to
-        manager_role_id (None | Unset | UUID): The ID of the manager incident role
-        manager_user_id (int | None | Unset): The ID of the manager user
-        assignment_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the assignment deadline
+        manager_role_id (None | Unset | UUID): The ID of the manager incident role. Exactly one of `manager_role_id` or
+            `manager_user_id` must be provided.
+        manager_user_id (int | None | Unset): The ID of the manager user. Exactly one of `manager_role_id` or
+            `manager_user_id` must be provided.
+        assignment_deadline_sub_status_id (None | Unset | UUID): Sub-status for the assignment deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         assignment_skip_weekends (bool | Unset): Whether to skip weekends when calculating the assignment deadline
-        completion_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the completion deadline
+        completion_deadline_sub_status_id (None | Unset | UUID): Sub-status for the completion deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         completion_skip_weekends (bool | Unset): Whether to skip weekends when calculating the completion deadline
         conditions (list[SlaConditionsItem] | Unset): Conditions that determine which incidents this SLA applies to
         notification_configurations (list[SlaNotificationConfigurationsItem] | Unset): Notification timing

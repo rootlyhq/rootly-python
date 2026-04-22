@@ -852,6 +852,22 @@ from .environment_slack_aliases_type_0_item import EnvironmentSlackAliasesType0I
 from .environment_slack_channels_type_0_item import EnvironmentSlackChannelsType0Item
 from .errors_list import ErrorsList
 from .errors_list_errors_item import ErrorsListErrorsItem
+from .escalation_path_rule_alert_urgency import EscalationPathRuleAlertUrgency
+from .escalation_path_rule_alert_urgency_rule_type import EscalationPathRuleAlertUrgencyRuleType
+from .escalation_path_rule_deferral_window import EscalationPathRuleDeferralWindow
+from .escalation_path_rule_deferral_window_rule_type import EscalationPathRuleDeferralWindowRuleType
+from .escalation_path_rule_deferral_window_time_blocks_item import EscalationPathRuleDeferralWindowTimeBlocksItem
+from .escalation_path_rule_deferral_window_time_zone import EscalationPathRuleDeferralWindowTimeZone
+from .escalation_path_rule_field import EscalationPathRuleField
+from .escalation_path_rule_field_operator import EscalationPathRuleFieldOperator
+from .escalation_path_rule_field_rule_type import EscalationPathRuleFieldRuleType
+from .escalation_path_rule_json_path import EscalationPathRuleJsonPath
+from .escalation_path_rule_json_path_operator import EscalationPathRuleJsonPathOperator
+from .escalation_path_rule_json_path_rule_type import EscalationPathRuleJsonPathRuleType
+from .escalation_path_rule_service import EscalationPathRuleService
+from .escalation_path_rule_service_rule_type import EscalationPathRuleServiceRuleType
+from .escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
+from .escalation_path_rule_working_hour_rule_type import EscalationPathRuleWorkingHourRuleType
 from .escalation_policy import EscalationPolicy
 from .escalation_policy_business_hours_type_0 import EscalationPolicyBusinessHoursType0
 from .escalation_policy_business_hours_type_0_days_type_0_item import EscalationPolicyBusinessHoursType0DaysType0Item
@@ -889,58 +905,6 @@ from .escalation_policy_path_path_type import EscalationPolicyPathPathType
 from .escalation_policy_path_response import EscalationPolicyPathResponse
 from .escalation_policy_path_response_data import EscalationPolicyPathResponseData
 from .escalation_policy_path_response_data_type import EscalationPolicyPathResponseDataType
-from .escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
-from .escalation_policy_path_rules_item_type_0_rule_type import EscalationPolicyPathRulesItemType0RuleType
-from .escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
-from .escalation_policy_path_rules_item_type_1_rule_type import EscalationPolicyPathRulesItemType1RuleType
-from .escalation_policy_path_rules_item_type_2 import EscalationPolicyPathRulesItemType2
-from .escalation_policy_path_rules_item_type_2_operator import EscalationPolicyPathRulesItemType2Operator
-from .escalation_policy_path_rules_item_type_2_rule_type import EscalationPolicyPathRulesItemType2RuleType
-from .escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
-from .escalation_policy_path_rules_item_type_3_operator import EscalationPolicyPathRulesItemType3Operator
-from .escalation_policy_path_rules_item_type_3_rule_type import EscalationPolicyPathRulesItemType3RuleType
-from .escalation_policy_path_rules_item_type_4 import EscalationPolicyPathRulesItemType4
-from .escalation_policy_path_rules_item_type_4_rule_type import EscalationPolicyPathRulesItemType4RuleType
-from .escalation_policy_path_rules_item_type_5 import EscalationPolicyPathRulesItemType5
-from .escalation_policy_path_rules_item_type_5_rule_type import EscalationPolicyPathRulesItemType5RuleType
-from .escalation_policy_path_rules_item_type_5_time_blocks_item import EscalationPolicyPathRulesItemType5TimeBlocksItem
-from .escalation_policy_path_rules_item_type_5_time_zone import EscalationPolicyPathRulesItemType5TimeZone
-from .escalation_policy_path_rules_item_type_6_type_0 import EscalationPolicyPathRulesItemType6Type0
-from .escalation_policy_path_rules_item_type_6_type_0_rule_type import EscalationPolicyPathRulesItemType6Type0RuleType
-from .escalation_policy_path_rules_item_type_6_type_1 import EscalationPolicyPathRulesItemType6Type1
-from .escalation_policy_path_rules_item_type_6_type_1_rule_type import EscalationPolicyPathRulesItemType6Type1RuleType
-from .escalation_policy_path_rules_item_type_6_type_2 import EscalationPolicyPathRulesItemType6Type2
-from .escalation_policy_path_rules_item_type_6_type_2_operator import EscalationPolicyPathRulesItemType6Type2Operator
-from .escalation_policy_path_rules_item_type_6_type_2_rule_type import EscalationPolicyPathRulesItemType6Type2RuleType
-from .escalation_policy_path_rules_item_type_6_type_3 import EscalationPolicyPathRulesItemType6Type3
-from .escalation_policy_path_rules_item_type_6_type_3_operator import EscalationPolicyPathRulesItemType6Type3Operator
-from .escalation_policy_path_rules_item_type_6_type_3_rule_type import EscalationPolicyPathRulesItemType6Type3RuleType
-from .escalation_policy_path_rules_item_type_6_type_4 import EscalationPolicyPathRulesItemType6Type4
-from .escalation_policy_path_rules_item_type_6_type_4_rule_type import EscalationPolicyPathRulesItemType6Type4RuleType
-from .escalation_policy_path_rules_item_type_6_type_5 import EscalationPolicyPathRulesItemType6Type5
-from .escalation_policy_path_rules_item_type_6_type_5_rule_type import EscalationPolicyPathRulesItemType6Type5RuleType
-from .escalation_policy_path_rules_item_type_6_type_5_time_blocks_item import (
-    EscalationPolicyPathRulesItemType6Type5TimeBlocksItem,
-)
-from .escalation_policy_path_rules_item_type_6_type_5_time_zone import EscalationPolicyPathRulesItemType6Type5TimeZone
-from .escalation_policy_path_rules_item_type_7_type_0 import EscalationPolicyPathRulesItemType7Type0
-from .escalation_policy_path_rules_item_type_7_type_0_rule_type import EscalationPolicyPathRulesItemType7Type0RuleType
-from .escalation_policy_path_rules_item_type_7_type_1 import EscalationPolicyPathRulesItemType7Type1
-from .escalation_policy_path_rules_item_type_7_type_1_rule_type import EscalationPolicyPathRulesItemType7Type1RuleType
-from .escalation_policy_path_rules_item_type_7_type_2 import EscalationPolicyPathRulesItemType7Type2
-from .escalation_policy_path_rules_item_type_7_type_2_operator import EscalationPolicyPathRulesItemType7Type2Operator
-from .escalation_policy_path_rules_item_type_7_type_2_rule_type import EscalationPolicyPathRulesItemType7Type2RuleType
-from .escalation_policy_path_rules_item_type_7_type_3 import EscalationPolicyPathRulesItemType7Type3
-from .escalation_policy_path_rules_item_type_7_type_3_operator import EscalationPolicyPathRulesItemType7Type3Operator
-from .escalation_policy_path_rules_item_type_7_type_3_rule_type import EscalationPolicyPathRulesItemType7Type3RuleType
-from .escalation_policy_path_rules_item_type_7_type_4 import EscalationPolicyPathRulesItemType7Type4
-from .escalation_policy_path_rules_item_type_7_type_4_rule_type import EscalationPolicyPathRulesItemType7Type4RuleType
-from .escalation_policy_path_rules_item_type_7_type_5 import EscalationPolicyPathRulesItemType7Type5
-from .escalation_policy_path_rules_item_type_7_type_5_rule_type import EscalationPolicyPathRulesItemType7Type5RuleType
-from .escalation_policy_path_rules_item_type_7_type_5_time_blocks_item import (
-    EscalationPolicyPathRulesItemType7Type5TimeBlocksItem,
-)
-from .escalation_policy_path_rules_item_type_7_type_5_time_zone import EscalationPolicyPathRulesItemType7Type5TimeZone
 from .escalation_policy_path_time_restriction_time_zone import EscalationPolicyPathTimeRestrictionTimeZone
 from .escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
 from .escalation_policy_path_time_restrictions_item_end_day import EscalationPolicyPathTimeRestrictionsItemEndDay
@@ -1727,6 +1691,30 @@ from .new_escalation_policy_level_data_attributes_paging_strategy_configuration_
     NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy,
 )
 from .new_escalation_policy_level_data_type import NewEscalationPolicyLevelDataType
+from .new_escalation_policy_path import NewEscalationPolicyPath
+from .new_escalation_policy_path_data import NewEscalationPolicyPathData
+from .new_escalation_policy_path_data_attributes import NewEscalationPolicyPathDataAttributes
+from .new_escalation_policy_path_data_attributes_after_deferral_behavior import (
+    NewEscalationPolicyPathDataAttributesAfterDeferralBehavior,
+)
+from .new_escalation_policy_path_data_attributes_match_mode import NewEscalationPolicyPathDataAttributesMatchMode
+from .new_escalation_policy_path_data_attributes_notification_type import (
+    NewEscalationPolicyPathDataAttributesNotificationType,
+)
+from .new_escalation_policy_path_data_attributes_path_type import NewEscalationPolicyPathDataAttributesPathType
+from .new_escalation_policy_path_data_attributes_time_restriction_time_zone import (
+    NewEscalationPolicyPathDataAttributesTimeRestrictionTimeZone,
+)
+from .new_escalation_policy_path_data_attributes_time_restrictions_item import (
+    NewEscalationPolicyPathDataAttributesTimeRestrictionsItem,
+)
+from .new_escalation_policy_path_data_attributes_time_restrictions_item_end_day import (
+    NewEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay,
+)
+from .new_escalation_policy_path_data_attributes_time_restrictions_item_start_day import (
+    NewEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay,
+)
+from .new_escalation_policy_path_data_type import NewEscalationPolicyPathDataType
 from .new_form_field import NewFormField
 from .new_form_field_data import NewFormFieldData
 from .new_form_field_data_attributes import NewFormFieldDataAttributes
@@ -3235,6 +3223,30 @@ from .update_escalation_policy_level_data_attributes_paging_strategy_configurati
     UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy,
 )
 from .update_escalation_policy_level_data_type import UpdateEscalationPolicyLevelDataType
+from .update_escalation_policy_path import UpdateEscalationPolicyPath
+from .update_escalation_policy_path_data import UpdateEscalationPolicyPathData
+from .update_escalation_policy_path_data_attributes import UpdateEscalationPolicyPathDataAttributes
+from .update_escalation_policy_path_data_attributes_after_deferral_behavior import (
+    UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior,
+)
+from .update_escalation_policy_path_data_attributes_match_mode import UpdateEscalationPolicyPathDataAttributesMatchMode
+from .update_escalation_policy_path_data_attributes_notification_type import (
+    UpdateEscalationPolicyPathDataAttributesNotificationType,
+)
+from .update_escalation_policy_path_data_attributes_path_type import UpdateEscalationPolicyPathDataAttributesPathType
+from .update_escalation_policy_path_data_attributes_time_restriction_time_zone import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone,
+)
+from .update_escalation_policy_path_data_attributes_time_restrictions_item import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
+)
+from .update_escalation_policy_path_data_attributes_time_restrictions_item_end_day import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay,
+)
+from .update_escalation_policy_path_data_attributes_time_restrictions_item_start_day import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay,
+)
+from .update_escalation_policy_path_data_type import UpdateEscalationPolicyPathDataType
 from .update_form_field import UpdateFormField
 from .update_form_field_data import UpdateFormFieldData
 from .update_form_field_data_attributes import UpdateFormFieldDataAttributes
@@ -4700,6 +4712,22 @@ __all__ = (
     "EnvironmentSlackChannelsType0Item",
     "ErrorsList",
     "ErrorsListErrorsItem",
+    "EscalationPathRuleAlertUrgency",
+    "EscalationPathRuleAlertUrgencyRuleType",
+    "EscalationPathRuleDeferralWindow",
+    "EscalationPathRuleDeferralWindowRuleType",
+    "EscalationPathRuleDeferralWindowTimeBlocksItem",
+    "EscalationPathRuleDeferralWindowTimeZone",
+    "EscalationPathRuleField",
+    "EscalationPathRuleFieldOperator",
+    "EscalationPathRuleFieldRuleType",
+    "EscalationPathRuleJsonPath",
+    "EscalationPathRuleJsonPathOperator",
+    "EscalationPathRuleJsonPathRuleType",
+    "EscalationPathRuleService",
+    "EscalationPathRuleServiceRuleType",
+    "EscalationPathRuleWorkingHour",
+    "EscalationPathRuleWorkingHourRuleType",
     "EscalationPolicy",
     "EscalationPolicyBusinessHoursType0",
     "EscalationPolicyBusinessHoursType0DaysType0Item",
@@ -4727,54 +4755,6 @@ __all__ = (
     "EscalationPolicyPathResponse",
     "EscalationPolicyPathResponseData",
     "EscalationPolicyPathResponseDataType",
-    "EscalationPolicyPathRulesItemType0",
-    "EscalationPolicyPathRulesItemType0RuleType",
-    "EscalationPolicyPathRulesItemType1",
-    "EscalationPolicyPathRulesItemType1RuleType",
-    "EscalationPolicyPathRulesItemType2",
-    "EscalationPolicyPathRulesItemType2Operator",
-    "EscalationPolicyPathRulesItemType2RuleType",
-    "EscalationPolicyPathRulesItemType3",
-    "EscalationPolicyPathRulesItemType3Operator",
-    "EscalationPolicyPathRulesItemType3RuleType",
-    "EscalationPolicyPathRulesItemType4",
-    "EscalationPolicyPathRulesItemType4RuleType",
-    "EscalationPolicyPathRulesItemType5",
-    "EscalationPolicyPathRulesItemType5RuleType",
-    "EscalationPolicyPathRulesItemType5TimeBlocksItem",
-    "EscalationPolicyPathRulesItemType5TimeZone",
-    "EscalationPolicyPathRulesItemType6Type0",
-    "EscalationPolicyPathRulesItemType6Type0RuleType",
-    "EscalationPolicyPathRulesItemType6Type1",
-    "EscalationPolicyPathRulesItemType6Type1RuleType",
-    "EscalationPolicyPathRulesItemType6Type2",
-    "EscalationPolicyPathRulesItemType6Type2Operator",
-    "EscalationPolicyPathRulesItemType6Type2RuleType",
-    "EscalationPolicyPathRulesItemType6Type3",
-    "EscalationPolicyPathRulesItemType6Type3Operator",
-    "EscalationPolicyPathRulesItemType6Type3RuleType",
-    "EscalationPolicyPathRulesItemType6Type4",
-    "EscalationPolicyPathRulesItemType6Type4RuleType",
-    "EscalationPolicyPathRulesItemType6Type5",
-    "EscalationPolicyPathRulesItemType6Type5RuleType",
-    "EscalationPolicyPathRulesItemType6Type5TimeBlocksItem",
-    "EscalationPolicyPathRulesItemType6Type5TimeZone",
-    "EscalationPolicyPathRulesItemType7Type0",
-    "EscalationPolicyPathRulesItemType7Type0RuleType",
-    "EscalationPolicyPathRulesItemType7Type1",
-    "EscalationPolicyPathRulesItemType7Type1RuleType",
-    "EscalationPolicyPathRulesItemType7Type2",
-    "EscalationPolicyPathRulesItemType7Type2Operator",
-    "EscalationPolicyPathRulesItemType7Type2RuleType",
-    "EscalationPolicyPathRulesItemType7Type3",
-    "EscalationPolicyPathRulesItemType7Type3Operator",
-    "EscalationPolicyPathRulesItemType7Type3RuleType",
-    "EscalationPolicyPathRulesItemType7Type4",
-    "EscalationPolicyPathRulesItemType7Type4RuleType",
-    "EscalationPolicyPathRulesItemType7Type5",
-    "EscalationPolicyPathRulesItemType7Type5RuleType",
-    "EscalationPolicyPathRulesItemType7Type5TimeBlocksItem",
-    "EscalationPolicyPathRulesItemType7Type5TimeZone",
     "EscalationPolicyPathTimeRestrictionsItem",
     "EscalationPolicyPathTimeRestrictionsItemEndDay",
     "EscalationPolicyPathTimeRestrictionsItemStartDay",
@@ -5403,6 +5383,18 @@ __all__ = (
     "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy",
     "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy",
     "NewEscalationPolicyLevelDataType",
+    "NewEscalationPolicyPath",
+    "NewEscalationPolicyPathData",
+    "NewEscalationPolicyPathDataAttributes",
+    "NewEscalationPolicyPathDataAttributesAfterDeferralBehavior",
+    "NewEscalationPolicyPathDataAttributesMatchMode",
+    "NewEscalationPolicyPathDataAttributesNotificationType",
+    "NewEscalationPolicyPathDataAttributesPathType",
+    "NewEscalationPolicyPathDataAttributesTimeRestrictionsItem",
+    "NewEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay",
+    "NewEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay",
+    "NewEscalationPolicyPathDataAttributesTimeRestrictionTimeZone",
+    "NewEscalationPolicyPathDataType",
     "NewFormField",
     "NewFormFieldData",
     "NewFormFieldDataAttributes",
@@ -6563,6 +6555,18 @@ __all__ = (
     "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy",
     "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy",
     "UpdateEscalationPolicyLevelDataType",
+    "UpdateEscalationPolicyPath",
+    "UpdateEscalationPolicyPathData",
+    "UpdateEscalationPolicyPathDataAttributes",
+    "UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior",
+    "UpdateEscalationPolicyPathDataAttributesMatchMode",
+    "UpdateEscalationPolicyPathDataAttributesNotificationType",
+    "UpdateEscalationPolicyPathDataAttributesPathType",
+    "UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem",
+    "UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay",
+    "UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay",
+    "UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone",
+    "UpdateEscalationPolicyPathDataType",
     "UpdateFormField",
     "UpdateFormFieldData",
     "UpdateFormFieldDataAttributes",

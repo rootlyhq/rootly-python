@@ -47,19 +47,23 @@ class UpdateSlaDataAttributes:
         position (int | None | Unset): Position of the SLA for ordering
         condition_match_type (UpdateSlaDataAttributesConditionMatchType | Unset): Whether all or any conditions must
             match
-        manager_role_id (None | Unset | UUID): The ID of the incident role responsible for this SLA
-        manager_user_id (int | None | Unset): The ID of the user responsible for this SLA
+        manager_role_id (None | Unset | UUID): The ID of the incident role responsible for this SLA. Exactly one of
+            `manager_role_id` or `manager_user_id` must be provided.
+        manager_user_id (int | None | Unset): The ID of the user responsible for this SLA. Exactly one of
+            `manager_role_id` or `manager_user_id` must be provided.
         assignment_deadline_days (UpdateSlaDataAttributesAssignmentDeadlineDays | Unset): Number of days for the
             assignment deadline
         assignment_deadline_parent_status (UpdateSlaDataAttributesAssignmentDeadlineParentStatus | Unset): The incident
             parent status that triggers the assignment deadline
-        assignment_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the assignment deadline
+        assignment_deadline_sub_status_id (None | Unset | UUID): Sub-status for the assignment deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         assignment_skip_weekends (bool | Unset): Whether to skip weekends when calculating the assignment deadline
         completion_deadline_days (UpdateSlaDataAttributesCompletionDeadlineDays | Unset): Number of days for the
             completion deadline
         completion_deadline_parent_status (UpdateSlaDataAttributesCompletionDeadlineParentStatus | Unset): The incident
             parent status that triggers the completion deadline
-        completion_deadline_sub_status_id (None | Unset | UUID): Optional sub-status for the completion deadline
+        completion_deadline_sub_status_id (None | Unset | UUID): Sub-status for the completion deadline. Required when
+            custom lifecycle statuses are enabled on the team.
         completion_skip_weekends (bool | Unset): Whether to skip weekends when calculating the completion deadline
         conditions (list[UpdateSlaDataAttributesConditionsItem] | Unset): Conditions that determine which incidents this
             SLA applies to. Replaces all existing conditions.

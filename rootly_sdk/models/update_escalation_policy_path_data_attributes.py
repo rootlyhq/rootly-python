@@ -4,23 +4,26 @@ from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..models.escalation_policy_path_after_deferral_behavior import (
-    EscalationPolicyPathAfterDeferralBehavior,
-    check_escalation_policy_path_after_deferral_behavior,
+from ..models.update_escalation_policy_path_data_attributes_after_deferral_behavior import (
+    UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior,
+    check_update_escalation_policy_path_data_attributes_after_deferral_behavior,
 )
-from ..models.escalation_policy_path_match_mode import (
-    EscalationPolicyPathMatchMode,
-    check_escalation_policy_path_match_mode,
+from ..models.update_escalation_policy_path_data_attributes_match_mode import (
+    UpdateEscalationPolicyPathDataAttributesMatchMode,
+    check_update_escalation_policy_path_data_attributes_match_mode,
 )
-from ..models.escalation_policy_path_path_type import (
-    EscalationPolicyPathPathType,
-    check_escalation_policy_path_path_type,
+from ..models.update_escalation_policy_path_data_attributes_notification_type import (
+    UpdateEscalationPolicyPathDataAttributesNotificationType,
+    check_update_escalation_policy_path_data_attributes_notification_type,
 )
-from ..models.escalation_policy_path_time_restriction_time_zone import (
-    EscalationPolicyPathTimeRestrictionTimeZone,
-    check_escalation_policy_path_time_restriction_time_zone,
+from ..models.update_escalation_policy_path_data_attributes_path_type import (
+    UpdateEscalationPolicyPathDataAttributesPathType,
+    check_update_escalation_policy_path_data_attributes_path_type,
+)
+from ..models.update_escalation_policy_path_data_attributes_time_restriction_time_zone import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone,
+    check_update_escalation_policy_path_data_attributes_time_restriction_time_zone,
 )
 from ..types import UNSET, Unset
 
@@ -31,55 +34,56 @@ if TYPE_CHECKING:
     from ..models.escalation_path_rule_json_path import EscalationPathRuleJsonPath
     from ..models.escalation_path_rule_service import EscalationPathRuleService
     from ..models.escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
-    from ..models.escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
+    from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item import (
+        UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
+    )
 
 
-T = TypeVar("T", bound="EscalationPolicyPath")
+T = TypeVar("T", bound="UpdateEscalationPolicyPathDataAttributes")
 
 
 @_attrs_define
-class EscalationPolicyPath:
+class UpdateEscalationPolicyPathDataAttributes:
     """
     Attributes:
-        name (str): The name of the escalation path
-        default (bool): Whether this escalation path is the default path
-        notification_type (str): Notification rule type
-        escalation_policy_id (str): The ID of the escalation policy
-        repeat (bool | None): Whether this path should be repeated until someone acknowledges the alert
-        repeat_count (int | None): The number of times this path will be executed until someone acknowledges the alert
-        path_type (EscalationPolicyPathPathType | Unset): The type of escalation path
-        after_deferral_behavior (EscalationPolicyPathAfterDeferralBehavior | Unset): What happens after a deferral path
-            finishes
+        name (str | Unset): The name of the escalation path
+        notification_type (UpdateEscalationPolicyPathDataAttributesNotificationType | Unset): Position of the escalation
+            policy level Default: 'audible'.
+        path_type (UpdateEscalationPolicyPathDataAttributesPathType | Unset): The type of escalation path. Cannot be
+            changed after creation.
+        after_deferral_behavior (UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset): What happens
+            after a deferral path finishes.
         after_deferral_path_id (None | str | Unset): The escalation path to execute after this deferral path when
-            after_deferral_behavior is execute_path
-        match_mode (EscalationPolicyPathMatchMode | Unset): How path rules are matched.
+            after_deferral_behavior is execute_path.
+        default (bool | None | Unset): Whether this escalation path is the default path
+        match_mode (UpdateEscalationPolicyPathDataAttributesMatchMode | Unset): How path rules are matched. Default:
+            'match-all-rules'.
         position (int | Unset): The position of this path in the paths for this EP.
+        repeat (bool | None | Unset): Whether this path should be repeated until someone acknowledges the alert
+        repeat_count (int | None | Unset): The number of times this path will be executed until someone acknowledges the
+            alert
         initial_delay (int | Unset): Initial delay for escalation path in minutes. Maximum 1 week (10080).
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
         rules (list[EscalationPathRuleAlertUrgency | EscalationPathRuleDeferralWindow | EscalationPathRuleField |
             EscalationPathRuleJsonPath | EscalationPathRuleService | EscalationPathRuleWorkingHour | None] | Unset):
-            Escalation path rules
-        time_restriction_time_zone (EscalationPolicyPathTimeRestrictionTimeZone | Unset): Time zone used for time
-            restrictions.
-        time_restrictions (list[EscalationPolicyPathTimeRestrictionsItem] | Unset): If time restrictions are set, alerts
-            will follow this path when they arrive within the specified time ranges and meet the rules.
+            Escalation path conditions
+        time_restriction_time_zone (UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset): Time zone
+            used for time restrictions.
+        time_restrictions (list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset): If time
+            restrictions are set, alerts will follow this path when they arrive within the specified time ranges and meet
+            the rules.
     """
 
-    name: str
-    default: bool
-    notification_type: str
-    escalation_policy_id: str
-    repeat: bool | None
-    repeat_count: int | None
-    path_type: EscalationPolicyPathPathType | Unset = UNSET
-    after_deferral_behavior: EscalationPolicyPathAfterDeferralBehavior | Unset = UNSET
+    name: str | Unset = UNSET
+    notification_type: UpdateEscalationPolicyPathDataAttributesNotificationType | Unset = "audible"
+    path_type: UpdateEscalationPolicyPathDataAttributesPathType | Unset = UNSET
+    after_deferral_behavior: UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset = UNSET
     after_deferral_path_id: None | str | Unset = UNSET
-    match_mode: EscalationPolicyPathMatchMode | Unset = UNSET
+    default: bool | None | Unset = UNSET
+    match_mode: UpdateEscalationPolicyPathDataAttributesMatchMode | Unset = "match-all-rules"
     position: int | Unset = UNSET
+    repeat: bool | None | Unset = UNSET
+    repeat_count: int | None | Unset = UNSET
     initial_delay: int | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
     rules: (
         list[
             EscalationPathRuleAlertUrgency
@@ -92,9 +96,8 @@ class EscalationPolicyPath:
         ]
         | Unset
     ) = UNSET
-    time_restriction_time_zone: EscalationPolicyPathTimeRestrictionTimeZone | Unset = UNSET
-    time_restrictions: list[EscalationPolicyPathTimeRestrictionsItem] | Unset = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    time_restriction_time_zone: UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset = UNSET
+    time_restrictions: list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.escalation_path_rule_alert_urgency import EscalationPathRuleAlertUrgency
@@ -106,17 +109,9 @@ class EscalationPolicyPath:
 
         name = self.name
 
-        default = self.default
-
-        notification_type = self.notification_type
-
-        escalation_policy_id = self.escalation_policy_id
-
-        repeat: bool | None
-        repeat = self.repeat
-
-        repeat_count: int | None
-        repeat_count = self.repeat_count
+        notification_type: str | Unset = UNSET
+        if not isinstance(self.notification_type, Unset):
+            notification_type = self.notification_type
 
         path_type: str | Unset = UNSET
         if not isinstance(self.path_type, Unset):
@@ -132,17 +127,31 @@ class EscalationPolicyPath:
         else:
             after_deferral_path_id = self.after_deferral_path_id
 
+        default: bool | None | Unset
+        if isinstance(self.default, Unset):
+            default = UNSET
+        else:
+            default = self.default
+
         match_mode: str | Unset = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
         position = self.position
 
+        repeat: bool | None | Unset
+        if isinstance(self.repeat, Unset):
+            repeat = UNSET
+        else:
+            repeat = self.repeat
+
+        repeat_count: int | None | Unset
+        if isinstance(self.repeat_count, Unset):
+            repeat_count = UNSET
+        else:
+            repeat_count = self.repeat_count
+
         initial_delay = self.initial_delay
-
-        created_at = self.created_at
-
-        updated_at = self.updated_at
 
         rules: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.rules, Unset):
@@ -177,33 +186,30 @@ class EscalationPolicyPath:
                 time_restrictions.append(time_restrictions_item)
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "default": default,
-                "notification_type": notification_type,
-                "escalation_policy_id": escalation_policy_id,
-                "repeat": repeat,
-                "repeat_count": repeat_count,
-            }
-        )
+
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
+        if notification_type is not UNSET:
+            field_dict["notification_type"] = notification_type
         if path_type is not UNSET:
             field_dict["path_type"] = path_type
         if after_deferral_behavior is not UNSET:
             field_dict["after_deferral_behavior"] = after_deferral_behavior
         if after_deferral_path_id is not UNSET:
             field_dict["after_deferral_path_id"] = after_deferral_path_id
+        if default is not UNSET:
+            field_dict["default"] = default
         if match_mode is not UNSET:
             field_dict["match_mode"] = match_mode
         if position is not UNSET:
             field_dict["position"] = position
+        if repeat is not UNSET:
+            field_dict["repeat"] = repeat
+        if repeat_count is not UNSET:
+            field_dict["repeat_count"] = repeat_count
         if initial_delay is not UNSET:
             field_dict["initial_delay"] = initial_delay
-        if created_at is not UNSET:
-            field_dict["created_at"] = created_at
-        if updated_at is not UNSET:
-            field_dict["updated_at"] = updated_at
         if rules is not UNSET:
             field_dict["rules"] = rules
         if time_restriction_time_zone is not UNSET:
@@ -221,44 +227,37 @@ class EscalationPolicyPath:
         from ..models.escalation_path_rule_json_path import EscalationPathRuleJsonPath
         from ..models.escalation_path_rule_service import EscalationPathRuleService
         from ..models.escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
-        from ..models.escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
+        from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item import (
+            UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
+        )
 
         d = dict(src_dict)
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        default = d.pop("default")
-
-        notification_type = d.pop("notification_type")
-
-        escalation_policy_id = d.pop("escalation_policy_id")
-
-        def _parse_repeat(data: object) -> bool | None:
-            if data is None:
-                return data
-            return cast(bool | None, data)
-
-        repeat = _parse_repeat(d.pop("repeat"))
-
-        def _parse_repeat_count(data: object) -> int | None:
-            if data is None:
-                return data
-            return cast(int | None, data)
-
-        repeat_count = _parse_repeat_count(d.pop("repeat_count"))
+        _notification_type = d.pop("notification_type", UNSET)
+        notification_type: UpdateEscalationPolicyPathDataAttributesNotificationType | Unset
+        if isinstance(_notification_type, Unset):
+            notification_type = UNSET
+        else:
+            notification_type = check_update_escalation_policy_path_data_attributes_notification_type(
+                _notification_type
+            )
 
         _path_type = d.pop("path_type", UNSET)
-        path_type: EscalationPolicyPathPathType | Unset
+        path_type: UpdateEscalationPolicyPathDataAttributesPathType | Unset
         if isinstance(_path_type, Unset):
             path_type = UNSET
         else:
-            path_type = check_escalation_policy_path_path_type(_path_type)
+            path_type = check_update_escalation_policy_path_data_attributes_path_type(_path_type)
 
         _after_deferral_behavior = d.pop("after_deferral_behavior", UNSET)
-        after_deferral_behavior: EscalationPolicyPathAfterDeferralBehavior | Unset
+        after_deferral_behavior: UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset
         if isinstance(_after_deferral_behavior, Unset):
             after_deferral_behavior = UNSET
         else:
-            after_deferral_behavior = check_escalation_policy_path_after_deferral_behavior(_after_deferral_behavior)
+            after_deferral_behavior = check_update_escalation_policy_path_data_attributes_after_deferral_behavior(
+                _after_deferral_behavior
+            )
 
         def _parse_after_deferral_path_id(data: object) -> None | str | Unset:
             if data is None:
@@ -269,20 +268,43 @@ class EscalationPolicyPath:
 
         after_deferral_path_id = _parse_after_deferral_path_id(d.pop("after_deferral_path_id", UNSET))
 
+        def _parse_default(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        default = _parse_default(d.pop("default", UNSET))
+
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: EscalationPolicyPathMatchMode | Unset
+        match_mode: UpdateEscalationPolicyPathDataAttributesMatchMode | Unset
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
-            match_mode = check_escalation_policy_path_match_mode(_match_mode)
+            match_mode = check_update_escalation_policy_path_data_attributes_match_mode(_match_mode)
 
         position = d.pop("position", UNSET)
 
+        def _parse_repeat(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        repeat = _parse_repeat(d.pop("repeat", UNSET))
+
+        def _parse_repeat_count(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        repeat_count = _parse_repeat_count(d.pop("repeat_count", UNSET))
+
         initial_delay = d.pop("initial_delay", UNSET)
-
-        created_at = d.pop("created_at", UNSET)
-
-        updated_at = d.pop("updated_at", UNSET)
 
         _rules = d.pop("rules", UNSET)
         rules: (
@@ -378,58 +400,40 @@ class EscalationPolicyPath:
                 rules.append(rules_item)
 
         _time_restriction_time_zone = d.pop("time_restriction_time_zone", UNSET)
-        time_restriction_time_zone: EscalationPolicyPathTimeRestrictionTimeZone | Unset
+        time_restriction_time_zone: UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset
         if isinstance(_time_restriction_time_zone, Unset):
             time_restriction_time_zone = UNSET
         else:
-            time_restriction_time_zone = check_escalation_policy_path_time_restriction_time_zone(
+            time_restriction_time_zone = check_update_escalation_policy_path_data_attributes_time_restriction_time_zone(
                 _time_restriction_time_zone
             )
 
         _time_restrictions = d.pop("time_restrictions", UNSET)
-        time_restrictions: list[EscalationPolicyPathTimeRestrictionsItem] | Unset = UNSET
+        time_restrictions: list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset = UNSET
         if _time_restrictions is not UNSET:
             time_restrictions = []
             for time_restrictions_item_data in _time_restrictions:
-                time_restrictions_item = EscalationPolicyPathTimeRestrictionsItem.from_dict(time_restrictions_item_data)
+                time_restrictions_item = UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem.from_dict(
+                    time_restrictions_item_data
+                )
 
                 time_restrictions.append(time_restrictions_item)
 
-        escalation_policy_path = cls(
+        update_escalation_policy_path_data_attributes = cls(
             name=name,
-            default=default,
             notification_type=notification_type,
-            escalation_policy_id=escalation_policy_id,
-            repeat=repeat,
-            repeat_count=repeat_count,
             path_type=path_type,
             after_deferral_behavior=after_deferral_behavior,
             after_deferral_path_id=after_deferral_path_id,
+            default=default,
             match_mode=match_mode,
             position=position,
+            repeat=repeat,
+            repeat_count=repeat_count,
             initial_delay=initial_delay,
-            created_at=created_at,
-            updated_at=updated_at,
             rules=rules,
             time_restriction_time_zone=time_restriction_time_zone,
             time_restrictions=time_restrictions,
         )
 
-        escalation_policy_path.additional_properties = d
-        return escalation_policy_path
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties
+        return update_escalation_policy_path_data_attributes
