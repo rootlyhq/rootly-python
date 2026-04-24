@@ -36,6 +36,11 @@ class OnCallPayReport:
         has_single_rate (bool | Unset): Whether a single rate is applied to all users.
         enabled_granular_time_breakdown (bool | Unset): Whether granular time breakdown is enabled.
         last_generated_at (datetime.datetime | None | Unset): When the report was last generated.
+        time_zone (None | str | Unset): The team's IANA timezone used to interpret start_date and end_date.
+        csv_file_url (None | str | Unset): Download URL for the generated CSV report. Null until the report is
+            generated.
+        xlsx_file_url (None | str | Unset): Download URL for the generated XLSX report. Null until the report is
+            generated.
     """
 
     status: OnCallPayReportStatus
@@ -55,6 +60,9 @@ class OnCallPayReport:
     has_single_rate: bool | Unset = UNSET
     enabled_granular_time_breakdown: bool | Unset = UNSET
     last_generated_at: datetime.datetime | None | Unset = UNSET
+    time_zone: None | str | Unset = UNSET
+    csv_file_url: None | str | Unset = UNSET
+    xlsx_file_url: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -100,6 +108,24 @@ class OnCallPayReport:
         else:
             last_generated_at = self.last_generated_at
 
+        time_zone: None | str | Unset
+        if isinstance(self.time_zone, Unset):
+            time_zone = UNSET
+        else:
+            time_zone = self.time_zone
+
+        csv_file_url: None | str | Unset
+        if isinstance(self.csv_file_url, Unset):
+            csv_file_url = UNSET
+        else:
+            csv_file_url = self.csv_file_url
+
+        xlsx_file_url: None | str | Unset
+        if isinstance(self.xlsx_file_url, Unset):
+            xlsx_file_url = UNSET
+        else:
+            xlsx_file_url = self.xlsx_file_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -135,6 +161,12 @@ class OnCallPayReport:
             field_dict["enabled_granular_time_breakdown"] = enabled_granular_time_breakdown
         if last_generated_at is not UNSET:
             field_dict["last_generated_at"] = last_generated_at
+        if time_zone is not UNSET:
+            field_dict["time_zone"] = time_zone
+        if csv_file_url is not UNSET:
+            field_dict["csv_file_url"] = csv_file_url
+        if xlsx_file_url is not UNSET:
+            field_dict["xlsx_file_url"] = xlsx_file_url
 
         return field_dict
 
@@ -195,6 +227,33 @@ class OnCallPayReport:
 
         last_generated_at = _parse_last_generated_at(d.pop("last_generated_at", UNSET))
 
+        def _parse_time_zone(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
+
+        def _parse_csv_file_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        csv_file_url = _parse_csv_file_url(d.pop("csv_file_url", UNSET))
+
+        def _parse_xlsx_file_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        xlsx_file_url = _parse_xlsx_file_url(d.pop("xlsx_file_url", UNSET))
+
         on_call_pay_report = cls(
             status=status,
             start_date=start_date,
@@ -213,6 +272,9 @@ class OnCallPayReport:
             has_single_rate=has_single_rate,
             enabled_granular_time_breakdown=enabled_granular_time_breakdown,
             last_generated_at=last_generated_at,
+            time_zone=time_zone,
+            csv_file_url=csv_file_url,
+            xlsx_file_url=xlsx_file_url,
         )
 
         on_call_pay_report.additional_properties = d

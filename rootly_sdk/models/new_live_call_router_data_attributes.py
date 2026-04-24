@@ -59,6 +59,8 @@ class NewLiveCallRouterDataAttributes:
         escalation_level_delay_in_seconds (int | Unset): This overrides the delay (seconds) in escalation levels
         should_auto_resolve_alert_on_call_end (bool | Unset): This overrides the delay (seconds) in escalation levels
         alert_urgency_id (str | Unset): This is used in escalation paths to determine who to page
+        calling_tree_enabled (bool | Unset): Whether the live call router is configured as a phone tree, requiring
+            callers to press a key before being connected
         calling_tree_prompt (str | Unset): The audio instructions callers will hear when they call this number,
             prompting them to select from available options to route their call
         escalation_policy_trigger_params (NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset):
@@ -79,6 +81,7 @@ class NewLiveCallRouterDataAttributes:
     escalation_level_delay_in_seconds: int | Unset = UNSET
     should_auto_resolve_alert_on_call_end: bool | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
+    calling_tree_enabled: bool | Unset = UNSET
     calling_tree_prompt: str | Unset = UNSET
     escalation_policy_trigger_params: NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset = UNSET
 
@@ -118,6 +121,8 @@ class NewLiveCallRouterDataAttributes:
 
         alert_urgency_id = self.alert_urgency_id
 
+        calling_tree_enabled = self.calling_tree_enabled
+
         calling_tree_prompt = self.calling_tree_prompt
 
         escalation_policy_trigger_params: dict[str, Any] | Unset = UNSET
@@ -153,6 +158,8 @@ class NewLiveCallRouterDataAttributes:
             field_dict["should_auto_resolve_alert_on_call_end"] = should_auto_resolve_alert_on_call_end
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
+        if calling_tree_enabled is not UNSET:
+            field_dict["calling_tree_enabled"] = calling_tree_enabled
         if calling_tree_prompt is not UNSET:
             field_dict["calling_tree_prompt"] = calling_tree_prompt
         if escalation_policy_trigger_params is not UNSET:
@@ -210,6 +217,8 @@ class NewLiveCallRouterDataAttributes:
 
         alert_urgency_id = d.pop("alert_urgency_id", UNSET)
 
+        calling_tree_enabled = d.pop("calling_tree_enabled", UNSET)
+
         calling_tree_prompt = d.pop("calling_tree_prompt", UNSET)
 
         _escalation_policy_trigger_params = d.pop("escalation_policy_trigger_params", UNSET)
@@ -237,6 +246,7 @@ class NewLiveCallRouterDataAttributes:
             escalation_level_delay_in_seconds=escalation_level_delay_in_seconds,
             should_auto_resolve_alert_on_call_end=should_auto_resolve_alert_on_call_end,
             alert_urgency_id=alert_urgency_id,
+            calling_tree_enabled=calling_tree_enabled,
             calling_tree_prompt=calling_tree_prompt,
             escalation_policy_trigger_params=escalation_policy_trigger_params,
         )

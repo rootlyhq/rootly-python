@@ -22,6 +22,7 @@ def _get_kwargs(
     filteruser_ids: str | Unset = UNSET,
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -49,6 +50,8 @@ def _get_kwargs(
     params["filter[service_ids]"] = filterservice_ids
 
     params["filter[group_ids]"] = filtergroup_ids
+
+    params["filter[notification_types]"] = filternotification_types
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -104,6 +107,7 @@ def sync_detailed(
     filteruser_ids: str | Unset = UNSET,
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Response[Any | ErrorsList]:
     """List on-calls
 
@@ -121,6 +125,7 @@ def sync_detailed(
         filteruser_ids (str | Unset):
         filterservice_ids (str | Unset):
         filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,6 +146,7 @@ def sync_detailed(
         filteruser_ids=filteruser_ids,
         filterservice_ids=filterservice_ids,
         filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     )
 
     response = client.get_httpx_client().request(
@@ -163,6 +169,7 @@ def sync(
     filteruser_ids: str | Unset = UNSET,
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Any | ErrorsList | None:
     """List on-calls
 
@@ -180,6 +187,7 @@ def sync(
         filteruser_ids (str | Unset):
         filterservice_ids (str | Unset):
         filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -201,6 +209,7 @@ def sync(
         filteruser_ids=filteruser_ids,
         filterservice_ids=filterservice_ids,
         filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     ).parsed
 
 
@@ -217,6 +226,7 @@ async def asyncio_detailed(
     filteruser_ids: str | Unset = UNSET,
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Response[Any | ErrorsList]:
     """List on-calls
 
@@ -234,6 +244,7 @@ async def asyncio_detailed(
         filteruser_ids (str | Unset):
         filterservice_ids (str | Unset):
         filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -254,6 +265,7 @@ async def asyncio_detailed(
         filteruser_ids=filteruser_ids,
         filterservice_ids=filterservice_ids,
         filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -274,6 +286,7 @@ async def asyncio(
     filteruser_ids: str | Unset = UNSET,
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Any | ErrorsList | None:
     """List on-calls
 
@@ -291,6 +304,7 @@ async def asyncio(
         filteruser_ids (str | Unset):
         filterservice_ids (str | Unset):
         filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -313,5 +327,6 @@ async def asyncio(
             filteruser_ids=filteruser_ids,
             filterservice_ids=filterservice_ids,
             filtergroup_ids=filtergroup_ids,
+            filternotification_types=filternotification_types,
         )
     ).parsed
