@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -22,13 +24,13 @@ class AlertListDataItem:
         id (str): Unique ID of the alert
         type_ (AlertListDataItemType):
         attributes (Alert):
-        source (Union[Unset, AlertListDataItemSource]): The source of the alert
+        source (AlertListDataItemSource | Unset): The source of the alert
     """
 
     id: str
     type_: AlertListDataItemType
-    attributes: "Alert"
-    source: Unset | AlertListDataItemSource = UNSET
+    attributes: Alert
+    source: AlertListDataItemSource | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +40,7 @@ class AlertListDataItem:
 
         attributes = self.attributes.to_dict()
 
-        source: Unset | str = UNSET
+        source: str | Unset = UNSET
         if not isinstance(self.source, Unset):
             source = self.source
 
@@ -68,7 +70,7 @@ class AlertListDataItem:
         attributes = Alert.from_dict(d.pop("attributes"))
 
         _source = d.pop("source", UNSET)
-        source: Unset | AlertListDataItemSource
+        source: AlertListDataItemSource | Unset
         if isinstance(_source, Unset):
             source = UNSET
         else:

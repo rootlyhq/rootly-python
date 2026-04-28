@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,12 +25,12 @@ class NewScheduleRotationActiveDayDataAttributes:
     Attributes:
         day_name (NewScheduleRotationActiveDayDataAttributesDayName): Schedule rotation day name for which active times
             to be created
-        active_time_attributes (list['NewScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem']): Schedule
+        active_time_attributes (list[NewScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem]): Schedule
             rotation active times per day
     """
 
     day_name: NewScheduleRotationActiveDayDataAttributesDayName
-    active_time_attributes: list["NewScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem"]
+    active_time_attributes: list[NewScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem]
 
     def to_dict(self) -> dict[str, Any]:
         day_name: str = self.day_name

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,25 +14,25 @@ T = TypeVar("T", bound="UpdateCommunicationsStageDataAttributes")
 class UpdateCommunicationsStageDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the communications stage
-        description (Union[None, Unset, str]): The description of the communications stage
-        position (Union[None, Unset, int]): Position of the communications stage
+        name (str | Unset): The name of the communications stage
+        description (None | str | Unset): The description of the communications stage
+        position (int | None | Unset): Position of the communications stage
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -53,21 +55,21 @@ class UpdateCommunicationsStageDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

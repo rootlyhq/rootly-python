@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,7 +15,7 @@ class WebhooksDelivery:
     Attributes:
         endpoint_id (str):
         payload (str):
-        delivered_at (Union[None, str]):
+        delivered_at (None | str):
         created_at (str): Date of creation
         updated_at (str): Date of last update
     """

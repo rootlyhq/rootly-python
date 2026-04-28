@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,27 +28,27 @@ class UpdateDatadogNotebookTaskParams:
     """
     Attributes:
         file_id (str): The Datadog notebook ID
-        task_type (Union[Unset, UpdateDatadogNotebookTaskParamsTaskType]):
-        title (Union[Unset, str]): The Datadog notebook title
-        content (Union[Unset, str]): The Datadog notebook content
-        kind (Union[Unset, UpdateDatadogNotebookTaskParamsKind]): The notebook type
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating notebook, if desired
-        template (Union[Unset, UpdateDatadogNotebookTaskParamsTemplate]): The Datadog notebook template to use
+        task_type (UpdateDatadogNotebookTaskParamsTaskType | Unset):
+        title (str | Unset): The Datadog notebook title
+        content (str | Unset): The Datadog notebook content
+        kind (UpdateDatadogNotebookTaskParamsKind | Unset): The notebook type
+        post_mortem_template_id (str | Unset): Retrospective template to use when updating notebook, if desired
+        template (UpdateDatadogNotebookTaskParamsTemplate | Unset): The Datadog notebook template to use
     """
 
     file_id: str
-    task_type: Unset | UpdateDatadogNotebookTaskParamsTaskType = UNSET
-    title: Unset | str = UNSET
-    content: Unset | str = UNSET
-    kind: Unset | UpdateDatadogNotebookTaskParamsKind = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    template: Union[Unset, "UpdateDatadogNotebookTaskParamsTemplate"] = UNSET
+    task_type: UpdateDatadogNotebookTaskParamsTaskType | Unset = UNSET
+    title: str | Unset = UNSET
+    content: str | Unset = UNSET
+    kind: UpdateDatadogNotebookTaskParamsKind | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    template: UpdateDatadogNotebookTaskParamsTemplate | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,13 +56,13 @@ class UpdateDatadogNotebookTaskParams:
 
         content = self.content
 
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
         post_mortem_template_id = self.post_mortem_template_id
 
-        template: Unset | dict[str, Any] = UNSET
+        template: dict[str, Any] | Unset = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -94,7 +96,7 @@ class UpdateDatadogNotebookTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateDatadogNotebookTaskParamsTaskType
+        task_type: UpdateDatadogNotebookTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -105,7 +107,7 @@ class UpdateDatadogNotebookTaskParams:
         content = d.pop("content", UNSET)
 
         _kind = d.pop("kind", UNSET)
-        kind: Unset | UpdateDatadogNotebookTaskParamsKind
+        kind: UpdateDatadogNotebookTaskParamsKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -114,7 +116,7 @@ class UpdateDatadogNotebookTaskParams:
         post_mortem_template_id = d.pop("post_mortem_template_id", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Unset | UpdateDatadogNotebookTaskParamsTemplate
+        template: UpdateDatadogNotebookTaskParamsTemplate | Unset
         if isinstance(_template, Unset):
             template = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,21 +14,21 @@ T = TypeVar("T", bound="ResolveAlertDataAttributes")
 class ResolveAlertDataAttributes:
     """
     Attributes:
-        resolution_message (Union[None, Unset, str]): How was the alert resolved?
-        resolve_related_incidents (Union[None, Unset, bool]): Resolve all associated incidents
+        resolution_message (None | str | Unset): How was the alert resolved?
+        resolve_related_incidents (bool | None | Unset): Resolve all associated incidents
     """
 
-    resolution_message: None | Unset | str = UNSET
-    resolve_related_incidents: None | Unset | bool = UNSET
+    resolution_message: None | str | Unset = UNSET
+    resolve_related_incidents: bool | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        resolution_message: None | Unset | str
+        resolution_message: None | str | Unset
         if isinstance(self.resolution_message, Unset):
             resolution_message = UNSET
         else:
             resolution_message = self.resolution_message
 
-        resolve_related_incidents: None | Unset | bool
+        resolve_related_incidents: bool | None | Unset
         if isinstance(self.resolve_related_incidents, Unset):
             resolve_related_incidents = UNSET
         else:
@@ -46,21 +48,21 @@ class ResolveAlertDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_resolution_message(data: object) -> None | Unset | str:
+        def _parse_resolution_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolution_message = _parse_resolution_message(d.pop("resolution_message", UNSET))
 
-        def _parse_resolve_related_incidents(data: object) -> None | Unset | bool:
+        def _parse_resolve_related_incidents(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         resolve_related_incidents = _parse_resolve_related_incidents(d.pop("resolve_related_incidents", UNSET))
 

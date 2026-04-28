@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="IncidentStatusPageEventList")
 class IncidentStatusPageEventList:
     """
     Attributes:
-        data (list['IncidentStatusPageEventListDataItem']):
+        data (list[IncidentStatusPageEventListDataItem]):
         links (Links):
         meta (Meta):
     """
 
-    data: list["IncidentStatusPageEventListDataItem"]
-    links: "Links"
-    meta: "Meta"
+    data: list[IncidentStatusPageEventListDataItem]
+    links: Links
+    meta: Meta
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

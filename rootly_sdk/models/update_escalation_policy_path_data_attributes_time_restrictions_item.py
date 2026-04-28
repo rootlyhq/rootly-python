@@ -1,0 +1,110 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item_end_day import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay,
+    check_update_escalation_policy_path_data_attributes_time_restrictions_item_end_day,
+)
+from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item_start_day import (
+    UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay,
+    check_update_escalation_policy_path_data_attributes_time_restrictions_item_start_day,
+)
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem")
+
+
+@_attrs_define
+class UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem:
+    """
+    Attributes:
+        start_day (UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset):
+        start_time (str | Unset): Formatted as HH:MM
+        end_day (UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset):
+        end_time (str | Unset): Formatted as HH:MM
+    """
+
+    start_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset = UNSET
+    start_time: str | Unset = UNSET
+    end_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset = UNSET
+    end_time: str | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        start_day: str | Unset = UNSET
+        if not isinstance(self.start_day, Unset):
+            start_day = self.start_day
+
+        start_time = self.start_time
+
+        end_day: str | Unset = UNSET
+        if not isinstance(self.end_day, Unset):
+            end_day = self.end_day
+
+        end_time = self.end_time
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if start_day is not UNSET:
+            field_dict["start_day"] = start_day
+        if start_time is not UNSET:
+            field_dict["start_time"] = start_time
+        if end_day is not UNSET:
+            field_dict["end_day"] = end_day
+        if end_time is not UNSET:
+            field_dict["end_time"] = end_time
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        _start_day = d.pop("start_day", UNSET)
+        start_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset
+        if isinstance(_start_day, Unset):
+            start_day = UNSET
+        else:
+            start_day = check_update_escalation_policy_path_data_attributes_time_restrictions_item_start_day(_start_day)
+
+        start_time = d.pop("start_time", UNSET)
+
+        _end_day = d.pop("end_day", UNSET)
+        end_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset
+        if isinstance(_end_day, Unset):
+            end_day = UNSET
+        else:
+            end_day = check_update_escalation_policy_path_data_attributes_time_restrictions_item_end_day(_end_day)
+
+        end_time = d.pop("end_time", UNSET)
+
+        update_escalation_policy_path_data_attributes_time_restrictions_item = cls(
+            start_day=start_day,
+            start_time=start_time,
+            end_day=end_day,
+            end_time=end_time,
+        )
+
+        update_escalation_policy_path_data_attributes_time_restrictions_item.additional_properties = d
+        return update_escalation_policy_path_data_attributes_time_restrictions_item
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

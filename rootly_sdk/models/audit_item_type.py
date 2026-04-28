@@ -1,6 +1,7 @@
 from typing import Literal, cast
 
 AuditItemType = Literal[
+    "Alerts::Source",
     "ApiKey",
     "Catalog",
     "CatalogEntity",
@@ -47,6 +48,7 @@ AuditItemType = Literal[
 ]
 
 AUDIT_ITEM_TYPE_VALUES: set[AuditItemType] = {
+    "Alerts::Source",
     "ApiKey",
     "Catalog",
     "CatalogEntity",

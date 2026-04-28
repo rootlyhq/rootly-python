@@ -1,9 +1,10 @@
 from typing import Literal, cast
 
-CatalogEntityPropertyKey = Literal["catalog_entity", "text"]
+CatalogEntityPropertyKey = Literal["catalog_entity", "slack", "text"]
 
 CATALOG_ENTITY_PROPERTY_KEY_VALUES: set[CatalogEntityPropertyKey] = {
     "catalog_entity",
+    "slack",
     "text",
 }
 

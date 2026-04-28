@@ -1,11 +1,14 @@
 from typing import Literal, cast
 
-NewAlertRoutingRuleDataAttributesDestinationTargetType = Literal["EscalationPolicy", "Group", "Service"]
+NewAlertRoutingRuleDataAttributesDestinationTargetType = Literal[
+    "EscalationPolicy", "Functionality", "Group", "Service"
+]
 
 NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_DESTINATION_TARGET_TYPE_VALUES: set[
     NewAlertRoutingRuleDataAttributesDestinationTargetType
 ] = {
     "EscalationPolicy",
+    "Functionality",
     "Group",
     "Service",
 }

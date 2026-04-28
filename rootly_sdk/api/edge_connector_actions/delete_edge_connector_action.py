@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -11,11 +12,15 @@ from ...types import Response
 
 def _get_kwargs(
     edge_connector_id: str,
-    id: UUID | str,
+    id: str | UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": f"/v1/edge_connectors/{edge_connector_id}/actions/{id}",
+        "url": "/v1/edge_connectors/{edge_connector_id}/actions/{id}".format(
+            edge_connector_id=quote(str(edge_connector_id), safe=""),
+            id=quote(str(id), safe=""),
+        ),
     }
 
     return _kwargs
@@ -42,7 +47,7 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     edge_connector_id: str,
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
@@ -50,7 +55,7 @@ def sync_detailed(
 
     Args:
         edge_connector_id (str):
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -74,7 +79,7 @@ def sync_detailed(
 
 async def asyncio_detailed(
     edge_connector_id: str,
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
@@ -82,7 +87,7 @@ async def asyncio_detailed(
 
     Args:
         edge_connector_id (str):
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

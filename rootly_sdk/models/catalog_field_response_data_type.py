@@ -1,9 +1,9 @@
 from typing import Literal, cast
 
-CatalogFieldResponseDataType = Literal["catalog_fields"]
+CatalogFieldResponseDataType = Literal["catalog_properties"]
 
 CATALOG_FIELD_RESPONSE_DATA_TYPE_VALUES: set[CatalogFieldResponseDataType] = {
-    "catalog_fields",
+    "catalog_properties",
 }
 
 

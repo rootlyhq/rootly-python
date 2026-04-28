@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -14,19 +16,19 @@ class NewAlertUrgencyDataAttributes:
     Attributes:
         name (str): The name of the alert urgency
         description (str): The description of the alert urgency
-        position (Union[None, Unset, int]): Position of the alert urgency
+        position (int | None | Unset): Position of the alert urgency
     """
 
     name: str
     description: str
-    position: None | Unset | int = UNSET
+    position: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -52,12 +54,12 @@ class NewAlertUrgencyDataAttributes:
 
         description = d.pop("description")
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

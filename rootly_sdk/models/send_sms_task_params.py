@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,13 +19,13 @@ class SendSmsTaskParams:
         phone_numbers (list[str]):
         name (str): The name
         content (str): The SMS message
-        task_type (Union[Unset, SendSmsTaskParamsTaskType]):
+        task_type (SendSmsTaskParamsTaskType | Unset):
     """
 
     phone_numbers: list[str]
     name: str
     content: str
-    task_type: Unset | SendSmsTaskParamsTaskType = UNSET
+    task_type: SendSmsTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,7 +35,7 @@ class SendSmsTaskParams:
 
         content = self.content
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -61,7 +63,7 @@ class SendSmsTaskParams:
         content = d.pop("content")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | SendSmsTaskParamsTaskType
+        task_type: SendSmsTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -25,12 +27,13 @@ class FormField:
         default_values (list[str]):
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        value_kind_catalog_id (Union[None, Unset, str]): The ID of the catalog used when value_kind is `catalog_entity`
-        slug (Union[Unset, str]): The slug of the form field
-        description (Union[None, Unset, str]): The description of the form field
-        show_on_incident_details (Union[Unset, bool]): Whether the form field is shown on the incident details panel
-        enabled (Union[Unset, bool]): Whether the form field is enabled
-        auto_set_by_catalog_field_id (Union[None, Unset, str]): Catalog field ID to auto-set this form field.
+        value_kind_catalog_id (None | str | Unset): The ID of the catalog used when value_kind is `catalog_entity`
+        slug (str | Unset): The slug of the form field
+        description (None | str | Unset): The description of the form field
+        show_on_incident_details (bool | Unset): Whether the form field is shown on the incident details panel
+        enabled (bool | Unset): Whether the form field is enabled
+        auto_set_by_catalog_property_id (None | str | Unset): Catalog property ID to auto-set this form field. Only
+            reference-kind catalog properties are supported.
     """
 
     kind: FormFieldKind
@@ -42,12 +45,12 @@ class FormField:
     default_values: list[str]
     created_at: str
     updated_at: str
-    value_kind_catalog_id: None | Unset | str = UNSET
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    show_on_incident_details: Unset | bool = UNSET
-    enabled: Unset | bool = UNSET
-    auto_set_by_catalog_field_id: None | Unset | str = UNSET
+    value_kind_catalog_id: None | str | Unset = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    show_on_incident_details: bool | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    auto_set_by_catalog_property_id: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,7 +72,7 @@ class FormField:
 
         updated_at = self.updated_at
 
-        value_kind_catalog_id: None | Unset | str
+        value_kind_catalog_id: None | str | Unset
         if isinstance(self.value_kind_catalog_id, Unset):
             value_kind_catalog_id = UNSET
         else:
@@ -77,7 +80,7 @@ class FormField:
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -87,11 +90,11 @@ class FormField:
 
         enabled = self.enabled
 
-        auto_set_by_catalog_field_id: None | Unset | str
-        if isinstance(self.auto_set_by_catalog_field_id, Unset):
-            auto_set_by_catalog_field_id = UNSET
+        auto_set_by_catalog_property_id: None | str | Unset
+        if isinstance(self.auto_set_by_catalog_property_id, Unset):
+            auto_set_by_catalog_property_id = UNSET
         else:
-            auto_set_by_catalog_field_id = self.auto_set_by_catalog_field_id
+            auto_set_by_catalog_property_id = self.auto_set_by_catalog_property_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -118,8 +121,8 @@ class FormField:
             field_dict["show_on_incident_details"] = show_on_incident_details
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if auto_set_by_catalog_field_id is not UNSET:
-            field_dict["auto_set_by_catalog_field_id"] = auto_set_by_catalog_field_id
+        if auto_set_by_catalog_property_id is not UNSET:
+            field_dict["auto_set_by_catalog_property_id"] = auto_set_by_catalog_property_id
 
         return field_dict
 
@@ -144,23 +147,23 @@ class FormField:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_value_kind_catalog_id(data: object) -> None | Unset | str:
+        def _parse_value_kind_catalog_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -168,14 +171,16 @@ class FormField:
 
         enabled = d.pop("enabled", UNSET)
 
-        def _parse_auto_set_by_catalog_field_id(data: object) -> None | Unset | str:
+        def _parse_auto_set_by_catalog_property_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
-        auto_set_by_catalog_field_id = _parse_auto_set_by_catalog_field_id(d.pop("auto_set_by_catalog_field_id", UNSET))
+        auto_set_by_catalog_property_id = _parse_auto_set_by_catalog_property_id(
+            d.pop("auto_set_by_catalog_property_id", UNSET)
+        )
 
         form_field = cls(
             kind=kind,
@@ -192,7 +197,7 @@ class FormField:
             description=description,
             show_on_incident_details=show_on_incident_details,
             enabled=enabled,
-            auto_set_by_catalog_field_id=auto_set_by_catalog_field_id,
+            auto_set_by_catalog_property_id=auto_set_by_catalog_property_id,
         )
 
         form_field.additional_properties = d

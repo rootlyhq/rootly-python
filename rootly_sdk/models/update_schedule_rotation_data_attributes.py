@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -43,47 +45,46 @@ class UpdateScheduleRotationDataAttributes:
     Attributes:
         schedule_rotationable_type (UpdateScheduleRotationDataAttributesScheduleRotationableType): Schedule rotation
             type
-        name (Union[Unset, str]): The name of the schedule rotation
-        position (Union[Unset, int]): Position of the schedule rotation
-        active_all_week (Union[Unset, bool]): Schedule rotation active all week? Default: True.
-        active_days (Union[Unset, list[UpdateScheduleRotationDataAttributesActiveDaysItem]]):
-        active_time_type (Union[Unset, str]):
-        active_time_attributes (Union[Unset, list['UpdateScheduleRotationDataAttributesActiveTimeAttributesItem']]):
-            Schedule rotation's active times
-        time_zone (Union[Unset, str]): A valid IANA time zone name. Default: 'Etc/UTC'.
-        schedule_rotationable_attributes
-            (Union['UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0',
-            'UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1',
-            'UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2',
-            'UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3', Unset]):
-        start_time (Union[None, Unset, str]): ISO8601 date and time when rotation starts. Shifts will only be created
-            after this time.
-        end_time (Union[None, Unset, str]): ISO8601 date and time when rotation ends. Shifts will only be created before
+        name (str | Unset): The name of the schedule rotation
+        position (int | Unset): Position of the schedule rotation
+        active_all_week (bool | Unset): Schedule rotation active all week? Default: True.
+        active_days (list[UpdateScheduleRotationDataAttributesActiveDaysItem] | Unset):
+        active_time_type (str | Unset):
+        active_time_attributes (list[UpdateScheduleRotationDataAttributesActiveTimeAttributesItem] | Unset): Schedule
+            rotation's active times
+        time_zone (str | Unset): A valid IANA time zone name. Default: 'Etc/UTC'.
+        schedule_rotationable_attributes (Unset |
+            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0 |
+            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1 |
+            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2 |
+            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3):
+        start_time (None | str | Unset): ISO8601 date and time when rotation starts. Shifts will only be created after
             this time.
-        schedule_rotation_members (Union[None, Unset,
-            list['UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item']]): You can only update schedule
-            rotation members if your account has schedule nesting feature enabled
+        end_time (None | str | Unset): ISO8601 date and time when rotation ends. Shifts will only be created before this
+            time.
+        schedule_rotation_members (list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None |
+            Unset): You can only update schedule rotation members if your account has schedule nesting feature enabled
     """
 
     schedule_rotationable_type: UpdateScheduleRotationDataAttributesScheduleRotationableType
-    name: Unset | str = UNSET
-    position: Unset | int = UNSET
-    active_all_week: Unset | bool = True
-    active_days: Unset | list[UpdateScheduleRotationDataAttributesActiveDaysItem] = UNSET
-    active_time_type: Unset | str = UNSET
-    active_time_attributes: Unset | list["UpdateScheduleRotationDataAttributesActiveTimeAttributesItem"] = UNSET
-    time_zone: Unset | str = "Etc/UTC"
-    schedule_rotationable_attributes: Union[
-        "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0",
-        "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1",
-        "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2",
-        "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3",
-        Unset,
-    ] = UNSET
-    start_time: None | Unset | str = UNSET
-    end_time: None | Unset | str = UNSET
+    name: str | Unset = UNSET
+    position: int | Unset = UNSET
+    active_all_week: bool | Unset = True
+    active_days: list[UpdateScheduleRotationDataAttributesActiveDaysItem] | Unset = UNSET
+    active_time_type: str | Unset = UNSET
+    active_time_attributes: list[UpdateScheduleRotationDataAttributesActiveTimeAttributesItem] | Unset = UNSET
+    time_zone: str | Unset = "Etc/UTC"
+    schedule_rotationable_attributes: (
+        Unset
+        | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0
+        | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1
+        | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2
+        | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3
+    ) = UNSET
+    start_time: None | str | Unset = UNSET
+    end_time: None | str | Unset = UNSET
     schedule_rotation_members: (
-        None | Unset | list["UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item"]
+        list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None | Unset
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -105,7 +106,7 @@ class UpdateScheduleRotationDataAttributes:
 
         active_all_week = self.active_all_week
 
-        active_days: Unset | list[str] = UNSET
+        active_days: list[str] | Unset = UNSET
         if not isinstance(self.active_days, Unset):
             active_days = []
             for active_days_item_data in self.active_days:
@@ -114,7 +115,7 @@ class UpdateScheduleRotationDataAttributes:
 
         active_time_type = self.active_time_type
 
-        active_time_attributes: Unset | list[dict[str, Any]] = UNSET
+        active_time_attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.active_time_attributes, Unset):
             active_time_attributes = []
             for active_time_attributes_item_data in self.active_time_attributes:
@@ -123,7 +124,7 @@ class UpdateScheduleRotationDataAttributes:
 
         time_zone = self.time_zone
 
-        schedule_rotationable_attributes: Unset | dict[str, Any]
+        schedule_rotationable_attributes: dict[str, Any] | Unset
         if isinstance(self.schedule_rotationable_attributes, Unset):
             schedule_rotationable_attributes = UNSET
         elif isinstance(
@@ -144,19 +145,19 @@ class UpdateScheduleRotationDataAttributes:
         else:
             schedule_rotationable_attributes = self.schedule_rotationable_attributes.to_dict()
 
-        start_time: None | Unset | str
+        start_time: None | str | Unset
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         else:
             start_time = self.start_time
 
-        end_time: None | Unset | str
+        end_time: None | str | Unset
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         else:
             end_time = self.end_time
 
-        schedule_rotation_members: None | Unset | list[dict[str, Any]]
+        schedule_rotation_members: list[dict[str, Any]] | None | Unset
         if isinstance(self.schedule_rotation_members, Unset):
             schedule_rotation_members = UNSET
         elif isinstance(self.schedule_rotation_members, list):
@@ -232,35 +233,41 @@ class UpdateScheduleRotationDataAttributes:
 
         active_all_week = d.pop("active_all_week", UNSET)
 
-        active_days = []
         _active_days = d.pop("active_days", UNSET)
-        for active_days_item_data in _active_days or []:
-            active_days_item = check_update_schedule_rotation_data_attributes_active_days_item(active_days_item_data)
+        active_days: list[UpdateScheduleRotationDataAttributesActiveDaysItem] | Unset = UNSET
+        if _active_days is not UNSET:
+            active_days = []
+            for active_days_item_data in _active_days:
+                active_days_item = check_update_schedule_rotation_data_attributes_active_days_item(
+                    active_days_item_data
+                )
 
-            active_days.append(active_days_item)
+                active_days.append(active_days_item)
 
         active_time_type = d.pop("active_time_type", UNSET)
 
-        active_time_attributes = []
         _active_time_attributes = d.pop("active_time_attributes", UNSET)
-        for active_time_attributes_item_data in _active_time_attributes or []:
-            active_time_attributes_item = UpdateScheduleRotationDataAttributesActiveTimeAttributesItem.from_dict(
-                active_time_attributes_item_data
-            )
+        active_time_attributes: list[UpdateScheduleRotationDataAttributesActiveTimeAttributesItem] | Unset = UNSET
+        if _active_time_attributes is not UNSET:
+            active_time_attributes = []
+            for active_time_attributes_item_data in _active_time_attributes:
+                active_time_attributes_item = UpdateScheduleRotationDataAttributesActiveTimeAttributesItem.from_dict(
+                    active_time_attributes_item_data
+                )
 
-            active_time_attributes.append(active_time_attributes_item)
+                active_time_attributes.append(active_time_attributes_item)
 
         time_zone = d.pop("time_zone", UNSET)
 
         def _parse_schedule_rotationable_attributes(
             data: object,
-        ) -> Union[
-            "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0",
-            "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1",
-            "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2",
-            "UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3",
-            Unset,
-        ]:
+        ) -> (
+            Unset
+            | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0
+            | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1
+            | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2
+            | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3
+        ):
             if isinstance(data, Unset):
                 return data
             try:
@@ -271,7 +278,7 @@ class UpdateScheduleRotationDataAttributes:
                 )
 
                 return schedule_rotationable_attributes_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -281,7 +288,7 @@ class UpdateScheduleRotationDataAttributes:
                 )
 
                 return schedule_rotationable_attributes_type_1
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -291,7 +298,7 @@ class UpdateScheduleRotationDataAttributes:
                 )
 
                 return schedule_rotationable_attributes_type_2
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -305,27 +312,27 @@ class UpdateScheduleRotationDataAttributes:
             d.pop("schedule_rotationable_attributes", UNSET)
         )
 
-        def _parse_start_time(data: object) -> None | Unset | str:
+        def _parse_start_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> None | Unset | str:
+        def _parse_end_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
         def _parse_schedule_rotation_members(
             data: object,
-        ) -> None | Unset | list["UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item"]:
+        ) -> list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -345,11 +352,9 @@ class UpdateScheduleRotationDataAttributes:
                     schedule_rotation_members_type_0.append(schedule_rotation_members_type_0_item)
 
                 return schedule_rotation_members_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(
-                None | Unset | list["UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item"], data
-            )
+            return cast(list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None | Unset, data)
 
         schedule_rotation_members = _parse_schedule_rotation_members(d.pop("schedule_rotation_members", UNSET))
 

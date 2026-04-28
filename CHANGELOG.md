@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-04-21
+
+### Added
+- New Escalation Paths endpoints (create, read, update, delete, list) with typed rule models (alert urgency, working hour, JSON path, field, service, deferral window)
+- New API Keys endpoints (create, read, update, delete, list, rotate)
+- New SLA endpoints (create, read, update, delete, list)
+- New On-Call endpoints (list on-call users)
+- New On-Call Pay Reports endpoints (create, read, update, delete, list)
+- New Meeting Recordings endpoints (read, list)
+- New Catalog Checklist Templates endpoints (create, read, update, delete, list)
+- New Catalog Entity Checklists endpoints (read, list)
+- New Catalog Properties endpoints (create, read, update, delete, list) — replaces Catalog Fields
+- Catalog property endpoints for causes, environments, functionalities, incident types, services, and teams
+- New incident actions: `detach_from_parent_incident`, `unmark_as_duplicate_incident`
+- New workflow task type: `PageJsmopsOnCallRespondersTaskParams` — page JSM Ops on-call responders
+- New workflow task type: `CreateJsmopsAlertTaskParams` — create JSM Ops alerts
+- New role permission types: catalogs, communication, edge connectors, incident communication, paging, SLAs, sub-statuses
+- Alert trigger params: alert condition urgency support
+- Status page: CNAME records and section ordering support
+- Page Rootly on-call responders: functionality target support
+- GitHub issue task params: issue type and labels support
+- Zoom meeting: global dial-in numbers support
+
+### Changed
+- Regenerated client from latest OpenAPI specification
+- **BREAKING**: Catalog Fields renamed to Catalog Properties across all endpoints and models
+- **BREAKING**: Minimum Python version bumped to 3.10
+
+### Removed
+- Catalog Fields endpoints and models (replaced by Catalog Properties)
+- Some escalation policy path rule type models (consolidated in upstream spec)
+
+### Fixed
+- Applied nullable enum fix to 1,348 model files via `tools/fix_nullable_enums.py`
+- Escalation path endpoints now fully generated — added `tools/fix_openapi_escalation_paths.py` to patch inline `oneOf` variants into named `$ref` schemas ([upstream bug](https://github.com/openapi-generators/openapi-python-client/issues/1428))
+
 ## [1.2.1] - 2025-03-02
 
 ### Fixed

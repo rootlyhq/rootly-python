@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -38,80 +40,80 @@ class PulseTriggerParams:
     """
     Attributes:
         trigger_type (PulseTriggerParamsTriggerType):
-        triggers (Union[Unset, list[PulseTriggerParamsTriggersItem]]):
-        pulse_condition (Union[Unset, PulseTriggerParamsPulseCondition]):
-        pulse_condition_source (Union[Unset, PulseTriggerParamsPulseConditionSource]):  Default: 'ANY'.
-        pulse_condition_source_use_regexp (Union[Unset, bool]):  Default: False.
-        pulse_sources (Union[Unset, list[str]]):
-        pulse_condition_label (Union[Unset, PulseTriggerParamsPulseConditionLabel]):  Default: 'ANY'.
-        pulse_condition_label_use_regexp (Union[Unset, bool]):  Default: False.
-        pulse_labels (Union[Unset, list[str]]):
-        pulse_condition_payload (Union[Unset, PulseTriggerParamsPulseConditionPayload]):  Default: 'ANY'.
-        pulse_condition_payload_use_regexp (Union[Unset, bool]):  Default: False.
-        pulse_payload (Union[Unset, list[str]]):
-        pulse_query_payload (Union[None, Unset, str]): You can use jsonpath syntax. eg: $.incident.teams[*]
+        triggers (list[PulseTriggerParamsTriggersItem] | Unset):
+        pulse_condition (PulseTriggerParamsPulseCondition | Unset):
+        pulse_condition_source (PulseTriggerParamsPulseConditionSource | Unset):  Default: 'ANY'.
+        pulse_condition_source_use_regexp (bool | Unset):  Default: False.
+        pulse_sources (list[str] | Unset):
+        pulse_condition_label (PulseTriggerParamsPulseConditionLabel | Unset):  Default: 'ANY'.
+        pulse_condition_label_use_regexp (bool | Unset):  Default: False.
+        pulse_labels (list[str] | Unset):
+        pulse_condition_payload (PulseTriggerParamsPulseConditionPayload | Unset):  Default: 'ANY'.
+        pulse_condition_payload_use_regexp (bool | Unset):  Default: False.
+        pulse_payload (list[str] | Unset):
+        pulse_query_payload (None | str | Unset): You can use jsonpath syntax. eg: $.incident.teams[*]
     """
 
     trigger_type: PulseTriggerParamsTriggerType
-    triggers: Unset | list[PulseTriggerParamsTriggersItem] = UNSET
-    pulse_condition: Unset | PulseTriggerParamsPulseCondition = UNSET
-    pulse_condition_source: Unset | PulseTriggerParamsPulseConditionSource = "ANY"
-    pulse_condition_source_use_regexp: Unset | bool = False
-    pulse_sources: Unset | list[str] = UNSET
-    pulse_condition_label: Unset | PulseTriggerParamsPulseConditionLabel = "ANY"
-    pulse_condition_label_use_regexp: Unset | bool = False
-    pulse_labels: Unset | list[str] = UNSET
-    pulse_condition_payload: Unset | PulseTriggerParamsPulseConditionPayload = "ANY"
-    pulse_condition_payload_use_regexp: Unset | bool = False
-    pulse_payload: Unset | list[str] = UNSET
-    pulse_query_payload: None | Unset | str = UNSET
+    triggers: list[PulseTriggerParamsTriggersItem] | Unset = UNSET
+    pulse_condition: PulseTriggerParamsPulseCondition | Unset = UNSET
+    pulse_condition_source: PulseTriggerParamsPulseConditionSource | Unset = "ANY"
+    pulse_condition_source_use_regexp: bool | Unset = False
+    pulse_sources: list[str] | Unset = UNSET
+    pulse_condition_label: PulseTriggerParamsPulseConditionLabel | Unset = "ANY"
+    pulse_condition_label_use_regexp: bool | Unset = False
+    pulse_labels: list[str] | Unset = UNSET
+    pulse_condition_payload: PulseTriggerParamsPulseConditionPayload | Unset = "ANY"
+    pulse_condition_payload_use_regexp: bool | Unset = False
+    pulse_payload: list[str] | Unset = UNSET
+    pulse_query_payload: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Unset | list[str] = UNSET
+        triggers: list[str] | Unset = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = []
             for triggers_item_data in self.triggers:
                 triggers_item: str = triggers_item_data
                 triggers.append(triggers_item)
 
-        pulse_condition: Unset | str = UNSET
+        pulse_condition: str | Unset = UNSET
         if not isinstance(self.pulse_condition, Unset):
             pulse_condition = self.pulse_condition
 
-        pulse_condition_source: Unset | str = UNSET
+        pulse_condition_source: str | Unset = UNSET
         if not isinstance(self.pulse_condition_source, Unset):
             pulse_condition_source = self.pulse_condition_source
 
         pulse_condition_source_use_regexp = self.pulse_condition_source_use_regexp
 
-        pulse_sources: Unset | list[str] = UNSET
+        pulse_sources: list[str] | Unset = UNSET
         if not isinstance(self.pulse_sources, Unset):
             pulse_sources = self.pulse_sources
 
-        pulse_condition_label: Unset | str = UNSET
+        pulse_condition_label: str | Unset = UNSET
         if not isinstance(self.pulse_condition_label, Unset):
             pulse_condition_label = self.pulse_condition_label
 
         pulse_condition_label_use_regexp = self.pulse_condition_label_use_regexp
 
-        pulse_labels: Unset | list[str] = UNSET
+        pulse_labels: list[str] | Unset = UNSET
         if not isinstance(self.pulse_labels, Unset):
             pulse_labels = self.pulse_labels
 
-        pulse_condition_payload: Unset | str = UNSET
+        pulse_condition_payload: str | Unset = UNSET
         if not isinstance(self.pulse_condition_payload, Unset):
             pulse_condition_payload = self.pulse_condition_payload
 
         pulse_condition_payload_use_regexp = self.pulse_condition_payload_use_regexp
 
-        pulse_payload: Unset | list[str] = UNSET
+        pulse_payload: list[str] | Unset = UNSET
         if not isinstance(self.pulse_payload, Unset):
             pulse_payload = self.pulse_payload
 
-        pulse_query_payload: None | Unset | str
+        pulse_query_payload: None | str | Unset
         if isinstance(self.pulse_query_payload, Unset):
             pulse_query_payload = UNSET
         else:
@@ -156,22 +158,24 @@ class PulseTriggerParams:
         d = dict(src_dict)
         trigger_type = check_pulse_trigger_params_trigger_type(d.pop("trigger_type"))
 
-        triggers = []
         _triggers = d.pop("triggers", UNSET)
-        for triggers_item_data in _triggers or []:
-            triggers_item = check_pulse_trigger_params_triggers_item(triggers_item_data)
+        triggers: list[PulseTriggerParamsTriggersItem] | Unset = UNSET
+        if _triggers is not UNSET:
+            triggers = []
+            for triggers_item_data in _triggers:
+                triggers_item = check_pulse_trigger_params_triggers_item(triggers_item_data)
 
-            triggers.append(triggers_item)
+                triggers.append(triggers_item)
 
         _pulse_condition = d.pop("pulse_condition", UNSET)
-        pulse_condition: Unset | PulseTriggerParamsPulseCondition
+        pulse_condition: PulseTriggerParamsPulseCondition | Unset
         if isinstance(_pulse_condition, Unset):
             pulse_condition = UNSET
         else:
             pulse_condition = check_pulse_trigger_params_pulse_condition(_pulse_condition)
 
         _pulse_condition_source = d.pop("pulse_condition_source", UNSET)
-        pulse_condition_source: Unset | PulseTriggerParamsPulseConditionSource
+        pulse_condition_source: PulseTriggerParamsPulseConditionSource | Unset
         if isinstance(_pulse_condition_source, Unset):
             pulse_condition_source = UNSET
         else:
@@ -182,7 +186,7 @@ class PulseTriggerParams:
         pulse_sources = cast(list[str], d.pop("pulse_sources", UNSET))
 
         _pulse_condition_label = d.pop("pulse_condition_label", UNSET)
-        pulse_condition_label: Unset | PulseTriggerParamsPulseConditionLabel
+        pulse_condition_label: PulseTriggerParamsPulseConditionLabel | Unset
         if isinstance(_pulse_condition_label, Unset):
             pulse_condition_label = UNSET
         else:
@@ -193,7 +197,7 @@ class PulseTriggerParams:
         pulse_labels = cast(list[str], d.pop("pulse_labels", UNSET))
 
         _pulse_condition_payload = d.pop("pulse_condition_payload", UNSET)
-        pulse_condition_payload: Unset | PulseTriggerParamsPulseConditionPayload
+        pulse_condition_payload: PulseTriggerParamsPulseConditionPayload | Unset
         if isinstance(_pulse_condition_payload, Unset):
             pulse_condition_payload = UNSET
         else:
@@ -203,12 +207,12 @@ class PulseTriggerParams:
 
         pulse_payload = cast(list[str], d.pop("pulse_payload", UNSET))
 
-        def _parse_pulse_query_payload(data: object) -> None | Unset | str:
+        def _parse_pulse_query_payload(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pulse_query_payload = _parse_pulse_query_payload(d.pop("pulse_query_payload", UNSET))
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,12 +25,12 @@ class RenameSlackChannelTaskParams:
     Attributes:
         channel (RenameSlackChannelTaskParamsChannel):
         title (str):
-        task_type (Union[Unset, RenameSlackChannelTaskParamsTaskType]):
+        task_type (RenameSlackChannelTaskParamsTaskType | Unset):
     """
 
-    channel: "RenameSlackChannelTaskParamsChannel"
+    channel: RenameSlackChannelTaskParamsChannel
     title: str
-    task_type: Unset | RenameSlackChannelTaskParamsTaskType = UNSET
+    task_type: RenameSlackChannelTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +38,7 @@ class RenameSlackChannelTaskParams:
 
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -63,7 +65,7 @@ class RenameSlackChannelTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | RenameSlackChannelTaskParamsTaskType
+        task_type: RenameSlackChannelTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

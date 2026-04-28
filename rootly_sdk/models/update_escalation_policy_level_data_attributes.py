@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -26,31 +28,31 @@ T = TypeVar("T", bound="UpdateEscalationPolicyLevelDataAttributes")
 class UpdateEscalationPolicyLevelDataAttributes:
     """
     Attributes:
-        delay (Union[Unset, int]): Delay before notifying targets in the next Escalation Level.
-        position (Union[Unset, int]): Position of the escalation policy level
-        escalation_policy_path_id (Union[None, Unset, str]): The ID of the dynamic escalation policy path the level will
+        delay (int | Unset): Delay before notifying targets in the next Escalation Level.
+        position (int | Unset): Position of the escalation policy level
+        escalation_policy_path_id (None | str | Unset): The ID of the dynamic escalation policy path the level will
             belong to. If nothing is specified it will add the level to your default path.
-        paging_strategy_configuration_strategy (Union[Unset,
-            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy]):  Default: 'default'.
-        paging_strategy_configuration_schedule_strategy (Union[Unset,
-            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy]):  Default:
+        paging_strategy_configuration_strategy
+            (UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy | Unset):  Default: 'default'.
+        paging_strategy_configuration_schedule_strategy
+            (UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy | Unset):  Default:
             'on_call_only'.
-        notification_target_params (Union[Unset,
-            list[Union['UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0', None]]]): Escalation
-            level's notification targets
+        notification_target_params (list[None |
+            UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0] | Unset): Escalation level's
+            notification targets
     """
 
-    delay: Unset | int = UNSET
-    position: Unset | int = UNSET
-    escalation_policy_path_id: None | Unset | str = UNSET
+    delay: int | Unset = UNSET
+    position: int | Unset = UNSET
+    escalation_policy_path_id: None | str | Unset = UNSET
     paging_strategy_configuration_strategy: (
-        Unset | UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
+        UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy | Unset
     ) = "default"
     paging_strategy_configuration_schedule_strategy: (
-        Unset | UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
+        UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy | Unset
     ) = "on_call_only"
     notification_target_params: (
-        Unset | list[Union["UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0", None]]
+        list[None | UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0] | Unset
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,25 +64,25 @@ class UpdateEscalationPolicyLevelDataAttributes:
 
         position = self.position
 
-        escalation_policy_path_id: None | Unset | str
+        escalation_policy_path_id: None | str | Unset
         if isinstance(self.escalation_policy_path_id, Unset):
             escalation_policy_path_id = UNSET
         else:
             escalation_policy_path_id = self.escalation_policy_path_id
 
-        paging_strategy_configuration_strategy: Unset | str = UNSET
+        paging_strategy_configuration_strategy: str | Unset = UNSET
         if not isinstance(self.paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = self.paging_strategy_configuration_strategy
 
-        paging_strategy_configuration_schedule_strategy: Unset | str = UNSET
+        paging_strategy_configuration_schedule_strategy: str | Unset = UNSET
         if not isinstance(self.paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = self.paging_strategy_configuration_schedule_strategy
 
-        notification_target_params: Unset | list[None | dict[str, Any]] = UNSET
+        notification_target_params: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.notification_target_params, Unset):
             notification_target_params = []
             for notification_target_params_item_data in self.notification_target_params:
-                notification_target_params_item: None | dict[str, Any]
+                notification_target_params_item: dict[str, Any] | None
                 if isinstance(
                     notification_target_params_item_data,
                     UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0,
@@ -121,18 +123,18 @@ class UpdateEscalationPolicyLevelDataAttributes:
 
         position = d.pop("position", UNSET)
 
-        def _parse_escalation_policy_path_id(data: object) -> None | Unset | str:
+        def _parse_escalation_policy_path_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         escalation_policy_path_id = _parse_escalation_policy_path_id(d.pop("escalation_policy_path_id", UNSET))
 
         _paging_strategy_configuration_strategy = d.pop("paging_strategy_configuration_strategy", UNSET)
         paging_strategy_configuration_strategy: (
-            Unset | UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy
+            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy | Unset
         )
         if isinstance(_paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = UNSET
@@ -147,7 +149,7 @@ class UpdateEscalationPolicyLevelDataAttributes:
             "paging_strategy_configuration_schedule_strategy", UNSET
         )
         paging_strategy_configuration_schedule_strategy: (
-            Unset | UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy
+            UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy | Unset
         )
         if isinstance(_paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = UNSET
@@ -158,34 +160,36 @@ class UpdateEscalationPolicyLevelDataAttributes:
                 )
             )
 
-        notification_target_params = []
         _notification_target_params = d.pop("notification_target_params", UNSET)
-        for notification_target_params_item_data in _notification_target_params or []:
+        notification_target_params: (
+            list[None | UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0] | Unset
+        ) = UNSET
+        if _notification_target_params is not UNSET:
+            notification_target_params = []
+            for notification_target_params_item_data in _notification_target_params:
 
-            def _parse_notification_target_params_item(
-                data: object,
-            ) -> Union["UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0", None]:
-                if data is None:
-                    return data
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    notification_target_params_item_type_0 = (
-                        UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0.from_dict(data)
-                    )
+                def _parse_notification_target_params_item(
+                    data: object,
+                ) -> None | UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
+                    if data is None:
+                        return data
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        notification_target_params_item_type_0 = (
+                            UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0.from_dict(data)
+                        )
 
-                    return notification_target_params_item_type_0
-                except:  # noqa: E722
-                    pass
-                return cast(
-                    Union["UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0", None], data
+                        return notification_target_params_item_type_0
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    return cast(None | UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0, data)
+
+                notification_target_params_item = _parse_notification_target_params_item(
+                    notification_target_params_item_data
                 )
 
-            notification_target_params_item = _parse_notification_target_params_item(
-                notification_target_params_item_data
-            )
-
-            notification_target_params.append(notification_target_params_item)
+                notification_target_params.append(notification_target_params_item)
 
         update_escalation_policy_level_data_attributes = cls(
             delay=delay,

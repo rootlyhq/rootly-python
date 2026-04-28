@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,20 +29,20 @@ class CreateDatadogNotebookTaskParams:
     Attributes:
         title (str): The notebook title
         kind (CreateDatadogNotebookTaskParamsKind): The notebook kind
-        task_type (Union[Unset, CreateDatadogNotebookTaskParamsTaskType]):
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating notebook, if desired
-        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
-        template (Union[Unset, CreateDatadogNotebookTaskParamsTemplate]):
-        content (Union[Unset, str]): The notebook content
+        task_type (CreateDatadogNotebookTaskParamsTaskType | Unset):
+        post_mortem_template_id (str | Unset): Retrospective template to use when creating notebook, if desired
+        mark_post_mortem_as_published (bool | Unset):  Default: True.
+        template (CreateDatadogNotebookTaskParamsTemplate | Unset):
+        content (str | Unset): The notebook content
     """
 
     title: str
     kind: CreateDatadogNotebookTaskParamsKind
-    task_type: Unset | CreateDatadogNotebookTaskParamsTaskType = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    mark_post_mortem_as_published: Unset | bool = True
-    template: Union[Unset, "CreateDatadogNotebookTaskParamsTemplate"] = UNSET
-    content: Unset | str = UNSET
+    task_type: CreateDatadogNotebookTaskParamsTaskType | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    mark_post_mortem_as_published: bool | Unset = True
+    template: CreateDatadogNotebookTaskParamsTemplate | Unset = UNSET
+    content: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,7 +50,7 @@ class CreateDatadogNotebookTaskParams:
 
         kind: str = self.kind
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -56,7 +58,7 @@ class CreateDatadogNotebookTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        template: Unset | dict[str, Any] = UNSET
+        template: dict[str, Any] | Unset = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -93,7 +95,7 @@ class CreateDatadogNotebookTaskParams:
         kind = check_create_datadog_notebook_task_params_kind(d.pop("kind"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateDatadogNotebookTaskParamsTaskType
+        task_type: CreateDatadogNotebookTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -104,7 +106,7 @@ class CreateDatadogNotebookTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Unset | CreateDatadogNotebookTaskParamsTemplate
+        template: CreateDatadogNotebookTaskParamsTemplate | Unset
         if isinstance(_template, Unset):
             template = UNSET
         else:

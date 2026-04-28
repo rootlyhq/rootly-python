@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,35 +19,35 @@ class NewIncidentStatusPageEventDataAttributes:
     """
     Attributes:
         event (str): The summary of the incident event
-        status_page_id (Union[Unset, str]): Unique ID of the status page you wish to post the event to
-        status (Union[Unset, NewIncidentStatusPageEventDataAttributesStatus]): The status of the incident event
-        notify_subscribers (Union[None, Unset, bool]): Notify all status pages subscribers Default: False.
-        should_tweet (Union[None, Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your
-            update Default: False.
+        status_page_id (str | Unset): Unique ID of the status page you wish to post the event to
+        status (NewIncidentStatusPageEventDataAttributesStatus | Unset): The status of the incident event
+        notify_subscribers (bool | None | Unset): Notify all status pages subscribers Default: False.
+        should_tweet (bool | None | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
+            Default: False.
     """
 
     event: str
-    status_page_id: Unset | str = UNSET
-    status: Unset | NewIncidentStatusPageEventDataAttributesStatus = UNSET
-    notify_subscribers: None | Unset | bool = False
-    should_tweet: None | Unset | bool = False
+    status_page_id: str | Unset = UNSET
+    status: NewIncidentStatusPageEventDataAttributesStatus | Unset = UNSET
+    notify_subscribers: bool | None | Unset = False
+    should_tweet: bool | None | Unset = False
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
         status_page_id = self.status_page_id
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: None | Unset | bool
+        notify_subscribers: bool | None | Unset
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: None | Unset | bool
+        should_tweet: bool | None | Unset
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
@@ -77,27 +79,27 @@ class NewIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | NewIncidentStatusPageEventDataAttributesStatus
+        status: NewIncidentStatusPageEventDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_new_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
+        def _parse_notify_subscribers(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> None | Unset | bool:
+        def _parse_should_tweet(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 

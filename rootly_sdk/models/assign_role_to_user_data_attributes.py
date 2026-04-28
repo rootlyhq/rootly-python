@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -12,12 +14,12 @@ T = TypeVar("T", bound="AssignRoleToUserDataAttributes")
 class AssignRoleToUserDataAttributes:
     """
     Attributes:
-        user_id (Union[Unset, str]): ID of user you wish to assign this incident
-        incident_role_id (Union[Unset, str]): ID of the incident role
+        user_id (str | Unset): ID of user you wish to assign this incident
+        incident_role_id (str | Unset): ID of the incident role
     """
 
-    user_id: Unset | str = UNSET
-    incident_role_id: Unset | str = UNSET
+    user_id: str | Unset = UNSET
+    incident_role_id: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         user_id = self.user_id

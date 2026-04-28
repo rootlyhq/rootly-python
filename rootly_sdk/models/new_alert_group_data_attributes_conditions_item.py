@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -28,32 +30,31 @@ class NewAlertGroupDataAttributesConditionsItem:
         property_field_type (NewAlertGroupDataAttributesConditionsItemPropertyFieldType): The type of the property field
         property_field_condition_type (NewAlertGroupDataAttributesConditionsItemPropertyFieldConditionType): The
             condition type of the property field
-        property_field_name (Union[Unset, str]): The name of the property field. If the property field type is selected
-            as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert_urgency'
-            and 'external_url' (for Alert Source URL). If the property field type is selected as 'payload', then the
-            property field name should be supplied in JSON Path syntax.
-        property_field_value (Union[Unset, str]): The value of the property field. Can be null if the property field
-            condition type is 'is_one_of' or 'is_not_one_of'
-        property_field_values (Union[Unset, list[str]]): The values of the property field. Need to be passed if the
-            property field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is
-            'alert_urgency'
-        alert_urgency_ids (Union[None, Unset, list[str]]): The Alert Urgency IDs to check in the condition. Only need to
-            be set when the property field type is 'attribute', the property field name is 'alert_urgency' and the property
+        property_field_name (str | Unset): The name of the property field. If the property field type is selected as
+            'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert_urgency' and
+            'external_url' (for Alert Source URL). If the property field type is selected as 'payload', then the property
+            field name should be supplied in JSON Path syntax.
+        property_field_value (str | Unset): The value of the property field. Can be null if the property field condition
+            type is 'is_one_of' or 'is_not_one_of'
+        property_field_values (list[str] | Unset): The values of the property field. Need to be passed if the property
+            field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is 'alert_urgency'
+        alert_urgency_ids (list[str] | None | Unset): The Alert Urgency IDs to check in the condition. Only need to be
+            set when the property field type is 'attribute', the property field name is 'alert_urgency' and the property
             field condition type is 'is_one_of' or 'is_not_one_of'
-        conditionable_type (Union[Unset, NewAlertGroupDataAttributesConditionsItemConditionableType]): The type of the
+        conditionable_type (NewAlertGroupDataAttributesConditionsItemConditionableType | Unset): The type of the
             conditionable
-        conditionable_id (Union[Unset, str]): The ID of the conditionable. If conditionable_type is AlertField, this is
-            the ID of the alert field.
+        conditionable_id (str | Unset): The ID of the conditionable. If conditionable_type is AlertField, this is the ID
+            of the alert field.
     """
 
     property_field_type: NewAlertGroupDataAttributesConditionsItemPropertyFieldType
     property_field_condition_type: NewAlertGroupDataAttributesConditionsItemPropertyFieldConditionType
-    property_field_name: Unset | str = UNSET
-    property_field_value: Unset | str = UNSET
-    property_field_values: Unset | list[str] = UNSET
-    alert_urgency_ids: None | Unset | list[str] = UNSET
-    conditionable_type: Unset | NewAlertGroupDataAttributesConditionsItemConditionableType = UNSET
-    conditionable_id: Unset | str = UNSET
+    property_field_name: str | Unset = UNSET
+    property_field_value: str | Unset = UNSET
+    property_field_values: list[str] | Unset = UNSET
+    alert_urgency_ids: list[str] | None | Unset = UNSET
+    conditionable_type: NewAlertGroupDataAttributesConditionsItemConditionableType | Unset = UNSET
+    conditionable_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,11 +66,11 @@ class NewAlertGroupDataAttributesConditionsItem:
 
         property_field_value = self.property_field_value
 
-        property_field_values: Unset | list[str] = UNSET
+        property_field_values: list[str] | Unset = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
-        alert_urgency_ids: None | Unset | list[str]
+        alert_urgency_ids: list[str] | None | Unset
         if isinstance(self.alert_urgency_ids, Unset):
             alert_urgency_ids = UNSET
         elif isinstance(self.alert_urgency_ids, list):
@@ -78,7 +79,7 @@ class NewAlertGroupDataAttributesConditionsItem:
         else:
             alert_urgency_ids = self.alert_urgency_ids
 
-        conditionable_type: Unset | str = UNSET
+        conditionable_type: str | Unset = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
@@ -126,7 +127,7 @@ class NewAlertGroupDataAttributesConditionsItem:
 
         property_field_values = cast(list[str], d.pop("property_field_values", UNSET))
 
-        def _parse_alert_urgency_ids(data: object) -> None | Unset | list[str]:
+        def _parse_alert_urgency_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -137,14 +138,14 @@ class NewAlertGroupDataAttributesConditionsItem:
                 alert_urgency_ids_type_0 = cast(list[str], data)
 
                 return alert_urgency_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         alert_urgency_ids = _parse_alert_urgency_ids(d.pop("alert_urgency_ids", UNSET))
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
-        conditionable_type: Unset | NewAlertGroupDataAttributesConditionsItemConditionableType
+        conditionable_type: NewAlertGroupDataAttributesConditionsItemConditionableType | Unset
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
         else:

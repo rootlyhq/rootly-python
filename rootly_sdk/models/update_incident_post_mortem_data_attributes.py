@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,61 +18,61 @@ T = TypeVar("T", bound="UpdateIncidentPostMortemDataAttributes")
 class UpdateIncidentPostMortemDataAttributes:
     """
     Attributes:
-        title (Union[Unset, str]): The title of the incident retrospective
-        status (Union[Unset, UpdateIncidentPostMortemDataAttributesStatus]): The status of the incident retrospective
-        started_at (Union[None, Unset, str]): Date of started at
-        mitigated_at (Union[None, Unset, str]): Date of mitigation
-        resolved_at (Union[None, Unset, str]): Date of resolution
-        show_timeline (Union[Unset, bool]): Show events timeline of the incident retrospective
-        show_timeline_trail (Union[Unset, bool]): Show trail events in the timeline of the incident retrospective
-        show_timeline_genius (Union[Unset, bool]): Show workflow events in the timeline of the incident retrospective
-        show_timeline_tasks (Union[Unset, bool]): Show tasks in the timeline of the incident retrospective
-        show_timeline_action_items (Union[Unset, bool]): Show action items in the timeline of the incident retrospective
-        show_services_impacted (Union[Unset, bool]): Show functionalities impacted of the incident retrospective
-        show_functionalities_impacted (Union[Unset, bool]): Show services impacted of the incident retrospective
-        show_groups_impacted (Union[Unset, bool]): Show groups impacted of the incident retrospective
-        show_alerts_attached (Union[Unset, bool]): Show alerts attached to the incident
-        show_action_items (Union[Unset, bool]): Show action items (follow-ups) in the incident retrospective
-        cause_ids (Union[None, Unset, list[str]]): The Cause IDs to attach to the incident retrospective
+        title (str | Unset): The title of the incident retrospective
+        status (UpdateIncidentPostMortemDataAttributesStatus | Unset): The status of the incident retrospective
+        started_at (None | str | Unset): Date of started at
+        mitigated_at (None | str | Unset): Date of mitigation
+        resolved_at (None | str | Unset): Date of resolution
+        show_timeline (bool | Unset): Show events timeline of the incident retrospective
+        show_timeline_trail (bool | Unset): Show trail events in the timeline of the incident retrospective
+        show_timeline_genius (bool | Unset): Show workflow events in the timeline of the incident retrospective
+        show_timeline_tasks (bool | Unset): Show tasks in the timeline of the incident retrospective
+        show_timeline_action_items (bool | Unset): Show action items in the timeline of the incident retrospective
+        show_services_impacted (bool | Unset): Show functionalities impacted of the incident retrospective
+        show_functionalities_impacted (bool | Unset): Show services impacted of the incident retrospective
+        show_groups_impacted (bool | Unset): Show groups impacted of the incident retrospective
+        show_alerts_attached (bool | Unset): Show alerts attached to the incident
+        show_action_items (bool | Unset): Show action items (follow-ups) in the incident retrospective
+        cause_ids (list[str] | None | Unset): The Cause IDs to attach to the incident retrospective
     """
 
-    title: Unset | str = UNSET
-    status: Unset | UpdateIncidentPostMortemDataAttributesStatus = UNSET
-    started_at: None | Unset | str = UNSET
-    mitigated_at: None | Unset | str = UNSET
-    resolved_at: None | Unset | str = UNSET
-    show_timeline: Unset | bool = UNSET
-    show_timeline_trail: Unset | bool = UNSET
-    show_timeline_genius: Unset | bool = UNSET
-    show_timeline_tasks: Unset | bool = UNSET
-    show_timeline_action_items: Unset | bool = UNSET
-    show_services_impacted: Unset | bool = UNSET
-    show_functionalities_impacted: Unset | bool = UNSET
-    show_groups_impacted: Unset | bool = UNSET
-    show_alerts_attached: Unset | bool = UNSET
-    show_action_items: Unset | bool = UNSET
-    cause_ids: None | Unset | list[str] = UNSET
+    title: str | Unset = UNSET
+    status: UpdateIncidentPostMortemDataAttributesStatus | Unset = UNSET
+    started_at: None | str | Unset = UNSET
+    mitigated_at: None | str | Unset = UNSET
+    resolved_at: None | str | Unset = UNSET
+    show_timeline: bool | Unset = UNSET
+    show_timeline_trail: bool | Unset = UNSET
+    show_timeline_genius: bool | Unset = UNSET
+    show_timeline_tasks: bool | Unset = UNSET
+    show_timeline_action_items: bool | Unset = UNSET
+    show_services_impacted: bool | Unset = UNSET
+    show_functionalities_impacted: bool | Unset = UNSET
+    show_groups_impacted: bool | Unset = UNSET
+    show_alerts_attached: bool | Unset = UNSET
+    show_action_items: bool | Unset = UNSET
+    cause_ids: list[str] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        mitigated_at: None | Unset | str
+        mitigated_at: None | str | Unset
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: None | Unset | str
+        resolved_at: None | str | Unset
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
@@ -96,7 +98,7 @@ class UpdateIncidentPostMortemDataAttributes:
 
         show_action_items = self.show_action_items
 
-        cause_ids: None | Unset | list[str]
+        cause_ids: list[str] | None | Unset
         if isinstance(self.cause_ids, Unset):
             cause_ids = UNSET
         elif isinstance(self.cause_ids, list):
@@ -149,36 +151,36 @@ class UpdateIncidentPostMortemDataAttributes:
         title = d.pop("title", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | UpdateIncidentPostMortemDataAttributesStatus
+        status: UpdateIncidentPostMortemDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_post_mortem_data_attributes_status(_status)
 
-        def _parse_started_at(data: object) -> None | Unset | str:
+        def _parse_started_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> None | Unset | str:
+        def _parse_mitigated_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> None | Unset | str:
+        def _parse_resolved_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
@@ -202,7 +204,7 @@ class UpdateIncidentPostMortemDataAttributes:
 
         show_action_items = d.pop("show_action_items", UNSET)
 
-        def _parse_cause_ids(data: object) -> None | Unset | list[str]:
+        def _parse_cause_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -213,9 +215,9 @@ class UpdateIncidentPostMortemDataAttributes:
                 cause_ids_type_0 = cast(list[str], data)
 
                 return cause_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         cause_ids = _parse_cause_ids(d.pop("cause_ids", UNSET))
 

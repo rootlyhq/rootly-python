@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,20 +23,20 @@ class IncidentStatusPageEvent:
         started_at (str): Date of start
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        status_page_id (Union[Unset, str]): Unique ID of the status page you wish to post the event to
-        status (Union[Unset, IncidentStatusPageEventStatus]): The status of the incident event
-        notify_subscribers (Union[Unset, bool]): Notify all status pages subscribers
-        should_tweet (Union[Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your update
+        status_page_id (str | Unset): Unique ID of the status page you wish to post the event to
+        status (IncidentStatusPageEventStatus | Unset): The status of the incident event
+        notify_subscribers (bool | Unset): Notify all status pages subscribers
+        should_tweet (bool | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
     """
 
     event: str
     started_at: str
     created_at: str
     updated_at: str
-    status_page_id: Unset | str = UNSET
-    status: Unset | IncidentStatusPageEventStatus = UNSET
-    notify_subscribers: Unset | bool = UNSET
-    should_tweet: Unset | bool = UNSET
+    status_page_id: str | Unset = UNSET
+    status: IncidentStatusPageEventStatus | Unset = UNSET
+    notify_subscribers: bool | Unset = UNSET
+    should_tweet: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,7 +50,7 @@ class IncidentStatusPageEvent:
 
         status_page_id = self.status_page_id
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -91,7 +93,7 @@ class IncidentStatusPageEvent:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | IncidentStatusPageEventStatus
+        status: IncidentStatusPageEventStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

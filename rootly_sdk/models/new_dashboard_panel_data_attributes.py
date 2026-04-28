@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -20,13 +22,13 @@ class NewDashboardPanelDataAttributes:
     """
     Attributes:
         params (NewDashboardPanelDataAttributesParams):
-        name (Union[None, Unset, str]): The name of the dashboard_panel
-        position (Union['NewDashboardPanelDataAttributesPositionType0', None, Unset]):
+        name (None | str | Unset): The name of the dashboard_panel
+        position (NewDashboardPanelDataAttributesPositionType0 | None | Unset):
     """
 
-    params: "NewDashboardPanelDataAttributesParams"
-    name: None | Unset | str = UNSET
-    position: Union["NewDashboardPanelDataAttributesPositionType0", None, Unset] = UNSET
+    params: NewDashboardPanelDataAttributesParams
+    name: None | str | Unset = UNSET
+    position: NewDashboardPanelDataAttributesPositionType0 | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_dashboard_panel_data_attributes_position_type_0 import (
@@ -35,13 +37,13 @@ class NewDashboardPanelDataAttributes:
 
         params = self.params.to_dict()
 
-        name: None | Unset | str
+        name: None | str | Unset
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        position: None | Unset | dict[str, Any]
+        position: dict[str, Any] | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, NewDashboardPanelDataAttributesPositionType0):
@@ -73,16 +75,16 @@ class NewDashboardPanelDataAttributes:
         d = dict(src_dict)
         params = NewDashboardPanelDataAttributesParams.from_dict(d.pop("params"))
 
-        def _parse_name(data: object) -> None | Unset | str:
+        def _parse_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_position(data: object) -> Union["NewDashboardPanelDataAttributesPositionType0", None, Unset]:
+        def _parse_position(data: object) -> NewDashboardPanelDataAttributesPositionType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -93,9 +95,9 @@ class NewDashboardPanelDataAttributes:
                 position_type_0 = NewDashboardPanelDataAttributesPositionType0.from_dict(data)
 
                 return position_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["NewDashboardPanelDataAttributesPositionType0", None, Unset], data)
+            return cast(NewDashboardPanelDataAttributesPositionType0 | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -41,6 +43,7 @@ if TYPE_CHECKING:
     from ..models.create_incident_task_params import CreateIncidentTaskParams
     from ..models.create_jira_issue_task_params import CreateJiraIssueTaskParams
     from ..models.create_jira_subtask_task_params import CreateJiraSubtaskTaskParams
+    from ..models.create_jsmops_alert_task_params import CreateJsmopsAlertTaskParams
     from ..models.create_linear_issue_comment_task_params import CreateLinearIssueCommentTaskParams
     from ..models.create_linear_issue_task_params import CreateLinearIssueTaskParams
     from ..models.create_linear_subtask_issue_task_params import CreateLinearSubtaskIssueTaskParams
@@ -74,6 +77,7 @@ if TYPE_CHECKING:
     from ..models.invite_to_slack_channel_opsgenie_task_params import InviteToSlackChannelOpsgenieTaskParams
     from ..models.invite_to_slack_channel_rootly_task_params import InviteToSlackChannelRootlyTaskParams
     from ..models.invite_to_slack_channel_victor_ops_task_params import InviteToSlackChannelVictorOpsTaskParams
+    from ..models.page_jsmops_on_call_responders_task_params import PageJsmopsOnCallRespondersTaskParams
     from ..models.page_opsgenie_on_call_responders_task_params import PageOpsgenieOnCallRespondersTaskParams
     from ..models.page_pagerduty_on_call_responders_task_params import PagePagerdutyOnCallRespondersTaskParams
     from ..models.page_rootly_on_call_responders_task_params import PageRootlyOnCallRespondersTaskParams
@@ -139,189 +143,190 @@ class WorkflowTask:
     """
     Attributes:
         workflow_id (str): The ID of the parent workflow
-        task_params (Union['AddActionItemTaskParams', 'AddMicrosoftTeamsChatTabTaskParams', 'AddRoleTaskParams',
-            'AddTeamTaskParams', 'AddToTimelineTaskParams', 'ArchiveMicrosoftTeamsChannelsTaskParams',
-            'ArchiveSlackChannelsTaskParams', 'AttachDatadogDashboardsTaskParams', 'AutoAssignRoleOpsgenieTaskParams',
-            'AutoAssignRoleRootlyTaskParams', 'AutoAssignRoleVictorOpsTaskParams', 'CallPeopleTaskParams',
-            'ChangeSlackChannelPrivacyTaskParams', 'CreateAirtableTableRecordTaskParams',
-            'CreateAnthropicChatCompletionTaskParams', 'CreateAsanaSubtaskTaskParams', 'CreateAsanaTaskTaskParams',
-            'CreateClickupTaskTaskParams', 'CreateCodaPageTaskParams', 'CreateConfluencePageTaskParams',
-            'CreateDatadogNotebookTaskParams', 'CreateDropboxPaperPageTaskParams', 'CreateGithubIssueTaskParams',
-            'CreateGitlabIssueTaskParams', 'CreateGoToMeetingTaskParams', 'CreateGoogleCalendarEventTaskParams',
-            'CreateGoogleDocsPageTaskParams', 'CreateGoogleDocsPermissionsTaskParams',
-            'CreateGoogleGeminiChatCompletionTaskParams', 'CreateGoogleMeetingTaskParams',
-            'CreateIncidentPostmortemTaskParams', 'CreateIncidentTaskParams', 'CreateJiraIssueTaskParams',
-            'CreateJiraSubtaskTaskParams', 'CreateLinearIssueCommentTaskParams', 'CreateLinearIssueTaskParams',
-            'CreateLinearSubtaskIssueTaskParams', 'CreateMicrosoftTeamsChannelTaskParams',
-            'CreateMicrosoftTeamsChatTaskParams', 'CreateMicrosoftTeamsMeetingTaskParams',
-            'CreateMistralChatCompletionTaskParams', 'CreateMotionTaskTaskParams', 'CreateNotionPageTaskParams',
-            'CreateOpenaiChatCompletionTaskParams', 'CreateOpsgenieAlertTaskParams', 'CreateOutlookEventTaskParams',
-            'CreatePagerdutyStatusUpdateTaskParams', 'CreatePagertreeAlertTaskParams', 'CreateQuipPageTaskParams',
-            'CreateServiceNowIncidentTaskParams', 'CreateSharepointPageTaskParams', 'CreateShortcutTaskTaskParams',
-            'CreateSlackChannelTaskParams', 'CreateSubIncidentTaskParams', 'CreateTrelloCardTaskParams',
-            'CreateWatsonxChatCompletionTaskParams', 'CreateWebexMeetingTaskParams', 'CreateZendeskJiraLinkTaskParams',
-            'CreateZendeskTicketTaskParams', 'CreateZoomMeetingTaskParams', 'GetAlertsTaskParams', 'GetPulsesTaskParams',
-            'HttpClientTaskParams', 'InviteToMicrosoftTeamsChannelTaskParams', 'InviteToSlackChannelOpsgenieTaskParams',
-            'InviteToSlackChannelRootlyTaskParams', 'InviteToSlackChannelVictorOpsTaskParams',
-            'PageOpsgenieOnCallRespondersTaskParams', 'PagePagerdutyOnCallRespondersTaskParams',
-            'PageRootlyOnCallRespondersTaskParams', 'PrintTaskParams', 'PublishIncidentTaskParams', 'RedisClientTaskParams',
-            'RemoveGoogleDocsPermissionsTaskParams', 'RenameMicrosoftTeamsChannelTaskParams',
-            'RenameSlackChannelTaskParams', 'RunCommandHerokuTaskParams', 'SendDashboardReportTaskParams',
-            'SendEmailTaskParams', 'SendMicrosoftTeamsChatMessageTaskParams', 'SendSmsTaskParams',
-            'SendWhatsappMessageTaskParams', 'SnapshotDatadogGraphTaskParams', 'SnapshotGrafanaDashboardTaskParams',
-            'SnapshotLookerLookTaskParams', 'SnapshotNewRelicGraphTaskParams', 'TriggerWorkflowTaskParams',
-            'TweetTwitterMessageTaskParams', 'UpdateActionItemTaskParams', 'UpdateAirtableTableRecordTaskParams',
-            'UpdateAsanaTaskTaskParams', 'UpdateAttachedAlertsTaskParams', 'UpdateClickupTaskTaskParams',
-            'UpdateCodaPageTaskParams', 'UpdateConfluencePageTaskParams', 'UpdateDatadogNotebookTaskParams',
-            'UpdateDropboxPaperPageTaskParams', 'UpdateGithubIssueTaskParams', 'UpdateGitlabIssueTaskParams',
-            'UpdateGoogleCalendarEventTaskParams', 'UpdateGoogleDocsPageTaskParams', 'UpdateIncidentPostmortemTaskParams',
-            'UpdateIncidentStatusTimestampTaskParams', 'UpdateIncidentTaskParams', 'UpdateJiraIssueTaskParams',
-            'UpdateLinearIssueTaskParams', 'UpdateMotionTaskTaskParams', 'UpdateNotionPageTaskParams',
-            'UpdateOpsgenieAlertTaskParams', 'UpdateOpsgenieIncidentTaskParams', 'UpdatePagerdutyIncidentTaskParams',
-            'UpdatePagertreeAlertTaskParams', 'UpdateQuipPageTaskParams', 'UpdateServiceNowIncidentTaskParams',
-            'UpdateSharepointPageTaskParams', 'UpdateShortcutStoryTaskParams', 'UpdateShortcutTaskTaskParams',
-            'UpdateSlackChannelTopicTaskParams', 'UpdateStatusTaskParams', 'UpdateTrelloCardTaskParams',
-            'UpdateVictorOpsIncidentTaskParams', 'UpdateZendeskTicketTaskParams', Any]):
+        task_params (AddActionItemTaskParams | AddMicrosoftTeamsChatTabTaskParams | AddRoleTaskParams |
+            AddTeamTaskParams | AddToTimelineTaskParams | Any | ArchiveMicrosoftTeamsChannelsTaskParams |
+            ArchiveSlackChannelsTaskParams | AttachDatadogDashboardsTaskParams | AutoAssignRoleOpsgenieTaskParams |
+            AutoAssignRoleRootlyTaskParams | AutoAssignRoleVictorOpsTaskParams | CallPeopleTaskParams |
+            ChangeSlackChannelPrivacyTaskParams | CreateAirtableTableRecordTaskParams |
+            CreateAnthropicChatCompletionTaskParams | CreateAsanaSubtaskTaskParams | CreateAsanaTaskTaskParams |
+            CreateClickupTaskTaskParams | CreateCodaPageTaskParams | CreateConfluencePageTaskParams |
+            CreateDatadogNotebookTaskParams | CreateDropboxPaperPageTaskParams | CreateGithubIssueTaskParams |
+            CreateGitlabIssueTaskParams | CreateGoogleCalendarEventTaskParams | CreateGoogleDocsPageTaskParams |
+            CreateGoogleDocsPermissionsTaskParams | CreateGoogleGeminiChatCompletionTaskParams |
+            CreateGoogleMeetingTaskParams | CreateGoToMeetingTaskParams | CreateIncidentPostmortemTaskParams |
+            CreateIncidentTaskParams | CreateJiraIssueTaskParams | CreateJiraSubtaskTaskParams | CreateJsmopsAlertTaskParams
+            | CreateLinearIssueCommentTaskParams | CreateLinearIssueTaskParams | CreateLinearSubtaskIssueTaskParams |
+            CreateMicrosoftTeamsChannelTaskParams | CreateMicrosoftTeamsChatTaskParams |
+            CreateMicrosoftTeamsMeetingTaskParams | CreateMistralChatCompletionTaskParams | CreateMotionTaskTaskParams |
+            CreateNotionPageTaskParams | CreateOpenaiChatCompletionTaskParams | CreateOpsgenieAlertTaskParams |
+            CreateOutlookEventTaskParams | CreatePagerdutyStatusUpdateTaskParams | CreatePagertreeAlertTaskParams |
+            CreateQuipPageTaskParams | CreateServiceNowIncidentTaskParams | CreateSharepointPageTaskParams |
+            CreateShortcutTaskTaskParams | CreateSlackChannelTaskParams | CreateSubIncidentTaskParams |
+            CreateTrelloCardTaskParams | CreateWatsonxChatCompletionTaskParams | CreateWebexMeetingTaskParams |
+            CreateZendeskJiraLinkTaskParams | CreateZendeskTicketTaskParams | CreateZoomMeetingTaskParams |
+            GetAlertsTaskParams | GetPulsesTaskParams | HttpClientTaskParams | InviteToMicrosoftTeamsChannelTaskParams |
+            InviteToSlackChannelOpsgenieTaskParams | InviteToSlackChannelRootlyTaskParams |
+            InviteToSlackChannelVictorOpsTaskParams | PageJsmopsOnCallRespondersTaskParams |
+            PageOpsgenieOnCallRespondersTaskParams | PagePagerdutyOnCallRespondersTaskParams |
+            PageRootlyOnCallRespondersTaskParams | PrintTaskParams | PublishIncidentTaskParams | RedisClientTaskParams |
+            RemoveGoogleDocsPermissionsTaskParams | RenameMicrosoftTeamsChannelTaskParams | RenameSlackChannelTaskParams |
+            RunCommandHerokuTaskParams | SendDashboardReportTaskParams | SendEmailTaskParams |
+            SendMicrosoftTeamsChatMessageTaskParams | SendSmsTaskParams | SendWhatsappMessageTaskParams |
+            SnapshotDatadogGraphTaskParams | SnapshotGrafanaDashboardTaskParams | SnapshotLookerLookTaskParams |
+            SnapshotNewRelicGraphTaskParams | TriggerWorkflowTaskParams | TweetTwitterMessageTaskParams |
+            UpdateActionItemTaskParams | UpdateAirtableTableRecordTaskParams | UpdateAsanaTaskTaskParams |
+            UpdateAttachedAlertsTaskParams | UpdateClickupTaskTaskParams | UpdateCodaPageTaskParams |
+            UpdateConfluencePageTaskParams | UpdateDatadogNotebookTaskParams | UpdateDropboxPaperPageTaskParams |
+            UpdateGithubIssueTaskParams | UpdateGitlabIssueTaskParams | UpdateGoogleCalendarEventTaskParams |
+            UpdateGoogleDocsPageTaskParams | UpdateIncidentPostmortemTaskParams | UpdateIncidentStatusTimestampTaskParams |
+            UpdateIncidentTaskParams | UpdateJiraIssueTaskParams | UpdateLinearIssueTaskParams | UpdateMotionTaskTaskParams
+            | UpdateNotionPageTaskParams | UpdateOpsgenieAlertTaskParams | UpdateOpsgenieIncidentTaskParams |
+            UpdatePagerdutyIncidentTaskParams | UpdatePagertreeAlertTaskParams | UpdateQuipPageTaskParams |
+            UpdateServiceNowIncidentTaskParams | UpdateSharepointPageTaskParams | UpdateShortcutStoryTaskParams |
+            UpdateShortcutTaskTaskParams | UpdateSlackChannelTopicTaskParams | UpdateStatusTaskParams |
+            UpdateTrelloCardTaskParams | UpdateVictorOpsIncidentTaskParams | UpdateZendeskTicketTaskParams):
         position (int): The position of the workflow task
         skip_on_failure (bool): Skip workflow task if any failures
         enabled (bool): Enable/disable workflow task Default: True.
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        name (Union[Unset, str]): Name of the workflow task
+        name (str | Unset): Name of the workflow task
     """
 
     workflow_id: str
-    task_params: Union[
-        "AddActionItemTaskParams",
-        "AddMicrosoftTeamsChatTabTaskParams",
-        "AddRoleTaskParams",
-        "AddTeamTaskParams",
-        "AddToTimelineTaskParams",
-        "ArchiveMicrosoftTeamsChannelsTaskParams",
-        "ArchiveSlackChannelsTaskParams",
-        "AttachDatadogDashboardsTaskParams",
-        "AutoAssignRoleOpsgenieTaskParams",
-        "AutoAssignRoleRootlyTaskParams",
-        "AutoAssignRoleVictorOpsTaskParams",
-        "CallPeopleTaskParams",
-        "ChangeSlackChannelPrivacyTaskParams",
-        "CreateAirtableTableRecordTaskParams",
-        "CreateAnthropicChatCompletionTaskParams",
-        "CreateAsanaSubtaskTaskParams",
-        "CreateAsanaTaskTaskParams",
-        "CreateClickupTaskTaskParams",
-        "CreateCodaPageTaskParams",
-        "CreateConfluencePageTaskParams",
-        "CreateDatadogNotebookTaskParams",
-        "CreateDropboxPaperPageTaskParams",
-        "CreateGithubIssueTaskParams",
-        "CreateGitlabIssueTaskParams",
-        "CreateGoToMeetingTaskParams",
-        "CreateGoogleCalendarEventTaskParams",
-        "CreateGoogleDocsPageTaskParams",
-        "CreateGoogleDocsPermissionsTaskParams",
-        "CreateGoogleGeminiChatCompletionTaskParams",
-        "CreateGoogleMeetingTaskParams",
-        "CreateIncidentPostmortemTaskParams",
-        "CreateIncidentTaskParams",
-        "CreateJiraIssueTaskParams",
-        "CreateJiraSubtaskTaskParams",
-        "CreateLinearIssueCommentTaskParams",
-        "CreateLinearIssueTaskParams",
-        "CreateLinearSubtaskIssueTaskParams",
-        "CreateMicrosoftTeamsChannelTaskParams",
-        "CreateMicrosoftTeamsChatTaskParams",
-        "CreateMicrosoftTeamsMeetingTaskParams",
-        "CreateMistralChatCompletionTaskParams",
-        "CreateMotionTaskTaskParams",
-        "CreateNotionPageTaskParams",
-        "CreateOpenaiChatCompletionTaskParams",
-        "CreateOpsgenieAlertTaskParams",
-        "CreateOutlookEventTaskParams",
-        "CreatePagerdutyStatusUpdateTaskParams",
-        "CreatePagertreeAlertTaskParams",
-        "CreateQuipPageTaskParams",
-        "CreateServiceNowIncidentTaskParams",
-        "CreateSharepointPageTaskParams",
-        "CreateShortcutTaskTaskParams",
-        "CreateSlackChannelTaskParams",
-        "CreateSubIncidentTaskParams",
-        "CreateTrelloCardTaskParams",
-        "CreateWatsonxChatCompletionTaskParams",
-        "CreateWebexMeetingTaskParams",
-        "CreateZendeskJiraLinkTaskParams",
-        "CreateZendeskTicketTaskParams",
-        "CreateZoomMeetingTaskParams",
-        "GetAlertsTaskParams",
-        "GetPulsesTaskParams",
-        "HttpClientTaskParams",
-        "InviteToMicrosoftTeamsChannelTaskParams",
-        "InviteToSlackChannelOpsgenieTaskParams",
-        "InviteToSlackChannelRootlyTaskParams",
-        "InviteToSlackChannelVictorOpsTaskParams",
-        "PageOpsgenieOnCallRespondersTaskParams",
-        "PagePagerdutyOnCallRespondersTaskParams",
-        "PageRootlyOnCallRespondersTaskParams",
-        "PrintTaskParams",
-        "PublishIncidentTaskParams",
-        "RedisClientTaskParams",
-        "RemoveGoogleDocsPermissionsTaskParams",
-        "RenameMicrosoftTeamsChannelTaskParams",
-        "RenameSlackChannelTaskParams",
-        "RunCommandHerokuTaskParams",
-        "SendDashboardReportTaskParams",
-        "SendEmailTaskParams",
-        "SendMicrosoftTeamsChatMessageTaskParams",
-        "SendSmsTaskParams",
-        "SendWhatsappMessageTaskParams",
-        "SnapshotDatadogGraphTaskParams",
-        "SnapshotGrafanaDashboardTaskParams",
-        "SnapshotLookerLookTaskParams",
-        "SnapshotNewRelicGraphTaskParams",
-        "TriggerWorkflowTaskParams",
-        "TweetTwitterMessageTaskParams",
-        "UpdateActionItemTaskParams",
-        "UpdateAirtableTableRecordTaskParams",
-        "UpdateAsanaTaskTaskParams",
-        "UpdateAttachedAlertsTaskParams",
-        "UpdateClickupTaskTaskParams",
-        "UpdateCodaPageTaskParams",
-        "UpdateConfluencePageTaskParams",
-        "UpdateDatadogNotebookTaskParams",
-        "UpdateDropboxPaperPageTaskParams",
-        "UpdateGithubIssueTaskParams",
-        "UpdateGitlabIssueTaskParams",
-        "UpdateGoogleCalendarEventTaskParams",
-        "UpdateGoogleDocsPageTaskParams",
-        "UpdateIncidentPostmortemTaskParams",
-        "UpdateIncidentStatusTimestampTaskParams",
-        "UpdateIncidentTaskParams",
-        "UpdateJiraIssueTaskParams",
-        "UpdateLinearIssueTaskParams",
-        "UpdateMotionTaskTaskParams",
-        "UpdateNotionPageTaskParams",
-        "UpdateOpsgenieAlertTaskParams",
-        "UpdateOpsgenieIncidentTaskParams",
-        "UpdatePagerdutyIncidentTaskParams",
-        "UpdatePagertreeAlertTaskParams",
-        "UpdateQuipPageTaskParams",
-        "UpdateServiceNowIncidentTaskParams",
-        "UpdateSharepointPageTaskParams",
-        "UpdateShortcutStoryTaskParams",
-        "UpdateShortcutTaskTaskParams",
-        "UpdateSlackChannelTopicTaskParams",
-        "UpdateStatusTaskParams",
-        "UpdateTrelloCardTaskParams",
-        "UpdateVictorOpsIncidentTaskParams",
-        "UpdateZendeskTicketTaskParams",
-        Any,
-    ]
+    task_params: (
+        AddActionItemTaskParams
+        | AddMicrosoftTeamsChatTabTaskParams
+        | AddRoleTaskParams
+        | AddTeamTaskParams
+        | AddToTimelineTaskParams
+        | Any
+        | ArchiveMicrosoftTeamsChannelsTaskParams
+        | ArchiveSlackChannelsTaskParams
+        | AttachDatadogDashboardsTaskParams
+        | AutoAssignRoleOpsgenieTaskParams
+        | AutoAssignRoleRootlyTaskParams
+        | AutoAssignRoleVictorOpsTaskParams
+        | CallPeopleTaskParams
+        | ChangeSlackChannelPrivacyTaskParams
+        | CreateAirtableTableRecordTaskParams
+        | CreateAnthropicChatCompletionTaskParams
+        | CreateAsanaSubtaskTaskParams
+        | CreateAsanaTaskTaskParams
+        | CreateClickupTaskTaskParams
+        | CreateCodaPageTaskParams
+        | CreateConfluencePageTaskParams
+        | CreateDatadogNotebookTaskParams
+        | CreateDropboxPaperPageTaskParams
+        | CreateGithubIssueTaskParams
+        | CreateGitlabIssueTaskParams
+        | CreateGoogleCalendarEventTaskParams
+        | CreateGoogleDocsPageTaskParams
+        | CreateGoogleDocsPermissionsTaskParams
+        | CreateGoogleGeminiChatCompletionTaskParams
+        | CreateGoogleMeetingTaskParams
+        | CreateGoToMeetingTaskParams
+        | CreateIncidentPostmortemTaskParams
+        | CreateIncidentTaskParams
+        | CreateJiraIssueTaskParams
+        | CreateJiraSubtaskTaskParams
+        | CreateJsmopsAlertTaskParams
+        | CreateLinearIssueCommentTaskParams
+        | CreateLinearIssueTaskParams
+        | CreateLinearSubtaskIssueTaskParams
+        | CreateMicrosoftTeamsChannelTaskParams
+        | CreateMicrosoftTeamsChatTaskParams
+        | CreateMicrosoftTeamsMeetingTaskParams
+        | CreateMistralChatCompletionTaskParams
+        | CreateMotionTaskTaskParams
+        | CreateNotionPageTaskParams
+        | CreateOpenaiChatCompletionTaskParams
+        | CreateOpsgenieAlertTaskParams
+        | CreateOutlookEventTaskParams
+        | CreatePagerdutyStatusUpdateTaskParams
+        | CreatePagertreeAlertTaskParams
+        | CreateQuipPageTaskParams
+        | CreateServiceNowIncidentTaskParams
+        | CreateSharepointPageTaskParams
+        | CreateShortcutTaskTaskParams
+        | CreateSlackChannelTaskParams
+        | CreateSubIncidentTaskParams
+        | CreateTrelloCardTaskParams
+        | CreateWatsonxChatCompletionTaskParams
+        | CreateWebexMeetingTaskParams
+        | CreateZendeskJiraLinkTaskParams
+        | CreateZendeskTicketTaskParams
+        | CreateZoomMeetingTaskParams
+        | GetAlertsTaskParams
+        | GetPulsesTaskParams
+        | HttpClientTaskParams
+        | InviteToMicrosoftTeamsChannelTaskParams
+        | InviteToSlackChannelOpsgenieTaskParams
+        | InviteToSlackChannelRootlyTaskParams
+        | InviteToSlackChannelVictorOpsTaskParams
+        | PageJsmopsOnCallRespondersTaskParams
+        | PageOpsgenieOnCallRespondersTaskParams
+        | PagePagerdutyOnCallRespondersTaskParams
+        | PageRootlyOnCallRespondersTaskParams
+        | PrintTaskParams
+        | PublishIncidentTaskParams
+        | RedisClientTaskParams
+        | RemoveGoogleDocsPermissionsTaskParams
+        | RenameMicrosoftTeamsChannelTaskParams
+        | RenameSlackChannelTaskParams
+        | RunCommandHerokuTaskParams
+        | SendDashboardReportTaskParams
+        | SendEmailTaskParams
+        | SendMicrosoftTeamsChatMessageTaskParams
+        | SendSmsTaskParams
+        | SendWhatsappMessageTaskParams
+        | SnapshotDatadogGraphTaskParams
+        | SnapshotGrafanaDashboardTaskParams
+        | SnapshotLookerLookTaskParams
+        | SnapshotNewRelicGraphTaskParams
+        | TriggerWorkflowTaskParams
+        | TweetTwitterMessageTaskParams
+        | UpdateActionItemTaskParams
+        | UpdateAirtableTableRecordTaskParams
+        | UpdateAsanaTaskTaskParams
+        | UpdateAttachedAlertsTaskParams
+        | UpdateClickupTaskTaskParams
+        | UpdateCodaPageTaskParams
+        | UpdateConfluencePageTaskParams
+        | UpdateDatadogNotebookTaskParams
+        | UpdateDropboxPaperPageTaskParams
+        | UpdateGithubIssueTaskParams
+        | UpdateGitlabIssueTaskParams
+        | UpdateGoogleCalendarEventTaskParams
+        | UpdateGoogleDocsPageTaskParams
+        | UpdateIncidentPostmortemTaskParams
+        | UpdateIncidentStatusTimestampTaskParams
+        | UpdateIncidentTaskParams
+        | UpdateJiraIssueTaskParams
+        | UpdateLinearIssueTaskParams
+        | UpdateMotionTaskTaskParams
+        | UpdateNotionPageTaskParams
+        | UpdateOpsgenieAlertTaskParams
+        | UpdateOpsgenieIncidentTaskParams
+        | UpdatePagerdutyIncidentTaskParams
+        | UpdatePagertreeAlertTaskParams
+        | UpdateQuipPageTaskParams
+        | UpdateServiceNowIncidentTaskParams
+        | UpdateSharepointPageTaskParams
+        | UpdateShortcutStoryTaskParams
+        | UpdateShortcutTaskTaskParams
+        | UpdateSlackChannelTopicTaskParams
+        | UpdateStatusTaskParams
+        | UpdateTrelloCardTaskParams
+        | UpdateVictorOpsIncidentTaskParams
+        | UpdateZendeskTicketTaskParams
+    )
     position: int
     skip_on_failure: bool
     created_at: str
     updated_at: str
     enabled: bool = True
-    name: Unset | str = UNSET
+    name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -359,6 +364,7 @@ class WorkflowTask:
         from ..models.create_incident_task_params import CreateIncidentTaskParams
         from ..models.create_jira_issue_task_params import CreateJiraIssueTaskParams
         from ..models.create_jira_subtask_task_params import CreateJiraSubtaskTaskParams
+        from ..models.create_jsmops_alert_task_params import CreateJsmopsAlertTaskParams
         from ..models.create_linear_issue_comment_task_params import CreateLinearIssueCommentTaskParams
         from ..models.create_linear_issue_task_params import CreateLinearIssueTaskParams
         from ..models.create_linear_subtask_issue_task_params import CreateLinearSubtaskIssueTaskParams
@@ -392,6 +398,7 @@ class WorkflowTask:
         from ..models.invite_to_slack_channel_opsgenie_task_params import InviteToSlackChannelOpsgenieTaskParams
         from ..models.invite_to_slack_channel_rootly_task_params import InviteToSlackChannelRootlyTaskParams
         from ..models.invite_to_slack_channel_victor_ops_task_params import InviteToSlackChannelVictorOpsTaskParams
+        from ..models.page_jsmops_on_call_responders_task_params import PageJsmopsOnCallRespondersTaskParams
         from ..models.page_opsgenie_on_call_responders_task_params import PageOpsgenieOnCallRespondersTaskParams
         from ..models.page_pagerduty_on_call_responders_task_params import PagePagerdutyOnCallRespondersTaskParams
         from ..models.page_rootly_on_call_responders_task_params import PageRootlyOnCallRespondersTaskParams
@@ -603,6 +610,10 @@ class WorkflowTask:
             task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, CreateOpsgenieAlertTaskParams):
             task_params = self.task_params.to_dict()
+        elif isinstance(self.task_params, CreateJsmopsAlertTaskParams):
+            task_params = self.task_params.to_dict()
+        elif isinstance(self.task_params, PageJsmopsOnCallRespondersTaskParams):
+            task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, UpdateOpsgenieAlertTaskParams):
             task_params = self.task_params.to_dict()
         elif isinstance(self.task_params, UpdateOpsgenieIncidentTaskParams):
@@ -764,6 +775,7 @@ class WorkflowTask:
         from ..models.create_incident_task_params import CreateIncidentTaskParams
         from ..models.create_jira_issue_task_params import CreateJiraIssueTaskParams
         from ..models.create_jira_subtask_task_params import CreateJiraSubtaskTaskParams
+        from ..models.create_jsmops_alert_task_params import CreateJsmopsAlertTaskParams
         from ..models.create_linear_issue_comment_task_params import CreateLinearIssueCommentTaskParams
         from ..models.create_linear_issue_task_params import CreateLinearIssueTaskParams
         from ..models.create_linear_subtask_issue_task_params import CreateLinearSubtaskIssueTaskParams
@@ -797,6 +809,7 @@ class WorkflowTask:
         from ..models.invite_to_slack_channel_opsgenie_task_params import InviteToSlackChannelOpsgenieTaskParams
         from ..models.invite_to_slack_channel_rootly_task_params import InviteToSlackChannelRootlyTaskParams
         from ..models.invite_to_slack_channel_victor_ops_task_params import InviteToSlackChannelVictorOpsTaskParams
+        from ..models.page_jsmops_on_call_responders_task_params import PageJsmopsOnCallRespondersTaskParams
         from ..models.page_opsgenie_on_call_responders_task_params import PageOpsgenieOnCallRespondersTaskParams
         from ..models.page_pagerduty_on_call_responders_task_params import PagePagerdutyOnCallRespondersTaskParams
         from ..models.page_rootly_on_call_responders_task_params import PageRootlyOnCallRespondersTaskParams
@@ -858,138 +871,140 @@ class WorkflowTask:
 
         def _parse_task_params(
             data: object,
-        ) -> Union[
-            "AddActionItemTaskParams",
-            "AddMicrosoftTeamsChatTabTaskParams",
-            "AddRoleTaskParams",
-            "AddTeamTaskParams",
-            "AddToTimelineTaskParams",
-            "ArchiveMicrosoftTeamsChannelsTaskParams",
-            "ArchiveSlackChannelsTaskParams",
-            "AttachDatadogDashboardsTaskParams",
-            "AutoAssignRoleOpsgenieTaskParams",
-            "AutoAssignRoleRootlyTaskParams",
-            "AutoAssignRoleVictorOpsTaskParams",
-            "CallPeopleTaskParams",
-            "ChangeSlackChannelPrivacyTaskParams",
-            "CreateAirtableTableRecordTaskParams",
-            "CreateAnthropicChatCompletionTaskParams",
-            "CreateAsanaSubtaskTaskParams",
-            "CreateAsanaTaskTaskParams",
-            "CreateClickupTaskTaskParams",
-            "CreateCodaPageTaskParams",
-            "CreateConfluencePageTaskParams",
-            "CreateDatadogNotebookTaskParams",
-            "CreateDropboxPaperPageTaskParams",
-            "CreateGithubIssueTaskParams",
-            "CreateGitlabIssueTaskParams",
-            "CreateGoToMeetingTaskParams",
-            "CreateGoogleCalendarEventTaskParams",
-            "CreateGoogleDocsPageTaskParams",
-            "CreateGoogleDocsPermissionsTaskParams",
-            "CreateGoogleGeminiChatCompletionTaskParams",
-            "CreateGoogleMeetingTaskParams",
-            "CreateIncidentPostmortemTaskParams",
-            "CreateIncidentTaskParams",
-            "CreateJiraIssueTaskParams",
-            "CreateJiraSubtaskTaskParams",
-            "CreateLinearIssueCommentTaskParams",
-            "CreateLinearIssueTaskParams",
-            "CreateLinearSubtaskIssueTaskParams",
-            "CreateMicrosoftTeamsChannelTaskParams",
-            "CreateMicrosoftTeamsChatTaskParams",
-            "CreateMicrosoftTeamsMeetingTaskParams",
-            "CreateMistralChatCompletionTaskParams",
-            "CreateMotionTaskTaskParams",
-            "CreateNotionPageTaskParams",
-            "CreateOpenaiChatCompletionTaskParams",
-            "CreateOpsgenieAlertTaskParams",
-            "CreateOutlookEventTaskParams",
-            "CreatePagerdutyStatusUpdateTaskParams",
-            "CreatePagertreeAlertTaskParams",
-            "CreateQuipPageTaskParams",
-            "CreateServiceNowIncidentTaskParams",
-            "CreateSharepointPageTaskParams",
-            "CreateShortcutTaskTaskParams",
-            "CreateSlackChannelTaskParams",
-            "CreateSubIncidentTaskParams",
-            "CreateTrelloCardTaskParams",
-            "CreateWatsonxChatCompletionTaskParams",
-            "CreateWebexMeetingTaskParams",
-            "CreateZendeskJiraLinkTaskParams",
-            "CreateZendeskTicketTaskParams",
-            "CreateZoomMeetingTaskParams",
-            "GetAlertsTaskParams",
-            "GetPulsesTaskParams",
-            "HttpClientTaskParams",
-            "InviteToMicrosoftTeamsChannelTaskParams",
-            "InviteToSlackChannelOpsgenieTaskParams",
-            "InviteToSlackChannelRootlyTaskParams",
-            "InviteToSlackChannelVictorOpsTaskParams",
-            "PageOpsgenieOnCallRespondersTaskParams",
-            "PagePagerdutyOnCallRespondersTaskParams",
-            "PageRootlyOnCallRespondersTaskParams",
-            "PrintTaskParams",
-            "PublishIncidentTaskParams",
-            "RedisClientTaskParams",
-            "RemoveGoogleDocsPermissionsTaskParams",
-            "RenameMicrosoftTeamsChannelTaskParams",
-            "RenameSlackChannelTaskParams",
-            "RunCommandHerokuTaskParams",
-            "SendDashboardReportTaskParams",
-            "SendEmailTaskParams",
-            "SendMicrosoftTeamsChatMessageTaskParams",
-            "SendSmsTaskParams",
-            "SendWhatsappMessageTaskParams",
-            "SnapshotDatadogGraphTaskParams",
-            "SnapshotGrafanaDashboardTaskParams",
-            "SnapshotLookerLookTaskParams",
-            "SnapshotNewRelicGraphTaskParams",
-            "TriggerWorkflowTaskParams",
-            "TweetTwitterMessageTaskParams",
-            "UpdateActionItemTaskParams",
-            "UpdateAirtableTableRecordTaskParams",
-            "UpdateAsanaTaskTaskParams",
-            "UpdateAttachedAlertsTaskParams",
-            "UpdateClickupTaskTaskParams",
-            "UpdateCodaPageTaskParams",
-            "UpdateConfluencePageTaskParams",
-            "UpdateDatadogNotebookTaskParams",
-            "UpdateDropboxPaperPageTaskParams",
-            "UpdateGithubIssueTaskParams",
-            "UpdateGitlabIssueTaskParams",
-            "UpdateGoogleCalendarEventTaskParams",
-            "UpdateGoogleDocsPageTaskParams",
-            "UpdateIncidentPostmortemTaskParams",
-            "UpdateIncidentStatusTimestampTaskParams",
-            "UpdateIncidentTaskParams",
-            "UpdateJiraIssueTaskParams",
-            "UpdateLinearIssueTaskParams",
-            "UpdateMotionTaskTaskParams",
-            "UpdateNotionPageTaskParams",
-            "UpdateOpsgenieAlertTaskParams",
-            "UpdateOpsgenieIncidentTaskParams",
-            "UpdatePagerdutyIncidentTaskParams",
-            "UpdatePagertreeAlertTaskParams",
-            "UpdateQuipPageTaskParams",
-            "UpdateServiceNowIncidentTaskParams",
-            "UpdateSharepointPageTaskParams",
-            "UpdateShortcutStoryTaskParams",
-            "UpdateShortcutTaskTaskParams",
-            "UpdateSlackChannelTopicTaskParams",
-            "UpdateStatusTaskParams",
-            "UpdateTrelloCardTaskParams",
-            "UpdateVictorOpsIncidentTaskParams",
-            "UpdateZendeskTicketTaskParams",
-            Any,
-        ]:
+        ) -> (
+            AddActionItemTaskParams
+            | AddMicrosoftTeamsChatTabTaskParams
+            | AddRoleTaskParams
+            | AddTeamTaskParams
+            | AddToTimelineTaskParams
+            | Any
+            | ArchiveMicrosoftTeamsChannelsTaskParams
+            | ArchiveSlackChannelsTaskParams
+            | AttachDatadogDashboardsTaskParams
+            | AutoAssignRoleOpsgenieTaskParams
+            | AutoAssignRoleRootlyTaskParams
+            | AutoAssignRoleVictorOpsTaskParams
+            | CallPeopleTaskParams
+            | ChangeSlackChannelPrivacyTaskParams
+            | CreateAirtableTableRecordTaskParams
+            | CreateAnthropicChatCompletionTaskParams
+            | CreateAsanaSubtaskTaskParams
+            | CreateAsanaTaskTaskParams
+            | CreateClickupTaskTaskParams
+            | CreateCodaPageTaskParams
+            | CreateConfluencePageTaskParams
+            | CreateDatadogNotebookTaskParams
+            | CreateDropboxPaperPageTaskParams
+            | CreateGithubIssueTaskParams
+            | CreateGitlabIssueTaskParams
+            | CreateGoogleCalendarEventTaskParams
+            | CreateGoogleDocsPageTaskParams
+            | CreateGoogleDocsPermissionsTaskParams
+            | CreateGoogleGeminiChatCompletionTaskParams
+            | CreateGoogleMeetingTaskParams
+            | CreateGoToMeetingTaskParams
+            | CreateIncidentPostmortemTaskParams
+            | CreateIncidentTaskParams
+            | CreateJiraIssueTaskParams
+            | CreateJiraSubtaskTaskParams
+            | CreateJsmopsAlertTaskParams
+            | CreateLinearIssueCommentTaskParams
+            | CreateLinearIssueTaskParams
+            | CreateLinearSubtaskIssueTaskParams
+            | CreateMicrosoftTeamsChannelTaskParams
+            | CreateMicrosoftTeamsChatTaskParams
+            | CreateMicrosoftTeamsMeetingTaskParams
+            | CreateMistralChatCompletionTaskParams
+            | CreateMotionTaskTaskParams
+            | CreateNotionPageTaskParams
+            | CreateOpenaiChatCompletionTaskParams
+            | CreateOpsgenieAlertTaskParams
+            | CreateOutlookEventTaskParams
+            | CreatePagerdutyStatusUpdateTaskParams
+            | CreatePagertreeAlertTaskParams
+            | CreateQuipPageTaskParams
+            | CreateServiceNowIncidentTaskParams
+            | CreateSharepointPageTaskParams
+            | CreateShortcutTaskTaskParams
+            | CreateSlackChannelTaskParams
+            | CreateSubIncidentTaskParams
+            | CreateTrelloCardTaskParams
+            | CreateWatsonxChatCompletionTaskParams
+            | CreateWebexMeetingTaskParams
+            | CreateZendeskJiraLinkTaskParams
+            | CreateZendeskTicketTaskParams
+            | CreateZoomMeetingTaskParams
+            | GetAlertsTaskParams
+            | GetPulsesTaskParams
+            | HttpClientTaskParams
+            | InviteToMicrosoftTeamsChannelTaskParams
+            | InviteToSlackChannelOpsgenieTaskParams
+            | InviteToSlackChannelRootlyTaskParams
+            | InviteToSlackChannelVictorOpsTaskParams
+            | PageJsmopsOnCallRespondersTaskParams
+            | PageOpsgenieOnCallRespondersTaskParams
+            | PagePagerdutyOnCallRespondersTaskParams
+            | PageRootlyOnCallRespondersTaskParams
+            | PrintTaskParams
+            | PublishIncidentTaskParams
+            | RedisClientTaskParams
+            | RemoveGoogleDocsPermissionsTaskParams
+            | RenameMicrosoftTeamsChannelTaskParams
+            | RenameSlackChannelTaskParams
+            | RunCommandHerokuTaskParams
+            | SendDashboardReportTaskParams
+            | SendEmailTaskParams
+            | SendMicrosoftTeamsChatMessageTaskParams
+            | SendSmsTaskParams
+            | SendWhatsappMessageTaskParams
+            | SnapshotDatadogGraphTaskParams
+            | SnapshotGrafanaDashboardTaskParams
+            | SnapshotLookerLookTaskParams
+            | SnapshotNewRelicGraphTaskParams
+            | TriggerWorkflowTaskParams
+            | TweetTwitterMessageTaskParams
+            | UpdateActionItemTaskParams
+            | UpdateAirtableTableRecordTaskParams
+            | UpdateAsanaTaskTaskParams
+            | UpdateAttachedAlertsTaskParams
+            | UpdateClickupTaskTaskParams
+            | UpdateCodaPageTaskParams
+            | UpdateConfluencePageTaskParams
+            | UpdateDatadogNotebookTaskParams
+            | UpdateDropboxPaperPageTaskParams
+            | UpdateGithubIssueTaskParams
+            | UpdateGitlabIssueTaskParams
+            | UpdateGoogleCalendarEventTaskParams
+            | UpdateGoogleDocsPageTaskParams
+            | UpdateIncidentPostmortemTaskParams
+            | UpdateIncidentStatusTimestampTaskParams
+            | UpdateIncidentTaskParams
+            | UpdateJiraIssueTaskParams
+            | UpdateLinearIssueTaskParams
+            | UpdateMotionTaskTaskParams
+            | UpdateNotionPageTaskParams
+            | UpdateOpsgenieAlertTaskParams
+            | UpdateOpsgenieIncidentTaskParams
+            | UpdatePagerdutyIncidentTaskParams
+            | UpdatePagertreeAlertTaskParams
+            | UpdateQuipPageTaskParams
+            | UpdateServiceNowIncidentTaskParams
+            | UpdateSharepointPageTaskParams
+            | UpdateShortcutStoryTaskParams
+            | UpdateShortcutTaskTaskParams
+            | UpdateSlackChannelTopicTaskParams
+            | UpdateStatusTaskParams
+            | UpdateTrelloCardTaskParams
+            | UpdateVictorOpsIncidentTaskParams
+            | UpdateZendeskTicketTaskParams
+        ):
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 task_params_type_0 = AddActionItemTaskParams.from_dict(data)
 
                 return task_params_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -997,7 +1012,7 @@ class WorkflowTask:
                 task_params_type_1 = UpdateActionItemTaskParams.from_dict(data)
 
                 return task_params_type_1
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1005,7 +1020,7 @@ class WorkflowTask:
                 task_params_type_2 = AddRoleTaskParams.from_dict(data)
 
                 return task_params_type_2
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1013,7 +1028,7 @@ class WorkflowTask:
                 task_params_type_4 = AddTeamTaskParams.from_dict(data)
 
                 return task_params_type_4
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1021,7 +1036,7 @@ class WorkflowTask:
                 task_params_type_5 = AddToTimelineTaskParams.from_dict(data)
 
                 return task_params_type_5
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1029,7 +1044,7 @@ class WorkflowTask:
                 task_params_type_6 = ArchiveSlackChannelsTaskParams.from_dict(data)
 
                 return task_params_type_6
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1037,7 +1052,7 @@ class WorkflowTask:
                 task_params_type_7 = AttachDatadogDashboardsTaskParams.from_dict(data)
 
                 return task_params_type_7
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1045,7 +1060,7 @@ class WorkflowTask:
                 task_params_type_8 = AutoAssignRoleOpsgenieTaskParams.from_dict(data)
 
                 return task_params_type_8
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1053,7 +1068,7 @@ class WorkflowTask:
                 task_params_type_9 = AutoAssignRoleRootlyTaskParams.from_dict(data)
 
                 return task_params_type_9
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1061,7 +1076,7 @@ class WorkflowTask:
                 task_params_type_11 = UpdatePagerdutyIncidentTaskParams.from_dict(data)
 
                 return task_params_type_11
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1069,7 +1084,7 @@ class WorkflowTask:
                 task_params_type_12 = CreatePagerdutyStatusUpdateTaskParams.from_dict(data)
 
                 return task_params_type_12
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1077,7 +1092,7 @@ class WorkflowTask:
                 task_params_type_13 = CreatePagertreeAlertTaskParams.from_dict(data)
 
                 return task_params_type_13
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1085,7 +1100,7 @@ class WorkflowTask:
                 task_params_type_14 = UpdatePagertreeAlertTaskParams.from_dict(data)
 
                 return task_params_type_14
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1093,7 +1108,7 @@ class WorkflowTask:
                 task_params_type_15 = AutoAssignRoleVictorOpsTaskParams.from_dict(data)
 
                 return task_params_type_15
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1101,7 +1116,7 @@ class WorkflowTask:
                 task_params_type_16 = CallPeopleTaskParams.from_dict(data)
 
                 return task_params_type_16
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1109,7 +1124,7 @@ class WorkflowTask:
                 task_params_type_17 = CreateAirtableTableRecordTaskParams.from_dict(data)
 
                 return task_params_type_17
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1117,7 +1132,7 @@ class WorkflowTask:
                 task_params_type_18 = CreateAsanaSubtaskTaskParams.from_dict(data)
 
                 return task_params_type_18
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1125,7 +1140,7 @@ class WorkflowTask:
                 task_params_type_19 = CreateAsanaTaskTaskParams.from_dict(data)
 
                 return task_params_type_19
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1133,7 +1148,7 @@ class WorkflowTask:
                 task_params_type_20 = CreateConfluencePageTaskParams.from_dict(data)
 
                 return task_params_type_20
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1141,7 +1156,7 @@ class WorkflowTask:
                 task_params_type_21 = CreateDatadogNotebookTaskParams.from_dict(data)
 
                 return task_params_type_21
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1149,7 +1164,7 @@ class WorkflowTask:
                 task_params_type_22 = CreateCodaPageTaskParams.from_dict(data)
 
                 return task_params_type_22
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1157,7 +1172,7 @@ class WorkflowTask:
                 task_params_type_23 = CreateDropboxPaperPageTaskParams.from_dict(data)
 
                 return task_params_type_23
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1165,7 +1180,7 @@ class WorkflowTask:
                 task_params_type_24 = CreateGithubIssueTaskParams.from_dict(data)
 
                 return task_params_type_24
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1173,7 +1188,7 @@ class WorkflowTask:
                 task_params_type_25 = CreateGitlabIssueTaskParams.from_dict(data)
 
                 return task_params_type_25
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1181,7 +1196,7 @@ class WorkflowTask:
                 task_params_type_26 = CreateOutlookEventTaskParams.from_dict(data)
 
                 return task_params_type_26
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1189,7 +1204,7 @@ class WorkflowTask:
                 task_params_type_27 = CreateGoogleCalendarEventTaskParams.from_dict(data)
 
                 return task_params_type_27
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1197,7 +1212,7 @@ class WorkflowTask:
                 task_params_type_28 = UpdateGoogleDocsPageTaskParams.from_dict(data)
 
                 return task_params_type_28
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1205,7 +1220,7 @@ class WorkflowTask:
                 task_params_type_29 = UpdateCodaPageTaskParams.from_dict(data)
 
                 return task_params_type_29
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1213,7 +1228,7 @@ class WorkflowTask:
                 task_params_type_30 = UpdateGoogleCalendarEventTaskParams.from_dict(data)
 
                 return task_params_type_30
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1221,7 +1236,7 @@ class WorkflowTask:
                 task_params_type_31 = CreateSharepointPageTaskParams.from_dict(data)
 
                 return task_params_type_31
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1229,7 +1244,7 @@ class WorkflowTask:
                 task_params_type_32 = CreateGoogleDocsPageTaskParams.from_dict(data)
 
                 return task_params_type_32
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1237,7 +1252,7 @@ class WorkflowTask:
                 task_params_type_33 = CreateGoogleDocsPermissionsTaskParams.from_dict(data)
 
                 return task_params_type_33
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1245,7 +1260,7 @@ class WorkflowTask:
                 task_params_type_34 = RemoveGoogleDocsPermissionsTaskParams.from_dict(data)
 
                 return task_params_type_34
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1253,7 +1268,7 @@ class WorkflowTask:
                 task_params_type_35 = CreateQuipPageTaskParams.from_dict(data)
 
                 return task_params_type_35
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1261,7 +1276,7 @@ class WorkflowTask:
                 task_params_type_36 = CreateGoogleMeetingTaskParams.from_dict(data)
 
                 return task_params_type_36
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1269,7 +1284,7 @@ class WorkflowTask:
                 task_params_type_37 = CreateGoToMeetingTaskParams.from_dict(data)
 
                 return task_params_type_37
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1277,7 +1292,7 @@ class WorkflowTask:
                 task_params_type_38 = CreateIncidentTaskParams.from_dict(data)
 
                 return task_params_type_38
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1285,7 +1300,7 @@ class WorkflowTask:
                 task_params_type_39 = CreateSubIncidentTaskParams.from_dict(data)
 
                 return task_params_type_39
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1293,7 +1308,7 @@ class WorkflowTask:
                 task_params_type_40 = CreateIncidentPostmortemTaskParams.from_dict(data)
 
                 return task_params_type_40
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1301,7 +1316,7 @@ class WorkflowTask:
                 task_params_type_41 = CreateJiraIssueTaskParams.from_dict(data)
 
                 return task_params_type_41
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1309,7 +1324,7 @@ class WorkflowTask:
                 task_params_type_42 = CreateJiraSubtaskTaskParams.from_dict(data)
 
                 return task_params_type_42
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1317,7 +1332,7 @@ class WorkflowTask:
                 task_params_type_43 = CreateLinearIssueTaskParams.from_dict(data)
 
                 return task_params_type_43
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1325,7 +1340,7 @@ class WorkflowTask:
                 task_params_type_44 = CreateLinearSubtaskIssueTaskParams.from_dict(data)
 
                 return task_params_type_44
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1333,7 +1348,7 @@ class WorkflowTask:
                 task_params_type_45 = CreateLinearIssueCommentTaskParams.from_dict(data)
 
                 return task_params_type_45
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1341,7 +1356,7 @@ class WorkflowTask:
                 task_params_type_46 = CreateMicrosoftTeamsMeetingTaskParams.from_dict(data)
 
                 return task_params_type_46
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1349,7 +1364,7 @@ class WorkflowTask:
                 task_params_type_47 = CreateMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_47
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1357,7 +1372,7 @@ class WorkflowTask:
                 task_params_type_48 = CreateMicrosoftTeamsChatTaskParams.from_dict(data)
 
                 return task_params_type_48
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1365,7 +1380,7 @@ class WorkflowTask:
                 task_params_type_50 = AddMicrosoftTeamsChatTabTaskParams.from_dict(data)
 
                 return task_params_type_50
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1373,7 +1388,7 @@ class WorkflowTask:
                 task_params_type_51 = ArchiveMicrosoftTeamsChannelsTaskParams.from_dict(data)
 
                 return task_params_type_51
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1381,7 +1396,7 @@ class WorkflowTask:
                 task_params_type_52 = RenameMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_52
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1389,7 +1404,7 @@ class WorkflowTask:
                 task_params_type_53 = InviteToMicrosoftTeamsChannelTaskParams.from_dict(data)
 
                 return task_params_type_53
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1397,7 +1412,7 @@ class WorkflowTask:
                 task_params_type_54 = CreateNotionPageTaskParams.from_dict(data)
 
                 return task_params_type_54
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1405,7 +1420,7 @@ class WorkflowTask:
                 task_params_type_56 = SendMicrosoftTeamsChatMessageTaskParams.from_dict(data)
 
                 return task_params_type_56
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1413,7 +1428,7 @@ class WorkflowTask:
                 task_params_type_58 = UpdateNotionPageTaskParams.from_dict(data)
 
                 return task_params_type_58
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1421,7 +1436,7 @@ class WorkflowTask:
                 task_params_type_59 = UpdateQuipPageTaskParams.from_dict(data)
 
                 return task_params_type_59
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1429,7 +1444,7 @@ class WorkflowTask:
                 task_params_type_60 = UpdateConfluencePageTaskParams.from_dict(data)
 
                 return task_params_type_60
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1437,7 +1452,7 @@ class WorkflowTask:
                 task_params_type_61 = UpdateSharepointPageTaskParams.from_dict(data)
 
                 return task_params_type_61
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1445,7 +1460,7 @@ class WorkflowTask:
                 task_params_type_62 = UpdateDropboxPaperPageTaskParams.from_dict(data)
 
                 return task_params_type_62
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1453,7 +1468,7 @@ class WorkflowTask:
                 task_params_type_63 = UpdateDatadogNotebookTaskParams.from_dict(data)
 
                 return task_params_type_63
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1461,7 +1476,7 @@ class WorkflowTask:
                 task_params_type_64 = CreateServiceNowIncidentTaskParams.from_dict(data)
 
                 return task_params_type_64
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1469,7 +1484,7 @@ class WorkflowTask:
                 task_params_type_66 = CreateShortcutTaskTaskParams.from_dict(data)
 
                 return task_params_type_66
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1477,7 +1492,7 @@ class WorkflowTask:
                 task_params_type_67 = CreateTrelloCardTaskParams.from_dict(data)
 
                 return task_params_type_67
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1485,7 +1500,7 @@ class WorkflowTask:
                 task_params_type_68 = CreateWebexMeetingTaskParams.from_dict(data)
 
                 return task_params_type_68
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1493,7 +1508,7 @@ class WorkflowTask:
                 task_params_type_69 = CreateZendeskTicketTaskParams.from_dict(data)
 
                 return task_params_type_69
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1501,7 +1516,7 @@ class WorkflowTask:
                 task_params_type_70 = CreateZendeskJiraLinkTaskParams.from_dict(data)
 
                 return task_params_type_70
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1509,7 +1524,7 @@ class WorkflowTask:
                 task_params_type_71 = CreateClickupTaskTaskParams.from_dict(data)
 
                 return task_params_type_71
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1517,7 +1532,7 @@ class WorkflowTask:
                 task_params_type_72 = CreateMotionTaskTaskParams.from_dict(data)
 
                 return task_params_type_72
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1525,7 +1540,7 @@ class WorkflowTask:
                 task_params_type_73 = CreateZoomMeetingTaskParams.from_dict(data)
 
                 return task_params_type_73
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1533,7 +1548,7 @@ class WorkflowTask:
                 task_params_type_76 = GetPulsesTaskParams.from_dict(data)
 
                 return task_params_type_76
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1541,7 +1556,7 @@ class WorkflowTask:
                 task_params_type_77 = GetAlertsTaskParams.from_dict(data)
 
                 return task_params_type_77
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1549,7 +1564,7 @@ class WorkflowTask:
                 task_params_type_78 = HttpClientTaskParams.from_dict(data)
 
                 return task_params_type_78
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1557,7 +1572,7 @@ class WorkflowTask:
                 task_params_type_79 = InviteToSlackChannelOpsgenieTaskParams.from_dict(data)
 
                 return task_params_type_79
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1565,7 +1580,7 @@ class WorkflowTask:
                 task_params_type_80 = InviteToSlackChannelRootlyTaskParams.from_dict(data)
 
                 return task_params_type_80
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1573,7 +1588,7 @@ class WorkflowTask:
                 task_params_type_83 = InviteToSlackChannelVictorOpsTaskParams.from_dict(data)
 
                 return task_params_type_83
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1581,7 +1596,7 @@ class WorkflowTask:
                 task_params_type_84 = PageOpsgenieOnCallRespondersTaskParams.from_dict(data)
 
                 return task_params_type_84
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -1589,502 +1604,518 @@ class WorkflowTask:
                 task_params_type_85 = CreateOpsgenieAlertTaskParams.from_dict(data)
 
                 return task_params_type_85
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_86 = UpdateOpsgenieAlertTaskParams.from_dict(data)
+                task_params_type_86 = CreateJsmopsAlertTaskParams.from_dict(data)
 
                 return task_params_type_86
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_87 = UpdateOpsgenieIncidentTaskParams.from_dict(data)
+                task_params_type_87 = PageJsmopsOnCallRespondersTaskParams.from_dict(data)
 
                 return task_params_type_87
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_88 = PageRootlyOnCallRespondersTaskParams.from_dict(data)
+                task_params_type_88 = UpdateOpsgenieAlertTaskParams.from_dict(data)
 
                 return task_params_type_88
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_89 = PagePagerdutyOnCallRespondersTaskParams.from_dict(data)
+                task_params_type_89 = UpdateOpsgenieIncidentTaskParams.from_dict(data)
 
                 return task_params_type_89
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_91 = UpdateVictorOpsIncidentTaskParams.from_dict(data)
+                task_params_type_90 = PageRootlyOnCallRespondersTaskParams.from_dict(data)
+
+                return task_params_type_90
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_91 = PagePagerdutyOnCallRespondersTaskParams.from_dict(data)
 
                 return task_params_type_91
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_92 = PrintTaskParams.from_dict(data)
-
-                return task_params_type_92
-            except:  # noqa: E722
-                pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                task_params_type_93 = PublishIncidentTaskParams.from_dict(data)
+                task_params_type_93 = UpdateVictorOpsIncidentTaskParams.from_dict(data)
 
                 return task_params_type_93
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_94 = RedisClientTaskParams.from_dict(data)
+                task_params_type_94 = PrintTaskParams.from_dict(data)
 
                 return task_params_type_94
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_95 = RenameSlackChannelTaskParams.from_dict(data)
+                task_params_type_95 = PublishIncidentTaskParams.from_dict(data)
 
                 return task_params_type_95
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_96 = ChangeSlackChannelPrivacyTaskParams.from_dict(data)
+                task_params_type_96 = RedisClientTaskParams.from_dict(data)
 
                 return task_params_type_96
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_97 = RunCommandHerokuTaskParams.from_dict(data)
+                task_params_type_97 = RenameSlackChannelTaskParams.from_dict(data)
 
                 return task_params_type_97
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_98 = SendEmailTaskParams.from_dict(data)
+                task_params_type_98 = ChangeSlackChannelPrivacyTaskParams.from_dict(data)
 
                 return task_params_type_98
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_99 = SendDashboardReportTaskParams.from_dict(data)
+                task_params_type_99 = RunCommandHerokuTaskParams.from_dict(data)
 
                 return task_params_type_99
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_100 = CreateSlackChannelTaskParams.from_dict(data)
+                task_params_type_100 = SendEmailTaskParams.from_dict(data)
 
                 return task_params_type_100
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_102 = SendSmsTaskParams.from_dict(data)
+                task_params_type_101 = SendDashboardReportTaskParams.from_dict(data)
+
+                return task_params_type_101
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_102 = CreateSlackChannelTaskParams.from_dict(data)
 
                 return task_params_type_102
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_103 = SendWhatsappMessageTaskParams.from_dict(data)
-
-                return task_params_type_103
-            except:  # noqa: E722
-                pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                task_params_type_104 = SnapshotDatadogGraphTaskParams.from_dict(data)
+                task_params_type_104 = SendSmsTaskParams.from_dict(data)
 
                 return task_params_type_104
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_105 = SnapshotGrafanaDashboardTaskParams.from_dict(data)
+                task_params_type_105 = SendWhatsappMessageTaskParams.from_dict(data)
 
                 return task_params_type_105
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_106 = SnapshotLookerLookTaskParams.from_dict(data)
+                task_params_type_106 = SnapshotDatadogGraphTaskParams.from_dict(data)
 
                 return task_params_type_106
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_107 = SnapshotNewRelicGraphTaskParams.from_dict(data)
+                task_params_type_107 = SnapshotGrafanaDashboardTaskParams.from_dict(data)
 
                 return task_params_type_107
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_108 = TweetTwitterMessageTaskParams.from_dict(data)
+                task_params_type_108 = SnapshotLookerLookTaskParams.from_dict(data)
 
                 return task_params_type_108
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_109 = UpdateAirtableTableRecordTaskParams.from_dict(data)
+                task_params_type_109 = SnapshotNewRelicGraphTaskParams.from_dict(data)
 
                 return task_params_type_109
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_110 = UpdateAsanaTaskTaskParams.from_dict(data)
+                task_params_type_110 = TweetTwitterMessageTaskParams.from_dict(data)
 
                 return task_params_type_110
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_111 = UpdateGithubIssueTaskParams.from_dict(data)
+                task_params_type_111 = UpdateAirtableTableRecordTaskParams.from_dict(data)
 
                 return task_params_type_111
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_112 = UpdateGitlabIssueTaskParams.from_dict(data)
+                task_params_type_112 = UpdateAsanaTaskTaskParams.from_dict(data)
 
                 return task_params_type_112
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_113 = UpdateIncidentTaskParams.from_dict(data)
+                task_params_type_113 = UpdateGithubIssueTaskParams.from_dict(data)
 
                 return task_params_type_113
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_114 = UpdateIncidentPostmortemTaskParams.from_dict(data)
+                task_params_type_114 = UpdateGitlabIssueTaskParams.from_dict(data)
 
                 return task_params_type_114
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_115 = UpdateJiraIssueTaskParams.from_dict(data)
+                task_params_type_115 = UpdateIncidentTaskParams.from_dict(data)
 
                 return task_params_type_115
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_116 = UpdateLinearIssueTaskParams.from_dict(data)
+                task_params_type_116 = UpdateIncidentPostmortemTaskParams.from_dict(data)
 
                 return task_params_type_116
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_117 = UpdateServiceNowIncidentTaskParams.from_dict(data)
+                task_params_type_117 = UpdateJiraIssueTaskParams.from_dict(data)
 
                 return task_params_type_117
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_118 = UpdateShortcutStoryTaskParams.from_dict(data)
+                task_params_type_118 = UpdateLinearIssueTaskParams.from_dict(data)
 
                 return task_params_type_118
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_119 = UpdateShortcutTaskTaskParams.from_dict(data)
+                task_params_type_119 = UpdateServiceNowIncidentTaskParams.from_dict(data)
 
                 return task_params_type_119
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_120 = UpdateSlackChannelTopicTaskParams.from_dict(data)
+                task_params_type_120 = UpdateShortcutStoryTaskParams.from_dict(data)
 
                 return task_params_type_120
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_121 = UpdateStatusTaskParams.from_dict(data)
+                task_params_type_121 = UpdateShortcutTaskTaskParams.from_dict(data)
 
                 return task_params_type_121
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_122 = UpdateIncidentStatusTimestampTaskParams.from_dict(data)
+                task_params_type_122 = UpdateSlackChannelTopicTaskParams.from_dict(data)
 
                 return task_params_type_122
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_123 = UpdateTrelloCardTaskParams.from_dict(data)
+                task_params_type_123 = UpdateStatusTaskParams.from_dict(data)
 
                 return task_params_type_123
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_124 = UpdateClickupTaskTaskParams.from_dict(data)
+                task_params_type_124 = UpdateIncidentStatusTimestampTaskParams.from_dict(data)
 
                 return task_params_type_124
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_125 = UpdateMotionTaskTaskParams.from_dict(data)
+                task_params_type_125 = UpdateTrelloCardTaskParams.from_dict(data)
 
                 return task_params_type_125
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_126 = UpdateZendeskTicketTaskParams.from_dict(data)
+                task_params_type_126 = UpdateClickupTaskTaskParams.from_dict(data)
 
                 return task_params_type_126
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_127 = UpdateAttachedAlertsTaskParams.from_dict(data)
+                task_params_type_127 = UpdateMotionTaskTaskParams.from_dict(data)
 
                 return task_params_type_127
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_128 = TriggerWorkflowTaskParams.from_dict(data)
+                task_params_type_128 = UpdateZendeskTicketTaskParams.from_dict(data)
 
                 return task_params_type_128
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_130 = CreateOpenaiChatCompletionTaskParams.from_dict(data)
+                task_params_type_129 = UpdateAttachedAlertsTaskParams.from_dict(data)
+
+                return task_params_type_129
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_130 = TriggerWorkflowTaskParams.from_dict(data)
 
                 return task_params_type_130
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_131 = CreateWatsonxChatCompletionTaskParams.from_dict(data)
-
-                return task_params_type_131
-            except:  # noqa: E722
-                pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                task_params_type_132 = CreateGoogleGeminiChatCompletionTaskParams.from_dict(data)
+                task_params_type_132 = CreateOpenaiChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_132
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_133 = CreateMistralChatCompletionTaskParams.from_dict(data)
+                task_params_type_133 = CreateWatsonxChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_133
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                task_params_type_134 = CreateAnthropicChatCompletionTaskParams.from_dict(data)
+                task_params_type_134 = CreateGoogleGeminiChatCompletionTaskParams.from_dict(data)
 
                 return task_params_type_134
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_135 = CreateMistralChatCompletionTaskParams.from_dict(data)
+
+                return task_params_type_135
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                task_params_type_136 = CreateAnthropicChatCompletionTaskParams.from_dict(data)
+
+                return task_params_type_136
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(
-                Union[
-                    "AddActionItemTaskParams",
-                    "AddMicrosoftTeamsChatTabTaskParams",
-                    "AddRoleTaskParams",
-                    "AddTeamTaskParams",
-                    "AddToTimelineTaskParams",
-                    "ArchiveMicrosoftTeamsChannelsTaskParams",
-                    "ArchiveSlackChannelsTaskParams",
-                    "AttachDatadogDashboardsTaskParams",
-                    "AutoAssignRoleOpsgenieTaskParams",
-                    "AutoAssignRoleRootlyTaskParams",
-                    "AutoAssignRoleVictorOpsTaskParams",
-                    "CallPeopleTaskParams",
-                    "ChangeSlackChannelPrivacyTaskParams",
-                    "CreateAirtableTableRecordTaskParams",
-                    "CreateAnthropicChatCompletionTaskParams",
-                    "CreateAsanaSubtaskTaskParams",
-                    "CreateAsanaTaskTaskParams",
-                    "CreateClickupTaskTaskParams",
-                    "CreateCodaPageTaskParams",
-                    "CreateConfluencePageTaskParams",
-                    "CreateDatadogNotebookTaskParams",
-                    "CreateDropboxPaperPageTaskParams",
-                    "CreateGithubIssueTaskParams",
-                    "CreateGitlabIssueTaskParams",
-                    "CreateGoToMeetingTaskParams",
-                    "CreateGoogleCalendarEventTaskParams",
-                    "CreateGoogleDocsPageTaskParams",
-                    "CreateGoogleDocsPermissionsTaskParams",
-                    "CreateGoogleGeminiChatCompletionTaskParams",
-                    "CreateGoogleMeetingTaskParams",
-                    "CreateIncidentPostmortemTaskParams",
-                    "CreateIncidentTaskParams",
-                    "CreateJiraIssueTaskParams",
-                    "CreateJiraSubtaskTaskParams",
-                    "CreateLinearIssueCommentTaskParams",
-                    "CreateLinearIssueTaskParams",
-                    "CreateLinearSubtaskIssueTaskParams",
-                    "CreateMicrosoftTeamsChannelTaskParams",
-                    "CreateMicrosoftTeamsChatTaskParams",
-                    "CreateMicrosoftTeamsMeetingTaskParams",
-                    "CreateMistralChatCompletionTaskParams",
-                    "CreateMotionTaskTaskParams",
-                    "CreateNotionPageTaskParams",
-                    "CreateOpenaiChatCompletionTaskParams",
-                    "CreateOpsgenieAlertTaskParams",
-                    "CreateOutlookEventTaskParams",
-                    "CreatePagerdutyStatusUpdateTaskParams",
-                    "CreatePagertreeAlertTaskParams",
-                    "CreateQuipPageTaskParams",
-                    "CreateServiceNowIncidentTaskParams",
-                    "CreateSharepointPageTaskParams",
-                    "CreateShortcutTaskTaskParams",
-                    "CreateSlackChannelTaskParams",
-                    "CreateSubIncidentTaskParams",
-                    "CreateTrelloCardTaskParams",
-                    "CreateWatsonxChatCompletionTaskParams",
-                    "CreateWebexMeetingTaskParams",
-                    "CreateZendeskJiraLinkTaskParams",
-                    "CreateZendeskTicketTaskParams",
-                    "CreateZoomMeetingTaskParams",
-                    "GetAlertsTaskParams",
-                    "GetPulsesTaskParams",
-                    "HttpClientTaskParams",
-                    "InviteToMicrosoftTeamsChannelTaskParams",
-                    "InviteToSlackChannelOpsgenieTaskParams",
-                    "InviteToSlackChannelRootlyTaskParams",
-                    "InviteToSlackChannelVictorOpsTaskParams",
-                    "PageOpsgenieOnCallRespondersTaskParams",
-                    "PagePagerdutyOnCallRespondersTaskParams",
-                    "PageRootlyOnCallRespondersTaskParams",
-                    "PrintTaskParams",
-                    "PublishIncidentTaskParams",
-                    "RedisClientTaskParams",
-                    "RemoveGoogleDocsPermissionsTaskParams",
-                    "RenameMicrosoftTeamsChannelTaskParams",
-                    "RenameSlackChannelTaskParams",
-                    "RunCommandHerokuTaskParams",
-                    "SendDashboardReportTaskParams",
-                    "SendEmailTaskParams",
-                    "SendMicrosoftTeamsChatMessageTaskParams",
-                    "SendSmsTaskParams",
-                    "SendWhatsappMessageTaskParams",
-                    "SnapshotDatadogGraphTaskParams",
-                    "SnapshotGrafanaDashboardTaskParams",
-                    "SnapshotLookerLookTaskParams",
-                    "SnapshotNewRelicGraphTaskParams",
-                    "TriggerWorkflowTaskParams",
-                    "TweetTwitterMessageTaskParams",
-                    "UpdateActionItemTaskParams",
-                    "UpdateAirtableTableRecordTaskParams",
-                    "UpdateAsanaTaskTaskParams",
-                    "UpdateAttachedAlertsTaskParams",
-                    "UpdateClickupTaskTaskParams",
-                    "UpdateCodaPageTaskParams",
-                    "UpdateConfluencePageTaskParams",
-                    "UpdateDatadogNotebookTaskParams",
-                    "UpdateDropboxPaperPageTaskParams",
-                    "UpdateGithubIssueTaskParams",
-                    "UpdateGitlabIssueTaskParams",
-                    "UpdateGoogleCalendarEventTaskParams",
-                    "UpdateGoogleDocsPageTaskParams",
-                    "UpdateIncidentPostmortemTaskParams",
-                    "UpdateIncidentStatusTimestampTaskParams",
-                    "UpdateIncidentTaskParams",
-                    "UpdateJiraIssueTaskParams",
-                    "UpdateLinearIssueTaskParams",
-                    "UpdateMotionTaskTaskParams",
-                    "UpdateNotionPageTaskParams",
-                    "UpdateOpsgenieAlertTaskParams",
-                    "UpdateOpsgenieIncidentTaskParams",
-                    "UpdatePagerdutyIncidentTaskParams",
-                    "UpdatePagertreeAlertTaskParams",
-                    "UpdateQuipPageTaskParams",
-                    "UpdateServiceNowIncidentTaskParams",
-                    "UpdateSharepointPageTaskParams",
-                    "UpdateShortcutStoryTaskParams",
-                    "UpdateShortcutTaskTaskParams",
-                    "UpdateSlackChannelTopicTaskParams",
-                    "UpdateStatusTaskParams",
-                    "UpdateTrelloCardTaskParams",
-                    "UpdateVictorOpsIncidentTaskParams",
-                    "UpdateZendeskTicketTaskParams",
-                    Any,
-                ],
+                AddActionItemTaskParams
+                | AddMicrosoftTeamsChatTabTaskParams
+                | AddRoleTaskParams
+                | AddTeamTaskParams
+                | AddToTimelineTaskParams
+                | Any
+                | ArchiveMicrosoftTeamsChannelsTaskParams
+                | ArchiveSlackChannelsTaskParams
+                | AttachDatadogDashboardsTaskParams
+                | AutoAssignRoleOpsgenieTaskParams
+                | AutoAssignRoleRootlyTaskParams
+                | AutoAssignRoleVictorOpsTaskParams
+                | CallPeopleTaskParams
+                | ChangeSlackChannelPrivacyTaskParams
+                | CreateAirtableTableRecordTaskParams
+                | CreateAnthropicChatCompletionTaskParams
+                | CreateAsanaSubtaskTaskParams
+                | CreateAsanaTaskTaskParams
+                | CreateClickupTaskTaskParams
+                | CreateCodaPageTaskParams
+                | CreateConfluencePageTaskParams
+                | CreateDatadogNotebookTaskParams
+                | CreateDropboxPaperPageTaskParams
+                | CreateGithubIssueTaskParams
+                | CreateGitlabIssueTaskParams
+                | CreateGoogleCalendarEventTaskParams
+                | CreateGoogleDocsPageTaskParams
+                | CreateGoogleDocsPermissionsTaskParams
+                | CreateGoogleGeminiChatCompletionTaskParams
+                | CreateGoogleMeetingTaskParams
+                | CreateGoToMeetingTaskParams
+                | CreateIncidentPostmortemTaskParams
+                | CreateIncidentTaskParams
+                | CreateJiraIssueTaskParams
+                | CreateJiraSubtaskTaskParams
+                | CreateJsmopsAlertTaskParams
+                | CreateLinearIssueCommentTaskParams
+                | CreateLinearIssueTaskParams
+                | CreateLinearSubtaskIssueTaskParams
+                | CreateMicrosoftTeamsChannelTaskParams
+                | CreateMicrosoftTeamsChatTaskParams
+                | CreateMicrosoftTeamsMeetingTaskParams
+                | CreateMistralChatCompletionTaskParams
+                | CreateMotionTaskTaskParams
+                | CreateNotionPageTaskParams
+                | CreateOpenaiChatCompletionTaskParams
+                | CreateOpsgenieAlertTaskParams
+                | CreateOutlookEventTaskParams
+                | CreatePagerdutyStatusUpdateTaskParams
+                | CreatePagertreeAlertTaskParams
+                | CreateQuipPageTaskParams
+                | CreateServiceNowIncidentTaskParams
+                | CreateSharepointPageTaskParams
+                | CreateShortcutTaskTaskParams
+                | CreateSlackChannelTaskParams
+                | CreateSubIncidentTaskParams
+                | CreateTrelloCardTaskParams
+                | CreateWatsonxChatCompletionTaskParams
+                | CreateWebexMeetingTaskParams
+                | CreateZendeskJiraLinkTaskParams
+                | CreateZendeskTicketTaskParams
+                | CreateZoomMeetingTaskParams
+                | GetAlertsTaskParams
+                | GetPulsesTaskParams
+                | HttpClientTaskParams
+                | InviteToMicrosoftTeamsChannelTaskParams
+                | InviteToSlackChannelOpsgenieTaskParams
+                | InviteToSlackChannelRootlyTaskParams
+                | InviteToSlackChannelVictorOpsTaskParams
+                | PageJsmopsOnCallRespondersTaskParams
+                | PageOpsgenieOnCallRespondersTaskParams
+                | PagePagerdutyOnCallRespondersTaskParams
+                | PageRootlyOnCallRespondersTaskParams
+                | PrintTaskParams
+                | PublishIncidentTaskParams
+                | RedisClientTaskParams
+                | RemoveGoogleDocsPermissionsTaskParams
+                | RenameMicrosoftTeamsChannelTaskParams
+                | RenameSlackChannelTaskParams
+                | RunCommandHerokuTaskParams
+                | SendDashboardReportTaskParams
+                | SendEmailTaskParams
+                | SendMicrosoftTeamsChatMessageTaskParams
+                | SendSmsTaskParams
+                | SendWhatsappMessageTaskParams
+                | SnapshotDatadogGraphTaskParams
+                | SnapshotGrafanaDashboardTaskParams
+                | SnapshotLookerLookTaskParams
+                | SnapshotNewRelicGraphTaskParams
+                | TriggerWorkflowTaskParams
+                | TweetTwitterMessageTaskParams
+                | UpdateActionItemTaskParams
+                | UpdateAirtableTableRecordTaskParams
+                | UpdateAsanaTaskTaskParams
+                | UpdateAttachedAlertsTaskParams
+                | UpdateClickupTaskTaskParams
+                | UpdateCodaPageTaskParams
+                | UpdateConfluencePageTaskParams
+                | UpdateDatadogNotebookTaskParams
+                | UpdateDropboxPaperPageTaskParams
+                | UpdateGithubIssueTaskParams
+                | UpdateGitlabIssueTaskParams
+                | UpdateGoogleCalendarEventTaskParams
+                | UpdateGoogleDocsPageTaskParams
+                | UpdateIncidentPostmortemTaskParams
+                | UpdateIncidentStatusTimestampTaskParams
+                | UpdateIncidentTaskParams
+                | UpdateJiraIssueTaskParams
+                | UpdateLinearIssueTaskParams
+                | UpdateMotionTaskTaskParams
+                | UpdateNotionPageTaskParams
+                | UpdateOpsgenieAlertTaskParams
+                | UpdateOpsgenieIncidentTaskParams
+                | UpdatePagerdutyIncidentTaskParams
+                | UpdatePagertreeAlertTaskParams
+                | UpdateQuipPageTaskParams
+                | UpdateServiceNowIncidentTaskParams
+                | UpdateSharepointPageTaskParams
+                | UpdateShortcutStoryTaskParams
+                | UpdateShortcutTaskTaskParams
+                | UpdateSlackChannelTopicTaskParams
+                | UpdateStatusTaskParams
+                | UpdateTrelloCardTaskParams
+                | UpdateVictorOpsIncidentTaskParams
+                | UpdateZendeskTicketTaskParams,
                 data,
             )
 

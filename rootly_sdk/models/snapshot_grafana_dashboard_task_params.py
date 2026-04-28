@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -26,16 +28,16 @@ T = TypeVar("T", bound="SnapshotGrafanaDashboardTaskParams")
 class SnapshotGrafanaDashboardTaskParams:
     """
     Attributes:
-        dashboards (list['SnapshotGrafanaDashboardTaskParamsDashboardsItem']):
-        task_type (Union[Unset, SnapshotGrafanaDashboardTaskParamsTaskType]):
-        post_to_incident_timeline (Union[Unset, bool]):
-        post_to_slack_channels (Union[Unset, list['SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem']]):
+        dashboards (list[SnapshotGrafanaDashboardTaskParamsDashboardsItem]):
+        task_type (SnapshotGrafanaDashboardTaskParamsTaskType | Unset):
+        post_to_incident_timeline (bool | Unset):
+        post_to_slack_channels (list[SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem] | Unset):
     """
 
-    dashboards: list["SnapshotGrafanaDashboardTaskParamsDashboardsItem"]
-    task_type: Unset | SnapshotGrafanaDashboardTaskParamsTaskType = UNSET
-    post_to_incident_timeline: Unset | bool = UNSET
-    post_to_slack_channels: Unset | list["SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem"] = UNSET
+    dashboards: list[SnapshotGrafanaDashboardTaskParamsDashboardsItem]
+    task_type: SnapshotGrafanaDashboardTaskParamsTaskType | Unset = UNSET
+    post_to_incident_timeline: bool | Unset = UNSET
+    post_to_slack_channels: list[SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +46,13 @@ class SnapshotGrafanaDashboardTaskParams:
             dashboards_item = dashboards_item_data.to_dict()
             dashboards.append(dashboards_item)
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -91,7 +93,7 @@ class SnapshotGrafanaDashboardTaskParams:
             dashboards.append(dashboards_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | SnapshotGrafanaDashboardTaskParamsTaskType
+        task_type: SnapshotGrafanaDashboardTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -99,14 +101,16 @@ class SnapshotGrafanaDashboardTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = SnapshotGrafanaDashboardTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
 
         snapshot_grafana_dashboard_task_params = cls(
             dashboards=dashboards,

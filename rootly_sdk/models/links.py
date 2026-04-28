@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,16 +15,16 @@ class Links:
     Attributes:
         self_ (str):
         first (str):
-        prev (Union[None, str]):
-        next_ (Union[None, str]):
-        last (str):
+        prev (None | str):
+        next_ (None | str):
+        last (None | str):
     """
 
     self_: str
     first: str
     prev: None | str
     next_: None | str
-    last: str
+    last: None | str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +38,7 @@ class Links:
         next_: None | str
         next_ = self.next_
 
+        last: None | str
         last = self.last
 
         field_dict: dict[str, Any] = {}
@@ -73,7 +76,12 @@ class Links:
 
         next_ = _parse_next_(d.pop("next"))
 
-        last = d.pop("last")
+        def _parse_last(data: object) -> None | str:
+            if data is None:
+                return data
+            return cast(None | str, data)
+
+        last = _parse_last(d.pop("last"))
 
         links = cls(
             self_=self_,

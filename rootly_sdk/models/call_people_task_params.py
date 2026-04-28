@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,13 +22,13 @@ class CallPeopleTaskParams:
         phone_numbers (list[str]):
         name (str): The name
         content (str): The message to be read by text-to-voice
-        task_type (Union[Unset, CallPeopleTaskParamsTaskType]):
+        task_type (CallPeopleTaskParamsTaskType | Unset):
     """
 
     phone_numbers: list[str]
     name: str
     content: str
-    task_type: Unset | CallPeopleTaskParamsTaskType = UNSET
+    task_type: CallPeopleTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +38,7 @@ class CallPeopleTaskParams:
 
         content = self.content
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -64,7 +66,7 @@ class CallPeopleTaskParams:
         content = d.pop("content")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CallPeopleTaskParamsTaskType
+        task_type: CallPeopleTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

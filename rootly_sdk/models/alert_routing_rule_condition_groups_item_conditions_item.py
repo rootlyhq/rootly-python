@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 from uuid import UUID
@@ -27,25 +29,25 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
         property_field_name (str): The name of the property field
         property_field_condition_type (AlertRoutingRuleConditionGroupsItemConditionsItemPropertyFieldConditionType): The
             condition type of the property field
-        id (Union[Unset, UUID]): Unique ID of the condition
-        property_field_value (Union[None, Unset, str]): The value of the property field
-        property_field_values (Union[None, Unset, list[str]]): The values of the property field
-        conditionable_id (Union[None, UUID, Unset]): The ID of the conditionable object
-        conditionable_type (Union[None, Unset, str]): The type of the conditionable object
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        id (UUID | Unset): Unique ID of the condition
+        property_field_value (None | str | Unset): The value of the property field
+        property_field_values (list[str] | None | Unset): The values of the property field
+        conditionable_id (None | Unset | UUID): The ID of the conditionable object
+        conditionable_type (None | str | Unset): The type of the conditionable object
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
     property_field_type: AlertRoutingRuleConditionGroupsItemConditionsItemPropertyFieldType
     property_field_name: str
     property_field_condition_type: AlertRoutingRuleConditionGroupsItemConditionsItemPropertyFieldConditionType
-    id: Unset | UUID = UNSET
-    property_field_value: None | Unset | str = UNSET
-    property_field_values: None | Unset | list[str] = UNSET
-    conditionable_id: None | UUID | Unset = UNSET
-    conditionable_type: None | Unset | str = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    id: UUID | Unset = UNSET
+    property_field_value: None | str | Unset = UNSET
+    property_field_values: list[str] | None | Unset = UNSET
+    conditionable_id: None | Unset | UUID = UNSET
+    conditionable_type: None | str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,17 +57,17 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
 
         property_field_condition_type: str = self.property_field_condition_type
 
-        id: Unset | str = UNSET
+        id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        property_field_value: None | Unset | str
+        property_field_value: None | str | Unset
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: None | Unset | list[str]
+        property_field_values: list[str] | None | Unset
         if isinstance(self.property_field_values, Unset):
             property_field_values = UNSET
         elif isinstance(self.property_field_values, list):
@@ -74,7 +76,7 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
         else:
             property_field_values = self.property_field_values
 
-        conditionable_id: None | Unset | str
+        conditionable_id: None | str | Unset
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         elif isinstance(self.conditionable_id, UUID):
@@ -82,7 +84,7 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
         else:
             conditionable_id = self.conditionable_id
 
-        conditionable_type: None | Unset | str
+        conditionable_type: None | str | Unset
         if isinstance(self.conditionable_type, Unset):
             conditionable_type = UNSET
         else:
@@ -134,22 +136,22 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
         )
 
         _id = d.pop("id", UNSET)
-        id: Unset | UUID
+        id: UUID | Unset
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
-        def _parse_property_field_value(data: object) -> None | Unset | str:
+        def _parse_property_field_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 
-        def _parse_property_field_values(data: object) -> None | Unset | list[str]:
+        def _parse_property_field_values(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -160,13 +162,13 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
                 property_field_values_type_0 = cast(list[str], data)
 
                 return property_field_values_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         property_field_values = _parse_property_field_values(d.pop("property_field_values", UNSET))
 
-        def _parse_conditionable_id(data: object) -> None | UUID | Unset:
+        def _parse_conditionable_id(data: object) -> None | Unset | UUID:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -177,18 +179,18 @@ class AlertRoutingRuleConditionGroupsItemConditionsItem:
                 conditionable_id_type_0 = UUID(data)
 
                 return conditionable_id_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | UUID | Unset, data)
+            return cast(None | Unset | UUID, data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 
-        def _parse_conditionable_type(data: object) -> None | Unset | str:
+        def _parse_conditionable_type(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         conditionable_type = _parse_conditionable_type(d.pop("conditionable_type", UNSET))
 

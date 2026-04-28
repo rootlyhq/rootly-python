@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,16 +19,16 @@ T = TypeVar("T", bound="OnCallRoleRelationship")
 class OnCallRoleRelationship:
     """
     Attributes:
-        data (Union['OnCallRoleRelationshipDataType0', None, Unset]):
+        data (None | OnCallRoleRelationshipDataType0 | Unset):
     """
 
-    data: Union["OnCallRoleRelationshipDataType0", None, Unset] = UNSET
+    data: None | OnCallRoleRelationshipDataType0 | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.on_call_role_relationship_data_type_0 import OnCallRoleRelationshipDataType0
 
-        data: None | Unset | dict[str, Any]
+        data: dict[str, Any] | None | Unset
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, OnCallRoleRelationshipDataType0):
@@ -48,7 +50,7 @@ class OnCallRoleRelationship:
 
         d = dict(src_dict)
 
-        def _parse_data(data: object) -> Union["OnCallRoleRelationshipDataType0", None, Unset]:
+        def _parse_data(data: object) -> None | OnCallRoleRelationshipDataType0 | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -59,9 +61,9 @@ class OnCallRoleRelationship:
                 data_type_0 = OnCallRoleRelationshipDataType0.from_dict(data)
 
                 return data_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["OnCallRoleRelationshipDataType0", None, Unset], data)
+            return cast(None | OnCallRoleRelationshipDataType0 | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 

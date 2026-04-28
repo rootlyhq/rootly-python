@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,18 +18,18 @@ class Catalog:
     Attributes:
         name (str):
         icon (CatalogIcon):
-        position (Union[None, int]): Default position of the catalog when displayed in a list.
+        position (int | None): Default position of the catalog when displayed in a list.
         created_at (str):
         updated_at (str):
-        description (Union[None, Unset, str]):
+        description (None | str | Unset):
     """
 
     name: str
     icon: CatalogIcon
-    position: None | int
+    position: int | None
     created_at: str
     updated_at: str
-    description: None | Unset | str = UNSET
+    description: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,14 +37,14 @@ class Catalog:
 
         icon: str = self.icon
 
-        position: None | int
+        position: int | None
         position = self.position
 
         created_at = self.created_at
 
         updated_at = self.updated_at
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -71,10 +73,10 @@ class Catalog:
 
         icon = check_catalog_icon(d.pop("icon"))
 
-        def _parse_position(data: object) -> None | int:
+        def _parse_position(data: object) -> int | None:
             if data is None:
                 return data
-            return cast(None | int, data)
+            return cast(int | None, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -82,12 +84,12 @@ class Catalog:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

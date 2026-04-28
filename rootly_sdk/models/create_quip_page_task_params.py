@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,27 +20,27 @@ class CreateQuipPageTaskParams:
     """
     Attributes:
         title (str): The page title
-        task_type (Union[Unset, CreateQuipPageTaskParamsTaskType]):
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page, if desired
-        parent_folder_id (Union[Unset, str]): The parent folder id
-        content (Union[Unset, str]): The page content
-        template_id (Union[Unset, str]): The Quip file ID to use as a template
-        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        task_type (CreateQuipPageTaskParamsTaskType | Unset):
+        post_mortem_template_id (str | Unset): Retrospective template to use when creating page, if desired
+        parent_folder_id (str | Unset): The parent folder id
+        content (str | Unset): The page content
+        template_id (str | Unset): The Quip file ID to use as a template
+        mark_post_mortem_as_published (bool | Unset):  Default: True.
     """
 
     title: str
-    task_type: Unset | CreateQuipPageTaskParamsTaskType = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    parent_folder_id: Unset | str = UNSET
-    content: Unset | str = UNSET
-    template_id: Unset | str = UNSET
-    mark_post_mortem_as_published: Unset | bool = True
+    task_type: CreateQuipPageTaskParamsTaskType | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    parent_folder_id: str | Unset = UNSET
+    content: str | Unset = UNSET
+    template_id: str | Unset = UNSET
+    mark_post_mortem_as_published: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -80,7 +82,7 @@ class CreateQuipPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateQuipPageTaskParamsTaskType
+        task_type: CreateQuipPageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

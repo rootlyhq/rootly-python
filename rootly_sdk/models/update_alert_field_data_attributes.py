@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -12,10 +14,10 @@ T = TypeVar("T", bound="UpdateAlertFieldDataAttributes")
 class UpdateAlertFieldDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the alert field
+        name (str | Unset): The name of the alert field
     """
 
-    name: Unset | str = UNSET
+    name: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name

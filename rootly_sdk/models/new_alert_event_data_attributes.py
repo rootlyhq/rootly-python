@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,12 +20,12 @@ class NewAlertEventDataAttributes:
     Attributes:
         kind (NewAlertEventDataAttributesKind):
         details (str): Note message.
-        user_id (Union[Unset, int]): Author of the note.
+        user_id (int | Unset): Author of the note.
     """
 
     kind: NewAlertEventDataAttributesKind
     details: str
-    user_id: Unset | int = UNSET
+    user_id: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         kind: str = self.kind

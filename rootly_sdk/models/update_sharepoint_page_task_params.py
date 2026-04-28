@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,23 +20,23 @@ class UpdateSharepointPageTaskParams:
     """
     Attributes:
         file_id (str): The SharePoint file ID
-        task_type (Union[Unset, UpdateSharepointPageTaskParamsTaskType]):
-        title (Union[Unset, str]): The SharePoint document title
-        content (Union[Unset, str]): The SharePoint document content
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating document, if desired
+        task_type (UpdateSharepointPageTaskParamsTaskType | Unset):
+        title (str | Unset): The SharePoint document title
+        content (str | Unset): The SharePoint document content
+        post_mortem_template_id (str | Unset): Retrospective template to use when updating document, if desired
     """
 
     file_id: str
-    task_type: Unset | UpdateSharepointPageTaskParamsTaskType = UNSET
-    title: Unset | str = UNSET
-    content: Unset | str = UNSET
-    post_mortem_template_id: Unset | str = UNSET
+    task_type: UpdateSharepointPageTaskParamsTaskType | Unset = UNSET
+    title: str | Unset = UNSET
+    content: str | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -68,7 +70,7 @@ class UpdateSharepointPageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateSharepointPageTaskParamsTaskType
+        task_type: UpdateSharepointPageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

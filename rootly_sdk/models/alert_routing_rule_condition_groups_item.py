@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -21,28 +23,27 @@ class AlertRoutingRuleConditionGroupsItem:
     """
     Attributes:
         position (int): The position of the condition group for ordering
-        id (Union[Unset, UUID]): Unique ID of the condition group
-        conditions (Union[Unset, list['AlertRoutingRuleConditionGroupsItemConditionsItem']]): The conditions within this
-            group
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        id (UUID | Unset): Unique ID of the condition group
+        conditions (list[AlertRoutingRuleConditionGroupsItemConditionsItem] | Unset): The conditions within this group
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
     position: int
-    id: Unset | UUID = UNSET
-    conditions: Unset | list["AlertRoutingRuleConditionGroupsItemConditionsItem"] = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    id: UUID | Unset = UNSET
+    conditions: list[AlertRoutingRuleConditionGroupsItemConditionsItem] | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         position = self.position
 
-        id: Unset | str = UNSET
+        id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        conditions: Unset | list[dict[str, Any]] = UNSET
+        conditions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -81,18 +82,20 @@ class AlertRoutingRuleConditionGroupsItem:
         position = d.pop("position")
 
         _id = d.pop("id", UNSET)
-        id: Unset | UUID
+        id: UUID | Unset
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
-        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        for conditions_item_data in _conditions or []:
-            conditions_item = AlertRoutingRuleConditionGroupsItemConditionsItem.from_dict(conditions_item_data)
+        conditions: list[AlertRoutingRuleConditionGroupsItemConditionsItem] | Unset = UNSET
+        if _conditions is not UNSET:
+            conditions = []
+            for conditions_item_data in _conditions:
+                conditions_item = AlertRoutingRuleConditionGroupsItemConditionsItem.from_dict(conditions_item_data)
 
-            conditions.append(conditions_item)
+                conditions.append(conditions_item)
 
         created_at = d.pop("created_at", UNSET)
 

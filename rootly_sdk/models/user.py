@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,21 +18,21 @@ class User:
         email (str): The email of the user
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        first_name (Union[None, Unset, str]): First name of the user
-        last_name (Union[None, Unset, str]): Last name of the user
-        full_name (Union[None, Unset, str]): The full name of the user
-        full_name_with_team (Union[None, Unset, str]): The full name with team of the user
-        time_zone (Union[None, Unset, str]): Configured time zone
+        first_name (None | str | Unset): First name of the user
+        last_name (None | str | Unset): Last name of the user
+        full_name (None | str | Unset): The full name of the user
+        full_name_with_team (None | str | Unset): The full name with team of the user
+        time_zone (None | str | Unset): Configured time zone
     """
 
     email: str
     created_at: str
     updated_at: str
-    first_name: None | Unset | str = UNSET
-    last_name: None | Unset | str = UNSET
-    full_name: None | Unset | str = UNSET
-    full_name_with_team: None | Unset | str = UNSET
-    time_zone: None | Unset | str = UNSET
+    first_name: None | str | Unset = UNSET
+    last_name: None | str | Unset = UNSET
+    full_name: None | str | Unset = UNSET
+    full_name_with_team: None | str | Unset = UNSET
+    time_zone: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,31 +42,31 @@ class User:
 
         updated_at = self.updated_at
 
-        first_name: None | Unset | str
+        first_name: None | str | Unset
         if isinstance(self.first_name, Unset):
             first_name = UNSET
         else:
             first_name = self.first_name
 
-        last_name: None | Unset | str
+        last_name: None | str | Unset
         if isinstance(self.last_name, Unset):
             last_name = UNSET
         else:
             last_name = self.last_name
 
-        full_name: None | Unset | str
+        full_name: None | str | Unset
         if isinstance(self.full_name, Unset):
             full_name = UNSET
         else:
             full_name = self.full_name
 
-        full_name_with_team: None | Unset | str
+        full_name_with_team: None | str | Unset
         if isinstance(self.full_name_with_team, Unset):
             full_name_with_team = UNSET
         else:
             full_name_with_team = self.full_name_with_team
 
-        time_zone: None | Unset | str
+        time_zone: None | str | Unset
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -101,48 +103,48 @@ class User:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_first_name(data: object) -> None | Unset | str:
+        def _parse_first_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         first_name = _parse_first_name(d.pop("first_name", UNSET))
 
-        def _parse_last_name(data: object) -> None | Unset | str:
+        def _parse_last_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         last_name = _parse_last_name(d.pop("last_name", UNSET))
 
-        def _parse_full_name(data: object) -> None | Unset | str:
+        def _parse_full_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         full_name = _parse_full_name(d.pop("full_name", UNSET))
 
-        def _parse_full_name_with_team(data: object) -> None | Unset | str:
+        def _parse_full_name_with_team(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         full_name_with_team = _parse_full_name_with_team(d.pop("full_name_with_team", UNSET))
 
-        def _parse_time_zone(data: object) -> None | Unset | str:
+        def _parse_time_zone(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 

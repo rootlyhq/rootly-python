@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -22,17 +24,17 @@ class SimpleTriggerParams:
     """
     Attributes:
         trigger_type (SimpleTriggerParamsTriggerType):
-        triggers (Union[Unset, list[SimpleTriggerParamsTriggersItem]]):
+        triggers (list[SimpleTriggerParamsTriggersItem] | Unset):
     """
 
     trigger_type: SimpleTriggerParamsTriggerType
-    triggers: Unset | list[SimpleTriggerParamsTriggersItem] = UNSET
+    triggers: list[SimpleTriggerParamsTriggersItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Unset | list[str] = UNSET
+        triggers: list[str] | Unset = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = []
             for triggers_item_data in self.triggers:
@@ -56,12 +58,14 @@ class SimpleTriggerParams:
         d = dict(src_dict)
         trigger_type = check_simple_trigger_params_trigger_type(d.pop("trigger_type"))
 
-        triggers = []
         _triggers = d.pop("triggers", UNSET)
-        for triggers_item_data in _triggers or []:
-            triggers_item = check_simple_trigger_params_triggers_item(triggers_item_data)
+        triggers: list[SimpleTriggerParamsTriggersItem] | Unset = UNSET
+        if _triggers is not UNSET:
+            triggers = []
+            for triggers_item_data in _triggers:
+                triggers_item = check_simple_trigger_params_triggers_item(triggers_item_data)
 
-            triggers.append(triggers_item)
+                triggers.append(triggers_item)
 
         simple_trigger_params = cls(
             trigger_type=trigger_type,

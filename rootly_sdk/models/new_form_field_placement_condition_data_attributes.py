@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -26,14 +28,14 @@ class NewFormFieldPlacementConditionDataAttributes:
         form_field_id (str): The condition field.
         comparison (NewFormFieldPlacementConditionDataAttributesComparison): The condition comparison.
         values (list[str]): The values for comparison.
-        position (Union[Unset, int]): The condition position.
+        position (int | Unset): The condition position.
     """
 
     conditioned: NewFormFieldPlacementConditionDataAttributesConditioned
     form_field_id: str
     comparison: NewFormFieldPlacementConditionDataAttributesComparison
     values: list[str]
-    position: Unset | int = UNSET
+    position: int | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

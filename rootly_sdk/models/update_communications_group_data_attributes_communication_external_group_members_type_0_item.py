@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,20 +15,20 @@ T = TypeVar("T", bound="UpdateCommunicationsGroupDataAttributesCommunicationExte
 class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item:
     """
     Attributes:
-        id (Union[None, Unset, str]): ID of the external group member
-        name (Union[Unset, str]): Name of the external member
-        email (Union[Unset, str]): Email of the external member
-        phone_number (Union[Unset, str]): Phone number of the external member
+        id (None | str | Unset): ID of the external group member
+        name (str | Unset): Name of the external member
+        email (str | Unset): Email of the external member
+        phone_number (str | Unset): Phone number of the external member
     """
 
-    id: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    email: Unset | str = UNSET
-    phone_number: Unset | str = UNSET
+    id: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    email: str | Unset = UNSET
+    phone_number: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: None | Unset | str
+        id: None | str | Unset
         if isinstance(self.id, Unset):
             id = UNSET
         else:
@@ -56,12 +58,12 @@ class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersTy
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | Unset | str:
+        def _parse_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         id = _parse_id(d.pop("id", UNSET))
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,7 +14,7 @@ class NewAlertDataAttributesLabelsItemType0:
     """
     Attributes:
         key (str): Key of the tag
-        value (Union[bool, float, str]): Value of the tag
+        value (bool | float | str): Value of the tag
     """
 
     key: str

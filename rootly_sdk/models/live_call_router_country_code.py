@@ -1,6 +1,6 @@
 from typing import Literal, cast
 
-LiveCallRouterCountryCode = Literal["AU", "CA", "DE", "GB", "NL", "NZ", "US"]
+LiveCallRouterCountryCode = Literal["AU", "CA", "DE", "GB", "NL", "NZ", "SE", "US"]
 
 LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES: set[LiveCallRouterCountryCode] = {
     "AU",
@@ -9,6 +9,7 @@ LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES: set[LiveCallRouterCountryCode] = {
     "GB",
     "NL",
     "NZ",
+    "SE",
     "US",
 }
 

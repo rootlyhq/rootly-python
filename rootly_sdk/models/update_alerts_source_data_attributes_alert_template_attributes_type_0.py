@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,30 +15,30 @@ T = TypeVar("T", bound="UpdateAlertsSourceDataAttributesAlertTemplateAttributesT
 class UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0:
     """
     Attributes:
-        title (Union[None, Unset, str]): The alert title.
-        description (Union[None, Unset, str]): The alert description.
-        external_url (Union[None, Unset, str]): The alert URL.
+        title (None | str | Unset): The alert title.
+        description (None | str | Unset): The alert description.
+        external_url (None | str | Unset): The alert URL.
     """
 
-    title: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    external_url: None | Unset | str = UNSET
+    title: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    external_url: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        title: None | Unset | str
+        title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        external_url: None | Unset | str
+        external_url: None | str | Unset
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
@@ -58,30 +60,30 @@ class UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_title(data: object) -> None | Unset | str:
+        def _parse_title(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_external_url(data: object) -> None | Unset | str:
+        def _parse_external_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 

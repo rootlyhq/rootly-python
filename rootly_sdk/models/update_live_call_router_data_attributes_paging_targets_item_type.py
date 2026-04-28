@@ -1,11 +1,14 @@
 from typing import Literal, cast
 
-UpdateLiveCallRouterDataAttributesPagingTargetsItemType = Literal["escalation_policy", "service", "team"]
+UpdateLiveCallRouterDataAttributesPagingTargetsItemType = Literal[
+    "escalation_policy", "functionality", "service", "team"
+]
 
 UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PAGING_TARGETS_ITEM_TYPE_VALUES: set[
     UpdateLiveCallRouterDataAttributesPagingTargetsItemType
 ] = {
     "escalation_policy",
+    "functionality",
     "service",
     "team",
 }

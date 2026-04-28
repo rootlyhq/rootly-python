@@ -11,19 +11,20 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -85,36 +86,36 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AuditsList]:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -149,36 +150,36 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AuditsList | None:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -208,36 +209,36 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AuditsList]:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -270,36 +271,36 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AuditsList | None:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

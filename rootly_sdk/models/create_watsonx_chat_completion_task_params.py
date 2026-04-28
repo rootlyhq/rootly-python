@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -24,15 +26,15 @@ class CreateWatsonxChatCompletionTaskParams:
         model (CreateWatsonxChatCompletionTaskParamsModel): The WatsonX model. eg: ibm/granite-3-b8b-instruct
         prompt (str): The prompt to send to WatsonX
         project_id (str):
-        task_type (Union[Unset, CreateWatsonxChatCompletionTaskParamsTaskType]):
-        system_prompt (Union[Unset, str]): The system prompt to send to WatsonX (optional)
+        task_type (CreateWatsonxChatCompletionTaskParamsTaskType | Unset):
+        system_prompt (str | Unset): The system prompt to send to WatsonX (optional)
     """
 
-    model: "CreateWatsonxChatCompletionTaskParamsModel"
+    model: CreateWatsonxChatCompletionTaskParamsModel
     prompt: str
     project_id: str
-    task_type: Unset | CreateWatsonxChatCompletionTaskParamsTaskType = UNSET
-    system_prompt: Unset | str = UNSET
+    task_type: CreateWatsonxChatCompletionTaskParamsTaskType | Unset = UNSET
+    system_prompt: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +44,7 @@ class CreateWatsonxChatCompletionTaskParams:
 
         project_id = self.project_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -76,7 +78,7 @@ class CreateWatsonxChatCompletionTaskParams:
         project_id = d.pop("project_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateWatsonxChatCompletionTaskParamsTaskType
+        task_type: CreateWatsonxChatCompletionTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

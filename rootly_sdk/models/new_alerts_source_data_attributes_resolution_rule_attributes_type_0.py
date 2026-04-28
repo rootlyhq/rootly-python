@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -32,76 +34,73 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
     """Provide additional attributes for email alerts source
 
     Attributes:
-        enabled (Union[Unset, bool]): Set this to true to enable the auto resolution rule
-        condition_type (Union[Unset, NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType]): The type
-            of condition to evaluate to apply auto resolution rule
-        identifier_matchable_type (Union[Unset,
-            NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType]): The type of the identifier
-            matchable
-        identifier_matchable_id (Union[None, Unset, str]): The ID of the identifier matchable. If
-            identifier_matchable_type is AlertField, this is the ID of the alert field.
-        identifier_reference_kind (Union[Unset,
-            NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind]): The kind of the identifier
-            reference
-        identifier_json_path (Union[None, Unset, str]): JSON path expression to extract unique alert identifier used to
-            match triggered alerts with resolving alerts
-        identifier_value_regex (Union[None, Unset, str]): Regex group to further specify the part of the string used as
-            a unique identifier
-        conditions_attributes (Union[Unset,
-            list['NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem']]): List of conditions
-            to evaluate for auto resolution
+        enabled (bool | Unset): Set this to true to enable the auto resolution rule
+        condition_type (NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType | Unset): The type of
+            condition to evaluate to apply auto resolution rule
+        identifier_matchable_type (NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType |
+            Unset): The type of the identifier matchable
+        identifier_matchable_id (None | str | Unset): The ID of the identifier matchable. If identifier_matchable_type
+            is AlertField, this is the ID of the alert field.
+        identifier_reference_kind (NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind |
+            Unset): The kind of the identifier reference
+        identifier_json_path (None | str | Unset): JSON path expression to extract unique alert identifier used to match
+            triggered alerts with resolving alerts
+        identifier_value_regex (None | str | Unset): Regex group to further specify the part of the string used as a
+            unique identifier
+        conditions_attributes (list[NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem]
+            | Unset): List of conditions to evaluate for auto resolution
     """
 
-    enabled: Unset | bool = UNSET
-    condition_type: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType = UNSET
+    enabled: bool | Unset = UNSET
+    condition_type: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType | Unset = UNSET
     identifier_matchable_type: (
-        Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType
+        NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType | Unset
     ) = UNSET
-    identifier_matchable_id: None | Unset | str = UNSET
+    identifier_matchable_id: None | str | Unset = UNSET
     identifier_reference_kind: (
-        Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind
+        NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind | Unset
     ) = UNSET
-    identifier_json_path: None | Unset | str = UNSET
-    identifier_value_regex: None | Unset | str = UNSET
+    identifier_json_path: None | str | Unset = UNSET
+    identifier_value_regex: None | str | Unset = UNSET
     conditions_attributes: (
-        Unset | list["NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem"]
+        list[NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem] | Unset
     ) = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         enabled = self.enabled
 
-        condition_type: Unset | str = UNSET
+        condition_type: str | Unset = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        identifier_matchable_type: Unset | str = UNSET
+        identifier_matchable_type: str | Unset = UNSET
         if not isinstance(self.identifier_matchable_type, Unset):
             identifier_matchable_type = self.identifier_matchable_type
 
-        identifier_matchable_id: None | Unset | str
+        identifier_matchable_id: None | str | Unset
         if isinstance(self.identifier_matchable_id, Unset):
             identifier_matchable_id = UNSET
         else:
             identifier_matchable_id = self.identifier_matchable_id
 
-        identifier_reference_kind: Unset | str = UNSET
+        identifier_reference_kind: str | Unset = UNSET
         if not isinstance(self.identifier_reference_kind, Unset):
             identifier_reference_kind = self.identifier_reference_kind
 
-        identifier_json_path: None | Unset | str
+        identifier_json_path: None | str | Unset
         if isinstance(self.identifier_json_path, Unset):
             identifier_json_path = UNSET
         else:
             identifier_json_path = self.identifier_json_path
 
-        identifier_value_regex: None | Unset | str
+        identifier_value_regex: None | str | Unset
         if isinstance(self.identifier_value_regex, Unset):
             identifier_value_regex = UNSET
         else:
             identifier_value_regex = self.identifier_value_regex
 
-        conditions_attributes: Unset | list[dict[str, Any]] = UNSET
+        conditions_attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.conditions_attributes, Unset):
             conditions_attributes = []
             for conditions_attributes_item_data in self.conditions_attributes:
@@ -140,7 +139,7 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
         enabled = d.pop("enabled", UNSET)
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType
+        condition_type: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType | Unset
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:
@@ -150,7 +149,7 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
 
         _identifier_matchable_type = d.pop("identifier_matchable_type", UNSET)
         identifier_matchable_type: (
-            Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType
+            NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType | Unset
         )
         if isinstance(_identifier_matchable_type, Unset):
             identifier_matchable_type = UNSET
@@ -161,18 +160,18 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
                 )
             )
 
-        def _parse_identifier_matchable_id(data: object) -> None | Unset | str:
+        def _parse_identifier_matchable_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         identifier_matchable_id = _parse_identifier_matchable_id(d.pop("identifier_matchable_id", UNSET))
 
         _identifier_reference_kind = d.pop("identifier_reference_kind", UNSET)
         identifier_reference_kind: (
-            Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind
+            NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind | Unset
         )
         if isinstance(_identifier_reference_kind, Unset):
             identifier_reference_kind = UNSET
@@ -183,34 +182,38 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
                 )
             )
 
-        def _parse_identifier_json_path(data: object) -> None | Unset | str:
+        def _parse_identifier_json_path(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         identifier_json_path = _parse_identifier_json_path(d.pop("identifier_json_path", UNSET))
 
-        def _parse_identifier_value_regex(data: object) -> None | Unset | str:
+        def _parse_identifier_value_regex(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         identifier_value_regex = _parse_identifier_value_regex(d.pop("identifier_value_regex", UNSET))
 
-        conditions_attributes = []
         _conditions_attributes = d.pop("conditions_attributes", UNSET)
-        for conditions_attributes_item_data in _conditions_attributes or []:
-            conditions_attributes_item = (
-                NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem.from_dict(
-                    conditions_attributes_item_data
+        conditions_attributes: (
+            list[NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem] | Unset
+        ) = UNSET
+        if _conditions_attributes is not UNSET:
+            conditions_attributes = []
+            for conditions_attributes_item_data in _conditions_attributes:
+                conditions_attributes_item = (
+                    NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem.from_dict(
+                        conditions_attributes_item_data
+                    )
                 )
-            )
 
-            conditions_attributes.append(conditions_attributes_item)
+                conditions_attributes.append(conditions_attributes_item)
 
         new_alerts_source_data_attributes_resolution_rule_attributes_type_0 = cls(
             enabled=enabled,

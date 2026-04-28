@@ -1,11 +1,14 @@
 from typing import Literal, cast
 
-UpdateHeartbeatDataAttributesNotificationTargetType = Literal["EscalationPolicy", "Group", "Service", "User"]
+UpdateHeartbeatDataAttributesNotificationTargetType = Literal[
+    "EscalationPolicy", "Functionality", "Group", "Service", "User"
+]
 
 UPDATE_HEARTBEAT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES: set[
     UpdateHeartbeatDataAttributesNotificationTargetType
 ] = {
     "EscalationPolicy",
+    "Functionality",
     "Group",
     "Service",
     "User",

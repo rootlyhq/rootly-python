@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -24,27 +26,27 @@ class AddToTimelineTaskParams:
     """
     Attributes:
         event (str): The timeline event description
-        task_type (Union[Unset, AddToTimelineTaskParamsTaskType]):
-        url (Union[Unset, str]): A URL for the timeline event
-        post_to_slack_channels (Union[Unset, list['AddToTimelineTaskParamsPostToSlackChannelsItem']]):
+        task_type (AddToTimelineTaskParamsTaskType | Unset):
+        url (str | Unset): A URL for the timeline event
+        post_to_slack_channels (list[AddToTimelineTaskParamsPostToSlackChannelsItem] | Unset):
     """
 
     event: str
-    task_type: Unset | AddToTimelineTaskParamsTaskType = UNSET
-    url: Unset | str = UNSET
-    post_to_slack_channels: Unset | list["AddToTimelineTaskParamsPostToSlackChannelsItem"] = UNSET
+    task_type: AddToTimelineTaskParamsTaskType | Unset = UNSET
+    url: str | Unset = UNSET
+    post_to_slack_channels: list[AddToTimelineTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         url = self.url
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -77,7 +79,7 @@ class AddToTimelineTaskParams:
         event = d.pop("event")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | AddToTimelineTaskParamsTaskType
+        task_type: AddToTimelineTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -85,14 +87,16 @@ class AddToTimelineTaskParams:
 
         url = d.pop("url", UNSET)
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = AddToTimelineTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[AddToTimelineTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = AddToTimelineTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
 
         add_to_timeline_task_params = cls(
             event=event,

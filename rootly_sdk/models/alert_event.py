@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,8 +22,8 @@ class AlertEvent:
         source (str):
         created_at (str):
         updated_at (str):
-        user_id (Union[None, Unset, int]): Author of the note.
-        details (Union[None, Unset, str]): Note message.
+        user_id (int | None | Unset): Author of the note.
+        details (None | str | Unset): Note message.
     """
 
     kind: AlertEventKind
@@ -29,8 +31,8 @@ class AlertEvent:
     source: str
     created_at: str
     updated_at: str
-    user_id: None | Unset | int = UNSET
-    details: None | Unset | str = UNSET
+    user_id: int | None | Unset = UNSET
+    details: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +46,13 @@ class AlertEvent:
 
         updated_at = self.updated_at
 
-        user_id: None | Unset | int
+        user_id: int | None | Unset
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        details: None | Unset | str
+        details: None | str | Unset
         if isinstance(self.details, Unset):
             details = UNSET
         else:
@@ -87,21 +89,21 @@ class AlertEvent:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_user_id(data: object) -> None | Unset | int:
+        def _parse_user_id(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_details(data: object) -> None | Unset | str:
+        def _parse_details(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         details = _parse_details(d.pop("details", UNSET))
 

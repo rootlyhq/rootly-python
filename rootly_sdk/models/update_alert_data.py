@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -19,17 +21,17 @@ class UpdateAlertData:
     """
     Attributes:
         attributes (UpdateAlertDataAttributes):
-        type_ (Union[Unset, UpdateAlertDataType]):
+        type_ (UpdateAlertDataType | Unset):
     """
 
-    attributes: "UpdateAlertDataAttributes"
-    type_: Unset | UpdateAlertDataType = UNSET
+    attributes: UpdateAlertDataAttributes
+    type_: UpdateAlertDataType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         attributes = self.attributes.to_dict()
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -53,7 +55,7 @@ class UpdateAlertData:
         attributes = UpdateAlertDataAttributes.from_dict(d.pop("attributes"))
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | UpdateAlertDataType
+        type_: UpdateAlertDataType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

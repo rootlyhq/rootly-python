@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,18 +29,18 @@ T = TypeVar("T", bound="DashboardPanelParamsDatasetsItem")
 class DashboardPanelParamsDatasetsItem:
     """
     Attributes:
-        name (Union[None, Unset, str]):
-        collection (Union[Unset, DashboardPanelParamsDatasetsItemCollection]):
-        filter_ (Union[Unset, list['DashboardPanelParamsDatasetsItemFilterItem']]):
-        group_by (Union['DashboardPanelParamsDatasetsItemGroupByType1Type0', None, Unset, str]):
-        aggregate (Union['DashboardPanelParamsDatasetsItemAggregateType0', None, Unset]):
+        name (None | str | Unset):
+        collection (DashboardPanelParamsDatasetsItemCollection | Unset):
+        filter_ (list[DashboardPanelParamsDatasetsItemFilterItem] | Unset):
+        group_by (DashboardPanelParamsDatasetsItemGroupByType1Type0 | None | str | Unset):
+        aggregate (DashboardPanelParamsDatasetsItemAggregateType0 | None | Unset):
     """
 
-    name: None | Unset | str = UNSET
-    collection: Unset | DashboardPanelParamsDatasetsItemCollection = UNSET
-    filter_: Unset | list["DashboardPanelParamsDatasetsItemFilterItem"] = UNSET
-    group_by: Union["DashboardPanelParamsDatasetsItemGroupByType1Type0", None, Unset, str] = UNSET
-    aggregate: Union["DashboardPanelParamsDatasetsItemAggregateType0", None, Unset] = UNSET
+    name: None | str | Unset = UNSET
+    collection: DashboardPanelParamsDatasetsItemCollection | Unset = UNSET
+    filter_: list[DashboardPanelParamsDatasetsItemFilterItem] | Unset = UNSET
+    group_by: DashboardPanelParamsDatasetsItemGroupByType1Type0 | None | str | Unset = UNSET
+    aggregate: DashboardPanelParamsDatasetsItemAggregateType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,24 +51,24 @@ class DashboardPanelParamsDatasetsItem:
             DashboardPanelParamsDatasetsItemGroupByType1Type0,
         )
 
-        name: None | Unset | str
+        name: None | str | Unset
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        collection: Unset | str = UNSET
+        collection: str | Unset = UNSET
         if not isinstance(self.collection, Unset):
             collection = self.collection
 
-        filter_: Unset | list[dict[str, Any]] = UNSET
+        filter_: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.filter_, Unset):
             filter_ = []
             for filter_item_data in self.filter_:
                 filter_item = filter_item_data.to_dict()
                 filter_.append(filter_item)
 
-        group_by: None | Unset | dict[str, Any] | str
+        group_by: dict[str, Any] | None | str | Unset
         if isinstance(self.group_by, Unset):
             group_by = UNSET
         elif isinstance(self.group_by, DashboardPanelParamsDatasetsItemGroupByType1Type0):
@@ -74,7 +76,7 @@ class DashboardPanelParamsDatasetsItem:
         else:
             group_by = self.group_by
 
-        aggregate: None | Unset | dict[str, Any]
+        aggregate: dict[str, Any] | None | Unset
         if isinstance(self.aggregate, Unset):
             aggregate = UNSET
         elif isinstance(self.aggregate, DashboardPanelParamsDatasetsItemAggregateType0):
@@ -110,32 +112,32 @@ class DashboardPanelParamsDatasetsItem:
 
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | Unset | str:
+        def _parse_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
         _collection = d.pop("collection", UNSET)
-        collection: Unset | DashboardPanelParamsDatasetsItemCollection
+        collection: DashboardPanelParamsDatasetsItemCollection | Unset
         if isinstance(_collection, Unset):
             collection = UNSET
         else:
             collection = check_dashboard_panel_params_datasets_item_collection(_collection)
 
-        filter_ = []
         _filter_ = d.pop("filter", UNSET)
-        for filter_item_data in _filter_ or []:
-            filter_item = DashboardPanelParamsDatasetsItemFilterItem.from_dict(filter_item_data)
+        filter_: list[DashboardPanelParamsDatasetsItemFilterItem] | Unset = UNSET
+        if _filter_ is not UNSET:
+            filter_ = []
+            for filter_item_data in _filter_:
+                filter_item = DashboardPanelParamsDatasetsItemFilterItem.from_dict(filter_item_data)
 
-            filter_.append(filter_item)
+                filter_.append(filter_item)
 
-        def _parse_group_by(
-            data: object,
-        ) -> Union["DashboardPanelParamsDatasetsItemGroupByType1Type0", None, Unset, str]:
+        def _parse_group_by(data: object) -> DashboardPanelParamsDatasetsItemGroupByType1Type0 | None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -146,13 +148,13 @@ class DashboardPanelParamsDatasetsItem:
                 group_by_type_1_type_0 = DashboardPanelParamsDatasetsItemGroupByType1Type0.from_dict(data)
 
                 return group_by_type_1_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["DashboardPanelParamsDatasetsItemGroupByType1Type0", None, Unset, str], data)
+            return cast(DashboardPanelParamsDatasetsItemGroupByType1Type0 | None | str | Unset, data)
 
         group_by = _parse_group_by(d.pop("group_by", UNSET))
 
-        def _parse_aggregate(data: object) -> Union["DashboardPanelParamsDatasetsItemAggregateType0", None, Unset]:
+        def _parse_aggregate(data: object) -> DashboardPanelParamsDatasetsItemAggregateType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -163,9 +165,9 @@ class DashboardPanelParamsDatasetsItem:
                 aggregate_type_0 = DashboardPanelParamsDatasetsItemAggregateType0.from_dict(data)
 
                 return aggregate_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["DashboardPanelParamsDatasetsItemAggregateType0", None, Unset], data)
+            return cast(DashboardPanelParamsDatasetsItemAggregateType0 | None | Unset, data)
 
         aggregate = _parse_aggregate(d.pop("aggregate", UNSET))
 

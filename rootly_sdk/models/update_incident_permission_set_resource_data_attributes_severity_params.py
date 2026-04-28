@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,18 +15,18 @@ T = TypeVar("T", bound="UpdateIncidentPermissionSetResourceDataAttributesSeverit
 class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
     """
     Attributes:
-        fully_enabled (Union[Unset, bool]): Whether permissions are enabled for any severity incident Default: True.
-        create_enabled (Union[Unset, bool]): Whether permissions are enabled when creating incident Default: False.
-        applies_to_unassigned (Union[Unset, bool]): Whether permissions are enabled for incident without severity
-            Default: True.
-        severity_ids (Union[None, Unset, list[str]]): Severity ids that determine if an incident is permitted based on
+        fully_enabled (bool | Unset): Whether permissions are enabled for any severity incident Default: True.
+        create_enabled (bool | Unset): Whether permissions are enabled when creating incident Default: False.
+        applies_to_unassigned (bool | Unset): Whether permissions are enabled for incident without severity Default:
+            True.
+        severity_ids (list[str] | None | Unset): Severity ids that determine if an incident is permitted based on
             matching severity
     """
 
-    fully_enabled: Unset | bool = True
-    create_enabled: Unset | bool = False
-    applies_to_unassigned: Unset | bool = True
-    severity_ids: None | Unset | list[str] = UNSET
+    fully_enabled: bool | Unset = True
+    create_enabled: bool | Unset = False
+    applies_to_unassigned: bool | Unset = True
+    severity_ids: list[str] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,7 +36,7 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
 
         applies_to_unassigned = self.applies_to_unassigned
 
-        severity_ids: None | Unset | list[str]
+        severity_ids: list[str] | None | Unset
         if isinstance(self.severity_ids, Unset):
             severity_ids = UNSET
         elif isinstance(self.severity_ids, list):
@@ -66,7 +68,7 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
 
         applies_to_unassigned = d.pop("applies_to_unassigned", UNSET)
 
-        def _parse_severity_ids(data: object) -> None | Unset | list[str]:
+        def _parse_severity_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -77,9 +79,9 @@ class UpdateIncidentPermissionSetResourceDataAttributesSeverityParams:
                 severity_ids_type_0 = cast(list[str], data)
 
                 return severity_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         severity_ids = _parse_severity_ids(d.pop("severity_ids", UNSET))
 

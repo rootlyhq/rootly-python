@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -24,18 +26,18 @@ class NewIncidentPermissionSetResourceDataAttributes:
     Attributes:
         incident_permission_set_id (str):
         kind (NewIncidentPermissionSetResourceDataAttributesKind):
-        private (Union[Unset, bool]):
-        resource_id (Union[Unset, str]):
-        resource_type (Union[Unset, str]):
-        severity_params (Union[Unset, NewIncidentPermissionSetResourceDataAttributesSeverityParams]):
+        private (bool | Unset):
+        resource_id (str | Unset):
+        resource_type (str | Unset):
+        severity_params (NewIncidentPermissionSetResourceDataAttributesSeverityParams | Unset):
     """
 
     incident_permission_set_id: str
     kind: NewIncidentPermissionSetResourceDataAttributesKind
-    private: Unset | bool = UNSET
-    resource_id: Unset | str = UNSET
-    resource_type: Unset | str = UNSET
-    severity_params: Union[Unset, "NewIncidentPermissionSetResourceDataAttributesSeverityParams"] = UNSET
+    private: bool | Unset = UNSET
+    resource_id: str | Unset = UNSET
+    resource_type: str | Unset = UNSET
+    severity_params: NewIncidentPermissionSetResourceDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         incident_permission_set_id = self.incident_permission_set_id
@@ -48,7 +50,7 @@ class NewIncidentPermissionSetResourceDataAttributes:
 
         resource_type = self.resource_type
 
-        severity_params: Unset | dict[str, Any] = UNSET
+        severity_params: dict[str, Any] | Unset = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -89,7 +91,7 @@ class NewIncidentPermissionSetResourceDataAttributes:
         resource_type = d.pop("resource_type", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Unset | NewIncidentPermissionSetResourceDataAttributesSeverityParams
+        severity_params: NewIncidentPermissionSetResourceDataAttributesSeverityParams | Unset
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

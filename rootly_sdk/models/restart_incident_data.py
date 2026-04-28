@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,17 +21,17 @@ class RestartIncidentData:
     """
     Attributes:
         type_ (RestartIncidentDataType):
-        attributes (Union[Unset, RestartIncidentDataAttributes]):
+        attributes (RestartIncidentDataAttributes | Unset):
     """
 
     type_: RestartIncidentDataType
-    attributes: Union[Unset, "RestartIncidentDataAttributes"] = UNSET
+    attributes: RestartIncidentDataAttributes | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -53,7 +55,7 @@ class RestartIncidentData:
         type_ = check_restart_incident_data_type(d.pop("type"))
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | RestartIncidentDataAttributes
+        attributes: RestartIncidentDataAttributes | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -12,10 +14,10 @@ T = TypeVar("T", bound="UpdateUserEmailAddressDataAttributes")
 class UpdateUserEmailAddressDataAttributes:
     """
     Attributes:
-        email (Union[Unset, str]): Email address
+        email (str | Unset): Email address
     """
 
-    email: Unset | str = UNSET
+    email: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         email = self.email

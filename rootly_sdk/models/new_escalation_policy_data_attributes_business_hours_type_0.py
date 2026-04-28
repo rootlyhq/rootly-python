@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -21,25 +23,24 @@ T = TypeVar("T", bound="NewEscalationPolicyDataAttributesBusinessHoursType0")
 class NewEscalationPolicyDataAttributesBusinessHoursType0:
     """
     Attributes:
-        time_zone (Union[Unset, NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone]): Time zone for business
-            hours
-        days (Union[None, Unset, list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]]): Business days
-        start_time (Union[None, Unset, str]): Start time for business hours (HH:MM)
-        end_time (Union[None, Unset, str]): End time for business hours (HH:MM)
+        time_zone (NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset): Time zone for business hours
+        days (list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset): Business days
+        start_time (None | str | Unset): Start time for business hours (HH:MM)
+        end_time (None | str | Unset): End time for business hours (HH:MM)
     """
 
-    time_zone: Unset | NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone = UNSET
-    days: None | Unset | list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] = UNSET
-    start_time: None | Unset | str = UNSET
-    end_time: None | Unset | str = UNSET
+    time_zone: NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset = UNSET
+    days: list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset = UNSET
+    start_time: None | str | Unset = UNSET
+    end_time: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        time_zone: Unset | str = UNSET
+        time_zone: str | Unset = UNSET
         if not isinstance(self.time_zone, Unset):
             time_zone = self.time_zone
 
-        days: None | Unset | list[str]
+        days: list[str] | None | Unset
         if isinstance(self.days, Unset):
             days = UNSET
         elif isinstance(self.days, list):
@@ -51,13 +52,13 @@ class NewEscalationPolicyDataAttributesBusinessHoursType0:
         else:
             days = self.days
 
-        start_time: None | Unset | str
+        start_time: None | str | Unset
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         else:
             start_time = self.start_time
 
-        end_time: None | Unset | str
+        end_time: None | str | Unset
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         else:
@@ -81,7 +82,7 @@ class NewEscalationPolicyDataAttributesBusinessHoursType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _time_zone = d.pop("time_zone", UNSET)
-        time_zone: Unset | NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone
+        time_zone: NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset
         if isinstance(_time_zone, Unset):
             time_zone = UNSET
         else:
@@ -89,7 +90,7 @@ class NewEscalationPolicyDataAttributesBusinessHoursType0:
 
         def _parse_days(
             data: object,
-        ) -> None | Unset | list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]:
+        ) -> list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -109,27 +110,27 @@ class NewEscalationPolicyDataAttributesBusinessHoursType0:
                     days_type_0.append(days_type_0_item)
 
                 return days_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item], data)
+            return cast(list[NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset, data)
 
         days = _parse_days(d.pop("days", UNSET))
 
-        def _parse_start_time(data: object) -> None | Unset | str:
+        def _parse_start_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> None | Unset | str:
+        def _parse_end_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 

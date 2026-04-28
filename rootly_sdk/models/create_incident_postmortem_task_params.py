@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,16 +27,16 @@ class CreateIncidentPostmortemTaskParams:
     Attributes:
         incident_id (str): UUID of the incident that needs a retrospective
         title (str): The retrospective title
-        task_type (Union[Unset, CreateIncidentPostmortemTaskParamsTaskType]):
-        status (Union[None, Unset, str]):
-        template (Union['CreateIncidentPostmortemTaskParamsTemplateType0', None, Unset]): Retrospective template to use
+        task_type (CreateIncidentPostmortemTaskParamsTaskType | Unset):
+        status (None | str | Unset):
+        template (CreateIncidentPostmortemTaskParamsTemplateType0 | None | Unset): Retrospective template to use
     """
 
     incident_id: str
     title: str
-    task_type: Unset | CreateIncidentPostmortemTaskParamsTaskType = UNSET
-    status: None | Unset | str = UNSET
-    template: Union["CreateIncidentPostmortemTaskParamsTemplateType0", None, Unset] = UNSET
+    task_type: CreateIncidentPostmortemTaskParamsTaskType | Unset = UNSET
+    status: None | str | Unset = UNSET
+    template: CreateIncidentPostmortemTaskParamsTemplateType0 | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,17 +48,17 @@ class CreateIncidentPostmortemTaskParams:
 
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        status: None | Unset | str
+        status: None | str | Unset
         if isinstance(self.status, Unset):
             status = UNSET
         else:
             status = self.status
 
-        template: None | Unset | dict[str, Any]
+        template: dict[str, Any] | None | Unset
         if isinstance(self.template, Unset):
             template = UNSET
         elif isinstance(self.template, CreateIncidentPostmortemTaskParamsTemplateType0):
@@ -93,22 +95,22 @@ class CreateIncidentPostmortemTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateIncidentPostmortemTaskParamsTaskType
+        task_type: CreateIncidentPostmortemTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_incident_postmortem_task_params_task_type(_task_type)
 
-        def _parse_status(data: object) -> None | Unset | str:
+        def _parse_status(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_template(data: object) -> Union["CreateIncidentPostmortemTaskParamsTemplateType0", None, Unset]:
+        def _parse_template(data: object) -> CreateIncidentPostmortemTaskParamsTemplateType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -119,9 +121,9 @@ class CreateIncidentPostmortemTaskParams:
                 template_type_0 = CreateIncidentPostmortemTaskParamsTemplateType0.from_dict(data)
 
                 return template_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["CreateIncidentPostmortemTaskParamsTemplateType0", None, Unset], data)
+            return cast(CreateIncidentPostmortemTaskParamsTemplateType0 | None | Unset, data)
 
         template = _parse_template(d.pop("template", UNSET))
 

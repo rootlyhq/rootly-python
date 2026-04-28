@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,22 +18,22 @@ T = TypeVar("T", bound="UpdatePostMortemTemplateDataAttributes")
 class UpdatePostMortemTemplateDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the postmortem template
-        default (Union[None, Unset, bool]): Default selected template when editing a postmortem
-        content (Union[Unset, str]): The postmortem template. Supports TipTap blocks (followup and timeline components),
+        name (str | Unset): The name of the postmortem template
+        default (bool | None | Unset): Default selected template when editing a postmortem
+        content (str | Unset): The postmortem template. Supports TipTap blocks (followup and timeline components),
             Liquid syntax, and HTML. Will be sanitized and applied to both content and content_html fields.
-        format_ (Union[Unset, UpdatePostMortemTemplateDataAttributesFormat]): The format of the input Default: 'html'.
+        format_ (UpdatePostMortemTemplateDataAttributesFormat | Unset): The format of the input Default: 'html'.
     """
 
-    name: Unset | str = UNSET
-    default: None | Unset | bool = UNSET
-    content: Unset | str = UNSET
-    format_: Unset | UpdatePostMortemTemplateDataAttributesFormat = "html"
+    name: str | Unset = UNSET
+    default: bool | None | Unset = UNSET
+    content: str | Unset = UNSET
+    format_: UpdatePostMortemTemplateDataAttributesFormat | Unset = "html"
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        default: None | Unset | bool
+        default: bool | None | Unset
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -39,7 +41,7 @@ class UpdatePostMortemTemplateDataAttributes:
 
         content = self.content
 
-        format_: Unset | str = UNSET
+        format_: str | Unset = UNSET
         if not isinstance(self.format_, Unset):
             format_ = self.format_
 
@@ -62,19 +64,19 @@ class UpdatePostMortemTemplateDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_default(data: object) -> None | Unset | bool:
+        def _parse_default(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
         content = d.pop("content", UNSET)
 
         _format_ = d.pop("format", UNSET)
-        format_: Unset | UpdatePostMortemTemplateDataAttributesFormat
+        format_: UpdatePostMortemTemplateDataAttributesFormat | Unset
         if isinstance(_format_, Unset):
             format_ = UNSET
         else:

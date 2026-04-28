@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -23,36 +25,36 @@ T = TypeVar("T", bound="NewEdgeConnectorActionActionMetadata")
 class NewEdgeConnectorActionActionMetadata:
     """
     Attributes:
-        description (Union[None, Unset, str]):
-        timeout (Union[None, Unset, int]):
-        icon (Union[Unset, NewEdgeConnectorActionActionMetadataIcon]):
-        parameters (Union[None, Unset, list['NewEdgeConnectorActionActionMetadataParametersType0Item']]):
+        description (None | str | Unset):
+        timeout (int | None | Unset):
+        icon (NewEdgeConnectorActionActionMetadataIcon | Unset):
+        parameters (list[NewEdgeConnectorActionActionMetadataParametersType0Item] | None | Unset):
     """
 
-    description: None | Unset | str = UNSET
-    timeout: None | Unset | int = UNSET
-    icon: Unset | NewEdgeConnectorActionActionMetadataIcon = UNSET
-    parameters: None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"] = UNSET
+    description: None | str | Unset = UNSET
+    timeout: int | None | Unset = UNSET
+    icon: NewEdgeConnectorActionActionMetadataIcon | Unset = UNSET
+    parameters: list[NewEdgeConnectorActionActionMetadataParametersType0Item] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        timeout: None | Unset | int
+        timeout: int | None | Unset
         if isinstance(self.timeout, Unset):
             timeout = UNSET
         else:
             timeout = self.timeout
 
-        icon: Unset | str = UNSET
+        icon: str | Unset = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        parameters: None | Unset | list[dict[str, Any]]
+        parameters: list[dict[str, Any]] | None | Unset
         if isinstance(self.parameters, Unset):
             parameters = UNSET
         elif isinstance(self.parameters, list):
@@ -86,26 +88,26 @@ class NewEdgeConnectorActionActionMetadata:
 
         d = dict(src_dict)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_timeout(data: object) -> None | Unset | int:
+        def _parse_timeout(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         timeout = _parse_timeout(d.pop("timeout", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: Unset | NewEdgeConnectorActionActionMetadataIcon
+        icon: NewEdgeConnectorActionActionMetadataIcon | Unset
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
@@ -113,7 +115,7 @@ class NewEdgeConnectorActionActionMetadata:
 
         def _parse_parameters(
             data: object,
-        ) -> None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"]:
+        ) -> list[NewEdgeConnectorActionActionMetadataParametersType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -131,9 +133,9 @@ class NewEdgeConnectorActionActionMetadata:
                     parameters_type_0.append(parameters_type_0_item)
 
                 return parameters_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"], data)
+            return cast(list[NewEdgeConnectorActionActionMetadataParametersType0Item] | None | Unset, data)
 
         parameters = _parse_parameters(d.pop("parameters", UNSET))
 

@@ -1,10 +1,11 @@
 from typing import Literal, cast
 
-DashboardPanelParamsDatasetsItemGroupByType1Type0Key = Literal["custom_field", "incident_role"]
+DashboardPanelParamsDatasetsItemGroupByType1Type0Key = Literal["alert_field", "custom_field", "incident_role"]
 
 DASHBOARD_PANEL_PARAMS_DATASETS_ITEM_GROUP_BY_TYPE_1_TYPE_0_KEY_VALUES: set[
     DashboardPanelParamsDatasetsItemGroupByType1Type0Key
 ] = {
+    "alert_field",
     "custom_field",
     "incident_role",
 }

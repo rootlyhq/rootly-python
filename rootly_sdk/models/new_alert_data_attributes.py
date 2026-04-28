@@ -1,6 +1,8 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -37,54 +39,52 @@ class NewAlertDataAttributes:
     Attributes:
         source (NewAlertDataAttributesSource): The source of the alert
         summary (str): The summary of the alert
-        noise (Union[Unset, NewAlertDataAttributesNoise]): Whether the alert is marked as noise
-        status (Union[Unset, NewAlertDataAttributesStatus]): Only available for organizations with Rootly On-Call
-            enabled. Can be one of open, triggered.
-        description (Union[None, Unset, str]): The description of the alert
-        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the alert. If your organization has
-            On-Call enabled and your notification target is a Service. This field will be automatically set for you.
-        group_ids (Union[None, Unset, list[str]]): The Group IDs to attach to the alert. If your organization has On-
-            Call enabled and your notification target is a Group. This field will be automatically set for you.
-        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the alert
-        started_at (Union[None, Unset, datetime.datetime]): Alert start datetime
-        ended_at (Union[None, Unset, datetime.datetime]): Alert end datetime
-        external_id (Union[None, Unset, str]): External ID
-        external_url (Union[None, Unset, str]): External Url
-        alert_urgency_id (Union[None, Unset, str]): The ID of the alert urgency
-        notification_target_type (Union[Unset, NewAlertDataAttributesNotificationTargetType]): Only available for
+        noise (NewAlertDataAttributesNoise | Unset): Whether the alert is marked as noise
+        status (NewAlertDataAttributesStatus | Unset): Only available for organizations with Rootly On-Call enabled. Can
+            be one of open, triggered.
+        description (None | str | Unset): The description of the alert
+        service_ids (list[str] | None | Unset): The Service IDs to attach to the alert. If your organization has On-Call
+            enabled and your notification target is a Service. This field will be automatically set for you.
+        group_ids (list[str] | None | Unset): The Group IDs to attach to the alert. If your organization has On-Call
+            enabled and your notification target is a Group. This field will be automatically set for you.
+        environment_ids (list[str] | None | Unset): The Environment IDs to attach to the alert
+        started_at (datetime.datetime | None | Unset): Alert start datetime
+        ended_at (datetime.datetime | None | Unset): Alert end datetime
+        external_id (None | str | Unset): External ID
+        external_url (None | str | Unset): External Url
+        alert_urgency_id (None | str | Unset): The ID of the alert urgency
+        notification_target_type (NewAlertDataAttributesNotificationTargetType | Unset): Only available for
             organizations with Rootly On-Call enabled. Can be one of Group, Service, EscalationPolicy, User.
-        notification_target_id (Union[None, Unset, str]): Only available for organizations with Rootly On-Call enabled.
-            The _identifier_ of the notification target object.
-        labels (Union[Unset, list[Union['NewAlertDataAttributesLabelsItemType0', None]]]):
-        data (Union['NewAlertDataAttributesDataType0', None, Unset]): Additional data
-        deduplication_key (Union[None, Unset, str]): Alerts sharing the same deduplication key are treated as a single
-            alert.
-        alert_field_values_attributes (Union[Unset,
-            list[Union['NewAlertDataAttributesAlertFieldValuesAttributesItemType0', None]]]): Custom alert field values to
-            create with the alert
+        notification_target_id (None | str | Unset): Only available for organizations with Rootly On-Call enabled. The
+            _identifier_ of the notification target object.
+        labels (list[NewAlertDataAttributesLabelsItemType0 | None] | Unset):
+        data (NewAlertDataAttributesDataType0 | None | Unset): Additional data
+        deduplication_key (None | str | Unset): Alerts sharing the same deduplication key are treated as a single alert.
+        alert_field_values_attributes (list[NewAlertDataAttributesAlertFieldValuesAttributesItemType0 | None] | Unset):
+            Custom alert field values to create with the alert
     """
 
     source: NewAlertDataAttributesSource
     summary: str
-    noise: Unset | NewAlertDataAttributesNoise = UNSET
-    status: Unset | NewAlertDataAttributesStatus = UNSET
-    description: None | Unset | str = UNSET
-    service_ids: None | Unset | list[str] = UNSET
-    group_ids: None | Unset | list[str] = UNSET
-    environment_ids: None | Unset | list[str] = UNSET
-    started_at: None | Unset | datetime.datetime = UNSET
-    ended_at: None | Unset | datetime.datetime = UNSET
-    external_id: None | Unset | str = UNSET
-    external_url: None | Unset | str = UNSET
-    alert_urgency_id: None | Unset | str = UNSET
-    notification_target_type: Unset | NewAlertDataAttributesNotificationTargetType = UNSET
-    notification_target_id: None | Unset | str = UNSET
-    labels: Unset | list[Union["NewAlertDataAttributesLabelsItemType0", None]] = UNSET
-    data: Union["NewAlertDataAttributesDataType0", None, Unset] = UNSET
-    deduplication_key: None | Unset | str = UNSET
-    alert_field_values_attributes: (
-        Unset | list[Union["NewAlertDataAttributesAlertFieldValuesAttributesItemType0", None]]
-    ) = UNSET
+    noise: NewAlertDataAttributesNoise | Unset = UNSET
+    status: NewAlertDataAttributesStatus | Unset = UNSET
+    description: None | str | Unset = UNSET
+    service_ids: list[str] | None | Unset = UNSET
+    group_ids: list[str] | None | Unset = UNSET
+    environment_ids: list[str] | None | Unset = UNSET
+    started_at: datetime.datetime | None | Unset = UNSET
+    ended_at: datetime.datetime | None | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    external_url: None | str | Unset = UNSET
+    alert_urgency_id: None | str | Unset = UNSET
+    notification_target_type: NewAlertDataAttributesNotificationTargetType | Unset = UNSET
+    notification_target_id: None | str | Unset = UNSET
+    labels: list[NewAlertDataAttributesLabelsItemType0 | None] | Unset = UNSET
+    data: NewAlertDataAttributesDataType0 | None | Unset = UNSET
+    deduplication_key: None | str | Unset = UNSET
+    alert_field_values_attributes: list[NewAlertDataAttributesAlertFieldValuesAttributesItemType0 | None] | Unset = (
+        UNSET
+    )
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
@@ -97,21 +97,21 @@ class NewAlertDataAttributes:
 
         summary = self.summary
 
-        noise: Unset | str = UNSET
+        noise: str | Unset = UNSET
         if not isinstance(self.noise, Unset):
             noise = self.noise
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        service_ids: None | Unset | list[str]
+        service_ids: list[str] | None | Unset
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -120,7 +120,7 @@ class NewAlertDataAttributes:
         else:
             service_ids = self.service_ids
 
-        group_ids: None | Unset | list[str]
+        group_ids: list[str] | None | Unset
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -129,7 +129,7 @@ class NewAlertDataAttributes:
         else:
             group_ids = self.group_ids
 
-        environment_ids: None | Unset | list[str]
+        environment_ids: list[str] | None | Unset
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -138,7 +138,7 @@ class NewAlertDataAttributes:
         else:
             environment_ids = self.environment_ids
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -146,7 +146,7 @@ class NewAlertDataAttributes:
         else:
             started_at = self.started_at
 
-        ended_at: None | Unset | str
+        ended_at: None | str | Unset
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -154,46 +154,46 @@ class NewAlertDataAttributes:
         else:
             ended_at = self.ended_at
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        external_url: None | Unset | str
+        external_url: None | str | Unset
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        alert_urgency_id: None | Unset | str
+        alert_urgency_id: None | str | Unset
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        notification_target_type: Unset | str = UNSET
+        notification_target_type: str | Unset = UNSET
         if not isinstance(self.notification_target_type, Unset):
             notification_target_type = self.notification_target_type
 
-        notification_target_id: None | Unset | str
+        notification_target_id: None | str | Unset
         if isinstance(self.notification_target_id, Unset):
             notification_target_id = UNSET
         else:
             notification_target_id = self.notification_target_id
 
-        labels: Unset | list[None | dict[str, Any]] = UNSET
+        labels: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: None | dict[str, Any]
+                labels_item: dict[str, Any] | None
                 if isinstance(labels_item_data, NewAlertDataAttributesLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        data: None | Unset | dict[str, Any]
+        data: dict[str, Any] | None | Unset
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, NewAlertDataAttributesDataType0):
@@ -201,17 +201,17 @@ class NewAlertDataAttributes:
         else:
             data = self.data
 
-        deduplication_key: None | Unset | str
+        deduplication_key: None | str | Unset
         if isinstance(self.deduplication_key, Unset):
             deduplication_key = UNSET
         else:
             deduplication_key = self.deduplication_key
 
-        alert_field_values_attributes: Unset | list[None | dict[str, Any]] = UNSET
+        alert_field_values_attributes: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.alert_field_values_attributes, Unset):
             alert_field_values_attributes = []
             for alert_field_values_attributes_item_data in self.alert_field_values_attributes:
-                alert_field_values_attributes_item: None | dict[str, Any]
+                alert_field_values_attributes_item: dict[str, Any] | None
                 if isinstance(
                     alert_field_values_attributes_item_data, NewAlertDataAttributesAlertFieldValuesAttributesItemType0
                 ):
@@ -279,29 +279,29 @@ class NewAlertDataAttributes:
         summary = d.pop("summary")
 
         _noise = d.pop("noise", UNSET)
-        noise: Unset | NewAlertDataAttributesNoise
+        noise: NewAlertDataAttributesNoise | Unset
         if isinstance(_noise, Unset):
             noise = UNSET
         else:
             noise = check_new_alert_data_attributes_noise(_noise)
 
         _status = d.pop("status", UNSET)
-        status: Unset | NewAlertDataAttributesStatus
+        status: NewAlertDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_new_alert_data_attributes_status(_status)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_service_ids(data: object) -> None | Unset | list[str]:
+        def _parse_service_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -312,13 +312,13 @@ class NewAlertDataAttributes:
                 service_ids_type_0 = cast(list[str], data)
 
                 return service_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> None | Unset | list[str]:
+        def _parse_group_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -329,13 +329,13 @@ class NewAlertDataAttributes:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
+        def _parse_environment_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -346,13 +346,13 @@ class NewAlertDataAttributes:
                 environment_ids_type_0 = cast(list[str], data)
 
                 return environment_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -363,13 +363,13 @@ class NewAlertDataAttributes:
                 started_at_type_0 = isoparse(data)
 
                 return started_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_ended_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -380,41 +380,41 @@ class NewAlertDataAttributes:
                 ended_at_type_0 = isoparse(data)
 
                 return ended_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_external_url(data: object) -> None | Unset | str:
+        def _parse_external_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
+        def _parse_alert_urgency_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
         _notification_target_type = d.pop("notification_target_type", UNSET)
-        notification_target_type: Unset | NewAlertDataAttributesNotificationTargetType
+        notification_target_type: NewAlertDataAttributesNotificationTargetType | Unset
         if isinstance(_notification_target_type, Unset):
             notification_target_type = UNSET
         else:
@@ -422,37 +422,39 @@ class NewAlertDataAttributes:
                 _notification_target_type
             )
 
-        def _parse_notification_target_id(data: object) -> None | Unset | str:
+        def _parse_notification_target_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         notification_target_id = _parse_notification_target_id(d.pop("notification_target_id", UNSET))
 
-        labels = []
         _labels = d.pop("labels", UNSET)
-        for labels_item_data in _labels or []:
+        labels: list[NewAlertDataAttributesLabelsItemType0 | None] | Unset = UNSET
+        if _labels is not UNSET:
+            labels = []
+            for labels_item_data in _labels:
 
-            def _parse_labels_item(data: object) -> Union["NewAlertDataAttributesLabelsItemType0", None]:
-                if data is None:
-                    return data
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    labels_item_type_0 = NewAlertDataAttributesLabelsItemType0.from_dict(data)
+                def _parse_labels_item(data: object) -> NewAlertDataAttributesLabelsItemType0 | None:
+                    if data is None:
+                        return data
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        labels_item_type_0 = NewAlertDataAttributesLabelsItemType0.from_dict(data)
 
-                    return labels_item_type_0
-                except:  # noqa: E722
-                    pass
-                return cast(Union["NewAlertDataAttributesLabelsItemType0", None], data)
+                        return labels_item_type_0
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    return cast(NewAlertDataAttributesLabelsItemType0 | None, data)
 
-            labels_item = _parse_labels_item(labels_item_data)
+                labels_item = _parse_labels_item(labels_item_data)
 
-            labels.append(labels_item)
+                labels.append(labels_item)
 
-        def _parse_data(data: object) -> Union["NewAlertDataAttributesDataType0", None, Unset]:
+        def _parse_data(data: object) -> NewAlertDataAttributesDataType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -463,47 +465,51 @@ class NewAlertDataAttributes:
                 data_type_0 = NewAlertDataAttributesDataType0.from_dict(data)
 
                 return data_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["NewAlertDataAttributesDataType0", None, Unset], data)
+            return cast(NewAlertDataAttributesDataType0 | None | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 
-        def _parse_deduplication_key(data: object) -> None | Unset | str:
+        def _parse_deduplication_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         deduplication_key = _parse_deduplication_key(d.pop("deduplication_key", UNSET))
 
-        alert_field_values_attributes = []
         _alert_field_values_attributes = d.pop("alert_field_values_attributes", UNSET)
-        for alert_field_values_attributes_item_data in _alert_field_values_attributes or []:
+        alert_field_values_attributes: (
+            list[NewAlertDataAttributesAlertFieldValuesAttributesItemType0 | None] | Unset
+        ) = UNSET
+        if _alert_field_values_attributes is not UNSET:
+            alert_field_values_attributes = []
+            for alert_field_values_attributes_item_data in _alert_field_values_attributes:
 
-            def _parse_alert_field_values_attributes_item(
-                data: object,
-            ) -> Union["NewAlertDataAttributesAlertFieldValuesAttributesItemType0", None]:
-                if data is None:
-                    return data
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    alert_field_values_attributes_item_type_0 = (
-                        NewAlertDataAttributesAlertFieldValuesAttributesItemType0.from_dict(data)
-                    )
+                def _parse_alert_field_values_attributes_item(
+                    data: object,
+                ) -> NewAlertDataAttributesAlertFieldValuesAttributesItemType0 | None:
+                    if data is None:
+                        return data
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        alert_field_values_attributes_item_type_0 = (
+                            NewAlertDataAttributesAlertFieldValuesAttributesItemType0.from_dict(data)
+                        )
 
-                    return alert_field_values_attributes_item_type_0
-                except:  # noqa: E722
-                    pass
-                return cast(Union["NewAlertDataAttributesAlertFieldValuesAttributesItemType0", None], data)
+                        return alert_field_values_attributes_item_type_0
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    return cast(NewAlertDataAttributesAlertFieldValuesAttributesItemType0 | None, data)
 
-            alert_field_values_attributes_item = _parse_alert_field_values_attributes_item(
-                alert_field_values_attributes_item_data
-            )
+                alert_field_values_attributes_item = _parse_alert_field_values_attributes_item(
+                    alert_field_values_attributes_item_data
+                )
 
-            alert_field_values_attributes.append(alert_field_values_attributes_item)
+                alert_field_values_attributes.append(alert_field_values_attributes_item)
 
         new_alert_data_attributes = cls(
             source=source,

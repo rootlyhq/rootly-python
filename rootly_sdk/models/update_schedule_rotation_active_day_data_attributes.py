@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -22,24 +24,21 @@ T = TypeVar("T", bound="UpdateScheduleRotationActiveDayDataAttributes")
 class UpdateScheduleRotationActiveDayDataAttributes:
     """
     Attributes:
-        day_name (Union[Unset, UpdateScheduleRotationActiveDayDataAttributesDayName]): Schedule rotation day name for
-            which active times to be created
-        active_time_attributes (Union[Unset,
-            list['UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem']]): Schedule rotation active times
-            per day
+        day_name (UpdateScheduleRotationActiveDayDataAttributesDayName | Unset): Schedule rotation day name for which
+            active times to be created
+        active_time_attributes (list[UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem] | Unset):
+            Schedule rotation active times per day
     """
 
-    day_name: Unset | UpdateScheduleRotationActiveDayDataAttributesDayName = UNSET
-    active_time_attributes: Unset | list["UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem"] = (
-        UNSET
-    )
+    day_name: UpdateScheduleRotationActiveDayDataAttributesDayName | Unset = UNSET
+    active_time_attributes: list[UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        day_name: Unset | str = UNSET
+        day_name: str | Unset = UNSET
         if not isinstance(self.day_name, Unset):
             day_name = self.day_name
 
-        active_time_attributes: Unset | list[dict[str, Any]] = UNSET
+        active_time_attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.active_time_attributes, Unset):
             active_time_attributes = []
             for active_time_attributes_item_data in self.active_time_attributes:
@@ -64,22 +63,26 @@ class UpdateScheduleRotationActiveDayDataAttributes:
 
         d = dict(src_dict)
         _day_name = d.pop("day_name", UNSET)
-        day_name: Unset | UpdateScheduleRotationActiveDayDataAttributesDayName
+        day_name: UpdateScheduleRotationActiveDayDataAttributesDayName | Unset
         if isinstance(_day_name, Unset):
             day_name = UNSET
         else:
             day_name = check_update_schedule_rotation_active_day_data_attributes_day_name(_day_name)
 
-        active_time_attributes = []
         _active_time_attributes = d.pop("active_time_attributes", UNSET)
-        for active_time_attributes_item_data in _active_time_attributes or []:
-            active_time_attributes_item = (
-                UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem.from_dict(
-                    active_time_attributes_item_data
+        active_time_attributes: list[UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem] | Unset = (
+            UNSET
+        )
+        if _active_time_attributes is not UNSET:
+            active_time_attributes = []
+            for active_time_attributes_item_data in _active_time_attributes:
+                active_time_attributes_item = (
+                    UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem.from_dict(
+                        active_time_attributes_item_data
+                    )
                 )
-            )
 
-            active_time_attributes.append(active_time_attributes_item)
+                active_time_attributes.append(active_time_attributes_item)
 
         update_schedule_rotation_active_day_data_attributes = cls(
             day_name=day_name,

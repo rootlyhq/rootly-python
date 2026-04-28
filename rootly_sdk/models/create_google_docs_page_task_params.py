@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,31 +25,31 @@ class CreateGoogleDocsPageTaskParams:
     """
     Attributes:
         title (str): The page title
-        task_type (Union[Unset, CreateGoogleDocsPageTaskParamsTaskType]):
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page, if desired
-        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
-        drive (Union[Unset, CreateGoogleDocsPageTaskParamsDrive]):
-        parent_folder (Union[Unset, CreateGoogleDocsPageTaskParamsParentFolder]):
-        content (Union[Unset, str]): The page content
-        template_id (Union[Unset, str]): The Google Doc file ID to use as a template
-        permissions (Union[Unset, str]): Page permissions JSON
+        task_type (CreateGoogleDocsPageTaskParamsTaskType | Unset):
+        post_mortem_template_id (str | Unset): Retrospective template to use when creating page, if desired
+        mark_post_mortem_as_published (bool | Unset):  Default: True.
+        drive (CreateGoogleDocsPageTaskParamsDrive | Unset):
+        parent_folder (CreateGoogleDocsPageTaskParamsParentFolder | Unset):
+        content (str | Unset): The page content
+        template_id (str | Unset): The Google Doc file ID to use as a template
+        permissions (str | Unset): Page permissions JSON
     """
 
     title: str
-    task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    mark_post_mortem_as_published: Unset | bool = True
-    drive: Union[Unset, "CreateGoogleDocsPageTaskParamsDrive"] = UNSET
-    parent_folder: Union[Unset, "CreateGoogleDocsPageTaskParamsParentFolder"] = UNSET
-    content: Unset | str = UNSET
-    template_id: Unset | str = UNSET
-    permissions: Unset | str = UNSET
+    task_type: CreateGoogleDocsPageTaskParamsTaskType | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    mark_post_mortem_as_published: bool | Unset = True
+    drive: CreateGoogleDocsPageTaskParamsDrive | Unset = UNSET
+    parent_folder: CreateGoogleDocsPageTaskParamsParentFolder | Unset = UNSET
+    content: str | Unset = UNSET
+    template_id: str | Unset = UNSET
+    permissions: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -55,11 +57,11 @@ class CreateGoogleDocsPageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        drive: Unset | dict[str, Any] = UNSET
+        drive: dict[str, Any] | Unset = UNSET
         if not isinstance(self.drive, Unset):
             drive = self.drive.to_dict()
 
-        parent_folder: Unset | dict[str, Any] = UNSET
+        parent_folder: dict[str, Any] | Unset = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -106,7 +108,7 @@ class CreateGoogleDocsPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType
+        task_type: CreateGoogleDocsPageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -117,14 +119,14 @@ class CreateGoogleDocsPageTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _drive = d.pop("drive", UNSET)
-        drive: Unset | CreateGoogleDocsPageTaskParamsDrive
+        drive: CreateGoogleDocsPageTaskParamsDrive | Unset
         if isinstance(_drive, Unset):
             drive = UNSET
         else:
             drive = CreateGoogleDocsPageTaskParamsDrive.from_dict(_drive)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: Unset | CreateGoogleDocsPageTaskParamsParentFolder
+        parent_folder: CreateGoogleDocsPageTaskParamsParentFolder | Unset
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

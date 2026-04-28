@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,10 +15,10 @@ T = TypeVar("T", bound="UpdateAlertGroupDataAttributesAttributesItem")
 class UpdateAlertGroupDataAttributesAttributesItem:
     """
     Attributes:
-        json_path (Union[Unset, str]): The JSON path to the value to group by.
+        json_path (str | Unset): The JSON path to the value to group by.
     """
 
-    json_path: Unset | str = UNSET
+    json_path: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

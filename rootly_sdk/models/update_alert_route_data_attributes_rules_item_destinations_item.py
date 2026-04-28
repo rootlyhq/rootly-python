@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -17,7 +19,8 @@ T = TypeVar("T", bound="UpdateAlertRouteDataAttributesRulesItemDestinationsItem"
 class UpdateAlertRouteDataAttributesRulesItemDestinationsItem:
     """
     Attributes:
-        target_type (UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType): The type of the target
+        target_type (UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType): The type of the target. Please
+            contact support if you encounter issues using `Functionality` as a target type.
         target_id (UUID): The ID of the target
     """
 

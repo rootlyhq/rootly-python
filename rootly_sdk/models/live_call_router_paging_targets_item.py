@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,7 +19,8 @@ class LiveCallRouterPagingTargetsItem:
     """
     Attributes:
         id (str): The ID of paging target
-        type_ (LiveCallRouterPagingTargetsItemType): The type of the paging target
+        type_ (LiveCallRouterPagingTargetsItemType): The type of the paging target. Please contact support if you
+            encounter issues using `functionality` as a target type.
         alert_urgency_id (str): This is used in escalation paths to determine who to page
     """
 

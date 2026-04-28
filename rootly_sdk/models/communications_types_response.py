@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,14 +21,14 @@ T = TypeVar("T", bound="CommunicationsTypesResponse")
 class CommunicationsTypesResponse:
     """
     Attributes:
-        data (list['CommunicationsTypesResponseDataItem']):
-        links (Union[Unset, Links]):
-        meta (Union[Unset, Meta]):
+        data (list[CommunicationsTypesResponseDataItem]):
+        links (Links | Unset):
+        meta (Meta | Unset):
     """
 
-    data: list["CommunicationsTypesResponseDataItem"]
-    links: Union[Unset, "Links"] = UNSET
-    meta: Union[Unset, "Meta"] = UNSET
+    data: list[CommunicationsTypesResponseDataItem]
+    links: Links | Unset = UNSET
+    meta: Meta | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,11 +37,11 @@ class CommunicationsTypesResponse:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        links: Unset | dict[str, Any] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        meta: Unset | dict[str, Any] = UNSET
+        meta: dict[str, Any] | Unset = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
@@ -72,14 +74,14 @@ class CommunicationsTypesResponse:
             data.append(data_item)
 
         _links = d.pop("links", UNSET)
-        links: Unset | Links
+        links: Links | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = Links.from_dict(_links)
 
         _meta = d.pop("meta", UNSET)
-        meta: Unset | Meta
+        meta: Meta | Unset
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

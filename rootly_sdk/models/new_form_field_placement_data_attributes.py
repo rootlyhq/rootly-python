@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -23,22 +25,22 @@ class NewFormFieldPlacementDataAttributes:
     Attributes:
         form_set_id (str): The form set this field is placed in.
         form (str): The form this field is placed on.
-        position (Union[Unset, int]): The position of the field placement.
-        required (Union[Unset, bool]): Whether the field is unconditionally required on this form.
-        required_operator (Union[Unset, NewFormFieldPlacementDataAttributesRequiredOperator]): Logical operator when
+        position (int | Unset): The position of the field placement.
+        required (bool | Unset): Whether the field is unconditionally required on this form.
+        required_operator (NewFormFieldPlacementDataAttributesRequiredOperator | Unset): Logical operator when
             evaluating multiple form_field_placement_conditions with conditioned=required
-        placement_operator (Union[Unset, NewFormFieldPlacementDataAttributesPlacementOperator]): Logical operator when
+        placement_operator (NewFormFieldPlacementDataAttributesPlacementOperator | Unset): Logical operator when
             evaluating multiple form_field_placement_conditions with conditioned=placement
-        non_editable (Union[Unset, bool]): Whether the field is read-only and cannot be edited by users.
+        non_editable (bool | Unset): Whether the field is read-only and cannot be edited by users.
     """
 
     form_set_id: str
     form: str
-    position: Unset | int = UNSET
-    required: Unset | bool = UNSET
-    required_operator: Unset | NewFormFieldPlacementDataAttributesRequiredOperator = UNSET
-    placement_operator: Unset | NewFormFieldPlacementDataAttributesPlacementOperator = UNSET
-    non_editable: Unset | bool = UNSET
+    position: int | Unset = UNSET
+    required: bool | Unset = UNSET
+    required_operator: NewFormFieldPlacementDataAttributesRequiredOperator | Unset = UNSET
+    placement_operator: NewFormFieldPlacementDataAttributesPlacementOperator | Unset = UNSET
+    non_editable: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,11 +52,11 @@ class NewFormFieldPlacementDataAttributes:
 
         required = self.required
 
-        required_operator: Unset | str = UNSET
+        required_operator: str | Unset = UNSET
         if not isinstance(self.required_operator, Unset):
             required_operator = self.required_operator
 
-        placement_operator: Unset | str = UNSET
+        placement_operator: str | Unset = UNSET
         if not isinstance(self.placement_operator, Unset):
             placement_operator = self.placement_operator
 
@@ -93,14 +95,14 @@ class NewFormFieldPlacementDataAttributes:
         required = d.pop("required", UNSET)
 
         _required_operator = d.pop("required_operator", UNSET)
-        required_operator: Unset | NewFormFieldPlacementDataAttributesRequiredOperator
+        required_operator: NewFormFieldPlacementDataAttributesRequiredOperator | Unset
         if isinstance(_required_operator, Unset):
             required_operator = UNSET
         else:
             required_operator = check_new_form_field_placement_data_attributes_required_operator(_required_operator)
 
         _placement_operator = d.pop("placement_operator", UNSET)
-        placement_operator: Unset | NewFormFieldPlacementDataAttributesPlacementOperator
+        placement_operator: NewFormFieldPlacementDataAttributesPlacementOperator | Unset
         if isinstance(_placement_operator, Unset):
             placement_operator = UNSET
         else:

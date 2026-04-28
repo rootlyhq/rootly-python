@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -27,26 +29,26 @@ class UpdateOpsgenieIncidentTaskParams:
     Attributes:
         opsgenie_incident_id (str): The Opsgenie incident ID, this can also be a Rootly incident variable ex. {{
             incident.opsgenie_incident_id }}
-        task_type (Union[Unset, UpdateOpsgenieIncidentTaskParamsTaskType]):
-        message (Union[Unset, str]): Message of the alert
-        description (Union[Unset, str]): Description field of the alert that is generally used to provide a detailed
+        task_type (UpdateOpsgenieIncidentTaskParamsTaskType | Unset):
+        message (str | Unset): Message of the alert
+        description (str | Unset): Description field of the alert that is generally used to provide a detailed
             information about the alert
-        status (Union[Unset, UpdateOpsgenieIncidentTaskParamsStatus]):
-        priority (Union[Unset, UpdateOpsgenieIncidentTaskParamsPriority]):
+        status (UpdateOpsgenieIncidentTaskParamsStatus | Unset):
+        priority (UpdateOpsgenieIncidentTaskParamsPriority | Unset):
     """
 
     opsgenie_incident_id: str
-    task_type: Unset | UpdateOpsgenieIncidentTaskParamsTaskType = UNSET
-    message: Unset | str = UNSET
-    description: Unset | str = UNSET
-    status: Unset | UpdateOpsgenieIncidentTaskParamsStatus = UNSET
-    priority: Unset | UpdateOpsgenieIncidentTaskParamsPriority = UNSET
+    task_type: UpdateOpsgenieIncidentTaskParamsTaskType | Unset = UNSET
+    message: str | Unset = UNSET
+    description: str | Unset = UNSET
+    status: UpdateOpsgenieIncidentTaskParamsStatus | Unset = UNSET
+    priority: UpdateOpsgenieIncidentTaskParamsPriority | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         opsgenie_incident_id = self.opsgenie_incident_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,11 +56,11 @@ class UpdateOpsgenieIncidentTaskParams:
 
         description = self.description
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        priority: Unset | str = UNSET
+        priority: str | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
@@ -88,7 +90,7 @@ class UpdateOpsgenieIncidentTaskParams:
         opsgenie_incident_id = d.pop("opsgenie_incident_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateOpsgenieIncidentTaskParamsTaskType
+        task_type: UpdateOpsgenieIncidentTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -99,14 +101,14 @@ class UpdateOpsgenieIncidentTaskParams:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | UpdateOpsgenieIncidentTaskParamsStatus
+        status: UpdateOpsgenieIncidentTaskParamsStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_opsgenie_incident_task_params_status(_status)
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | UpdateOpsgenieIncidentTaskParamsPriority
+        priority: UpdateOpsgenieIncidentTaskParamsPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
