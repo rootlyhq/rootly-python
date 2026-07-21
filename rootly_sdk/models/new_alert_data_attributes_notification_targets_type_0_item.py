@@ -1,21 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_alert_data_attributes_notification_targets_type_0_item_type import (
-    check_new_alert_data_attributes_notification_targets_type_0_item_type,
-)
 from ..models.new_alert_data_attributes_notification_targets_type_0_item_type import (
     NewAlertDataAttributesNotificationTargetsType0ItemType,
+    check_new_alert_data_attributes_notification_targets_type_0_item_type,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="NewAlertDataAttributesNotificationTargetsType0Item")
 

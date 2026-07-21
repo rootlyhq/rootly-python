@@ -1,21 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.alerts_source_deduplication_key_kind import (
+    AlertsSourceDeduplicationKeyKind,
+    check_alerts_source_deduplication_key_kind,
+)
+from ..models.alerts_source_source_type import AlertsSourceSourceType, check_alerts_source_source_type
+from ..models.alerts_source_status import AlertsSourceStatus, check_alerts_source_status
 from ..types import UNSET, Unset
-
-from ..models.alerts_source_deduplication_key_kind import AlertsSourceDeduplicationKeyKind
-from ..models.alerts_source_deduplication_key_kind import check_alerts_source_deduplication_key_kind
-from ..models.alerts_source_source_type import AlertsSourceSourceType
-from ..models.alerts_source_source_type import check_alerts_source_source_type
-from ..models.alerts_source_status import AlertsSourceStatus
-from ..models.alerts_source_status import check_alerts_source_status
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.alerts_source_alert_source_fields_attributes_item import AlertsSourceAlertSourceFieldsAttributesItem
@@ -88,15 +85,9 @@ class AlertsSource:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.alerts_source_sourceable_attributes_type_0 import AlertsSourceSourceableAttributesType0
-        from ..models.alerts_source_alert_source_urgency_rules_attributes_item import (
-            AlertsSourceAlertSourceUrgencyRulesAttributesItem,
-        )
-        from ..models.alerts_source_resolution_rule_attributes_type_0 import AlertsSourceResolutionRuleAttributesType0
         from ..models.alerts_source_alert_template_attributes_type_0 import AlertsSourceAlertTemplateAttributesType0
-        from ..models.alerts_source_alert_source_fields_attributes_item import (
-            AlertsSourceAlertSourceFieldsAttributesItem,
-        )
+        from ..models.alerts_source_resolution_rule_attributes_type_0 import AlertsSourceResolutionRuleAttributesType0
+        from ..models.alerts_source_sourceable_attributes_type_0 import AlertsSourceSourceableAttributesType0
 
         name = self.name
 

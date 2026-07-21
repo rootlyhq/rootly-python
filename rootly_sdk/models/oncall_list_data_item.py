@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.oncall_list_data_item_type import OncallListDataItemType, check_oncall_list_data_item_type
 from ..types import UNSET, Unset
-
-from ..models.oncall_list_data_item_type import check_oncall_list_data_item_type
-from ..models.oncall_list_data_item_type import OncallListDataItemType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.oncall import Oncall
@@ -38,8 +34,6 @@ class OncallListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.oncall_relationships import OncallRelationships
-        from ..models.oncall import Oncall
 
         id = self.id
 

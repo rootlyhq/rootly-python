@@ -1,20 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.receipt_reason import ReceiptReason, check_receipt_reason
+from ..models.receipt_state import ReceiptState, check_receipt_state
 from ..types import UNSET, Unset
-
-from ..models.receipt_reason import check_receipt_reason
-from ..models.receipt_reason import ReceiptReason
-from ..models.receipt_state import check_receipt_state
-from ..models.receipt_state import ReceiptState
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="Receipt")
 

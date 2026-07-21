@@ -1,27 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.escalation_policy_path_rules_item_type_8_type_7_operator import (
-    check_escalation_policy_path_rules_item_type_8_type_7_operator,
-)
 from ..models.escalation_policy_path_rules_item_type_8_type_7_operator import (
     EscalationPolicyPathRulesItemType8Type7Operator,
-)
-from ..models.escalation_policy_path_rules_item_type_8_type_7_rule_type import (
-    check_escalation_policy_path_rules_item_type_8_type_7_rule_type,
+    check_escalation_policy_path_rules_item_type_8_type_7_operator,
 )
 from ..models.escalation_policy_path_rules_item_type_8_type_7_rule_type import (
     EscalationPolicyPathRulesItemType8Type7RuleType,
+    check_escalation_policy_path_rules_item_type_8_type_7_rule_type,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="EscalationPolicyPathRulesItemType8Type7")
 

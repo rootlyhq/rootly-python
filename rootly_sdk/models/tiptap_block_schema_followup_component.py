@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.tiptap_block_schema_followup_component_data_sort import (
+    TiptapBlockSchemaFollowupComponentDataSort,
     check_tiptap_block_schema_followup_component_data_sort,
 )
-from ..models.tiptap_block_schema_followup_component_data_sort import TiptapBlockSchemaFollowupComponentDataSort
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="TiptapBlockSchemaFollowupComponent")
 

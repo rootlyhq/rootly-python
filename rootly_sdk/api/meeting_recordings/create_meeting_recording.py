@@ -4,16 +4,13 @@ from urllib.parse import quote
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
-from ...models.create_meeting_recording_platform import check_create_meeting_recording_platform
-from ...models.create_meeting_recording_platform import CreateMeetingRecordingPlatform
+from ...client import AuthenticatedClient, Client
+from ...models.create_meeting_recording_platform import (
+    CreateMeetingRecordingPlatform,
+)
 from ...models.meeting_recording_response import MeetingRecordingResponse
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

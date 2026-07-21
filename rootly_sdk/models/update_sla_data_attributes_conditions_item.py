@@ -1,27 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_sla_data_attributes_conditions_item_conditionable_type import (
-    check_update_sla_data_attributes_conditions_item_conditionable_type,
-)
 from ..models.update_sla_data_attributes_conditions_item_conditionable_type import (
     UpdateSlaDataAttributesConditionsItemConditionableType,
+    check_update_sla_data_attributes_conditions_item_conditionable_type,
 )
 from ..models.update_sla_data_attributes_conditions_item_property import (
+    UpdateSlaDataAttributesConditionsItemProperty,
     check_update_sla_data_attributes_conditions_item_property,
 )
-from ..models.update_sla_data_attributes_conditions_item_property import UpdateSlaDataAttributesConditionsItemProperty
 from ..types import UNSET, Unset
-from typing import cast
-from uuid import UUID
-
 
 T = TypeVar("T", bound="UpdateSlaDataAttributesConditionsItem")
 

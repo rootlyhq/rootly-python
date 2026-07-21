@@ -1,31 +1,27 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 from ..models.new_live_call_router_data_attributes_country_code import (
+    NewLiveCallRouterDataAttributesCountryCode,
     check_new_live_call_router_data_attributes_country_code,
 )
-from ..models.new_live_call_router_data_attributes_country_code import NewLiveCallRouterDataAttributesCountryCode
-from ..models.new_live_call_router_data_attributes_kind import check_new_live_call_router_data_attributes_kind
-from ..models.new_live_call_router_data_attributes_kind import NewLiveCallRouterDataAttributesKind
-from ..models.new_live_call_router_data_attributes_phone_type import (
-    check_new_live_call_router_data_attributes_phone_type,
+from ..models.new_live_call_router_data_attributes_kind import (
+    NewLiveCallRouterDataAttributesKind,
+    check_new_live_call_router_data_attributes_kind,
 )
-from ..models.new_live_call_router_data_attributes_phone_type import NewLiveCallRouterDataAttributesPhoneType
-from ..models.new_live_call_router_data_attributes_waiting_music_url import (
-    check_new_live_call_router_data_attributes_waiting_music_url,
+from ..models.new_live_call_router_data_attributes_phone_type import (
+    NewLiveCallRouterDataAttributesPhoneType,
+    check_new_live_call_router_data_attributes_phone_type,
 )
 from ..models.new_live_call_router_data_attributes_waiting_music_url import (
     NewLiveCallRouterDataAttributesWaitingMusicUrl,
+    check_new_live_call_router_data_attributes_waiting_music_url,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params import (
@@ -101,12 +97,6 @@ class NewLiveCallRouterDataAttributes:
     escalation_policy_trigger_params: NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params import (
-            NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams,
-        )
-        from ..models.new_live_call_router_data_attributes_paging_targets_item import (
-            NewLiveCallRouterDataAttributesPagingTargetsItem,
-        )
 
         kind: str = self.kind
 

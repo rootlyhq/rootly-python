@@ -1,21 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.sla_notification_configurations_item_offset_type import (
+    SlaNotificationConfigurationsItemOffsetType,
     check_sla_notification_configurations_item_offset_type,
 )
-from ..models.sla_notification_configurations_item_offset_type import SlaNotificationConfigurationsItemOffsetType
 from ..types import UNSET, Unset
-from typing import cast
-from uuid import UUID
-
 
 T = TypeVar("T", bound="SlaNotificationConfigurationsItem")
 

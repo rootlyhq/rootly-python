@@ -1,27 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.page_pagerduty_on_call_responders_task_params_task_type import (
-    check_page_pagerduty_on_call_responders_task_params_task_type,
-)
 from ..models.page_pagerduty_on_call_responders_task_params_task_type import (
     PagePagerdutyOnCallRespondersTaskParamsTaskType,
-)
-from ..models.page_pagerduty_on_call_responders_task_params_urgency import (
-    check_page_pagerduty_on_call_responders_task_params_urgency,
+    check_page_pagerduty_on_call_responders_task_params_task_type,
 )
 from ..models.page_pagerduty_on_call_responders_task_params_urgency import (
     PagePagerdutyOnCallRespondersTaskParamsUrgency,
+    check_page_pagerduty_on_call_responders_task_params_urgency,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.page_pagerduty_on_call_responders_task_params_escalation_policies_item import (
@@ -69,15 +62,6 @@ class PagePagerdutyOnCallRespondersTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.page_pagerduty_on_call_responders_task_params_escalation_policies_item import (
-            PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem,
-        )
-        from ..models.page_pagerduty_on_call_responders_task_params_users_item import (
-            PagePagerdutyOnCallRespondersTaskParamsUsersItem,
-        )
-        from ..models.page_pagerduty_on_call_responders_task_params_service import (
-            PagePagerdutyOnCallRespondersTaskParamsService,
-        )
 
         service = self.service.to_dict()
 

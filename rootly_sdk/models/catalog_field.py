@@ -1,22 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.catalog_field_catalog_type import CatalogFieldCatalogType, check_catalog_field_catalog_type
+from ..models.catalog_field_kind import CatalogFieldKind, check_catalog_field_kind
+from ..models.catalog_field_managed_by import CatalogFieldManagedBy, check_catalog_field_managed_by
 from ..types import UNSET, Unset
-
-from ..models.catalog_field_catalog_type import CatalogFieldCatalogType
-from ..models.catalog_field_catalog_type import check_catalog_field_catalog_type
-from ..models.catalog_field_kind import CatalogFieldKind
-from ..models.catalog_field_kind import check_catalog_field_kind
-from ..models.catalog_field_managed_by import CatalogFieldManagedBy
-from ..models.catalog_field_managed_by import check_catalog_field_managed_by
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="CatalogField")
 

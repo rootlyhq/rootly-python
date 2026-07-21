@@ -1,24 +1,17 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
-from ..models.new_incident_status_page_event_data_attributes_status import (
-    check_new_incident_status_page_event_data_attributes_status,
-)
 from ..models.new_incident_status_page_event_data_attributes_status import (
     NewIncidentStatusPageEventDataAttributesStatus,
+    check_new_incident_status_page_event_data_attributes_status,
 )
 from ..types import UNSET, Unset
-from dateutil.parser import isoparse
-from typing import cast
-import datetime
-
 
 T = TypeVar("T", bound="NewIncidentStatusPageEventDataAttributes")
 

@@ -1,21 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.authorization_authorizable_type import AuthorizationAuthorizableType
-from ..models.authorization_authorizable_type import check_authorization_authorizable_type
-from ..models.authorization_grantee_type import AuthorizationGranteeType
-from ..models.authorization_grantee_type import check_authorization_grantee_type
-from ..models.authorization_permissions_item import AuthorizationPermissionsItem
-from ..models.authorization_permissions_item import check_authorization_permissions_item
-from typing import cast
-
+from ..models.authorization_authorizable_type import (
+    AuthorizationAuthorizableType,
+    check_authorization_authorizable_type,
+)
+from ..models.authorization_grantee_type import AuthorizationGranteeType, check_authorization_grantee_type
+from ..models.authorization_permissions_item import AuthorizationPermissionsItem, check_authorization_permissions_item
 
 T = TypeVar("T", bound="Authorization")
 

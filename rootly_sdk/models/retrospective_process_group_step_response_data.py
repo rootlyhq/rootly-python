@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.retrospective_process_group_step_response_data_type import (
+    RetrospectiveProcessGroupStepResponseDataType,
     check_retrospective_process_group_step_response_data_type,
 )
-from ..models.retrospective_process_group_step_response_data_type import RetrospectiveProcessGroupStepResponseDataType
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.retrospective_process_group_step import RetrospectiveProcessGroupStep
@@ -36,7 +33,6 @@ class RetrospectiveProcessGroupStepResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.retrospective_process_group_step import RetrospectiveProcessGroupStep
 
         id = self.id
 

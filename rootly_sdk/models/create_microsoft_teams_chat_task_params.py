@@ -1,23 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.create_microsoft_teams_chat_task_params_chat_type import (
+    CreateMicrosoftTeamsChatTaskParamsChatType,
     check_create_microsoft_teams_chat_task_params_chat_type,
 )
-from ..models.create_microsoft_teams_chat_task_params_chat_type import CreateMicrosoftTeamsChatTaskParamsChatType
 from ..models.create_microsoft_teams_chat_task_params_task_type import (
+    CreateMicrosoftTeamsChatTaskParamsTaskType,
     check_create_microsoft_teams_chat_task_params_task_type,
 )
-from ..models.create_microsoft_teams_chat_task_params_task_type import CreateMicrosoftTeamsChatTaskParamsTaskType
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_microsoft_teams_chat_task_params_members_item import (
@@ -45,9 +42,6 @@ class CreateMicrosoftTeamsChatTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_microsoft_teams_chat_task_params_members_item import (
-            CreateMicrosoftTeamsChatTaskParamsMembersItem,
-        )
 
         members = []
         for members_item_data in self.members:

@@ -1,160 +1,107 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_on_call_role_data_attributes_alert_fields_permissions_item import (
-    check_update_on_call_role_data_attributes_alert_fields_permissions_item,
-)
 from ..models.update_on_call_role_data_attributes_alert_fields_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_alert_groups_permissions_item import (
-    check_update_on_call_role_data_attributes_alert_groups_permissions_item,
+    check_update_on_call_role_data_attributes_alert_fields_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_groups_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertGroupsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
-    check_update_on_call_role_data_attributes_alert_routing_rules_permissions_item,
+    check_update_on_call_role_data_attributes_alert_groups_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_alert_sources_permissions_item import (
-    check_update_on_call_role_data_attributes_alert_sources_permissions_item,
+    check_update_on_call_role_data_attributes_alert_routing_rules_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_sources_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_alert_urgency_permissions_item import (
-    check_update_on_call_role_data_attributes_alert_urgency_permissions_item,
+    check_update_on_call_role_data_attributes_alert_sources_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_urgency_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertUrgencyPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_alerts_permissions_item import (
-    check_update_on_call_role_data_attributes_alerts_permissions_item,
+    check_update_on_call_role_data_attributes_alert_urgency_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alerts_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_api_keys_permissions_item import (
-    check_update_on_call_role_data_attributes_api_keys_permissions_item,
+    check_update_on_call_role_data_attributes_alerts_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_api_keys_permissions_item import (
     UpdateOnCallRoleDataAttributesApiKeysPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_audits_permissions_item import (
-    check_update_on_call_role_data_attributes_audits_permissions_item,
+    check_update_on_call_role_data_attributes_api_keys_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_audits_permissions_item import (
     UpdateOnCallRoleDataAttributesAuditsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_catalogs_permissions_item import (
-    check_update_on_call_role_data_attributes_catalogs_permissions_item,
+    check_update_on_call_role_data_attributes_audits_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_catalogs_permissions_item import (
     UpdateOnCallRoleDataAttributesCatalogsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_contacts_permissions_item import (
-    check_update_on_call_role_data_attributes_contacts_permissions_item,
+    check_update_on_call_role_data_attributes_catalogs_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_contacts_permissions_item import (
     UpdateOnCallRoleDataAttributesContactsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_escalation_policies_permissions_item import (
-    check_update_on_call_role_data_attributes_escalation_policies_permissions_item,
+    check_update_on_call_role_data_attributes_contacts_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_escalation_policies_permissions_item import (
     UpdateOnCallRoleDataAttributesEscalationPoliciesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_functionalities_permissions_item import (
-    check_update_on_call_role_data_attributes_functionalities_permissions_item,
+    check_update_on_call_role_data_attributes_escalation_policies_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_functionalities_permissions_item import (
     UpdateOnCallRoleDataAttributesFunctionalitiesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_groups_permissions_item import (
-    check_update_on_call_role_data_attributes_groups_permissions_item,
+    check_update_on_call_role_data_attributes_functionalities_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_groups_permissions_item import (
     UpdateOnCallRoleDataAttributesGroupsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_heartbeats_permissions_item import (
-    check_update_on_call_role_data_attributes_heartbeats_permissions_item,
+    check_update_on_call_role_data_attributes_groups_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_heartbeats_permissions_item import (
     UpdateOnCallRoleDataAttributesHeartbeatsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_integrations_permissions_item import (
-    check_update_on_call_role_data_attributes_integrations_permissions_item,
+    check_update_on_call_role_data_attributes_heartbeats_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_integrations_permissions_item import (
     UpdateOnCallRoleDataAttributesIntegrationsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_invitations_permissions_item import (
-    check_update_on_call_role_data_attributes_invitations_permissions_item,
+    check_update_on_call_role_data_attributes_integrations_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_invitations_permissions_item import (
     UpdateOnCallRoleDataAttributesInvitationsPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_live_call_routing_permissions_item import (
-    check_update_on_call_role_data_attributes_live_call_routing_permissions_item,
+    check_update_on_call_role_data_attributes_invitations_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_live_call_routing_permissions_item import (
     UpdateOnCallRoleDataAttributesLiveCallRoutingPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
-    check_update_on_call_role_data_attributes_on_call_readiness_report_permissions_item,
+    check_update_on_call_role_data_attributes_live_call_routing_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
     UpdateOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_on_call_roles_permissions_item import (
-    check_update_on_call_role_data_attributes_on_call_roles_permissions_item,
+    check_update_on_call_role_data_attributes_on_call_readiness_report_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_on_call_roles_permissions_item import (
     UpdateOnCallRoleDataAttributesOnCallRolesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_schedule_override_permissions_item import (
-    check_update_on_call_role_data_attributes_schedule_override_permissions_item,
+    check_update_on_call_role_data_attributes_on_call_roles_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_schedule_override_permissions_item import (
     UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_schedules_permissions_item import (
-    check_update_on_call_role_data_attributes_schedules_permissions_item,
+    check_update_on_call_role_data_attributes_schedule_override_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_schedules_permissions_item import (
     UpdateOnCallRoleDataAttributesSchedulesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_services_permissions_item import (
-    check_update_on_call_role_data_attributes_services_permissions_item,
+    check_update_on_call_role_data_attributes_schedules_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_services_permissions_item import (
     UpdateOnCallRoleDataAttributesServicesPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_webhooks_permissions_item import (
-    check_update_on_call_role_data_attributes_webhooks_permissions_item,
+    check_update_on_call_role_data_attributes_services_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_webhooks_permissions_item import (
     UpdateOnCallRoleDataAttributesWebhooksPermissionsItem,
-)
-from ..models.update_on_call_role_data_attributes_workflows_permissions_item import (
-    check_update_on_call_role_data_attributes_workflows_permissions_item,
+    check_update_on_call_role_data_attributes_webhooks_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_workflows_permissions_item import (
     UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem,
+    check_update_on_call_role_data_attributes_workflows_permissions_item,
 )
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateOnCallRoleDataAttributes")
 

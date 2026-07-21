@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_sla_data_attributes_notification_configurations_item_offset_type import (
-    check_update_sla_data_attributes_notification_configurations_item_offset_type,
-)
 from ..models.update_sla_data_attributes_notification_configurations_item_offset_type import (
     UpdateSlaDataAttributesNotificationConfigurationsItemOffsetType,
+    check_update_sla_data_attributes_notification_configurations_item_offset_type,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateSlaDataAttributesNotificationConfigurationsItem")
 

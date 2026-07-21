@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.create_linear_issue_task_params_task_type import (
+    CreateLinearIssueTaskParamsTaskType,
+    check_create_linear_issue_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.create_linear_issue_task_params_task_type import check_create_linear_issue_task_params_task_type
-from ..models.create_linear_issue_task_params_task_type import CreateLinearIssueTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_linear_issue_task_params_labels_item import CreateLinearIssueTaskParamsLabelsItem
@@ -54,11 +53,6 @@ class CreateLinearIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_linear_issue_task_params_labels_item import CreateLinearIssueTaskParamsLabelsItem
-        from ..models.create_linear_issue_task_params_team import CreateLinearIssueTaskParamsTeam
-        from ..models.create_linear_issue_task_params_state import CreateLinearIssueTaskParamsState
-        from ..models.create_linear_issue_task_params_priority import CreateLinearIssueTaskParamsPriority
-        from ..models.create_linear_issue_task_params_project import CreateLinearIssueTaskParamsProject
 
         title = self.title
 

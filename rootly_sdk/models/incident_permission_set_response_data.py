@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.incident_permission_set_response_data_type import check_incident_permission_set_response_data_type
-from ..models.incident_permission_set_response_data_type import IncidentPermissionSetResponseDataType
-from typing import cast
+from ..models.incident_permission_set_response_data_type import (
+    IncidentPermissionSetResponseDataType,
+    check_incident_permission_set_response_data_type,
+)
 
 if TYPE_CHECKING:
     from ..models.incident_permission_set import IncidentPermissionSet
@@ -34,7 +33,6 @@ class IncidentPermissionSetResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.incident_permission_set import IncidentPermissionSet
 
         id = self.id
 

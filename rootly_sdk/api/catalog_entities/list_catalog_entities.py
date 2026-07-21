@@ -1,21 +1,15 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.catalog_entity_list import CatalogEntityList
-from ...models.list_catalog_entities_include import check_list_catalog_entities_include
 from ...models.list_catalog_entities_include import ListCatalogEntitiesInclude
-from ...models.list_catalog_entities_sort import check_list_catalog_entities_sort
 from ...models.list_catalog_entities_sort import ListCatalogEntitiesSort
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

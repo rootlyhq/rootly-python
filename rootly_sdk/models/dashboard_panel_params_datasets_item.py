@@ -1,19 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.dashboard_panel_params_datasets_item_collection import (
+    DashboardPanelParamsDatasetsItemCollection,
     check_dashboard_panel_params_datasets_item_collection,
 )
-from ..models.dashboard_panel_params_datasets_item_collection import DashboardPanelParamsDatasetsItemCollection
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.dashboard_panel_params_datasets_item_aggregate_type_0 import (
@@ -53,7 +50,6 @@ class DashboardPanelParamsDatasetsItem:
         from ..models.dashboard_panel_params_datasets_item_group_by_type_1_type_0 import (
             DashboardPanelParamsDatasetsItemGroupByType1Type0,
         )
-        from ..models.dashboard_panel_params_datasets_item_filter_item import DashboardPanelParamsDatasetsItemFilterItem
 
         name: None | str | Unset
         if isinstance(self.name, Unset):

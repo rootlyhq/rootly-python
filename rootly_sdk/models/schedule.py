@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.schedule_shift_report_day_of_week import (
+    ScheduleShiftReportDayOfWeek,
+    check_schedule_shift_report_day_of_week,
+)
 from ..types import UNSET, Unset
-
-from ..models.schedule_shift_report_day_of_week import check_schedule_shift_report_day_of_week
-from ..models.schedule_shift_report_day_of_week import ScheduleShiftReportDayOfWeek
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.schedule_slack_channel_type_0 import ScheduleSlackChannelType0
@@ -68,8 +67,8 @@ class Schedule:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.schedule_slack_user_group_type_0 import ScheduleSlackUserGroupType0
         from ..models.schedule_slack_channel_type_0 import ScheduleSlackChannelType0
+        from ..models.schedule_slack_user_group_type_0 import ScheduleSlackUserGroupType0
 
         name = self.name
 

@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.resolve_alert_data_type import ResolveAlertDataType, check_resolve_alert_data_type
 from ..types import UNSET, Unset
-
-from ..models.resolve_alert_data_type import check_resolve_alert_data_type
-from ..models.resolve_alert_data_type import ResolveAlertDataType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.resolve_alert_data_attributes import ResolveAlertDataAttributes
@@ -33,7 +29,6 @@ class ResolveAlertData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.resolve_alert_data_attributes import ResolveAlertDataAttributes
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):

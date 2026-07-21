@@ -1,18 +1,14 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.errors_list import ErrorsList
 from ...models.functionality_response import FunctionalityResponse
 from ...models.new_functionality import NewFunctionality
-from typing import cast
-
+from ...types import Response
 
 
 def _get_kwargs(

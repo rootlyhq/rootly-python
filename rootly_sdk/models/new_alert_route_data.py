@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.new_alert_route_data_type import NewAlertRouteDataType, check_new_alert_route_data_type
 from ..types import UNSET, Unset
-
-from ..models.new_alert_route_data_type import check_new_alert_route_data_type
-from ..models.new_alert_route_data_type import NewAlertRouteDataType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_alert_route_data_attributes import NewAlertRouteDataAttributes
@@ -33,7 +29,6 @@ class NewAlertRouteData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_alert_route_data_attributes import NewAlertRouteDataAttributes
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):

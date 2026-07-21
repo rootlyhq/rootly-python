@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.sub_status_list_data_item_type import check_sub_status_list_data_item_type
-from ..models.sub_status_list_data_item_type import SubStatusListDataItemType
-from typing import cast
+from ..models.sub_status_list_data_item_type import SubStatusListDataItemType, check_sub_status_list_data_item_type
 
 if TYPE_CHECKING:
     from ..models.sub_status import SubStatus
@@ -34,7 +30,6 @@ class SubStatusListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.sub_status import SubStatus
 
         id = self.id
 

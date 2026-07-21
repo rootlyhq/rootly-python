@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_jira_issue_task_params_task_type import (
+    UpdateJiraIssueTaskParamsTaskType,
+    check_update_jira_issue_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_jira_issue_task_params_task_type import check_update_jira_issue_task_params_task_type
-from ..models.update_jira_issue_task_params_task_type import UpdateJiraIssueTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_jira_issue_task_params_integration import UpdateJiraIssueTaskParamsIntegration
@@ -61,9 +60,6 @@ class UpdateJiraIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_jira_issue_task_params_priority import UpdateJiraIssueTaskParamsPriority
-        from ..models.update_jira_issue_task_params_integration import UpdateJiraIssueTaskParamsIntegration
-        from ..models.update_jira_issue_task_params_status import UpdateJiraIssueTaskParamsStatus
 
         issue_id = self.issue_id
 

@@ -1,21 +1,18 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.catalog_property_list import CatalogPropertyList
-from ...models.list_incident_type_catalog_properties_include import check_list_incident_type_catalog_properties_include
-from ...models.list_incident_type_catalog_properties_include import ListIncidentTypeCatalogPropertiesInclude
-from ...models.list_incident_type_catalog_properties_sort import check_list_incident_type_catalog_properties_sort
-from ...models.list_incident_type_catalog_properties_sort import ListIncidentTypeCatalogPropertiesSort
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...models.list_incident_type_catalog_properties_include import (
+    ListIncidentTypeCatalogPropertiesInclude,
+)
+from ...models.list_incident_type_catalog_properties_sort import (
+    ListIncidentTypeCatalogPropertiesSort,
+)
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_pulse_data_type import check_new_pulse_data_type
-from ..models.new_pulse_data_type import NewPulseDataType
-from typing import cast
+from ..models.new_pulse_data_type import NewPulseDataType, check_new_pulse_data_type
 
 if TYPE_CHECKING:
     from ..models.new_pulse_data_attributes import NewPulseDataAttributes
@@ -32,7 +28,6 @@ class NewPulseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_pulse_data_attributes import NewPulseDataAttributes
 
         type_: str = self.type_
 

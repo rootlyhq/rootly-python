@@ -1,25 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.create_google_calendar_event_task_params_conference_solution_key import (
-    check_create_google_calendar_event_task_params_conference_solution_key,
-)
 from ..models.create_google_calendar_event_task_params_conference_solution_key import (
     CreateGoogleCalendarEventTaskParamsConferenceSolutionKey,
+    check_create_google_calendar_event_task_params_conference_solution_key,
 )
 from ..models.create_google_calendar_event_task_params_task_type import (
+    CreateGoogleCalendarEventTaskParamsTaskType,
     check_create_google_calendar_event_task_params_task_type,
 )
-from ..models.create_google_calendar_event_task_params_task_type import CreateGoogleCalendarEventTaskParamsTaskType
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_google_calendar_event_task_params_post_to_slack_channels_item import (
@@ -74,9 +69,6 @@ class CreateGoogleCalendarEventTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_google_calendar_event_task_params_post_to_slack_channels_item import (
-            CreateGoogleCalendarEventTaskParamsPostToSlackChannelsItem,
-        )
 
         days_until_meeting = self.days_until_meeting
 

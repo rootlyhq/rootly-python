@@ -1,19 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.attach_datadog_dashboards_task_params_task_type import AttachDatadogDashboardsTaskParamsTaskType
 from ..models.attach_datadog_dashboards_task_params_task_type import (
+    AttachDatadogDashboardsTaskParamsTaskType,
     check_attach_datadog_dashboards_task_params_task_type,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.attach_datadog_dashboards_task_params_dashboards_item import (
@@ -44,12 +41,6 @@ class AttachDatadogDashboardsTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.attach_datadog_dashboards_task_params_dashboards_item import (
-            AttachDatadogDashboardsTaskParamsDashboardsItem,
-        )
-        from ..models.attach_datadog_dashboards_task_params_post_to_slack_channels_item import (
-            AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem,
-        )
 
         dashboards = []
         for dashboards_item_data in self.dashboards:

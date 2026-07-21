@@ -1,19 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.team_auto_add_members_scope import TeamAutoAddMembersScope, check_team_auto_add_members_scope
+from ..models.team_managed_by import TeamManagedBy, check_team_managed_by
 from ..types import UNSET, Unset
-
-from ..models.team_auto_add_members_scope import check_team_auto_add_members_scope
-from ..models.team_auto_add_members_scope import TeamAutoAddMembersScope
-from ..models.team_managed_by import check_team_managed_by
-from ..models.team_managed_by import TeamManagedBy
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
@@ -104,11 +99,8 @@ class Team:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.team_slack_aliases_type_0_item import TeamSlackAliasesType0Item
         from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
         from ..models.team_incident_broadcast_channel_type_0 import TeamIncidentBroadcastChannelType0
-        from ..models.team_slack_channels_type_0_item import TeamSlackChannelsType0Item
-        from ..models.team_properties_type_0_item import TeamPropertiesType0Item
 
         name = self.name
 

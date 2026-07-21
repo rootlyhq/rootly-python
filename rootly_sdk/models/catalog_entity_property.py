@@ -1,17 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.catalog_entity_property_key import CatalogEntityPropertyKey
-from ..models.catalog_entity_property_key import check_catalog_entity_property_key
-from typing import cast
-
+from ..models.catalog_entity_property_key import CatalogEntityPropertyKey, check_catalog_entity_property_key
 
 T = TypeVar("T", bound="CatalogEntityProperty")
 

@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.auto_assign_role_rootly_task_params_task_type import (
+    AutoAssignRoleRootlyTaskParamsTaskType,
+    check_auto_assign_role_rootly_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.auto_assign_role_rootly_task_params_task_type import AutoAssignRoleRootlyTaskParamsTaskType
-from ..models.auto_assign_role_rootly_task_params_task_type import check_auto_assign_role_rootly_task_params_task_type
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.auto_assign_role_rootly_task_params_escalation_policy_target import (
@@ -51,17 +50,6 @@ class AutoAssignRoleRootlyTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.auto_assign_role_rootly_task_params_escalation_policy_target import (
-            AutoAssignRoleRootlyTaskParamsEscalationPolicyTarget,
-        )
-        from ..models.auto_assign_role_rootly_task_params_group_target import AutoAssignRoleRootlyTaskParamsGroupTarget
-        from ..models.auto_assign_role_rootly_task_params_user_target import AutoAssignRoleRootlyTaskParamsUserTarget
-        from ..models.auto_assign_role_rootly_task_params_service_target import (
-            AutoAssignRoleRootlyTaskParamsServiceTarget,
-        )
-        from ..models.auto_assign_role_rootly_task_params_schedule_target import (
-            AutoAssignRoleRootlyTaskParamsScheduleTarget,
-        )
 
         incident_role_id = self.incident_role_id
 

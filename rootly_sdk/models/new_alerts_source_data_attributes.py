@@ -1,23 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_alerts_source_data_attributes_deduplication_key_kind import (
-    check_new_alerts_source_data_attributes_deduplication_key_kind,
-)
 from ..models.new_alerts_source_data_attributes_deduplication_key_kind import (
     NewAlertsSourceDataAttributesDeduplicationKeyKind,
+    check_new_alerts_source_data_attributes_deduplication_key_kind,
 )
-from ..models.new_alerts_source_data_attributes_source_type import check_new_alerts_source_data_attributes_source_type
-from ..models.new_alerts_source_data_attributes_source_type import NewAlertsSourceDataAttributesSourceType
+from ..models.new_alerts_source_data_attributes_source_type import (
+    NewAlertsSourceDataAttributesSourceType,
+    check_new_alerts_source_data_attributes_source_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_alerts_source_data_attributes_alert_source_fields_attributes_item import (
@@ -87,12 +83,6 @@ class NewAlertsSourceDataAttributes:
     alert_source_fields_attributes: list[NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_alerts_source_data_attributes_alert_source_urgency_rules_attributes_item import (
-            NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem,
-        )
-        from ..models.new_alerts_source_data_attributes_alert_source_fields_attributes_item import (
-            NewAlertsSourceDataAttributesAlertSourceFieldsAttributesItem,
-        )
         from ..models.new_alerts_source_data_attributes_alert_template_attributes_type_0 import (
             NewAlertsSourceDataAttributesAlertTemplateAttributesType0,
         )

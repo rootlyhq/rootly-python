@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.create_google_chat_space_task_params_task_type import (
+    CreateGoogleChatSpaceTaskParamsTaskType,
+    check_create_google_chat_space_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.create_google_chat_space_task_params_task_type import check_create_google_chat_space_task_params_task_type
-from ..models.create_google_chat_space_task_params_task_type import CreateGoogleChatSpaceTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="CreateGoogleChatSpaceTaskParams")
 

@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
+from ..models.bulk_destroy_environments_type_1_managed_by import (
+    BulkDestroyEnvironmentsType1ManagedBy,
+    check_bulk_destroy_environments_type_1_managed_by,
+)
 from ..types import UNSET, Unset
-
-from ..models.bulk_destroy_environments_type_1_managed_by import BulkDestroyEnvironmentsType1ManagedBy
-from ..models.bulk_destroy_environments_type_1_managed_by import check_bulk_destroy_environments_type_1_managed_by
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="BulkDestroyEnvironmentsType1")
 

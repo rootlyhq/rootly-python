@@ -1,188 +1,135 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_role_data_attributes_api_keys_permissions_item import (
-    check_update_role_data_attributes_api_keys_permissions_item,
-)
 from ..models.update_role_data_attributes_api_keys_permissions_item import (
     UpdateRoleDataAttributesApiKeysPermissionsItem,
+    check_update_role_data_attributes_api_keys_permissions_item,
 )
 from ..models.update_role_data_attributes_audits_permissions_item import (
+    UpdateRoleDataAttributesAuditsPermissionsItem,
     check_update_role_data_attributes_audits_permissions_item,
 )
-from ..models.update_role_data_attributes_audits_permissions_item import UpdateRoleDataAttributesAuditsPermissionsItem
 from ..models.update_role_data_attributes_billing_permissions_item import (
+    UpdateRoleDataAttributesBillingPermissionsItem,
     check_update_role_data_attributes_billing_permissions_item,
-)
-from ..models.update_role_data_attributes_billing_permissions_item import UpdateRoleDataAttributesBillingPermissionsItem
-from ..models.update_role_data_attributes_catalogs_permissions_item import (
-    check_update_role_data_attributes_catalogs_permissions_item,
 )
 from ..models.update_role_data_attributes_catalogs_permissions_item import (
     UpdateRoleDataAttributesCatalogsPermissionsItem,
-)
-from ..models.update_role_data_attributes_communication_permissions_item import (
-    check_update_role_data_attributes_communication_permissions_item,
+    check_update_role_data_attributes_catalogs_permissions_item,
 )
 from ..models.update_role_data_attributes_communication_permissions_item import (
     UpdateRoleDataAttributesCommunicationPermissionsItem,
-)
-from ..models.update_role_data_attributes_edge_connector_permissions_item import (
-    check_update_role_data_attributes_edge_connector_permissions_item,
+    check_update_role_data_attributes_communication_permissions_item,
 )
 from ..models.update_role_data_attributes_edge_connector_permissions_item import (
     UpdateRoleDataAttributesEdgeConnectorPermissionsItem,
-)
-from ..models.update_role_data_attributes_environments_permissions_item import (
-    check_update_role_data_attributes_environments_permissions_item,
+    check_update_role_data_attributes_edge_connector_permissions_item,
 )
 from ..models.update_role_data_attributes_environments_permissions_item import (
     UpdateRoleDataAttributesEnvironmentsPermissionsItem,
-)
-from ..models.update_role_data_attributes_form_fields_permissions_item import (
-    check_update_role_data_attributes_form_fields_permissions_item,
+    check_update_role_data_attributes_environments_permissions_item,
 )
 from ..models.update_role_data_attributes_form_fields_permissions_item import (
     UpdateRoleDataAttributesFormFieldsPermissionsItem,
-)
-from ..models.update_role_data_attributes_functionalities_permissions_item import (
-    check_update_role_data_attributes_functionalities_permissions_item,
+    check_update_role_data_attributes_form_fields_permissions_item,
 )
 from ..models.update_role_data_attributes_functionalities_permissions_item import (
     UpdateRoleDataAttributesFunctionalitiesPermissionsItem,
+    check_update_role_data_attributes_functionalities_permissions_item,
 )
 from ..models.update_role_data_attributes_groups_permissions_item import (
+    UpdateRoleDataAttributesGroupsPermissionsItem,
     check_update_role_data_attributes_groups_permissions_item,
-)
-from ..models.update_role_data_attributes_groups_permissions_item import UpdateRoleDataAttributesGroupsPermissionsItem
-from ..models.update_role_data_attributes_incident_causes_permissions_item import (
-    check_update_role_data_attributes_incident_causes_permissions_item,
 )
 from ..models.update_role_data_attributes_incident_causes_permissions_item import (
     UpdateRoleDataAttributesIncidentCausesPermissionsItem,
-)
-from ..models.update_role_data_attributes_incident_communication_permissions_item import (
-    check_update_role_data_attributes_incident_communication_permissions_item,
+    check_update_role_data_attributes_incident_causes_permissions_item,
 )
 from ..models.update_role_data_attributes_incident_communication_permissions_item import (
     UpdateRoleDataAttributesIncidentCommunicationPermissionsItem,
-)
-from ..models.update_role_data_attributes_incident_feedbacks_permissions_item import (
-    check_update_role_data_attributes_incident_feedbacks_permissions_item,
+    check_update_role_data_attributes_incident_communication_permissions_item,
 )
 from ..models.update_role_data_attributes_incident_feedbacks_permissions_item import (
     UpdateRoleDataAttributesIncidentFeedbacksPermissionsItem,
-)
-from ..models.update_role_data_attributes_incident_roles_permissions_item import (
-    check_update_role_data_attributes_incident_roles_permissions_item,
+    check_update_role_data_attributes_incident_feedbacks_permissions_item,
 )
 from ..models.update_role_data_attributes_incident_roles_permissions_item import (
     UpdateRoleDataAttributesIncidentRolesPermissionsItem,
-)
-from ..models.update_role_data_attributes_incident_types_permissions_item import (
-    check_update_role_data_attributes_incident_types_permissions_item,
+    check_update_role_data_attributes_incident_roles_permissions_item,
 )
 from ..models.update_role_data_attributes_incident_types_permissions_item import (
     UpdateRoleDataAttributesIncidentTypesPermissionsItem,
-)
-from ..models.update_role_data_attributes_incidents_permissions_item import (
-    check_update_role_data_attributes_incidents_permissions_item,
+    check_update_role_data_attributes_incident_types_permissions_item,
 )
 from ..models.update_role_data_attributes_incidents_permissions_item import (
     UpdateRoleDataAttributesIncidentsPermissionsItem,
-)
-from ..models.update_role_data_attributes_integrations_permissions_item import (
-    check_update_role_data_attributes_integrations_permissions_item,
+    check_update_role_data_attributes_incidents_permissions_item,
 )
 from ..models.update_role_data_attributes_integrations_permissions_item import (
     UpdateRoleDataAttributesIntegrationsPermissionsItem,
-)
-from ..models.update_role_data_attributes_invitations_permissions_item import (
-    check_update_role_data_attributes_invitations_permissions_item,
+    check_update_role_data_attributes_integrations_permissions_item,
 )
 from ..models.update_role_data_attributes_invitations_permissions_item import (
     UpdateRoleDataAttributesInvitationsPermissionsItem,
+    check_update_role_data_attributes_invitations_permissions_item,
 )
 from ..models.update_role_data_attributes_paging_permissions_item import (
+    UpdateRoleDataAttributesPagingPermissionsItem,
     check_update_role_data_attributes_paging_permissions_item,
-)
-from ..models.update_role_data_attributes_paging_permissions_item import UpdateRoleDataAttributesPagingPermissionsItem
-from ..models.update_role_data_attributes_playbooks_permissions_item import (
-    check_update_role_data_attributes_playbooks_permissions_item,
 )
 from ..models.update_role_data_attributes_playbooks_permissions_item import (
     UpdateRoleDataAttributesPlaybooksPermissionsItem,
-)
-from ..models.update_role_data_attributes_private_incidents_permissions_item import (
-    check_update_role_data_attributes_private_incidents_permissions_item,
+    check_update_role_data_attributes_playbooks_permissions_item,
 )
 from ..models.update_role_data_attributes_private_incidents_permissions_item import (
     UpdateRoleDataAttributesPrivateIncidentsPermissionsItem,
-)
-from ..models.update_role_data_attributes_retrospective_permissions_item import (
-    check_update_role_data_attributes_retrospective_permissions_item,
+    check_update_role_data_attributes_private_incidents_permissions_item,
 )
 from ..models.update_role_data_attributes_retrospective_permissions_item import (
     UpdateRoleDataAttributesRetrospectivePermissionsItem,
+    check_update_role_data_attributes_retrospective_permissions_item,
 )
 from ..models.update_role_data_attributes_roles_permissions_item import (
+    UpdateRoleDataAttributesRolesPermissionsItem,
     check_update_role_data_attributes_roles_permissions_item,
 )
-from ..models.update_role_data_attributes_roles_permissions_item import UpdateRoleDataAttributesRolesPermissionsItem
 from ..models.update_role_data_attributes_secrets_permissions_item import (
+    UpdateRoleDataAttributesSecretsPermissionsItem,
     check_update_role_data_attributes_secrets_permissions_item,
-)
-from ..models.update_role_data_attributes_secrets_permissions_item import UpdateRoleDataAttributesSecretsPermissionsItem
-from ..models.update_role_data_attributes_services_permissions_item import (
-    check_update_role_data_attributes_services_permissions_item,
 )
 from ..models.update_role_data_attributes_services_permissions_item import (
     UpdateRoleDataAttributesServicesPermissionsItem,
-)
-from ..models.update_role_data_attributes_severities_permissions_item import (
-    check_update_role_data_attributes_severities_permissions_item,
+    check_update_role_data_attributes_services_permissions_item,
 )
 from ..models.update_role_data_attributes_severities_permissions_item import (
     UpdateRoleDataAttributesSeveritiesPermissionsItem,
+    check_update_role_data_attributes_severities_permissions_item,
 )
 from ..models.update_role_data_attributes_slas_permissions_item import (
+    UpdateRoleDataAttributesSlasPermissionsItem,
     check_update_role_data_attributes_slas_permissions_item,
-)
-from ..models.update_role_data_attributes_slas_permissions_item import UpdateRoleDataAttributesSlasPermissionsItem
-from ..models.update_role_data_attributes_status_pages_permissions_item import (
-    check_update_role_data_attributes_status_pages_permissions_item,
 )
 from ..models.update_role_data_attributes_status_pages_permissions_item import (
     UpdateRoleDataAttributesStatusPagesPermissionsItem,
-)
-from ..models.update_role_data_attributes_sub_statuses_permissions_item import (
-    check_update_role_data_attributes_sub_statuses_permissions_item,
+    check_update_role_data_attributes_status_pages_permissions_item,
 )
 from ..models.update_role_data_attributes_sub_statuses_permissions_item import (
     UpdateRoleDataAttributesSubStatusesPermissionsItem,
-)
-from ..models.update_role_data_attributes_webhooks_permissions_item import (
-    check_update_role_data_attributes_webhooks_permissions_item,
+    check_update_role_data_attributes_sub_statuses_permissions_item,
 )
 from ..models.update_role_data_attributes_webhooks_permissions_item import (
     UpdateRoleDataAttributesWebhooksPermissionsItem,
-)
-from ..models.update_role_data_attributes_workflows_permissions_item import (
-    check_update_role_data_attributes_workflows_permissions_item,
+    check_update_role_data_attributes_webhooks_permissions_item,
 )
 from ..models.update_role_data_attributes_workflows_permissions_item import (
     UpdateRoleDataAttributesWorkflowsPermissionsItem,
+    check_update_role_data_attributes_workflows_permissions_item,
 )
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateRoleDataAttributes")
 

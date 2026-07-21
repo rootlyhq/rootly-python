@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_catalog_checklist_template_data_attributes_builtin_field_field_source import (
-    check_new_catalog_checklist_template_data_attributes_builtin_field_field_source,
-)
 from ..models.new_catalog_checklist_template_data_attributes_builtin_field_field_source import (
     NewCatalogChecklistTemplateDataAttributesBuiltinFieldFieldSource,
+    check_new_catalog_checklist_template_data_attributes_builtin_field_field_source,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="NewCatalogChecklistTemplateDataAttributesBuiltinField")
 

@@ -1,18 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.incident_event_visibility import IncidentEventVisibility, check_incident_event_visibility
 from ..types import UNSET, Unset
-
-from ..models.incident_event_visibility import check_incident_event_visibility
-from ..models.incident_event_visibility import IncidentEventVisibility
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="IncidentEvent")
 

@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.on_call_role_relationship_data_type_0_type import (
+    OnCallRoleRelationshipDataType0Type,
+    check_on_call_role_relationship_data_type_0_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.on_call_role_relationship_data_type_0_type import check_on_call_role_relationship_data_type_0_type
-from ..models.on_call_role_relationship_data_type_0_type import OnCallRoleRelationshipDataType0Type
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="OnCallRoleRelationshipDataType0")
 

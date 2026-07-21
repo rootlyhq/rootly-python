@@ -1,21 +1,14 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.custom_field_list import CustomFieldList
-from ...models.list_custom_fields_include import check_list_custom_fields_include
 from ...models.list_custom_fields_include import ListCustomFieldsInclude
-from ...models.list_custom_fields_sort import check_list_custom_fields_sort
 from ...models.list_custom_fields_sort import ListCustomFieldsSort
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

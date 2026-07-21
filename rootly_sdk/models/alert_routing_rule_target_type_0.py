@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.alert_routing_rule_target_type_0_target_type import AlertRoutingRuleTargetType0TargetType
-from ..models.alert_routing_rule_target_type_0_target_type import check_alert_routing_rule_target_type_0_target_type
-from typing import cast
-from uuid import UUID
-
+from ..models.alert_routing_rule_target_type_0_target_type import (
+    AlertRoutingRuleTargetType0TargetType,
+    check_alert_routing_rule_target_type_0_target_type,
+)
 
 T = TypeVar("T", bound="AlertRoutingRuleTargetType0")
 

@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.service_managed_by import ServiceManagedBy, check_service_managed_by
 from ..types import UNSET, Unset
-
-from ..models.service_managed_by import check_service_managed_by
-from ..models.service_managed_by import ServiceManagedBy
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.service_alert_broadcast_channel_type_0 import ServiceAlertBroadcastChannelType0
@@ -111,10 +107,7 @@ class Service:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.service_slack_channels_type_0_item import ServiceSlackChannelsType0Item
-        from ..models.service_slack_aliases_type_0_item import ServiceSlackAliasesType0Item
         from ..models.service_alert_broadcast_channel_type_0 import ServiceAlertBroadcastChannelType0
-        from ..models.service_properties_type_0_item import ServicePropertiesType0Item
         from ..models.service_incident_broadcast_channel_type_0 import ServiceIncidentBroadcastChannelType0
 
         name = self.name

@@ -1,22 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 from ..models.update_catalog_property_data_attributes_catalog_type import (
+    UpdateCatalogPropertyDataAttributesCatalogType,
     check_update_catalog_property_data_attributes_catalog_type,
 )
-from ..models.update_catalog_property_data_attributes_catalog_type import UpdateCatalogPropertyDataAttributesCatalogType
-from ..models.update_catalog_property_data_attributes_kind import check_update_catalog_property_data_attributes_kind
-from ..models.update_catalog_property_data_attributes_kind import UpdateCatalogPropertyDataAttributesKind
+from ..models.update_catalog_property_data_attributes_kind import (
+    UpdateCatalogPropertyDataAttributesKind,
+    check_update_catalog_property_data_attributes_kind,
+)
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateCatalogPropertyDataAttributes")
 

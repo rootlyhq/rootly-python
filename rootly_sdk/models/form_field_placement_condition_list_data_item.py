@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.form_field_placement_condition_list_data_item_type import (
+    FormFieldPlacementConditionListDataItemType,
     check_form_field_placement_condition_list_data_item_type,
 )
-from ..models.form_field_placement_condition_list_data_item_type import FormFieldPlacementConditionListDataItemType
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.form_field_placement_condition import FormFieldPlacementCondition
@@ -36,7 +33,6 @@ class FormFieldPlacementConditionListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.form_field_placement_condition import FormFieldPlacementCondition
 
         id = self.id
 

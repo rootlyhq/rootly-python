@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_form_set_data_type import check_update_form_set_data_type
-from ..models.update_form_set_data_type import UpdateFormSetDataType
-from typing import cast
+from ..models.update_form_set_data_type import UpdateFormSetDataType, check_update_form_set_data_type
 
 if TYPE_CHECKING:
     from ..models.update_form_set_data_attributes import UpdateFormSetDataAttributes
@@ -32,7 +28,6 @@ class UpdateFormSetData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_form_set_data_attributes import UpdateFormSetDataAttributes
 
         type_: str = self.type_
 

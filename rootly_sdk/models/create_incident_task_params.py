@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.create_incident_task_params_task_type import (
+    CreateIncidentTaskParamsTaskType,
+    check_create_incident_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.create_incident_task_params_task_type import check_create_incident_task_params_task_type
-from ..models.create_incident_task_params_task_type import CreateIncidentTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="CreateIncidentTaskParams")
 

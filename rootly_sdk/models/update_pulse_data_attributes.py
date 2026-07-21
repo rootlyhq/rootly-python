@@ -1,17 +1,13 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
+
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.update_pulse_data_attributes_data_type_0 import UpdatePulseDataAttributesDataType0
@@ -50,9 +46,9 @@ class UpdatePulseDataAttributes:
     data: None | Unset | UpdatePulseDataAttributesDataType0 = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_pulse_data_attributes_refs_item_type_0 import UpdatePulseDataAttributesRefsItemType0
-        from ..models.update_pulse_data_attributes_labels_item_type_0 import UpdatePulseDataAttributesLabelsItemType0
         from ..models.update_pulse_data_attributes_data_type_0 import UpdatePulseDataAttributesDataType0
+        from ..models.update_pulse_data_attributes_labels_item_type_0 import UpdatePulseDataAttributesLabelsItemType0
+        from ..models.update_pulse_data_attributes_refs_item_type_0 import UpdatePulseDataAttributesRefsItemType0
 
         source: None | str | Unset
         if isinstance(self.source, Unset):

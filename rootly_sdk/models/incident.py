@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.incident_retrospective_progress_status import (
+    IncidentRetrospectiveProgressStatus,
+    check_incident_retrospective_progress_status,
+)
 from ..types import UNSET, Unset
-
-from ..models.incident_retrospective_progress_status import check_incident_retrospective_progress_status
-from ..models.incident_retrospective_progress_status import IncidentRetrospectiveProgressStatus
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.environment_response import EnvironmentResponse
@@ -319,23 +318,14 @@ class Incident:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.incident_closed_by_type_0 import IncidentClosedByType0
         from ..models.incident_cancelled_by_type_0 import IncidentCancelledByType0
-        from ..models.team_response import TeamResponse
-        from ..models.functionality_response import FunctionalityResponse
-        from ..models.incident_type_response import IncidentTypeResponse
+        from ..models.incident_closed_by_type_0 import IncidentClosedByType0
         from ..models.incident_in_triage_by_type_0 import IncidentInTriageByType0
-        from ..models.service_response import ServiceResponse
-        from ..models.severity_response import SeverityResponse
-        from ..models.incident_started_by_type_0 import IncidentStartedByType0
-        from ..models.environment_response import EnvironmentResponse
-        from ..models.incident_user_type_0 import IncidentUserType0
         from ..models.incident_labels_type_0 import IncidentLabelsType0
-        from ..models.incident_resolved_by_type_0 import IncidentResolvedByType0
-        from ..models.incident_zoom_meeting_global_dial_in_numbers_type_0_item import (
-            IncidentZoomMeetingGlobalDialInNumbersType0Item,
-        )
         from ..models.incident_mitigated_by_type_0 import IncidentMitigatedByType0
+        from ..models.incident_resolved_by_type_0 import IncidentResolvedByType0
+        from ..models.incident_started_by_type_0 import IncidentStartedByType0
+        from ..models.incident_user_type_0 import IncidentUserType0
 
         title = self.title
 

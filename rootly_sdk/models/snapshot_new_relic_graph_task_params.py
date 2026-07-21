@@ -1,21 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.snapshot_new_relic_graph_task_params_metric_type import (
+    SnapshotNewRelicGraphTaskParamsMetricType,
     check_snapshot_new_relic_graph_task_params_metric_type,
 )
-from ..models.snapshot_new_relic_graph_task_params_metric_type import SnapshotNewRelicGraphTaskParamsMetricType
-from ..models.snapshot_new_relic_graph_task_params_task_type import check_snapshot_new_relic_graph_task_params_task_type
-from ..models.snapshot_new_relic_graph_task_params_task_type import SnapshotNewRelicGraphTaskParamsTaskType
+from ..models.snapshot_new_relic_graph_task_params_task_type import (
+    SnapshotNewRelicGraphTaskParamsTaskType,
+    check_snapshot_new_relic_graph_task_params_task_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.snapshot_new_relic_graph_task_params_post_to_slack_channels_item import (
@@ -45,9 +44,6 @@ class SnapshotNewRelicGraphTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.snapshot_new_relic_graph_task_params_post_to_slack_channels_item import (
-            SnapshotNewRelicGraphTaskParamsPostToSlackChannelsItem,
-        )
 
         metric_query = self.metric_query
 

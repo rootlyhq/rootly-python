@@ -1,23 +1,19 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.alert_event_feed_list import AlertEventFeedList
-from ...models.list_alert_events_feed_filteraction import check_list_alert_events_feed_filteraction
-from ...models.list_alert_events_feed_filteraction import ListAlertEventsFeedFilteraction
-from ...models.list_alert_events_feed_filterkind import check_list_alert_events_feed_filterkind
-from ...models.list_alert_events_feed_filterkind import ListAlertEventsFeedFilterkind
-from ...models.list_alert_events_feed_sort import check_list_alert_events_feed_sort
+from ...models.list_alert_events_feed_filteraction import (
+    ListAlertEventsFeedFilteraction,
+)
+from ...models.list_alert_events_feed_filterkind import (
+    ListAlertEventsFeedFilterkind,
+)
 from ...models.list_alert_events_feed_sort import ListAlertEventsFeedSort
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

@@ -1,24 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_heartbeat_data_attributes_interval_unit import check_update_heartbeat_data_attributes_interval_unit
-from ..models.update_heartbeat_data_attributes_interval_unit import UpdateHeartbeatDataAttributesIntervalUnit
-from ..models.update_heartbeat_data_attributes_notification_target_type import (
-    check_update_heartbeat_data_attributes_notification_target_type,
+from ..models.update_heartbeat_data_attributes_interval_unit import (
+    UpdateHeartbeatDataAttributesIntervalUnit,
+    check_update_heartbeat_data_attributes_interval_unit,
 )
 from ..models.update_heartbeat_data_attributes_notification_target_type import (
     UpdateHeartbeatDataAttributesNotificationTargetType,
+    check_update_heartbeat_data_attributes_notification_target_type,
 )
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateHeartbeatDataAttributes")
 

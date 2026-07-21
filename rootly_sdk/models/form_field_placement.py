@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.form_field_placement_placement_operator import (
+    FormFieldPlacementPlacementOperator,
+    check_form_field_placement_placement_operator,
+)
+from ..models.form_field_placement_required_operator import (
+    FormFieldPlacementRequiredOperator,
+    check_form_field_placement_required_operator,
+)
 from ..types import UNSET, Unset
-
-from ..models.form_field_placement_placement_operator import check_form_field_placement_placement_operator
-from ..models.form_field_placement_placement_operator import FormFieldPlacementPlacementOperator
-from ..models.form_field_placement_required_operator import check_form_field_placement_required_operator
-from ..models.form_field_placement_required_operator import FormFieldPlacementRequiredOperator
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="FormFieldPlacement")
 

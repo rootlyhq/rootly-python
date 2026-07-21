@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.escalation_policy_path_rules_item_type_8_type_4_rule_type import (
-    check_escalation_policy_path_rules_item_type_8_type_4_rule_type,
-)
 from ..models.escalation_policy_path_rules_item_type_8_type_4_rule_type import (
     EscalationPolicyPathRulesItemType8Type4RuleType,
+    check_escalation_policy_path_rules_item_type_8_type_4_rule_type,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="EscalationPolicyPathRulesItemType8Type4")
 

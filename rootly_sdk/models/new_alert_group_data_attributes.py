@@ -1,27 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_alert_group_data_attributes_condition_type import check_new_alert_group_data_attributes_condition_type
-from ..models.new_alert_group_data_attributes_condition_type import NewAlertGroupDataAttributesConditionType
-from ..models.new_alert_group_data_attributes_group_by_alert_title import (
-    check_new_alert_group_data_attributes_group_by_alert_title,
+from ..models.new_alert_group_data_attributes_condition_type import (
+    NewAlertGroupDataAttributesConditionType,
+    check_new_alert_group_data_attributes_condition_type,
 )
-from ..models.new_alert_group_data_attributes_group_by_alert_title import NewAlertGroupDataAttributesGroupByAlertTitle
-from ..models.new_alert_group_data_attributes_group_by_alert_urgency import (
-    check_new_alert_group_data_attributes_group_by_alert_urgency,
+from ..models.new_alert_group_data_attributes_group_by_alert_title import (
+    NewAlertGroupDataAttributesGroupByAlertTitle,
+    check_new_alert_group_data_attributes_group_by_alert_title,
 )
 from ..models.new_alert_group_data_attributes_group_by_alert_urgency import (
     NewAlertGroupDataAttributesGroupByAlertUrgency,
+    check_new_alert_group_data_attributes_group_by_alert_urgency,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_alert_group_data_attributes_attributes_item import NewAlertGroupDataAttributesAttributesItem
@@ -64,9 +60,6 @@ class NewAlertGroupDataAttributes:
     conditions: list[NewAlertGroupDataAttributesConditionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_alert_group_data_attributes_conditions_item import NewAlertGroupDataAttributesConditionsItem
-        from ..models.new_alert_group_data_attributes_attributes_item import NewAlertGroupDataAttributesAttributesItem
-        from ..models.new_alert_group_data_attributes_targets_item import NewAlertGroupDataAttributesTargetsItem
 
         name = self.name
 

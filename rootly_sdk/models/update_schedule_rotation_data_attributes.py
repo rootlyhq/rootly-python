@@ -1,29 +1,21 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
-from ..models.update_schedule_rotation_data_attributes_active_days_item import (
-    check_update_schedule_rotation_data_attributes_active_days_item,
-)
 from ..models.update_schedule_rotation_data_attributes_active_days_item import (
     UpdateScheduleRotationDataAttributesActiveDaysItem,
-)
-from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_type import (
-    check_update_schedule_rotation_data_attributes_schedule_rotationable_type,
+    check_update_schedule_rotation_data_attributes_active_days_item,
 )
 from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_type import (
     UpdateScheduleRotationDataAttributesScheduleRotationableType,
+    check_update_schedule_rotation_data_attributes_schedule_rotationable_type,
 )
 from ..types import UNSET, Unset
-from dateutil.parser import isoparse
-from typing import cast
-import datetime
 
 if TYPE_CHECKING:
     from ..models.update_schedule_rotation_data_attributes_active_time_attributes_item import (
@@ -98,20 +90,11 @@ class UpdateScheduleRotationDataAttributes:
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_schedule_rotation_data_attributes_schedule_rotation_members_type_0_item import (
-            UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item,
-        )
-        from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3 import (
-            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3,
-        )
-        from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_1 import (
-            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1,
-        )
         from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
             UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType0,
         )
-        from ..models.update_schedule_rotation_data_attributes_active_time_attributes_item import (
-            UpdateScheduleRotationDataAttributesActiveTimeAttributesItem,
+        from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_1 import (
+            UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1,
         )
         from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_2 import (
             UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2,

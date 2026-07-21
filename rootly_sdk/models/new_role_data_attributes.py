@@ -1,178 +1,143 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 from ..models.new_role_data_attributes_alerts_permissions_item import (
+    NewRoleDataAttributesAlertsPermissionsItem,
     check_new_role_data_attributes_alerts_permissions_item,
 )
-from ..models.new_role_data_attributes_alerts_permissions_item import NewRoleDataAttributesAlertsPermissionsItem
 from ..models.new_role_data_attributes_api_keys_permissions_item import (
+    NewRoleDataAttributesApiKeysPermissionsItem,
     check_new_role_data_attributes_api_keys_permissions_item,
 )
-from ..models.new_role_data_attributes_api_keys_permissions_item import NewRoleDataAttributesApiKeysPermissionsItem
 from ..models.new_role_data_attributes_audits_permissions_item import (
+    NewRoleDataAttributesAuditsPermissionsItem,
     check_new_role_data_attributes_audits_permissions_item,
 )
-from ..models.new_role_data_attributes_audits_permissions_item import NewRoleDataAttributesAuditsPermissionsItem
 from ..models.new_role_data_attributes_billing_permissions_item import (
+    NewRoleDataAttributesBillingPermissionsItem,
     check_new_role_data_attributes_billing_permissions_item,
 )
-from ..models.new_role_data_attributes_billing_permissions_item import NewRoleDataAttributesBillingPermissionsItem
 from ..models.new_role_data_attributes_catalogs_permissions_item import (
+    NewRoleDataAttributesCatalogsPermissionsItem,
     check_new_role_data_attributes_catalogs_permissions_item,
-)
-from ..models.new_role_data_attributes_catalogs_permissions_item import NewRoleDataAttributesCatalogsPermissionsItem
-from ..models.new_role_data_attributes_communication_permissions_item import (
-    check_new_role_data_attributes_communication_permissions_item,
 )
 from ..models.new_role_data_attributes_communication_permissions_item import (
     NewRoleDataAttributesCommunicationPermissionsItem,
-)
-from ..models.new_role_data_attributes_edge_connector_permissions_item import (
-    check_new_role_data_attributes_edge_connector_permissions_item,
+    check_new_role_data_attributes_communication_permissions_item,
 )
 from ..models.new_role_data_attributes_edge_connector_permissions_item import (
     NewRoleDataAttributesEdgeConnectorPermissionsItem,
-)
-from ..models.new_role_data_attributes_environments_permissions_item import (
-    check_new_role_data_attributes_environments_permissions_item,
+    check_new_role_data_attributes_edge_connector_permissions_item,
 )
 from ..models.new_role_data_attributes_environments_permissions_item import (
     NewRoleDataAttributesEnvironmentsPermissionsItem,
-)
-from ..models.new_role_data_attributes_form_fields_permissions_item import (
-    check_new_role_data_attributes_form_fields_permissions_item,
+    check_new_role_data_attributes_environments_permissions_item,
 )
 from ..models.new_role_data_attributes_form_fields_permissions_item import (
     NewRoleDataAttributesFormFieldsPermissionsItem,
-)
-from ..models.new_role_data_attributes_functionalities_permissions_item import (
-    check_new_role_data_attributes_functionalities_permissions_item,
+    check_new_role_data_attributes_form_fields_permissions_item,
 )
 from ..models.new_role_data_attributes_functionalities_permissions_item import (
     NewRoleDataAttributesFunctionalitiesPermissionsItem,
+    check_new_role_data_attributes_functionalities_permissions_item,
 )
 from ..models.new_role_data_attributes_groups_permissions_item import (
+    NewRoleDataAttributesGroupsPermissionsItem,
     check_new_role_data_attributes_groups_permissions_item,
-)
-from ..models.new_role_data_attributes_groups_permissions_item import NewRoleDataAttributesGroupsPermissionsItem
-from ..models.new_role_data_attributes_incident_causes_permissions_item import (
-    check_new_role_data_attributes_incident_causes_permissions_item,
 )
 from ..models.new_role_data_attributes_incident_causes_permissions_item import (
     NewRoleDataAttributesIncidentCausesPermissionsItem,
-)
-from ..models.new_role_data_attributes_incident_communication_permissions_item import (
-    check_new_role_data_attributes_incident_communication_permissions_item,
+    check_new_role_data_attributes_incident_causes_permissions_item,
 )
 from ..models.new_role_data_attributes_incident_communication_permissions_item import (
     NewRoleDataAttributesIncidentCommunicationPermissionsItem,
-)
-from ..models.new_role_data_attributes_incident_feedbacks_permissions_item import (
-    check_new_role_data_attributes_incident_feedbacks_permissions_item,
+    check_new_role_data_attributes_incident_communication_permissions_item,
 )
 from ..models.new_role_data_attributes_incident_feedbacks_permissions_item import (
     NewRoleDataAttributesIncidentFeedbacksPermissionsItem,
-)
-from ..models.new_role_data_attributes_incident_roles_permissions_item import (
-    check_new_role_data_attributes_incident_roles_permissions_item,
+    check_new_role_data_attributes_incident_feedbacks_permissions_item,
 )
 from ..models.new_role_data_attributes_incident_roles_permissions_item import (
     NewRoleDataAttributesIncidentRolesPermissionsItem,
-)
-from ..models.new_role_data_attributes_incident_types_permissions_item import (
-    check_new_role_data_attributes_incident_types_permissions_item,
+    check_new_role_data_attributes_incident_roles_permissions_item,
 )
 from ..models.new_role_data_attributes_incident_types_permissions_item import (
     NewRoleDataAttributesIncidentTypesPermissionsItem,
+    check_new_role_data_attributes_incident_types_permissions_item,
 )
 from ..models.new_role_data_attributes_incidents_permissions_item import (
+    NewRoleDataAttributesIncidentsPermissionsItem,
     check_new_role_data_attributes_incidents_permissions_item,
-)
-from ..models.new_role_data_attributes_incidents_permissions_item import NewRoleDataAttributesIncidentsPermissionsItem
-from ..models.new_role_data_attributes_integrations_permissions_item import (
-    check_new_role_data_attributes_integrations_permissions_item,
 )
 from ..models.new_role_data_attributes_integrations_permissions_item import (
     NewRoleDataAttributesIntegrationsPermissionsItem,
-)
-from ..models.new_role_data_attributes_invitations_permissions_item import (
-    check_new_role_data_attributes_invitations_permissions_item,
+    check_new_role_data_attributes_integrations_permissions_item,
 )
 from ..models.new_role_data_attributes_invitations_permissions_item import (
     NewRoleDataAttributesInvitationsPermissionsItem,
+    check_new_role_data_attributes_invitations_permissions_item,
 )
 from ..models.new_role_data_attributes_paging_permissions_item import (
+    NewRoleDataAttributesPagingPermissionsItem,
     check_new_role_data_attributes_paging_permissions_item,
 )
-from ..models.new_role_data_attributes_paging_permissions_item import NewRoleDataAttributesPagingPermissionsItem
 from ..models.new_role_data_attributes_playbooks_permissions_item import (
+    NewRoleDataAttributesPlaybooksPermissionsItem,
     check_new_role_data_attributes_playbooks_permissions_item,
-)
-from ..models.new_role_data_attributes_playbooks_permissions_item import NewRoleDataAttributesPlaybooksPermissionsItem
-from ..models.new_role_data_attributes_private_incidents_permissions_item import (
-    check_new_role_data_attributes_private_incidents_permissions_item,
 )
 from ..models.new_role_data_attributes_private_incidents_permissions_item import (
     NewRoleDataAttributesPrivateIncidentsPermissionsItem,
+    check_new_role_data_attributes_private_incidents_permissions_item,
 )
 from ..models.new_role_data_attributes_pulses_permissions_item import (
+    NewRoleDataAttributesPulsesPermissionsItem,
     check_new_role_data_attributes_pulses_permissions_item,
-)
-from ..models.new_role_data_attributes_pulses_permissions_item import NewRoleDataAttributesPulsesPermissionsItem
-from ..models.new_role_data_attributes_retrospective_permissions_item import (
-    check_new_role_data_attributes_retrospective_permissions_item,
 )
 from ..models.new_role_data_attributes_retrospective_permissions_item import (
     NewRoleDataAttributesRetrospectivePermissionsItem,
+    check_new_role_data_attributes_retrospective_permissions_item,
 )
 from ..models.new_role_data_attributes_roles_permissions_item import (
+    NewRoleDataAttributesRolesPermissionsItem,
     check_new_role_data_attributes_roles_permissions_item,
 )
-from ..models.new_role_data_attributes_roles_permissions_item import NewRoleDataAttributesRolesPermissionsItem
 from ..models.new_role_data_attributes_secrets_permissions_item import (
+    NewRoleDataAttributesSecretsPermissionsItem,
     check_new_role_data_attributes_secrets_permissions_item,
 )
-from ..models.new_role_data_attributes_secrets_permissions_item import NewRoleDataAttributesSecretsPermissionsItem
 from ..models.new_role_data_attributes_services_permissions_item import (
+    NewRoleDataAttributesServicesPermissionsItem,
     check_new_role_data_attributes_services_permissions_item,
 )
-from ..models.new_role_data_attributes_services_permissions_item import NewRoleDataAttributesServicesPermissionsItem
 from ..models.new_role_data_attributes_severities_permissions_item import (
+    NewRoleDataAttributesSeveritiesPermissionsItem,
     check_new_role_data_attributes_severities_permissions_item,
 )
-from ..models.new_role_data_attributes_severities_permissions_item import NewRoleDataAttributesSeveritiesPermissionsItem
-from ..models.new_role_data_attributes_slas_permissions_item import check_new_role_data_attributes_slas_permissions_item
-from ..models.new_role_data_attributes_slas_permissions_item import NewRoleDataAttributesSlasPermissionsItem
-from ..models.new_role_data_attributes_status_pages_permissions_item import (
-    check_new_role_data_attributes_status_pages_permissions_item,
+from ..models.new_role_data_attributes_slas_permissions_item import (
+    NewRoleDataAttributesSlasPermissionsItem,
+    check_new_role_data_attributes_slas_permissions_item,
 )
 from ..models.new_role_data_attributes_status_pages_permissions_item import (
     NewRoleDataAttributesStatusPagesPermissionsItem,
-)
-from ..models.new_role_data_attributes_sub_statuses_permissions_item import (
-    check_new_role_data_attributes_sub_statuses_permissions_item,
+    check_new_role_data_attributes_status_pages_permissions_item,
 )
 from ..models.new_role_data_attributes_sub_statuses_permissions_item import (
     NewRoleDataAttributesSubStatusesPermissionsItem,
+    check_new_role_data_attributes_sub_statuses_permissions_item,
 )
 from ..models.new_role_data_attributes_webhooks_permissions_item import (
+    NewRoleDataAttributesWebhooksPermissionsItem,
     check_new_role_data_attributes_webhooks_permissions_item,
 )
-from ..models.new_role_data_attributes_webhooks_permissions_item import NewRoleDataAttributesWebhooksPermissionsItem
 from ..models.new_role_data_attributes_workflows_permissions_item import (
+    NewRoleDataAttributesWorkflowsPermissionsItem,
     check_new_role_data_attributes_workflows_permissions_item,
 )
-from ..models.new_role_data_attributes_workflows_permissions_item import NewRoleDataAttributesWorkflowsPermissionsItem
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="NewRoleDataAttributes")
 

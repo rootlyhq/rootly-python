@@ -1,134 +1,112 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.incident_trigger_params_incident_condition import check_incident_trigger_params_incident_condition
-from ..models.incident_trigger_params_incident_condition import IncidentTriggerParamsIncidentCondition
-from ..models.incident_trigger_params_incident_condition_acknowledged_at import (
-    check_incident_trigger_params_incident_condition_acknowledged_at,
+from ..models.incident_trigger_params_incident_condition import (
+    IncidentTriggerParamsIncidentCondition,
+    check_incident_trigger_params_incident_condition,
 )
 from ..models.incident_trigger_params_incident_condition_acknowledged_at import (
     IncidentTriggerParamsIncidentConditionAcknowledgedAt,
+    check_incident_trigger_params_incident_condition_acknowledged_at,
 )
 from ..models.incident_trigger_params_incident_condition_cause import (
+    IncidentTriggerParamsIncidentConditionCause,
     check_incident_trigger_params_incident_condition_cause,
-)
-from ..models.incident_trigger_params_incident_condition_cause import IncidentTriggerParamsIncidentConditionCause
-from ..models.incident_trigger_params_incident_condition_detected_at import (
-    check_incident_trigger_params_incident_condition_detected_at,
 )
 from ..models.incident_trigger_params_incident_condition_detected_at import (
     IncidentTriggerParamsIncidentConditionDetectedAt,
-)
-from ..models.incident_trigger_params_incident_condition_environment import (
-    check_incident_trigger_params_incident_condition_environment,
+    check_incident_trigger_params_incident_condition_detected_at,
 )
 from ..models.incident_trigger_params_incident_condition_environment import (
     IncidentTriggerParamsIncidentConditionEnvironment,
-)
-from ..models.incident_trigger_params_incident_condition_functionality import (
-    check_incident_trigger_params_incident_condition_functionality,
+    check_incident_trigger_params_incident_condition_environment,
 )
 from ..models.incident_trigger_params_incident_condition_functionality import (
     IncidentTriggerParamsIncidentConditionFunctionality,
+    check_incident_trigger_params_incident_condition_functionality,
 )
 from ..models.incident_trigger_params_incident_condition_group import (
+    IncidentTriggerParamsIncidentConditionGroup,
     check_incident_trigger_params_incident_condition_group,
-)
-from ..models.incident_trigger_params_incident_condition_group import IncidentTriggerParamsIncidentConditionGroup
-from ..models.incident_trigger_params_incident_condition_incident_roles import (
-    check_incident_trigger_params_incident_condition_incident_roles,
 )
 from ..models.incident_trigger_params_incident_condition_incident_roles import (
     IncidentTriggerParamsIncidentConditionIncidentRoles,
-)
-from ..models.incident_trigger_params_incident_condition_incident_type import (
-    check_incident_trigger_params_incident_condition_incident_type,
+    check_incident_trigger_params_incident_condition_incident_roles,
 )
 from ..models.incident_trigger_params_incident_condition_incident_type import (
     IncidentTriggerParamsIncidentConditionIncidentType,
+    check_incident_trigger_params_incident_condition_incident_type,
 )
 from ..models.incident_trigger_params_incident_condition_kind import (
+    IncidentTriggerParamsIncidentConditionKind,
     check_incident_trigger_params_incident_condition_kind,
 )
-from ..models.incident_trigger_params_incident_condition_kind import IncidentTriggerParamsIncidentConditionKind
 from ..models.incident_trigger_params_incident_condition_label import (
+    IncidentTriggerParamsIncidentConditionLabel,
     check_incident_trigger_params_incident_condition_label,
-)
-from ..models.incident_trigger_params_incident_condition_label import IncidentTriggerParamsIncidentConditionLabel
-from ..models.incident_trigger_params_incident_condition_mitigated_at import (
-    check_incident_trigger_params_incident_condition_mitigated_at,
 )
 from ..models.incident_trigger_params_incident_condition_mitigated_at import (
     IncidentTriggerParamsIncidentConditionMitigatedAt,
-)
-from ..models.incident_trigger_params_incident_condition_resolved_at import (
-    check_incident_trigger_params_incident_condition_resolved_at,
+    check_incident_trigger_params_incident_condition_mitigated_at,
 )
 from ..models.incident_trigger_params_incident_condition_resolved_at import (
     IncidentTriggerParamsIncidentConditionResolvedAt,
+    check_incident_trigger_params_incident_condition_resolved_at,
 )
 from ..models.incident_trigger_params_incident_condition_service import (
+    IncidentTriggerParamsIncidentConditionService,
     check_incident_trigger_params_incident_condition_service,
 )
-from ..models.incident_trigger_params_incident_condition_service import IncidentTriggerParamsIncidentConditionService
 from ..models.incident_trigger_params_incident_condition_severity import (
+    IncidentTriggerParamsIncidentConditionSeverity,
     check_incident_trigger_params_incident_condition_severity,
-)
-from ..models.incident_trigger_params_incident_condition_severity import IncidentTriggerParamsIncidentConditionSeverity
-from ..models.incident_trigger_params_incident_condition_started_at import (
-    check_incident_trigger_params_incident_condition_started_at,
 )
 from ..models.incident_trigger_params_incident_condition_started_at import (
     IncidentTriggerParamsIncidentConditionStartedAt,
+    check_incident_trigger_params_incident_condition_started_at,
 )
 from ..models.incident_trigger_params_incident_condition_status import (
+    IncidentTriggerParamsIncidentConditionStatus,
     check_incident_trigger_params_incident_condition_status,
-)
-from ..models.incident_trigger_params_incident_condition_status import IncidentTriggerParamsIncidentConditionStatus
-from ..models.incident_trigger_params_incident_condition_sub_status import (
-    check_incident_trigger_params_incident_condition_sub_status,
 )
 from ..models.incident_trigger_params_incident_condition_sub_status import (
     IncidentTriggerParamsIncidentConditionSubStatus,
+    check_incident_trigger_params_incident_condition_sub_status,
 )
 from ..models.incident_trigger_params_incident_condition_summary import (
+    IncidentTriggerParamsIncidentConditionSummary,
     check_incident_trigger_params_incident_condition_summary,
-)
-from ..models.incident_trigger_params_incident_condition_summary import IncidentTriggerParamsIncidentConditionSummary
-from ..models.incident_trigger_params_incident_condition_visibility import (
-    check_incident_trigger_params_incident_condition_visibility,
 )
 from ..models.incident_trigger_params_incident_condition_visibility import (
     IncidentTriggerParamsIncidentConditionVisibility,
-)
-from ..models.incident_trigger_params_incident_conditional_inactivity import (
-    check_incident_trigger_params_incident_conditional_inactivity,
+    check_incident_trigger_params_incident_condition_visibility,
 )
 from ..models.incident_trigger_params_incident_conditional_inactivity import (
     IncidentTriggerParamsIncidentConditionalInactivity,
+    check_incident_trigger_params_incident_conditional_inactivity,
 )
-from ..models.incident_trigger_params_incident_kinds_item import check_incident_trigger_params_incident_kinds_item
-from ..models.incident_trigger_params_incident_kinds_item import IncidentTriggerParamsIncidentKindsItem
-from ..models.incident_trigger_params_incident_post_mortem_condition_cause import (
-    check_incident_trigger_params_incident_post_mortem_condition_cause,
+from ..models.incident_trigger_params_incident_kinds_item import (
+    IncidentTriggerParamsIncidentKindsItem,
+    check_incident_trigger_params_incident_kinds_item,
 )
 from ..models.incident_trigger_params_incident_post_mortem_condition_cause import (
     IncidentTriggerParamsIncidentPostMortemConditionCause,
+    check_incident_trigger_params_incident_post_mortem_condition_cause,
 )
-from ..models.incident_trigger_params_incident_statuses_item import check_incident_trigger_params_incident_statuses_item
-from ..models.incident_trigger_params_incident_statuses_item import IncidentTriggerParamsIncidentStatusesItem
-from ..models.incident_trigger_params_trigger_type import check_incident_trigger_params_trigger_type
-from ..models.incident_trigger_params_trigger_type import IncidentTriggerParamsTriggerType
+from ..models.incident_trigger_params_incident_statuses_item import (
+    IncidentTriggerParamsIncidentStatusesItem,
+    check_incident_trigger_params_incident_statuses_item,
+)
+from ..models.incident_trigger_params_trigger_type import (
+    IncidentTriggerParamsTriggerType,
+    check_incident_trigger_params_trigger_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="IncidentTriggerParams")
 

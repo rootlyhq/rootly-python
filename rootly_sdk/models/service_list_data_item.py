@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.service_list_data_item_type import check_service_list_data_item_type
-from ..models.service_list_data_item_type import ServiceListDataItemType
-from typing import cast
+from ..models.service_list_data_item_type import ServiceListDataItemType, check_service_list_data_item_type
 
 if TYPE_CHECKING:
     from ..models.service import Service
@@ -34,7 +30,6 @@ class ServiceListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.service import Service
 
         id = self.id
 

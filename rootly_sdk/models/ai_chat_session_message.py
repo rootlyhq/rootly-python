@@ -1,20 +1,15 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.ai_chat_session_message_role import AiChatSessionMessageRole
-from ..models.ai_chat_session_message_role import check_ai_chat_session_message_role
 from dateutil.parser import isoparse
-from typing import cast
-from uuid import UUID
-import datetime
 
+from ..models.ai_chat_session_message_role import AiChatSessionMessageRole, check_ai_chat_session_message_role
 
 T = TypeVar("T", bound="AiChatSessionMessage")
 

@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.environment_managed_by import EnvironmentManagedBy, check_environment_managed_by
 from ..types import UNSET, Unset
-
-from ..models.environment_managed_by import check_environment_managed_by
-from ..models.environment_managed_by import EnvironmentManagedBy
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.environment_properties_type_0_item import EnvironmentPropertiesType0Item
@@ -60,9 +56,6 @@ class Environment:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.environment_slack_aliases_type_0_item import EnvironmentSlackAliasesType0Item
-        from ..models.environment_slack_channels_type_0_item import EnvironmentSlackChannelsType0Item
-        from ..models.environment_properties_type_0_item import EnvironmentPropertiesType0Item
 
         name = self.name
 

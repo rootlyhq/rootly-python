@@ -1,25 +1,22 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
-from ..models.new_alert_data_attributes_noise import check_new_alert_data_attributes_noise
-from ..models.new_alert_data_attributes_noise import NewAlertDataAttributesNoise
+from ..models.new_alert_data_attributes_noise import NewAlertDataAttributesNoise, check_new_alert_data_attributes_noise
 from ..models.new_alert_data_attributes_notification_target_type import (
+    NewAlertDataAttributesNotificationTargetType,
     check_new_alert_data_attributes_notification_target_type,
 )
-from ..models.new_alert_data_attributes_notification_target_type import NewAlertDataAttributesNotificationTargetType
-from ..models.new_alert_data_attributes_status import check_new_alert_data_attributes_status
-from ..models.new_alert_data_attributes_status import NewAlertDataAttributesStatus
+from ..models.new_alert_data_attributes_status import (
+    NewAlertDataAttributesStatus,
+    check_new_alert_data_attributes_status,
+)
 from ..types import UNSET, Unset
-from dateutil.parser import isoparse
-from typing import cast
-import datetime
 
 if TYPE_CHECKING:
     from ..models.new_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
@@ -100,14 +97,11 @@ class NewAlertDataAttributes:
     )
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_alert_data_attributes_notification_targets_type_0_item import (
-            NewAlertDataAttributesNotificationTargetsType0Item,
-        )
-        from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
         from ..models.new_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
             NewAlertDataAttributesAlertFieldValuesAttributesItemType0,
         )
         from ..models.new_alert_data_attributes_data_type_0 import NewAlertDataAttributesDataType0
+        from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
 
         summary = self.summary
 

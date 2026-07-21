@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_gitlab_issue_task_params_issue_type import (
+    UpdateGitlabIssueTaskParamsIssueType,
+    check_update_gitlab_issue_task_params_issue_type,
+)
+from ..models.update_gitlab_issue_task_params_task_type import (
+    UpdateGitlabIssueTaskParamsTaskType,
+    check_update_gitlab_issue_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_gitlab_issue_task_params_issue_type import check_update_gitlab_issue_task_params_issue_type
-from ..models.update_gitlab_issue_task_params_issue_type import UpdateGitlabIssueTaskParamsIssueType
-from ..models.update_gitlab_issue_task_params_task_type import check_update_gitlab_issue_task_params_task_type
-from ..models.update_gitlab_issue_task_params_task_type import UpdateGitlabIssueTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_gitlab_issue_task_params_completion import UpdateGitlabIssueTaskParamsCompletion
@@ -47,7 +48,6 @@ class UpdateGitlabIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_gitlab_issue_task_params_completion import UpdateGitlabIssueTaskParamsCompletion
 
         issue_id = self.issue_id
 

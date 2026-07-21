@@ -1,20 +1,18 @@
 from http import HTTPStatus
 from typing import Any, cast
-from urllib.parse import quote
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.errors_list import ErrorsList
-from ...models.generate_phone_number_live_call_router_country_code import check_generate_phone_number_live_call_router_country_code
-from ...models.generate_phone_number_live_call_router_country_code import GeneratePhoneNumberLiveCallRouterCountryCode
-from ...models.generate_phone_number_live_call_router_phone_type import check_generate_phone_number_live_call_router_phone_type
-from ...models.generate_phone_number_live_call_router_phone_type import GeneratePhoneNumberLiveCallRouterPhoneType
-from typing import cast
-
+from ...models.generate_phone_number_live_call_router_country_code import (
+    GeneratePhoneNumberLiveCallRouterCountryCode,
+)
+from ...models.generate_phone_number_live_call_router_phone_type import (
+    GeneratePhoneNumberLiveCallRouterPhoneType,
+)
+from ...types import UNSET, Response
 
 
 def _get_kwargs(

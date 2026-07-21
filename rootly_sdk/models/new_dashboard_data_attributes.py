@@ -1,22 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
+from ..models.new_dashboard_data_attributes_color import (
+    NewDashboardDataAttributesColor,
+    check_new_dashboard_data_attributes_color,
+)
+from ..models.new_dashboard_data_attributes_owner import (
+    NewDashboardDataAttributesOwner,
+    check_new_dashboard_data_attributes_owner,
+)
+from ..models.new_dashboard_data_attributes_period import (
+    NewDashboardDataAttributesPeriod,
+    check_new_dashboard_data_attributes_period,
+)
 from ..types import UNSET, Unset
-
-from ..models.new_dashboard_data_attributes_color import check_new_dashboard_data_attributes_color
-from ..models.new_dashboard_data_attributes_color import NewDashboardDataAttributesColor
-from ..models.new_dashboard_data_attributes_owner import check_new_dashboard_data_attributes_owner
-from ..models.new_dashboard_data_attributes_owner import NewDashboardDataAttributesOwner
-from ..models.new_dashboard_data_attributes_period import check_new_dashboard_data_attributes_period
-from ..models.new_dashboard_data_attributes_period import NewDashboardDataAttributesPeriod
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="NewDashboardDataAttributes")
 

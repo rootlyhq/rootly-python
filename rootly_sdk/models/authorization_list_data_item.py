@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.authorization_list_data_item_type import AuthorizationListDataItemType
-from ..models.authorization_list_data_item_type import check_authorization_list_data_item_type
-from typing import cast
+from ..models.authorization_list_data_item_type import (
+    AuthorizationListDataItemType,
+    check_authorization_list_data_item_type,
+)
 
 if TYPE_CHECKING:
     from ..models.authorization import Authorization
@@ -34,7 +33,6 @@ class AuthorizationListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.authorization import Authorization
 
         id = self.id
 

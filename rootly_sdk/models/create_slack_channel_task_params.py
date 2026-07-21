@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.create_slack_channel_task_params_private import (
+    CreateSlackChannelTaskParamsPrivate,
+    check_create_slack_channel_task_params_private,
+)
+from ..models.create_slack_channel_task_params_task_type import (
+    CreateSlackChannelTaskParamsTaskType,
+    check_create_slack_channel_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.create_slack_channel_task_params_private import check_create_slack_channel_task_params_private
-from ..models.create_slack_channel_task_params_private import CreateSlackChannelTaskParamsPrivate
-from ..models.create_slack_channel_task_params_task_type import check_create_slack_channel_task_params_task_type
-from ..models.create_slack_channel_task_params_task_type import CreateSlackChannelTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_slack_channel_task_params_workspace import CreateSlackChannelTaskParamsWorkspace
@@ -39,7 +40,6 @@ class CreateSlackChannelTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_slack_channel_task_params_workspace import CreateSlackChannelTaskParamsWorkspace
 
         workspace = self.workspace.to_dict()
 

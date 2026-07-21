@@ -1,19 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.workflow_run_status import WorkflowRunStatus, check_workflow_run_status
+from ..models.workflow_run_triggered_by import WorkflowRunTriggeredBy, check_workflow_run_triggered_by
 from ..types import UNSET, Unset
-
-from ..models.workflow_run_status import check_workflow_run_status
-from ..models.workflow_run_status import WorkflowRunStatus
-from ..models.workflow_run_triggered_by import check_workflow_run_triggered_by
-from ..models.workflow_run_triggered_by import WorkflowRunTriggeredBy
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.workflow_run_context import WorkflowRunContext
@@ -59,7 +54,6 @@ class WorkflowRun:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.workflow_run_context import WorkflowRunContext
 
         workflow_id = self.workflow_id
 

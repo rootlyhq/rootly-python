@@ -1,19 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.alert_event_action import AlertEventAction, check_alert_event_action
+from ..models.alert_event_kind import AlertEventKind, check_alert_event_kind
 from ..types import UNSET, Unset
-
-from ..models.alert_event_action import AlertEventAction
-from ..models.alert_event_action import check_alert_event_action
-from ..models.alert_event_kind import AlertEventKind
-from ..models.alert_event_kind import check_alert_event_kind
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.alert_event_escalation_target_type_0 import AlertEventEscalationTargetType0
@@ -69,9 +64,7 @@ class AlertEvent:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.alert_event_escalation_target_type_0 import AlertEventEscalationTargetType0
-        from ..models.slack_channel import SlackChannel
         from ..models.alert_event_incident_type_0 import AlertEventIncidentType0
-        from ..models.alert_event_user import AlertEventUser
         from ..models.alert_event_schedule_type_0 import AlertEventScheduleType0
 
         alert_id = self.alert_id

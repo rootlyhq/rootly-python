@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.snapshot_datadog_graph_task_params_task_type import (
+    SnapshotDatadogGraphTaskParamsTaskType,
+    check_snapshot_datadog_graph_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.snapshot_datadog_graph_task_params_task_type import check_snapshot_datadog_graph_task_params_task_type
-from ..models.snapshot_datadog_graph_task_params_task_type import SnapshotDatadogGraphTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.snapshot_datadog_graph_task_params_dashboards_item import SnapshotDatadogGraphTaskParamsDashboardsItem
@@ -44,12 +43,6 @@ class SnapshotDatadogGraphTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.snapshot_datadog_graph_task_params_dashboards_item import (
-            SnapshotDatadogGraphTaskParamsDashboardsItem,
-        )
-        from ..models.snapshot_datadog_graph_task_params_post_to_slack_channels_item import (
-            SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem,
-        )
 
         past_duration = self.past_duration
 

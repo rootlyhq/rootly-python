@@ -1,20 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.catalog_icon import CatalogIcon, check_catalog_icon
+from ..models.catalog_managed_by import CatalogManagedBy, check_catalog_managed_by
 from ..types import UNSET, Unset
-
-from ..models.catalog_icon import CatalogIcon
-from ..models.catalog_icon import check_catalog_icon
-from ..models.catalog_managed_by import CatalogManagedBy
-from ..models.catalog_managed_by import check_catalog_managed_by
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="Catalog")
 

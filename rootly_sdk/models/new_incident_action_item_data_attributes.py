@@ -1,25 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_incident_action_item_data_attributes_kind import check_new_incident_action_item_data_attributes_kind
-from ..models.new_incident_action_item_data_attributes_kind import NewIncidentActionItemDataAttributesKind
+from ..models.new_incident_action_item_data_attributes_kind import (
+    NewIncidentActionItemDataAttributesKind,
+    check_new_incident_action_item_data_attributes_kind,
+)
 from ..models.new_incident_action_item_data_attributes_priority import (
+    NewIncidentActionItemDataAttributesPriority,
     check_new_incident_action_item_data_attributes_priority,
 )
-from ..models.new_incident_action_item_data_attributes_priority import NewIncidentActionItemDataAttributesPriority
 from ..models.new_incident_action_item_data_attributes_status import (
+    NewIncidentActionItemDataAttributesStatus,
     check_new_incident_action_item_data_attributes_status,
 )
-from ..models.new_incident_action_item_data_attributes_status import NewIncidentActionItemDataAttributesStatus
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_incident_action_item_data_attributes_form_field_selections_type_0_item import (
@@ -64,9 +62,6 @@ class NewIncidentActionItemDataAttributes:
     form_field_selections: list[NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_incident_action_item_data_attributes_form_field_selections_type_0_item import (
-            NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item,
-        )
 
         summary = self.summary
 

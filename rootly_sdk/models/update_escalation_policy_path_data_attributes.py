@@ -1,45 +1,31 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_escalation_policy_path_data_attributes_after_deferral_behavior import (
-    check_update_escalation_policy_path_data_attributes_after_deferral_behavior,
-)
 from ..models.update_escalation_policy_path_data_attributes_after_deferral_behavior import (
     UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior,
-)
-from ..models.update_escalation_policy_path_data_attributes_match_mode import (
-    check_update_escalation_policy_path_data_attributes_match_mode,
+    check_update_escalation_policy_path_data_attributes_after_deferral_behavior,
 )
 from ..models.update_escalation_policy_path_data_attributes_match_mode import (
     UpdateEscalationPolicyPathDataAttributesMatchMode,
-)
-from ..models.update_escalation_policy_path_data_attributes_notification_type import (
-    check_update_escalation_policy_path_data_attributes_notification_type,
+    check_update_escalation_policy_path_data_attributes_match_mode,
 )
 from ..models.update_escalation_policy_path_data_attributes_notification_type import (
     UpdateEscalationPolicyPathDataAttributesNotificationType,
-)
-from ..models.update_escalation_policy_path_data_attributes_path_type import (
-    check_update_escalation_policy_path_data_attributes_path_type,
+    check_update_escalation_policy_path_data_attributes_notification_type,
 )
 from ..models.update_escalation_policy_path_data_attributes_path_type import (
     UpdateEscalationPolicyPathDataAttributesPathType,
-)
-from ..models.update_escalation_policy_path_data_attributes_time_restriction_time_zone import (
-    check_update_escalation_policy_path_data_attributes_time_restriction_time_zone,
+    check_update_escalation_policy_path_data_attributes_path_type,
 )
 from ..models.update_escalation_policy_path_data_attributes_time_restriction_time_zone import (
     UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone,
+    check_update_escalation_policy_path_data_attributes_time_restriction_time_zone,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
@@ -216,59 +202,62 @@ class UpdateEscalationPolicyPathDataAttributes:
     time_restrictions: list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item import (
-            UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0,
-        )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType0,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType7,
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_1 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType1,
         )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_2 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType2,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3,
-        )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_3 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType3,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_4 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType4,
         )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType5,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1,
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_6 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType6,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_7 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType7,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_0 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_1 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_2 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_3 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_4 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_5 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_6 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6,
         )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_7 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7,
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_0 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType4,
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_1 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1,
+        )
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_2 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2,
         )
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_3 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3,
@@ -279,17 +268,8 @@ class UpdateEscalationPolicyPathDataAttributes:
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_5 import (
             UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5,
         )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1,
+        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_6 import (
+            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6,
         )
 
         name = self.name

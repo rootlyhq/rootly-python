@@ -1,19 +1,17 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.update_alert_data_attributes_noise import check_update_alert_data_attributes_noise
-from ..models.update_alert_data_attributes_noise import UpdateAlertDataAttributesNoise
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
+
+from ..models.update_alert_data_attributes_noise import (
+    UpdateAlertDataAttributesNoise,
+    check_update_alert_data_attributes_noise,
+)
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.update_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
@@ -72,11 +70,11 @@ class UpdateAlertDataAttributes:
     )
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_alert_data_attributes_labels_item_type_0 import UpdateAlertDataAttributesLabelsItemType0
         from ..models.update_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
             UpdateAlertDataAttributesAlertFieldValuesAttributesItemType0,
         )
         from ..models.update_alert_data_attributes_data_type_0 import UpdateAlertDataAttributesDataType0
+        from ..models.update_alert_data_attributes_labels_item_type_0 import UpdateAlertDataAttributesLabelsItemType0
 
         noise: str | Unset = UNSET
         if not isinstance(self.noise, Unset):

@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.run_command_heroku_task_params_size import (
+    RunCommandHerokuTaskParamsSize,
+    check_run_command_heroku_task_params_size,
+)
+from ..models.run_command_heroku_task_params_task_type import (
+    RunCommandHerokuTaskParamsTaskType,
+    check_run_command_heroku_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.run_command_heroku_task_params_size import check_run_command_heroku_task_params_size
-from ..models.run_command_heroku_task_params_size import RunCommandHerokuTaskParamsSize
-from ..models.run_command_heroku_task_params_task_type import check_run_command_heroku_task_params_task_type
-from ..models.run_command_heroku_task_params_task_type import RunCommandHerokuTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.run_command_heroku_task_params_post_to_slack_channels_item import (
@@ -45,9 +46,6 @@ class RunCommandHerokuTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.run_command_heroku_task_params_post_to_slack_channels_item import (
-            RunCommandHerokuTaskParamsPostToSlackChannelsItem,
-        )
 
         command = self.command
 

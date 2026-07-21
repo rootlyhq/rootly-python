@@ -1,23 +1,17 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.alert_noise import AlertNoise
-from ..models.alert_noise import check_alert_noise
-from ..models.alert_notification_target_type import AlertNotificationTargetType
-from ..models.alert_notification_target_type import check_alert_notification_target_type
-from ..models.alert_status import AlertStatus
-from ..models.alert_status import check_alert_status
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
+
+from ..models.alert_noise import AlertNoise, check_alert_noise
+from ..models.alert_notification_target_type import AlertNotificationTargetType, check_alert_notification_target_type
+from ..models.alert_status import AlertStatus, check_alert_status
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.alert_alert_field_values_type_0_item import AlertAlertFieldValuesType0Item
@@ -122,17 +116,8 @@ class Alert:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.alert_alerting_targets_type_0_item import AlertAlertingTargetsType0Item
-        from ..models.service import Service
-        from ..models.alert_alert_field_values_type_0_item import AlertAlertFieldValuesType0Item
-        from ..models.user_flat_response import UserFlatResponse
-        from ..models.user import User
-        from ..models.team import Team
         from ..models.alert_data_type_0 import AlertDataType0
         from ..models.alert_labels_item_type_0 import AlertLabelsItemType0
-        from ..models.environment import Environment
-        from ..models.functionality import Functionality
-        from ..models.alert_urgency import AlertUrgency
 
         short_id = self.short_id
 

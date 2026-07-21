@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.catalog_list_data_item_type import CatalogListDataItemType
-from ..models.catalog_list_data_item_type import check_catalog_list_data_item_type
-from typing import cast
+from ..models.catalog_list_data_item_type import CatalogListDataItemType, check_catalog_list_data_item_type
 
 if TYPE_CHECKING:
     from ..models.catalog import Catalog
@@ -34,7 +30,6 @@ class CatalogListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.catalog import Catalog
 
         id = self.id
 

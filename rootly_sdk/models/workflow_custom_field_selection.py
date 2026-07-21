@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.workflow_custom_field_selection_incident_condition import (
+    WorkflowCustomFieldSelectionIncidentCondition,
     check_workflow_custom_field_selection_incident_condition,
 )
-from ..models.workflow_custom_field_selection_incident_condition import WorkflowCustomFieldSelectionIncidentCondition
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="WorkflowCustomFieldSelection")
 

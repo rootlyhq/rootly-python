@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.incident_action_item_kind import IncidentActionItemKind, check_incident_action_item_kind
+from ..models.incident_action_item_priority import IncidentActionItemPriority, check_incident_action_item_priority
+from ..models.incident_action_item_status import IncidentActionItemStatus, check_incident_action_item_status
 from ..types import UNSET, Unset
-
-from ..models.incident_action_item_kind import check_incident_action_item_kind
-from ..models.incident_action_item_kind import IncidentActionItemKind
-from ..models.incident_action_item_priority import check_incident_action_item_priority
-from ..models.incident_action_item_priority import IncidentActionItemPriority
-from ..models.incident_action_item_status import check_incident_action_item_status
-from ..models.incident_action_item_status import IncidentActionItemStatus
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.user_flat_response import UserFlatResponse
@@ -63,7 +57,6 @@ class IncidentActionItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.user_flat_response import UserFlatResponse
 
         summary = self.summary
 

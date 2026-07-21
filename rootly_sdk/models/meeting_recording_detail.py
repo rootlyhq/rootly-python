@@ -1,21 +1,16 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.meeting_recording_platform import check_meeting_recording_platform
-from ..models.meeting_recording_platform import MeetingRecordingPlatform
-from ..models.meeting_recording_status import check_meeting_recording_status
-from ..models.meeting_recording_status import MeetingRecordingStatus
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
+
+from ..models.meeting_recording_platform import MeetingRecordingPlatform, check_meeting_recording_platform
+from ..models.meeting_recording_status import MeetingRecordingStatus, check_meeting_recording_status
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.meeting_recording_detail_transcript_type_1 import MeetingRecordingDetailTranscriptType1
@@ -75,8 +70,6 @@ class MeetingRecordingDetail:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.meeting_recording_transcript_segment import MeetingRecordingTranscriptSegment
-        from ..models.meeting_recording_detail_transcript_type_1 import MeetingRecordingDetailTranscriptType1
 
         platform: str = self.platform
 

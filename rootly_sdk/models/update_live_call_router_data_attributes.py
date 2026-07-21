@@ -1,31 +1,27 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 from ..models.update_live_call_router_data_attributes_country_code import (
+    UpdateLiveCallRouterDataAttributesCountryCode,
     check_update_live_call_router_data_attributes_country_code,
 )
-from ..models.update_live_call_router_data_attributes_country_code import UpdateLiveCallRouterDataAttributesCountryCode
-from ..models.update_live_call_router_data_attributes_kind import check_update_live_call_router_data_attributes_kind
-from ..models.update_live_call_router_data_attributes_kind import UpdateLiveCallRouterDataAttributesKind
-from ..models.update_live_call_router_data_attributes_phone_type import (
-    check_update_live_call_router_data_attributes_phone_type,
+from ..models.update_live_call_router_data_attributes_kind import (
+    UpdateLiveCallRouterDataAttributesKind,
+    check_update_live_call_router_data_attributes_kind,
 )
-from ..models.update_live_call_router_data_attributes_phone_type import UpdateLiveCallRouterDataAttributesPhoneType
-from ..models.update_live_call_router_data_attributes_waiting_music_url import (
-    check_update_live_call_router_data_attributes_waiting_music_url,
+from ..models.update_live_call_router_data_attributes_phone_type import (
+    UpdateLiveCallRouterDataAttributesPhoneType,
+    check_update_live_call_router_data_attributes_phone_type,
 )
 from ..models.update_live_call_router_data_attributes_waiting_music_url import (
     UpdateLiveCallRouterDataAttributesWaitingMusicUrl,
+    check_update_live_call_router_data_attributes_waiting_music_url,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_live_call_router_data_attributes_escalation_policy_trigger_params import (
@@ -97,12 +93,6 @@ class UpdateLiveCallRouterDataAttributes:
     escalation_policy_trigger_params: UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_live_call_router_data_attributes_escalation_policy_trigger_params import (
-            UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams,
-        )
-        from ..models.update_live_call_router_data_attributes_paging_targets_item import (
-            UpdateLiveCallRouterDataAttributesPagingTargetsItem,
-        )
 
         kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):

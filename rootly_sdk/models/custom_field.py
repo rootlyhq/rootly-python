@@ -1,20 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.custom_field_required_type_0_item import (
+    CustomFieldRequiredType0Item,
+    check_custom_field_required_type_0_item,
+)
+from ..models.custom_field_shown_item import CustomFieldShownItem, check_custom_field_shown_item
 from ..types import UNSET, Unset
-
-from ..models.custom_field_required_type_0_item import check_custom_field_required_type_0_item
-from ..models.custom_field_required_type_0_item import CustomFieldRequiredType0Item
-from ..models.custom_field_shown_item import check_custom_field_shown_item
-from ..models.custom_field_shown_item import CustomFieldShownItem
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="CustomField")
 

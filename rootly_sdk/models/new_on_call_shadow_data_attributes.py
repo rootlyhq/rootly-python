@@ -1,21 +1,16 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
+from dateutil.parser import isoparse
 
 from ..models.new_on_call_shadow_data_attributes_shadowable_type import (
+    NewOnCallShadowDataAttributesShadowableType,
     check_new_on_call_shadow_data_attributes_shadowable_type,
 )
-from ..models.new_on_call_shadow_data_attributes_shadowable_type import NewOnCallShadowDataAttributesShadowableType
-from dateutil.parser import isoparse
-from typing import cast
-import datetime
-
 
 T = TypeVar("T", bound="NewOnCallShadowDataAttributes")
 

@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.get_alerts_task_params_task_type import (
+    GetAlertsTaskParamsTaskType,
+    check_get_alerts_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.get_alerts_task_params_task_type import check_get_alerts_task_params_task_type
-from ..models.get_alerts_task_params_task_type import GetAlertsTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.get_alerts_task_params_parent_message_thread_task import GetAlertsTaskParamsParentMessageThreadTask
@@ -54,12 +53,6 @@ class GetAlertsTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.get_alerts_task_params_parent_message_thread_task import (
-            GetAlertsTaskParamsParentMessageThreadTask,
-        )
-        from ..models.get_alerts_task_params_post_to_slack_channels_item import (
-            GetAlertsTaskParamsPostToSlackChannelsItem,
-        )
 
         past_duration = self.past_duration
 

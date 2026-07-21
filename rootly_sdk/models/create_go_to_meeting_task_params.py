@@ -1,21 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.create_go_to_meeting_task_params_conference_call_info import (
+    CreateGoToMeetingTaskParamsConferenceCallInfo,
     check_create_go_to_meeting_task_params_conference_call_info,
 )
-from ..models.create_go_to_meeting_task_params_conference_call_info import CreateGoToMeetingTaskParamsConferenceCallInfo
-from ..models.create_go_to_meeting_task_params_task_type import check_create_go_to_meeting_task_params_task_type
-from ..models.create_go_to_meeting_task_params_task_type import CreateGoToMeetingTaskParamsTaskType
+from ..models.create_go_to_meeting_task_params_task_type import (
+    CreateGoToMeetingTaskParamsTaskType,
+    check_create_go_to_meeting_task_params_task_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_go_to_meeting_task_params_post_to_slack_channels_item import (
@@ -47,9 +46,6 @@ class CreateGoToMeetingTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.create_go_to_meeting_task_params_post_to_slack_channels_item import (
-            CreateGoToMeetingTaskParamsPostToSlackChannelsItem,
-        )
 
         subject = self.subject
 

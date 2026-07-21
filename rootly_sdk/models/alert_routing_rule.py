@@ -1,18 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.alert_routing_rule_condition_type import (
+    AlertRoutingRuleConditionType,
+    check_alert_routing_rule_condition_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.alert_routing_rule_condition_type import AlertRoutingRuleConditionType
-from ..models.alert_routing_rule_condition_type import check_alert_routing_rule_condition_type
-from ..types import UNSET, Unset
-from typing import cast
-from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.alert_routing_rule_condition_groups_item import AlertRoutingRuleConditionGroupsItem
@@ -53,8 +52,6 @@ class AlertRoutingRule:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.alert_routing_rule_conditions_item import AlertRoutingRuleConditionsItem
-        from ..models.alert_routing_rule_condition_groups_item import AlertRoutingRuleConditionGroupsItem
         from ..models.alert_routing_rule_destination_type_0 import AlertRoutingRuleDestinationType0
 
         name = self.name

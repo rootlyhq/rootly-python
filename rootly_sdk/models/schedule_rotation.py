@@ -1,21 +1,22 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.schedule_rotation_active_days_item import check_schedule_rotation_active_days_item
-from ..models.schedule_rotation_active_days_item import ScheduleRotationActiveDaysItem
-from ..models.schedule_rotation_schedule_rotationable_type import check_schedule_rotation_schedule_rotationable_type
-from ..models.schedule_rotation_schedule_rotationable_type import ScheduleRotationScheduleRotationableType
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
+
+from ..models.schedule_rotation_active_days_item import (
+    ScheduleRotationActiveDaysItem,
+    check_schedule_rotation_active_days_item,
+)
+from ..models.schedule_rotation_schedule_rotationable_type import (
+    ScheduleRotationScheduleRotationableType,
+    check_schedule_rotation_schedule_rotationable_type,
+)
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.schedule_rotation_active_time_attributes_item import ScheduleRotationActiveTimeAttributesItem
@@ -79,18 +80,14 @@ class ScheduleRotation:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.schedule_rotation_schedule_rotationable_attributes_type_1 import (
-            ScheduleRotationScheduleRotationableAttributesType1,
-        )
-        from ..models.schedule_rotation_active_time_attributes_item import ScheduleRotationActiveTimeAttributesItem
         from ..models.schedule_rotation_schedule_rotationable_attributes_type_0 import (
             ScheduleRotationScheduleRotationableAttributesType0,
         )
+        from ..models.schedule_rotation_schedule_rotationable_attributes_type_1 import (
+            ScheduleRotationScheduleRotationableAttributesType1,
+        )
         from ..models.schedule_rotation_schedule_rotationable_attributes_type_2 import (
             ScheduleRotationScheduleRotationableAttributesType2,
-        )
-        from ..models.schedule_rotation_schedule_rotationable_attributes_type_3 import (
-            ScheduleRotationScheduleRotationableAttributesType3,
         )
 
         schedule_id = self.schedule_id

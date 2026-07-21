@@ -1,34 +1,24 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type import (
     AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType,
-)
-from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type import (
     check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type,
 )
 from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_kind import (
     AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind,
-)
-from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_kind import (
     check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_kind,
 )
 from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_operator import (
     AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator,
-)
-from ..models.alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_operator import (
     check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_item_operator,
 )
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem")
 

@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.schedule_rotation_active_day_day_name import check_schedule_rotation_active_day_day_name
-from ..models.schedule_rotation_active_day_day_name import ScheduleRotationActiveDayDayName
-from typing import cast
+from ..models.schedule_rotation_active_day_day_name import (
+    ScheduleRotationActiveDayDayName,
+    check_schedule_rotation_active_day_day_name,
+)
 
 if TYPE_CHECKING:
     from ..models.schedule_rotation_active_day_active_time_attributes_item import (
@@ -41,9 +40,6 @@ class ScheduleRotationActiveDay:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.schedule_rotation_active_day_active_time_attributes_item import (
-            ScheduleRotationActiveDayActiveTimeAttributesItem,
-        )
 
         schedule_rotation_id = self.schedule_rotation_id
 

@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.environment_list_data_item_type import check_environment_list_data_item_type
-from ..models.environment_list_data_item_type import EnvironmentListDataItemType
-from typing import cast
+from ..models.environment_list_data_item_type import EnvironmentListDataItemType, check_environment_list_data_item_type
 
 if TYPE_CHECKING:
     from ..models.environment import Environment
@@ -34,7 +30,6 @@ class EnvironmentListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.environment import Environment
 
         id = self.id
 

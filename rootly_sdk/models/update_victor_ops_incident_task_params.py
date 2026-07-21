@@ -1,22 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_victor_ops_incident_task_params_status import check_update_victor_ops_incident_task_params_status
-from ..models.update_victor_ops_incident_task_params_status import UpdateVictorOpsIncidentTaskParamsStatus
+from ..models.update_victor_ops_incident_task_params_status import (
+    UpdateVictorOpsIncidentTaskParamsStatus,
+    check_update_victor_ops_incident_task_params_status,
+)
 from ..models.update_victor_ops_incident_task_params_task_type import (
+    UpdateVictorOpsIncidentTaskParamsTaskType,
     check_update_victor_ops_incident_task_params_task_type,
 )
-from ..models.update_victor_ops_incident_task_params_task_type import UpdateVictorOpsIncidentTaskParamsTaskType
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateVictorOpsIncidentTaskParams")
 

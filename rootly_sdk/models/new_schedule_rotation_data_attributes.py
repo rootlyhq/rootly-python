@@ -1,29 +1,21 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
-from ..models.new_schedule_rotation_data_attributes_active_days_item import (
-    check_new_schedule_rotation_data_attributes_active_days_item,
-)
 from ..models.new_schedule_rotation_data_attributes_active_days_item import (
     NewScheduleRotationDataAttributesActiveDaysItem,
-)
-from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_type import (
-    check_new_schedule_rotation_data_attributes_schedule_rotationable_type,
+    check_new_schedule_rotation_data_attributes_active_days_item,
 )
 from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_type import (
     NewScheduleRotationDataAttributesScheduleRotationableType,
+    check_new_schedule_rotation_data_attributes_schedule_rotationable_type,
 )
 from ..types import UNSET, Unset
-from dateutil.parser import isoparse
-from typing import cast
-import datetime
 
 if TYPE_CHECKING:
     from ..models.new_schedule_rotation_data_attributes_active_time_attributes_item import (
@@ -98,17 +90,8 @@ class NewScheduleRotationDataAttributes:
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_0 import (
             NewScheduleRotationDataAttributesScheduleRotationableAttributesType0,
         )
-        from ..models.new_schedule_rotation_data_attributes_schedule_rotation_members_type_0_item import (
-            NewScheduleRotationDataAttributesScheduleRotationMembersType0Item,
-        )
-        from ..models.new_schedule_rotation_data_attributes_active_time_attributes_item import (
-            NewScheduleRotationDataAttributesActiveTimeAttributesItem,
-        )
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_1 import (
             NewScheduleRotationDataAttributesScheduleRotationableAttributesType1,
-        )
-        from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3 import (
-            NewScheduleRotationDataAttributesScheduleRotationableAttributesType3,
         )
         from ..models.new_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_2 import (
             NewScheduleRotationDataAttributesScheduleRotationableAttributesType2,

@@ -1,18 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.api_key_kind import ApiKeyKind, check_api_key_kind
 from ..types import UNSET, Unset
-
-from ..models.api_key_kind import ApiKeyKind
-from ..models.api_key_kind import check_api_key_kind
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="ApiKey")
 

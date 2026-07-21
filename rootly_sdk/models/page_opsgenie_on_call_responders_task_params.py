@@ -1,27 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.page_opsgenie_on_call_responders_task_params_priority import (
-    check_page_opsgenie_on_call_responders_task_params_priority,
-)
 from ..models.page_opsgenie_on_call_responders_task_params_priority import (
     PageOpsgenieOnCallRespondersTaskParamsPriority,
-)
-from ..models.page_opsgenie_on_call_responders_task_params_task_type import (
-    check_page_opsgenie_on_call_responders_task_params_task_type,
+    check_page_opsgenie_on_call_responders_task_params_priority,
 )
 from ..models.page_opsgenie_on_call_responders_task_params_task_type import (
     PageOpsgenieOnCallRespondersTaskParamsTaskType,
+    check_page_opsgenie_on_call_responders_task_params_task_type,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.page_opsgenie_on_call_responders_task_params_teams_item import (
@@ -59,12 +52,6 @@ class PageOpsgenieOnCallRespondersTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.page_opsgenie_on_call_responders_task_params_users_item import (
-            PageOpsgenieOnCallRespondersTaskParamsUsersItem,
-        )
-        from ..models.page_opsgenie_on_call_responders_task_params_teams_item import (
-            PageOpsgenieOnCallRespondersTaskParamsTeamsItem,
-        )
 
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):

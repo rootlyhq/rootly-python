@@ -1,82 +1,96 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.role_alerts_permissions_item import RoleAlertsPermissionsItem, check_role_alerts_permissions_item
+from ..models.role_api_keys_permissions_item import RoleApiKeysPermissionsItem, check_role_api_keys_permissions_item
+from ..models.role_audits_permissions_item import RoleAuditsPermissionsItem, check_role_audits_permissions_item
+from ..models.role_billing_permissions_item import RoleBillingPermissionsItem, check_role_billing_permissions_item
+from ..models.role_catalogs_permissions_item import RoleCatalogsPermissionsItem, check_role_catalogs_permissions_item
+from ..models.role_communication_permissions_item import (
+    RoleCommunicationPermissionsItem,
+    check_role_communication_permissions_item,
+)
+from ..models.role_edge_connector_permissions_item import (
+    RoleEdgeConnectorPermissionsItem,
+    check_role_edge_connector_permissions_item,
+)
+from ..models.role_environments_permissions_item import (
+    RoleEnvironmentsPermissionsItem,
+    check_role_environments_permissions_item,
+)
+from ..models.role_form_fields_permissions_item import (
+    RoleFormFieldsPermissionsItem,
+    check_role_form_fields_permissions_item,
+)
+from ..models.role_functionalities_permissions_item import (
+    RoleFunctionalitiesPermissionsItem,
+    check_role_functionalities_permissions_item,
+)
+from ..models.role_groups_permissions_item import RoleGroupsPermissionsItem, check_role_groups_permissions_item
+from ..models.role_incident_causes_permissions_item import (
+    RoleIncidentCausesPermissionsItem,
+    check_role_incident_causes_permissions_item,
+)
+from ..models.role_incident_communication_permissions_item import (
+    RoleIncidentCommunicationPermissionsItem,
+    check_role_incident_communication_permissions_item,
+)
+from ..models.role_incident_feedbacks_permissions_item import (
+    RoleIncidentFeedbacksPermissionsItem,
+    check_role_incident_feedbacks_permissions_item,
+)
+from ..models.role_incident_roles_permissions_item import (
+    RoleIncidentRolesPermissionsItem,
+    check_role_incident_roles_permissions_item,
+)
+from ..models.role_incident_types_permissions_item import (
+    RoleIncidentTypesPermissionsItem,
+    check_role_incident_types_permissions_item,
+)
+from ..models.role_incidents_permissions_item import RoleIncidentsPermissionsItem, check_role_incidents_permissions_item
+from ..models.role_integrations_permissions_item import (
+    RoleIntegrationsPermissionsItem,
+    check_role_integrations_permissions_item,
+)
+from ..models.role_invitations_permissions_item import (
+    RoleInvitationsPermissionsItem,
+    check_role_invitations_permissions_item,
+)
+from ..models.role_paging_permissions_item import RolePagingPermissionsItem, check_role_paging_permissions_item
+from ..models.role_playbooks_permissions_item import RolePlaybooksPermissionsItem, check_role_playbooks_permissions_item
+from ..models.role_private_incidents_permissions_item import (
+    RolePrivateIncidentsPermissionsItem,
+    check_role_private_incidents_permissions_item,
+)
+from ..models.role_pulses_permissions_item import RolePulsesPermissionsItem, check_role_pulses_permissions_item
+from ..models.role_retrospective_permissions_item import (
+    RoleRetrospectivePermissionsItem,
+    check_role_retrospective_permissions_item,
+)
+from ..models.role_roles_permissions_item import RoleRolesPermissionsItem, check_role_roles_permissions_item
+from ..models.role_secrets_permissions_item import RoleSecretsPermissionsItem, check_role_secrets_permissions_item
+from ..models.role_services_permissions_item import RoleServicesPermissionsItem, check_role_services_permissions_item
+from ..models.role_severities_permissions_item import (
+    RoleSeveritiesPermissionsItem,
+    check_role_severities_permissions_item,
+)
+from ..models.role_slas_permissions_item import RoleSlasPermissionsItem, check_role_slas_permissions_item
+from ..models.role_status_pages_permissions_item import (
+    RoleStatusPagesPermissionsItem,
+    check_role_status_pages_permissions_item,
+)
+from ..models.role_sub_statuses_permissions_item import (
+    RoleSubStatusesPermissionsItem,
+    check_role_sub_statuses_permissions_item,
+)
+from ..models.role_webhooks_permissions_item import RoleWebhooksPermissionsItem, check_role_webhooks_permissions_item
+from ..models.role_workflows_permissions_item import RoleWorkflowsPermissionsItem, check_role_workflows_permissions_item
 from ..types import UNSET, Unset
-
-from ..models.role_alerts_permissions_item import check_role_alerts_permissions_item
-from ..models.role_alerts_permissions_item import RoleAlertsPermissionsItem
-from ..models.role_api_keys_permissions_item import check_role_api_keys_permissions_item
-from ..models.role_api_keys_permissions_item import RoleApiKeysPermissionsItem
-from ..models.role_audits_permissions_item import check_role_audits_permissions_item
-from ..models.role_audits_permissions_item import RoleAuditsPermissionsItem
-from ..models.role_billing_permissions_item import check_role_billing_permissions_item
-from ..models.role_billing_permissions_item import RoleBillingPermissionsItem
-from ..models.role_catalogs_permissions_item import check_role_catalogs_permissions_item
-from ..models.role_catalogs_permissions_item import RoleCatalogsPermissionsItem
-from ..models.role_communication_permissions_item import check_role_communication_permissions_item
-from ..models.role_communication_permissions_item import RoleCommunicationPermissionsItem
-from ..models.role_edge_connector_permissions_item import check_role_edge_connector_permissions_item
-from ..models.role_edge_connector_permissions_item import RoleEdgeConnectorPermissionsItem
-from ..models.role_environments_permissions_item import check_role_environments_permissions_item
-from ..models.role_environments_permissions_item import RoleEnvironmentsPermissionsItem
-from ..models.role_form_fields_permissions_item import check_role_form_fields_permissions_item
-from ..models.role_form_fields_permissions_item import RoleFormFieldsPermissionsItem
-from ..models.role_functionalities_permissions_item import check_role_functionalities_permissions_item
-from ..models.role_functionalities_permissions_item import RoleFunctionalitiesPermissionsItem
-from ..models.role_groups_permissions_item import check_role_groups_permissions_item
-from ..models.role_groups_permissions_item import RoleGroupsPermissionsItem
-from ..models.role_incident_causes_permissions_item import check_role_incident_causes_permissions_item
-from ..models.role_incident_causes_permissions_item import RoleIncidentCausesPermissionsItem
-from ..models.role_incident_communication_permissions_item import check_role_incident_communication_permissions_item
-from ..models.role_incident_communication_permissions_item import RoleIncidentCommunicationPermissionsItem
-from ..models.role_incident_feedbacks_permissions_item import check_role_incident_feedbacks_permissions_item
-from ..models.role_incident_feedbacks_permissions_item import RoleIncidentFeedbacksPermissionsItem
-from ..models.role_incident_roles_permissions_item import check_role_incident_roles_permissions_item
-from ..models.role_incident_roles_permissions_item import RoleIncidentRolesPermissionsItem
-from ..models.role_incident_types_permissions_item import check_role_incident_types_permissions_item
-from ..models.role_incident_types_permissions_item import RoleIncidentTypesPermissionsItem
-from ..models.role_incidents_permissions_item import check_role_incidents_permissions_item
-from ..models.role_incidents_permissions_item import RoleIncidentsPermissionsItem
-from ..models.role_integrations_permissions_item import check_role_integrations_permissions_item
-from ..models.role_integrations_permissions_item import RoleIntegrationsPermissionsItem
-from ..models.role_invitations_permissions_item import check_role_invitations_permissions_item
-from ..models.role_invitations_permissions_item import RoleInvitationsPermissionsItem
-from ..models.role_paging_permissions_item import check_role_paging_permissions_item
-from ..models.role_paging_permissions_item import RolePagingPermissionsItem
-from ..models.role_playbooks_permissions_item import check_role_playbooks_permissions_item
-from ..models.role_playbooks_permissions_item import RolePlaybooksPermissionsItem
-from ..models.role_private_incidents_permissions_item import check_role_private_incidents_permissions_item
-from ..models.role_private_incidents_permissions_item import RolePrivateIncidentsPermissionsItem
-from ..models.role_pulses_permissions_item import check_role_pulses_permissions_item
-from ..models.role_pulses_permissions_item import RolePulsesPermissionsItem
-from ..models.role_retrospective_permissions_item import check_role_retrospective_permissions_item
-from ..models.role_retrospective_permissions_item import RoleRetrospectivePermissionsItem
-from ..models.role_roles_permissions_item import check_role_roles_permissions_item
-from ..models.role_roles_permissions_item import RoleRolesPermissionsItem
-from ..models.role_secrets_permissions_item import check_role_secrets_permissions_item
-from ..models.role_secrets_permissions_item import RoleSecretsPermissionsItem
-from ..models.role_services_permissions_item import check_role_services_permissions_item
-from ..models.role_services_permissions_item import RoleServicesPermissionsItem
-from ..models.role_severities_permissions_item import check_role_severities_permissions_item
-from ..models.role_severities_permissions_item import RoleSeveritiesPermissionsItem
-from ..models.role_slas_permissions_item import check_role_slas_permissions_item
-from ..models.role_slas_permissions_item import RoleSlasPermissionsItem
-from ..models.role_status_pages_permissions_item import check_role_status_pages_permissions_item
-from ..models.role_status_pages_permissions_item import RoleStatusPagesPermissionsItem
-from ..models.role_sub_statuses_permissions_item import check_role_sub_statuses_permissions_item
-from ..models.role_sub_statuses_permissions_item import RoleSubStatusesPermissionsItem
-from ..models.role_webhooks_permissions_item import check_role_webhooks_permissions_item
-from ..models.role_webhooks_permissions_item import RoleWebhooksPermissionsItem
-from ..models.role_workflows_permissions_item import check_role_workflows_permissions_item
-from ..models.role_workflows_permissions_item import RoleWorkflowsPermissionsItem
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="Role")
 

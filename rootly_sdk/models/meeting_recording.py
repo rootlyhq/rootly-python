@@ -1,22 +1,16 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
-
-from ..models.meeting_recording_platform import check_meeting_recording_platform
-from ..models.meeting_recording_platform import MeetingRecordingPlatform
-from ..models.meeting_recording_status import check_meeting_recording_status
-from ..models.meeting_recording_status import MeetingRecordingStatus
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-from typing import cast
-import datetime
 
+from ..models.meeting_recording_platform import MeetingRecordingPlatform, check_meeting_recording_platform
+from ..models.meeting_recording_status import MeetingRecordingStatus, check_meeting_recording_status
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="MeetingRecording")
 

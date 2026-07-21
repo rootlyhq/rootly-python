@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
+from ..models.new_catalog_data_attributes_icon import (
+    NewCatalogDataAttributesIcon,
+    check_new_catalog_data_attributes_icon,
+)
 from ..types import UNSET, Unset
-
-from ..models.new_catalog_data_attributes_icon import check_new_catalog_data_attributes_icon
-from ..models.new_catalog_data_attributes_icon import NewCatalogDataAttributesIcon
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="NewCatalogDataAttributes")
 

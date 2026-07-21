@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.alert_event_list_data_item_type import AlertEventListDataItemType
-from ..models.alert_event_list_data_item_type import check_alert_event_list_data_item_type
-from typing import cast
+from ..models.alert_event_list_data_item_type import AlertEventListDataItemType, check_alert_event_list_data_item_type
 
 if TYPE_CHECKING:
     from ..models.alert_event import AlertEvent
@@ -34,7 +30,6 @@ class AlertEventListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.alert_event import AlertEvent
 
         id = self.id
 

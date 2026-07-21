@@ -1,21 +1,17 @@
 from http import HTTPStatus
-from typing import Any, cast
+from typing import Any
 from urllib.parse import quote
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.escalation_policy_path_list import EscalationPolicyPathList
-from ...models.list_escalation_paths_filterpath_type import check_list_escalation_paths_filterpath_type
-from ...models.list_escalation_paths_filterpath_type import ListEscalationPathsFilterpathType
-from ...models.list_escalation_paths_include import check_list_escalation_paths_include
+from ...models.list_escalation_paths_filterpath_type import (
+    ListEscalationPathsFilterpathType,
+)
 from ...models.list_escalation_paths_include import ListEscalationPathsInclude
-from ...types import UNSET, Unset
-from typing import cast
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(

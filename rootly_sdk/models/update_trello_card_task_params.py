@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_trello_card_task_params_task_type import (
+    UpdateTrelloCardTaskParamsTaskType,
+    check_update_trello_card_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_trello_card_task_params_task_type import check_update_trello_card_task_params_task_type
-from ..models.update_trello_card_task_params_task_type import UpdateTrelloCardTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_trello_card_task_params_archivation import UpdateTrelloCardTaskParamsArchivation
@@ -50,10 +49,6 @@ class UpdateTrelloCardTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_trello_card_task_params_board import UpdateTrelloCardTaskParamsBoard
-        from ..models.update_trello_card_task_params_archivation import UpdateTrelloCardTaskParamsArchivation
-        from ..models.update_trello_card_task_params_labels_item import UpdateTrelloCardTaskParamsLabelsItem
-        from ..models.update_trello_card_task_params_list import UpdateTrelloCardTaskParamsList
 
         card_id = self.card_id
 

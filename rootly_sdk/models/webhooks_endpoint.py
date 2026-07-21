@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.webhooks_endpoint_event_types_item import (
+    WebhooksEndpointEventTypesItem,
+    check_webhooks_endpoint_event_types_item,
+)
 from ..types import UNSET, Unset
-
-from ..models.webhooks_endpoint_event_types_item import check_webhooks_endpoint_event_types_item
-from ..models.webhooks_endpoint_event_types_item import WebhooksEndpointEventTypesItem
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.webhooks_endpoint_custom_headers_item import WebhooksEndpointCustomHeadersItem
@@ -48,7 +47,6 @@ class WebhooksEndpoint:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.webhooks_endpoint_custom_headers_item import WebhooksEndpointCustomHeadersItem
 
         name = self.name
 

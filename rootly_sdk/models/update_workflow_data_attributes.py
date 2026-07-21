@@ -1,15 +1,11 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.action_item_trigger_params import ActionItemTriggerParams
@@ -88,10 +84,9 @@ class UpdateWorkflowDataAttributes:
     sub_status_ids: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.simple_trigger_params import SimpleTriggerParams
-        from ..models.incident_trigger_params import IncidentTriggerParams
-        from ..models.alert_trigger_params import AlertTriggerParams
         from ..models.action_item_trigger_params import ActionItemTriggerParams
+        from ..models.alert_trigger_params import AlertTriggerParams
+        from ..models.incident_trigger_params import IncidentTriggerParams
         from ..models.pulse_trigger_params import PulseTriggerParams
 
         name = self.name

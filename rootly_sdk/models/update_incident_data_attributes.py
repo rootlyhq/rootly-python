@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
+from ..models.update_incident_data_attributes_kind import (
+    UpdateIncidentDataAttributesKind,
+    check_update_incident_data_attributes_kind,
+)
+from ..models.update_incident_data_attributes_status import (
+    UpdateIncidentDataAttributesStatus,
+    check_update_incident_data_attributes_status,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_incident_data_attributes_kind import check_update_incident_data_attributes_kind
-from ..models.update_incident_data_attributes_kind import UpdateIncidentDataAttributesKind
-from ..models.update_incident_data_attributes_status import check_update_incident_data_attributes_status
-from ..models.update_incident_data_attributes_status import UpdateIncidentDataAttributesStatus
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_incident_data_attributes_labels_type_0 import UpdateIncidentDataAttributesLabelsType0

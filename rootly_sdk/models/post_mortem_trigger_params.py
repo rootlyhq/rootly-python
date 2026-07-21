@@ -1,160 +1,124 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.post_mortem_trigger_params_incident_condition import check_post_mortem_trigger_params_incident_condition
-from ..models.post_mortem_trigger_params_incident_condition import PostMortemTriggerParamsIncidentCondition
-from ..models.post_mortem_trigger_params_incident_condition_acknowledged_at import (
-    check_post_mortem_trigger_params_incident_condition_acknowledged_at,
+from ..models.post_mortem_trigger_params_incident_condition import (
+    PostMortemTriggerParamsIncidentCondition,
+    check_post_mortem_trigger_params_incident_condition,
 )
 from ..models.post_mortem_trigger_params_incident_condition_acknowledged_at import (
     PostMortemTriggerParamsIncidentConditionAcknowledgedAt,
+    check_post_mortem_trigger_params_incident_condition_acknowledged_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_cause import (
+    PostMortemTriggerParamsIncidentConditionCause,
     check_post_mortem_trigger_params_incident_condition_cause,
-)
-from ..models.post_mortem_trigger_params_incident_condition_cause import PostMortemTriggerParamsIncidentConditionCause
-from ..models.post_mortem_trigger_params_incident_condition_detected_at import (
-    check_post_mortem_trigger_params_incident_condition_detected_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_detected_at import (
     PostMortemTriggerParamsIncidentConditionDetectedAt,
-)
-from ..models.post_mortem_trigger_params_incident_condition_environment import (
-    check_post_mortem_trigger_params_incident_condition_environment,
+    check_post_mortem_trigger_params_incident_condition_detected_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_environment import (
     PostMortemTriggerParamsIncidentConditionEnvironment,
-)
-from ..models.post_mortem_trigger_params_incident_condition_functionality import (
-    check_post_mortem_trigger_params_incident_condition_functionality,
+    check_post_mortem_trigger_params_incident_condition_environment,
 )
 from ..models.post_mortem_trigger_params_incident_condition_functionality import (
     PostMortemTriggerParamsIncidentConditionFunctionality,
+    check_post_mortem_trigger_params_incident_condition_functionality,
 )
 from ..models.post_mortem_trigger_params_incident_condition_group import (
+    PostMortemTriggerParamsIncidentConditionGroup,
     check_post_mortem_trigger_params_incident_condition_group,
-)
-from ..models.post_mortem_trigger_params_incident_condition_group import PostMortemTriggerParamsIncidentConditionGroup
-from ..models.post_mortem_trigger_params_incident_condition_incident_roles import (
-    check_post_mortem_trigger_params_incident_condition_incident_roles,
 )
 from ..models.post_mortem_trigger_params_incident_condition_incident_roles import (
     PostMortemTriggerParamsIncidentConditionIncidentRoles,
-)
-from ..models.post_mortem_trigger_params_incident_condition_incident_type import (
-    check_post_mortem_trigger_params_incident_condition_incident_type,
+    check_post_mortem_trigger_params_incident_condition_incident_roles,
 )
 from ..models.post_mortem_trigger_params_incident_condition_incident_type import (
     PostMortemTriggerParamsIncidentConditionIncidentType,
+    check_post_mortem_trigger_params_incident_condition_incident_type,
 )
 from ..models.post_mortem_trigger_params_incident_condition_kind import (
+    PostMortemTriggerParamsIncidentConditionKind,
     check_post_mortem_trigger_params_incident_condition_kind,
 )
-from ..models.post_mortem_trigger_params_incident_condition_kind import PostMortemTriggerParamsIncidentConditionKind
 from ..models.post_mortem_trigger_params_incident_condition_label import (
+    PostMortemTriggerParamsIncidentConditionLabel,
     check_post_mortem_trigger_params_incident_condition_label,
-)
-from ..models.post_mortem_trigger_params_incident_condition_label import PostMortemTriggerParamsIncidentConditionLabel
-from ..models.post_mortem_trigger_params_incident_condition_mitigated_at import (
-    check_post_mortem_trigger_params_incident_condition_mitigated_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_mitigated_at import (
     PostMortemTriggerParamsIncidentConditionMitigatedAt,
-)
-from ..models.post_mortem_trigger_params_incident_condition_resolved_at import (
-    check_post_mortem_trigger_params_incident_condition_resolved_at,
+    check_post_mortem_trigger_params_incident_condition_mitigated_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_resolved_at import (
     PostMortemTriggerParamsIncidentConditionResolvedAt,
-)
-from ..models.post_mortem_trigger_params_incident_condition_service import (
-    check_post_mortem_trigger_params_incident_condition_service,
+    check_post_mortem_trigger_params_incident_condition_resolved_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_service import (
     PostMortemTriggerParamsIncidentConditionService,
-)
-from ..models.post_mortem_trigger_params_incident_condition_severity import (
-    check_post_mortem_trigger_params_incident_condition_severity,
+    check_post_mortem_trigger_params_incident_condition_service,
 )
 from ..models.post_mortem_trigger_params_incident_condition_severity import (
     PostMortemTriggerParamsIncidentConditionSeverity,
-)
-from ..models.post_mortem_trigger_params_incident_condition_started_at import (
-    check_post_mortem_trigger_params_incident_condition_started_at,
+    check_post_mortem_trigger_params_incident_condition_severity,
 )
 from ..models.post_mortem_trigger_params_incident_condition_started_at import (
     PostMortemTriggerParamsIncidentConditionStartedAt,
+    check_post_mortem_trigger_params_incident_condition_started_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_status import (
+    PostMortemTriggerParamsIncidentConditionStatus,
     check_post_mortem_trigger_params_incident_condition_status,
-)
-from ..models.post_mortem_trigger_params_incident_condition_status import PostMortemTriggerParamsIncidentConditionStatus
-from ..models.post_mortem_trigger_params_incident_condition_sub_status import (
-    check_post_mortem_trigger_params_incident_condition_sub_status,
 )
 from ..models.post_mortem_trigger_params_incident_condition_sub_status import (
     PostMortemTriggerParamsIncidentConditionSubStatus,
-)
-from ..models.post_mortem_trigger_params_incident_condition_summary import (
-    check_post_mortem_trigger_params_incident_condition_summary,
+    check_post_mortem_trigger_params_incident_condition_sub_status,
 )
 from ..models.post_mortem_trigger_params_incident_condition_summary import (
     PostMortemTriggerParamsIncidentConditionSummary,
-)
-from ..models.post_mortem_trigger_params_incident_condition_visibility import (
-    check_post_mortem_trigger_params_incident_condition_visibility,
+    check_post_mortem_trigger_params_incident_condition_summary,
 )
 from ..models.post_mortem_trigger_params_incident_condition_visibility import (
     PostMortemTriggerParamsIncidentConditionVisibility,
-)
-from ..models.post_mortem_trigger_params_incident_conditional_inactivity import (
-    check_post_mortem_trigger_params_incident_conditional_inactivity,
+    check_post_mortem_trigger_params_incident_condition_visibility,
 )
 from ..models.post_mortem_trigger_params_incident_conditional_inactivity import (
     PostMortemTriggerParamsIncidentConditionalInactivity,
+    check_post_mortem_trigger_params_incident_conditional_inactivity,
 )
-from ..models.post_mortem_trigger_params_incident_kinds_item import check_post_mortem_trigger_params_incident_kinds_item
-from ..models.post_mortem_trigger_params_incident_kinds_item import PostMortemTriggerParamsIncidentKindsItem
-from ..models.post_mortem_trigger_params_incident_post_mortem_condition import (
-    check_post_mortem_trigger_params_incident_post_mortem_condition,
+from ..models.post_mortem_trigger_params_incident_kinds_item import (
+    PostMortemTriggerParamsIncidentKindsItem,
+    check_post_mortem_trigger_params_incident_kinds_item,
 )
 from ..models.post_mortem_trigger_params_incident_post_mortem_condition import (
     PostMortemTriggerParamsIncidentPostMortemCondition,
-)
-from ..models.post_mortem_trigger_params_incident_post_mortem_condition_cause import (
-    check_post_mortem_trigger_params_incident_post_mortem_condition_cause,
+    check_post_mortem_trigger_params_incident_post_mortem_condition,
 )
 from ..models.post_mortem_trigger_params_incident_post_mortem_condition_cause import (
     PostMortemTriggerParamsIncidentPostMortemConditionCause,
-)
-from ..models.post_mortem_trigger_params_incident_post_mortem_condition_status import (
-    check_post_mortem_trigger_params_incident_post_mortem_condition_status,
+    check_post_mortem_trigger_params_incident_post_mortem_condition_cause,
 )
 from ..models.post_mortem_trigger_params_incident_post_mortem_condition_status import (
     PostMortemTriggerParamsIncidentPostMortemConditionStatus,
-)
-from ..models.post_mortem_trigger_params_incident_post_mortem_statuses_item import (
-    check_post_mortem_trigger_params_incident_post_mortem_statuses_item,
+    check_post_mortem_trigger_params_incident_post_mortem_condition_status,
 )
 from ..models.post_mortem_trigger_params_incident_post_mortem_statuses_item import (
     PostMortemTriggerParamsIncidentPostMortemStatusesItem,
+    check_post_mortem_trigger_params_incident_post_mortem_statuses_item,
 )
 from ..models.post_mortem_trigger_params_incident_statuses_item import (
+    PostMortemTriggerParamsIncidentStatusesItem,
     check_post_mortem_trigger_params_incident_statuses_item,
 )
-from ..models.post_mortem_trigger_params_incident_statuses_item import PostMortemTriggerParamsIncidentStatusesItem
-from ..models.post_mortem_trigger_params_trigger_type import check_post_mortem_trigger_params_trigger_type
-from ..models.post_mortem_trigger_params_trigger_type import PostMortemTriggerParamsTriggerType
+from ..models.post_mortem_trigger_params_trigger_type import (
+    PostMortemTriggerParamsTriggerType,
+    check_post_mortem_trigger_params_trigger_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="PostMortemTriggerParams")
 

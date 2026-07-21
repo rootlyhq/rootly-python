@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0_key import (
-    check_new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0_key,
-)
 from ..models.new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0_key import (
     NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0Key,
+    check_new_dashboard_panel_data_attributes_params_datasets_item_group_by_type_1_type_0_key,
 )
-from typing import cast
-
 
 T = TypeVar("T", bound="NewDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0")
 

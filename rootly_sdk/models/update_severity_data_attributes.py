@@ -1,17 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
+from ..models.update_severity_data_attributes_severity import (
+    UpdateSeverityDataAttributesSeverity,
+    check_update_severity_data_attributes_severity,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_severity_data_attributes_severity import check_update_severity_data_attributes_severity
-from ..models.update_severity_data_attributes_severity import UpdateSeverityDataAttributesSeverity
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_severity_data_attributes_slack_aliases_type_0_item import (
@@ -51,12 +49,6 @@ class UpdateSeverityDataAttributes:
     slack_aliases: list[UpdateSeverityDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_severity_data_attributes_slack_channels_type_0_item import (
-            UpdateSeverityDataAttributesSlackChannelsType0Item,
-        )
-        from ..models.update_severity_data_attributes_slack_aliases_type_0_item import (
-            UpdateSeverityDataAttributesSlackAliasesType0Item,
-        )
 
         name = self.name
 

@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_attached_alerts_task_params_status import (
+    UpdateAttachedAlertsTaskParamsStatus,
+    check_update_attached_alerts_task_params_status,
+)
+from ..models.update_attached_alerts_task_params_task_type import (
+    UpdateAttachedAlertsTaskParamsTaskType,
+    check_update_attached_alerts_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_attached_alerts_task_params_status import check_update_attached_alerts_task_params_status
-from ..models.update_attached_alerts_task_params_status import UpdateAttachedAlertsTaskParamsStatus
-from ..models.update_attached_alerts_task_params_task_type import check_update_attached_alerts_task_params_task_type
-from ..models.update_attached_alerts_task_params_task_type import UpdateAttachedAlertsTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="UpdateAttachedAlertsTaskParams")
 

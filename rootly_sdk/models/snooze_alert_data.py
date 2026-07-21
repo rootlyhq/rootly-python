@@ -1,16 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.snooze_alert_data_type import check_snooze_alert_data_type
-from ..models.snooze_alert_data_type import SnoozeAlertDataType
-from typing import cast
+from ..models.snooze_alert_data_type import SnoozeAlertDataType, check_snooze_alert_data_type
 
 if TYPE_CHECKING:
     from ..models.snooze_alert_data_attributes import SnoozeAlertDataAttributes
@@ -32,7 +28,6 @@ class SnoozeAlertData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.snooze_alert_data_attributes import SnoozeAlertDataAttributes
 
         type_: str = self.type_
 

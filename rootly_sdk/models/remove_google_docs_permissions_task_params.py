@@ -1,26 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.remove_google_docs_permissions_task_params_attribute_to_query_by import (
-    check_remove_google_docs_permissions_task_params_attribute_to_query_by,
-)
 from ..models.remove_google_docs_permissions_task_params_attribute_to_query_by import (
     RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy,
+    check_remove_google_docs_permissions_task_params_attribute_to_query_by,
 )
 from ..models.remove_google_docs_permissions_task_params_task_type import (
+    RemoveGoogleDocsPermissionsTaskParamsTaskType,
     check_remove_google_docs_permissions_task_params_task_type,
 )
-from ..models.remove_google_docs_permissions_task_params_task_type import RemoveGoogleDocsPermissionsTaskParamsTaskType
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="RemoveGoogleDocsPermissionsTaskParams")
 

@@ -1,21 +1,24 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_pagertree_alert_task_params_severity import (
+    UpdatePagertreeAlertTaskParamsSeverity,
+    check_update_pagertree_alert_task_params_severity,
+)
+from ..models.update_pagertree_alert_task_params_task_type import (
+    UpdatePagertreeAlertTaskParamsTaskType,
+    check_update_pagertree_alert_task_params_task_type,
+)
+from ..models.update_pagertree_alert_task_params_urgency import (
+    UpdatePagertreeAlertTaskParamsUrgency,
+    check_update_pagertree_alert_task_params_urgency,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_pagertree_alert_task_params_severity import check_update_pagertree_alert_task_params_severity
-from ..models.update_pagertree_alert_task_params_severity import UpdatePagertreeAlertTaskParamsSeverity
-from ..models.update_pagertree_alert_task_params_task_type import check_update_pagertree_alert_task_params_task_type
-from ..models.update_pagertree_alert_task_params_task_type import UpdatePagertreeAlertTaskParamsTaskType
-from ..models.update_pagertree_alert_task_params_urgency import check_update_pagertree_alert_task_params_urgency
-from ..models.update_pagertree_alert_task_params_urgency import UpdatePagertreeAlertTaskParamsUrgency
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_pagertree_alert_task_params_teams_item import UpdatePagertreeAlertTaskParamsTeamsItem
@@ -52,8 +55,6 @@ class UpdatePagertreeAlertTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_pagertree_alert_task_params_users_item import UpdatePagertreeAlertTaskParamsUsersItem
-        from ..models.update_pagertree_alert_task_params_teams_item import UpdatePagertreeAlertTaskParamsTeamsItem
 
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):

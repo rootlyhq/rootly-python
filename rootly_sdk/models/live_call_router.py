@@ -1,23 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.live_call_router_country_code import LiveCallRouterCountryCode, check_live_call_router_country_code
+from ..models.live_call_router_kind import LiveCallRouterKind, check_live_call_router_kind
+from ..models.live_call_router_phone_type import LiveCallRouterPhoneType, check_live_call_router_phone_type
+from ..models.live_call_router_waiting_music_url import (
+    LiveCallRouterWaitingMusicUrl,
+    check_live_call_router_waiting_music_url,
+)
 from ..types import UNSET, Unset
-
-from ..models.live_call_router_country_code import check_live_call_router_country_code
-from ..models.live_call_router_country_code import LiveCallRouterCountryCode
-from ..models.live_call_router_kind import check_live_call_router_kind
-from ..models.live_call_router_kind import LiveCallRouterKind
-from ..models.live_call_router_phone_type import check_live_call_router_phone_type
-from ..models.live_call_router_phone_type import LiveCallRouterPhoneType
-from ..models.live_call_router_waiting_music_url import check_live_call_router_waiting_music_url
-from ..models.live_call_router_waiting_music_url import LiveCallRouterWaitingMusicUrl
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.live_call_router_escalation_policy_trigger_params import LiveCallRouterEscalationPolicyTriggerParams
@@ -90,10 +86,6 @@ class LiveCallRouter:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.live_call_router_paging_targets_item import LiveCallRouterPagingTargetsItem
-        from ..models.live_call_router_escalation_policy_trigger_params import (
-            LiveCallRouterEscalationPolicyTriggerParams,
-        )
 
         name = self.name
 

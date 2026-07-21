@@ -1,15 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_workflow_run_data_attributes_type_4_context import NewWorkflowRunDataAttributesType4Context
@@ -36,7 +33,6 @@ class NewWorkflowRunDataAttributesType4:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.new_workflow_run_data_attributes_type_4_context import NewWorkflowRunDataAttributesType4Context
 
         alert_id = self.alert_id
 

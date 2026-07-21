@@ -1,31 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 from ..models.update_alert_group_data_attributes_condition_type import (
+    UpdateAlertGroupDataAttributesConditionType,
     check_update_alert_group_data_attributes_condition_type,
-)
-from ..models.update_alert_group_data_attributes_condition_type import UpdateAlertGroupDataAttributesConditionType
-from ..models.update_alert_group_data_attributes_group_by_alert_title import (
-    check_update_alert_group_data_attributes_group_by_alert_title,
 )
 from ..models.update_alert_group_data_attributes_group_by_alert_title import (
     UpdateAlertGroupDataAttributesGroupByAlertTitle,
-)
-from ..models.update_alert_group_data_attributes_group_by_alert_urgency import (
-    check_update_alert_group_data_attributes_group_by_alert_urgency,
+    check_update_alert_group_data_attributes_group_by_alert_title,
 )
 from ..models.update_alert_group_data_attributes_group_by_alert_urgency import (
     UpdateAlertGroupDataAttributesGroupByAlertUrgency,
+    check_update_alert_group_data_attributes_group_by_alert_urgency,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_alert_group_data_attributes_attributes_item import UpdateAlertGroupDataAttributesAttributesItem
@@ -68,13 +60,6 @@ class UpdateAlertGroupDataAttributes:
     conditions: list[UpdateAlertGroupDataAttributesConditionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_alert_group_data_attributes_targets_item import UpdateAlertGroupDataAttributesTargetsItem
-        from ..models.update_alert_group_data_attributes_conditions_item import (
-            UpdateAlertGroupDataAttributesConditionsItem,
-        )
-        from ..models.update_alert_group_data_attributes_attributes_item import (
-            UpdateAlertGroupDataAttributesAttributesItem,
-        )
 
         name = self.name
 

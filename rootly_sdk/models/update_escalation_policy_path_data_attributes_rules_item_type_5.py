@@ -1,26 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_rule_type import (
-    check_update_escalation_policy_path_data_attributes_rules_item_type_5_rule_type,
-)
 from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_rule_type import (
     UpdateEscalationPolicyPathDataAttributesRulesItemType5RuleType,
-)
-from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_time_zone import (
-    check_update_escalation_policy_path_data_attributes_rules_item_type_5_time_zone,
+    check_update_escalation_policy_path_data_attributes_rules_item_type_5_rule_type,
 )
 from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_time_zone import (
     UpdateEscalationPolicyPathDataAttributesRulesItemType5TimeZone,
+    check_update_escalation_policy_path_data_attributes_rules_item_type_5_time_zone,
 )
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_time_blocks_item import (
@@ -47,9 +40,6 @@ class UpdateEscalationPolicyPathDataAttributesRulesItemType5:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5_time_blocks_item import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType5TimeBlocksItem,
-        )
 
         rule_type: str = self.rule_type
 

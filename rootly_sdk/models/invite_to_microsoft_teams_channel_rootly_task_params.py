@@ -1,21 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.invite_to_microsoft_teams_channel_rootly_task_params_task_type import (
-    check_invite_to_microsoft_teams_channel_rootly_task_params_task_type,
-)
 from ..models.invite_to_microsoft_teams_channel_rootly_task_params_task_type import (
     InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType,
+    check_invite_to_microsoft_teams_channel_rootly_task_params_task_type,
 )
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.invite_to_microsoft_teams_channel_rootly_task_params_channel import (
@@ -69,27 +64,6 @@ class InviteToMicrosoftTeamsChannelRootlyTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_escalation_policy_target import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_team import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsTeam,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_group_target import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_channel import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsChannel,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_service_target import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_user_target import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget,
-        )
-        from ..models.invite_to_microsoft_teams_channel_rootly_task_params_schedule_target import (
-            InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget,
-        )
 
         team = self.team.to_dict()
 

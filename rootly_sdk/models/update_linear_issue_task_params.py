@@ -1,17 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.update_linear_issue_task_params_task_type import (
+    UpdateLinearIssueTaskParamsTaskType,
+    check_update_linear_issue_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.update_linear_issue_task_params_task_type import check_update_linear_issue_task_params_task_type
-from ..models.update_linear_issue_task_params_task_type import UpdateLinearIssueTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_linear_issue_task_params_labels_item import UpdateLinearIssueTaskParamsLabelsItem
@@ -53,9 +52,6 @@ class UpdateLinearIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_linear_issue_task_params_project import UpdateLinearIssueTaskParamsProject
-        from ..models.update_linear_issue_task_params_labels_item import UpdateLinearIssueTaskParamsLabelsItem
-        from ..models.update_linear_issue_task_params_priority import UpdateLinearIssueTaskParamsPriority
         from ..models.update_linear_issue_task_params_state_type_0 import UpdateLinearIssueTaskParamsStateType0
 
         issue_id = self.issue_id

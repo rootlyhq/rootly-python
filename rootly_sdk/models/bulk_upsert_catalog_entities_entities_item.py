@@ -1,15 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.bulk_upsert_catalog_entities_entities_item_fields_item import (
@@ -41,9 +38,6 @@ class BulkUpsertCatalogEntitiesEntitiesItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.bulk_upsert_catalog_entities_entities_item_fields_item import (
-            BulkUpsertCatalogEntitiesEntitiesItemFieldsItem,
-        )
 
         external_id = self.external_id
 

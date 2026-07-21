@@ -1,180 +1,136 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
 from ..models.action_item_trigger_params_incident_action_item_condition import (
     ActionItemTriggerParamsIncidentActionItemCondition,
-)
-from ..models.action_item_trigger_params_incident_action_item_condition import (
     check_action_item_trigger_params_incident_action_item_condition,
 )
 from ..models.action_item_trigger_params_incident_action_item_condition_group import (
     ActionItemTriggerParamsIncidentActionItemConditionGroup,
-)
-from ..models.action_item_trigger_params_incident_action_item_condition_group import (
     check_action_item_trigger_params_incident_action_item_condition_group,
 )
 from ..models.action_item_trigger_params_incident_action_item_condition_kind import (
     ActionItemTriggerParamsIncidentActionItemConditionKind,
-)
-from ..models.action_item_trigger_params_incident_action_item_condition_kind import (
     check_action_item_trigger_params_incident_action_item_condition_kind,
 )
 from ..models.action_item_trigger_params_incident_action_item_condition_priority import (
     ActionItemTriggerParamsIncidentActionItemConditionPriority,
-)
-from ..models.action_item_trigger_params_incident_action_item_condition_priority import (
     check_action_item_trigger_params_incident_action_item_condition_priority,
 )
 from ..models.action_item_trigger_params_incident_action_item_condition_status import (
     ActionItemTriggerParamsIncidentActionItemConditionStatus,
-)
-from ..models.action_item_trigger_params_incident_action_item_condition_status import (
     check_action_item_trigger_params_incident_action_item_condition_status,
 )
 from ..models.action_item_trigger_params_incident_action_item_kinds_item import (
     ActionItemTriggerParamsIncidentActionItemKindsItem,
-)
-from ..models.action_item_trigger_params_incident_action_item_kinds_item import (
     check_action_item_trigger_params_incident_action_item_kinds_item,
 )
 from ..models.action_item_trigger_params_incident_action_item_priorities_item import (
     ActionItemTriggerParamsIncidentActionItemPrioritiesItem,
-)
-from ..models.action_item_trigger_params_incident_action_item_priorities_item import (
     check_action_item_trigger_params_incident_action_item_priorities_item,
 )
 from ..models.action_item_trigger_params_incident_action_item_statuses_item import (
     ActionItemTriggerParamsIncidentActionItemStatusesItem,
-)
-from ..models.action_item_trigger_params_incident_action_item_statuses_item import (
     check_action_item_trigger_params_incident_action_item_statuses_item,
 )
-from ..models.action_item_trigger_params_incident_condition import ActionItemTriggerParamsIncidentCondition
-from ..models.action_item_trigger_params_incident_condition import check_action_item_trigger_params_incident_condition
-from ..models.action_item_trigger_params_incident_condition_acknowledged_at import (
-    ActionItemTriggerParamsIncidentConditionAcknowledgedAt,
+from ..models.action_item_trigger_params_incident_condition import (
+    ActionItemTriggerParamsIncidentCondition,
+    check_action_item_trigger_params_incident_condition,
 )
 from ..models.action_item_trigger_params_incident_condition_acknowledged_at import (
+    ActionItemTriggerParamsIncidentConditionAcknowledgedAt,
     check_action_item_trigger_params_incident_condition_acknowledged_at,
 )
 from ..models.action_item_trigger_params_incident_condition_detected_at import (
     ActionItemTriggerParamsIncidentConditionDetectedAt,
-)
-from ..models.action_item_trigger_params_incident_condition_detected_at import (
     check_action_item_trigger_params_incident_condition_detected_at,
 )
 from ..models.action_item_trigger_params_incident_condition_environment import (
     ActionItemTriggerParamsIncidentConditionEnvironment,
-)
-from ..models.action_item_trigger_params_incident_condition_environment import (
     check_action_item_trigger_params_incident_condition_environment,
 )
 from ..models.action_item_trigger_params_incident_condition_functionality import (
     ActionItemTriggerParamsIncidentConditionFunctionality,
-)
-from ..models.action_item_trigger_params_incident_condition_functionality import (
     check_action_item_trigger_params_incident_condition_functionality,
 )
-from ..models.action_item_trigger_params_incident_condition_group import ActionItemTriggerParamsIncidentConditionGroup
 from ..models.action_item_trigger_params_incident_condition_group import (
+    ActionItemTriggerParamsIncidentConditionGroup,
     check_action_item_trigger_params_incident_condition_group,
 )
 from ..models.action_item_trigger_params_incident_condition_incident_roles import (
     ActionItemTriggerParamsIncidentConditionIncidentRoles,
-)
-from ..models.action_item_trigger_params_incident_condition_incident_roles import (
     check_action_item_trigger_params_incident_condition_incident_roles,
 )
 from ..models.action_item_trigger_params_incident_condition_incident_type import (
     ActionItemTriggerParamsIncidentConditionIncidentType,
-)
-from ..models.action_item_trigger_params_incident_condition_incident_type import (
     check_action_item_trigger_params_incident_condition_incident_type,
 )
-from ..models.action_item_trigger_params_incident_condition_kind import ActionItemTriggerParamsIncidentConditionKind
 from ..models.action_item_trigger_params_incident_condition_kind import (
+    ActionItemTriggerParamsIncidentConditionKind,
     check_action_item_trigger_params_incident_condition_kind,
 )
-from ..models.action_item_trigger_params_incident_condition_label import ActionItemTriggerParamsIncidentConditionLabel
 from ..models.action_item_trigger_params_incident_condition_label import (
+    ActionItemTriggerParamsIncidentConditionLabel,
     check_action_item_trigger_params_incident_condition_label,
 )
 from ..models.action_item_trigger_params_incident_condition_mitigated_at import (
     ActionItemTriggerParamsIncidentConditionMitigatedAt,
-)
-from ..models.action_item_trigger_params_incident_condition_mitigated_at import (
     check_action_item_trigger_params_incident_condition_mitigated_at,
 )
 from ..models.action_item_trigger_params_incident_condition_resolved_at import (
     ActionItemTriggerParamsIncidentConditionResolvedAt,
-)
-from ..models.action_item_trigger_params_incident_condition_resolved_at import (
     check_action_item_trigger_params_incident_condition_resolved_at,
 )
 from ..models.action_item_trigger_params_incident_condition_service import (
     ActionItemTriggerParamsIncidentConditionService,
-)
-from ..models.action_item_trigger_params_incident_condition_service import (
     check_action_item_trigger_params_incident_condition_service,
 )
 from ..models.action_item_trigger_params_incident_condition_severity import (
     ActionItemTriggerParamsIncidentConditionSeverity,
-)
-from ..models.action_item_trigger_params_incident_condition_severity import (
     check_action_item_trigger_params_incident_condition_severity,
 )
 from ..models.action_item_trigger_params_incident_condition_started_at import (
     ActionItemTriggerParamsIncidentConditionStartedAt,
-)
-from ..models.action_item_trigger_params_incident_condition_started_at import (
     check_action_item_trigger_params_incident_condition_started_at,
 )
-from ..models.action_item_trigger_params_incident_condition_status import ActionItemTriggerParamsIncidentConditionStatus
 from ..models.action_item_trigger_params_incident_condition_status import (
+    ActionItemTriggerParamsIncidentConditionStatus,
     check_action_item_trigger_params_incident_condition_status,
 )
 from ..models.action_item_trigger_params_incident_condition_sub_status import (
     ActionItemTriggerParamsIncidentConditionSubStatus,
-)
-from ..models.action_item_trigger_params_incident_condition_sub_status import (
     check_action_item_trigger_params_incident_condition_sub_status,
 )
 from ..models.action_item_trigger_params_incident_condition_summary import (
     ActionItemTriggerParamsIncidentConditionSummary,
-)
-from ..models.action_item_trigger_params_incident_condition_summary import (
     check_action_item_trigger_params_incident_condition_summary,
 )
 from ..models.action_item_trigger_params_incident_condition_visibility import (
     ActionItemTriggerParamsIncidentConditionVisibility,
-)
-from ..models.action_item_trigger_params_incident_condition_visibility import (
     check_action_item_trigger_params_incident_condition_visibility,
 )
 from ..models.action_item_trigger_params_incident_conditional_inactivity import (
     ActionItemTriggerParamsIncidentConditionalInactivity,
-)
-from ..models.action_item_trigger_params_incident_conditional_inactivity import (
     check_action_item_trigger_params_incident_conditional_inactivity,
 )
-from ..models.action_item_trigger_params_incident_kinds_item import ActionItemTriggerParamsIncidentKindsItem
-from ..models.action_item_trigger_params_incident_kinds_item import check_action_item_trigger_params_incident_kinds_item
-from ..models.action_item_trigger_params_incident_statuses_item import ActionItemTriggerParamsIncidentStatusesItem
+from ..models.action_item_trigger_params_incident_kinds_item import (
+    ActionItemTriggerParamsIncidentKindsItem,
+    check_action_item_trigger_params_incident_kinds_item,
+)
 from ..models.action_item_trigger_params_incident_statuses_item import (
+    ActionItemTriggerParamsIncidentStatusesItem,
     check_action_item_trigger_params_incident_statuses_item,
 )
-from ..models.action_item_trigger_params_trigger_type import ActionItemTriggerParamsTriggerType
-from ..models.action_item_trigger_params_trigger_type import check_action_item_trigger_params_trigger_type
+from ..models.action_item_trigger_params_trigger_type import (
+    ActionItemTriggerParamsTriggerType,
+    check_action_item_trigger_params_trigger_type,
+)
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="ActionItemTriggerParams")
 

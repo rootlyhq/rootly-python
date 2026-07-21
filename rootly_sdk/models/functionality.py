@@ -1,17 +1,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.functionality_managed_by import FunctionalityManagedBy, check_functionality_managed_by
 from ..types import UNSET, Unset
-
-from ..models.functionality_managed_by import check_functionality_managed_by
-from ..models.functionality_managed_by import FunctionalityManagedBy
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.functionality_properties_type_0_item import FunctionalityPropertiesType0Item
@@ -86,9 +82,6 @@ class Functionality:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.functionality_slack_channels_type_0_item import FunctionalitySlackChannelsType0Item
-        from ..models.functionality_slack_aliases_type_0_item import FunctionalitySlackAliasesType0Item
-        from ..models.functionality_properties_type_0_item import FunctionalityPropertiesType0Item
 
         name = self.name
 

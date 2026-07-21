@@ -1,19 +1,15 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
 from ... import errors
-
+from ...client import AuthenticatedClient, Client
 from ...models.bulk_destroy_functionalities_response import BulkDestroyFunctionalitiesResponse
 from ...models.bulk_destroy_functionalities_type_0 import BulkDestroyFunctionalitiesType0
 from ...models.bulk_destroy_functionalities_type_1 import BulkDestroyFunctionalitiesType1
 from ...models.errors_list import ErrorsList
-from typing import cast
-
+from ...types import Response
 
 
 def _get_kwargs(

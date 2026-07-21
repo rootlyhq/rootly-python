@@ -1,19 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.http_client_task_params_method import HttpClientTaskParamsMethod, check_http_client_task_params_method
+from ..models.http_client_task_params_task_type import (
+    HttpClientTaskParamsTaskType,
+    check_http_client_task_params_task_type,
+)
 from ..types import UNSET, Unset
-
-from ..models.http_client_task_params_method import check_http_client_task_params_method
-from ..models.http_client_task_params_method import HttpClientTaskParamsMethod
-from ..models.http_client_task_params_task_type import check_http_client_task_params_task_type
-from ..models.http_client_task_params_task_type import HttpClientTaskParamsTaskType
-from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.http_client_task_params_post_to_slack_channels_item import HttpClientTaskParamsPostToSlackChannelsItem
@@ -60,9 +58,6 @@ class HttpClientTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.http_client_task_params_post_to_slack_channels_item import (
-            HttpClientTaskParamsPostToSlackChannelsItem,
-        )
 
         url = self.url
 

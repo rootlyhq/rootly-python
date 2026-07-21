@@ -1,22 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.workflow_action_item_form_field_condition_action_item_condition import (
-    check_workflow_action_item_form_field_condition_action_item_condition,
-)
 from ..models.workflow_action_item_form_field_condition_action_item_condition import (
     WorkflowActionItemFormFieldConditionActionItemCondition,
+    check_workflow_action_item_form_field_condition_action_item_condition,
 )
 from ..types import UNSET, Unset
-from typing import cast
-
 
 T = TypeVar("T", bound="WorkflowActionItemFormFieldCondition")
 

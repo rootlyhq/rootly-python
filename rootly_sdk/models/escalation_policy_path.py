@@ -1,25 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-from ..models.escalation_policy_path_after_deferral_behavior import check_escalation_policy_path_after_deferral_behavior
-from ..models.escalation_policy_path_after_deferral_behavior import EscalationPolicyPathAfterDeferralBehavior
-from ..models.escalation_policy_path_match_mode import check_escalation_policy_path_match_mode
-from ..models.escalation_policy_path_match_mode import EscalationPolicyPathMatchMode
-from ..models.escalation_policy_path_path_type import check_escalation_policy_path_path_type
-from ..models.escalation_policy_path_path_type import EscalationPolicyPathPathType
+from ..models.escalation_policy_path_after_deferral_behavior import (
+    EscalationPolicyPathAfterDeferralBehavior,
+    check_escalation_policy_path_after_deferral_behavior,
+)
+from ..models.escalation_policy_path_match_mode import (
+    EscalationPolicyPathMatchMode,
+    check_escalation_policy_path_match_mode,
+)
+from ..models.escalation_policy_path_path_type import (
+    EscalationPolicyPathPathType,
+    check_escalation_policy_path_path_type,
+)
 from ..models.escalation_policy_path_time_restriction_time_zone import (
+    EscalationPolicyPathTimeRestrictionTimeZone,
     check_escalation_policy_path_time_restriction_time_zone,
 )
-from ..models.escalation_policy_path_time_restriction_time_zone import EscalationPolicyPathTimeRestrictionTimeZone
 from ..types import UNSET, Unset
-from typing import cast
 
 if TYPE_CHECKING:
     from ..models.escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
@@ -138,31 +141,29 @@ class EscalationPolicyPath:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.escalation_policy_path_rules_item_type_4 import EscalationPolicyPathRulesItemType4
-        from ..models.escalation_policy_path_rules_item_type_8_type_4 import EscalationPolicyPathRulesItemType8Type4
-        from ..models.escalation_policy_path_rules_item_type_9_type_2 import EscalationPolicyPathRulesItemType9Type2
-        from ..models.escalation_policy_path_rules_item_type_8_type_6 import EscalationPolicyPathRulesItemType8Type6
-        from ..models.escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
-        from ..models.escalation_policy_path_rules_item_type_8_type_1 import EscalationPolicyPathRulesItemType8Type1
-        from ..models.escalation_policy_path_rules_item_type_9_type_7 import EscalationPolicyPathRulesItemType9Type7
-        from ..models.escalation_policy_path_rules_item_type_7 import EscalationPolicyPathRulesItemType7
-        from ..models.escalation_policy_path_rules_item_type_6 import EscalationPolicyPathRulesItemType6
-        from ..models.escalation_policy_path_rules_item_type_8_type_3 import EscalationPolicyPathRulesItemType8Type3
-        from ..models.escalation_policy_path_rules_item_type_9_type_6 import EscalationPolicyPathRulesItemType9Type6
-        from ..models.escalation_policy_path_rules_item_type_9_type_4 import EscalationPolicyPathRulesItemType9Type4
-        from ..models.escalation_policy_path_rules_item_type_8_type_7 import EscalationPolicyPathRulesItemType8Type7
-        from ..models.escalation_policy_path_rules_item_type_9_type_3 import EscalationPolicyPathRulesItemType9Type3
-        from ..models.escalation_policy_path_rules_item_type_8_type_0 import EscalationPolicyPathRulesItemType8Type0
-        from ..models.escalation_policy_path_rules_item_type_8_type_5 import EscalationPolicyPathRulesItemType8Type5
-        from ..models.escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
-        from ..models.escalation_policy_path_rules_item_type_9_type_0 import EscalationPolicyPathRulesItemType9Type0
         from ..models.escalation_policy_path_rules_item_type_0 import EscalationPolicyPathRulesItemType0
+        from ..models.escalation_policy_path_rules_item_type_1 import EscalationPolicyPathRulesItemType1
         from ..models.escalation_policy_path_rules_item_type_2 import EscalationPolicyPathRulesItemType2
+        from ..models.escalation_policy_path_rules_item_type_3 import EscalationPolicyPathRulesItemType3
+        from ..models.escalation_policy_path_rules_item_type_4 import EscalationPolicyPathRulesItemType4
         from ..models.escalation_policy_path_rules_item_type_5 import EscalationPolicyPathRulesItemType5
-        from ..models.escalation_policy_path_time_restrictions_item import EscalationPolicyPathTimeRestrictionsItem
+        from ..models.escalation_policy_path_rules_item_type_6 import EscalationPolicyPathRulesItemType6
+        from ..models.escalation_policy_path_rules_item_type_7 import EscalationPolicyPathRulesItemType7
+        from ..models.escalation_policy_path_rules_item_type_8_type_0 import EscalationPolicyPathRulesItemType8Type0
+        from ..models.escalation_policy_path_rules_item_type_8_type_1 import EscalationPolicyPathRulesItemType8Type1
         from ..models.escalation_policy_path_rules_item_type_8_type_2 import EscalationPolicyPathRulesItemType8Type2
-        from ..models.escalation_policy_path_rules_item_type_9_type_5 import EscalationPolicyPathRulesItemType9Type5
+        from ..models.escalation_policy_path_rules_item_type_8_type_3 import EscalationPolicyPathRulesItemType8Type3
+        from ..models.escalation_policy_path_rules_item_type_8_type_4 import EscalationPolicyPathRulesItemType8Type4
+        from ..models.escalation_policy_path_rules_item_type_8_type_5 import EscalationPolicyPathRulesItemType8Type5
+        from ..models.escalation_policy_path_rules_item_type_8_type_6 import EscalationPolicyPathRulesItemType8Type6
+        from ..models.escalation_policy_path_rules_item_type_8_type_7 import EscalationPolicyPathRulesItemType8Type7
+        from ..models.escalation_policy_path_rules_item_type_9_type_0 import EscalationPolicyPathRulesItemType9Type0
         from ..models.escalation_policy_path_rules_item_type_9_type_1 import EscalationPolicyPathRulesItemType9Type1
+        from ..models.escalation_policy_path_rules_item_type_9_type_2 import EscalationPolicyPathRulesItemType9Type2
+        from ..models.escalation_policy_path_rules_item_type_9_type_3 import EscalationPolicyPathRulesItemType9Type3
+        from ..models.escalation_policy_path_rules_item_type_9_type_4 import EscalationPolicyPathRulesItemType9Type4
+        from ..models.escalation_policy_path_rules_item_type_9_type_5 import EscalationPolicyPathRulesItemType9Type5
+        from ..models.escalation_policy_path_rules_item_type_9_type_6 import EscalationPolicyPathRulesItemType9Type6
 
         name = self.name
 
