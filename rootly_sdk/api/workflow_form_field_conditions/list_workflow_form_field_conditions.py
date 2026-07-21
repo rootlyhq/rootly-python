@@ -16,11 +16,7 @@ def _get_kwargs(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -30,26 +26,24 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/workflows/{workflow_id}/form_field_conditions".format(workflow_id=quote(str(workflow_id), safe=""),),
+        "url": "/v1/workflows/{workflow_id}/form_field_conditions".format(
+            workflow_id=quote(str(workflow_id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowFormFieldConditionList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> WorkflowFormFieldConditionList | None:
     if response.status_code == 200:
         response_200 = WorkflowFormFieldConditionList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -59,7 +53,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WorkflowFormFieldConditionList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[WorkflowFormFieldConditionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,9 +71,8 @@ def sync_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[WorkflowFormFieldConditionList]:
-    """ List workflow form field conditions
+    """List workflow form field conditions
 
      List workflow form field conditions
 
@@ -93,15 +88,13 @@ def sync_detailed(
 
     Returns:
         Response[WorkflowFormFieldConditionList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -110,6 +103,7 @@ pagesize=pagesize,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     workflow_id: str,
     *,
@@ -117,9 +111,8 @@ def sync(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> WorkflowFormFieldConditionList | None:
-    """ List workflow form field conditions
+    """List workflow form field conditions
 
      List workflow form field conditions
 
@@ -135,17 +128,16 @@ def sync(
 
     Returns:
         WorkflowFormFieldConditionList
-     """
-
+    """
 
     return sync_detailed(
         workflow_id=workflow_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     workflow_id: str,
@@ -154,9 +146,8 @@ async def asyncio_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[WorkflowFormFieldConditionList]:
-    """ List workflow form field conditions
+    """List workflow form field conditions
 
      List workflow form field conditions
 
@@ -172,22 +163,19 @@ async def asyncio_detailed(
 
     Returns:
         Response[WorkflowFormFieldConditionList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     workflow_id: str,
@@ -196,9 +184,8 @@ async def asyncio(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> WorkflowFormFieldConditionList | None:
-    """ List workflow form field conditions
+    """List workflow form field conditions
 
      List workflow form field conditions
 
@@ -214,14 +201,14 @@ async def asyncio(
 
     Returns:
         WorkflowFormFieldConditionList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        workflow_id=workflow_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            workflow_id=workflow_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

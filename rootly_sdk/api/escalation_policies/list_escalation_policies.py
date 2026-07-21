@@ -32,11 +32,7 @@ def _get_kwargs(
     filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -80,9 +76,7 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -90,16 +84,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> EscalationPolicyList | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -109,7 +99,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[EscalationPolicyList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[EscalationPolicyList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -139,9 +131,8 @@ def sync_detailed(
     filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[EscalationPolicyList]:
-    """ List escalation policies
+    """List escalation policies
 
      List escalation policies
 
@@ -171,29 +162,27 @@ def sync_detailed(
 
     Returns:
         Response[EscalationPolicyList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filterteam_ids=filterteam_ids,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterteam_idseq=filterteam_idseq,
-filterteam_idsnot_eq=filterteam_idsnot_eq,
-filterteam_idsin=filterteam_idsin,
-filterteam_idsnot_in=filterteam_idsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterteam_ids=filterteam_ids,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -201,6 +190,7 @@ pagesize=pagesize,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -223,9 +213,8 @@ def sync(
     filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> EscalationPolicyList | None:
-    """ List escalation policies
+    """List escalation policies
 
      List escalation policies
 
@@ -255,31 +244,30 @@ def sync(
 
     Returns:
         EscalationPolicyList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filterteam_ids=filterteam_ids,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterteam_idseq=filterteam_idseq,
-filterteam_idsnot_eq=filterteam_idsnot_eq,
-filterteam_idsin=filterteam_idsin,
-filterteam_idsnot_in=filterteam_idsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterteam_ids=filterteam_ids,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -302,9 +290,8 @@ async def asyncio_detailed(
     filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[EscalationPolicyList]:
-    """ List escalation policies
+    """List escalation policies
 
      List escalation policies
 
@@ -334,36 +321,33 @@ async def asyncio_detailed(
 
     Returns:
         Response[EscalationPolicyList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filterteam_ids=filterteam_ids,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterteam_idseq=filterteam_idseq,
-filterteam_idsnot_eq=filterteam_idsnot_eq,
-filterteam_idsin=filterteam_idsin,
-filterteam_idsnot_in=filterteam_idsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterteam_ids=filterteam_ids,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -386,9 +370,8 @@ async def asyncio(
     filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> EscalationPolicyList | None:
-    """ List escalation policies
+    """List escalation policies
 
      List escalation policies
 
@@ -418,28 +401,28 @@ async def asyncio(
 
     Returns:
         EscalationPolicyList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filterteam_ids=filterteam_ids,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterteam_idseq=filterteam_idseq,
-filterteam_idsnot_eq=filterteam_idsnot_eq,
-filterteam_idsin=filterteam_idsin,
-filterteam_idsnot_in=filterteam_idsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterteam_ids=filterteam_ids,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterteam_idseq=filterteam_idseq,
+            filterteam_idsnot_eq=filterteam_idsnot_eq,
+            filterteam_idsin=filterteam_idsin,
+            filterteam_idsnot_in=filterteam_idsnot_in,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

@@ -20,11 +20,7 @@ def _get_kwargs(
     filtername: str | Unset = UNSET,
     filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -46,9 +42,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -56,16 +50,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertsSourceList | None:
     if response.status_code == 200:
         response_200 = AlertsSourceList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -96,9 +86,8 @@ def sync_detailed(
     filtername: str | Unset = UNSET,
     filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[AlertsSourceList]:
-    """ List alert sources
+    """List alert sources
 
      List alert sources
 
@@ -119,20 +108,18 @@ def sync_detailed(
 
     Returns:
         Response[AlertsSourceList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterstatuses=filterstatuses,
-filtersource_types=filtersource_types,
-filtername=filtername,
-filterenabled=filterenabled,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterstatuses=filterstatuses,
+        filtersource_types=filtersource_types,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -140,6 +127,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -153,9 +141,8 @@ def sync(
     filtername: str | Unset = UNSET,
     filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> AlertsSourceList | None:
-    """ List alert sources
+    """List alert sources
 
      List alert sources
 
@@ -176,22 +163,21 @@ def sync(
 
     Returns:
         AlertsSourceList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterstatuses=filterstatuses,
-filtersource_types=filtersource_types,
-filtername=filtername,
-filterenabled=filterenabled,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterstatuses=filterstatuses,
+        filtersource_types=filtersource_types,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -205,9 +191,8 @@ async def asyncio_detailed(
     filtername: str | Unset = UNSET,
     filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[AlertsSourceList]:
-    """ List alert sources
+    """List alert sources
 
      List alert sources
 
@@ -228,27 +213,24 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertsSourceList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterstatuses=filterstatuses,
-filtersource_types=filtersource_types,
-filtername=filtername,
-filterenabled=filterenabled,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterstatuses=filterstatuses,
+        filtersource_types=filtersource_types,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -262,9 +244,8 @@ async def asyncio(
     filtername: str | Unset = UNSET,
     filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> AlertsSourceList | None:
-    """ List alert sources
+    """List alert sources
 
      List alert sources
 
@@ -285,19 +266,19 @@ async def asyncio(
 
     Returns:
         AlertsSourceList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterstatuses=filterstatuses,
-filtersource_types=filtersource_types,
-filtername=filtername,
-filterenabled=filterenabled,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filterstatuses=filterstatuses,
+            filtersource_types=filtersource_types,
+            filtername=filtername,
+            filterenabled=filterenabled,
+            sort=sort,
+        )
+    ).parsed

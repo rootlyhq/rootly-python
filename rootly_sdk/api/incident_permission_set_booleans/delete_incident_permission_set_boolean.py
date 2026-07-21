@@ -13,36 +13,28 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/incident_permission_set_booleans/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/incident_permission_set_booleans/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | IncidentPermissionSetBooleanResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentPermissionSetBooleanResponse | None:
     if response.status_code == 200:
         response_200 = IncidentPermissionSetBooleanResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -52,7 +44,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | IncidentPermissionSetBooleanResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentPermissionSetBooleanResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,9 +59,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | IncidentPermissionSetBooleanResponse]:
-    """ Delete an incident_permission_set_boolean
+    """Delete an incident_permission_set_boolean
 
      Delete a specific incident_permission_set_boolean by id
 
@@ -80,12 +73,10 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | IncidentPermissionSetBooleanResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +85,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | IncidentPermissionSetBooleanResponse | None:
-    """ Delete an incident_permission_set_boolean
+    """Delete an incident_permission_set_boolean
 
      Delete a specific incident_permission_set_boolean by id
 
@@ -113,22 +104,20 @@ def sync(
 
     Returns:
         ErrorsList | IncidentPermissionSetBooleanResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | IncidentPermissionSetBooleanResponse]:
-    """ Delete an incident_permission_set_boolean
+    """Delete an incident_permission_set_boolean
 
      Delete a specific incident_permission_set_boolean by id
 
@@ -141,27 +130,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | IncidentPermissionSetBooleanResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | IncidentPermissionSetBooleanResponse | None:
-    """ Delete an incident_permission_set_boolean
+    """Delete an incident_permission_set_boolean
 
      Delete a specific incident_permission_set_boolean by id
 
@@ -174,11 +159,11 @@ async def asyncio(
 
     Returns:
         ErrorsList | IncidentPermissionSetBooleanResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

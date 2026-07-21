@@ -14,11 +14,7 @@ def _get_kwargs(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -28,9 +24,7 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -38,16 +32,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PostMortemTemplateList | None:
     if response.status_code == 200:
         response_200 = PostMortemTemplateList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -57,7 +47,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PostMortemTemplateList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[PostMortemTemplateList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,9 +64,8 @@ def sync_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[PostMortemTemplateList]:
-    """ List Retrospective Templates
+    """List Retrospective Templates
 
      List Retrospective Templates
 
@@ -89,14 +80,12 @@ def sync_detailed(
 
     Returns:
         Response[PostMortemTemplateList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -105,15 +94,15 @@ pagesize=pagesize,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> PostMortemTemplateList | None:
-    """ List Retrospective Templates
+    """List Retrospective Templates
 
      List Retrospective Templates
 
@@ -128,16 +117,15 @@ def sync(
 
     Returns:
         PostMortemTemplateList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -145,9 +133,8 @@ async def asyncio_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[PostMortemTemplateList]:
-    """ List Retrospective Templates
+    """List Retrospective Templates
 
      List Retrospective Templates
 
@@ -162,21 +149,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[PostMortemTemplateList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -184,9 +168,8 @@ async def asyncio(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> PostMortemTemplateList | None:
-    """ List Retrospective Templates
+    """List Retrospective Templates
 
      List Retrospective Templates
 
@@ -201,13 +184,13 @@ async def asyncio(
 
     Returns:
         PostMortemTemplateList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

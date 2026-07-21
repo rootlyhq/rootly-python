@@ -15,11 +15,7 @@ def _get_kwargs(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -40,9 +36,7 @@ def _get_kwargs(
         json_alert_id = str(alert_id)
     params["alert_id"] = json_alert_id
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -50,9 +44,7 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -84,9 +76,8 @@ def sync_detailed(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> Response[Any]:
-    """ Stream AI chat response (SSE)
+    """Stream AI chat response (SSE)
 
      Send a message and receive the AI response as a Server-Sent Events stream. Optionally bind to an
     incident or alert for context. Events: `session_id` (initial), `text` (content chunks),
@@ -105,15 +96,13 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
+        session_id=session_id,
+        incident_id=incident_id,
+        alert_id=alert_id,
     )
 
     response = client.get_httpx_client().request(
@@ -130,9 +119,8 @@ async def asyncio_detailed(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> Response[Any]:
-    """ Stream AI chat response (SSE)
+    """Stream AI chat response (SSE)
 
      Send a message and receive the AI response as a Server-Sent Events stream. Optionally bind to an
     incident or alert for context. Events: `session_id` (initial), `text` (content chunks),
@@ -151,20 +139,15 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
+        session_id=session_id,
+        incident_id=incident_id,
+        alert_id=alert_id,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

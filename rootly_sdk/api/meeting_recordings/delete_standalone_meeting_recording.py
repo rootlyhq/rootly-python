@@ -11,22 +11,16 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/meeting_recordings/{id}/delete_session".format(id=quote(str(id), safe=""),),
+        "url": "/v1/meeting_recordings/{id}/delete_session".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -58,9 +52,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ Delete a standalone meeting recording
+    """Delete a standalone meeting recording
 
      Delete a standalone meeting recording (not linked to an incident). Only the recording owner can
     delete it. Active recordings (pending, recording, paused) must be stopped first. Returns 404 for
@@ -75,12 +68,10 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -94,9 +85,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ Delete a standalone meeting recording
+    """Delete a standalone meeting recording
 
      Delete a standalone meeting recording (not linked to an incident). Only the recording owner can
     delete it. Active recordings (pending, recording, paused) must be stopped first. Returns 404 for
@@ -111,17 +101,12 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

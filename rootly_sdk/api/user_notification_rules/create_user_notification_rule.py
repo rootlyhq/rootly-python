@@ -16,22 +16,17 @@ def _get_kwargs(
     user_id: str,
     *,
     body: NewUserNotificationRule,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/users/{user_id}/notification_rules".format(user_id=quote(str(user_id), safe=""),),
+        "url": "/v1/users/{user_id}/notification_rules".format(
+            user_id=quote(str(user_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,26 +34,21 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | UserNotificationRuleResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserNotificationRuleResponse | None:
     if response.status_code == 201:
         response_201 = UserNotificationRuleResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
-
-
 
         return response_422
 
@@ -68,7 +58,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | UserNotificationRuleResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserNotificationRuleResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +74,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewUserNotificationRule,
-
 ) -> Response[ErrorsList | UserNotificationRuleResponse]:
-    """ Creates an user notification rule
+    """Creates an user notification rule
 
      Creates a new user notification rule from provided data
 
@@ -98,13 +89,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | UserNotificationRuleResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         user_id=user_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -113,14 +102,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
     body: NewUserNotificationRule,
-
 ) -> ErrorsList | UserNotificationRuleResponse | None:
-    """ Creates an user notification rule
+    """Creates an user notification rule
 
      Creates a new user notification rule from provided data
 
@@ -134,24 +123,22 @@ def sync(
 
     Returns:
         ErrorsList | UserNotificationRuleResponse
-     """
-
+    """
 
     return sync_detailed(
         user_id=user_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
     body: NewUserNotificationRule,
-
 ) -> Response[ErrorsList | UserNotificationRuleResponse]:
-    """ Creates an user notification rule
+    """Creates an user notification rule
 
      Creates a new user notification rule from provided data
 
@@ -165,29 +152,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | UserNotificationRuleResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         user_id=user_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
     body: NewUserNotificationRule,
-
 ) -> ErrorsList | UserNotificationRuleResponse | None:
-    """ Creates an user notification rule
+    """Creates an user notification rule
 
      Creates a new user notification rule from provided data
 
@@ -201,12 +184,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | UserNotificationRuleResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        user_id=user_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            user_id=user_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

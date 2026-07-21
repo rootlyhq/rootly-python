@@ -16,22 +16,17 @@ def _get_kwargs(
     incident_event_id: str,
     *,
     body: NewIncidentEventFunctionality,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/events/{incident_event_id}/functionalities".format(incident_event_id=quote(str(incident_event_id), safe=""),),
+        "url": "/v1/events/{incident_event_id}/functionalities".format(
+            incident_event_id=quote(str(incident_event_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,26 +34,21 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | IncidentEventFunctionalityResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentEventFunctionalityResponse | None:
     if response.status_code == 201:
         response_201 = IncidentEventFunctionalityResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
-
-
 
         return response_422
 
@@ -68,7 +58,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +74,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventFunctionality,
-
 ) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
-    """ Creates an incident event functionality
+    """Creates an incident event functionality
 
      Creates a new event functionality from provided data
 
@@ -98,13 +89,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | IncidentEventFunctionalityResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_event_id=incident_event_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -113,14 +102,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     incident_event_id: str,
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventFunctionality,
-
 ) -> ErrorsList | IncidentEventFunctionalityResponse | None:
-    """ Creates an incident event functionality
+    """Creates an incident event functionality
 
      Creates a new event functionality from provided data
 
@@ -134,24 +123,22 @@ def sync(
 
     Returns:
         ErrorsList | IncidentEventFunctionalityResponse
-     """
-
+    """
 
     return sync_detailed(
         incident_event_id=incident_event_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     incident_event_id: str,
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventFunctionality,
-
 ) -> Response[ErrorsList | IncidentEventFunctionalityResponse]:
-    """ Creates an incident event functionality
+    """Creates an incident event functionality
 
      Creates a new event functionality from provided data
 
@@ -165,29 +152,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | IncidentEventFunctionalityResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_event_id=incident_event_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     incident_event_id: str,
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventFunctionality,
-
 ) -> ErrorsList | IncidentEventFunctionalityResponse | None:
-    """ Creates an incident event functionality
+    """Creates an incident event functionality
 
      Creates a new event functionality from provided data
 
@@ -201,12 +184,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | IncidentEventFunctionalityResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        incident_event_id=incident_event_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            incident_event_id=incident_event_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

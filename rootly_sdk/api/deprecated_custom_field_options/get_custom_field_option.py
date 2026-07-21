@@ -13,36 +13,28 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/custom_field_options/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/custom_field_options/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldOptionResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CustomFieldOptionResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CustomFieldOptionResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -52,7 +44,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CustomFieldOptionResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CustomFieldOptionResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,9 +59,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[CustomFieldOptionResponse | ErrorsList]:
-    """ [DEPRECATED] Retrieves a custom field option
+    """[DEPRECATED] Retrieves a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific custom field option by id
 
@@ -80,12 +73,10 @@ def sync_detailed(
 
     Returns:
         Response[CustomFieldOptionResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +85,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> CustomFieldOptionResponse | ErrorsList | None:
-    """ [DEPRECATED] Retrieves a custom field option
+    """[DEPRECATED] Retrieves a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific custom field option by id
 
@@ -113,22 +104,20 @@ def sync(
 
     Returns:
         CustomFieldOptionResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[CustomFieldOptionResponse | ErrorsList]:
-    """ [DEPRECATED] Retrieves a custom field option
+    """[DEPRECATED] Retrieves a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific custom field option by id
 
@@ -141,27 +130,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[CustomFieldOptionResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> CustomFieldOptionResponse | ErrorsList | None:
-    """ [DEPRECATED] Retrieves a custom field option
+    """[DEPRECATED] Retrieves a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Retrieves a specific custom field option by id
 
@@ -174,11 +159,11 @@ async def asyncio(
 
     Returns:
         CustomFieldOptionResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

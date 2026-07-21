@@ -13,36 +13,28 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/communications/templates/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/communications/templates/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CommunicationsTemplateResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CommunicationsTemplateResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CommunicationsTemplateResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -52,7 +44,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CommunicationsTemplateResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CommunicationsTemplateResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,9 +59,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[CommunicationsTemplateResponse | ErrorsList]:
-    """ Shows a communications template
+    """Shows a communications template
 
      Shows details of a communications template
 
@@ -80,12 +73,10 @@ def sync_detailed(
 
     Returns:
         Response[CommunicationsTemplateResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +85,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> CommunicationsTemplateResponse | ErrorsList | None:
-    """ Shows a communications template
+    """Shows a communications template
 
      Shows details of a communications template
 
@@ -113,22 +104,20 @@ def sync(
 
     Returns:
         CommunicationsTemplateResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[CommunicationsTemplateResponse | ErrorsList]:
-    """ Shows a communications template
+    """Shows a communications template
 
      Shows details of a communications template
 
@@ -141,27 +130,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[CommunicationsTemplateResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> CommunicationsTemplateResponse | ErrorsList | None:
-    """ Shows a communications template
+    """Shows a communications template
 
      Shows details of a communications template
 
@@ -174,11 +159,11 @@ async def asyncio(
 
     Returns:
         CommunicationsTemplateResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

@@ -20,11 +20,7 @@ def _get_kwargs(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -46,9 +42,7 @@ def _get_kwargs(
 
     params["filter[name][not_in]"] = filternamenot_in
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -56,16 +50,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertGroupList | None:
     if response.status_code == 200:
         response_200 = AlertGroupList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -96,9 +86,8 @@ def sync_detailed(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> Response[AlertGroupList]:
-    """ List alert groups
+    """List alert groups
 
      List alert groups
 
@@ -119,20 +108,18 @@ def sync_detailed(
 
     Returns:
         Response[AlertGroupList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -140,6 +127,7 @@ filternamenot_in=filternamenot_in,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -153,9 +141,8 @@ def sync(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> AlertGroupList | None:
-    """ List alert groups
+    """List alert groups
 
      List alert groups
 
@@ -176,22 +163,21 @@ def sync(
 
     Returns:
         AlertGroupList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        include=include,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -205,9 +191,8 @@ async def asyncio_detailed(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> Response[AlertGroupList]:
-    """ List alert groups
+    """List alert groups
 
      List alert groups
 
@@ -228,27 +213,24 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertGroupList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -262,9 +244,8 @@ async def asyncio(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> AlertGroupList | None:
-    """ List alert groups
+    """List alert groups
 
      List alert groups
 
@@ -285,19 +266,19 @@ async def asyncio(
 
     Returns:
         AlertGroupList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+        )
+    ).parsed

@@ -17,11 +17,7 @@ def _get_kwargs(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -33,26 +29,22 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_processes/{retrospective_process_id}/retrospective_steps".format(retrospective_process_id=quote(str(retrospective_process_id), safe=""),),
+        "url": "/v1/retrospective_processes/{retrospective_process_id}/retrospective_steps".format(
+            retrospective_process_id=quote(str(retrospective_process_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RetrospectiveStepList | None:
     if response.status_code == 200:
         response_200 = RetrospectiveStepList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -62,7 +54,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RetrospectiveStepList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[RetrospectiveStepList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,9 +73,8 @@ def sync_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[RetrospectiveStepList]:
-    """ List retrospective steps
+    """List retrospective steps
 
      List retrospective steps
 
@@ -98,16 +91,14 @@ def sync_detailed(
 
     Returns:
         Response[RetrospectiveStepList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         retrospective_process_id=retrospective_process_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -115,6 +106,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     retrospective_process_id: str,
@@ -124,9 +116,8 @@ def sync(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> RetrospectiveStepList | None:
-    """ List retrospective steps
+    """List retrospective steps
 
      List retrospective steps
 
@@ -143,18 +134,17 @@ def sync(
 
     Returns:
         RetrospectiveStepList
-     """
-
+    """
 
     return sync_detailed(
         retrospective_process_id=retrospective_process_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-sort=sort,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     retrospective_process_id: str,
@@ -164,9 +154,8 @@ async def asyncio_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[RetrospectiveStepList]:
-    """ List retrospective steps
+    """List retrospective steps
 
      List retrospective steps
 
@@ -183,23 +172,20 @@ async def asyncio_detailed(
 
     Returns:
         Response[RetrospectiveStepList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         retrospective_process_id=retrospective_process_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     retrospective_process_id: str,
@@ -209,9 +195,8 @@ async def asyncio(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> RetrospectiveStepList | None:
-    """ List retrospective steps
+    """List retrospective steps
 
      List retrospective steps
 
@@ -228,15 +213,15 @@ async def asyncio(
 
     Returns:
         RetrospectiveStepList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        retrospective_process_id=retrospective_process_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            retrospective_process_id=retrospective_process_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            sort=sort,
+        )
+    ).parsed

@@ -18,11 +18,7 @@ def _get_kwargs(
     pagesize: int | Unset = UNSET,
     filterkind: str | Unset = UNSET,
     filteraction: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -36,26 +32,22 @@ def _get_kwargs(
 
     params["filter[action]"] = filteraction
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/alerts/{alert_id}/events".format(alert_id=quote(str(alert_id), safe=""),),
+        "url": "/v1/alerts/{alert_id}/events".format(
+            alert_id=quote(str(alert_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertEventList | None:
     if response.status_code == 200:
         response_200 = AlertEventList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -83,9 +75,8 @@ def sync_detailed(
     pagesize: int | Unset = UNSET,
     filterkind: str | Unset = UNSET,
     filteraction: str | Unset = UNSET,
-
 ) -> Response[AlertEventList]:
-    """ List alert events
+    """List alert events
 
      List alert_events
 
@@ -103,17 +94,15 @@ def sync_detailed(
 
     Returns:
         Response[AlertEventList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         alert_id=alert_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filteraction=filteraction,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filteraction=filteraction,
     )
 
     response = client.get_httpx_client().request(
@@ -121,6 +110,7 @@ filteraction=filteraction,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     alert_id: str,
@@ -131,9 +121,8 @@ def sync(
     pagesize: int | Unset = UNSET,
     filterkind: str | Unset = UNSET,
     filteraction: str | Unset = UNSET,
-
 ) -> AlertEventList | None:
-    """ List alert events
+    """List alert events
 
      List alert_events
 
@@ -151,19 +140,18 @@ def sync(
 
     Returns:
         AlertEventList
-     """
-
+    """
 
     return sync_detailed(
         alert_id=alert_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filteraction=filteraction,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filteraction=filteraction,
     ).parsed
+
 
 async def asyncio_detailed(
     alert_id: str,
@@ -174,9 +162,8 @@ async def asyncio_detailed(
     pagesize: int | Unset = UNSET,
     filterkind: str | Unset = UNSET,
     filteraction: str | Unset = UNSET,
-
 ) -> Response[AlertEventList]:
-    """ List alert events
+    """List alert events
 
      List alert_events
 
@@ -194,24 +181,21 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertEventList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         alert_id=alert_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filteraction=filteraction,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filteraction=filteraction,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     alert_id: str,
@@ -222,9 +206,8 @@ async def asyncio(
     pagesize: int | Unset = UNSET,
     filterkind: str | Unset = UNSET,
     filteraction: str | Unset = UNSET,
-
 ) -> AlertEventList | None:
-    """ List alert events
+    """List alert events
 
      List alert_events
 
@@ -242,16 +225,16 @@ async def asyncio(
 
     Returns:
         AlertEventList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        alert_id=alert_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filteraction=filteraction,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            alert_id=alert_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterkind=filterkind,
+            filteraction=filteraction,
+        )
+    ).parsed

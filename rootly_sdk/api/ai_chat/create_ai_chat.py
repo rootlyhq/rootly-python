@@ -16,11 +16,7 @@ def _get_kwargs(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -41,9 +37,7 @@ def _get_kwargs(
         json_alert_id = str(alert_id)
     params["alert_id"] = json_alert_id
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -51,16 +45,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AiChatResponse | Any | None:
     if response.status_code == 200:
         response_200 = AiChatResponse.from_dict(response.json())
-
-
 
         return response_200
 
@@ -78,7 +68,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AiChatResponse | Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AiChatResponse | Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,9 +86,8 @@ def sync_detailed(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> Response[AiChatResponse | Any]:
-    """ Send AI chat message
+    """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
     to an incident or alert for context-aware responses. Requires `ai.chat:write` OAuth scope or an API
@@ -114,15 +105,13 @@ def sync_detailed(
 
     Returns:
         Response[AiChatResponse | Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
+        session_id=session_id,
+        incident_id=incident_id,
+        alert_id=alert_id,
     )
 
     response = client.get_httpx_client().request(
@@ -131,6 +120,7 @@ alert_id=alert_id,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
@@ -138,9 +128,8 @@ def sync(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> AiChatResponse | Any | None:
-    """ Send AI chat message
+    """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
     to an incident or alert for context-aware responses. Requires `ai.chat:write` OAuth scope or an API
@@ -158,17 +147,16 @@ def sync(
 
     Returns:
         AiChatResponse | Any
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
+        message=message,
+        session_id=session_id,
+        incident_id=incident_id,
+        alert_id=alert_id,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -177,9 +165,8 @@ async def asyncio_detailed(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> Response[AiChatResponse | Any]:
-    """ Send AI chat message
+    """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
     to an incident or alert for context-aware responses. Requires `ai.chat:write` OAuth scope or an API
@@ -197,22 +184,19 @@ async def asyncio_detailed(
 
     Returns:
         Response[AiChatResponse | Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
+        session_id=session_id,
+        incident_id=incident_id,
+        alert_id=alert_id,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -221,9 +205,8 @@ async def asyncio(
     session_id: UUID | Unset = UNSET,
     incident_id: UUID | Unset = UNSET,
     alert_id: UUID | Unset = UNSET,
-
 ) -> AiChatResponse | Any | None:
-    """ Send AI chat message
+    """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
     to an incident or alert for context-aware responses. Requires `ai.chat:write` OAuth scope or an API
@@ -241,14 +224,14 @@ async def asyncio(
 
     Returns:
         AiChatResponse | Any
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-message=message,
-session_id=session_id,
-incident_id=incident_id,
-alert_id=alert_id,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            message=message,
+            session_id=session_id,
+            incident_id=incident_id,
+            alert_id=alert_id,
+        )
+    ).parsed

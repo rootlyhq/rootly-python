@@ -44,11 +44,7 @@ def _get_kwargs(
     filterincident_broadcast_enabledin: str | Unset = UNSET,
     filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -118,9 +114,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -128,16 +122,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ServiceList | None:
     if response.status_code == 200:
         response_200 = ServiceList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -192,9 +182,8 @@ def sync_detailed(
     filterincident_broadcast_enabledin: str | Unset = UNSET,
     filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[ServiceList]:
-    """ List services
+    """List services
 
      List services
 
@@ -239,44 +228,42 @@ def sync_detailed(
 
     Returns:
         Response[ServiceList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filteralert_broadcast_enabled=filteralert_broadcast_enabled,
-filterincident_broadcast_enabled=filterincident_broadcast_enabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
-filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
-filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
-filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
-filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
-filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
-filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
-filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filteralert_broadcast_enabled=filteralert_broadcast_enabled,
+        filterincident_broadcast_enabled=filterincident_broadcast_enabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -284,6 +271,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -321,9 +309,8 @@ def sync(
     filterincident_broadcast_enabledin: str | Unset = UNSET,
     filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> ServiceList | None:
-    """ List services
+    """List services
 
      List services
 
@@ -368,46 +355,45 @@ def sync(
 
     Returns:
         ServiceList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filteralert_broadcast_enabled=filteralert_broadcast_enabled,
-filterincident_broadcast_enabled=filterincident_broadcast_enabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
-filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
-filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
-filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
-filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
-filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
-filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
-filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filteralert_broadcast_enabled=filteralert_broadcast_enabled,
+        filterincident_broadcast_enabled=filterincident_broadcast_enabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -445,9 +431,8 @@ async def asyncio_detailed(
     filterincident_broadcast_enabledin: str | Unset = UNSET,
     filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[ServiceList]:
-    """ List services
+    """List services
 
      List services
 
@@ -492,51 +477,48 @@ async def asyncio_detailed(
 
     Returns:
         Response[ServiceList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filteralert_broadcast_enabled=filteralert_broadcast_enabled,
-filterincident_broadcast_enabled=filterincident_broadcast_enabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
-filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
-filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
-filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
-filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
-filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
-filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
-filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filteralert_broadcast_enabled=filteralert_broadcast_enabled,
+        filterincident_broadcast_enabled=filterincident_broadcast_enabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -574,9 +556,8 @@ async def asyncio(
     filterincident_broadcast_enabledin: str | Unset = UNSET,
     filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> ServiceList | None:
-    """ List services
+    """List services
 
      List services
 
@@ -621,43 +602,43 @@ async def asyncio(
 
     Returns:
         ServiceList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filteralert_broadcast_enabled=filteralert_broadcast_enabled,
-filterincident_broadcast_enabled=filterincident_broadcast_enabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
-filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
-filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
-filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
-filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
-filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
-filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
-filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterslug=filterslug,
+            filterbackstage_id=filterbackstage_id,
+            filtercortex_id=filtercortex_id,
+            filteropslevel_id=filteropslevel_id,
+            filterexternal_id=filterexternal_id,
+            filteralert_broadcast_enabled=filteralert_broadcast_enabled,
+            filterincident_broadcast_enabled=filterincident_broadcast_enabled,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+            filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+            filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+            filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+            filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+            filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+            filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+            filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
+            sort=sort,
+        )
+    ).parsed

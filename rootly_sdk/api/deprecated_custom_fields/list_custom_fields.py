@@ -41,11 +41,7 @@ def _get_kwargs(
     filterenablednot_eq: str | Unset = UNSET,
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -113,9 +109,7 @@ def _get_kwargs(
 
     params["filter[enabled][not_in]"] = filterenablednot_in
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -123,16 +117,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldList | None:
     if response.status_code == 200:
         response_200 = CustomFieldList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -182,9 +172,8 @@ def sync_detailed(
     filterenablednot_eq: str | Unset = UNSET,
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
-
 ) -> Response[CustomFieldList]:
-    """ [DEPRECATED] List Custom Fields
+    """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -224,39 +213,37 @@ def sync_detailed(
 
     Returns:
         Response[CustomFieldList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filterlabel=filterlabel,
-filterkind=filterkind,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filterlabeleq=filterlabeleq,
-filterlabelnot_eq=filterlabelnot_eq,
-filterlabelin=filterlabelin,
-filterlabelnot_in=filterlabelnot_in,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filterlabel=filterlabel,
+        filterkind=filterkind,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filterlabeleq=filterlabeleq,
+        filterlabelnot_eq=filterlabelnot_eq,
+        filterlabelin=filterlabelin,
+        filterlabelnot_in=filterlabelnot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -264,6 +251,7 @@ filterenablednot_in=filterenablednot_in,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -296,9 +284,8 @@ def sync(
     filterenablednot_eq: str | Unset = UNSET,
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
-
 ) -> CustomFieldList | None:
-    """ [DEPRECATED] List Custom Fields
+    """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -338,41 +325,40 @@ def sync(
 
     Returns:
         CustomFieldList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filterlabel=filterlabel,
-filterkind=filterkind,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filterlabeleq=filterlabeleq,
-filterlabelnot_eq=filterlabelnot_eq,
-filterlabelin=filterlabelin,
-filterlabelnot_in=filterlabelnot_in,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filterlabel=filterlabel,
+        filterkind=filterkind,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filterlabeleq=filterlabeleq,
+        filterlabelnot_eq=filterlabelnot_eq,
+        filterlabelin=filterlabelin,
+        filterlabelnot_in=filterlabelnot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -405,9 +391,8 @@ async def asyncio_detailed(
     filterenablednot_eq: str | Unset = UNSET,
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
-
 ) -> Response[CustomFieldList]:
-    """ [DEPRECATED] List Custom Fields
+    """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -447,46 +432,43 @@ async def asyncio_detailed(
 
     Returns:
         Response[CustomFieldList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filterlabel=filterlabel,
-filterkind=filterkind,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filterlabeleq=filterlabeleq,
-filterlabelnot_eq=filterlabelnot_eq,
-filterlabelin=filterlabelin,
-filterlabelnot_in=filterlabelnot_in,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filterlabel=filterlabel,
+        filterkind=filterkind,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filterlabeleq=filterlabeleq,
+        filterlabelnot_eq=filterlabelnot_eq,
+        filterlabelin=filterlabelin,
+        filterlabelnot_in=filterlabelnot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -519,9 +501,8 @@ async def asyncio(
     filterenablednot_eq: str | Unset = UNSET,
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
-
 ) -> CustomFieldList | None:
-    """ [DEPRECATED] List Custom Fields
+    """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -561,38 +542,38 @@ async def asyncio(
 
     Returns:
         CustomFieldList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filterlabel=filterlabel,
-filterkind=filterkind,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filterlabeleq=filterlabeleq,
-filterlabelnot_eq=filterlabelnot_eq,
-filterlabelin=filterlabelin,
-filterlabelnot_in=filterlabelnot_in,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            sort=sort,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterslug=filterslug,
+            filterlabel=filterlabel,
+            filterkind=filterkind,
+            filterenabled=filterenabled,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filterlabeleq=filterlabeleq,
+            filterlabelnot_eq=filterlabelnot_eq,
+            filterlabelin=filterlabelin,
+            filterlabelnot_in=filterlabelnot_in,
+            filterkindeq=filterkindeq,
+            filterkindnot_eq=filterkindnot_eq,
+            filterkindin=filterkindin,
+            filterkindnot_in=filterkindnot_in,
+            filterenabledeq=filterenabledeq,
+            filterenablednot_eq=filterenablednot_eq,
+            filterenabledin=filterenabledin,
+            filterenablednot_in=filterenablednot_in,
+        )
+    ).parsed

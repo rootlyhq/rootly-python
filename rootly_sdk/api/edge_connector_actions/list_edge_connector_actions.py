@@ -11,22 +11,16 @@ from ...types import Response
 
 def _get_kwargs(
     edge_connector_id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/edge_connectors/{edge_connector_id}/actions".format(edge_connector_id=quote(str(edge_connector_id), safe=""),),
+        "url": "/v1/edge_connectors/{edge_connector_id}/actions".format(
+            edge_connector_id=quote(str(edge_connector_id), safe=""),
+        ),
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -55,9 +49,8 @@ def sync_detailed(
     edge_connector_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ List edge connector actions
+    """List edge connector actions
 
     Args:
         edge_connector_id (str):
@@ -68,12 +61,10 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -87,9 +78,8 @@ async def asyncio_detailed(
     edge_connector_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ List edge connector actions
+    """List edge connector actions
 
     Args:
         edge_connector_id (str):
@@ -100,17 +90,12 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

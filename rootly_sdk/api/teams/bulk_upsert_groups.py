@@ -15,14 +15,8 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: BulkUpsertTeams,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
-
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -31,37 +25,32 @@ def _get_kwargs(
 
     _kwargs["json"] = body.to_dict()
 
-
     headers["Content-Type"] = "application/vnd.api+json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkUpsertTeamsResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
+
         def _parse_response_422(data: object) -> BulkUpsertTeamsError | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
-
-
 
                 return response_422_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -69,8 +58,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
             if not isinstance(data, dict):
                 raise TypeError()
             response_422_type_1 = BulkUpsertTeamsError.from_dict(data)
-
-
 
             return response_422_type_1
 
@@ -84,7 +71,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -97,9 +86,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-
 ) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
-    """ Bulk upsert Teams
+    """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
     (managed-fields semantics). Transactional: all succeed or all fail. Requires an API key with both
@@ -116,12 +104,10 @@ def sync_detailed(
 
     Returns:
         Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
     response = client.get_httpx_client().request(
@@ -130,13 +116,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-
 ) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
-    """ Bulk upsert Teams
+    """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
     (managed-fields semantics). Transactional: all succeed or all fail. Requires an API key with both
@@ -153,22 +139,20 @@ def sync(
 
     Returns:
         BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-body=body,
-
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-
 ) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
-    """ Bulk upsert Teams
+    """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
     (managed-fields semantics). Transactional: all succeed or all fail. Requires an API key with both
@@ -185,27 +169,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-
 ) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
-    """ Bulk upsert Teams
+    """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
     (managed-fields semantics). Transactional: all succeed or all fail. Requires an API key with both
@@ -222,11 +202,11 @@ async def asyncio(
 
     Returns:
         BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            body=body,
+        )
+    ).parsed

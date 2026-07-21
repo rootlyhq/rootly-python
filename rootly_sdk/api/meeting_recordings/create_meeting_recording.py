@@ -17,11 +17,7 @@ def _get_kwargs(
     incident_id: str,
     *,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -31,26 +27,24 @@ def _get_kwargs(
 
     params["platform"] = json_platform
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(incident_id=quote(str(incident_id), safe=""),),
+        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(
+            incident_id=quote(str(incident_id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | MeetingRecordingResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 201:
         response_201 = MeetingRecordingResponse.from_dict(response.json())
-
-
 
         return response_201
 
@@ -64,7 +58,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | MeetingRecordingResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -78,9 +74,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-
 ) -> Response[Any | MeetingRecordingResponse]:
-    """ Create meeting recording
+    """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -96,13 +91,11 @@ def sync_detailed(
 
     Returns:
         Response[Any | MeetingRecordingResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-platform=platform,
-
+        platform=platform,
     )
 
     response = client.get_httpx_client().request(
@@ -111,14 +104,14 @@ platform=platform,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-
 ) -> Any | MeetingRecordingResponse | None:
-    """ Create meeting recording
+    """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -134,24 +127,22 @@ def sync(
 
     Returns:
         Any | MeetingRecordingResponse
-     """
-
+    """
 
     return sync_detailed(
         incident_id=incident_id,
-client=client,
-platform=platform,
-
+        client=client,
+        platform=platform,
     ).parsed
+
 
 async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-
 ) -> Response[Any | MeetingRecordingResponse]:
-    """ Create meeting recording
+    """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -167,29 +158,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | MeetingRecordingResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-platform=platform,
-
+        platform=platform,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-
 ) -> Any | MeetingRecordingResponse | None:
-    """ Create meeting recording
+    """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -205,12 +192,12 @@ async def asyncio(
 
     Returns:
         Any | MeetingRecordingResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        incident_id=incident_id,
-client=client,
-platform=platform,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            incident_id=incident_id,
+            client=client,
+            platform=platform,
+        )
+    ).parsed

@@ -17,27 +17,20 @@ def _get_kwargs(
     catalog_id: str,
     *,
     body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalogs/{catalog_id}/entities/bulk_delete".format(catalog_id=quote(str(catalog_id), safe=""),),
+        "url": "/v1/catalogs/{catalog_id}/entities/bulk_delete".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
     }
 
-    
     if isinstance(body, BulkDestroyCatalogEntitiesType0):
         _kwargs["json"] = body.to_dict()
     else:
         _kwargs["json"] = body.to_dict()
-
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -45,30 +38,26 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkDestroyCatalogEntitiesResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
+
         def _parse_response_422(data: object) -> BulkDestroyCatalogEntitiesResponse | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
-
-
 
                 return response_422_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -76,8 +65,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
             if not isinstance(data, dict):
                 raise TypeError()
             response_422_type_1 = BulkDestroyCatalogEntitiesResponse.from_dict(data)
-
-
 
             return response_422_type_1
 
@@ -91,7 +78,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,9 +94,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-
 ) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
-    """ Bulk delete Catalog Entities
+    """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
@@ -124,13 +112,11 @@ def sync_detailed(
 
     Returns:
         Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -139,14 +125,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-
 ) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
-    """ Bulk delete Catalog Entities
+    """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
@@ -163,24 +149,22 @@ def sync(
 
     Returns:
         BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         catalog_id=catalog_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-
 ) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
-    """ Bulk delete Catalog Entities
+    """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
@@ -197,29 +181,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-
 ) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
-    """ Bulk delete Catalog Entities
+    """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
@@ -236,12 +216,12 @@ async def asyncio(
 
     Returns:
         BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        catalog_id=catalog_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            catalog_id=catalog_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

@@ -13,36 +13,28 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/dashboard_panels/{id}/duplicate".format(id=quote(str(id), safe=""),),
+        "url": "/v1/dashboard_panels/{id}/duplicate".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardPanelResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DashboardPanelResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = DashboardPanelResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
-
-
 
         return response_401
 
@@ -52,7 +44,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[DashboardPanelResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DashboardPanelResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,9 +59,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[DashboardPanelResponse | ErrorsList]:
-    """ Duplicates a dashboard panel
+    """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
 
@@ -80,12 +73,10 @@ def sync_detailed(
 
     Returns:
         Response[DashboardPanelResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +85,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> DashboardPanelResponse | ErrorsList | None:
-    """ Duplicates a dashboard panel
+    """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
 
@@ -113,22 +104,20 @@ def sync(
 
     Returns:
         DashboardPanelResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[DashboardPanelResponse | ErrorsList]:
-    """ Duplicates a dashboard panel
+    """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
 
@@ -141,27 +130,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[DashboardPanelResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> DashboardPanelResponse | ErrorsList | None:
-    """ Duplicates a dashboard panel
+    """Duplicates a dashboard panel
 
      Duplicates a dashboard panel
 
@@ -174,11 +159,11 @@ async def asyncio(
 
     Returns:
         DashboardPanelResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

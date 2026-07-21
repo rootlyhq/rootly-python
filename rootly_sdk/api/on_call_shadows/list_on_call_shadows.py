@@ -16,11 +16,7 @@ def _get_kwargs(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -30,26 +26,22 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{schedule_id}/on_call_shadows".format(schedule_id=quote(str(schedule_id), safe=""),),
+        "url": "/v1/schedules/{schedule_id}/on_call_shadows".format(
+            schedule_id=quote(str(schedule_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> OnCallShadowsList | None:
     if response.status_code == 200:
         response_200 = OnCallShadowsList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -75,9 +67,8 @@ def sync_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[OnCallShadowsList]:
-    """ List On Call Shadows for Shift
+    """List On Call Shadows for Shift
 
      List shadow shifts for schedule
 
@@ -93,15 +84,13 @@ def sync_detailed(
 
     Returns:
         Response[OnCallShadowsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -110,6 +99,7 @@ pagesize=pagesize,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     schedule_id: str,
     *,
@@ -117,9 +107,8 @@ def sync(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> OnCallShadowsList | None:
-    """ List On Call Shadows for Shift
+    """List On Call Shadows for Shift
 
      List shadow shifts for schedule
 
@@ -135,17 +124,16 @@ def sync(
 
     Returns:
         OnCallShadowsList
-     """
-
+    """
 
     return sync_detailed(
         schedule_id=schedule_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     schedule_id: str,
@@ -154,9 +142,8 @@ async def asyncio_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[OnCallShadowsList]:
-    """ List On Call Shadows for Shift
+    """List On Call Shadows for Shift
 
      List shadow shifts for schedule
 
@@ -172,22 +159,19 @@ async def asyncio_detailed(
 
     Returns:
         Response[OnCallShadowsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     schedule_id: str,
@@ -196,9 +180,8 @@ async def asyncio(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> OnCallShadowsList | None:
-    """ List On Call Shadows for Shift
+    """List On Call Shadows for Shift
 
      List shadow shifts for schedule
 
@@ -214,14 +197,14 @@ async def asyncio(
 
     Returns:
         OnCallShadowsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        schedule_id=schedule_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            schedule_id=schedule_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

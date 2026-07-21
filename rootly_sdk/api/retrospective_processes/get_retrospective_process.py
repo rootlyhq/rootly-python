@@ -18,11 +18,7 @@ def _get_kwargs(
     id: str,
     *,
     include: GetRetrospectiveProcessInclude | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -32,33 +28,29 @@ def _get_kwargs(
 
     params["include"] = json_include
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_processes/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/retrospective_processes/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | RetrospectiveProcessResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | RetrospectiveProcessResponse | None:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -68,7 +60,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | RetrospectiveProcessResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | RetrospectiveProcessResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +76,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetRetrospectiveProcessInclude | Unset = UNSET,
-
 ) -> Response[ErrorsList | RetrospectiveProcessResponse]:
-    """ Retrieves a retrospective process
+    """Retrieves a retrospective process
 
      Retrieves a specific retrospective process by id
 
@@ -98,13 +91,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | RetrospectiveProcessResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
     response = client.get_httpx_client().request(
@@ -113,14 +104,14 @@ include=include,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetRetrospectiveProcessInclude | Unset = UNSET,
-
 ) -> ErrorsList | RetrospectiveProcessResponse | None:
-    """ Retrieves a retrospective process
+    """Retrieves a retrospective process
 
      Retrieves a specific retrospective process by id
 
@@ -134,24 +125,22 @@ def sync(
 
     Returns:
         ErrorsList | RetrospectiveProcessResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-include=include,
-
+        client=client,
+        include=include,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetRetrospectiveProcessInclude | Unset = UNSET,
-
 ) -> Response[ErrorsList | RetrospectiveProcessResponse]:
-    """ Retrieves a retrospective process
+    """Retrieves a retrospective process
 
      Retrieves a specific retrospective process by id
 
@@ -165,29 +154,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | RetrospectiveProcessResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetRetrospectiveProcessInclude | Unset = UNSET,
-
 ) -> ErrorsList | RetrospectiveProcessResponse | None:
-    """ Retrieves a retrospective process
+    """Retrieves a retrospective process
 
      Retrieves a specific retrospective process by id
 
@@ -201,12 +186,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | RetrospectiveProcessResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-include=include,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            include=include,
+        )
+    ).parsed

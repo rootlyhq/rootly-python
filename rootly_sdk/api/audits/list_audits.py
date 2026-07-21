@@ -39,11 +39,7 @@ def _get_kwargs(
     filteritem_typein: str | Unset = UNSET,
     filteritem_typenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -103,9 +99,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -113,16 +107,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AuditsList | None:
     if response.status_code == 200:
         response_200 = AuditsList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -172,9 +162,8 @@ def sync_detailed(
     filteritem_typein: str | Unset = UNSET,
     filteritem_typenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[AuditsList]:
-    """ List audits
+    """List audits
 
      List audits
 
@@ -214,39 +203,37 @@ def sync_detailed(
 
     Returns:
         Response[AuditsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filteruser_id=filteruser_id,
-filterapi_key_id=filterapi_key_id,
-filtersource=filtersource,
-filteritem_type=filteritem_type,
-filteruser_ideq=filteruser_ideq,
-filteruser_idnot_eq=filteruser_idnot_eq,
-filteruser_idin=filteruser_idin,
-filteruser_idnot_in=filteruser_idnot_in,
-filterapi_key_ideq=filterapi_key_ideq,
-filterapi_key_idnot_eq=filterapi_key_idnot_eq,
-filterapi_key_idin=filterapi_key_idin,
-filterapi_key_idnot_in=filterapi_key_idnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filteritem_typeeq=filteritem_typeeq,
-filteritem_typenot_eq=filteritem_typenot_eq,
-filteritem_typein=filteritem_typein,
-filteritem_typenot_in=filteritem_typenot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filteruser_id=filteruser_id,
+        filterapi_key_id=filterapi_key_id,
+        filtersource=filtersource,
+        filteritem_type=filteritem_type,
+        filteruser_ideq=filteruser_ideq,
+        filteruser_idnot_eq=filteruser_idnot_eq,
+        filteruser_idin=filteruser_idin,
+        filteruser_idnot_in=filteruser_idnot_in,
+        filterapi_key_ideq=filterapi_key_ideq,
+        filterapi_key_idnot_eq=filterapi_key_idnot_eq,
+        filterapi_key_idin=filterapi_key_idin,
+        filterapi_key_idnot_in=filterapi_key_idnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filteritem_typeeq=filteritem_typeeq,
+        filteritem_typenot_eq=filteritem_typenot_eq,
+        filteritem_typein=filteritem_typein,
+        filteritem_typenot_in=filteritem_typenot_in,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -254,6 +241,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -286,9 +274,8 @@ def sync(
     filteritem_typein: str | Unset = UNSET,
     filteritem_typenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> AuditsList | None:
-    """ List audits
+    """List audits
 
      List audits
 
@@ -328,41 +315,40 @@ def sync(
 
     Returns:
         AuditsList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filteruser_id=filteruser_id,
-filterapi_key_id=filterapi_key_id,
-filtersource=filtersource,
-filteritem_type=filteritem_type,
-filteruser_ideq=filteruser_ideq,
-filteruser_idnot_eq=filteruser_idnot_eq,
-filteruser_idin=filteruser_idin,
-filteruser_idnot_in=filteruser_idnot_in,
-filterapi_key_ideq=filterapi_key_ideq,
-filterapi_key_idnot_eq=filterapi_key_idnot_eq,
-filterapi_key_idin=filterapi_key_idin,
-filterapi_key_idnot_in=filterapi_key_idnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filteritem_typeeq=filteritem_typeeq,
-filteritem_typenot_eq=filteritem_typenot_eq,
-filteritem_typein=filteritem_typein,
-filteritem_typenot_in=filteritem_typenot_in,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filteruser_id=filteruser_id,
+        filterapi_key_id=filterapi_key_id,
+        filtersource=filtersource,
+        filteritem_type=filteritem_type,
+        filteruser_ideq=filteruser_ideq,
+        filteruser_idnot_eq=filteruser_idnot_eq,
+        filteruser_idin=filteruser_idin,
+        filteruser_idnot_in=filteruser_idnot_in,
+        filterapi_key_ideq=filterapi_key_ideq,
+        filterapi_key_idnot_eq=filterapi_key_idnot_eq,
+        filterapi_key_idin=filterapi_key_idin,
+        filterapi_key_idnot_in=filterapi_key_idnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filteritem_typeeq=filteritem_typeeq,
+        filteritem_typenot_eq=filteritem_typenot_eq,
+        filteritem_typein=filteritem_typein,
+        filteritem_typenot_in=filteritem_typenot_in,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -395,9 +381,8 @@ async def asyncio_detailed(
     filteritem_typein: str | Unset = UNSET,
     filteritem_typenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[AuditsList]:
-    """ List audits
+    """List audits
 
      List audits
 
@@ -437,46 +422,43 @@ async def asyncio_detailed(
 
     Returns:
         Response[AuditsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filteruser_id=filteruser_id,
-filterapi_key_id=filterapi_key_id,
-filtersource=filtersource,
-filteritem_type=filteritem_type,
-filteruser_ideq=filteruser_ideq,
-filteruser_idnot_eq=filteruser_idnot_eq,
-filteruser_idin=filteruser_idin,
-filteruser_idnot_in=filteruser_idnot_in,
-filterapi_key_ideq=filterapi_key_ideq,
-filterapi_key_idnot_eq=filterapi_key_idnot_eq,
-filterapi_key_idin=filterapi_key_idin,
-filterapi_key_idnot_in=filterapi_key_idnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filteritem_typeeq=filteritem_typeeq,
-filteritem_typenot_eq=filteritem_typenot_eq,
-filteritem_typein=filteritem_typein,
-filteritem_typenot_in=filteritem_typenot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filteruser_id=filteruser_id,
+        filterapi_key_id=filterapi_key_id,
+        filtersource=filtersource,
+        filteritem_type=filteritem_type,
+        filteruser_ideq=filteruser_ideq,
+        filteruser_idnot_eq=filteruser_idnot_eq,
+        filteruser_idin=filteruser_idin,
+        filteruser_idnot_in=filteruser_idnot_in,
+        filterapi_key_ideq=filterapi_key_ideq,
+        filterapi_key_idnot_eq=filterapi_key_idnot_eq,
+        filterapi_key_idin=filterapi_key_idin,
+        filterapi_key_idnot_in=filterapi_key_idnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filteritem_typeeq=filteritem_typeeq,
+        filteritem_typenot_eq=filteritem_typenot_eq,
+        filteritem_typein=filteritem_typein,
+        filteritem_typenot_in=filteritem_typenot_in,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -509,9 +491,8 @@ async def asyncio(
     filteritem_typein: str | Unset = UNSET,
     filteritem_typenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> AuditsList | None:
-    """ List audits
+    """List audits
 
      List audits
 
@@ -551,38 +532,38 @@ async def asyncio(
 
     Returns:
         AuditsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filteruser_id=filteruser_id,
-filterapi_key_id=filterapi_key_id,
-filtersource=filtersource,
-filteritem_type=filteritem_type,
-filteruser_ideq=filteruser_ideq,
-filteruser_idnot_eq=filteruser_idnot_eq,
-filteruser_idin=filteruser_idin,
-filteruser_idnot_in=filteruser_idnot_in,
-filterapi_key_ideq=filterapi_key_ideq,
-filterapi_key_idnot_eq=filterapi_key_idnot_eq,
-filterapi_key_idin=filterapi_key_idin,
-filterapi_key_idnot_in=filterapi_key_idnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filteritem_typeeq=filteritem_typeeq,
-filteritem_typenot_eq=filteritem_typenot_eq,
-filteritem_typein=filteritem_typein,
-filteritem_typenot_in=filteritem_typenot_in,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filteruser_id=filteruser_id,
+            filterapi_key_id=filterapi_key_id,
+            filtersource=filtersource,
+            filteritem_type=filteritem_type,
+            filteruser_ideq=filteruser_ideq,
+            filteruser_idnot_eq=filteruser_idnot_eq,
+            filteruser_idin=filteruser_idin,
+            filteruser_idnot_in=filteruser_idnot_in,
+            filterapi_key_ideq=filterapi_key_ideq,
+            filterapi_key_idnot_eq=filterapi_key_idnot_eq,
+            filterapi_key_idin=filterapi_key_idin,
+            filterapi_key_idnot_in=filterapi_key_idnot_in,
+            filtersourceeq=filtersourceeq,
+            filtersourcenot_eq=filtersourcenot_eq,
+            filtersourcein=filtersourcein,
+            filtersourcenot_in=filtersourcenot_in,
+            filteritem_typeeq=filteritem_typeeq,
+            filteritem_typenot_eq=filteritem_typenot_eq,
+            filteritem_typein=filteritem_typein,
+            filteritem_typenot_in=filteritem_typenot_in,
+            sort=sort,
+        )
+    ).parsed

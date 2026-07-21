@@ -16,43 +16,35 @@ def _get_kwargs(
     id: str | UUID,
     *,
     period: str,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
     params["period"] = period
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/services/{id}/incidents_chart".format(id=quote(str(id), safe=""),),
+        "url": "/v1/services/{id}/incidents_chart".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | IncidentsChartResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentsChartResponse | None:
     if response.status_code == 200:
         response_200 = IncidentsChartResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -62,7 +54,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | IncidentsChartResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentsChartResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,9 +70,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     period: str,
-
 ) -> Response[ErrorsList | IncidentsChartResponse]:
-    """ Get service incidents chart
+    """Get service incidents chart
 
      Get service incidents chart
 
@@ -92,13 +85,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | IncidentsChartResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-period=period,
-
+        period=period,
     )
 
     response = client.get_httpx_client().request(
@@ -107,14 +98,14 @@ period=period,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     period: str,
-
 ) -> ErrorsList | IncidentsChartResponse | None:
-    """ Get service incidents chart
+    """Get service incidents chart
 
      Get service incidents chart
 
@@ -128,24 +119,22 @@ def sync(
 
     Returns:
         ErrorsList | IncidentsChartResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-period=period,
-
+        client=client,
+        period=period,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     period: str,
-
 ) -> Response[ErrorsList | IncidentsChartResponse]:
-    """ Get service incidents chart
+    """Get service incidents chart
 
      Get service incidents chart
 
@@ -159,29 +148,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | IncidentsChartResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-period=period,
-
+        period=period,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     period: str,
-
 ) -> ErrorsList | IncidentsChartResponse | None:
-    """ Get service incidents chart
+    """Get service incidents chart
 
      Get service incidents chart
 
@@ -195,12 +180,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | IncidentsChartResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-period=period,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            period=period,
+        )
+    ).parsed

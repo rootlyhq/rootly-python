@@ -17,22 +17,17 @@ def _get_kwargs(
     catalog_id: str,
     *,
     body: BulkUpsertCatalogEntities,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalogs/{catalog_id}/entities/bulk_upsert".format(catalog_id=quote(str(catalog_id), safe=""),),
+        "url": "/v1/catalogs/{catalog_id}/entities/bulk_upsert".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -40,30 +35,26 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkUpsertCatalogEntitiesResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
+
         def _parse_response_422(data: object) -> BulkUpsertCatalogEntitiesError | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
-
-
 
                 return response_422_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -71,8 +62,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
             if not isinstance(data, dict):
                 raise TypeError()
             response_422_type_1 = BulkUpsertCatalogEntitiesError.from_dict(data)
-
-
 
             return response_422_type_1
 
@@ -86,7 +75,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -100,9 +91,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-
 ) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
-    """ Bulk upsert Catalog Entities
+    """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
     are written (managed-fields semantics). Transactional: all succeed or all fail.
@@ -117,13 +107,11 @@ def sync_detailed(
 
     Returns:
         Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -132,14 +120,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-
 ) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
-    """ Bulk upsert Catalog Entities
+    """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
     are written (managed-fields semantics). Transactional: all succeed or all fail.
@@ -154,24 +142,22 @@ def sync(
 
     Returns:
         BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         catalog_id=catalog_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-
 ) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
-    """ Bulk upsert Catalog Entities
+    """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
     are written (managed-fields semantics). Transactional: all succeed or all fail.
@@ -186,29 +172,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-
 ) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
-    """ Bulk upsert Catalog Entities
+    """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
     are written (managed-fields semantics). Transactional: all succeed or all fail.
@@ -223,12 +205,12 @@ async def asyncio(
 
     Returns:
         BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        catalog_id=catalog_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            catalog_id=catalog_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

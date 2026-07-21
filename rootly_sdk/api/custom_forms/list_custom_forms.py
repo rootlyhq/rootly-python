@@ -23,11 +23,7 @@ def _get_kwargs(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -53,9 +49,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -63,23 +57,19 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFormList | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CustomFormList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CustomFormList.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
-
-
 
         return response_401
 
@@ -89,7 +79,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CustomFormList | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CustomFormList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -112,9 +104,8 @@ def sync_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[CustomFormList | ErrorsList]:
-    """ List custom forms
+    """List custom forms
 
      List custom forms
 
@@ -137,22 +128,20 @@ def sync_detailed(
 
     Returns:
         Response[CustomFormList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommand=filtercommand,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommand=filtercommand,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -160,6 +149,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -175,9 +165,8 @@ def sync(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> CustomFormList | ErrorsList | None:
-    """ List custom forms
+    """List custom forms
 
      List custom forms
 
@@ -200,24 +189,23 @@ def sync(
 
     Returns:
         CustomFormList | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommand=filtercommand,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommand=filtercommand,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -233,9 +221,8 @@ async def asyncio_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[CustomFormList | ErrorsList]:
-    """ List custom forms
+    """List custom forms
 
      List custom forms
 
@@ -258,29 +245,26 @@ async def asyncio_detailed(
 
     Returns:
         Response[CustomFormList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommand=filtercommand,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommand=filtercommand,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -296,9 +280,8 @@ async def asyncio(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> CustomFormList | ErrorsList | None:
-    """ List custom forms
+    """List custom forms
 
      List custom forms
 
@@ -321,21 +304,21 @@ async def asyncio(
 
     Returns:
         CustomFormList | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommand=filtercommand,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterslug=filterslug,
+            filtercommand=filtercommand,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            sort=sort,
+        )
+    ).parsed

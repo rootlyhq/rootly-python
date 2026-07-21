@@ -14,11 +14,7 @@ def _get_kwargs(
     per_page: int | Unset = UNSET,
     status: str | Unset = UNSET,
     name: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -30,9 +26,7 @@ def _get_kwargs(
 
     params["name"] = name
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -40,9 +34,7 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -71,9 +63,8 @@ def sync_detailed(
     per_page: int | Unset = UNSET,
     status: str | Unset = UNSET,
     name: str | Unset = UNSET,
-
 ) -> Response[Any]:
-    """ List edge connectors
+    """List edge connectors
 
     Args:
         page (int | Unset):
@@ -87,15 +78,13 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         page=page,
-per_page=per_page,
-status=status,
-name=name,
-
+        per_page=per_page,
+        status=status,
+        name=name,
     )
 
     response = client.get_httpx_client().request(
@@ -112,9 +101,8 @@ async def asyncio_detailed(
     per_page: int | Unset = UNSET,
     status: str | Unset = UNSET,
     name: str | Unset = UNSET,
-
 ) -> Response[Any]:
-    """ List edge connectors
+    """List edge connectors
 
     Args:
         page (int | Unset):
@@ -128,20 +116,15 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         page=page,
-per_page=per_page,
-status=status,
-name=name,
-
+        per_page=per_page,
+        status=status,
+        name=name,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

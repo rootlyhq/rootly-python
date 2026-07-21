@@ -51,11 +51,7 @@ def _get_kwargs(
     filterrefsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -139,9 +135,7 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -149,16 +143,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PulseList | None:
     if response.status_code == 200:
         response_200 = PulseList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -220,9 +210,8 @@ def sync_detailed(
     filterrefsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[PulseList]:
-    """ List pulses
+    """List pulses
 
      List pulses
 
@@ -274,51 +263,49 @@ def sync_detailed(
 
     Returns:
         Response[PulseList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filterlabels=filterlabels,
-filterrefs=filterrefs,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-filterrefseq=filterrefseq,
-filterrefsnot_eq=filterrefsnot_eq,
-filterrefsin=filterrefsin,
-filterrefsnot_in=filterrefsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filterlabels=filterlabels,
+        filterrefs=filterrefs,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        filterrefseq=filterrefseq,
+        filterrefsnot_eq=filterrefsnot_eq,
+        filterrefsin=filterrefsin,
+        filterrefsnot_in=filterrefsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -326,6 +313,7 @@ pagesize=pagesize,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -370,9 +358,8 @@ def sync(
     filterrefsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> PulseList | None:
-    """ List pulses
+    """List pulses
 
      List pulses
 
@@ -424,53 +411,52 @@ def sync(
 
     Returns:
         PulseList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filterlabels=filterlabels,
-filterrefs=filterrefs,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-filterrefseq=filterrefseq,
-filterrefsnot_eq=filterrefsnot_eq,
-filterrefsin=filterrefsin,
-filterrefsnot_in=filterrefsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filterlabels=filterlabels,
+        filterrefs=filterrefs,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        filterrefseq=filterrefseq,
+        filterrefsnot_eq=filterrefsnot_eq,
+        filterrefsin=filterrefsin,
+        filterrefsnot_in=filterrefsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -515,9 +501,8 @@ async def asyncio_detailed(
     filterrefsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[PulseList]:
-    """ List pulses
+    """List pulses
 
      List pulses
 
@@ -569,58 +554,55 @@ async def asyncio_detailed(
 
     Returns:
         Response[PulseList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filterlabels=filterlabels,
-filterrefs=filterrefs,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-filterrefseq=filterrefseq,
-filterrefsnot_eq=filterrefsnot_eq,
-filterrefsin=filterrefsin,
-filterrefsnot_in=filterrefsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filterlabels=filterlabels,
+        filterrefs=filterrefs,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        filterrefseq=filterrefseq,
+        filterrefsnot_eq=filterrefsnot_eq,
+        filterrefsin=filterrefsin,
+        filterrefsnot_in=filterrefsnot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -665,9 +647,8 @@ async def asyncio(
     filterrefsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> PulseList | None:
-    """ List pulses
+    """List pulses
 
      List pulses
 
@@ -719,50 +700,50 @@ async def asyncio(
 
     Returns:
         PulseList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filterlabels=filterlabels,
-filterrefs=filterrefs,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-filterrefseq=filterrefseq,
-filterrefsnot_eq=filterrefsnot_eq,
-filterrefsin=filterrefsin,
-filterrefsnot_in=filterrefsnot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            filtersource=filtersource,
+            filterservices=filterservices,
+            filterenvironments=filterenvironments,
+            filterlabels=filterlabels,
+            filterrefs=filterrefs,
+            filterstarted_atgt=filterstarted_atgt,
+            filterstarted_atgte=filterstarted_atgte,
+            filterstarted_atlt=filterstarted_atlt,
+            filterstarted_atlte=filterstarted_atlte,
+            filterended_atgt=filterended_atgt,
+            filterended_atgte=filterended_atgte,
+            filterended_atlt=filterended_atlt,
+            filterended_atlte=filterended_atlte,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filtersourceeq=filtersourceeq,
+            filtersourcenot_eq=filtersourcenot_eq,
+            filtersourcein=filtersourcein,
+            filtersourcenot_in=filtersourcenot_in,
+            filterserviceseq=filterserviceseq,
+            filterservicesnot_eq=filterservicesnot_eq,
+            filterservicesin=filterservicesin,
+            filterservicesnot_in=filterservicesnot_in,
+            filterenvironmentseq=filterenvironmentseq,
+            filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+            filterenvironmentsin=filterenvironmentsin,
+            filterenvironmentsnot_in=filterenvironmentsnot_in,
+            filterlabelseq=filterlabelseq,
+            filterlabelsnot_eq=filterlabelsnot_eq,
+            filterlabelsin=filterlabelsin,
+            filterlabelsnot_in=filterlabelsnot_in,
+            filterrefseq=filterrefseq,
+            filterrefsnot_eq=filterrefsnot_eq,
+            filterrefsin=filterrefsin,
+            filterrefsnot_in=filterrefsnot_in,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

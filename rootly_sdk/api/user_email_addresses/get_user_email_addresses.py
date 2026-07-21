@@ -13,43 +13,33 @@ from ...types import Response
 
 def _get_kwargs(
     user_id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/email_addresses".format(user_id=quote(str(user_id), safe=""),),
+        "url": "/v1/users/{user_id}/email_addresses".format(
+            user_id=quote(str(user_id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | UserEmailAddressList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserEmailAddressList | None:
     if response.status_code == 200:
         response_200 = UserEmailAddressList.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -59,7 +49,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | UserEmailAddressList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserEmailAddressList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,9 +64,8 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | UserEmailAddressList]:
-    """ Retrieves user email addresses
+    """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
 
@@ -87,12 +78,10 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | UserEmailAddressList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         user_id=user_id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -101,13 +90,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | UserEmailAddressList | None:
-    """ Retrieves user email addresses
+    """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
 
@@ -120,22 +109,20 @@ def sync(
 
     Returns:
         ErrorsList | UserEmailAddressList
-     """
-
+    """
 
     return sync_detailed(
         user_id=user_id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | UserEmailAddressList]:
-    """ Retrieves user email addresses
+    """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
 
@@ -148,27 +135,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | UserEmailAddressList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         user_id=user_id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | UserEmailAddressList | None:
-    """ Retrieves user email addresses
+    """Retrieves user email addresses
 
      Retrieves all email addresses for the specified user
 
@@ -181,11 +164,11 @@ async def asyncio(
 
     Returns:
         ErrorsList | UserEmailAddressList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        user_id=user_id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            user_id=user_id,
+            client=client,
+        )
+    ).parsed

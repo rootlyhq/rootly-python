@@ -21,11 +21,7 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -49,9 +45,7 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -59,16 +53,14 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogEntityChecklistList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityChecklistList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityChecklistList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -78,7 +70,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CatalogEntityChecklistList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityChecklistList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -100,9 +94,8 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[CatalogEntityChecklistList]:
-    """ List catalog entity checklists
+    """List catalog entity checklists
 
      List catalog entity checklists
 
@@ -124,21 +117,19 @@ def sync_detailed(
 
     Returns:
         Response[CatalogEntityChecklistList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
-filterauditable_type=filterauditable_type,
-filterauditable_id=filterauditable_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
+        filterauditable_type=filterauditable_type,
+        filterauditable_id=filterauditable_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
     response = client.get_httpx_client().request(
@@ -146,6 +137,7 @@ filtercreated_atlte=filtercreated_atlte,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -160,9 +152,8 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> CatalogEntityChecklistList | None:
-    """ List catalog entity checklists
+    """List catalog entity checklists
 
      List catalog entity checklists
 
@@ -184,23 +175,22 @@ def sync(
 
     Returns:
         CatalogEntityChecklistList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
-filterauditable_type=filterauditable_type,
-filterauditable_id=filterauditable_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
+        filterauditable_type=filterauditable_type,
+        filterauditable_id=filterauditable_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -215,9 +205,8 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[CatalogEntityChecklistList]:
-    """ List catalog entity checklists
+    """List catalog entity checklists
 
      List catalog entity checklists
 
@@ -239,28 +228,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogEntityChecklistList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
-filterauditable_type=filterauditable_type,
-filterauditable_id=filterauditable_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
+        filterauditable_type=filterauditable_type,
+        filterauditable_id=filterauditable_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -275,9 +261,8 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> CatalogEntityChecklistList | None:
-    """ List catalog entity checklists
+    """List catalog entity checklists
 
      List catalog entity checklists
 
@@ -299,20 +284,20 @@ async def asyncio(
 
     Returns:
         CatalogEntityChecklistList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
-filterauditable_type=filterauditable_type,
-filterauditable_id=filterauditable_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterstatus=filterstatus,
+            filtercatalog_checklist_template_id=filtercatalog_checklist_template_id,
+            filterauditable_type=filterauditable_type,
+            filterauditable_id=filterauditable_id,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+        )
+    ).parsed

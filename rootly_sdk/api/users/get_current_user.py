@@ -10,37 +10,26 @@ from ...models.user_response import UserResponse
 from ...types import Response
 
 
-def _get_kwargs(
-    
-) -> dict[str, Any]:
-    
-
-    
-
-    
+def _get_kwargs() -> dict[str, Any]:
 
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/v1/users/me",
     }
 
-
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | UserResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserResponse | None:
     if response.status_code == 200:
         response_200 = UserResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
-
-
 
         return response_401
 
@@ -50,7 +39,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | UserResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,9 +53,8 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | UserResponse]:
-    """ Get current user
+    """Get current user
 
      Get current user
 
@@ -74,12 +64,9 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | UserResponse]
-     """
+    """
 
-
-    kwargs = _get_kwargs(
-        
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -87,12 +74,12 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | UserResponse | None:
-    """ Get current user
+    """Get current user
 
      Get current user
 
@@ -102,20 +89,18 @@ def sync(
 
     Returns:
         ErrorsList | UserResponse
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ErrorsList | UserResponse]:
-    """ Get current user
+    """Get current user
 
      Get current user
 
@@ -125,25 +110,20 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | UserResponse]
-     """
+    """
 
+    kwargs = _get_kwargs()
 
-    kwargs = _get_kwargs(
-        
-    )
-
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
-
 ) -> ErrorsList | UserResponse | None:
-    """ Get current user
+    """Get current user
 
      Get current user
 
@@ -153,10 +133,10 @@ async def asyncio(
 
     Returns:
         ErrorsList | UserResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+        )
+    ).parsed

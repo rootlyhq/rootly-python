@@ -34,11 +34,7 @@ def _get_kwargs(
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -88,9 +84,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -98,16 +92,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FunctionalityList | None:
     if response.status_code == 200:
         response_200 = FunctionalityList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -152,9 +142,8 @@ def sync_detailed(
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[FunctionalityList]:
-    """ List functionalities
+    """List functionalities
 
      List functionalities
 
@@ -189,34 +178,32 @@ def sync_detailed(
 
     Returns:
         Response[FunctionalityList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -224,6 +211,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -251,9 +239,8 @@ def sync(
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> FunctionalityList | None:
-    """ List functionalities
+    """List functionalities
 
      List functionalities
 
@@ -288,36 +275,35 @@ def sync(
 
     Returns:
         FunctionalityList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -345,9 +331,8 @@ async def asyncio_detailed(
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[FunctionalityList]:
-    """ List functionalities
+    """List functionalities
 
      List functionalities
 
@@ -382,41 +367,38 @@ async def asyncio_detailed(
 
     Returns:
         Response[FunctionalityList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filtercortex_id=filtercortex_id,
+        filteropslevel_id=filteropslevel_id,
+        filterexternal_id=filterexternal_id,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -444,9 +426,8 @@ async def asyncio(
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> FunctionalityList | None:
-    """ List functionalities
+    """List functionalities
 
      List functionalities
 
@@ -481,33 +462,33 @@ async def asyncio(
 
     Returns:
         FunctionalityList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filtercortex_id=filtercortex_id,
-filteropslevel_id=filteropslevel_id,
-filterexternal_id=filterexternal_id,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterbackstage_id=filterbackstage_id,
+            filtercortex_id=filtercortex_id,
+            filteropslevel_id=filteropslevel_id,
+            filterexternal_id=filterexternal_id,
+            filterslug=filterslug,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            sort=sort,
+        )
+    ).parsed

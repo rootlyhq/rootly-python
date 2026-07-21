@@ -27,11 +27,7 @@ def _get_kwargs(
     filterslugnot_eq: str | Unset = UNSET,
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -63,26 +59,22 @@ def _get_kwargs(
 
     params["filter[slug][not_in]"] = filterslugnot_in
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/workflows/{workflow_id}/workflow_tasks".format(workflow_id=quote(str(workflow_id), safe=""),),
+        "url": "/v1/workflows/{workflow_id}/workflow_tasks".format(
+            workflow_id=quote(str(workflow_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowTaskList | None:
     if response.status_code == 200:
         response_200 = WorkflowTaskList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -119,9 +111,8 @@ def sync_detailed(
     filterslugnot_eq: str | Unset = UNSET,
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
-
 ) -> Response[WorkflowTaskList]:
-    """ List workflow tasks
+    """List workflow tasks
 
      List workflow tasks
 
@@ -148,26 +139,24 @@ def sync_detailed(
 
     Returns:
         Response[WorkflowTaskList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -175,6 +164,7 @@ filterslugnot_in=filterslugnot_in,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     workflow_id: str,
@@ -194,9 +184,8 @@ def sync(
     filterslugnot_eq: str | Unset = UNSET,
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
-
 ) -> WorkflowTaskList | None:
-    """ List workflow tasks
+    """List workflow tasks
 
      List workflow tasks
 
@@ -223,28 +212,27 @@ def sync(
 
     Returns:
         WorkflowTaskList
-     """
-
+    """
 
     return sync_detailed(
         workflow_id=workflow_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     ).parsed
+
 
 async def asyncio_detailed(
     workflow_id: str,
@@ -264,9 +252,8 @@ async def asyncio_detailed(
     filterslugnot_eq: str | Unset = UNSET,
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
-
 ) -> Response[WorkflowTaskList]:
-    """ List workflow tasks
+    """List workflow tasks
 
      List workflow tasks
 
@@ -293,33 +280,30 @@ async def asyncio_detailed(
 
     Returns:
         Response[WorkflowTaskList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     workflow_id: str,
@@ -339,9 +323,8 @@ async def asyncio(
     filterslugnot_eq: str | Unset = UNSET,
     filterslugin: str | Unset = UNSET,
     filterslugnot_in: str | Unset = UNSET,
-
 ) -> WorkflowTaskList | None:
-    """ List workflow tasks
+    """List workflow tasks
 
      List workflow tasks
 
@@ -368,25 +351,25 @@ async def asyncio(
 
     Returns:
         WorkflowTaskList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        workflow_id=workflow_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            workflow_id=workflow_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterslug=filterslug,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+        )
+    ).parsed

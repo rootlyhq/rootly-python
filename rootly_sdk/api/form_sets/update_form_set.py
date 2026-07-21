@@ -17,22 +17,17 @@ def _get_kwargs(
     id: str | UUID,
     *,
     body: UpdateFormSet,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/form_sets/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/form_sets/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -40,19 +35,16 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | FormSetResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | FormSetResponse | None:
     if response.status_code == 200:
         response_200 = FormSetResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -62,7 +54,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | FormSetResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | FormSetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,9 +70,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateFormSet,
-
 ) -> Response[ErrorsList | FormSetResponse]:
-    """ Update a Form Set
+    """Update a Form Set
 
      Update a specific form_set by id
 
@@ -92,13 +85,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | FormSetResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -107,14 +98,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateFormSet,
-
 ) -> ErrorsList | FormSetResponse | None:
-    """ Update a Form Set
+    """Update a Form Set
 
      Update a specific form_set by id
 
@@ -128,24 +119,22 @@ def sync(
 
     Returns:
         ErrorsList | FormSetResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateFormSet,
-
 ) -> Response[ErrorsList | FormSetResponse]:
-    """ Update a Form Set
+    """Update a Form Set
 
      Update a specific form_set by id
 
@@ -159,29 +148,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | FormSetResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateFormSet,
-
 ) -> ErrorsList | FormSetResponse | None:
-    """ Update a Form Set
+    """Update a Form Set
 
      Update a specific form_set by id
 
@@ -195,12 +180,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | FormSetResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            body=body,
+        )
+    ).parsed

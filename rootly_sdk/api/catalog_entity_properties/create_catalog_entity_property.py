@@ -16,22 +16,17 @@ def _get_kwargs(
     catalog_entity_id: str,
     *,
     body: NewCatalogEntityProperty,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalog_entities/{catalog_entity_id}/properties".format(catalog_entity_id=quote(str(catalog_entity_id), safe=""),),
+        "url": "/v1/catalog_entities/{catalog_entity_id}/properties".format(
+            catalog_entity_id=quote(str(catalog_entity_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,26 +34,21 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogEntityPropertyResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = CatalogEntityPropertyResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
-
-
 
         return response_422
 
@@ -68,7 +58,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +74,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-
 ) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
-    """ Creates a Catalog Entity Property
+    """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
     or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
@@ -104,13 +95,11 @@ def sync_detailed(
 
     Returns:
         Response[CatalogEntityPropertyResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_entity_id=catalog_entity_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -119,14 +108,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-
 ) -> CatalogEntityPropertyResponse | ErrorsList | None:
-    """ Creates a Catalog Entity Property
+    """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
     or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
@@ -146,24 +135,22 @@ def sync(
 
     Returns:
         CatalogEntityPropertyResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         catalog_entity_id=catalog_entity_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-
 ) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
-    """ Creates a Catalog Entity Property
+    """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
     or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
@@ -183,29 +170,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogEntityPropertyResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_entity_id=catalog_entity_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCatalogEntityProperty,
-
 ) -> CatalogEntityPropertyResponse | ErrorsList | None:
-    """ Creates a Catalog Entity Property
+    """Creates a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use the `fields` attribute on catalog entities
     or native catalog endpoints (teams, services, functionalities, incident_types, causes, environments)
@@ -225,12 +208,12 @@ async def asyncio(
 
     Returns:
         CatalogEntityPropertyResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        catalog_entity_id=catalog_entity_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            catalog_entity_id=catalog_entity_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

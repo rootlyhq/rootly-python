@@ -19,11 +19,7 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -43,9 +39,7 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -53,16 +47,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> OnCallPayReportList | None:
     if response.status_code == 200:
         response_200 = OnCallPayReportList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -92,9 +82,8 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[OnCallPayReportList]:
-    """ List On-Call Pay Reports
+    """List On-Call Pay Reports
 
      List on-call pay reports
 
@@ -114,19 +103,17 @@ def sync_detailed(
 
     Returns:
         Response[OnCallPayReportList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
     response = client.get_httpx_client().request(
@@ -134,6 +121,7 @@ filtercreated_atlte=filtercreated_atlte,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -146,9 +134,8 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> OnCallPayReportList | None:
-    """ List On-Call Pay Reports
+    """List On-Call Pay Reports
 
      List on-call pay reports
 
@@ -168,21 +155,20 @@ def sync(
 
     Returns:
         OnCallPayReportList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -195,9 +181,8 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[OnCallPayReportList]:
-    """ List On-Call Pay Reports
+    """List On-Call Pay Reports
 
      List on-call pay reports
 
@@ -217,26 +202,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[OnCallPayReportList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -249,9 +231,8 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> OnCallPayReportList | None:
-    """ List On-Call Pay Reports
+    """List On-Call Pay Reports
 
      List on-call pay reports
 
@@ -271,18 +252,18 @@ async def asyncio(
 
     Returns:
         OnCallPayReportList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterstatus=filterstatus,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterstatus=filterstatus,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+        )
+    ).parsed

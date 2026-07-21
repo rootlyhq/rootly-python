@@ -34,11 +34,7 @@ def _get_kwargs(
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -88,9 +84,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -98,16 +92,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentRoleList | None:
     if response.status_code == 200:
         response_200 = IncidentRoleList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -152,9 +142,8 @@ def sync_detailed(
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[IncidentRoleList]:
-    """ List incident roles
+    """List incident roles
 
      List incident roles
 
@@ -189,34 +178,32 @@ def sync_detailed(
 
     Returns:
         Response[IncidentRoleList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -224,6 +211,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -251,9 +239,8 @@ def sync(
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> IncidentRoleList | None:
-    """ List incident roles
+    """List incident roles
 
      List incident roles
 
@@ -288,36 +275,35 @@ def sync(
 
     Returns:
         IncidentRoleList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -345,9 +331,8 @@ async def asyncio_detailed(
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[IncidentRoleList]:
-    """ List incident roles
+    """List incident roles
 
      List incident roles
 
@@ -382,41 +367,38 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentRoleList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterenabled=filterenabled,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterenabledeq=filterenabledeq,
+        filterenablednot_eq=filterenablednot_eq,
+        filterenabledin=filterenabledin,
+        filterenablednot_in=filterenablednot_in,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -444,9 +426,8 @@ async def asyncio(
     filterenabledin: str | Unset = UNSET,
     filterenablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> IncidentRoleList | None:
-    """ List incident roles
+    """List incident roles
 
      List incident roles
 
@@ -481,33 +462,33 @@ async def asyncio(
 
     Returns:
         IncidentRoleList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterenabled=filterenabled,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filterenabledeq=filterenabledeq,
-filterenablednot_eq=filterenablednot_eq,
-filterenabledin=filterenabledin,
-filterenablednot_in=filterenablednot_in,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filterslug=filterslug,
+            filtername=filtername,
+            filterenabled=filterenabled,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterenabledeq=filterenabledeq,
+            filterenablednot_eq=filterenablednot_eq,
+            filterenabledin=filterenabledin,
+            filterenablednot_in=filterenablednot_in,
+            sort=sort,
+        )
+    ).parsed

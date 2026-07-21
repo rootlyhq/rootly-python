@@ -13,22 +13,16 @@ from ...types import Response
 
 def _get_kwargs(
     id: str | UUID,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalog_checklist_templates/{id}/trigger".format(id=quote(str(id), safe=""),),
+        "url": "/v1/catalog_checklist_templates/{id}/trigger".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
@@ -38,8 +32,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -62,9 +54,8 @@ def sync_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any | ErrorsList]:
-    """ Trigger an audit for a catalog checklist template
+    """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
@@ -77,12 +68,10 @@ def sync_detailed(
 
     Returns:
         Response[Any | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -91,13 +80,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Any | ErrorsList | None:
-    """ Trigger an audit for a catalog checklist template
+    """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
@@ -110,22 +99,20 @@ def sync(
 
     Returns:
         Any | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any | ErrorsList]:
-    """ Trigger an audit for a catalog checklist template
+    """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
@@ -138,27 +125,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Any | ErrorsList | None:
-    """ Trigger an audit for a catalog checklist template
+    """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
@@ -171,11 +154,11 @@ async def asyncio(
 
     Returns:
         Any | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

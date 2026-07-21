@@ -32,11 +32,7 @@ def _get_kwargs(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -86,9 +82,7 @@ def _get_kwargs(
 
     params["filter[name][not_in]"] = filternamenot_in
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -96,16 +90,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowList | None:
     if response.status_code == 200:
         response_200 = WorkflowList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -146,9 +136,8 @@ def sync_detailed(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> Response[WorkflowList]:
-    """ List workflows
+    """List workflows
 
      List workflows
 
@@ -179,30 +168,28 @@ def sync_detailed(
 
     Returns:
         Response[WorkflowList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -210,6 +197,7 @@ filternamenot_in=filternamenot_in,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -233,9 +221,8 @@ def sync(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> WorkflowList | None:
-    """ List workflows
+    """List workflows
 
      List workflows
 
@@ -266,32 +253,31 @@ def sync(
 
     Returns:
         WorkflowList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -315,9 +301,8 @@ async def asyncio_detailed(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> Response[WorkflowList]:
-    """ List workflows
+    """List workflows
 
      List workflows
 
@@ -348,37 +333,34 @@ async def asyncio_detailed(
 
     Returns:
         Response[WorkflowList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -402,9 +384,8 @@ async def asyncio(
     filternamenot_eq: str | Unset = UNSET,
     filternamein: str | Unset = UNSET,
     filternamenot_in: str | Unset = UNSET,
-
 ) -> WorkflowList | None:
-    """ List workflows
+    """List workflows
 
      List workflows
 
@@ -435,29 +416,29 @@ async def asyncio(
 
     Returns:
         WorkflowList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            sort=sort,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterslug=filterslug,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+        )
+    ).parsed

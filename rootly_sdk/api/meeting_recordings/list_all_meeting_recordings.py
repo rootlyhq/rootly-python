@@ -14,11 +14,7 @@ def _get_kwargs(
     status: str | Unset = UNSET,
     platform: str | Unset = UNSET,
     created_by: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -28,9 +24,7 @@ def _get_kwargs(
 
     params["created_by"] = created_by
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -38,16 +32,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MeetingRecordingList | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -57,7 +47,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[MeetingRecordingList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[MeetingRecordingList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,9 +64,8 @@ def sync_detailed(
     status: str | Unset = UNSET,
     platform: str | Unset = UNSET,
     created_by: str | Unset = UNSET,
-
 ) -> Response[MeetingRecordingList]:
-    """ List all meeting recordings
+    """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings
     plus incident-backed recordings the user can access. Supports filtering by status, platform, and
@@ -91,14 +82,12 @@ def sync_detailed(
 
     Returns:
         Response[MeetingRecordingList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         status=status,
-platform=platform,
-created_by=created_by,
-
+        platform=platform,
+        created_by=created_by,
     )
 
     response = client.get_httpx_client().request(
@@ -107,15 +96,15 @@ created_by=created_by,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     status: str | Unset = UNSET,
     platform: str | Unset = UNSET,
     created_by: str | Unset = UNSET,
-
 ) -> MeetingRecordingList | None:
-    """ List all meeting recordings
+    """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings
     plus incident-backed recordings the user can access. Supports filtering by status, platform, and
@@ -132,16 +121,15 @@ def sync(
 
     Returns:
         MeetingRecordingList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-status=status,
-platform=platform,
-created_by=created_by,
-
+        status=status,
+        platform=platform,
+        created_by=created_by,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -149,9 +137,8 @@ async def asyncio_detailed(
     status: str | Unset = UNSET,
     platform: str | Unset = UNSET,
     created_by: str | Unset = UNSET,
-
 ) -> Response[MeetingRecordingList]:
-    """ List all meeting recordings
+    """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings
     plus incident-backed recordings the user can access. Supports filtering by status, platform, and
@@ -168,21 +155,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[MeetingRecordingList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         status=status,
-platform=platform,
-created_by=created_by,
-
+        platform=platform,
+        created_by=created_by,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -190,9 +174,8 @@ async def asyncio(
     status: str | Unset = UNSET,
     platform: str | Unset = UNSET,
     created_by: str | Unset = UNSET,
-
 ) -> MeetingRecordingList | None:
-    """ List all meeting recordings
+    """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings
     plus incident-backed recordings the user can access. Supports filtering by status, platform, and
@@ -209,13 +192,13 @@ async def asyncio(
 
     Returns:
         MeetingRecordingList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-status=status,
-platform=platform,
-created_by=created_by,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            status=status,
+            platform=platform,
+            created_by=created_by,
+        )
+    ).parsed

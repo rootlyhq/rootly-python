@@ -47,11 +47,7 @@ def _get_kwargs(
     filterincident_statusin: str | Unset = UNSET,
     filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -127,9 +123,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -137,16 +131,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentActionItemList | None:
     if response.status_code == 200:
         response_200 = IncidentActionItemList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -156,7 +146,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IncidentActionItemList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[IncidentActionItemList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -204,9 +196,8 @@ def sync_detailed(
     filterincident_statusin: str | Unset = UNSET,
     filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[IncidentActionItemList]:
-    """ List all action items for an organization
+    """List all action items for an organization
 
      List all action items for an organization
 
@@ -254,47 +245,45 @@ def sync_detailed(
 
     Returns:
         Response[IncidentActionItemList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filterpriority=filterpriority,
-filterstatus=filterstatus,
-filterincident_status=filterincident_status,
-filterincident_created_atgt=filterincident_created_atgt,
-filterincident_created_atgte=filterincident_created_atgte,
-filterincident_created_atlt=filterincident_created_atlt,
-filterincident_created_atlte=filterincident_created_atlte,
-filterdue_dategt=filterdue_dategt,
-filterdue_dategte=filterdue_dategte,
-filterdue_datelt=filterdue_datelt,
-filterdue_datelte=filterdue_datelte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterpriorityeq=filterpriorityeq,
-filterprioritynot_eq=filterprioritynot_eq,
-filterpriorityin=filterpriorityin,
-filterprioritynot_in=filterprioritynot_in,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filterincident_statuseq=filterincident_statuseq,
-filterincident_statusnot_eq=filterincident_statusnot_eq,
-filterincident_statusin=filterincident_statusin,
-filterincident_statusnot_in=filterincident_statusnot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filterpriority=filterpriority,
+        filterstatus=filterstatus,
+        filterincident_status=filterincident_status,
+        filterincident_created_atgt=filterincident_created_atgt,
+        filterincident_created_atgte=filterincident_created_atgte,
+        filterincident_created_atlt=filterincident_created_atlt,
+        filterincident_created_atlte=filterincident_created_atlte,
+        filterdue_dategt=filterdue_dategt,
+        filterdue_dategte=filterdue_dategte,
+        filterdue_datelt=filterdue_datelt,
+        filterdue_datelte=filterdue_datelte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -302,6 +291,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -342,9 +332,8 @@ def sync(
     filterincident_statusin: str | Unset = UNSET,
     filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> IncidentActionItemList | None:
-    """ List all action items for an organization
+    """List all action items for an organization
 
      List all action items for an organization
 
@@ -392,49 +381,48 @@ def sync(
 
     Returns:
         IncidentActionItemList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filterpriority=filterpriority,
-filterstatus=filterstatus,
-filterincident_status=filterincident_status,
-filterincident_created_atgt=filterincident_created_atgt,
-filterincident_created_atgte=filterincident_created_atgte,
-filterincident_created_atlt=filterincident_created_atlt,
-filterincident_created_atlte=filterincident_created_atlte,
-filterdue_dategt=filterdue_dategt,
-filterdue_dategte=filterdue_dategte,
-filterdue_datelt=filterdue_datelt,
-filterdue_datelte=filterdue_datelte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterpriorityeq=filterpriorityeq,
-filterprioritynot_eq=filterprioritynot_eq,
-filterpriorityin=filterpriorityin,
-filterprioritynot_in=filterprioritynot_in,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filterincident_statuseq=filterincident_statuseq,
-filterincident_statusnot_eq=filterincident_statusnot_eq,
-filterincident_statusin=filterincident_statusin,
-filterincident_statusnot_in=filterincident_statusnot_in,
-sort=sort,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filterpriority=filterpriority,
+        filterstatus=filterstatus,
+        filterincident_status=filterincident_status,
+        filterincident_created_atgt=filterincident_created_atgt,
+        filterincident_created_atgte=filterincident_created_atgte,
+        filterincident_created_atlt=filterincident_created_atlt,
+        filterincident_created_atlte=filterincident_created_atlte,
+        filterdue_dategt=filterdue_dategt,
+        filterdue_dategte=filterdue_dategte,
+        filterdue_datelt=filterdue_datelt,
+        filterdue_datelte=filterdue_datelte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -475,9 +463,8 @@ async def asyncio_detailed(
     filterincident_statusin: str | Unset = UNSET,
     filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[IncidentActionItemList]:
-    """ List all action items for an organization
+    """List all action items for an organization
 
      List all action items for an organization
 
@@ -525,54 +512,51 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentActionItemList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filterpriority=filterpriority,
-filterstatus=filterstatus,
-filterincident_status=filterincident_status,
-filterincident_created_atgt=filterincident_created_atgt,
-filterincident_created_atgte=filterincident_created_atgte,
-filterincident_created_atlt=filterincident_created_atlt,
-filterincident_created_atlte=filterincident_created_atlte,
-filterdue_dategt=filterdue_dategt,
-filterdue_dategte=filterdue_dategte,
-filterdue_datelt=filterdue_datelt,
-filterdue_datelte=filterdue_datelte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterpriorityeq=filterpriorityeq,
-filterprioritynot_eq=filterprioritynot_eq,
-filterpriorityin=filterpriorityin,
-filterprioritynot_in=filterprioritynot_in,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filterincident_statuseq=filterincident_statuseq,
-filterincident_statusnot_eq=filterincident_statusnot_eq,
-filterincident_statusin=filterincident_statusin,
-filterincident_statusnot_in=filterincident_statusnot_in,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterkind=filterkind,
+        filterpriority=filterpriority,
+        filterstatus=filterstatus,
+        filterincident_status=filterincident_status,
+        filterincident_created_atgt=filterincident_created_atgt,
+        filterincident_created_atgte=filterincident_created_atgte,
+        filterincident_created_atlt=filterincident_created_atlt,
+        filterincident_created_atlte=filterincident_created_atlte,
+        filterdue_dategt=filterdue_dategt,
+        filterdue_dategte=filterdue_dategte,
+        filterdue_datelt=filterdue_datelt,
+        filterdue_datelte=filterdue_datelte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -613,9 +597,8 @@ async def asyncio(
     filterincident_statusin: str | Unset = UNSET,
     filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> IncidentActionItemList | None:
-    """ List all action items for an organization
+    """List all action items for an organization
 
      List all action items for an organization
 
@@ -663,46 +646,46 @@ async def asyncio(
 
     Returns:
         IncidentActionItemList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterkind=filterkind,
-filterpriority=filterpriority,
-filterstatus=filterstatus,
-filterincident_status=filterincident_status,
-filterincident_created_atgt=filterincident_created_atgt,
-filterincident_created_atgte=filterincident_created_atgte,
-filterincident_created_atlt=filterincident_created_atlt,
-filterincident_created_atlte=filterincident_created_atlte,
-filterdue_dategt=filterdue_dategt,
-filterdue_dategte=filterdue_dategte,
-filterdue_datelt=filterdue_datelt,
-filterdue_datelte=filterdue_datelte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterkindeq=filterkindeq,
-filterkindnot_eq=filterkindnot_eq,
-filterkindin=filterkindin,
-filterkindnot_in=filterkindnot_in,
-filterpriorityeq=filterpriorityeq,
-filterprioritynot_eq=filterprioritynot_eq,
-filterpriorityin=filterpriorityin,
-filterprioritynot_in=filterprioritynot_in,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filterincident_statuseq=filterincident_statuseq,
-filterincident_statusnot_eq=filterincident_statusnot_eq,
-filterincident_statusin=filterincident_statusin,
-filterincident_statusnot_in=filterincident_statusnot_in,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterkind=filterkind,
+            filterpriority=filterpriority,
+            filterstatus=filterstatus,
+            filterincident_status=filterincident_status,
+            filterincident_created_atgt=filterincident_created_atgt,
+            filterincident_created_atgte=filterincident_created_atgte,
+            filterincident_created_atlt=filterincident_created_atlt,
+            filterincident_created_atlte=filterincident_created_atlte,
+            filterdue_dategt=filterdue_dategt,
+            filterdue_dategte=filterdue_dategte,
+            filterdue_datelt=filterdue_datelt,
+            filterdue_datelte=filterdue_datelte,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterkindeq=filterkindeq,
+            filterkindnot_eq=filterkindnot_eq,
+            filterkindin=filterkindin,
+            filterkindnot_in=filterkindnot_in,
+            filterpriorityeq=filterpriorityeq,
+            filterprioritynot_eq=filterprioritynot_eq,
+            filterpriorityin=filterpriorityin,
+            filterprioritynot_in=filterprioritynot_in,
+            filterstatuseq=filterstatuseq,
+            filterstatusnot_eq=filterstatusnot_eq,
+            filterstatusin=filterstatusin,
+            filterstatusnot_in=filterstatusnot_in,
+            filterincident_statuseq=filterincident_statuseq,
+            filterincident_statusnot_eq=filterincident_statusnot_eq,
+            filterincident_statusin=filterincident_statusin,
+            filterincident_statusnot_in=filterincident_statusnot_in,
+            sort=sort,
+        )
+    ).parsed

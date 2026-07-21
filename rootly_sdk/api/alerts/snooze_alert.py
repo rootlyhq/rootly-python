@@ -16,22 +16,17 @@ def _get_kwargs(
     id: str,
     *,
     body: SnoozeAlert,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/alerts/{id}/snooze".format(id=quote(str(id), safe=""),),
+        "url": "/v1/alerts/{id}/snooze".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,33 +34,26 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 400:
         response_400 = ErrorsList.from_dict(response.json())
 
-
-
         return response_400
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
 
-
-
         return response_404
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
-
-
 
         return response_422
 
@@ -75,7 +63,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,9 +79,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: SnoozeAlert,
-
 ) -> Response[AlertResponse | ErrorsList]:
-    """ Snoozes an alert
+    """Snoozes an alert
 
      Snoozes a specific alert by id, extending the acknowledgment timeout
 
@@ -105,13 +94,11 @@ def sync_detailed(
 
     Returns:
         Response[AlertResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -120,14 +107,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     body: SnoozeAlert,
-
 ) -> AlertResponse | ErrorsList | None:
-    """ Snoozes an alert
+    """Snoozes an alert
 
      Snoozes a specific alert by id, extending the acknowledgment timeout
 
@@ -141,24 +128,22 @@ def sync(
 
     Returns:
         AlertResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     body: SnoozeAlert,
-
 ) -> Response[AlertResponse | ErrorsList]:
-    """ Snoozes an alert
+    """Snoozes an alert
 
      Snoozes a specific alert by id, extending the acknowledgment timeout
 
@@ -172,29 +157,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     body: SnoozeAlert,
-
 ) -> AlertResponse | ErrorsList | None:
-    """ Snoozes an alert
+    """Snoozes an alert
 
      Snoozes a specific alert by id, extending the acknowledgment timeout
 
@@ -208,12 +189,12 @@ async def asyncio(
 
     Returns:
         AlertResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            body=body,
+        )
+    ).parsed

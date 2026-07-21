@@ -24,11 +24,7 @@ def _get_kwargs(
     filternamenot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -58,9 +54,7 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -68,16 +62,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ScheduleList | None:
     if response.status_code == 200:
         response_200 = ScheduleList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -112,9 +102,8 @@ def sync_detailed(
     filternamenot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[ScheduleList]:
-    """ List schedules
+    """List schedules
 
      List schedules
 
@@ -139,24 +128,22 @@ def sync_detailed(
 
     Returns:
         Response[ScheduleList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -164,6 +151,7 @@ pagesize=pagesize,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -181,9 +169,8 @@ def sync(
     filternamenot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> ScheduleList | None:
-    """ List schedules
+    """List schedules
 
      List schedules
 
@@ -208,26 +195,25 @@ def sync(
 
     Returns:
         ScheduleList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -245,9 +231,8 @@ async def asyncio_detailed(
     filternamenot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[ScheduleList]:
-    """ List schedules
+    """List schedules
 
      List schedules
 
@@ -272,31 +257,28 @@ async def asyncio_detailed(
 
     Returns:
         Response[ScheduleList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -314,9 +296,8 @@ async def asyncio(
     filternamenot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> ScheduleList | None:
-    """ List schedules
+    """List schedules
 
      List schedules
 
@@ -341,23 +322,23 @@ async def asyncio(
 
     Returns:
         ScheduleList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-filtersearch=filtersearch,
-filtername=filtername,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

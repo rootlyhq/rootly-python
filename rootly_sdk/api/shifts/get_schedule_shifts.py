@@ -16,11 +16,7 @@ def _get_kwargs(
     *,
     to: str | Unset = UNSET,
     from_: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -28,33 +24,27 @@ def _get_kwargs(
 
     params["from"] = from_
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{id}/shifts".format(id=quote(str(id), safe=""),),
+        "url": "/v1/schedules/{id}/shifts".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | ShiftList | None:
     if response.status_code == 200:
         response_200 = ShiftList.from_dict(response.json())
 
-
-
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -64,7 +54,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | ShiftList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ShiftList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,9 +71,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     to: str | Unset = UNSET,
     from_: str | Unset = UNSET,
-
 ) -> Response[ErrorsList | ShiftList]:
-    """ Retrieves a schedule shifts
+    """Retrieves a schedule shifts
 
      Retrieves schedule shifts
 
@@ -96,14 +87,12 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | ShiftList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-to=to,
-from_=from_,
-
+        to=to,
+        from_=from_,
     )
 
     response = client.get_httpx_client().request(
@@ -112,15 +101,15 @@ from_=from_,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     to: str | Unset = UNSET,
     from_: str | Unset = UNSET,
-
 ) -> ErrorsList | ShiftList | None:
-    """ Retrieves a schedule shifts
+    """Retrieves a schedule shifts
 
      Retrieves schedule shifts
 
@@ -135,16 +124,15 @@ def sync(
 
     Returns:
         ErrorsList | ShiftList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-to=to,
-from_=from_,
-
+        client=client,
+        to=to,
+        from_=from_,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
@@ -152,9 +140,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     to: str | Unset = UNSET,
     from_: str | Unset = UNSET,
-
 ) -> Response[ErrorsList | ShiftList]:
-    """ Retrieves a schedule shifts
+    """Retrieves a schedule shifts
 
      Retrieves schedule shifts
 
@@ -169,21 +156,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | ShiftList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-to=to,
-from_=from_,
-
+        to=to,
+        from_=from_,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
@@ -191,9 +175,8 @@ async def asyncio(
     client: AuthenticatedClient,
     to: str | Unset = UNSET,
     from_: str | Unset = UNSET,
-
 ) -> ErrorsList | ShiftList | None:
-    """ Retrieves a schedule shifts
+    """Retrieves a schedule shifts
 
      Retrieves schedule shifts
 
@@ -208,13 +191,13 @@ async def asyncio(
 
     Returns:
         ErrorsList | ShiftList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-to=to,
-from_=from_,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            to=to,
+            from_=from_,
+        )
+    ).parsed

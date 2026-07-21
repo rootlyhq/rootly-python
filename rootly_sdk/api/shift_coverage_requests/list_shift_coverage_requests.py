@@ -12,29 +12,23 @@ from ...types import Response
 
 def _get_kwargs(
     schedule_id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{schedule_id}/shift_coverage_requests".format(schedule_id=quote(str(schedule_id), safe=""),),
+        "url": "/v1/schedules/{schedule_id}/shift_coverage_requests".format(
+            schedule_id=quote(str(schedule_id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ShiftCoverageRequestList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ShiftCoverageRequestList | None:
     if response.status_code == 200:
         response_200 = ShiftCoverageRequestList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -44,7 +38,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ShiftCoverageRequestList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ShiftCoverageRequestList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,9 +53,8 @@ def sync_detailed(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ShiftCoverageRequestList]:
-    """ list shift coverage requests
+    """list shift coverage requests
 
      List active shift coverage requests for a schedule.
 
@@ -72,12 +67,10 @@ def sync_detailed(
 
     Returns:
         Response[ShiftCoverageRequestList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -86,13 +79,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ShiftCoverageRequestList | None:
-    """ list shift coverage requests
+    """list shift coverage requests
 
      List active shift coverage requests for a schedule.
 
@@ -105,22 +98,20 @@ def sync(
 
     Returns:
         ShiftCoverageRequestList
-     """
-
+    """
 
     return sync_detailed(
         schedule_id=schedule_id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[ShiftCoverageRequestList]:
-    """ list shift coverage requests
+    """list shift coverage requests
 
      List active shift coverage requests for a schedule.
 
@@ -133,27 +124,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[ShiftCoverageRequestList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> ShiftCoverageRequestList | None:
-    """ list shift coverage requests
+    """list shift coverage requests
 
      List active shift coverage requests for a schedule.
 
@@ -166,11 +153,11 @@ async def asyncio(
 
     Returns:
         ShiftCoverageRequestList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        schedule_id=schedule_id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            schedule_id=schedule_id,
+            client=client,
+        )
+    ).parsed

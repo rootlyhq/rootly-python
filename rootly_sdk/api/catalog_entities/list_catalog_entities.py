@@ -41,11 +41,7 @@ def _get_kwargs(
     filtermanaged_bynot_eq: str | Unset = UNSET,
     filtermanaged_byin: str | Unset = UNSET,
     filtermanaged_bynot_in: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -109,26 +105,22 @@ def _get_kwargs(
 
     params["filter[managed_by][not_in]"] = filtermanaged_bynot_in
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalogs/{catalog_id}/entities".format(catalog_id=quote(str(catalog_id), safe=""),),
+        "url": "/v1/catalogs/{catalog_id}/entities".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogEntityList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -177,9 +169,8 @@ def sync_detailed(
     filtermanaged_bynot_eq: str | Unset = UNSET,
     filtermanaged_byin: str | Unset = UNSET,
     filtermanaged_bynot_in: str | Unset = UNSET,
-
 ) -> Response[CatalogEntityList]:
-    """ List Catalog Entities
+    """List Catalog Entities
 
      List Catalog Entities
 
@@ -218,38 +209,36 @@ def sync_detailed(
 
     Returns:
         Response[CatalogEntityList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filterexternal_id=filterexternal_id,
-filtermanaged_by=filtermanaged_by,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filtermanaged_byeq=filtermanaged_byeq,
-filtermanaged_bynot_eq=filtermanaged_bynot_eq,
-filtermanaged_byin=filtermanaged_byin,
-filtermanaged_bynot_in=filtermanaged_bynot_in,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filterexternal_id=filterexternal_id,
+        filtermanaged_by=filtermanaged_by,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filtermanaged_byeq=filtermanaged_byeq,
+        filtermanaged_bynot_eq=filtermanaged_bynot_eq,
+        filtermanaged_byin=filtermanaged_byin,
+        filtermanaged_bynot_in=filtermanaged_bynot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -257,6 +246,7 @@ filtermanaged_bynot_in=filtermanaged_bynot_in,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     catalog_id: str,
@@ -288,9 +278,8 @@ def sync(
     filtermanaged_bynot_eq: str | Unset = UNSET,
     filtermanaged_byin: str | Unset = UNSET,
     filtermanaged_bynot_in: str | Unset = UNSET,
-
 ) -> CatalogEntityList | None:
-    """ List Catalog Entities
+    """List Catalog Entities
 
      List Catalog Entities
 
@@ -329,40 +318,39 @@ def sync(
 
     Returns:
         CatalogEntityList
-     """
-
+    """
 
     return sync_detailed(
         catalog_id=catalog_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filterexternal_id=filterexternal_id,
-filtermanaged_by=filtermanaged_by,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filtermanaged_byeq=filtermanaged_byeq,
-filtermanaged_bynot_eq=filtermanaged_bynot_eq,
-filtermanaged_byin=filtermanaged_byin,
-filtermanaged_bynot_in=filtermanaged_bynot_in,
-
+        client=client,
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filterexternal_id=filterexternal_id,
+        filtermanaged_by=filtermanaged_by,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filtermanaged_byeq=filtermanaged_byeq,
+        filtermanaged_bynot_eq=filtermanaged_bynot_eq,
+        filtermanaged_byin=filtermanaged_byin,
+        filtermanaged_bynot_in=filtermanaged_bynot_in,
     ).parsed
+
 
 async def asyncio_detailed(
     catalog_id: str,
@@ -394,9 +382,8 @@ async def asyncio_detailed(
     filtermanaged_bynot_eq: str | Unset = UNSET,
     filtermanaged_byin: str | Unset = UNSET,
     filtermanaged_bynot_in: str | Unset = UNSET,
-
 ) -> Response[CatalogEntityList]:
-    """ List Catalog Entities
+    """List Catalog Entities
 
      List Catalog Entities
 
@@ -435,45 +422,42 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogEntityList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filterexternal_id=filterexternal_id,
-filtermanaged_by=filtermanaged_by,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filtermanaged_byeq=filtermanaged_byeq,
-filtermanaged_bynot_eq=filtermanaged_bynot_eq,
-filtermanaged_byin=filtermanaged_byin,
-filtermanaged_bynot_in=filtermanaged_bynot_in,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filterslug=filterslug,
+        filtername=filtername,
+        filterbackstage_id=filterbackstage_id,
+        filterexternal_id=filterexternal_id,
+        filtermanaged_by=filtermanaged_by,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filtermanaged_byeq=filtermanaged_byeq,
+        filtermanaged_bynot_eq=filtermanaged_bynot_eq,
+        filtermanaged_byin=filtermanaged_byin,
+        filtermanaged_bynot_in=filtermanaged_bynot_in,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     catalog_id: str,
@@ -505,9 +489,8 @@ async def asyncio(
     filtermanaged_bynot_eq: str | Unset = UNSET,
     filtermanaged_byin: str | Unset = UNSET,
     filtermanaged_bynot_in: str | Unset = UNSET,
-
 ) -> CatalogEntityList | None:
-    """ List Catalog Entities
+    """List Catalog Entities
 
      List Catalog Entities
 
@@ -546,37 +529,37 @@ async def asyncio(
 
     Returns:
         CatalogEntityList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        catalog_id=catalog_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filterslug=filterslug,
-filtername=filtername,
-filterbackstage_id=filterbackstage_id,
-filterexternal_id=filterexternal_id,
-filtermanaged_by=filtermanaged_by,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterslugeq=filterslugeq,
-filterslugnot_eq=filterslugnot_eq,
-filterslugin=filterslugin,
-filterslugnot_in=filterslugnot_in,
-filternameeq=filternameeq,
-filternamenot_eq=filternamenot_eq,
-filternamein=filternamein,
-filternamenot_in=filternamenot_in,
-filtermanaged_byeq=filtermanaged_byeq,
-filtermanaged_bynot_eq=filtermanaged_bynot_eq,
-filtermanaged_byin=filtermanaged_byin,
-filtermanaged_bynot_in=filtermanaged_bynot_in,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            catalog_id=catalog_id,
+            client=client,
+            include=include,
+            sort=sort,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filterslug=filterslug,
+            filtername=filtername,
+            filterbackstage_id=filterbackstage_id,
+            filterexternal_id=filterexternal_id,
+            filtermanaged_by=filtermanaged_by,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filtermanaged_byeq=filtermanaged_byeq,
+            filtermanaged_bynot_eq=filtermanaged_bynot_eq,
+            filtermanaged_byin=filtermanaged_byin,
+            filtermanaged_bynot_in=filtermanaged_bynot_in,
+        )
+    ).parsed

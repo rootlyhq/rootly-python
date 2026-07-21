@@ -15,27 +15,18 @@ from ...types import Response
 def _get_kwargs(
     *,
     body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
-
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/v1/teams/bulk_delete",
     }
 
-    
     if isinstance(body, BulkDestroyTeamsType0):
         _kwargs["json"] = body.to_dict()
     else:
         _kwargs["json"] = body.to_dict()
-
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -43,30 +34,26 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkDestroyTeamsResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
+
         def _parse_response_422(data: object) -> BulkDestroyTeamsResponse | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
-
-
 
                 return response_422_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
@@ -74,8 +61,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
             if not isinstance(data, dict):
                 raise TypeError()
             response_422_type_1 = BulkDestroyTeamsResponse.from_dict(data)
-
-
 
             return response_422_type_1
 
@@ -89,7 +74,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -102,9 +89,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-
 ) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
-    """ Bulk delete Teams
+    """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
@@ -119,12 +105,10 @@ def sync_detailed(
 
     Returns:
         Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
     response = client.get_httpx_client().request(
@@ -133,13 +117,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-
 ) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
-    """ Bulk delete Teams
+    """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
@@ -154,22 +138,20 @@ def sync(
 
     Returns:
         BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-body=body,
-
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-
 ) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
-    """ Bulk delete Teams
+    """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
@@ -184,27 +166,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-
 ) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
-    """ Bulk delete Teams
+    """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
@@ -219,11 +197,11 @@ async def asyncio(
 
     Returns:
         BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            body=body,
+        )
+    ).parsed

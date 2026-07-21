@@ -15,11 +15,7 @@ def _get_kwargs(
     id: str,
     *,
     include: GetMeetingRecordingInclude | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -29,26 +25,24 @@ def _get_kwargs(
 
     params["include"] = json_include
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/meeting_recordings/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/meeting_recordings/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | MeetingRecordingResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingResponse.from_dict(response.json())
-
-
 
         return response_200
 
@@ -62,7 +56,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | MeetingRecordingResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,9 +72,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetMeetingRecordingInclude | Unset = UNSET,
-
 ) -> Response[Any | MeetingRecordingResponse]:
-    """ Get a meeting recording
+    """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
     count, and transcript summary.
@@ -93,13 +88,11 @@ def sync_detailed(
 
     Returns:
         Response[Any | MeetingRecordingResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
     response = client.get_httpx_client().request(
@@ -108,14 +101,14 @@ include=include,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetMeetingRecordingInclude | Unset = UNSET,
-
 ) -> Any | MeetingRecordingResponse | None:
-    """ Get a meeting recording
+    """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
     count, and transcript summary.
@@ -130,24 +123,22 @@ def sync(
 
     Returns:
         Any | MeetingRecordingResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-include=include,
-
+        client=client,
+        include=include,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetMeetingRecordingInclude | Unset = UNSET,
-
 ) -> Response[Any | MeetingRecordingResponse]:
-    """ Get a meeting recording
+    """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
     count, and transcript summary.
@@ -162,29 +153,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | MeetingRecordingResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetMeetingRecordingInclude | Unset = UNSET,
-
 ) -> Any | MeetingRecordingResponse | None:
-    """ Get a meeting recording
+    """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
     count, and transcript summary.
@@ -199,12 +186,12 @@ async def asyncio(
 
     Returns:
         Any | MeetingRecordingResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-include=include,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            include=include,
+        )
+    ).parsed

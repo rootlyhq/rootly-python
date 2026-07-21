@@ -13,24 +13,16 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     body: StartSessionRequest | Unset = UNSET,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
-
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": "/v1/meeting_recordings/start_session",
     }
 
-    
     if not isinstance(body, Unset):
         _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -38,12 +30,11 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | StartSessionResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | StartSessionResponse | None:
     if response.status_code == 201:
         response_201 = StartSessionResponse.from_dict(response.json())
-
-
 
         return response_201
 
@@ -57,7 +48,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | StartSessionResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | StartSessionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,9 +63,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: StartSessionRequest | Unset = UNSET,
-
 ) -> Response[Any | StartSessionResponse]:
-    """ Start a recording session
+    """Start a recording session
 
      Start a new desktop recording session. The server creates a recording record and returns a stream
     token the desktop client uses to send audio. No provider-specific configuration is needed from the
@@ -87,12 +79,10 @@ def sync_detailed(
 
     Returns:
         Response[Any | StartSessionResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
     response = client.get_httpx_client().request(
@@ -101,13 +91,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     body: StartSessionRequest | Unset = UNSET,
-
 ) -> Any | StartSessionResponse | None:
-    """ Start a recording session
+    """Start a recording session
 
      Start a new desktop recording session. The server creates a recording record and returns a stream
     token the desktop client uses to send audio. No provider-specific configuration is needed from the
@@ -122,22 +112,20 @@ def sync(
 
     Returns:
         Any | StartSessionResponse
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-body=body,
-
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: StartSessionRequest | Unset = UNSET,
-
 ) -> Response[Any | StartSessionResponse]:
-    """ Start a recording session
+    """Start a recording session
 
      Start a new desktop recording session. The server creates a recording record and returns a stream
     token the desktop client uses to send audio. No provider-specific configuration is needed from the
@@ -152,27 +140,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | StartSessionResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         body=body,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
     body: StartSessionRequest | Unset = UNSET,
-
 ) -> Any | StartSessionResponse | None:
-    """ Start a recording session
+    """Start a recording session
 
      Start a new desktop recording session. The server creates a recording record and returns a stream
     token the desktop client uses to send audio. No provider-specific configuration is needed from the
@@ -187,11 +171,11 @@ async def asyncio(
 
     Returns:
         Any | StartSessionResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            body=body,
+        )
+    ).parsed

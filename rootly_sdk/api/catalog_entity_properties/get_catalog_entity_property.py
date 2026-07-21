@@ -18,11 +18,7 @@ def _get_kwargs(
     id: str,
     *,
     include: GetCatalogEntityPropertyInclude | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -32,33 +28,29 @@ def _get_kwargs(
 
     params["include"] = json_include
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalog_entity_properties/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/catalog_entity_properties/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogEntityPropertyResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityPropertyResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -68,7 +60,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +76,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityPropertyInclude | Unset = UNSET,
-
 ) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
-    """ Retrieves a Catalog Entity Property
+    """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
     native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
@@ -102,13 +95,11 @@ def sync_detailed(
 
     Returns:
         Response[CatalogEntityPropertyResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
     response = client.get_httpx_client().request(
@@ -117,14 +108,14 @@ include=include,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityPropertyInclude | Unset = UNSET,
-
 ) -> CatalogEntityPropertyResponse | ErrorsList | None:
-    """ Retrieves a Catalog Entity Property
+    """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
     native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
@@ -142,24 +133,22 @@ def sync(
 
     Returns:
         CatalogEntityPropertyResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-include=include,
-
+        client=client,
+        include=include,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityPropertyInclude | Unset = UNSET,
-
 ) -> Response[CatalogEntityPropertyResponse | ErrorsList]:
-    """ Retrieves a Catalog Entity Property
+    """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
     native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
@@ -177,29 +166,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogEntityPropertyResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-include=include,
-
+        include=include,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityPropertyInclude | Unset = UNSET,
-
 ) -> CatalogEntityPropertyResponse | ErrorsList | None:
-    """ Retrieves a Catalog Entity Property
+    """Retrieves a Catalog Entity Property
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
     native catalog endpoints (teams, services, functionalities, incident_types, causes, environments) to
@@ -217,12 +202,12 @@ async def asyncio(
 
     Returns:
         CatalogEntityPropertyResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-include=include,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            include=include,
+        )
+    ).parsed

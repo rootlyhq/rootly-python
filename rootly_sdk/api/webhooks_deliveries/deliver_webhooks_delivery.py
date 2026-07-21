@@ -12,29 +12,23 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/webhooks/deliveries/{id}/deliver".format(id=quote(str(id), safe=""),),
+        "url": "/v1/webhooks/deliveries/{id}/deliver".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WebhooksDeliveryResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> WebhooksDeliveryResponse | None:
     if response.status_code == 200:
         response_200 = WebhooksDeliveryResponse.from_dict(response.json())
-
-
 
         return response_200
 
@@ -44,7 +38,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WebhooksDeliveryResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[WebhooksDeliveryResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,9 +53,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[WebhooksDeliveryResponse]:
-    """ Retries a webhook delivery
+    """Retries a webhook delivery
 
      Retries a webhook delivery
 
@@ -72,12 +67,10 @@ def sync_detailed(
 
     Returns:
         Response[WebhooksDeliveryResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -86,13 +79,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> WebhooksDeliveryResponse | None:
-    """ Retries a webhook delivery
+    """Retries a webhook delivery
 
      Retries a webhook delivery
 
@@ -105,22 +98,20 @@ def sync(
 
     Returns:
         WebhooksDeliveryResponse
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[WebhooksDeliveryResponse]:
-    """ Retries a webhook delivery
+    """Retries a webhook delivery
 
      Retries a webhook delivery
 
@@ -133,27 +124,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[WebhooksDeliveryResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> WebhooksDeliveryResponse | None:
-    """ Retries a webhook delivery
+    """Retries a webhook delivery
 
      Retries a webhook delivery
 
@@ -166,11 +153,11 @@ async def asyncio(
 
     Returns:
         WebhooksDeliveryResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

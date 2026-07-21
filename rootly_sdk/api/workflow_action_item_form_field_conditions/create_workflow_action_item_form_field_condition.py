@@ -16,22 +16,17 @@ def _get_kwargs(
     workflow_id: str,
     *,
     body: NewWorkflowActionItemFormFieldCondition,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/workflows/{workflow_id}/action_item_form_field_conditions".format(workflow_id=quote(str(workflow_id), safe=""),),
+        "url": "/v1/workflows/{workflow_id}/action_item_form_field_conditions".format(
+            workflow_id=quote(str(workflow_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,19 +34,16 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
     if response.status_code == 201:
         response_201 = WorkflowActionItemFormFieldConditionResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
-
-
 
         return response_401
 
@@ -62,8 +54,6 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
 
-
-
         return response_422
 
     if client.raise_on_unexpected_status:
@@ -72,7 +62,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,9 +78,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-
 ) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
-    """ Creates a workflow action item form field condition
+    """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
 
@@ -102,13 +93,11 @@ def sync_detailed(
 
     Returns:
         Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -117,14 +106,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-
 ) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
-    """ Creates a workflow action item form field condition
+    """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
 
@@ -138,24 +127,22 @@ def sync(
 
     Returns:
         Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse
-     """
-
+    """
 
     return sync_detailed(
         workflow_id=workflow_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-
 ) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
-    """ Creates a workflow action item form field condition
+    """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
 
@@ -169,29 +156,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-
 ) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
-    """ Creates a workflow action item form field condition
+    """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
 
@@ -205,12 +188,12 @@ async def asyncio(
 
     Returns:
         Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        workflow_id=workflow_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            workflow_id=workflow_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

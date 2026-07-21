@@ -13,43 +13,33 @@ from ...types import Response
 
 def _get_kwargs(
     id: str,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/alert_routes/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/alert_routes/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertRouteResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertRouteResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertRouteResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -59,7 +49,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertRouteResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertRouteResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,9 +64,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[AlertRouteResponse | ErrorsList]:
-    """ Get an alert route
+    """Get an alert route
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
@@ -96,12 +87,10 @@ def sync_detailed(
 
     Returns:
         Response[AlertRouteResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -110,13 +99,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> AlertRouteResponse | ErrorsList | None:
-    """ Get an alert route
+    """Get an alert route
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
@@ -138,22 +127,20 @@ def sync(
 
     Returns:
         AlertRouteResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[AlertRouteResponse | ErrorsList]:
-    """ Get an alert route
+    """Get an alert route
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
@@ -175,27 +162,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertRouteResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> AlertRouteResponse | ErrorsList | None:
-    """ Get an alert route
+    """Get an alert route
 
      Get a specific alert route by id. **Note: This endpoint requires access to Advanced Alert Routing.
     If you're unsure whether you have access to this feature, please contact Rootly customer support.**
@@ -217,11 +200,11 @@ async def asyncio(
 
     Returns:
         AlertRouteResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

@@ -14,28 +14,22 @@ def _get_kwargs(
     catalog_id: str,
     *,
     body: NewCatalogField,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalogs/{catalog_id}/properties".format(catalog_id=quote(str(catalog_id), safe=""),),
+        "url": "/v1/catalogs/{catalog_id}/properties".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
     _kwargs["headers"] = headers
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -62,9 +56,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogField,
-
 ) -> Response[Any]:
-    """ Creates a Catalog Property (alias for field)
+    """Creates a Catalog Property (alias for field)
 
      Creates a new Catalog Property - returns catalog_properties type
 
@@ -78,13 +71,11 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -99,9 +90,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogField,
-
 ) -> Response[Any]:
-    """ Creates a Catalog Property (alias for field)
+    """Creates a Catalog Property (alias for field)
 
      Creates a new Catalog Property - returns catalog_properties type
 
@@ -115,18 +105,13 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

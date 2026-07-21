@@ -17,11 +17,7 @@ def _get_kwargs(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     filterform_field_id: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -33,26 +29,24 @@ def _get_kwargs(
 
     params["filter[form_field_id]"] = filterform_field_id
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_field_placements/{form_field_placement_id}/conditions".format(form_field_placement_id=quote(str(form_field_placement_id), safe=""),),
+        "url": "/v1/form_field_placements/{form_field_placement_id}/conditions".format(
+            form_field_placement_id=quote(str(form_field_placement_id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FormFieldPlacementConditionList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> FormFieldPlacementConditionList | None:
     if response.status_code == 200:
         response_200 = FormFieldPlacementConditionList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -62,7 +56,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FormFieldPlacementConditionList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[FormFieldPlacementConditionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,9 +75,8 @@ def sync_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     filterform_field_id: str | Unset = UNSET,
-
 ) -> Response[FormFieldPlacementConditionList]:
-    """ List Form Set Conditions
+    """List Form Set Conditions
 
      List form_field_placement_conditions
 
@@ -98,16 +93,14 @@ def sync_detailed(
 
     Returns:
         Response[FormFieldPlacementConditionList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         form_field_placement_id=form_field_placement_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterform_field_id=filterform_field_id,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterform_field_id=filterform_field_id,
     )
 
     response = client.get_httpx_client().request(
@@ -115,6 +108,7 @@ filterform_field_id=filterform_field_id,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     form_field_placement_id: str,
@@ -124,9 +118,8 @@ def sync(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     filterform_field_id: str | Unset = UNSET,
-
 ) -> FormFieldPlacementConditionList | None:
-    """ List Form Set Conditions
+    """List Form Set Conditions
 
      List form_field_placement_conditions
 
@@ -143,18 +136,17 @@ def sync(
 
     Returns:
         FormFieldPlacementConditionList
-     """
-
+    """
 
     return sync_detailed(
         form_field_placement_id=form_field_placement_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterform_field_id=filterform_field_id,
-
+        client=client,
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterform_field_id=filterform_field_id,
     ).parsed
+
 
 async def asyncio_detailed(
     form_field_placement_id: str,
@@ -164,9 +156,8 @@ async def asyncio_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     filterform_field_id: str | Unset = UNSET,
-
 ) -> Response[FormFieldPlacementConditionList]:
-    """ List Form Set Conditions
+    """List Form Set Conditions
 
      List form_field_placement_conditions
 
@@ -183,23 +174,20 @@ async def asyncio_detailed(
 
     Returns:
         Response[FormFieldPlacementConditionList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         form_field_placement_id=form_field_placement_id,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterform_field_id=filterform_field_id,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterform_field_id=filterform_field_id,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     form_field_placement_id: str,
@@ -209,9 +197,8 @@ async def asyncio(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     filterform_field_id: str | Unset = UNSET,
-
 ) -> FormFieldPlacementConditionList | None:
-    """ List Form Set Conditions
+    """List Form Set Conditions
 
      List form_field_placement_conditions
 
@@ -228,15 +215,15 @@ async def asyncio(
 
     Returns:
         FormFieldPlacementConditionList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        form_field_placement_id=form_field_placement_id,
-client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterform_field_id=filterform_field_id,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            form_field_placement_id=form_field_placement_id,
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterform_field_id=filterform_field_id,
+        )
+    ).parsed

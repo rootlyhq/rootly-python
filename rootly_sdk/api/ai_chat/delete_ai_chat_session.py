@@ -12,22 +12,16 @@ from ...types import Response
 
 def _get_kwargs(
     id: UUID,
-
 ) -> dict[str, Any]:
-    
-
-    
-
-    
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/ai/chat/sessions/{id}".format(id=quote(str(id), safe=""),),
+        "url": "/v1/ai/chat/sessions/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -56,9 +50,8 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ Delete AI chat session
+    """Delete AI chat session
 
      Permanently deletes an AI chat session and all its messages. Requires `ai.chat:write` OAuth scope or
     an API key.
@@ -72,12 +65,10 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
     response = client.get_httpx_client().request(
@@ -91,9 +82,8 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
-    """ Delete AI chat session
+    """Delete AI chat session
 
      Permanently deletes an AI chat session and all its messages. Requires `ai.chat:write` OAuth scope or
     an API key.
@@ -107,17 +97,12 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-

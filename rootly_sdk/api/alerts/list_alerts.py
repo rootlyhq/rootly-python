@@ -62,11 +62,7 @@ def _get_kwargs(
     pageafter: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -174,9 +170,7 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -184,16 +178,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertList | None:
     if response.status_code == 200:
         response_200 = AlertList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -265,9 +255,8 @@ def sync_detailed(
     pageafter: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[AlertList]:
-    """ List alerts
+    """List alerts
 
      List alerts
 
@@ -329,61 +318,59 @@ def sync_detailed(
 
     Returns:
         Response[AlertList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filterstatus=filterstatus,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filtergroups=filtergroups,
-filterlabels=filterlabels,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterupdated_atgt=filterupdated_atgt,
-filterupdated_atgte=filterupdated_atgte,
-filterupdated_atlt=filterupdated_atlt,
-filterupdated_atlte=filterupdated_atlte,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filtergroupseq=filtergroupseq,
-filtergroupsnot_eq=filtergroupsnot_eq,
-filtergroupsin=filtergroupsin,
-filtergroupsnot_in=filtergroupsnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-pageafter=pageafter,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filterstatus=filterstatus,
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filtergroups=filtergroups,
+        filterlabels=filterlabels,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterupdated_atgt=filterupdated_atgt,
+        filterupdated_atgte=filterupdated_atgte,
+        filterupdated_atlt=filterupdated_atlt,
+        filterupdated_atlte=filterupdated_atlte,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filtergroupseq=filtergroupseq,
+        filtergroupsnot_eq=filtergroupsnot_eq,
+        filtergroupsin=filtergroupsin,
+        filtergroupsnot_in=filtergroupsnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        pageafter=pageafter,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -391,6 +378,7 @@ pagesize=pagesize,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -445,9 +433,8 @@ def sync(
     pageafter: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> AlertList | None:
-    """ List alerts
+    """List alerts
 
      List alerts
 
@@ -509,63 +496,62 @@ def sync(
 
     Returns:
         AlertList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-filterstatus=filterstatus,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filtergroups=filtergroups,
-filterlabels=filterlabels,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterupdated_atgt=filterupdated_atgt,
-filterupdated_atgte=filterupdated_atgte,
-filterupdated_atlt=filterupdated_atlt,
-filterupdated_atlte=filterupdated_atlte,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filtergroupseq=filtergroupseq,
-filtergroupsnot_eq=filtergroupsnot_eq,
-filtergroupsin=filtergroupsin,
-filtergroupsnot_in=filtergroupsnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-pageafter=pageafter,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        include=include,
+        filterstatus=filterstatus,
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filtergroups=filtergroups,
+        filterlabels=filterlabels,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterupdated_atgt=filterupdated_atgt,
+        filterupdated_atgte=filterupdated_atgte,
+        filterupdated_atlt=filterupdated_atlt,
+        filterupdated_atlte=filterupdated_atlte,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filtergroupseq=filtergroupseq,
+        filtergroupsnot_eq=filtergroupsnot_eq,
+        filtergroupsin=filtergroupsin,
+        filtergroupsnot_in=filtergroupsnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        pageafter=pageafter,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -620,9 +606,8 @@ async def asyncio_detailed(
     pageafter: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[AlertList]:
-    """ List alerts
+    """List alerts
 
      List alerts
 
@@ -684,68 +669,65 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-filterstatus=filterstatus,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filtergroups=filtergroups,
-filterlabels=filterlabels,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterupdated_atgt=filterupdated_atgt,
-filterupdated_atgte=filterupdated_atgte,
-filterupdated_atlt=filterupdated_atlt,
-filterupdated_atlte=filterupdated_atlte,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filtergroupseq=filtergroupseq,
-filtergroupsnot_eq=filtergroupsnot_eq,
-filtergroupsin=filtergroupsin,
-filtergroupsnot_in=filtergroupsnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-pageafter=pageafter,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        filterstatus=filterstatus,
+        filtersource=filtersource,
+        filterservices=filterservices,
+        filterenvironments=filterenvironments,
+        filtergroups=filtergroups,
+        filterlabels=filterlabels,
+        filterstarted_atgt=filterstarted_atgt,
+        filterstarted_atgte=filterstarted_atgte,
+        filterstarted_atlt=filterstarted_atlt,
+        filterstarted_atlte=filterstarted_atlte,
+        filterended_atgt=filterended_atgt,
+        filterended_atgte=filterended_atgte,
+        filterended_atlt=filterended_atlt,
+        filterended_atlte=filterended_atlte,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterupdated_atgt=filterupdated_atgt,
+        filterupdated_atgte=filterupdated_atgte,
+        filterupdated_atlt=filterupdated_atlt,
+        filterupdated_atlte=filterupdated_atlte,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filtersourceeq=filtersourceeq,
+        filtersourcenot_eq=filtersourcenot_eq,
+        filtersourcein=filtersourcein,
+        filtersourcenot_in=filtersourcenot_in,
+        filterserviceseq=filterserviceseq,
+        filterservicesnot_eq=filterservicesnot_eq,
+        filterservicesin=filterservicesin,
+        filterservicesnot_in=filterservicesnot_in,
+        filtergroupseq=filtergroupseq,
+        filtergroupsnot_eq=filtergroupsnot_eq,
+        filtergroupsin=filtergroupsin,
+        filtergroupsnot_in=filtergroupsnot_in,
+        filterenvironmentseq=filterenvironmentseq,
+        filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+        filterenvironmentsin=filterenvironmentsin,
+        filterenvironmentsnot_in=filterenvironmentsnot_in,
+        filterlabelseq=filterlabelseq,
+        filterlabelsnot_eq=filterlabelsnot_eq,
+        filterlabelsin=filterlabelsin,
+        filterlabelsnot_in=filterlabelsnot_in,
+        pageafter=pageafter,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -800,9 +782,8 @@ async def asyncio(
     pageafter: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> AlertList | None:
-    """ List alerts
+    """List alerts
 
      List alerts
 
@@ -864,60 +845,60 @@ async def asyncio(
 
     Returns:
         AlertList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-filterstatus=filterstatus,
-filtersource=filtersource,
-filterservices=filterservices,
-filterenvironments=filterenvironments,
-filtergroups=filtergroups,
-filterlabels=filterlabels,
-filterstarted_atgt=filterstarted_atgt,
-filterstarted_atgte=filterstarted_atgte,
-filterstarted_atlt=filterstarted_atlt,
-filterstarted_atlte=filterstarted_atlte,
-filterended_atgt=filterended_atgt,
-filterended_atgte=filterended_atgte,
-filterended_atlt=filterended_atlt,
-filterended_atlte=filterended_atlte,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-filterupdated_atgt=filterupdated_atgt,
-filterupdated_atgte=filterupdated_atgte,
-filterupdated_atlt=filterupdated_atlt,
-filterupdated_atlte=filterupdated_atlte,
-filterstatuseq=filterstatuseq,
-filterstatusnot_eq=filterstatusnot_eq,
-filterstatusin=filterstatusin,
-filterstatusnot_in=filterstatusnot_in,
-filtersourceeq=filtersourceeq,
-filtersourcenot_eq=filtersourcenot_eq,
-filtersourcein=filtersourcein,
-filtersourcenot_in=filtersourcenot_in,
-filterserviceseq=filterserviceseq,
-filterservicesnot_eq=filterservicesnot_eq,
-filterservicesin=filterservicesin,
-filterservicesnot_in=filterservicesnot_in,
-filtergroupseq=filtergroupseq,
-filtergroupsnot_eq=filtergroupsnot_eq,
-filtergroupsin=filtergroupsin,
-filtergroupsnot_in=filtergroupsnot_in,
-filterenvironmentseq=filterenvironmentseq,
-filterenvironmentsnot_eq=filterenvironmentsnot_eq,
-filterenvironmentsin=filterenvironmentsin,
-filterenvironmentsnot_in=filterenvironmentsnot_in,
-filterlabelseq=filterlabelseq,
-filterlabelsnot_eq=filterlabelsnot_eq,
-filterlabelsin=filterlabelsin,
-filterlabelsnot_in=filterlabelsnot_in,
-pageafter=pageafter,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            filterstatus=filterstatus,
+            filtersource=filtersource,
+            filterservices=filterservices,
+            filterenvironments=filterenvironments,
+            filtergroups=filtergroups,
+            filterlabels=filterlabels,
+            filterstarted_atgt=filterstarted_atgt,
+            filterstarted_atgte=filterstarted_atgte,
+            filterstarted_atlt=filterstarted_atlt,
+            filterstarted_atlte=filterstarted_atlte,
+            filterended_atgt=filterended_atgt,
+            filterended_atgte=filterended_atgte,
+            filterended_atlt=filterended_atlt,
+            filterended_atlte=filterended_atlte,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterupdated_atgt=filterupdated_atgt,
+            filterupdated_atgte=filterupdated_atgte,
+            filterupdated_atlt=filterupdated_atlt,
+            filterupdated_atlte=filterupdated_atlte,
+            filterstatuseq=filterstatuseq,
+            filterstatusnot_eq=filterstatusnot_eq,
+            filterstatusin=filterstatusin,
+            filterstatusnot_in=filterstatusnot_in,
+            filtersourceeq=filtersourceeq,
+            filtersourcenot_eq=filtersourcenot_eq,
+            filtersourcein=filtersourcein,
+            filtersourcenot_in=filtersourcenot_in,
+            filterserviceseq=filterserviceseq,
+            filterservicesnot_eq=filterservicesnot_eq,
+            filterservicesin=filterservicesin,
+            filterservicesnot_in=filterservicesnot_in,
+            filtergroupseq=filtergroupseq,
+            filtergroupsnot_eq=filtergroupsnot_eq,
+            filtergroupsin=filtergroupsin,
+            filtergroupsnot_in=filtergroupsnot_in,
+            filterenvironmentseq=filterenvironmentseq,
+            filterenvironmentsnot_eq=filterenvironmentsnot_eq,
+            filterenvironmentsin=filterenvironmentsin,
+            filterenvironmentsnot_in=filterenvironmentsnot_in,
+            filterlabelseq=filterlabelseq,
+            filterlabelsnot_eq=filterlabelsnot_eq,
+            filterlabelsin=filterlabelsin,
+            filterlabelsnot_in=filterlabelsnot_in,
+            pageafter=pageafter,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

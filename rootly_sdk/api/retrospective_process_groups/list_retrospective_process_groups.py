@@ -28,11 +28,7 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -62,26 +58,24 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_processes/{retrospective_process_id}/groups".format(retrospective_process_id=quote(str(retrospective_process_id), safe=""),),
+        "url": "/v1/retrospective_processes/{retrospective_process_id}/groups".format(
+            retrospective_process_id=quote(str(retrospective_process_id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RetrospectiveProcessGroupList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RetrospectiveProcessGroupList | None:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessGroupList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -91,7 +85,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RetrospectiveProcessGroupList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[RetrospectiveProcessGroupList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -113,9 +109,8 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[RetrospectiveProcessGroupList]:
-    """ List Retrospective Process Groups
+    """List Retrospective Process Groups
 
      List Retrospective Process Groups
 
@@ -137,21 +132,19 @@ def sync_detailed(
 
     Returns:
         Response[RetrospectiveProcessGroupList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         retrospective_process_id=retrospective_process_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
     response = client.get_httpx_client().request(
@@ -159,6 +152,7 @@ filtercreated_atlte=filtercreated_atlte,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     retrospective_process_id: str,
@@ -173,9 +167,8 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> RetrospectiveProcessGroupList | None:
-    """ List Retrospective Process Groups
+    """List Retrospective Process Groups
 
      List Retrospective Process Groups
 
@@ -197,23 +190,22 @@ def sync(
 
     Returns:
         RetrospectiveProcessGroupList
-     """
-
+    """
 
     return sync_detailed(
         retrospective_process_id=retrospective_process_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        client=client,
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     ).parsed
+
 
 async def asyncio_detailed(
     retrospective_process_id: str,
@@ -228,9 +220,8 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> Response[RetrospectiveProcessGroupList]:
-    """ List Retrospective Process Groups
+    """List Retrospective Process Groups
 
      List Retrospective Process Groups
 
@@ -252,28 +243,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[RetrospectiveProcessGroupList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         retrospective_process_id=retrospective_process_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     retrospective_process_id: str,
@@ -288,9 +276,8 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
-
 ) -> RetrospectiveProcessGroupList | None:
-    """ List Retrospective Process Groups
+    """List Retrospective Process Groups
 
      List Retrospective Process Groups
 
@@ -312,20 +299,20 @@ async def asyncio(
 
     Returns:
         RetrospectiveProcessGroupList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        retrospective_process_id=retrospective_process_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            retrospective_process_id=retrospective_process_id,
+            client=client,
+            include=include,
+            sort=sort,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersub_status_id=filtersub_status_id,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+        )
+    ).parsed

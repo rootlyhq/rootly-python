@@ -26,11 +26,7 @@ def _get_kwargs(
     filterassigned_atgte: str | Unset = UNSET,
     filterassigned_atlt: str | Unset = UNSET,
     filterassigned_atlte: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -60,26 +56,22 @@ def _get_kwargs(
 
     params["filter[assigned_at][lte]"] = filterassigned_atlte
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incidents/{incident_id}/sub_statuses".format(incident_id=quote(str(incident_id), safe=""),),
+        "url": "/v1/incidents/{incident_id}/sub_statuses".format(
+            incident_id=quote(str(incident_id), safe=""),
+        ),
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentSubStatusList | None:
     if response.status_code == 200:
         response_200 = IncidentSubStatusList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -89,7 +81,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IncidentSubStatusList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[IncidentSubStatusList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -111,9 +105,8 @@ def sync_detailed(
     filterassigned_atgte: str | Unset = UNSET,
     filterassigned_atlt: str | Unset = UNSET,
     filterassigned_atlte: str | Unset = UNSET,
-
 ) -> Response[IncidentSubStatusList]:
-    """ List incident_sub_statuses
+    """List incident_sub_statuses
 
      List incident_sub_statuses
 
@@ -135,21 +128,19 @@ def sync_detailed(
 
     Returns:
         Response[IncidentSubStatusList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filterassigned_atgt=filterassigned_atgt,
-filterassigned_atgte=filterassigned_atgte,
-filterassigned_atlt=filterassigned_atlt,
-filterassigned_atlte=filterassigned_atlte,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filterassigned_atgt=filterassigned_atgt,
+        filterassigned_atgte=filterassigned_atgte,
+        filterassigned_atlt=filterassigned_atlt,
+        filterassigned_atlte=filterassigned_atlte,
     )
 
     response = client.get_httpx_client().request(
@@ -157,6 +148,7 @@ filterassigned_atlte=filterassigned_atlte,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     incident_id: str,
@@ -171,9 +163,8 @@ def sync(
     filterassigned_atgte: str | Unset = UNSET,
     filterassigned_atlt: str | Unset = UNSET,
     filterassigned_atlte: str | Unset = UNSET,
-
 ) -> IncidentSubStatusList | None:
-    """ List incident_sub_statuses
+    """List incident_sub_statuses
 
      List incident_sub_statuses
 
@@ -195,23 +186,22 @@ def sync(
 
     Returns:
         IncidentSubStatusList
-     """
-
+    """
 
     return sync_detailed(
         incident_id=incident_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filterassigned_atgt=filterassigned_atgt,
-filterassigned_atgte=filterassigned_atgte,
-filterassigned_atlt=filterassigned_atlt,
-filterassigned_atlte=filterassigned_atlte,
-
+        client=client,
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filterassigned_atgt=filterassigned_atgt,
+        filterassigned_atgte=filterassigned_atgte,
+        filterassigned_atlt=filterassigned_atlt,
+        filterassigned_atlte=filterassigned_atlte,
     ).parsed
+
 
 async def asyncio_detailed(
     incident_id: str,
@@ -226,9 +216,8 @@ async def asyncio_detailed(
     filterassigned_atgte: str | Unset = UNSET,
     filterassigned_atlt: str | Unset = UNSET,
     filterassigned_atlte: str | Unset = UNSET,
-
 ) -> Response[IncidentSubStatusList]:
-    """ List incident_sub_statuses
+    """List incident_sub_statuses
 
      List incident_sub_statuses
 
@@ -250,28 +239,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentSubStatusList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filterassigned_atgt=filterassigned_atgt,
-filterassigned_atgte=filterassigned_atgte,
-filterassigned_atlt=filterassigned_atlt,
-filterassigned_atlte=filterassigned_atlte,
-
+        include=include,
+        sort=sort,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersub_status_id=filtersub_status_id,
+        filterassigned_atgt=filterassigned_atgt,
+        filterassigned_atgte=filterassigned_atgte,
+        filterassigned_atlt=filterassigned_atlt,
+        filterassigned_atlte=filterassigned_atlte,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     incident_id: str,
@@ -286,9 +272,8 @@ async def asyncio(
     filterassigned_atgte: str | Unset = UNSET,
     filterassigned_atlt: str | Unset = UNSET,
     filterassigned_atlte: str | Unset = UNSET,
-
 ) -> IncidentSubStatusList | None:
-    """ List incident_sub_statuses
+    """List incident_sub_statuses
 
      List incident_sub_statuses
 
@@ -310,20 +295,20 @@ async def asyncio(
 
     Returns:
         IncidentSubStatusList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        incident_id=incident_id,
-client=client,
-include=include,
-sort=sort,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersub_status_id=filtersub_status_id,
-filterassigned_atgt=filterassigned_atgt,
-filterassigned_atgte=filterassigned_atgte,
-filterassigned_atlt=filterassigned_atlt,
-filterassigned_atlte=filterassigned_atlte,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            incident_id=incident_id,
+            client=client,
+            include=include,
+            sort=sort,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersub_status_id=filtersub_status_id,
+            filterassigned_atgt=filterassigned_atgt,
+            filterassigned_atgte=filterassigned_atgte,
+            filterassigned_atlt=filterassigned_atlt,
+            filterassigned_atlte=filterassigned_atlte,
+        )
+    ).parsed

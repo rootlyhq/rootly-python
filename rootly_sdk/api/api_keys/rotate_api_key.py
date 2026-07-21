@@ -16,24 +16,18 @@ def _get_kwargs(
     id: str,
     *,
     body: RotateApiKey | Unset = UNSET,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/api_keys/{id}/rotate".format(id=quote(str(id), safe=""),),
+        "url": "/v1/api_keys/{id}/rotate".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
-    
     if not isinstance(body, Unset):
         _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -41,19 +35,16 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApiKeyWithTokenResponse | ErrorsList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ApiKeyWithTokenResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = ApiKeyWithTokenResponse.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -63,7 +54,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -77,9 +70,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: RotateApiKey | Unset = UNSET,
-
 ) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
-    """ Rotate an API key
+    """Rotate an API key
 
      Rotate an API key's token. Issues a new secret token and returns it — **the new token is only shown
     once**, so store it securely.
@@ -112,13 +104,11 @@ def sync_detailed(
 
     Returns:
         Response[ApiKeyWithTokenResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -127,14 +117,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     body: RotateApiKey | Unset = UNSET,
-
 ) -> ApiKeyWithTokenResponse | ErrorsList | None:
-    """ Rotate an API key
+    """Rotate an API key
 
      Rotate an API key's token. Issues a new secret token and returns it — **the new token is only shown
     once**, so store it securely.
@@ -167,24 +157,22 @@ def sync(
 
     Returns:
         ApiKeyWithTokenResponse | ErrorsList
-     """
-
+    """
 
     return sync_detailed(
         id=id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     body: RotateApiKey | Unset = UNSET,
-
 ) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
-    """ Rotate an API key
+    """Rotate an API key
 
      Rotate an API key's token. Issues a new secret token and returns it — **the new token is only shown
     once**, so store it securely.
@@ -217,29 +205,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ApiKeyWithTokenResponse | ErrorsList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         id=id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     body: RotateApiKey | Unset = UNSET,
-
 ) -> ApiKeyWithTokenResponse | ErrorsList | None:
-    """ Rotate an API key
+    """Rotate an API key
 
      Rotate an API key's token. Issues a new secret token and returns it — **the new token is only shown
     once**, so store it securely.
@@ -272,12 +256,12 @@ async def asyncio(
 
     Returns:
         ApiKeyWithTokenResponse | ErrorsList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        id=id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+            body=body,
+        )
+    ).parsed

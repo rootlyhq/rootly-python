@@ -24,11 +24,7 @@ def _get_kwargs(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -58,9 +54,7 @@ def _get_kwargs(
 
     params["filter[notification_types]"] = filternotification_types
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -68,30 +62,24 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | OncallList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | OncallList | None:
     if response.status_code == 200:
         response_200 = OncallList.from_dict(response.json())
-
-
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
-
-
 
         return response_404
 
@@ -101,7 +89,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | OncallList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | OncallList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -124,9 +114,8 @@ def sync_detailed(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-
 ) -> Response[ErrorsList | OncallList]:
-    """ List on-calls
+    """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -150,22 +139,20 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | OncallList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-since=since,
-until=until,
-earliest=earliest,
-time_zone=time_zone,
-filterescalation_policy_ids=filterescalation_policy_ids,
-filterschedule_ids=filterschedule_ids,
-filteruser_ids=filteruser_ids,
-filterservice_ids=filterservice_ids,
-filtergroup_ids=filtergroup_ids,
-filternotification_types=filternotification_types,
-
+        since=since,
+        until=until,
+        earliest=earliest,
+        time_zone=time_zone,
+        filterescalation_policy_ids=filterescalation_policy_ids,
+        filterschedule_ids=filterschedule_ids,
+        filteruser_ids=filteruser_ids,
+        filterservice_ids=filterservice_ids,
+        filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     )
 
     response = client.get_httpx_client().request(
@@ -173,6 +160,7 @@ filternotification_types=filternotification_types,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -188,9 +176,8 @@ def sync(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-
 ) -> ErrorsList | OncallList | None:
-    """ List on-calls
+    """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -214,24 +201,23 @@ def sync(
 
     Returns:
         ErrorsList | OncallList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-since=since,
-until=until,
-earliest=earliest,
-time_zone=time_zone,
-filterescalation_policy_ids=filterescalation_policy_ids,
-filterschedule_ids=filterschedule_ids,
-filteruser_ids=filteruser_ids,
-filterservice_ids=filterservice_ids,
-filtergroup_ids=filtergroup_ids,
-filternotification_types=filternotification_types,
-
+        include=include,
+        since=since,
+        until=until,
+        earliest=earliest,
+        time_zone=time_zone,
+        filterescalation_policy_ids=filterescalation_policy_ids,
+        filterschedule_ids=filterschedule_ids,
+        filteruser_ids=filteruser_ids,
+        filterservice_ids=filterservice_ids,
+        filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -247,9 +233,8 @@ async def asyncio_detailed(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-
 ) -> Response[ErrorsList | OncallList]:
-    """ List on-calls
+    """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -273,29 +258,26 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | OncallList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-since=since,
-until=until,
-earliest=earliest,
-time_zone=time_zone,
-filterescalation_policy_ids=filterescalation_policy_ids,
-filterschedule_ids=filterschedule_ids,
-filteruser_ids=filteruser_ids,
-filterservice_ids=filterservice_ids,
-filtergroup_ids=filtergroup_ids,
-filternotification_types=filternotification_types,
-
+        since=since,
+        until=until,
+        earliest=earliest,
+        time_zone=time_zone,
+        filterescalation_policy_ids=filterescalation_policy_ids,
+        filterschedule_ids=filterschedule_ids,
+        filteruser_ids=filteruser_ids,
+        filterservice_ids=filterservice_ids,
+        filtergroup_ids=filtergroup_ids,
+        filternotification_types=filternotification_types,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -311,9 +293,8 @@ async def asyncio(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-
 ) -> ErrorsList | OncallList | None:
-    """ List on-calls
+    """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -337,21 +318,21 @@ async def asyncio(
 
     Returns:
         ErrorsList | OncallList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-since=since,
-until=until,
-earliest=earliest,
-time_zone=time_zone,
-filterescalation_policy_ids=filterescalation_policy_ids,
-filterschedule_ids=filterschedule_ids,
-filteruser_ids=filteruser_ids,
-filterservice_ids=filterservice_ids,
-filtergroup_ids=filtergroup_ids,
-filternotification_types=filternotification_types,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            since=since,
+            until=until,
+            earliest=earliest,
+            time_zone=time_zone,
+            filterescalation_policy_ids=filterescalation_policy_ids,
+            filterschedule_ids=filterschedule_ids,
+            filteruser_ids=filteruser_ids,
+            filterservice_ids=filterservice_ids,
+            filtergroup_ids=filtergroup_ids,
+            filternotification_types=filternotification_types,
+        )
+    ).parsed

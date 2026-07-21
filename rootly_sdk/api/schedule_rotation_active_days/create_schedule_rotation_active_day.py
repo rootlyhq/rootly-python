@@ -16,22 +16,17 @@ def _get_kwargs(
     schedule_rotation_id: str,
     *,
     body: NewScheduleRotationActiveDay,
-
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
-
-    
-
-    
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/schedule_rotations/{schedule_rotation_id}/schedule_rotation_active_days".format(schedule_rotation_id=quote(str(schedule_rotation_id), safe=""),),
+        "url": "/v1/schedule_rotations/{schedule_rotation_id}/schedule_rotation_active_days".format(
+            schedule_rotation_id=quote(str(schedule_rotation_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
-
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -39,26 +34,21 @@ def _get_kwargs(
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | ScheduleRotationActiveDayResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | ScheduleRotationActiveDayResponse | None:
     if response.status_code == 201:
         response_201 = ScheduleRotationActiveDayResponse.from_dict(response.json())
-
-
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
-
-
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
-
-
 
         return response_422
 
@@ -68,7 +58,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | ScheduleRotationActiveDayResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ScheduleRotationActiveDayResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,9 +74,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotationActiveDay,
-
 ) -> Response[ErrorsList | ScheduleRotationActiveDayResponse]:
-    """ Creates a schedule rotation active day
+    """Creates a schedule rotation active day
 
      Creates a new schedule rotation active day from provided data
 
@@ -98,13 +89,11 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | ScheduleRotationActiveDayResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_rotation_id=schedule_rotation_id,
-body=body,
-
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -113,14 +102,14 @@ body=body,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     schedule_rotation_id: str,
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotationActiveDay,
-
 ) -> ErrorsList | ScheduleRotationActiveDayResponse | None:
-    """ Creates a schedule rotation active day
+    """Creates a schedule rotation active day
 
      Creates a new schedule rotation active day from provided data
 
@@ -134,24 +123,22 @@ def sync(
 
     Returns:
         ErrorsList | ScheduleRotationActiveDayResponse
-     """
-
+    """
 
     return sync_detailed(
         schedule_rotation_id=schedule_rotation_id,
-client=client,
-body=body,
-
+        client=client,
+        body=body,
     ).parsed
+
 
 async def asyncio_detailed(
     schedule_rotation_id: str,
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotationActiveDay,
-
 ) -> Response[ErrorsList | ScheduleRotationActiveDayResponse]:
-    """ Creates a schedule rotation active day
+    """Creates a schedule rotation active day
 
      Creates a new schedule rotation active day from provided data
 
@@ -165,29 +152,25 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | ScheduleRotationActiveDayResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         schedule_rotation_id=schedule_rotation_id,
-body=body,
-
+        body=body,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     schedule_rotation_id: str,
     *,
     client: AuthenticatedClient,
     body: NewScheduleRotationActiveDay,
-
 ) -> ErrorsList | ScheduleRotationActiveDayResponse | None:
-    """ Creates a schedule rotation active day
+    """Creates a schedule rotation active day
 
      Creates a new schedule rotation active day from provided data
 
@@ -201,12 +184,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | ScheduleRotationActiveDayResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        schedule_rotation_id=schedule_rotation_id,
-client=client,
-body=body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            schedule_rotation_id=schedule_rotation_id,
+            client=client,
+            body=body,
+        )
+    ).parsed

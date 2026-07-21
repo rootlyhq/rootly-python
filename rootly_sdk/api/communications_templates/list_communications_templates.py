@@ -22,11 +22,7 @@ def _get_kwargs(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -52,9 +48,7 @@ def _get_kwargs(
 
     params["sort"] = sort
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -62,16 +56,14 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CommunicationsTemplatesResponse | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CommunicationsTemplatesResponse | None:
     if response.status_code == 200:
         response_200 = CommunicationsTemplatesResponse.from_dict(response.json())
-
-
 
         return response_200
 
@@ -81,7 +73,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CommunicationsTemplatesResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CommunicationsTemplatesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -104,9 +98,8 @@ def sync_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[CommunicationsTemplatesResponse]:
-    """ Lists communications templates
+    """Lists communications templates
 
      Lists communications templates
 
@@ -129,22 +122,20 @@ def sync_detailed(
 
     Returns:
         Response[CommunicationsTemplatesResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommunication_type_id=filtercommunication_type_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommunication_type_id=filtercommunication_type_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     )
 
     response = client.get_httpx_client().request(
@@ -152,6 +143,7 @@ sort=sort,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -167,9 +159,8 @@ def sync(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> CommunicationsTemplatesResponse | None:
-    """ Lists communications templates
+    """Lists communications templates
 
      Lists communications templates
 
@@ -192,24 +183,23 @@ def sync(
 
     Returns:
         CommunicationsTemplatesResponse
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommunication_type_id=filtercommunication_type_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommunication_type_id=filtercommunication_type_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -225,9 +215,8 @@ async def asyncio_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> Response[CommunicationsTemplatesResponse]:
-    """ Lists communications templates
+    """Lists communications templates
 
      Lists communications templates
 
@@ -250,29 +239,26 @@ async def asyncio_detailed(
 
     Returns:
         Response[CommunicationsTemplatesResponse]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommunication_type_id=filtercommunication_type_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
+        pagesize=pagesize,
+        filtersearch=filtersearch,
+        filtername=filtername,
+        filterslug=filterslug,
+        filtercommunication_type_id=filtercommunication_type_id,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        sort=sort,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -288,9 +274,8 @@ async def asyncio(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
-
 ) -> CommunicationsTemplatesResponse | None:
-    """ Lists communications templates
+    """Lists communications templates
 
      Lists communications templates
 
@@ -313,21 +298,21 @@ async def asyncio(
 
     Returns:
         CommunicationsTemplatesResponse
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filtersearch=filtersearch,
-filtername=filtername,
-filterslug=filterslug,
-filtercommunication_type_id=filtercommunication_type_id,
-filtercreated_atgt=filtercreated_atgt,
-filtercreated_atgte=filtercreated_atgte,
-filtercreated_atlt=filtercreated_atlt,
-filtercreated_atlte=filtercreated_atlte,
-sort=sort,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filtersearch=filtersearch,
+            filtername=filtername,
+            filterslug=filterslug,
+            filtercommunication_type_id=filtercommunication_type_id,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            sort=sort,
+        )
+    ).parsed

@@ -16,11 +16,7 @@ def _get_kwargs(
     *,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -28,26 +24,24 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/ai/chat/sessions/{session_id}/messages".format(session_id=quote(str(session_id), safe=""),),
+        "url": "/v1/ai/chat/sessions/{session_id}/messages".format(
+            session_id=quote(str(session_id), safe=""),
+        ),
         "params": params,
     }
-
 
     return _kwargs
 
 
-
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AiChatSessionMessageList | Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AiChatSessionMessageList | Any | None:
     if response.status_code == 200:
         response_200 = AiChatSessionMessageList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -61,7 +55,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AiChatSessionMessageList | Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AiChatSessionMessageList | Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,9 +72,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[AiChatSessionMessageList | Any]:
-    """ List AI chat session messages
+    """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
     Internal tool messages are filtered out. Requires `ai.chat:read` OAuth scope or an API key.
@@ -94,14 +89,12 @@ def sync_detailed(
 
     Returns:
         Response[AiChatSessionMessageList | Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         session_id=session_id,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
     response = client.get_httpx_client().request(
@@ -110,15 +103,15 @@ pagesize=pagesize,
 
     return _build_response(client=client, response=response)
 
+
 def sync(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> AiChatSessionMessageList | Any | None:
-    """ List AI chat session messages
+    """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
     Internal tool messages are filtered out. Requires `ai.chat:read` OAuth scope or an API key.
@@ -134,16 +127,15 @@ def sync(
 
     Returns:
         AiChatSessionMessageList | Any
-     """
-
+    """
 
     return sync_detailed(
         session_id=session_id,
-client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        client=client,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     ).parsed
+
 
 async def asyncio_detailed(
     session_id: UUID,
@@ -151,9 +143,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> Response[AiChatSessionMessageList | Any]:
-    """ List AI chat session messages
+    """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
     Internal tool messages are filtered out. Requires `ai.chat:read` OAuth scope or an API key.
@@ -169,21 +160,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[AiChatSessionMessageList | Any]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         session_id=session_id,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     session_id: UUID,
@@ -191,9 +179,8 @@ async def asyncio(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
-
 ) -> AiChatSessionMessageList | Any | None:
-    """ List AI chat session messages
+    """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
     Internal tool messages are filtered out. Requires `ai.chat:read` OAuth scope or an API key.
@@ -209,13 +196,13 @@ async def asyncio(
 
     Returns:
         AiChatSessionMessageList | Any
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        session_id=session_id,
-client=client,
-pagenumber=pagenumber,
-pagesize=pagesize,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            session_id=session_id,
+            client=client,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+        )
+    ).parsed

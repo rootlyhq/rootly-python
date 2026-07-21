@@ -16,11 +16,7 @@ def _get_kwargs(
     pagesize: int | Unset = UNSET,
     filterslug: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
-
 ) -> dict[str, Any]:
-    
-
-    
 
     params: dict[str, Any] = {}
 
@@ -34,9 +30,7 @@ def _get_kwargs(
 
     params["filter[name]"] = filtername
 
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -44,16 +38,12 @@ def _get_kwargs(
         "params": params,
     }
 
-
     return _kwargs
-
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WebhooksEndpointList | None:
     if response.status_code == 200:
         response_200 = WebhooksEndpointList.from_dict(response.json())
-
-
 
         return response_200
 
@@ -63,7 +53,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WebhooksEndpointList]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[WebhooksEndpointList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,9 +72,8 @@ def sync_detailed(
     pagesize: int | Unset = UNSET,
     filterslug: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
-
 ) -> Response[WebhooksEndpointList]:
-    """ List webhook endpoints
+    """List webhook endpoints
 
      List webhook endpoints
 
@@ -99,16 +90,14 @@ def sync_detailed(
 
     Returns:
         Response[WebhooksEndpointList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filtername=filtername,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filtername=filtername,
     )
 
     response = client.get_httpx_client().request(
@@ -116,6 +105,7 @@ filtername=filtername,
     )
 
     return _build_response(client=client, response=response)
+
 
 def sync(
     *,
@@ -125,9 +115,8 @@ def sync(
     pagesize: int | Unset = UNSET,
     filterslug: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
-
 ) -> WebhooksEndpointList | None:
-    """ List webhook endpoints
+    """List webhook endpoints
 
      List webhook endpoints
 
@@ -144,18 +133,17 @@ def sync(
 
     Returns:
         WebhooksEndpointList
-     """
-
+    """
 
     return sync_detailed(
         client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filtername=filtername,
-
+        include=include,
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filtername=filtername,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -165,9 +153,8 @@ async def asyncio_detailed(
     pagesize: int | Unset = UNSET,
     filterslug: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
-
 ) -> Response[WebhooksEndpointList]:
-    """ List webhook endpoints
+    """List webhook endpoints
 
      List webhook endpoints
 
@@ -184,23 +171,20 @@ async def asyncio_detailed(
 
     Returns:
         Response[WebhooksEndpointList]
-     """
-
+    """
 
     kwargs = _get_kwargs(
         include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filtername=filtername,
-
+        pagenumber=pagenumber,
+        pagesize=pagesize,
+        filterslug=filterslug,
+        filtername=filtername,
     )
 
-    response = await client.get_async_httpx_client().request(
-        **kwargs
-    )
+    response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
 
 async def asyncio(
     *,
@@ -210,9 +194,8 @@ async def asyncio(
     pagesize: int | Unset = UNSET,
     filterslug: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
-
 ) -> WebhooksEndpointList | None:
-    """ List webhook endpoints
+    """List webhook endpoints
 
      List webhook endpoints
 
@@ -229,15 +212,15 @@ async def asyncio(
 
     Returns:
         WebhooksEndpointList
-     """
+    """
 
-
-    return (await asyncio_detailed(
-        client=client,
-include=include,
-pagenumber=pagenumber,
-pagesize=pagesize,
-filterslug=filterslug,
-filtername=filtername,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            include=include,
+            pagenumber=pagenumber,
+            pagesize=pagesize,
+            filterslug=filterslug,
+            filtername=filtername,
+        )
+    ).parsed
