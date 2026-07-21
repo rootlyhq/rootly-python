@@ -88,6 +88,7 @@ class NewSlaDataAttributes:
     notification_configurations: list[NewSlaDataAttributesNotificationConfigurationsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         assignment_deadline_days: int = self.assignment_deadline_days

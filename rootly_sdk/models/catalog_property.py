@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 
 from ..models.catalog_property_catalog_type import CatalogPropertyCatalogType, check_catalog_property_catalog_type
 from ..models.catalog_property_kind import CatalogPropertyKind, check_catalog_property_kind
+from ..models.catalog_property_managed_by import CatalogPropertyManagedBy, check_catalog_property_managed_by
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CatalogProperty")
@@ -28,6 +29,9 @@ class CatalogProperty:
         kind_catalog_id (None | str | Unset): Restricts values to items of specified catalog.
         required (bool | Unset): Whether the property is required.
         catalog_type (CatalogPropertyCatalogType | Unset): The type of catalog the property belongs to.
+        external_id (None | str | Unset): An external identifier for this catalog property. Must be unique within the
+            scope.
+        managed_by (CatalogPropertyManagedBy | Unset): Which source manages this resource (read-only).
     """
 
     catalog_id: None | str
@@ -41,6 +45,8 @@ class CatalogProperty:
     kind_catalog_id: None | str | Unset = UNSET
     required: bool | Unset = UNSET
     catalog_type: CatalogPropertyCatalogType | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    managed_by: CatalogPropertyManagedBy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -74,6 +80,16 @@ class CatalogProperty:
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
+        managed_by: str | Unset = UNSET
+        if not isinstance(self.managed_by, Unset):
+            managed_by = self.managed_by
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -95,6 +111,10 @@ class CatalogProperty:
             field_dict["required"] = required
         if catalog_type is not UNSET:
             field_dict["catalog_type"] = catalog_type
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
 
         return field_dict
 
@@ -146,6 +166,22 @@ class CatalogProperty:
         else:
             catalog_type = check_catalog_property_catalog_type(_catalog_type)
 
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
+        _managed_by = d.pop("managed_by", UNSET)
+        managed_by: CatalogPropertyManagedBy | Unset
+        if isinstance(_managed_by, Unset):
+            managed_by = UNSET
+        else:
+            managed_by = check_catalog_property_managed_by(_managed_by)
+
         catalog_property = cls(
             catalog_id=catalog_id,
             name=name,
@@ -158,6 +194,8 @@ class CatalogProperty:
             kind_catalog_id=kind_catalog_id,
             required=required,
             catalog_type=catalog_type,
+            external_id=external_id,
+            managed_by=managed_by,
         )
 
         catalog_property.additional_properties = d

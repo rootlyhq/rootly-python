@@ -30,6 +30,7 @@ class TiptapBlockSchema:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         followup_component: dict[str, Any] | Unset = UNSET
         if not isinstance(self.followup_component, Unset):
             followup_component = self.followup_component.to_dict()

@@ -36,6 +36,7 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         id = self.id
 
         type_: str | Unset = UNSET

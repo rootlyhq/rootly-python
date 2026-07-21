@@ -16,6 +16,14 @@ def _get_kwargs(
     pagesize: int | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -28,6 +36,22 @@ def _get_kwargs(
     params["filter[search]"] = filtersearch
 
     params["filter[name]"] = filtername
+
+    params["filter[slug][eq]"] = filterslugeq
+
+    params["filter[slug][not_eq]"] = filterslugnot_eq
+
+    params["filter[slug][in]"] = filterslugin
+
+    params["filter[slug][not_in]"] = filterslugnot_in
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
 
     params["sort"] = sort
 
@@ -79,6 +103,14 @@ def sync_detailed(
     pagesize: int | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
@@ -92,6 +124,14 @@ def sync_detailed(
         pagesize (int | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -107,6 +147,14 @@ def sync_detailed(
         pagesize=pagesize,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
         sort=sort,
     )
 
@@ -124,6 +172,14 @@ def sync(
     pagesize: int | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertRouteList | ErrorsList | None:
     """List alert routes
@@ -137,6 +193,14 @@ def sync(
         pagesize (int | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -153,6 +217,14 @@ def sync(
         pagesize=pagesize,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
         sort=sort,
     ).parsed
 
@@ -164,6 +236,14 @@ async def asyncio_detailed(
     pagesize: int | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
@@ -177,6 +257,14 @@ async def asyncio_detailed(
         pagesize (int | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -192,6 +280,14 @@ async def asyncio_detailed(
         pagesize=pagesize,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
         sort=sort,
     )
 
@@ -207,6 +303,14 @@ async def asyncio(
     pagesize: int | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertRouteList | ErrorsList | None:
     """List alert routes
@@ -220,6 +324,14 @@ async def asyncio(
         pagesize (int | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -237,6 +349,14 @@ async def asyncio(
             pagesize=pagesize,
             filtersearch=filtersearch,
             filtername=filtername,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
             sort=sort,
         )
     ).parsed

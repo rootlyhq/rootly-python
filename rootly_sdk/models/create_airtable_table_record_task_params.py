@@ -38,6 +38,7 @@ class CreateAirtableTableRecordTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         base = self.base.to_dict()
 
         table = self.table.to_dict()

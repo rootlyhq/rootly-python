@@ -32,6 +32,7 @@ class NewHeartbeatDataAttributes:
         description (None | str | Unset): The description of the heartbeat
         alert_description (None | str | Unset): Description of alerts triggered when heartbeat expires.
         alert_urgency_id (None | str | Unset): Urgency of alerts triggered when heartbeat expires.
+        owner_group_ids (list[str] | Unset): List of team IDs that own this heartbeat
         enabled (bool | Unset): Whether to trigger alerts when heartbeat is expired.
     """
 
@@ -44,6 +45,7 @@ class NewHeartbeatDataAttributes:
     description: None | str | Unset = UNSET
     alert_description: None | str | Unset = UNSET
     alert_urgency_id: None | str | Unset = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
     enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +79,10 @@ class NewHeartbeatDataAttributes:
         else:
             alert_urgency_id = self.alert_urgency_id
 
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = self.owner_group_ids
+
         enabled = self.enabled
 
         field_dict: dict[str, Any] = {}
@@ -97,6 +103,8 @@ class NewHeartbeatDataAttributes:
             field_dict["alert_description"] = alert_description
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
 
@@ -146,6 +154,8 @@ class NewHeartbeatDataAttributes:
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
+        owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
+
         enabled = d.pop("enabled", UNSET)
 
         new_heartbeat_data_attributes = cls(
@@ -158,6 +168,7 @@ class NewHeartbeatDataAttributes:
             description=description,
             alert_description=alert_description,
             alert_urgency_id=alert_urgency_id,
+            owner_group_ids=owner_group_ids,
             enabled=enabled,
         )
 

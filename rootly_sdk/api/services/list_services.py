@@ -27,6 +27,22 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filteralert_broadcast_enabledeq: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_eq: str | Unset = UNSET,
+    filteralert_broadcast_enabledin: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_in: str | Unset = UNSET,
+    filterincident_broadcast_enabledeq: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_eq: str | Unset = UNSET,
+    filterincident_broadcast_enabledin: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -63,6 +79,38 @@ def _get_kwargs(
     params["filter[created_at][lt]"] = filtercreated_atlt
 
     params["filter[created_at][lte]"] = filtercreated_atlte
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[slug][eq]"] = filterslugeq
+
+    params["filter[slug][not_eq]"] = filterslugnot_eq
+
+    params["filter[slug][in]"] = filterslugin
+
+    params["filter[slug][not_in]"] = filterslugnot_in
+
+    params["filter[alert_broadcast_enabled][eq]"] = filteralert_broadcast_enabledeq
+
+    params["filter[alert_broadcast_enabled][not_eq]"] = filteralert_broadcast_enablednot_eq
+
+    params["filter[alert_broadcast_enabled][in]"] = filteralert_broadcast_enabledin
+
+    params["filter[alert_broadcast_enabled][not_in]"] = filteralert_broadcast_enablednot_in
+
+    params["filter[incident_broadcast_enabled][eq]"] = filterincident_broadcast_enabledeq
+
+    params["filter[incident_broadcast_enabled][not_eq]"] = filterincident_broadcast_enablednot_eq
+
+    params["filter[incident_broadcast_enabled][in]"] = filterincident_broadcast_enabledin
+
+    params["filter[incident_broadcast_enabled][not_in]"] = filterincident_broadcast_enablednot_in
 
     params["sort"] = sort
 
@@ -117,6 +165,22 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filteralert_broadcast_enabledeq: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_eq: str | Unset = UNSET,
+    filteralert_broadcast_enabledin: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_in: str | Unset = UNSET,
+    filterincident_broadcast_enabledeq: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_eq: str | Unset = UNSET,
+    filterincident_broadcast_enabledin: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[ServiceList]:
     """List services
@@ -140,6 +204,22 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filteralert_broadcast_enabledeq (str | Unset):
+        filteralert_broadcast_enablednot_eq (str | Unset):
+        filteralert_broadcast_enabledin (str | Unset):
+        filteralert_broadcast_enablednot_in (str | Unset):
+        filterincident_broadcast_enabledeq (str | Unset):
+        filterincident_broadcast_enablednot_eq (str | Unset):
+        filterincident_broadcast_enabledin (str | Unset):
+        filterincident_broadcast_enablednot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -167,6 +247,22 @@ def sync_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
         sort=sort,
     )
 
@@ -196,6 +292,22 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filteralert_broadcast_enabledeq: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_eq: str | Unset = UNSET,
+    filteralert_broadcast_enabledin: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_in: str | Unset = UNSET,
+    filterincident_broadcast_enabledeq: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_eq: str | Unset = UNSET,
+    filterincident_broadcast_enabledin: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> ServiceList | None:
     """List services
@@ -219,6 +331,22 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filteralert_broadcast_enabledeq (str | Unset):
+        filteralert_broadcast_enablednot_eq (str | Unset):
+        filteralert_broadcast_enabledin (str | Unset):
+        filteralert_broadcast_enablednot_in (str | Unset):
+        filterincident_broadcast_enabledeq (str | Unset):
+        filterincident_broadcast_enablednot_eq (str | Unset):
+        filterincident_broadcast_enabledin (str | Unset):
+        filterincident_broadcast_enablednot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -247,6 +375,22 @@ def sync(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
         sort=sort,
     ).parsed
 
@@ -270,6 +414,22 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filteralert_broadcast_enabledeq: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_eq: str | Unset = UNSET,
+    filteralert_broadcast_enabledin: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_in: str | Unset = UNSET,
+    filterincident_broadcast_enabledeq: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_eq: str | Unset = UNSET,
+    filterincident_broadcast_enabledin: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[ServiceList]:
     """List services
@@ -293,6 +453,22 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filteralert_broadcast_enabledeq (str | Unset):
+        filteralert_broadcast_enablednot_eq (str | Unset):
+        filteralert_broadcast_enabledin (str | Unset):
+        filteralert_broadcast_enablednot_in (str | Unset):
+        filterincident_broadcast_enabledeq (str | Unset):
+        filterincident_broadcast_enablednot_eq (str | Unset):
+        filterincident_broadcast_enabledin (str | Unset):
+        filterincident_broadcast_enablednot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -320,6 +496,22 @@ async def asyncio_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
+        filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+        filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+        filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+        filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+        filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+        filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+        filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+        filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
         sort=sort,
     )
 
@@ -347,6 +539,22 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filteralert_broadcast_enabledeq: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_eq: str | Unset = UNSET,
+    filteralert_broadcast_enabledin: str | Unset = UNSET,
+    filteralert_broadcast_enablednot_in: str | Unset = UNSET,
+    filterincident_broadcast_enabledeq: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_eq: str | Unset = UNSET,
+    filterincident_broadcast_enabledin: str | Unset = UNSET,
+    filterincident_broadcast_enablednot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> ServiceList | None:
     """List services
@@ -370,6 +578,22 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filteralert_broadcast_enabledeq (str | Unset):
+        filteralert_broadcast_enablednot_eq (str | Unset):
+        filteralert_broadcast_enabledin (str | Unset):
+        filteralert_broadcast_enablednot_in (str | Unset):
+        filterincident_broadcast_enabledeq (str | Unset):
+        filterincident_broadcast_enablednot_eq (str | Unset):
+        filterincident_broadcast_enabledin (str | Unset):
+        filterincident_broadcast_enablednot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -399,6 +623,22 @@ async def asyncio(
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
             filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
+            filteralert_broadcast_enabledeq=filteralert_broadcast_enabledeq,
+            filteralert_broadcast_enablednot_eq=filteralert_broadcast_enablednot_eq,
+            filteralert_broadcast_enabledin=filteralert_broadcast_enabledin,
+            filteralert_broadcast_enablednot_in=filteralert_broadcast_enablednot_in,
+            filterincident_broadcast_enabledeq=filterincident_broadcast_enabledeq,
+            filterincident_broadcast_enablednot_eq=filterincident_broadcast_enablednot_eq,
+            filterincident_broadcast_enabledin=filterincident_broadcast_enabledin,
+            filterincident_broadcast_enablednot_in=filterincident_broadcast_enablednot_in,
             sort=sort,
         )
     ).parsed

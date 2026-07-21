@@ -34,6 +34,7 @@ class UpdateScheduleRotationActiveDayDataAttributes:
     active_time_attributes: list[UpdateScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         day_name: str | Unset = UNSET
         if not isinstance(self.day_name, Unset):
             day_name = self.day_name

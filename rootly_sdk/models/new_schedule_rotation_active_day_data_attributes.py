@@ -33,6 +33,7 @@ class NewScheduleRotationActiveDayDataAttributes:
     active_time_attributes: list[NewScheduleRotationActiveDayDataAttributesActiveTimeAttributesItem]
 
     def to_dict(self) -> dict[str, Any]:
+
         day_name: str = self.day_name
 
         active_time_attributes = []

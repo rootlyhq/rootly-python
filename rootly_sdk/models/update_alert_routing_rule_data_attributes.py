@@ -49,6 +49,7 @@ class UpdateAlertRoutingRuleDataAttributes:
     destination: UpdateAlertRoutingRuleDataAttributesDestination | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         enabled = self.enabled

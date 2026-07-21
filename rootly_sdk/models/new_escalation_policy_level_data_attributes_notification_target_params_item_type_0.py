@@ -23,7 +23,8 @@ T = TypeVar("T", bound="NewEscalationPolicyLevelDataAttributesNotificationTarget
 class NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
     """
     Attributes:
-        id (str): The ID of notification target. If Slack channel, then id of the slack channel (eg. C06Q2JK7RQW)
+        id (str): The ID of notification target. If Slack channel, then id of the slack channel (eg. C06Q2JK7RQW). If
+            Microsoft Teams channel, then the Rootly channel UUID.
         type_ (NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type): The type of the
             notification target
         team_members (NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers | Unset): For

@@ -1,9 +1,9 @@
 from typing import Literal, cast
 
-ChangeSlackChannelPrivacyTaskParamsTaskType = Literal["rename_slack_channel"]
+ChangeSlackChannelPrivacyTaskParamsTaskType = Literal["change_slack_channel_privacy"]
 
 CHANGE_SLACK_CHANNEL_PRIVACY_TASK_PARAMS_TASK_TYPE_VALUES: set[ChangeSlackChannelPrivacyTaskParamsTaskType] = {
-    "rename_slack_channel",
+    "change_slack_channel_privacy",
 }
 
 

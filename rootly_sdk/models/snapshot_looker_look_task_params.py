@@ -39,6 +39,7 @@ class SnapshotLookerLookTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         dashboards = []
         for dashboards_item_data in self.dashboards:
             dashboards_item = dashboards_item_data.to_dict()

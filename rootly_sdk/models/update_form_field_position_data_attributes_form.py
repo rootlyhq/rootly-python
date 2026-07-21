@@ -2,6 +2,7 @@ from typing import Literal, cast
 
 UpdateFormFieldPositionDataAttributesForm = Literal[
     "incident_post_mortem",
+    "slack_action_item_form",
     "slack_incident_cancellation_form",
     "slack_incident_mitigation_form",
     "slack_incident_resolution_form",
@@ -10,6 +11,7 @@ UpdateFormFieldPositionDataAttributesForm = Literal[
     "slack_update_incident_form",
     "slack_update_incident_status_form",
     "slack_update_scheduled_incident_form",
+    "web_action_item_form",
     "web_incident_cancellation_form",
     "web_incident_mitigation_form",
     "web_incident_post_mortem_form",
@@ -22,6 +24,7 @@ UpdateFormFieldPositionDataAttributesForm = Literal[
 
 UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES: set[UpdateFormFieldPositionDataAttributesForm] = {
     "incident_post_mortem",
+    "slack_action_item_form",
     "slack_incident_cancellation_form",
     "slack_incident_mitigation_form",
     "slack_incident_resolution_form",
@@ -30,6 +33,7 @@ UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES: set[UpdateFormFieldPosit
     "slack_update_incident_form",
     "slack_update_incident_status_form",
     "slack_update_scheduled_incident_form",
+    "web_action_item_form",
     "web_incident_cancellation_form",
     "web_incident_mitigation_form",
     "web_incident_post_mortem_form",

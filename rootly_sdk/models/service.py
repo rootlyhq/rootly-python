@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.service_managed_by import ServiceManagedBy, check_service_managed_by
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -27,6 +28,8 @@ class Service:
         created_at (str): Date of creation
         updated_at (str): Date of last update
         slug (str | Unset): The slug of the service
+        managed_by (ServiceManagedBy | Unset): How this service is managed (provenance): web, api, terraform, etc. Read-
+            only.
         description (None | str | Unset): The description of the service
         public_description (None | str | Unset): The public description of the service
         notify_emails (list[str] | None | Unset): Emails attached to the service
@@ -69,6 +72,7 @@ class Service:
     created_at: str
     updated_at: str
     slug: str | Unset = UNSET
+    managed_by: ServiceManagedBy | Unset = UNSET
     description: None | str | Unset = UNSET
     public_description: None | str | Unset = UNSET
     notify_emails: list[str] | None | Unset = UNSET
@@ -113,6 +117,10 @@ class Service:
         updated_at = self.updated_at
 
         slug = self.slug
+
+        managed_by: str | Unset = UNSET
+        if not isinstance(self.managed_by, Unset):
+            managed_by = self.managed_by
 
         description: None | str | Unset
         if isinstance(self.description, Unset):
@@ -348,6 +356,8 @@ class Service:
         )
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
         if description is not UNSET:
             field_dict["description"] = description
         if public_description is not UNSET:
@@ -429,6 +439,13 @@ class Service:
         updated_at = d.pop("updated_at")
 
         slug = d.pop("slug", UNSET)
+
+        _managed_by = d.pop("managed_by", UNSET)
+        managed_by: ServiceManagedBy | Unset
+        if isinstance(_managed_by, Unset):
+            managed_by = UNSET
+        else:
+            managed_by = check_service_managed_by(_managed_by)
 
         def _parse_description(data: object) -> None | str | Unset:
             if data is None:
@@ -811,6 +828,7 @@ class Service:
             created_at=created_at,
             updated_at=updated_at,
             slug=slug,
+            managed_by=managed_by,
             description=description,
             public_description=public_description,
             notify_emails=notify_emails,

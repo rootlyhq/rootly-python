@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -18,6 +18,12 @@ from ..models.new_incident_action_item_data_attributes_status import (
     check_new_incident_action_item_data_attributes_status,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.new_incident_action_item_data_attributes_form_field_selections_type_0_item import (
+        NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item,
+    )
+
 
 T = TypeVar("T", bound="NewIncidentActionItemDataAttributes")
 
@@ -37,6 +43,9 @@ class NewIncidentActionItemDataAttributes:
         jira_issue_id (None | str | Unset): The Jira issue ID.
         jira_issue_key (None | str | Unset): The Jira issue key.
         jira_issue_url (None | str | Unset): The Jira issue URL.
+        form_field_selections (list[NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset):
+            Custom field values to set on the action item. Ignored unless custom fields for action items are enabled for the
+            organization.
     """
 
     summary: str
@@ -50,8 +59,10 @@ class NewIncidentActionItemDataAttributes:
     jira_issue_id: None | str | Unset = UNSET
     jira_issue_key: None | str | Unset = UNSET
     jira_issue_url: None | str | Unset = UNSET
+    form_field_selections: list[NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         summary = self.summary
 
         description: None | str | Unset
@@ -106,6 +117,18 @@ class NewIncidentActionItemDataAttributes:
         else:
             jira_issue_url = self.jira_issue_url
 
+        form_field_selections: list[dict[str, Any]] | None | Unset
+        if isinstance(self.form_field_selections, Unset):
+            form_field_selections = UNSET
+        elif isinstance(self.form_field_selections, list):
+            form_field_selections = []
+            for form_field_selections_type_0_item_data in self.form_field_selections:
+                form_field_selections_type_0_item = form_field_selections_type_0_item_data.to_dict()
+                form_field_selections.append(form_field_selections_type_0_item)
+
+        else:
+            form_field_selections = self.form_field_selections
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -133,11 +156,17 @@ class NewIncidentActionItemDataAttributes:
             field_dict["jira_issue_key"] = jira_issue_key
         if jira_issue_url is not UNSET:
             field_dict["jira_issue_url"] = jira_issue_url
+        if form_field_selections is not UNSET:
+            field_dict["form_field_selections"] = form_field_selections
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.new_incident_action_item_data_attributes_form_field_selections_type_0_item import (
+            NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item,
+        )
+
         d = dict(src_dict)
         summary = d.pop("summary")
 
@@ -218,6 +247,34 @@ class NewIncidentActionItemDataAttributes:
 
         jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
 
+        def _parse_form_field_selections(
+            data: object,
+        ) -> list[NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                form_field_selections_type_0 = []
+                _form_field_selections_type_0 = data
+                for form_field_selections_type_0_item_data in _form_field_selections_type_0:
+                    form_field_selections_type_0_item = (
+                        NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item.from_dict(
+                            form_field_selections_type_0_item_data
+                        )
+                    )
+
+                    form_field_selections_type_0.append(form_field_selections_type_0_item)
+
+                return form_field_selections_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[NewIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset, data)
+
+        form_field_selections = _parse_form_field_selections(d.pop("form_field_selections", UNSET))
+
         new_incident_action_item_data_attributes = cls(
             summary=summary,
             description=description,
@@ -230,6 +287,7 @@ class NewIncidentActionItemDataAttributes:
             jira_issue_id=jira_issue_id,
             jira_issue_key=jira_issue_key,
             jira_issue_url=jira_issue_url,
+            form_field_selections=form_field_selections,
         )
 
         return new_incident_action_item_data_attributes

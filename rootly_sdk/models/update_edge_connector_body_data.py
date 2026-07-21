@@ -34,6 +34,7 @@ class UpdateEdgeConnectorBodyData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_

@@ -26,6 +26,7 @@ class EscalationPolicyPathListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         id = self.id
 
         attributes = self.attributes.to_dict()

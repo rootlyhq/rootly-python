@@ -40,6 +40,7 @@ class NewIncidentPermissionSetResourceDataAttributes:
     severity_params: NewIncidentPermissionSetResourceDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         incident_permission_set_id = self.incident_permission_set_id
 
         kind: str = self.kind

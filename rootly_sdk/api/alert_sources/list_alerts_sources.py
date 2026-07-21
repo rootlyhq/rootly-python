@@ -18,6 +18,7 @@ def _get_kwargs(
     filterstatuses: str | Unset = UNSET,
     filtersource_types: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -36,6 +37,8 @@ def _get_kwargs(
     params["filter[source_types]"] = filtersource_types
 
     params["filter[name]"] = filtername
+
+    params["filter[enabled]"] = filterenabled
 
     params["sort"] = sort
 
@@ -81,6 +84,7 @@ def sync_detailed(
     filterstatuses: str | Unset = UNSET,
     filtersource_types: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
@@ -95,6 +99,7 @@ def sync_detailed(
         filterstatuses (str | Unset):
         filtersource_types (str | Unset):
         filtername (str | Unset):
+        filterenabled (bool | Unset):
         sort (str | Unset):
 
     Raises:
@@ -113,6 +118,7 @@ def sync_detailed(
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
         filtername=filtername,
+        filterenabled=filterenabled,
         sort=sort,
     )
 
@@ -133,6 +139,7 @@ def sync(
     filterstatuses: str | Unset = UNSET,
     filtersource_types: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertsSourceList | None:
     """List alert sources
@@ -147,6 +154,7 @@ def sync(
         filterstatuses (str | Unset):
         filtersource_types (str | Unset):
         filtername (str | Unset):
+        filterenabled (bool | Unset):
         sort (str | Unset):
 
     Raises:
@@ -166,6 +174,7 @@ def sync(
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
         filtername=filtername,
+        filterenabled=filterenabled,
         sort=sort,
     ).parsed
 
@@ -180,6 +189,7 @@ async def asyncio_detailed(
     filterstatuses: str | Unset = UNSET,
     filtersource_types: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
@@ -194,6 +204,7 @@ async def asyncio_detailed(
         filterstatuses (str | Unset):
         filtersource_types (str | Unset):
         filtername (str | Unset):
+        filterenabled (bool | Unset):
         sort (str | Unset):
 
     Raises:
@@ -212,6 +223,7 @@ async def asyncio_detailed(
         filterstatuses=filterstatuses,
         filtersource_types=filtersource_types,
         filtername=filtername,
+        filterenabled=filterenabled,
         sort=sort,
     )
 
@@ -230,6 +242,7 @@ async def asyncio(
     filterstatuses: str | Unset = UNSET,
     filtersource_types: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertsSourceList | None:
     """List alert sources
@@ -244,6 +257,7 @@ async def asyncio(
         filterstatuses (str | Unset):
         filtersource_types (str | Unset):
         filtername (str | Unset):
+        filterenabled (bool | Unset):
         sort (str | Unset):
 
     Raises:
@@ -264,6 +278,7 @@ async def asyncio(
             filterstatuses=filterstatuses,
             filtersource_types=filtersource_types,
             filtername=filtername,
+            filterenabled=filterenabled,
             sort=sort,
         )
     ).parsed

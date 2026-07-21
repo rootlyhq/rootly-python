@@ -46,6 +46,7 @@ class UpdateDatadogNotebookTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         file_id = self.file_id
 
         task_type: str | Unset = UNSET

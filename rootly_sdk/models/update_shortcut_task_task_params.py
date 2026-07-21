@@ -38,6 +38,7 @@ class UpdateShortcutTaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         task_id = self.task_id
 
         parent_story_id = self.parent_story_id

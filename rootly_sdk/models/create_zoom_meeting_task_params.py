@@ -43,6 +43,8 @@ class CreateZoomMeetingTaskParams:
             summary from your meeting
         recording_mode (CreateZoomMeetingTaskParamsRecordingMode | Unset): The video layout for the bot's recording
             (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
+        enable_zoom_bot_auto_join (bool | Unset): Allow the Rootly bot to start recording without waiting for host
+            approval
         post_to_incident_timeline (bool | Unset):
         post_to_slack_channels (list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset):
     """
@@ -55,11 +57,13 @@ class CreateZoomMeetingTaskParams:
     auto_recording: CreateZoomMeetingTaskParamsAutoRecording | Unset = "none"
     record_meeting: bool | Unset = UNSET
     recording_mode: CreateZoomMeetingTaskParamsRecordingMode | Unset = UNSET
+    enable_zoom_bot_auto_join: bool | Unset = UNSET
     post_to_incident_timeline: bool | Unset = UNSET
     post_to_slack_channels: list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         topic = self.topic
 
         task_type: str | Unset = UNSET
@@ -83,6 +87,8 @@ class CreateZoomMeetingTaskParams:
         recording_mode: str | Unset = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
+
+        enable_zoom_bot_auto_join = self.enable_zoom_bot_auto_join
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
@@ -114,6 +120,8 @@ class CreateZoomMeetingTaskParams:
             field_dict["record_meeting"] = record_meeting
         if recording_mode is not UNSET:
             field_dict["recording_mode"] = recording_mode
+        if enable_zoom_bot_auto_join is not UNSET:
+            field_dict["enable_zoom_bot_auto_join"] = enable_zoom_bot_auto_join
         if post_to_incident_timeline is not UNSET:
             field_dict["post_to_incident_timeline"] = post_to_incident_timeline
         if post_to_slack_channels is not UNSET:
@@ -159,6 +167,8 @@ class CreateZoomMeetingTaskParams:
         else:
             recording_mode = check_create_zoom_meeting_task_params_recording_mode(_recording_mode)
 
+        enable_zoom_bot_auto_join = d.pop("enable_zoom_bot_auto_join", UNSET)
+
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
@@ -181,6 +191,7 @@ class CreateZoomMeetingTaskParams:
             auto_recording=auto_recording,
             record_meeting=record_meeting,
             recording_mode=recording_mode,
+            enable_zoom_bot_auto_join=enable_zoom_bot_auto_join,
             post_to_incident_timeline=post_to_incident_timeline,
             post_to_slack_channels=post_to_slack_channels,
         )

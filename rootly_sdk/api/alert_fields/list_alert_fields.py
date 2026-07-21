@@ -21,6 +21,14 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -45,6 +53,22 @@ def _get_kwargs(
     params["filter[created_at][lt]"] = filtercreated_atlt
 
     params["filter[created_at][lte]"] = filtercreated_atlte
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[kind][eq]"] = filterkindeq
+
+    params["filter[kind][not_eq]"] = filterkindnot_eq
+
+    params["filter[kind][in]"] = filterkindin
+
+    params["filter[kind][not_in]"] = filterkindnot_in
 
     params["sort"] = sort
 
@@ -93,6 +117,14 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertFieldList]:
     """List alert fields
@@ -110,6 +142,14 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -131,6 +171,14 @@ def sync_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
         sort=sort,
     )
 
@@ -154,6 +202,14 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertFieldList | None:
     """List alert fields
@@ -171,6 +227,14 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -193,6 +257,14 @@ def sync(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
         sort=sort,
     ).parsed
 
@@ -210,6 +282,14 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[AlertFieldList]:
     """List alert fields
@@ -227,6 +307,14 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -248,6 +336,14 @@ async def asyncio_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
         sort=sort,
     )
 
@@ -269,6 +365,14 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> AlertFieldList | None:
     """List alert fields
@@ -286,6 +390,14 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -309,6 +421,14 @@ async def asyncio(
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
             filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterkindeq=filterkindeq,
+            filterkindnot_eq=filterkindnot_eq,
+            filterkindin=filterkindin,
+            filterkindnot_in=filterkindnot_in,
             sort=sort,
         )
     ).parsed

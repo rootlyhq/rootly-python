@@ -57,6 +57,7 @@ class TriggerWorkflowTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         kind: str = self.kind
 
         attribute_to_query_by: str = self.attribute_to_query_by

@@ -56,6 +56,7 @@ class CatalogEntityChecklist:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         catalog_checklist_template_id = self.catalog_checklist_template_id
 
         auditable_type: str = self.auditable_type

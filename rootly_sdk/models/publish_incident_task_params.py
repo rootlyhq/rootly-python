@@ -56,6 +56,7 @@ class PublishIncidentTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         incident = self.incident.to_dict()
 
         public_title = self.public_title

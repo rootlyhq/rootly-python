@@ -29,6 +29,7 @@ class UserRelationships:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         role: dict[str, Any] | Unset = UNSET
         if not isinstance(self.role, Unset):
             role = self.role.to_dict()

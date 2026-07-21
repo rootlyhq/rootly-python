@@ -34,6 +34,7 @@ class DashboardPanelParamsDatasetsItemFilterItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         operation: str | Unset = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation

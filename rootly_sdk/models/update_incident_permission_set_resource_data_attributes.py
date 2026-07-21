@@ -38,6 +38,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
     severity_params: UpdateIncidentPermissionSetResourceDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind

@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.alert_list_data_item_source import AlertListDataItemSource, check_alert_list_data_item_source
 from ..models.alert_list_data_item_type import AlertListDataItemType, check_alert_list_data_item_type
 from ..types import UNSET, Unset
 
@@ -24,25 +23,24 @@ class AlertListDataItem:
         id (str): Unique ID of the alert
         type_ (AlertListDataItemType):
         attributes (Alert):
-        source (AlertListDataItemSource | Unset): The source of the alert
+        source (str | Unset): The source of the alert
     """
 
     id: str
     type_: AlertListDataItemType
     attributes: Alert
-    source: AlertListDataItemSource | Unset = UNSET
+    source: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         id = self.id
 
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()
 
-        source: str | Unset = UNSET
-        if not isinstance(self.source, Unset):
-            source = self.source
+        source = self.source
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -69,12 +67,7 @@ class AlertListDataItem:
 
         attributes = Alert.from_dict(d.pop("attributes"))
 
-        _source = d.pop("source", UNSET)
-        source: AlertListDataItemSource | Unset
-        if isinstance(_source, Unset):
-            source = UNSET
-        else:
-            source = check_alert_list_data_item_source(_source)
+        source = d.pop("source", UNSET)
 
         alert_list_data_item = cls(
             id=id,

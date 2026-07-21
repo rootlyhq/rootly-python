@@ -38,6 +38,7 @@ class AlertsSourceSourceableAttributesType0:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         auto_resolve = self.auto_resolve
 
         resolve_state: None | str | Unset

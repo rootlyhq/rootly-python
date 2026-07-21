@@ -49,6 +49,7 @@ class NewAlertRoutingRuleDataAttributes:
     conditions: list[NewAlertRoutingRuleDataAttributesConditionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         alerts_source_id = str(self.alerts_source_id)

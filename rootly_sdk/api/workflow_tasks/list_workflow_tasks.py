@@ -19,6 +19,14 @@ def _get_kwargs(
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
     filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
     params: dict[str, Any] = {}
@@ -34,6 +42,22 @@ def _get_kwargs(
     params["filter[name]"] = filtername
 
     params["filter[slug]"] = filterslug
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[slug][eq]"] = filterslugeq
+
+    params["filter[slug][not_eq]"] = filterslugnot_eq
+
+    params["filter[slug][in]"] = filterslugin
+
+    params["filter[slug][not_in]"] = filterslugnot_in
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -79,6 +103,14 @@ def sync_detailed(
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
     filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> Response[WorkflowTaskList]:
     """List workflow tasks
 
@@ -92,6 +124,14 @@ def sync_detailed(
         filtersearch (str | Unset):
         filtername (str | Unset):
         filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -109,6 +149,14 @@ def sync_detailed(
         filtersearch=filtersearch,
         filtername=filtername,
         filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     )
 
     response = client.get_httpx_client().request(
@@ -128,6 +176,14 @@ def sync(
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
     filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> WorkflowTaskList | None:
     """List workflow tasks
 
@@ -141,6 +197,14 @@ def sync(
         filtersearch (str | Unset):
         filtername (str | Unset):
         filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,6 +223,14 @@ def sync(
         filtersearch=filtersearch,
         filtername=filtername,
         filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     ).parsed
 
 
@@ -172,6 +244,14 @@ async def asyncio_detailed(
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
     filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> Response[WorkflowTaskList]:
     """List workflow tasks
 
@@ -185,6 +265,14 @@ async def asyncio_detailed(
         filtersearch (str | Unset):
         filtername (str | Unset):
         filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -202,6 +290,14 @@ async def asyncio_detailed(
         filtersearch=filtersearch,
         filtername=filtername,
         filterslug=filterslug,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterslugeq=filterslugeq,
+        filterslugnot_eq=filterslugnot_eq,
+        filterslugin=filterslugin,
+        filterslugnot_in=filterslugnot_in,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -219,6 +315,14 @@ async def asyncio(
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
     filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> WorkflowTaskList | None:
     """List workflow tasks
 
@@ -232,6 +336,14 @@ async def asyncio(
         filtersearch (str | Unset):
         filtername (str | Unset):
         filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -251,5 +363,13 @@ async def asyncio(
             filtersearch=filtersearch,
             filtername=filtername,
             filterslug=filterslug,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterslugeq=filterslugeq,
+            filterslugnot_eq=filterslugnot_eq,
+            filterslugin=filterslugin,
+            filterslugnot_in=filterslugnot_in,
         )
     ).parsed

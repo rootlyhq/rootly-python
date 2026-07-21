@@ -27,7 +27,8 @@ class IncidentActionItem:
         updated_at (str): Date of last update
         description (None | str | Unset): The description of incident action item
         kind (IncidentActionItemKind | Unset): The kind of the action item
-        assigned_to (UserFlatResponse | Unset): Flat user object as returned by serializer
+        assigned_to (UserFlatResponse | Unset): Flat user attributes as returned by UserFlatSerializer (no nested
+            associations)
         assigned_to_group_ids (list[str] | None | Unset): IDs of groups you wish to assign this action item
         priority (IncidentActionItemPriority | Unset): The priority of the action item
         status (IncidentActionItemStatus | Unset): The status of the action item
@@ -35,6 +36,8 @@ class IncidentActionItem:
         jira_issue_id (None | str | Unset): The Jira issue ID.
         jira_issue_key (None | str | Unset): The Jira issue key.
         jira_issue_url (None | str | Unset): The Jira issue URL.
+        created_by (UserFlatResponse | Unset): Flat user attributes as returned by UserFlatSerializer (no nested
+            associations)
     """
 
     summary: str
@@ -50,9 +53,11 @@ class IncidentActionItem:
     jira_issue_id: None | str | Unset = UNSET
     jira_issue_key: None | str | Unset = UNSET
     jira_issue_url: None | str | Unset = UNSET
+    created_by: UserFlatResponse | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         summary = self.summary
 
         created_at = self.created_at
@@ -114,6 +119,10 @@ class IncidentActionItem:
         else:
             jira_issue_url = self.jira_issue_url
 
+        created_by: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.created_by, Unset):
+            created_by = self.created_by.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -143,6 +152,8 @@ class IncidentActionItem:
             field_dict["jira_issue_key"] = jira_issue_key
         if jira_issue_url is not UNSET:
             field_dict["jira_issue_url"] = jira_issue_url
+        if created_by is not UNSET:
+            field_dict["created_by"] = created_by
 
         return field_dict
 
@@ -247,6 +258,13 @@ class IncidentActionItem:
 
         jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
 
+        _created_by = d.pop("created_by", UNSET)
+        created_by: UserFlatResponse | Unset
+        if isinstance(_created_by, Unset):
+            created_by = UNSET
+        else:
+            created_by = UserFlatResponse.from_dict(_created_by)
+
         incident_action_item = cls(
             summary=summary,
             created_at=created_at,
@@ -261,6 +279,7 @@ class IncidentActionItem:
             jira_issue_id=jira_issue_id,
             jira_issue_key=jira_issue_key,
             jira_issue_url=jira_issue_url,
+            created_by=created_by,
         )
 
         incident_action_item.additional_properties = d

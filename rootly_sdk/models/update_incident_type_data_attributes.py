@@ -49,6 +49,7 @@ class UpdateIncidentTypeDataAttributes:
     properties: list[UpdateIncidentTypeDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         description: None | str | Unset

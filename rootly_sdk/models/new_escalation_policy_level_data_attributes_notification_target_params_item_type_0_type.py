@@ -1,12 +1,13 @@
 from typing import Literal, cast
 
 NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type = Literal[
-    "schedule", "service", "slack_channel", "team", "user"
+    "microsoft_teams_channel", "schedule", "service", "slack_channel", "team", "user"
 ]
 
 NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TYPE_VALUES: set[
     NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type
 ] = {
+    "microsoft_teams_channel",
     "schedule",
     "service",
     "slack_channel",

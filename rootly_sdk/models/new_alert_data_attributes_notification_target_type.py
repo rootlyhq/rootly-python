@@ -1,9 +1,10 @@
 from typing import Literal, cast
 
-NewAlertDataAttributesNotificationTargetType = Literal["EscalationPolicy", "Group", "Service", "User"]
+NewAlertDataAttributesNotificationTargetType = Literal["EscalationPolicy", "Functionality", "Group", "Service", "User"]
 
 NEW_ALERT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES: set[NewAlertDataAttributesNotificationTargetType] = {
     "EscalationPolicy",
+    "Functionality",
     "Group",
     "Service",
     "User",

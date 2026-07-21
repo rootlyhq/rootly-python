@@ -32,7 +32,10 @@ class MeetingRecording:
         word_count (int | Unset): Total word count across all transcript segments
         transcript_summary (None | str | Unset): AI-generated summary of the meeting transcript (null if no transcript
             or not yet analyzed)
-        has_video (bool | Unset): Whether a video recording file is attached
+        title (None | str | Unset): Human-readable label for the recording session
+        meeting_url (None | str | Unset): Original meeting URL
+        video_url (None | str | Unset): Signed URL to stream/download the video recording
+        created_by (None | str | Unset): Source that created the recording (e.g. desktop_sdk, recall_bot)
     """
 
     platform: MeetingRecordingPlatform
@@ -46,7 +49,10 @@ class MeetingRecording:
     speaker_count: int | Unset = UNSET
     word_count: int | Unset = UNSET
     transcript_summary: None | str | Unset = UNSET
-    has_video: bool | Unset = UNSET
+    title: None | str | Unset = UNSET
+    meeting_url: None | str | Unset = UNSET
+    video_url: None | str | Unset = UNSET
+    created_by: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -92,7 +98,29 @@ class MeetingRecording:
         else:
             transcript_summary = self.transcript_summary
 
-        has_video = self.has_video
+        title: None | str | Unset
+        if isinstance(self.title, Unset):
+            title = UNSET
+        else:
+            title = self.title
+
+        meeting_url: None | str | Unset
+        if isinstance(self.meeting_url, Unset):
+            meeting_url = UNSET
+        else:
+            meeting_url = self.meeting_url
+
+        video_url: None | str | Unset
+        if isinstance(self.video_url, Unset):
+            video_url = UNSET
+        else:
+            video_url = self.video_url
+
+        created_by: None | str | Unset
+        if isinstance(self.created_by, Unset):
+            created_by = UNSET
+        else:
+            created_by = self.created_by
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -117,8 +145,14 @@ class MeetingRecording:
             field_dict["word_count"] = word_count
         if transcript_summary is not UNSET:
             field_dict["transcript_summary"] = transcript_summary
-        if has_video is not UNSET:
-            field_dict["has_video"] = has_video
+        if title is not UNSET:
+            field_dict["title"] = title
+        if meeting_url is not UNSET:
+            field_dict["meeting_url"] = meeting_url
+        if video_url is not UNSET:
+            field_dict["video_url"] = video_url
+        if created_by is not UNSET:
+            field_dict["created_by"] = created_by
 
         return field_dict
 
@@ -191,7 +225,41 @@ class MeetingRecording:
 
         transcript_summary = _parse_transcript_summary(d.pop("transcript_summary", UNSET))
 
-        has_video = d.pop("has_video", UNSET)
+        def _parse_title(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        title = _parse_title(d.pop("title", UNSET))
+
+        def _parse_meeting_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        meeting_url = _parse_meeting_url(d.pop("meeting_url", UNSET))
+
+        def _parse_video_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        video_url = _parse_video_url(d.pop("video_url", UNSET))
+
+        def _parse_created_by(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        created_by = _parse_created_by(d.pop("created_by", UNSET))
 
         meeting_recording = cls(
             platform=platform,
@@ -205,7 +273,10 @@ class MeetingRecording:
             speaker_count=speaker_count,
             word_count=word_count,
             transcript_summary=transcript_summary,
-            has_video=has_video,
+            title=title,
+            meeting_url=meeting_url,
+            video_url=video_url,
+            created_by=created_by,
         )
 
         meeting_recording.additional_properties = d

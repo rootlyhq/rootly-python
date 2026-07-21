@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -36,6 +36,8 @@ class CreateLinearIssueTaskParams:
         labels (list[CreateLinearIssueTaskParamsLabelsItem] | Unset):
         priority (CreateLinearIssueTaskParamsPriority | Unset): The priority id and display name
         assign_user_email (str | Unset): The assigned user's email
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+            valid JSON
     """
 
     title: str
@@ -47,9 +49,11 @@ class CreateLinearIssueTaskParams:
     labels: list[CreateLinearIssueTaskParamsLabelsItem] | Unset = UNSET
     priority: CreateLinearIssueTaskParamsPriority | Unset = UNSET
     assign_user_email: str | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         title = self.title
 
         team = self.team.to_dict()
@@ -79,6 +83,12 @@ class CreateLinearIssueTaskParams:
 
         assign_user_email = self.assign_user_email
 
+        custom_fields_mapping: None | str | Unset
+        if isinstance(self.custom_fields_mapping, Unset):
+            custom_fields_mapping = UNSET
+        else:
+            custom_fields_mapping = self.custom_fields_mapping
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -100,6 +110,8 @@ class CreateLinearIssueTaskParams:
             field_dict["priority"] = priority
         if assign_user_email is not UNSET:
             field_dict["assign_user_email"] = assign_user_email
+        if custom_fields_mapping is not UNSET:
+            field_dict["custom_fields_mapping"] = custom_fields_mapping
 
         return field_dict
 
@@ -152,6 +164,15 @@ class CreateLinearIssueTaskParams:
 
         assign_user_email = d.pop("assign_user_email", UNSET)
 
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
+
         create_linear_issue_task_params = cls(
             title=title,
             team=team,
@@ -162,6 +183,7 @@ class CreateLinearIssueTaskParams:
             labels=labels,
             priority=priority,
             assign_user_email=assign_user_email,
+            custom_fields_mapping=custom_fields_mapping,
         )
 
         create_linear_issue_task_params.additional_properties = d

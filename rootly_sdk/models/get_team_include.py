@@ -1,8 +1,10 @@
 from typing import Literal, cast
 
-GetTeamInclude = Literal["users"]
+GetTeamInclude = Literal["escalation_policies", "schedules", "users"]
 
 GET_TEAM_INCLUDE_VALUES: set[GetTeamInclude] = {
+    "escalation_policies",
+    "schedules",
     "users",
 }
 

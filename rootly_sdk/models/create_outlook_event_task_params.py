@@ -57,6 +57,7 @@ class CreateOutlookEventTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         calendar = self.calendar.to_dict()
 
         days_until_meeting = self.days_until_meeting

@@ -23,7 +23,7 @@ class FormSet:
             `web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `slack_new_incident_form`,
             `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
             `slack_incident_resolution_form`, `slack_incident_cancellation_form`, `slack_scheduled_incident_form`,
-            `slack_update_scheduled_incident_form`
+            `slack_update_scheduled_incident_form`, `google_chat_new_incident_form`, `google_chat_update_incident_form`
         created_at (str): Date of creation
         updated_at (str): Date of last update
         slug (str | Unset): The slug of the form set

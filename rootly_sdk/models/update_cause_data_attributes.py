@@ -30,6 +30,7 @@ class UpdateCauseDataAttributes:
     properties: list[UpdateCauseDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         description: None | str | Unset

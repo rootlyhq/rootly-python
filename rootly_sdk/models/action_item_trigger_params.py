@@ -42,13 +42,13 @@ from ..models.action_item_trigger_params_incident_condition import (
     ActionItemTriggerParamsIncidentCondition,
     check_action_item_trigger_params_incident_condition,
 )
-from ..models.action_item_trigger_params_incident_condition_acknowledged_at_type_1 import (
-    ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1,
-    check_action_item_trigger_params_incident_condition_acknowledged_at_type_1,
+from ..models.action_item_trigger_params_incident_condition_acknowledged_at import (
+    ActionItemTriggerParamsIncidentConditionAcknowledgedAt,
+    check_action_item_trigger_params_incident_condition_acknowledged_at,
 )
-from ..models.action_item_trigger_params_incident_condition_detected_at_type_1 import (
-    ActionItemTriggerParamsIncidentConditionDetectedAtType1,
-    check_action_item_trigger_params_incident_condition_detected_at_type_1,
+from ..models.action_item_trigger_params_incident_condition_detected_at import (
+    ActionItemTriggerParamsIncidentConditionDetectedAt,
+    check_action_item_trigger_params_incident_condition_detected_at,
 )
 from ..models.action_item_trigger_params_incident_condition_environment import (
     ActionItemTriggerParamsIncidentConditionEnvironment,
@@ -74,13 +74,17 @@ from ..models.action_item_trigger_params_incident_condition_kind import (
     ActionItemTriggerParamsIncidentConditionKind,
     check_action_item_trigger_params_incident_condition_kind,
 )
-from ..models.action_item_trigger_params_incident_condition_mitigated_at_type_1 import (
-    ActionItemTriggerParamsIncidentConditionMitigatedAtType1,
-    check_action_item_trigger_params_incident_condition_mitigated_at_type_1,
+from ..models.action_item_trigger_params_incident_condition_label import (
+    ActionItemTriggerParamsIncidentConditionLabel,
+    check_action_item_trigger_params_incident_condition_label,
 )
-from ..models.action_item_trigger_params_incident_condition_resolved_at_type_1 import (
-    ActionItemTriggerParamsIncidentConditionResolvedAtType1,
-    check_action_item_trigger_params_incident_condition_resolved_at_type_1,
+from ..models.action_item_trigger_params_incident_condition_mitigated_at import (
+    ActionItemTriggerParamsIncidentConditionMitigatedAt,
+    check_action_item_trigger_params_incident_condition_mitigated_at,
+)
+from ..models.action_item_trigger_params_incident_condition_resolved_at import (
+    ActionItemTriggerParamsIncidentConditionResolvedAt,
+    check_action_item_trigger_params_incident_condition_resolved_at,
 )
 from ..models.action_item_trigger_params_incident_condition_service import (
     ActionItemTriggerParamsIncidentConditionService,
@@ -90,9 +94,9 @@ from ..models.action_item_trigger_params_incident_condition_severity import (
     ActionItemTriggerParamsIncidentConditionSeverity,
     check_action_item_trigger_params_incident_condition_severity,
 )
-from ..models.action_item_trigger_params_incident_condition_started_at_type_1 import (
-    ActionItemTriggerParamsIncidentConditionStartedAtType1,
-    check_action_item_trigger_params_incident_condition_started_at_type_1,
+from ..models.action_item_trigger_params_incident_condition_started_at import (
+    ActionItemTriggerParamsIncidentConditionStartedAt,
+    check_action_item_trigger_params_incident_condition_started_at,
 )
 from ..models.action_item_trigger_params_incident_condition_status import (
     ActionItemTriggerParamsIncidentConditionStatus,
@@ -102,17 +106,17 @@ from ..models.action_item_trigger_params_incident_condition_sub_status import (
     ActionItemTriggerParamsIncidentConditionSubStatus,
     check_action_item_trigger_params_incident_condition_sub_status,
 )
-from ..models.action_item_trigger_params_incident_condition_summary_type_1 import (
-    ActionItemTriggerParamsIncidentConditionSummaryType1,
-    check_action_item_trigger_params_incident_condition_summary_type_1,
+from ..models.action_item_trigger_params_incident_condition_summary import (
+    ActionItemTriggerParamsIncidentConditionSummary,
+    check_action_item_trigger_params_incident_condition_summary,
 )
 from ..models.action_item_trigger_params_incident_condition_visibility import (
     ActionItemTriggerParamsIncidentConditionVisibility,
     check_action_item_trigger_params_incident_condition_visibility,
 )
-from ..models.action_item_trigger_params_incident_conditional_inactivity_type_1 import (
-    ActionItemTriggerParamsIncidentConditionalInactivityType1,
-    check_action_item_trigger_params_incident_conditional_inactivity_type_1,
+from ..models.action_item_trigger_params_incident_conditional_inactivity import (
+    ActionItemTriggerParamsIncidentConditionalInactivity,
+    check_action_item_trigger_params_incident_conditional_inactivity,
 )
 from ..models.action_item_trigger_params_incident_kinds_item import (
     ActionItemTriggerParamsIncidentKindsItem,
@@ -140,7 +144,7 @@ class ActionItemTriggerParams:
         incident_visibilities (list[bool] | Unset):
         incident_kinds (list[ActionItemTriggerParamsIncidentKindsItem] | Unset):
         incident_statuses (list[ActionItemTriggerParamsIncidentStatusesItem] | Unset):
-        incident_inactivity_duration (None | str | Unset):
+        incident_inactivity_duration (None | str | Unset): ex. 10 min, 1h, 3 days, 2 weeks
         incident_condition (ActionItemTriggerParamsIncidentCondition | Unset):  Default: 'ALL'.
         incident_condition_visibility (ActionItemTriggerParamsIncidentConditionVisibility | Unset):  Default: 'ANY'.
         incident_condition_kind (ActionItemTriggerParamsIncidentConditionKind | Unset):  Default: 'IS'.
@@ -156,13 +160,16 @@ class ActionItemTriggerParams:
         incident_condition_functionality (ActionItemTriggerParamsIncidentConditionFunctionality | Unset):  Default:
             'ANY'.
         incident_condition_group (ActionItemTriggerParamsIncidentConditionGroup | Unset):  Default: 'ANY'.
-        incident_condition_summary (ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset):
-        incident_condition_started_at (ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset):
-        incident_condition_detected_at (ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset):
-        incident_condition_acknowledged_at (ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset):
-        incident_condition_mitigated_at (ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset):
-        incident_condition_resolved_at (ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset):
-        incident_conditional_inactivity (ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset):
+        incident_condition_label (ActionItemTriggerParamsIncidentConditionLabel | Unset):  Default: 'ANY'.
+        incident_condition_label_use_regexp (bool | Unset):  Default: False.
+        incident_labels (list[str] | Unset):
+        incident_condition_summary (ActionItemTriggerParamsIncidentConditionSummary | Unset):
+        incident_condition_started_at (ActionItemTriggerParamsIncidentConditionStartedAt | Unset):
+        incident_condition_detected_at (ActionItemTriggerParamsIncidentConditionDetectedAt | Unset):
+        incident_condition_acknowledged_at (ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset):
+        incident_condition_mitigated_at (ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset):
+        incident_condition_resolved_at (ActionItemTriggerParamsIncidentConditionResolvedAt | Unset):
+        incident_conditional_inactivity (ActionItemTriggerParamsIncidentConditionalInactivity | Unset):
         incident_action_item_condition (ActionItemTriggerParamsIncidentActionItemCondition | Unset):
         incident_action_item_condition_kind (ActionItemTriggerParamsIncidentActionItemConditionKind | Unset):  Default:
             'ANY'.
@@ -196,15 +203,16 @@ class ActionItemTriggerParams:
     incident_condition_service: ActionItemTriggerParamsIncidentConditionService | Unset = "ANY"
     incident_condition_functionality: ActionItemTriggerParamsIncidentConditionFunctionality | Unset = "ANY"
     incident_condition_group: ActionItemTriggerParamsIncidentConditionGroup | Unset = "ANY"
-    incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset = UNSET
-    incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset = UNSET
-    incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset = UNSET
-    incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset = (
-        UNSET
-    )
-    incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset = UNSET
-    incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset = UNSET
-    incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset = UNSET
+    incident_condition_label: ActionItemTriggerParamsIncidentConditionLabel | Unset = "ANY"
+    incident_condition_label_use_regexp: bool | Unset = False
+    incident_labels: list[str] | Unset = UNSET
+    incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummary | Unset = UNSET
+    incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAt | Unset = UNSET
+    incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAt | Unset = UNSET
+    incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset = UNSET
+    incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset = UNSET
+    incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAt | Unset = UNSET
+    incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivity | Unset = UNSET
     incident_action_item_condition: ActionItemTriggerParamsIncidentActionItemCondition | Unset = UNSET
     incident_action_item_condition_kind: ActionItemTriggerParamsIncidentActionItemConditionKind | Unset = "ANY"
     incident_action_item_kinds: list[ActionItemTriggerParamsIncidentActionItemKindsItem] | Unset = UNSET
@@ -295,60 +303,42 @@ class ActionItemTriggerParams:
         if not isinstance(self.incident_condition_group, Unset):
             incident_condition_group = self.incident_condition_group
 
-        incident_condition_summary: None | str | Unset
-        if isinstance(self.incident_condition_summary, Unset):
-            incident_condition_summary = UNSET
-        elif isinstance(self.incident_condition_summary, str):
-            incident_condition_summary = self.incident_condition_summary
-        else:
+        incident_condition_label: str | Unset = UNSET
+        if not isinstance(self.incident_condition_label, Unset):
+            incident_condition_label = self.incident_condition_label
+
+        incident_condition_label_use_regexp = self.incident_condition_label_use_regexp
+
+        incident_labels: list[str] | Unset = UNSET
+        if not isinstance(self.incident_labels, Unset):
+            incident_labels = self.incident_labels
+
+        incident_condition_summary: str | Unset = UNSET
+        if not isinstance(self.incident_condition_summary, Unset):
             incident_condition_summary = self.incident_condition_summary
 
-        incident_condition_started_at: None | str | Unset
-        if isinstance(self.incident_condition_started_at, Unset):
-            incident_condition_started_at = UNSET
-        elif isinstance(self.incident_condition_started_at, str):
-            incident_condition_started_at = self.incident_condition_started_at
-        else:
+        incident_condition_started_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_started_at, Unset):
             incident_condition_started_at = self.incident_condition_started_at
 
-        incident_condition_detected_at: None | str | Unset
-        if isinstance(self.incident_condition_detected_at, Unset):
-            incident_condition_detected_at = UNSET
-        elif isinstance(self.incident_condition_detected_at, str):
-            incident_condition_detected_at = self.incident_condition_detected_at
-        else:
+        incident_condition_detected_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_detected_at, Unset):
             incident_condition_detected_at = self.incident_condition_detected_at
 
-        incident_condition_acknowledged_at: None | str | Unset
-        if isinstance(self.incident_condition_acknowledged_at, Unset):
-            incident_condition_acknowledged_at = UNSET
-        elif isinstance(self.incident_condition_acknowledged_at, str):
-            incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
-        else:
+        incident_condition_acknowledged_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
 
-        incident_condition_mitigated_at: None | str | Unset
-        if isinstance(self.incident_condition_mitigated_at, Unset):
-            incident_condition_mitigated_at = UNSET
-        elif isinstance(self.incident_condition_mitigated_at, str):
-            incident_condition_mitigated_at = self.incident_condition_mitigated_at
-        else:
+        incident_condition_mitigated_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = self.incident_condition_mitigated_at
 
-        incident_condition_resolved_at: None | str | Unset
-        if isinstance(self.incident_condition_resolved_at, Unset):
-            incident_condition_resolved_at = UNSET
-        elif isinstance(self.incident_condition_resolved_at, str):
-            incident_condition_resolved_at = self.incident_condition_resolved_at
-        else:
+        incident_condition_resolved_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = self.incident_condition_resolved_at
 
-        incident_conditional_inactivity: None | str | Unset
-        if isinstance(self.incident_conditional_inactivity, Unset):
-            incident_conditional_inactivity = UNSET
-        elif isinstance(self.incident_conditional_inactivity, str):
-            incident_conditional_inactivity = self.incident_conditional_inactivity
-        else:
+        incident_conditional_inactivity: str | Unset = UNSET
+        if not isinstance(self.incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = self.incident_conditional_inactivity
 
         incident_action_item_condition: str | Unset = UNSET
@@ -437,6 +427,12 @@ class ActionItemTriggerParams:
             field_dict["incident_condition_functionality"] = incident_condition_functionality
         if incident_condition_group is not UNSET:
             field_dict["incident_condition_group"] = incident_condition_group
+        if incident_condition_label is not UNSET:
+            field_dict["incident_condition_label"] = incident_condition_label
+        if incident_condition_label_use_regexp is not UNSET:
+            field_dict["incident_condition_label_use_regexp"] = incident_condition_label_use_regexp
+        if incident_labels is not UNSET:
+            field_dict["incident_labels"] = incident_labels
         if incident_condition_summary is not UNSET:
             field_dict["incident_condition_summary"] = incident_condition_summary
         if incident_condition_started_at is not UNSET:
@@ -614,164 +610,81 @@ class ActionItemTriggerParams:
                 _incident_condition_group
             )
 
-        def _parse_incident_condition_summary(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_summary_type_1 = check_action_item_trigger_params_incident_condition_summary_type_1(
-                    data
-                )
+        _incident_condition_label = d.pop("incident_condition_label", UNSET)
+        incident_condition_label: ActionItemTriggerParamsIncidentConditionLabel | Unset
+        if isinstance(_incident_condition_label, Unset):
+            incident_condition_label = UNSET
+        else:
+            incident_condition_label = check_action_item_trigger_params_incident_condition_label(
+                _incident_condition_label
+            )
 
-                return incident_condition_summary_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionSummaryType1 | None | Unset, data)
+        incident_condition_label_use_regexp = d.pop("incident_condition_label_use_regexp", UNSET)
 
-        incident_condition_summary = _parse_incident_condition_summary(d.pop("incident_condition_summary", UNSET))
+        incident_labels = cast(list[str], d.pop("incident_labels", UNSET))
 
-        def _parse_incident_condition_started_at(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_started_at_type_1 = (
-                    check_action_item_trigger_params_incident_condition_started_at_type_1(data)
-                )
+        _incident_condition_summary = d.pop("incident_condition_summary", UNSET)
+        incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummary | Unset
+        if isinstance(_incident_condition_summary, Unset):
+            incident_condition_summary = UNSET
+        else:
+            incident_condition_summary = check_action_item_trigger_params_incident_condition_summary(
+                _incident_condition_summary
+            )
 
-                return incident_condition_started_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionStartedAtType1 | None | Unset, data)
+        _incident_condition_started_at = d.pop("incident_condition_started_at", UNSET)
+        incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAt | Unset
+        if isinstance(_incident_condition_started_at, Unset):
+            incident_condition_started_at = UNSET
+        else:
+            incident_condition_started_at = check_action_item_trigger_params_incident_condition_started_at(
+                _incident_condition_started_at
+            )
 
-        incident_condition_started_at = _parse_incident_condition_started_at(
-            d.pop("incident_condition_started_at", UNSET)
-        )
+        _incident_condition_detected_at = d.pop("incident_condition_detected_at", UNSET)
+        incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAt | Unset
+        if isinstance(_incident_condition_detected_at, Unset):
+            incident_condition_detected_at = UNSET
+        else:
+            incident_condition_detected_at = check_action_item_trigger_params_incident_condition_detected_at(
+                _incident_condition_detected_at
+            )
 
-        def _parse_incident_condition_detected_at(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_detected_at_type_1 = (
-                    check_action_item_trigger_params_incident_condition_detected_at_type_1(data)
-                )
+        _incident_condition_acknowledged_at = d.pop("incident_condition_acknowledged_at", UNSET)
+        incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset
+        if isinstance(_incident_condition_acknowledged_at, Unset):
+            incident_condition_acknowledged_at = UNSET
+        else:
+            incident_condition_acknowledged_at = check_action_item_trigger_params_incident_condition_acknowledged_at(
+                _incident_condition_acknowledged_at
+            )
 
-                return incident_condition_detected_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionDetectedAtType1 | None | Unset, data)
+        _incident_condition_mitigated_at = d.pop("incident_condition_mitigated_at", UNSET)
+        incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset
+        if isinstance(_incident_condition_mitigated_at, Unset):
+            incident_condition_mitigated_at = UNSET
+        else:
+            incident_condition_mitigated_at = check_action_item_trigger_params_incident_condition_mitigated_at(
+                _incident_condition_mitigated_at
+            )
 
-        incident_condition_detected_at = _parse_incident_condition_detected_at(
-            d.pop("incident_condition_detected_at", UNSET)
-        )
+        _incident_condition_resolved_at = d.pop("incident_condition_resolved_at", UNSET)
+        incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAt | Unset
+        if isinstance(_incident_condition_resolved_at, Unset):
+            incident_condition_resolved_at = UNSET
+        else:
+            incident_condition_resolved_at = check_action_item_trigger_params_incident_condition_resolved_at(
+                _incident_condition_resolved_at
+            )
 
-        def _parse_incident_condition_acknowledged_at(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_acknowledged_at_type_1 = (
-                    check_action_item_trigger_params_incident_condition_acknowledged_at_type_1(data)
-                )
-
-                return incident_condition_acknowledged_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionAcknowledgedAtType1 | None | Unset, data)
-
-        incident_condition_acknowledged_at = _parse_incident_condition_acknowledged_at(
-            d.pop("incident_condition_acknowledged_at", UNSET)
-        )
-
-        def _parse_incident_condition_mitigated_at(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_mitigated_at_type_1 = (
-                    check_action_item_trigger_params_incident_condition_mitigated_at_type_1(data)
-                )
-
-                return incident_condition_mitigated_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionMitigatedAtType1 | None | Unset, data)
-
-        incident_condition_mitigated_at = _parse_incident_condition_mitigated_at(
-            d.pop("incident_condition_mitigated_at", UNSET)
-        )
-
-        def _parse_incident_condition_resolved_at(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_resolved_at_type_1 = (
-                    check_action_item_trigger_params_incident_condition_resolved_at_type_1(data)
-                )
-
-                return incident_condition_resolved_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionResolvedAtType1 | None | Unset, data)
-
-        incident_condition_resolved_at = _parse_incident_condition_resolved_at(
-            d.pop("incident_condition_resolved_at", UNSET)
-        )
-
-        def _parse_incident_conditional_inactivity(
-            data: object,
-        ) -> ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_conditional_inactivity_type_1 = (
-                    check_action_item_trigger_params_incident_conditional_inactivity_type_1(data)
-                )
-
-                return incident_conditional_inactivity_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(ActionItemTriggerParamsIncidentConditionalInactivityType1 | None | Unset, data)
-
-        incident_conditional_inactivity = _parse_incident_conditional_inactivity(
-            d.pop("incident_conditional_inactivity", UNSET)
-        )
+        _incident_conditional_inactivity = d.pop("incident_conditional_inactivity", UNSET)
+        incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivity | Unset
+        if isinstance(_incident_conditional_inactivity, Unset):
+            incident_conditional_inactivity = UNSET
+        else:
+            incident_conditional_inactivity = check_action_item_trigger_params_incident_conditional_inactivity(
+                _incident_conditional_inactivity
+            )
 
         _incident_action_item_condition = d.pop("incident_action_item_condition", UNSET)
         incident_action_item_condition: ActionItemTriggerParamsIncidentActionItemCondition | Unset
@@ -882,6 +795,9 @@ class ActionItemTriggerParams:
             incident_condition_service=incident_condition_service,
             incident_condition_functionality=incident_condition_functionality,
             incident_condition_group=incident_condition_group,
+            incident_condition_label=incident_condition_label,
+            incident_condition_label_use_regexp=incident_condition_label_use_regexp,
+            incident_labels=incident_labels,
             incident_condition_summary=incident_condition_summary,
             incident_condition_started_at=incident_condition_started_at,
             incident_condition_detected_at=incident_condition_detected_at,

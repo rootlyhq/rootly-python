@@ -29,6 +29,7 @@ class MeetingRecordingList:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()

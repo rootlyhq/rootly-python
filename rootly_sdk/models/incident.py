@@ -84,6 +84,23 @@ class Incident:
         google_drive_url (None | str | Unset): Google Drive URL
         google_meeting_id (None | str | Unset): Google meeting ID
         google_meeting_url (None | str | Unset): Google meeting URL
+        microsoft_teams_meeting_id (None | str | Unset): Microsoft Teams meeting ID
+        microsoft_teams_meeting_url (None | str | Unset): Microsoft Teams meeting URL
+        microsoft_teams_channel_id (None | str | Unset): Microsoft Teams channel ID
+        microsoft_teams_channel_name (None | str | Unset): Microsoft Teams channel name
+        microsoft_teams_channel_url (None | str | Unset): Microsoft Teams channel URL
+        microsoft_teams_channel_short_url (None | str | Unset): Microsoft Teams channel short URL
+        microsoft_teams_chat_id (None | str | Unset): Microsoft Teams chat ID
+        microsoft_teams_chat_url (None | str | Unset): Microsoft Teams chat URL
+        microsoft_teams_team_id (None | str | Unset): Microsoft Teams team ID
+        google_chat_space_id (None | str | Unset): Google Chat space ID
+        google_chat_space_name (None | str | Unset): Google Chat space name
+        google_chat_space_url (None | str | Unset): Google Chat space URL
+        google_chat_space_short_url (None | str | Unset): Google Chat space short URL
+        google_chat_space_archived (bool | None | Unset): Whether the Google Chat space is archived
+        google_chat_space_domain_id (None | str | Unset): Google Chat space domain ID
+        webex_meeting_id (None | str | Unset): Webex meeting ID
+        webex_meeting_url (None | str | Unset): Webex meeting URL
         jira_issue_key (None | str | Unset): Jira issue key
         jira_issue_id (None | str | Unset): Jira issue ID
         jira_issue_url (None | str | Unset): Jira issue URL
@@ -206,6 +223,23 @@ class Incident:
     google_drive_url: None | str | Unset = UNSET
     google_meeting_id: None | str | Unset = UNSET
     google_meeting_url: None | str | Unset = UNSET
+    microsoft_teams_meeting_id: None | str | Unset = UNSET
+    microsoft_teams_meeting_url: None | str | Unset = UNSET
+    microsoft_teams_channel_id: None | str | Unset = UNSET
+    microsoft_teams_channel_name: None | str | Unset = UNSET
+    microsoft_teams_channel_url: None | str | Unset = UNSET
+    microsoft_teams_channel_short_url: None | str | Unset = UNSET
+    microsoft_teams_chat_id: None | str | Unset = UNSET
+    microsoft_teams_chat_url: None | str | Unset = UNSET
+    microsoft_teams_team_id: None | str | Unset = UNSET
+    google_chat_space_id: None | str | Unset = UNSET
+    google_chat_space_name: None | str | Unset = UNSET
+    google_chat_space_url: None | str | Unset = UNSET
+    google_chat_space_short_url: None | str | Unset = UNSET
+    google_chat_space_archived: bool | None | Unset = UNSET
+    google_chat_space_domain_id: None | str | Unset = UNSET
+    webex_meeting_id: None | str | Unset = UNSET
+    webex_meeting_url: None | str | Unset = UNSET
     jira_issue_key: None | str | Unset = UNSET
     jira_issue_id: None | str | Unset = UNSET
     jira_issue_url: None | str | Unset = UNSET
@@ -558,6 +592,108 @@ class Incident:
             google_meeting_url = UNSET
         else:
             google_meeting_url = self.google_meeting_url
+
+        microsoft_teams_meeting_id: None | str | Unset
+        if isinstance(self.microsoft_teams_meeting_id, Unset):
+            microsoft_teams_meeting_id = UNSET
+        else:
+            microsoft_teams_meeting_id = self.microsoft_teams_meeting_id
+
+        microsoft_teams_meeting_url: None | str | Unset
+        if isinstance(self.microsoft_teams_meeting_url, Unset):
+            microsoft_teams_meeting_url = UNSET
+        else:
+            microsoft_teams_meeting_url = self.microsoft_teams_meeting_url
+
+        microsoft_teams_channel_id: None | str | Unset
+        if isinstance(self.microsoft_teams_channel_id, Unset):
+            microsoft_teams_channel_id = UNSET
+        else:
+            microsoft_teams_channel_id = self.microsoft_teams_channel_id
+
+        microsoft_teams_channel_name: None | str | Unset
+        if isinstance(self.microsoft_teams_channel_name, Unset):
+            microsoft_teams_channel_name = UNSET
+        else:
+            microsoft_teams_channel_name = self.microsoft_teams_channel_name
+
+        microsoft_teams_channel_url: None | str | Unset
+        if isinstance(self.microsoft_teams_channel_url, Unset):
+            microsoft_teams_channel_url = UNSET
+        else:
+            microsoft_teams_channel_url = self.microsoft_teams_channel_url
+
+        microsoft_teams_channel_short_url: None | str | Unset
+        if isinstance(self.microsoft_teams_channel_short_url, Unset):
+            microsoft_teams_channel_short_url = UNSET
+        else:
+            microsoft_teams_channel_short_url = self.microsoft_teams_channel_short_url
+
+        microsoft_teams_chat_id: None | str | Unset
+        if isinstance(self.microsoft_teams_chat_id, Unset):
+            microsoft_teams_chat_id = UNSET
+        else:
+            microsoft_teams_chat_id = self.microsoft_teams_chat_id
+
+        microsoft_teams_chat_url: None | str | Unset
+        if isinstance(self.microsoft_teams_chat_url, Unset):
+            microsoft_teams_chat_url = UNSET
+        else:
+            microsoft_teams_chat_url = self.microsoft_teams_chat_url
+
+        microsoft_teams_team_id: None | str | Unset
+        if isinstance(self.microsoft_teams_team_id, Unset):
+            microsoft_teams_team_id = UNSET
+        else:
+            microsoft_teams_team_id = self.microsoft_teams_team_id
+
+        google_chat_space_id: None | str | Unset
+        if isinstance(self.google_chat_space_id, Unset):
+            google_chat_space_id = UNSET
+        else:
+            google_chat_space_id = self.google_chat_space_id
+
+        google_chat_space_name: None | str | Unset
+        if isinstance(self.google_chat_space_name, Unset):
+            google_chat_space_name = UNSET
+        else:
+            google_chat_space_name = self.google_chat_space_name
+
+        google_chat_space_url: None | str | Unset
+        if isinstance(self.google_chat_space_url, Unset):
+            google_chat_space_url = UNSET
+        else:
+            google_chat_space_url = self.google_chat_space_url
+
+        google_chat_space_short_url: None | str | Unset
+        if isinstance(self.google_chat_space_short_url, Unset):
+            google_chat_space_short_url = UNSET
+        else:
+            google_chat_space_short_url = self.google_chat_space_short_url
+
+        google_chat_space_archived: bool | None | Unset
+        if isinstance(self.google_chat_space_archived, Unset):
+            google_chat_space_archived = UNSET
+        else:
+            google_chat_space_archived = self.google_chat_space_archived
+
+        google_chat_space_domain_id: None | str | Unset
+        if isinstance(self.google_chat_space_domain_id, Unset):
+            google_chat_space_domain_id = UNSET
+        else:
+            google_chat_space_domain_id = self.google_chat_space_domain_id
+
+        webex_meeting_id: None | str | Unset
+        if isinstance(self.webex_meeting_id, Unset):
+            webex_meeting_id = UNSET
+        else:
+            webex_meeting_id = self.webex_meeting_id
+
+        webex_meeting_url: None | str | Unset
+        if isinstance(self.webex_meeting_url, Unset):
+            webex_meeting_url = UNSET
+        else:
+            webex_meeting_url = self.webex_meeting_url
 
         jira_issue_key: None | str | Unset
         if isinstance(self.jira_issue_key, Unset):
@@ -1111,6 +1247,40 @@ class Incident:
             field_dict["google_meeting_id"] = google_meeting_id
         if google_meeting_url is not UNSET:
             field_dict["google_meeting_url"] = google_meeting_url
+        if microsoft_teams_meeting_id is not UNSET:
+            field_dict["microsoft_teams_meeting_id"] = microsoft_teams_meeting_id
+        if microsoft_teams_meeting_url is not UNSET:
+            field_dict["microsoft_teams_meeting_url"] = microsoft_teams_meeting_url
+        if microsoft_teams_channel_id is not UNSET:
+            field_dict["microsoft_teams_channel_id"] = microsoft_teams_channel_id
+        if microsoft_teams_channel_name is not UNSET:
+            field_dict["microsoft_teams_channel_name"] = microsoft_teams_channel_name
+        if microsoft_teams_channel_url is not UNSET:
+            field_dict["microsoft_teams_channel_url"] = microsoft_teams_channel_url
+        if microsoft_teams_channel_short_url is not UNSET:
+            field_dict["microsoft_teams_channel_short_url"] = microsoft_teams_channel_short_url
+        if microsoft_teams_chat_id is not UNSET:
+            field_dict["microsoft_teams_chat_id"] = microsoft_teams_chat_id
+        if microsoft_teams_chat_url is not UNSET:
+            field_dict["microsoft_teams_chat_url"] = microsoft_teams_chat_url
+        if microsoft_teams_team_id is not UNSET:
+            field_dict["microsoft_teams_team_id"] = microsoft_teams_team_id
+        if google_chat_space_id is not UNSET:
+            field_dict["google_chat_space_id"] = google_chat_space_id
+        if google_chat_space_name is not UNSET:
+            field_dict["google_chat_space_name"] = google_chat_space_name
+        if google_chat_space_url is not UNSET:
+            field_dict["google_chat_space_url"] = google_chat_space_url
+        if google_chat_space_short_url is not UNSET:
+            field_dict["google_chat_space_short_url"] = google_chat_space_short_url
+        if google_chat_space_archived is not UNSET:
+            field_dict["google_chat_space_archived"] = google_chat_space_archived
+        if google_chat_space_domain_id is not UNSET:
+            field_dict["google_chat_space_domain_id"] = google_chat_space_domain_id
+        if webex_meeting_id is not UNSET:
+            field_dict["webex_meeting_id"] = webex_meeting_id
+        if webex_meeting_url is not UNSET:
+            field_dict["webex_meeting_url"] = webex_meeting_url
         if jira_issue_key is not UNSET:
             field_dict["jira_issue_key"] = jira_issue_key
         if jira_issue_id is not UNSET:
@@ -1715,6 +1885,161 @@ class Incident:
             return cast(None | str | Unset, data)
 
         google_meeting_url = _parse_google_meeting_url(d.pop("google_meeting_url", UNSET))
+
+        def _parse_microsoft_teams_meeting_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_meeting_id = _parse_microsoft_teams_meeting_id(d.pop("microsoft_teams_meeting_id", UNSET))
+
+        def _parse_microsoft_teams_meeting_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_meeting_url = _parse_microsoft_teams_meeting_url(d.pop("microsoft_teams_meeting_url", UNSET))
+
+        def _parse_microsoft_teams_channel_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_channel_id = _parse_microsoft_teams_channel_id(d.pop("microsoft_teams_channel_id", UNSET))
+
+        def _parse_microsoft_teams_channel_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_channel_name = _parse_microsoft_teams_channel_name(d.pop("microsoft_teams_channel_name", UNSET))
+
+        def _parse_microsoft_teams_channel_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_channel_url = _parse_microsoft_teams_channel_url(d.pop("microsoft_teams_channel_url", UNSET))
+
+        def _parse_microsoft_teams_channel_short_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_channel_short_url = _parse_microsoft_teams_channel_short_url(
+            d.pop("microsoft_teams_channel_short_url", UNSET)
+        )
+
+        def _parse_microsoft_teams_chat_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_chat_id = _parse_microsoft_teams_chat_id(d.pop("microsoft_teams_chat_id", UNSET))
+
+        def _parse_microsoft_teams_chat_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_chat_url = _parse_microsoft_teams_chat_url(d.pop("microsoft_teams_chat_url", UNSET))
+
+        def _parse_microsoft_teams_team_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        microsoft_teams_team_id = _parse_microsoft_teams_team_id(d.pop("microsoft_teams_team_id", UNSET))
+
+        def _parse_google_chat_space_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        google_chat_space_id = _parse_google_chat_space_id(d.pop("google_chat_space_id", UNSET))
+
+        def _parse_google_chat_space_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        google_chat_space_name = _parse_google_chat_space_name(d.pop("google_chat_space_name", UNSET))
+
+        def _parse_google_chat_space_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        google_chat_space_url = _parse_google_chat_space_url(d.pop("google_chat_space_url", UNSET))
+
+        def _parse_google_chat_space_short_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        google_chat_space_short_url = _parse_google_chat_space_short_url(d.pop("google_chat_space_short_url", UNSET))
+
+        def _parse_google_chat_space_archived(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        google_chat_space_archived = _parse_google_chat_space_archived(d.pop("google_chat_space_archived", UNSET))
+
+        def _parse_google_chat_space_domain_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        google_chat_space_domain_id = _parse_google_chat_space_domain_id(d.pop("google_chat_space_domain_id", UNSET))
+
+        def _parse_webex_meeting_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        webex_meeting_id = _parse_webex_meeting_id(d.pop("webex_meeting_id", UNSET))
+
+        def _parse_webex_meeting_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        webex_meeting_url = _parse_webex_meeting_url(d.pop("webex_meeting_url", UNSET))
 
         def _parse_jira_issue_key(data: object) -> None | str | Unset:
             if data is None:
@@ -2489,6 +2814,23 @@ class Incident:
             google_drive_url=google_drive_url,
             google_meeting_id=google_meeting_id,
             google_meeting_url=google_meeting_url,
+            microsoft_teams_meeting_id=microsoft_teams_meeting_id,
+            microsoft_teams_meeting_url=microsoft_teams_meeting_url,
+            microsoft_teams_channel_id=microsoft_teams_channel_id,
+            microsoft_teams_channel_name=microsoft_teams_channel_name,
+            microsoft_teams_channel_url=microsoft_teams_channel_url,
+            microsoft_teams_channel_short_url=microsoft_teams_channel_short_url,
+            microsoft_teams_chat_id=microsoft_teams_chat_id,
+            microsoft_teams_chat_url=microsoft_teams_chat_url,
+            microsoft_teams_team_id=microsoft_teams_team_id,
+            google_chat_space_id=google_chat_space_id,
+            google_chat_space_name=google_chat_space_name,
+            google_chat_space_url=google_chat_space_url,
+            google_chat_space_short_url=google_chat_space_short_url,
+            google_chat_space_archived=google_chat_space_archived,
+            google_chat_space_domain_id=google_chat_space_domain_id,
+            webex_meeting_id=webex_meeting_id,
+            webex_meeting_url=webex_meeting_url,
             jira_issue_key=jira_issue_key,
             jira_issue_id=jira_issue_id,
             jira_issue_url=jira_issue_url,

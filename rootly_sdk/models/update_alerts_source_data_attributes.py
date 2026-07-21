@@ -41,6 +41,8 @@ class UpdateAlertsSourceDataAttributes:
     """
     Attributes:
         name (str | Unset): The name of the alert source
+        enabled (bool | Unset): Whether the alert source is enabled. Disabled sources do not create alerts from incoming
+            events.
         source_type (UpdateAlertsSourceDataAttributesSourceType | Unset): The alert source type
         alert_urgency_id (str | Unset): ID for the default alert urgency assigned to this alert source
         deduplicate_alerts_by_key (bool | Unset): Toggle alert deduplication using deduplication key. If enabled,
@@ -65,6 +67,7 @@ class UpdateAlertsSourceDataAttributes:
     """
 
     name: str | Unset = UNSET
+    enabled: bool | Unset = UNSET
     source_type: UpdateAlertsSourceDataAttributesSourceType | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
     deduplicate_alerts_by_key: bool | Unset = UNSET
@@ -94,6 +97,8 @@ class UpdateAlertsSourceDataAttributes:
         )
 
         name = self.name
+
+        enabled = self.enabled
 
         source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
@@ -166,6 +171,8 @@ class UpdateAlertsSourceDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if source_type is not UNSET:
             field_dict["source_type"] = source_type
         if alert_urgency_id is not UNSET:
@@ -213,6 +220,8 @@ class UpdateAlertsSourceDataAttributes:
 
         d = dict(src_dict)
         name = d.pop("name", UNSET)
+
+        enabled = d.pop("enabled", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
         source_type: UpdateAlertsSourceDataAttributesSourceType | Unset
@@ -347,6 +356,7 @@ class UpdateAlertsSourceDataAttributes:
 
         update_alerts_source_data_attributes = cls(
             name=name,
+            enabled=enabled,
             source_type=source_type,
             alert_urgency_id=alert_urgency_id,
             deduplicate_alerts_by_key=deduplicate_alerts_by_key,

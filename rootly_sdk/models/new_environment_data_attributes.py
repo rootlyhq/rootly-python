@@ -28,6 +28,7 @@ class NewEnvironmentDataAttributes:
         description (None | str | Unset): The description of the environment
         color (None | str | Unset): The hex color of the environment
         position (int | None | Unset): Position of the environment
+        external_id (None | str | Unset): The external id associated to this environment
         notify_emails (list[str] | None | Unset): Emails to attach to the environment
         slack_channels (list[NewEnvironmentDataAttributesSlackChannelsType0Item] | None | Unset): Slack Channels
             associated with this environment
@@ -41,12 +42,14 @@ class NewEnvironmentDataAttributes:
     description: None | str | Unset = UNSET
     color: None | str | Unset = UNSET
     position: int | None | Unset = UNSET
+    external_id: None | str | Unset = UNSET
     notify_emails: list[str] | None | Unset = UNSET
     slack_channels: list[NewEnvironmentDataAttributesSlackChannelsType0Item] | None | Unset = UNSET
     slack_aliases: list[NewEnvironmentDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
     properties: list[NewEnvironmentDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         description: None | str | Unset
@@ -66,6 +69,12 @@ class NewEnvironmentDataAttributes:
             position = UNSET
         else:
             position = self.position
+
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
 
         notify_emails: list[str] | None | Unset
         if isinstance(self.notify_emails, Unset):
@@ -120,6 +129,8 @@ class NewEnvironmentDataAttributes:
             field_dict["color"] = color
         if position is not UNSET:
             field_dict["position"] = position
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
         if notify_emails is not UNSET:
             field_dict["notify_emails"] = notify_emails
         if slack_channels is not UNSET:
@@ -170,6 +181,15 @@ class NewEnvironmentDataAttributes:
             return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
+
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         def _parse_notify_emails(data: object) -> list[str] | None | Unset:
             if data is None:
@@ -254,6 +274,7 @@ class NewEnvironmentDataAttributes:
             description=description,
             color=color,
             position=position,
+            external_id=external_id,
             notify_emails=notify_emails,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,

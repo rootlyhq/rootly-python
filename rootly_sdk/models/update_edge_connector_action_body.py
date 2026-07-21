@@ -26,6 +26,7 @@ class UpdateEdgeConnectorActionBody:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         action: dict[str, Any] | Unset = UNSET
         if not isinstance(self.action, Unset):
             action = self.action.to_dict()

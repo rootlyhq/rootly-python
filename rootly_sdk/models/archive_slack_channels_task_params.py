@@ -32,6 +32,7 @@ class ArchiveSlackChannelsTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         channels = []
         for channels_item_data in self.channels:
             channels_item = channels_item_data.to_dict()

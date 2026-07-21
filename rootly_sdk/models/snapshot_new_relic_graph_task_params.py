@@ -44,6 +44,7 @@ class SnapshotNewRelicGraphTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         metric_query = self.metric_query
 
         metric_type: str = self.metric_type

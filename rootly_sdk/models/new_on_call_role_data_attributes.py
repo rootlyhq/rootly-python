@@ -37,6 +37,10 @@ from ..models.new_on_call_role_data_attributes_audits_permissions_item import (
     NewOnCallRoleDataAttributesAuditsPermissionsItem,
     check_new_on_call_role_data_attributes_audits_permissions_item,
 )
+from ..models.new_on_call_role_data_attributes_catalogs_permissions_item import (
+    NewOnCallRoleDataAttributesCatalogsPermissionsItem,
+    check_new_on_call_role_data_attributes_catalogs_permissions_item,
+)
 from ..models.new_on_call_role_data_attributes_contacts_permissions_item import (
     NewOnCallRoleDataAttributesContactsPermissionsItem,
     check_new_on_call_role_data_attributes_contacts_permissions_item,
@@ -44,6 +48,10 @@ from ..models.new_on_call_role_data_attributes_contacts_permissions_item import 
 from ..models.new_on_call_role_data_attributes_escalation_policies_permissions_item import (
     NewOnCallRoleDataAttributesEscalationPoliciesPermissionsItem,
     check_new_on_call_role_data_attributes_escalation_policies_permissions_item,
+)
+from ..models.new_on_call_role_data_attributes_functionalities_permissions_item import (
+    NewOnCallRoleDataAttributesFunctionalitiesPermissionsItem,
+    check_new_on_call_role_data_attributes_functionalities_permissions_item,
 )
 from ..models.new_on_call_role_data_attributes_groups_permissions_item import (
     NewOnCallRoleDataAttributesGroupsPermissionsItem,
@@ -125,8 +133,10 @@ class NewOnCallRoleDataAttributes:
         schedule_override_permissions (list[NewOnCallRoleDataAttributesScheduleOverridePermissionsItem] | Unset):
         schedules_permissions (list[NewOnCallRoleDataAttributesSchedulesPermissionsItem] | Unset):
         services_permissions (list[NewOnCallRoleDataAttributesServicesPermissionsItem] | Unset):
+        functionalities_permissions (list[NewOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset):
         webhooks_permissions (list[NewOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset):
         workflows_permissions (list[NewOnCallRoleDataAttributesWorkflowsPermissionsItem] | Unset):
+        catalogs_permissions (list[NewOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset):
     """
 
     name: str
@@ -153,8 +163,10 @@ class NewOnCallRoleDataAttributes:
     schedule_override_permissions: list[NewOnCallRoleDataAttributesScheduleOverridePermissionsItem] | Unset = UNSET
     schedules_permissions: list[NewOnCallRoleDataAttributesSchedulesPermissionsItem] | Unset = UNSET
     services_permissions: list[NewOnCallRoleDataAttributesServicesPermissionsItem] | Unset = UNSET
+    functionalities_permissions: list[NewOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset = UNSET
     webhooks_permissions: list[NewOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset = UNSET
     workflows_permissions: list[NewOnCallRoleDataAttributesWorkflowsPermissionsItem] | Unset = UNSET
+    catalogs_permissions: list[NewOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -301,6 +313,13 @@ class NewOnCallRoleDataAttributes:
                 services_permissions_item: str = services_permissions_item_data
                 services_permissions.append(services_permissions_item)
 
+        functionalities_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.functionalities_permissions, Unset):
+            functionalities_permissions = []
+            for functionalities_permissions_item_data in self.functionalities_permissions:
+                functionalities_permissions_item: str = functionalities_permissions_item_data
+                functionalities_permissions.append(functionalities_permissions_item)
+
         webhooks_permissions: list[str] | Unset = UNSET
         if not isinstance(self.webhooks_permissions, Unset):
             webhooks_permissions = []
@@ -314,6 +333,13 @@ class NewOnCallRoleDataAttributes:
             for workflows_permissions_item_data in self.workflows_permissions:
                 workflows_permissions_item: str = workflows_permissions_item_data
                 workflows_permissions.append(workflows_permissions_item)
+
+        catalogs_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.catalogs_permissions, Unset):
+            catalogs_permissions = []
+            for catalogs_permissions_item_data in self.catalogs_permissions:
+                catalogs_permissions_item: str = catalogs_permissions_item_data
+                catalogs_permissions.append(catalogs_permissions_item)
 
         field_dict: dict[str, Any] = {}
 
@@ -364,10 +390,14 @@ class NewOnCallRoleDataAttributes:
             field_dict["schedules_permissions"] = schedules_permissions
         if services_permissions is not UNSET:
             field_dict["services_permissions"] = services_permissions
+        if functionalities_permissions is not UNSET:
+            field_dict["functionalities_permissions"] = functionalities_permissions
         if webhooks_permissions is not UNSET:
             field_dict["webhooks_permissions"] = webhooks_permissions
         if workflows_permissions is not UNSET:
             field_dict["workflows_permissions"] = workflows_permissions
+        if catalogs_permissions is not UNSET:
+            field_dict["catalogs_permissions"] = catalogs_permissions
 
         return field_dict
 
@@ -614,6 +644,19 @@ class NewOnCallRoleDataAttributes:
 
                 services_permissions.append(services_permissions_item)
 
+        _functionalities_permissions = d.pop("functionalities_permissions", UNSET)
+        functionalities_permissions: list[NewOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset = UNSET
+        if _functionalities_permissions is not UNSET:
+            functionalities_permissions = []
+            for functionalities_permissions_item_data in _functionalities_permissions:
+                functionalities_permissions_item = (
+                    check_new_on_call_role_data_attributes_functionalities_permissions_item(
+                        functionalities_permissions_item_data
+                    )
+                )
+
+                functionalities_permissions.append(functionalities_permissions_item)
+
         _webhooks_permissions = d.pop("webhooks_permissions", UNSET)
         webhooks_permissions: list[NewOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset = UNSET
         if _webhooks_permissions is not UNSET:
@@ -635,6 +678,17 @@ class NewOnCallRoleDataAttributes:
                 )
 
                 workflows_permissions.append(workflows_permissions_item)
+
+        _catalogs_permissions = d.pop("catalogs_permissions", UNSET)
+        catalogs_permissions: list[NewOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset = UNSET
+        if _catalogs_permissions is not UNSET:
+            catalogs_permissions = []
+            for catalogs_permissions_item_data in _catalogs_permissions:
+                catalogs_permissions_item = check_new_on_call_role_data_attributes_catalogs_permissions_item(
+                    catalogs_permissions_item_data
+                )
+
+                catalogs_permissions.append(catalogs_permissions_item)
 
         new_on_call_role_data_attributes = cls(
             name=name,
@@ -659,8 +713,10 @@ class NewOnCallRoleDataAttributes:
             schedule_override_permissions=schedule_override_permissions,
             schedules_permissions=schedules_permissions,
             services_permissions=services_permissions,
+            functionalities_permissions=functionalities_permissions,
             webhooks_permissions=webhooks_permissions,
             workflows_permissions=workflows_permissions,
+            catalogs_permissions=catalogs_permissions,
         )
 
         return new_on_call_role_data_attributes

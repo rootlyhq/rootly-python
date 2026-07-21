@@ -27,7 +27,9 @@ class UpdateSlaDataAttributesConditionsItem:
         conditionable_type (UpdateSlaDataAttributesConditionsItemConditionableType): The type of condition
         operator (str): The comparison operator
         property_ (UpdateSlaDataAttributesConditionsItemProperty | Unset): The property to evaluate (for built-in field
-            conditions)
+            conditions). When the team has custom lifecycle statuses enabled, use 'sub_status' (with sub-status IDs as
+            values); otherwise use 'status' (with parent status names). Sending the wrong one will return a validation
+            error.
         values (list[str] | None | Unset): The values to compare against
         form_field_id (None | Unset | UUID): The ID of the form field (for custom field conditions)
         position (int | Unset): The position of the condition for ordering

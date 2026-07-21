@@ -51,6 +51,7 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         email_body: None | str | Unset
         if isinstance(self.email_body, Unset):
             email_body = UNSET

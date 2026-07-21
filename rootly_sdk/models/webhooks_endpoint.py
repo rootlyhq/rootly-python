@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,6 +11,10 @@ from ..models.webhooks_endpoint_event_types_item import (
     check_webhooks_endpoint_event_types_item,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.webhooks_endpoint_custom_headers_item import WebhooksEndpointCustomHeadersItem
+
 
 T = TypeVar("T", bound="WebhooksEndpoint")
 
@@ -27,6 +31,8 @@ class WebhooksEndpoint:
         created_at (str): Date of creation
         updated_at (str): Date of last update
         slug (str | Unset): The slug of the endpoint
+        custom_headers (list[WebhooksEndpointCustomHeadersItem] | Unset): Custom HTTP headers sent with each delivery.
+            Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
     """
 
     name: str
@@ -37,9 +43,11 @@ class WebhooksEndpoint:
     created_at: str
     updated_at: str
     slug: str | Unset = UNSET
+    custom_headers: list[WebhooksEndpointCustomHeadersItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         url = self.url
@@ -59,6 +67,13 @@ class WebhooksEndpoint:
 
         slug = self.slug
 
+        custom_headers: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.custom_headers, Unset):
+            custom_headers = []
+            for custom_headers_item_data in self.custom_headers:
+                custom_headers_item = custom_headers_item_data.to_dict()
+                custom_headers.append(custom_headers_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -74,11 +89,15 @@ class WebhooksEndpoint:
         )
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if custom_headers is not UNSET:
+            field_dict["custom_headers"] = custom_headers
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.webhooks_endpoint_custom_headers_item import WebhooksEndpointCustomHeadersItem
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -101,6 +120,15 @@ class WebhooksEndpoint:
 
         slug = d.pop("slug", UNSET)
 
+        _custom_headers = d.pop("custom_headers", UNSET)
+        custom_headers: list[WebhooksEndpointCustomHeadersItem] | Unset = UNSET
+        if _custom_headers is not UNSET:
+            custom_headers = []
+            for custom_headers_item_data in _custom_headers:
+                custom_headers_item = WebhooksEndpointCustomHeadersItem.from_dict(custom_headers_item_data)
+
+                custom_headers.append(custom_headers_item)
+
         webhooks_endpoint = cls(
             name=name,
             url=url,
@@ -110,6 +138,7 @@ class WebhooksEndpoint:
             created_at=created_at,
             updated_at=updated_at,
             slug=slug,
+            custom_headers=custom_headers,
         )
 
         webhooks_endpoint.additional_properties = d

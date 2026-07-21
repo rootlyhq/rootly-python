@@ -29,6 +29,8 @@ class UpdateCatalogPropertyDataAttributes:
         required (bool | Unset): Whether the property is required.
         catalog_type (UpdateCatalogPropertyDataAttributesCatalogType | Unset): The type of catalog the property belongs
             to.
+        external_id (None | str | Unset): An external identifier for this catalog property. Must be unique within the
+            scope.
     """
 
     name: str | Unset = UNSET
@@ -37,6 +39,7 @@ class UpdateCatalogPropertyDataAttributes:
     position: int | None | Unset = UNSET
     required: bool | Unset = UNSET
     catalog_type: UpdateCatalogPropertyDataAttributesCatalogType | Unset = UNSET
+    external_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -63,6 +66,12 @@ class UpdateCatalogPropertyDataAttributes:
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -78,6 +87,8 @@ class UpdateCatalogPropertyDataAttributes:
             field_dict["required"] = required
         if catalog_type is not UNSET:
             field_dict["catalog_type"] = catalog_type
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
 
         return field_dict
 
@@ -120,6 +131,15 @@ class UpdateCatalogPropertyDataAttributes:
         else:
             catalog_type = check_update_catalog_property_data_attributes_catalog_type(_catalog_type)
 
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
         update_catalog_property_data_attributes = cls(
             name=name,
             kind=kind,
@@ -127,6 +147,7 @@ class UpdateCatalogPropertyDataAttributes:
             position=position,
             required=required,
             catalog_type=catalog_type,
+            external_id=external_id,
         )
 
         return update_catalog_property_data_attributes

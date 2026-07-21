@@ -10,17 +10,17 @@ from ..models.post_mortem_trigger_params_incident_condition import (
     PostMortemTriggerParamsIncidentCondition,
     check_post_mortem_trigger_params_incident_condition,
 )
-from ..models.post_mortem_trigger_params_incident_condition_acknowledged_at_type_1 import (
-    PostMortemTriggerParamsIncidentConditionAcknowledgedAtType1,
-    check_post_mortem_trigger_params_incident_condition_acknowledged_at_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_acknowledged_at import (
+    PostMortemTriggerParamsIncidentConditionAcknowledgedAt,
+    check_post_mortem_trigger_params_incident_condition_acknowledged_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_cause import (
     PostMortemTriggerParamsIncidentConditionCause,
     check_post_mortem_trigger_params_incident_condition_cause,
 )
-from ..models.post_mortem_trigger_params_incident_condition_detected_at_type_1 import (
-    PostMortemTriggerParamsIncidentConditionDetectedAtType1,
-    check_post_mortem_trigger_params_incident_condition_detected_at_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_detected_at import (
+    PostMortemTriggerParamsIncidentConditionDetectedAt,
+    check_post_mortem_trigger_params_incident_condition_detected_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_environment import (
     PostMortemTriggerParamsIncidentConditionEnvironment,
@@ -46,13 +46,17 @@ from ..models.post_mortem_trigger_params_incident_condition_kind import (
     PostMortemTriggerParamsIncidentConditionKind,
     check_post_mortem_trigger_params_incident_condition_kind,
 )
-from ..models.post_mortem_trigger_params_incident_condition_mitigated_at_type_1 import (
-    PostMortemTriggerParamsIncidentConditionMitigatedAtType1,
-    check_post_mortem_trigger_params_incident_condition_mitigated_at_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_label import (
+    PostMortemTriggerParamsIncidentConditionLabel,
+    check_post_mortem_trigger_params_incident_condition_label,
 )
-from ..models.post_mortem_trigger_params_incident_condition_resolved_at_type_1 import (
-    PostMortemTriggerParamsIncidentConditionResolvedAtType1,
-    check_post_mortem_trigger_params_incident_condition_resolved_at_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_mitigated_at import (
+    PostMortemTriggerParamsIncidentConditionMitigatedAt,
+    check_post_mortem_trigger_params_incident_condition_mitigated_at,
+)
+from ..models.post_mortem_trigger_params_incident_condition_resolved_at import (
+    PostMortemTriggerParamsIncidentConditionResolvedAt,
+    check_post_mortem_trigger_params_incident_condition_resolved_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_service import (
     PostMortemTriggerParamsIncidentConditionService,
@@ -62,9 +66,9 @@ from ..models.post_mortem_trigger_params_incident_condition_severity import (
     PostMortemTriggerParamsIncidentConditionSeverity,
     check_post_mortem_trigger_params_incident_condition_severity,
 )
-from ..models.post_mortem_trigger_params_incident_condition_started_at_type_1 import (
-    PostMortemTriggerParamsIncidentConditionStartedAtType1,
-    check_post_mortem_trigger_params_incident_condition_started_at_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_started_at import (
+    PostMortemTriggerParamsIncidentConditionStartedAt,
+    check_post_mortem_trigger_params_incident_condition_started_at,
 )
 from ..models.post_mortem_trigger_params_incident_condition_status import (
     PostMortemTriggerParamsIncidentConditionStatus,
@@ -74,17 +78,17 @@ from ..models.post_mortem_trigger_params_incident_condition_sub_status import (
     PostMortemTriggerParamsIncidentConditionSubStatus,
     check_post_mortem_trigger_params_incident_condition_sub_status,
 )
-from ..models.post_mortem_trigger_params_incident_condition_summary_type_1 import (
-    PostMortemTriggerParamsIncidentConditionSummaryType1,
-    check_post_mortem_trigger_params_incident_condition_summary_type_1,
+from ..models.post_mortem_trigger_params_incident_condition_summary import (
+    PostMortemTriggerParamsIncidentConditionSummary,
+    check_post_mortem_trigger_params_incident_condition_summary,
 )
 from ..models.post_mortem_trigger_params_incident_condition_visibility import (
     PostMortemTriggerParamsIncidentConditionVisibility,
     check_post_mortem_trigger_params_incident_condition_visibility,
 )
-from ..models.post_mortem_trigger_params_incident_conditional_inactivity_type_1 import (
-    PostMortemTriggerParamsIncidentConditionalInactivityType1,
-    check_post_mortem_trigger_params_incident_conditional_inactivity_type_1,
+from ..models.post_mortem_trigger_params_incident_conditional_inactivity import (
+    PostMortemTriggerParamsIncidentConditionalInactivity,
+    check_post_mortem_trigger_params_incident_conditional_inactivity,
 )
 from ..models.post_mortem_trigger_params_incident_kinds_item import (
     PostMortemTriggerParamsIncidentKindsItem,
@@ -128,7 +132,7 @@ class PostMortemTriggerParams:
         incident_visibilities (list[bool] | Unset):
         incident_kinds (list[PostMortemTriggerParamsIncidentKindsItem] | Unset):
         incident_statuses (list[PostMortemTriggerParamsIncidentStatusesItem] | Unset):
-        incident_inactivity_duration (None | str | Unset):
+        incident_inactivity_duration (None | str | Unset): ex. 10 min, 1h, 3 days, 2 weeks
         incident_condition (PostMortemTriggerParamsIncidentCondition | Unset):  Default: 'ALL'.
         incident_condition_visibility (PostMortemTriggerParamsIncidentConditionVisibility | Unset):  Default: 'ANY'.
         incident_condition_kind (PostMortemTriggerParamsIncidentConditionKind | Unset):  Default: 'IS'.
@@ -145,15 +149,18 @@ class PostMortemTriggerParams:
             'ANY'.
         incident_condition_group (PostMortemTriggerParamsIncidentConditionGroup | Unset):  Default: 'ANY'.
         incident_condition_cause (PostMortemTriggerParamsIncidentConditionCause | Unset):  Default: 'ANY'.
+        incident_condition_label (PostMortemTriggerParamsIncidentConditionLabel | Unset):  Default: 'ANY'.
+        incident_condition_label_use_regexp (bool | Unset):  Default: False.
+        incident_labels (list[str] | Unset):
         incident_post_mortem_condition_cause (PostMortemTriggerParamsIncidentPostMortemConditionCause | Unset):
             [DEPRECATED] Use incident_condition_cause instead Default: 'ANY'.
-        incident_condition_summary (None | PostMortemTriggerParamsIncidentConditionSummaryType1 | Unset):
-        incident_condition_started_at (None | PostMortemTriggerParamsIncidentConditionStartedAtType1 | Unset):
-        incident_condition_detected_at (None | PostMortemTriggerParamsIncidentConditionDetectedAtType1 | Unset):
-        incident_condition_acknowledged_at (None | PostMortemTriggerParamsIncidentConditionAcknowledgedAtType1 | Unset):
-        incident_condition_mitigated_at (None | PostMortemTriggerParamsIncidentConditionMitigatedAtType1 | Unset):
-        incident_condition_resolved_at (None | PostMortemTriggerParamsIncidentConditionResolvedAtType1 | Unset):
-        incident_conditional_inactivity (None | PostMortemTriggerParamsIncidentConditionalInactivityType1 | Unset):
+        incident_condition_summary (PostMortemTriggerParamsIncidentConditionSummary | Unset):
+        incident_condition_started_at (PostMortemTriggerParamsIncidentConditionStartedAt | Unset):
+        incident_condition_detected_at (PostMortemTriggerParamsIncidentConditionDetectedAt | Unset):
+        incident_condition_acknowledged_at (PostMortemTriggerParamsIncidentConditionAcknowledgedAt | Unset):
+        incident_condition_mitigated_at (PostMortemTriggerParamsIncidentConditionMitigatedAt | Unset):
+        incident_condition_resolved_at (PostMortemTriggerParamsIncidentConditionResolvedAt | Unset):
+        incident_conditional_inactivity (PostMortemTriggerParamsIncidentConditionalInactivity | Unset):
         incident_post_mortem_condition (PostMortemTriggerParamsIncidentPostMortemCondition | Unset):
         incident_post_mortem_condition_status (PostMortemTriggerParamsIncidentPostMortemConditionStatus | Unset):
             Default: 'ANY'.
@@ -179,16 +186,17 @@ class PostMortemTriggerParams:
     incident_condition_functionality: PostMortemTriggerParamsIncidentConditionFunctionality | Unset = "ANY"
     incident_condition_group: PostMortemTriggerParamsIncidentConditionGroup | Unset = "ANY"
     incident_condition_cause: PostMortemTriggerParamsIncidentConditionCause | Unset = "ANY"
+    incident_condition_label: PostMortemTriggerParamsIncidentConditionLabel | Unset = "ANY"
+    incident_condition_label_use_regexp: bool | Unset = False
+    incident_labels: list[str] | Unset = UNSET
     incident_post_mortem_condition_cause: PostMortemTriggerParamsIncidentPostMortemConditionCause | Unset = "ANY"
-    incident_condition_summary: None | PostMortemTriggerParamsIncidentConditionSummaryType1 | Unset = UNSET
-    incident_condition_started_at: None | PostMortemTriggerParamsIncidentConditionStartedAtType1 | Unset = UNSET
-    incident_condition_detected_at: None | PostMortemTriggerParamsIncidentConditionDetectedAtType1 | Unset = UNSET
-    incident_condition_acknowledged_at: None | PostMortemTriggerParamsIncidentConditionAcknowledgedAtType1 | Unset = (
-        UNSET
-    )
-    incident_condition_mitigated_at: None | PostMortemTriggerParamsIncidentConditionMitigatedAtType1 | Unset = UNSET
-    incident_condition_resolved_at: None | PostMortemTriggerParamsIncidentConditionResolvedAtType1 | Unset = UNSET
-    incident_conditional_inactivity: None | PostMortemTriggerParamsIncidentConditionalInactivityType1 | Unset = UNSET
+    incident_condition_summary: PostMortemTriggerParamsIncidentConditionSummary | Unset = UNSET
+    incident_condition_started_at: PostMortemTriggerParamsIncidentConditionStartedAt | Unset = UNSET
+    incident_condition_detected_at: PostMortemTriggerParamsIncidentConditionDetectedAt | Unset = UNSET
+    incident_condition_acknowledged_at: PostMortemTriggerParamsIncidentConditionAcknowledgedAt | Unset = UNSET
+    incident_condition_mitigated_at: PostMortemTriggerParamsIncidentConditionMitigatedAt | Unset = UNSET
+    incident_condition_resolved_at: PostMortemTriggerParamsIncidentConditionResolvedAt | Unset = UNSET
+    incident_conditional_inactivity: PostMortemTriggerParamsIncidentConditionalInactivity | Unset = UNSET
     incident_post_mortem_condition: PostMortemTriggerParamsIncidentPostMortemCondition | Unset = UNSET
     incident_post_mortem_condition_status: PostMortemTriggerParamsIncidentPostMortemConditionStatus | Unset = "ANY"
     incident_post_mortem_statuses: list[PostMortemTriggerParamsIncidentPostMortemStatusesItem] | Unset = UNSET
@@ -277,64 +285,46 @@ class PostMortemTriggerParams:
         if not isinstance(self.incident_condition_cause, Unset):
             incident_condition_cause = self.incident_condition_cause
 
+        incident_condition_label: str | Unset = UNSET
+        if not isinstance(self.incident_condition_label, Unset):
+            incident_condition_label = self.incident_condition_label
+
+        incident_condition_label_use_regexp = self.incident_condition_label_use_regexp
+
+        incident_labels: list[str] | Unset = UNSET
+        if not isinstance(self.incident_labels, Unset):
+            incident_labels = self.incident_labels
+
         incident_post_mortem_condition_cause: str | Unset = UNSET
         if not isinstance(self.incident_post_mortem_condition_cause, Unset):
             incident_post_mortem_condition_cause = self.incident_post_mortem_condition_cause
 
-        incident_condition_summary: None | str | Unset
-        if isinstance(self.incident_condition_summary, Unset):
-            incident_condition_summary = UNSET
-        elif isinstance(self.incident_condition_summary, str):
-            incident_condition_summary = self.incident_condition_summary
-        else:
+        incident_condition_summary: str | Unset = UNSET
+        if not isinstance(self.incident_condition_summary, Unset):
             incident_condition_summary = self.incident_condition_summary
 
-        incident_condition_started_at: None | str | Unset
-        if isinstance(self.incident_condition_started_at, Unset):
-            incident_condition_started_at = UNSET
-        elif isinstance(self.incident_condition_started_at, str):
-            incident_condition_started_at = self.incident_condition_started_at
-        else:
+        incident_condition_started_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_started_at, Unset):
             incident_condition_started_at = self.incident_condition_started_at
 
-        incident_condition_detected_at: None | str | Unset
-        if isinstance(self.incident_condition_detected_at, Unset):
-            incident_condition_detected_at = UNSET
-        elif isinstance(self.incident_condition_detected_at, str):
-            incident_condition_detected_at = self.incident_condition_detected_at
-        else:
+        incident_condition_detected_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_detected_at, Unset):
             incident_condition_detected_at = self.incident_condition_detected_at
 
-        incident_condition_acknowledged_at: None | str | Unset
-        if isinstance(self.incident_condition_acknowledged_at, Unset):
-            incident_condition_acknowledged_at = UNSET
-        elif isinstance(self.incident_condition_acknowledged_at, str):
-            incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
-        else:
+        incident_condition_acknowledged_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
 
-        incident_condition_mitigated_at: None | str | Unset
-        if isinstance(self.incident_condition_mitigated_at, Unset):
-            incident_condition_mitigated_at = UNSET
-        elif isinstance(self.incident_condition_mitigated_at, str):
-            incident_condition_mitigated_at = self.incident_condition_mitigated_at
-        else:
+        incident_condition_mitigated_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = self.incident_condition_mitigated_at
 
-        incident_condition_resolved_at: None | str | Unset
-        if isinstance(self.incident_condition_resolved_at, Unset):
-            incident_condition_resolved_at = UNSET
-        elif isinstance(self.incident_condition_resolved_at, str):
-            incident_condition_resolved_at = self.incident_condition_resolved_at
-        else:
+        incident_condition_resolved_at: str | Unset = UNSET
+        if not isinstance(self.incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = self.incident_condition_resolved_at
 
-        incident_conditional_inactivity: None | str | Unset
-        if isinstance(self.incident_conditional_inactivity, Unset):
-            incident_conditional_inactivity = UNSET
-        elif isinstance(self.incident_conditional_inactivity, str):
-            incident_conditional_inactivity = self.incident_conditional_inactivity
-        else:
+        incident_conditional_inactivity: str | Unset = UNSET
+        if not isinstance(self.incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = self.incident_conditional_inactivity
 
         incident_post_mortem_condition: str | Unset = UNSET
@@ -395,6 +385,12 @@ class PostMortemTriggerParams:
             field_dict["incident_condition_group"] = incident_condition_group
         if incident_condition_cause is not UNSET:
             field_dict["incident_condition_cause"] = incident_condition_cause
+        if incident_condition_label is not UNSET:
+            field_dict["incident_condition_label"] = incident_condition_label
+        if incident_condition_label_use_regexp is not UNSET:
+            field_dict["incident_condition_label_use_regexp"] = incident_condition_label_use_regexp
+        if incident_labels is not UNSET:
+            field_dict["incident_labels"] = incident_labels
         if incident_post_mortem_condition_cause is not UNSET:
             field_dict["incident_post_mortem_condition_cause"] = incident_post_mortem_condition_cause
         if incident_condition_summary is not UNSET:
@@ -571,6 +567,19 @@ class PostMortemTriggerParams:
                 _incident_condition_cause
             )
 
+        _incident_condition_label = d.pop("incident_condition_label", UNSET)
+        incident_condition_label: PostMortemTriggerParamsIncidentConditionLabel | Unset
+        if isinstance(_incident_condition_label, Unset):
+            incident_condition_label = UNSET
+        else:
+            incident_condition_label = check_post_mortem_trigger_params_incident_condition_label(
+                _incident_condition_label
+            )
+
+        incident_condition_label_use_regexp = d.pop("incident_condition_label_use_regexp", UNSET)
+
+        incident_labels = cast(list[str], d.pop("incident_labels", UNSET))
+
         _incident_post_mortem_condition_cause = d.pop("incident_post_mortem_condition_cause", UNSET)
         incident_post_mortem_condition_cause: PostMortemTriggerParamsIncidentPostMortemConditionCause | Unset
         if isinstance(_incident_post_mortem_condition_cause, Unset):
@@ -582,164 +591,68 @@ class PostMortemTriggerParams:
                 )
             )
 
-        def _parse_incident_condition_summary(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionSummaryType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_summary_type_1 = check_post_mortem_trigger_params_incident_condition_summary_type_1(
-                    data
-                )
+        _incident_condition_summary = d.pop("incident_condition_summary", UNSET)
+        incident_condition_summary: PostMortemTriggerParamsIncidentConditionSummary | Unset
+        if isinstance(_incident_condition_summary, Unset):
+            incident_condition_summary = UNSET
+        else:
+            incident_condition_summary = check_post_mortem_trigger_params_incident_condition_summary(
+                _incident_condition_summary
+            )
 
-                return incident_condition_summary_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionSummaryType1 | Unset, data)
+        _incident_condition_started_at = d.pop("incident_condition_started_at", UNSET)
+        incident_condition_started_at: PostMortemTriggerParamsIncidentConditionStartedAt | Unset
+        if isinstance(_incident_condition_started_at, Unset):
+            incident_condition_started_at = UNSET
+        else:
+            incident_condition_started_at = check_post_mortem_trigger_params_incident_condition_started_at(
+                _incident_condition_started_at
+            )
 
-        incident_condition_summary = _parse_incident_condition_summary(d.pop("incident_condition_summary", UNSET))
+        _incident_condition_detected_at = d.pop("incident_condition_detected_at", UNSET)
+        incident_condition_detected_at: PostMortemTriggerParamsIncidentConditionDetectedAt | Unset
+        if isinstance(_incident_condition_detected_at, Unset):
+            incident_condition_detected_at = UNSET
+        else:
+            incident_condition_detected_at = check_post_mortem_trigger_params_incident_condition_detected_at(
+                _incident_condition_detected_at
+            )
 
-        def _parse_incident_condition_started_at(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionStartedAtType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_started_at_type_1 = (
-                    check_post_mortem_trigger_params_incident_condition_started_at_type_1(data)
-                )
+        _incident_condition_acknowledged_at = d.pop("incident_condition_acknowledged_at", UNSET)
+        incident_condition_acknowledged_at: PostMortemTriggerParamsIncidentConditionAcknowledgedAt | Unset
+        if isinstance(_incident_condition_acknowledged_at, Unset):
+            incident_condition_acknowledged_at = UNSET
+        else:
+            incident_condition_acknowledged_at = check_post_mortem_trigger_params_incident_condition_acknowledged_at(
+                _incident_condition_acknowledged_at
+            )
 
-                return incident_condition_started_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionStartedAtType1 | Unset, data)
+        _incident_condition_mitigated_at = d.pop("incident_condition_mitigated_at", UNSET)
+        incident_condition_mitigated_at: PostMortemTriggerParamsIncidentConditionMitigatedAt | Unset
+        if isinstance(_incident_condition_mitigated_at, Unset):
+            incident_condition_mitigated_at = UNSET
+        else:
+            incident_condition_mitigated_at = check_post_mortem_trigger_params_incident_condition_mitigated_at(
+                _incident_condition_mitigated_at
+            )
 
-        incident_condition_started_at = _parse_incident_condition_started_at(
-            d.pop("incident_condition_started_at", UNSET)
-        )
+        _incident_condition_resolved_at = d.pop("incident_condition_resolved_at", UNSET)
+        incident_condition_resolved_at: PostMortemTriggerParamsIncidentConditionResolvedAt | Unset
+        if isinstance(_incident_condition_resolved_at, Unset):
+            incident_condition_resolved_at = UNSET
+        else:
+            incident_condition_resolved_at = check_post_mortem_trigger_params_incident_condition_resolved_at(
+                _incident_condition_resolved_at
+            )
 
-        def _parse_incident_condition_detected_at(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionDetectedAtType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_detected_at_type_1 = (
-                    check_post_mortem_trigger_params_incident_condition_detected_at_type_1(data)
-                )
-
-                return incident_condition_detected_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionDetectedAtType1 | Unset, data)
-
-        incident_condition_detected_at = _parse_incident_condition_detected_at(
-            d.pop("incident_condition_detected_at", UNSET)
-        )
-
-        def _parse_incident_condition_acknowledged_at(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionAcknowledgedAtType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_acknowledged_at_type_1 = (
-                    check_post_mortem_trigger_params_incident_condition_acknowledged_at_type_1(data)
-                )
-
-                return incident_condition_acknowledged_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionAcknowledgedAtType1 | Unset, data)
-
-        incident_condition_acknowledged_at = _parse_incident_condition_acknowledged_at(
-            d.pop("incident_condition_acknowledged_at", UNSET)
-        )
-
-        def _parse_incident_condition_mitigated_at(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionMitigatedAtType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_mitigated_at_type_1 = (
-                    check_post_mortem_trigger_params_incident_condition_mitigated_at_type_1(data)
-                )
-
-                return incident_condition_mitigated_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionMitigatedAtType1 | Unset, data)
-
-        incident_condition_mitigated_at = _parse_incident_condition_mitigated_at(
-            d.pop("incident_condition_mitigated_at", UNSET)
-        )
-
-        def _parse_incident_condition_resolved_at(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionResolvedAtType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_condition_resolved_at_type_1 = (
-                    check_post_mortem_trigger_params_incident_condition_resolved_at_type_1(data)
-                )
-
-                return incident_condition_resolved_at_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionResolvedAtType1 | Unset, data)
-
-        incident_condition_resolved_at = _parse_incident_condition_resolved_at(
-            d.pop("incident_condition_resolved_at", UNSET)
-        )
-
-        def _parse_incident_conditional_inactivity(
-            data: object,
-        ) -> None | PostMortemTriggerParamsIncidentConditionalInactivityType1 | Unset:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                incident_conditional_inactivity_type_1 = (
-                    check_post_mortem_trigger_params_incident_conditional_inactivity_type_1(data)
-                )
-
-                return incident_conditional_inactivity_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
-                pass
-            return cast(None | PostMortemTriggerParamsIncidentConditionalInactivityType1 | Unset, data)
-
-        incident_conditional_inactivity = _parse_incident_conditional_inactivity(
-            d.pop("incident_conditional_inactivity", UNSET)
-        )
+        _incident_conditional_inactivity = d.pop("incident_conditional_inactivity", UNSET)
+        incident_conditional_inactivity: PostMortemTriggerParamsIncidentConditionalInactivity | Unset
+        if isinstance(_incident_conditional_inactivity, Unset):
+            incident_conditional_inactivity = UNSET
+        else:
+            incident_conditional_inactivity = check_post_mortem_trigger_params_incident_conditional_inactivity(
+                _incident_conditional_inactivity
+            )
 
         _incident_post_mortem_condition = d.pop("incident_post_mortem_condition", UNSET)
         incident_post_mortem_condition: PostMortemTriggerParamsIncidentPostMortemCondition | Unset
@@ -794,6 +707,9 @@ class PostMortemTriggerParams:
             incident_condition_functionality=incident_condition_functionality,
             incident_condition_group=incident_condition_group,
             incident_condition_cause=incident_condition_cause,
+            incident_condition_label=incident_condition_label,
+            incident_condition_label_use_regexp=incident_condition_label_use_regexp,
+            incident_labels=incident_labels,
             incident_post_mortem_condition_cause=incident_post_mortem_condition_cause,
             incident_condition_summary=incident_condition_summary,
             incident_condition_started_at=incident_condition_started_at,

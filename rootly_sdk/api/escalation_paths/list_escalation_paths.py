@@ -7,6 +7,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.escalation_policy_path_list import EscalationPolicyPathList
+from ...models.list_escalation_paths_filterpath_type import (
+    ListEscalationPathsFilterpathType,
+)
 from ...models.list_escalation_paths_include import ListEscalationPathsInclude
 from ...types import UNSET, Response, Unset
 
@@ -15,6 +18,7 @@ def _get_kwargs(
     escalation_policy_id: str,
     *,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -26,6 +30,12 @@ def _get_kwargs(
         json_include = include
 
     params["include"] = json_include
+
+    json_filterpath_type: str | Unset = UNSET
+    if not isinstance(filterpath_type, Unset):
+        json_filterpath_type = filterpath_type
+
+    params["filter[path_type]"] = json_filterpath_type
 
     params["page[number]"] = pagenumber
 
@@ -74,6 +84,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> Response[EscalationPolicyPathList]:
@@ -84,6 +95,7 @@ def sync_detailed(
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -98,6 +110,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         escalation_policy_id=escalation_policy_id,
         include=include,
+        filterpath_type=filterpath_type,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -114,6 +127,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> EscalationPolicyPathList | None:
@@ -124,6 +138,7 @@ def sync(
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -139,6 +154,7 @@ def sync(
         escalation_policy_id=escalation_policy_id,
         client=client,
         include=include,
+        filterpath_type=filterpath_type,
         pagenumber=pagenumber,
         pagesize=pagesize,
     ).parsed
@@ -149,6 +165,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> Response[EscalationPolicyPathList]:
@@ -159,6 +176,7 @@ async def asyncio_detailed(
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -173,6 +191,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         escalation_policy_id=escalation_policy_id,
         include=include,
+        filterpath_type=filterpath_type,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -187,6 +206,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> EscalationPolicyPathList | None:
@@ -197,6 +217,7 @@ async def asyncio(
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -213,6 +234,7 @@ async def asyncio(
             escalation_policy_id=escalation_policy_id,
             client=client,
             include=include,
+            filterpath_type=filterpath_type,
             pagenumber=pagenumber,
             pagesize=pagesize,
         )

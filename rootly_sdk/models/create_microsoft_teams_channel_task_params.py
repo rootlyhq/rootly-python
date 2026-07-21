@@ -27,30 +27,29 @@ T = TypeVar("T", bound="CreateMicrosoftTeamsChannelTaskParams")
 class CreateMicrosoftTeamsChannelTaskParams:
     """
     Attributes:
+        team (CreateMicrosoftTeamsChannelTaskParamsTeam):
         title (str): Microsoft Team channel title
         task_type (CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset):
-        team (CreateMicrosoftTeamsChannelTaskParamsTeam | Unset):
         description (str | Unset): Microsoft Team channel description
         private (CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset):  Default: 'auto'.
     """
 
+    team: CreateMicrosoftTeamsChannelTaskParamsTeam
     title: str
     task_type: CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset = UNSET
-    team: CreateMicrosoftTeamsChannelTaskParamsTeam | Unset = UNSET
     description: str | Unset = UNSET
     private: CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset = "auto"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
+        team = self.team.to_dict()
+
         title = self.title
 
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
-
-        team: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.team, Unset):
-            team = self.team.to_dict()
 
         description = self.description
 
@@ -62,13 +61,12 @@ class CreateMicrosoftTeamsChannelTaskParams:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "team": team,
                 "title": title,
             }
         )
         if task_type is not UNSET:
             field_dict["task_type"] = task_type
-        if team is not UNSET:
-            field_dict["team"] = team
         if description is not UNSET:
             field_dict["description"] = description
         if private is not UNSET:
@@ -81,6 +79,8 @@ class CreateMicrosoftTeamsChannelTaskParams:
         from ..models.create_microsoft_teams_channel_task_params_team import CreateMicrosoftTeamsChannelTaskParamsTeam
 
         d = dict(src_dict)
+        team = CreateMicrosoftTeamsChannelTaskParamsTeam.from_dict(d.pop("team"))
+
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
@@ -89,13 +89,6 @@ class CreateMicrosoftTeamsChannelTaskParams:
             task_type = UNSET
         else:
             task_type = check_create_microsoft_teams_channel_task_params_task_type(_task_type)
-
-        _team = d.pop("team", UNSET)
-        team: CreateMicrosoftTeamsChannelTaskParamsTeam | Unset
-        if isinstance(_team, Unset):
-            team = UNSET
-        else:
-            team = CreateMicrosoftTeamsChannelTaskParamsTeam.from_dict(_team)
 
         description = d.pop("description", UNSET)
 
@@ -107,9 +100,9 @@ class CreateMicrosoftTeamsChannelTaskParams:
             private = check_create_microsoft_teams_channel_task_params_private(_private)
 
         create_microsoft_teams_channel_task_params = cls(
+            team=team,
             title=title,
             task_type=task_type,
-            team=team,
             description=description,
             private=private,
         )

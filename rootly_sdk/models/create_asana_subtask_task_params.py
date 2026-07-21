@@ -53,6 +53,7 @@ class CreateAsanaSubtaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         parent_task_id = self.parent_task_id
 
         title = self.title

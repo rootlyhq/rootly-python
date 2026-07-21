@@ -1,11 +1,12 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.meeting_recording_response import MeetingRecordingResponse
 from ...types import Response
 
 
@@ -23,12 +24,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 200:
-        return None
+        response_200 = MeetingRecordingResponse.from_dict(response.json())
+
+        return response_200
 
     if response.status_code == 422:
-        return None
+        response_422 = cast(Any, None)
+        return response_422
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -36,7 +42,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -49,7 +57,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Any | MeetingRecordingResponse]:
     """Resume a meeting recording
 
      Resume a paused recording session. The bot continues capturing audio/video from the meeting.
@@ -62,7 +70,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -76,11 +84,11 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Any | MeetingRecordingResponse | None:
     """Resume a meeting recording
 
      Resume a paused recording session. The bot continues capturing audio/video from the meeting.
@@ -93,7 +101,33 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Any | MeetingRecordingResponse
+    """
+
+    return sync_detailed(
+        id=id,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    id: str,
+    *,
+    client: AuthenticatedClient,
+) -> Response[Any | MeetingRecordingResponse]:
+    """Resume a meeting recording
+
+     Resume a paused recording session. The bot continues capturing audio/video from the meeting.
+
+    Args:
+        id (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -103,3 +137,31 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    id: str,
+    *,
+    client: AuthenticatedClient,
+) -> Any | MeetingRecordingResponse | None:
+    """Resume a meeting recording
+
+     Resume a paused recording session. The bot continues capturing audio/video from the meeting.
+
+    Args:
+        id (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Any | MeetingRecordingResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            id=id,
+            client=client,
+        )
+    ).parsed

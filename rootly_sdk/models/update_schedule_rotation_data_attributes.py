@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
+from dateutil.parser import isoparse
 
 from ..models.update_schedule_rotation_data_attributes_active_days_item import (
     UpdateScheduleRotationDataAttributesActiveDaysItem,
@@ -58,10 +60,10 @@ class UpdateScheduleRotationDataAttributes:
             UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType1 |
             UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2 |
             UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3):
-        start_time (None | str | Unset): ISO8601 date and time when rotation starts. Shifts will only be created after
-            this time.
-        end_time (None | str | Unset): ISO8601 date and time when rotation ends. Shifts will only be created before this
-            time.
+        start_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation starts. Shifts will only be
+            created after this time.
+        end_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation ends. Shifts will only be created
+            before this time.
         schedule_rotation_members (list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None |
             Unset): You can only update schedule rotation members if your account has schedule nesting feature enabled
     """
@@ -81,8 +83,8 @@ class UpdateScheduleRotationDataAttributes:
         | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType2
         | UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3
     ) = UNSET
-    start_time: None | str | Unset = UNSET
-    end_time: None | str | Unset = UNSET
+    start_time: datetime.datetime | None | Unset = UNSET
+    end_time: datetime.datetime | None | Unset = UNSET
     schedule_rotation_members: (
         list[UpdateScheduleRotationDataAttributesScheduleRotationMembersType0Item] | None | Unset
     ) = UNSET
@@ -148,12 +150,16 @@ class UpdateScheduleRotationDataAttributes:
         start_time: None | str | Unset
         if isinstance(self.start_time, Unset):
             start_time = UNSET
+        elif isinstance(self.start_time, datetime.datetime):
+            start_time = self.start_time.isoformat()
         else:
             start_time = self.start_time
 
         end_time: None | str | Unset
         if isinstance(self.end_time, Unset):
             end_time = UNSET
+        elif isinstance(self.end_time, datetime.datetime):
+            end_time = self.end_time.isoformat()
         else:
             end_time = self.end_time
 
@@ -312,21 +318,37 @@ class UpdateScheduleRotationDataAttributes:
             d.pop("schedule_rotationable_attributes", UNSET)
         )
 
-        def _parse_start_time(data: object) -> None | str | Unset:
+        def _parse_start_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                start_time_type_0 = isoparse(data)
+
+                return start_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> None | str | Unset:
+        def _parse_end_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                end_time_type_0 = isoparse(data)
+
+                return end_time_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 

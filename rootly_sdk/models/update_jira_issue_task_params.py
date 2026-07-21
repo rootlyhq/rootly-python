@@ -13,6 +13,7 @@ from ..models.update_jira_issue_task_params_task_type import (
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.update_jira_issue_task_params_integration import UpdateJiraIssueTaskParamsIntegration
     from ..models.update_jira_issue_task_params_priority import UpdateJiraIssueTaskParamsPriority
     from ..models.update_jira_issue_task_params_status import UpdateJiraIssueTaskParamsStatus
 
@@ -27,6 +28,8 @@ class UpdateJiraIssueTaskParams:
         issue_id (str): The issue id
         project_key (str): The project key
         task_type (UpdateJiraIssueTaskParamsTaskType | Unset):
+        integration (UpdateJiraIssueTaskParamsIntegration | Unset): Specify integration id if you have more than one
+            Jira instance
         title (str | Unset): The issue title
         description (str | Unset): The issue description
         labels (str | Unset): The issue labels
@@ -43,6 +46,7 @@ class UpdateJiraIssueTaskParams:
     issue_id: str
     project_key: str
     task_type: UpdateJiraIssueTaskParamsTaskType | Unset = UNSET
+    integration: UpdateJiraIssueTaskParamsIntegration | Unset = UNSET
     title: str | Unset = UNSET
     description: str | Unset = UNSET
     labels: str | Unset = UNSET
@@ -56,6 +60,7 @@ class UpdateJiraIssueTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         issue_id = self.issue_id
 
         project_key = self.project_key
@@ -63,6 +68,10 @@ class UpdateJiraIssueTaskParams:
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
+
+        integration: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.integration, Unset):
+            integration = self.integration.to_dict()
 
         title = self.title
 
@@ -106,6 +115,8 @@ class UpdateJiraIssueTaskParams:
         )
         if task_type is not UNSET:
             field_dict["task_type"] = task_type
+        if integration is not UNSET:
+            field_dict["integration"] = integration
         if title is not UNSET:
             field_dict["title"] = title
         if description is not UNSET:
@@ -131,6 +142,7 @@ class UpdateJiraIssueTaskParams:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.update_jira_issue_task_params_integration import UpdateJiraIssueTaskParamsIntegration
         from ..models.update_jira_issue_task_params_priority import UpdateJiraIssueTaskParamsPriority
         from ..models.update_jira_issue_task_params_status import UpdateJiraIssueTaskParamsStatus
 
@@ -145,6 +157,13 @@ class UpdateJiraIssueTaskParams:
             task_type = UNSET
         else:
             task_type = check_update_jira_issue_task_params_task_type(_task_type)
+
+        _integration = d.pop("integration", UNSET)
+        integration: UpdateJiraIssueTaskParamsIntegration | Unset
+        if isinstance(_integration, Unset):
+            integration = UNSET
+        else:
+            integration = UpdateJiraIssueTaskParamsIntegration.from_dict(_integration)
 
         title = d.pop("title", UNSET)
 
@@ -194,6 +213,7 @@ class UpdateJiraIssueTaskParams:
             issue_id=issue_id,
             project_key=project_key,
             task_type=task_type,
+            integration=integration,
             title=title,
             description=description,
             labels=labels,

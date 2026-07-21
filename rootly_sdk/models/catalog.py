@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.catalog_icon import CatalogIcon, check_catalog_icon
+from ..models.catalog_managed_by import CatalogManagedBy, check_catalog_managed_by
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Catalog")
@@ -22,6 +23,8 @@ class Catalog:
         created_at (str):
         updated_at (str):
         description (None | str | Unset):
+        external_id (None | str | Unset): An external identifier for this catalog. Must be unique within the team.
+        managed_by (CatalogManagedBy | Unset): Which source manages this resource (read-only).
     """
 
     name: str
@@ -30,6 +33,8 @@ class Catalog:
     created_at: str
     updated_at: str
     description: None | str | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    managed_by: CatalogManagedBy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,6 +55,16 @@ class Catalog:
         else:
             description = self.description
 
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
+        managed_by: str | Unset = UNSET
+        if not isinstance(self.managed_by, Unset):
+            managed_by = self.managed_by
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -63,6 +78,10 @@ class Catalog:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
 
         return field_dict
 
@@ -93,6 +112,22 @@ class Catalog:
 
         description = _parse_description(d.pop("description", UNSET))
 
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
+        _managed_by = d.pop("managed_by", UNSET)
+        managed_by: CatalogManagedBy | Unset
+        if isinstance(_managed_by, Unset):
+            managed_by = UNSET
+        else:
+            managed_by = check_catalog_managed_by(_managed_by)
+
         catalog = cls(
             name=name,
             icon=icon,
@@ -100,6 +135,8 @@ class Catalog:
             created_at=created_at,
             updated_at=updated_at,
             description=description,
+            external_id=external_id,
+            managed_by=managed_by,
         )
 
         catalog.additional_properties = d

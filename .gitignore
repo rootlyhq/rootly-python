@@ -21,3 +21,6 @@ dmypy.json
 
 /coverage.xml
 /.coverage
+
+# Serena
+.serena/

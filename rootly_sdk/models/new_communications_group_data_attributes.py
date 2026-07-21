@@ -60,6 +60,7 @@ class NewCommunicationsGroupDataAttributes:
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+
         name = self.name
 
         communication_type_id = self.communication_type_id

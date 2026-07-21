@@ -33,6 +33,7 @@ class NewWorkflowRunDataAttributesType1:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         incident_id = self.incident_id
 
         immediate: bool | None | Unset

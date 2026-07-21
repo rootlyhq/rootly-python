@@ -33,6 +33,8 @@ class CreateGoogleDocsPageTaskParams:
         content (str | Unset): The page content
         template_id (str | Unset): The Google Doc file ID to use as a template
         permissions (str | Unset): Page permissions JSON
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
     """
 
     title: str
@@ -44,9 +46,12 @@ class CreateGoogleDocsPageTaskParams:
     content: str | Unset = UNSET
     template_id: str | Unset = UNSET
     permissions: str | Unset = UNSET
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         title = self.title
 
         task_type: str | Unset = UNSET
@@ -71,6 +76,10 @@ class CreateGoogleDocsPageTaskParams:
 
         permissions = self.permissions
 
+        include_overview = self.include_overview
+
+        include_timeline = self.include_timeline
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -94,6 +103,10 @@ class CreateGoogleDocsPageTaskParams:
             field_dict["template_id"] = template_id
         if permissions is not UNSET:
             field_dict["permissions"] = permissions
+        if include_overview is not UNSET:
+            field_dict["include_overview"] = include_overview
+        if include_timeline is not UNSET:
+            field_dict["include_timeline"] = include_timeline
 
         return field_dict
 
@@ -138,6 +151,10 @@ class CreateGoogleDocsPageTaskParams:
 
         permissions = d.pop("permissions", UNSET)
 
+        include_overview = d.pop("include_overview", UNSET)
+
+        include_timeline = d.pop("include_timeline", UNSET)
+
         create_google_docs_page_task_params = cls(
             title=title,
             task_type=task_type,
@@ -148,6 +165,8 @@ class CreateGoogleDocsPageTaskParams:
             content=content,
             template_id=template_id,
             permissions=permissions,
+            include_overview=include_overview,
+            include_timeline=include_timeline,
         )
 
         create_google_docs_page_task_params.additional_properties = d

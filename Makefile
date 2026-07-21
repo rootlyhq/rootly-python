@@ -41,8 +41,10 @@ regenerate:
 		--config tools/config.yaml
 	@echo "Applying nullable enum fix..."
 	@python tools/fix_nullable_enums.py
+	@echo "Fixing lint errors..."
+	@ruff check --fix rootly_sdk/
 	@echo "Formatting patched files..."
-	@ruff format rootly_sdk/models/
+	@ruff format rootly_sdk/
 
 test:
 	python -c "import rootly_sdk; print('SDK imports successfully')"

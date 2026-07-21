@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
+from dateutil.parser import isoparse
 
 from ..models.update_incident_status_page_event_data_attributes_status import (
     UpdateIncidentStatusPageEventDataAttributesStatus,
@@ -24,6 +26,7 @@ class UpdateIncidentStatusPageEventDataAttributes:
         notify_subscribers (bool | None | Unset): Notify all status pages subscribers Default: False.
         should_tweet (bool | None | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
             Default: False.
+        started_at (datetime.datetime | None | Unset): When the event started.
     """
 
     event: str | Unset = UNSET
@@ -31,6 +34,7 @@ class UpdateIncidentStatusPageEventDataAttributes:
     status: UpdateIncidentStatusPageEventDataAttributesStatus | Unset = UNSET
     notify_subscribers: bool | None | Unset = False
     should_tweet: bool | None | Unset = False
+    started_at: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
@@ -53,6 +57,14 @@ class UpdateIncidentStatusPageEventDataAttributes:
         else:
             should_tweet = self.should_tweet
 
+        started_at: None | str | Unset
+        if isinstance(self.started_at, Unset):
+            started_at = UNSET
+        elif isinstance(self.started_at, datetime.datetime):
+            started_at = self.started_at.isoformat()
+        else:
+            started_at = self.started_at
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
@@ -66,6 +78,8 @@ class UpdateIncidentStatusPageEventDataAttributes:
             field_dict["notify_subscribers"] = notify_subscribers
         if should_tweet is not UNSET:
             field_dict["should_tweet"] = should_tweet
+        if started_at is not UNSET:
+            field_dict["started_at"] = started_at
 
         return field_dict
 
@@ -101,12 +115,30 @@ class UpdateIncidentStatusPageEventDataAttributes:
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 
+        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                started_at_type_0 = isoparse(data)
+
+                return started_at_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        started_at = _parse_started_at(d.pop("started_at", UNSET))
+
         update_incident_status_page_event_data_attributes = cls(
             event=event,
             status_page_id=status_page_id,
             status=status,
             notify_subscribers=notify_subscribers,
             should_tweet=should_tweet,
+            started_at=started_at,
         )
 
         return update_incident_status_page_event_data_attributes

@@ -11,10 +11,6 @@ from ..models.update_alert_data_attributes_noise import (
     UpdateAlertDataAttributesNoise,
     check_update_alert_data_attributes_noise,
 )
-from ..models.update_alert_data_attributes_source import (
-    UpdateAlertDataAttributesSource,
-    check_update_alert_data_attributes_source,
-)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -33,11 +29,13 @@ class UpdateAlertDataAttributes:
     """
     Attributes:
         noise (UpdateAlertDataAttributesNoise | Unset): Whether the alert is marked as noise
-        source (UpdateAlertDataAttributesSource | Unset): The source of the alert
+        source (str | Unset): Deprecated. Accepted for backwards compatibility; new clients should omit. Defaults to
+            `api`.
         summary (str | Unset): The summary of the alert
         description (None | str | Unset): The description of the alert
         service_ids (list[str] | None | Unset): The Service IDs to attach to the alert
         group_ids (list[str] | None | Unset): The Group IDs to attach to the alert
+        functionality_ids (list[str] | None | Unset): The Functionality IDs to attach to the alert
         environment_ids (list[str] | None | Unset): The Environment IDs to attach to the alert
         started_at (datetime.datetime | None | Unset): Alert start datetime
         ended_at (datetime.datetime | None | Unset): Alert end datetime
@@ -52,11 +50,12 @@ class UpdateAlertDataAttributes:
     """
 
     noise: UpdateAlertDataAttributesNoise | Unset = UNSET
-    source: UpdateAlertDataAttributesSource | Unset = UNSET
+    source: str | Unset = UNSET
     summary: str | Unset = UNSET
     description: None | str | Unset = UNSET
     service_ids: list[str] | None | Unset = UNSET
     group_ids: list[str] | None | Unset = UNSET
+    functionality_ids: list[str] | None | Unset = UNSET
     environment_ids: list[str] | None | Unset = UNSET
     started_at: datetime.datetime | None | Unset = UNSET
     ended_at: datetime.datetime | None | Unset = UNSET
@@ -81,9 +80,7 @@ class UpdateAlertDataAttributes:
         if not isinstance(self.noise, Unset):
             noise = self.noise
 
-        source: str | Unset = UNSET
-        if not isinstance(self.source, Unset):
-            source = self.source
+        source = self.source
 
         summary = self.summary
 
@@ -110,6 +107,15 @@ class UpdateAlertDataAttributes:
 
         else:
             group_ids = self.group_ids
+
+        functionality_ids: list[str] | None | Unset
+        if isinstance(self.functionality_ids, Unset):
+            functionality_ids = UNSET
+        elif isinstance(self.functionality_ids, list):
+            functionality_ids = self.functionality_ids
+
+        else:
+            functionality_ids = self.functionality_ids
 
         environment_ids: list[str] | None | Unset
         if isinstance(self.environment_ids, Unset):
@@ -208,6 +214,8 @@ class UpdateAlertDataAttributes:
             field_dict["service_ids"] = service_ids
         if group_ids is not UNSET:
             field_dict["group_ids"] = group_ids
+        if functionality_ids is not UNSET:
+            field_dict["functionality_ids"] = functionality_ids
         if environment_ids is not UNSET:
             field_dict["environment_ids"] = environment_ids
         if started_at is not UNSET:
@@ -247,12 +255,7 @@ class UpdateAlertDataAttributes:
         else:
             noise = check_update_alert_data_attributes_noise(_noise)
 
-        _source = d.pop("source", UNSET)
-        source: UpdateAlertDataAttributesSource | Unset
-        if isinstance(_source, Unset):
-            source = UNSET
-        else:
-            source = check_update_alert_data_attributes_source(_source)
+        source = d.pop("source", UNSET)
 
         summary = d.pop("summary", UNSET)
 
@@ -298,6 +301,23 @@ class UpdateAlertDataAttributes:
             return cast(list[str] | None | Unset, data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
+
+        def _parse_functionality_ids(data: object) -> list[str] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                functionality_ids_type_0 = cast(list[str], data)
+
+                return functionality_ids_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[str] | None | Unset, data)
+
+        functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
         def _parse_environment_ids(data: object) -> list[str] | None | Unset:
             if data is None:
@@ -464,6 +484,7 @@ class UpdateAlertDataAttributes:
             description=description,
             service_ids=service_ids,
             group_ids=group_ids,
+            functionality_ids=functionality_ids,
             environment_ids=environment_ids,
             started_at=started_at,
             ended_at=ended_at,

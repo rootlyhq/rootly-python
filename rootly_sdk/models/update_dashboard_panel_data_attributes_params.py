@@ -48,6 +48,7 @@ class UpdateDashboardPanelDataAttributesParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         display: str | Unset = UNSET
         if not isinstance(self.display, Unset):
             display = self.display

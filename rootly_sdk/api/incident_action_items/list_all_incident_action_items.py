@@ -30,6 +30,22 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterpriorityeq: str | Unset = UNSET,
+    filterprioritynot_eq: str | Unset = UNSET,
+    filterpriorityin: str | Unset = UNSET,
+    filterprioritynot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterincident_statuseq: str | Unset = UNSET,
+    filterincident_statusnot_eq: str | Unset = UNSET,
+    filterincident_statusin: str | Unset = UNSET,
+    filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
 
@@ -72,6 +88,38 @@ def _get_kwargs(
     params["filter[created_at][lt]"] = filtercreated_atlt
 
     params["filter[created_at][lte]"] = filtercreated_atlte
+
+    params["filter[kind][eq]"] = filterkindeq
+
+    params["filter[kind][not_eq]"] = filterkindnot_eq
+
+    params["filter[kind][in]"] = filterkindin
+
+    params["filter[kind][not_in]"] = filterkindnot_in
+
+    params["filter[priority][eq]"] = filterpriorityeq
+
+    params["filter[priority][not_eq]"] = filterprioritynot_eq
+
+    params["filter[priority][in]"] = filterpriorityin
+
+    params["filter[priority][not_in]"] = filterprioritynot_in
+
+    params["filter[status][eq]"] = filterstatuseq
+
+    params["filter[status][not_eq]"] = filterstatusnot_eq
+
+    params["filter[status][in]"] = filterstatusin
+
+    params["filter[status][not_in]"] = filterstatusnot_in
+
+    params["filter[incident_status][eq]"] = filterincident_statuseq
+
+    params["filter[incident_status][not_eq]"] = filterincident_statusnot_eq
+
+    params["filter[incident_status][in]"] = filterincident_statusin
+
+    params["filter[incident_status][not_in]"] = filterincident_statusnot_in
 
     params["sort"] = sort
 
@@ -131,6 +179,22 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterpriorityeq: str | Unset = UNSET,
+    filterprioritynot_eq: str | Unset = UNSET,
+    filterpriorityin: str | Unset = UNSET,
+    filterprioritynot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterincident_statuseq: str | Unset = UNSET,
+    filterincident_statusnot_eq: str | Unset = UNSET,
+    filterincident_statusin: str | Unset = UNSET,
+    filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
@@ -157,6 +221,22 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterpriorityeq (str | Unset):
+        filterprioritynot_eq (str | Unset):
+        filterpriorityin (str | Unset):
+        filterprioritynot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterincident_statuseq (str | Unset):
+        filterincident_statusnot_eq (str | Unset):
+        filterincident_statusin (str | Unset):
+        filterincident_statusnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -187,6 +267,22 @@ def sync_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
         sort=sort,
     )
 
@@ -219,6 +315,22 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterpriorityeq: str | Unset = UNSET,
+    filterprioritynot_eq: str | Unset = UNSET,
+    filterpriorityin: str | Unset = UNSET,
+    filterprioritynot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterincident_statuseq: str | Unset = UNSET,
+    filterincident_statusnot_eq: str | Unset = UNSET,
+    filterincident_statusin: str | Unset = UNSET,
+    filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> IncidentActionItemList | None:
     """List all action items for an organization
@@ -245,6 +357,22 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterpriorityeq (str | Unset):
+        filterprioritynot_eq (str | Unset):
+        filterpriorityin (str | Unset):
+        filterprioritynot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterincident_statuseq (str | Unset):
+        filterincident_statusnot_eq (str | Unset):
+        filterincident_statusin (str | Unset):
+        filterincident_statusnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -276,6 +404,22 @@ def sync(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
         sort=sort,
     ).parsed
 
@@ -302,6 +446,22 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterpriorityeq: str | Unset = UNSET,
+    filterprioritynot_eq: str | Unset = UNSET,
+    filterpriorityin: str | Unset = UNSET,
+    filterprioritynot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterincident_statuseq: str | Unset = UNSET,
+    filterincident_statusnot_eq: str | Unset = UNSET,
+    filterincident_statusin: str | Unset = UNSET,
+    filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
@@ -328,6 +488,22 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterpriorityeq (str | Unset):
+        filterprioritynot_eq (str | Unset):
+        filterpriorityin (str | Unset):
+        filterprioritynot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterincident_statuseq (str | Unset):
+        filterincident_statusnot_eq (str | Unset):
+        filterincident_statusin (str | Unset):
+        filterincident_statusnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -358,6 +534,22 @@ async def asyncio_detailed(
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filterkindeq=filterkindeq,
+        filterkindnot_eq=filterkindnot_eq,
+        filterkindin=filterkindin,
+        filterkindnot_in=filterkindnot_in,
+        filterpriorityeq=filterpriorityeq,
+        filterprioritynot_eq=filterprioritynot_eq,
+        filterpriorityin=filterpriorityin,
+        filterprioritynot_in=filterprioritynot_in,
+        filterstatuseq=filterstatuseq,
+        filterstatusnot_eq=filterstatusnot_eq,
+        filterstatusin=filterstatusin,
+        filterstatusnot_in=filterstatusnot_in,
+        filterincident_statuseq=filterincident_statuseq,
+        filterincident_statusnot_eq=filterincident_statusnot_eq,
+        filterincident_statusin=filterincident_statusin,
+        filterincident_statusnot_in=filterincident_statusnot_in,
         sort=sort,
     )
 
@@ -388,6 +580,22 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterpriorityeq: str | Unset = UNSET,
+    filterprioritynot_eq: str | Unset = UNSET,
+    filterpriorityin: str | Unset = UNSET,
+    filterprioritynot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterincident_statuseq: str | Unset = UNSET,
+    filterincident_statusnot_eq: str | Unset = UNSET,
+    filterincident_statusin: str | Unset = UNSET,
+    filterincident_statusnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
 ) -> IncidentActionItemList | None:
     """List all action items for an organization
@@ -414,6 +622,22 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterpriorityeq (str | Unset):
+        filterprioritynot_eq (str | Unset):
+        filterpriorityin (str | Unset):
+        filterprioritynot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterincident_statuseq (str | Unset):
+        filterincident_statusnot_eq (str | Unset):
+        filterincident_statusin (str | Unset):
+        filterincident_statusnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -446,6 +670,22 @@ async def asyncio(
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
             filtercreated_atlte=filtercreated_atlte,
+            filterkindeq=filterkindeq,
+            filterkindnot_eq=filterkindnot_eq,
+            filterkindin=filterkindin,
+            filterkindnot_in=filterkindnot_in,
+            filterpriorityeq=filterpriorityeq,
+            filterprioritynot_eq=filterprioritynot_eq,
+            filterpriorityin=filterpriorityin,
+            filterprioritynot_in=filterprioritynot_in,
+            filterstatuseq=filterstatuseq,
+            filterstatusnot_eq=filterstatusnot_eq,
+            filterstatusin=filterstatusin,
+            filterstatusnot_in=filterstatusnot_in,
+            filterincident_statuseq=filterincident_statuseq,
+            filterincident_statusnot_eq=filterincident_statusnot_eq,
+            filterincident_statusin=filterincident_statusin,
+            filterincident_statusnot_in=filterincident_statusnot_in,
             sort=sort,
         )
     ).parsed

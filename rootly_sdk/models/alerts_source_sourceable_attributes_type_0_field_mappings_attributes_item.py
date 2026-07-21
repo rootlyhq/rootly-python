@@ -22,7 +22,8 @@ class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
         field (AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset): Select the field on which
             the condition to be evaluated
         json_path (str | Unset): JSON path expression to extract a specific value from the alert's payload for
-            evaluation
+            evaluation. For `notification_target_id` only: if your account has opted in to Dynamic Notification Targets,
+            this may also be a Liquid template that resolves to a notification target id at routing time.
     """
 
     field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset = UNSET

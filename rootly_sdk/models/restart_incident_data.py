@@ -29,6 +29,7 @@ class RestartIncidentData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         type_: str = self.type_
 
         attributes: dict[str, Any] | Unset = UNSET

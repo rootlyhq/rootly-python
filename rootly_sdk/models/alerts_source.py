@@ -36,6 +36,8 @@ class AlertsSource:
         secret (str): The secret used to authenticate non-email alert sources
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        enabled (bool | Unset): Whether the alert source is enabled. Disabled sources do not create alerts from incoming
+            events.
         source_type (AlertsSourceSourceType | Unset): The alert source type
         alert_urgency_id (str | Unset): ID for the default alert urgency assigned to this alert source
         deduplicate_alerts_by_key (bool | Unset): Toggle alert deduplication using deduplication key. If enabled,
@@ -65,6 +67,7 @@ class AlertsSource:
     secret: str
     created_at: str
     updated_at: str
+    enabled: bool | Unset = UNSET
     source_type: AlertsSourceSourceType | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
     deduplicate_alerts_by_key: bool | Unset = UNSET
@@ -95,6 +98,8 @@ class AlertsSource:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        enabled = self.enabled
 
         source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
@@ -185,6 +190,8 @@ class AlertsSource:
                 "updated_at": updated_at,
             }
         )
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if source_type is not UNSET:
             field_dict["source_type"] = source_type
         if alert_urgency_id is not UNSET:
@@ -238,6 +245,8 @@ class AlertsSource:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        enabled = d.pop("enabled", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
         source_type: AlertsSourceSourceType | Unset
@@ -376,6 +385,7 @@ class AlertsSource:
             secret=secret,
             created_at=created_at,
             updated_at=updated_at,
+            enabled=enabled,
             source_type=source_type,
             alert_urgency_id=alert_urgency_id,
             deduplicate_alerts_by_key=deduplicate_alerts_by_key,

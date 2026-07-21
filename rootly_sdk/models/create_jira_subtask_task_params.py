@@ -63,6 +63,7 @@ class CreateJiraSubtaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         project_key = self.project_key
 
         parent_issue_id = self.parent_issue_id

@@ -19,8 +19,9 @@ T = TypeVar("T", bound="UpdateAlertGroupDataAttributesTargetsItem")
 class UpdateAlertGroupDataAttributesTargetsItem:
     """
     Attributes:
-        target_type (UpdateAlertGroupDataAttributesTargetsItemTargetType): The type of the target.
-        target_id (UUID): id for the Group, Service or EscalationPolicy
+        target_type (UpdateAlertGroupDataAttributesTargetsItemTargetType): The type of the target. Please contact
+            support if you encounter issues using `Functionality` as a target type.
+        target_id (UUID): id for the Group, Service, EscalationPolicy or Functionality
     """
 
     target_type: UpdateAlertGroupDataAttributesTargetsItemTargetType

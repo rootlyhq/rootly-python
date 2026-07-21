@@ -1,11 +1,12 @@
 from typing import Literal, cast
 
-UpdateAlertGroupDataAttributesTargetsItemTargetType = Literal["EscalationPolicy", "Group", "Service"]
+UpdateAlertGroupDataAttributesTargetsItemTargetType = Literal["EscalationPolicy", "Functionality", "Group", "Service"]
 
 UPDATE_ALERT_GROUP_DATA_ATTRIBUTES_TARGETS_ITEM_TARGET_TYPE_VALUES: set[
     UpdateAlertGroupDataAttributesTargetsItemTargetType
 ] = {
     "EscalationPolicy",
+    "Functionality",
     "Group",
     "Service",
 }

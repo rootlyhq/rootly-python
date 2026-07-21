@@ -47,6 +47,8 @@ class PageRootlyOnCallRespondersTaskParams:
         functionality_target (PageRootlyOnCallRespondersTaskParamsFunctionalityTarget | Unset):
         description (str | Unset): Alert description
         escalation_note (str | Unset):
+        create_new_alert (bool | Unset): When true, always create a new alert instead of re-paging the alert that
+            triggered the workflow Default: False.
     """
 
     alert_urgency_id: str
@@ -59,9 +61,11 @@ class PageRootlyOnCallRespondersTaskParams:
     functionality_target: PageRootlyOnCallRespondersTaskParamsFunctionalityTarget | Unset = UNSET
     description: str | Unset = UNSET
     escalation_note: str | Unset = UNSET
+    create_new_alert: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+
         alert_urgency_id = self.alert_urgency_id
 
         summary = self.summary
@@ -94,6 +98,8 @@ class PageRootlyOnCallRespondersTaskParams:
 
         escalation_note = self.escalation_note
 
+        create_new_alert = self.create_new_alert
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -118,6 +124,8 @@ class PageRootlyOnCallRespondersTaskParams:
             field_dict["description"] = description
         if escalation_note is not UNSET:
             field_dict["escalation_note"] = escalation_note
+        if create_new_alert is not UNSET:
+            field_dict["create_new_alert"] = create_new_alert
 
         return field_dict
 
@@ -194,6 +202,8 @@ class PageRootlyOnCallRespondersTaskParams:
 
         escalation_note = d.pop("escalation_note", UNSET)
 
+        create_new_alert = d.pop("create_new_alert", UNSET)
+
         page_rootly_on_call_responders_task_params = cls(
             alert_urgency_id=alert_urgency_id,
             summary=summary,
@@ -205,6 +215,7 @@ class PageRootlyOnCallRespondersTaskParams:
             functionality_target=functionality_target,
             description=description,
             escalation_note=escalation_note,
+            create_new_alert=create_new_alert,
         )
 
         page_rootly_on_call_responders_task_params.additional_properties = d

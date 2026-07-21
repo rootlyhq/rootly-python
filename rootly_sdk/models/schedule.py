@@ -6,6 +6,10 @@ from typing import TYPE_CHECKING, Any, TypeVar, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.schedule_shift_report_day_of_week import (
+    ScheduleShiftReportDayOfWeek,
+    check_schedule_shift_report_day_of_week,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -29,6 +33,18 @@ class Schedule:
         slack_user_group (None | ScheduleSlackUserGroupType0 | Unset): Synced slack group of the schedule
         slack_channel (None | ScheduleSlackChannelType0 | Unset): Synced slack channel of the schedule
         owner_group_ids (list[str] | Unset): Owning teams.
+        sync_linear_enabled (bool | Unset): Whether the schedule is synced with Linear
+        include_shadows_in_slack_notifications (bool | Unset): Whether shadow users are included in Slack notifications
+            and user group syncing. Requires `slack_channel` to be set; otherwise this value is forced to false on save.
+        shift_start_notifications_enabled (bool | Unset): Whether shift-start notifications are enabled. Requires
+            `slack_channel` to be set; otherwise this value is forced to false on save.
+        shift_update_notifications_enabled (bool | Unset): Whether shift-update notifications are enabled. Requires
+            `slack_channel` to be set; otherwise this value is forced to false on save.
+        shift_report_enabled (bool | Unset): Whether the weekly shift summary report is enabled. Requires
+            `slack_channel` to be set; otherwise this value is forced to false on save.
+        shift_report_day_of_week (ScheduleShiftReportDayOfWeek | Unset): Day of week the weekly shift summary is sent
+        shift_report_time_of_day (str | Unset): Time of day the weekly shift summary is sent, in HH:MM 24-hour format
+        shift_report_time_zone (str | Unset): IANA time zone used for the weekly shift summary
     """
 
     name: str
@@ -40,6 +56,14 @@ class Schedule:
     slack_user_group: None | ScheduleSlackUserGroupType0 | Unset = UNSET
     slack_channel: None | ScheduleSlackChannelType0 | Unset = UNSET
     owner_group_ids: list[str] | Unset = UNSET
+    sync_linear_enabled: bool | Unset = UNSET
+    include_shadows_in_slack_notifications: bool | Unset = UNSET
+    shift_start_notifications_enabled: bool | Unset = UNSET
+    shift_update_notifications_enabled: bool | Unset = UNSET
+    shift_report_enabled: bool | Unset = UNSET
+    shift_report_day_of_week: ScheduleShiftReportDayOfWeek | Unset = UNSET
+    shift_report_time_of_day: str | Unset = UNSET
+    shift_report_time_zone: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,6 +110,24 @@ class Schedule:
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
+        sync_linear_enabled = self.sync_linear_enabled
+
+        include_shadows_in_slack_notifications = self.include_shadows_in_slack_notifications
+
+        shift_start_notifications_enabled = self.shift_start_notifications_enabled
+
+        shift_update_notifications_enabled = self.shift_update_notifications_enabled
+
+        shift_report_enabled = self.shift_report_enabled
+
+        shift_report_day_of_week: str | Unset = UNSET
+        if not isinstance(self.shift_report_day_of_week, Unset):
+            shift_report_day_of_week = self.shift_report_day_of_week
+
+        shift_report_time_of_day = self.shift_report_time_of_day
+
+        shift_report_time_zone = self.shift_report_time_zone
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -106,6 +148,22 @@ class Schedule:
             field_dict["slack_channel"] = slack_channel
         if owner_group_ids is not UNSET:
             field_dict["owner_group_ids"] = owner_group_ids
+        if sync_linear_enabled is not UNSET:
+            field_dict["sync_linear_enabled"] = sync_linear_enabled
+        if include_shadows_in_slack_notifications is not UNSET:
+            field_dict["include_shadows_in_slack_notifications"] = include_shadows_in_slack_notifications
+        if shift_start_notifications_enabled is not UNSET:
+            field_dict["shift_start_notifications_enabled"] = shift_start_notifications_enabled
+        if shift_update_notifications_enabled is not UNSET:
+            field_dict["shift_update_notifications_enabled"] = shift_update_notifications_enabled
+        if shift_report_enabled is not UNSET:
+            field_dict["shift_report_enabled"] = shift_report_enabled
+        if shift_report_day_of_week is not UNSET:
+            field_dict["shift_report_day_of_week"] = shift_report_day_of_week
+        if shift_report_time_of_day is not UNSET:
+            field_dict["shift_report_time_of_day"] = shift_report_time_of_day
+        if shift_report_time_zone is not UNSET:
+            field_dict["shift_report_time_zone"] = shift_report_time_zone
 
         return field_dict
 
@@ -177,6 +235,27 @@ class Schedule:
 
         owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
 
+        sync_linear_enabled = d.pop("sync_linear_enabled", UNSET)
+
+        include_shadows_in_slack_notifications = d.pop("include_shadows_in_slack_notifications", UNSET)
+
+        shift_start_notifications_enabled = d.pop("shift_start_notifications_enabled", UNSET)
+
+        shift_update_notifications_enabled = d.pop("shift_update_notifications_enabled", UNSET)
+
+        shift_report_enabled = d.pop("shift_report_enabled", UNSET)
+
+        _shift_report_day_of_week = d.pop("shift_report_day_of_week", UNSET)
+        shift_report_day_of_week: ScheduleShiftReportDayOfWeek | Unset
+        if isinstance(_shift_report_day_of_week, Unset):
+            shift_report_day_of_week = UNSET
+        else:
+            shift_report_day_of_week = check_schedule_shift_report_day_of_week(_shift_report_day_of_week)
+
+        shift_report_time_of_day = d.pop("shift_report_time_of_day", UNSET)
+
+        shift_report_time_zone = d.pop("shift_report_time_zone", UNSET)
+
         schedule = cls(
             name=name,
             owner_user_id=owner_user_id,
@@ -187,6 +266,14 @@ class Schedule:
             slack_user_group=slack_user_group,
             slack_channel=slack_channel,
             owner_group_ids=owner_group_ids,
+            sync_linear_enabled=sync_linear_enabled,
+            include_shadows_in_slack_notifications=include_shadows_in_slack_notifications,
+            shift_start_notifications_enabled=shift_start_notifications_enabled,
+            shift_update_notifications_enabled=shift_update_notifications_enabled,
+            shift_report_enabled=shift_report_enabled,
+            shift_report_day_of_week=shift_report_day_of_week,
+            shift_report_time_of_day=shift_report_time_of_day,
+            shift_report_time_zone=shift_report_time_zone,
         )
 
         schedule.additional_properties = d

@@ -37,6 +37,11 @@ def _get_kwargs(
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> ErrorsList | OverrideShiftResponse | None:
+    if response.status_code == 200:
+        response_200 = OverrideShiftResponse.from_dict(response.json())
+
+        return response_200
+
     if response.status_code == 201:
         response_201 = OverrideShiftResponse.from_dict(response.json())
 
@@ -78,7 +83,9 @@ def sync_detailed(
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
-    specified time range, they will be automatically deleted and replaced by the new override.
+    specified time range, they will be automatically deleted and replaced by the new override. This
+    endpoint is idempotent: re-sending an identical override (same user and same start/end time) returns
+    the existing override with a 200 status and does not recreate it.
 
     Args:
         schedule_id (str):
@@ -113,7 +120,9 @@ def sync(
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
-    specified time range, they will be automatically deleted and replaced by the new override.
+    specified time range, they will be automatically deleted and replaced by the new override. This
+    endpoint is idempotent: re-sending an identical override (same user and same start/end time) returns
+    the existing override with a 200 status and does not recreate it.
 
     Args:
         schedule_id (str):
@@ -143,7 +152,9 @@ async def asyncio_detailed(
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
-    specified time range, they will be automatically deleted and replaced by the new override.
+    specified time range, they will be automatically deleted and replaced by the new override. This
+    endpoint is idempotent: re-sending an identical override (same user and same start/end time) returns
+    the existing override with a 200 status and does not recreate it.
 
     Args:
         schedule_id (str):
@@ -176,7 +187,9 @@ async def asyncio(
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
-    specified time range, they will be automatically deleted and replaced by the new override.
+    specified time range, they will be automatically deleted and replaced by the new override. This
+    endpoint is idempotent: re-sending an identical override (same user and same start/end time) returns
+    the existing override with a 200 status and does not recreate it.
 
     Args:
         schedule_id (str):

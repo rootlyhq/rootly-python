@@ -17,10 +17,19 @@ def _get_kwargs(
     include: ListEscalationPoliciesInclude | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
     filtercreated_atgt: str | Unset = UNSET,
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
@@ -37,6 +46,8 @@ def _get_kwargs(
 
     params["filter[name]"] = filtername
 
+    params["filter[team_ids]"] = filterteam_ids
+
     params["filter[created_at][gt]"] = filtercreated_atgt
 
     params["filter[created_at][gte]"] = filtercreated_atgte
@@ -44,6 +55,22 @@ def _get_kwargs(
     params["filter[created_at][lt]"] = filtercreated_atlt
 
     params["filter[created_at][lte]"] = filtercreated_atlte
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[team_ids][eq]"] = filterteam_idseq
+
+    params["filter[team_ids][not_eq]"] = filterteam_idsnot_eq
+
+    params["filter[team_ids][in]"] = filterteam_idsin
+
+    params["filter[team_ids][not_in]"] = filterteam_idsnot_in
 
     params["page[number]"] = pagenumber
 
@@ -89,10 +116,19 @@ def sync_detailed(
     include: ListEscalationPoliciesInclude | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
     filtercreated_atgt: str | Unset = UNSET,
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> Response[EscalationPolicyList]:
@@ -104,10 +140,19 @@ def sync_detailed(
         include (ListEscalationPoliciesInclude | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterteam_ids (str | Unset):
         filtercreated_atgt (str | Unset):
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -123,10 +168,19 @@ def sync_detailed(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -144,10 +198,19 @@ def sync(
     include: ListEscalationPoliciesInclude | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
     filtercreated_atgt: str | Unset = UNSET,
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> EscalationPolicyList | None:
@@ -159,10 +222,19 @@ def sync(
         include (ListEscalationPoliciesInclude | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterteam_ids (str | Unset):
         filtercreated_atgt (str | Unset):
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -179,10 +251,19 @@ def sync(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     ).parsed
@@ -194,10 +275,19 @@ async def asyncio_detailed(
     include: ListEscalationPoliciesInclude | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
     filtercreated_atgt: str | Unset = UNSET,
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> Response[EscalationPolicyList]:
@@ -209,10 +299,19 @@ async def asyncio_detailed(
         include (ListEscalationPoliciesInclude | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterteam_ids (str | Unset):
         filtercreated_atgt (str | Unset):
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -228,10 +327,19 @@ async def asyncio_detailed(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
         filtercreated_atlte=filtercreated_atlte,
+        filternameeq=filternameeq,
+        filternamenot_eq=filternamenot_eq,
+        filternamein=filternamein,
+        filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -247,10 +355,19 @@ async def asyncio(
     include: ListEscalationPoliciesInclude | Unset = UNSET,
     filtersearch: str | Unset = UNSET,
     filtername: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
     filtercreated_atgt: str | Unset = UNSET,
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
 ) -> EscalationPolicyList | None:
@@ -262,10 +379,19 @@ async def asyncio(
         include (ListEscalationPoliciesInclude | Unset):
         filtersearch (str | Unset):
         filtername (str | Unset):
+        filterteam_ids (str | Unset):
         filtercreated_atgt (str | Unset):
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -283,10 +409,19 @@ async def asyncio(
             include=include,
             filtersearch=filtersearch,
             filtername=filtername,
+            filterteam_ids=filterteam_ids,
             filtercreated_atgt=filtercreated_atgt,
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
             filtercreated_atlte=filtercreated_atlte,
+            filternameeq=filternameeq,
+            filternamenot_eq=filternamenot_eq,
+            filternamein=filternamein,
+            filternamenot_in=filternamenot_in,
+            filterteam_idseq=filterteam_idseq,
+            filterteam_idsnot_eq=filterteam_idsnot_eq,
+            filterteam_idsin=filterteam_idsin,
+            filterteam_idsnot_in=filterteam_idsnot_in,
             pagenumber=pagenumber,
             pagesize=pagesize,
         )

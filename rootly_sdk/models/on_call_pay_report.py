@@ -36,7 +36,10 @@ class OnCallPayReport:
         has_single_rate (bool | Unset): Whether a single rate is applied to all users.
         enabled_granular_time_breakdown (bool | Unset): Whether granular time breakdown is enabled.
         last_generated_at (datetime.datetime | None | Unset): When the report was last generated.
-        time_zone (None | str | Unset): The team's IANA timezone used to interpret start_date and end_date.
+        time_zone (None | str | Unset): The IANA timezone used to compute day and weekend boundaries for this report.
+            Defaults to the team's timezone.
+        use_responders_time_zone (bool | Unset): When true, each responder's personal timezone is used for their pay
+            calculation; otherwise the report-wide time_zone is used.
         csv_file_url (None | str | Unset): Download URL for the generated CSV report. Null until the report is
             generated.
         xlsx_file_url (None | str | Unset): Download URL for the generated XLSX report. Null until the report is
@@ -61,6 +64,7 @@ class OnCallPayReport:
     enabled_granular_time_breakdown: bool | Unset = UNSET
     last_generated_at: datetime.datetime | None | Unset = UNSET
     time_zone: None | str | Unset = UNSET
+    use_responders_time_zone: bool | Unset = UNSET
     csv_file_url: None | str | Unset = UNSET
     xlsx_file_url: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -114,6 +118,8 @@ class OnCallPayReport:
         else:
             time_zone = self.time_zone
 
+        use_responders_time_zone = self.use_responders_time_zone
+
         csv_file_url: None | str | Unset
         if isinstance(self.csv_file_url, Unset):
             csv_file_url = UNSET
@@ -163,6 +169,8 @@ class OnCallPayReport:
             field_dict["last_generated_at"] = last_generated_at
         if time_zone is not UNSET:
             field_dict["time_zone"] = time_zone
+        if use_responders_time_zone is not UNSET:
+            field_dict["use_responders_time_zone"] = use_responders_time_zone
         if csv_file_url is not UNSET:
             field_dict["csv_file_url"] = csv_file_url
         if xlsx_file_url is not UNSET:
@@ -236,6 +244,8 @@ class OnCallPayReport:
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 
+        use_responders_time_zone = d.pop("use_responders_time_zone", UNSET)
+
         def _parse_csv_file_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -273,6 +283,7 @@ class OnCallPayReport:
             enabled_granular_time_breakdown=enabled_granular_time_breakdown,
             last_generated_at=last_generated_at,
             time_zone=time_zone,
+            use_responders_time_zone=use_responders_time_zone,
             csv_file_url=csv_file_url,
             xlsx_file_url=xlsx_file_url,
         )
