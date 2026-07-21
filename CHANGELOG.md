@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-07-20
+
+### Added
+- New AI Chat endpoints (create, stream, list session messages, delete session)
+- New Shift Coverage Requests endpoints (create, read, delete, list)
+- New Workflow Action Item Form Field Conditions endpoints (create, read, update, delete, list)
+- Bulk operations for catalog entities, environments, functionalities, services, and teams (bulk upsert and bulk delete)
+- New Meeting Recordings actions: import, delete standalone, start recording session, list all
+- Alert escalation and snooze actions (`escalate_alert`, `snooze_alert`)
+- Alert receipt endpoint (`get_receipt`)
+- Alert events feed endpoint (`list_alert_events_feed`)
+- New Google Chat workflow task types: create/rename/archive spaces, change space privacy, update space description, invite to space, send messages and attachments
+- New workflow task type: `InviteToMicrosoftTeamsChannelRootlyTaskParams` — invite users to Microsoft Teams channels via Rootly
+- New workflow task type: `AttachRetrospectivePdfToJiraIssueTaskParams` — attach retrospective PDFs to Jira issues
+- Edge connector filters support (`CreateEdgeConnectorBodyDataAttributesFilters`)
+- `owner_group_ids` field on heartbeat, alerts source, functionality, and schedule models for team-scoped API key support
+- GitHub issue task params: labels mode support (`update_github_issue_task_params_labels_mode`)
+
+### Changed
+- Regenerated client from latest OpenAPI specification
+- httpx minimum version bumped from `>=0.20.0` to `>=0.23.0`
+- 428 new model files, 28 removed models (consolidated upstream)
+
+### Fixed
+- Applied nullable enum fix to all model files via `tools/fix_nullable_enums.py`
+
 ## [1.3.0] - 2026-04-21
 
 ### Added
