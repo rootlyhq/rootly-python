@@ -1,36 +1,47 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.create_edge_connector_action_body import CreateEdgeConnectorActionBody
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     edge_connector_id: str,
     *,
     body: CreateEdgeConnectorActionBody | Unset = UNSET,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/edge_connectors/{edge_connector_id}/actions".format(
-            edge_connector_id=quote(str(edge_connector_id), safe=""),
-        ),
+        "url": "/v1/edge_connectors/{edge_connector_id}/actions".format(edge_connector_id=quote(str(edge_connector_id), safe=""),),
     }
 
+    
     if not isinstance(body, Unset):
         _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
     _kwargs["headers"] = headers
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -60,8 +71,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateEdgeConnectorActionBody | Unset = UNSET,
+
 ) -> Response[Any]:
-    """Create edge connector action
+    """ Create edge connector action
 
     Args:
         edge_connector_id (str):
@@ -73,11 +85,13 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -92,8 +106,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateEdgeConnectorActionBody | Unset = UNSET,
+
 ) -> Response[Any]:
-    """Create edge connector action
+    """ Create edge connector action
 
     Args:
         edge_connector_id (str):
@@ -105,13 +120,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
+

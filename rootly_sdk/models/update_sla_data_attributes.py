@@ -1,32 +1,40 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_sla_data_attributes_assignment_deadline_days import (
-    UpdateSlaDataAttributesAssignmentDeadlineDays,
     check_update_sla_data_attributes_assignment_deadline_days,
+)
+from ..models.update_sla_data_attributes_assignment_deadline_days import UpdateSlaDataAttributesAssignmentDeadlineDays
+from ..models.update_sla_data_attributes_assignment_deadline_parent_status import (
+    check_update_sla_data_attributes_assignment_deadline_parent_status,
 )
 from ..models.update_sla_data_attributes_assignment_deadline_parent_status import (
     UpdateSlaDataAttributesAssignmentDeadlineParentStatus,
-    check_update_sla_data_attributes_assignment_deadline_parent_status,
 )
 from ..models.update_sla_data_attributes_completion_deadline_days import (
-    UpdateSlaDataAttributesCompletionDeadlineDays,
     check_update_sla_data_attributes_completion_deadline_days,
+)
+from ..models.update_sla_data_attributes_completion_deadline_days import UpdateSlaDataAttributesCompletionDeadlineDays
+from ..models.update_sla_data_attributes_completion_deadline_parent_status import (
+    check_update_sla_data_attributes_completion_deadline_parent_status,
 )
 from ..models.update_sla_data_attributes_completion_deadline_parent_status import (
     UpdateSlaDataAttributesCompletionDeadlineParentStatus,
-    check_update_sla_data_attributes_completion_deadline_parent_status,
 )
 from ..models.update_sla_data_attributes_condition_match_type import (
-    UpdateSlaDataAttributesConditionMatchType,
     check_update_sla_data_attributes_condition_match_type,
 )
+from ..models.update_sla_data_attributes_condition_match_type import UpdateSlaDataAttributesConditionMatchType
 from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.update_sla_data_attributes_conditions_item import UpdateSlaDataAttributesConditionsItem
@@ -89,6 +97,11 @@ class UpdateSlaDataAttributes:
     notification_configurations: list[UpdateSlaDataAttributesNotificationConfigurationsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_sla_data_attributes_notification_configurations_item import (
+            UpdateSlaDataAttributesNotificationConfigurationsItem,
+        )
+        from ..models.update_sla_data_attributes_conditions_item import UpdateSlaDataAttributesConditionsItem
+
         name = self.name
 
         description: None | str | Unset

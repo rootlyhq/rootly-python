@@ -1,20 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.create_asana_subtask_task_params_dependency_direction import (
-    CreateAsanaSubtaskTaskParamsDependencyDirection,
     check_create_asana_subtask_task_params_dependency_direction,
 )
-from ..models.create_asana_subtask_task_params_task_type import (
-    CreateAsanaSubtaskTaskParamsTaskType,
-    check_create_asana_subtask_task_params_task_type,
+from ..models.create_asana_subtask_task_params_dependency_direction import (
+    CreateAsanaSubtaskTaskParamsDependencyDirection,
 )
+from ..models.create_asana_subtask_task_params_task_type import check_create_asana_subtask_task_params_task_type
+from ..models.create_asana_subtask_task_params_task_type import CreateAsanaSubtaskTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_asana_subtask_task_params_completion import CreateAsanaSubtaskTaskParamsCompletion
@@ -53,6 +56,8 @@ class CreateAsanaSubtaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_asana_subtask_task_params_completion import CreateAsanaSubtaskTaskParamsCompletion
+
         parent_task_id = self.parent_task_id
 
         title = self.title

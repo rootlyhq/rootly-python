@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_google_docs_page_task_params_task_type import (
-    UpdateGoogleDocsPageTaskParamsTaskType,
-    check_update_google_docs_page_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.update_google_docs_page_task_params_task_type import check_update_google_docs_page_task_params_task_type
+from ..models.update_google_docs_page_task_params_task_type import UpdateGoogleDocsPageTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateGoogleDocsPageTaskParams")
 
@@ -25,6 +27,8 @@ class UpdateGoogleDocsPageTaskParams:
         content (str | Unset): The Google Doc content
         post_mortem_template_id (str | Unset): Retrospective template to use when updating page, if desired
         template_id (str | Unset): The Google Doc file ID to use as a template.
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
     """
 
     file_id: str
@@ -33,6 +37,8 @@ class UpdateGoogleDocsPageTaskParams:
     content: str | Unset = UNSET
     post_mortem_template_id: str | Unset = UNSET
     template_id: str | Unset = UNSET
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +55,10 @@ class UpdateGoogleDocsPageTaskParams:
         post_mortem_template_id = self.post_mortem_template_id
 
         template_id = self.template_id
+
+        include_overview = self.include_overview
+
+        include_timeline = self.include_timeline
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -67,6 +77,10 @@ class UpdateGoogleDocsPageTaskParams:
             field_dict["post_mortem_template_id"] = post_mortem_template_id
         if template_id is not UNSET:
             field_dict["template_id"] = template_id
+        if include_overview is not UNSET:
+            field_dict["include_overview"] = include_overview
+        if include_timeline is not UNSET:
+            field_dict["include_timeline"] = include_timeline
 
         return field_dict
 
@@ -90,6 +104,10 @@ class UpdateGoogleDocsPageTaskParams:
 
         template_id = d.pop("template_id", UNSET)
 
+        include_overview = d.pop("include_overview", UNSET)
+
+        include_timeline = d.pop("include_timeline", UNSET)
+
         update_google_docs_page_task_params = cls(
             file_id=file_id,
             task_type=task_type,
@@ -97,6 +115,8 @@ class UpdateGoogleDocsPageTaskParams:
             content=content,
             post_mortem_template_id=post_mortem_template_id,
             template_id=template_id,
+            include_overview=include_overview,
+            include_timeline=include_timeline,
         )
 
         update_google_docs_page_task_params.additional_properties = d

@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.schedule_rotation_list import ScheduleRotationList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -17,7 +21,11 @@ def _get_kwargs(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -29,22 +37,26 @@ def _get_kwargs(
 
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{schedule_id}/schedule_rotations".format(
-            schedule_id=quote(str(schedule_id), safe=""),
-        ),
+        "url": "/v1/schedules/{schedule_id}/schedule_rotations".format(schedule_id=quote(str(schedule_id), safe=""),),
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ScheduleRotationList | None:
     if response.status_code == 200:
         response_200 = ScheduleRotationList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -54,9 +66,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ScheduleRotationList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ScheduleRotationList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,8 +83,9 @@ def sync_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[ScheduleRotationList]:
-    """List schedule rotations
+    """ List schedule rotations
 
      List schedule rotations
 
@@ -91,14 +102,16 @@ def sync_detailed(
 
     Returns:
         Response[ScheduleRotationList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -106,7 +119,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     schedule_id: str,
@@ -116,8 +128,9 @@ def sync(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> ScheduleRotationList | None:
-    """List schedule rotations
+    """ List schedule rotations
 
      List schedule rotations
 
@@ -134,17 +147,18 @@ def sync(
 
     Returns:
         ScheduleRotationList
-    """
+     """
+
 
     return sync_detailed(
         schedule_id=schedule_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     schedule_id: str,
@@ -154,8 +168,9 @@ async def asyncio_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[ScheduleRotationList]:
-    """List schedule rotations
+    """ List schedule rotations
 
      List schedule rotations
 
@@ -172,20 +187,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[ScheduleRotationList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         schedule_id=schedule_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     schedule_id: str,
@@ -195,8 +213,9 @@ async def asyncio(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> ScheduleRotationList | None:
-    """List schedule rotations
+    """ List schedule rotations
 
      List schedule rotations
 
@@ -213,15 +232,15 @@ async def asyncio(
 
     Returns:
         ScheduleRotationList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            schedule_id=schedule_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        schedule_id=schedule_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
+    )).parsed

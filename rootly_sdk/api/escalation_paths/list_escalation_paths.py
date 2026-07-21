@@ -1,23 +1,35 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.escalation_policy_path_list import EscalationPolicyPathList
+from ...models.list_escalation_paths_filterpath_type import check_list_escalation_paths_filterpath_type
+from ...models.list_escalation_paths_filterpath_type import ListEscalationPathsFilterpathType
+from ...models.list_escalation_paths_include import check_list_escalation_paths_include
 from ...models.list_escalation_paths_include import ListEscalationPathsInclude
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     escalation_policy_id: str,
     *,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -27,28 +39,36 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+    json_filterpath_type: str | Unset = UNSET
+    if not isinstance(filterpath_type, Unset):
+        json_filterpath_type = filterpath_type
+
+    params["filter[path_type]"] = json_filterpath_type
+
     params["page[number]"] = pagenumber
 
     params["page[size]"] = pagesize
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/escalation_policies/{escalation_policy_id}/escalation_paths".format(
-            escalation_policy_id=quote(str(escalation_policy_id), safe=""),
-        ),
+        "url": "/v1/escalation_policies/{escalation_policy_id}/escalation_paths".format(escalation_policy_id=quote(str(escalation_policy_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> EscalationPolicyPathList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> EscalationPolicyPathList | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyPathList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -58,9 +78,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[EscalationPolicyPathList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[EscalationPolicyPathList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,16 +92,19 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[EscalationPolicyPathList]:
-    """List escalation paths
+    """ List escalation paths
 
      List escalation paths
 
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -93,13 +114,16 @@ def sync_detailed(
 
     Returns:
         Response[EscalationPolicyPathList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         escalation_policy_id=escalation_policy_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+filterpath_type=filterpath_type,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
     response = client.get_httpx_client().request(
@@ -108,22 +132,24 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> EscalationPolicyPathList | None:
-    """List escalation paths
+    """ List escalation paths
 
      List escalation paths
 
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -133,32 +159,37 @@ def sync(
 
     Returns:
         EscalationPolicyPathList
-    """
+     """
+
 
     return sync_detailed(
         escalation_policy_id=escalation_policy_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-    ).parsed
+client=client,
+include=include,
+filterpath_type=filterpath_type,
+pagenumber=pagenumber,
+pagesize=pagesize,
 
+    ).parsed
 
 async def asyncio_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[EscalationPolicyPathList]:
-    """List escalation paths
+    """ List escalation paths
 
      List escalation paths
 
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -168,35 +199,42 @@ async def asyncio_detailed(
 
     Returns:
         Response[EscalationPolicyPathList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         escalation_policy_id=escalation_policy_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+filterpath_type=filterpath_type,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
     include: ListEscalationPathsInclude | Unset = UNSET,
+    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> EscalationPolicyPathList | None:
-    """List escalation paths
+    """ List escalation paths
 
      List escalation paths
 
     Args:
         escalation_policy_id (str):
         include (ListEscalationPathsInclude | Unset):
+        filterpath_type (ListEscalationPathsFilterpathType | Unset):
         pagenumber (int | Unset):
         pagesize (int | Unset):
 
@@ -206,14 +244,15 @@ async def asyncio(
 
     Returns:
         EscalationPolicyPathList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            escalation_policy_id=escalation_policy_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        escalation_policy_id=escalation_policy_id,
+client=client,
+include=include,
+filterpath_type=filterpath_type,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
+    )).parsed

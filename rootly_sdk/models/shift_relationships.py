@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.shift_relationships_assignee import ShiftRelationshipsAssignee
@@ -32,6 +35,10 @@ class ShiftRelationships:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.shift_relationships_user import ShiftRelationshipsUser
+        from ..models.shift_relationships_assignee import ShiftRelationshipsAssignee
+        from ..models.shift_relationships_shift_override import ShiftRelationshipsShiftOverride
+
         shift_override: dict[str, Any] | Unset = UNSET
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()

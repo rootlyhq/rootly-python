@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.alert_group_attributes_item import AlertGroupAttributesItem
@@ -55,6 +58,10 @@ class AlertGroup:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.alert_group_attributes_item import AlertGroupAttributesItem
+        from ..models.alert_group_targets_item import AlertGroupTargetsItem
+        from ..models.alert_group_conditions_item import AlertGroupConditionsItem
+
         name = self.name
 
         description: None | str

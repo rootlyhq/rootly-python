@@ -1,11 +1,14 @@
 from typing import Literal, cast
 
-UserNotificationRuleEnabledContactTypesItem = Literal["call", "device", "email", "non_critical_device", "slack", "sms"]
+UserNotificationRuleEnabledContactTypesItem = Literal[
+    "call", "device", "email", "google_chat", "non_critical_device", "slack", "sms"
+]
 
 USER_NOTIFICATION_RULE_ENABLED_CONTACT_TYPES_ITEM_VALUES: set[UserNotificationRuleEnabledContactTypesItem] = {
     "call",
     "device",
     "email",
+    "google_chat",
     "non_critical_device",
     "slack",
     "sms",

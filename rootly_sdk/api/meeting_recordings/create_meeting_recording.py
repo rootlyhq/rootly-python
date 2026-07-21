@@ -1,22 +1,30 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.create_meeting_recording_platform import (
-    CreateMeetingRecordingPlatform,
-)
-from ...types import UNSET, Response, Unset
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.create_meeting_recording_platform import check_create_meeting_recording_platform
+from ...models.create_meeting_recording_platform import CreateMeetingRecordingPlatform
+from ...models.meeting_recording_response import MeetingRecordingResponse
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     incident_id: str,
     *,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -26,25 +34,32 @@ def _get_kwargs(
 
     params["platform"] = json_platform
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(incident_id=quote(str(incident_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 201:
-        return None
+        response_201 = MeetingRecordingResponse.from_dict(response.json())
+
+
+
+        return response_201
 
     if response.status_code == 422:
-        return None
+        response_422 = cast(Any, None)
+        return response_422
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -52,7 +67,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,8 +81,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-) -> Response[Any]:
-    """Create meeting recording
+
+) -> Response[Any | MeetingRecordingResponse]:
+    """ Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -82,12 +98,14 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
-    """
+        Response[Any | MeetingRecordingResponse]
+     """
+
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-        platform=platform,
+platform=platform,
+
     )
 
     response = client.get_httpx_client().request(
@@ -96,14 +114,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
-async def asyncio_detailed(
+def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
     platform: CreateMeetingRecordingPlatform | Unset = UNSET,
-) -> Response[Any]:
-    """Create meeting recording
+
+) -> Any | MeetingRecordingResponse | None:
+    """ Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
     a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
@@ -118,14 +136,84 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
-    """
+        Any | MeetingRecordingResponse
+     """
+
+
+    return sync_detailed(
+        incident_id=incident_id,
+client=client,
+platform=platform,
+
+    ).parsed
+
+async def asyncio_detailed(
+    incident_id: str,
+    *,
+    client: AuthenticatedClient,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
+
+) -> Response[Any | MeetingRecordingResponse]:
+    """ Create meeting recording
+
+     Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
+    a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
+    The bot joins the meeting, records audio/video, and generates a transcript when the session ends.
+
+    Args:
+        incident_id (str):
+        platform (CreateMeetingRecordingPlatform | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Any | MeetingRecordingResponse]
+     """
+
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-        platform=platform,
+platform=platform,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
+
+async def asyncio(
+    incident_id: str,
+    *,
+    client: AuthenticatedClient,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
+
+) -> Any | MeetingRecordingResponse | None:
+    """ Create meeting recording
+
+     Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
+    a new bot is invited (session 1). If previous sessions exist, a new session is created (re-invite).
+    The bot joins the meeting, records audio/video, and generates a transcript when the session ends.
+
+    Args:
+        incident_id (str):
+        platform (CreateMeetingRecordingPlatform | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Any | MeetingRecordingResponse
+     """
+
+
+    return (await asyncio_detailed(
+        incident_id=incident_id,
+client=client,
+platform=platform,
+
+    )).parsed

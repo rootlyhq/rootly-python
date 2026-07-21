@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.new_edge_connector_action_action_action_type import (
-    NewEdgeConnectorActionActionActionType,
-    check_new_edge_connector_action_action_action_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.new_edge_connector_action_action_action_type import check_new_edge_connector_action_action_action_type
+from ..models.new_edge_connector_action_action_action_type import NewEdgeConnectorActionActionActionType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_edge_connector_action_action_metadata import NewEdgeConnectorActionActionMetadata
@@ -34,6 +35,8 @@ class NewEdgeConnectorActionAction:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_edge_connector_action_action_metadata import NewEdgeConnectorActionActionMetadata
+
         name = self.name
 
         action_type: str = self.action_type

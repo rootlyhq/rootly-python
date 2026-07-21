@@ -1,15 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.sla_condition_match_type import SlaConditionMatchType, check_sla_condition_match_type
-from ..models.sla_entity_type import SlaEntityType, check_sla_entity_type
 from ..types import UNSET, Unset
+
+from ..models.sla_condition_match_type import check_sla_condition_match_type
+from ..models.sla_condition_match_type import SlaConditionMatchType
+from ..models.sla_entity_type import check_sla_entity_type
+from ..models.sla_entity_type import SlaEntityType
+from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.sla_conditions_item import SlaConditionsItem
@@ -73,6 +78,9 @@ class Sla:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.sla_notification_configurations_item import SlaNotificationConfigurationsItem
+        from ..models.sla_conditions_item import SlaConditionsItem
+
         name = self.name
 
         condition_match_type: str = self.condition_match_type

@@ -1,16 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.update_alert_route_data_attributes_rules_item_destinations_item_target_type import (
-    UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType,
     check_update_alert_route_data_attributes_rules_item_destinations_item_target_type,
 )
+from ..models.update_alert_route_data_attributes_rules_item_destinations_item_target_type import (
+    UpdateAlertRouteDataAttributesRulesItemDestinationsItemTargetType,
+)
+from typing import cast
+from uuid import UUID
+
 
 T = TypeVar("T", bound="UpdateAlertRouteDataAttributesRulesItemDestinationsItem")
 

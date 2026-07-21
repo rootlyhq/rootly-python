@@ -1,12 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.alert_field_list import AlertFieldList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -21,8 +26,20 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -46,9 +63,27 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[kind][eq]"] = filterkindeq
+
+    params["filter[kind][not_eq]"] = filterkindnot_eq
+
+    params["filter[kind][in]"] = filterkindin
+
+    params["filter[kind][not_in]"] = filterkindnot_in
+
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -56,12 +91,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertFieldList | None:
     if response.status_code == 200:
         response_200 = AlertFieldList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -93,9 +132,18 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[AlertFieldList]:
-    """List alert fields
+    """ List alert fields
 
      List alert fields
 
@@ -110,6 +158,14 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -118,20 +174,30 @@ def sync_detailed(
 
     Returns:
         Response[AlertFieldList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -139,7 +205,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -154,9 +219,18 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> AlertFieldList | None:
-    """List alert fields
+    """ List alert fields
 
      List alert fields
 
@@ -171,6 +245,14 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -179,23 +261,32 @@ def sync(
 
     Returns:
         AlertFieldList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -210,9 +301,18 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[AlertFieldList]:
-    """List alert fields
+    """ List alert fields
 
      List alert fields
 
@@ -227,6 +327,14 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -235,26 +343,37 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertFieldList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -269,9 +388,18 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> AlertFieldList | None:
-    """List alert fields
+    """ List alert fields
 
      List alert fields
 
@@ -286,6 +414,14 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -294,21 +430,29 @@ async def asyncio(
 
     Returns:
         AlertFieldList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtersearch=filtersearch,
-            filtername=filtername,
-            filterkind=filterkind,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+sort=sort,
+
+    )).parsed

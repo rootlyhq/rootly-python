@@ -1,22 +1,31 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
 from ...models.escalation_policy_response import EscalationPolicyResponse
+from ...models.get_escalation_policy_include import check_get_escalation_policy_include
 from ...models.get_escalation_policy_include import GetEscalationPolicyInclude
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     include: GetEscalationPolicyInclude | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -26,29 +35,33 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/escalation_policies/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/escalation_policies/{id}".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | EscalationPolicyResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | EscalationPolicyResponse | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -58,9 +71,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | EscalationPolicyResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | EscalationPolicyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +85,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetEscalationPolicyInclude | Unset = UNSET,
+
 ) -> Response[ErrorsList | EscalationPolicyResponse]:
-    """Retrieves an escalation policy
+    """ Retrieves an escalation policy
 
      Retrieves a specific escalation policy by id
 
@@ -89,11 +101,13 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | EscalationPolicyResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
     response = client.get_httpx_client().request(
@@ -102,14 +116,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetEscalationPolicyInclude | Unset = UNSET,
+
 ) -> ErrorsList | EscalationPolicyResponse | None:
-    """Retrieves an escalation policy
+    """ Retrieves an escalation policy
 
      Retrieves a specific escalation policy by id
 
@@ -123,22 +137,24 @@ def sync(
 
     Returns:
         ErrorsList | EscalationPolicyResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        include=include,
-    ).parsed
+client=client,
+include=include,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetEscalationPolicyInclude | Unset = UNSET,
+
 ) -> Response[ErrorsList | EscalationPolicyResponse]:
-    """Retrieves an escalation policy
+    """ Retrieves an escalation policy
 
      Retrieves a specific escalation policy by id
 
@@ -152,25 +168,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | EscalationPolicyResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetEscalationPolicyInclude | Unset = UNSET,
+
 ) -> ErrorsList | EscalationPolicyResponse | None:
-    """Retrieves an escalation policy
+    """ Retrieves an escalation policy
 
      Retrieves a specific escalation policy by id
 
@@ -184,12 +204,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | EscalationPolicyResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            include=include,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+include=include,
+
+    )).parsed

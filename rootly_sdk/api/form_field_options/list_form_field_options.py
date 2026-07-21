@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.form_field_option_list import FormFieldOptionList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -18,7 +22,11 @@ def _get_kwargs(
     pagesize: int | Unset = UNSET,
     filtervalue: str | Unset = UNSET,
     filtercolor: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -32,22 +40,26 @@ def _get_kwargs(
 
     params["filter[color]"] = filtercolor
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_fields/{form_field_id}/options".format(
-            form_field_id=quote(str(form_field_id), safe=""),
-        ),
+        "url": "/v1/form_fields/{form_field_id}/options".format(form_field_id=quote(str(form_field_id), safe=""),),
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FormFieldOptionList | None:
     if response.status_code == 200:
         response_200 = FormFieldOptionList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -75,8 +87,9 @@ def sync_detailed(
     pagesize: int | Unset = UNSET,
     filtervalue: str | Unset = UNSET,
     filtercolor: str | Unset = UNSET,
+
 ) -> Response[FormFieldOptionList]:
-    """List FormField Options
+    """ List FormField Options
 
      List form_field_options
 
@@ -94,15 +107,17 @@ def sync_detailed(
 
     Returns:
         Response[FormFieldOptionList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         form_field_id=form_field_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtervalue=filtervalue,
-        filtercolor=filtercolor,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtervalue=filtervalue,
+filtercolor=filtercolor,
+
     )
 
     response = client.get_httpx_client().request(
@@ -110,7 +125,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     form_field_id: str,
@@ -121,8 +135,9 @@ def sync(
     pagesize: int | Unset = UNSET,
     filtervalue: str | Unset = UNSET,
     filtercolor: str | Unset = UNSET,
+
 ) -> FormFieldOptionList | None:
-    """List FormField Options
+    """ List FormField Options
 
      List form_field_options
 
@@ -140,18 +155,19 @@ def sync(
 
     Returns:
         FormFieldOptionList
-    """
+     """
+
 
     return sync_detailed(
         form_field_id=form_field_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtervalue=filtervalue,
-        filtercolor=filtercolor,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtervalue=filtervalue,
+filtercolor=filtercolor,
 
+    ).parsed
 
 async def asyncio_detailed(
     form_field_id: str,
@@ -162,8 +178,9 @@ async def asyncio_detailed(
     pagesize: int | Unset = UNSET,
     filtervalue: str | Unset = UNSET,
     filtercolor: str | Unset = UNSET,
+
 ) -> Response[FormFieldOptionList]:
-    """List FormField Options
+    """ List FormField Options
 
      List form_field_options
 
@@ -181,21 +198,24 @@ async def asyncio_detailed(
 
     Returns:
         Response[FormFieldOptionList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         form_field_id=form_field_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtervalue=filtervalue,
-        filtercolor=filtercolor,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtervalue=filtervalue,
+filtercolor=filtercolor,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     form_field_id: str,
@@ -206,8 +226,9 @@ async def asyncio(
     pagesize: int | Unset = UNSET,
     filtervalue: str | Unset = UNSET,
     filtercolor: str | Unset = UNSET,
+
 ) -> FormFieldOptionList | None:
-    """List FormField Options
+    """ List FormField Options
 
      List form_field_options
 
@@ -225,16 +246,16 @@ async def asyncio(
 
     Returns:
         FormFieldOptionList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            form_field_id=form_field_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtervalue=filtervalue,
-            filtercolor=filtercolor,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        form_field_id=form_field_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtervalue=filtervalue,
+filtercolor=filtercolor,
+
+    )).parsed

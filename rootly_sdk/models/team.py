@@ -1,12 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..models.team_auto_add_members_scope import check_team_auto_add_members_scope
+from ..models.team_auto_add_members_scope import TeamAutoAddMembersScope
+from ..models.team_managed_by import check_team_managed_by
+from ..models.team_managed_by import TeamManagedBy
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
@@ -27,6 +34,7 @@ class Team:
         created_at (str): Date of creation
         updated_at (str): Date of last update
         slug (str | Unset):
+        managed_by (TeamManagedBy | Unset): How this team is managed (provenance): web, api, terraform, etc. Read-only.
         description (None | str | Unset): The description of the team
         notify_emails (list[str] | None | Unset): Emails to attach to the team
         color (None | str | Unset): The hex color of the team
@@ -55,6 +63,9 @@ class Team:
         incident_broadcast_channel (None | TeamIncidentBroadcastChannelType0 | Unset): Slack channel to broadcast
             incidents to
         auto_add_members_when_attached (bool | None | Unset): Auto add members to incident channel when team is attached
+        auto_add_members_scope (TeamAutoAddMembersScope | Unset): Visibility-scoped auto-add behavior. Only present when
+            the `enable_scoped_incident_channel_auto_add` feature flag is on for the organization. When set, it overrides
+            `auto_add_members_when_attached`.
         properties (list[TeamPropertiesType0Item] | None | Unset): Array of property values for this team.
     """
 
@@ -62,6 +73,7 @@ class Team:
     created_at: str
     updated_at: str
     slug: str | Unset = UNSET
+    managed_by: TeamManagedBy | Unset = UNSET
     description: None | str | Unset = UNSET
     notify_emails: list[str] | None | Unset = UNSET
     color: None | str | Unset = UNSET
@@ -87,12 +99,16 @@ class Team:
     incident_broadcast_enabled: bool | None | Unset = UNSET
     incident_broadcast_channel: None | TeamIncidentBroadcastChannelType0 | Unset = UNSET
     auto_add_members_when_attached: bool | None | Unset = UNSET
+    auto_add_members_scope: TeamAutoAddMembersScope | Unset = UNSET
     properties: list[TeamPropertiesType0Item] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.team_slack_aliases_type_0_item import TeamSlackAliasesType0Item
         from ..models.team_alert_broadcast_channel_type_0 import TeamAlertBroadcastChannelType0
         from ..models.team_incident_broadcast_channel_type_0 import TeamIncidentBroadcastChannelType0
+        from ..models.team_slack_channels_type_0_item import TeamSlackChannelsType0Item
+        from ..models.team_properties_type_0_item import TeamPropertiesType0Item
 
         name = self.name
 
@@ -101,6 +117,10 @@ class Team:
         updated_at = self.updated_at
 
         slug = self.slug
+
+        managed_by: str | Unset = UNSET
+        if not isinstance(self.managed_by, Unset):
+            managed_by = self.managed_by
 
         description: None | str | Unset
         if isinstance(self.description, Unset):
@@ -277,6 +297,10 @@ class Team:
         else:
             auto_add_members_when_attached = self.auto_add_members_when_attached
 
+        auto_add_members_scope: str | Unset = UNSET
+        if not isinstance(self.auto_add_members_scope, Unset):
+            auto_add_members_scope = self.auto_add_members_scope
+
         properties: list[dict[str, Any]] | None | Unset
         if isinstance(self.properties, Unset):
             properties = UNSET
@@ -300,6 +324,8 @@ class Team:
         )
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
         if description is not UNSET:
             field_dict["description"] = description
         if notify_emails is not UNSET:
@@ -350,6 +376,8 @@ class Team:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
         if auto_add_members_when_attached is not UNSET:
             field_dict["auto_add_members_when_attached"] = auto_add_members_when_attached
+        if auto_add_members_scope is not UNSET:
+            field_dict["auto_add_members_scope"] = auto_add_members_scope
         if properties is not UNSET:
             field_dict["properties"] = properties
 
@@ -371,6 +399,13 @@ class Team:
         updated_at = d.pop("updated_at")
 
         slug = d.pop("slug", UNSET)
+
+        _managed_by = d.pop("managed_by", UNSET)
+        managed_by: TeamManagedBy | Unset
+        if isinstance(_managed_by, Unset):
+            managed_by = UNSET
+        else:
+            managed_by = check_team_managed_by(_managed_by)
 
         def _parse_description(data: object) -> None | str | Unset:
             if data is None:
@@ -665,6 +700,13 @@ class Team:
             d.pop("auto_add_members_when_attached", UNSET)
         )
 
+        _auto_add_members_scope = d.pop("auto_add_members_scope", UNSET)
+        auto_add_members_scope: TeamAutoAddMembersScope | Unset
+        if isinstance(_auto_add_members_scope, Unset):
+            auto_add_members_scope = UNSET
+        else:
+            auto_add_members_scope = check_team_auto_add_members_scope(_auto_add_members_scope)
+
         def _parse_properties(data: object) -> list[TeamPropertiesType0Item] | None | Unset:
             if data is None:
                 return data
@@ -692,6 +734,7 @@ class Team:
             created_at=created_at,
             updated_at=updated_at,
             slug=slug,
+            managed_by=managed_by,
             description=description,
             notify_emails=notify_emails,
             color=color,
@@ -717,6 +760,7 @@ class Team:
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
             auto_add_members_when_attached=auto_add_members_when_attached,
+            auto_add_members_scope=auto_add_members_scope,
             properties=properties,
         )
 

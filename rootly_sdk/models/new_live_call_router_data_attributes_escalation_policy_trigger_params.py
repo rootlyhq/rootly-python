@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params_type import (
-    NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType,
     check_new_live_call_router_data_attributes_escalation_policy_trigger_params_type,
 )
+from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params_type import (
+    NewLiveCallRouterDataAttributesEscalationPolicyTriggerParamsType,
+)
+from typing import cast
+
 
 T = TypeVar("T", bound="NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams")
 

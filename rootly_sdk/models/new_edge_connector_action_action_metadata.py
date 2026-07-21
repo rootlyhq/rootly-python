@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.new_edge_connector_action_action_metadata_icon import (
-    NewEdgeConnectorActionActionMetadataIcon,
-    check_new_edge_connector_action_action_metadata_icon,
-)
 from ..types import UNSET, Unset
+
+from ..models.new_edge_connector_action_action_metadata_icon import check_new_edge_connector_action_action_metadata_icon
+from ..models.new_edge_connector_action_action_metadata_icon import NewEdgeConnectorActionActionMetadataIcon
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_edge_connector_action_action_metadata_parameters_type_0_item import (
@@ -38,6 +39,10 @@ class NewEdgeConnectorActionActionMetadata:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_edge_connector_action_action_metadata_parameters_type_0_item import (
+            NewEdgeConnectorActionActionMetadataParametersType0Item,
+        )
+
         description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET

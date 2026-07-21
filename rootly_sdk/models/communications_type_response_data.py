@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.communications_type_response_data_type import (
-    CommunicationsTypeResponseDataType,
-    check_communications_type_response_data_type,
-)
+from ..types import UNSET, Unset
+
+from ..models.communications_type_response_data_type import check_communications_type_response_data_type
+from ..models.communications_type_response_data_type import CommunicationsTypeResponseDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.communications_type import CommunicationsType
@@ -33,6 +34,8 @@ class CommunicationsTypeResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.communications_type import CommunicationsType
+
         id = self.id
 
         type_: str = self.type_

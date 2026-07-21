@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.tiptap_block_schema_followup_component import TiptapBlockSchemaFollowupComponent
@@ -30,6 +33,9 @@ class TiptapBlockSchema:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.tiptap_block_schema_followup_component import TiptapBlockSchemaFollowupComponent
+        from ..models.tiptap_block_schema_timeline_component import TiptapBlockSchemaTimelineComponent
+
         followup_component: dict[str, Any] | Unset = UNSET
         if not isinstance(self.followup_component, Unset):
             followup_component = self.followup_component.to_dict()

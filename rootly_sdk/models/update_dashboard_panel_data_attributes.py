@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_dashboard_panel_data_attributes_params import UpdateDashboardPanelDataAttributesParams
@@ -31,6 +35,7 @@ class UpdateDashboardPanelDataAttributes:
     position: None | Unset | UpdateDashboardPanelDataAttributesPositionType0 = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_dashboard_panel_data_attributes_params import UpdateDashboardPanelDataAttributesParams
         from ..models.update_dashboard_panel_data_attributes_position_type_0 import (
             UpdateDashboardPanelDataAttributesPositionType0,
         )

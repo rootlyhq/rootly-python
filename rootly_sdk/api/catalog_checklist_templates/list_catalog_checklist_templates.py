@@ -1,18 +1,21 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.catalog_checklist_template_list import CatalogChecklistTemplateList
-from ...models.list_catalog_checklist_templates_include import (
-    ListCatalogChecklistTemplatesInclude,
-)
-from ...models.list_catalog_checklist_templates_sort import (
-    ListCatalogChecklistTemplatesSort,
-)
-from ...types import UNSET, Response, Unset
+from ...models.list_catalog_checklist_templates_include import check_list_catalog_checklist_templates_include
+from ...models.list_catalog_checklist_templates_include import ListCatalogChecklistTemplatesInclude
+from ...models.list_catalog_checklist_templates_sort import check_list_catalog_checklist_templates_sort
+from ...models.list_catalog_checklist_templates_sort import ListCatalogChecklistTemplatesSort
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -29,7 +32,11 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -65,7 +72,9 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -73,14 +82,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CatalogChecklistTemplateList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogChecklistTemplateList | None:
     if response.status_code == 200:
         response_200 = CatalogChecklistTemplateList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -90,9 +101,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CatalogChecklistTemplateList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CatalogChecklistTemplateList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -116,8 +125,9 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> Response[CatalogChecklistTemplateList]:
-    """List catalog checklist templates
+    """ List catalog checklist templates
 
      List catalog checklist templates
 
@@ -141,21 +151,23 @@ def sync_detailed(
 
     Returns:
         Response[CatalogChecklistTemplateList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtername=filtername,
-        filterslug=filterslug,
-        filtercatalog_type=filtercatalog_type,
-        filterscope_type=filterscope_type,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtername=filtername,
+filterslug=filterslug,
+filtercatalog_type=filtercatalog_type,
+filterscope_type=filterscope_type,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
     )
 
     response = client.get_httpx_client().request(
@@ -163,7 +175,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -180,8 +191,9 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> CatalogChecklistTemplateList | None:
-    """List catalog checklist templates
+    """ List catalog checklist templates
 
      List catalog checklist templates
 
@@ -205,24 +217,25 @@ def sync(
 
     Returns:
         CatalogChecklistTemplateList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtername=filtername,
-        filterslug=filterslug,
-        filtercatalog_type=filtercatalog_type,
-        filterscope_type=filterscope_type,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-    ).parsed
+include=include,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtername=filtername,
+filterslug=filterslug,
+filtercatalog_type=filtercatalog_type,
+filterscope_type=filterscope_type,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -239,8 +252,9 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> Response[CatalogChecklistTemplateList]:
-    """List catalog checklist templates
+    """ List catalog checklist templates
 
      List catalog checklist templates
 
@@ -264,27 +278,30 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogChecklistTemplateList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtername=filtername,
-        filterslug=filterslug,
-        filtercatalog_type=filtercatalog_type,
-        filterscope_type=filterscope_type,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtername=filtername,
+filterslug=filterslug,
+filtercatalog_type=filtercatalog_type,
+filterscope_type=filterscope_type,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -301,8 +318,9 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> CatalogChecklistTemplateList | None:
-    """List catalog checklist templates
+    """ List catalog checklist templates
 
      List catalog checklist templates
 
@@ -326,22 +344,22 @@ async def asyncio(
 
     Returns:
         CatalogChecklistTemplateList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            sort=sort,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtername=filtername,
-            filterslug=filterslug,
-            filtercatalog_type=filtercatalog_type,
-            filterscope_type=filterscope_type,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtername=filtername,
+filterslug=filterslug,
+filtercatalog_type=filtercatalog_type,
+filterscope_type=filterscope_type,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
+    )).parsed

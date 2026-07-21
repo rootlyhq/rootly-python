@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.simple_trigger_params_trigger_type import (
-    SimpleTriggerParamsTriggerType,
-    check_simple_trigger_params_trigger_type,
-)
-from ..models.simple_trigger_params_triggers_item import (
-    SimpleTriggerParamsTriggersItem,
-    check_simple_trigger_params_triggers_item,
-)
 from ..types import UNSET, Unset
+
+from ..models.simple_trigger_params_trigger_type import check_simple_trigger_params_trigger_type
+from ..models.simple_trigger_params_trigger_type import SimpleTriggerParamsTriggerType
+from ..models.simple_trigger_params_triggers_item import check_simple_trigger_params_triggers_item
+from ..models.simple_trigger_params_triggers_item import SimpleTriggerParamsTriggersItem
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="SimpleTriggerParams")
 

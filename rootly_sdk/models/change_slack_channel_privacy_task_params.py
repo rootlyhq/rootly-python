@@ -1,20 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.change_slack_channel_privacy_task_params_privacy import ChangeSlackChannelPrivacyTaskParamsPrivacy
 from ..models.change_slack_channel_privacy_task_params_privacy import (
-    ChangeSlackChannelPrivacyTaskParamsPrivacy,
     check_change_slack_channel_privacy_task_params_privacy,
 )
+from ..models.change_slack_channel_privacy_task_params_task_type import ChangeSlackChannelPrivacyTaskParamsTaskType
 from ..models.change_slack_channel_privacy_task_params_task_type import (
-    ChangeSlackChannelPrivacyTaskParamsTaskType,
     check_change_slack_channel_privacy_task_params_task_type,
 )
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.change_slack_channel_privacy_task_params_channel import ChangeSlackChannelPrivacyTaskParamsChannel
@@ -27,38 +30,37 @@ T = TypeVar("T", bound="ChangeSlackChannelPrivacyTaskParams")
 class ChangeSlackChannelPrivacyTaskParams:
     """
     Attributes:
+        channel (ChangeSlackChannelPrivacyTaskParamsChannel):
         privacy (ChangeSlackChannelPrivacyTaskParamsPrivacy):
         task_type (ChangeSlackChannelPrivacyTaskParamsTaskType | Unset):
-        channel (ChangeSlackChannelPrivacyTaskParamsChannel | Unset):
     """
 
+    channel: ChangeSlackChannelPrivacyTaskParamsChannel
     privacy: ChangeSlackChannelPrivacyTaskParamsPrivacy
     task_type: ChangeSlackChannelPrivacyTaskParamsTaskType | Unset = UNSET
-    channel: ChangeSlackChannelPrivacyTaskParamsChannel | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.change_slack_channel_privacy_task_params_channel import ChangeSlackChannelPrivacyTaskParamsChannel
+
+        channel = self.channel.to_dict()
+
         privacy: str = self.privacy
 
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        channel: dict[str, Any] | Unset = UNSET
-        if not isinstance(self.channel, Unset):
-            channel = self.channel.to_dict()
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "channel": channel,
                 "privacy": privacy,
             }
         )
         if task_type is not UNSET:
             field_dict["task_type"] = task_type
-        if channel is not UNSET:
-            field_dict["channel"] = channel
 
         return field_dict
 
@@ -67,6 +69,8 @@ class ChangeSlackChannelPrivacyTaskParams:
         from ..models.change_slack_channel_privacy_task_params_channel import ChangeSlackChannelPrivacyTaskParamsChannel
 
         d = dict(src_dict)
+        channel = ChangeSlackChannelPrivacyTaskParamsChannel.from_dict(d.pop("channel"))
+
         privacy = check_change_slack_channel_privacy_task_params_privacy(d.pop("privacy"))
 
         _task_type = d.pop("task_type", UNSET)
@@ -76,17 +80,10 @@ class ChangeSlackChannelPrivacyTaskParams:
         else:
             task_type = check_change_slack_channel_privacy_task_params_task_type(_task_type)
 
-        _channel = d.pop("channel", UNSET)
-        channel: ChangeSlackChannelPrivacyTaskParamsChannel | Unset
-        if isinstance(_channel, Unset):
-            channel = UNSET
-        else:
-            channel = ChangeSlackChannelPrivacyTaskParamsChannel.from_dict(_channel)
-
         change_slack_channel_privacy_task_params = cls(
+            channel=channel,
             privacy=privacy,
             task_type=task_type,
-            channel=channel,
         )
 
         change_slack_channel_privacy_task_params.additional_properties = d

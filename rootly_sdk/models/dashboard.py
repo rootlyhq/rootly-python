@@ -1,14 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.dashboard_color import DashboardColor, check_dashboard_color
-from ..models.dashboard_owner import DashboardOwner, check_dashboard_owner
 from ..types import UNSET, Unset
+
+from ..models.dashboard_color import check_dashboard_color
+from ..models.dashboard_color import DashboardColor
+from ..models.dashboard_owner import check_dashboard_owner
+from ..models.dashboard_owner import DashboardOwner
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="Dashboard")
 

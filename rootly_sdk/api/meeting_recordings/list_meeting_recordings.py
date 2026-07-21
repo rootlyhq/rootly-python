@@ -4,10 +4,14 @@ from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.meeting_recording_list import MeetingRecordingList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -15,7 +19,11 @@ def _get_kwargs(
     *,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -23,24 +31,26 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(incident_id=quote(str(incident_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | MeetingRecordingList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | MeetingRecordingList | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -54,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | MeetingRecordingList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | MeetingRecordingList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +79,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[Any | MeetingRecordingList]:
-    """List meeting recordings
+    """ List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
     Each recording represents one bot session with its own transcript, status, and metadata.
@@ -88,12 +97,14 @@ def sync_detailed(
 
     Returns:
         Response[Any | MeetingRecordingList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
     response = client.get_httpx_client().request(
@@ -102,15 +113,15 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Any | MeetingRecordingList | None:
-    """List meeting recordings
+    """ List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
     Each recording represents one bot session with its own transcript, status, and metadata.
@@ -126,15 +137,16 @@ def sync(
 
     Returns:
         Any | MeetingRecordingList
-    """
+     """
+
 
     return sync_detailed(
         incident_id=incident_id,
-        client=client,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-    ).parsed
+client=client,
+pagenumber=pagenumber,
+pagesize=pagesize,
 
+    ).parsed
 
 async def asyncio_detailed(
     incident_id: str,
@@ -142,8 +154,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[Any | MeetingRecordingList]:
-    """List meeting recordings
+    """ List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
     Each recording represents one bot session with its own transcript, status, and metadata.
@@ -159,18 +172,21 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | MeetingRecordingList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         incident_id=incident_id,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     incident_id: str,
@@ -178,8 +194,9 @@ async def asyncio(
     client: AuthenticatedClient,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Any | MeetingRecordingList | None:
-    """List meeting recordings
+    """ List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
     Each recording represents one bot session with its own transcript, status, and metadata.
@@ -195,13 +212,13 @@ async def asyncio(
 
     Returns:
         Any | MeetingRecordingList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            incident_id=incident_id,
-            client=client,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        incident_id=incident_id,
+client=client,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
+    )).parsed

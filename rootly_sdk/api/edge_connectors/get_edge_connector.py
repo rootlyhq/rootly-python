@@ -1,26 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import Response, UNSET
+from ... import errors
+
+
 
 
 def _get_kwargs(
     id: str,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/edge_connectors/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/edge_connectors/{id}".format(id=quote(str(id), safe=""),),
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -49,8 +57,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """Show edge connector
+    """ Show edge connector
 
     Args:
         id (str):
@@ -61,10 +70,12 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -78,8 +89,9 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """Show edge connector
+    """ Show edge connector
 
     Args:
         id (str):
@@ -90,12 +102,17 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
+

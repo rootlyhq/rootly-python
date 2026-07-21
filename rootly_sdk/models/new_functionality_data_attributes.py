@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_functionality_data_attributes_show_uptime_last_days import (
-    NewFunctionalityDataAttributesShowUptimeLastDays,
     check_new_functionality_data_attributes_show_uptime_last_days,
 )
+from ..models.new_functionality_data_attributes_show_uptime_last_days import (
+    NewFunctionalityDataAttributesShowUptimeLastDays,
+)
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_functionality_data_attributes_properties_item import NewFunctionalityDataAttributesPropertiesItem
@@ -49,6 +55,7 @@ class NewFunctionalityDataAttributes:
         service_ids (list[str] | None | Unset): Services associated with this functionality
         owner_group_ids (list[str] | None | Unset): Owner Teams associated with this functionality
         owner_user_ids (list[int] | None | Unset): Owner Users associated with this functionality
+        escalation_policy_id (None | str | Unset): The escalation policy id of the functionality
         slack_channels (list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset): Slack Channels
             associated with this functionality
         slack_aliases (list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset): Slack Aliases
@@ -76,11 +83,22 @@ class NewFunctionalityDataAttributes:
     service_ids: list[str] | None | Unset = UNSET
     owner_group_ids: list[str] | None | Unset = UNSET
     owner_user_ids: list[int] | None | Unset = UNSET
+    escalation_policy_id: None | str | Unset = UNSET
     slack_channels: list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset = UNSET
     slack_aliases: list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
     properties: list[NewFunctionalityDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_functionality_data_attributes_slack_channels_type_0_item import (
+            NewFunctionalityDataAttributesSlackChannelsType0Item,
+        )
+        from ..models.new_functionality_data_attributes_properties_item import (
+            NewFunctionalityDataAttributesPropertiesItem,
+        )
+        from ..models.new_functionality_data_attributes_slack_aliases_type_0_item import (
+            NewFunctionalityDataAttributesSlackAliasesType0Item,
+        )
+
         name = self.name
 
         description: None | str | Unset
@@ -204,6 +222,12 @@ class NewFunctionalityDataAttributes:
         else:
             owner_user_ids = self.owner_user_ids
 
+        escalation_policy_id: None | str | Unset
+        if isinstance(self.escalation_policy_id, Unset):
+            escalation_policy_id = UNSET
+        else:
+            escalation_policy_id = self.escalation_policy_id
+
         slack_channels: list[dict[str, Any]] | None | Unset
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
@@ -278,6 +302,8 @@ class NewFunctionalityDataAttributes:
             field_dict["owner_group_ids"] = owner_group_ids
         if owner_user_ids is not UNSET:
             field_dict["owner_user_ids"] = owner_user_ids
+        if escalation_policy_id is not UNSET:
+            field_dict["escalation_policy_id"] = escalation_policy_id
         if slack_channels is not UNSET:
             field_dict["slack_channels"] = slack_channels
         if slack_aliases is not UNSET:
@@ -504,6 +530,15 @@ class NewFunctionalityDataAttributes:
 
         owner_user_ids = _parse_owner_user_ids(d.pop("owner_user_ids", UNSET))
 
+        def _parse_escalation_policy_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        escalation_policy_id = _parse_escalation_policy_id(d.pop("escalation_policy_id", UNSET))
+
         def _parse_slack_channels(
             data: object,
         ) -> list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset:
@@ -585,6 +620,7 @@ class NewFunctionalityDataAttributes:
             service_ids=service_ids,
             owner_group_ids=owner_group_ids,
             owner_user_ids=owner_user_ids,
+            escalation_policy_id=escalation_policy_id,
             slack_channels=slack_channels,
             slack_aliases=slack_aliases,
             properties=properties,

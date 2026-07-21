@@ -1,12 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.incident_post_mortem_list import IncidentPostMortemList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -48,7 +53,11 @@ def _get_kwargs(
     filterresolved_atlt: str | Unset = UNSET,
     filterresolved_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -126,7 +135,9 @@ def _get_kwargs(
 
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -134,12 +145,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentPostMortemList | None:
     if response.status_code == 200:
         response_200 = IncidentPostMortemList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -149,9 +164,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[IncidentPostMortemList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IncidentPostMortemList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -200,8 +213,9 @@ def sync_detailed(
     filterresolved_atlt: str | Unset = UNSET,
     filterresolved_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[IncidentPostMortemList]:
-    """List incident retrospectives
+    """ List incident retrospectives
 
      List incident retrospectives
 
@@ -250,46 +264,48 @@ def sync_detailed(
 
     Returns:
         Response[IncidentPostMortemList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterstatus=filterstatus,
-        filterseverity=filterseverity,
-        filtertype=filtertype,
-        filteruser_id=filteruser_id,
-        filtertypes=filtertypes,
-        filtertype_ids=filtertype_ids,
-        filterenvironments=filterenvironments,
-        filterenvironment_ids=filterenvironment_ids,
-        filterfunctionalities=filterfunctionalities,
-        filterfunctionality_ids=filterfunctionality_ids,
-        filterservices=filterservices,
-        filterservice_ids=filterservice_ids,
-        filterteams=filterteams,
-        filterteam_ids=filterteam_ids,
-        filtercauses=filtercauses,
-        filtercause_ids=filtercause_ids,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterstarted_atgt=filterstarted_atgt,
-        filterstarted_atgte=filterstarted_atgte,
-        filterstarted_atlt=filterstarted_atlt,
-        filterstarted_atlte=filterstarted_atlte,
-        filtermitigated_atgt=filtermitigated_atgt,
-        filtermitigated_atgte=filtermitigated_atgte,
-        filtermitigated_atlt=filtermitigated_atlt,
-        filtermitigated_atlte=filtermitigated_atlte,
-        filterresolved_atgt=filterresolved_atgt,
-        filterresolved_atgte=filterresolved_atgte,
-        filterresolved_atlt=filterresolved_atlt,
-        filterresolved_atlte=filterresolved_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterstatus=filterstatus,
+filterseverity=filterseverity,
+filtertype=filtertype,
+filteruser_id=filteruser_id,
+filtertypes=filtertypes,
+filtertype_ids=filtertype_ids,
+filterenvironments=filterenvironments,
+filterenvironment_ids=filterenvironment_ids,
+filterfunctionalities=filterfunctionalities,
+filterfunctionality_ids=filterfunctionality_ids,
+filterservices=filterservices,
+filterservice_ids=filterservice_ids,
+filterteams=filterteams,
+filterteam_ids=filterteam_ids,
+filtercauses=filtercauses,
+filtercause_ids=filtercause_ids,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterstarted_atgt=filterstarted_atgt,
+filterstarted_atgte=filterstarted_atgte,
+filterstarted_atlt=filterstarted_atlt,
+filterstarted_atlte=filterstarted_atlte,
+filtermitigated_atgt=filtermitigated_atgt,
+filtermitigated_atgte=filtermitigated_atgte,
+filtermitigated_atlt=filtermitigated_atlt,
+filtermitigated_atlte=filtermitigated_atlte,
+filterresolved_atgt=filterresolved_atgt,
+filterresolved_atgte=filterresolved_atgte,
+filterresolved_atlt=filterresolved_atlt,
+filterresolved_atlte=filterresolved_atlte,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -297,7 +313,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -339,8 +354,9 @@ def sync(
     filterresolved_atlt: str | Unset = UNSET,
     filterresolved_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> IncidentPostMortemList | None:
-    """List incident retrospectives
+    """ List incident retrospectives
 
      List incident retrospectives
 
@@ -389,49 +405,50 @@ def sync(
 
     Returns:
         IncidentPostMortemList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterstatus=filterstatus,
-        filterseverity=filterseverity,
-        filtertype=filtertype,
-        filteruser_id=filteruser_id,
-        filtertypes=filtertypes,
-        filtertype_ids=filtertype_ids,
-        filterenvironments=filterenvironments,
-        filterenvironment_ids=filterenvironment_ids,
-        filterfunctionalities=filterfunctionalities,
-        filterfunctionality_ids=filterfunctionality_ids,
-        filterservices=filterservices,
-        filterservice_ids=filterservice_ids,
-        filterteams=filterteams,
-        filterteam_ids=filterteam_ids,
-        filtercauses=filtercauses,
-        filtercause_ids=filtercause_ids,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterstarted_atgt=filterstarted_atgt,
-        filterstarted_atgte=filterstarted_atgte,
-        filterstarted_atlt=filterstarted_atlt,
-        filterstarted_atlte=filterstarted_atlte,
-        filtermitigated_atgt=filtermitigated_atgt,
-        filtermitigated_atgte=filtermitigated_atgte,
-        filtermitigated_atlt=filtermitigated_atlt,
-        filtermitigated_atlte=filtermitigated_atlte,
-        filterresolved_atgt=filterresolved_atgt,
-        filterresolved_atgte=filterresolved_atgte,
-        filterresolved_atlt=filterresolved_atlt,
-        filterresolved_atlte=filterresolved_atlte,
-        sort=sort,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterstatus=filterstatus,
+filterseverity=filterseverity,
+filtertype=filtertype,
+filteruser_id=filteruser_id,
+filtertypes=filtertypes,
+filtertype_ids=filtertype_ids,
+filterenvironments=filterenvironments,
+filterenvironment_ids=filterenvironment_ids,
+filterfunctionalities=filterfunctionalities,
+filterfunctionality_ids=filterfunctionality_ids,
+filterservices=filterservices,
+filterservice_ids=filterservice_ids,
+filterteams=filterteams,
+filterteam_ids=filterteam_ids,
+filtercauses=filtercauses,
+filtercause_ids=filtercause_ids,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterstarted_atgt=filterstarted_atgt,
+filterstarted_atgte=filterstarted_atgte,
+filterstarted_atlt=filterstarted_atlt,
+filterstarted_atlte=filterstarted_atlte,
+filtermitigated_atgt=filtermitigated_atgt,
+filtermitigated_atgte=filtermitigated_atgte,
+filtermitigated_atlt=filtermitigated_atlt,
+filtermitigated_atlte=filtermitigated_atlte,
+filterresolved_atgt=filterresolved_atgt,
+filterresolved_atgte=filterresolved_atgte,
+filterresolved_atlt=filterresolved_atlt,
+filterresolved_atlte=filterresolved_atlte,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -473,8 +490,9 @@ async def asyncio_detailed(
     filterresolved_atlt: str | Unset = UNSET,
     filterresolved_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[IncidentPostMortemList]:
-    """List incident retrospectives
+    """ List incident retrospectives
 
      List incident retrospectives
 
@@ -523,52 +541,55 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentPostMortemList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterstatus=filterstatus,
-        filterseverity=filterseverity,
-        filtertype=filtertype,
-        filteruser_id=filteruser_id,
-        filtertypes=filtertypes,
-        filtertype_ids=filtertype_ids,
-        filterenvironments=filterenvironments,
-        filterenvironment_ids=filterenvironment_ids,
-        filterfunctionalities=filterfunctionalities,
-        filterfunctionality_ids=filterfunctionality_ids,
-        filterservices=filterservices,
-        filterservice_ids=filterservice_ids,
-        filterteams=filterteams,
-        filterteam_ids=filterteam_ids,
-        filtercauses=filtercauses,
-        filtercause_ids=filtercause_ids,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterstarted_atgt=filterstarted_atgt,
-        filterstarted_atgte=filterstarted_atgte,
-        filterstarted_atlt=filterstarted_atlt,
-        filterstarted_atlte=filterstarted_atlte,
-        filtermitigated_atgt=filtermitigated_atgt,
-        filtermitigated_atgte=filtermitigated_atgte,
-        filtermitigated_atlt=filtermitigated_atlt,
-        filtermitigated_atlte=filtermitigated_atlte,
-        filterresolved_atgt=filterresolved_atgt,
-        filterresolved_atgte=filterresolved_atgte,
-        filterresolved_atlt=filterresolved_atlt,
-        filterresolved_atlte=filterresolved_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterstatus=filterstatus,
+filterseverity=filterseverity,
+filtertype=filtertype,
+filteruser_id=filteruser_id,
+filtertypes=filtertypes,
+filtertype_ids=filtertype_ids,
+filterenvironments=filterenvironments,
+filterenvironment_ids=filterenvironment_ids,
+filterfunctionalities=filterfunctionalities,
+filterfunctionality_ids=filterfunctionality_ids,
+filterservices=filterservices,
+filterservice_ids=filterservice_ids,
+filterteams=filterteams,
+filterteam_ids=filterteam_ids,
+filtercauses=filtercauses,
+filtercause_ids=filtercause_ids,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterstarted_atgt=filterstarted_atgt,
+filterstarted_atgte=filterstarted_atgte,
+filterstarted_atlt=filterstarted_atlt,
+filterstarted_atlte=filterstarted_atlte,
+filtermitigated_atgt=filtermitigated_atgt,
+filtermitigated_atgte=filtermitigated_atgte,
+filtermitigated_atlt=filtermitigated_atlt,
+filtermitigated_atlte=filtermitigated_atlte,
+filterresolved_atgt=filterresolved_atgt,
+filterresolved_atgte=filterresolved_atgte,
+filterresolved_atlt=filterresolved_atlt,
+filterresolved_atlte=filterresolved_atlte,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -610,8 +631,9 @@ async def asyncio(
     filterresolved_atlt: str | Unset = UNSET,
     filterresolved_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> IncidentPostMortemList | None:
-    """List incident retrospectives
+    """ List incident retrospectives
 
      List incident retrospectives
 
@@ -660,47 +682,47 @@ async def asyncio(
 
     Returns:
         IncidentPostMortemList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtersearch=filtersearch,
-            filterstatus=filterstatus,
-            filterseverity=filterseverity,
-            filtertype=filtertype,
-            filteruser_id=filteruser_id,
-            filtertypes=filtertypes,
-            filtertype_ids=filtertype_ids,
-            filterenvironments=filterenvironments,
-            filterenvironment_ids=filterenvironment_ids,
-            filterfunctionalities=filterfunctionalities,
-            filterfunctionality_ids=filterfunctionality_ids,
-            filterservices=filterservices,
-            filterservice_ids=filterservice_ids,
-            filterteams=filterteams,
-            filterteam_ids=filterteam_ids,
-            filtercauses=filtercauses,
-            filtercause_ids=filtercause_ids,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-            filterstarted_atgt=filterstarted_atgt,
-            filterstarted_atgte=filterstarted_atgte,
-            filterstarted_atlt=filterstarted_atlt,
-            filterstarted_atlte=filterstarted_atlte,
-            filtermitigated_atgt=filtermitigated_atgt,
-            filtermitigated_atgte=filtermitigated_atgte,
-            filtermitigated_atlt=filtermitigated_atlt,
-            filtermitigated_atlte=filtermitigated_atlte,
-            filterresolved_atgt=filterresolved_atgt,
-            filterresolved_atgte=filterresolved_atgte,
-            filterresolved_atlt=filterresolved_atlt,
-            filterresolved_atlte=filterresolved_atlte,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterstatus=filterstatus,
+filterseverity=filterseverity,
+filtertype=filtertype,
+filteruser_id=filteruser_id,
+filtertypes=filtertypes,
+filtertype_ids=filtertype_ids,
+filterenvironments=filterenvironments,
+filterenvironment_ids=filterenvironment_ids,
+filterfunctionalities=filterfunctionalities,
+filterfunctionality_ids=filterfunctionality_ids,
+filterservices=filterservices,
+filterservice_ids=filterservice_ids,
+filterteams=filterteams,
+filterteam_ids=filterteam_ids,
+filtercauses=filtercauses,
+filtercause_ids=filtercause_ids,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterstarted_atgt=filterstarted_atgt,
+filterstarted_atgte=filterstarted_atgte,
+filterstarted_atlt=filterstarted_atlt,
+filterstarted_atlte=filterstarted_atlte,
+filtermitigated_atgt=filtermitigated_atgt,
+filtermitigated_atgte=filtermitigated_atgte,
+filtermitigated_atlt=filtermitigated_atlt,
+filtermitigated_atlte=filtermitigated_atlte,
+filterresolved_atgt=filterresolved_atgt,
+filterresolved_atgte=filterresolved_atgte,
+filterresolved_atlt=filterresolved_atlt,
+filterresolved_atlte=filterresolved_atlte,
+sort=sort,
+
+    )).parsed

@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.cause_response_data_type import CauseResponseDataType, check_cause_response_data_type
+from ..types import UNSET, Unset
+
+from ..models.cause_response_data_type import CauseResponseDataType
+from ..models.cause_response_data_type import check_cause_response_data_type
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.cause import Cause
@@ -30,6 +34,8 @@ class CauseResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.cause import Cause
+
         id = self.id
 
         type_: str = self.type_

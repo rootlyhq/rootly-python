@@ -1,45 +1,32 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.alert_trigger_params_alert_condition import (
-    AlertTriggerParamsAlertCondition,
-    check_alert_trigger_params_alert_condition,
-)
-from ..models.alert_trigger_params_alert_condition_label import (
-    AlertTriggerParamsAlertConditionLabel,
-    check_alert_trigger_params_alert_condition_label,
-)
-from ..models.alert_trigger_params_alert_condition_payload import (
-    AlertTriggerParamsAlertConditionPayload,
-    check_alert_trigger_params_alert_condition_payload,
-)
-from ..models.alert_trigger_params_alert_condition_source import (
-    AlertTriggerParamsAlertConditionSource,
-    check_alert_trigger_params_alert_condition_source,
-)
-from ..models.alert_trigger_params_alert_condition_status import (
-    AlertTriggerParamsAlertConditionStatus,
-    check_alert_trigger_params_alert_condition_status,
-)
-from ..models.alert_trigger_params_alert_condition_urgency import (
-    AlertTriggerParamsAlertConditionUrgency,
-    check_alert_trigger_params_alert_condition_urgency,
-)
-from ..models.alert_trigger_params_trigger_type import (
-    AlertTriggerParamsTriggerType,
-    check_alert_trigger_params_trigger_type,
-)
-from ..models.alert_trigger_params_triggers_item import (
-    AlertTriggerParamsTriggersItem,
-    check_alert_trigger_params_triggers_item,
-)
 from ..types import UNSET, Unset
+
+from ..models.alert_trigger_params_alert_condition import AlertTriggerParamsAlertCondition
+from ..models.alert_trigger_params_alert_condition import check_alert_trigger_params_alert_condition
+from ..models.alert_trigger_params_alert_condition_label import AlertTriggerParamsAlertConditionLabel
+from ..models.alert_trigger_params_alert_condition_label import check_alert_trigger_params_alert_condition_label
+from ..models.alert_trigger_params_alert_condition_payload import AlertTriggerParamsAlertConditionPayload
+from ..models.alert_trigger_params_alert_condition_payload import check_alert_trigger_params_alert_condition_payload
+from ..models.alert_trigger_params_alert_condition_source import AlertTriggerParamsAlertConditionSource
+from ..models.alert_trigger_params_alert_condition_source import check_alert_trigger_params_alert_condition_source
+from ..models.alert_trigger_params_alert_condition_status import AlertTriggerParamsAlertConditionStatus
+from ..models.alert_trigger_params_alert_condition_status import check_alert_trigger_params_alert_condition_status
+from ..models.alert_trigger_params_alert_condition_urgency import AlertTriggerParamsAlertConditionUrgency
+from ..models.alert_trigger_params_alert_condition_urgency import check_alert_trigger_params_alert_condition_urgency
+from ..models.alert_trigger_params_trigger_type import AlertTriggerParamsTriggerType
+from ..models.alert_trigger_params_trigger_type import check_alert_trigger_params_trigger_type
+from ..models.alert_trigger_params_triggers_item import AlertTriggerParamsTriggersItem
+from ..models.alert_trigger_params_triggers_item import check_alert_trigger_params_triggers_item
+from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.alert_trigger_params_alert_field_conditions_item import AlertTriggerParamsAlertFieldConditionsItem
@@ -98,6 +85,9 @@ class AlertTriggerParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.alert_trigger_params_alert_field_conditions_item import AlertTriggerParamsAlertFieldConditionsItem
+        from ..models.alert_trigger_params_alert_payload_conditions import AlertTriggerParamsAlertPayloadConditions
+
         trigger_type: str = self.trigger_type
 
         triggers: list[str] | Unset = UNSET

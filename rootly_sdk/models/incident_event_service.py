@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
-from ..models.incident_event_service_status import IncidentEventServiceStatus, check_incident_event_service_status
+from ..types import UNSET, Unset
+
+from ..models.incident_event_service_status import check_incident_event_service_status
+from ..models.incident_event_service_status import IncidentEventServiceStatus
+from typing import cast
+
 
 T = TypeVar("T", bound="IncidentEventService")
 

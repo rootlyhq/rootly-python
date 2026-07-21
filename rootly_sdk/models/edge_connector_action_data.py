@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.edge_connector_action_data_type import EdgeConnectorActionDataType, check_edge_connector_action_data_type
+from ..types import UNSET, Unset
+
+from ..models.edge_connector_action_data_type import check_edge_connector_action_data_type
+from ..models.edge_connector_action_data_type import EdgeConnectorActionDataType
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.edge_connector_action_data_attributes import EdgeConnectorActionDataAttributes
@@ -31,6 +35,8 @@ class EdgeConnectorActionData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.edge_connector_action_data_attributes import EdgeConnectorActionDataAttributes
+
         type_: str = self.type_
 
         id = str(self.id)

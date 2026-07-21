@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.incident_permission_set_resource_list import IncidentPermissionSetResourceList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -22,7 +26,11 @@ def _get_kwargs(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -44,24 +52,26 @@ def _get_kwargs(
 
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incident_permission_sets/{incident_permission_set_id}/resources".format(
-            incident_permission_set_id=quote(str(incident_permission_set_id), safe=""),
-        ),
+        "url": "/v1/incident_permission_sets/{incident_permission_set_id}/resources".format(incident_permission_set_id=quote(str(incident_permission_set_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> IncidentPermissionSetResourceList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentPermissionSetResourceList | None:
     if response.status_code == 200:
         response_200 = IncidentPermissionSetResourceList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -71,9 +81,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[IncidentPermissionSetResourceList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IncidentPermissionSetResourceList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,8 +103,9 @@ def sync_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[IncidentPermissionSetResourceList]:
-    """List incident_permission_set_resources
+    """ List incident_permission_set_resources
 
      List incident_permission_set_resources
 
@@ -118,19 +127,21 @@ def sync_detailed(
 
     Returns:
         Response[IncidentPermissionSetResourceList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         incident_permission_set_id=incident_permission_set_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -138,7 +149,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     incident_permission_set_id: str,
@@ -153,8 +163,9 @@ def sync(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> IncidentPermissionSetResourceList | None:
-    """List incident_permission_set_resources
+    """ List incident_permission_set_resources
 
      List incident_permission_set_resources
 
@@ -176,22 +187,23 @@ def sync(
 
     Returns:
         IncidentPermissionSetResourceList
-    """
+     """
+
 
     return sync_detailed(
         incident_permission_set_id=incident_permission_set_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     incident_permission_set_id: str,
@@ -206,8 +218,9 @@ async def asyncio_detailed(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[IncidentPermissionSetResourceList]:
-    """List incident_permission_set_resources
+    """ List incident_permission_set_resources
 
      List incident_permission_set_resources
 
@@ -229,25 +242,28 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentPermissionSetResourceList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         incident_permission_set_id=incident_permission_set_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     incident_permission_set_id: str,
@@ -262,8 +278,9 @@ async def asyncio(
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> IncidentPermissionSetResourceList | None:
-    """List incident_permission_set_resources
+    """ List incident_permission_set_resources
 
      List incident_permission_set_resources
 
@@ -285,20 +302,20 @@ async def asyncio(
 
     Returns:
         IncidentPermissionSetResourceList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            incident_permission_set_id=incident_permission_set_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filterkind=filterkind,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        incident_permission_set_id=incident_permission_set_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+
+    )).parsed

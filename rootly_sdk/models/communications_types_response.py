@@ -1,15 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+from ..types import UNSET, Unset
+from typing import cast
+
 if TYPE_CHECKING:
     from ..models.communications_types_response_data_item import CommunicationsTypesResponseDataItem
+    from ..models.jsonapi_included_resource import JsonapiIncludedResource
     from ..models.links import Links
     from ..models.meta import Meta
 
@@ -24,14 +28,21 @@ class CommunicationsTypesResponse:
         data (list[CommunicationsTypesResponseDataItem]):
         links (Links | Unset):
         meta (Meta | Unset):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
     data: list[CommunicationsTypesResponseDataItem]
     links: Links | Unset = UNSET
     meta: Meta | Unset = UNSET
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.communications_types_response_data_item import CommunicationsTypesResponseDataItem
+        from ..models.meta import Meta
+        from ..models.jsonapi_included_resource import JsonapiIncludedResource
+        from ..models.links import Links
+
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()
@@ -45,6 +56,13 @@ class CommunicationsTypesResponse:
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
+        included: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.included, Unset):
+            included = []
+            for included_item_data in self.included:
+                included_item = included_item_data.to_dict()
+                included.append(included_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -56,12 +74,15 @@ class CommunicationsTypesResponse:
             field_dict["links"] = links
         if meta is not UNSET:
             field_dict["meta"] = meta
+        if included is not UNSET:
+            field_dict["included"] = included
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.communications_types_response_data_item import CommunicationsTypesResponseDataItem
+        from ..models.jsonapi_included_resource import JsonapiIncludedResource
         from ..models.links import Links
         from ..models.meta import Meta
 
@@ -87,10 +108,20 @@ class CommunicationsTypesResponse:
         else:
             meta = Meta.from_dict(_meta)
 
+        _included = d.pop("included", UNSET)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
+
+                included.append(included_item)
+
         communications_types_response = cls(
             data=data,
             links=links,
             meta=meta,
+            included=included,
         )
 
         communications_types_response.additional_properties = d

@@ -1,26 +1,25 @@
 from __future__ import annotations
 
-import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
+from attrs import field as _attrs_field
 
-from ..models.new_alert_data_attributes_noise import NewAlertDataAttributesNoise, check_new_alert_data_attributes_noise
+from ..types import UNSET, Unset
+
+from ..models.new_alert_data_attributes_noise import check_new_alert_data_attributes_noise
+from ..models.new_alert_data_attributes_noise import NewAlertDataAttributesNoise
 from ..models.new_alert_data_attributes_notification_target_type import (
-    NewAlertDataAttributesNotificationTargetType,
     check_new_alert_data_attributes_notification_target_type,
 )
-from ..models.new_alert_data_attributes_source import (
-    NewAlertDataAttributesSource,
-    check_new_alert_data_attributes_source,
-)
-from ..models.new_alert_data_attributes_status import (
-    NewAlertDataAttributesStatus,
-    check_new_alert_data_attributes_status,
-)
+from ..models.new_alert_data_attributes_notification_target_type import NewAlertDataAttributesNotificationTargetType
+from ..models.new_alert_data_attributes_status import check_new_alert_data_attributes_status
+from ..models.new_alert_data_attributes_status import NewAlertDataAttributesStatus
 from ..types import UNSET, Unset
+from dateutil.parser import isoparse
+from typing import cast
+import datetime
 
 if TYPE_CHECKING:
     from ..models.new_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
@@ -28,6 +27,9 @@ if TYPE_CHECKING:
     )
     from ..models.new_alert_data_attributes_data_type_0 import NewAlertDataAttributesDataType0
     from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
+    from ..models.new_alert_data_attributes_notification_targets_type_0_item import (
+        NewAlertDataAttributesNotificationTargetsType0Item,
+    )
 
 
 T = TypeVar("T", bound="NewAlertDataAttributes")
@@ -37,9 +39,10 @@ T = TypeVar("T", bound="NewAlertDataAttributes")
 class NewAlertDataAttributes:
     """
     Attributes:
-        source (NewAlertDataAttributesSource): The source of the alert
         summary (str): The summary of the alert
         noise (NewAlertDataAttributesNoise | Unset): Whether the alert is marked as noise
+        source (str | Unset): Deprecated. Accepted for backwards compatibility; new clients should omit. Defaults to
+            `api`.
         status (NewAlertDataAttributesStatus | Unset): Only available for organizations with Rootly On-Call enabled. Can
             be one of open, triggered.
         description (None | str | Unset): The description of the alert
@@ -47,6 +50,7 @@ class NewAlertDataAttributes:
             enabled and your notification target is a Service. This field will be automatically set for you.
         group_ids (list[str] | None | Unset): The Group IDs to attach to the alert. If your organization has On-Call
             enabled and your notification target is a Group. This field will be automatically set for you.
+        functionality_ids (list[str] | None | Unset): The Functionality IDs to attach to the alert
         environment_ids (list[str] | None | Unset): The Environment IDs to attach to the alert
         started_at (datetime.datetime | None | Unset): Alert start datetime
         ended_at (datetime.datetime | None | Unset): Alert end datetime
@@ -54,9 +58,16 @@ class NewAlertDataAttributes:
         external_url (None | str | Unset): External Url
         alert_urgency_id (None | str | Unset): The ID of the alert urgency
         notification_target_type (NewAlertDataAttributesNotificationTargetType | Unset): Only available for
-            organizations with Rootly On-Call enabled. Can be one of Group, Service, EscalationPolicy, User.
+            organizations with Rootly On-Call enabled. Can be one of Group, Service, EscalationPolicy, Functionality, User.
+            Please contact support if you encounter issues using `Functionality` as a notification target type.
         notification_target_id (None | str | Unset): Only available for organizations with Rootly On-Call enabled. The
             _identifier_ of the notification target object.
+        notification_targets (list[NewAlertDataAttributesNotificationTargetsType0Item] | None | Unset): Only available
+            for organizations with Rootly On-Call enabled. Page multiple destinations (any combination of Group, Service,
+            EscalationPolicy, Functionality, or User) in a single request. `Functionality` targets require the
+            `enable_paging_functionalities` feature; a request that includes one while it is disabled is rejected. Applies
+            to alert creation only. When provided, this takes precedence over the singular `notification_target_type` /
+            `notification_target_id` fields.
         labels (list[NewAlertDataAttributesLabelsItemType0 | None] | Unset):
         data (NewAlertDataAttributesDataType0 | None | Unset): Additional data
         deduplication_key (None | str | Unset): Alerts sharing the same deduplication key are treated as a single alert.
@@ -64,13 +75,14 @@ class NewAlertDataAttributes:
             Custom alert field values to create with the alert
     """
 
-    source: NewAlertDataAttributesSource
     summary: str
     noise: NewAlertDataAttributesNoise | Unset = UNSET
+    source: str | Unset = UNSET
     status: NewAlertDataAttributesStatus | Unset = UNSET
     description: None | str | Unset = UNSET
     service_ids: list[str] | None | Unset = UNSET
     group_ids: list[str] | None | Unset = UNSET
+    functionality_ids: list[str] | None | Unset = UNSET
     environment_ids: list[str] | None | Unset = UNSET
     started_at: datetime.datetime | None | Unset = UNSET
     ended_at: datetime.datetime | None | Unset = UNSET
@@ -79,6 +91,7 @@ class NewAlertDataAttributes:
     alert_urgency_id: None | str | Unset = UNSET
     notification_target_type: NewAlertDataAttributesNotificationTargetType | Unset = UNSET
     notification_target_id: None | str | Unset = UNSET
+    notification_targets: list[NewAlertDataAttributesNotificationTargetsType0Item] | None | Unset = UNSET
     labels: list[NewAlertDataAttributesLabelsItemType0 | None] | Unset = UNSET
     data: NewAlertDataAttributesDataType0 | None | Unset = UNSET
     deduplication_key: None | str | Unset = UNSET
@@ -87,19 +100,22 @@ class NewAlertDataAttributes:
     )
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_alert_data_attributes_notification_targets_type_0_item import (
+            NewAlertDataAttributesNotificationTargetsType0Item,
+        )
+        from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
         from ..models.new_alert_data_attributes_alert_field_values_attributes_item_type_0 import (
             NewAlertDataAttributesAlertFieldValuesAttributesItemType0,
         )
         from ..models.new_alert_data_attributes_data_type_0 import NewAlertDataAttributesDataType0
-        from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
-
-        source: str = self.source
 
         summary = self.summary
 
         noise: str | Unset = UNSET
         if not isinstance(self.noise, Unset):
             noise = self.noise
+
+        source = self.source
 
         status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
@@ -128,6 +144,15 @@ class NewAlertDataAttributes:
 
         else:
             group_ids = self.group_ids
+
+        functionality_ids: list[str] | None | Unset
+        if isinstance(self.functionality_ids, Unset):
+            functionality_ids = UNSET
+        elif isinstance(self.functionality_ids, list):
+            functionality_ids = self.functionality_ids
+
+        else:
+            functionality_ids = self.functionality_ids
 
         environment_ids: list[str] | None | Unset
         if isinstance(self.environment_ids, Unset):
@@ -182,6 +207,18 @@ class NewAlertDataAttributes:
         else:
             notification_target_id = self.notification_target_id
 
+        notification_targets: list[dict[str, Any]] | None | Unset
+        if isinstance(self.notification_targets, Unset):
+            notification_targets = UNSET
+        elif isinstance(self.notification_targets, list):
+            notification_targets = []
+            for notification_targets_type_0_item_data in self.notification_targets:
+                notification_targets_type_0_item = notification_targets_type_0_item_data.to_dict()
+                notification_targets.append(notification_targets_type_0_item)
+
+        else:
+            notification_targets = self.notification_targets
+
         labels: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
@@ -224,12 +261,13 @@ class NewAlertDataAttributes:
 
         field_dict.update(
             {
-                "source": source,
                 "summary": summary,
             }
         )
         if noise is not UNSET:
             field_dict["noise"] = noise
+        if source is not UNSET:
+            field_dict["source"] = source
         if status is not UNSET:
             field_dict["status"] = status
         if description is not UNSET:
@@ -238,6 +276,8 @@ class NewAlertDataAttributes:
             field_dict["service_ids"] = service_ids
         if group_ids is not UNSET:
             field_dict["group_ids"] = group_ids
+        if functionality_ids is not UNSET:
+            field_dict["functionality_ids"] = functionality_ids
         if environment_ids is not UNSET:
             field_dict["environment_ids"] = environment_ids
         if started_at is not UNSET:
@@ -254,6 +294,8 @@ class NewAlertDataAttributes:
             field_dict["notification_target_type"] = notification_target_type
         if notification_target_id is not UNSET:
             field_dict["notification_target_id"] = notification_target_id
+        if notification_targets is not UNSET:
+            field_dict["notification_targets"] = notification_targets
         if labels is not UNSET:
             field_dict["labels"] = labels
         if data is not UNSET:
@@ -272,10 +314,11 @@ class NewAlertDataAttributes:
         )
         from ..models.new_alert_data_attributes_data_type_0 import NewAlertDataAttributesDataType0
         from ..models.new_alert_data_attributes_labels_item_type_0 import NewAlertDataAttributesLabelsItemType0
+        from ..models.new_alert_data_attributes_notification_targets_type_0_item import (
+            NewAlertDataAttributesNotificationTargetsType0Item,
+        )
 
         d = dict(src_dict)
-        source = check_new_alert_data_attributes_source(d.pop("source"))
-
         summary = d.pop("summary")
 
         _noise = d.pop("noise", UNSET)
@@ -284,6 +327,8 @@ class NewAlertDataAttributes:
             noise = UNSET
         else:
             noise = check_new_alert_data_attributes_noise(_noise)
+
+        source = d.pop("source", UNSET)
 
         _status = d.pop("status", UNSET)
         status: NewAlertDataAttributesStatus | Unset
@@ -334,6 +379,23 @@ class NewAlertDataAttributes:
             return cast(list[str] | None | Unset, data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
+
+        def _parse_functionality_ids(data: object) -> list[str] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                functionality_ids_type_0 = cast(list[str], data)
+
+                return functionality_ids_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[str] | None | Unset, data)
+
+        functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
         def _parse_environment_ids(data: object) -> list[str] | None | Unset:
             if data is None:
@@ -431,6 +493,32 @@ class NewAlertDataAttributes:
 
         notification_target_id = _parse_notification_target_id(d.pop("notification_target_id", UNSET))
 
+        def _parse_notification_targets(
+            data: object,
+        ) -> list[NewAlertDataAttributesNotificationTargetsType0Item] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                notification_targets_type_0 = []
+                _notification_targets_type_0 = data
+                for notification_targets_type_0_item_data in _notification_targets_type_0:
+                    notification_targets_type_0_item = NewAlertDataAttributesNotificationTargetsType0Item.from_dict(
+                        notification_targets_type_0_item_data
+                    )
+
+                    notification_targets_type_0.append(notification_targets_type_0_item)
+
+                return notification_targets_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[NewAlertDataAttributesNotificationTargetsType0Item] | None | Unset, data)
+
+        notification_targets = _parse_notification_targets(d.pop("notification_targets", UNSET))
+
         _labels = d.pop("labels", UNSET)
         labels: list[NewAlertDataAttributesLabelsItemType0 | None] | Unset = UNSET
         if _labels is not UNSET:
@@ -512,13 +600,14 @@ class NewAlertDataAttributes:
                 alert_field_values_attributes.append(alert_field_values_attributes_item)
 
         new_alert_data_attributes = cls(
-            source=source,
             summary=summary,
             noise=noise,
+            source=source,
             status=status,
             description=description,
             service_ids=service_ids,
             group_ids=group_ids,
+            functionality_ids=functionality_ids,
             environment_ids=environment_ids,
             started_at=started_at,
             ended_at=ended_at,
@@ -527,6 +616,7 @@ class NewAlertDataAttributes:
             alert_urgency_id=alert_urgency_id,
             notification_target_type=notification_target_type,
             notification_target_id=notification_target_id,
+            notification_targets=notification_targets,
             labels=labels,
             data=data,
             deduplication_key=deduplication_key,

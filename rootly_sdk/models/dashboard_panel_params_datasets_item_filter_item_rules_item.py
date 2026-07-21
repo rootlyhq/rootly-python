@@ -1,20 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.dashboard_panel_params_datasets_item_filter_item_rules_item_condition import (
+    check_dashboard_panel_params_datasets_item_filter_item_rules_item_condition,
+)
 from ..models.dashboard_panel_params_datasets_item_filter_item_rules_item_condition import (
     DashboardPanelParamsDatasetsItemFilterItemRulesItemCondition,
-    check_dashboard_panel_params_datasets_item_filter_item_rules_item_condition,
+)
+from ..models.dashboard_panel_params_datasets_item_filter_item_rules_item_operation import (
+    check_dashboard_panel_params_datasets_item_filter_item_rules_item_operation,
 )
 from ..models.dashboard_panel_params_datasets_item_filter_item_rules_item_operation import (
     DashboardPanelParamsDatasetsItemFilterItemRulesItemOperation,
-    check_dashboard_panel_params_datasets_item_filter_item_rules_item_operation,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="DashboardPanelParamsDatasetsItemFilterItemRulesItem")
 

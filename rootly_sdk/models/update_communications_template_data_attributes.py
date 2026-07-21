@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_communications_template_data_attributes_communication_template_stages_attributes_type_0_item import (
@@ -38,6 +42,10 @@ class UpdateCommunicationsTemplateDataAttributes:
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_communications_template_data_attributes_communication_template_stages_attributes_type_0_item import (
+            UpdateCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item,
+        )
+
         name = self.name
 
         description: None | str | Unset

@@ -1,20 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.new_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item import (
+    check_new_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item,
+)
 from ..models.new_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item import (
     NewEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item,
-    check_new_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item,
+)
+from ..models.new_escalation_policy_data_attributes_business_hours_type_0_time_zone import (
+    check_new_escalation_policy_data_attributes_business_hours_type_0_time_zone,
 )
 from ..models.new_escalation_policy_data_attributes_business_hours_type_0_time_zone import (
     NewEscalationPolicyDataAttributesBusinessHoursType0TimeZone,
-    check_new_escalation_policy_data_attributes_business_hours_type_0_time_zone,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewEscalationPolicyDataAttributesBusinessHoursType0")
 

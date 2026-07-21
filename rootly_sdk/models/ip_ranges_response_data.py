@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.ip_ranges_response_data_type import IpRangesResponseDataType, check_ip_ranges_response_data_type
+from ..types import UNSET, Unset
+
+from ..models.ip_ranges_response_data_type import check_ip_ranges_response_data_type
+from ..models.ip_ranges_response_data_type import IpRangesResponseDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.ip_ranges import IpRanges
@@ -30,6 +34,8 @@ class IpRangesResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.ip_ranges import IpRanges
+
         id = self.id
 
         type_: str = self.type_

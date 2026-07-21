@@ -1,19 +1,27 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.new_escalation_policy_path_data_attributes_time_restrictions_item_end_day import (
+    check_new_escalation_policy_path_data_attributes_time_restrictions_item_end_day,
+)
 from ..models.new_escalation_policy_path_data_attributes_time_restrictions_item_end_day import (
     NewEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay,
-    check_new_escalation_policy_path_data_attributes_time_restrictions_item_end_day,
+)
+from ..models.new_escalation_policy_path_data_attributes_time_restrictions_item_start_day import (
+    check_new_escalation_policy_path_data_attributes_time_restrictions_item_start_day,
 )
 from ..models.new_escalation_policy_path_data_attributes_time_restrictions_item_start_day import (
     NewEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay,
-    check_new_escalation_policy_path_data_attributes_time_restrictions_item_start_day,
 )
+from typing import cast
+
 
 T = TypeVar("T", bound="NewEscalationPolicyPathDataAttributesTimeRestrictionsItem")
 

@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.create_confluence_page_task_params_task_type import (
-    CreateConfluencePageTaskParamsTaskType,
-    check_create_confluence_page_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.create_confluence_page_task_params_task_type import check_create_confluence_page_task_params_task_type
+from ..models.create_confluence_page_task_params_task_type import CreateConfluencePageTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_confluence_page_task_params_ancestor import CreateConfluencePageTaskParamsAncestor
@@ -36,6 +37,9 @@ class CreateConfluencePageTaskParams:
         content (str | Unset): The page content
         post_mortem_template_id (str | Unset): The Retrospective template to use
         mark_post_mortem_as_published (bool | Unset):  Default: True.
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
+        create_as_live_doc (bool | Unset):  Default: False.
     """
 
     space: CreateConfluencePageTaskParamsSpace
@@ -47,9 +51,17 @@ class CreateConfluencePageTaskParams:
     content: str | Unset = UNSET
     post_mortem_template_id: str | Unset = UNSET
     mark_post_mortem_as_published: bool | Unset = True
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
+    create_as_live_doc: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_confluence_page_task_params_space import CreateConfluencePageTaskParamsSpace
+        from ..models.create_confluence_page_task_params_ancestor import CreateConfluencePageTaskParamsAncestor
+        from ..models.create_confluence_page_task_params_integration import CreateConfluencePageTaskParamsIntegration
+        from ..models.create_confluence_page_task_params_template import CreateConfluencePageTaskParamsTemplate
+
         space = self.space.to_dict()
 
         title = self.title
@@ -76,6 +88,12 @@ class CreateConfluencePageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
+        include_overview = self.include_overview
+
+        include_timeline = self.include_timeline
+
+        create_as_live_doc = self.create_as_live_doc
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -98,6 +116,12 @@ class CreateConfluencePageTaskParams:
             field_dict["post_mortem_template_id"] = post_mortem_template_id
         if mark_post_mortem_as_published is not UNSET:
             field_dict["mark_post_mortem_as_published"] = mark_post_mortem_as_published
+        if include_overview is not UNSET:
+            field_dict["include_overview"] = include_overview
+        if include_timeline is not UNSET:
+            field_dict["include_timeline"] = include_timeline
+        if create_as_live_doc is not UNSET:
+            field_dict["create_as_live_doc"] = create_as_live_doc
 
         return field_dict
 
@@ -147,6 +171,12 @@ class CreateConfluencePageTaskParams:
 
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
+        include_overview = d.pop("include_overview", UNSET)
+
+        include_timeline = d.pop("include_timeline", UNSET)
+
+        create_as_live_doc = d.pop("create_as_live_doc", UNSET)
+
         create_confluence_page_task_params = cls(
             space=space,
             title=title,
@@ -157,6 +187,9 @@ class CreateConfluencePageTaskParams:
             content=content,
             post_mortem_template_id=post_mortem_template_id,
             mark_post_mortem_as_published=mark_post_mortem_as_published,
+            include_overview=include_overview,
+            include_timeline=include_timeline,
+            create_as_live_doc=create_as_live_doc,
         )
 
         create_confluence_page_task_params.additional_properties = d

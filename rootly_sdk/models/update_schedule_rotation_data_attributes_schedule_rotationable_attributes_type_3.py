@@ -1,14 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3_shift_length_unit import (
-    UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit,
     check_update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3_shift_length_unit,
 )
+from ..models.update_schedule_rotation_data_attributes_schedule_rotationable_attributes_type_3_shift_length_unit import (
+    UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit,
+)
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateScheduleRotationDataAttributesScheduleRotationableAttributesType3")
 

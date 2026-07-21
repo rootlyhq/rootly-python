@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_retrospective_process_data_type import (
-    UpdateRetrospectiveProcessDataType,
-    check_update_retrospective_process_data_type,
-)
+from ..types import UNSET, Unset
+
+from ..models.update_retrospective_process_data_type import check_update_retrospective_process_data_type
+from ..models.update_retrospective_process_data_type import UpdateRetrospectiveProcessDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_retrospective_process_data_attributes import UpdateRetrospectiveProcessDataAttributes
@@ -31,6 +32,8 @@ class UpdateRetrospectiveProcessData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_retrospective_process_data_attributes import UpdateRetrospectiveProcessDataAttributes
+
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()

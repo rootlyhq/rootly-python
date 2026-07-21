@@ -1,16 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.new_alert_group_data_attributes_targets_item_target_type import (
-    NewAlertGroupDataAttributesTargetsItemTargetType,
     check_new_alert_group_data_attributes_targets_item_target_type,
 )
+from ..models.new_alert_group_data_attributes_targets_item_target_type import (
+    NewAlertGroupDataAttributesTargetsItemTargetType,
+)
+from typing import cast
+from uuid import UUID
+
 
 T = TypeVar("T", bound="NewAlertGroupDataAttributesTargetsItem")
 
@@ -19,8 +25,9 @@ T = TypeVar("T", bound="NewAlertGroupDataAttributesTargetsItem")
 class NewAlertGroupDataAttributesTargetsItem:
     """
     Attributes:
-        target_type (NewAlertGroupDataAttributesTargetsItemTargetType): The type of the target.
-        target_id (UUID): id for the Group, Service or EscalationPolicy
+        target_type (NewAlertGroupDataAttributesTargetsItemTargetType): The type of the target. Please contact support
+            if you encounter issues using `Functionality` as a target type.
+        target_id (UUID): id for the Group, Service, EscalationPolicy or Functionality
     """
 
     target_type: NewAlertGroupDataAttributesTargetsItemTargetType

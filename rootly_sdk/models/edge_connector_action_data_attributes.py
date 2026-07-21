@@ -1,22 +1,23 @@
 from __future__ import annotations
 
-import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 from ..models.edge_connector_action_data_attributes_action_type import (
-    EdgeConnectorActionDataAttributesActionType,
     check_edge_connector_action_data_attributes_action_type,
 )
-from ..models.edge_connector_action_data_attributes_icon import (
-    EdgeConnectorActionDataAttributesIcon,
-    check_edge_connector_action_data_attributes_icon,
-)
+from ..models.edge_connector_action_data_attributes_action_type import EdgeConnectorActionDataAttributesActionType
+from ..models.edge_connector_action_data_attributes_icon import check_edge_connector_action_data_attributes_icon
+from ..models.edge_connector_action_data_attributes_icon import EdgeConnectorActionDataAttributesIcon
 from ..types import UNSET, Unset
+from dateutil.parser import isoparse
+from typing import cast
+import datetime
 
 if TYPE_CHECKING:
     from ..models.edge_connector_action_data_attributes_parameters_type_0_item import (
@@ -56,6 +57,10 @@ class EdgeConnectorActionDataAttributes:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.edge_connector_action_data_attributes_parameters_type_0_item import (
+            EdgeConnectorActionDataAttributesParametersType0Item,
+        )
+
         name = self.name
 
         action_type: str = self.action_type

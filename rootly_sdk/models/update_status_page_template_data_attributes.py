@@ -1,19 +1,26 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_status_page_template_data_attributes_kind import (
-    UpdateStatusPageTemplateDataAttributesKind,
     check_update_status_page_template_data_attributes_kind,
+)
+from ..models.update_status_page_template_data_attributes_kind import UpdateStatusPageTemplateDataAttributesKind
+from ..models.update_status_page_template_data_attributes_update_status import (
+    check_update_status_page_template_data_attributes_update_status,
 )
 from ..models.update_status_page_template_data_attributes_update_status import (
     UpdateStatusPageTemplateDataAttributesUpdateStatus,
-    check_update_status_page_template_data_attributes_update_status,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateStatusPageTemplateDataAttributes")
 

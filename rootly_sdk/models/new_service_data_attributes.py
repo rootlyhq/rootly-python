@@ -1,15 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_service_data_attributes_show_uptime_last_days import (
-    NewServiceDataAttributesShowUptimeLastDays,
     check_new_service_data_attributes_show_uptime_last_days,
 )
+from ..models.new_service_data_attributes_show_uptime_last_days import NewServiceDataAttributesShowUptimeLastDays
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_service_data_attributes_alert_broadcast_channel_type_0 import (
@@ -114,11 +118,18 @@ class NewServiceDataAttributes:
     properties: list[NewServiceDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_service_data_attributes_incident_broadcast_channel_type_0 import (
+            NewServiceDataAttributesIncidentBroadcastChannelType0,
+        )
         from ..models.new_service_data_attributes_alert_broadcast_channel_type_0 import (
             NewServiceDataAttributesAlertBroadcastChannelType0,
         )
-        from ..models.new_service_data_attributes_incident_broadcast_channel_type_0 import (
-            NewServiceDataAttributesIncidentBroadcastChannelType0,
+        from ..models.new_service_data_attributes_properties_item import NewServiceDataAttributesPropertiesItem
+        from ..models.new_service_data_attributes_slack_channels_type_0_item import (
+            NewServiceDataAttributesSlackChannelsType0Item,
+        )
+        from ..models.new_service_data_attributes_slack_aliases_type_0_item import (
+            NewServiceDataAttributesSlackAliasesType0Item,
         )
 
         name = self.name

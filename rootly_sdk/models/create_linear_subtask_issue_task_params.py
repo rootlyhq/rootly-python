@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.create_linear_subtask_issue_task_params_task_type import (
-    CreateLinearSubtaskIssueTaskParamsTaskType,
     check_create_linear_subtask_issue_task_params_task_type,
 )
+from ..models.create_linear_subtask_issue_task_params_task_type import CreateLinearSubtaskIssueTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_linear_subtask_issue_task_params_labels_item import (
@@ -35,6 +38,8 @@ class CreateLinearSubtaskIssueTaskParams:
         priority (CreateLinearSubtaskIssueTaskParamsPriority | Unset): The priority id and display name
         labels (list[CreateLinearSubtaskIssueTaskParamsLabelsItem] | Unset):
         assign_user_email (str | Unset): The assigned user's email
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+            valid JSON
     """
 
     parent_issue_id: str
@@ -45,9 +50,16 @@ class CreateLinearSubtaskIssueTaskParams:
     priority: CreateLinearSubtaskIssueTaskParamsPriority | Unset = UNSET
     labels: list[CreateLinearSubtaskIssueTaskParamsLabelsItem] | Unset = UNSET
     assign_user_email: str | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_linear_subtask_issue_task_params_state import CreateLinearSubtaskIssueTaskParamsState
+        from ..models.create_linear_subtask_issue_task_params_priority import CreateLinearSubtaskIssueTaskParamsPriority
+        from ..models.create_linear_subtask_issue_task_params_labels_item import (
+            CreateLinearSubtaskIssueTaskParamsLabelsItem,
+        )
+
         parent_issue_id = self.parent_issue_id
 
         title = self.title
@@ -73,6 +85,12 @@ class CreateLinearSubtaskIssueTaskParams:
 
         assign_user_email = self.assign_user_email
 
+        custom_fields_mapping: None | str | Unset
+        if isinstance(self.custom_fields_mapping, Unset):
+            custom_fields_mapping = UNSET
+        else:
+            custom_fields_mapping = self.custom_fields_mapping
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -92,6 +110,8 @@ class CreateLinearSubtaskIssueTaskParams:
             field_dict["labels"] = labels
         if assign_user_email is not UNSET:
             field_dict["assign_user_email"] = assign_user_email
+        if custom_fields_mapping is not UNSET:
+            field_dict["custom_fields_mapping"] = custom_fields_mapping
 
         return field_dict
 
@@ -137,6 +157,15 @@ class CreateLinearSubtaskIssueTaskParams:
 
         assign_user_email = d.pop("assign_user_email", UNSET)
 
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
+
         create_linear_subtask_issue_task_params = cls(
             parent_issue_id=parent_issue_id,
             title=title,
@@ -146,6 +175,7 @@ class CreateLinearSubtaskIssueTaskParams:
             priority=priority,
             labels=labels,
             assign_user_email=assign_user_email,
+            custom_fields_mapping=custom_fields_mapping,
         )
 
         create_linear_subtask_issue_task_params.additional_properties = d

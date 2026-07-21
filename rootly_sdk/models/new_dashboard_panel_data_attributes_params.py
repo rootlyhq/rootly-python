@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.new_dashboard_panel_data_attributes_params_display import (
-    NewDashboardPanelDataAttributesParamsDisplay,
     check_new_dashboard_panel_data_attributes_params_display,
 )
+from ..models.new_dashboard_panel_data_attributes_params_display import NewDashboardPanelDataAttributesParamsDisplay
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_dashboard_panel_data_attributes_params_datalabels import (
@@ -46,6 +49,16 @@ class NewDashboardPanelDataAttributesParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_dashboard_panel_data_attributes_params_datalabels import (
+            NewDashboardPanelDataAttributesParamsDatalabels,
+        )
+        from ..models.new_dashboard_panel_data_attributes_params_legend import (
+            NewDashboardPanelDataAttributesParamsLegend,
+        )
+        from ..models.new_dashboard_panel_data_attributes_params_datasets_item import (
+            NewDashboardPanelDataAttributesParamsDatasetsItem,
+        )
+
         display: str | Unset = UNSET
         if not isinstance(self.display, Unset):
             display = self.display

@@ -1,19 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_catalog_property_data_attributes_catalog_type import (
-    NewCatalogPropertyDataAttributesCatalogType,
     check_new_catalog_property_data_attributes_catalog_type,
 )
-from ..models.new_catalog_property_data_attributes_kind import (
-    NewCatalogPropertyDataAttributesKind,
-    check_new_catalog_property_data_attributes_kind,
-)
+from ..models.new_catalog_property_data_attributes_catalog_type import NewCatalogPropertyDataAttributesCatalogType
+from ..models.new_catalog_property_data_attributes_kind import check_new_catalog_property_data_attributes_kind
+from ..models.new_catalog_property_data_attributes_kind import NewCatalogPropertyDataAttributesKind
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewCatalogPropertyDataAttributes")
 
@@ -29,6 +32,8 @@ class NewCatalogPropertyDataAttributes:
         position (int | None | Unset): Default position of the item when displayed in a list.
         required (bool | Unset): Whether the property is required.
         catalog_type (NewCatalogPropertyDataAttributesCatalogType | Unset): The type of catalog the property belongs to.
+        external_id (None | str | Unset): An external identifier for this catalog property. Must be unique within the
+            scope.
     """
 
     name: str
@@ -38,6 +43,7 @@ class NewCatalogPropertyDataAttributes:
     position: int | None | Unset = UNSET
     required: bool | Unset = UNSET
     catalog_type: NewCatalogPropertyDataAttributesCatalogType | Unset = UNSET
+    external_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -64,6 +70,12 @@ class NewCatalogPropertyDataAttributes:
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -82,6 +94,8 @@ class NewCatalogPropertyDataAttributes:
             field_dict["required"] = required
         if catalog_type is not UNSET:
             field_dict["catalog_type"] = catalog_type
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
 
         return field_dict
 
@@ -121,6 +135,15 @@ class NewCatalogPropertyDataAttributes:
         else:
             catalog_type = check_new_catalog_property_data_attributes_catalog_type(_catalog_type)
 
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
         new_catalog_property_data_attributes = cls(
             name=name,
             kind=kind,
@@ -129,6 +152,7 @@ class NewCatalogPropertyDataAttributes:
             position=position,
             required=required,
             catalog_type=catalog_type,
+            external_id=external_id,
         )
 
         return new_catalog_property_data_attributes

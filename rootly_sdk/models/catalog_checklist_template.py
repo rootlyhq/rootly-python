@@ -1,20 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.catalog_checklist_template_catalog_type import (
-    CatalogChecklistTemplateCatalogType,
-    check_catalog_checklist_template_catalog_type,
-)
-from ..models.catalog_checklist_template_scope_type import (
-    CatalogChecklistTemplateScopeType,
-    check_catalog_checklist_template_scope_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.catalog_checklist_template_catalog_type import CatalogChecklistTemplateCatalogType
+from ..models.catalog_checklist_template_catalog_type import check_catalog_checklist_template_catalog_type
+from ..models.catalog_checklist_template_scope_type import CatalogChecklistTemplateScopeType
+from ..models.catalog_checklist_template_scope_type import check_catalog_checklist_template_scope_type
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.catalog_checklist_template_fields_type_0_item import CatalogChecklistTemplateFieldsType0Item
@@ -53,6 +52,9 @@ class CatalogChecklistTemplate:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.catalog_checklist_template_owners_type_0_item import CatalogChecklistTemplateOwnersType0Item
+        from ..models.catalog_checklist_template_fields_type_0_item import CatalogChecklistTemplateFieldsType0Item
+
         name = self.name
 
         catalog_type: str = self.catalog_type

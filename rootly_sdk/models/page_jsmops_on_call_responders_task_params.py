@@ -1,20 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.page_jsmops_on_call_responders_task_params_priority import (
-    PageJsmopsOnCallRespondersTaskParamsPriority,
     check_page_jsmops_on_call_responders_task_params_priority,
 )
+from ..models.page_jsmops_on_call_responders_task_params_priority import PageJsmopsOnCallRespondersTaskParamsPriority
 from ..models.page_jsmops_on_call_responders_task_params_task_type import (
-    PageJsmopsOnCallRespondersTaskParamsTaskType,
     check_page_jsmops_on_call_responders_task_params_task_type,
 )
+from ..models.page_jsmops_on_call_responders_task_params_task_type import PageJsmopsOnCallRespondersTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.page_jsmops_on_call_responders_task_params_teams_item import (
@@ -52,6 +55,13 @@ class PageJsmopsOnCallRespondersTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.page_jsmops_on_call_responders_task_params_teams_item import (
+            PageJsmopsOnCallRespondersTaskParamsTeamsItem,
+        )
+        from ..models.page_jsmops_on_call_responders_task_params_users_item import (
+            PageJsmopsOnCallRespondersTaskParamsUsersItem,
+        )
+
         task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type

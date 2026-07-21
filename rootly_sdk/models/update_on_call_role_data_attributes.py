@@ -1,99 +1,160 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_on_call_role_data_attributes_alert_fields_permissions_item import (
-    UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem,
     check_update_on_call_role_data_attributes_alert_fields_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_alert_fields_permissions_item import (
+    UpdateOnCallRoleDataAttributesAlertFieldsPermissionsItem,
+)
+from ..models.update_on_call_role_data_attributes_alert_groups_permissions_item import (
+    check_update_on_call_role_data_attributes_alert_groups_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_groups_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertGroupsPermissionsItem,
-    check_update_on_call_role_data_attributes_alert_groups_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
+    check_update_on_call_role_data_attributes_alert_routing_rules_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_routing_rules_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertRoutingRulesPermissionsItem,
-    check_update_on_call_role_data_attributes_alert_routing_rules_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_alert_sources_permissions_item import (
+    check_update_on_call_role_data_attributes_alert_sources_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_sources_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertSourcesPermissionsItem,
-    check_update_on_call_role_data_attributes_alert_sources_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_alert_urgency_permissions_item import (
+    check_update_on_call_role_data_attributes_alert_urgency_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alert_urgency_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertUrgencyPermissionsItem,
-    check_update_on_call_role_data_attributes_alert_urgency_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_alerts_permissions_item import (
+    check_update_on_call_role_data_attributes_alerts_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_alerts_permissions_item import (
     UpdateOnCallRoleDataAttributesAlertsPermissionsItem,
-    check_update_on_call_role_data_attributes_alerts_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_api_keys_permissions_item import (
+    check_update_on_call_role_data_attributes_api_keys_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_api_keys_permissions_item import (
     UpdateOnCallRoleDataAttributesApiKeysPermissionsItem,
-    check_update_on_call_role_data_attributes_api_keys_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_audits_permissions_item import (
+    check_update_on_call_role_data_attributes_audits_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_audits_permissions_item import (
     UpdateOnCallRoleDataAttributesAuditsPermissionsItem,
-    check_update_on_call_role_data_attributes_audits_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_catalogs_permissions_item import (
+    check_update_on_call_role_data_attributes_catalogs_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_catalogs_permissions_item import (
+    UpdateOnCallRoleDataAttributesCatalogsPermissionsItem,
+)
+from ..models.update_on_call_role_data_attributes_contacts_permissions_item import (
+    check_update_on_call_role_data_attributes_contacts_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_contacts_permissions_item import (
     UpdateOnCallRoleDataAttributesContactsPermissionsItem,
-    check_update_on_call_role_data_attributes_contacts_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_escalation_policies_permissions_item import (
+    check_update_on_call_role_data_attributes_escalation_policies_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_escalation_policies_permissions_item import (
     UpdateOnCallRoleDataAttributesEscalationPoliciesPermissionsItem,
-    check_update_on_call_role_data_attributes_escalation_policies_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_functionalities_permissions_item import (
+    check_update_on_call_role_data_attributes_functionalities_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_functionalities_permissions_item import (
+    UpdateOnCallRoleDataAttributesFunctionalitiesPermissionsItem,
+)
+from ..models.update_on_call_role_data_attributes_groups_permissions_item import (
+    check_update_on_call_role_data_attributes_groups_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_groups_permissions_item import (
     UpdateOnCallRoleDataAttributesGroupsPermissionsItem,
-    check_update_on_call_role_data_attributes_groups_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_heartbeats_permissions_item import (
+    check_update_on_call_role_data_attributes_heartbeats_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_heartbeats_permissions_item import (
     UpdateOnCallRoleDataAttributesHeartbeatsPermissionsItem,
-    check_update_on_call_role_data_attributes_heartbeats_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_integrations_permissions_item import (
+    check_update_on_call_role_data_attributes_integrations_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_integrations_permissions_item import (
     UpdateOnCallRoleDataAttributesIntegrationsPermissionsItem,
-    check_update_on_call_role_data_attributes_integrations_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_invitations_permissions_item import (
+    check_update_on_call_role_data_attributes_invitations_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_invitations_permissions_item import (
     UpdateOnCallRoleDataAttributesInvitationsPermissionsItem,
-    check_update_on_call_role_data_attributes_invitations_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_live_call_routing_permissions_item import (
+    check_update_on_call_role_data_attributes_live_call_routing_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_live_call_routing_permissions_item import (
     UpdateOnCallRoleDataAttributesLiveCallRoutingPermissionsItem,
-    check_update_on_call_role_data_attributes_live_call_routing_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
+    check_update_on_call_role_data_attributes_on_call_readiness_report_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_on_call_readiness_report_permissions_item import (
     UpdateOnCallRoleDataAttributesOnCallReadinessReportPermissionsItem,
-    check_update_on_call_role_data_attributes_on_call_readiness_report_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_on_call_roles_permissions_item import (
+    check_update_on_call_role_data_attributes_on_call_roles_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_on_call_roles_permissions_item import (
     UpdateOnCallRoleDataAttributesOnCallRolesPermissionsItem,
-    check_update_on_call_role_data_attributes_on_call_roles_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_schedule_override_permissions_item import (
+    check_update_on_call_role_data_attributes_schedule_override_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_schedule_override_permissions_item import (
     UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem,
-    check_update_on_call_role_data_attributes_schedule_override_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_schedules_permissions_item import (
+    check_update_on_call_role_data_attributes_schedules_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_schedules_permissions_item import (
     UpdateOnCallRoleDataAttributesSchedulesPermissionsItem,
-    check_update_on_call_role_data_attributes_schedules_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_services_permissions_item import (
+    check_update_on_call_role_data_attributes_services_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_services_permissions_item import (
     UpdateOnCallRoleDataAttributesServicesPermissionsItem,
-    check_update_on_call_role_data_attributes_services_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_webhooks_permissions_item import (
+    check_update_on_call_role_data_attributes_webhooks_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_webhooks_permissions_item import (
     UpdateOnCallRoleDataAttributesWebhooksPermissionsItem,
-    check_update_on_call_role_data_attributes_webhooks_permissions_item,
+)
+from ..models.update_on_call_role_data_attributes_workflows_permissions_item import (
+    check_update_on_call_role_data_attributes_workflows_permissions_item,
 )
 from ..models.update_on_call_role_data_attributes_workflows_permissions_item import (
     UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem,
-    check_update_on_call_role_data_attributes_workflows_permissions_item,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateOnCallRoleDataAttributes")
 
@@ -125,8 +186,10 @@ class UpdateOnCallRoleDataAttributes:
         schedule_override_permissions (list[UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem] | Unset):
         schedules_permissions (list[UpdateOnCallRoleDataAttributesSchedulesPermissionsItem] | Unset):
         services_permissions (list[UpdateOnCallRoleDataAttributesServicesPermissionsItem] | Unset):
+        functionalities_permissions (list[UpdateOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset):
         webhooks_permissions (list[UpdateOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset):
         workflows_permissions (list[UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem] | Unset):
+        catalogs_permissions (list[UpdateOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset):
     """
 
     name: str | Unset = UNSET
@@ -157,8 +220,10 @@ class UpdateOnCallRoleDataAttributes:
     schedule_override_permissions: list[UpdateOnCallRoleDataAttributesScheduleOverridePermissionsItem] | Unset = UNSET
     schedules_permissions: list[UpdateOnCallRoleDataAttributesSchedulesPermissionsItem] | Unset = UNSET
     services_permissions: list[UpdateOnCallRoleDataAttributesServicesPermissionsItem] | Unset = UNSET
+    functionalities_permissions: list[UpdateOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset = UNSET
     webhooks_permissions: list[UpdateOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset = UNSET
     workflows_permissions: list[UpdateOnCallRoleDataAttributesWorkflowsPermissionsItem] | Unset = UNSET
+    catalogs_permissions: list[UpdateOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -305,6 +370,13 @@ class UpdateOnCallRoleDataAttributes:
                 services_permissions_item: str = services_permissions_item_data
                 services_permissions.append(services_permissions_item)
 
+        functionalities_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.functionalities_permissions, Unset):
+            functionalities_permissions = []
+            for functionalities_permissions_item_data in self.functionalities_permissions:
+                functionalities_permissions_item: str = functionalities_permissions_item_data
+                functionalities_permissions.append(functionalities_permissions_item)
+
         webhooks_permissions: list[str] | Unset = UNSET
         if not isinstance(self.webhooks_permissions, Unset):
             webhooks_permissions = []
@@ -318,6 +390,13 @@ class UpdateOnCallRoleDataAttributes:
             for workflows_permissions_item_data in self.workflows_permissions:
                 workflows_permissions_item: str = workflows_permissions_item_data
                 workflows_permissions.append(workflows_permissions_item)
+
+        catalogs_permissions: list[str] | Unset = UNSET
+        if not isinstance(self.catalogs_permissions, Unset):
+            catalogs_permissions = []
+            for catalogs_permissions_item_data in self.catalogs_permissions:
+                catalogs_permissions_item: str = catalogs_permissions_item_data
+                catalogs_permissions.append(catalogs_permissions_item)
 
         field_dict: dict[str, Any] = {}
 
@@ -366,10 +445,14 @@ class UpdateOnCallRoleDataAttributes:
             field_dict["schedules_permissions"] = schedules_permissions
         if services_permissions is not UNSET:
             field_dict["services_permissions"] = services_permissions
+        if functionalities_permissions is not UNSET:
+            field_dict["functionalities_permissions"] = functionalities_permissions
         if webhooks_permissions is not UNSET:
             field_dict["webhooks_permissions"] = webhooks_permissions
         if workflows_permissions is not UNSET:
             field_dict["workflows_permissions"] = workflows_permissions
+        if catalogs_permissions is not UNSET:
+            field_dict["catalogs_permissions"] = catalogs_permissions
 
         return field_dict
 
@@ -626,6 +709,19 @@ class UpdateOnCallRoleDataAttributes:
 
                 services_permissions.append(services_permissions_item)
 
+        _functionalities_permissions = d.pop("functionalities_permissions", UNSET)
+        functionalities_permissions: list[UpdateOnCallRoleDataAttributesFunctionalitiesPermissionsItem] | Unset = UNSET
+        if _functionalities_permissions is not UNSET:
+            functionalities_permissions = []
+            for functionalities_permissions_item_data in _functionalities_permissions:
+                functionalities_permissions_item = (
+                    check_update_on_call_role_data_attributes_functionalities_permissions_item(
+                        functionalities_permissions_item_data
+                    )
+                )
+
+                functionalities_permissions.append(functionalities_permissions_item)
+
         _webhooks_permissions = d.pop("webhooks_permissions", UNSET)
         webhooks_permissions: list[UpdateOnCallRoleDataAttributesWebhooksPermissionsItem] | Unset = UNSET
         if _webhooks_permissions is not UNSET:
@@ -647,6 +743,17 @@ class UpdateOnCallRoleDataAttributes:
                 )
 
                 workflows_permissions.append(workflows_permissions_item)
+
+        _catalogs_permissions = d.pop("catalogs_permissions", UNSET)
+        catalogs_permissions: list[UpdateOnCallRoleDataAttributesCatalogsPermissionsItem] | Unset = UNSET
+        if _catalogs_permissions is not UNSET:
+            catalogs_permissions = []
+            for catalogs_permissions_item_data in _catalogs_permissions:
+                catalogs_permissions_item = check_update_on_call_role_data_attributes_catalogs_permissions_item(
+                    catalogs_permissions_item_data
+                )
+
+                catalogs_permissions.append(catalogs_permissions_item)
 
         update_on_call_role_data_attributes = cls(
             name=name,
@@ -671,8 +778,10 @@ class UpdateOnCallRoleDataAttributes:
             schedule_override_permissions=schedule_override_permissions,
             schedules_permissions=schedules_permissions,
             services_permissions=services_permissions,
+            functionalities_permissions=functionalities_permissions,
             webhooks_permissions=webhooks_permissions,
             workflows_permissions=workflows_permissions,
+            catalogs_permissions=catalogs_permissions,
         )
 
         return update_on_call_role_data_attributes

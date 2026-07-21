@@ -1,16 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_alert_routing_rule_data_attributes_condition_type import (
-    UpdateAlertRoutingRuleDataAttributesConditionType,
     check_update_alert_routing_rule_data_attributes_condition_type,
 )
+from ..models.update_alert_routing_rule_data_attributes_condition_type import (
+    UpdateAlertRoutingRuleDataAttributesConditionType,
+)
 from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.update_alert_routing_rule_data_attributes_conditions_item import (
@@ -49,6 +55,13 @@ class UpdateAlertRoutingRuleDataAttributes:
     destination: UpdateAlertRoutingRuleDataAttributesDestination | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_alert_routing_rule_data_attributes_destination import (
+            UpdateAlertRoutingRuleDataAttributesDestination,
+        )
+        from ..models.update_alert_routing_rule_data_attributes_conditions_item import (
+            UpdateAlertRoutingRuleDataAttributesConditionsItem,
+        )
+
         name = self.name
 
         enabled = self.enabled

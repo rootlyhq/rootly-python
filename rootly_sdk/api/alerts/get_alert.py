@@ -1,22 +1,31 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.alert_response import AlertResponse
 from ...models.errors_list import ErrorsList
+from ...models.get_alert_include import check_get_alert_include
 from ...models.get_alert_include import GetAlertInclude
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     include: GetAlertInclude | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -26,29 +35,33 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/alerts/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/alerts/{id}".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -58,9 +71,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +85,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetAlertInclude | Unset = UNSET,
+
 ) -> Response[AlertResponse | ErrorsList]:
-    """Retrieves an alert
+    """ Retrieves an alert
 
      Retrieves a specific alert by id
 
@@ -89,11 +101,13 @@ def sync_detailed(
 
     Returns:
         Response[AlertResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
     response = client.get_httpx_client().request(
@@ -102,14 +116,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetAlertInclude | Unset = UNSET,
+
 ) -> AlertResponse | ErrorsList | None:
-    """Retrieves an alert
+    """ Retrieves an alert
 
      Retrieves a specific alert by id
 
@@ -123,22 +137,24 @@ def sync(
 
     Returns:
         AlertResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        include=include,
-    ).parsed
+client=client,
+include=include,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetAlertInclude | Unset = UNSET,
+
 ) -> Response[AlertResponse | ErrorsList]:
-    """Retrieves an alert
+    """ Retrieves an alert
 
      Retrieves a specific alert by id
 
@@ -152,25 +168,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetAlertInclude | Unset = UNSET,
+
 ) -> AlertResponse | ErrorsList | None:
-    """Retrieves an alert
+    """ Retrieves an alert
 
      Retrieves a specific alert by id
 
@@ -184,12 +204,12 @@ async def asyncio(
 
     Returns:
         AlertResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            include=include,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+include=include,
+
+    )).parsed

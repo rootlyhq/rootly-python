@@ -1,16 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.create_pagerduty_status_update_task_params_task_type import (
-    CreatePagerdutyStatusUpdateTaskParamsTaskType,
     check_create_pagerduty_status_update_task_params_task_type,
 )
+from ..models.create_pagerduty_status_update_task_params_task_type import CreatePagerdutyStatusUpdateTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="CreatePagerdutyStatusUpdateTaskParams")
 

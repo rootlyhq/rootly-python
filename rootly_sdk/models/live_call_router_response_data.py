@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.live_call_router_response_data_type import (
-    LiveCallRouterResponseDataType,
-    check_live_call_router_response_data_type,
-)
+from ..types import UNSET, Unset
+
+from ..models.live_call_router_response_data_type import check_live_call_router_response_data_type
+from ..models.live_call_router_response_data_type import LiveCallRouterResponseDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.live_call_router import LiveCallRouter
@@ -33,6 +34,8 @@ class LiveCallRouterResponseData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.live_call_router import LiveCallRouter
+
         id = self.id
 
         type_: str = self.type_

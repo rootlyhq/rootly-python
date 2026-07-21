@@ -1,13 +1,18 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.api_key_list import ApiKeyList
 from ...models.errors_list import ErrorsList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -36,7 +41,11 @@ def _get_kwargs(
     filterlast_used_atlt: str | Unset = UNSET,
     filterlast_used_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -88,7 +97,9 @@ def _get_kwargs(
 
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -96,19 +107,23 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ApiKeyList | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ApiKeyList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = ApiKeyList.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
+
+
 
         return response_401
 
@@ -118,9 +133,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ApiKeyList | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ApiKeyList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -156,8 +169,9 @@ def sync_detailed(
     filterlast_used_atlt: str | Unset = UNSET,
     filterlast_used_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[ApiKeyList | ErrorsList]:
-    """List API keys
+    """ List API keys
 
      List API keys for the current organization. Returns key metadata including name, kind, expiration,
     and last usage — the secret token value is never included in the response.
@@ -209,33 +223,35 @@ def sync_detailed(
 
     Returns:
         Response[ApiKeyList | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filteruser_id=filteruser_id,
-        filtergroup_ids=filtergroup_ids,
-        filterrole_id=filterrole_id,
-        filteractive=filteractive,
-        filterexpired=filterexpired,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterexpires_atgt=filterexpires_atgt,
-        filterexpires_atgte=filterexpires_atgte,
-        filterexpires_atlt=filterexpires_atlt,
-        filterexpires_atlte=filterexpires_atlte,
-        filterlast_used_atgt=filterlast_used_atgt,
-        filterlast_used_atgte=filterlast_used_atgte,
-        filterlast_used_atlt=filterlast_used_atlt,
-        filterlast_used_atlte=filterlast_used_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtersearch=filtersearch,
+filtername=filtername,
+filteruser_id=filteruser_id,
+filtergroup_ids=filtergroup_ids,
+filterrole_id=filterrole_id,
+filteractive=filteractive,
+filterexpired=filterexpired,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterexpires_atgt=filterexpires_atgt,
+filterexpires_atgte=filterexpires_atgte,
+filterexpires_atlt=filterexpires_atlt,
+filterexpires_atlte=filterexpires_atlte,
+filterlast_used_atgt=filterlast_used_atgt,
+filterlast_used_atgte=filterlast_used_atgte,
+filterlast_used_atlt=filterlast_used_atlt,
+filterlast_used_atlte=filterlast_used_atlte,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -243,7 +259,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -272,8 +287,9 @@ def sync(
     filterlast_used_atlt: str | Unset = UNSET,
     filterlast_used_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> ApiKeyList | ErrorsList | None:
-    """List API keys
+    """ List API keys
 
      List API keys for the current organization. Returns key metadata including name, kind, expiration,
     and last usage — the secret token value is never included in the response.
@@ -325,36 +341,37 @@ def sync(
 
     Returns:
         ApiKeyList | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filteruser_id=filteruser_id,
-        filtergroup_ids=filtergroup_ids,
-        filterrole_id=filterrole_id,
-        filteractive=filteractive,
-        filterexpired=filterexpired,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterexpires_atgt=filterexpires_atgt,
-        filterexpires_atgte=filterexpires_atgte,
-        filterexpires_atlt=filterexpires_atlt,
-        filterexpires_atlte=filterexpires_atlte,
-        filterlast_used_atgt=filterlast_used_atgt,
-        filterlast_used_atgte=filterlast_used_atgte,
-        filterlast_used_atlt=filterlast_used_atlt,
-        filterlast_used_atlte=filterlast_used_atlte,
-        sort=sort,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtersearch=filtersearch,
+filtername=filtername,
+filteruser_id=filteruser_id,
+filtergroup_ids=filtergroup_ids,
+filterrole_id=filterrole_id,
+filteractive=filteractive,
+filterexpired=filterexpired,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterexpires_atgt=filterexpires_atgt,
+filterexpires_atgte=filterexpires_atgte,
+filterexpires_atlt=filterexpires_atlt,
+filterexpires_atlte=filterexpires_atlte,
+filterlast_used_atgt=filterlast_used_atgt,
+filterlast_used_atgte=filterlast_used_atgte,
+filterlast_used_atlt=filterlast_used_atlt,
+filterlast_used_atlte=filterlast_used_atlte,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -383,8 +400,9 @@ async def asyncio_detailed(
     filterlast_used_atlt: str | Unset = UNSET,
     filterlast_used_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[ApiKeyList | ErrorsList]:
-    """List API keys
+    """ List API keys
 
      List API keys for the current organization. Returns key metadata including name, kind, expiration,
     and last usage — the secret token value is never included in the response.
@@ -436,39 +454,42 @@ async def asyncio_detailed(
 
     Returns:
         Response[ApiKeyList | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterkind=filterkind,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filteruser_id=filteruser_id,
-        filtergroup_ids=filtergroup_ids,
-        filterrole_id=filterrole_id,
-        filteractive=filteractive,
-        filterexpired=filterexpired,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        filterexpires_atgt=filterexpires_atgt,
-        filterexpires_atgte=filterexpires_atgte,
-        filterexpires_atlt=filterexpires_atlt,
-        filterexpires_atlte=filterexpires_atlte,
-        filterlast_used_atgt=filterlast_used_atgt,
-        filterlast_used_atgte=filterlast_used_atgte,
-        filterlast_used_atlt=filterlast_used_atlt,
-        filterlast_used_atlte=filterlast_used_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtersearch=filtersearch,
+filtername=filtername,
+filteruser_id=filteruser_id,
+filtergroup_ids=filtergroup_ids,
+filterrole_id=filterrole_id,
+filteractive=filteractive,
+filterexpired=filterexpired,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterexpires_atgt=filterexpires_atgt,
+filterexpires_atgte=filterexpires_atgte,
+filterexpires_atlt=filterexpires_atlt,
+filterexpires_atlte=filterexpires_atlte,
+filterlast_used_atgt=filterlast_used_atgt,
+filterlast_used_atgte=filterlast_used_atgte,
+filterlast_used_atlt=filterlast_used_atlt,
+filterlast_used_atlte=filterlast_used_atlte,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -497,8 +518,9 @@ async def asyncio(
     filterlast_used_atlt: str | Unset = UNSET,
     filterlast_used_atlte: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> ApiKeyList | ErrorsList | None:
-    """List API keys
+    """ List API keys
 
      List API keys for the current organization. Returns key metadata including name, kind, expiration,
     and last usage — the secret token value is never included in the response.
@@ -550,34 +572,34 @@ async def asyncio(
 
     Returns:
         ApiKeyList | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filterkind=filterkind,
-            filtersearch=filtersearch,
-            filtername=filtername,
-            filteruser_id=filteruser_id,
-            filtergroup_ids=filtergroup_ids,
-            filterrole_id=filterrole_id,
-            filteractive=filteractive,
-            filterexpired=filterexpired,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-            filterexpires_atgt=filterexpires_atgt,
-            filterexpires_atgte=filterexpires_atgte,
-            filterexpires_atlt=filterexpires_atlt,
-            filterexpires_atlte=filterexpires_atlte,
-            filterlast_used_atgt=filterlast_used_atgt,
-            filterlast_used_atgte=filterlast_used_atgte,
-            filterlast_used_atlt=filterlast_used_atlt,
-            filterlast_used_atlte=filterlast_used_atlte,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterkind=filterkind,
+filtersearch=filtersearch,
+filtername=filtername,
+filteruser_id=filteruser_id,
+filtergroup_ids=filtergroup_ids,
+filterrole_id=filterrole_id,
+filteractive=filteractive,
+filterexpired=filterexpired,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterexpires_atgt=filterexpires_atgt,
+filterexpires_atgte=filterexpires_atgte,
+filterexpires_atlt=filterexpires_atlt,
+filterexpires_atlte=filterexpires_atlte,
+filterlast_used_atgt=filterlast_used_atgt,
+filterlast_used_atgte=filterlast_used_atgte,
+filterlast_used_atlt=filterlast_used_atlt,
+filterlast_used_atlte=filterlast_used_atlte,
+sort=sort,
+
+    )).parsed

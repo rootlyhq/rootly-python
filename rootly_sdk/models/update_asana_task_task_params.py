@@ -1,20 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.update_asana_task_task_params_dependency_direction import (
-    UpdateAsanaTaskTaskParamsDependencyDirection,
     check_update_asana_task_task_params_dependency_direction,
 )
-from ..models.update_asana_task_task_params_task_type import (
-    UpdateAsanaTaskTaskParamsTaskType,
-    check_update_asana_task_task_params_task_type,
-)
+from ..models.update_asana_task_task_params_dependency_direction import UpdateAsanaTaskTaskParamsDependencyDirection
+from ..models.update_asana_task_task_params_task_type import check_update_asana_task_task_params_task_type
+from ..models.update_asana_task_task_params_task_type import UpdateAsanaTaskTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_asana_task_task_params_completion import UpdateAsanaTaskTaskParamsCompletion
@@ -53,6 +54,8 @@ class UpdateAsanaTaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_asana_task_task_params_completion import UpdateAsanaTaskTaskParamsCompletion
+
         task_id = self.task_id
 
         completion = self.completion.to_dict()

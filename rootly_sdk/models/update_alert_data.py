@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_alert_data_type import UpdateAlertDataType, check_update_alert_data_type
 from ..types import UNSET, Unset
+
+from ..models.update_alert_data_type import check_update_alert_data_type
+from ..models.update_alert_data_type import UpdateAlertDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_alert_data_attributes import UpdateAlertDataAttributes
@@ -20,30 +23,29 @@ T = TypeVar("T", bound="UpdateAlertData")
 class UpdateAlertData:
     """
     Attributes:
+        type_ (UpdateAlertDataType):
         attributes (UpdateAlertDataAttributes):
-        type_ (UpdateAlertDataType | Unset):
     """
 
+    type_: UpdateAlertDataType
     attributes: UpdateAlertDataAttributes
-    type_: UpdateAlertDataType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attributes = self.attributes.to_dict()
+        from ..models.update_alert_data_attributes import UpdateAlertDataAttributes
 
-        type_: str | Unset = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_
+        type_: str = self.type_
+
+        attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "type": type_,
                 "attributes": attributes,
             }
         )
-        if type_ is not UNSET:
-            field_dict["type"] = type_
 
         return field_dict
 
@@ -52,18 +54,13 @@ class UpdateAlertData:
         from ..models.update_alert_data_attributes import UpdateAlertDataAttributes
 
         d = dict(src_dict)
+        type_ = check_update_alert_data_type(d.pop("type"))
+
         attributes = UpdateAlertDataAttributes.from_dict(d.pop("attributes"))
 
-        _type_ = d.pop("type", UNSET)
-        type_: UpdateAlertDataType | Unset
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = check_update_alert_data_type(_type_)
-
         update_alert_data = cls(
-            attributes=attributes,
             type_=type_,
+            attributes=attributes,
         )
 
         update_alert_data.additional_properties = d

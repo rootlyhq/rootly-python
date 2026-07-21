@@ -1,27 +1,40 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_status_page_data_attributes_authentication_method import (
-    UpdateStatusPageDataAttributesAuthenticationMethod,
     check_update_status_page_data_attributes_authentication_method,
+)
+from ..models.update_status_page_data_attributes_authentication_method import (
+    UpdateStatusPageDataAttributesAuthenticationMethod,
+)
+from ..models.update_status_page_data_attributes_saml_name_identifier_format import (
+    check_update_status_page_data_attributes_saml_name_identifier_format,
 )
 from ..models.update_status_page_data_attributes_saml_name_identifier_format import (
     UpdateStatusPageDataAttributesSamlNameIdentifierFormat,
-    check_update_status_page_data_attributes_saml_name_identifier_format,
+)
+from ..models.update_status_page_data_attributes_section_order_type_0_item import (
+    check_update_status_page_data_attributes_section_order_type_0_item,
 )
 from ..models.update_status_page_data_attributes_section_order_type_0_item import (
     UpdateStatusPageDataAttributesSectionOrderType0Item,
-    check_update_status_page_data_attributes_section_order_type_0_item,
+)
+from ..models.update_status_page_data_attributes_show_uptime_last_days import (
+    check_update_status_page_data_attributes_show_uptime_last_days,
 )
 from ..models.update_status_page_data_attributes_show_uptime_last_days import (
     UpdateStatusPageDataAttributesShowUptimeLastDays,
-    check_update_status_page_data_attributes_show_uptime_last_days,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateStatusPageDataAttributes")
 

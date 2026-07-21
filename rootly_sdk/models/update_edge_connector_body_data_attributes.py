@@ -1,16 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.update_edge_connector_body_data_attributes_status import (
-    UpdateEdgeConnectorBodyDataAttributesStatus,
     check_update_edge_connector_body_data_attributes_status,
 )
+from ..models.update_edge_connector_body_data_attributes_status import UpdateEdgeConnectorBodyDataAttributesStatus
 from ..types import UNSET, Unset
+from typing import cast
+
+if TYPE_CHECKING:
+    from ..models.update_edge_connector_body_data_attributes_filters import UpdateEdgeConnectorBodyDataAttributesFilters
+
 
 T = TypeVar("T", bound="UpdateEdgeConnectorBodyDataAttributes")
 
@@ -23,15 +30,21 @@ class UpdateEdgeConnectorBodyDataAttributes:
         description (str | Unset):
         status (UpdateEdgeConnectorBodyDataAttributesStatus | Unset):
         subscriptions (list[str] | Unset):
+        filters (UpdateEdgeConnectorBodyDataAttributesFilters | Unset): Event filters
     """
 
     name: str | Unset = UNSET
     description: str | Unset = UNSET
     status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset = UNSET
     subscriptions: list[str] | Unset = UNSET
+    filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_edge_connector_body_data_attributes_filters import (
+            UpdateEdgeConnectorBodyDataAttributesFilters,
+        )
+
         name = self.name
 
         description = self.description
@@ -44,6 +57,10 @@ class UpdateEdgeConnectorBodyDataAttributes:
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
+        filters: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.filters, Unset):
+            filters = self.filters.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -55,11 +72,17 @@ class UpdateEdgeConnectorBodyDataAttributes:
             field_dict["status"] = status
         if subscriptions is not UNSET:
             field_dict["subscriptions"] = subscriptions
+        if filters is not UNSET:
+            field_dict["filters"] = filters
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.update_edge_connector_body_data_attributes_filters import (
+            UpdateEdgeConnectorBodyDataAttributesFilters,
+        )
+
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
@@ -74,11 +97,19 @@ class UpdateEdgeConnectorBodyDataAttributes:
 
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
+        _filters = d.pop("filters", UNSET)
+        filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset
+        if isinstance(_filters, Unset):
+            filters = UNSET
+        else:
+            filters = UpdateEdgeConnectorBodyDataAttributesFilters.from_dict(_filters)
+
         update_edge_connector_body_data_attributes = cls(
             name=name,
             description=description,
             status=status,
             subscriptions=subscriptions,
+            filters=filters,
         )
 
         update_edge_connector_body_data_attributes.additional_properties = d

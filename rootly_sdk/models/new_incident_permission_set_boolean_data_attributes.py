@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_incident_permission_set_boolean_data_attributes_kind import (
-    NewIncidentPermissionSetBooleanDataAttributesKind,
     check_new_incident_permission_set_boolean_data_attributes_kind,
 )
+from ..models.new_incident_permission_set_boolean_data_attributes_kind import (
+    NewIncidentPermissionSetBooleanDataAttributesKind,
+)
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_incident_permission_set_boolean_data_attributes_severity_params import (
@@ -38,6 +44,10 @@ class NewIncidentPermissionSetBooleanDataAttributes:
     severity_params: NewIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_incident_permission_set_boolean_data_attributes_severity_params import (
+            NewIncidentPermissionSetBooleanDataAttributesSeverityParams,
+        )
+
         incident_permission_set_id = self.incident_permission_set_id
 
         kind: str = self.kind

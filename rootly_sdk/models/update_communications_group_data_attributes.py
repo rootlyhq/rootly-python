@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_communications_group_data_attributes_condition_type import (
-    UpdateCommunicationsGroupDataAttributesConditionType,
     check_update_communications_group_data_attributes_condition_type,
 )
+from ..models.update_communications_group_data_attributes_condition_type import (
+    UpdateCommunicationsGroupDataAttributesConditionType,
+)
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_communications_group_data_attributes_communication_external_group_members_type_0_item import (
@@ -61,6 +67,13 @@ class UpdateCommunicationsGroupDataAttributes:
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_communications_group_data_attributes_communication_group_conditions_type_0_item import (
+            UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0Item,
+        )
+        from ..models.update_communications_group_data_attributes_communication_external_group_members_type_0_item import (
+            UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item,
+        )
+
         name = self.name
 
         description: None | str | Unset

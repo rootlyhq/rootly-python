@@ -1,12 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.form_set_list import FormSetList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -20,7 +25,11 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -42,7 +51,9 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -50,12 +61,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FormSetList | None:
     if response.status_code == 200:
         response_200 = FormSetList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -86,8 +101,9 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> Response[FormSetList]:
-    """List Form Sets
+    """ List Form Sets
 
      List form_sets
 
@@ -108,18 +124,20 @@ def sync_detailed(
 
     Returns:
         Response[FormSetList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filteris_default=filteris_default,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filteris_default=filteris_default,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
     )
 
     response = client.get_httpx_client().request(
@@ -127,7 +145,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -141,8 +158,9 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> FormSetList | None:
-    """List Form Sets
+    """ List Form Sets
 
      List form_sets
 
@@ -163,21 +181,22 @@ def sync(
 
     Returns:
         FormSetList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filteris_default=filteris_default,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filteris_default=filteris_default,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -191,8 +210,9 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> Response[FormSetList]:
-    """List Form Sets
+    """ List Form Sets
 
      List form_sets
 
@@ -213,24 +233,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[FormSetList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filteris_default=filteris_default,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filteris_default=filteris_default,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -244,8 +267,9 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+
 ) -> FormSetList | None:
-    """List Form Sets
+    """ List Form Sets
 
      List form_sets
 
@@ -266,19 +290,19 @@ async def asyncio(
 
     Returns:
         FormSetList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filterslug=filterslug,
-            filteris_default=filteris_default,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filteris_default=filteris_default,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+
+    )).parsed

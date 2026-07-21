@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.print_task_params_task_type import PrintTaskParamsTaskType, check_print_task_params_task_type
 from ..types import UNSET, Unset
+
+from ..models.print_task_params_task_type import check_print_task_params_task_type
+from ..models.print_task_params_task_type import PrintTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="PrintTaskParams")
 

@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.new_edge_connector_edge_connector_status import (
-    NewEdgeConnectorEdgeConnectorStatus,
-    check_new_edge_connector_edge_connector_status,
-)
 from ..types import UNSET, Unset
+
+from ..models.new_edge_connector_edge_connector_status import check_new_edge_connector_edge_connector_status
+from ..models.new_edge_connector_edge_connector_status import NewEdgeConnectorEdgeConnectorStatus
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewEdgeConnectorEdgeConnector")
 

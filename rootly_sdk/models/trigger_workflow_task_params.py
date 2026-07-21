@@ -1,24 +1,23 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.trigger_workflow_task_params_attribute_to_query_by import (
-    TriggerWorkflowTaskParamsAttributeToQueryBy,
     check_trigger_workflow_task_params_attribute_to_query_by,
 )
-from ..models.trigger_workflow_task_params_kind import (
-    TriggerWorkflowTaskParamsKind,
-    check_trigger_workflow_task_params_kind,
-)
-from ..models.trigger_workflow_task_params_task_type import (
-    TriggerWorkflowTaskParamsTaskType,
-    check_trigger_workflow_task_params_task_type,
-)
+from ..models.trigger_workflow_task_params_attribute_to_query_by import TriggerWorkflowTaskParamsAttributeToQueryBy
+from ..models.trigger_workflow_task_params_kind import check_trigger_workflow_task_params_kind
+from ..models.trigger_workflow_task_params_kind import TriggerWorkflowTaskParamsKind
+from ..models.trigger_workflow_task_params_task_type import check_trigger_workflow_task_params_task_type
+from ..models.trigger_workflow_task_params_task_type import TriggerWorkflowTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.trigger_workflow_task_params_resource import TriggerWorkflowTaskParamsResource
@@ -57,6 +56,9 @@ class TriggerWorkflowTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.trigger_workflow_task_params_workflow import TriggerWorkflowTaskParamsWorkflow
+        from ..models.trigger_workflow_task_params_resource import TriggerWorkflowTaskParamsResource
+
         kind: str = self.kind
 
         attribute_to_query_by: str = self.attribute_to_query_by

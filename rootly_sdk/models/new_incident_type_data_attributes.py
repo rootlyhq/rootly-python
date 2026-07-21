@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_incident_type_data_attributes_properties_item import NewIncidentTypeDataAttributesPropertiesItem
@@ -47,6 +51,16 @@ class NewIncidentTypeDataAttributes:
     properties: list[NewIncidentTypeDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_incident_type_data_attributes_properties_item import (
+            NewIncidentTypeDataAttributesPropertiesItem,
+        )
+        from ..models.new_incident_type_data_attributes_slack_aliases_type_0_item import (
+            NewIncidentTypeDataAttributesSlackAliasesType0Item,
+        )
+        from ..models.new_incident_type_data_attributes_slack_channels_type_0_item import (
+            NewIncidentTypeDataAttributesSlackChannelsType0Item,
+        )
+
         name = self.name
 
         description: None | str | Unset

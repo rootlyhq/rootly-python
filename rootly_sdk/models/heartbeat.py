@@ -1,18 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.heartbeat_interval_unit import HeartbeatIntervalUnit, check_heartbeat_interval_unit
-from ..models.heartbeat_notification_target_type import (
-    HeartbeatNotificationTargetType,
-    check_heartbeat_notification_target_type,
-)
-from ..models.heartbeat_status import HeartbeatStatus, check_heartbeat_status
 from ..types import UNSET, Unset
+
+from ..models.heartbeat_interval_unit import check_heartbeat_interval_unit
+from ..models.heartbeat_interval_unit import HeartbeatIntervalUnit
+from ..models.heartbeat_notification_target_type import check_heartbeat_notification_target_type
+from ..models.heartbeat_notification_target_type import HeartbeatNotificationTargetType
+from ..models.heartbeat_status import check_heartbeat_status
+from ..models.heartbeat_status import HeartbeatStatus
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="Heartbeat")
 
@@ -36,6 +40,7 @@ class Heartbeat:
         description (None | str | Unset): The description of the heartbeat
         alert_description (None | str | Unset): Description of alerts triggered when heartbeat expires.
         alert_urgency_id (None | str | Unset): Urgency of alerts triggered when heartbeat expires.
+        owner_group_ids (list[str] | Unset): List of team IDs that own this heartbeat
         ping_url (None | str | Unset): URL to receive heartbeat pings.
         secret (None | str | Unset): Secret used as bearer token when pinging heartbeat.
         last_pinged_at (None | str | Unset): When the heartbeat was last pinged.
@@ -56,6 +61,7 @@ class Heartbeat:
     description: None | str | Unset = UNSET
     alert_description: None | str | Unset = UNSET
     alert_urgency_id: None | str | Unset = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
     ping_url: None | str | Unset = UNSET
     secret: None | str | Unset = UNSET
     last_pinged_at: None | str | Unset = UNSET
@@ -102,6 +108,10 @@ class Heartbeat:
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
+
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = self.owner_group_ids
 
         ping_url: None | str | Unset
         if isinstance(self.ping_url, Unset):
@@ -150,6 +160,8 @@ class Heartbeat:
             field_dict["alert_description"] = alert_description
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if ping_url is not UNSET:
             field_dict["ping_url"] = ping_url
         if secret is not UNSET:
@@ -213,6 +225,8 @@ class Heartbeat:
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
+        owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
+
         def _parse_ping_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -264,6 +278,7 @@ class Heartbeat:
             description=description,
             alert_description=alert_description,
             alert_urgency_id=alert_urgency_id,
+            owner_group_ids=owner_group_ids,
             ping_url=ping_url,
             secret=secret,
             last_pinged_at=last_pinged_at,

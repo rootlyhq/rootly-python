@@ -1,33 +1,41 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
-from uuid import UUID
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
 from ...models.update_workflow import UpdateWorkflow
 from ...models.workflow_response import WorkflowResponse
-from ...types import Response
+from typing import cast
+from uuid import UUID
+
 
 
 def _get_kwargs(
     id: str | UUID,
     *,
     body: UpdateWorkflow,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/workflows/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/workflows/{id}".format(id=quote(str(id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -35,21 +43,26 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WorkflowResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | WorkflowResponse | None:
     if response.status_code == 200:
         response_200 = WorkflowResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 403:
         response_403 = ErrorsList.from_dict(response.json())
 
+
+
         return response_403
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -59,9 +72,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WorkflowResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | WorkflowResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +86,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflow,
+
 ) -> Response[ErrorsList | WorkflowResponse]:
-    """Update a workflow
+    """ Update a workflow
 
      Update a specific workflow by id
 
@@ -90,11 +102,13 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | WorkflowResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -103,14 +117,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflow,
+
 ) -> ErrorsList | WorkflowResponse | None:
-    """Update a workflow
+    """ Update a workflow
 
      Update a specific workflow by id
 
@@ -124,22 +138,24 @@ def sync(
 
     Returns:
         ErrorsList | WorkflowResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflow,
+
 ) -> Response[ErrorsList | WorkflowResponse]:
-    """Update a workflow
+    """ Update a workflow
 
      Update a specific workflow by id
 
@@ -153,25 +169,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | WorkflowResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflow,
+
 ) -> ErrorsList | WorkflowResponse | None:
-    """Update a workflow
+    """ Update a workflow
 
      Update a specific workflow by id
 
@@ -185,12 +205,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | WorkflowResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+body=body,
+
+    )).parsed

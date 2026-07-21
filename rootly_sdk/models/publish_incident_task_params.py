@@ -1,20 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.publish_incident_task_params_status import (
-    PublishIncidentTaskParamsStatus,
-    check_publish_incident_task_params_status,
-)
-from ..models.publish_incident_task_params_task_type import (
-    PublishIncidentTaskParamsTaskType,
-    check_publish_incident_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.publish_incident_task_params_status import check_publish_incident_task_params_status
+from ..models.publish_incident_task_params_status import PublishIncidentTaskParamsStatus
+from ..models.publish_incident_task_params_task_type import check_publish_incident_task_params_task_type
+from ..models.publish_incident_task_params_task_type import PublishIncidentTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.publish_incident_task_params_incident import PublishIncidentTaskParamsIncident
@@ -56,6 +55,11 @@ class PublishIncidentTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.publish_incident_task_params_incident import PublishIncidentTaskParamsIncident
+        from ..models.publish_incident_task_params_status_page_template import (
+            PublishIncidentTaskParamsStatusPageTemplate,
+        )
+
         incident = self.incident.to_dict()
 
         public_title = self.public_title

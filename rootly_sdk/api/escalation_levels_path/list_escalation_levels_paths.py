@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.escalation_policy_level_list import EscalationPolicyLevelList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -16,7 +20,11 @@ def _get_kwargs(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -26,24 +34,26 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/escalation_paths/{escalation_policy_path_id}/escalation_levels".format(
-            escalation_policy_path_id=quote(str(escalation_policy_path_id), safe=""),
-        ),
+        "url": "/v1/escalation_paths/{escalation_policy_path_id}/escalation_levels".format(escalation_policy_path_id=quote(str(escalation_policy_path_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> EscalationPolicyLevelList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> EscalationPolicyLevelList | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyLevelList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -53,9 +63,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[EscalationPolicyLevelList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[EscalationPolicyLevelList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +79,9 @@ def sync_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[EscalationPolicyLevelList]:
-    """List escalation levels for an Escalation Path
+    """ List escalation levels for an Escalation Path
 
      List escalation levels
 
@@ -88,13 +97,15 @@ def sync_detailed(
 
     Returns:
         Response[EscalationPolicyLevelList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         escalation_policy_path_id=escalation_policy_path_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
     response = client.get_httpx_client().request(
@@ -103,7 +114,6 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     escalation_policy_path_id: str,
     *,
@@ -111,8 +121,9 @@ def sync(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> EscalationPolicyLevelList | None:
-    """List escalation levels for an Escalation Path
+    """ List escalation levels for an Escalation Path
 
      List escalation levels
 
@@ -128,16 +139,17 @@ def sync(
 
     Returns:
         EscalationPolicyLevelList
-    """
+     """
+
 
     return sync_detailed(
         escalation_policy_path_id=escalation_policy_path_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
 
+    ).parsed
 
 async def asyncio_detailed(
     escalation_policy_path_id: str,
@@ -146,8 +158,9 @@ async def asyncio_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[EscalationPolicyLevelList]:
-    """List escalation levels for an Escalation Path
+    """ List escalation levels for an Escalation Path
 
      List escalation levels
 
@@ -163,19 +176,22 @@ async def asyncio_detailed(
 
     Returns:
         Response[EscalationPolicyLevelList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         escalation_policy_path_id=escalation_policy_path_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     escalation_policy_path_id: str,
@@ -184,8 +200,9 @@ async def asyncio(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> EscalationPolicyLevelList | None:
-    """List escalation levels for an Escalation Path
+    """ List escalation levels for an Escalation Path
 
      List escalation levels
 
@@ -201,14 +218,14 @@ async def asyncio(
 
     Returns:
         EscalationPolicyLevelList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            escalation_policy_path_id=escalation_policy_path_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        escalation_policy_path_id=escalation_policy_path_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
+    )).parsed

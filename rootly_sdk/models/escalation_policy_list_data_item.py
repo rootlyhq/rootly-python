@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.escalation_policy_list_data_item_type import (
-    EscalationPolicyListDataItemType,
-    check_escalation_policy_list_data_item_type,
-)
+from ..types import UNSET, Unset
+
+from ..models.escalation_policy_list_data_item_type import check_escalation_policy_list_data_item_type
+from ..models.escalation_policy_list_data_item_type import EscalationPolicyListDataItemType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.escalation_policy import EscalationPolicy
@@ -33,6 +34,8 @@ class EscalationPolicyListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.escalation_policy import EscalationPolicy
+
         id = self.id
 
         type_: str = self.type_

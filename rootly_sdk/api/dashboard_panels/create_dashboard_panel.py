@@ -1,32 +1,40 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.dashboard_panel_response import DashboardPanelResponse
 from ...models.errors_list import ErrorsList
 from ...models.new_dashboard_panel import NewDashboardPanel
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     dashboard_id: str,
     *,
     body: NewDashboardPanel,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/dashboards/{dashboard_id}/panels".format(
-            dashboard_id=quote(str(dashboard_id), safe=""),
-        ),
+        "url": "/v1/dashboards/{dashboard_id}/panels".format(dashboard_id=quote(str(dashboard_id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -34,16 +42,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DashboardPanelResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardPanelResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = DashboardPanelResponse.from_dict(response.json())
+
+
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
+
+
 
         return response_401
 
@@ -53,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DashboardPanelResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[DashboardPanelResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +78,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewDashboardPanel,
+
 ) -> Response[DashboardPanelResponse | ErrorsList]:
-    """Creates a dashboard panel
+    """ Creates a dashboard panel
 
      Creates a new dashboard panel from provided data
 
@@ -84,11 +94,13 @@ def sync_detailed(
 
     Returns:
         Response[DashboardPanelResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         dashboard_id=dashboard_id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -97,14 +109,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     dashboard_id: str,
     *,
     client: AuthenticatedClient,
     body: NewDashboardPanel,
+
 ) -> DashboardPanelResponse | ErrorsList | None:
-    """Creates a dashboard panel
+    """ Creates a dashboard panel
 
      Creates a new dashboard panel from provided data
 
@@ -118,22 +130,24 @@ def sync(
 
     Returns:
         DashboardPanelResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         dashboard_id=dashboard_id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     dashboard_id: str,
     *,
     client: AuthenticatedClient,
     body: NewDashboardPanel,
+
 ) -> Response[DashboardPanelResponse | ErrorsList]:
-    """Creates a dashboard panel
+    """ Creates a dashboard panel
 
      Creates a new dashboard panel from provided data
 
@@ -147,25 +161,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[DashboardPanelResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         dashboard_id=dashboard_id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     dashboard_id: str,
     *,
     client: AuthenticatedClient,
     body: NewDashboardPanel,
+
 ) -> DashboardPanelResponse | ErrorsList | None:
-    """Creates a dashboard panel
+    """ Creates a dashboard panel
 
      Creates a new dashboard panel from provided data
 
@@ -179,12 +197,12 @@ async def asyncio(
 
     Returns:
         DashboardPanelResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            dashboard_id=dashboard_id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        dashboard_id=dashboard_id,
+client=client,
+body=body,
+
+    )).parsed

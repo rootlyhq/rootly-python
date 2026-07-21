@@ -1,18 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.alerts_source_deduplication_key_kind import (
-    AlertsSourceDeduplicationKeyKind,
-    check_alerts_source_deduplication_key_kind,
-)
-from ..models.alerts_source_source_type import AlertsSourceSourceType, check_alerts_source_source_type
-from ..models.alerts_source_status import AlertsSourceStatus, check_alerts_source_status
 from ..types import UNSET, Unset
+
+from ..models.alerts_source_deduplication_key_kind import AlertsSourceDeduplicationKeyKind
+from ..models.alerts_source_deduplication_key_kind import check_alerts_source_deduplication_key_kind
+from ..models.alerts_source_source_type import AlertsSourceSourceType
+from ..models.alerts_source_source_type import check_alerts_source_source_type
+from ..models.alerts_source_status import AlertsSourceStatus
+from ..models.alerts_source_status import check_alerts_source_status
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.alerts_source_alert_source_fields_attributes_item import AlertsSourceAlertSourceFieldsAttributesItem
@@ -36,6 +39,8 @@ class AlertsSource:
         secret (str): The secret used to authenticate non-email alert sources
         created_at (str): Date of creation
         updated_at (str): Date of last update
+        enabled (bool | Unset): Whether the alert source is enabled. Disabled sources do not create alerts from incoming
+            events.
         source_type (AlertsSourceSourceType | Unset): The alert source type
         alert_urgency_id (str | Unset): ID for the default alert urgency assigned to this alert source
         deduplicate_alerts_by_key (bool | Unset): Toggle alert deduplication using deduplication key. If enabled,
@@ -65,6 +70,7 @@ class AlertsSource:
     secret: str
     created_at: str
     updated_at: str
+    enabled: bool | Unset = UNSET
     source_type: AlertsSourceSourceType | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
     deduplicate_alerts_by_key: bool | Unset = UNSET
@@ -82,9 +88,15 @@ class AlertsSource:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.alerts_source_alert_template_attributes_type_0 import AlertsSourceAlertTemplateAttributesType0
-        from ..models.alerts_source_resolution_rule_attributes_type_0 import AlertsSourceResolutionRuleAttributesType0
         from ..models.alerts_source_sourceable_attributes_type_0 import AlertsSourceSourceableAttributesType0
+        from ..models.alerts_source_alert_source_urgency_rules_attributes_item import (
+            AlertsSourceAlertSourceUrgencyRulesAttributesItem,
+        )
+        from ..models.alerts_source_resolution_rule_attributes_type_0 import AlertsSourceResolutionRuleAttributesType0
+        from ..models.alerts_source_alert_template_attributes_type_0 import AlertsSourceAlertTemplateAttributesType0
+        from ..models.alerts_source_alert_source_fields_attributes_item import (
+            AlertsSourceAlertSourceFieldsAttributesItem,
+        )
 
         name = self.name
 
@@ -95,6 +107,8 @@ class AlertsSource:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        enabled = self.enabled
 
         source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
@@ -185,6 +199,8 @@ class AlertsSource:
                 "updated_at": updated_at,
             }
         )
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if source_type is not UNSET:
             field_dict["source_type"] = source_type
         if alert_urgency_id is not UNSET:
@@ -238,6 +254,8 @@ class AlertsSource:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        enabled = d.pop("enabled", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
         source_type: AlertsSourceSourceType | Unset
@@ -376,6 +394,7 @@ class AlertsSource:
             secret=secret,
             created_at=created_at,
             updated_at=updated_at,
+            enabled=enabled,
             source_type=source_type,
             alert_urgency_id=alert_urgency_id,
             deduplicate_alerts_by_key=deduplicate_alerts_by_key,

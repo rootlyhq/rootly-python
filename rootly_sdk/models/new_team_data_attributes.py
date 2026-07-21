@@ -1,11 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..models.new_team_data_attributes_auto_add_members_scope import (
+    check_new_team_data_attributes_auto_add_members_scope,
+)
+from ..models.new_team_data_attributes_auto_add_members_scope import NewTeamDataAttributesAutoAddMembersScope
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_team_data_attributes_alert_broadcast_channel_type_0 import (
@@ -58,6 +66,9 @@ class NewTeamDataAttributes:
         incident_broadcast_channel (NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset): Slack channel to
             broadcast incidents to
         auto_add_members_when_attached (bool | None | Unset): Auto add members to incident channel when team is attached
+        auto_add_members_scope (NewTeamDataAttributesAutoAddMembersScope | Unset): Visibility-scoped auto-add behavior.
+            Only present when the `enable_scoped_incident_channel_auto_add` feature flag is on for the organization. When
+            set, it overrides `auto_add_members_when_attached`.
         properties (list[NewTeamDataAttributesPropertiesItem] | Unset): Array of property values for this team.
     """
 
@@ -87,14 +98,22 @@ class NewTeamDataAttributes:
     incident_broadcast_enabled: bool | None | Unset = UNSET
     incident_broadcast_channel: NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset = UNSET
     auto_add_members_when_attached: bool | None | Unset = UNSET
+    auto_add_members_scope: NewTeamDataAttributesAutoAddMembersScope | Unset = UNSET
     properties: list[NewTeamDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_team_data_attributes_alert_broadcast_channel_type_0 import (
             NewTeamDataAttributesAlertBroadcastChannelType0,
         )
+        from ..models.new_team_data_attributes_properties_item import NewTeamDataAttributesPropertiesItem
+        from ..models.new_team_data_attributes_slack_aliases_type_0_item import (
+            NewTeamDataAttributesSlackAliasesType0Item,
+        )
         from ..models.new_team_data_attributes_incident_broadcast_channel_type_0 import (
             NewTeamDataAttributesIncidentBroadcastChannelType0,
+        )
+        from ..models.new_team_data_attributes_slack_channels_type_0_item import (
+            NewTeamDataAttributesSlackChannelsType0Item,
         )
 
         name = self.name
@@ -274,6 +293,10 @@ class NewTeamDataAttributes:
         else:
             auto_add_members_when_attached = self.auto_add_members_when_attached
 
+        auto_add_members_scope: str | Unset = UNSET
+        if not isinstance(self.auto_add_members_scope, Unset):
+            auto_add_members_scope = self.auto_add_members_scope
+
         properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
@@ -338,6 +361,8 @@ class NewTeamDataAttributes:
             field_dict["incident_broadcast_channel"] = incident_broadcast_channel
         if auto_add_members_when_attached is not UNSET:
             field_dict["auto_add_members_when_attached"] = auto_add_members_when_attached
+        if auto_add_members_scope is not UNSET:
+            field_dict["auto_add_members_scope"] = auto_add_members_scope
         if properties is not UNSET:
             field_dict["properties"] = properties
 
@@ -663,6 +688,13 @@ class NewTeamDataAttributes:
             d.pop("auto_add_members_when_attached", UNSET)
         )
 
+        _auto_add_members_scope = d.pop("auto_add_members_scope", UNSET)
+        auto_add_members_scope: NewTeamDataAttributesAutoAddMembersScope | Unset
+        if isinstance(_auto_add_members_scope, Unset):
+            auto_add_members_scope = UNSET
+        else:
+            auto_add_members_scope = check_new_team_data_attributes_auto_add_members_scope(_auto_add_members_scope)
+
         _properties = d.pop("properties", UNSET)
         properties: list[NewTeamDataAttributesPropertiesItem] | Unset = UNSET
         if _properties is not UNSET:
@@ -699,6 +731,7 @@ class NewTeamDataAttributes:
             incident_broadcast_enabled=incident_broadcast_enabled,
             incident_broadcast_channel=incident_broadcast_channel,
             auto_add_members_when_attached=auto_add_members_when_attached,
+            auto_add_members_scope=auto_add_members_scope,
             properties=properties,
         )
 

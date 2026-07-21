@@ -1,29 +1,37 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
-from uuid import UUID
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import Response, UNSET
+from ... import errors
+
+from typing import cast
+from uuid import UUID
+
 
 
 def _get_kwargs(
     edge_connector_id: str,
     id: str | UUID,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/edge_connectors/{edge_connector_id}/actions/{id}".format(
-            edge_connector_id=quote(str(edge_connector_id), safe=""),
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/edge_connectors/{edge_connector_id}/actions/{id}".format(edge_connector_id=quote(str(edge_connector_id), safe=""),id=quote(str(id), safe=""),),
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -53,8 +61,9 @@ def sync_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """Show edge connector action
+    """ Show edge connector action
 
     Args:
         edge_connector_id (str):
@@ -66,11 +75,13 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-        id=id,
+id=id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -85,8 +96,9 @@ async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """Show edge connector action
+    """ Show edge connector action
 
     Args:
         edge_connector_id (str):
@@ -98,13 +110,18 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         edge_connector_id=edge_connector_id,
-        id=id,
+id=id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
+

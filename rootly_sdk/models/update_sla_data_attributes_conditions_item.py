@@ -1,21 +1,27 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.update_sla_data_attributes_conditions_item_conditionable_type import (
-    UpdateSlaDataAttributesConditionsItemConditionableType,
     check_update_sla_data_attributes_conditions_item_conditionable_type,
 )
+from ..models.update_sla_data_attributes_conditions_item_conditionable_type import (
+    UpdateSlaDataAttributesConditionsItemConditionableType,
+)
 from ..models.update_sla_data_attributes_conditions_item_property import (
-    UpdateSlaDataAttributesConditionsItemProperty,
     check_update_sla_data_attributes_conditions_item_property,
 )
+from ..models.update_sla_data_attributes_conditions_item_property import UpdateSlaDataAttributesConditionsItemProperty
 from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
 
 T = TypeVar("T", bound="UpdateSlaDataAttributesConditionsItem")
 
@@ -27,7 +33,9 @@ class UpdateSlaDataAttributesConditionsItem:
         conditionable_type (UpdateSlaDataAttributesConditionsItemConditionableType): The type of condition
         operator (str): The comparison operator
         property_ (UpdateSlaDataAttributesConditionsItemProperty | Unset): The property to evaluate (for built-in field
-            conditions)
+            conditions). When the team has custom lifecycle statuses enabled, use 'sub_status' (with sub-status IDs as
+            values); otherwise use 'status' (with parent status names). Sending the wrong one will return a validation
+            error.
         values (list[str] | None | Unset): The values to compare against
         form_field_id (None | Unset | UUID): The ID of the form field (for custom field conditions)
         position (int | Unset): The position of the condition for ordering

@@ -1,32 +1,40 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.communications_template_response import CommunicationsTemplateResponse
 from ...models.errors_list import ErrorsList
 from ...models.update_communications_template import UpdateCommunicationsTemplate
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     body: UpdateCommunicationsTemplate,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v1/communications/templates/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/communications/templates/{id}".format(id=quote(str(id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -34,16 +42,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CommunicationsTemplateResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CommunicationsTemplateResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CommunicationsTemplateResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
+
+
 
         return response_422
 
@@ -53,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CommunicationsTemplateResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CommunicationsTemplateResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +78,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateCommunicationsTemplate,
+
 ) -> Response[CommunicationsTemplateResponse | ErrorsList]:
-    """Updates a communications template
+    """ Updates a communications template
 
      Updates a communications template
 
@@ -84,11 +94,13 @@ def sync_detailed(
 
     Returns:
         Response[CommunicationsTemplateResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -97,14 +109,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateCommunicationsTemplate,
+
 ) -> CommunicationsTemplateResponse | ErrorsList | None:
-    """Updates a communications template
+    """ Updates a communications template
 
      Updates a communications template
 
@@ -118,22 +130,24 @@ def sync(
 
     Returns:
         CommunicationsTemplateResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateCommunicationsTemplate,
+
 ) -> Response[CommunicationsTemplateResponse | ErrorsList]:
-    """Updates a communications template
+    """ Updates a communications template
 
      Updates a communications template
 
@@ -147,25 +161,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[CommunicationsTemplateResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateCommunicationsTemplate,
+
 ) -> CommunicationsTemplateResponse | ErrorsList | None:
-    """Updates a communications template
+    """ Updates a communications template
 
      Updates a communications template
 
@@ -179,12 +197,12 @@ async def asyncio(
 
     Returns:
         CommunicationsTemplateResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+body=body,
+
+    )).parsed

@@ -1,54 +1,67 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
 from ...models.user_email_address_response import UserEmailAddressResponse
-from ...types import UNSET, Response
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     token: str,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
     params["token"] = token
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/email_addresses/{id}/verify".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/email_addresses/{id}/verify".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | UserEmailAddressResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | UserEmailAddressResponse | None:
     if response.status_code == 200:
         response_200 = UserEmailAddressResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
 
+
+
         return response_404
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
+
+
 
         return response_422
 
@@ -58,9 +71,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | UserEmailAddressResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | UserEmailAddressResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +85,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     token: str,
+
 ) -> Response[ErrorsList | UserEmailAddressResponse]:
-    """Verifies an email address with token
+    """ Verifies an email address with token
 
      Verifies an email address using a verification token
 
@@ -89,11 +101,13 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | UserEmailAddressResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        token=token,
+token=token,
+
     )
 
     response = client.get_httpx_client().request(
@@ -102,14 +116,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     token: str,
+
 ) -> ErrorsList | UserEmailAddressResponse | None:
-    """Verifies an email address with token
+    """ Verifies an email address with token
 
      Verifies an email address using a verification token
 
@@ -123,22 +137,24 @@ def sync(
 
     Returns:
         ErrorsList | UserEmailAddressResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        token=token,
-    ).parsed
+client=client,
+token=token,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     token: str,
+
 ) -> Response[ErrorsList | UserEmailAddressResponse]:
-    """Verifies an email address with token
+    """ Verifies an email address with token
 
      Verifies an email address using a verification token
 
@@ -152,25 +168,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | UserEmailAddressResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        token=token,
+token=token,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     token: str,
+
 ) -> ErrorsList | UserEmailAddressResponse | None:
-    """Verifies an email address with token
+    """ Verifies an email address with token
 
      Verifies an email address using a verification token
 
@@ -184,12 +204,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | UserEmailAddressResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            token=token,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+token=token,
+
+    )).parsed

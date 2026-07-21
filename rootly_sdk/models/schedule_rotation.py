@@ -1,22 +1,21 @@
 from __future__ import annotations
 
-import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
-from ..models.schedule_rotation_active_days_item import (
-    ScheduleRotationActiveDaysItem,
-    check_schedule_rotation_active_days_item,
-)
-from ..models.schedule_rotation_schedule_rotationable_type import (
-    ScheduleRotationScheduleRotationableType,
-    check_schedule_rotation_schedule_rotationable_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.schedule_rotation_active_days_item import check_schedule_rotation_active_days_item
+from ..models.schedule_rotation_active_days_item import ScheduleRotationActiveDaysItem
+from ..models.schedule_rotation_schedule_rotationable_type import check_schedule_rotation_schedule_rotationable_type
+from ..models.schedule_rotation_schedule_rotationable_type import ScheduleRotationScheduleRotationableType
+from ..types import UNSET, Unset
+from dateutil.parser import isoparse
+from typing import cast
+import datetime
 
 if TYPE_CHECKING:
     from ..models.schedule_rotation_active_time_attributes_item import ScheduleRotationActiveTimeAttributesItem
@@ -54,9 +53,9 @@ class ScheduleRotation:
         active_time_attributes (list[ScheduleRotationActiveTimeAttributesItem] | Unset): Schedule rotation's active
             times
         time_zone (str | Unset): A valid IANA time zone name. Default: 'Etc/UTC'.
-        start_time (datetime.date | None | Unset): ISO8601 date and time when rotation starts. Shifts will only be
+        start_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation starts. Shifts will only be
             created after this time.
-        end_time (datetime.date | None | Unset): ISO8601 date and time when rotation ends. Shifts will only be created
+        end_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation ends. Shifts will only be created
             before this time.
     """
 
@@ -75,19 +74,23 @@ class ScheduleRotation:
     active_time_type: str | Unset = UNSET
     active_time_attributes: list[ScheduleRotationActiveTimeAttributesItem] | Unset = UNSET
     time_zone: str | Unset = "Etc/UTC"
-    start_time: datetime.date | None | Unset = UNSET
-    end_time: datetime.date | None | Unset = UNSET
+    start_time: datetime.datetime | None | Unset = UNSET
+    end_time: datetime.datetime | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.schedule_rotation_schedule_rotationable_attributes_type_0 import (
-            ScheduleRotationScheduleRotationableAttributesType0,
-        )
         from ..models.schedule_rotation_schedule_rotationable_attributes_type_1 import (
             ScheduleRotationScheduleRotationableAttributesType1,
         )
+        from ..models.schedule_rotation_active_time_attributes_item import ScheduleRotationActiveTimeAttributesItem
+        from ..models.schedule_rotation_schedule_rotationable_attributes_type_0 import (
+            ScheduleRotationScheduleRotationableAttributesType0,
+        )
         from ..models.schedule_rotation_schedule_rotationable_attributes_type_2 import (
             ScheduleRotationScheduleRotationableAttributesType2,
+        )
+        from ..models.schedule_rotation_schedule_rotationable_attributes_type_3 import (
+            ScheduleRotationScheduleRotationableAttributesType3,
         )
 
         schedule_id = self.schedule_id
@@ -131,7 +134,7 @@ class ScheduleRotation:
         start_time: None | str | Unset
         if isinstance(self.start_time, Unset):
             start_time = UNSET
-        elif isinstance(self.start_time, datetime.date):
+        elif isinstance(self.start_time, datetime.datetime):
             start_time = self.start_time.isoformat()
         else:
             start_time = self.start_time
@@ -139,7 +142,7 @@ class ScheduleRotation:
         end_time: None | str | Unset
         if isinstance(self.end_time, Unset):
             end_time = UNSET
-        elif isinstance(self.end_time, datetime.date):
+        elif isinstance(self.end_time, datetime.datetime):
             end_time = self.end_time.isoformat()
         else:
             end_time = self.end_time
@@ -276,7 +279,7 @@ class ScheduleRotation:
 
         time_zone = d.pop("time_zone", UNSET)
 
-        def _parse_start_time(data: object) -> datetime.date | None | Unset:
+        def _parse_start_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -284,16 +287,16 @@ class ScheduleRotation:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                start_time_type_0 = isoparse(data).date()
+                start_time_type_0 = isoparse(data)
 
                 return start_time_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(datetime.date | None | Unset, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> datetime.date | None | Unset:
+        def _parse_end_time(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -301,12 +304,12 @@ class ScheduleRotation:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                end_time_type_0 = isoparse(data).date()
+                end_time_type_0 = isoparse(data)
 
                 return end_time_type_0
             except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(datetime.date | None | Unset, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 

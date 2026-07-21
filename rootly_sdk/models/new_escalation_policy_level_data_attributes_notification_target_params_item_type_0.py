@@ -1,20 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_team_members import (
+    check_new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_team_members,
+)
 from ..models.new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_team_members import (
     NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers,
-    check_new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_team_members,
+)
+from ..models.new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type import (
+    check_new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type,
 )
 from ..models.new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type import (
     NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type,
-    check_new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0")
 
@@ -23,7 +31,8 @@ T = TypeVar("T", bound="NewEscalationPolicyLevelDataAttributesNotificationTarget
 class NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0:
     """
     Attributes:
-        id (str): The ID of notification target. If Slack channel, then id of the slack channel (eg. C06Q2JK7RQW)
+        id (str): The ID of notification target. If Slack channel, then id of the slack channel (eg. C06Q2JK7RQW). If
+            Microsoft Teams channel, then the Rootly channel UUID.
         type_ (NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type): The type of the
             notification target
         team_members (NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers | Unset): For

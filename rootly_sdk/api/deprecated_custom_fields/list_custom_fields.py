@@ -1,14 +1,21 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.custom_field_list import CustomFieldList
+from ...models.list_custom_fields_include import check_list_custom_fields_include
 from ...models.list_custom_fields_include import ListCustomFieldsInclude
+from ...models.list_custom_fields_sort import check_list_custom_fields_sort
 from ...models.list_custom_fields_sort import ListCustomFieldsSort
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -25,7 +32,27 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -61,7 +88,41 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+    params["filter[slug][eq]"] = filterslugeq
+
+    params["filter[slug][not_eq]"] = filterslugnot_eq
+
+    params["filter[slug][in]"] = filterslugin
+
+    params["filter[slug][not_in]"] = filterslugnot_in
+
+    params["filter[label][eq]"] = filterlabeleq
+
+    params["filter[label][not_eq]"] = filterlabelnot_eq
+
+    params["filter[label][in]"] = filterlabelin
+
+    params["filter[label][not_in]"] = filterlabelnot_in
+
+    params["filter[kind][eq]"] = filterkindeq
+
+    params["filter[kind][not_eq]"] = filterkindnot_eq
+
+    params["filter[kind][in]"] = filterkindin
+
+    params["filter[kind][not_in]"] = filterkindnot_in
+
+    params["filter[enabled][eq]"] = filterenabledeq
+
+    params["filter[enabled][not_eq]"] = filterenablednot_eq
+
+    params["filter[enabled][in]"] = filterenabledin
+
+    params["filter[enabled][not_in]"] = filterenablednot_in
+
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -69,12 +130,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldList | None:
     if response.status_code == 200:
         response_200 = CustomFieldList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -108,8 +173,25 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
+
 ) -> Response[CustomFieldList]:
-    """[DEPRECATED] List Custom Fields
+    """ [DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -126,6 +208,22 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,21 +231,39 @@ def sync_detailed(
 
     Returns:
         Response[CustomFieldList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filterlabel=filterlabel,
-        filterkind=filterkind,
-        filterenabled=filterenabled,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filterlabel=filterlabel,
+filterkind=filterkind,
+filterenabled=filterenabled,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filterlabeleq=filterlabeleq,
+filterlabelnot_eq=filterlabelnot_eq,
+filterlabelin=filterlabelin,
+filterlabelnot_in=filterlabelnot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+filterenabledeq=filterenabledeq,
+filterenablednot_eq=filterenablednot_eq,
+filterenabledin=filterenabledin,
+filterenablednot_in=filterenablednot_in,
+
     )
 
     response = client.get_httpx_client().request(
@@ -155,7 +271,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -172,8 +287,25 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
+
 ) -> CustomFieldList | None:
-    """[DEPRECATED] List Custom Fields
+    """ [DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -190,6 +322,22 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -197,24 +345,41 @@ def sync(
 
     Returns:
         CustomFieldList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filterlabel=filterlabel,
-        filterkind=filterkind,
-        filterenabled=filterenabled,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-    ).parsed
+include=include,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filterlabel=filterlabel,
+filterkind=filterkind,
+filterenabled=filterenabled,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filterlabeleq=filterlabeleq,
+filterlabelnot_eq=filterlabelnot_eq,
+filterlabelin=filterlabelin,
+filterlabelnot_in=filterlabelnot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+filterenabledeq=filterenabledeq,
+filterenablednot_eq=filterenablednot_eq,
+filterenabledin=filterenabledin,
+filterenablednot_in=filterenablednot_in,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -231,8 +396,25 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
+
 ) -> Response[CustomFieldList]:
-    """[DEPRECATED] List Custom Fields
+    """ [DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -249,6 +431,22 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -256,27 +454,46 @@ async def asyncio_detailed(
 
     Returns:
         Response[CustomFieldList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        sort=sort,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filterslug=filterslug,
-        filterlabel=filterlabel,
-        filterkind=filterkind,
-        filterenabled=filterenabled,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filterlabel=filterlabel,
+filterkind=filterkind,
+filterenabled=filterenabled,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filterlabeleq=filterlabeleq,
+filterlabelnot_eq=filterlabelnot_eq,
+filterlabelin=filterlabelin,
+filterlabelnot_in=filterlabelnot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+filterenabledeq=filterenabledeq,
+filterenablednot_eq=filterenablednot_eq,
+filterenabledin=filterenabledin,
+filterenablednot_in=filterenablednot_in,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -293,8 +510,25 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
+
 ) -> CustomFieldList | None:
-    """[DEPRECATED] List Custom Fields
+    """ [DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
@@ -311,6 +545,22 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -318,22 +568,38 @@ async def asyncio(
 
     Returns:
         CustomFieldList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            sort=sort,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filterslug=filterslug,
-            filterlabel=filterlabel,
-            filterkind=filterkind,
-            filterenabled=filterenabled,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filterslug=filterslug,
+filterlabel=filterlabel,
+filterkind=filterkind,
+filterenabled=filterenabled,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filterlabeleq=filterlabeleq,
+filterlabelnot_eq=filterlabelnot_eq,
+filterlabelin=filterlabelin,
+filterlabelnot_in=filterlabelnot_in,
+filterkindeq=filterkindeq,
+filterkindnot_eq=filterkindnot_eq,
+filterkindin=filterkindin,
+filterkindnot_in=filterkindnot_in,
+filterenabledeq=filterenabledeq,
+filterenablednot_eq=filterenablednot_eq,
+filterenabledin=filterenabledin,
+filterenablednot_in=filterenablednot_in,
+
+    )).parsed

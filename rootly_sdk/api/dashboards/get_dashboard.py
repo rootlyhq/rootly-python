@@ -1,23 +1,32 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
-from uuid import UUID
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.dashboard_response import DashboardResponse
 from ...models.errors_list import ErrorsList
+from ...models.get_dashboard_include import check_get_dashboard_include
 from ...models.get_dashboard_include import GetDashboardInclude
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
 
 
 def _get_kwargs(
     id: str | UUID,
     *,
     include: GetDashboardInclude | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -27,29 +36,33 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/dashboards/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/dashboards/{id}".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> DashboardResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = DashboardResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -59,9 +72,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[DashboardResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[DashboardResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +86,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetDashboardInclude | Unset = UNSET,
+
 ) -> Response[DashboardResponse | ErrorsList]:
-    """Retrieves a dashboard
+    """ Retrieves a dashboard
 
      Retrieves a specific dashboard by id
 
@@ -90,11 +102,13 @@ def sync_detailed(
 
     Returns:
         Response[DashboardResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
     response = client.get_httpx_client().request(
@@ -103,14 +117,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetDashboardInclude | Unset = UNSET,
+
 ) -> DashboardResponse | ErrorsList | None:
-    """Retrieves a dashboard
+    """ Retrieves a dashboard
 
      Retrieves a specific dashboard by id
 
@@ -124,22 +138,24 @@ def sync(
 
     Returns:
         DashboardResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        include=include,
-    ).parsed
+client=client,
+include=include,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetDashboardInclude | Unset = UNSET,
+
 ) -> Response[DashboardResponse | ErrorsList]:
-    """Retrieves a dashboard
+    """ Retrieves a dashboard
 
      Retrieves a specific dashboard by id
 
@@ -153,25 +169,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[DashboardResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetDashboardInclude | Unset = UNSET,
+
 ) -> DashboardResponse | ErrorsList | None:
-    """Retrieves a dashboard
+    """ Retrieves a dashboard
 
      Retrieves a specific dashboard by id
 
@@ -185,12 +205,12 @@ async def asyncio(
 
     Returns:
         DashboardResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            include=include,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+include=include,
+
+    )).parsed

@@ -1,33 +1,43 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.alert_event_response import AlertEventResponse
 from ...models.errors_list import ErrorsList
 from ...models.new_alert_event import NewAlertEvent
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     alert_id: str,
     *,
     body: NewAlertEvent | Unset = UNSET,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/alerts/{alert_id}/events".format(
-            alert_id=quote(str(alert_id), safe=""),
-        ),
+        "url": "/v1/alerts/{alert_id}/events".format(alert_id=quote(str(alert_id), safe=""),),
     }
 
+    
     if not isinstance(body, Unset):
         _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -35,16 +45,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertEventResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertEventResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertEventResponse.from_dict(response.json())
+
+
 
         return response_201
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
+
+
 
         return response_422
 
@@ -54,9 +67,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertEventResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertEventResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,8 +81,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent | Unset = UNSET,
+
 ) -> Response[AlertEventResponse | ErrorsList]:
-    """Create alert event
+    """ Create alert event
 
      Creates a new alert event
 
@@ -85,11 +97,13 @@ def sync_detailed(
 
     Returns:
         Response[AlertEventResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         alert_id=alert_id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -98,14 +112,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     alert_id: str,
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent | Unset = UNSET,
+
 ) -> AlertEventResponse | ErrorsList | None:
-    """Create alert event
+    """ Create alert event
 
      Creates a new alert event
 
@@ -119,22 +133,24 @@ def sync(
 
     Returns:
         AlertEventResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         alert_id=alert_id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     alert_id: str,
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent | Unset = UNSET,
+
 ) -> Response[AlertEventResponse | ErrorsList]:
-    """Create alert event
+    """ Create alert event
 
      Creates a new alert event
 
@@ -148,25 +164,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertEventResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         alert_id=alert_id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     alert_id: str,
     *,
     client: AuthenticatedClient,
     body: NewAlertEvent | Unset = UNSET,
+
 ) -> AlertEventResponse | ErrorsList | None:
-    """Create alert event
+    """ Create alert event
 
      Creates a new alert event
 
@@ -180,12 +200,12 @@ async def asyncio(
 
     Returns:
         AlertEventResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            alert_id=alert_id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        alert_id=alert_id,
+client=client,
+body=body,
+
+    )).parsed

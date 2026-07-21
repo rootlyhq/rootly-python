@@ -1,15 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.workflow_custom_field_selection_list_data_item_type import (
-    WorkflowCustomFieldSelectionListDataItemType,
     check_workflow_custom_field_selection_list_data_item_type,
 )
+from ..models.workflow_custom_field_selection_list_data_item_type import WorkflowCustomFieldSelectionListDataItemType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.workflow_custom_field_selection import WorkflowCustomFieldSelection
@@ -33,6 +36,8 @@ class WorkflowCustomFieldSelectionListDataItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.workflow_custom_field_selection import WorkflowCustomFieldSelection
+
         id = self.id
 
         type_: str = self.type_

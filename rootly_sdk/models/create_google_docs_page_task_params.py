@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.create_google_docs_page_task_params_task_type import (
-    CreateGoogleDocsPageTaskParamsTaskType,
-    check_create_google_docs_page_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.create_google_docs_page_task_params_task_type import check_create_google_docs_page_task_params_task_type
+from ..models.create_google_docs_page_task_params_task_type import CreateGoogleDocsPageTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_google_docs_page_task_params_drive import CreateGoogleDocsPageTaskParamsDrive
@@ -33,6 +34,8 @@ class CreateGoogleDocsPageTaskParams:
         content (str | Unset): The page content
         template_id (str | Unset): The Google Doc file ID to use as a template
         permissions (str | Unset): Page permissions JSON
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
     """
 
     title: str
@@ -44,9 +47,16 @@ class CreateGoogleDocsPageTaskParams:
     content: str | Unset = UNSET
     template_id: str | Unset = UNSET
     permissions: str | Unset = UNSET
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_google_docs_page_task_params_drive import CreateGoogleDocsPageTaskParamsDrive
+        from ..models.create_google_docs_page_task_params_parent_folder import (
+            CreateGoogleDocsPageTaskParamsParentFolder,
+        )
+
         title = self.title
 
         task_type: str | Unset = UNSET
@@ -71,6 +81,10 @@ class CreateGoogleDocsPageTaskParams:
 
         permissions = self.permissions
 
+        include_overview = self.include_overview
+
+        include_timeline = self.include_timeline
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -94,6 +108,10 @@ class CreateGoogleDocsPageTaskParams:
             field_dict["template_id"] = template_id
         if permissions is not UNSET:
             field_dict["permissions"] = permissions
+        if include_overview is not UNSET:
+            field_dict["include_overview"] = include_overview
+        if include_timeline is not UNSET:
+            field_dict["include_timeline"] = include_timeline
 
         return field_dict
 
@@ -138,6 +156,10 @@ class CreateGoogleDocsPageTaskParams:
 
         permissions = d.pop("permissions", UNSET)
 
+        include_overview = d.pop("include_overview", UNSET)
+
+        include_timeline = d.pop("include_timeline", UNSET)
+
         create_google_docs_page_task_params = cls(
             title=title,
             task_type=task_type,
@@ -148,6 +170,8 @@ class CreateGoogleDocsPageTaskParams:
             content=content,
             template_id=template_id,
             permissions=permissions,
+            include_overview=include_overview,
+            include_timeline=include_timeline,
         )
 
         create_google_docs_page_task_params.additional_properties = d

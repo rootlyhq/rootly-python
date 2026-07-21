@@ -1,40 +1,51 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.authorization_response import AuthorizationResponse
 from ...models.errors_list import ErrorsList
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/authorizations/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/authorizations/{id}".format(id=quote(str(id), safe=""),),
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AuthorizationResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AuthorizationResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AuthorizationResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -44,9 +55,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AuthorizationResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AuthorizationResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,8 +68,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[AuthorizationResponse | ErrorsList]:
-    """Delete an authorization
+    """ Delete an authorization
 
      Delete a specific authorization by id
 
@@ -73,10 +83,12 @@ def sync_detailed(
 
     Returns:
         Response[AuthorizationResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -85,13 +97,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> AuthorizationResponse | ErrorsList | None:
-    """Delete an authorization
+    """ Delete an authorization
 
      Delete a specific authorization by id
 
@@ -104,20 +116,22 @@ def sync(
 
     Returns:
         AuthorizationResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-    ).parsed
+client=client,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[AuthorizationResponse | ErrorsList]:
-    """Delete an authorization
+    """ Delete an authorization
 
      Delete a specific authorization by id
 
@@ -130,23 +144,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[AuthorizationResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> AuthorizationResponse | ErrorsList | None:
-    """Delete an authorization
+    """ Delete an authorization
 
      Delete a specific authorization by id
 
@@ -159,11 +177,11 @@ async def asyncio(
 
     Returns:
         AuthorizationResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+
+    )).parsed

@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.incident_role_task_priority import IncidentRoleTaskPriority, check_incident_role_task_priority
 from ..types import UNSET, Unset
+
+from ..models.incident_role_task_priority import check_incident_role_task_priority
+from ..models.incident_role_task_priority import IncidentRoleTaskPriority
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="IncidentRoleTask")
 

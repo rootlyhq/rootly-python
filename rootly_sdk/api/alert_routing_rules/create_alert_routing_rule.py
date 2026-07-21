@@ -1,21 +1,31 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.alert_routing_rule_response import AlertRoutingRuleResponse
 from ...models.errors_list import ErrorsList
 from ...models.new_alert_routing_rule import NewAlertRoutingRule
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     *,
     body: NewAlertRoutingRule,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -24,27 +34,33 @@ def _get_kwargs(
 
     _kwargs["json"] = body.to_dict()
 
+
     headers["Content-Type"] = "application/vnd.api+json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertRoutingRuleResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertRoutingRuleResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertRoutingRuleResponse.from_dict(response.json())
+
+
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
+
+
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
+
+
 
         return response_422
 
@@ -54,9 +70,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertRoutingRuleResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertRoutingRuleResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +83,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
+
 ) -> Response[AlertRoutingRuleResponse | ErrorsList]:
-    """Creates an alert routing rule
+    """ Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
     user, you should use the Alert Routes endpoint instead of this endpoint. If you don't know whether
@@ -85,10 +100,12 @@ def sync_detailed(
 
     Returns:
         Response[AlertRoutingRuleResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -97,13 +114,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
+
 ) -> AlertRoutingRuleResponse | ErrorsList | None:
-    """Creates an alert routing rule
+    """ Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
     user, you should use the Alert Routes endpoint instead of this endpoint. If you don't know whether
@@ -118,20 +135,22 @@ def sync(
 
     Returns:
         AlertRoutingRuleResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        body=body,
-    ).parsed
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
+
 ) -> Response[AlertRoutingRuleResponse | ErrorsList]:
-    """Creates an alert routing rule
+    """ Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
     user, you should use the Alert Routes endpoint instead of this endpoint. If you don't know whether
@@ -146,23 +165,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[AlertRoutingRuleResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAlertRoutingRule,
+
 ) -> AlertRoutingRuleResponse | ErrorsList | None:
-    """Creates an alert routing rule
+    """ Creates an alert routing rule
 
      Creates a new alert routing rule from provided data. **Note: If you are an advanced alert routing
     user, you should use the Alert Routes endpoint instead of this endpoint. If you don't know whether
@@ -177,11 +200,11 @@ async def asyncio(
 
     Returns:
         AlertRoutingRuleResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+body=body,
+
+    )).parsed

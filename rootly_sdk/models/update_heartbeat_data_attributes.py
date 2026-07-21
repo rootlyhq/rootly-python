@@ -1,19 +1,24 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
-from ..models.update_heartbeat_data_attributes_interval_unit import (
-    UpdateHeartbeatDataAttributesIntervalUnit,
-    check_update_heartbeat_data_attributes_interval_unit,
+from ..types import UNSET, Unset
+
+from ..models.update_heartbeat_data_attributes_interval_unit import check_update_heartbeat_data_attributes_interval_unit
+from ..models.update_heartbeat_data_attributes_interval_unit import UpdateHeartbeatDataAttributesIntervalUnit
+from ..models.update_heartbeat_data_attributes_notification_target_type import (
+    check_update_heartbeat_data_attributes_notification_target_type,
 )
 from ..models.update_heartbeat_data_attributes_notification_target_type import (
     UpdateHeartbeatDataAttributesNotificationTargetType,
-    check_update_heartbeat_data_attributes_notification_target_type,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateHeartbeatDataAttributes")
 
@@ -32,6 +37,7 @@ class UpdateHeartbeatDataAttributes:
         notification_target_id (str | Unset):
         notification_target_type (UpdateHeartbeatDataAttributesNotificationTargetType | Unset): The type of the
             notification target. Please contact support if you encounter issues using `Functionality` as a target type.
+        owner_group_ids (list[str] | Unset): List of team IDs that own this heartbeat
         enabled (bool | Unset): Whether to trigger alerts when heartbeat is expired.
     """
 
@@ -44,6 +50,7 @@ class UpdateHeartbeatDataAttributes:
     interval_unit: UpdateHeartbeatDataAttributesIntervalUnit | Unset = UNSET
     notification_target_id: str | Unset = UNSET
     notification_target_type: UpdateHeartbeatDataAttributesNotificationTargetType | Unset = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
     enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -81,6 +88,10 @@ class UpdateHeartbeatDataAttributes:
         if not isinstance(self.notification_target_type, Unset):
             notification_target_type = self.notification_target_type
 
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = self.owner_group_ids
+
         enabled = self.enabled
 
         field_dict: dict[str, Any] = {}
@@ -104,6 +115,8 @@ class UpdateHeartbeatDataAttributes:
             field_dict["notification_target_id"] = notification_target_id
         if notification_target_type is not UNSET:
             field_dict["notification_target_type"] = notification_target_type
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
 
@@ -163,6 +176,8 @@ class UpdateHeartbeatDataAttributes:
                 _notification_target_type
             )
 
+        owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
+
         enabled = d.pop("enabled", UNSET)
 
         update_heartbeat_data_attributes = cls(
@@ -175,6 +190,7 @@ class UpdateHeartbeatDataAttributes:
             interval_unit=interval_unit,
             notification_target_id=notification_target_id,
             notification_target_type=notification_target_type,
+            owner_group_ids=owner_group_ids,
             enabled=enabled,
         )
 

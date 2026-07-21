@@ -1,16 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.alerts_source_sourceable_attributes_type_0_field_mappings_attributes_item_field import (
     AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField,
+)
+from ..models.alerts_source_sourceable_attributes_type_0_field_mappings_attributes_item_field import (
     check_alerts_source_sourceable_attributes_type_0_field_mappings_attributes_item_field,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem")
 
@@ -22,7 +28,8 @@ class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
         field (AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset): Select the field on which
             the condition to be evaluated
         json_path (str | Unset): JSON path expression to extract a specific value from the alert's payload for
-            evaluation
+            evaluation. For `notification_target_id` only: if your account has opted in to Dynamic Notification Targets,
+            this may also be a Liquid template that resolves to a notification target id at routing time.
     """
 
     field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset = UNSET

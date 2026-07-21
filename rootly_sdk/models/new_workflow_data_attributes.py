@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
-from ..models.new_workflow_data_attributes_priority import (
-    NewWorkflowDataAttributesPriority,
-    check_new_workflow_data_attributes_priority,
-)
-from ..models.new_workflow_data_attributes_repeat_on_item import (
-    NewWorkflowDataAttributesRepeatOnItem,
-    check_new_workflow_data_attributes_repeat_on_item,
-)
 from ..types import UNSET, Unset
+
+from ..models.new_workflow_data_attributes_priority import check_new_workflow_data_attributes_priority
+from ..models.new_workflow_data_attributes_priority import NewWorkflowDataAttributesPriority
+from ..models.new_workflow_data_attributes_repeat_on_item import check_new_workflow_data_attributes_repeat_on_item
+from ..models.new_workflow_data_attributes_repeat_on_item import NewWorkflowDataAttributesRepeatOnItem
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.action_item_trigger_params import ActionItemTriggerParams
@@ -96,9 +96,10 @@ class NewWorkflowDataAttributes:
     sub_status_ids: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.action_item_trigger_params import ActionItemTriggerParams
-        from ..models.alert_trigger_params import AlertTriggerParams
+        from ..models.simple_trigger_params import SimpleTriggerParams
         from ..models.incident_trigger_params import IncidentTriggerParams
+        from ..models.alert_trigger_params import AlertTriggerParams
+        from ..models.action_item_trigger_params import ActionItemTriggerParams
         from ..models.pulse_trigger_params import PulseTriggerParams
 
         name = self.name

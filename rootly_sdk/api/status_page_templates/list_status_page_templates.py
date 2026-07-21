@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.status_page_template_list import StatusPageTemplateList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -16,7 +20,11 @@ def _get_kwargs(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -26,22 +34,26 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/status-pages/{status_page_id}/templates".format(
-            status_page_id=quote(str(status_page_id), safe=""),
-        ),
+        "url": "/v1/status-pages/{status_page_id}/templates".format(status_page_id=quote(str(status_page_id), safe=""),),
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> StatusPageTemplateList | None:
     if response.status_code == 200:
         response_200 = StatusPageTemplateList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -51,9 +63,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[StatusPageTemplateList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[StatusPageTemplateList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +79,9 @@ def sync_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[StatusPageTemplateList]:
-    """List status page templates
+    """ List status page templates
 
      List status page templates
 
@@ -86,13 +97,15 @@ def sync_detailed(
 
     Returns:
         Response[StatusPageTemplateList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         status_page_id=status_page_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
     response = client.get_httpx_client().request(
@@ -101,7 +114,6 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     status_page_id: str,
     *,
@@ -109,8 +121,9 @@ def sync(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> StatusPageTemplateList | None:
-    """List status page templates
+    """ List status page templates
 
      List status page templates
 
@@ -126,16 +139,17 @@ def sync(
 
     Returns:
         StatusPageTemplateList
-    """
+     """
+
 
     return sync_detailed(
         status_page_id=status_page_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
 
+    ).parsed
 
 async def asyncio_detailed(
     status_page_id: str,
@@ -144,8 +158,9 @@ async def asyncio_detailed(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> Response[StatusPageTemplateList]:
-    """List status page templates
+    """ List status page templates
 
      List status page templates
 
@@ -161,19 +176,22 @@ async def asyncio_detailed(
 
     Returns:
         Response[StatusPageTemplateList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         status_page_id=status_page_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     status_page_id: str,
@@ -182,8 +200,9 @@ async def asyncio(
     include: str | Unset = UNSET,
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
+
 ) -> StatusPageTemplateList | None:
-    """List status page templates
+    """ List status page templates
 
      List status page templates
 
@@ -199,14 +218,14 @@ async def asyncio(
 
     Returns:
         StatusPageTemplateList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            status_page_id=status_page_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        status_page_id=status_page_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+
+    )).parsed

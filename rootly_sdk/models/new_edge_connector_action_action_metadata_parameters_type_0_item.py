@@ -1,16 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.new_edge_connector_action_action_metadata_parameters_type_0_item_type import (
-    NewEdgeConnectorActionActionMetadataParametersType0ItemType,
     check_new_edge_connector_action_action_metadata_parameters_type_0_item_type,
 )
+from ..models.new_edge_connector_action_action_metadata_parameters_type_0_item_type import (
+    NewEdgeConnectorActionActionMetadataParametersType0ItemType,
+)
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewEdgeConnectorActionActionMetadataParametersType0Item")
 

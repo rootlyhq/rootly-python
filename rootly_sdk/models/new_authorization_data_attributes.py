@@ -1,22 +1,25 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_authorization_data_attributes_authorizable_type import (
-    NewAuthorizationDataAttributesAuthorizableType,
     check_new_authorization_data_attributes_authorizable_type,
 )
-from ..models.new_authorization_data_attributes_grantee_type import (
-    NewAuthorizationDataAttributesGranteeType,
-    check_new_authorization_data_attributes_grantee_type,
-)
+from ..models.new_authorization_data_attributes_authorizable_type import NewAuthorizationDataAttributesAuthorizableType
+from ..models.new_authorization_data_attributes_grantee_type import check_new_authorization_data_attributes_grantee_type
+from ..models.new_authorization_data_attributes_grantee_type import NewAuthorizationDataAttributesGranteeType
 from ..models.new_authorization_data_attributes_permissions_item import (
-    NewAuthorizationDataAttributesPermissionsItem,
     check_new_authorization_data_attributes_permissions_item,
 )
+from ..models.new_authorization_data_attributes_permissions_item import NewAuthorizationDataAttributesPermissionsItem
+from typing import cast
+
 
 T = TypeVar("T", bound="NewAuthorizationDataAttributes")
 

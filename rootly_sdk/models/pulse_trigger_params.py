@@ -1,36 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.pulse_trigger_params_pulse_condition import (
-    PulseTriggerParamsPulseCondition,
-    check_pulse_trigger_params_pulse_condition,
-)
-from ..models.pulse_trigger_params_pulse_condition_label import (
-    PulseTriggerParamsPulseConditionLabel,
-    check_pulse_trigger_params_pulse_condition_label,
-)
-from ..models.pulse_trigger_params_pulse_condition_payload import (
-    PulseTriggerParamsPulseConditionPayload,
-    check_pulse_trigger_params_pulse_condition_payload,
-)
-from ..models.pulse_trigger_params_pulse_condition_source import (
-    PulseTriggerParamsPulseConditionSource,
-    check_pulse_trigger_params_pulse_condition_source,
-)
-from ..models.pulse_trigger_params_trigger_type import (
-    PulseTriggerParamsTriggerType,
-    check_pulse_trigger_params_trigger_type,
-)
-from ..models.pulse_trigger_params_triggers_item import (
-    PulseTriggerParamsTriggersItem,
-    check_pulse_trigger_params_triggers_item,
-)
 from ..types import UNSET, Unset
+
+from ..models.pulse_trigger_params_pulse_condition import check_pulse_trigger_params_pulse_condition
+from ..models.pulse_trigger_params_pulse_condition import PulseTriggerParamsPulseCondition
+from ..models.pulse_trigger_params_pulse_condition_label import check_pulse_trigger_params_pulse_condition_label
+from ..models.pulse_trigger_params_pulse_condition_label import PulseTriggerParamsPulseConditionLabel
+from ..models.pulse_trigger_params_pulse_condition_payload import check_pulse_trigger_params_pulse_condition_payload
+from ..models.pulse_trigger_params_pulse_condition_payload import PulseTriggerParamsPulseConditionPayload
+from ..models.pulse_trigger_params_pulse_condition_source import check_pulse_trigger_params_pulse_condition_source
+from ..models.pulse_trigger_params_pulse_condition_source import PulseTriggerParamsPulseConditionSource
+from ..models.pulse_trigger_params_trigger_type import check_pulse_trigger_params_trigger_type
+from ..models.pulse_trigger_params_trigger_type import PulseTriggerParamsTriggerType
+from ..models.pulse_trigger_params_triggers_item import check_pulse_trigger_params_triggers_item
+from ..models.pulse_trigger_params_triggers_item import PulseTriggerParamsTriggersItem
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="PulseTriggerParams")
 

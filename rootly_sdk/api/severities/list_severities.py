@@ -1,12 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.severity_list import SeverityList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -23,8 +28,28 @@ def _get_kwargs(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -52,9 +77,43 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
+    params["filter[slug][eq]"] = filterslugeq
+
+    params["filter[slug][not_eq]"] = filterslugnot_eq
+
+    params["filter[slug][in]"] = filterslugin
+
+    params["filter[slug][not_in]"] = filterslugnot_in
+
+    params["filter[name][eq]"] = filternameeq
+
+    params["filter[name][not_eq]"] = filternamenot_eq
+
+    params["filter[name][in]"] = filternamein
+
+    params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[severity][eq]"] = filterseverityeq
+
+    params["filter[severity][not_eq]"] = filterseveritynot_eq
+
+    params["filter[severity][in]"] = filterseverityin
+
+    params["filter[severity][not_in]"] = filterseveritynot_in
+
+    params["filter[color][eq]"] = filtercoloreq
+
+    params["filter[color][not_eq]"] = filtercolornot_eq
+
+    params["filter[color][in]"] = filtercolorin
+
+    params["filter[color][not_in]"] = filtercolornot_in
+
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -62,12 +121,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SeverityList | None:
     if response.status_code == 200:
         response_200 = SeverityList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -101,9 +164,26 @@ def sync_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[SeverityList]:
-    """List severities
+    """ List severities
 
      List severities
 
@@ -120,6 +200,22 @@ def sync_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -128,22 +224,40 @@ def sync_detailed(
 
     Returns:
         Response[SeverityList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterslug=filterslug,
-        filtername=filtername,
-        filterseverity=filterseverity,
-        filtercolor=filtercolor,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterslug=filterslug,
+filtername=filtername,
+filterseverity=filterseverity,
+filtercolor=filtercolor,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterseverityeq=filterseverityeq,
+filterseveritynot_eq=filterseveritynot_eq,
+filterseverityin=filterseverityin,
+filterseveritynot_in=filterseveritynot_in,
+filtercoloreq=filtercoloreq,
+filtercolornot_eq=filtercolornot_eq,
+filtercolorin=filtercolorin,
+filtercolornot_in=filtercolornot_in,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -151,7 +265,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -168,9 +281,26 @@ def sync(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> SeverityList | None:
-    """List severities
+    """ List severities
 
      List severities
 
@@ -187,6 +317,22 @@ def sync(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -195,25 +341,42 @@ def sync(
 
     Returns:
         SeverityList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterslug=filterslug,
-        filtername=filtername,
-        filterseverity=filterseverity,
-        filtercolor=filtercolor,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterslug=filterslug,
+filtername=filtername,
+filterseverity=filterseverity,
+filtercolor=filtercolor,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterseverityeq=filterseverityeq,
+filterseveritynot_eq=filterseveritynot_eq,
+filterseverityin=filterseverityin,
+filterseveritynot_in=filterseveritynot_in,
+filtercoloreq=filtercoloreq,
+filtercolornot_eq=filtercolornot_eq,
+filtercolorin=filtercolorin,
+filtercolornot_in=filtercolornot_in,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -230,9 +393,26 @@ async def asyncio_detailed(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[SeverityList]:
-    """List severities
+    """ List severities
 
      List severities
 
@@ -249,6 +429,22 @@ async def asyncio_detailed(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -257,28 +453,47 @@ async def asyncio_detailed(
 
     Returns:
         Response[SeverityList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filterslug=filterslug,
-        filtername=filtername,
-        filterseverity=filterseverity,
-        filtercolor=filtercolor,
-        filtercreated_atgt=filtercreated_atgt,
-        filtercreated_atgte=filtercreated_atgte,
-        filtercreated_atlt=filtercreated_atlt,
-        filtercreated_atlte=filtercreated_atlte,
-        sort=sort,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterslug=filterslug,
+filtername=filtername,
+filterseverity=filterseverity,
+filtercolor=filtercolor,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterseverityeq=filterseverityeq,
+filterseveritynot_eq=filterseveritynot_eq,
+filterseverityin=filterseverityin,
+filterseveritynot_in=filterseveritynot_in,
+filtercoloreq=filtercoloreq,
+filtercolornot_eq=filtercolornot_eq,
+filtercolorin=filtercolorin,
+filtercolornot_in=filtercolornot_in,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -295,9 +510,26 @@ async def asyncio(
     filtercreated_atgte: str | Unset = UNSET,
     filtercreated_atlt: str | Unset = UNSET,
     filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> SeverityList | None:
-    """List severities
+    """ List severities
 
      List severities
 
@@ -314,6 +546,22 @@ async def asyncio(
         filtercreated_atgte (str | Unset):
         filtercreated_atlt (str | Unset):
         filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
         sort (str | Unset):
 
     Raises:
@@ -322,23 +570,39 @@ async def asyncio(
 
     Returns:
         SeverityList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtersearch=filtersearch,
-            filterslug=filterslug,
-            filtername=filtername,
-            filterseverity=filterseverity,
-            filtercolor=filtercolor,
-            filtercreated_atgt=filtercreated_atgt,
-            filtercreated_atgte=filtercreated_atgte,
-            filtercreated_atlt=filtercreated_atlt,
-            filtercreated_atlte=filtercreated_atlte,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filterslug=filterslug,
+filtername=filtername,
+filterseverity=filterseverity,
+filtercolor=filtercolor,
+filtercreated_atgt=filtercreated_atgt,
+filtercreated_atgte=filtercreated_atgte,
+filtercreated_atlt=filtercreated_atlt,
+filtercreated_atlte=filtercreated_atlte,
+filterslugeq=filterslugeq,
+filterslugnot_eq=filterslugnot_eq,
+filterslugin=filterslugin,
+filterslugnot_in=filterslugnot_in,
+filternameeq=filternameeq,
+filternamenot_eq=filternamenot_eq,
+filternamein=filternamein,
+filternamenot_in=filternamenot_in,
+filterseverityeq=filterseverityeq,
+filterseveritynot_eq=filterseveritynot_eq,
+filterseverityin=filterseverityin,
+filterseveritynot_in=filterseveritynot_in,
+filtercoloreq=filtercoloreq,
+filtercolornot_eq=filtercolornot_eq,
+filtercolorin=filtercolorin,
+filtercolornot_in=filtercolornot_in,
+sort=sort,
+
+    )).parsed

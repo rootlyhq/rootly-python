@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
 
-from ..models.new_catalog_field_data_attributes_catalog_type import (
-    NewCatalogFieldDataAttributesCatalogType,
-    check_new_catalog_field_data_attributes_catalog_type,
-)
-from ..models.new_catalog_field_data_attributes_kind import (
-    NewCatalogFieldDataAttributesKind,
-    check_new_catalog_field_data_attributes_kind,
-)
 from ..types import UNSET, Unset
+
+from ..models.new_catalog_field_data_attributes_catalog_type import check_new_catalog_field_data_attributes_catalog_type
+from ..models.new_catalog_field_data_attributes_catalog_type import NewCatalogFieldDataAttributesCatalogType
+from ..models.new_catalog_field_data_attributes_kind import check_new_catalog_field_data_attributes_kind
+from ..models.new_catalog_field_data_attributes_kind import NewCatalogFieldDataAttributesKind
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="NewCatalogFieldDataAttributes")
 
@@ -29,6 +30,8 @@ class NewCatalogFieldDataAttributes:
         position (int | None | Unset): Default position of the item when displayed in a list.
         required (bool | Unset): Whether the field is required.
         catalog_type (NewCatalogFieldDataAttributesCatalogType | Unset): The type of catalog the field belongs to.
+        external_id (None | str | Unset): An external identifier for this catalog field. Must be unique within the
+            scope.
     """
 
     name: str
@@ -38,6 +41,7 @@ class NewCatalogFieldDataAttributes:
     position: int | None | Unset = UNSET
     required: bool | Unset = UNSET
     catalog_type: NewCatalogFieldDataAttributesCatalogType | Unset = UNSET
+    external_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -64,6 +68,12 @@ class NewCatalogFieldDataAttributes:
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
         field_dict: dict[str, Any] = {}
 
         field_dict.update(
@@ -82,6 +92,8 @@ class NewCatalogFieldDataAttributes:
             field_dict["required"] = required
         if catalog_type is not UNSET:
             field_dict["catalog_type"] = catalog_type
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
 
         return field_dict
 
@@ -121,6 +133,15 @@ class NewCatalogFieldDataAttributes:
         else:
             catalog_type = check_new_catalog_field_data_attributes_catalog_type(_catalog_type)
 
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
         new_catalog_field_data_attributes = cls(
             name=name,
             kind=kind,
@@ -129,6 +150,7 @@ class NewCatalogFieldDataAttributes:
             position=position,
             required=required,
             catalog_type=catalog_type,
+            external_id=external_id,
         )
 
         return new_catalog_field_data_attributes

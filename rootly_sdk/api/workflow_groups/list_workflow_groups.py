@@ -1,12 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.workflow_group_list import WorkflowGroupList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -20,7 +25,11 @@ def _get_kwargs(
     filterkind: str | Unset = UNSET,
     filterexpanded: bool | Unset = UNSET,
     filterposition: int | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -42,7 +51,9 @@ def _get_kwargs(
 
     params["filter[position]"] = filterposition
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -50,12 +61,16 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowGroupList | None:
     if response.status_code == 200:
         response_200 = WorkflowGroupList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -86,8 +101,9 @@ def sync_detailed(
     filterkind: str | Unset = UNSET,
     filterexpanded: bool | Unset = UNSET,
     filterposition: int | Unset = UNSET,
+
 ) -> Response[WorkflowGroupList]:
-    """List workflow groups
+    """ List workflow groups
 
      List workflow groups
 
@@ -108,18 +124,20 @@ def sync_detailed(
 
     Returns:
         Response[WorkflowGroupList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterslug=filterslug,
-        filterkind=filterkind,
-        filterexpanded=filterexpanded,
-        filterposition=filterposition,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterslug=filterslug,
+filterkind=filterkind,
+filterexpanded=filterexpanded,
+filterposition=filterposition,
+
     )
 
     response = client.get_httpx_client().request(
@@ -127,7 +145,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -141,8 +158,9 @@ def sync(
     filterkind: str | Unset = UNSET,
     filterexpanded: bool | Unset = UNSET,
     filterposition: int | Unset = UNSET,
+
 ) -> WorkflowGroupList | None:
-    """List workflow groups
+    """ List workflow groups
 
      List workflow groups
 
@@ -163,21 +181,22 @@ def sync(
 
     Returns:
         WorkflowGroupList
-    """
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterslug=filterslug,
-        filterkind=filterkind,
-        filterexpanded=filterexpanded,
-        filterposition=filterposition,
-    ).parsed
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterslug=filterslug,
+filterkind=filterkind,
+filterexpanded=filterexpanded,
+filterposition=filterposition,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -191,8 +210,9 @@ async def asyncio_detailed(
     filterkind: str | Unset = UNSET,
     filterexpanded: bool | Unset = UNSET,
     filterposition: int | Unset = UNSET,
+
 ) -> Response[WorkflowGroupList]:
-    """List workflow groups
+    """ List workflow groups
 
      List workflow groups
 
@@ -213,24 +233,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[WorkflowGroupList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        filtersearch=filtersearch,
-        filtername=filtername,
-        filterslug=filterslug,
-        filterkind=filterkind,
-        filterexpanded=filterexpanded,
-        filterposition=filterposition,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterslug=filterslug,
+filterkind=filterkind,
+filterexpanded=filterexpanded,
+filterposition=filterposition,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -244,8 +267,9 @@ async def asyncio(
     filterkind: str | Unset = UNSET,
     filterexpanded: bool | Unset = UNSET,
     filterposition: int | Unset = UNSET,
+
 ) -> WorkflowGroupList | None:
-    """List workflow groups
+    """ List workflow groups
 
      List workflow groups
 
@@ -266,19 +290,19 @@ async def asyncio(
 
     Returns:
         WorkflowGroupList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            filtersearch=filtersearch,
-            filtername=filtername,
-            filterslug=filterslug,
-            filterkind=filterkind,
-            filterexpanded=filterexpanded,
-            filterposition=filterposition,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+filtersearch=filtersearch,
+filtername=filtername,
+filterslug=filterslug,
+filterkind=filterkind,
+filterexpanded=filterexpanded,
+filterposition=filterposition,
+
+    )).parsed

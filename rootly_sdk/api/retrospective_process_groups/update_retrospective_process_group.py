@@ -1,31 +1,39 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.retrospective_process_group_response import RetrospectiveProcessGroupResponse
 from ...models.update_retrospective_process_group import UpdateRetrospectiveProcessGroup
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     body: UpdateRetrospectiveProcessGroup,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/retrospective_process_groups/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/retrospective_process_groups/{id}".format(id=quote(str(id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -33,11 +41,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrospectiveProcessGroupResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RetrospectiveProcessGroupResponse | None:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessGroupResponse.from_dict(response.json())
+
+
 
         return response_200
 
@@ -47,9 +56,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[RetrospectiveProcessGroupResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RetrospectiveProcessGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,8 +70,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroup,
+
 ) -> Response[RetrospectiveProcessGroupResponse]:
-    """Update a Retrospective Process Group
+    """ Update a Retrospective Process Group
 
      Update a specific Retrospective Process Group by id
 
@@ -78,11 +86,13 @@ def sync_detailed(
 
     Returns:
         Response[RetrospectiveProcessGroupResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -91,14 +101,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroup,
+
 ) -> RetrospectiveProcessGroupResponse | None:
-    """Update a Retrospective Process Group
+    """ Update a Retrospective Process Group
 
      Update a specific Retrospective Process Group by id
 
@@ -112,22 +122,24 @@ def sync(
 
     Returns:
         RetrospectiveProcessGroupResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroup,
+
 ) -> Response[RetrospectiveProcessGroupResponse]:
-    """Update a Retrospective Process Group
+    """ Update a Retrospective Process Group
 
      Update a specific Retrospective Process Group by id
 
@@ -141,25 +153,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[RetrospectiveProcessGroupResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroup,
+
 ) -> RetrospectiveProcessGroupResponse | None:
-    """Update a Retrospective Process Group
+    """ Update a Retrospective Process Group
 
      Update a specific Retrospective Process Group by id
 
@@ -173,12 +189,12 @@ async def asyncio(
 
     Returns:
         RetrospectiveProcessGroupResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+body=body,
+
+    )).parsed

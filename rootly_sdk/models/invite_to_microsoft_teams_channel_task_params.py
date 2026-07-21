@@ -1,16 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.invite_to_microsoft_teams_channel_task_params_task_type import (
-    InviteToMicrosoftTeamsChannelTaskParamsTaskType,
     check_invite_to_microsoft_teams_channel_task_params_task_type,
 )
+from ..models.invite_to_microsoft_teams_channel_task_params_task_type import (
+    InviteToMicrosoftTeamsChannelTaskParamsTaskType,
+)
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.invite_to_microsoft_teams_channel_task_params_channel import (
@@ -39,6 +44,13 @@ class InviteToMicrosoftTeamsChannelTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.invite_to_microsoft_teams_channel_task_params_team import (
+            InviteToMicrosoftTeamsChannelTaskParamsTeam,
+        )
+        from ..models.invite_to_microsoft_teams_channel_task_params_channel import (
+            InviteToMicrosoftTeamsChannelTaskParamsChannel,
+        )
+
         channel = self.channel.to_dict()
 
         emails = self.emails

@@ -1,24 +1,33 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_condition_type import (
+    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_condition_type,
+)
 from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_condition_type import (
     NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType,
-    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_condition_type,
+)
+from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_matchable_type import (
+    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_matchable_type,
 )
 from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_matchable_type import (
     NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierMatchableType,
-    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_matchable_type,
+)
+from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_reference_kind import (
+    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_reference_kind,
 )
 from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_reference_kind import (
     NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind,
-    check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_identifier_reference_kind,
 )
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item import (
@@ -68,6 +77,10 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item import (
+            NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem,
+        )
+
         enabled = self.enabled
 
         condition_type: str | Unset = UNSET

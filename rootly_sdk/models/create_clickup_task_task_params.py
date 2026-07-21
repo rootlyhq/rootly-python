@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.create_clickup_task_task_params_task_type import (
-    CreateClickupTaskTaskParamsTaskType,
-    check_create_clickup_task_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.create_clickup_task_task_params_task_type import check_create_clickup_task_task_params_task_type
+from ..models.create_clickup_task_task_params_task_type import CreateClickupTaskTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_clickup_task_task_params_priority import CreateClickupTaskTaskParamsPriority
@@ -46,6 +47,8 @@ class CreateClickupTaskTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_clickup_task_task_params_priority import CreateClickupTaskTaskParamsPriority
+
         title = self.title
 
         task_type: str | Unset = UNSET

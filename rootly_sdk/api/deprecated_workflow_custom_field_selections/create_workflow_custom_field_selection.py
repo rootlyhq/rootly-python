@@ -1,32 +1,40 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
 from ...models.new_workflow_custom_field_selection import NewWorkflowCustomFieldSelection
 from ...models.workflow_custom_field_selection_response import WorkflowCustomFieldSelectionResponse
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     workflow_id: str,
     *,
     body: NewWorkflowCustomFieldSelection,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/workflows/{workflow_id}/custom_field_selections".format(
-            workflow_id=quote(str(workflow_id), safe=""),
-        ),
+        "url": "/v1/workflows/{workflow_id}/custom_field_selections".format(workflow_id=quote(str(workflow_id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -34,16 +42,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
     if response.status_code == 201:
         response_201 = WorkflowCustomFieldSelectionResponse.from_dict(response.json())
+
+
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
+
+
 
         return response_401
 
@@ -53,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +78,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowCustomFieldSelection,
+
 ) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
-    """[DEPRECATED] Creates a workflow custom field selection
+    """ [DEPRECATED] Creates a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Creates a new workflow custom field selection from
     provided data
@@ -85,11 +95,13 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | WorkflowCustomFieldSelectionResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -98,14 +110,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowCustomFieldSelection,
+
 ) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
-    """[DEPRECATED] Creates a workflow custom field selection
+    """ [DEPRECATED] Creates a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Creates a new workflow custom field selection from
     provided data
@@ -120,22 +132,24 @@ def sync(
 
     Returns:
         ErrorsList | WorkflowCustomFieldSelectionResponse
-    """
+     """
+
 
     return sync_detailed(
         workflow_id=workflow_id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowCustomFieldSelection,
+
 ) -> Response[ErrorsList | WorkflowCustomFieldSelectionResponse]:
-    """[DEPRECATED] Creates a workflow custom field selection
+    """ [DEPRECATED] Creates a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Creates a new workflow custom field selection from
     provided data
@@ -150,25 +164,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | WorkflowCustomFieldSelectionResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         workflow_id=workflow_id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
     body: NewWorkflowCustomFieldSelection,
+
 ) -> ErrorsList | WorkflowCustomFieldSelectionResponse | None:
-    """[DEPRECATED] Creates a workflow custom field selection
+    """ [DEPRECATED] Creates a workflow custom field selection
 
      [DEPRECATED] Use form field endpoints instead. Creates a new workflow custom field selection from
     provided data
@@ -183,12 +201,12 @@ async def asyncio(
 
     Returns:
         ErrorsList | WorkflowCustomFieldSelectionResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            workflow_id=workflow_id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        workflow_id=workflow_id,
+client=client,
+body=body,
+
+    )).parsed

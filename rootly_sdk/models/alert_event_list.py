@@ -1,13 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
+
 if TYPE_CHECKING:
     from ..models.alert_event_list_data_item import AlertEventListDataItem
+    from ..models.jsonapi_included_resource import JsonapiIncludedResource
     from ..models.links import Links
     from ..models.meta import Meta
 
@@ -22,14 +28,21 @@ class AlertEventList:
         data (list[AlertEventListDataItem]):
         links (Links):
         meta (Meta):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
     data: list[AlertEventListDataItem]
     links: Links
     meta: Meta
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.meta import Meta
+        from ..models.jsonapi_included_resource import JsonapiIncludedResource
+        from ..models.links import Links
+        from ..models.alert_event_list_data_item import AlertEventListDataItem
+
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()
@@ -38,6 +51,13 @@ class AlertEventList:
         links = self.links.to_dict()
 
         meta = self.meta.to_dict()
+
+        included: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.included, Unset):
+            included = []
+            for included_item_data in self.included:
+                included_item = included_item_data.to_dict()
+                included.append(included_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -48,12 +68,15 @@ class AlertEventList:
                 "meta": meta,
             }
         )
+        if included is not UNSET:
+            field_dict["included"] = included
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.alert_event_list_data_item import AlertEventListDataItem
+        from ..models.jsonapi_included_resource import JsonapiIncludedResource
         from ..models.links import Links
         from ..models.meta import Meta
 
@@ -69,10 +92,20 @@ class AlertEventList:
 
         meta = Meta.from_dict(d.pop("meta"))
 
+        _included = d.pop("included", UNSET)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
+
+                included.append(included_item)
+
         alert_event_list = cls(
             data=data,
             links=links,
             meta=meta,
+            included=included,
         )
 
         alert_event_list.additional_properties = d

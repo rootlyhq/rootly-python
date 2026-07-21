@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.environment import Environment
@@ -48,9 +51,11 @@ class Pulse:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.pulse_data_type_0 import PulseDataType0
         from ..models.pulse_labels_item_type_0 import PulseLabelsItemType0
+        from ..models.service import Service
         from ..models.pulse_refs_item_type_0 import PulseRefsItemType0
+        from ..models.environment import Environment
+        from ..models.pulse_data_type_0 import PulseDataType0
 
         summary = self.summary
 

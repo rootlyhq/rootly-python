@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.incident_retrospective_step_status import (
-    IncidentRetrospectiveStepStatus,
-    check_incident_retrospective_step_status,
-)
 from ..types import UNSET, Unset
+
+from ..models.incident_retrospective_step_status import check_incident_retrospective_step_status
+from ..models.incident_retrospective_step_status import IncidentRetrospectiveStepStatus
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="IncidentRetrospectiveStep")
 

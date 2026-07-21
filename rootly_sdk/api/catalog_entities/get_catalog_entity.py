@@ -1,23 +1,32 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
-from uuid import UUID
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.catalog_entity_response import CatalogEntityResponse
 from ...models.errors_list import ErrorsList
+from ...models.get_catalog_entity_include import check_get_catalog_entity_include
 from ...models.get_catalog_entity_include import GetCatalogEntityInclude
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
 
 
 def _get_kwargs(
     id: str | UUID,
     *,
     include: GetCatalogEntityInclude | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -27,29 +36,33 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalog_entities/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/catalog_entities/{id}".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CatalogEntityResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CatalogEntityResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -59,9 +72,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CatalogEntityResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CatalogEntityResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +86,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityInclude | Unset = UNSET,
+
 ) -> Response[CatalogEntityResponse | ErrorsList]:
-    """Retrieves a Catalog Entity
+    """ Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
@@ -90,11 +102,13 @@ def sync_detailed(
 
     Returns:
         Response[CatalogEntityResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
     response = client.get_httpx_client().request(
@@ -103,14 +117,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityInclude | Unset = UNSET,
+
 ) -> CatalogEntityResponse | ErrorsList | None:
-    """Retrieves a Catalog Entity
+    """ Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
@@ -124,22 +138,24 @@ def sync(
 
     Returns:
         CatalogEntityResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        include=include,
-    ).parsed
+client=client,
+include=include,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityInclude | Unset = UNSET,
+
 ) -> Response[CatalogEntityResponse | ErrorsList]:
-    """Retrieves a Catalog Entity
+    """ Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
@@ -153,25 +169,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[CatalogEntityResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str | UUID,
     *,
     client: AuthenticatedClient,
     include: GetCatalogEntityInclude | Unset = UNSET,
+
 ) -> CatalogEntityResponse | ErrorsList | None:
-    """Retrieves a Catalog Entity
+    """ Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
@@ -185,12 +205,12 @@ async def asyncio(
 
     Returns:
         CatalogEntityResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            include=include,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+include=include,
+
+    )).parsed

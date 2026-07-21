@@ -1,32 +1,40 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.custom_field_option_response import CustomFieldOptionResponse
 from ...models.errors_list import ErrorsList
 from ...models.new_custom_field_option import NewCustomFieldOption
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     custom_field_id: str,
     *,
     body: NewCustomFieldOption,
+
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
+
+    
+
+    
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/custom_fields/{custom_field_id}/options".format(
-            custom_field_id=quote(str(custom_field_id), safe=""),
-        ),
+        "url": "/v1/custom_fields/{custom_field_id}/options".format(custom_field_id=quote(str(custom_field_id), safe=""),),
     }
 
     _kwargs["json"] = body.to_dict()
+
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -34,21 +42,26 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CustomFieldOptionResponse | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> CustomFieldOptionResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = CustomFieldOptionResponse.from_dict(response.json())
+
+
 
         return response_201
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
+
+
         return response_401
 
     if response.status_code == 422:
         response_422 = ErrorsList.from_dict(response.json())
+
+
 
         return response_422
 
@@ -58,9 +71,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CustomFieldOptionResponse | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[CustomFieldOptionResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +85,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCustomFieldOption,
+
 ) -> Response[CustomFieldOptionResponse | ErrorsList]:
-    """[DEPRECATED] Creates a custom field option
+    """ [DEPRECATED] Creates a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Creates a new custom field option from provided data
 
@@ -89,11 +101,13 @@ def sync_detailed(
 
     Returns:
         Response[CustomFieldOptionResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         custom_field_id=custom_field_id,
-        body=body,
+body=body,
+
     )
 
     response = client.get_httpx_client().request(
@@ -102,14 +116,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCustomFieldOption,
+
 ) -> CustomFieldOptionResponse | ErrorsList | None:
-    """[DEPRECATED] Creates a custom field option
+    """ [DEPRECATED] Creates a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Creates a new custom field option from provided data
 
@@ -123,22 +137,24 @@ def sync(
 
     Returns:
         CustomFieldOptionResponse | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         custom_field_id=custom_field_id,
-        client=client,
-        body=body,
-    ).parsed
+client=client,
+body=body,
 
+    ).parsed
 
 async def asyncio_detailed(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCustomFieldOption,
+
 ) -> Response[CustomFieldOptionResponse | ErrorsList]:
-    """[DEPRECATED] Creates a custom field option
+    """ [DEPRECATED] Creates a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Creates a new custom field option from provided data
 
@@ -152,25 +168,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[CustomFieldOptionResponse | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         custom_field_id=custom_field_id,
-        body=body,
+body=body,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     custom_field_id: str,
     *,
     client: AuthenticatedClient,
     body: NewCustomFieldOption,
+
 ) -> CustomFieldOptionResponse | ErrorsList | None:
-    """[DEPRECATED] Creates a custom field option
+    """ [DEPRECATED] Creates a custom field option
 
      [DEPRECATED] Use form field endpoints instead. Creates a new custom field option from provided data
 
@@ -184,12 +204,12 @@ async def asyncio(
 
     Returns:
         CustomFieldOptionResponse | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            custom_field_id=custom_field_id,
-            client=client,
-            body=body,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        custom_field_id=custom_field_id,
+client=client,
+body=body,
+
+    )).parsed

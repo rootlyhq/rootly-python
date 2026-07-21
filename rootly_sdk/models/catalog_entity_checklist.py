@@ -1,17 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.catalog_entity_checklist_auditable_type import (
-    CatalogEntityChecklistAuditableType,
-    check_catalog_entity_checklist_auditable_type,
-)
-from ..models.catalog_entity_checklist_status import CatalogEntityChecklistStatus, check_catalog_entity_checklist_status
 from ..types import UNSET, Unset
+
+from ..models.catalog_entity_checklist_auditable_type import CatalogEntityChecklistAuditableType
+from ..models.catalog_entity_checklist_auditable_type import check_catalog_entity_checklist_auditable_type
+from ..models.catalog_entity_checklist_status import CatalogEntityChecklistStatus
+from ..models.catalog_entity_checklist_status import check_catalog_entity_checklist_status
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.catalog_entity_checklist_checklist_fields_type_0_item import (
@@ -56,6 +58,13 @@ class CatalogEntityChecklist:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.catalog_entity_checklist_checklist_fields_type_0_item import (
+            CatalogEntityChecklistChecklistFieldsType0Item,
+        )
+        from ..models.catalog_entity_checklist_checklist_owners_type_0_item import (
+            CatalogEntityChecklistChecklistOwnersType0Item,
+        )
+
         catalog_checklist_template_id = self.catalog_checklist_template_id
 
         auditable_type: str = self.auditable_type

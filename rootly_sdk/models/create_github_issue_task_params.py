@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.create_github_issue_task_params_task_type import (
-    CreateGithubIssueTaskParamsTaskType,
-    check_create_github_issue_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.create_github_issue_task_params_task_type import check_create_github_issue_task_params_task_type
+from ..models.create_github_issue_task_params_task_type import CreateGithubIssueTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_github_issue_task_params_issue_type import CreateGithubIssueTaskParamsIssueType
@@ -32,6 +33,8 @@ class CreateGithubIssueTaskParams:
         labels (list[CreateGithubIssueTaskParamsLabelsItem] | Unset): The issue labels
         issue_type (CreateGithubIssueTaskParamsIssueType | Unset): The issue type
         parent_issue_number (None | str | Unset): The parent issue number for sub-issue linking
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+            valid JSON
     """
 
     title: str
@@ -41,9 +44,14 @@ class CreateGithubIssueTaskParams:
     labels: list[CreateGithubIssueTaskParamsLabelsItem] | Unset = UNSET
     issue_type: CreateGithubIssueTaskParamsIssueType | Unset = UNSET
     parent_issue_number: None | str | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_github_issue_task_params_labels_item import CreateGithubIssueTaskParamsLabelsItem
+        from ..models.create_github_issue_task_params_issue_type import CreateGithubIssueTaskParamsIssueType
+        from ..models.create_github_issue_task_params_repository import CreateGithubIssueTaskParamsRepository
+
         title = self.title
 
         repository = self.repository.to_dict()
@@ -71,6 +79,12 @@ class CreateGithubIssueTaskParams:
         else:
             parent_issue_number = self.parent_issue_number
 
+        custom_fields_mapping: None | str | Unset
+        if isinstance(self.custom_fields_mapping, Unset):
+            custom_fields_mapping = UNSET
+        else:
+            custom_fields_mapping = self.custom_fields_mapping
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -89,6 +103,8 @@ class CreateGithubIssueTaskParams:
             field_dict["issue_type"] = issue_type
         if parent_issue_number is not UNSET:
             field_dict["parent_issue_number"] = parent_issue_number
+        if custom_fields_mapping is not UNSET:
+            field_dict["custom_fields_mapping"] = custom_fields_mapping
 
         return field_dict
 
@@ -137,6 +153,15 @@ class CreateGithubIssueTaskParams:
 
         parent_issue_number = _parse_parent_issue_number(d.pop("parent_issue_number", UNSET))
 
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
+
         create_github_issue_task_params = cls(
             title=title,
             repository=repository,
@@ -145,6 +170,7 @@ class CreateGithubIssueTaskParams:
             labels=labels,
             issue_type=issue_type,
             parent_issue_number=parent_issue_number,
+            custom_fields_mapping=custom_fields_mapping,
         )
 
         create_github_issue_task_params.additional_properties = d

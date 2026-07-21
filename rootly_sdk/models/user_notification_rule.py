@@ -1,20 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.user_notification_rule_enabled_contact_types_item import (
-    UserNotificationRuleEnabledContactTypesItem,
     check_user_notification_rule_enabled_contact_types_item,
 )
-from ..models.user_notification_rule_notification_type import (
-    UserNotificationRuleNotificationType,
-    check_user_notification_rule_notification_type,
-)
+from ..models.user_notification_rule_enabled_contact_types_item import UserNotificationRuleEnabledContactTypesItem
+from ..models.user_notification_rule_notification_type import check_user_notification_rule_notification_type
+from ..models.user_notification_rule_notification_type import UserNotificationRuleNotificationType
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UserNotificationRule")
 

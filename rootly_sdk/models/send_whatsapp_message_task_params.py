@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.send_whatsapp_message_task_params_task_type import (
-    SendWhatsappMessageTaskParamsTaskType,
-    check_send_whatsapp_message_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.send_whatsapp_message_task_params_task_type import check_send_whatsapp_message_task_params_task_type
+from ..models.send_whatsapp_message_task_params_task_type import SendWhatsappMessageTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="SendWhatsappMessageTaskParams")
 

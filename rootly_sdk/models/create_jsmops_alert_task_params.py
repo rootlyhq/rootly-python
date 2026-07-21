@@ -1,20 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.create_jsmops_alert_task_params_priority import (
-    CreateJsmopsAlertTaskParamsPriority,
-    check_create_jsmops_alert_task_params_priority,
-)
-from ..models.create_jsmops_alert_task_params_task_type import (
-    CreateJsmopsAlertTaskParamsTaskType,
-    check_create_jsmops_alert_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.create_jsmops_alert_task_params_priority import check_create_jsmops_alert_task_params_priority
+from ..models.create_jsmops_alert_task_params_priority import CreateJsmopsAlertTaskParamsPriority
+from ..models.create_jsmops_alert_task_params_task_type import check_create_jsmops_alert_task_params_task_type
+from ..models.create_jsmops_alert_task_params_task_type import CreateJsmopsAlertTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_jsmops_alert_task_params_escalations_item import CreateJsmopsAlertTaskParamsEscalationsItem
@@ -54,6 +53,11 @@ class CreateJsmopsAlertTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_jsmops_alert_task_params_users_item import CreateJsmopsAlertTaskParamsUsersItem
+        from ..models.create_jsmops_alert_task_params_schedules_item import CreateJsmopsAlertTaskParamsSchedulesItem
+        from ..models.create_jsmops_alert_task_params_escalations_item import CreateJsmopsAlertTaskParamsEscalationsItem
+        from ..models.create_jsmops_alert_task_params_teams_item import CreateJsmopsAlertTaskParamsTeamsItem
+
         message = self.message
 
         task_type: str | Unset = UNSET

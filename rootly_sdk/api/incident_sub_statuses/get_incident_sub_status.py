@@ -1,21 +1,30 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.get_incident_sub_status_include import check_get_incident_sub_status_include
 from ...models.get_incident_sub_status_include import GetIncidentSubStatusInclude
 from ...models.incident_sub_status_response import IncidentSubStatusResponse
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
     *,
     include: GetIncidentSubStatusInclude | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -25,24 +34,26 @@ def _get_kwargs(
 
     params["include"] = json_include
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incident_sub_statuses/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/incident_sub_statuses/{id}".format(id=quote(str(id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> IncidentSubStatusResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentSubStatusResponse | None:
     if response.status_code == 200:
         response_200 = IncidentSubStatusResponse.from_dict(response.json())
+
+
 
         return response_200
 
@@ -52,9 +63,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[IncidentSubStatusResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[IncidentSubStatusResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,8 +77,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include: GetIncidentSubStatusInclude | Unset = UNSET,
+
 ) -> Response[IncidentSubStatusResponse]:
-    """Retrieves incident_sub_status
+    """ Retrieves incident_sub_status
 
      Retrieves a specific incident_sub_status by id
 
@@ -83,11 +93,13 @@ def sync_detailed(
 
     Returns:
         Response[IncidentSubStatusResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
     response = client.get_httpx_client().request(
@@ -96,14 +108,14 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetIncidentSubStatusInclude | Unset = UNSET,
+
 ) -> IncidentSubStatusResponse | None:
-    """Retrieves incident_sub_status
+    """ Retrieves incident_sub_status
 
      Retrieves a specific incident_sub_status by id
 
@@ -117,22 +129,24 @@ def sync(
 
     Returns:
         IncidentSubStatusResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-        include=include,
-    ).parsed
+client=client,
+include=include,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetIncidentSubStatusInclude | Unset = UNSET,
+
 ) -> Response[IncidentSubStatusResponse]:
-    """Retrieves incident_sub_status
+    """ Retrieves incident_sub_status
 
      Retrieves a specific incident_sub_status by id
 
@@ -146,25 +160,29 @@ async def asyncio_detailed(
 
     Returns:
         Response[IncidentSubStatusResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
-        include=include,
+include=include,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
     include: GetIncidentSubStatusInclude | Unset = UNSET,
+
 ) -> IncidentSubStatusResponse | None:
-    """Retrieves incident_sub_status
+    """ Retrieves incident_sub_status
 
      Retrieves a specific incident_sub_status by id
 
@@ -178,12 +196,12 @@ async def asyncio(
 
     Returns:
         IncidentSubStatusResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-            include=include,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+include=include,
+
+    )).parsed

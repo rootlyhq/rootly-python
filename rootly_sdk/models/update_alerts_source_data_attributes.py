@@ -1,19 +1,25 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_alerts_source_data_attributes_deduplication_key_kind import (
-    UpdateAlertsSourceDataAttributesDeduplicationKeyKind,
     check_update_alerts_source_data_attributes_deduplication_key_kind,
 )
+from ..models.update_alerts_source_data_attributes_deduplication_key_kind import (
+    UpdateAlertsSourceDataAttributesDeduplicationKeyKind,
+)
 from ..models.update_alerts_source_data_attributes_source_type import (
-    UpdateAlertsSourceDataAttributesSourceType,
     check_update_alerts_source_data_attributes_source_type,
 )
+from ..models.update_alerts_source_data_attributes_source_type import UpdateAlertsSourceDataAttributesSourceType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.update_alerts_source_data_attributes_alert_source_fields_attributes_item import (
@@ -41,6 +47,8 @@ class UpdateAlertsSourceDataAttributes:
     """
     Attributes:
         name (str | Unset): The name of the alert source
+        enabled (bool | Unset): Whether the alert source is enabled. Disabled sources do not create alerts from incoming
+            events.
         source_type (UpdateAlertsSourceDataAttributesSourceType | Unset): The alert source type
         alert_urgency_id (str | Unset): ID for the default alert urgency assigned to this alert source
         deduplicate_alerts_by_key (bool | Unset): Toggle alert deduplication using deduplication key. If enabled,
@@ -65,6 +73,7 @@ class UpdateAlertsSourceDataAttributes:
     """
 
     name: str | Unset = UNSET
+    enabled: bool | Unset = UNSET
     source_type: UpdateAlertsSourceDataAttributesSourceType | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
     deduplicate_alerts_by_key: bool | Unset = UNSET
@@ -83,17 +92,25 @@ class UpdateAlertsSourceDataAttributes:
     )
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.update_alerts_source_data_attributes_sourceable_attributes_type_0 import (
+            UpdateAlertsSourceDataAttributesSourceableAttributesType0,
+        )
+        from ..models.update_alerts_source_data_attributes_alert_source_urgency_rules_attributes_item import (
+            UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem,
+        )
         from ..models.update_alerts_source_data_attributes_alert_template_attributes_type_0 import (
             UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0,
+        )
+        from ..models.update_alerts_source_data_attributes_alert_source_fields_attributes_item import (
+            UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem,
         )
         from ..models.update_alerts_source_data_attributes_resolution_rule_attributes_type_0 import (
             UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0,
         )
-        from ..models.update_alerts_source_data_attributes_sourceable_attributes_type_0 import (
-            UpdateAlertsSourceDataAttributesSourceableAttributesType0,
-        )
 
         name = self.name
+
+        enabled = self.enabled
 
         source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
@@ -166,6 +183,8 @@ class UpdateAlertsSourceDataAttributes:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
+        if enabled is not UNSET:
+            field_dict["enabled"] = enabled
         if source_type is not UNSET:
             field_dict["source_type"] = source_type
         if alert_urgency_id is not UNSET:
@@ -213,6 +232,8 @@ class UpdateAlertsSourceDataAttributes:
 
         d = dict(src_dict)
         name = d.pop("name", UNSET)
+
+        enabled = d.pop("enabled", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
         source_type: UpdateAlertsSourceDataAttributesSourceType | Unset
@@ -347,6 +368,7 @@ class UpdateAlertsSourceDataAttributes:
 
         update_alerts_source_data_attributes = cls(
             name=name,
+            enabled=enabled,
             source_type=source_type,
             alert_urgency_id=alert_urgency_id,
             deduplicate_alerts_by_key=deduplicate_alerts_by_key,

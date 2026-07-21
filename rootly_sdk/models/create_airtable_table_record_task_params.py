@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.create_airtable_table_record_task_params_task_type import (
-    CreateAirtableTableRecordTaskParamsTaskType,
     check_create_airtable_table_record_task_params_task_type,
 )
+from ..models.create_airtable_table_record_task_params_task_type import CreateAirtableTableRecordTaskParamsTaskType
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.create_airtable_table_record_task_params_base import CreateAirtableTableRecordTaskParamsBase
@@ -38,6 +41,9 @@ class CreateAirtableTableRecordTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.create_airtable_table_record_task_params_table import CreateAirtableTableRecordTaskParamsTable
+        from ..models.create_airtable_table_record_task_params_base import CreateAirtableTableRecordTaskParamsBase
+
         base = self.base.to_dict()
 
         table = self.table.to_dict()

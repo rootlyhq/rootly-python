@@ -1,19 +1,28 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.update_incident_permission_set_data_attributes_private_incident_permissions_item import (
-    UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem,
     check_update_incident_permission_set_data_attributes_private_incident_permissions_item,
+)
+from ..models.update_incident_permission_set_data_attributes_private_incident_permissions_item import (
+    UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem,
+)
+from ..models.update_incident_permission_set_data_attributes_public_incident_permissions_item import (
+    check_update_incident_permission_set_data_attributes_public_incident_permissions_item,
 )
 from ..models.update_incident_permission_set_data_attributes_public_incident_permissions_item import (
     UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem,
-    check_update_incident_permission_set_data_attributes_public_incident_permissions_item,
 )
 from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateIncidentPermissionSetDataAttributes")
 

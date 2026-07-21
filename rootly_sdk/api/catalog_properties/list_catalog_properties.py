@@ -1,26 +1,34 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import Response, UNSET
+from ... import errors
+
+
 
 
 def _get_kwargs(
     catalog_id: str,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalogs/{catalog_id}/properties".format(
-            catalog_id=quote(str(catalog_id), safe=""),
-        ),
+        "url": "/v1/catalogs/{catalog_id}/properties".format(catalog_id=quote(str(catalog_id), safe=""),),
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
@@ -46,8 +54,9 @@ def sync_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """List Catalog Properties (alias for fields)
+    """ List Catalog Properties (alias for fields)
 
      List Catalog Properties - returns catalog_properties type
 
@@ -60,10 +69,12 @@ def sync_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -77,8 +88,9 @@ async def asyncio_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any]:
-    """List Catalog Properties (alias for fields)
+    """ List Catalog Properties (alias for fields)
 
      List Catalog Properties - returns catalog_properties type
 
@@ -91,12 +103,17 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         catalog_id=catalog_id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
+

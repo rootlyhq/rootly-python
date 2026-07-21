@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.redis_client_task_params_task_type import (
-    RedisClientTaskParamsTaskType,
-    check_redis_client_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.redis_client_task_params_task_type import check_redis_client_task_params_task_type
+from ..models.redis_client_task_params_task_type import RedisClientTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.redis_client_task_params_post_to_slack_channels_item import (
@@ -44,6 +45,10 @@ class RedisClientTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.redis_client_task_params_post_to_slack_channels_item import (
+            RedisClientTaskParamsPostToSlackChannelsItem,
+        )
+
         url = self.url
 
         commands = self.commands

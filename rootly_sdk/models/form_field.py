@@ -1,15 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.form_field_input_kind import FormFieldInputKind, check_form_field_input_kind
-from ..models.form_field_kind import FormFieldKind, check_form_field_kind
-from ..models.form_field_value_kind import FormFieldValueKind, check_form_field_value_kind
 from ..types import UNSET, Unset
+
+from ..models.form_field_input_kind import check_form_field_input_kind
+from ..models.form_field_input_kind import FormFieldInputKind
+from ..models.form_field_kind import check_form_field_kind
+from ..models.form_field_kind import FormFieldKind
+from ..models.form_field_value_kind import check_form_field_value_kind
+from ..models.form_field_value_kind import FormFieldValueKind
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="FormField")
 

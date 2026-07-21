@@ -4,24 +4,33 @@ from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     heartbeat_id: str,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/heartbeats/{heartbeat_id}/ping".format(
-            heartbeat_id=quote(str(heartbeat_id), safe=""),
-        ),
+        "url": "/v1/heartbeats/{heartbeat_id}/ping".format(heartbeat_id=quote(str(heartbeat_id), safe=""),),
     }
 
+
     return _kwargs
+
 
 
 def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
@@ -31,6 +40,8 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -53,8 +64,9 @@ def sync_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any | ErrorsList]:
-    """Ping a heartbeat
+    """ Ping a heartbeat
 
      Ping a specific heartbeat by id
 
@@ -67,10 +79,12 @@ def sync_detailed(
 
     Returns:
         Response[Any | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         heartbeat_id=heartbeat_id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -79,13 +93,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Any | ErrorsList | None:
-    """Ping a heartbeat
+    """ Ping a heartbeat
 
      Ping a specific heartbeat by id
 
@@ -98,20 +112,22 @@ def sync(
 
     Returns:
         Any | ErrorsList
-    """
+     """
+
 
     return sync_detailed(
         heartbeat_id=heartbeat_id,
-        client=client,
-    ).parsed
+client=client,
 
+    ).parsed
 
 async def asyncio_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[Any | ErrorsList]:
-    """Ping a heartbeat
+    """ Ping a heartbeat
 
      Ping a specific heartbeat by id
 
@@ -124,23 +140,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[Any | ErrorsList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         heartbeat_id=heartbeat_id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Any | ErrorsList | None:
-    """Ping a heartbeat
+    """ Ping a heartbeat
 
      Ping a specific heartbeat by id
 
@@ -153,11 +173,11 @@ async def asyncio(
 
     Returns:
         Any | ErrorsList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            heartbeat_id=heartbeat_id,
-            client=client,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        heartbeat_id=heartbeat_id,
+client=client,
+
+    )).parsed

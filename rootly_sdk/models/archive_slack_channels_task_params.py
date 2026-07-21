@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.archive_slack_channels_task_params_task_type import (
-    ArchiveSlackChannelsTaskParamsTaskType,
-    check_archive_slack_channels_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.archive_slack_channels_task_params_task_type import ArchiveSlackChannelsTaskParamsTaskType
+from ..models.archive_slack_channels_task_params_task_type import check_archive_slack_channels_task_params_task_type
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.archive_slack_channels_task_params_channels_item import ArchiveSlackChannelsTaskParamsChannelsItem
@@ -32,6 +33,8 @@ class ArchiveSlackChannelsTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.archive_slack_channels_task_params_channels_item import ArchiveSlackChannelsTaskParamsChannelsItem
+
         channels = []
         for channels_item_data in self.channels:
             channels_item = channels_item_data.to_dict()

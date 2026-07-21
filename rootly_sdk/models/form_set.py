@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="FormSet")
 
@@ -23,7 +27,7 @@ class FormSet:
             `web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `slack_new_incident_form`,
             `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
             `slack_incident_resolution_form`, `slack_incident_cancellation_form`, `slack_scheduled_incident_form`,
-            `slack_update_scheduled_incident_form`
+            `slack_update_scheduled_incident_form`, `google_chat_new_incident_form`, `google_chat_update_incident_form`
         created_at (str): Date of creation
         updated_at (str): Date of last update
         slug (str | Unset): The slug of the form set

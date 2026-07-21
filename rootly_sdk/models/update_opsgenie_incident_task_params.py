@@ -1,24 +1,22 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_opsgenie_incident_task_params_priority import (
-    UpdateOpsgenieIncidentTaskParamsPriority,
-    check_update_opsgenie_incident_task_params_priority,
-)
-from ..models.update_opsgenie_incident_task_params_status import (
-    UpdateOpsgenieIncidentTaskParamsStatus,
-    check_update_opsgenie_incident_task_params_status,
-)
-from ..models.update_opsgenie_incident_task_params_task_type import (
-    UpdateOpsgenieIncidentTaskParamsTaskType,
-    check_update_opsgenie_incident_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.update_opsgenie_incident_task_params_priority import check_update_opsgenie_incident_task_params_priority
+from ..models.update_opsgenie_incident_task_params_priority import UpdateOpsgenieIncidentTaskParamsPriority
+from ..models.update_opsgenie_incident_task_params_status import check_update_opsgenie_incident_task_params_status
+from ..models.update_opsgenie_incident_task_params_status import UpdateOpsgenieIncidentTaskParamsStatus
+from ..models.update_opsgenie_incident_task_params_task_type import check_update_opsgenie_incident_task_params_task_type
+from ..models.update_opsgenie_incident_task_params_task_type import UpdateOpsgenieIncidentTaskParamsTaskType
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateOpsgenieIncidentTaskParams")
 

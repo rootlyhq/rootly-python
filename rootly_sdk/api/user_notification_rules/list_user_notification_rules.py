@@ -1,13 +1,17 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.user_notification_rule_list import UserNotificationRuleList
-from ...types import UNSET, Response, Unset
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -17,7 +21,11 @@ def _get_kwargs(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -29,24 +37,26 @@ def _get_kwargs(
 
     params["sort"] = sort
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/notification_rules".format(
-            user_id=quote(str(user_id), safe=""),
-        ),
+        "url": "/v1/users/{user_id}/notification_rules".format(user_id=quote(str(user_id), safe=""),),
         "params": params,
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> UserNotificationRuleList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> UserNotificationRuleList | None:
     if response.status_code == 200:
         response_200 = UserNotificationRuleList.from_dict(response.json())
+
+
 
         return response_200
 
@@ -56,9 +66,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[UserNotificationRuleList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[UserNotificationRuleList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,8 +83,9 @@ def sync_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[UserNotificationRuleList]:
-    """List user notification rules
+    """ List user notification rules
 
      List user notification rules
 
@@ -93,14 +102,16 @@ def sync_detailed(
 
     Returns:
         Response[UserNotificationRuleList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         user_id=user_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
     )
 
     response = client.get_httpx_client().request(
@@ -108,7 +119,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     user_id: str,
@@ -118,8 +128,9 @@ def sync(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> UserNotificationRuleList | None:
-    """List user notification rules
+    """ List user notification rules
 
      List user notification rules
 
@@ -136,17 +147,18 @@ def sync(
 
     Returns:
         UserNotificationRuleList
-    """
+     """
+
 
     return sync_detailed(
         user_id=user_id,
-        client=client,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
-    ).parsed
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
 
+    ).parsed
 
 async def asyncio_detailed(
     user_id: str,
@@ -156,8 +168,9 @@ async def asyncio_detailed(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> Response[UserNotificationRuleList]:
-    """List user notification rules
+    """ List user notification rules
 
      List user notification rules
 
@@ -174,20 +187,23 @@ async def asyncio_detailed(
 
     Returns:
         Response[UserNotificationRuleList]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         user_id=user_id,
-        include=include,
-        pagenumber=pagenumber,
-        pagesize=pagesize,
-        sort=sort,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     user_id: str,
@@ -197,8 +213,9 @@ async def asyncio(
     pagenumber: int | Unset = UNSET,
     pagesize: int | Unset = UNSET,
     sort: str | Unset = UNSET,
+
 ) -> UserNotificationRuleList | None:
-    """List user notification rules
+    """ List user notification rules
 
      List user notification rules
 
@@ -215,15 +232,15 @@ async def asyncio(
 
     Returns:
         UserNotificationRuleList
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            user_id=user_id,
-            client=client,
-            include=include,
-            pagenumber=pagenumber,
-            pagesize=pagesize,
-            sort=sort,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        user_id=user_id,
+client=client,
+include=include,
+pagenumber=pagenumber,
+pagesize=pagesize,
+sort=sort,
+
+    )).parsed

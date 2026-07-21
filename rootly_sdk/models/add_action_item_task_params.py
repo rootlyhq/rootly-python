@@ -1,28 +1,25 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
+from ..models.add_action_item_task_params_attribute_to_query_by import AddActionItemTaskParamsAttributeToQueryBy
 from ..models.add_action_item_task_params_attribute_to_query_by import (
-    AddActionItemTaskParamsAttributeToQueryBy,
     check_add_action_item_task_params_attribute_to_query_by,
 )
-from ..models.add_action_item_task_params_priority import (
-    AddActionItemTaskParamsPriority,
-    check_add_action_item_task_params_priority,
-)
-from ..models.add_action_item_task_params_status import (
-    AddActionItemTaskParamsStatus,
-    check_add_action_item_task_params_status,
-)
-from ..models.add_action_item_task_params_task_type import (
-    AddActionItemTaskParamsTaskType,
-    check_add_action_item_task_params_task_type,
-)
+from ..models.add_action_item_task_params_priority import AddActionItemTaskParamsPriority
+from ..models.add_action_item_task_params_priority import check_add_action_item_task_params_priority
+from ..models.add_action_item_task_params_status import AddActionItemTaskParamsStatus
+from ..models.add_action_item_task_params_status import check_add_action_item_task_params_status
+from ..models.add_action_item_task_params_task_type import AddActionItemTaskParamsTaskType
+from ..models.add_action_item_task_params_task_type import check_add_action_item_task_params_task_type
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.add_action_item_task_params_assigned_to_user import AddActionItemTaskParamsAssignedToUser
@@ -74,6 +71,11 @@ class AddActionItemTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.add_action_item_task_params_assigned_to_user import AddActionItemTaskParamsAssignedToUser
+        from ..models.add_action_item_task_params_post_to_slack_channels_item import (
+            AddActionItemTaskParamsPostToSlackChannelsItem,
+        )
+
         priority: str = self.priority
 
         summary = self.summary

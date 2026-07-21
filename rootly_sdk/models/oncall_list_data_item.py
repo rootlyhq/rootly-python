@@ -1,0 +1,111 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+from ..models.oncall_list_data_item_type import check_oncall_list_data_item_type
+from ..models.oncall_list_data_item_type import OncallListDataItemType
+from ..types import UNSET, Unset
+from typing import cast
+
+if TYPE_CHECKING:
+    from ..models.oncall import Oncall
+    from ..models.oncall_relationships import OncallRelationships
+
+
+T = TypeVar("T", bound="OncallListDataItem")
+
+
+@_attrs_define
+class OncallListDataItem:
+    """
+    Attributes:
+        id (str): Unique ID of the on-call entry
+        type_ (OncallListDataItemType):
+        attributes (Oncall):
+        relationships (OncallRelationships | Unset):
+    """
+
+    id: str
+    type_: OncallListDataItemType
+    attributes: Oncall
+    relationships: OncallRelationships | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        from ..models.oncall_relationships import OncallRelationships
+        from ..models.oncall import Oncall
+
+        id = self.id
+
+        type_: str = self.type_
+
+        attributes = self.attributes.to_dict()
+
+        relationships: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.relationships, Unset):
+            relationships = self.relationships.to_dict()
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "id": id,
+                "type": type_,
+                "attributes": attributes,
+            }
+        )
+        if relationships is not UNSET:
+            field_dict["relationships"] = relationships
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.oncall import Oncall
+        from ..models.oncall_relationships import OncallRelationships
+
+        d = dict(src_dict)
+        id = d.pop("id")
+
+        type_ = check_oncall_list_data_item_type(d.pop("type"))
+
+        attributes = Oncall.from_dict(d.pop("attributes"))
+
+        _relationships = d.pop("relationships", UNSET)
+        relationships: OncallRelationships | Unset
+        if isinstance(_relationships, Unset):
+            relationships = UNSET
+        else:
+            relationships = OncallRelationships.from_dict(_relationships)
+
+        oncall_list_data_item = cls(
+            id=id,
+            type_=type_,
+            attributes=attributes,
+            relationships=relationships,
+        )
+
+        oncall_list_data_item.additional_properties = d
+        return oncall_list_data_item
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

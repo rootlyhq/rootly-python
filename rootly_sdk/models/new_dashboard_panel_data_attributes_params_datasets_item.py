@@ -1,16 +1,21 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 from ..models.new_dashboard_panel_data_attributes_params_datasets_item_collection import (
-    NewDashboardPanelDataAttributesParamsDatasetsItemCollection,
     check_new_dashboard_panel_data_attributes_params_datasets_item_collection,
 )
+from ..models.new_dashboard_panel_data_attributes_params_datasets_item_collection import (
+    NewDashboardPanelDataAttributesParamsDatasetsItemCollection,
+)
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_dashboard_panel_data_attributes_params_datasets_item_aggregate_type_0 import (
@@ -46,6 +51,9 @@ class NewDashboardPanelDataAttributesParamsDatasetsItem:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_dashboard_panel_data_attributes_params_datasets_item_filter_item import (
+            NewDashboardPanelDataAttributesParamsDatasetsItemFilterItem,
+        )
         from ..models.new_dashboard_panel_data_attributes_params_datasets_item_aggregate_type_0 import (
             NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0,
         )

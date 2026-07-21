@@ -1,27 +1,31 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_live_call_router_data_attributes_country_code import (
-    NewLiveCallRouterDataAttributesCountryCode,
     check_new_live_call_router_data_attributes_country_code,
 )
-from ..models.new_live_call_router_data_attributes_kind import (
-    NewLiveCallRouterDataAttributesKind,
-    check_new_live_call_router_data_attributes_kind,
-)
+from ..models.new_live_call_router_data_attributes_country_code import NewLiveCallRouterDataAttributesCountryCode
+from ..models.new_live_call_router_data_attributes_kind import check_new_live_call_router_data_attributes_kind
+from ..models.new_live_call_router_data_attributes_kind import NewLiveCallRouterDataAttributesKind
 from ..models.new_live_call_router_data_attributes_phone_type import (
-    NewLiveCallRouterDataAttributesPhoneType,
     check_new_live_call_router_data_attributes_phone_type,
+)
+from ..models.new_live_call_router_data_attributes_phone_type import NewLiveCallRouterDataAttributesPhoneType
+from ..models.new_live_call_router_data_attributes_waiting_music_url import (
+    check_new_live_call_router_data_attributes_waiting_music_url,
 )
 from ..models.new_live_call_router_data_attributes_waiting_music_url import (
     NewLiveCallRouterDataAttributesWaitingMusicUrl,
-    check_new_live_call_router_data_attributes_waiting_music_url,
 )
 from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params import (
@@ -51,6 +55,8 @@ class NewLiveCallRouterDataAttributes:
             from when this live call router is configured as a phone tree.
         enabled (bool | Unset): Whether the live_call_router is enabled
         caller_greeting (str | Unset): The caller greeting message of the live_call_router
+        unavailable_responder_message (None | str | Unset): The message played to the caller when a responder doesn't
+            answer and the call moves on to the next person in the escalation. Leave blank to use the default message.
         waiting_music_url (NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset): The waiting music URL of the
             live_call_router
         sent_to_voicemail_delay (int | Unset): The delay (seconds) after which the caller in redirected to voicemail
@@ -58,6 +64,11 @@ class NewLiveCallRouterDataAttributes:
             live
         escalation_level_delay_in_seconds (int | Unset): This overrides the delay (seconds) in escalation levels
         should_auto_resolve_alert_on_call_end (bool | Unset): This overrides the delay (seconds) in escalation levels
+        notify_via_sms (bool | Unset): Whether responders are also notified via SMS when this router pages them
+        notify_via_push_notification (bool | Unset): Whether responders are also notified via push notification when
+            this router pages them
+        informational_notification_message (None | str | Unset): Optional message included in the SMS/push notification.
+            Supports variables such as {{ alert.url }}, {{ alert.data.* }}, and {{ alert.alert_urgency.name }}.
         alert_urgency_id (str | Unset): This is used in escalation paths to determine who to page
         calling_tree_enabled (bool | Unset): Whether the live call router is configured as a phone tree, requiring
             callers to press a key before being connected
@@ -75,17 +86,28 @@ class NewLiveCallRouterDataAttributes:
     paging_targets: list[NewLiveCallRouterDataAttributesPagingTargetsItem]
     enabled: bool | Unset = UNSET
     caller_greeting: str | Unset = UNSET
+    unavailable_responder_message: None | str | Unset = UNSET
     waiting_music_url: NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset = UNSET
     sent_to_voicemail_delay: int | Unset = UNSET
     should_redirect_to_voicemail_on_no_answer: bool | Unset = UNSET
     escalation_level_delay_in_seconds: int | Unset = UNSET
     should_auto_resolve_alert_on_call_end: bool | Unset = UNSET
+    notify_via_sms: bool | Unset = UNSET
+    notify_via_push_notification: bool | Unset = UNSET
+    informational_notification_message: None | str | Unset = UNSET
     alert_urgency_id: str | Unset = UNSET
     calling_tree_enabled: bool | Unset = UNSET
     calling_tree_prompt: str | Unset = UNSET
     escalation_policy_trigger_params: NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_live_call_router_data_attributes_escalation_policy_trigger_params import (
+            NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams,
+        )
+        from ..models.new_live_call_router_data_attributes_paging_targets_item import (
+            NewLiveCallRouterDataAttributesPagingTargetsItem,
+        )
+
         kind: str = self.kind
 
         name = self.name
@@ -107,6 +129,12 @@ class NewLiveCallRouterDataAttributes:
 
         caller_greeting = self.caller_greeting
 
+        unavailable_responder_message: None | str | Unset
+        if isinstance(self.unavailable_responder_message, Unset):
+            unavailable_responder_message = UNSET
+        else:
+            unavailable_responder_message = self.unavailable_responder_message
+
         waiting_music_url: str | Unset = UNSET
         if not isinstance(self.waiting_music_url, Unset):
             waiting_music_url = self.waiting_music_url
@@ -118,6 +146,16 @@ class NewLiveCallRouterDataAttributes:
         escalation_level_delay_in_seconds = self.escalation_level_delay_in_seconds
 
         should_auto_resolve_alert_on_call_end = self.should_auto_resolve_alert_on_call_end
+
+        notify_via_sms = self.notify_via_sms
+
+        notify_via_push_notification = self.notify_via_push_notification
+
+        informational_notification_message: None | str | Unset
+        if isinstance(self.informational_notification_message, Unset):
+            informational_notification_message = UNSET
+        else:
+            informational_notification_message = self.informational_notification_message
 
         alert_urgency_id = self.alert_urgency_id
 
@@ -146,6 +184,8 @@ class NewLiveCallRouterDataAttributes:
             field_dict["enabled"] = enabled
         if caller_greeting is not UNSET:
             field_dict["caller_greeting"] = caller_greeting
+        if unavailable_responder_message is not UNSET:
+            field_dict["unavailable_responder_message"] = unavailable_responder_message
         if waiting_music_url is not UNSET:
             field_dict["waiting_music_url"] = waiting_music_url
         if sent_to_voicemail_delay is not UNSET:
@@ -156,6 +196,12 @@ class NewLiveCallRouterDataAttributes:
             field_dict["escalation_level_delay_in_seconds"] = escalation_level_delay_in_seconds
         if should_auto_resolve_alert_on_call_end is not UNSET:
             field_dict["should_auto_resolve_alert_on_call_end"] = should_auto_resolve_alert_on_call_end
+        if notify_via_sms is not UNSET:
+            field_dict["notify_via_sms"] = notify_via_sms
+        if notify_via_push_notification is not UNSET:
+            field_dict["notify_via_push_notification"] = notify_via_push_notification
+        if informational_notification_message is not UNSET:
+            field_dict["informational_notification_message"] = informational_notification_message
         if alert_urgency_id is not UNSET:
             field_dict["alert_urgency_id"] = alert_urgency_id
         if calling_tree_enabled is not UNSET:
@@ -200,6 +246,17 @@ class NewLiveCallRouterDataAttributes:
 
         caller_greeting = d.pop("caller_greeting", UNSET)
 
+        def _parse_unavailable_responder_message(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        unavailable_responder_message = _parse_unavailable_responder_message(
+            d.pop("unavailable_responder_message", UNSET)
+        )
+
         _waiting_music_url = d.pop("waiting_music_url", UNSET)
         waiting_music_url: NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset
         if isinstance(_waiting_music_url, Unset):
@@ -214,6 +271,21 @@ class NewLiveCallRouterDataAttributes:
         escalation_level_delay_in_seconds = d.pop("escalation_level_delay_in_seconds", UNSET)
 
         should_auto_resolve_alert_on_call_end = d.pop("should_auto_resolve_alert_on_call_end", UNSET)
+
+        notify_via_sms = d.pop("notify_via_sms", UNSET)
+
+        notify_via_push_notification = d.pop("notify_via_push_notification", UNSET)
+
+        def _parse_informational_notification_message(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        informational_notification_message = _parse_informational_notification_message(
+            d.pop("informational_notification_message", UNSET)
+        )
 
         alert_urgency_id = d.pop("alert_urgency_id", UNSET)
 
@@ -240,11 +312,15 @@ class NewLiveCallRouterDataAttributes:
             paging_targets=paging_targets,
             enabled=enabled,
             caller_greeting=caller_greeting,
+            unavailable_responder_message=unavailable_responder_message,
             waiting_music_url=waiting_music_url,
             sent_to_voicemail_delay=sent_to_voicemail_delay,
             should_redirect_to_voicemail_on_no_answer=should_redirect_to_voicemail_on_no_answer,
             escalation_level_delay_in_seconds=escalation_level_delay_in_seconds,
             should_auto_resolve_alert_on_call_end=should_auto_resolve_alert_on_call_end,
+            notify_via_sms=notify_via_sms,
+            notify_via_push_notification=notify_via_push_notification,
+            informational_notification_message=informational_notification_message,
             alert_urgency_id=alert_urgency_id,
             calling_tree_enabled=calling_tree_enabled,
             calling_tree_prompt=calling_tree_prompt,

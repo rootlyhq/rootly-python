@@ -1,40 +1,51 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
 from ...models.form_set_condition_response import FormSetConditionResponse
-from ...types import Response
+from typing import cast
+
 
 
 def _get_kwargs(
     id: str,
+
 ) -> dict[str, Any]:
+    
+
+    
+
+    
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_set_conditions/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": "/v1/form_set_conditions/{id}".format(id=quote(str(id), safe=""),),
     }
+
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | FormSetConditionResponse | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | FormSetConditionResponse | None:
     if response.status_code == 200:
         response_200 = FormSetConditionResponse.from_dict(response.json())
+
+
 
         return response_200
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -44,9 +55,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | FormSetConditionResponse]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | FormSetConditionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,8 +68,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[ErrorsList | FormSetConditionResponse]:
-    """Retrieves a Form Set Condition
+    """ Retrieves a Form Set Condition
 
      Retrieves a specific form_set_condition by id
 
@@ -73,10 +83,12 @@ def sync_detailed(
 
     Returns:
         Response[ErrorsList | FormSetConditionResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
     response = client.get_httpx_client().request(
@@ -85,13 +97,13 @@ def sync_detailed(
 
     return _build_response(client=client, response=response)
 
-
 def sync(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> ErrorsList | FormSetConditionResponse | None:
-    """Retrieves a Form Set Condition
+    """ Retrieves a Form Set Condition
 
      Retrieves a specific form_set_condition by id
 
@@ -104,20 +116,22 @@ def sync(
 
     Returns:
         ErrorsList | FormSetConditionResponse
-    """
+     """
+
 
     return sync_detailed(
         id=id,
-        client=client,
-    ).parsed
+client=client,
 
+    ).parsed
 
 async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> Response[ErrorsList | FormSetConditionResponse]:
-    """Retrieves a Form Set Condition
+    """ Retrieves a Form Set Condition
 
      Retrieves a specific form_set_condition by id
 
@@ -130,23 +144,27 @@ async def asyncio_detailed(
 
     Returns:
         Response[ErrorsList | FormSetConditionResponse]
-    """
+     """
+
 
     kwargs = _get_kwargs(
         id=id,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
+
 ) -> ErrorsList | FormSetConditionResponse | None:
-    """Retrieves a Form Set Condition
+    """ Retrieves a Form Set Condition
 
      Retrieves a specific form_set_condition by id
 
@@ -159,11 +177,11 @@ async def asyncio(
 
     Returns:
         ErrorsList | FormSetConditionResponse
-    """
+     """
 
-    return (
-        await asyncio_detailed(
-            id=id,
-            client=client,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+
+    )).parsed

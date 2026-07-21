@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_workflow_group_data_attributes_kind import (
-    UpdateWorkflowGroupDataAttributesKind,
-    check_update_workflow_group_data_attributes_kind,
-)
 from ..types import UNSET, Unset
+
+from ..models.update_workflow_group_data_attributes_kind import check_update_workflow_group_data_attributes_kind
+from ..models.update_workflow_group_data_attributes_kind import UpdateWorkflowGroupDataAttributesKind
+from ..types import UNSET, Unset
+from typing import cast
+
 
 T = TypeVar("T", bound="UpdateWorkflowGroupDataAttributes")
 

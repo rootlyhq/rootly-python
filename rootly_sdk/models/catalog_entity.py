@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+from ..models.catalog_entity_managed_by import CatalogEntityManagedBy
+from ..models.catalog_entity_managed_by import check_catalog_entity_managed_by
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.catalog_entity_properties_item import CatalogEntityPropertiesItem
@@ -24,6 +29,10 @@ class CatalogEntity:
         created_at (str):
         updated_at (str):
         description (None | str | Unset):
+        backstage_id (None | str | Unset): The Backstage entity ID this catalog entity is linked to.
+        external_id (None | str | Unset): An external identifier for this catalog entity. Must be unique within the
+            catalog.
+        managed_by (CatalogEntityManagedBy | Unset): Which source manages this resource (read-only).
         properties (list[CatalogEntityPropertiesItem] | Unset): Array of property values for this catalog entity
     """
 
@@ -32,10 +41,15 @@ class CatalogEntity:
     created_at: str
     updated_at: str
     description: None | str | Unset = UNSET
+    backstage_id: None | str | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    managed_by: CatalogEntityManagedBy | Unset = UNSET
     properties: list[CatalogEntityPropertiesItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.catalog_entity_properties_item import CatalogEntityPropertiesItem
+
         name = self.name
 
         position: int | None
@@ -50,6 +64,22 @@ class CatalogEntity:
             description = UNSET
         else:
             description = self.description
+
+        backstage_id: None | str | Unset
+        if isinstance(self.backstage_id, Unset):
+            backstage_id = UNSET
+        else:
+            backstage_id = self.backstage_id
+
+        external_id: None | str | Unset
+        if isinstance(self.external_id, Unset):
+            external_id = UNSET
+        else:
+            external_id = self.external_id
+
+        managed_by: str | Unset = UNSET
+        if not isinstance(self.managed_by, Unset):
+            managed_by = self.managed_by
 
         properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
@@ -70,6 +100,12 @@ class CatalogEntity:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if backstage_id is not UNSET:
+            field_dict["backstage_id"] = backstage_id
+        if external_id is not UNSET:
+            field_dict["external_id"] = external_id
+        if managed_by is not UNSET:
+            field_dict["managed_by"] = managed_by
         if properties is not UNSET:
             field_dict["properties"] = properties
 
@@ -102,6 +138,31 @@ class CatalogEntity:
 
         description = _parse_description(d.pop("description", UNSET))
 
+        def _parse_backstage_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
+
+        def _parse_external_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        external_id = _parse_external_id(d.pop("external_id", UNSET))
+
+        _managed_by = d.pop("managed_by", UNSET)
+        managed_by: CatalogEntityManagedBy | Unset
+        if isinstance(_managed_by, Unset):
+            managed_by = UNSET
+        else:
+            managed_by = check_catalog_entity_managed_by(_managed_by)
+
         _properties = d.pop("properties", UNSET)
         properties: list[CatalogEntityPropertiesItem] | Unset = UNSET
         if _properties is not UNSET:
@@ -117,6 +178,9 @@ class CatalogEntity:
             created_at=created_at,
             updated_at=updated_at,
             description=description,
+            backstage_id=backstage_id,
+            external_id=external_id,
+            managed_by=managed_by,
             properties=properties,
         )
 

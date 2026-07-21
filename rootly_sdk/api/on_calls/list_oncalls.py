@@ -1,13 +1,20 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
-from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
 from ...models.errors_list import ErrorsList
+from ...models.list_oncalls_include import check_list_oncalls_include
 from ...models.list_oncalls_include import ListOncallsInclude
-from ...types import UNSET, Response, Unset
+from ...models.oncall_list import OncallList
+from ...types import UNSET, Unset
+from typing import cast
+
 
 
 def _get_kwargs(
@@ -23,7 +30,11 @@ def _get_kwargs(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
+
 ) -> dict[str, Any]:
+    
+
+    
 
     params: dict[str, Any] = {}
 
@@ -53,7 +64,9 @@ def _get_kwargs(
 
     params["filter[notification_types]"] = filternotification_types
 
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
 
     _kwargs: dict[str, Any] = {
         "method": "get",
@@ -61,21 +74,30 @@ def _get_kwargs(
         "params": params,
     }
 
+
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | OncallList | None:
     if response.status_code == 200:
-        response_200 = cast(Any, None)
+        response_200 = OncallList.from_dict(response.json())
+
+
+
         return response_200
 
     if response.status_code == 401:
         response_401 = ErrorsList.from_dict(response.json())
 
+
+
         return response_401
 
     if response.status_code == 404:
         response_404 = ErrorsList.from_dict(response.json())
+
+
 
         return response_404
 
@@ -85,7 +107,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorsList | OncallList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -108,8 +130,9 @@ def sync_detailed(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-) -> Response[Any | ErrorsList]:
-    """List on-calls
+
+) -> Response[ErrorsList | OncallList]:
+    """ List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -132,21 +155,23 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
-    """
+        Response[ErrorsList | OncallList]
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        since=since,
-        until=until,
-        earliest=earliest,
-        time_zone=time_zone,
-        filterescalation_policy_ids=filterescalation_policy_ids,
-        filterschedule_ids=filterschedule_ids,
-        filteruser_ids=filteruser_ids,
-        filterservice_ids=filterservice_ids,
-        filtergroup_ids=filtergroup_ids,
-        filternotification_types=filternotification_types,
+since=since,
+until=until,
+earliest=earliest,
+time_zone=time_zone,
+filterescalation_policy_ids=filterescalation_policy_ids,
+filterschedule_ids=filterschedule_ids,
+filteruser_ids=filteruser_ids,
+filterservice_ids=filterservice_ids,
+filtergroup_ids=filtergroup_ids,
+filternotification_types=filternotification_types,
+
     )
 
     response = client.get_httpx_client().request(
@@ -154,7 +179,6 @@ def sync_detailed(
     )
 
     return _build_response(client=client, response=response)
-
 
 def sync(
     *,
@@ -170,8 +194,9 @@ def sync(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-) -> Any | ErrorsList | None:
-    """List on-calls
+
+) -> ErrorsList | OncallList | None:
+    """ List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -194,24 +219,25 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
-    """
+        ErrorsList | OncallList
+     """
+
 
     return sync_detailed(
         client=client,
-        include=include,
-        since=since,
-        until=until,
-        earliest=earliest,
-        time_zone=time_zone,
-        filterescalation_policy_ids=filterescalation_policy_ids,
-        filterschedule_ids=filterschedule_ids,
-        filteruser_ids=filteruser_ids,
-        filterservice_ids=filterservice_ids,
-        filtergroup_ids=filtergroup_ids,
-        filternotification_types=filternotification_types,
-    ).parsed
+include=include,
+since=since,
+until=until,
+earliest=earliest,
+time_zone=time_zone,
+filterescalation_policy_ids=filterescalation_policy_ids,
+filterschedule_ids=filterschedule_ids,
+filteruser_ids=filteruser_ids,
+filterservice_ids=filterservice_ids,
+filtergroup_ids=filtergroup_ids,
+filternotification_types=filternotification_types,
 
+    ).parsed
 
 async def asyncio_detailed(
     *,
@@ -227,8 +253,9 @@ async def asyncio_detailed(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-) -> Response[Any | ErrorsList]:
-    """List on-calls
+
+) -> Response[ErrorsList | OncallList]:
+    """ List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -251,27 +278,30 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
-    """
+        Response[ErrorsList | OncallList]
+     """
+
 
     kwargs = _get_kwargs(
         include=include,
-        since=since,
-        until=until,
-        earliest=earliest,
-        time_zone=time_zone,
-        filterescalation_policy_ids=filterescalation_policy_ids,
-        filterschedule_ids=filterschedule_ids,
-        filteruser_ids=filteruser_ids,
-        filterservice_ids=filterservice_ids,
-        filtergroup_ids=filtergroup_ids,
-        filternotification_types=filternotification_types,
+since=since,
+until=until,
+earliest=earliest,
+time_zone=time_zone,
+filterescalation_policy_ids=filterescalation_policy_ids,
+filterschedule_ids=filterschedule_ids,
+filteruser_ids=filteruser_ids,
+filterservice_ids=filterservice_ids,
+filtergroup_ids=filtergroup_ids,
+filternotification_types=filternotification_types,
+
     )
 
-    response = await client.get_async_httpx_client().request(**kwargs)
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
 
     return _build_response(client=client, response=response)
-
 
 async def asyncio(
     *,
@@ -287,8 +317,9 @@ async def asyncio(
     filterservice_ids: str | Unset = UNSET,
     filtergroup_ids: str | Unset = UNSET,
     filternotification_types: str | Unset = UNSET,
-) -> Any | ErrorsList | None:
-    """List on-calls
+
+) -> ErrorsList | OncallList | None:
+    """ List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
     Returns on-call entries grouped by escalation policy level.
@@ -311,22 +342,22 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
-    """
+        ErrorsList | OncallList
+     """
 
-    return (
-        await asyncio_detailed(
-            client=client,
-            include=include,
-            since=since,
-            until=until,
-            earliest=earliest,
-            time_zone=time_zone,
-            filterescalation_policy_ids=filterescalation_policy_ids,
-            filterschedule_ids=filterschedule_ids,
-            filteruser_ids=filteruser_ids,
-            filterservice_ids=filterservice_ids,
-            filtergroup_ids=filtergroup_ids,
-            filternotification_types=filternotification_types,
-        )
-    ).parsed
+
+    return (await asyncio_detailed(
+        client=client,
+include=include,
+since=since,
+until=until,
+earliest=earliest,
+time_zone=time_zone,
+filterescalation_policy_ids=filterescalation_policy_ids,
+filterschedule_ids=filterschedule_ids,
+filteruser_ids=filteruser_ids,
+filterservice_ids=filterservice_ids,
+filtergroup_ids=filtergroup_ids,
+filternotification_types=filternotification_types,
+
+    )).parsed

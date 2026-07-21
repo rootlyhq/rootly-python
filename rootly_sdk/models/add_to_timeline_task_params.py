@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.add_to_timeline_task_params_task_type import (
-    AddToTimelineTaskParamsTaskType,
-    check_add_to_timeline_task_params_task_type,
-)
 from ..types import UNSET, Unset
+
+from ..models.add_to_timeline_task_params_task_type import AddToTimelineTaskParamsTaskType
+from ..models.add_to_timeline_task_params_task_type import check_add_to_timeline_task_params_task_type
+from ..types import UNSET, Unset
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.add_to_timeline_task_params_post_to_slack_channels_item import (
@@ -38,6 +39,10 @@ class AddToTimelineTaskParams:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.add_to_timeline_task_params_post_to_slack_channels_item import (
+            AddToTimelineTaskParamsPostToSlackChannelsItem,
+        )
+
         event = self.event
 
         task_type: str | Unset = UNSET

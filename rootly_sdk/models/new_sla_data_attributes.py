@@ -1,32 +1,38 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
-from uuid import UUID
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 from ..models.new_sla_data_attributes_assignment_deadline_days import (
-    NewSlaDataAttributesAssignmentDeadlineDays,
     check_new_sla_data_attributes_assignment_deadline_days,
+)
+from ..models.new_sla_data_attributes_assignment_deadline_days import NewSlaDataAttributesAssignmentDeadlineDays
+from ..models.new_sla_data_attributes_assignment_deadline_parent_status import (
+    check_new_sla_data_attributes_assignment_deadline_parent_status,
 )
 from ..models.new_sla_data_attributes_assignment_deadline_parent_status import (
     NewSlaDataAttributesAssignmentDeadlineParentStatus,
-    check_new_sla_data_attributes_assignment_deadline_parent_status,
 )
 from ..models.new_sla_data_attributes_completion_deadline_days import (
-    NewSlaDataAttributesCompletionDeadlineDays,
     check_new_sla_data_attributes_completion_deadline_days,
+)
+from ..models.new_sla_data_attributes_completion_deadline_days import NewSlaDataAttributesCompletionDeadlineDays
+from ..models.new_sla_data_attributes_completion_deadline_parent_status import (
+    check_new_sla_data_attributes_completion_deadline_parent_status,
 )
 from ..models.new_sla_data_attributes_completion_deadline_parent_status import (
     NewSlaDataAttributesCompletionDeadlineParentStatus,
-    check_new_sla_data_attributes_completion_deadline_parent_status,
 )
-from ..models.new_sla_data_attributes_condition_match_type import (
-    NewSlaDataAttributesConditionMatchType,
-    check_new_sla_data_attributes_condition_match_type,
-)
+from ..models.new_sla_data_attributes_condition_match_type import check_new_sla_data_attributes_condition_match_type
+from ..models.new_sla_data_attributes_condition_match_type import NewSlaDataAttributesConditionMatchType
 from ..types import UNSET, Unset
+from typing import cast
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ..models.new_sla_data_attributes_conditions_item import NewSlaDataAttributesConditionsItem
@@ -88,6 +94,11 @@ class NewSlaDataAttributes:
     notification_configurations: list[NewSlaDataAttributesNotificationConfigurationsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_sla_data_attributes_conditions_item import NewSlaDataAttributesConditionsItem
+        from ..models.new_sla_data_attributes_notification_configurations_item import (
+            NewSlaDataAttributesNotificationConfigurationsItem,
+        )
+
         name = self.name
 
         assignment_deadline_days: int = self.assignment_deadline_days

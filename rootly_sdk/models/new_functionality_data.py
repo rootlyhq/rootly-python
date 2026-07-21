@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.new_functionality_data_type import NewFunctionalityDataType, check_new_functionality_data_type
+from ..types import UNSET, Unset
+
+from ..models.new_functionality_data_type import check_new_functionality_data_type
+from ..models.new_functionality_data_type import NewFunctionalityDataType
+from typing import cast
 
 if TYPE_CHECKING:
     from ..models.new_functionality_data_attributes import NewFunctionalityDataAttributes
@@ -28,6 +32,8 @@ class NewFunctionalityData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.new_functionality_data_attributes import NewFunctionalityDataAttributes
+
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()
