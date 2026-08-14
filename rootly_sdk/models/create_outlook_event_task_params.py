@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -32,32 +30,31 @@ class CreateOutlookEventTaskParams:
         meeting_duration (str): Meeting duration in format like '1 hour', '30 minutes' Example: 1 hour.
         summary (str): The event summary
         description (str): The event description
-        task_type (CreateOutlookEventTaskParamsTaskType | Unset):
-        attendees (list[str] | Unset): Emails of attendees
-        time_zone (None | str | Unset): A valid IANA time zone name.
-        exclude_weekends (bool | Unset):
-        enable_online_meeting (bool | Unset): Enable Microsoft Teams online meeting
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[CreateOutlookEventTaskParamsPostToSlackChannelsItem] | Unset):
+        task_type (Union[Unset, CreateOutlookEventTaskParamsTaskType]):
+        attendees (Union[Unset, list[str]]): Emails of attendees
+        time_zone (Union[None, Unset, str]): A valid IANA time zone name.
+        exclude_weekends (Union[Unset, bool]):
+        enable_online_meeting (Union[Unset, bool]): Enable Microsoft Teams online meeting
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['CreateOutlookEventTaskParamsPostToSlackChannelsItem']]):
     """
 
-    calendar: CreateOutlookEventTaskParamsCalendar
+    calendar: "CreateOutlookEventTaskParamsCalendar"
     days_until_meeting: int
     time_of_meeting: str
     meeting_duration: str
     summary: str
     description: str
-    task_type: CreateOutlookEventTaskParamsTaskType | Unset = UNSET
-    attendees: list[str] | Unset = UNSET
-    time_zone: None | str | Unset = UNSET
-    exclude_weekends: bool | Unset = UNSET
-    enable_online_meeting: bool | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[CreateOutlookEventTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Unset | CreateOutlookEventTaskParamsTaskType = UNSET
+    attendees: Unset | list[str] = UNSET
+    time_zone: None | Unset | str = UNSET
+    exclude_weekends: Unset | bool = UNSET
+    enable_online_meeting: Unset | bool = UNSET
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["CreateOutlookEventTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         calendar = self.calendar.to_dict()
 
         days_until_meeting = self.days_until_meeting
@@ -70,15 +67,15 @@ class CreateOutlookEventTaskParams:
 
         description = self.description
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        attendees: list[str] | Unset = UNSET
+        attendees: Unset | list[str] = UNSET
         if not isinstance(self.attendees, Unset):
             attendees = self.attendees
 
-        time_zone: None | str | Unset
+        time_zone: None | Unset | str
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -90,7 +87,7 @@ class CreateOutlookEventTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -147,7 +144,7 @@ class CreateOutlookEventTaskParams:
         description = d.pop("description")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateOutlookEventTaskParamsTaskType | Unset
+        task_type: Unset | CreateOutlookEventTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -155,12 +152,12 @@ class CreateOutlookEventTaskParams:
 
         attendees = cast(list[str], d.pop("attendees", UNSET))
 
-        def _parse_time_zone(data: object) -> None | str | Unset:
+        def _parse_time_zone(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 
@@ -170,16 +167,14 @@ class CreateOutlookEventTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[CreateOutlookEventTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = CreateOutlookEventTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = CreateOutlookEventTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         create_outlook_event_task_params = cls(
             calendar=calendar,

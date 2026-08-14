@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,22 +21,21 @@ T = TypeVar("T", bound="ArchiveSlackChannelsTaskParams")
 class ArchiveSlackChannelsTaskParams:
     """
     Attributes:
-        channels (list[ArchiveSlackChannelsTaskParamsChannelsItem]):
-        task_type (ArchiveSlackChannelsTaskParamsTaskType | Unset):
+        channels (list['ArchiveSlackChannelsTaskParamsChannelsItem']):
+        task_type (Union[Unset, ArchiveSlackChannelsTaskParamsTaskType]):
     """
 
-    channels: list[ArchiveSlackChannelsTaskParamsChannelsItem]
-    task_type: ArchiveSlackChannelsTaskParamsTaskType | Unset = UNSET
+    channels: list["ArchiveSlackChannelsTaskParamsChannelsItem"]
+    task_type: Unset | ArchiveSlackChannelsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         channels = []
         for channels_item_data in self.channels:
             channels_item = channels_item_data.to_dict()
             channels.append(channels_item)
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -67,7 +64,7 @@ class ArchiveSlackChannelsTaskParams:
             channels.append(channels_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: ArchiveSlackChannelsTaskParamsTaskType | Unset
+        task_type: Unset | ArchiveSlackChannelsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

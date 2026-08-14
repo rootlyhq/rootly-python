@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,28 +25,27 @@ class CreateDropboxPaperPageTaskParams:
     """
     Attributes:
         title (str): The page task title
-        task_type (CreateDropboxPaperPageTaskParamsTaskType | Unset):
-        post_mortem_template_id (str | Unset): Retrospective template to use when creating page task, if desired
-        mark_post_mortem_as_published (bool | Unset):  Default: True.
-        content (str | Unset): The page content
-        namespace (CreateDropboxPaperPageTaskParamsNamespace | Unset):
-        parent_folder (CreateDropboxPaperPageTaskParamsParentFolder | Unset):
+        task_type (Union[Unset, CreateDropboxPaperPageTaskParamsTaskType]):
+        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page task, if desired
+        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        content (Union[Unset, str]): The page content
+        namespace (Union[Unset, CreateDropboxPaperPageTaskParamsNamespace]):
+        parent_folder (Union[Unset, CreateDropboxPaperPageTaskParamsParentFolder]):
     """
 
     title: str
-    task_type: CreateDropboxPaperPageTaskParamsTaskType | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
-    mark_post_mortem_as_published: bool | Unset = True
-    content: str | Unset = UNSET
-    namespace: CreateDropboxPaperPageTaskParamsNamespace | Unset = UNSET
-    parent_folder: CreateDropboxPaperPageTaskParamsParentFolder | Unset = UNSET
+    task_type: Unset | CreateDropboxPaperPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    content: Unset | str = UNSET
+    namespace: Union[Unset, "CreateDropboxPaperPageTaskParamsNamespace"] = UNSET
+    parent_folder: Union[Unset, "CreateDropboxPaperPageTaskParamsParentFolder"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -58,11 +55,11 @@ class CreateDropboxPaperPageTaskParams:
 
         content = self.content
 
-        namespace: dict[str, Any] | Unset = UNSET
+        namespace: Unset | dict[str, Any] = UNSET
         if not isinstance(self.namespace, Unset):
             namespace = self.namespace.to_dict()
 
-        parent_folder: dict[str, Any] | Unset = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -99,7 +96,7 @@ class CreateDropboxPaperPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateDropboxPaperPageTaskParamsTaskType | Unset
+        task_type: Unset | CreateDropboxPaperPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -112,14 +109,14 @@ class CreateDropboxPaperPageTaskParams:
         content = d.pop("content", UNSET)
 
         _namespace = d.pop("namespace", UNSET)
-        namespace: CreateDropboxPaperPageTaskParamsNamespace | Unset
+        namespace: Unset | CreateDropboxPaperPageTaskParamsNamespace
         if isinstance(_namespace, Unset):
             namespace = UNSET
         else:
             namespace = CreateDropboxPaperPageTaskParamsNamespace.from_dict(_namespace)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: CreateDropboxPaperPageTaskParamsParentFolder | Unset
+        parent_folder: Unset | CreateDropboxPaperPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

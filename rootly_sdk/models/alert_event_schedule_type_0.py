@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -21,35 +19,34 @@ T = TypeVar("T", bound="AlertEventScheduleType0")
 class AlertEventScheduleType0:
     """
     Attributes:
-        id (str | Unset):
-        name (str | Unset):
-        description (None | str | Unset):
-        escalation_policies (list[AlertEventScheduleType0EscalationPoliciesItem] | Unset):
-        created_at (str | Unset):
-        updated_at (str | Unset):
+        id (Union[Unset, str]):
+        name (Union[Unset, str]):
+        description (Union[None, Unset, str]):
+        escalation_policies (Union[Unset, list['AlertEventScheduleType0EscalationPoliciesItem']]):
+        created_at (Union[Unset, str]):
+        updated_at (Union[Unset, str]):
     """
 
-    id: str | Unset = UNSET
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    escalation_policies: list[AlertEventScheduleType0EscalationPoliciesItem] | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    id: Unset | str = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    escalation_policies: Unset | list["AlertEventScheduleType0EscalationPoliciesItem"] = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         name = self.name
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        escalation_policies: list[dict[str, Any]] | Unset = UNSET
+        escalation_policies: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.escalation_policies, Unset):
             escalation_policies = []
             for escalation_policies_item_data in self.escalation_policies:
@@ -89,25 +86,23 @@ class AlertEventScheduleType0:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
+        escalation_policies = []
         _escalation_policies = d.pop("escalation_policies", UNSET)
-        escalation_policies: list[AlertEventScheduleType0EscalationPoliciesItem] | Unset = UNSET
-        if _escalation_policies is not UNSET:
-            escalation_policies = []
-            for escalation_policies_item_data in _escalation_policies:
-                escalation_policies_item = AlertEventScheduleType0EscalationPoliciesItem.from_dict(
-                    escalation_policies_item_data
-                )
+        for escalation_policies_item_data in _escalation_policies or []:
+            escalation_policies_item = AlertEventScheduleType0EscalationPoliciesItem.from_dict(
+                escalation_policies_item_data
+            )
 
-                escalation_policies.append(escalation_policies_item)
+            escalation_policies.append(escalation_policies_item)
 
         created_at = d.pop("created_at", UNSET)
 

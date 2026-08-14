@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -22,20 +20,20 @@ class SendDashboardReportTaskParams:
         dashboard_ids (list[str]):
         to (list[str]):
         subject (str): The subject
-        body (None | str): The email body
-        task_type (SendDashboardReportTaskParamsTaskType | Unset):
-        from_ (str | Unset): The from email address. Need to use SMTP integration if different than rootly.com Default:
-            'Rootly <workflows@rootly.com>'.
-        preheader (None | str | Unset): The preheader
+        body (Union[None, str]): The email body
+        task_type (Union[Unset, SendDashboardReportTaskParamsTaskType]):
+        from_ (Union[Unset, str]): The from email address. Need to use SMTP integration if different than rootly.com
+            Default: 'Rootly <workflows@rootly.com>'.
+        preheader (Union[None, Unset, str]): The preheader
     """
 
     dashboard_ids: list[str]
     to: list[str]
     subject: str
     body: None | str
-    task_type: SendDashboardReportTaskParamsTaskType | Unset = UNSET
-    from_: str | Unset = "Rootly <workflows@rootly.com>"
-    preheader: None | str | Unset = UNSET
+    task_type: Unset | SendDashboardReportTaskParamsTaskType = UNSET
+    from_: Unset | str = "Rootly <workflows@rootly.com>"
+    preheader: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,13 +46,13 @@ class SendDashboardReportTaskParams:
         body: None | str
         body = self.body
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         from_ = self.from_
 
-        preheader: None | str | Unset
+        preheader: None | Unset | str
         if isinstance(self.preheader, Unset):
             preheader = UNSET
         else:
@@ -96,7 +94,7 @@ class SendDashboardReportTaskParams:
         body = _parse_body(d.pop("body"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: SendDashboardReportTaskParamsTaskType | Unset
+        task_type: Unset | SendDashboardReportTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -104,12 +102,12 @@ class SendDashboardReportTaskParams:
 
         from_ = d.pop("from", UNSET)
 
-        def _parse_preheader(data: object) -> None | str | Unset:
+        def _parse_preheader(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         preheader = _parse_preheader(d.pop("preheader", UNSET))
 

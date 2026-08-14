@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -14,25 +12,25 @@ T = TypeVar("T", bound="DuplicateIncidentDataAttributes")
 class DuplicateIncidentDataAttributes:
     """
     Attributes:
-        duplicate_incident_id (str | Unset):
-        auto_cancel_incident (bool | None | Unset):  Default: True.
-        reason_for_cancellation (None | str | Unset): Why was the incident cancelled?
+        duplicate_incident_id (Union[Unset, str]):
+        auto_cancel_incident (Union[None, Unset, bool]):  Default: True.
+        reason_for_cancellation (Union[None, Unset, str]): Why was the incident cancelled?
     """
 
-    duplicate_incident_id: str | Unset = UNSET
-    auto_cancel_incident: bool | None | Unset = True
-    reason_for_cancellation: None | str | Unset = UNSET
+    duplicate_incident_id: Unset | str = UNSET
+    auto_cancel_incident: None | Unset | bool = True
+    reason_for_cancellation: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         duplicate_incident_id = self.duplicate_incident_id
 
-        auto_cancel_incident: bool | None | Unset
+        auto_cancel_incident: None | Unset | bool
         if isinstance(self.auto_cancel_incident, Unset):
             auto_cancel_incident = UNSET
         else:
             auto_cancel_incident = self.auto_cancel_incident
 
-        reason_for_cancellation: None | str | Unset
+        reason_for_cancellation: None | Unset | str
         if isinstance(self.reason_for_cancellation, Unset):
             reason_for_cancellation = UNSET
         else:
@@ -55,21 +53,21 @@ class DuplicateIncidentDataAttributes:
         d = dict(src_dict)
         duplicate_incident_id = d.pop("duplicate_incident_id", UNSET)
 
-        def _parse_auto_cancel_incident(data: object) -> bool | None | Unset:
+        def _parse_auto_cancel_incident(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(None | Unset | bool, data)
 
         auto_cancel_incident = _parse_auto_cancel_incident(d.pop("auto_cancel_incident", UNSET))
 
-        def _parse_reason_for_cancellation(data: object) -> None | str | Unset:
+        def _parse_reason_for_cancellation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         reason_for_cancellation = _parse_reason_for_cancellation(d.pop("reason_for_cancellation", UNSET))
 

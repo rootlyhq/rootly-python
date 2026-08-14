@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,24 +18,24 @@ class ApiKey:
         kind (ApiKeyKind): The kind of the API key
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        description (None | str | Unset): A description of the API key
-        role_id (None | str | Unset): The role ID
-        on_call_role_id (None | str | Unset): The on-call role ID
-        expires_at (None | str | Unset): Expiration date
-        last_used_at (None | str | Unset): Date of last use
-        grace_period_ends_at (None | str | Unset): Grace period end date
+        description (Union[None, Unset, str]): A description of the API key
+        role_id (Union[None, Unset, str]): The role ID
+        on_call_role_id (Union[None, Unset, str]): The on-call role ID
+        expires_at (Union[None, Unset, str]): Expiration date
+        last_used_at (Union[None, Unset, str]): Date of last use
+        grace_period_ends_at (Union[None, Unset, str]): Grace period end date
     """
 
     name: str
     kind: ApiKeyKind
     created_at: str
     updated_at: str
-    description: None | str | Unset = UNSET
-    role_id: None | str | Unset = UNSET
-    on_call_role_id: None | str | Unset = UNSET
-    expires_at: None | str | Unset = UNSET
-    last_used_at: None | str | Unset = UNSET
-    grace_period_ends_at: None | str | Unset = UNSET
+    description: None | Unset | str = UNSET
+    role_id: None | Unset | str = UNSET
+    on_call_role_id: None | Unset | str = UNSET
+    expires_at: None | Unset | str = UNSET
+    last_used_at: None | Unset | str = UNSET
+    grace_period_ends_at: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,37 +47,37 @@ class ApiKey:
 
         updated_at = self.updated_at
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        role_id: None | str | Unset
+        role_id: None | Unset | str
         if isinstance(self.role_id, Unset):
             role_id = UNSET
         else:
             role_id = self.role_id
 
-        on_call_role_id: None | str | Unset
+        on_call_role_id: None | Unset | str
         if isinstance(self.on_call_role_id, Unset):
             on_call_role_id = UNSET
         else:
             on_call_role_id = self.on_call_role_id
 
-        expires_at: None | str | Unset
+        expires_at: None | Unset | str
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         else:
             expires_at = self.expires_at
 
-        last_used_at: None | str | Unset
+        last_used_at: None | Unset | str
         if isinstance(self.last_used_at, Unset):
             last_used_at = UNSET
         else:
             last_used_at = self.last_used_at
 
-        grace_period_ends_at: None | str | Unset
+        grace_period_ends_at: None | Unset | str
         if isinstance(self.grace_period_ends_at, Unset):
             grace_period_ends_at = UNSET
         else:
@@ -121,57 +119,57 @@ class ApiKey:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_role_id(data: object) -> None | str | Unset:
+        def _parse_role_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         role_id = _parse_role_id(d.pop("role_id", UNSET))
 
-        def _parse_on_call_role_id(data: object) -> None | str | Unset:
+        def _parse_on_call_role_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         on_call_role_id = _parse_on_call_role_id(d.pop("on_call_role_id", UNSET))
 
-        def _parse_expires_at(data: object) -> None | str | Unset:
+        def _parse_expires_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 
-        def _parse_last_used_at(data: object) -> None | str | Unset:
+        def _parse_last_used_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         last_used_at = _parse_last_used_at(d.pop("last_used_at", UNSET))
 
-        def _parse_grace_period_ends_at(data: object) -> None | str | Unset:
+        def _parse_grace_period_ends_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         grace_period_ends_at = _parse_grace_period_ends_at(d.pop("grace_period_ends_at", UNSET))
 

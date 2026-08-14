@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,25 +21,24 @@ T = TypeVar("T", bound="BulkUpsertTeamsResponseDataItem")
 class BulkUpsertTeamsResponseDataItem:
     """
     Attributes:
-        id (str | Unset):
-        type_ (BulkUpsertTeamsResponseDataItemType | Unset):
-        attributes (Team | Unset):
+        id (Union[Unset, str]):
+        type_ (Union[Unset, BulkUpsertTeamsResponseDataItemType]):
+        attributes (Union[Unset, Team]):
     """
 
-    id: str | Unset = UNSET
-    type_: BulkUpsertTeamsResponseDataItemType | Unset = UNSET
-    attributes: Team | Unset = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | BulkUpsertTeamsResponseDataItemType = UNSET
+    attributes: Union[Unset, "Team"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -65,14 +62,14 @@ class BulkUpsertTeamsResponseDataItem:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: BulkUpsertTeamsResponseDataItemType | Unset
+        type_: Unset | BulkUpsertTeamsResponseDataItemType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_bulk_upsert_teams_response_data_item_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Team | Unset
+        attributes: Unset | Team
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,12 +13,12 @@ T = TypeVar("T", bound="UpdateCodaPageTaskParamsTemplate")
 class UpdateCodaPageTaskParamsTemplate:
     """
     Attributes:
-        id (str | Unset): Combined doc_id/page_id in format 'doc_id/page_id'
-        name (str | Unset):
+        id (Union[Unset, str]): Combined doc_id/page_id in format 'doc_id/page_id'
+        name (Union[Unset, str]):
     """
 
-    id: str | Unset = UNSET
-    name: str | Unset = UNSET
+    id: Unset | str = UNSET
+    name: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

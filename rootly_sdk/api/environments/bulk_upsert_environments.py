@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Union
 
 import httpx
 
@@ -33,7 +33,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList | None:
+) -> BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkUpsertEnvironmentsResponse.from_dict(response.json())
 
@@ -46,14 +46,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> BulkUpsertEnvironmentsError | ErrorsList:
+        def _parse_response_422(data: object) -> Union["BulkUpsertEnvironmentsError", "ErrorsList"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -73,7 +73,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList]:
+) -> Response[BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +86,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertEnvironments,
-) -> Response[BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList]:
+) -> Response[BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"]]:
     """Bulk upsert Environments
 
      Create or update multiple environments by external_id. Only attributes present in the payload are
@@ -103,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList]
+        Response[Union[BulkUpsertEnvironmentsResponse, ErrorsList, Union['BulkUpsertEnvironmentsError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -121,7 +121,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertEnvironments,
-) -> BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList | None:
+) -> BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"] | None:
     """Bulk upsert Environments
 
      Create or update multiple environments by external_id. Only attributes present in the payload are
@@ -138,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList
+        Union[BulkUpsertEnvironmentsResponse, ErrorsList, Union['BulkUpsertEnvironmentsError', 'ErrorsList']]
     """
 
     return sync_detailed(
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertEnvironments,
-) -> Response[BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList]:
+) -> Response[BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"]]:
     """Bulk upsert Environments
 
      Create or update multiple environments by external_id. Only attributes present in the payload are
@@ -168,7 +168,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList]
+        Response[Union[BulkUpsertEnvironmentsResponse, ErrorsList, Union['BulkUpsertEnvironmentsError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertEnvironments,
-) -> BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList | None:
+) -> BulkUpsertEnvironmentsResponse | ErrorsList | Union["BulkUpsertEnvironmentsError", "ErrorsList"] | None:
     """Bulk upsert Environments
 
      Create or update multiple environments by external_id. Only attributes present in the payload are
@@ -201,7 +201,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertEnvironmentsError | ErrorsList | BulkUpsertEnvironmentsResponse | ErrorsList
+        Union[BulkUpsertEnvironmentsResponse, ErrorsList, Union['BulkUpsertEnvironmentsError', 'ErrorsList']]
     """
 
     return (

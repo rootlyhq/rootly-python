@@ -2,6 +2,7 @@ from typing import Literal, cast
 
 NewWebhooksEndpointDataAttributesEventTypesItem = Literal[
     "alert.created",
+    "alert.updated",
     "audit_log.created",
     "genius_workflow_run.canceled",
     "genius_workflow_run.completed",
@@ -36,6 +37,7 @@ NewWebhooksEndpointDataAttributesEventTypesItem = Literal[
 
 NEW_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES: set[NewWebhooksEndpointDataAttributesEventTypesItem] = {
     "alert.created",
+    "alert.updated",
     "audit_log.created",
     "genius_workflow_run.canceled",
     "genius_workflow_run.completed",

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -21,62 +19,73 @@ class CatalogEntity:
     """
     Attributes:
         name (str):
-        position (int | None): Default position of the item when displayed in a list.
+        position (Union[None, int]): Default position of the item when displayed in a list.
         created_at (str):
         updated_at (str):
-        description (None | str | Unset):
-        backstage_id (None | str | Unset): The Backstage entity ID this catalog entity is linked to.
-        external_id (None | str | Unset): An external identifier for this catalog entity. Must be unique within the
+        slug (Union[Unset, str]): The slug of the catalog entity. Derived from `name`.
+        description (Union[None, Unset, str]):
+        public_description (Union[None, Unset, str]): The status page description of the catalog entity
+        backstage_id (Union[None, Unset, str]): The Backstage entity ID this catalog entity is linked to.
+        external_id (Union[None, Unset, str]): An external identifier for this catalog entity. Must be unique within the
             catalog.
-        managed_by (CatalogEntityManagedBy | Unset): Which source manages this resource (read-only).
-        properties (list[CatalogEntityPropertiesItem] | Unset): Array of property values for this catalog entity
+        managed_by (Union[Unset, CatalogEntityManagedBy]): Which source manages this resource (read-only).
+        properties (Union[Unset, list['CatalogEntityPropertiesItem']]): Array of property values for this catalog entity
     """
 
     name: str
-    position: int | None
+    position: None | int
     created_at: str
     updated_at: str
-    description: None | str | Unset = UNSET
-    backstage_id: None | str | Unset = UNSET
-    external_id: None | str | Unset = UNSET
-    managed_by: CatalogEntityManagedBy | Unset = UNSET
-    properties: list[CatalogEntityPropertiesItem] | Unset = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    backstage_id: None | Unset | str = UNSET
+    external_id: None | Unset | str = UNSET
+    managed_by: Unset | CatalogEntityManagedBy = UNSET
+    properties: Unset | list["CatalogEntityPropertiesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
-        position: int | None
+        position: None | int
         position = self.position
 
         created_at = self.created_at
 
         updated_at = self.updated_at
 
-        description: None | str | Unset
+        slug = self.slug
+
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        backstage_id: None | str | Unset
+        public_description: None | Unset | str
+        if isinstance(self.public_description, Unset):
+            public_description = UNSET
+        else:
+            public_description = self.public_description
+
+        backstage_id: None | Unset | str
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: None | str | Unset
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        managed_by: str | Unset = UNSET
+        managed_by: Unset | str = UNSET
         if not isinstance(self.managed_by, Unset):
             managed_by = self.managed_by
 
-        properties: list[dict[str, Any]] | Unset = UNSET
+        properties: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -93,8 +102,12 @@ class CatalogEntity:
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
+        if public_description is not UNSET:
+            field_dict["public_description"] = public_description
         if backstage_id is not UNSET:
             field_dict["backstage_id"] = backstage_id
         if external_id is not UNSET:
@@ -113,10 +126,10 @@ class CatalogEntity:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_position(data: object) -> int | None:
+        def _parse_position(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(None | int, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -124,55 +137,66 @@ class CatalogEntity:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        slug = d.pop("slug", UNSET)
+
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_backstage_id(data: object) -> None | str | Unset:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
+
+        public_description = _parse_public_description(d.pop("public_description", UNSET))
+
+        def _parse_backstage_id(data: object) -> None | Unset | str:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | Unset | str, data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         _managed_by = d.pop("managed_by", UNSET)
-        managed_by: CatalogEntityManagedBy | Unset
+        managed_by: Unset | CatalogEntityManagedBy
         if isinstance(_managed_by, Unset):
             managed_by = UNSET
         else:
             managed_by = check_catalog_entity_managed_by(_managed_by)
 
+        properties = []
         _properties = d.pop("properties", UNSET)
-        properties: list[CatalogEntityPropertiesItem] | Unset = UNSET
-        if _properties is not UNSET:
-            properties = []
-            for properties_item_data in _properties:
-                properties_item = CatalogEntityPropertiesItem.from_dict(properties_item_data)
+        for properties_item_data in _properties or []:
+            properties_item = CatalogEntityPropertiesItem.from_dict(properties_item_data)
 
-                properties.append(properties_item)
+            properties.append(properties_item)
 
         catalog_entity = cls(
             name=name,
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
+            public_description=public_description,
             backstage_id=backstage_id,
             external_id=external_id,
             managed_by=managed_by,

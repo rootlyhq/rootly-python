@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -13,16 +12,15 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     retrospective_process_group_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterretrospective_step_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterretrospective_step_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -45,9 +43,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_process_groups/{retrospective_process_group_id}/steps".format(
-            retrospective_process_group_id=quote(str(retrospective_process_group_id), safe=""),
-        ),
+        "url": f"/v1/retrospective_process_groups/{retrospective_process_group_id}/steps",
         "params": params,
     }
 
@@ -83,14 +79,14 @@ def sync_detailed(
     retrospective_process_group_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterretrospective_step_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterretrospective_step_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[RetrospectiveProcessGroupStepList]:
     """List RetrospectiveProcessGroup Steps
 
@@ -98,14 +94,14 @@ def sync_detailed(
 
     Args:
         retrospective_process_group_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterretrospective_step_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterretrospective_step_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -138,14 +134,14 @@ def sync(
     retrospective_process_group_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterretrospective_step_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterretrospective_step_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> RetrospectiveProcessGroupStepList | None:
     """List RetrospectiveProcessGroup Steps
 
@@ -153,14 +149,14 @@ def sync(
 
     Args:
         retrospective_process_group_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterretrospective_step_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterretrospective_step_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -188,14 +184,14 @@ async def asyncio_detailed(
     retrospective_process_group_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterretrospective_step_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterretrospective_step_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[RetrospectiveProcessGroupStepList]:
     """List RetrospectiveProcessGroup Steps
 
@@ -203,14 +199,14 @@ async def asyncio_detailed(
 
     Args:
         retrospective_process_group_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterretrospective_step_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterretrospective_step_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -241,14 +237,14 @@ async def asyncio(
     retrospective_process_group_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterretrospective_step_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterretrospective_step_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> RetrospectiveProcessGroupStepList | None:
     """List RetrospectiveProcessGroup Steps
 
@@ -256,14 +252,14 @@ async def asyncio(
 
     Args:
         retrospective_process_group_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterretrospective_step_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterretrospective_step_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

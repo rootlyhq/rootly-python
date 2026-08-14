@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,14 +12,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: UUID | str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/incident_roles/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incident_roles/{id}",
     }
 
     return _kwargs
@@ -57,7 +53,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorsList | IncidentRoleResponse]:
@@ -66,14 +62,14 @@ def sync_detailed(
      Delete a specific incident_role by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentRoleResponse]
+        Response[Union[ErrorsList, IncidentRoleResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +84,7 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> ErrorsList | IncidentRoleResponse | None:
@@ -97,14 +93,14 @@ def sync(
      Delete a specific incident_role by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentRoleResponse
+        Union[ErrorsList, IncidentRoleResponse]
     """
 
     return sync_detailed(
@@ -114,7 +110,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorsList | IncidentRoleResponse]:
@@ -123,14 +119,14 @@ async def asyncio_detailed(
      Delete a specific incident_role by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentRoleResponse]
+        Response[Union[ErrorsList, IncidentRoleResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +139,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> ErrorsList | IncidentRoleResponse | None:
@@ -152,14 +148,14 @@ async def asyncio(
      Delete a specific incident_role by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentRoleResponse
+        Union[ErrorsList, IncidentRoleResponse]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -21,31 +19,31 @@ T = TypeVar("T", bound="UpdateDashboardPanelDataAttributes")
 class UpdateDashboardPanelDataAttributes:
     """
     Attributes:
-        name (None | str | Unset): The name of the dashboard_panel
-        params (UpdateDashboardPanelDataAttributesParams | Unset):
-        position (None | Unset | UpdateDashboardPanelDataAttributesPositionType0):
+        name (Union[None, Unset, str]): The name of the dashboard_panel
+        params (Union[Unset, UpdateDashboardPanelDataAttributesParams]):
+        position (Union['UpdateDashboardPanelDataAttributesPositionType0', None, Unset]):
     """
 
-    name: None | str | Unset = UNSET
-    params: UpdateDashboardPanelDataAttributesParams | Unset = UNSET
-    position: None | Unset | UpdateDashboardPanelDataAttributesPositionType0 = UNSET
+    name: None | Unset | str = UNSET
+    params: Union[Unset, "UpdateDashboardPanelDataAttributesParams"] = UNSET
+    position: Union["UpdateDashboardPanelDataAttributesPositionType0", None, Unset] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_dashboard_panel_data_attributes_position_type_0 import (
             UpdateDashboardPanelDataAttributesPositionType0,
         )
 
-        name: None | str | Unset
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        params: dict[str, Any] | Unset = UNSET
+        params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.params, Unset):
             params = self.params.to_dict()
 
-        position: dict[str, Any] | None | Unset
+        position: None | Unset | dict[str, Any]
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, UpdateDashboardPanelDataAttributesPositionType0):
@@ -74,23 +72,23 @@ class UpdateDashboardPanelDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | str | Unset:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
         _params = d.pop("params", UNSET)
-        params: UpdateDashboardPanelDataAttributesParams | Unset
+        params: Unset | UpdateDashboardPanelDataAttributesParams
         if isinstance(_params, Unset):
             params = UNSET
         else:
             params = UpdateDashboardPanelDataAttributesParams.from_dict(_params)
 
-        def _parse_position(data: object) -> None | Unset | UpdateDashboardPanelDataAttributesPositionType0:
+        def _parse_position(data: object) -> Union["UpdateDashboardPanelDataAttributesPositionType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -101,9 +99,9 @@ class UpdateDashboardPanelDataAttributes:
                 position_type_0 = UpdateDashboardPanelDataAttributesPositionType0.from_dict(data)
 
                 return position_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateDashboardPanelDataAttributesPositionType0, data)
+            return cast(Union["UpdateDashboardPanelDataAttributesPositionType0", None, Unset], data)
 
         position = _parse_position(d.pop("position", UNSET))
 

@@ -11,21 +11,25 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterteam_ids: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    filterteam_idseq: Unset | str = UNSET,
+    filterteam_idsnot_eq: Unset | str = UNSET,
+    filterteam_idsin: Unset | str = UNSET,
+    filterteam_idsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -33,6 +37,8 @@ def _get_kwargs(
     params["filter[search]"] = filtersearch
 
     params["filter[name]"] = filtername
+
+    params["filter[team_ids]"] = filterteam_ids
 
     params["filter[created_at][gt]"] = filtercreated_atgt
 
@@ -49,6 +55,14 @@ def _get_kwargs(
     params["filter[name][in]"] = filternamein
 
     params["filter[name][not_in]"] = filternamenot_in
+
+    params["filter[team_ids][eq]"] = filterteam_idseq
+
+    params["filter[team_ids][not_eq]"] = filterteam_idsnot_eq
+
+    params["filter[team_ids][in]"] = filterteam_idsin
+
+    params["filter[team_ids][not_in]"] = filterteam_idsnot_in
 
     params["page[number]"] = pagenumber
 
@@ -89,38 +103,48 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterteam_ids: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    filterteam_idseq: Unset | str = UNSET,
+    filterteam_idsnot_eq: Unset | str = UNSET,
+    filterteam_idsin: Unset | str = UNSET,
+    filterteam_idsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[ScheduleList]:
     """List schedules
 
      List schedules
 
     Args:
-        include (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,6 +158,7 @@ def sync_detailed(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -142,6 +167,10 @@ def sync_detailed(
         filternamenot_eq=filternamenot_eq,
         filternamein=filternamein,
         filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -156,38 +185,48 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterteam_ids: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    filterteam_idseq: Unset | str = UNSET,
+    filterteam_idsnot_eq: Unset | str = UNSET,
+    filterteam_idsin: Unset | str = UNSET,
+    filterteam_idsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> ScheduleList | None:
     """List schedules
 
      List schedules
 
     Args:
-        include (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -202,6 +241,7 @@ def sync(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -210,6 +250,10 @@ def sync(
         filternamenot_eq=filternamenot_eq,
         filternamein=filternamein,
         filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     ).parsed
@@ -218,38 +262,48 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterteam_ids: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    filterteam_idseq: Unset | str = UNSET,
+    filterteam_idsnot_eq: Unset | str = UNSET,
+    filterteam_idsin: Unset | str = UNSET,
+    filterteam_idsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[ScheduleList]:
     """List schedules
 
      List schedules
 
     Args:
-        include (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -263,6 +317,7 @@ async def asyncio_detailed(
         include=include,
         filtersearch=filtersearch,
         filtername=filtername,
+        filterteam_ids=filterteam_ids,
         filtercreated_atgt=filtercreated_atgt,
         filtercreated_atgte=filtercreated_atgte,
         filtercreated_atlt=filtercreated_atlt,
@@ -271,6 +326,10 @@ async def asyncio_detailed(
         filternamenot_eq=filternamenot_eq,
         filternamein=filternamein,
         filternamenot_in=filternamenot_in,
+        filterteam_idseq=filterteam_idseq,
+        filterteam_idsnot_eq=filterteam_idsnot_eq,
+        filterteam_idsin=filterteam_idsin,
+        filterteam_idsnot_in=filterteam_idsnot_in,
         pagenumber=pagenumber,
         pagesize=pagesize,
     )
@@ -283,38 +342,48 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterteam_ids: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    filterteam_idseq: Unset | str = UNSET,
+    filterteam_idsnot_eq: Unset | str = UNSET,
+    filterteam_idsin: Unset | str = UNSET,
+    filterteam_idsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> ScheduleList | None:
     """List schedules
 
      List schedules
 
     Args:
-        include (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -330,6 +399,7 @@ async def asyncio(
             include=include,
             filtersearch=filtersearch,
             filtername=filtername,
+            filterteam_ids=filterteam_ids,
             filtercreated_atgt=filtercreated_atgt,
             filtercreated_atgte=filtercreated_atgte,
             filtercreated_atlt=filtercreated_atlt,
@@ -338,6 +408,10 @@ async def asyncio(
             filternamenot_eq=filternamenot_eq,
             filternamein=filternamein,
             filternamenot_in=filternamenot_in,
+            filterteam_idseq=filterteam_idseq,
+            filterteam_idsnot_eq=filterteam_idsnot_eq,
+            filterteam_idsin=filterteam_idsin,
+            filterteam_idsnot_in=filterteam_idsnot_in,
             pagenumber=pagenumber,
             pagesize=pagesize,
         )

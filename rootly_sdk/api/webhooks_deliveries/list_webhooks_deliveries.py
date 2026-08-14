@@ -1,11 +1,12 @@
+import datetime
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.errors_list import ErrorsList
 from ...models.webhooks_delivery_list import WebhooksDeliveryList
 from ...types import UNSET, Response, Unset
 
@@ -13,11 +14,19 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     endpoint_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -26,24 +35,71 @@ def _get_kwargs(
 
     params["page[size]"] = pagesize
 
+    params["filter[status]"] = filterstatus
+
+    json_filtercreated_atgt: Unset | str = UNSET
+    if not isinstance(filtercreated_atgt, Unset):
+        json_filtercreated_atgt = filtercreated_atgt.isoformat()
+    params["filter[created_at][gt]"] = json_filtercreated_atgt
+
+    json_filtercreated_atgte: Unset | str = UNSET
+    if not isinstance(filtercreated_atgte, Unset):
+        json_filtercreated_atgte = filtercreated_atgte.isoformat()
+    params["filter[created_at][gte]"] = json_filtercreated_atgte
+
+    json_filtercreated_atlt: Unset | str = UNSET
+    if not isinstance(filtercreated_atlt, Unset):
+        json_filtercreated_atlt = filtercreated_atlt.isoformat()
+    params["filter[created_at][lt]"] = json_filtercreated_atlt
+
+    json_filtercreated_atlte: Unset | str = UNSET
+    if not isinstance(filtercreated_atlte, Unset):
+        json_filtercreated_atlte = filtercreated_atlte.isoformat()
+    params["filter[created_at][lte]"] = json_filtercreated_atlte
+
+    json_filterdelivered_atgt: Unset | str = UNSET
+    if not isinstance(filterdelivered_atgt, Unset):
+        json_filterdelivered_atgt = filterdelivered_atgt.isoformat()
+    params["filter[delivered_at][gt]"] = json_filterdelivered_atgt
+
+    json_filterdelivered_atgte: Unset | str = UNSET
+    if not isinstance(filterdelivered_atgte, Unset):
+        json_filterdelivered_atgte = filterdelivered_atgte.isoformat()
+    params["filter[delivered_at][gte]"] = json_filterdelivered_atgte
+
+    json_filterdelivered_atlt: Unset | str = UNSET
+    if not isinstance(filterdelivered_atlt, Unset):
+        json_filterdelivered_atlt = filterdelivered_atlt.isoformat()
+    params["filter[delivered_at][lt]"] = json_filterdelivered_atlt
+
+    json_filterdelivered_atlte: Unset | str = UNSET
+    if not isinstance(filterdelivered_atlte, Unset):
+        json_filterdelivered_atlte = filterdelivered_atlte.isoformat()
+    params["filter[delivered_at][lte]"] = json_filterdelivered_atlte
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/webhooks/endpoints/{endpoint_id}/deliveries".format(
-            endpoint_id=quote(str(endpoint_id), safe=""),
-        ),
+        "url": f"/v1/webhooks/endpoints/{endpoint_id}/deliveries",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WebhooksDeliveryList | None:
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | WebhooksDeliveryList | None:
     if response.status_code == 200:
         response_200 = WebhooksDeliveryList.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = ErrorsList.from_dict(response.json())
+
+        return response_400
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -53,7 +109,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[WebhooksDeliveryList]:
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,26 +122,44 @@ def sync_detailed(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[WebhooksDeliveryList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
 
     Args:
         endpoint_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, datetime.datetime]):
+        filtercreated_atgte (Union[Unset, datetime.datetime]):
+        filtercreated_atlt (Union[Unset, datetime.datetime]):
+        filtercreated_atlte (Union[Unset, datetime.datetime]):
+        filterdelivered_atgt (Union[Unset, datetime.datetime]):
+        filterdelivered_atgte (Union[Unset, datetime.datetime]):
+        filterdelivered_atlt (Union[Unset, datetime.datetime]):
+        filterdelivered_atlte (Union[Unset, datetime.datetime]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[WebhooksDeliveryList]
+        Response[Union[ErrorsList, WebhooksDeliveryList]]
     """
 
     kwargs = _get_kwargs(
@@ -93,6 +167,15 @@ def sync_detailed(
         include=include,
         pagenumber=pagenumber,
         pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterdelivered_atgt=filterdelivered_atgt,
+        filterdelivered_atgte=filterdelivered_atgte,
+        filterdelivered_atlt=filterdelivered_atlt,
+        filterdelivered_atlte=filterdelivered_atlte,
     )
 
     response = client.get_httpx_client().request(
@@ -106,26 +189,44 @@ def sync(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> WebhooksDeliveryList | None:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> ErrorsList | WebhooksDeliveryList | None:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
 
     Args:
         endpoint_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, datetime.datetime]):
+        filtercreated_atgte (Union[Unset, datetime.datetime]):
+        filtercreated_atlt (Union[Unset, datetime.datetime]):
+        filtercreated_atlte (Union[Unset, datetime.datetime]):
+        filterdelivered_atgt (Union[Unset, datetime.datetime]):
+        filterdelivered_atgte (Union[Unset, datetime.datetime]):
+        filterdelivered_atlt (Union[Unset, datetime.datetime]):
+        filterdelivered_atlte (Union[Unset, datetime.datetime]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        WebhooksDeliveryList
+        Union[ErrorsList, WebhooksDeliveryList]
     """
 
     return sync_detailed(
@@ -134,6 +235,15 @@ def sync(
         include=include,
         pagenumber=pagenumber,
         pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterdelivered_atgt=filterdelivered_atgt,
+        filterdelivered_atgte=filterdelivered_atgte,
+        filterdelivered_atlt=filterdelivered_atlt,
+        filterdelivered_atlte=filterdelivered_atlte,
     ).parsed
 
 
@@ -141,26 +251,44 @@ async def asyncio_detailed(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[WebhooksDeliveryList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
 
     Args:
         endpoint_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, datetime.datetime]):
+        filtercreated_atgte (Union[Unset, datetime.datetime]):
+        filtercreated_atlt (Union[Unset, datetime.datetime]):
+        filtercreated_atlte (Union[Unset, datetime.datetime]):
+        filterdelivered_atgt (Union[Unset, datetime.datetime]):
+        filterdelivered_atgte (Union[Unset, datetime.datetime]):
+        filterdelivered_atlt (Union[Unset, datetime.datetime]):
+        filterdelivered_atlte (Union[Unset, datetime.datetime]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[WebhooksDeliveryList]
+        Response[Union[ErrorsList, WebhooksDeliveryList]]
     """
 
     kwargs = _get_kwargs(
@@ -168,6 +296,15 @@ async def asyncio_detailed(
         include=include,
         pagenumber=pagenumber,
         pagesize=pagesize,
+        filterstatus=filterstatus,
+        filtercreated_atgt=filtercreated_atgt,
+        filtercreated_atgte=filtercreated_atgte,
+        filtercreated_atlt=filtercreated_atlt,
+        filtercreated_atlte=filtercreated_atlte,
+        filterdelivered_atgt=filterdelivered_atgt,
+        filterdelivered_atgte=filterdelivered_atgte,
+        filterdelivered_atlt=filterdelivered_atlt,
+        filterdelivered_atlte=filterdelivered_atlte,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -179,26 +316,44 @@ async def asyncio(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> WebhooksDeliveryList | None:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> ErrorsList | WebhooksDeliveryList | None:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
 
     Args:
         endpoint_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, datetime.datetime]):
+        filtercreated_atgte (Union[Unset, datetime.datetime]):
+        filtercreated_atlt (Union[Unset, datetime.datetime]):
+        filtercreated_atlte (Union[Unset, datetime.datetime]):
+        filterdelivered_atgt (Union[Unset, datetime.datetime]):
+        filterdelivered_atgte (Union[Unset, datetime.datetime]):
+        filterdelivered_atlt (Union[Unset, datetime.datetime]):
+        filterdelivered_atlte (Union[Unset, datetime.datetime]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        WebhooksDeliveryList
+        Union[ErrorsList, WebhooksDeliveryList]
     """
 
     return (
@@ -208,5 +363,14 @@ async def asyncio(
             include=include,
             pagenumber=pagenumber,
             pagesize=pagesize,
+            filterstatus=filterstatus,
+            filtercreated_atgt=filtercreated_atgt,
+            filtercreated_atgte=filtercreated_atgte,
+            filtercreated_atlt=filtercreated_atlt,
+            filtercreated_atlte=filtercreated_atlte,
+            filterdelivered_atgt=filterdelivered_atgt,
+            filterdelivered_atgte=filterdelivered_atgte,
+            filterdelivered_atlt=filterdelivered_atlt,
+            filterdelivered_atlte=filterdelivered_atlte,
         )
     ).parsed

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -19,24 +17,24 @@ T = TypeVar("T", bound="CatalogChecklistTemplateFieldsType0Item")
 class CatalogChecklistTemplateFieldsType0Item:
     """
     Attributes:
-        field_source (CatalogChecklistTemplateFieldsType0ItemFieldSource | Unset): Source of the field
-        field_key (str | Unset): Key identifying the field
-        catalog_property_id (None | str | Unset): ID of the catalog property for custom fields
+        field_source (Union[Unset, CatalogChecklistTemplateFieldsType0ItemFieldSource]): Source of the field
+        field_key (Union[Unset, str]): Key identifying the field
+        catalog_property_id (Union[None, Unset, str]): ID of the catalog property for custom fields
     """
 
-    field_source: CatalogChecklistTemplateFieldsType0ItemFieldSource | Unset = UNSET
-    field_key: str | Unset = UNSET
-    catalog_property_id: None | str | Unset = UNSET
+    field_source: Unset | CatalogChecklistTemplateFieldsType0ItemFieldSource = UNSET
+    field_key: Unset | str = UNSET
+    catalog_property_id: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field_source: str | Unset = UNSET
+        field_source: Unset | str = UNSET
         if not isinstance(self.field_source, Unset):
             field_source = self.field_source
 
         field_key = self.field_key
 
-        catalog_property_id: None | str | Unset
+        catalog_property_id: None | Unset | str
         if isinstance(self.catalog_property_id, Unset):
             catalog_property_id = UNSET
         else:
@@ -58,7 +56,7 @@ class CatalogChecklistTemplateFieldsType0Item:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _field_source = d.pop("field_source", UNSET)
-        field_source: CatalogChecklistTemplateFieldsType0ItemFieldSource | Unset
+        field_source: Unset | CatalogChecklistTemplateFieldsType0ItemFieldSource
         if isinstance(_field_source, Unset):
             field_source = UNSET
         else:
@@ -66,12 +64,12 @@ class CatalogChecklistTemplateFieldsType0Item:
 
         field_key = d.pop("field_key", UNSET)
 
-        def _parse_catalog_property_id(data: object) -> None | str | Unset:
+        def _parse_catalog_property_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         catalog_property_id = _parse_catalog_property_id(d.pop("catalog_property_id", UNSET))
 

@@ -13,6 +13,7 @@ NEW_PATCH := $(MAJOR).$(MINOR).$(shell echo $$(($(PATCH) + 1)))
 
 # Today's date
 TODAY := $(shell date +%Y-%m-%d)
+RUFF_VERSION := 0.16.3
 
 bump-major:
 	@echo "Bumping version: $(CURRENT_VERSION) -> $(NEW_MAJOR)"
@@ -42,9 +43,9 @@ regenerate:
 	@echo "Applying nullable enum fix..."
 	@python tools/fix_nullable_enums.py
 	@echo "Fixing lint errors..."
-	@ruff check --fix rootly_sdk/
+	@uvx --from ruff==$(RUFF_VERSION) ruff check --fix .
 	@echo "Formatting patched files..."
-	@ruff format rootly_sdk/
+	@uvx --from ruff==$(RUFF_VERSION) ruff format .
 
 test:
 	python -c "import rootly_sdk; print('SDK imports successfully')"

@@ -11,48 +11,47 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterrefs: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    filterrefseq: str | Unset = UNSET,
-    filterrefsnot_eq: str | Unset = UNSET,
-    filterrefsin: str | Unset = UNSET,
-    filterrefsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersource: Unset | str = UNSET,
+    filterservices: Unset | str = UNSET,
+    filterenvironments: Unset | str = UNSET,
+    filterlabels: Unset | str = UNSET,
+    filterrefs: Unset | str = UNSET,
+    filterstarted_atgt: Unset | str = UNSET,
+    filterstarted_atgte: Unset | str = UNSET,
+    filterstarted_atlt: Unset | str = UNSET,
+    filterstarted_atlte: Unset | str = UNSET,
+    filterended_atgt: Unset | str = UNSET,
+    filterended_atgte: Unset | str = UNSET,
+    filterended_atlt: Unset | str = UNSET,
+    filterended_atlte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filtersourceeq: Unset | str = UNSET,
+    filtersourcenot_eq: Unset | str = UNSET,
+    filtersourcein: Unset | str = UNSET,
+    filtersourcenot_in: Unset | str = UNSET,
+    filterserviceseq: Unset | str = UNSET,
+    filterservicesnot_eq: Unset | str = UNSET,
+    filterservicesin: Unset | str = UNSET,
+    filterservicesnot_in: Unset | str = UNSET,
+    filterenvironmentseq: Unset | str = UNSET,
+    filterenvironmentsnot_eq: Unset | str = UNSET,
+    filterenvironmentsin: Unset | str = UNSET,
+    filterenvironmentsnot_in: Unset | str = UNSET,
+    filterlabelseq: Unset | str = UNSET,
+    filterlabelsnot_eq: Unset | str = UNSET,
+    filterlabelsin: Unset | str = UNSET,
+    filterlabelsnot_in: Unset | str = UNSET,
+    filterrefseq: Unset | str = UNSET,
+    filterrefsnot_eq: Unset | str = UNSET,
+    filterrefsin: Unset | str = UNSET,
+    filterrefsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -170,92 +169,92 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterrefs: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    filterrefseq: str | Unset = UNSET,
-    filterrefsnot_eq: str | Unset = UNSET,
-    filterrefsin: str | Unset = UNSET,
-    filterrefsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersource: Unset | str = UNSET,
+    filterservices: Unset | str = UNSET,
+    filterenvironments: Unset | str = UNSET,
+    filterlabels: Unset | str = UNSET,
+    filterrefs: Unset | str = UNSET,
+    filterstarted_atgt: Unset | str = UNSET,
+    filterstarted_atgte: Unset | str = UNSET,
+    filterstarted_atlt: Unset | str = UNSET,
+    filterstarted_atlte: Unset | str = UNSET,
+    filterended_atgt: Unset | str = UNSET,
+    filterended_atgte: Unset | str = UNSET,
+    filterended_atlt: Unset | str = UNSET,
+    filterended_atlte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filtersourceeq: Unset | str = UNSET,
+    filtersourcenot_eq: Unset | str = UNSET,
+    filtersourcein: Unset | str = UNSET,
+    filtersourcenot_in: Unset | str = UNSET,
+    filterserviceseq: Unset | str = UNSET,
+    filterservicesnot_eq: Unset | str = UNSET,
+    filterservicesin: Unset | str = UNSET,
+    filterservicesnot_in: Unset | str = UNSET,
+    filterenvironmentseq: Unset | str = UNSET,
+    filterenvironmentsnot_eq: Unset | str = UNSET,
+    filterenvironmentsin: Unset | str = UNSET,
+    filterenvironmentsnot_in: Unset | str = UNSET,
+    filterlabelseq: Unset | str = UNSET,
+    filterlabelsnot_eq: Unset | str = UNSET,
+    filterlabelsin: Unset | str = UNSET,
+    filterlabelsnot_in: Unset | str = UNSET,
+    filterrefseq: Unset | str = UNSET,
+    filterrefsnot_eq: Unset | str = UNSET,
+    filterrefsin: Unset | str = UNSET,
+    filterrefsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[PulseList]:
     """List pulses
 
      List pulses
 
     Args:
-        include (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filterlabels (str | Unset):
-        filterrefs (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        filterrefseq (str | Unset):
-        filterrefsnot_eq (str | Unset):
-        filterrefsin (str | Unset):
-        filterrefsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterrefs (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        filterrefseq (Union[Unset, str]):
+        filterrefsnot_eq (Union[Unset, str]):
+        filterrefsin (Union[Unset, str]):
+        filterrefsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -318,92 +317,92 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterrefs: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    filterrefseq: str | Unset = UNSET,
-    filterrefsnot_eq: str | Unset = UNSET,
-    filterrefsin: str | Unset = UNSET,
-    filterrefsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersource: Unset | str = UNSET,
+    filterservices: Unset | str = UNSET,
+    filterenvironments: Unset | str = UNSET,
+    filterlabels: Unset | str = UNSET,
+    filterrefs: Unset | str = UNSET,
+    filterstarted_atgt: Unset | str = UNSET,
+    filterstarted_atgte: Unset | str = UNSET,
+    filterstarted_atlt: Unset | str = UNSET,
+    filterstarted_atlte: Unset | str = UNSET,
+    filterended_atgt: Unset | str = UNSET,
+    filterended_atgte: Unset | str = UNSET,
+    filterended_atlt: Unset | str = UNSET,
+    filterended_atlte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filtersourceeq: Unset | str = UNSET,
+    filtersourcenot_eq: Unset | str = UNSET,
+    filtersourcein: Unset | str = UNSET,
+    filtersourcenot_in: Unset | str = UNSET,
+    filterserviceseq: Unset | str = UNSET,
+    filterservicesnot_eq: Unset | str = UNSET,
+    filterservicesin: Unset | str = UNSET,
+    filterservicesnot_in: Unset | str = UNSET,
+    filterenvironmentseq: Unset | str = UNSET,
+    filterenvironmentsnot_eq: Unset | str = UNSET,
+    filterenvironmentsin: Unset | str = UNSET,
+    filterenvironmentsnot_in: Unset | str = UNSET,
+    filterlabelseq: Unset | str = UNSET,
+    filterlabelsnot_eq: Unset | str = UNSET,
+    filterlabelsin: Unset | str = UNSET,
+    filterlabelsnot_in: Unset | str = UNSET,
+    filterrefseq: Unset | str = UNSET,
+    filterrefsnot_eq: Unset | str = UNSET,
+    filterrefsin: Unset | str = UNSET,
+    filterrefsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> PulseList | None:
     """List pulses
 
      List pulses
 
     Args:
-        include (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filterlabels (str | Unset):
-        filterrefs (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        filterrefseq (str | Unset):
-        filterrefsnot_eq (str | Unset):
-        filterrefsin (str | Unset):
-        filterrefsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterrefs (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        filterrefseq (Union[Unset, str]):
+        filterrefsnot_eq (Union[Unset, str]):
+        filterrefsin (Union[Unset, str]):
+        filterrefsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -461,92 +460,92 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterrefs: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    filterrefseq: str | Unset = UNSET,
-    filterrefsnot_eq: str | Unset = UNSET,
-    filterrefsin: str | Unset = UNSET,
-    filterrefsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersource: Unset | str = UNSET,
+    filterservices: Unset | str = UNSET,
+    filterenvironments: Unset | str = UNSET,
+    filterlabels: Unset | str = UNSET,
+    filterrefs: Unset | str = UNSET,
+    filterstarted_atgt: Unset | str = UNSET,
+    filterstarted_atgte: Unset | str = UNSET,
+    filterstarted_atlt: Unset | str = UNSET,
+    filterstarted_atlte: Unset | str = UNSET,
+    filterended_atgt: Unset | str = UNSET,
+    filterended_atgte: Unset | str = UNSET,
+    filterended_atlt: Unset | str = UNSET,
+    filterended_atlte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filtersourceeq: Unset | str = UNSET,
+    filtersourcenot_eq: Unset | str = UNSET,
+    filtersourcein: Unset | str = UNSET,
+    filtersourcenot_in: Unset | str = UNSET,
+    filterserviceseq: Unset | str = UNSET,
+    filterservicesnot_eq: Unset | str = UNSET,
+    filterservicesin: Unset | str = UNSET,
+    filterservicesnot_in: Unset | str = UNSET,
+    filterenvironmentseq: Unset | str = UNSET,
+    filterenvironmentsnot_eq: Unset | str = UNSET,
+    filterenvironmentsin: Unset | str = UNSET,
+    filterenvironmentsnot_in: Unset | str = UNSET,
+    filterlabelseq: Unset | str = UNSET,
+    filterlabelsnot_eq: Unset | str = UNSET,
+    filterlabelsin: Unset | str = UNSET,
+    filterlabelsnot_in: Unset | str = UNSET,
+    filterrefseq: Unset | str = UNSET,
+    filterrefsnot_eq: Unset | str = UNSET,
+    filterrefsin: Unset | str = UNSET,
+    filterrefsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[PulseList]:
     """List pulses
 
      List pulses
 
     Args:
-        include (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filterlabels (str | Unset):
-        filterrefs (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        filterrefseq (str | Unset):
-        filterrefsnot_eq (str | Unset):
-        filterrefsin (str | Unset):
-        filterrefsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterrefs (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        filterrefseq (Union[Unset, str]):
+        filterrefsnot_eq (Union[Unset, str]):
+        filterrefsin (Union[Unset, str]):
+        filterrefsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -607,92 +606,92 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterrefs: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    filterrefseq: str | Unset = UNSET,
-    filterrefsnot_eq: str | Unset = UNSET,
-    filterrefsin: str | Unset = UNSET,
-    filterrefsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    filtersource: Unset | str = UNSET,
+    filterservices: Unset | str = UNSET,
+    filterenvironments: Unset | str = UNSET,
+    filterlabels: Unset | str = UNSET,
+    filterrefs: Unset | str = UNSET,
+    filterstarted_atgt: Unset | str = UNSET,
+    filterstarted_atgte: Unset | str = UNSET,
+    filterstarted_atlt: Unset | str = UNSET,
+    filterstarted_atlte: Unset | str = UNSET,
+    filterended_atgt: Unset | str = UNSET,
+    filterended_atgte: Unset | str = UNSET,
+    filterended_atlt: Unset | str = UNSET,
+    filterended_atlte: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filtersourceeq: Unset | str = UNSET,
+    filtersourcenot_eq: Unset | str = UNSET,
+    filtersourcein: Unset | str = UNSET,
+    filtersourcenot_in: Unset | str = UNSET,
+    filterserviceseq: Unset | str = UNSET,
+    filterservicesnot_eq: Unset | str = UNSET,
+    filterservicesin: Unset | str = UNSET,
+    filterservicesnot_in: Unset | str = UNSET,
+    filterenvironmentseq: Unset | str = UNSET,
+    filterenvironmentsnot_eq: Unset | str = UNSET,
+    filterenvironmentsin: Unset | str = UNSET,
+    filterenvironmentsnot_in: Unset | str = UNSET,
+    filterlabelseq: Unset | str = UNSET,
+    filterlabelsnot_eq: Unset | str = UNSET,
+    filterlabelsin: Unset | str = UNSET,
+    filterlabelsnot_in: Unset | str = UNSET,
+    filterrefseq: Unset | str = UNSET,
+    filterrefsnot_eq: Unset | str = UNSET,
+    filterrefsin: Unset | str = UNSET,
+    filterrefsnot_in: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> PulseList | None:
     """List pulses
 
      List pulses
 
     Args:
-        include (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filterlabels (str | Unset):
-        filterrefs (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        filterrefseq (str | Unset):
-        filterrefsnot_eq (str | Unset):
-        filterrefsin (str | Unset):
-        filterrefsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterrefs (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        filterrefseq (Union[Unset, str]):
+        filterrefsnot_eq (Union[Unset, str]):
+        filterrefsin (Union[Unset, str]):
+        filterrefsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

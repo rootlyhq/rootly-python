@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,19 +17,19 @@ T = TypeVar("T", bound="AlertsSourceSourceableAttributesType0FieldMappingsAttrib
 class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
     """
     Attributes:
-        field (AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset): Select the field on which
-            the condition to be evaluated
-        json_path (str | Unset): JSON path expression to extract a specific value from the alert's payload for
+        field (Union[Unset, AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField]): Select the field on
+            which the condition to be evaluated
+        json_path (Union[Unset, str]): JSON path expression to extract a specific value from the alert's payload for
             evaluation. For `notification_target_id` only: if your account has opted in to Dynamic Notification Targets,
             this may also be a Liquid template that resolves to a notification target id at routing time.
     """
 
-    field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset = UNSET
-    json_path: str | Unset = UNSET
+    field: Unset | AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField = UNSET
+    json_path: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field: str | Unset = UNSET
+        field: Unset | str = UNSET
         if not isinstance(self.field, Unset):
             field = self.field
 
@@ -51,7 +49,7 @@ class AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _field = d.pop("field", UNSET)
-        field: AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField | Unset
+        field: Unset | AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField
         if isinstance(_field, Unset):
             field = UNSET
         else:

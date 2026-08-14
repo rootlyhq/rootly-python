@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -21,12 +19,12 @@ class AlertTriggerParamsAlertFieldConditionsItem:
     Attributes:
         alert_field_id (str):
         condition_type (AlertTriggerParamsAlertFieldConditionsItemConditionType):
-        values (list[str] | Unset):
+        values (Union[Unset, list[str]]):
     """
 
     alert_field_id: str
     condition_type: AlertTriggerParamsAlertFieldConditionsItemConditionType
-    values: list[str] | Unset = UNSET
+    values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,7 +32,7 @@ class AlertTriggerParamsAlertFieldConditionsItem:
 
         condition_type: str = self.condition_type
 
-        values: list[str] | Unset = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -15,40 +13,40 @@ T = TypeVar("T", bound="AlertEventIncidentType0")
 class AlertEventIncidentType0:
     """
     Attributes:
-        id (str | Unset):
-        sequential_id (int | None | Unset):
-        title (str | Unset):
-        slug (str | Unset):
-        kind (str | Unset):
-        status (str | Unset):
-        private (bool | Unset):
-        description (None | str | Unset):
-        started_at (None | str | Unset):
-        duration (int | None | Unset): Duration in seconds.
-        url (str | Unset):
-        created_at (str | Unset):
-        updated_at (str | Unset):
+        id (Union[Unset, str]):
+        sequential_id (Union[None, Unset, int]):
+        title (Union[Unset, str]):
+        slug (Union[Unset, str]):
+        kind (Union[Unset, str]):
+        status (Union[Unset, str]):
+        private (Union[Unset, bool]):
+        description (Union[None, Unset, str]):
+        started_at (Union[None, Unset, str]):
+        duration (Union[None, Unset, int]): Duration in seconds.
+        url (Union[Unset, str]):
+        created_at (Union[Unset, str]):
+        updated_at (Union[Unset, str]):
     """
 
-    id: str | Unset = UNSET
-    sequential_id: int | None | Unset = UNSET
-    title: str | Unset = UNSET
-    slug: str | Unset = UNSET
-    kind: str | Unset = UNSET
-    status: str | Unset = UNSET
-    private: bool | Unset = UNSET
-    description: None | str | Unset = UNSET
-    started_at: None | str | Unset = UNSET
-    duration: int | None | Unset = UNSET
-    url: str | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    id: Unset | str = UNSET
+    sequential_id: None | Unset | int = UNSET
+    title: Unset | str = UNSET
+    slug: Unset | str = UNSET
+    kind: Unset | str = UNSET
+    status: Unset | str = UNSET
+    private: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    started_at: None | Unset | str = UNSET
+    duration: None | Unset | int = UNSET
+    url: Unset | str = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        sequential_id: int | None | Unset
+        sequential_id: None | Unset | int
         if isinstance(self.sequential_id, Unset):
             sequential_id = UNSET
         else:
@@ -64,19 +62,19 @@ class AlertEventIncidentType0:
 
         private = self.private
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        started_at: None | str | Unset
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        duration: int | None | Unset
+        duration: None | Unset | int
         if isinstance(self.duration, Unset):
             duration = UNSET
         else:
@@ -125,12 +123,12 @@ class AlertEventIncidentType0:
         d = dict(src_dict)
         id = d.pop("id", UNSET)
 
-        def _parse_sequential_id(data: object) -> int | None | Unset:
+        def _parse_sequential_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         sequential_id = _parse_sequential_id(d.pop("sequential_id", UNSET))
 
@@ -144,30 +142,30 @@ class AlertEventIncidentType0:
 
         private = d.pop("private", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_started_at(data: object) -> None | str | Unset:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_duration(data: object) -> int | None | Unset:
+        def _parse_duration(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         duration = _parse_duration(d.pop("duration", UNSET))
 

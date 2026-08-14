@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -15,12 +14,9 @@ from ...types import Response
 def _get_kwargs(
     id: UUID,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalog_entity_checklists/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/catalog_entity_checklists/{id}",
     }
 
     return _kwargs
@@ -73,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CatalogEntityChecklistResponse | ErrorsList]
+        Response[Union[CatalogEntityChecklistResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -104,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CatalogEntityChecklistResponse | ErrorsList
+        Union[CatalogEntityChecklistResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -130,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CatalogEntityChecklistResponse | ErrorsList]
+        Response[Union[CatalogEntityChecklistResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -159,7 +155,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CatalogEntityChecklistResponse | ErrorsList
+        Union[CatalogEntityChecklistResponse, ErrorsList]
     """
 
     return (

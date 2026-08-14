@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,15 +13,15 @@ class NewCustomFieldOptionDataAttributes:
     """
     Attributes:
         value (str): The value of the custom_field_option
-        color (str | Unset): The hex color of the custom_field_option
-        default (bool | Unset):
-        position (int | Unset): The position of the custom_field_option
+        color (Union[Unset, str]): The hex color of the custom_field_option
+        default (Union[Unset, bool]):
+        position (Union[Unset, int]): The position of the custom_field_option
     """
 
     value: str
-    color: str | Unset = UNSET
-    default: bool | Unset = UNSET
-    position: int | Unset = UNSET
+    color: Unset | str = UNSET
+    default: Unset | bool = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         value = self.value

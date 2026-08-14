@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -24,25 +22,24 @@ class ChangeGoogleChatSpacePrivacyTaskParams:
     """
     Attributes:
         space (ChangeGoogleChatSpacePrivacyTaskParamsSpace):
-        task_type (ChangeGoogleChatSpacePrivacyTaskParamsTaskType | Unset):
-        audience (None | str | Unset): Target audience resource name (e.g. audiences/default). Leave blank to make
+        task_type (Union[Unset, ChangeGoogleChatSpacePrivacyTaskParamsTaskType]):
+        audience (Union[None, Unset, str]): Target audience resource name (e.g. audiences/default). Leave blank to make
             private.
     """
 
-    space: ChangeGoogleChatSpacePrivacyTaskParamsSpace
-    task_type: ChangeGoogleChatSpacePrivacyTaskParamsTaskType | Unset = UNSET
-    audience: None | str | Unset = UNSET
+    space: "ChangeGoogleChatSpacePrivacyTaskParamsSpace"
+    task_type: Unset | ChangeGoogleChatSpacePrivacyTaskParamsTaskType = UNSET
+    audience: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         space = self.space.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        audience: None | str | Unset
+        audience: None | Unset | str
         if isinstance(self.audience, Unset):
             audience = UNSET
         else:
@@ -72,18 +69,18 @@ class ChangeGoogleChatSpacePrivacyTaskParams:
         space = ChangeGoogleChatSpacePrivacyTaskParamsSpace.from_dict(d.pop("space"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: ChangeGoogleChatSpacePrivacyTaskParamsTaskType | Unset
+        task_type: Unset | ChangeGoogleChatSpacePrivacyTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_change_google_chat_space_privacy_task_params_task_type(_task_type)
 
-        def _parse_audience(data: object) -> None | str | Unset:
+        def _parse_audience(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         audience = _parse_audience(d.pop("audience", UNSET))
 

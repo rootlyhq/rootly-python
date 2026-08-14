@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,18 +13,18 @@ T = TypeVar("T", bound="IncidentZoomMeetingGlobalDialInNumbersType0Item")
 class IncidentZoomMeetingGlobalDialInNumbersType0Item:
     """
     Attributes:
-        country (str | Unset):
-        country_name (str | Unset):
-        city (str | Unset):
-        number (str | Unset):
-        type_ (str | Unset):
+        country (Union[Unset, str]):
+        country_name (Union[Unset, str]):
+        city (Union[Unset, str]):
+        number (Union[Unset, str]):
+        type_ (Union[Unset, str]):
     """
 
-    country: str | Unset = UNSET
-    country_name: str | Unset = UNSET
-    city: str | Unset = UNSET
-    number: str | Unset = UNSET
-    type_: str | Unset = UNSET
+    country: Unset | str = UNSET
+    country_name: Unset | str = UNSET
+    city: Unset | str = UNSET
+    number: Unset | str = UNSET
+    type_: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -21,23 +19,22 @@ T = TypeVar("T", bound="CreateEdgeConnectorActionBodyActionMetadata")
 class CreateEdgeConnectorActionBodyActionMetadata:
     """
     Attributes:
-        description (str | Unset):
-        timeout (int | Unset):
-        parameters (list[CreateEdgeConnectorActionBodyActionMetadataParametersItem] | Unset):
+        description (Union[Unset, str]):
+        timeout (Union[Unset, int]):
+        parameters (Union[Unset, list['CreateEdgeConnectorActionBodyActionMetadataParametersItem']]):
     """
 
-    description: str | Unset = UNSET
-    timeout: int | Unset = UNSET
-    parameters: list[CreateEdgeConnectorActionBodyActionMetadataParametersItem] | Unset = UNSET
+    description: Unset | str = UNSET
+    timeout: Unset | int = UNSET
+    parameters: Unset | list["CreateEdgeConnectorActionBodyActionMetadataParametersItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         description = self.description
 
         timeout = self.timeout
 
-        parameters: list[dict[str, Any]] | Unset = UNSET
+        parameters: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.parameters, Unset):
             parameters = []
             for parameters_item_data in self.parameters:
@@ -67,16 +64,12 @@ class CreateEdgeConnectorActionBodyActionMetadata:
 
         timeout = d.pop("timeout", UNSET)
 
+        parameters = []
         _parameters = d.pop("parameters", UNSET)
-        parameters: list[CreateEdgeConnectorActionBodyActionMetadataParametersItem] | Unset = UNSET
-        if _parameters is not UNSET:
-            parameters = []
-            for parameters_item_data in _parameters:
-                parameters_item = CreateEdgeConnectorActionBodyActionMetadataParametersItem.from_dict(
-                    parameters_item_data
-                )
+        for parameters_item_data in _parameters or []:
+            parameters_item = CreateEdgeConnectorActionBodyActionMetadataParametersItem.from_dict(parameters_item_data)
 
-                parameters.append(parameters_item)
+            parameters.append(parameters_item)
 
         create_edge_connector_action_body_action_metadata = cls(
             description=description,

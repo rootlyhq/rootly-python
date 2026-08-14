@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -21,18 +19,17 @@ class IncidentActionItemResponse:
     """
     Attributes:
         data (IncidentActionItemResponseData):
-        included (list[JsonapiIncludedResource] | Unset):
+        included (Union[Unset, list['JsonapiIncludedResource']]):
     """
 
-    data: IncidentActionItemResponseData
-    included: list[JsonapiIncludedResource] | Unset = UNSET
+    data: "IncidentActionItemResponseData"
+    included: Unset | list["JsonapiIncludedResource"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         data = self.data.to_dict()
 
-        included: list[dict[str, Any]] | Unset = UNSET
+        included: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -59,14 +56,12 @@ class IncidentActionItemResponse:
         d = dict(src_dict)
         data = IncidentActionItemResponseData.from_dict(d.pop("data"))
 
+        included = []
         _included = d.pop("included", UNSET)
-        included: list[JsonapiIncludedResource] | Unset = UNSET
-        if _included is not UNSET:
-            included = []
-            for included_item_data in _included:
-                included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        for included_item_data in _included or []:
+            included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-                included.append(included_item)
+            included.append(included_item)
 
         incident_action_item_response = cls(
             data=data,

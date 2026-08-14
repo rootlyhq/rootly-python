@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -23,38 +21,48 @@ class NewIncidentPermissionSetDataAttributes:
     """
     Attributes:
         name (str): The incident permission set name.
-        description (None | str | Unset): The incident permission set description.
-        private_incident_permissions (list[NewIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] |
-            Unset):
-        public_incident_permissions (list[NewIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] | Unset):
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]): The incident permission set description.
+        private_incident_permissions (Union[Unset,
+            list[NewIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]]):
+        public_incident_permissions (Union[Unset,
+            list[NewIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]]):
     """
 
     name: str
-    description: None | str | Unset = UNSET
-    private_incident_permissions: list[NewIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] | Unset = (
+    slug: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    private_incident_permissions: Unset | list[NewIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] = (
         UNSET
     )
-    public_incident_permissions: list[NewIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] | Unset = (
+    public_incident_permissions: Unset | list[NewIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] = (
         UNSET
     )
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | str | Unset
+        slug: None | Unset | str
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        private_incident_permissions: list[str] | Unset = UNSET
+        private_incident_permissions: Unset | list[str] = UNSET
         if not isinstance(self.private_incident_permissions, Unset):
             private_incident_permissions = []
             for private_incident_permissions_item_data in self.private_incident_permissions:
                 private_incident_permissions_item: str = private_incident_permissions_item_data
                 private_incident_permissions.append(private_incident_permissions_item)
 
-        public_incident_permissions: list[str] | Unset = UNSET
+        public_incident_permissions: Unset | list[str] = UNSET
         if not isinstance(self.public_incident_permissions, Unset):
             public_incident_permissions = []
             for public_incident_permissions_item_data in self.public_incident_permissions:
@@ -68,6 +76,8 @@ class NewIncidentPermissionSetDataAttributes:
                 "name": name,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if private_incident_permissions is not UNSET:
@@ -82,47 +92,49 @@ class NewIncidentPermissionSetDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> None | Unset | str:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
+        private_incident_permissions = []
         _private_incident_permissions = d.pop("private_incident_permissions", UNSET)
-        private_incident_permissions: (
-            list[NewIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem] | Unset
-        ) = UNSET
-        if _private_incident_permissions is not UNSET:
-            private_incident_permissions = []
-            for private_incident_permissions_item_data in _private_incident_permissions:
-                private_incident_permissions_item = (
-                    check_new_incident_permission_set_data_attributes_private_incident_permissions_item(
-                        private_incident_permissions_item_data
-                    )
+        for private_incident_permissions_item_data in _private_incident_permissions or []:
+            private_incident_permissions_item = (
+                check_new_incident_permission_set_data_attributes_private_incident_permissions_item(
+                    private_incident_permissions_item_data
                 )
+            )
 
-                private_incident_permissions.append(private_incident_permissions_item)
+            private_incident_permissions.append(private_incident_permissions_item)
 
+        public_incident_permissions = []
         _public_incident_permissions = d.pop("public_incident_permissions", UNSET)
-        public_incident_permissions: (
-            list[NewIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem] | Unset
-        ) = UNSET
-        if _public_incident_permissions is not UNSET:
-            public_incident_permissions = []
-            for public_incident_permissions_item_data in _public_incident_permissions:
-                public_incident_permissions_item = (
-                    check_new_incident_permission_set_data_attributes_public_incident_permissions_item(
-                        public_incident_permissions_item_data
-                    )
+        for public_incident_permissions_item_data in _public_incident_permissions or []:
+            public_incident_permissions_item = (
+                check_new_incident_permission_set_data_attributes_public_incident_permissions_item(
+                    public_incident_permissions_item_data
                 )
+            )
 
-                public_incident_permissions.append(public_incident_permissions_item)
+            public_incident_permissions.append(public_incident_permissions_item)
 
         new_incident_permission_set_data_attributes = cls(
             name=name,
+            slug=slug,
             description=description,
             private_incident_permissions=private_incident_permissions,
             public_incident_permissions=public_incident_permissions,

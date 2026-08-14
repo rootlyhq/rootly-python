@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,31 +18,31 @@ class Dashboard:
         name (str): The name of the dashboard
         owner (DashboardOwner): The owner type of the dashboard
         public (bool): Whether the dashboard is public
-        team_id (int | Unset): The dashboard team
-        user_id (int | None | Unset): The dashboard user owner if owner is of type user
-        description (None | str | Unset): The description of the dashboard
-        range_ (None | str | Unset): The date range for dashboard panel data
-        period (None | str | Unset): The grouping period for dashboard panel data
-        auto_refresh (bool | Unset): Whether the dashboard auto-updates the UI with new data.
-        color (DashboardColor | Unset): The hex color of the dashboard
-        icon (str | Unset): The emoji icon of the dashboard
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        team_id (Union[Unset, int]): The dashboard team
+        user_id (Union[None, Unset, int]): The dashboard user owner if owner is of type user
+        description (Union[None, Unset, str]): The description of the dashboard
+        range_ (Union[None, Unset, str]): The date range for dashboard panel data
+        period (Union[None, Unset, str]): The grouping period for dashboard panel data
+        auto_refresh (Union[Unset, bool]): Whether the dashboard auto-updates the UI with new data.
+        color (Union[Unset, DashboardColor]): The hex color of the dashboard
+        icon (Union[Unset, str]): The emoji icon of the dashboard
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
     name: str
     owner: DashboardOwner
     public: bool
-    team_id: int | Unset = UNSET
-    user_id: int | None | Unset = UNSET
-    description: None | str | Unset = UNSET
-    range_: None | str | Unset = UNSET
-    period: None | str | Unset = UNSET
-    auto_refresh: bool | Unset = UNSET
-    color: DashboardColor | Unset = UNSET
-    icon: str | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    team_id: Unset | int = UNSET
+    user_id: None | Unset | int = UNSET
+    description: None | Unset | str = UNSET
+    range_: None | Unset | str = UNSET
+    period: None | Unset | str = UNSET
+    auto_refresh: Unset | bool = UNSET
+    color: Unset | DashboardColor = UNSET
+    icon: Unset | str = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,25 +54,25 @@ class Dashboard:
 
         team_id = self.team_id
 
-        user_id: int | None | Unset
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        range_: None | str | Unset
+        range_: None | Unset | str
         if isinstance(self.range_, Unset):
             range_ = UNSET
         else:
             range_ = self.range_
 
-        period: None | str | Unset
+        period: None | Unset | str
         if isinstance(self.period, Unset):
             period = UNSET
         else:
@@ -82,7 +80,7 @@ class Dashboard:
 
         auto_refresh = self.auto_refresh
 
-        color: str | Unset = UNSET
+        color: Unset | str = UNSET
         if not isinstance(self.color, Unset):
             color = self.color
 
@@ -135,46 +133,46 @@ class Dashboard:
 
         team_id = d.pop("team_id", UNSET)
 
-        def _parse_user_id(data: object) -> int | None | Unset:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_range_(data: object) -> None | str | Unset:
+        def _parse_range_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         range_ = _parse_range_(d.pop("range", UNSET))
 
-        def _parse_period(data: object) -> None | str | Unset:
+        def _parse_period(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         period = _parse_period(d.pop("period", UNSET))
 
         auto_refresh = d.pop("auto_refresh", UNSET)
 
         _color = d.pop("color", UNSET)
-        color: DashboardColor | Unset
+        color: Unset | DashboardColor
         if isinstance(_color, Unset):
             color = UNSET
         else:

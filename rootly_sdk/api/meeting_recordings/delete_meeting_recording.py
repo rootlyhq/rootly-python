@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, cast
-from urllib.parse import quote
 
 import httpx
 
@@ -13,12 +12,9 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/meeting_recordings/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/meeting_recordings/{id}",
     }
 
     return _kwargs
@@ -71,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return sync_detailed(
@@ -130,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -160,7 +156,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return (

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,35 +16,35 @@ T = TypeVar("T", bound="CatalogProperty")
 class CatalogProperty:
     """
     Attributes:
-        catalog_id (None | str):
+        catalog_id (Union[None, str]):
         name (str):
         kind (CatalogPropertyKind):
         multiple (bool): Whether the attribute accepts multiple values.
-        position (int | None): Default position of the item when displayed in a list.
+        position (Union[None, int]): Default position of the item when displayed in a list.
         created_at (str):
         updated_at (str):
-        slug (str | Unset):
-        kind_catalog_id (None | str | Unset): Restricts values to items of specified catalog.
-        required (bool | Unset): Whether the property is required.
-        catalog_type (CatalogPropertyCatalogType | Unset): The type of catalog the property belongs to.
-        external_id (None | str | Unset): An external identifier for this catalog property. Must be unique within the
-            scope.
-        managed_by (CatalogPropertyManagedBy | Unset): Which source manages this resource (read-only).
+        slug (Union[Unset, str]):
+        kind_catalog_id (Union[None, Unset, str]): Restricts values to items of specified catalog.
+        required (Union[Unset, bool]): Whether the property is required.
+        catalog_type (Union[Unset, CatalogPropertyCatalogType]): The type of catalog the property belongs to.
+        external_id (Union[None, Unset, str]): An external identifier for this catalog property. Must be unique within
+            the scope.
+        managed_by (Union[Unset, CatalogPropertyManagedBy]): Which source manages this resource (read-only).
     """
 
     catalog_id: None | str
     name: str
     kind: CatalogPropertyKind
     multiple: bool
-    position: int | None
+    position: None | int
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    kind_catalog_id: None | str | Unset = UNSET
-    required: bool | Unset = UNSET
-    catalog_type: CatalogPropertyCatalogType | Unset = UNSET
-    external_id: None | str | Unset = UNSET
-    managed_by: CatalogPropertyManagedBy | Unset = UNSET
+    slug: Unset | str = UNSET
+    kind_catalog_id: None | Unset | str = UNSET
+    required: Unset | bool = UNSET
+    catalog_type: Unset | CatalogPropertyCatalogType = UNSET
+    external_id: None | Unset | str = UNSET
+    managed_by: Unset | CatalogPropertyManagedBy = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,7 +57,7 @@ class CatalogProperty:
 
         multiple = self.multiple
 
-        position: int | None
+        position: None | int
         position = self.position
 
         created_at = self.created_at
@@ -68,7 +66,7 @@ class CatalogProperty:
 
         slug = self.slug
 
-        kind_catalog_id: None | str | Unset
+        kind_catalog_id: None | Unset | str
         if isinstance(self.kind_catalog_id, Unset):
             kind_catalog_id = UNSET
         else:
@@ -76,17 +74,17 @@ class CatalogProperty:
 
         required = self.required
 
-        catalog_type: str | Unset = UNSET
+        catalog_type: Unset | str = UNSET
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
-        external_id: None | str | Unset
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        managed_by: str | Unset = UNSET
+        managed_by: Unset | str = UNSET
         if not isinstance(self.managed_by, Unset):
             managed_by = self.managed_by
 
@@ -135,10 +133,10 @@ class CatalogProperty:
 
         multiple = d.pop("multiple")
 
-        def _parse_position(data: object) -> int | None:
+        def _parse_position(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(None | int, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -148,35 +146,35 @@ class CatalogProperty:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_kind_catalog_id(data: object) -> None | str | Unset:
+        def _parse_kind_catalog_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         kind_catalog_id = _parse_kind_catalog_id(d.pop("kind_catalog_id", UNSET))
 
         required = d.pop("required", UNSET)
 
         _catalog_type = d.pop("catalog_type", UNSET)
-        catalog_type: CatalogPropertyCatalogType | Unset
+        catalog_type: Unset | CatalogPropertyCatalogType
         if isinstance(_catalog_type, Unset):
             catalog_type = UNSET
         else:
             catalog_type = check_catalog_property_catalog_type(_catalog_type)
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         _managed_by = d.pop("managed_by", UNSET)
-        managed_by: CatalogPropertyManagedBy | Unset
+        managed_by: Unset | CatalogPropertyManagedBy
         if isinstance(_managed_by, Unset):
             managed_by = UNSET
         else:

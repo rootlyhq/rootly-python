@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -9,25 +8,22 @@ from ...client import AuthenticatedClient, Client
 from ...models.alert_event_response import AlertEventResponse
 from ...models.errors_list import ErrorsList
 from ...models.update_alert_event import UpdateAlertEvent
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     id: str,
     *,
-    body: UpdateAlertEvent | Unset = UNSET,
+    body: UpdateAlertEvent,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v1/alert_events/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/alert_events/{id}",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -69,7 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateAlertEvent | Unset = UNSET,
+    body: UpdateAlertEvent,
 ) -> Response[AlertEventResponse | ErrorsList]:
     """Update alert event
 
@@ -78,15 +74,15 @@ def sync_detailed(
 
     Args:
         id (str):
-        body (UpdateAlertEvent | Unset): Update an alert event. Note: Only alert events with
-            kind='note' can be updated. You cannot change the kind field.
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertEventResponse | ErrorsList]
+        Response[Union[AlertEventResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +101,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateAlertEvent | Unset = UNSET,
+    body: UpdateAlertEvent,
 ) -> AlertEventResponse | ErrorsList | None:
     """Update alert event
 
@@ -114,15 +110,15 @@ def sync(
 
     Args:
         id (str):
-        body (UpdateAlertEvent | Unset): Update an alert event. Note: Only alert events with
-            kind='note' can be updated. You cannot change the kind field.
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertEventResponse | ErrorsList
+        Union[AlertEventResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -136,7 +132,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateAlertEvent | Unset = UNSET,
+    body: UpdateAlertEvent,
 ) -> Response[AlertEventResponse | ErrorsList]:
     """Update alert event
 
@@ -145,15 +141,15 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        body (UpdateAlertEvent | Unset): Update an alert event. Note: Only alert events with
-            kind='note' can be updated. You cannot change the kind field.
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertEventResponse | ErrorsList]
+        Response[Union[AlertEventResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -170,7 +166,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateAlertEvent | Unset = UNSET,
+    body: UpdateAlertEvent,
 ) -> AlertEventResponse | ErrorsList | None:
     """Update alert event
 
@@ -179,15 +175,15 @@ async def asyncio(
 
     Args:
         id (str):
-        body (UpdateAlertEvent | Unset): Update an alert event. Note: Only alert events with
-            kind='note' can be updated. You cannot change the kind field.
+        body (UpdateAlertEvent): Update an alert event. Note: Only alert events with kind='note'
+            can be updated. You cannot change the kind field.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertEventResponse | ErrorsList
+        Union[AlertEventResponse, ErrorsList]
     """
 
     return (

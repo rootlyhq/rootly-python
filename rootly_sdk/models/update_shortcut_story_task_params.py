@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -25,29 +23,28 @@ class UpdateShortcutStoryTaskParams:
     Attributes:
         story_id (str): The story id
         archivation (UpdateShortcutStoryTaskParamsArchivation): The archivation id and display name
-        task_type (UpdateShortcutStoryTaskParamsTaskType | Unset):
-        title (str | Unset): The incident title
-        description (str | Unset): The incident description
-        labels (str | Unset): The story labels
-        due_date (str | Unset): The due date
+        task_type (Union[Unset, UpdateShortcutStoryTaskParamsTaskType]):
+        title (Union[Unset, str]): The incident title
+        description (Union[Unset, str]): The incident description
+        labels (Union[Unset, str]): The story labels
+        due_date (Union[Unset, str]): The due date
     """
 
     story_id: str
-    archivation: UpdateShortcutStoryTaskParamsArchivation
-    task_type: UpdateShortcutStoryTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    description: str | Unset = UNSET
-    labels: str | Unset = UNSET
-    due_date: str | Unset = UNSET
+    archivation: "UpdateShortcutStoryTaskParamsArchivation"
+    task_type: Unset | UpdateShortcutStoryTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         story_id = self.story_id
 
         archivation = self.archivation.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -90,7 +87,7 @@ class UpdateShortcutStoryTaskParams:
         archivation = UpdateShortcutStoryTaskParamsArchivation.from_dict(d.pop("archivation"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateShortcutStoryTaskParamsTaskType | Unset
+        task_type: Unset | UpdateShortcutStoryTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

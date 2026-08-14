@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -14,10 +13,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    to: str | Unset = UNSET,
-    from_: str | Unset = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["to"] = to
@@ -28,9 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{id}/shifts".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/schedules/{id}/shifts",
         "params": params,
     }
 
@@ -69,8 +65,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: str | Unset = UNSET,
-    from_: str | Unset = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> Response[ErrorsList | ShiftList]:
     """Retrieves a schedule shifts
 
@@ -78,15 +74,15 @@ def sync_detailed(
 
     Args:
         id (str):
-        to (str | Unset):
-        from_ (str | Unset):
+        to (Union[Unset, str]):
+        from_ (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftList]
+        Response[Union[ErrorsList, ShiftList]]
     """
 
     kwargs = _get_kwargs(
@@ -106,8 +102,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: str | Unset = UNSET,
-    from_: str | Unset = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> ErrorsList | ShiftList | None:
     """Retrieves a schedule shifts
 
@@ -115,15 +111,15 @@ def sync(
 
     Args:
         id (str):
-        to (str | Unset):
-        from_ (str | Unset):
+        to (Union[Unset, str]):
+        from_ (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftList
+        Union[ErrorsList, ShiftList]
     """
 
     return sync_detailed(
@@ -138,8 +134,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: str | Unset = UNSET,
-    from_: str | Unset = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> Response[ErrorsList | ShiftList]:
     """Retrieves a schedule shifts
 
@@ -147,15 +143,15 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        to (str | Unset):
-        from_ (str | Unset):
+        to (Union[Unset, str]):
+        from_ (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftList]
+        Response[Union[ErrorsList, ShiftList]]
     """
 
     kwargs = _get_kwargs(
@@ -173,8 +169,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    to: str | Unset = UNSET,
-    from_: str | Unset = UNSET,
+    to: Unset | str = UNSET,
+    from_: Unset | str = UNSET,
 ) -> ErrorsList | ShiftList | None:
     """Retrieves a schedule shifts
 
@@ -182,15 +178,15 @@ async def asyncio(
 
     Args:
         id (str):
-        to (str | Unset):
-        from_ (str | Unset):
+        to (Union[Unset, str]):
+        from_ (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftList
+        Union[ErrorsList, ShiftList]
     """
 
     return (

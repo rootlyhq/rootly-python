@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -13,12 +12,9 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/webhooks/deliveries/{id}/deliver".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/webhooks/deliveries/{id}/deliver",
     }
 
     return _kwargs

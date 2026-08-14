@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -16,7 +15,6 @@ def _get_kwargs(
     *,
     period: str,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["period"] = period
@@ -25,9 +23,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/teams/{id}/incidents_chart".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/teams/{id}/incidents_chart",
         "params": params,
     }
 
@@ -83,7 +79,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentsChartResponse]
+        Response[Union[ErrorsList, IncidentsChartResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -117,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentsChartResponse
+        Union[ErrorsList, IncidentsChartResponse]
     """
 
     return sync_detailed(
@@ -146,7 +142,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentsChartResponse]
+        Response[Union[ErrorsList, IncidentsChartResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -178,7 +174,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentsChartResponse
+        Union[ErrorsList, IncidentsChartResponse]
     """
 
     return (

@@ -8,6 +8,7 @@ UpdateFormFieldPositionDataAttributesForm = Literal[
     "slack_incident_resolution_form",
     "slack_new_incident_form",
     "slack_scheduled_incident_form",
+    "slack_task_form",
     "slack_update_incident_form",
     "slack_update_incident_status_form",
     "slack_update_scheduled_incident_form",
@@ -18,6 +19,7 @@ UpdateFormFieldPositionDataAttributesForm = Literal[
     "web_incident_resolution_form",
     "web_new_incident_form",
     "web_scheduled_incident_form",
+    "web_task_form",
     "web_update_incident_form",
     "web_update_scheduled_incident_form",
 ]
@@ -30,6 +32,7 @@ UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES: set[UpdateFormFieldPosit
     "slack_incident_resolution_form",
     "slack_new_incident_form",
     "slack_scheduled_incident_form",
+    "slack_task_form",
     "slack_update_incident_form",
     "slack_update_incident_status_form",
     "slack_update_scheduled_incident_form",
@@ -40,6 +43,7 @@ UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES: set[UpdateFormFieldPosit
     "web_incident_resolution_form",
     "web_new_incident_form",
     "web_scheduled_incident_form",
+    "web_task_form",
     "web_update_incident_form",
     "web_update_scheduled_incident_form",
 }

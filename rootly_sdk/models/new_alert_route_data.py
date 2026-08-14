@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +18,20 @@ T = TypeVar("T", bound="NewAlertRouteData")
 class NewAlertRouteData:
     """
     Attributes:
-        type_ (NewAlertRouteDataType | Unset):
-        attributes (NewAlertRouteDataAttributes | Unset):
+        type_ (Union[Unset, NewAlertRouteDataType]):
+        attributes (Union[Unset, NewAlertRouteDataAttributes]):
     """
 
-    type_: NewAlertRouteDataType | Unset = UNSET
-    attributes: NewAlertRouteDataAttributes | Unset = UNSET
+    type_: Unset | NewAlertRouteDataType = UNSET
+    attributes: Union[Unset, "NewAlertRouteDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +51,14 @@ class NewAlertRouteData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: NewAlertRouteDataType | Unset
+        type_: Unset | NewAlertRouteDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_new_alert_route_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: NewAlertRouteDataAttributes | Unset
+        attributes: Unset | NewAlertRouteDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

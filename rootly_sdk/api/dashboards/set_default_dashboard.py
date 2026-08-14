@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,14 +12,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: UUID | str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/dashboards/{id}/set_default".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/dashboards/{id}/set_default",
     }
 
     return _kwargs
@@ -57,7 +53,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[DashboardResponse | ErrorsList]:
@@ -66,14 +62,14 @@ def sync_detailed(
      Sets dashboard to user default
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DashboardResponse | ErrorsList]
+        Response[Union[DashboardResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +84,7 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> DashboardResponse | ErrorsList | None:
@@ -97,14 +93,14 @@ def sync(
      Sets dashboard to user default
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DashboardResponse | ErrorsList
+        Union[DashboardResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -114,7 +110,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[DashboardResponse | ErrorsList]:
@@ -123,14 +119,14 @@ async def asyncio_detailed(
      Sets dashboard to user default
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DashboardResponse | ErrorsList]
+        Response[Union[DashboardResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +139,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> DashboardResponse | ErrorsList | None:
@@ -152,14 +148,14 @@ async def asyncio(
      Sets dashboard to user default
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DashboardResponse | ErrorsList
+        Union[DashboardResponse, ErrorsList]
     """
 
     return (

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -24,25 +22,25 @@ class NewStatusPageTemplateDataAttributes:
     Attributes:
         title (str): Title of the template
         body (str): Description of the event the template will populate
-        status_page_id (str | Unset):
-        update_title (None | str | Unset): Title that will be used for the status page update
-        update_status (NewStatusPageTemplateDataAttributesUpdateStatus | Unset): Status of the event the template will
-            populate
-        kind (NewStatusPageTemplateDataAttributesKind | Unset): The kind of the status page template
-        should_notify_subscribers (bool | None | Unset): Controls if incident subscribers should be notified
-        position (int | Unset): Position of the status page template
-        enabled (bool | None | Unset): Enable / Disable the status page template
+        status_page_id (Union[Unset, str]):
+        update_title (Union[None, Unset, str]): Title that will be used for the status page update
+        update_status (Union[Unset, NewStatusPageTemplateDataAttributesUpdateStatus]): Status of the event the template
+            will populate
+        kind (Union[Unset, NewStatusPageTemplateDataAttributesKind]): The kind of the status page template
+        should_notify_subscribers (Union[None, Unset, bool]): Controls if incident subscribers should be notified
+        position (Union[Unset, int]): Position of the status page template
+        enabled (Union[None, Unset, bool]): Enable / Disable the status page template
     """
 
     title: str
     body: str
-    status_page_id: str | Unset = UNSET
-    update_title: None | str | Unset = UNSET
-    update_status: NewStatusPageTemplateDataAttributesUpdateStatus | Unset = UNSET
-    kind: NewStatusPageTemplateDataAttributesKind | Unset = UNSET
-    should_notify_subscribers: bool | None | Unset = UNSET
-    position: int | Unset = UNSET
-    enabled: bool | None | Unset = UNSET
+    status_page_id: Unset | str = UNSET
+    update_title: None | Unset | str = UNSET
+    update_status: Unset | NewStatusPageTemplateDataAttributesUpdateStatus = UNSET
+    kind: Unset | NewStatusPageTemplateDataAttributesKind = UNSET
+    should_notify_subscribers: None | Unset | bool = UNSET
+    position: Unset | int = UNSET
+    enabled: None | Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
@@ -51,21 +49,21 @@ class NewStatusPageTemplateDataAttributes:
 
         status_page_id = self.status_page_id
 
-        update_title: None | str | Unset
+        update_title: None | Unset | str
         if isinstance(self.update_title, Unset):
             update_title = UNSET
         else:
             update_title = self.update_title
 
-        update_status: str | Unset = UNSET
+        update_status: Unset | str = UNSET
         if not isinstance(self.update_status, Unset):
             update_status = self.update_status
 
-        kind: str | Unset = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        should_notify_subscribers: bool | None | Unset
+        should_notify_subscribers: None | Unset | bool
         if isinstance(self.should_notify_subscribers, Unset):
             should_notify_subscribers = UNSET
         else:
@@ -73,7 +71,7 @@ class NewStatusPageTemplateDataAttributes:
 
         position = self.position
 
-        enabled: bool | None | Unset
+        enabled: None | Unset | bool
         if isinstance(self.enabled, Unset):
             enabled = UNSET
         else:
@@ -113,46 +111,46 @@ class NewStatusPageTemplateDataAttributes:
 
         status_page_id = d.pop("status_page_id", UNSET)
 
-        def _parse_update_title(data: object) -> None | str | Unset:
+        def _parse_update_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         update_title = _parse_update_title(d.pop("update_title", UNSET))
 
         _update_status = d.pop("update_status", UNSET)
-        update_status: NewStatusPageTemplateDataAttributesUpdateStatus | Unset
+        update_status: Unset | NewStatusPageTemplateDataAttributesUpdateStatus
         if isinstance(_update_status, Unset):
             update_status = UNSET
         else:
             update_status = check_new_status_page_template_data_attributes_update_status(_update_status)
 
         _kind = d.pop("kind", UNSET)
-        kind: NewStatusPageTemplateDataAttributesKind | Unset
+        kind: Unset | NewStatusPageTemplateDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_new_status_page_template_data_attributes_kind(_kind)
 
-        def _parse_should_notify_subscribers(data: object) -> bool | None | Unset:
+        def _parse_should_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(None | Unset | bool, data)
 
         should_notify_subscribers = _parse_should_notify_subscribers(d.pop("should_notify_subscribers", UNSET))
 
         position = d.pop("position", UNSET)
 
-        def _parse_enabled(data: object) -> bool | None | Unset:
+        def _parse_enabled(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(None | Unset | bool, data)
 
         enabled = _parse_enabled(d.pop("enabled", UNSET))
 

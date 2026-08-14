@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,12 +19,12 @@ class UpdateCatalogChecklistTemplateDataAttributesCustomField:
     Attributes:
         field_source (UpdateCatalogChecklistTemplateDataAttributesCustomFieldFieldSource):
         catalog_property_id (str): ID of the catalog property
-        field_key (str | Unset): Ignored for custom fields (auto-derived from catalog property)
+        field_key (Union[Unset, str]): Ignored for custom fields (auto-derived from catalog property)
     """
 
     field_source: UpdateCatalogChecklistTemplateDataAttributesCustomFieldFieldSource
     catalog_property_id: str
-    field_key: str | Unset = UNSET
+    field_key: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -11,11 +11,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    status: str | Unset = UNSET,
-    platform: str | Unset = UNSET,
-    created_by: str | Unset = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["status"] = status
@@ -61,9 +60,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    status: str | Unset = UNSET,
-    platform: str | Unset = UNSET,
-    created_by: str | Unset = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> Response[MeetingRecordingList]:
     """List all meeting recordings
 
@@ -72,9 +71,9 @@ def sync_detailed(
     created_by.
 
     Args:
-        status (str | Unset):
-        platform (str | Unset):
-        created_by (str | Unset):
+        status (Union[Unset, str]):
+        platform (Union[Unset, str]):
+        created_by (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,9 +99,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    status: str | Unset = UNSET,
-    platform: str | Unset = UNSET,
-    created_by: str | Unset = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> MeetingRecordingList | None:
     """List all meeting recordings
 
@@ -111,9 +110,9 @@ def sync(
     created_by.
 
     Args:
-        status (str | Unset):
-        platform (str | Unset):
-        created_by (str | Unset):
+        status (Union[Unset, str]):
+        platform (Union[Unset, str]):
+        created_by (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -134,9 +133,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    status: str | Unset = UNSET,
-    platform: str | Unset = UNSET,
-    created_by: str | Unset = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> Response[MeetingRecordingList]:
     """List all meeting recordings
 
@@ -145,9 +144,9 @@ async def asyncio_detailed(
     created_by.
 
     Args:
-        status (str | Unset):
-        platform (str | Unset):
-        created_by (str | Unset):
+        status (Union[Unset, str]):
+        platform (Union[Unset, str]):
+        created_by (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -171,9 +170,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    status: str | Unset = UNSET,
-    platform: str | Unset = UNSET,
-    created_by: str | Unset = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> MeetingRecordingList | None:
     """List all meeting recordings
 
@@ -182,9 +181,9 @@ async def asyncio(
     created_by.
 
     Args:
-        status (str | Unset):
-        platform (str | Unset):
-        created_by (str | Unset):
+        status (Union[Unset, str]):
+        platform (Union[Unset, str]):
+        created_by (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

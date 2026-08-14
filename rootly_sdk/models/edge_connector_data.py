@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -27,11 +25,10 @@ class EdgeConnectorData:
 
     type_: EdgeConnectorDataType
     id: UUID
-    attributes: EdgeConnectorDataAttributes
+    attributes: "EdgeConnectorDataAttributes"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         type_: str = self.type_
 
         id = str(self.id)

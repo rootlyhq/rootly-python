@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,28 +22,27 @@ class UpdateCodaPageTaskParams:
     """
     Attributes:
         page_id (str): The Coda page id
-        task_type (UpdateCodaPageTaskParamsTaskType | Unset):
-        doc_id (str | Unset): The Coda doc id
-        title (str | Unset): The Coda page title
-        subtitle (str | Unset): The Coda page subtitle
-        content (str | Unset): The Coda page content
-        template (UpdateCodaPageTaskParamsTemplate | Unset):
+        task_type (Union[Unset, UpdateCodaPageTaskParamsTaskType]):
+        doc_id (Union[Unset, str]): The Coda doc id
+        title (Union[Unset, str]): The Coda page title
+        subtitle (Union[Unset, str]): The Coda page subtitle
+        content (Union[Unset, str]): The Coda page content
+        template (Union[Unset, UpdateCodaPageTaskParamsTemplate]):
     """
 
     page_id: str
-    task_type: UpdateCodaPageTaskParamsTaskType | Unset = UNSET
-    doc_id: str | Unset = UNSET
-    title: str | Unset = UNSET
-    subtitle: str | Unset = UNSET
-    content: str | Unset = UNSET
-    template: UpdateCodaPageTaskParamsTemplate | Unset = UNSET
+    task_type: Unset | UpdateCodaPageTaskParamsTaskType = UNSET
+    doc_id: Unset | str = UNSET
+    title: Unset | str = UNSET
+    subtitle: Unset | str = UNSET
+    content: Unset | str = UNSET
+    template: Union[Unset, "UpdateCodaPageTaskParamsTemplate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         page_id = self.page_id
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -57,7 +54,7 @@ class UpdateCodaPageTaskParams:
 
         content = self.content
 
-        template: dict[str, Any] | Unset = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -91,7 +88,7 @@ class UpdateCodaPageTaskParams:
         page_id = d.pop("page_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateCodaPageTaskParamsTaskType | Unset
+        task_type: Unset | UpdateCodaPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -106,7 +103,7 @@ class UpdateCodaPageTaskParams:
         content = d.pop("content", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: UpdateCodaPageTaskParamsTemplate | Unset
+        template: Unset | UpdateCodaPageTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:

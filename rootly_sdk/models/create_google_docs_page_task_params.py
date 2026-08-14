@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,36 +23,37 @@ class CreateGoogleDocsPageTaskParams:
     """
     Attributes:
         title (str): The page title
-        task_type (CreateGoogleDocsPageTaskParamsTaskType | Unset):
-        post_mortem_template_id (str | Unset): Retrospective template to use when creating page, if desired
-        mark_post_mortem_as_published (bool | Unset):  Default: True.
-        drive (CreateGoogleDocsPageTaskParamsDrive | Unset):
-        parent_folder (CreateGoogleDocsPageTaskParamsParentFolder | Unset):
-        content (str | Unset): The page content
-        template_id (str | Unset): The Google Doc file ID to use as a template
-        permissions (str | Unset): Page permissions JSON
-        include_overview (bool | Unset):  Default: True.
-        include_timeline (bool | Unset):  Default: True.
+        task_type (Union[Unset, CreateGoogleDocsPageTaskParamsTaskType]):
+        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page, if desired
+        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        drive (Union[Unset, CreateGoogleDocsPageTaskParamsDrive]):
+        parent_folder (Union[Unset, CreateGoogleDocsPageTaskParamsParentFolder]):
+        content (Union[Unset, str]): The page content
+        template_id (Union[Unset, str]): The Google Doc file ID to use as a template
+        permissions (Union[Unset, str]): Page permissions JSON
+        include_overview (Union[Unset, bool]):  Default: True.
+        include_timeline (Union[Unset, bool]):  Default: True.
+        include_follow_ups (Union[Unset, bool]):  Default: True.
     """
 
     title: str
-    task_type: CreateGoogleDocsPageTaskParamsTaskType | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
-    mark_post_mortem_as_published: bool | Unset = True
-    drive: CreateGoogleDocsPageTaskParamsDrive | Unset = UNSET
-    parent_folder: CreateGoogleDocsPageTaskParamsParentFolder | Unset = UNSET
-    content: str | Unset = UNSET
-    template_id: str | Unset = UNSET
-    permissions: str | Unset = UNSET
-    include_overview: bool | Unset = True
-    include_timeline: bool | Unset = True
+    task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    drive: Union[Unset, "CreateGoogleDocsPageTaskParamsDrive"] = UNSET
+    parent_folder: Union[Unset, "CreateGoogleDocsPageTaskParamsParentFolder"] = UNSET
+    content: Unset | str = UNSET
+    template_id: Unset | str = UNSET
+    permissions: Unset | str = UNSET
+    include_overview: Unset | bool = True
+    include_timeline: Unset | bool = True
+    include_follow_ups: Unset | bool = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -62,11 +61,11 @@ class CreateGoogleDocsPageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        drive: dict[str, Any] | Unset = UNSET
+        drive: Unset | dict[str, Any] = UNSET
         if not isinstance(self.drive, Unset):
             drive = self.drive.to_dict()
 
-        parent_folder: dict[str, Any] | Unset = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -79,6 +78,8 @@ class CreateGoogleDocsPageTaskParams:
         include_overview = self.include_overview
 
         include_timeline = self.include_timeline
+
+        include_follow_ups = self.include_follow_ups
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -107,6 +108,8 @@ class CreateGoogleDocsPageTaskParams:
             field_dict["include_overview"] = include_overview
         if include_timeline is not UNSET:
             field_dict["include_timeline"] = include_timeline
+        if include_follow_ups is not UNSET:
+            field_dict["include_follow_ups"] = include_follow_ups
 
         return field_dict
 
@@ -121,7 +124,7 @@ class CreateGoogleDocsPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateGoogleDocsPageTaskParamsTaskType | Unset
+        task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -132,14 +135,14 @@ class CreateGoogleDocsPageTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _drive = d.pop("drive", UNSET)
-        drive: CreateGoogleDocsPageTaskParamsDrive | Unset
+        drive: Unset | CreateGoogleDocsPageTaskParamsDrive
         if isinstance(_drive, Unset):
             drive = UNSET
         else:
             drive = CreateGoogleDocsPageTaskParamsDrive.from_dict(_drive)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: CreateGoogleDocsPageTaskParamsParentFolder | Unset
+        parent_folder: Unset | CreateGoogleDocsPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:
@@ -155,6 +158,8 @@ class CreateGoogleDocsPageTaskParams:
 
         include_timeline = d.pop("include_timeline", UNSET)
 
+        include_follow_ups = d.pop("include_follow_ups", UNSET)
+
         create_google_docs_page_task_params = cls(
             title=title,
             task_type=task_type,
@@ -167,6 +172,7 @@ class CreateGoogleDocsPageTaskParams:
             permissions=permissions,
             include_overview=include_overview,
             include_timeline=include_timeline,
+            include_follow_ups=include_follow_ups,
         )
 
         create_google_docs_page_task_params.additional_properties = d

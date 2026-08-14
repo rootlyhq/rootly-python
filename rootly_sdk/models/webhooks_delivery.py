@@ -1,10 +1,10 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..models.webhooks_delivery_status import WebhooksDeliveryStatus, check_webhooks_delivery_status
 
 T = TypeVar("T", bound="WebhooksDelivery")
 
@@ -15,13 +15,19 @@ class WebhooksDelivery:
     Attributes:
         endpoint_id (str):
         payload (str):
-        delivered_at (None | str):
+        status (WebhooksDeliveryStatus): Delivery status
+        response_status (Union[None, int]): HTTP status code recorded for the delivery attempt. It is null before the
+            first attempt. For SSRF and transport failures, Rootly generates this code because no destination response was
+            received.
+        delivered_at (Union[None, str]):
         created_at (str): Date of creation
         updated_at (str): Date of last update
     """
 
     endpoint_id: str
     payload: str
+    status: WebhooksDeliveryStatus
+    response_status: None | int
     delivered_at: None | str
     created_at: str
     updated_at: str
@@ -31,6 +37,11 @@ class WebhooksDelivery:
         endpoint_id = self.endpoint_id
 
         payload = self.payload
+
+        status: str = self.status
+
+        response_status: None | int
+        response_status = self.response_status
 
         delivered_at: None | str
         delivered_at = self.delivered_at
@@ -45,6 +56,8 @@ class WebhooksDelivery:
             {
                 "endpoint_id": endpoint_id,
                 "payload": payload,
+                "status": status,
+                "response_status": response_status,
                 "delivered_at": delivered_at,
                 "created_at": created_at,
                 "updated_at": updated_at,
@@ -60,6 +73,15 @@ class WebhooksDelivery:
 
         payload = d.pop("payload")
 
+        status = check_webhooks_delivery_status(d.pop("status"))
+
+        def _parse_response_status(data: object) -> None | int:
+            if data is None:
+                return data
+            return cast(None | int, data)
+
+        response_status = _parse_response_status(d.pop("response_status"))
+
         def _parse_delivered_at(data: object) -> None | str:
             if data is None:
                 return data
@@ -74,6 +96,8 @@ class WebhooksDelivery:
         webhooks_delivery = cls(
             endpoint_id=endpoint_id,
             payload=payload,
+            status=status,
+            response_status=response_status,
             delivered_at=delivered_at,
             created_at=created_at,
             updated_at=updated_at,

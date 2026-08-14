@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -19,44 +17,44 @@ T = TypeVar("T", bound="EdgeConnectorActionDataAttributesParametersType0Item")
 class EdgeConnectorActionDataAttributesParametersType0Item:
     """
     Attributes:
-        name (str | Unset):
-        type_ (EdgeConnectorActionDataAttributesParametersType0ItemType | Unset):
-        required (bool | Unset):
-        description (None | str | Unset):
-        default (None | str | Unset): Default value (any type)
-        options (list[str] | None | Unset):
+        name (Union[Unset, str]):
+        type_ (Union[Unset, EdgeConnectorActionDataAttributesParametersType0ItemType]):
+        required (Union[Unset, bool]):
+        description (Union[None, Unset, str]):
+        default (Union[None, Unset, str]): Default value (any type)
+        options (Union[None, Unset, list[str]]):
     """
 
-    name: str | Unset = UNSET
-    type_: EdgeConnectorActionDataAttributesParametersType0ItemType | Unset = UNSET
-    required: bool | Unset = UNSET
-    description: None | str | Unset = UNSET
-    default: None | str | Unset = UNSET
-    options: list[str] | None | Unset = UNSET
+    name: Unset | str = UNSET
+    type_: Unset | EdgeConnectorActionDataAttributesParametersType0ItemType = UNSET
+    required: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    default: None | Unset | str = UNSET
+    options: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
         required = self.required
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        default: None | str | Unset
+        default: None | Unset | str
         if isinstance(self.default, Unset):
             default = UNSET
         else:
             default = self.default
 
-        options: list[str] | None | Unset
+        options: None | Unset | list[str]
         if isinstance(self.options, Unset):
             options = UNSET
         elif isinstance(self.options, list):
@@ -89,7 +87,7 @@ class EdgeConnectorActionDataAttributesParametersType0Item:
         name = d.pop("name", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: EdgeConnectorActionDataAttributesParametersType0ItemType | Unset
+        type_: Unset | EdgeConnectorActionDataAttributesParametersType0ItemType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
@@ -97,25 +95,25 @@ class EdgeConnectorActionDataAttributesParametersType0Item:
 
         required = d.pop("required", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_default(data: object) -> None | str | Unset:
+        def _parse_default(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
-        def _parse_options(data: object) -> list[str] | None | Unset:
+        def _parse_options(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -126,9 +124,9 @@ class EdgeConnectorActionDataAttributesParametersType0Item:
                 options_type_0 = cast(list[str], data)
 
                 return options_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         options = _parse_options(d.pop("options", UNSET))
 

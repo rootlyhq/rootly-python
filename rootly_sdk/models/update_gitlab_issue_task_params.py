@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -29,35 +27,34 @@ class UpdateGitlabIssueTaskParams:
     Attributes:
         issue_id (str): The issue id
         completion (UpdateGitlabIssueTaskParamsCompletion):
-        task_type (UpdateGitlabIssueTaskParamsTaskType | Unset):
-        issue_type (UpdateGitlabIssueTaskParamsIssueType | Unset): The issue type
-        title (str | Unset): The issue title
-        description (str | Unset): The issue description
-        labels (str | Unset): The issue labels
-        due_date (str | Unset): The due date
+        task_type (Union[Unset, UpdateGitlabIssueTaskParamsTaskType]):
+        issue_type (Union[Unset, UpdateGitlabIssueTaskParamsIssueType]): The issue type
+        title (Union[Unset, str]): The issue title
+        description (Union[Unset, str]): The issue description
+        labels (Union[Unset, str]): The issue labels
+        due_date (Union[Unset, str]): The due date
     """
 
     issue_id: str
-    completion: UpdateGitlabIssueTaskParamsCompletion
-    task_type: UpdateGitlabIssueTaskParamsTaskType | Unset = UNSET
-    issue_type: UpdateGitlabIssueTaskParamsIssueType | Unset = UNSET
-    title: str | Unset = UNSET
-    description: str | Unset = UNSET
-    labels: str | Unset = UNSET
-    due_date: str | Unset = UNSET
+    completion: "UpdateGitlabIssueTaskParamsCompletion"
+    task_type: Unset | UpdateGitlabIssueTaskParamsTaskType = UNSET
+    issue_type: Unset | UpdateGitlabIssueTaskParamsIssueType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         issue_id = self.issue_id
 
         completion = self.completion.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        issue_type: str | Unset = UNSET
+        issue_type: Unset | str = UNSET
         if not isinstance(self.issue_type, Unset):
             issue_type = self.issue_type
 
@@ -102,14 +99,14 @@ class UpdateGitlabIssueTaskParams:
         completion = UpdateGitlabIssueTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateGitlabIssueTaskParamsTaskType | Unset
+        task_type: Unset | UpdateGitlabIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_gitlab_issue_task_params_task_type(_task_type)
 
         _issue_type = d.pop("issue_type", UNSET)
-        issue_type: UpdateGitlabIssueTaskParamsIssueType | Unset
+        issue_type: Unset | UpdateGitlabIssueTaskParamsIssueType
         if isinstance(_issue_type, Unset):
             issue_type = UNSET
         else:

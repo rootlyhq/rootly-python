@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +18,20 @@ T = TypeVar("T", bound="EscalateAlertData")
 class EscalateAlertData:
     """
     Attributes:
-        type_ (EscalateAlertDataType | Unset):
-        attributes (EscalateAlertDataAttributes | Unset):
+        type_ (Union[Unset, EscalateAlertDataType]):
+        attributes (Union[Unset, EscalateAlertDataAttributes]):
     """
 
-    type_: EscalateAlertDataType | Unset = UNSET
-    attributes: EscalateAlertDataAttributes | Unset = UNSET
+    type_: Unset | EscalateAlertDataType = UNSET
+    attributes: Union[Unset, "EscalateAlertDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +51,14 @@ class EscalateAlertData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: EscalateAlertDataType | Unset
+        type_: Unset | EscalateAlertDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_escalate_alert_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: EscalateAlertDataAttributes | Unset
+        attributes: Unset | EscalateAlertDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

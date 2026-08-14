@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -25,21 +23,20 @@ class NewAlertRouteDataAttributesRulesItem:
     """
     Attributes:
         name (str): The name of the alert routing rule
-        destinations (list[NewAlertRouteDataAttributesRulesItemDestinationsItem]):
-        condition_groups (list[NewAlertRouteDataAttributesRulesItemConditionGroupsItem]):
-        position (int | Unset): The position of the alert routing rule for ordering evaluation
-        fallback_rule (bool | Unset): Whether this is a fallback rule Default: False.
+        destinations (list['NewAlertRouteDataAttributesRulesItemDestinationsItem']):
+        condition_groups (list['NewAlertRouteDataAttributesRulesItemConditionGroupsItem']):
+        position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
+        fallback_rule (Union[Unset, bool]): Whether this is a fallback rule Default: False.
     """
 
     name: str
-    destinations: list[NewAlertRouteDataAttributesRulesItemDestinationsItem]
-    condition_groups: list[NewAlertRouteDataAttributesRulesItemConditionGroupsItem]
-    position: int | Unset = UNSET
-    fallback_rule: bool | Unset = False
+    destinations: list["NewAlertRouteDataAttributesRulesItemDestinationsItem"]
+    condition_groups: list["NewAlertRouteDataAttributesRulesItemConditionGroupsItem"]
+    position: Unset | int = UNSET
+    fallback_rule: Unset | bool = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         destinations = []

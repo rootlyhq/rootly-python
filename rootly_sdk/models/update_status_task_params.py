@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -24,19 +22,19 @@ class UpdateStatusTaskParams:
     """
     Attributes:
         status (UpdateStatusTaskParamsStatus):
-        task_type (UpdateStatusTaskParamsTaskType | Unset):
-        inactivity_timeout (str | Unset): In format '1 hour', '1 day', etc Example: 1 hour.
+        task_type (Union[Unset, UpdateStatusTaskParamsTaskType]):
+        inactivity_timeout (Union[Unset, str]): In format '1 hour', '1 day', etc Example: 1 hour.
     """
 
     status: UpdateStatusTaskParamsStatus
-    task_type: UpdateStatusTaskParamsTaskType | Unset = UNSET
-    inactivity_timeout: str | Unset = UNSET
+    task_type: Unset | UpdateStatusTaskParamsTaskType = UNSET
+    inactivity_timeout: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         status: str = self.status
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -62,7 +60,7 @@ class UpdateStatusTaskParams:
         status = check_update_status_task_params_status(d.pop("status"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateStatusTaskParamsTaskType | Unset
+        task_type: Unset | UpdateStatusTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

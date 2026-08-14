@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -14,12 +13,9 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/incident_custom_field_selections/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incident_custom_field_selections/{id}",
     }
 
     return _kwargs
@@ -73,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentCustomFieldSelectionResponse]
+        Response[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentCustomFieldSelectionResponse
+        Union[ErrorsList, IncidentCustomFieldSelectionResponse]
     """
 
     return sync_detailed(
@@ -132,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentCustomFieldSelectionResponse]
+        Response[Union[ErrorsList, IncidentCustomFieldSelectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -162,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentCustomFieldSelectionResponse
+        Union[ErrorsList, IncidentCustomFieldSelectionResponse]
     """
 
     return (

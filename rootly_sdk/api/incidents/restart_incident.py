@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -14,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: UUID | str,
     *,
     body: RestartIncident,
 ) -> dict[str, Any]:
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/incidents/{id}/restart".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incidents/{id}/restart",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -66,7 +63,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: RestartIncident,
@@ -76,7 +73,7 @@ def sync_detailed(
      Restart a specific incident by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (RestartIncident):
 
     Raises:
@@ -84,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentResponse]
+        Response[Union[ErrorsList, IncidentResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +97,7 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: RestartIncident,
@@ -110,7 +107,7 @@ def sync(
      Restart a specific incident by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (RestartIncident):
 
     Raises:
@@ -118,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentResponse
+        Union[ErrorsList, IncidentResponse]
     """
 
     return sync_detailed(
@@ -129,7 +126,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: RestartIncident,
@@ -139,7 +136,7 @@ async def asyncio_detailed(
      Restart a specific incident by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (RestartIncident):
 
     Raises:
@@ -147,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentResponse]
+        Response[Union[ErrorsList, IncidentResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -161,7 +158,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: RestartIncident,
@@ -171,7 +168,7 @@ async def asyncio(
      Restart a specific incident by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (RestartIncident):
 
     Raises:
@@ -179,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentResponse
+        Union[ErrorsList, IncidentResponse]
     """
 
     return (

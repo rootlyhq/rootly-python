@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 from uuid import UUID
@@ -24,53 +22,54 @@ T = TypeVar("T", bound="UpdateAlertRoutingRuleDataAttributesConditionsItem")
 class UpdateAlertRoutingRuleDataAttributesConditionsItem:
     """
     Attributes:
-        id (UUID | Unset): The ID of the alert routing rule condition
-        property_field_type (UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType | Unset): The type of
-            the property field
-        property_field_name (str | Unset): The name of the property field. If the property field type is selected as
-            'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert_urgency' and
-            'external_url' (for Alert Source URL). If the property field type is selected as 'payload', then the property
-            field name should be supplied in JSON Path syntax.
-        property_field_condition_type (UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType |
-            Unset): The condition type of the property field
-        property_field_value (None | str | Unset): The value of the property field. Can be null if the property field
-            condition type is 'is_one_of' or 'is_not_one_of'
-        property_field_values (list[str] | Unset): The values of the property field. Used if the property field
+        id (Union[Unset, UUID]): The ID of the alert routing rule condition
+        property_field_type (Union[Unset, UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType]): The
+            type of the property field
+        property_field_name (Union[Unset, str]): The name of the property field. If the property field type is selected
+            as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert_urgency'
+            and 'external_url' (for Alert Source URL). If the property field type is selected as 'payload', then the
+            property field name should be supplied in JSON Path syntax.
+        property_field_condition_type (Union[Unset,
+            UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType]): The condition type of the
+            property field
+        property_field_value (Union[None, Unset, str]): The value of the property field. Can be null if the property
+            field condition type is 'is_one_of' or 'is_not_one_of'
+        property_field_values (Union[Unset, list[str]]): The values of the property field. Used if the property field
             condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is 'alert_urgency'
     """
 
-    id: UUID | Unset = UNSET
-    property_field_type: UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType | Unset = UNSET
-    property_field_name: str | Unset = UNSET
+    id: Unset | UUID = UNSET
+    property_field_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType = UNSET
+    property_field_name: Unset | str = UNSET
     property_field_condition_type: (
-        UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType | Unset
+        Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
     ) = UNSET
-    property_field_value: None | str | Unset = UNSET
-    property_field_values: list[str] | Unset = UNSET
+    property_field_value: None | Unset | str = UNSET
+    property_field_values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: str | Unset = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        property_field_type: str | Unset = UNSET
+        property_field_type: Unset | str = UNSET
         if not isinstance(self.property_field_type, Unset):
             property_field_type = self.property_field_type
 
         property_field_name = self.property_field_name
 
-        property_field_condition_type: str | Unset = UNSET
+        property_field_condition_type: Unset | str = UNSET
         if not isinstance(self.property_field_condition_type, Unset):
             property_field_condition_type = self.property_field_condition_type
 
-        property_field_value: None | str | Unset
+        property_field_value: None | Unset | str
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: list[str] | Unset = UNSET
+        property_field_values: Unset | list[str] = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
@@ -96,14 +95,14 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: UUID | Unset
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _property_field_type = d.pop("property_field_type", UNSET)
-        property_field_type: UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType | Unset
+        property_field_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType
         if isinstance(_property_field_type, Unset):
             property_field_type = UNSET
         else:
@@ -115,7 +114,7 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
 
         _property_field_condition_type = d.pop("property_field_condition_type", UNSET)
         property_field_condition_type: (
-            UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType | Unset
+            Unset | UpdateAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
         )
         if isinstance(_property_field_condition_type, Unset):
             property_field_condition_type = UNSET
@@ -126,12 +125,12 @@ class UpdateAlertRoutingRuleDataAttributesConditionsItem:
                 )
             )
 
-        def _parse_property_field_value(data: object) -> None | str | Unset:
+        def _parse_property_field_value(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 

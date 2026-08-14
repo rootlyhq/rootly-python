@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -17,21 +16,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     escalation_policy_id: str,
     *,
-    include: ListEscalationPathsInclude | Unset = UNSET,
-    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_filterpath_type: str | Unset = UNSET
+    json_filterpath_type: Unset | str = UNSET
     if not isinstance(filterpath_type, Unset):
         json_filterpath_type = filterpath_type
 
@@ -45,9 +43,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/escalation_policies/{escalation_policy_id}/escalation_paths".format(
-            escalation_policy_id=quote(str(escalation_policy_id), safe=""),
-        ),
+        "url": f"/v1/escalation_policies/{escalation_policy_id}/escalation_paths",
         "params": params,
     }
 
@@ -83,10 +79,10 @@ def sync_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPathsInclude | Unset = UNSET,
-    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyPathList]:
     """List escalation paths
 
@@ -94,10 +90,10 @@ def sync_detailed(
 
     Args:
         escalation_policy_id (str):
-        include (ListEscalationPathsInclude | Unset):
-        filterpath_type (ListEscalationPathsFilterpathType | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPathsInclude]):
+        filterpath_type (Union[Unset, ListEscalationPathsFilterpathType]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,10 +122,10 @@ def sync(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPathsInclude | Unset = UNSET,
-    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> EscalationPolicyPathList | None:
     """List escalation paths
 
@@ -137,10 +133,10 @@ def sync(
 
     Args:
         escalation_policy_id (str):
-        include (ListEscalationPathsInclude | Unset):
-        filterpath_type (ListEscalationPathsFilterpathType | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPathsInclude]):
+        filterpath_type (Union[Unset, ListEscalationPathsFilterpathType]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,10 +160,10 @@ async def asyncio_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPathsInclude | Unset = UNSET,
-    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyPathList]:
     """List escalation paths
 
@@ -175,10 +171,10 @@ async def asyncio_detailed(
 
     Args:
         escalation_policy_id (str):
-        include (ListEscalationPathsInclude | Unset):
-        filterpath_type (ListEscalationPathsFilterpathType | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPathsInclude]):
+        filterpath_type (Union[Unset, ListEscalationPathsFilterpathType]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -205,10 +201,10 @@ async def asyncio(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPathsInclude | Unset = UNSET,
-    filterpath_type: ListEscalationPathsFilterpathType | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> EscalationPolicyPathList | None:
     """List escalation paths
 
@@ -216,10 +212,10 @@ async def asyncio(
 
     Args:
         escalation_policy_id (str):
-        include (ListEscalationPathsInclude | Unset):
-        filterpath_type (ListEscalationPathsFilterpathType | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPathsInclude]):
+        filterpath_type (Union[Unset, ListEscalationPathsFilterpathType]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -14,12 +13,9 @@ from ...types import Response
 def _get_kwargs(
     user_id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/email_addresses".format(
-            user_id=quote(str(user_id), safe=""),
-        ),
+        "url": f"/v1/users/{user_id}/email_addresses",
     }
 
     return _kwargs
@@ -77,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserEmailAddressList]
+        Response[Union[ErrorsList, UserEmailAddressList]]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserEmailAddressList
+        Union[ErrorsList, UserEmailAddressList]
     """
 
     return sync_detailed(
@@ -134,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserEmailAddressList]
+        Response[Union[ErrorsList, UserEmailAddressList]]
     """
 
     kwargs = _get_kwargs(
@@ -163,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserEmailAddressList
+        Union[ErrorsList, UserEmailAddressList]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -40,48 +38,55 @@ T = TypeVar("T", bound="UpdateAlertsSourceDataAttributes")
 class UpdateAlertsSourceDataAttributes:
     """
     Attributes:
-        name (str | Unset): The name of the alert source
-        enabled (bool | Unset): Whether the alert source is enabled. Disabled sources do not create alerts from incoming
-            events.
-        source_type (UpdateAlertsSourceDataAttributesSourceType | Unset): The alert source type
-        alert_urgency_id (str | Unset): ID for the default alert urgency assigned to this alert source
-        deduplicate_alerts_by_key (bool | Unset): Toggle alert deduplication using deduplication key. If enabled,
+        name (Union[Unset, str]): The name of the alert source
+        enabled (Union[Unset, bool]): Whether the alert source is enabled. Disabled sources do not create alerts from
+            incoming events.
+        source_type (Union[Unset, UpdateAlertsSourceDataAttributesSourceType]): The alert source type
+        alert_urgency_id (Union[Unset, str]): ID for the default alert urgency assigned to this alert source
+        deduplicate_alerts_by_key (Union[Unset, bool]): Toggle alert deduplication using deduplication key. If enabled,
             deduplication_key_kind and deduplication_key_path are required.
-        deduplication_key_kind (UpdateAlertsSourceDataAttributesDeduplicationKeyKind | Unset): Kind of deduplication
-            key.
-        deduplication_key_path (None | str | Unset): Path to deduplication key. This is a JSON Path to extract the
+        deduplication_key_kind (Union[Unset, UpdateAlertsSourceDataAttributesDeduplicationKeyKind]): Kind of
+            deduplication key.
+        deduplication_key_path (Union[None, Unset, str]): Path to deduplication key. This is a JSON Path to extract the
             deduplication key from the request body.
-        deduplication_key_regexp (None | str | Unset): Regular expression to extract key from value found at key path.
-        owner_group_ids (list[str] | Unset): List of team IDs that will own the alert source
-        alert_template_attributes (None | Unset | UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0):
-        alert_source_urgency_rules_attributes
-            (list[UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem] | Unset): List of rules that define
-            the conditions under which the alert urgency will be set automatically based on the alert payload
-        sourceable_attributes (None | Unset | UpdateAlertsSourceDataAttributesSourceableAttributesType0): Provide
-            additional attributes for generic_webhook alerts source
-        resolution_rule_attributes (None | Unset | UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0):
-            Provide additional attributes for email alerts source
-        alert_source_fields_attributes (list[UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem] | Unset):
-            List of alert fields to be added to the alert source. Note: This attribute requires the alert field feature to
-            be enabled on your account. Contact Rootly customer support if you need assistance with this feature.
+        deduplication_key_regexp (Union[None, Unset, str]): Regular expression to extract key from value found at key
+            path.
+        owner_group_ids (Union[Unset, list[str]]): List of team IDs that will own the alert source
+        alert_template_attributes (Union['UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0', None, Unset]):
+        alert_source_urgency_rules_attributes (Union[Unset,
+            list['UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem']]): List of rules that define the
+            conditions under which the alert urgency will be set automatically based on the alert payload
+        sourceable_attributes (Union['UpdateAlertsSourceDataAttributesSourceableAttributesType0', None, Unset]): Provide
+            additional attributes for the underlying source. `auto_resolve`, `resolve_state` and `field_mappings_attributes`
+            apply to generic_webhook sources; `accept_threaded_emails` applies to email sources.
+        resolution_rule_attributes (Union['UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0', None,
+            Unset]): Provide additional attributes for email alerts source
+        alert_source_fields_attributes (Union[Unset,
+            list['UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem']]): List of alert fields to be added to
+            the alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact
+            Rootly customer support if you need assistance with this feature.
     """
 
-    name: str | Unset = UNSET
-    enabled: bool | Unset = UNSET
-    source_type: UpdateAlertsSourceDataAttributesSourceType | Unset = UNSET
-    alert_urgency_id: str | Unset = UNSET
-    deduplicate_alerts_by_key: bool | Unset = UNSET
-    deduplication_key_kind: UpdateAlertsSourceDataAttributesDeduplicationKeyKind | Unset = UNSET
-    deduplication_key_path: None | str | Unset = UNSET
-    deduplication_key_regexp: None | str | Unset = UNSET
-    owner_group_ids: list[str] | Unset = UNSET
-    alert_template_attributes: None | Unset | UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0 = UNSET
+    name: Unset | str = UNSET
+    enabled: Unset | bool = UNSET
+    source_type: Unset | UpdateAlertsSourceDataAttributesSourceType = UNSET
+    alert_urgency_id: Unset | str = UNSET
+    deduplicate_alerts_by_key: Unset | bool = UNSET
+    deduplication_key_kind: Unset | UpdateAlertsSourceDataAttributesDeduplicationKeyKind = UNSET
+    deduplication_key_path: None | Unset | str = UNSET
+    deduplication_key_regexp: None | Unset | str = UNSET
+    owner_group_ids: Unset | list[str] = UNSET
+    alert_template_attributes: Union["UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0", None, Unset] = (
+        UNSET
+    )
     alert_source_urgency_rules_attributes: (
-        list[UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem] | Unset
+        Unset | list["UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem"]
     ) = UNSET
-    sourceable_attributes: None | Unset | UpdateAlertsSourceDataAttributesSourceableAttributesType0 = UNSET
-    resolution_rule_attributes: None | Unset | UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0 = UNSET
-    alert_source_fields_attributes: list[UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem] | Unset = (
+    sourceable_attributes: Union["UpdateAlertsSourceDataAttributesSourceableAttributesType0", None, Unset] = UNSET
+    resolution_rule_attributes: Union["UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0", None, Unset] = (
+        UNSET
+    )
+    alert_source_fields_attributes: Unset | list["UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem"] = (
         UNSET
     )
 
@@ -100,7 +105,7 @@ class UpdateAlertsSourceDataAttributes:
 
         enabled = self.enabled
 
-        source_type: str | Unset = UNSET
+        source_type: Unset | str = UNSET
         if not isinstance(self.source_type, Unset):
             source_type = self.source_type
 
@@ -108,27 +113,27 @@ class UpdateAlertsSourceDataAttributes:
 
         deduplicate_alerts_by_key = self.deduplicate_alerts_by_key
 
-        deduplication_key_kind: str | Unset = UNSET
+        deduplication_key_kind: Unset | str = UNSET
         if not isinstance(self.deduplication_key_kind, Unset):
             deduplication_key_kind = self.deduplication_key_kind
 
-        deduplication_key_path: None | str | Unset
+        deduplication_key_path: None | Unset | str
         if isinstance(self.deduplication_key_path, Unset):
             deduplication_key_path = UNSET
         else:
             deduplication_key_path = self.deduplication_key_path
 
-        deduplication_key_regexp: None | str | Unset
+        deduplication_key_regexp: None | Unset | str
         if isinstance(self.deduplication_key_regexp, Unset):
             deduplication_key_regexp = UNSET
         else:
             deduplication_key_regexp = self.deduplication_key_regexp
 
-        owner_group_ids: list[str] | Unset = UNSET
+        owner_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
-        alert_template_attributes: dict[str, Any] | None | Unset
+        alert_template_attributes: None | Unset | dict[str, Any]
         if isinstance(self.alert_template_attributes, Unset):
             alert_template_attributes = UNSET
         elif isinstance(self.alert_template_attributes, UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0):
@@ -136,14 +141,14 @@ class UpdateAlertsSourceDataAttributes:
         else:
             alert_template_attributes = self.alert_template_attributes
 
-        alert_source_urgency_rules_attributes: list[dict[str, Any]] | Unset = UNSET
+        alert_source_urgency_rules_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.alert_source_urgency_rules_attributes, Unset):
             alert_source_urgency_rules_attributes = []
             for alert_source_urgency_rules_attributes_item_data in self.alert_source_urgency_rules_attributes:
                 alert_source_urgency_rules_attributes_item = alert_source_urgency_rules_attributes_item_data.to_dict()
                 alert_source_urgency_rules_attributes.append(alert_source_urgency_rules_attributes_item)
 
-        sourceable_attributes: dict[str, Any] | None | Unset
+        sourceable_attributes: None | Unset | dict[str, Any]
         if isinstance(self.sourceable_attributes, Unset):
             sourceable_attributes = UNSET
         elif isinstance(self.sourceable_attributes, UpdateAlertsSourceDataAttributesSourceableAttributesType0):
@@ -151,7 +156,7 @@ class UpdateAlertsSourceDataAttributes:
         else:
             sourceable_attributes = self.sourceable_attributes
 
-        resolution_rule_attributes: dict[str, Any] | None | Unset
+        resolution_rule_attributes: None | Unset | dict[str, Any]
         if isinstance(self.resolution_rule_attributes, Unset):
             resolution_rule_attributes = UNSET
         elif isinstance(self.resolution_rule_attributes, UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0):
@@ -159,7 +164,7 @@ class UpdateAlertsSourceDataAttributes:
         else:
             resolution_rule_attributes = self.resolution_rule_attributes
 
-        alert_source_fields_attributes: list[dict[str, Any]] | Unset = UNSET
+        alert_source_fields_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.alert_source_fields_attributes, Unset):
             alert_source_fields_attributes = []
             for alert_source_fields_attributes_item_data in self.alert_source_fields_attributes:
@@ -224,7 +229,7 @@ class UpdateAlertsSourceDataAttributes:
         enabled = d.pop("enabled", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
-        source_type: UpdateAlertsSourceDataAttributesSourceType | Unset
+        source_type: Unset | UpdateAlertsSourceDataAttributesSourceType
         if isinstance(_source_type, Unset):
             source_type = UNSET
         else:
@@ -235,7 +240,7 @@ class UpdateAlertsSourceDataAttributes:
         deduplicate_alerts_by_key = d.pop("deduplicate_alerts_by_key", UNSET)
 
         _deduplication_key_kind = d.pop("deduplication_key_kind", UNSET)
-        deduplication_key_kind: UpdateAlertsSourceDataAttributesDeduplicationKeyKind | Unset
+        deduplication_key_kind: Unset | UpdateAlertsSourceDataAttributesDeduplicationKeyKind
         if isinstance(_deduplication_key_kind, Unset):
             deduplication_key_kind = UNSET
         else:
@@ -243,21 +248,21 @@ class UpdateAlertsSourceDataAttributes:
                 _deduplication_key_kind
             )
 
-        def _parse_deduplication_key_path(data: object) -> None | str | Unset:
+        def _parse_deduplication_key_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         deduplication_key_path = _parse_deduplication_key_path(d.pop("deduplication_key_path", UNSET))
 
-        def _parse_deduplication_key_regexp(data: object) -> None | str | Unset:
+        def _parse_deduplication_key_regexp(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         deduplication_key_regexp = _parse_deduplication_key_regexp(d.pop("deduplication_key_regexp", UNSET))
 
@@ -265,7 +270,7 @@ class UpdateAlertsSourceDataAttributes:
 
         def _parse_alert_template_attributes(
             data: object,
-        ) -> None | Unset | UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0:
+        ) -> Union["UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -278,30 +283,26 @@ class UpdateAlertsSourceDataAttributes:
                 )
 
                 return alert_template_attributes_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0, data)
+            return cast(Union["UpdateAlertsSourceDataAttributesAlertTemplateAttributesType0", None, Unset], data)
 
         alert_template_attributes = _parse_alert_template_attributes(d.pop("alert_template_attributes", UNSET))
 
+        alert_source_urgency_rules_attributes = []
         _alert_source_urgency_rules_attributes = d.pop("alert_source_urgency_rules_attributes", UNSET)
-        alert_source_urgency_rules_attributes: (
-            list[UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem] | Unset
-        ) = UNSET
-        if _alert_source_urgency_rules_attributes is not UNSET:
-            alert_source_urgency_rules_attributes = []
-            for alert_source_urgency_rules_attributes_item_data in _alert_source_urgency_rules_attributes:
-                alert_source_urgency_rules_attributes_item = (
-                    UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem.from_dict(
-                        alert_source_urgency_rules_attributes_item_data
-                    )
+        for alert_source_urgency_rules_attributes_item_data in _alert_source_urgency_rules_attributes or []:
+            alert_source_urgency_rules_attributes_item = (
+                UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem.from_dict(
+                    alert_source_urgency_rules_attributes_item_data
                 )
+            )
 
-                alert_source_urgency_rules_attributes.append(alert_source_urgency_rules_attributes_item)
+            alert_source_urgency_rules_attributes.append(alert_source_urgency_rules_attributes_item)
 
         def _parse_sourceable_attributes(
             data: object,
-        ) -> None | Unset | UpdateAlertsSourceDataAttributesSourceableAttributesType0:
+        ) -> Union["UpdateAlertsSourceDataAttributesSourceableAttributesType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -312,15 +313,15 @@ class UpdateAlertsSourceDataAttributes:
                 sourceable_attributes_type_0 = UpdateAlertsSourceDataAttributesSourceableAttributesType0.from_dict(data)
 
                 return sourceable_attributes_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateAlertsSourceDataAttributesSourceableAttributesType0, data)
+            return cast(Union["UpdateAlertsSourceDataAttributesSourceableAttributesType0", None, Unset], data)
 
         sourceable_attributes = _parse_sourceable_attributes(d.pop("sourceable_attributes", UNSET))
 
         def _parse_resolution_rule_attributes(
             data: object,
-        ) -> None | Unset | UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0:
+        ) -> Union["UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -333,26 +334,22 @@ class UpdateAlertsSourceDataAttributes:
                 )
 
                 return resolution_rule_attributes_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0, data)
+            return cast(Union["UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0", None, Unset], data)
 
         resolution_rule_attributes = _parse_resolution_rule_attributes(d.pop("resolution_rule_attributes", UNSET))
 
+        alert_source_fields_attributes = []
         _alert_source_fields_attributes = d.pop("alert_source_fields_attributes", UNSET)
-        alert_source_fields_attributes: (
-            list[UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem] | Unset
-        ) = UNSET
-        if _alert_source_fields_attributes is not UNSET:
-            alert_source_fields_attributes = []
-            for alert_source_fields_attributes_item_data in _alert_source_fields_attributes:
-                alert_source_fields_attributes_item = (
-                    UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem.from_dict(
-                        alert_source_fields_attributes_item_data
-                    )
+        for alert_source_fields_attributes_item_data in _alert_source_fields_attributes or []:
+            alert_source_fields_attributes_item = (
+                UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem.from_dict(
+                    alert_source_fields_attributes_item_data
                 )
+            )
 
-                alert_source_fields_attributes.append(alert_source_fields_attributes_item)
+            alert_source_fields_attributes.append(alert_source_fields_attributes_item)
 
         update_alerts_source_data_attributes = cls(
             name=name,

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,14 +13,14 @@ T = TypeVar("T", bound="NewCommunicationsGroupDataAttributesCommunicationExterna
 class NewCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item:
     """
     Attributes:
-        name (str | Unset): Name of the external member
-        email (str | Unset): Email of the external member
-        phone_number (str | Unset): Phone number of the external member
+        name (Union[Unset, str]): Name of the external member
+        email (Union[Unset, str]): Email of the external member
+        phone_number (Union[Unset, str]): Phone number of the external member
     """
 
-    name: str | Unset = UNSET
-    email: str | Unset = UNSET
-    phone_number: str | Unset = UNSET
+    name: Unset | str = UNSET
+    email: Unset | str = UNSET
+    phone_number: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

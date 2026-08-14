@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,40 +28,45 @@ class CreateJiraSubtaskTaskParams:
         parent_issue_id (str): The parent issue
         title (str): The issue title
         subtask_issue_type (CreateJiraSubtaskTaskParamsSubtaskIssueType): The issue type id and display name
-        task_type (CreateJiraSubtaskTaskParamsTaskType | Unset):
-        integration (CreateJiraSubtaskTaskParamsIntegration | Unset): Specify integration id if you have more than one
-            Jira instance
-        description (str | Unset): The issue description
-        labels (str | Unset): The issue labels
-        due_date (str | Unset): The due date
-        assign_user_email (str | Unset): The assigned user's email
-        reporter_user_email (str | Unset): The reporter user's email
-        priority (CreateJiraSubtaskTaskParamsPriority | Unset): The priority id and display name
-        status (CreateJiraSubtaskTaskParamsStatus | Unset): The status id and display name
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, CreateJiraSubtaskTaskParamsTaskType]):
+        integration (Union[Unset, CreateJiraSubtaskTaskParamsIntegration]): Specify integration id if you have more than
+            one Jira instance
+        description (Union[Unset, str]): The issue description
+        labels (Union[Unset, str]): The issue labels
+        due_date (Union[Unset, str]): The due date
+        assign_user_email (Union[Unset, str]): The assigned user's email
+        reporter_user_email (Union[Unset, str]): The reporter user's email
+        priority (Union[Unset, CreateJiraSubtaskTaskParamsPriority]): The priority id and display name
+        status (Union[Unset, CreateJiraSubtaskTaskParamsStatus]): The status id and display name
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        update_payload (None | str | Unset): Update payload. Can contain liquid markup and need to be valid JSON
+        update_payload (Union[None, Unset, str]): Update payload. Can contain liquid markup and need to be valid JSON
+        retry_count (Union[Unset, int]): Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables
+            retry. Default: 0. Example: 3.
+        retry_wait_time (Union[Unset, int]): Seconds to wait before each retry (1-15). Retry-After header is honored
+            when present and <= 90s, taking the larger of retry_wait_time and the header value. Default: 1. Example: 2.
     """
 
     project_key: str
     parent_issue_id: str
     title: str
-    subtask_issue_type: CreateJiraSubtaskTaskParamsSubtaskIssueType
-    task_type: CreateJiraSubtaskTaskParamsTaskType | Unset = UNSET
-    integration: CreateJiraSubtaskTaskParamsIntegration | Unset = UNSET
-    description: str | Unset = UNSET
-    labels: str | Unset = UNSET
-    due_date: str | Unset = UNSET
-    assign_user_email: str | Unset = UNSET
-    reporter_user_email: str | Unset = UNSET
-    priority: CreateJiraSubtaskTaskParamsPriority | Unset = UNSET
-    status: CreateJiraSubtaskTaskParamsStatus | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
-    update_payload: None | str | Unset = UNSET
+    subtask_issue_type: "CreateJiraSubtaskTaskParamsSubtaskIssueType"
+    task_type: Unset | CreateJiraSubtaskTaskParamsTaskType = UNSET
+    integration: Union[Unset, "CreateJiraSubtaskTaskParamsIntegration"] = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
+    assign_user_email: Unset | str = UNSET
+    reporter_user_email: Unset | str = UNSET
+    priority: Union[Unset, "CreateJiraSubtaskTaskParamsPriority"] = UNSET
+    status: Union[Unset, "CreateJiraSubtaskTaskParamsStatus"] = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
+    update_payload: None | Unset | str = UNSET
+    retry_count: Unset | int = 0
+    retry_wait_time: Unset | int = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         project_key = self.project_key
 
         parent_issue_id = self.parent_issue_id
@@ -72,11 +75,11 @@ class CreateJiraSubtaskTaskParams:
 
         subtask_issue_type = self.subtask_issue_type.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        integration: dict[str, Any] | Unset = UNSET
+        integration: Unset | dict[str, Any] = UNSET
         if not isinstance(self.integration, Unset):
             integration = self.integration.to_dict()
 
@@ -90,25 +93,29 @@ class CreateJiraSubtaskTaskParams:
 
         reporter_user_email = self.reporter_user_email
 
-        priority: dict[str, Any] | Unset = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        status: dict[str, Any] | Unset = UNSET
+        status: Unset | dict[str, Any] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        update_payload: None | str | Unset
+        update_payload: None | Unset | str
         if isinstance(self.update_payload, Unset):
             update_payload = UNSET
         else:
             update_payload = self.update_payload
+
+        retry_count = self.retry_count
+
+        retry_wait_time = self.retry_wait_time
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -142,6 +149,10 @@ class CreateJiraSubtaskTaskParams:
             field_dict["custom_fields_mapping"] = custom_fields_mapping
         if update_payload is not UNSET:
             field_dict["update_payload"] = update_payload
+        if retry_count is not UNSET:
+            field_dict["retry_count"] = retry_count
+        if retry_wait_time is not UNSET:
+            field_dict["retry_wait_time"] = retry_wait_time
 
         return field_dict
 
@@ -164,14 +175,14 @@ class CreateJiraSubtaskTaskParams:
         subtask_issue_type = CreateJiraSubtaskTaskParamsSubtaskIssueType.from_dict(d.pop("subtask_issue_type"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateJiraSubtaskTaskParamsTaskType | Unset
+        task_type: Unset | CreateJiraSubtaskTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_jira_subtask_task_params_task_type(_task_type)
 
         _integration = d.pop("integration", UNSET)
-        integration: CreateJiraSubtaskTaskParamsIntegration | Unset
+        integration: Unset | CreateJiraSubtaskTaskParamsIntegration
         if isinstance(_integration, Unset):
             integration = UNSET
         else:
@@ -188,36 +199,40 @@ class CreateJiraSubtaskTaskParams:
         reporter_user_email = d.pop("reporter_user_email", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: CreateJiraSubtaskTaskParamsPriority | Unset
+        priority: Unset | CreateJiraSubtaskTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = CreateJiraSubtaskTaskParamsPriority.from_dict(_priority)
 
         _status = d.pop("status", UNSET)
-        status: CreateJiraSubtaskTaskParamsStatus | Unset
+        status: Unset | CreateJiraSubtaskTaskParamsStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = CreateJiraSubtaskTaskParamsStatus.from_dict(_status)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        def _parse_update_payload(data: object) -> None | str | Unset:
+        def _parse_update_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         update_payload = _parse_update_payload(d.pop("update_payload", UNSET))
+
+        retry_count = d.pop("retry_count", UNSET)
+
+        retry_wait_time = d.pop("retry_wait_time", UNSET)
 
         create_jira_subtask_task_params = cls(
             project_key=project_key,
@@ -235,6 +250,8 @@ class CreateJiraSubtaskTaskParams:
             status=status,
             custom_fields_mapping=custom_fields_mapping,
             update_payload=update_payload,
+            retry_count=retry_count,
+            retry_wait_time=retry_wait_time,
         )
 
         create_jira_subtask_task_params.additional_properties = d

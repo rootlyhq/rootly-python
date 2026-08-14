@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -15,13 +13,13 @@ class NewIncidentCustomFieldSelectionDataAttributes:
     """
     Attributes:
         custom_field_id (int): The custom field for this selection
-        value (None | str): The selected value for text kind custom fields
-        selected_option_ids (list[int] | Unset):
+        value (Union[None, str]): The selected value for text kind custom fields
+        selected_option_ids (Union[Unset, list[int]]):
     """
 
     custom_field_id: int
     value: None | str
-    selected_option_ids: list[int] | Unset = UNSET
+    selected_option_ids: Unset | list[int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         custom_field_id = self.custom_field_id
@@ -29,7 +27,7 @@ class NewIncidentCustomFieldSelectionDataAttributes:
         value: None | str
         value = self.value
 
-        selected_option_ids: list[int] | Unset = UNSET
+        selected_option_ids: Unset | list[int] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 

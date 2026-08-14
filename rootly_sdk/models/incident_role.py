@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,25 +16,25 @@ class IncidentRole:
         name (str): The name of the incident role
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the incident role
-        summary (None | str | Unset): The summary of the incident role
-        description (None | str | Unset): The description of the incident role
-        position (int | None | Unset): Position of the incident role
-        optional (bool | Unset):
-        enabled (bool | Unset):
-        allow_multi_user_assignment (bool | Unset):
+        slug (Union[Unset, str]): The slug of the incident role
+        summary (Union[None, Unset, str]): The summary of the incident role
+        description (Union[None, Unset, str]): The description of the incident role
+        position (Union[None, Unset, int]): Position of the incident role
+        optional (Union[Unset, bool]):
+        enabled (Union[Unset, bool]):
+        allow_multi_user_assignment (Union[Unset, bool]):
     """
 
     name: str
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    summary: None | str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
-    optional: bool | Unset = UNSET
-    enabled: bool | Unset = UNSET
-    allow_multi_user_assignment: bool | Unset = UNSET
+    slug: Unset | str = UNSET
+    summary: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    optional: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
+    allow_multi_user_assignment: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,19 +46,19 @@ class IncidentRole:
 
         slug = self.slug
 
-        summary: None | str | Unset
+        summary: None | Unset | str
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
             summary = self.summary
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: int | None | Unset
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -109,30 +107,30 @@ class IncidentRole:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_summary(data: object) -> None | str | Unset:
+        def _parse_summary(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
@@ -18,25 +16,25 @@ class NewOnCallPayReportDataAttributes:
     Attributes:
         start_date (datetime.date): The start date for the report period.
         end_date (datetime.date): The end date for the report period.
-        schedule_ids (list[str] | Unset): List of schedule UUIDs to scope the report.
-        time_zone (str | Unset): IANA timezone used to compute day and weekend boundaries. Defaults to the team's
+        schedule_ids (Union[Unset, list[str]]): List of schedule UUIDs to scope the report.
+        time_zone (Union[Unset, str]): IANA timezone used to compute day and weekend boundaries. Defaults to the team's
             timezone.
-        use_responders_time_zone (bool | Unset): When true, day and weekend boundaries are computed in each responder's
-            personal timezone instead of the report-wide timezone.
+        use_responders_time_zone (Union[Unset, bool]): When true, day and weekend boundaries are computed in each
+            responder's personal timezone instead of the report-wide timezone.
     """
 
     start_date: datetime.date
     end_date: datetime.date
-    schedule_ids: list[str] | Unset = UNSET
-    time_zone: str | Unset = UNSET
-    use_responders_time_zone: bool | Unset = UNSET
+    schedule_ids: Unset | list[str] = UNSET
+    time_zone: Unset | str = UNSET
+    use_responders_time_zone: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         start_date = self.start_date.isoformat()
 
         end_date = self.end_date.isoformat()
 
-        schedule_ids: list[str] | Unset = UNSET
+        schedule_ids: Unset | list[str] = UNSET
         if not isinstance(self.schedule_ids, Unset):
             schedule_ids = self.schedule_ids
 

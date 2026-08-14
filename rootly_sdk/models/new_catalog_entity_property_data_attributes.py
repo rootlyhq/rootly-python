@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -22,13 +20,13 @@ class NewCatalogEntityPropertyDataAttributes:
         catalog_field_id (str):
         key (NewCatalogEntityPropertyDataAttributesKey):
         value (str):
-        catalog_entity_id (str | Unset):
+        catalog_entity_id (Union[Unset, str]):
     """
 
     catalog_field_id: str
     key: NewCatalogEntityPropertyDataAttributesKey
     value: str
-    catalog_entity_id: str | Unset = UNSET
+    catalog_entity_id: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         catalog_field_id = self.catalog_field_id

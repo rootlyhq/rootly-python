@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -14,9 +13,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: str | Unset = UNSET,
+    include: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -25,9 +23,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/on_call_pay_reports/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/on_call_pay_reports/{id}",
         "params": params,
     }
 
@@ -68,7 +64,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
+    include: Unset | str = UNSET,
 ) -> Response[ErrorsList | OnCallPayReportResponse]:
     """Retrieves an On-Call Pay Report
 
@@ -76,14 +72,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (str | Unset):
+        include (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallPayReportResponse]
+        Response[Union[ErrorsList, OnCallPayReportResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -102,7 +98,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
+    include: Unset | str = UNSET,
 ) -> ErrorsList | OnCallPayReportResponse | None:
     """Retrieves an On-Call Pay Report
 
@@ -110,14 +106,14 @@ def sync(
 
     Args:
         id (str):
-        include (str | Unset):
+        include (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallPayReportResponse
+        Union[ErrorsList, OnCallPayReportResponse]
     """
 
     return sync_detailed(
@@ -131,7 +127,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
+    include: Unset | str = UNSET,
 ) -> Response[ErrorsList | OnCallPayReportResponse]:
     """Retrieves an On-Call Pay Report
 
@@ -139,14 +135,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (str | Unset):
+        include (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallPayReportResponse]
+        Response[Union[ErrorsList, OnCallPayReportResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -163,7 +159,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
+    include: Unset | str = UNSET,
 ) -> ErrorsList | OnCallPayReportResponse | None:
     """Retrieves an On-Call Pay Report
 
@@ -171,14 +167,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (str | Unset):
+        include (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallPayReportResponse
+        Union[ErrorsList, OnCallPayReportResponse]
     """
 
     return (

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -25,21 +23,20 @@ class EscalationPolicyPathResponseData:
     Attributes:
         id (str): Unique ID of the escalation policy path
         attributes (EscalationPolicyPath):
-        type_ (EscalationPolicyPathResponseDataType | Unset):
+        type_ (Union[Unset, EscalationPolicyPathResponseDataType]):
     """
 
     id: str
-    attributes: EscalationPolicyPath
-    type_: EscalationPolicyPathResponseDataType | Unset = UNSET
+    attributes: "EscalationPolicyPath"
+    type_: Unset | EscalationPolicyPathResponseDataType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         attributes = self.attributes.to_dict()
 
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -66,7 +63,7 @@ class EscalationPolicyPathResponseData:
         attributes = EscalationPolicyPath.from_dict(d.pop("attributes"))
 
         _type_ = d.pop("type", UNSET)
-        type_: EscalationPolicyPathResponseDataType | Unset
+        type_: Unset | EscalationPolicyPathResponseDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

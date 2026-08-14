@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,28 +25,28 @@ class UpdateLinearIssueTaskParams:
     """
     Attributes:
         issue_id (str): The issue id
-        task_type (UpdateLinearIssueTaskParamsTaskType | Unset):
-        title (str | Unset): The issue title
-        description (str | Unset): The issue description
-        state (None | Unset | UpdateLinearIssueTaskParamsStateType0): The state id and display name
-        project (UpdateLinearIssueTaskParamsProject | Unset): The project id and display name
-        labels (list[UpdateLinearIssueTaskParamsLabelsItem] | Unset):
-        priority (UpdateLinearIssueTaskParamsPriority | Unset): The priority id and display name
-        assign_user_email (str | Unset): The assigned user's email
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, UpdateLinearIssueTaskParamsTaskType]):
+        title (Union[Unset, str]): The issue title
+        description (Union[Unset, str]): The issue description
+        state (Union['UpdateLinearIssueTaskParamsStateType0', None, Unset]): The state id and display name
+        project (Union[Unset, UpdateLinearIssueTaskParamsProject]): The project id and display name
+        labels (Union[Unset, list['UpdateLinearIssueTaskParamsLabelsItem']]):
+        priority (Union[Unset, UpdateLinearIssueTaskParamsPriority]): The priority id and display name
+        assign_user_email (Union[Unset, str]): The assigned user's email
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
     """
 
     issue_id: str
-    task_type: UpdateLinearIssueTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    description: str | Unset = UNSET
-    state: None | Unset | UpdateLinearIssueTaskParamsStateType0 = UNSET
-    project: UpdateLinearIssueTaskParamsProject | Unset = UNSET
-    labels: list[UpdateLinearIssueTaskParamsLabelsItem] | Unset = UNSET
-    priority: UpdateLinearIssueTaskParamsPriority | Unset = UNSET
-    assign_user_email: str | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
+    task_type: Unset | UpdateLinearIssueTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    state: Union["UpdateLinearIssueTaskParamsStateType0", None, Unset] = UNSET
+    project: Union[Unset, "UpdateLinearIssueTaskParamsProject"] = UNSET
+    labels: Unset | list["UpdateLinearIssueTaskParamsLabelsItem"] = UNSET
+    priority: Union[Unset, "UpdateLinearIssueTaskParamsPriority"] = UNSET
+    assign_user_email: Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,7 +54,7 @@ class UpdateLinearIssueTaskParams:
 
         issue_id = self.issue_id
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -64,7 +62,7 @@ class UpdateLinearIssueTaskParams:
 
         description = self.description
 
-        state: dict[str, Any] | None | Unset
+        state: None | Unset | dict[str, Any]
         if isinstance(self.state, Unset):
             state = UNSET
         elif isinstance(self.state, UpdateLinearIssueTaskParamsStateType0):
@@ -72,24 +70,24 @@ class UpdateLinearIssueTaskParams:
         else:
             state = self.state
 
-        project: dict[str, Any] | Unset = UNSET
+        project: Unset | dict[str, Any] = UNSET
         if not isinstance(self.project, Unset):
             project = self.project.to_dict()
 
-        labels: list[dict[str, Any]] | Unset = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        priority: dict[str, Any] | Unset = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
         assign_user_email = self.assign_user_email
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -134,7 +132,7 @@ class UpdateLinearIssueTaskParams:
         issue_id = d.pop("issue_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateLinearIssueTaskParamsTaskType | Unset
+        task_type: Unset | UpdateLinearIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -144,7 +142,7 @@ class UpdateLinearIssueTaskParams:
 
         description = d.pop("description", UNSET)
 
-        def _parse_state(data: object) -> None | Unset | UpdateLinearIssueTaskParamsStateType0:
+        def _parse_state(data: object) -> Union["UpdateLinearIssueTaskParamsStateType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -155,30 +153,28 @@ class UpdateLinearIssueTaskParams:
                 state_type_0 = UpdateLinearIssueTaskParamsStateType0.from_dict(data)
 
                 return state_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateLinearIssueTaskParamsStateType0, data)
+            return cast(Union["UpdateLinearIssueTaskParamsStateType0", None, Unset], data)
 
         state = _parse_state(d.pop("state", UNSET))
 
         _project = d.pop("project", UNSET)
-        project: UpdateLinearIssueTaskParamsProject | Unset
+        project: Unset | UpdateLinearIssueTaskParamsProject
         if isinstance(_project, Unset):
             project = UNSET
         else:
             project = UpdateLinearIssueTaskParamsProject.from_dict(_project)
 
+        labels = []
         _labels = d.pop("labels", UNSET)
-        labels: list[UpdateLinearIssueTaskParamsLabelsItem] | Unset = UNSET
-        if _labels is not UNSET:
-            labels = []
-            for labels_item_data in _labels:
-                labels_item = UpdateLinearIssueTaskParamsLabelsItem.from_dict(labels_item_data)
+        for labels_item_data in _labels or []:
+            labels_item = UpdateLinearIssueTaskParamsLabelsItem.from_dict(labels_item_data)
 
-                labels.append(labels_item)
+            labels.append(labels_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: UpdateLinearIssueTaskParamsPriority | Unset
+        priority: Unset | UpdateLinearIssueTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
@@ -186,12 +182,12 @@ class UpdateLinearIssueTaskParams:
 
         assign_user_email = d.pop("assign_user_email", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

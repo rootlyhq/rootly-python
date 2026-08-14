@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,14 +15,14 @@ class ShiftOverride:
     Attributes:
         shift_id (str): ID of shift
         created_by_user_id (int): User who created the override
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
     shift_id: str
     created_by_user_id: int
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

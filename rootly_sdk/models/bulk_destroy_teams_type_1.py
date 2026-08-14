@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,16 +18,16 @@ class BulkDestroyTeamsType1:
     Attributes:
         managed_by (BulkDestroyTeamsType1ManagedBy): Delete all records with this managed_by value (web/admin_web not
             allowed).
-        keep_external_ids (list[str] | Unset): Records with these external_ids are preserved.
+        keep_external_ids (Union[Unset, list[str]]): Records with these external_ids are preserved.
     """
 
     managed_by: BulkDestroyTeamsType1ManagedBy
-    keep_external_ids: list[str] | Unset = UNSET
+    keep_external_ids: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         managed_by: str = self.managed_by
 
-        keep_external_ids: list[str] | Unset = UNSET
+        keep_external_ids: Unset | list[str] = UNSET
         if not isinstance(self.keep_external_ids, Unset):
             keep_external_ids = self.keep_external_ids
 

@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -8,27 +7,23 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.update_edge_connector_action_body import UpdateEdgeConnectorActionBody
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     edge_connector_id: str,
-    id: str | UUID,
+    id: UUID | str,
     *,
-    body: UpdateEdgeConnectorActionBody | Unset = UNSET,
+    body: UpdateEdgeConnectorActionBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v1/edge_connectors/{edge_connector_id}/actions/{id}".format(
-            edge_connector_id=quote(str(edge_connector_id), safe=""),
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/edge_connectors/{edge_connector_id}/actions/{id}",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -57,17 +52,17 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 def sync_detailed(
     edge_connector_id: str,
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    body: UpdateEdgeConnectorActionBody | Unset = UNSET,
+    body: UpdateEdgeConnectorActionBody,
 ) -> Response[Any]:
     """Update edge connector action
 
     Args:
         edge_connector_id (str):
-        id (str | UUID):
-        body (UpdateEdgeConnectorActionBody | Unset):
+        id (Union[UUID, str]):
+        body (UpdateEdgeConnectorActionBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -92,17 +87,17 @@ def sync_detailed(
 
 async def asyncio_detailed(
     edge_connector_id: str,
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    body: UpdateEdgeConnectorActionBody | Unset = UNSET,
+    body: UpdateEdgeConnectorActionBody,
 ) -> Response[Any]:
     """Update edge connector action
 
     Args:
         edge_connector_id (str):
-        id (str | UUID):
-        body (UpdateEdgeConnectorActionBody | Unset):
+        id (Union[UUID, str]):
+        body (UpdateEdgeConnectorActionBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,23 +19,22 @@ T = TypeVar("T", bound="AlertEventEscalationTargetType0Data")
 class AlertEventEscalationTargetType0Data:
     """
     Attributes:
-        id (str | Unset):
-        type_ (str | Unset): e.g. users, escalation_policies.
-        attributes (AlertEventEscalationTargetType0DataAttributes | Unset):
+        id (Union[Unset, str]):
+        type_ (Union[Unset, str]): e.g. users, escalation_policies.
+        attributes (Union[Unset, AlertEventEscalationTargetType0DataAttributes]):
     """
 
-    id: str | Unset = UNSET
-    type_: str | Unset = UNSET
-    attributes: AlertEventEscalationTargetType0DataAttributes | Unset = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | str = UNSET
+    attributes: Union[Unset, "AlertEventEscalationTargetType0DataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -65,7 +62,7 @@ class AlertEventEscalationTargetType0Data:
         type_ = d.pop("type", UNSET)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: AlertEventEscalationTargetType0DataAttributes | Unset
+        attributes: Unset | AlertEventEscalationTargetType0DataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

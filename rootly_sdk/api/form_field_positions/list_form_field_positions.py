@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -13,12 +12,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     form_field_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterform: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -33,9 +31,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_fields/{form_field_id}/positions".format(
-            form_field_id=quote(str(form_field_id), safe=""),
-        ),
+        "url": f"/v1/form_fields/{form_field_id}/positions",
         "params": params,
     }
 
@@ -69,10 +65,10 @@ def sync_detailed(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterform: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform: Unset | str = UNSET,
 ) -> Response[FormFieldPositionList]:
     """List FormField Position
 
@@ -80,10 +76,10 @@ def sync_detailed(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterform (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterform (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,10 +108,10 @@ def sync(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterform: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform: Unset | str = UNSET,
 ) -> FormFieldPositionList | None:
     """List FormField Position
 
@@ -123,10 +119,10 @@ def sync(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterform (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterform (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,10 +146,10 @@ async def asyncio_detailed(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterform: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform: Unset | str = UNSET,
 ) -> Response[FormFieldPositionList]:
     """List FormField Position
 
@@ -161,10 +157,10 @@ async def asyncio_detailed(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterform (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterform (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -191,10 +187,10 @@ async def asyncio(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterform: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform: Unset | str = UNSET,
 ) -> FormFieldPositionList | None:
     """List FormField Position
 
@@ -202,10 +198,10 @@ async def asyncio(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterform (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterform (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

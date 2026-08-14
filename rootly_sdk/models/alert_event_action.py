@@ -1,12 +1,14 @@
 from typing import Literal, cast
 
 AlertEventAction = Literal[
+    "ack_timeout_retriggered",
     "acknowledged",
     "added",
     "answered",
     "attached",
     "call_lifecycle",
     "called",
+    "cleared",
     "created",
     "deferred",
     "emailed",
@@ -25,6 +27,7 @@ AlertEventAction = Literal[
     "paged",
     "removed",
     "resolved",
+    "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
@@ -35,12 +38,14 @@ AlertEventAction = Literal[
 ]
 
 ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
+    "ack_timeout_retriggered",
     "acknowledged",
     "added",
     "answered",
     "attached",
     "call_lifecycle",
     "called",
+    "cleared",
     "created",
     "deferred",
     "emailed",
@@ -59,6 +64,7 @@ ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
     "paged",
     "removed",
     "resolved",
+    "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",

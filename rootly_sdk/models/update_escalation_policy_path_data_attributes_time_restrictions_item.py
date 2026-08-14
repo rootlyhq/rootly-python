@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -23,26 +21,26 @@ T = TypeVar("T", bound="UpdateEscalationPolicyPathDataAttributesTimeRestrictions
 class UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem:
     """
     Attributes:
-        start_day (UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset):
-        start_time (str | Unset): Formatted as HH:MM
-        end_day (UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset):
-        end_time (str | Unset): Formatted as HH:MM
+        start_day (Union[Unset, UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay]):
+        start_time (Union[Unset, str]): Formatted as HH:MM
+        end_day (Union[Unset, UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay]):
+        end_time (Union[Unset, str]): Formatted as HH:MM
     """
 
-    start_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset = UNSET
-    start_time: str | Unset = UNSET
-    end_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset = UNSET
-    end_time: str | Unset = UNSET
+    start_day: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay = UNSET
+    start_time: Unset | str = UNSET
+    end_day: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay = UNSET
+    end_time: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        start_day: str | Unset = UNSET
+        start_day: Unset | str = UNSET
         if not isinstance(self.start_day, Unset):
             start_day = self.start_day
 
         start_time = self.start_time
 
-        end_day: str | Unset = UNSET
+        end_day: Unset | str = UNSET
         if not isinstance(self.end_day, Unset):
             end_day = self.end_day
 
@@ -66,7 +64,7 @@ class UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _start_day = d.pop("start_day", UNSET)
-        start_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay | Unset
+        start_day: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemStartDay
         if isinstance(_start_day, Unset):
             start_day = UNSET
         else:
@@ -75,7 +73,7 @@ class UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem:
         start_time = d.pop("start_time", UNSET)
 
         _end_day = d.pop("end_day", UNSET)
-        end_day: UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay | Unset
+        end_day: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItemEndDay
         if isinstance(_end_day, Unset):
             end_day = UNSET
         else:

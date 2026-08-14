@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -24,30 +22,39 @@ class NewCatalogFieldDataAttributes:
     Attributes:
         name (str):
         kind (NewCatalogFieldDataAttributesKind):
-        kind_catalog_id (None | str | Unset): Restricts values to items of specified catalog.
-        multiple (bool | Unset): Whether the attribute accepts multiple values.
-        position (int | None | Unset): Default position of the item when displayed in a list.
-        required (bool | Unset): Whether the field is required.
-        catalog_type (NewCatalogFieldDataAttributesCatalogType | Unset): The type of catalog the field belongs to.
-        external_id (None | str | Unset): An external identifier for this catalog field. Must be unique within the
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        kind_catalog_id (Union[None, Unset, str]): Restricts values to items of specified catalog.
+        multiple (Union[Unset, bool]): Whether the attribute accepts multiple values.
+        position (Union[None, Unset, int]): Default position of the item when displayed in a list.
+        required (Union[Unset, bool]): Whether the field is required.
+        catalog_type (Union[Unset, NewCatalogFieldDataAttributesCatalogType]): The type of catalog the field belongs to.
+        external_id (Union[None, Unset, str]): An external identifier for this catalog field. Must be unique within the
             scope.
     """
 
     name: str
     kind: NewCatalogFieldDataAttributesKind
-    kind_catalog_id: None | str | Unset = UNSET
-    multiple: bool | Unset = UNSET
-    position: int | None | Unset = UNSET
-    required: bool | Unset = UNSET
-    catalog_type: NewCatalogFieldDataAttributesCatalogType | Unset = UNSET
-    external_id: None | str | Unset = UNSET
+    slug: None | Unset | str = UNSET
+    kind_catalog_id: None | Unset | str = UNSET
+    multiple: Unset | bool = UNSET
+    position: None | Unset | int = UNSET
+    required: Unset | bool = UNSET
+    catalog_type: Unset | NewCatalogFieldDataAttributesCatalogType = UNSET
+    external_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         kind: str = self.kind
 
-        kind_catalog_id: None | str | Unset
+        slug: None | Unset | str
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        kind_catalog_id: None | Unset | str
         if isinstance(self.kind_catalog_id, Unset):
             kind_catalog_id = UNSET
         else:
@@ -55,7 +62,7 @@ class NewCatalogFieldDataAttributes:
 
         multiple = self.multiple
 
-        position: int | None | Unset
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -63,11 +70,11 @@ class NewCatalogFieldDataAttributes:
 
         required = self.required
 
-        catalog_type: str | Unset = UNSET
+        catalog_type: Unset | str = UNSET
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
-        external_id: None | str | Unset
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
@@ -81,6 +88,8 @@ class NewCatalogFieldDataAttributes:
                 "kind": kind,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if kind_catalog_id is not UNSET:
             field_dict["kind_catalog_id"] = kind_catalog_id
         if multiple is not UNSET:
@@ -103,47 +112,57 @@ class NewCatalogFieldDataAttributes:
 
         kind = check_new_catalog_field_data_attributes_kind(d.pop("kind"))
 
-        def _parse_kind_catalog_id(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_kind_catalog_id(data: object) -> None | Unset | str:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | Unset | str, data)
 
         kind_catalog_id = _parse_kind_catalog_id(d.pop("kind_catalog_id", UNSET))
 
         multiple = d.pop("multiple", UNSET)
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         required = d.pop("required", UNSET)
 
         _catalog_type = d.pop("catalog_type", UNSET)
-        catalog_type: NewCatalogFieldDataAttributesCatalogType | Unset
+        catalog_type: Unset | NewCatalogFieldDataAttributesCatalogType
         if isinstance(_catalog_type, Unset):
             catalog_type = UNSET
         else:
             catalog_type = check_new_catalog_field_data_attributes_catalog_type(_catalog_type)
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         new_catalog_field_data_attributes = cls(
             name=name,
             kind=kind,
+            slug=slug,
             kind_catalog_id=kind_catalog_id,
             multiple=multiple,
             position=position,

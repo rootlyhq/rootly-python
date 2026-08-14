@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,12 +14,12 @@ class CommunicationsType:
     """
     Attributes:
         name (str): The name of the communications type
-        color (None | str): The color of the communications type
+        color (Union[None, str]): The color of the communications type
         position (int): Position of the communications type
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the communications type
-        description (None | str | Unset): The description of the communications type
+        slug (Union[Unset, str]): The slug of the communications type
+        description (Union[None, Unset, str]): The description of the communications type
     """
 
     name: str
@@ -29,8 +27,8 @@ class CommunicationsType:
     position: int
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,7 +45,7 @@ class CommunicationsType:
 
         slug = self.slug
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -91,12 +89,12 @@ class CommunicationsType:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -21,16 +19,15 @@ T = TypeVar("T", bound="AlertRouteRulesItemConditionGroupsItem")
 class AlertRouteRulesItemConditionGroupsItem:
     """
     Attributes:
-        conditions (list[AlertRouteRulesItemConditionGroupsItemConditionsItem]):
-        position (int | Unset): The position of the condition group
+        conditions (list['AlertRouteRulesItemConditionGroupsItemConditionsItem']):
+        position (Union[Unset, int]): The position of the condition group
     """
 
-    conditions: list[AlertRouteRulesItemConditionGroupsItemConditionsItem]
-    position: int | Unset = UNSET
+    conditions: list["AlertRouteRulesItemConditionGroupsItemConditionsItem"]
+    position: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         conditions = []
         for conditions_item_data in self.conditions:
             conditions_item = conditions_item_data.to_dict()

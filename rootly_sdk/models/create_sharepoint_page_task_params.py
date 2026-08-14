@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,34 +26,33 @@ class CreateSharepointPageTaskParams:
         title (str): The page title
         site (CreateSharepointPageTaskParamsSite):
         drive (CreateSharepointPageTaskParamsDrive):
-        task_type (CreateSharepointPageTaskParamsTaskType | Unset):
-        post_mortem_template_id (str | Unset): Retrospective template to use when creating page, if desired
-        mark_post_mortem_as_published (bool | Unset):  Default: True.
-        parent_folder (CreateSharepointPageTaskParamsParentFolder | Unset):
-        content (str | Unset): The page content
-        template_id (str | Unset): The SharePoint file ID to use as a template
+        task_type (Union[Unset, CreateSharepointPageTaskParamsTaskType]):
+        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page, if desired
+        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        parent_folder (Union[Unset, CreateSharepointPageTaskParamsParentFolder]):
+        content (Union[Unset, str]): The page content
+        template_id (Union[Unset, str]): The SharePoint file ID to use as a template
     """
 
     title: str
-    site: CreateSharepointPageTaskParamsSite
-    drive: CreateSharepointPageTaskParamsDrive
-    task_type: CreateSharepointPageTaskParamsTaskType | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
-    mark_post_mortem_as_published: bool | Unset = True
-    parent_folder: CreateSharepointPageTaskParamsParentFolder | Unset = UNSET
-    content: str | Unset = UNSET
-    template_id: str | Unset = UNSET
+    site: "CreateSharepointPageTaskParamsSite"
+    drive: "CreateSharepointPageTaskParamsDrive"
+    task_type: Unset | CreateSharepointPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    parent_folder: Union[Unset, "CreateSharepointPageTaskParamsParentFolder"] = UNSET
+    content: Unset | str = UNSET
+    template_id: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         title = self.title
 
         site = self.site.to_dict()
 
         drive = self.drive.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -63,7 +60,7 @@ class CreateSharepointPageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        parent_folder: dict[str, Any] | Unset = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -109,7 +106,7 @@ class CreateSharepointPageTaskParams:
         drive = CreateSharepointPageTaskParamsDrive.from_dict(d.pop("drive"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateSharepointPageTaskParamsTaskType | Unset
+        task_type: Unset | CreateSharepointPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -120,7 +117,7 @@ class CreateSharepointPageTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: CreateSharepointPageTaskParamsParentFolder | Unset
+        parent_folder: Unset | CreateSharepointPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

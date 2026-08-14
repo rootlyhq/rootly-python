@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, cast
-from urllib.parse import quote
 
 import httpx
 
@@ -8,25 +7,22 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.import_meeting_recording import ImportMeetingRecording
 from ...models.meeting_recording_response import MeetingRecordingResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     incident_id: str,
     *,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings/import".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": f"/v1/incidents/{incident_id}/meeting_recordings/import",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -67,7 +63,7 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Import a meeting recording
 
@@ -78,14 +74,14 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -104,7 +100,7 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> Any | MeetingRecordingResponse | None:
     """Import a meeting recording
 
@@ -115,14 +111,14 @@ def sync(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return sync_detailed(
@@ -136,7 +132,7 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Import a meeting recording
 
@@ -147,14 +143,14 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -171,7 +167,7 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> Any | MeetingRecordingResponse | None:
     """Import a meeting recording
 
@@ -182,14 +178,14 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return (

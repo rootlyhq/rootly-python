@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
@@ -20,44 +18,44 @@ T = TypeVar("T", bound="UpdateIncidentStatusPageEventDataAttributes")
 class UpdateIncidentStatusPageEventDataAttributes:
     """
     Attributes:
-        event (str | Unset): The summary of the incident event
-        status_page_id (str | Unset): Unique ID of the status page you wish to post the event to
-        status (UpdateIncidentStatusPageEventDataAttributesStatus | Unset): The status of the incident event
-        notify_subscribers (bool | None | Unset): Notify all status pages subscribers Default: False.
-        should_tweet (bool | None | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
-            Default: False.
-        started_at (datetime.datetime | None | Unset): When the event started.
+        event (Union[Unset, str]): The summary of the incident event
+        status_page_id (Union[Unset, str]): Unique ID of the status page you wish to post the event to
+        status (Union[Unset, UpdateIncidentStatusPageEventDataAttributesStatus]): The status of the incident event
+        notify_subscribers (Union[None, Unset, bool]): Notify all status pages subscribers Default: False.
+        should_tweet (Union[None, Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your
+            update Default: False.
+        started_at (Union[None, Unset, datetime.datetime]): When the event started.
     """
 
-    event: str | Unset = UNSET
-    status_page_id: str | Unset = UNSET
-    status: UpdateIncidentStatusPageEventDataAttributesStatus | Unset = UNSET
-    notify_subscribers: bool | None | Unset = False
-    should_tweet: bool | None | Unset = False
-    started_at: datetime.datetime | None | Unset = UNSET
+    event: Unset | str = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus = UNSET
+    notify_subscribers: None | Unset | bool = False
+    should_tweet: None | Unset | bool = False
+    started_at: None | Unset | datetime.datetime = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
         status_page_id = self.status_page_id
 
-        status: str | Unset = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: bool | None | Unset
+        notify_subscribers: None | Unset | bool
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: bool | None | Unset
+        should_tweet: None | Unset | bool
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
             should_tweet = self.should_tweet
 
-        started_at: None | str | Unset
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -91,31 +89,31 @@ class UpdateIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: UpdateIncidentStatusPageEventDataAttributesStatus | Unset
+        status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> bool | None | Unset:
+        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(None | Unset | bool, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> bool | None | Unset:
+        def _parse_should_tweet(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(None | Unset | bool, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 
-        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -126,9 +124,9 @@ class UpdateIncidentStatusPageEventDataAttributes:
                 started_at_type_0 = isoparse(data)
 
                 return started_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 

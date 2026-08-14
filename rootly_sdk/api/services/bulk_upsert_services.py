@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Union
 
 import httpx
 
@@ -33,7 +33,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList | None:
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkUpsertServicesResponse.from_dict(response.json())
 
@@ -46,14 +46,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> BulkUpsertServicesError | ErrorsList:
+        def _parse_response_422(data: object) -> Union["BulkUpsertServicesError", "ErrorsList"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -73,7 +73,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList]:
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +86,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Response[BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList]:
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -103,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList]
+        Response[Union[BulkUpsertServicesResponse, ErrorsList, Union['BulkUpsertServicesError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -121,7 +121,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList | None:
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -138,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList
+        Union[BulkUpsertServicesResponse, ErrorsList, Union['BulkUpsertServicesError', 'ErrorsList']]
     """
 
     return sync_detailed(
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Response[BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList]:
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -168,7 +168,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList]
+        Response[Union[BulkUpsertServicesResponse, ErrorsList, Union['BulkUpsertServicesError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList | None:
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -201,7 +201,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertServicesError | ErrorsList | BulkUpsertServicesResponse | ErrorsList
+        Union[BulkUpsertServicesResponse, ErrorsList, Union['BulkUpsertServicesError', 'ErrorsList']]
     """
 
     return (

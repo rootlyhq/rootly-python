@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -26,18 +24,17 @@ T = TypeVar("T", bound="InviteToSlackChannelVictorOpsTaskParams")
 class InviteToSlackChannelVictorOpsTaskParams:
     """
     Attributes:
-        channels (list[InviteToSlackChannelVictorOpsTaskParamsChannelsItem]):
+        channels (list['InviteToSlackChannelVictorOpsTaskParamsChannelsItem']):
         team (InviteToSlackChannelVictorOpsTaskParamsTeam):
-        task_type (InviteToSlackChannelVictorOpsTaskParamsTaskType | Unset):
+        task_type (Union[Unset, InviteToSlackChannelVictorOpsTaskParamsTaskType]):
     """
 
-    channels: list[InviteToSlackChannelVictorOpsTaskParamsChannelsItem]
-    team: InviteToSlackChannelVictorOpsTaskParamsTeam
-    task_type: InviteToSlackChannelVictorOpsTaskParamsTaskType | Unset = UNSET
+    channels: list["InviteToSlackChannelVictorOpsTaskParamsChannelsItem"]
+    team: "InviteToSlackChannelVictorOpsTaskParamsTeam"
+    task_type: Unset | InviteToSlackChannelVictorOpsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         channels = []
         for channels_item_data in self.channels:
             channels_item = channels_item_data.to_dict()
@@ -45,7 +42,7 @@ class InviteToSlackChannelVictorOpsTaskParams:
 
         team = self.team.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -82,7 +79,7 @@ class InviteToSlackChannelVictorOpsTaskParams:
         team = InviteToSlackChannelVictorOpsTaskParamsTeam.from_dict(d.pop("team"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: InviteToSlackChannelVictorOpsTaskParamsTaskType | Unset
+        task_type: Unset | InviteToSlackChannelVictorOpsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

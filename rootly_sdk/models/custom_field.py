@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -10,6 +8,7 @@ from ..models.custom_field_required_type_0_item import (
     CustomFieldRequiredType0Item,
     check_custom_field_required_type_0_item,
 )
+from ..models.custom_field_resource_type import CustomFieldResourceType, check_custom_field_resource_type
 from ..models.custom_field_shown_item import CustomFieldShownItem, check_custom_field_shown_item
 from ..types import UNSET, Unset
 
@@ -22,28 +21,30 @@ class CustomField:
     Attributes:
         label (str): The name of the custom_field
         shown (list[CustomFieldShownItem]):
-        required (list[CustomFieldRequiredType0Item] | None):
+        required (Union[None, list[CustomFieldRequiredType0Item]]):
         position (int): The position of the custom_field
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        kind (str | Unset): The kind of the custom_field
-        enabled (bool | Unset): Whether the custom_field is enabled
-        slug (str | Unset): The slug of the custom_field
-        description (None | str | Unset): The description of the custom_field
-        default (None | str | Unset): The default value for text field kinds
+        kind (Union[Unset, str]): The kind of the custom_field
+        enabled (Union[Unset, bool]): Whether the custom_field is enabled
+        slug (Union[Unset, str]): The slug of the custom_field
+        resource_type (Union[Unset, CustomFieldResourceType]): The resource type this field belongs to
+        description (Union[None, Unset, str]): The description of the custom_field
+        default (Union[None, Unset, str]): The default value for text field kinds
     """
 
     label: str
     shown: list[CustomFieldShownItem]
-    required: list[CustomFieldRequiredType0Item] | None
+    required: None | list[CustomFieldRequiredType0Item]
     position: int
     created_at: str
     updated_at: str
-    kind: str | Unset = UNSET
-    enabled: bool | Unset = UNSET
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    default: None | str | Unset = UNSET
+    kind: Unset | str = UNSET
+    enabled: Unset | bool = UNSET
+    slug: Unset | str = UNSET
+    resource_type: Unset | CustomFieldResourceType = UNSET
+    description: None | Unset | str = UNSET
+    default: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,7 +55,7 @@ class CustomField:
             shown_item: str = shown_item_data
             shown.append(shown_item)
 
-        required: list[str] | None
+        required: None | list[str]
         if isinstance(self.required, list):
             required = []
             for required_type_0_item_data in self.required:
@@ -76,13 +77,17 @@ class CustomField:
 
         slug = self.slug
 
-        description: None | str | Unset
+        resource_type: Unset | str = UNSET
+        if not isinstance(self.resource_type, Unset):
+            resource_type = self.resource_type
+
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        default: None | str | Unset
+        default: None | Unset | str
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -106,6 +111,8 @@ class CustomField:
             field_dict["enabled"] = enabled
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
         if description is not UNSET:
             field_dict["description"] = description
         if default is not UNSET:
@@ -125,7 +132,7 @@ class CustomField:
 
             shown.append(shown_item)
 
-        def _parse_required(data: object) -> list[CustomFieldRequiredType0Item] | None:
+        def _parse_required(data: object) -> None | list[CustomFieldRequiredType0Item]:
             if data is None:
                 return data
             try:
@@ -139,9 +146,9 @@ class CustomField:
                     required_type_0.append(required_type_0_item)
 
                 return required_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[CustomFieldRequiredType0Item] | None, data)
+            return cast(None | list[CustomFieldRequiredType0Item], data)
 
         required = _parse_required(d.pop("required"))
 
@@ -157,21 +164,28 @@ class CustomField:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        _resource_type = d.pop("resource_type", UNSET)
+        resource_type: Unset | CustomFieldResourceType
+        if isinstance(_resource_type, Unset):
+            resource_type = UNSET
+        else:
+            resource_type = check_custom_field_resource_type(_resource_type)
+
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_default(data: object) -> None | str | Unset:
+        def _parse_default(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
@@ -185,6 +199,7 @@ class CustomField:
             kind=kind,
             enabled=enabled,
             slug=slug,
+            resource_type=resource_type,
             description=description,
             default=default,
         )

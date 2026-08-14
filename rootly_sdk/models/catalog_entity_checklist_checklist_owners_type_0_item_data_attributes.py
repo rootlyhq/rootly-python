@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,16 +13,16 @@ T = TypeVar("T", bound="CatalogEntityChecklistChecklistOwnersType0ItemDataAttrib
 class CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes:
     """
     Attributes:
-        catalog_entity_checklist_id (str | Unset): The ID of the parent checklist
-        owner_user_id (str | Unset): The ID of the owner user
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        catalog_entity_checklist_id (Union[Unset, str]): The ID of the parent checklist
+        owner_user_id (Union[Unset, str]): The ID of the owner user
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
-    catalog_entity_checklist_id: str | Unset = UNSET
-    owner_user_id: str | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    catalog_entity_checklist_id: Unset | str = UNSET
+    owner_user_id: Unset | str = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

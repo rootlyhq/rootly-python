@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,16 +17,16 @@ class NewIncidentEventDataAttributes:
     """
     Attributes:
         event (str): The summary of the incident event
-        visibility (NewIncidentEventDataAttributesVisibility | Unset): The visibility of the incident action item
+        visibility (Union[Unset, NewIncidentEventDataAttributesVisibility]): The visibility of the incident action item
     """
 
     event: str
-    visibility: NewIncidentEventDataAttributesVisibility | Unset = UNSET
+    visibility: Unset | NewIncidentEventDataAttributesVisibility = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
-        visibility: str | Unset = UNSET
+        visibility: Unset | str = UNSET
         if not isinstance(self.visibility, Unset):
             visibility = self.visibility
 
@@ -50,7 +48,7 @@ class NewIncidentEventDataAttributes:
         event = d.pop("event")
 
         _visibility = d.pop("visibility", UNSET)
-        visibility: NewIncidentEventDataAttributesVisibility | Unset
+        visibility: Unset | NewIncidentEventDataAttributesVisibility
         if isinstance(_visibility, Unset):
             visibility = UNSET
         else:

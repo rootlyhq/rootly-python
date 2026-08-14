@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -20,49 +18,56 @@ class BulkUpsertEnvironmentsEntitiesItem:
     """
     Attributes:
         external_id (str): External identifier used as the upsert key. Unique per team.
-        name (str | Unset): Required for new records. Optional for updates.
-        description (None | str | Unset):
-        color (None | str | Unset):
-        position (int | None | Unset):
-        notify_emails (list[str] | None | Unset):
-        fields (list[BulkUpsertEnvironmentsEntitiesItemFieldsItem] | Unset): Catalog property values (merge semantics:
-            only mentioned fields written).
+        name (Union[Unset, str]): Required for new records. Optional for updates.
+        description (Union[None, Unset, str]):
+        public_description (Union[None, Unset, str]):
+        color (Union[None, Unset, str]):
+        position (Union[None, Unset, int]):
+        notify_emails (Union[None, Unset, list[str]]):
+        fields (Union[Unset, list['BulkUpsertEnvironmentsEntitiesItemFieldsItem']]): Catalog property values (merge
+            semantics: only mentioned fields written).
     """
 
     external_id: str
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    color: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
-    notify_emails: list[str] | None | Unset = UNSET
-    fields: list[BulkUpsertEnvironmentsEntitiesItemFieldsItem] | Unset = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    color: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    notify_emails: None | Unset | list[str] = UNSET
+    fields: Unset | list["BulkUpsertEnvironmentsEntitiesItemFieldsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         external_id = self.external_id
 
         name = self.name
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        color: None | str | Unset
+        public_description: None | Unset | str
+        if isinstance(self.public_description, Unset):
+            public_description = UNSET
+        else:
+            public_description = self.public_description
+
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: int | None | Unset
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        notify_emails: list[str] | None | Unset
+        notify_emails: None | Unset | list[str]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -71,7 +76,7 @@ class BulkUpsertEnvironmentsEntitiesItem:
         else:
             notify_emails = self.notify_emails
 
-        fields: list[dict[str, Any]] | Unset = UNSET
+        fields: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.fields, Unset):
             fields = []
             for fields_item_data in self.fields:
@@ -89,6 +94,8 @@ class BulkUpsertEnvironmentsEntitiesItem:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if public_description is not UNSET:
+            field_dict["public_description"] = public_description
         if color is not UNSET:
             field_dict["color"] = color
         if position is not UNSET:
@@ -111,34 +118,43 @@ class BulkUpsertEnvironmentsEntitiesItem:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_color(data: object) -> None | str | Unset:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
+
+        public_description = _parse_public_description(d.pop("public_description", UNSET))
+
+        def _parse_color(data: object) -> None | Unset | str:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_notify_emails(data: object) -> list[str] | None | Unset:
+        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -149,25 +165,24 @@ class BulkUpsertEnvironmentsEntitiesItem:
                 notify_emails_type_0 = cast(list[str], data)
 
                 return notify_emails_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
+        fields = []
         _fields = d.pop("fields", UNSET)
-        fields: list[BulkUpsertEnvironmentsEntitiesItemFieldsItem] | Unset = UNSET
-        if _fields is not UNSET:
-            fields = []
-            for fields_item_data in _fields:
-                fields_item = BulkUpsertEnvironmentsEntitiesItemFieldsItem.from_dict(fields_item_data)
+        for fields_item_data in _fields or []:
+            fields_item = BulkUpsertEnvironmentsEntitiesItemFieldsItem.from_dict(fields_item_data)
 
-                fields.append(fields_item)
+            fields.append(fields_item)
 
         bulk_upsert_environments_entities_item = cls(
             external_id=external_id,
             name=name,
             description=description,
+            public_description=public_description,
             color=color,
             position=position,
             notify_emails=notify_emails,

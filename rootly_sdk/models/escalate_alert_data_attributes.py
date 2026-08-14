@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -14,14 +12,15 @@ T = TypeVar("T", bound="EscalateAlertDataAttributes")
 class EscalateAlertDataAttributes:
     """
     Attributes:
-        escalation_policy_id (str | Unset): The ID of the escalation policy to escalate to. If omitted, uses the alert's
-            current escalation policy from metadata. Required for resolved alerts whose metadata may have been cleared.
-        escalation_policy_level (int | Unset): The escalation policy level to escalate to. If omitted, defaults to the
-            next level (same EP) or level 1 (different EP).
+        escalation_policy_id (Union[Unset, str]): The ID of the escalation policy to escalate to. If omitted, uses the
+            alert's current escalation policy from metadata. Required for resolved alerts whose metadata may have been
+            cleared.
+        escalation_policy_level (Union[Unset, int]): The escalation policy level to escalate to. If omitted, defaults to
+            the next level (same EP) or level 1 (different EP).
     """
 
-    escalation_policy_id: str | Unset = UNSET
-    escalation_policy_level: int | Unset = UNSET
+    escalation_policy_id: Unset | str = UNSET
+    escalation_policy_level: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         escalation_policy_id = self.escalation_policy_id

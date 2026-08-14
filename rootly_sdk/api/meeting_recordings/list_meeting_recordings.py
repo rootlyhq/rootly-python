@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, cast
-from urllib.parse import quote
 
 import httpx
 
@@ -13,10 +12,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -27,9 +25,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": f"/v1/incidents/{incident_id}/meeting_recordings",
         "params": params,
     }
 
@@ -69,8 +65,8 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[Any | MeetingRecordingList]:
     """List meeting recordings
 
@@ -79,15 +75,15 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingList]
+        Response[Union[Any, MeetingRecordingList]]
     """
 
     kwargs = _get_kwargs(
@@ -107,8 +103,8 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Any | MeetingRecordingList | None:
     """List meeting recordings
 
@@ -117,15 +113,15 @@ def sync(
 
     Args:
         incident_id (str):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingList
+        Union[Any, MeetingRecordingList]
     """
 
     return sync_detailed(
@@ -140,8 +136,8 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[Any | MeetingRecordingList]:
     """List meeting recordings
 
@@ -150,15 +146,15 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingList]
+        Response[Union[Any, MeetingRecordingList]]
     """
 
     kwargs = _get_kwargs(
@@ -176,8 +172,8 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Any | MeetingRecordingList | None:
     """List meeting recordings
 
@@ -186,15 +182,15 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingList
+        Union[Any, MeetingRecordingList]
     """
 
     return (

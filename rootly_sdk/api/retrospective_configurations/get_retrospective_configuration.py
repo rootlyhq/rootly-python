@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -17,12 +16,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Unset | GetRetrospectiveConfigurationInclude = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -32,9 +30,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_configurations/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/retrospective_configurations/{id}",
         "params": params,
     }
 
@@ -75,7 +71,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Unset | GetRetrospectiveConfigurationInclude = UNSET,
 ) -> Response[ErrorsList | RetrospectiveConfigurationResponse]:
     """Retrieves a Retrospective Configuration
 
@@ -83,14 +79,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveConfigurationResponse]
+        Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -109,7 +105,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Unset | GetRetrospectiveConfigurationInclude = UNSET,
 ) -> ErrorsList | RetrospectiveConfigurationResponse | None:
     """Retrieves a Retrospective Configuration
 
@@ -117,14 +113,14 @@ def sync(
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveConfigurationResponse
+        Union[ErrorsList, RetrospectiveConfigurationResponse]
     """
 
     return sync_detailed(
@@ -138,7 +134,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Unset | GetRetrospectiveConfigurationInclude = UNSET,
 ) -> Response[ErrorsList | RetrospectiveConfigurationResponse]:
     """Retrieves a Retrospective Configuration
 
@@ -146,14 +142,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveConfigurationResponse]
+        Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -170,7 +166,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Unset | GetRetrospectiveConfigurationInclude = UNSET,
 ) -> ErrorsList | RetrospectiveConfigurationResponse | None:
     """Retrieves a Retrospective Configuration
 
@@ -178,14 +174,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveConfigurationResponse
+        Union[ErrorsList, RetrospectiveConfigurationResponse]
     """
 
     return (

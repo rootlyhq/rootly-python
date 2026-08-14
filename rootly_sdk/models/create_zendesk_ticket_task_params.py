@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,35 +28,34 @@ class CreateZendeskTicketTaskParams:
     Attributes:
         kind (CreateZendeskTicketTaskParamsKind):
         subject (str): The ticket subject
-        task_type (CreateZendeskTicketTaskParamsTaskType | Unset):
-        comment (str | Unset): The ticket comment
-        tags (str | Unset): The ticket tags
-        priority (CreateZendeskTicketTaskParamsPriority | Unset): The priority id and display name
-        completion (CreateZendeskTicketTaskParamsCompletion | Unset): The completion id and display name
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, CreateZendeskTicketTaskParamsTaskType]):
+        comment (Union[Unset, str]): The ticket comment
+        tags (Union[Unset, str]): The ticket tags
+        priority (Union[Unset, CreateZendeskTicketTaskParamsPriority]): The priority id and display name
+        completion (Union[Unset, CreateZendeskTicketTaskParamsCompletion]): The completion id and display name
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        ticket_payload (None | str | Unset): Additional Zendesk ticket attributes. Will be merged into whatever was
+        ticket_payload (Union[None, Unset, str]): Additional Zendesk ticket attributes. Will be merged into whatever was
             specified in this tasks current parameters. Can contain liquid markup and need to be valid JSON
     """
 
     kind: CreateZendeskTicketTaskParamsKind
     subject: str
-    task_type: CreateZendeskTicketTaskParamsTaskType | Unset = UNSET
-    comment: str | Unset = UNSET
-    tags: str | Unset = UNSET
-    priority: CreateZendeskTicketTaskParamsPriority | Unset = UNSET
-    completion: CreateZendeskTicketTaskParamsCompletion | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
-    ticket_payload: None | str | Unset = UNSET
+    task_type: Unset | CreateZendeskTicketTaskParamsTaskType = UNSET
+    comment: Unset | str = UNSET
+    tags: Unset | str = UNSET
+    priority: Union[Unset, "CreateZendeskTicketTaskParamsPriority"] = UNSET
+    completion: Union[Unset, "CreateZendeskTicketTaskParamsCompletion"] = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
+    ticket_payload: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         kind: str = self.kind
 
         subject = self.subject
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -66,21 +63,21 @@ class CreateZendeskTicketTaskParams:
 
         tags = self.tags
 
-        priority: dict[str, Any] | Unset = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        completion: dict[str, Any] | Unset = UNSET
+        completion: Unset | dict[str, Any] = UNSET
         if not isinstance(self.completion, Unset):
             completion = self.completion.to_dict()
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        ticket_payload: None | str | Unset
+        ticket_payload: None | Unset | str
         if isinstance(self.ticket_payload, Unset):
             ticket_payload = UNSET
         else:
@@ -122,7 +119,7 @@ class CreateZendeskTicketTaskParams:
         subject = d.pop("subject")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateZendeskTicketTaskParamsTaskType | Unset
+        task_type: Unset | CreateZendeskTicketTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -133,34 +130,34 @@ class CreateZendeskTicketTaskParams:
         tags = d.pop("tags", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: CreateZendeskTicketTaskParamsPriority | Unset
+        priority: Unset | CreateZendeskTicketTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = CreateZendeskTicketTaskParamsPriority.from_dict(_priority)
 
         _completion = d.pop("completion", UNSET)
-        completion: CreateZendeskTicketTaskParamsCompletion | Unset
+        completion: Unset | CreateZendeskTicketTaskParamsCompletion
         if isinstance(_completion, Unset):
             completion = UNSET
         else:
             completion = CreateZendeskTicketTaskParamsCompletion.from_dict(_completion)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        def _parse_ticket_payload(data: object) -> None | str | Unset:
+        def _parse_ticket_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         ticket_payload = _parse_ticket_payload(d.pop("ticket_payload", UNSET))
 

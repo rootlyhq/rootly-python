@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/form_field_placements/{form_field_placement_id}/conditions".format(
-            form_field_placement_id=quote(str(form_field_placement_id), safe=""),
-        ),
+        "url": f"/v1/form_field_placements/{form_field_placement_id}/conditions",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldPlacementConditionResponse]
+        Response[Union[ErrorsList, FormFieldPlacementConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldPlacementConditionResponse
+        Union[ErrorsList, FormFieldPlacementConditionResponse]
     """
 
     return sync_detailed(
@@ -151,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldPlacementConditionResponse]
+        Response[Union[ErrorsList, FormFieldPlacementConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldPlacementConditionResponse
+        Union[ErrorsList, FormFieldPlacementConditionResponse]
     """
 
     return (

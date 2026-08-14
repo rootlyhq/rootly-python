@@ -12,32 +12,31 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filteruser_id: str | Unset = UNSET,
-    filtergroup_ids: str | Unset = UNSET,
-    filterrole_id: str | Unset = UNSET,
-    filteractive: bool | Unset = UNSET,
-    filterexpired: bool | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterexpires_atgt: str | Unset = UNSET,
-    filterexpires_atgte: str | Unset = UNSET,
-    filterexpires_atlt: str | Unset = UNSET,
-    filterexpires_atlte: str | Unset = UNSET,
-    filterlast_used_atgt: str | Unset = UNSET,
-    filterlast_used_atgte: str | Unset = UNSET,
-    filterlast_used_atlt: str | Unset = UNSET,
-    filterlast_used_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filteruser_id: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filterrole_id: Unset | str = UNSET,
+    filteractive: Unset | bool = UNSET,
+    filterexpired: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterexpires_atgt: Unset | str = UNSET,
+    filterexpires_atgte: Unset | str = UNSET,
+    filterexpires_atlt: Unset | str = UNSET,
+    filterexpires_atlte: Unset | str = UNSET,
+    filterlast_used_atgt: Unset | str = UNSET,
+    filterlast_used_atgte: Unset | str = UNSET,
+    filterlast_used_atlt: Unset | str = UNSET,
+    filterlast_used_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -132,30 +131,30 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filteruser_id: str | Unset = UNSET,
-    filtergroup_ids: str | Unset = UNSET,
-    filterrole_id: str | Unset = UNSET,
-    filteractive: bool | Unset = UNSET,
-    filterexpired: bool | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterexpires_atgt: str | Unset = UNSET,
-    filterexpires_atgte: str | Unset = UNSET,
-    filterexpires_atlt: str | Unset = UNSET,
-    filterexpires_atlte: str | Unset = UNSET,
-    filterlast_used_atgt: str | Unset = UNSET,
-    filterlast_used_atgte: str | Unset = UNSET,
-    filterlast_used_atlt: str | Unset = UNSET,
-    filterlast_used_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filteruser_id: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filterrole_id: Unset | str = UNSET,
+    filteractive: Unset | bool = UNSET,
+    filterexpired: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterexpires_atgt: Unset | str = UNSET,
+    filterexpires_atgte: Unset | str = UNSET,
+    filterexpires_atlt: Unset | str = UNSET,
+    filterexpires_atlte: Unset | str = UNSET,
+    filterlast_used_atgt: Unset | str = UNSET,
+    filterlast_used_atgte: Unset | str = UNSET,
+    filterlast_used_atlt: Unset | str = UNSET,
+    filterlast_used_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[ApiKeyList | ErrorsList]:
     """List API keys
 
@@ -178,37 +177,37 @@ def sync_detailed(
     `updated_at`, `expires_at`, `last_used_at`.
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filteruser_id (str | Unset):
-        filtergroup_ids (str | Unset):
-        filterrole_id (str | Unset):
-        filteractive (bool | Unset):
-        filterexpired (bool | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterexpires_atgt (str | Unset):
-        filterexpires_atgte (str | Unset):
-        filterexpires_atlt (str | Unset):
-        filterexpires_atlte (str | Unset):
-        filterlast_used_atgt (str | Unset):
-        filterlast_used_atgte (str | Unset):
-        filterlast_used_atlt (str | Unset):
-        filterlast_used_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filteruser_id (Union[Unset, str]):
+        filtergroup_ids (Union[Unset, str]):
+        filterrole_id (Union[Unset, str]):
+        filteractive (Union[Unset, bool]):
+        filterexpired (Union[Unset, bool]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterexpires_atgt (Union[Unset, str]):
+        filterexpires_atgte (Union[Unset, str]):
+        filterexpires_atlt (Union[Unset, str]):
+        filterexpires_atlte (Union[Unset, str]):
+        filterlast_used_atgt (Union[Unset, str]):
+        filterlast_used_atgte (Union[Unset, str]):
+        filterlast_used_atlt (Union[Unset, str]):
+        filterlast_used_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyList | ErrorsList]
+        Response[Union[ApiKeyList, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -248,30 +247,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filteruser_id: str | Unset = UNSET,
-    filtergroup_ids: str | Unset = UNSET,
-    filterrole_id: str | Unset = UNSET,
-    filteractive: bool | Unset = UNSET,
-    filterexpired: bool | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterexpires_atgt: str | Unset = UNSET,
-    filterexpires_atgte: str | Unset = UNSET,
-    filterexpires_atlt: str | Unset = UNSET,
-    filterexpires_atlte: str | Unset = UNSET,
-    filterlast_used_atgt: str | Unset = UNSET,
-    filterlast_used_atgte: str | Unset = UNSET,
-    filterlast_used_atlt: str | Unset = UNSET,
-    filterlast_used_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filteruser_id: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filterrole_id: Unset | str = UNSET,
+    filteractive: Unset | bool = UNSET,
+    filterexpired: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterexpires_atgt: Unset | str = UNSET,
+    filterexpires_atgte: Unset | str = UNSET,
+    filterexpires_atlt: Unset | str = UNSET,
+    filterexpires_atlte: Unset | str = UNSET,
+    filterlast_used_atgt: Unset | str = UNSET,
+    filterlast_used_atgte: Unset | str = UNSET,
+    filterlast_used_atlt: Unset | str = UNSET,
+    filterlast_used_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> ApiKeyList | ErrorsList | None:
     """List API keys
 
@@ -294,37 +293,37 @@ def sync(
     `updated_at`, `expires_at`, `last_used_at`.
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filteruser_id (str | Unset):
-        filtergroup_ids (str | Unset):
-        filterrole_id (str | Unset):
-        filteractive (bool | Unset):
-        filterexpired (bool | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterexpires_atgt (str | Unset):
-        filterexpires_atgte (str | Unset):
-        filterexpires_atlt (str | Unset):
-        filterexpires_atlte (str | Unset):
-        filterlast_used_atgt (str | Unset):
-        filterlast_used_atgte (str | Unset):
-        filterlast_used_atlt (str | Unset):
-        filterlast_used_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filteruser_id (Union[Unset, str]):
+        filtergroup_ids (Union[Unset, str]):
+        filterrole_id (Union[Unset, str]):
+        filteractive (Union[Unset, bool]):
+        filterexpired (Union[Unset, bool]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterexpires_atgt (Union[Unset, str]):
+        filterexpires_atgte (Union[Unset, str]):
+        filterexpires_atlt (Union[Unset, str]):
+        filterexpires_atlte (Union[Unset, str]):
+        filterlast_used_atgt (Union[Unset, str]):
+        filterlast_used_atgte (Union[Unset, str]):
+        filterlast_used_atlt (Union[Unset, str]):
+        filterlast_used_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyList | ErrorsList
+        Union[ApiKeyList, ErrorsList]
     """
 
     return sync_detailed(
@@ -359,30 +358,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filteruser_id: str | Unset = UNSET,
-    filtergroup_ids: str | Unset = UNSET,
-    filterrole_id: str | Unset = UNSET,
-    filteractive: bool | Unset = UNSET,
-    filterexpired: bool | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterexpires_atgt: str | Unset = UNSET,
-    filterexpires_atgte: str | Unset = UNSET,
-    filterexpires_atlt: str | Unset = UNSET,
-    filterexpires_atlte: str | Unset = UNSET,
-    filterlast_used_atgt: str | Unset = UNSET,
-    filterlast_used_atgte: str | Unset = UNSET,
-    filterlast_used_atlt: str | Unset = UNSET,
-    filterlast_used_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filteruser_id: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filterrole_id: Unset | str = UNSET,
+    filteractive: Unset | bool = UNSET,
+    filterexpired: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterexpires_atgt: Unset | str = UNSET,
+    filterexpires_atgte: Unset | str = UNSET,
+    filterexpires_atlt: Unset | str = UNSET,
+    filterexpires_atlte: Unset | str = UNSET,
+    filterlast_used_atgt: Unset | str = UNSET,
+    filterlast_used_atgte: Unset | str = UNSET,
+    filterlast_used_atlt: Unset | str = UNSET,
+    filterlast_used_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[ApiKeyList | ErrorsList]:
     """List API keys
 
@@ -405,37 +404,37 @@ async def asyncio_detailed(
     `updated_at`, `expires_at`, `last_used_at`.
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filteruser_id (str | Unset):
-        filtergroup_ids (str | Unset):
-        filterrole_id (str | Unset):
-        filteractive (bool | Unset):
-        filterexpired (bool | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterexpires_atgt (str | Unset):
-        filterexpires_atgte (str | Unset):
-        filterexpires_atlt (str | Unset):
-        filterexpires_atlte (str | Unset):
-        filterlast_used_atgt (str | Unset):
-        filterlast_used_atgte (str | Unset):
-        filterlast_used_atlt (str | Unset):
-        filterlast_used_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filteruser_id (Union[Unset, str]):
+        filtergroup_ids (Union[Unset, str]):
+        filterrole_id (Union[Unset, str]):
+        filteractive (Union[Unset, bool]):
+        filterexpired (Union[Unset, bool]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterexpires_atgt (Union[Unset, str]):
+        filterexpires_atgte (Union[Unset, str]):
+        filterexpires_atlt (Union[Unset, str]):
+        filterexpires_atlte (Union[Unset, str]):
+        filterlast_used_atgt (Union[Unset, str]):
+        filterlast_used_atgte (Union[Unset, str]):
+        filterlast_used_atlt (Union[Unset, str]):
+        filterlast_used_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyList | ErrorsList]
+        Response[Union[ApiKeyList, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -473,30 +472,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filteruser_id: str | Unset = UNSET,
-    filtergroup_ids: str | Unset = UNSET,
-    filterrole_id: str | Unset = UNSET,
-    filteractive: bool | Unset = UNSET,
-    filterexpired: bool | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterexpires_atgt: str | Unset = UNSET,
-    filterexpires_atgte: str | Unset = UNSET,
-    filterexpires_atlt: str | Unset = UNSET,
-    filterexpires_atlte: str | Unset = UNSET,
-    filterlast_used_atgt: str | Unset = UNSET,
-    filterlast_used_atgte: str | Unset = UNSET,
-    filterlast_used_atlt: str | Unset = UNSET,
-    filterlast_used_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterkind: Unset | str = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filteruser_id: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filterrole_id: Unset | str = UNSET,
+    filteractive: Unset | bool = UNSET,
+    filterexpired: Unset | bool = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterexpires_atgt: Unset | str = UNSET,
+    filterexpires_atgte: Unset | str = UNSET,
+    filterexpires_atlt: Unset | str = UNSET,
+    filterexpires_atlte: Unset | str = UNSET,
+    filterlast_used_atgt: Unset | str = UNSET,
+    filterlast_used_atgte: Unset | str = UNSET,
+    filterlast_used_atlt: Unset | str = UNSET,
+    filterlast_used_atlte: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> ApiKeyList | ErrorsList | None:
     """List API keys
 
@@ -519,37 +518,37 @@ async def asyncio(
     `updated_at`, `expires_at`, `last_used_at`.
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filteruser_id (str | Unset):
-        filtergroup_ids (str | Unset):
-        filterrole_id (str | Unset):
-        filteractive (bool | Unset):
-        filterexpired (bool | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterexpires_atgt (str | Unset):
-        filterexpires_atgte (str | Unset):
-        filterexpires_atlt (str | Unset):
-        filterexpires_atlte (str | Unset):
-        filterlast_used_atgt (str | Unset):
-        filterlast_used_atgte (str | Unset):
-        filterlast_used_atlt (str | Unset):
-        filterlast_used_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filteruser_id (Union[Unset, str]):
+        filtergroup_ids (Union[Unset, str]):
+        filterrole_id (Union[Unset, str]):
+        filteractive (Union[Unset, bool]):
+        filterexpired (Union[Unset, bool]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterexpires_atgt (Union[Unset, str]):
+        filterexpires_atgte (Union[Unset, str]):
+        filterexpires_atlt (Union[Unset, str]):
+        filterexpires_atlte (Union[Unset, str]):
+        filterlast_used_atgt (Union[Unset, str]):
+        filterlast_used_atgte (Union[Unset, str]):
+        filterlast_used_atlt (Union[Unset, str]):
+        filterlast_used_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyList | ErrorsList
+        Union[ApiKeyList, ErrorsList]
     """
 
     return (

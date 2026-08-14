@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/workflows/{workflow_id}/form_field_conditions".format(
-            workflow_id=quote(str(workflow_id), safe=""),
-        ),
+        "url": f"/v1/workflows/{workflow_id}/form_field_conditions",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -46,6 +43,11 @@ def _parse_response(
         response_401 = ErrorsList.from_dict(response.json())
 
         return response_401
+
+    if response.status_code == 422:
+        response_422 = ErrorsList.from_dict(response.json())
+
+        return response_422
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -83,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -117,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowFormFieldConditionResponse
+        Union[ErrorsList, WorkflowFormFieldConditionResponse]
     """
 
     return sync_detailed(
@@ -146,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -178,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowFormFieldConditionResponse
+        Union[ErrorsList, WorkflowFormFieldConditionResponse]
     """
 
     return (

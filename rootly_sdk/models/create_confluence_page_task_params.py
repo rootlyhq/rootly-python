@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,52 +26,53 @@ class CreateConfluencePageTaskParams:
     Attributes:
         space (CreateConfluencePageTaskParamsSpace):
         title (str): The page title
-        task_type (CreateConfluencePageTaskParamsTaskType | Unset):
-        integration (CreateConfluencePageTaskParamsIntegration | Unset): Specify integration id if you have more than
-            one Confluence instance
-        ancestor (CreateConfluencePageTaskParamsAncestor | Unset):
-        template (CreateConfluencePageTaskParamsTemplate | Unset):
-        content (str | Unset): The page content
-        post_mortem_template_id (str | Unset): The Retrospective template to use
-        mark_post_mortem_as_published (bool | Unset):  Default: True.
-        include_overview (bool | Unset):  Default: True.
-        include_timeline (bool | Unset):  Default: True.
-        create_as_live_doc (bool | Unset):  Default: False.
+        task_type (Union[Unset, CreateConfluencePageTaskParamsTaskType]):
+        integration (Union[Unset, CreateConfluencePageTaskParamsIntegration]): Specify integration id if you have more
+            than one Confluence instance
+        ancestor (Union[Unset, CreateConfluencePageTaskParamsAncestor]):
+        template (Union[Unset, CreateConfluencePageTaskParamsTemplate]):
+        content (Union[Unset, str]): The page content
+        post_mortem_template_id (Union[Unset, str]): The Retrospective template to use
+        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        include_overview (Union[Unset, bool]):  Default: True.
+        include_timeline (Union[Unset, bool]):  Default: True.
+        include_follow_ups (Union[Unset, bool]):  Default: True.
+        create_as_live_doc (Union[Unset, bool]):  Default: False.
     """
 
-    space: CreateConfluencePageTaskParamsSpace
+    space: "CreateConfluencePageTaskParamsSpace"
     title: str
-    task_type: CreateConfluencePageTaskParamsTaskType | Unset = UNSET
-    integration: CreateConfluencePageTaskParamsIntegration | Unset = UNSET
-    ancestor: CreateConfluencePageTaskParamsAncestor | Unset = UNSET
-    template: CreateConfluencePageTaskParamsTemplate | Unset = UNSET
-    content: str | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
-    mark_post_mortem_as_published: bool | Unset = True
-    include_overview: bool | Unset = True
-    include_timeline: bool | Unset = True
-    create_as_live_doc: bool | Unset = False
+    task_type: Unset | CreateConfluencePageTaskParamsTaskType = UNSET
+    integration: Union[Unset, "CreateConfluencePageTaskParamsIntegration"] = UNSET
+    ancestor: Union[Unset, "CreateConfluencePageTaskParamsAncestor"] = UNSET
+    template: Union[Unset, "CreateConfluencePageTaskParamsTemplate"] = UNSET
+    content: Unset | str = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    include_overview: Unset | bool = True
+    include_timeline: Unset | bool = True
+    include_follow_ups: Unset | bool = True
+    create_as_live_doc: Unset | bool = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         space = self.space.to_dict()
 
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        integration: dict[str, Any] | Unset = UNSET
+        integration: Unset | dict[str, Any] = UNSET
         if not isinstance(self.integration, Unset):
             integration = self.integration.to_dict()
 
-        ancestor: dict[str, Any] | Unset = UNSET
+        ancestor: Unset | dict[str, Any] = UNSET
         if not isinstance(self.ancestor, Unset):
             ancestor = self.ancestor.to_dict()
 
-        template: dict[str, Any] | Unset = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -86,6 +85,8 @@ class CreateConfluencePageTaskParams:
         include_overview = self.include_overview
 
         include_timeline = self.include_timeline
+
+        include_follow_ups = self.include_follow_ups
 
         create_as_live_doc = self.create_as_live_doc
 
@@ -115,6 +116,8 @@ class CreateConfluencePageTaskParams:
             field_dict["include_overview"] = include_overview
         if include_timeline is not UNSET:
             field_dict["include_timeline"] = include_timeline
+        if include_follow_ups is not UNSET:
+            field_dict["include_follow_ups"] = include_follow_ups
         if create_as_live_doc is not UNSET:
             field_dict["create_as_live_doc"] = create_as_live_doc
 
@@ -133,28 +136,28 @@ class CreateConfluencePageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateConfluencePageTaskParamsTaskType | Unset
+        task_type: Unset | CreateConfluencePageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_confluence_page_task_params_task_type(_task_type)
 
         _integration = d.pop("integration", UNSET)
-        integration: CreateConfluencePageTaskParamsIntegration | Unset
+        integration: Unset | CreateConfluencePageTaskParamsIntegration
         if isinstance(_integration, Unset):
             integration = UNSET
         else:
             integration = CreateConfluencePageTaskParamsIntegration.from_dict(_integration)
 
         _ancestor = d.pop("ancestor", UNSET)
-        ancestor: CreateConfluencePageTaskParamsAncestor | Unset
+        ancestor: Unset | CreateConfluencePageTaskParamsAncestor
         if isinstance(_ancestor, Unset):
             ancestor = UNSET
         else:
             ancestor = CreateConfluencePageTaskParamsAncestor.from_dict(_ancestor)
 
         _template = d.pop("template", UNSET)
-        template: CreateConfluencePageTaskParamsTemplate | Unset
+        template: Unset | CreateConfluencePageTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:
@@ -170,6 +173,8 @@ class CreateConfluencePageTaskParams:
 
         include_timeline = d.pop("include_timeline", UNSET)
 
+        include_follow_ups = d.pop("include_follow_ups", UNSET)
+
         create_as_live_doc = d.pop("create_as_live_doc", UNSET)
 
         create_confluence_page_task_params = cls(
@@ -184,6 +189,7 @@ class CreateConfluencePageTaskParams:
             mark_post_mortem_as_published=mark_post_mortem_as_published,
             include_overview=include_overview,
             include_timeline=include_timeline,
+            include_follow_ups=include_follow_ups,
             create_as_live_doc=create_as_live_doc,
         )
 

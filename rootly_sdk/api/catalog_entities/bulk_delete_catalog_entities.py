@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Union
 
 import httpx
 
@@ -16,17 +15,16 @@ from ...types import Response
 def _get_kwargs(
     catalog_id: str,
     *,
-    body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
+    body: Union["BulkDestroyCatalogEntitiesType0", "BulkDestroyCatalogEntitiesType1"],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalogs/{catalog_id}/entities/bulk_delete".format(
-            catalog_id=quote(str(catalog_id), safe=""),
-        ),
+        "url": f"/v1/catalogs/{catalog_id}/entities/bulk_delete",
     }
 
+    _kwargs["json"]: dict[str, Any]
     if isinstance(body, BulkDestroyCatalogEntitiesType0):
         _kwargs["json"] = body.to_dict()
     else:
@@ -40,7 +38,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
+) -> BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkDestroyCatalogEntitiesResponse.from_dict(response.json())
 
@@ -53,14 +51,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> BulkDestroyCatalogEntitiesResponse | ErrorsList:
+        def _parse_response_422(data: object) -> Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -80,7 +78,9 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
+) -> Response[
+    BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"]
+]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,8 +93,10 @@ def sync_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
+    body: Union["BulkDestroyCatalogEntitiesType0", "BulkDestroyCatalogEntitiesType1"],
+) -> Response[
+    BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"]
+]:
     """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -102,8 +104,8 @@ def sync_detailed(
 
     Args:
         catalog_id (str):
-        body (BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1): Two mutually
-            exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
+        body (Union['BulkDestroyCatalogEntitiesType0', 'BulkDestroyCatalogEntitiesType1']): Two
+            mutually exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
             managed_by (prune all managed entities not in keep set).
 
     Raises:
@@ -111,7 +113,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]
+        Response[Union[BulkDestroyCatalogEntitiesResponse, ErrorsList, Union['BulkDestroyCatalogEntitiesResponse', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -130,8 +132,8 @@ def sync(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
+    body: Union["BulkDestroyCatalogEntitiesType0", "BulkDestroyCatalogEntitiesType1"],
+) -> BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"] | None:
     """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -139,8 +141,8 @@ def sync(
 
     Args:
         catalog_id (str):
-        body (BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1): Two mutually
-            exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
+        body (Union['BulkDestroyCatalogEntitiesType0', 'BulkDestroyCatalogEntitiesType1']): Two
+            mutually exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
             managed_by (prune all managed entities not in keep set).
 
     Raises:
@@ -148,7 +150,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList
+        Union[BulkDestroyCatalogEntitiesResponse, ErrorsList, Union['BulkDestroyCatalogEntitiesResponse', 'ErrorsList']]
     """
 
     return sync_detailed(
@@ -162,8 +164,10 @@ async def asyncio_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-) -> Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]:
+    body: Union["BulkDestroyCatalogEntitiesType0", "BulkDestroyCatalogEntitiesType1"],
+) -> Response[
+    BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"]
+]:
     """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -171,8 +175,8 @@ async def asyncio_detailed(
 
     Args:
         catalog_id (str):
-        body (BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1): Two mutually
-            exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
+        body (Union['BulkDestroyCatalogEntitiesType0', 'BulkDestroyCatalogEntitiesType1']): Two
+            mutually exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
             managed_by (prune all managed entities not in keep set).
 
     Raises:
@@ -180,7 +184,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList]
+        Response[Union[BulkDestroyCatalogEntitiesResponse, ErrorsList, Union['BulkDestroyCatalogEntitiesResponse', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -197,8 +201,8 @@ async def asyncio(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1,
-) -> BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList | None:
+    body: Union["BulkDestroyCatalogEntitiesType0", "BulkDestroyCatalogEntitiesType1"],
+) -> BulkDestroyCatalogEntitiesResponse | ErrorsList | Union["BulkDestroyCatalogEntitiesResponse", "ErrorsList"] | None:
     """Bulk delete Catalog Entities
 
      Delete catalog entities by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -206,8 +210,8 @@ async def asyncio(
 
     Args:
         catalog_id (str):
-        body (BulkDestroyCatalogEntitiesType0 | BulkDestroyCatalogEntitiesType1): Two mutually
-            exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
+        body (Union['BulkDestroyCatalogEntitiesType0', 'BulkDestroyCatalogEntitiesType1']): Two
+            mutually exclusive modes. Pass exactly one of: external_ids (delete specific entities) or
             managed_by (prune all managed entities not in keep set).
 
     Raises:
@@ -215,7 +219,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkDestroyCatalogEntitiesResponse | BulkDestroyCatalogEntitiesResponse | ErrorsList | ErrorsList
+        Union[BulkDestroyCatalogEntitiesResponse, ErrorsList, Union['BulkDestroyCatalogEntitiesResponse', 'ErrorsList']]
     """
 
     return (

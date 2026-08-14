@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,9 +18,9 @@ class CustomForm:
         command (str): The Slack command used to trigger this form.
         created_at (str): Date of creation.
         updated_at (str): Date of last update.
-        slug (str | Unset): The custom form slug. Add this to form_field.shown or form_field.required to associate form
-            fields with custom forms.
-        description (None | str | Unset):
+        slug (Union[Unset, str]): The custom form slug. Add this to form_field.shown or form_field.required to associate
+            form fields with custom forms.
+        description (Union[None, Unset, str]):
     """
 
     name: str
@@ -30,8 +28,8 @@ class CustomForm:
     command: str
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,7 +45,7 @@ class CustomForm:
 
         slug = self.slug
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -86,12 +84,12 @@ class CustomForm:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

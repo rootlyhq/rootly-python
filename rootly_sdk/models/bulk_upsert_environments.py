@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -17,15 +15,14 @@ T = TypeVar("T", bound="BulkUpsertEnvironments")
 class BulkUpsertEnvironments:
     """
     Attributes:
-        entities (list[BulkUpsertEnvironmentsEntitiesItem]): Environments to upsert, matched by external_id. Max 100 per
-            request; external_ids unique within a batch. Only attributes present are written (managed-fields semantics).
+        entities (list['BulkUpsertEnvironmentsEntitiesItem']): Environments to upsert, matched by external_id. Max 100
+            per request; external_ids unique within a batch. Only attributes present are written (managed-fields semantics).
     """
 
-    entities: list[BulkUpsertEnvironmentsEntitiesItem]
+    entities: list["BulkUpsertEnvironmentsEntitiesItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         entities = []
         for entities_item_data in self.entities:
             entities_item = entities_item_data.to_dict()

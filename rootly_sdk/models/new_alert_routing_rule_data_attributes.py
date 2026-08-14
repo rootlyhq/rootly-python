@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -29,27 +27,26 @@ class NewAlertRoutingRuleDataAttributes:
         name (str): The name of the alert routing rule
         alerts_source_id (UUID): The ID of the alerts source
         destination (NewAlertRoutingRuleDataAttributesDestination):
-        enabled (bool | Unset): Whether the alert routing rule is enabled
-        owning_team_ids (list[UUID] | Unset): The IDs of the teams which own the alert routing rule. If the user doesn't
-            have Alert Routing Create Permission in On-Call Roles, then this field is required and can contain Team IDs the
-            user is an admin of.
-        position (int | Unset): The position of the alert routing rule for ordering evaluation
-        condition_type (NewAlertRoutingRuleDataAttributesConditionType | Unset): The type of condition for the alert
-            routing rule
-        conditions (list[NewAlertRoutingRuleDataAttributesConditionsItem] | Unset):
+        enabled (Union[Unset, bool]): Whether the alert routing rule is enabled
+        owning_team_ids (Union[Unset, list[UUID]]): The IDs of the teams which own the alert routing rule. If the user
+            doesn't have Alert Routing Create Permission in On-Call Roles, then this field is required and can contain Team
+            IDs the user is an admin of.
+        position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
+        condition_type (Union[Unset, NewAlertRoutingRuleDataAttributesConditionType]): The type of condition for the
+            alert routing rule
+        conditions (Union[Unset, list['NewAlertRoutingRuleDataAttributesConditionsItem']]):
     """
 
     name: str
     alerts_source_id: UUID
-    destination: NewAlertRoutingRuleDataAttributesDestination
-    enabled: bool | Unset = UNSET
-    owning_team_ids: list[UUID] | Unset = UNSET
-    position: int | Unset = UNSET
-    condition_type: NewAlertRoutingRuleDataAttributesConditionType | Unset = UNSET
-    conditions: list[NewAlertRoutingRuleDataAttributesConditionsItem] | Unset = UNSET
+    destination: "NewAlertRoutingRuleDataAttributesDestination"
+    enabled: Unset | bool = UNSET
+    owning_team_ids: Unset | list[UUID] = UNSET
+    position: Unset | int = UNSET
+    condition_type: Unset | NewAlertRoutingRuleDataAttributesConditionType = UNSET
+    conditions: Unset | list["NewAlertRoutingRuleDataAttributesConditionsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         alerts_source_id = str(self.alerts_source_id)
@@ -58,7 +55,7 @@ class NewAlertRoutingRuleDataAttributes:
 
         enabled = self.enabled
 
-        owning_team_ids: list[str] | Unset = UNSET
+        owning_team_ids: Unset | list[str] = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
@@ -67,11 +64,11 @@ class NewAlertRoutingRuleDataAttributes:
 
         position = self.position
 
-        condition_type: str | Unset = UNSET
+        condition_type: Unset | str = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        conditions: list[dict[str, Any]] | Unset = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -118,32 +115,28 @@ class NewAlertRoutingRuleDataAttributes:
 
         enabled = d.pop("enabled", UNSET)
 
+        owning_team_ids = []
         _owning_team_ids = d.pop("owning_team_ids", UNSET)
-        owning_team_ids: list[UUID] | Unset = UNSET
-        if _owning_team_ids is not UNSET:
-            owning_team_ids = []
-            for owning_team_ids_item_data in _owning_team_ids:
-                owning_team_ids_item = UUID(owning_team_ids_item_data)
+        for owning_team_ids_item_data in _owning_team_ids or []:
+            owning_team_ids_item = UUID(owning_team_ids_item_data)
 
-                owning_team_ids.append(owning_team_ids_item)
+            owning_team_ids.append(owning_team_ids_item)
 
         position = d.pop("position", UNSET)
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: NewAlertRoutingRuleDataAttributesConditionType | Unset
+        condition_type: Unset | NewAlertRoutingRuleDataAttributesConditionType
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:
             condition_type = check_new_alert_routing_rule_data_attributes_condition_type(_condition_type)
 
+        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        conditions: list[NewAlertRoutingRuleDataAttributesConditionsItem] | Unset = UNSET
-        if _conditions is not UNSET:
-            conditions = []
-            for conditions_item_data in _conditions:
-                conditions_item = NewAlertRoutingRuleDataAttributesConditionsItem.from_dict(conditions_item_data)
+        for conditions_item_data in _conditions or []:
+            conditions_item = NewAlertRoutingRuleDataAttributesConditionsItem.from_dict(conditions_item_data)
 
-                conditions.append(conditions_item)
+            conditions.append(conditions_item)
 
         new_alert_routing_rule_data_attributes = cls(
             name=name,

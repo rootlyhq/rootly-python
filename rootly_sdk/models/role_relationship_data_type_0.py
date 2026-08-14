@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,18 +17,18 @@ T = TypeVar("T", bound="RoleRelationshipDataType0")
 class RoleRelationshipDataType0:
     """
     Attributes:
-        id (str | Unset):
-        type_ (RoleRelationshipDataType0Type | Unset):
+        id (Union[Unset, str]):
+        type_ (Union[Unset, RoleRelationshipDataType0Type]):
     """
 
-    id: str | Unset = UNSET
-    type_: RoleRelationshipDataType0Type | Unset = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | RoleRelationshipDataType0Type = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: str | Unset = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -50,7 +48,7 @@ class RoleRelationshipDataType0:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: RoleRelationshipDataType0Type | Unset
+        type_: Unset | RoleRelationshipDataType0Type
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

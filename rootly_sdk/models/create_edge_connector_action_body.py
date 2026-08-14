@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,15 +17,14 @@ T = TypeVar("T", bound="CreateEdgeConnectorActionBody")
 class CreateEdgeConnectorActionBody:
     """
     Attributes:
-        action (CreateEdgeConnectorActionBodyAction | Unset):
+        action (Union[Unset, CreateEdgeConnectorActionBodyAction]):
     """
 
-    action: CreateEdgeConnectorActionBodyAction | Unset = UNSET
+    action: Union[Unset, "CreateEdgeConnectorActionBodyAction"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        action: dict[str, Any] | Unset = UNSET
+        action: Unset | dict[str, Any] = UNSET
         if not isinstance(self.action, Unset):
             action = self.action.to_dict()
 
@@ -45,7 +42,7 @@ class CreateEdgeConnectorActionBody:
 
         d = dict(src_dict)
         _action = d.pop("action", UNSET)
-        action: CreateEdgeConnectorActionBodyAction | Unset
+        action: Unset | CreateEdgeConnectorActionBodyAction
         if isinstance(_action, Unset):
             action = UNSET
         else:

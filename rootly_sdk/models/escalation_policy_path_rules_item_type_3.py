@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -27,14 +25,14 @@ class EscalationPolicyPathRulesItemType3:
         fieldable_type (str): The type of the fieldable (e.g., AlertField)
         fieldable_id (str): The ID of the alert field
         operator (EscalationPolicyPathRulesItemType3Operator): How the alert field value should be matched
-        values (list[str] | Unset): Values to match against
+        values (Union[Unset, list[str]]): Values to match against
     """
 
     rule_type: EscalationPolicyPathRulesItemType3RuleType
     fieldable_type: str
     fieldable_id: str
     operator: EscalationPolicyPathRulesItemType3Operator
-    values: list[str] | Unset = UNSET
+    values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,7 +44,7 @@ class EscalationPolicyPathRulesItemType3:
 
         operator: str = self.operator
 
-        values: list[str] | Unset = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 

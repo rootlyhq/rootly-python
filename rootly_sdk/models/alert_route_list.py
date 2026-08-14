@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -19,18 +17,17 @@ T = TypeVar("T", bound="AlertRouteList")
 class AlertRouteList:
     """
     Attributes:
-        data (list[AlertRouteListDataItem]):
+        data (list['AlertRouteListDataItem']):
         links (Links):
         meta (Meta):
     """
 
-    data: list[AlertRouteListDataItem]
-    links: Links
-    meta: Meta
+    data: list["AlertRouteListDataItem"]
+    links: "Links"
+    meta: "Meta"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()

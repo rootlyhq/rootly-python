@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,14 +17,14 @@ T = TypeVar("T", bound="DashboardPanelParamsLegend")
 class DashboardPanelParamsLegend:
     """
     Attributes:
-        groups (DashboardPanelParamsLegendGroups | Unset):  Default: 'all'.
+        groups (Union[Unset, DashboardPanelParamsLegendGroups]):  Default: 'all'.
     """
 
-    groups: DashboardPanelParamsLegendGroups | Unset = "all"
+    groups: Unset | DashboardPanelParamsLegendGroups = "all"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        groups: str | Unset = UNSET
+        groups: Unset | str = UNSET
         if not isinstance(self.groups, Unset):
             groups = self.groups
 
@@ -42,7 +40,7 @@ class DashboardPanelParamsLegend:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _groups = d.pop("groups", UNSET)
-        groups: DashboardPanelParamsLegendGroups | Unset
+        groups: Unset | DashboardPanelParamsLegendGroups
         if isinstance(_groups, Unset):
             groups = UNSET
         else:

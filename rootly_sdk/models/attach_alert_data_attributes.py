@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,13 +10,13 @@ T = TypeVar("T", bound="AttachAlertDataAttributes")
 class AttachAlertDataAttributes:
     """
     Attributes:
-        alert_ids (list[str] | None): Alert Id to attach to the incident
+        alert_ids (Union[None, list[str]]): Alert Id to attach to the incident
     """
 
-    alert_ids: list[str] | None
+    alert_ids: None | list[str]
 
     def to_dict(self) -> dict[str, Any]:
-        alert_ids: list[str] | None
+        alert_ids: None | list[str]
         if isinstance(self.alert_ids, list):
             alert_ids = self.alert_ids
 
@@ -39,7 +37,7 @@ class AttachAlertDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_alert_ids(data: object) -> list[str] | None:
+        def _parse_alert_ids(data: object) -> None | list[str]:
             if data is None:
                 return data
             try:
@@ -48,9 +46,9 @@ class AttachAlertDataAttributes:
                 alert_ids_type_0 = cast(list[str], data)
 
                 return alert_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None, data)
+            return cast(None | list[str], data)
 
         alert_ids = _parse_alert_ids(d.pop("alert_ids"))
 

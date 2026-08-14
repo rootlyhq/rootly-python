@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -25,27 +23,30 @@ class CreateAnthropicChatCompletionTaskParams:
     Attributes:
         model (CreateAnthropicChatCompletionTaskParamsModel): The Anthropic model. eg: claude-3-5-sonnet-20241022
         prompt (str): The prompt to send to Anthropic
-        task_type (CreateAnthropicChatCompletionTaskParamsTaskType | Unset):
-        system_prompt (str | Unset): The system prompt to send to Anthropic (optional)
+        task_type (Union[Unset, CreateAnthropicChatCompletionTaskParamsTaskType]):
+        system_prompt (Union[Unset, str]): The system prompt to send to Anthropic (optional)
+        max_tokens (Union[Unset, int]): Maximum number of tokens to generate. Defaults to 4000 when omitted
     """
 
-    model: CreateAnthropicChatCompletionTaskParamsModel
+    model: "CreateAnthropicChatCompletionTaskParamsModel"
     prompt: str
-    task_type: CreateAnthropicChatCompletionTaskParamsTaskType | Unset = UNSET
-    system_prompt: str | Unset = UNSET
+    task_type: Unset | CreateAnthropicChatCompletionTaskParamsTaskType = UNSET
+    system_prompt: Unset | str = UNSET
+    max_tokens: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         model = self.model.to_dict()
 
         prompt = self.prompt
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         system_prompt = self.system_prompt
+
+        max_tokens = self.max_tokens
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -59,6 +60,8 @@ class CreateAnthropicChatCompletionTaskParams:
             field_dict["task_type"] = task_type
         if system_prompt is not UNSET:
             field_dict["system_prompt"] = system_prompt
+        if max_tokens is not UNSET:
+            field_dict["max_tokens"] = max_tokens
 
         return field_dict
 
@@ -74,7 +77,7 @@ class CreateAnthropicChatCompletionTaskParams:
         prompt = d.pop("prompt")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateAnthropicChatCompletionTaskParamsTaskType | Unset
+        task_type: Unset | CreateAnthropicChatCompletionTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -82,11 +85,14 @@ class CreateAnthropicChatCompletionTaskParams:
 
         system_prompt = d.pop("system_prompt", UNSET)
 
+        max_tokens = d.pop("max_tokens", UNSET)
+
         create_anthropic_chat_completion_task_params = cls(
             model=model,
             prompt=prompt,
             task_type=task_type,
             system_prompt=system_prompt,
+            max_tokens=max_tokens,
         )
 
         create_anthropic_chat_completion_task_params.additional_properties = d

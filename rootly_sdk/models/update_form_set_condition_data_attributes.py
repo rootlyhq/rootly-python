@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,23 +16,23 @@ T = TypeVar("T", bound="UpdateFormSetConditionDataAttributes")
 class UpdateFormSetConditionDataAttributes:
     """
     Attributes:
-        form_field_id (str | Unset): The form field this condition applies.
-        comparison (UpdateFormSetConditionDataAttributesComparison | Unset): The condition comparison.
-        values (list[str] | Unset): The values for comparison.
+        form_field_id (Union[Unset, str]): The form field this condition applies.
+        comparison (Union[Unset, UpdateFormSetConditionDataAttributesComparison]): The condition comparison.
+        values (Union[Unset, list[str]]): The values for comparison.
     """
 
-    form_field_id: str | Unset = UNSET
-    comparison: UpdateFormSetConditionDataAttributesComparison | Unset = UNSET
-    values: list[str] | Unset = UNSET
+    form_field_id: Unset | str = UNSET
+    comparison: Unset | UpdateFormSetConditionDataAttributesComparison = UNSET
+    values: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
 
-        comparison: str | Unset = UNSET
+        comparison: Unset | str = UNSET
         if not isinstance(self.comparison, Unset):
             comparison = self.comparison
 
-        values: list[str] | Unset = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -56,7 +54,7 @@ class UpdateFormSetConditionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _comparison = d.pop("comparison", UNSET)
-        comparison: UpdateFormSetConditionDataAttributesComparison | Unset
+        comparison: Unset | UpdateFormSetConditionDataAttributesComparison
         if isinstance(_comparison, Unset):
             comparison = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -26,22 +24,22 @@ T = TypeVar("T", bound="UpdateRetrospectiveProcessDataAttributes")
 class UpdateRetrospectiveProcessDataAttributes:
     """
     Attributes:
-        name (str | Unset): The name of the retrospective process
-        description (None | str | Unset): The description of the retrospective process
-        retrospective_process_matching_criteria (Unset |
-            UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0 |
-            UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1 |
-            UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2):
+        name (Union[Unset, str]): The name of the retrospective process
+        description (Union[None, Unset, str]): The description of the retrospective process
+        retrospective_process_matching_criteria
+            (Union['UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0',
+            'UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1',
+            'UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2', Unset]):
     """
 
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    retrospective_process_matching_criteria: (
-        Unset
-        | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0
-        | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1
-        | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2
-    ) = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    retrospective_process_matching_criteria: Union[
+        "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0",
+        "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1",
+        "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2",
+        Unset,
+    ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_retrospective_process_data_attributes_retrospective_process_matching_criteria_type_0 import (
@@ -53,13 +51,13 @@ class UpdateRetrospectiveProcessDataAttributes:
 
         name = self.name
 
-        description: None | str | Unset
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        retrospective_process_matching_criteria: dict[str, Any] | Unset
+        retrospective_process_matching_criteria: Unset | dict[str, Any]
         if isinstance(self.retrospective_process_matching_criteria, Unset):
             retrospective_process_matching_criteria = UNSET
         elif isinstance(
@@ -102,23 +100,23 @@ class UpdateRetrospectiveProcessDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         def _parse_retrospective_process_matching_criteria(
             data: object,
-        ) -> (
-            Unset
-            | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0
-            | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1
-            | UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2
-        ):
+        ) -> Union[
+            "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0",
+            "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1",
+            "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2",
+            Unset,
+        ]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -129,7 +127,7 @@ class UpdateRetrospectiveProcessDataAttributes:
                 )
 
                 return retrospective_process_matching_criteria_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -139,7 +137,7 @@ class UpdateRetrospectiveProcessDataAttributes:
                 )
 
                 return retrospective_process_matching_criteria_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -31,43 +29,42 @@ class CreateMicrosoftTeamsMeetingTaskParams:
     Attributes:
         name (str): The meeting name
         subject (str): The meeting subject
-        task_type (CreateMicrosoftTeamsMeetingTaskParamsTaskType | Unset):
-        record_meeting (bool | Unset): Rootly AI will record the meeting and automatically generate a transcript and
-            summary from your meeting
-        recording_mode (CreateMicrosoftTeamsMeetingTaskParamsRecordingMode | Unset): The video layout for the bot's
-            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem] | Unset):
+        task_type (Union[Unset, CreateMicrosoftTeamsMeetingTaskParamsTaskType]):
+        record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
+            and summary from your meeting
+        recording_mode (Union[Unset, CreateMicrosoftTeamsMeetingTaskParamsRecordingMode]): The video layout for the
+            bot's recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem']]):
     """
 
     name: str
     subject: str
-    task_type: CreateMicrosoftTeamsMeetingTaskParamsTaskType | Unset = UNSET
-    record_meeting: bool | Unset = UNSET
-    recording_mode: CreateMicrosoftTeamsMeetingTaskParamsRecordingMode | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Unset | CreateMicrosoftTeamsMeetingTaskParamsTaskType = UNSET
+    record_meeting: Unset | bool = UNSET
+    recording_mode: Unset | CreateMicrosoftTeamsMeetingTaskParamsRecordingMode = UNSET
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         subject = self.subject
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         record_meeting = self.record_meeting
 
-        recording_mode: str | Unset = UNSET
+        recording_mode: Unset | str = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -107,7 +104,7 @@ class CreateMicrosoftTeamsMeetingTaskParams:
         subject = d.pop("subject")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateMicrosoftTeamsMeetingTaskParamsTaskType | Unset
+        task_type: Unset | CreateMicrosoftTeamsMeetingTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -116,7 +113,7 @@ class CreateMicrosoftTeamsMeetingTaskParams:
         record_meeting = d.pop("record_meeting", UNSET)
 
         _recording_mode = d.pop("recording_mode", UNSET)
-        recording_mode: CreateMicrosoftTeamsMeetingTaskParamsRecordingMode | Unset
+        recording_mode: Unset | CreateMicrosoftTeamsMeetingTaskParamsRecordingMode
         if isinstance(_recording_mode, Unset):
             recording_mode = UNSET
         else:
@@ -124,16 +121,14 @@ class CreateMicrosoftTeamsMeetingTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = CreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         create_microsoft_teams_meeting_task_params = cls(
             name=name,

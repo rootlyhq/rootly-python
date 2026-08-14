@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,25 +24,25 @@ class Pulse:
         summary (str): The summary of the pulse
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        source (None | str | Unset): The source of the pulse (eg: k8s)
-        services (list[Service] | Unset): Services attached to the pulse
-        environments (list[Environment] | Unset): Environments attached to the pulse
-        external_url (None | str | Unset): The external url of the pulse
-        labels (list[None | PulseLabelsItemType0] | Unset):
-        refs (list[None | PulseRefsItemType0] | Unset):
-        data (None | PulseDataType0 | Unset): Additional data
+        source (Union[None, Unset, str]): The source of the pulse (eg: k8s)
+        services (Union[Unset, list['Service']]): Services attached to the pulse
+        environments (Union[Unset, list['Environment']]): Environments attached to the pulse
+        external_url (Union[None, Unset, str]): The external url of the pulse
+        labels (Union[Unset, list[Union['PulseLabelsItemType0', None]]]):
+        refs (Union[Unset, list[Union['PulseRefsItemType0', None]]]):
+        data (Union['PulseDataType0', None, Unset]): Additional data
     """
 
     summary: str
     created_at: str
     updated_at: str
-    source: None | str | Unset = UNSET
-    services: list[Service] | Unset = UNSET
-    environments: list[Environment] | Unset = UNSET
-    external_url: None | str | Unset = UNSET
-    labels: list[None | PulseLabelsItemType0] | Unset = UNSET
-    refs: list[None | PulseRefsItemType0] | Unset = UNSET
-    data: None | PulseDataType0 | Unset = UNSET
+    source: None | Unset | str = UNSET
+    services: Unset | list["Service"] = UNSET
+    environments: Unset | list["Environment"] = UNSET
+    external_url: None | Unset | str = UNSET
+    labels: Unset | list[Union["PulseLabelsItemType0", None]] = UNSET
+    refs: Unset | list[Union["PulseRefsItemType0", None]] = UNSET
+    data: Union["PulseDataType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,55 +56,55 @@ class Pulse:
 
         updated_at = self.updated_at
 
-        source: None | str | Unset
+        source: None | Unset | str
         if isinstance(self.source, Unset):
             source = UNSET
         else:
             source = self.source
 
-        services: list[dict[str, Any]] | Unset = UNSET
+        services: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.services, Unset):
             services = []
             for services_item_data in self.services:
                 services_item = services_item_data.to_dict()
                 services.append(services_item)
 
-        environments: list[dict[str, Any]] | Unset = UNSET
+        environments: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.environments, Unset):
             environments = []
             for environments_item_data in self.environments:
                 environments_item = environments_item_data.to_dict()
                 environments.append(environments_item)
 
-        external_url: None | str | Unset
+        external_url: None | Unset | str
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        labels: list[dict[str, Any] | None] | Unset = UNSET
+        labels: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: dict[str, Any] | None
+                labels_item: None | dict[str, Any]
                 if isinstance(labels_item_data, PulseLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        refs: list[dict[str, Any] | None] | Unset = UNSET
+        refs: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
-                refs_item: dict[str, Any] | None
+                refs_item: None | dict[str, Any]
                 if isinstance(refs_item_data, PulseRefsItemType0):
                     refs_item = refs_item_data.to_dict()
                 else:
                     refs_item = refs_item_data
                 refs.append(refs_item)
 
-        data: dict[str, Any] | None | Unset
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, PulseDataType0):
@@ -155,89 +153,81 @@ class Pulse:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_source(data: object) -> None | str | Unset:
+        def _parse_source(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         source = _parse_source(d.pop("source", UNSET))
 
+        services = []
         _services = d.pop("services", UNSET)
-        services: list[Service] | Unset = UNSET
-        if _services is not UNSET:
-            services = []
-            for services_item_data in _services:
-                services_item = Service.from_dict(services_item_data)
+        for services_item_data in _services or []:
+            services_item = Service.from_dict(services_item_data)
 
-                services.append(services_item)
+            services.append(services_item)
 
+        environments = []
         _environments = d.pop("environments", UNSET)
-        environments: list[Environment] | Unset = UNSET
-        if _environments is not UNSET:
-            environments = []
-            for environments_item_data in _environments:
-                environments_item = Environment.from_dict(environments_item_data)
+        for environments_item_data in _environments or []:
+            environments_item = Environment.from_dict(environments_item_data)
 
-                environments.append(environments_item)
+            environments.append(environments_item)
 
-        def _parse_external_url(data: object) -> None | str | Unset:
+        def _parse_external_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
+        labels = []
         _labels = d.pop("labels", UNSET)
-        labels: list[None | PulseLabelsItemType0] | Unset = UNSET
-        if _labels is not UNSET:
-            labels = []
-            for labels_item_data in _labels:
+        for labels_item_data in _labels or []:
 
-                def _parse_labels_item(data: object) -> None | PulseLabelsItemType0:
-                    if data is None:
-                        return data
-                    try:
-                        if not isinstance(data, dict):
-                            raise TypeError()
-                        labels_item_type_0 = PulseLabelsItemType0.from_dict(data)
+            def _parse_labels_item(data: object) -> Union["PulseLabelsItemType0", None]:
+                if data is None:
+                    return data
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    labels_item_type_0 = PulseLabelsItemType0.from_dict(data)
 
-                        return labels_item_type_0
-                    except (TypeError, ValueError, AttributeError, KeyError):
-                        pass
-                    return cast(None | PulseLabelsItemType0, data)
+                    return labels_item_type_0
+                except:  # noqa: E722
+                    pass
+                return cast(Union["PulseLabelsItemType0", None], data)
 
-                labels_item = _parse_labels_item(labels_item_data)
+            labels_item = _parse_labels_item(labels_item_data)
 
-                labels.append(labels_item)
+            labels.append(labels_item)
 
+        refs = []
         _refs = d.pop("refs", UNSET)
-        refs: list[None | PulseRefsItemType0] | Unset = UNSET
-        if _refs is not UNSET:
-            refs = []
-            for refs_item_data in _refs:
+        for refs_item_data in _refs or []:
 
-                def _parse_refs_item(data: object) -> None | PulseRefsItemType0:
-                    if data is None:
-                        return data
-                    try:
-                        if not isinstance(data, dict):
-                            raise TypeError()
-                        refs_item_type_0 = PulseRefsItemType0.from_dict(data)
+            def _parse_refs_item(data: object) -> Union["PulseRefsItemType0", None]:
+                if data is None:
+                    return data
+                try:
+                    if not isinstance(data, dict):
+                        raise TypeError()
+                    refs_item_type_0 = PulseRefsItemType0.from_dict(data)
 
-                        return refs_item_type_0
-                    except (TypeError, ValueError, AttributeError, KeyError):
-                        pass
-                    return cast(None | PulseRefsItemType0, data)
+                    return refs_item_type_0
+                except:  # noqa: E722
+                    pass
+                return cast(Union["PulseRefsItemType0", None], data)
 
-                refs_item = _parse_refs_item(refs_item_data)
+            refs_item = _parse_refs_item(refs_item_data)
 
-                refs.append(refs_item)
+            refs.append(refs_item)
 
-        def _parse_data(data: object) -> None | PulseDataType0 | Unset:
+        def _parse_data(data: object) -> Union["PulseDataType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -248,9 +238,9 @@ class Pulse:
                 data_type_0 = PulseDataType0.from_dict(data)
 
                 return data_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | PulseDataType0 | Unset, data)
+            return cast(Union["PulseDataType0", None, Unset], data)
 
         data = _parse_data(d.pop("data", UNSET))
 

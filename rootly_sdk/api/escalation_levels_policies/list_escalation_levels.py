@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -13,11 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     escalation_policy_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -30,9 +28,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/escalation_policies/{escalation_policy_id}/escalation_levels".format(
-            escalation_policy_id=quote(str(escalation_policy_id), safe=""),
-        ),
+        "url": f"/v1/escalation_policies/{escalation_policy_id}/escalation_levels",
         "params": params,
     }
 
@@ -68,9 +64,9 @@ def sync_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyLevelList]:
     """List escalation levels for an Escalation Policy
 
@@ -78,9 +74,9 @@ def sync_detailed(
 
     Args:
         escalation_policy_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -108,9 +104,9 @@ def sync(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> EscalationPolicyLevelList | None:
     """List escalation levels for an Escalation Policy
 
@@ -118,9 +114,9 @@ def sync(
 
     Args:
         escalation_policy_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -143,9 +139,9 @@ async def asyncio_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyLevelList]:
     """List escalation levels for an Escalation Policy
 
@@ -153,9 +149,9 @@ async def asyncio_detailed(
 
     Args:
         escalation_policy_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -181,9 +177,9 @@ async def asyncio(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> EscalationPolicyLevelList | None:
     """List escalation levels for an Escalation Policy
 
@@ -191,9 +187,9 @@ async def asyncio(
 
     Args:
         escalation_policy_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -14,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: UUID | str,
     *,
     body: UpdateCause,
 ) -> dict[str, Any]:
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/causes/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/causes/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -66,7 +63,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateCause,
@@ -76,7 +73,7 @@ def sync_detailed(
      Update a specific cause by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateCause):
 
     Raises:
@@ -84,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CauseResponse | ErrorsList]
+        Response[Union[CauseResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +97,7 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateCause,
@@ -110,7 +107,7 @@ def sync(
      Update a specific cause by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateCause):
 
     Raises:
@@ -118,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CauseResponse | ErrorsList
+        Union[CauseResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -129,7 +126,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateCause,
@@ -139,7 +136,7 @@ async def asyncio_detailed(
      Update a specific cause by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateCause):
 
     Raises:
@@ -147,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CauseResponse | ErrorsList]
+        Response[Union[CauseResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -161,7 +158,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateCause,
@@ -171,7 +168,7 @@ async def asyncio(
      Update a specific cause by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateCause):
 
     Raises:
@@ -179,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CauseResponse | ErrorsList
+        Union[CauseResponse, ErrorsList]
     """
 
     return (

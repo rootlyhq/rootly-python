@@ -7,12 +7,12 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.start_session_request import StartSessionRequest
 from ...models.start_session_response import StartSessionResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: StartSessionRequest | Unset = UNSET,
+    body: StartSessionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,8 +21,7 @@ def _get_kwargs(
         "url": "/v1/meeting_recordings/start_session",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -62,7 +61,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: StartSessionRequest | Unset = UNSET,
+    body: StartSessionRequest,
 ) -> Response[Any | StartSessionResponse]:
     """Start a recording session
 
@@ -71,14 +70,14 @@ def sync_detailed(
     client.
 
     Args:
-        body (StartSessionRequest | Unset):
+        body (StartSessionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | StartSessionResponse]
+        Response[Union[Any, StartSessionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +94,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: StartSessionRequest | Unset = UNSET,
+    body: StartSessionRequest,
 ) -> Any | StartSessionResponse | None:
     """Start a recording session
 
@@ -104,14 +103,14 @@ def sync(
     client.
 
     Args:
-        body (StartSessionRequest | Unset):
+        body (StartSessionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | StartSessionResponse
+        Union[Any, StartSessionResponse]
     """
 
     return sync_detailed(
@@ -123,7 +122,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: StartSessionRequest | Unset = UNSET,
+    body: StartSessionRequest,
 ) -> Response[Any | StartSessionResponse]:
     """Start a recording session
 
@@ -132,14 +131,14 @@ async def asyncio_detailed(
     client.
 
     Args:
-        body (StartSessionRequest | Unset):
+        body (StartSessionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | StartSessionResponse]
+        Response[Union[Any, StartSessionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -154,7 +153,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: StartSessionRequest | Unset = UNSET,
+    body: StartSessionRequest,
 ) -> Any | StartSessionResponse | None:
     """Start a recording session
 
@@ -163,14 +162,14 @@ async def asyncio(
     client.
 
     Args:
-        body (StartSessionRequest | Unset):
+        body (StartSessionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | StartSessionResponse
+        Union[Any, StartSessionResponse]
     """
 
     return (

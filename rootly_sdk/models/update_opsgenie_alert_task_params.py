@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -30,29 +28,28 @@ class UpdateOpsgenieAlertTaskParams:
         alert_id (str): Opsgenie Alert ID
         priority (UpdateOpsgenieAlertTaskParamsPriority):
         completion (UpdateOpsgenieAlertTaskParamsCompletion):
-        task_type (UpdateOpsgenieAlertTaskParamsTaskType | Unset):
-        message (str | Unset): Message of the alert
-        description (str | Unset): Description field of the alert that is generally used to provide a detailed
+        task_type (Union[Unset, UpdateOpsgenieAlertTaskParamsTaskType]):
+        message (Union[Unset, str]): Message of the alert
+        description (Union[Unset, str]): Description field of the alert that is generally used to provide a detailed
             information about the alert
     """
 
     alert_id: str
     priority: UpdateOpsgenieAlertTaskParamsPriority
-    completion: UpdateOpsgenieAlertTaskParamsCompletion
-    task_type: UpdateOpsgenieAlertTaskParamsTaskType | Unset = UNSET
-    message: str | Unset = UNSET
-    description: str | Unset = UNSET
+    completion: "UpdateOpsgenieAlertTaskParamsCompletion"
+    task_type: Unset | UpdateOpsgenieAlertTaskParamsTaskType = UNSET
+    message: Unset | str = UNSET
+    description: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         alert_id = self.alert_id
 
         priority: str = self.priority
 
         completion = self.completion.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -90,7 +87,7 @@ class UpdateOpsgenieAlertTaskParams:
         completion = UpdateOpsgenieAlertTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateOpsgenieAlertTaskParamsTaskType | Unset
+        task_type: Unset | UpdateOpsgenieAlertTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

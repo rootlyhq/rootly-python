@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,27 +16,27 @@ class Playbook:
         title (str): The title of the playbook
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        summary (None | str | Unset): The summary of the playbook
-        external_url (None | str | Unset): The external url of the playbook
-        severity_ids (list[str] | None | Unset): The Severity IDs to attach to the incident
-        environment_ids (list[str] | None | Unset): The Environment IDs to attach to the incident
-        functionality_ids (list[str] | None | Unset): The Functionality IDs to attach to the incident
-        service_ids (list[str] | None | Unset): The Service IDs to attach to the incident
-        group_ids (list[str] | None | Unset): The Team IDs to attach to the incident
-        incident_type_ids (list[str] | None | Unset): The Incident Type IDs to attach to the incident
+        summary (Union[None, Unset, str]): The summary of the playbook
+        external_url (Union[None, Unset, str]): The external url of the playbook
+        severity_ids (Union[None, Unset, list[str]]): The Severity IDs to attach to the incident
+        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the incident
+        functionality_ids (Union[None, Unset, list[str]]): The Functionality IDs to attach to the incident
+        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the incident
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the incident
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the incident
     """
 
     title: str
     created_at: str
     updated_at: str
-    summary: None | str | Unset = UNSET
-    external_url: None | str | Unset = UNSET
-    severity_ids: list[str] | None | Unset = UNSET
-    environment_ids: list[str] | None | Unset = UNSET
-    functionality_ids: list[str] | None | Unset = UNSET
-    service_ids: list[str] | None | Unset = UNSET
-    group_ids: list[str] | None | Unset = UNSET
-    incident_type_ids: list[str] | None | Unset = UNSET
+    summary: None | Unset | str = UNSET
+    external_url: None | Unset | str = UNSET
+    severity_ids: None | Unset | list[str] = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    functionality_ids: None | Unset | list[str] = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    group_ids: None | Unset | list[str] = UNSET
+    incident_type_ids: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,19 +46,19 @@ class Playbook:
 
         updated_at = self.updated_at
 
-        summary: None | str | Unset
+        summary: None | Unset | str
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
             summary = self.summary
 
-        external_url: None | str | Unset
+        external_url: None | Unset | str
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        severity_ids: list[str] | None | Unset
+        severity_ids: None | Unset | list[str]
         if isinstance(self.severity_ids, Unset):
             severity_ids = UNSET
         elif isinstance(self.severity_ids, list):
@@ -69,7 +67,7 @@ class Playbook:
         else:
             severity_ids = self.severity_ids
 
-        environment_ids: list[str] | None | Unset
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -78,7 +76,7 @@ class Playbook:
         else:
             environment_ids = self.environment_ids
 
-        functionality_ids: list[str] | None | Unset
+        functionality_ids: None | Unset | list[str]
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -87,7 +85,7 @@ class Playbook:
         else:
             functionality_ids = self.functionality_ids
 
-        service_ids: list[str] | None | Unset
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -96,7 +94,7 @@ class Playbook:
         else:
             service_ids = self.service_ids
 
-        group_ids: list[str] | None | Unset
+        group_ids: None | Unset | list[str]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -105,7 +103,7 @@ class Playbook:
         else:
             group_ids = self.group_ids
 
-        incident_type_ids: list[str] | None | Unset
+        incident_type_ids: None | Unset | list[str]
         if isinstance(self.incident_type_ids, Unset):
             incident_type_ids = UNSET
         elif isinstance(self.incident_type_ids, list):
@@ -151,25 +149,25 @@ class Playbook:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_summary(data: object) -> None | str | Unset:
+        def _parse_summary(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
-        def _parse_external_url(data: object) -> None | str | Unset:
+        def _parse_external_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
-        def _parse_severity_ids(data: object) -> list[str] | None | Unset:
+        def _parse_severity_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -180,13 +178,13 @@ class Playbook:
                 severity_ids_type_0 = cast(list[str], data)
 
                 return severity_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         severity_ids = _parse_severity_ids(d.pop("severity_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> list[str] | None | Unset:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -197,13 +195,13 @@ class Playbook:
                 environment_ids_type_0 = cast(list[str], data)
 
                 return environment_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> list[str] | None | Unset:
+        def _parse_functionality_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -214,13 +212,13 @@ class Playbook:
                 functionality_ids_type_0 = cast(list[str], data)
 
                 return functionality_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> list[str] | None | Unset:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -231,13 +229,13 @@ class Playbook:
                 service_ids_type_0 = cast(list[str], data)
 
                 return service_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> list[str] | None | Unset:
+        def _parse_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -248,13 +246,13 @@ class Playbook:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_incident_type_ids(data: object) -> list[str] | None | Unset:
+        def _parse_incident_type_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -265,9 +263,9 @@ class Playbook:
                 incident_type_ids_type_0 = cast(list[str], data)
 
                 return incident_type_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(None | Unset | list[str], data)
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 

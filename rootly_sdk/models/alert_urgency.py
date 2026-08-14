@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,11 +18,13 @@ class AlertUrgency:
         position (int): Position of the alert urgency
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        id (str | Unset): Unique ID of the alert urgency
-        urgency (None | str | Unset): The urgency level
-        color (None | str | Unset): The color associated with this urgency level
-        team_id (int | Unset): The ID of the team this urgency belongs to
-        deleted_at (None | str | Unset): Date of deletion
+        id (Union[Unset, str]): Unique ID of the alert urgency
+        retrigger_timeout_minutes (Union[None, Unset, int]): Re-trigger acknowledged alerts of this urgency after N
+            minutes; null inherits the workspace default, negative = never.
+        urgency (Union[None, Unset, str]): The urgency level
+        color (Union[None, Unset, str]): The color associated with this urgency level
+        team_id (Union[Unset, int]): The ID of the team this urgency belongs to
+        deleted_at (Union[None, Unset, str]): Date of deletion
     """
 
     name: str
@@ -32,11 +32,12 @@ class AlertUrgency:
     position: int
     created_at: str
     updated_at: str
-    id: str | Unset = UNSET
-    urgency: None | str | Unset = UNSET
-    color: None | str | Unset = UNSET
-    team_id: int | Unset = UNSET
-    deleted_at: None | str | Unset = UNSET
+    id: Unset | str = UNSET
+    retrigger_timeout_minutes: None | Unset | int = UNSET
+    urgency: None | Unset | str = UNSET
+    color: None | Unset | str = UNSET
+    team_id: Unset | int = UNSET
+    deleted_at: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,13 +53,19 @@ class AlertUrgency:
 
         id = self.id
 
-        urgency: None | str | Unset
+        retrigger_timeout_minutes: None | Unset | int
+        if isinstance(self.retrigger_timeout_minutes, Unset):
+            retrigger_timeout_minutes = UNSET
+        else:
+            retrigger_timeout_minutes = self.retrigger_timeout_minutes
+
+        urgency: None | Unset | str
         if isinstance(self.urgency, Unset):
             urgency = UNSET
         else:
             urgency = self.urgency
 
-        color: None | str | Unset
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
@@ -66,7 +73,7 @@ class AlertUrgency:
 
         team_id = self.team_id
 
-        deleted_at: None | str | Unset
+        deleted_at: None | Unset | str
         if isinstance(self.deleted_at, Unset):
             deleted_at = UNSET
         else:
@@ -85,6 +92,8 @@ class AlertUrgency:
         )
         if id is not UNSET:
             field_dict["id"] = id
+        if retrigger_timeout_minutes is not UNSET:
+            field_dict["retrigger_timeout_minutes"] = retrigger_timeout_minutes
         if urgency is not UNSET:
             field_dict["urgency"] = urgency
         if color is not UNSET:
@@ -111,32 +120,41 @@ class AlertUrgency:
 
         id = d.pop("id", UNSET)
 
-        def _parse_urgency(data: object) -> None | str | Unset:
+        def _parse_retrigger_timeout_minutes(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | int, data)
+
+        retrigger_timeout_minutes = _parse_retrigger_timeout_minutes(d.pop("retrigger_timeout_minutes", UNSET))
+
+        def _parse_urgency(data: object) -> None | Unset | str:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | Unset | str, data)
 
         urgency = _parse_urgency(d.pop("urgency", UNSET))
 
-        def _parse_color(data: object) -> None | str | Unset:
+        def _parse_color(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
         team_id = d.pop("team_id", UNSET)
 
-        def _parse_deleted_at(data: object) -> None | str | Unset:
+        def _parse_deleted_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         deleted_at = _parse_deleted_at(d.pop("deleted_at", UNSET))
 
@@ -147,6 +165,7 @@ class AlertUrgency:
             created_at=created_at,
             updated_at=updated_at,
             id=id,
+            retrigger_timeout_minutes=retrigger_timeout_minutes,
             urgency=urgency,
             color=color,
             team_id=team_id,

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Union
 
 import httpx
 
@@ -14,7 +14,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
+    body: Union["BulkDestroyTeamsType0", "BulkDestroyTeamsType1"],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,6 +23,7 @@ def _get_kwargs(
         "url": "/v1/teams/bulk_delete",
     }
 
+    _kwargs["json"]: dict[str, Any]
     if isinstance(body, BulkDestroyTeamsType0):
         _kwargs["json"] = body.to_dict()
     else:
@@ -36,7 +37,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
+) -> BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkDestroyTeamsResponse.from_dict(response.json())
 
@@ -49,14 +50,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> BulkDestroyTeamsResponse | ErrorsList:
+        def _parse_response_422(data: object) -> Union["BulkDestroyTeamsResponse", "ErrorsList"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -76,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
+) -> Response[BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -88,23 +89,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
+    body: Union["BulkDestroyTeamsType0", "BulkDestroyTeamsType1"],
+) -> Response[BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"]]:
     """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
     Args:
-        body (BulkDestroyTeamsType0 | BulkDestroyTeamsType1): Two mutually exclusive modes. Pass
-            exactly one of: external_ids (delete specific records) or managed_by (prune all managed
-            records not in keep set).
+        body (Union['BulkDestroyTeamsType0', 'BulkDestroyTeamsType1']): Two mutually exclusive
+            modes. Pass exactly one of: external_ids (delete specific records) or managed_by (prune
+            all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]
+        Response[Union[BulkDestroyTeamsResponse, ErrorsList, Union['BulkDestroyTeamsResponse', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -121,23 +122,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
+    body: Union["BulkDestroyTeamsType0", "BulkDestroyTeamsType1"],
+) -> BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"] | None:
     """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
     Args:
-        body (BulkDestroyTeamsType0 | BulkDestroyTeamsType1): Two mutually exclusive modes. Pass
-            exactly one of: external_ids (delete specific records) or managed_by (prune all managed
-            records not in keep set).
+        body (Union['BulkDestroyTeamsType0', 'BulkDestroyTeamsType1']): Two mutually exclusive
+            modes. Pass exactly one of: external_ids (delete specific records) or managed_by (prune
+            all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList
+        Union[BulkDestroyTeamsResponse, ErrorsList, Union['BulkDestroyTeamsResponse', 'ErrorsList']]
     """
 
     return sync_detailed(
@@ -149,23 +150,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-) -> Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]:
+    body: Union["BulkDestroyTeamsType0", "BulkDestroyTeamsType1"],
+) -> Response[BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"]]:
     """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
     Args:
-        body (BulkDestroyTeamsType0 | BulkDestroyTeamsType1): Two mutually exclusive modes. Pass
-            exactly one of: external_ids (delete specific records) or managed_by (prune all managed
-            records not in keep set).
+        body (Union['BulkDestroyTeamsType0', 'BulkDestroyTeamsType1']): Two mutually exclusive
+            modes. Pass exactly one of: external_ids (delete specific records) or managed_by (prune
+            all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList]
+        Response[Union[BulkDestroyTeamsResponse, ErrorsList, Union['BulkDestroyTeamsResponse', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -180,23 +181,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: BulkDestroyTeamsType0 | BulkDestroyTeamsType1,
-) -> BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList | None:
+    body: Union["BulkDestroyTeamsType0", "BulkDestroyTeamsType1"],
+) -> BulkDestroyTeamsResponse | ErrorsList | Union["BulkDestroyTeamsResponse", "ErrorsList"] | None:
     """Bulk delete Teams
 
      Delete teams by external_id list, or prune by managed_by source. Two mutually exclusive modes.
 
     Args:
-        body (BulkDestroyTeamsType0 | BulkDestroyTeamsType1): Two mutually exclusive modes. Pass
-            exactly one of: external_ids (delete specific records) or managed_by (prune all managed
-            records not in keep set).
+        body (Union['BulkDestroyTeamsType0', 'BulkDestroyTeamsType1']): Two mutually exclusive
+            modes. Pass exactly one of: external_ids (delete specific records) or managed_by (prune
+            all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkDestroyTeamsResponse | BulkDestroyTeamsResponse | ErrorsList | ErrorsList
+        Union[BulkDestroyTeamsResponse, ErrorsList, Union['BulkDestroyTeamsResponse', 'ErrorsList']]
     """
 
     return (

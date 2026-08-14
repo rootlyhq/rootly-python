@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,7 +11,6 @@ class RestartIncidentDataAttributes:
     """ """
 
     def to_dict(self) -> dict[str, Any]:
-
         field_dict: dict[str, Any] = {}
 
         return field_dict

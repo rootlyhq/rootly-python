@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -9,25 +8,22 @@ from ...client import AuthenticatedClient, Client
 from ...models.api_key_with_token_response import ApiKeyWithTokenResponse
 from ...models.errors_list import ErrorsList
 from ...models.rotate_api_key import RotateApiKey
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     id: str,
     *,
-    body: RotateApiKey | Unset = UNSET,
+    body: RotateApiKey,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/api_keys/{id}/rotate".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/api_keys/{id}/rotate",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -69,7 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: RotateApiKey | Unset = UNSET,
+    body: RotateApiKey,
 ) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     """Rotate an API key
 
@@ -96,14 +92,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        body (RotateApiKey | Unset):
+        body (RotateApiKey):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyWithTokenResponse | ErrorsList]
+        Response[Union[ApiKeyWithTokenResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -122,7 +118,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: RotateApiKey | Unset = UNSET,
+    body: RotateApiKey,
 ) -> ApiKeyWithTokenResponse | ErrorsList | None:
     """Rotate an API key
 
@@ -149,14 +145,14 @@ def sync(
 
     Args:
         id (str):
-        body (RotateApiKey | Unset):
+        body (RotateApiKey):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyWithTokenResponse | ErrorsList
+        Union[ApiKeyWithTokenResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -170,7 +166,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: RotateApiKey | Unset = UNSET,
+    body: RotateApiKey,
 ) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     """Rotate an API key
 
@@ -197,14 +193,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        body (RotateApiKey | Unset):
+        body (RotateApiKey):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyWithTokenResponse | ErrorsList]
+        Response[Union[ApiKeyWithTokenResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -221,7 +217,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: RotateApiKey | Unset = UNSET,
+    body: RotateApiKey,
 ) -> ApiKeyWithTokenResponse | ErrorsList | None:
     """Rotate an API key
 
@@ -248,14 +244,14 @@ async def asyncio(
 
     Args:
         id (str):
-        body (RotateApiKey | Unset):
+        body (RotateApiKey):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyWithTokenResponse | ErrorsList
+        Union[ApiKeyWithTokenResponse, ErrorsList]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,6 +9,12 @@ from ..models.incident_status_page_event_status import (
     check_incident_status_page_event_status,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.incident_status_page_event_status_page_components_item import (
+        IncidentStatusPageEventStatusPageComponentsItem,
+    )
+
 
 T = TypeVar("T", bound="IncidentStatusPageEvent")
 
@@ -23,20 +27,23 @@ class IncidentStatusPageEvent:
         started_at (str): Date of start
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        status_page_id (str | Unset): Unique ID of the status page you wish to post the event to
-        status (IncidentStatusPageEventStatus | Unset): The status of the incident event
-        notify_subscribers (bool | Unset): Notify all status pages subscribers
-        should_tweet (bool | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
+        status_page_id (Union[Unset, str]): Unique ID of the status page you wish to post the event to
+        status (Union[Unset, IncidentStatusPageEventStatus]): The status of the incident event
+        notify_subscribers (Union[Unset, bool]): Notify all status pages subscribers
+        should_tweet (Union[Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your update
+        status_page_components (Union[Unset, list['IncidentStatusPageEventStatusPageComponentsItem']]): Affected status
+            page components recorded on the event and their statuses
     """
 
     event: str
     started_at: str
     created_at: str
     updated_at: str
-    status_page_id: str | Unset = UNSET
-    status: IncidentStatusPageEventStatus | Unset = UNSET
-    notify_subscribers: bool | Unset = UNSET
-    should_tweet: bool | Unset = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | IncidentStatusPageEventStatus = UNSET
+    notify_subscribers: Unset | bool = UNSET
+    should_tweet: Unset | bool = UNSET
+    status_page_components: Unset | list["IncidentStatusPageEventStatusPageComponentsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,13 +57,20 @@ class IncidentStatusPageEvent:
 
         status_page_id = self.status_page_id
 
-        status: str | Unset = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
         notify_subscribers = self.notify_subscribers
 
         should_tweet = self.should_tweet
+
+        status_page_components: Unset | list[dict[str, Any]] = UNSET
+        if not isinstance(self.status_page_components, Unset):
+            status_page_components = []
+            for status_page_components_item_data in self.status_page_components:
+                status_page_components_item = status_page_components_item_data.to_dict()
+                status_page_components.append(status_page_components_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -76,11 +90,17 @@ class IncidentStatusPageEvent:
             field_dict["notify_subscribers"] = notify_subscribers
         if should_tweet is not UNSET:
             field_dict["should_tweet"] = should_tweet
+        if status_page_components is not UNSET:
+            field_dict["status_page_components"] = status_page_components
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.incident_status_page_event_status_page_components_item import (
+            IncidentStatusPageEventStatusPageComponentsItem,
+        )
+
         d = dict(src_dict)
         event = d.pop("event")
 
@@ -93,7 +113,7 @@ class IncidentStatusPageEvent:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: IncidentStatusPageEventStatus | Unset
+        status: Unset | IncidentStatusPageEventStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -102,6 +122,15 @@ class IncidentStatusPageEvent:
         notify_subscribers = d.pop("notify_subscribers", UNSET)
 
         should_tweet = d.pop("should_tweet", UNSET)
+
+        status_page_components = []
+        _status_page_components = d.pop("status_page_components", UNSET)
+        for status_page_components_item_data in _status_page_components or []:
+            status_page_components_item = IncidentStatusPageEventStatusPageComponentsItem.from_dict(
+                status_page_components_item_data
+            )
+
+            status_page_components.append(status_page_components_item)
 
         incident_status_page_event = cls(
             event=event,
@@ -112,6 +141,7 @@ class IncidentStatusPageEvent:
             status=status,
             notify_subscribers=notify_subscribers,
             should_tweet=should_tweet,
+            status_page_components=status_page_components,
         )
 
         incident_status_page_event.additional_properties = d

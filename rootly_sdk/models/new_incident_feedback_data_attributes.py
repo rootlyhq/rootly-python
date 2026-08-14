@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -20,12 +18,12 @@ class NewIncidentFeedbackDataAttributes:
     Attributes:
         feedback (str): The feedback of the incident feedback
         rating (NewIncidentFeedbackDataAttributesRating): The rating of the incident feedback
-        anonymous (bool | Unset): Is the feedback anonymous?
+        anonymous (Union[Unset, bool]): Is the feedback anonymous?
     """
 
     feedback: str
     rating: NewIncidentFeedbackDataAttributesRating
-    anonymous: bool | Unset = UNSET
+    anonymous: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         feedback = self.feedback

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -27,37 +25,34 @@ T = TypeVar("T", bound="CreateGitlabIssueTaskParams")
 class CreateGitlabIssueTaskParams:
     """
     Attributes:
+        issue_type (CreateGitlabIssueTaskParamsIssueType): The issue type
         title (str): The issue title
         repository (CreateGitlabIssueTaskParamsRepository):
-        task_type (CreateGitlabIssueTaskParamsTaskType | Unset):
-        issue_type (CreateGitlabIssueTaskParamsIssueType | Unset): The issue type
-        description (str | Unset): The issue description
-        labels (str | Unset): The issue labels
-        due_date (str | Unset): The due date
+        task_type (Union[Unset, CreateGitlabIssueTaskParamsTaskType]):
+        description (Union[Unset, str]): The issue description
+        labels (Union[Unset, str]): The issue labels
+        due_date (Union[Unset, str]): The due date
     """
 
+    issue_type: CreateGitlabIssueTaskParamsIssueType
     title: str
-    repository: CreateGitlabIssueTaskParamsRepository
-    task_type: CreateGitlabIssueTaskParamsTaskType | Unset = UNSET
-    issue_type: CreateGitlabIssueTaskParamsIssueType | Unset = UNSET
-    description: str | Unset = UNSET
-    labels: str | Unset = UNSET
-    due_date: str | Unset = UNSET
+    repository: "CreateGitlabIssueTaskParamsRepository"
+    task_type: Unset | CreateGitlabIssueTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        issue_type: str = self.issue_type
 
         title = self.title
 
         repository = self.repository.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
-
-        issue_type: str | Unset = UNSET
-        if not isinstance(self.issue_type, Unset):
-            issue_type = self.issue_type
 
         description = self.description
 
@@ -69,14 +64,13 @@ class CreateGitlabIssueTaskParams:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "issue_type": issue_type,
                 "title": title,
                 "repository": repository,
             }
         )
         if task_type is not UNSET:
             field_dict["task_type"] = task_type
-        if issue_type is not UNSET:
-            field_dict["issue_type"] = issue_type
         if description is not UNSET:
             field_dict["description"] = description
         if labels is not UNSET:
@@ -91,23 +85,18 @@ class CreateGitlabIssueTaskParams:
         from ..models.create_gitlab_issue_task_params_repository import CreateGitlabIssueTaskParamsRepository
 
         d = dict(src_dict)
+        issue_type = check_create_gitlab_issue_task_params_issue_type(d.pop("issue_type"))
+
         title = d.pop("title")
 
         repository = CreateGitlabIssueTaskParamsRepository.from_dict(d.pop("repository"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateGitlabIssueTaskParamsTaskType | Unset
+        task_type: Unset | CreateGitlabIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_gitlab_issue_task_params_task_type(_task_type)
-
-        _issue_type = d.pop("issue_type", UNSET)
-        issue_type: CreateGitlabIssueTaskParamsIssueType | Unset
-        if isinstance(_issue_type, Unset):
-            issue_type = UNSET
-        else:
-            issue_type = check_create_gitlab_issue_task_params_issue_type(_issue_type)
 
         description = d.pop("description", UNSET)
 
@@ -116,10 +105,10 @@ class CreateGitlabIssueTaskParams:
         due_date = d.pop("due_date", UNSET)
 
         create_gitlab_issue_task_params = cls(
+            issue_type=issue_type,
             title=title,
             repository=repository,
             task_type=task_type,
-            issue_type=issue_type,
             description=description,
             labels=labels,
             due_date=due_date,

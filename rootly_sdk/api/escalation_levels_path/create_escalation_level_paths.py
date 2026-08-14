@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/escalation_paths/{escalation_policy_path_id}/escalation_levels".format(
-            escalation_policy_path_id=quote(str(escalation_policy_path_id), safe=""),
-        ),
+        "url": f"/v1/escalation_paths/{escalation_policy_path_id}/escalation_levels",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | EscalationPolicyLevelResponse]
+        Response[Union[ErrorsList, EscalationPolicyLevelResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | EscalationPolicyLevelResponse
+        Union[ErrorsList, EscalationPolicyLevelResponse]
     """
 
     return sync_detailed(
@@ -151,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | EscalationPolicyLevelResponse]
+        Response[Union[ErrorsList, EscalationPolicyLevelResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | EscalationPolicyLevelResponse
+        Union[ErrorsList, EscalationPolicyLevelResponse]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,16 +17,16 @@ T = TypeVar("T", bound="OncallRelationshipsUser")
 class OncallRelationshipsUser:
     """
     Attributes:
-        data (None | OncallRelationshipsUserDataType0 | Unset):
+        data (Union['OncallRelationshipsUserDataType0', None, Unset]):
     """
 
-    data: None | OncallRelationshipsUserDataType0 | Unset = UNSET
+    data: Union["OncallRelationshipsUserDataType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.oncall_relationships_user_data_type_0 import OncallRelationshipsUserDataType0
 
-        data: dict[str, Any] | None | Unset
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, OncallRelationshipsUserDataType0):
@@ -50,7 +48,7 @@ class OncallRelationshipsUser:
 
         d = dict(src_dict)
 
-        def _parse_data(data: object) -> None | OncallRelationshipsUserDataType0 | Unset:
+        def _parse_data(data: object) -> Union["OncallRelationshipsUserDataType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -61,9 +59,9 @@ class OncallRelationshipsUser:
                 data_type_0 = OncallRelationshipsUserDataType0.from_dict(data)
 
                 return data_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | OncallRelationshipsUserDataType0 | Unset, data)
+            return cast(Union["OncallRelationshipsUserDataType0", None, Unset], data)
 
         data = _parse_data(d.pop("data", UNSET))
 

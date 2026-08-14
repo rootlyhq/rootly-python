@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,19 +16,19 @@ class Secret:
         name (str): The name of the secret
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        secret (str | Unset): The redacted secret
-        hashicorp_vault_mount (str | Unset): The HashiCorp Vault secret mount path
-        hashicorp_vault_path (None | str | Unset): The HashiCorp Vault secret path
-        hashicorp_vault_version (int | Unset): The HashiCorp Vault secret version
+        secret (Union[Unset, str]): The redacted secret
+        hashicorp_vault_mount (Union[Unset, str]): The HashiCorp Vault secret mount path
+        hashicorp_vault_path (Union[None, Unset, str]): The HashiCorp Vault secret path
+        hashicorp_vault_version (Union[Unset, int]): The HashiCorp Vault secret version
     """
 
     name: str
     created_at: str
     updated_at: str
-    secret: str | Unset = UNSET
-    hashicorp_vault_mount: str | Unset = UNSET
-    hashicorp_vault_path: None | str | Unset = UNSET
-    hashicorp_vault_version: int | Unset = UNSET
+    secret: Unset | str = UNSET
+    hashicorp_vault_mount: Unset | str = UNSET
+    hashicorp_vault_path: None | Unset | str = UNSET
+    hashicorp_vault_version: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +42,7 @@ class Secret:
 
         hashicorp_vault_mount = self.hashicorp_vault_mount
 
-        hashicorp_vault_path: None | str | Unset
+        hashicorp_vault_path: None | Unset | str
         if isinstance(self.hashicorp_vault_path, Unset):
             hashicorp_vault_path = UNSET
         else:
@@ -85,12 +83,12 @@ class Secret:
 
         hashicorp_vault_mount = d.pop("hashicorp_vault_mount", UNSET)
 
-        def _parse_hashicorp_vault_path(data: object) -> None | str | Unset:
+        def _parse_hashicorp_vault_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         hashicorp_vault_path = _parse_hashicorp_vault_path(d.pop("hashicorp_vault_path", UNSET))
 

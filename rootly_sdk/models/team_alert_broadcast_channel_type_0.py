@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -16,12 +14,12 @@ class TeamAlertBroadcastChannelType0:
     """Slack channel to broadcast alerts to
 
     Attributes:
-        id (str | Unset): Slack channel ID
-        name (str | Unset): Slack channel name
+        id (Union[Unset, str]): Slack channel ID
+        name (Union[Unset, str]): Slack channel name
     """
 
-    id: str | Unset = UNSET
-    name: str | Unset = UNSET
+    id: Unset | str = UNSET
+    name: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -29,36 +27,35 @@ T = TypeVar("T", bound="CreateMicrosoftTeamsChatTaskParams")
 class CreateMicrosoftTeamsChatTaskParams:
     """
     Attributes:
-        members (list[CreateMicrosoftTeamsChatTaskParamsMembersItem]): Array of members to include in the chat
-        task_type (CreateMicrosoftTeamsChatTaskParamsTaskType | Unset):
-        topic (None | str | Unset): Chat topic (only for group chats)
-        chat_type (CreateMicrosoftTeamsChatTaskParamsChatType | Unset): Type of chat to create Default: 'group'.
+        members (list['CreateMicrosoftTeamsChatTaskParamsMembersItem']): Array of members to include in the chat
+        task_type (Union[Unset, CreateMicrosoftTeamsChatTaskParamsTaskType]):
+        topic (Union[None, Unset, str]): Chat topic (only for group chats)
+        chat_type (Union[Unset, CreateMicrosoftTeamsChatTaskParamsChatType]): Type of chat to create Default: 'group'.
     """
 
-    members: list[CreateMicrosoftTeamsChatTaskParamsMembersItem]
-    task_type: CreateMicrosoftTeamsChatTaskParamsTaskType | Unset = UNSET
-    topic: None | str | Unset = UNSET
-    chat_type: CreateMicrosoftTeamsChatTaskParamsChatType | Unset = "group"
+    members: list["CreateMicrosoftTeamsChatTaskParamsMembersItem"]
+    task_type: Unset | CreateMicrosoftTeamsChatTaskParamsTaskType = UNSET
+    topic: None | Unset | str = UNSET
+    chat_type: Unset | CreateMicrosoftTeamsChatTaskParamsChatType = "group"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         members = []
         for members_item_data in self.members:
             members_item = members_item_data.to_dict()
             members.append(members_item)
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        topic: None | str | Unset
+        topic: None | Unset | str
         if isinstance(self.topic, Unset):
             topic = UNSET
         else:
             topic = self.topic
 
-        chat_type: str | Unset = UNSET
+        chat_type: Unset | str = UNSET
         if not isinstance(self.chat_type, Unset):
             chat_type = self.chat_type
 
@@ -93,23 +90,23 @@ class CreateMicrosoftTeamsChatTaskParams:
             members.append(members_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateMicrosoftTeamsChatTaskParamsTaskType | Unset
+        task_type: Unset | CreateMicrosoftTeamsChatTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_microsoft_teams_chat_task_params_task_type(_task_type)
 
-        def _parse_topic(data: object) -> None | str | Unset:
+        def _parse_topic(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         topic = _parse_topic(d.pop("topic", UNSET))
 
         _chat_type = d.pop("chat_type", UNSET)
-        chat_type: CreateMicrosoftTeamsChatTaskParamsChatType | Unset
+        chat_type: Unset | CreateMicrosoftTeamsChatTaskParamsChatType
         if isinstance(_chat_type, Unset):
             chat_type = UNSET
         else:

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,12 +19,12 @@ class NewScheduleRotationDataAttributesScheduleRotationMembersType0Item:
     Attributes:
         member_type (NewScheduleRotationDataAttributesScheduleRotationMembersType0ItemMemberType): Type of member
         member_id (str): ID of the member
-        position (int | Unset): Position of the member in rotation
+        position (Union[Unset, int]): Position of the member in rotation
     """
 
     member_type: NewScheduleRotationDataAttributesScheduleRotationMembersType0ItemMemberType
     member_id: str
-    position: int | Unset = UNSET
+    position: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

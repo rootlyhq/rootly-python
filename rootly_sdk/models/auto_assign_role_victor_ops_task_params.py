@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -25,21 +23,20 @@ class AutoAssignRoleVictorOpsTaskParams:
     Attributes:
         incident_role_id (str): The role id
         team (AutoAssignRoleVictorOpsTaskParamsTeam):
-        task_type (AutoAssignRoleVictorOpsTaskParamsTaskType | Unset):
+        task_type (Union[Unset, AutoAssignRoleVictorOpsTaskParamsTaskType]):
     """
 
     incident_role_id: str
-    team: AutoAssignRoleVictorOpsTaskParamsTeam
-    task_type: AutoAssignRoleVictorOpsTaskParamsTaskType | Unset = UNSET
+    team: "AutoAssignRoleVictorOpsTaskParamsTeam"
+    task_type: Unset | AutoAssignRoleVictorOpsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         incident_role_id = self.incident_role_id
 
         team = self.team.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -66,7 +63,7 @@ class AutoAssignRoleVictorOpsTaskParams:
         team = AutoAssignRoleVictorOpsTaskParamsTeam.from_dict(d.pop("team"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: AutoAssignRoleVictorOpsTaskParamsTaskType | Unset
+        task_type: Unset | AutoAssignRoleVictorOpsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

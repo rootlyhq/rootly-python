@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, cast
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,14 +12,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: UUID | str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/incidents/{id}/detach_from_parent".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incidents/{id}/detach_from_parent",
     }
 
     return _kwargs
@@ -61,7 +57,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorsList | IncidentResponse]:
@@ -70,14 +66,14 @@ def sync_detailed(
      Detach a sub-incident from its parent incident
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList | IncidentResponse]
+        Response[Union[Any, ErrorsList, IncidentResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -92,7 +88,7 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorsList | IncidentResponse | None:
@@ -101,14 +97,14 @@ def sync(
      Detach a sub-incident from its parent incident
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList | IncidentResponse
+        Union[Any, ErrorsList, IncidentResponse]
     """
 
     return sync_detailed(
@@ -118,7 +114,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any | ErrorsList | IncidentResponse]:
@@ -127,14 +123,14 @@ async def asyncio_detailed(
      Detach a sub-incident from its parent incident
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList | IncidentResponse]
+        Response[Union[Any, ErrorsList, IncidentResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +143,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
 ) -> Any | ErrorsList | IncidentResponse | None:
@@ -156,14 +152,14 @@ async def asyncio(
      Detach a sub-incident from its parent incident
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList | IncidentResponse
+        Union[Any, ErrorsList, IncidentResponse]
     """
 
     return (

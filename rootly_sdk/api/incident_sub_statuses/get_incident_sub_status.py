@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 
 import httpx
 
@@ -14,12 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetIncidentSubStatusInclude | Unset = UNSET,
+    include: Unset | GetIncidentSubStatusInclude = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,9 +27,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incident_sub_statuses/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incident_sub_statuses/{id}",
         "params": params,
     }
 
@@ -67,7 +63,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetIncidentSubStatusInclude | Unset = UNSET,
+    include: Unset | GetIncidentSubStatusInclude = UNSET,
 ) -> Response[IncidentSubStatusResponse]:
     """Retrieves incident_sub_status
 
@@ -75,7 +71,7 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (GetIncidentSubStatusInclude | Unset):
+        include (Union[Unset, GetIncidentSubStatusInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -101,7 +97,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetIncidentSubStatusInclude | Unset = UNSET,
+    include: Unset | GetIncidentSubStatusInclude = UNSET,
 ) -> IncidentSubStatusResponse | None:
     """Retrieves incident_sub_status
 
@@ -109,7 +105,7 @@ def sync(
 
     Args:
         id (str):
-        include (GetIncidentSubStatusInclude | Unset):
+        include (Union[Unset, GetIncidentSubStatusInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,7 +126,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetIncidentSubStatusInclude | Unset = UNSET,
+    include: Unset | GetIncidentSubStatusInclude = UNSET,
 ) -> Response[IncidentSubStatusResponse]:
     """Retrieves incident_sub_status
 
@@ -138,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (GetIncidentSubStatusInclude | Unset):
+        include (Union[Unset, GetIncidentSubStatusInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -162,7 +158,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetIncidentSubStatusInclude | Unset = UNSET,
+    include: Unset | GetIncidentSubStatusInclude = UNSET,
 ) -> IncidentSubStatusResponse | None:
     """Retrieves incident_sub_status
 
@@ -170,7 +166,7 @@ async def asyncio(
 
     Args:
         id (str):
-        include (GetIncidentSubStatusInclude | Unset):
+        include (Union[Unset, GetIncidentSubStatusInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -26,13 +24,13 @@ class RemoveGoogleDocsPermissionsTaskParams:
         file_id (str): The Google Doc file ID
         attribute_to_query_by (RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy):  Default: 'email_address'.
         value (str):
-        task_type (RemoveGoogleDocsPermissionsTaskParamsTaskType | Unset):
+        task_type (Union[Unset, RemoveGoogleDocsPermissionsTaskParamsTaskType]):
     """
 
     file_id: str
     value: str
     attribute_to_query_by: RemoveGoogleDocsPermissionsTaskParamsAttributeToQueryBy = "email_address"
-    task_type: RemoveGoogleDocsPermissionsTaskParamsTaskType | Unset = UNSET
+    task_type: Unset | RemoveGoogleDocsPermissionsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +40,7 @@ class RemoveGoogleDocsPermissionsTaskParams:
 
         value = self.value
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -72,7 +70,7 @@ class RemoveGoogleDocsPermissionsTaskParams:
         value = d.pop("value")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: RemoveGoogleDocsPermissionsTaskParamsTaskType | Unset
+        task_type: Unset | RemoveGoogleDocsPermissionsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

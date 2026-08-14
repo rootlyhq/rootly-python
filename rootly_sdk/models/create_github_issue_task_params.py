@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,55 +25,54 @@ class CreateGithubIssueTaskParams:
     Attributes:
         title (str): The issue title
         repository (CreateGithubIssueTaskParamsRepository):
-        task_type (CreateGithubIssueTaskParamsTaskType | Unset):
-        body (str | Unset): The issue body
-        labels (list[CreateGithubIssueTaskParamsLabelsItem] | Unset): The issue labels
-        issue_type (CreateGithubIssueTaskParamsIssueType | Unset): The issue type
-        parent_issue_number (None | str | Unset): The parent issue number for sub-issue linking
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, CreateGithubIssueTaskParamsTaskType]):
+        body (Union[Unset, str]): The issue body
+        labels (Union[Unset, list['CreateGithubIssueTaskParamsLabelsItem']]): The issue labels
+        issue_type (Union[Unset, CreateGithubIssueTaskParamsIssueType]): The issue type
+        parent_issue_number (Union[None, Unset, str]): The parent issue number for sub-issue linking
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
     """
 
     title: str
-    repository: CreateGithubIssueTaskParamsRepository
-    task_type: CreateGithubIssueTaskParamsTaskType | Unset = UNSET
-    body: str | Unset = UNSET
-    labels: list[CreateGithubIssueTaskParamsLabelsItem] | Unset = UNSET
-    issue_type: CreateGithubIssueTaskParamsIssueType | Unset = UNSET
-    parent_issue_number: None | str | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
+    repository: "CreateGithubIssueTaskParamsRepository"
+    task_type: Unset | CreateGithubIssueTaskParamsTaskType = UNSET
+    body: Unset | str = UNSET
+    labels: Unset | list["CreateGithubIssueTaskParamsLabelsItem"] = UNSET
+    issue_type: Union[Unset, "CreateGithubIssueTaskParamsIssueType"] = UNSET
+    parent_issue_number: None | Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         title = self.title
 
         repository = self.repository.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         body = self.body
 
-        labels: list[dict[str, Any]] | Unset = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        issue_type: dict[str, Any] | Unset = UNSET
+        issue_type: Unset | dict[str, Any] = UNSET
         if not isinstance(self.issue_type, Unset):
             issue_type = self.issue_type.to_dict()
 
-        parent_issue_number: None | str | Unset
+        parent_issue_number: None | Unset | str
         if isinstance(self.parent_issue_number, Unset):
             parent_issue_number = UNSET
         else:
             parent_issue_number = self.parent_issue_number
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -116,7 +113,7 @@ class CreateGithubIssueTaskParams:
         repository = CreateGithubIssueTaskParamsRepository.from_dict(d.pop("repository"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateGithubIssueTaskParamsTaskType | Unset
+        task_type: Unset | CreateGithubIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -124,37 +121,35 @@ class CreateGithubIssueTaskParams:
 
         body = d.pop("body", UNSET)
 
+        labels = []
         _labels = d.pop("labels", UNSET)
-        labels: list[CreateGithubIssueTaskParamsLabelsItem] | Unset = UNSET
-        if _labels is not UNSET:
-            labels = []
-            for labels_item_data in _labels:
-                labels_item = CreateGithubIssueTaskParamsLabelsItem.from_dict(labels_item_data)
+        for labels_item_data in _labels or []:
+            labels_item = CreateGithubIssueTaskParamsLabelsItem.from_dict(labels_item_data)
 
-                labels.append(labels_item)
+            labels.append(labels_item)
 
         _issue_type = d.pop("issue_type", UNSET)
-        issue_type: CreateGithubIssueTaskParamsIssueType | Unset
+        issue_type: Unset | CreateGithubIssueTaskParamsIssueType
         if isinstance(_issue_type, Unset):
             issue_type = UNSET
         else:
             issue_type = CreateGithubIssueTaskParamsIssueType.from_dict(_issue_type)
 
-        def _parse_parent_issue_number(data: object) -> None | str | Unset:
+        def _parse_parent_issue_number(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         parent_issue_number = _parse_parent_issue_number(d.pop("parent_issue_number", UNSET))
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

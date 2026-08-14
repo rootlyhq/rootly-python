@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -29,21 +27,20 @@ class ChangeSlackChannelPrivacyTaskParams:
     Attributes:
         channel (ChangeSlackChannelPrivacyTaskParamsChannel):
         privacy (ChangeSlackChannelPrivacyTaskParamsPrivacy):
-        task_type (ChangeSlackChannelPrivacyTaskParamsTaskType | Unset):
+        task_type (Union[Unset, ChangeSlackChannelPrivacyTaskParamsTaskType]):
     """
 
-    channel: ChangeSlackChannelPrivacyTaskParamsChannel
+    channel: "ChangeSlackChannelPrivacyTaskParamsChannel"
     privacy: ChangeSlackChannelPrivacyTaskParamsPrivacy
-    task_type: ChangeSlackChannelPrivacyTaskParamsTaskType | Unset = UNSET
+    task_type: Unset | ChangeSlackChannelPrivacyTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         channel = self.channel.to_dict()
 
         privacy: str = self.privacy
 
-        task_type: str | Unset = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,7 +67,7 @@ class ChangeSlackChannelPrivacyTaskParams:
         privacy = check_change_slack_channel_privacy_task_params_privacy(d.pop("privacy"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: ChangeSlackChannelPrivacyTaskParamsTaskType | Unset
+        task_type: Unset | ChangeSlackChannelPrivacyTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

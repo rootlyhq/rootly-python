@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any
-from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/api_keys/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/api_keys/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -90,7 +87,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyResponse | ErrorsList]
+        Response[Union[ApiKeyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -130,7 +127,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyResponse | ErrorsList
+        Union[ApiKeyResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -165,7 +162,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyResponse | ErrorsList]
+        Response[Union[ApiKeyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -203,7 +200,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyResponse | ErrorsList
+        Union[ApiKeyResponse, ErrorsList]
     """
 
     return (

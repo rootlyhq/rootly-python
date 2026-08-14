@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -15,16 +13,16 @@ T = TypeVar("T", bound="IncidentCustomFieldSelection")
 class IncidentCustomFieldSelection:
     """
     Attributes:
-        value (None | str): The value of the incident_custom_field_selection
+        value (Union[None, str]): The value of the incident_custom_field_selection
         selected_option_ids (list[int]):
-        incident_id (str | Unset):
-        custom_field_id (int | Unset):
+        incident_id (Union[Unset, str]):
+        custom_field_id (Union[Unset, int]):
     """
 
     value: None | str
     selected_option_ids: list[int]
-    incident_id: str | Unset = UNSET
-    custom_field_id: int | Unset = UNSET
+    incident_id: Unset | str = UNSET
+    custom_field_id: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
