@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -34,9 +34,9 @@ class CreateMicrosoftTeamsChannelTaskParams:
 
     team: "CreateMicrosoftTeamsChannelTaskParamsTeam"
     title: str
-    task_type: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
-    private: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate] = "auto"
+    task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
+    private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate = "auto"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +44,13 @@ class CreateMicrosoftTeamsChannelTaskParams:
 
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        private: Union[Unset, str] = UNSET
+        private: Unset | str = UNSET
         if not isinstance(self.private, Unset):
             private = self.private
 
@@ -81,7 +81,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType]
+        task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -90,7 +90,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         description = d.pop("description", UNSET)
 
         _private = d.pop("private", UNSET)
-        private: Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate]
+        private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate
         if isinstance(_private, Unset):
             private = UNSET
         else:

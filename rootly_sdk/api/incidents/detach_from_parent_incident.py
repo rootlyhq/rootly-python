@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 from uuid import UUID
 
 import httpx
@@ -12,7 +12,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "put",
@@ -23,8 +23,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ErrorsList, IncidentResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | ErrorsList | IncidentResponse | None:
     if response.status_code == 200:
         response_200 = IncidentResponse.from_dict(response.json())
 
@@ -46,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ErrorsList, IncidentResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | ErrorsList | IncidentResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,10 +57,10 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList, IncidentResponse]]:
+) -> Response[Any | ErrorsList | IncidentResponse]:
     """Detach an incident from its parent
 
      Detach a sub-incident from its parent incident
@@ -88,10 +88,10 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList, IncidentResponse]]:
+) -> Any | ErrorsList | IncidentResponse | None:
     """Detach an incident from its parent
 
      Detach a sub-incident from its parent incident
@@ -114,10 +114,10 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList, IncidentResponse]]:
+) -> Response[Any | ErrorsList | IncidentResponse]:
     """Detach an incident from its parent
 
      Detach a sub-incident from its parent incident
@@ -143,10 +143,10 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList, IncidentResponse]]:
+) -> Any | ErrorsList | IncidentResponse | None:
     """Detach an incident from its parent
 
      Detach a sub-incident from its parent incident

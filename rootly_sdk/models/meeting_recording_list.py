@@ -32,7 +32,7 @@ class MeetingRecordingList:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        meta: Union[Unset, dict[str, Any]] = UNSET
+        meta: Unset | dict[str, Any] = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
@@ -62,7 +62,7 @@ class MeetingRecordingList:
             data.append(data_item)
 
         _meta = d.pop("meta", UNSET)
-        meta: Union[Unset, Meta]
+        meta: Unset | Meta
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

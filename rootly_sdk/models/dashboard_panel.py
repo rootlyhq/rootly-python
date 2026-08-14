@@ -27,10 +27,10 @@ class DashboardPanel:
     """
 
     params: "DashboardPanelParams"
-    dashboard_id: Union[Unset, str] = UNSET
-    name: Union[None, Unset, str] = UNSET
+    dashboard_id: Unset | str = UNSET
+    name: None | Unset | str = UNSET
     position: Union["DashboardPanelPositionType0", None, Unset] = UNSET
-    data: Union[Unset, list["DashboardPanelDataItem"]] = UNSET
+    data: Unset | list["DashboardPanelDataItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,13 +40,13 @@ class DashboardPanel:
 
         dashboard_id = self.dashboard_id
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        position: Union[None, Unset, dict[str, Any]]
+        position: None | Unset | dict[str, Any]
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, DashboardPanelPositionType0):
@@ -54,7 +54,7 @@ class DashboardPanel:
         else:
             position = self.position
 
-        data: Union[Unset, list[dict[str, Any]]] = UNSET
+        data: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.data, Unset):
             data = []
             for data_item_data in self.data:
@@ -90,12 +90,12 @@ class DashboardPanel:
 
         dashboard_id = d.pop("dashboard_id", UNSET)
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 

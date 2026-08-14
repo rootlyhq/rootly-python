@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -34,43 +34,43 @@ class UpdateIncidentPostMortemDataAttributes:
         cause_ids (Union[None, Unset, list[str]]): The Cause IDs to attach to the incident retrospective
     """
 
-    title: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdateIncidentPostMortemDataAttributesStatus] = UNSET
-    started_at: Union[None, Unset, str] = UNSET
-    mitigated_at: Union[None, Unset, str] = UNSET
-    resolved_at: Union[None, Unset, str] = UNSET
-    show_timeline: Union[Unset, bool] = UNSET
-    show_timeline_trail: Union[Unset, bool] = UNSET
-    show_timeline_genius: Union[Unset, bool] = UNSET
-    show_timeline_tasks: Union[Unset, bool] = UNSET
-    show_timeline_action_items: Union[Unset, bool] = UNSET
-    show_services_impacted: Union[Unset, bool] = UNSET
-    show_functionalities_impacted: Union[Unset, bool] = UNSET
-    show_groups_impacted: Union[Unset, bool] = UNSET
-    show_alerts_attached: Union[Unset, bool] = UNSET
-    show_action_items: Union[Unset, bool] = UNSET
-    cause_ids: Union[None, Unset, list[str]] = UNSET
+    title: Unset | str = UNSET
+    status: Unset | UpdateIncidentPostMortemDataAttributesStatus = UNSET
+    started_at: None | Unset | str = UNSET
+    mitigated_at: None | Unset | str = UNSET
+    resolved_at: None | Unset | str = UNSET
+    show_timeline: Unset | bool = UNSET
+    show_timeline_trail: Unset | bool = UNSET
+    show_timeline_genius: Unset | bool = UNSET
+    show_timeline_tasks: Unset | bool = UNSET
+    show_timeline_action_items: Unset | bool = UNSET
+    show_services_impacted: Unset | bool = UNSET
+    show_functionalities_impacted: Unset | bool = UNSET
+    show_groups_impacted: Unset | bool = UNSET
+    show_alerts_attached: Unset | bool = UNSET
+    show_action_items: Unset | bool = UNSET
+    cause_ids: None | Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        mitigated_at: Union[None, Unset, str]
+        mitigated_at: None | Unset | str
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: Union[None, Unset, str]
+        resolved_at: None | Unset | str
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
@@ -96,7 +96,7 @@ class UpdateIncidentPostMortemDataAttributes:
 
         show_action_items = self.show_action_items
 
-        cause_ids: Union[None, Unset, list[str]]
+        cause_ids: None | Unset | list[str]
         if isinstance(self.cause_ids, Unset):
             cause_ids = UNSET
         elif isinstance(self.cause_ids, list):
@@ -149,36 +149,36 @@ class UpdateIncidentPostMortemDataAttributes:
         title = d.pop("title", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateIncidentPostMortemDataAttributesStatus]
+        status: Unset | UpdateIncidentPostMortemDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_post_mortem_data_attributes_status(_status)
 
-        def _parse_started_at(data: object) -> Union[None, Unset, str]:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> Union[None, Unset, str]:
+        def _parse_mitigated_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> Union[None, Unset, str]:
+        def _parse_resolved_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
@@ -202,7 +202,7 @@ class UpdateIncidentPostMortemDataAttributes:
 
         show_action_items = d.pop("show_action_items", UNSET)
 
-        def _parse_cause_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_cause_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -215,7 +215,7 @@ class UpdateIncidentPostMortemDataAttributes:
                 return cause_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         cause_ids = _parse_cause_ids(d.pop("cause_ids", UNSET))
 

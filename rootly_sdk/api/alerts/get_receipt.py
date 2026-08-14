@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -20,9 +20,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, Receipt]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Receipt | None:
     if response.status_code == 200:
         response_200 = Receipt.from_dict(response.json())
 
@@ -38,9 +36,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, Receipt]]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Receipt]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +49,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, Receipt]]:
+) -> Response[Any | Receipt]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -85,7 +81,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, Receipt]]:
+) -> Any | Receipt | None:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -112,7 +108,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, Receipt]]:
+) -> Response[Any | Receipt]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -142,7 +138,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, Receipt]]:
+) -> Any | Receipt | None:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)

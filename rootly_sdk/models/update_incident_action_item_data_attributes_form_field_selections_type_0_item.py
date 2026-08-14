@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -30,25 +30,25 @@ class UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item:
     """
 
     form_field_id: str
-    id: Union[Unset, str] = UNSET
-    value: Union[None, Unset, list[str], str] = UNSET
-    selected_option_ids: Union[Unset, list[str]] = UNSET
-    selected_user_ids: Union[Unset, list[int]] = UNSET
-    selected_group_ids: Union[Unset, list[str]] = UNSET
-    selected_service_ids: Union[Unset, list[str]] = UNSET
-    selected_functionality_ids: Union[Unset, list[str]] = UNSET
-    selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
-    selected_environment_ids: Union[Unset, list[str]] = UNSET
-    selected_cause_ids: Union[Unset, list[str]] = UNSET
-    selected_incident_type_ids: Union[Unset, list[str]] = UNSET
-    field_destroy: Union[None, Unset, bool] = UNSET
+    id: Unset | str = UNSET
+    value: None | Unset | list[str] | str = UNSET
+    selected_option_ids: Unset | list[str] = UNSET
+    selected_user_ids: Unset | list[int] = UNSET
+    selected_group_ids: Unset | list[str] = UNSET
+    selected_service_ids: Unset | list[str] = UNSET
+    selected_functionality_ids: Unset | list[str] = UNSET
+    selected_catalog_entity_ids: Unset | list[str] = UNSET
+    selected_environment_ids: Unset | list[str] = UNSET
+    selected_cause_ids: Unset | list[str] = UNSET
+    selected_incident_type_ids: Unset | list[str] = UNSET
+    field_destroy: None | Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id
 
         id = self.id
 
-        value: Union[None, Unset, list[str], str]
+        value: None | Unset | list[str] | str
         if isinstance(self.value, Unset):
             value = UNSET
         elif isinstance(self.value, list):
@@ -57,43 +57,43 @@ class UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item:
         else:
             value = self.value
 
-        selected_option_ids: Union[Unset, list[str]] = UNSET
+        selected_option_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
-        selected_user_ids: Union[Unset, list[int]] = UNSET
+        selected_user_ids: Unset | list[int] = UNSET
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
-        selected_group_ids: Union[Unset, list[str]] = UNSET
+        selected_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_group_ids, Unset):
             selected_group_ids = self.selected_group_ids
 
-        selected_service_ids: Union[Unset, list[str]] = UNSET
+        selected_service_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_service_ids, Unset):
             selected_service_ids = self.selected_service_ids
 
-        selected_functionality_ids: Union[Unset, list[str]] = UNSET
+        selected_functionality_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_functionality_ids, Unset):
             selected_functionality_ids = self.selected_functionality_ids
 
-        selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
+        selected_catalog_entity_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_catalog_entity_ids, Unset):
             selected_catalog_entity_ids = self.selected_catalog_entity_ids
 
-        selected_environment_ids: Union[Unset, list[str]] = UNSET
+        selected_environment_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_environment_ids, Unset):
             selected_environment_ids = self.selected_environment_ids
 
-        selected_cause_ids: Union[Unset, list[str]] = UNSET
+        selected_cause_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_cause_ids, Unset):
             selected_cause_ids = self.selected_cause_ids
 
-        selected_incident_type_ids: Union[Unset, list[str]] = UNSET
+        selected_incident_type_ids: Unset | list[str] = UNSET
         if not isinstance(self.selected_incident_type_ids, Unset):
             selected_incident_type_ids = self.selected_incident_type_ids
 
-        field_destroy: Union[None, Unset, bool]
+        field_destroy: None | Unset | bool
         if isinstance(self.field_destroy, Unset):
             field_destroy = UNSET
         else:
@@ -140,7 +140,7 @@ class UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item:
 
         id = d.pop("id", UNSET)
 
-        def _parse_value(data: object) -> Union[None, Unset, list[str], str]:
+        def _parse_value(data: object) -> None | Unset | list[str] | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -153,7 +153,7 @@ class UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item:
                 return value_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str], str], data)
+            return cast(None | Unset | list[str] | str, data)
 
         value = _parse_value(d.pop("value", UNSET))
 
@@ -175,12 +175,12 @@ class UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item:
 
         selected_incident_type_ids = cast(list[str], d.pop("selected_incident_type_ids", UNSET))
 
-        def _parse_field_destroy(data: object) -> Union[None, Unset, bool]:
+        def _parse_field_destroy(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         field_destroy = _parse_field_destroy(d.pop("_destroy", UNSET))
 

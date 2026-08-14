@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,18 +29,18 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
         end_time (Union[None, Unset, str]): End time for business hours (HH:MM)
     """
 
-    time_zone: Union[Unset, UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone] = UNSET
-    days: Union[None, Unset, list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]] = UNSET
-    start_time: Union[None, Unset, str] = UNSET
-    end_time: Union[None, Unset, str] = UNSET
+    time_zone: Unset | UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = UNSET
+    days: None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] = UNSET
+    start_time: None | Unset | str = UNSET
+    end_time: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        time_zone: Union[Unset, str] = UNSET
+        time_zone: Unset | str = UNSET
         if not isinstance(self.time_zone, Unset):
             time_zone = self.time_zone
 
-        days: Union[None, Unset, list[str]]
+        days: None | Unset | list[str]
         if isinstance(self.days, Unset):
             days = UNSET
         elif isinstance(self.days, list):
@@ -52,13 +52,13 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
         else:
             days = self.days
 
-        start_time: Union[None, Unset, str]
+        start_time: None | Unset | str
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         else:
             start_time = self.start_time
 
-        end_time: Union[None, Unset, str]
+        end_time: None | Unset | str
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         else:
@@ -82,7 +82,7 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _time_zone = d.pop("time_zone", UNSET)
-        time_zone: Union[Unset, UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone]
+        time_zone: Unset | UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone
         if isinstance(_time_zone, Unset):
             time_zone = UNSET
         else:
@@ -90,7 +90,7 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
 
         def _parse_days(
             data: object,
-        ) -> Union[None, Unset, list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]]:
+        ) -> None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -112,27 +112,25 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
                 return days_type_0
             except:  # noqa: E722
                 pass
-            return cast(
-                Union[None, Unset, list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]], data
-            )
+            return cast(None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item], data)
 
         days = _parse_days(d.pop("days", UNSET))
 
-        def _parse_start_time(data: object) -> Union[None, Unset, str]:
+        def _parse_start_time(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> Union[None, Unset, str]:
+        def _parse_end_time(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 

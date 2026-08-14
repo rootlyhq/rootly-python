@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -39,11 +39,11 @@ class IncidentStatusPageEvent:
     started_at: str
     created_at: str
     updated_at: str
-    status_page_id: Union[Unset, str] = UNSET
-    status: Union[Unset, IncidentStatusPageEventStatus] = UNSET
-    notify_subscribers: Union[Unset, bool] = UNSET
-    should_tweet: Union[Unset, bool] = UNSET
-    status_page_components: Union[Unset, list["IncidentStatusPageEventStatusPageComponentsItem"]] = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | IncidentStatusPageEventStatus = UNSET
+    notify_subscribers: Unset | bool = UNSET
+    should_tweet: Unset | bool = UNSET
+    status_page_components: Unset | list["IncidentStatusPageEventStatusPageComponentsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,7 +57,7 @@ class IncidentStatusPageEvent:
 
         status_page_id = self.status_page_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -65,7 +65,7 @@ class IncidentStatusPageEvent:
 
         should_tweet = self.should_tweet
 
-        status_page_components: Union[Unset, list[dict[str, Any]]] = UNSET
+        status_page_components: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.status_page_components, Unset):
             status_page_components = []
             for status_page_components_item_data in self.status_page_components:
@@ -113,7 +113,7 @@ class IncidentStatusPageEvent:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, IncidentStatusPageEventStatus]
+        status: Unset | IncidentStatusPageEventStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

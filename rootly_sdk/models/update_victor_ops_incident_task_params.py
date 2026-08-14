@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,8 +30,8 @@ class UpdateVictorOpsIncidentTaskParams:
 
     victor_ops_incident_id: str
     status: UpdateVictorOpsIncidentTaskParamsStatus
-    task_type: Union[Unset, UpdateVictorOpsIncidentTaskParamsTaskType] = UNSET
-    resolution_message: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateVictorOpsIncidentTaskParamsTaskType = UNSET
+    resolution_message: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,7 +39,7 @@ class UpdateVictorOpsIncidentTaskParams:
 
         status: str = self.status
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -68,7 +68,7 @@ class UpdateVictorOpsIncidentTaskParams:
         status = check_update_victor_ops_incident_task_params_status(d.pop("status"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateVictorOpsIncidentTaskParamsTaskType]
+        task_type: Unset | UpdateVictorOpsIncidentTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

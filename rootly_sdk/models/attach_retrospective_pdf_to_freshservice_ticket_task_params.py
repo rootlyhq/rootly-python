@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,14 +23,14 @@ class AttachRetrospectivePdfToFreshserviceTicketTaskParams:
     """
 
     ticket_id: str
-    task_type: Union[Unset, AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType] = UNSET
-    filename: Union[Unset, str] = UNSET
+    task_type: Unset | AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType = UNSET
+    filename: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         ticket_id = self.ticket_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -56,7 +56,7 @@ class AttachRetrospectivePdfToFreshserviceTicketTaskParams:
         ticket_id = d.pop("ticket_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType]
+        task_type: Unset | AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

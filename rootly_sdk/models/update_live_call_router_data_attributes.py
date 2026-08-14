@@ -74,32 +74,32 @@ class UpdateLiveCallRouterDataAttributes:
             UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams]):
     """
 
-    kind: Union[Unset, UpdateLiveCallRouterDataAttributesKind] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    country_code: Union[Unset, UpdateLiveCallRouterDataAttributesCountryCode] = UNSET
-    phone_type: Union[Unset, UpdateLiveCallRouterDataAttributesPhoneType] = UNSET
-    voicemail_greeting: Union[Unset, str] = UNSET
-    caller_greeting: Union[Unset, str] = UNSET
-    unavailable_responder_message: Union[None, Unset, str] = UNSET
-    waiting_music_url: Union[Unset, UpdateLiveCallRouterDataAttributesWaitingMusicUrl] = UNSET
-    sent_to_voicemail_delay: Union[Unset, int] = UNSET
-    should_redirect_to_voicemail_on_no_answer: Union[Unset, bool] = UNSET
-    escalation_level_delay_in_seconds: Union[Unset, int] = UNSET
-    should_auto_resolve_alert_on_call_end: Union[Unset, bool] = UNSET
-    notify_via_sms: Union[Unset, bool] = UNSET
-    notify_via_push_notification: Union[Unset, bool] = UNSET
-    informational_notification_message: Union[None, Unset, str] = UNSET
-    alert_urgency_id: Union[Unset, str] = UNSET
-    calling_tree_enabled: Union[Unset, bool] = UNSET
-    calling_tree_prompt: Union[Unset, str] = UNSET
-    paging_targets: Union[Unset, list["UpdateLiveCallRouterDataAttributesPagingTargetsItem"]] = UNSET
+    kind: Unset | UpdateLiveCallRouterDataAttributesKind = UNSET
+    enabled: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    country_code: Unset | UpdateLiveCallRouterDataAttributesCountryCode = UNSET
+    phone_type: Unset | UpdateLiveCallRouterDataAttributesPhoneType = UNSET
+    voicemail_greeting: Unset | str = UNSET
+    caller_greeting: Unset | str = UNSET
+    unavailable_responder_message: None | Unset | str = UNSET
+    waiting_music_url: Unset | UpdateLiveCallRouterDataAttributesWaitingMusicUrl = UNSET
+    sent_to_voicemail_delay: Unset | int = UNSET
+    should_redirect_to_voicemail_on_no_answer: Unset | bool = UNSET
+    escalation_level_delay_in_seconds: Unset | int = UNSET
+    should_auto_resolve_alert_on_call_end: Unset | bool = UNSET
+    notify_via_sms: Unset | bool = UNSET
+    notify_via_push_notification: Unset | bool = UNSET
+    informational_notification_message: None | Unset | str = UNSET
+    alert_urgency_id: Unset | str = UNSET
+    calling_tree_enabled: Unset | bool = UNSET
+    calling_tree_prompt: Unset | str = UNSET
+    paging_targets: Unset | list["UpdateLiveCallRouterDataAttributesPagingTargetsItem"] = UNSET
     escalation_policy_trigger_params: Union[
         Unset, "UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams"
     ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -107,11 +107,11 @@ class UpdateLiveCallRouterDataAttributes:
 
         name = self.name
 
-        country_code: Union[Unset, str] = UNSET
+        country_code: Unset | str = UNSET
         if not isinstance(self.country_code, Unset):
             country_code = self.country_code
 
-        phone_type: Union[Unset, str] = UNSET
+        phone_type: Unset | str = UNSET
         if not isinstance(self.phone_type, Unset):
             phone_type = self.phone_type
 
@@ -119,13 +119,13 @@ class UpdateLiveCallRouterDataAttributes:
 
         caller_greeting = self.caller_greeting
 
-        unavailable_responder_message: Union[None, Unset, str]
+        unavailable_responder_message: None | Unset | str
         if isinstance(self.unavailable_responder_message, Unset):
             unavailable_responder_message = UNSET
         else:
             unavailable_responder_message = self.unavailable_responder_message
 
-        waiting_music_url: Union[Unset, str] = UNSET
+        waiting_music_url: Unset | str = UNSET
         if not isinstance(self.waiting_music_url, Unset):
             waiting_music_url = self.waiting_music_url
 
@@ -141,7 +141,7 @@ class UpdateLiveCallRouterDataAttributes:
 
         notify_via_push_notification = self.notify_via_push_notification
 
-        informational_notification_message: Union[None, Unset, str]
+        informational_notification_message: None | Unset | str
         if isinstance(self.informational_notification_message, Unset):
             informational_notification_message = UNSET
         else:
@@ -153,14 +153,14 @@ class UpdateLiveCallRouterDataAttributes:
 
         calling_tree_prompt = self.calling_tree_prompt
 
-        paging_targets: Union[Unset, list[dict[str, Any]]] = UNSET
+        paging_targets: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.paging_targets, Unset):
             paging_targets = []
             for paging_targets_item_data in self.paging_targets:
                 paging_targets_item = paging_targets_item_data.to_dict()
                 paging_targets.append(paging_targets_item)
 
-        escalation_policy_trigger_params: Union[Unset, dict[str, Any]] = UNSET
+        escalation_policy_trigger_params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.escalation_policy_trigger_params, Unset):
             escalation_policy_trigger_params = self.escalation_policy_trigger_params.to_dict()
 
@@ -223,7 +223,7 @@ class UpdateLiveCallRouterDataAttributes:
 
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateLiveCallRouterDataAttributesKind]
+        kind: Unset | UpdateLiveCallRouterDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -234,14 +234,14 @@ class UpdateLiveCallRouterDataAttributes:
         name = d.pop("name", UNSET)
 
         _country_code = d.pop("country_code", UNSET)
-        country_code: Union[Unset, UpdateLiveCallRouterDataAttributesCountryCode]
+        country_code: Unset | UpdateLiveCallRouterDataAttributesCountryCode
         if isinstance(_country_code, Unset):
             country_code = UNSET
         else:
             country_code = check_update_live_call_router_data_attributes_country_code(_country_code)
 
         _phone_type = d.pop("phone_type", UNSET)
-        phone_type: Union[Unset, UpdateLiveCallRouterDataAttributesPhoneType]
+        phone_type: Unset | UpdateLiveCallRouterDataAttributesPhoneType
         if isinstance(_phone_type, Unset):
             phone_type = UNSET
         else:
@@ -251,19 +251,19 @@ class UpdateLiveCallRouterDataAttributes:
 
         caller_greeting = d.pop("caller_greeting", UNSET)
 
-        def _parse_unavailable_responder_message(data: object) -> Union[None, Unset, str]:
+        def _parse_unavailable_responder_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         unavailable_responder_message = _parse_unavailable_responder_message(
             d.pop("unavailable_responder_message", UNSET)
         )
 
         _waiting_music_url = d.pop("waiting_music_url", UNSET)
-        waiting_music_url: Union[Unset, UpdateLiveCallRouterDataAttributesWaitingMusicUrl]
+        waiting_music_url: Unset | UpdateLiveCallRouterDataAttributesWaitingMusicUrl
         if isinstance(_waiting_music_url, Unset):
             waiting_music_url = UNSET
         else:
@@ -281,12 +281,12 @@ class UpdateLiveCallRouterDataAttributes:
 
         notify_via_push_notification = d.pop("notify_via_push_notification", UNSET)
 
-        def _parse_informational_notification_message(data: object) -> Union[None, Unset, str]:
+        def _parse_informational_notification_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         informational_notification_message = _parse_informational_notification_message(
             d.pop("informational_notification_message", UNSET)
@@ -308,7 +308,7 @@ class UpdateLiveCallRouterDataAttributes:
             paging_targets.append(paging_targets_item)
 
         _escalation_policy_trigger_params = d.pop("escalation_policy_trigger_params", UNSET)
-        escalation_policy_trigger_params: Union[Unset, UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams]
+        escalation_policy_trigger_params: Unset | UpdateLiveCallRouterDataAttributesEscalationPolicyTriggerParams
         if isinstance(_escalation_policy_trigger_params, Unset):
             escalation_policy_trigger_params = UNSET
         else:

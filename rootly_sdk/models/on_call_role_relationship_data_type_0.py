@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,14 +21,14 @@ class OnCallRoleRelationshipDataType0:
         type_ (Union[Unset, OnCallRoleRelationshipDataType0Type]):
     """
 
-    id: Union[Unset, str] = UNSET
-    type_: Union[Unset, OnCallRoleRelationshipDataType0Type] = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | OnCallRoleRelationshipDataType0Type = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -48,7 +48,7 @@ class OnCallRoleRelationshipDataType0:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, OnCallRoleRelationshipDataType0Type]
+        type_: Unset | OnCallRoleRelationshipDataType0Type
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

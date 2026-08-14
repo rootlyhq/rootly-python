@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AuthorizationResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AuthorizationResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AuthorizationResponse.from_dict(response.json())
 
@@ -50,8 +50,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AuthorizationResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AuthorizationResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAuthorization,
-) -> Response[Union[AuthorizationResponse, ErrorsList]]:
+) -> Response[AuthorizationResponse | ErrorsList]:
     """Creates an authorization
 
      Creates a new authorization from provided data
@@ -95,7 +95,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewAuthorization,
-) -> Optional[Union[AuthorizationResponse, ErrorsList]]:
+) -> AuthorizationResponse | ErrorsList | None:
     """Creates an authorization
 
      Creates a new authorization from provided data
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAuthorization,
-) -> Response[Union[AuthorizationResponse, ErrorsList]]:
+) -> Response[AuthorizationResponse | ErrorsList]:
     """Creates an authorization
 
      Creates a new authorization from provided data
@@ -150,7 +150,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAuthorization,
-) -> Optional[Union[AuthorizationResponse, ErrorsList]]:
+) -> AuthorizationResponse | ErrorsList | None:
     """Creates an authorization
 
      Creates a new authorization from provided data

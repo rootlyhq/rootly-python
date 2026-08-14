@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,13 +13,13 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
-    include: Union[Unset, GetWorkflowInclude] = UNSET,
+    include: Unset | GetWorkflowInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -37,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, WorkflowResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | WorkflowResponse | None:
     if response.status_code == 200:
         response_200 = WorkflowResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, WorkflowResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | WorkflowResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,11 +67,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetWorkflowInclude] = UNSET,
-) -> Response[Union[ErrorsList, WorkflowResponse]]:
+    include: Unset | GetWorkflowInclude = UNSET,
+) -> Response[ErrorsList | WorkflowResponse]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
@@ -101,11 +101,11 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetWorkflowInclude] = UNSET,
-) -> Optional[Union[ErrorsList, WorkflowResponse]]:
+    include: Unset | GetWorkflowInclude = UNSET,
+) -> ErrorsList | WorkflowResponse | None:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
@@ -130,11 +130,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetWorkflowInclude] = UNSET,
-) -> Response[Union[ErrorsList, WorkflowResponse]]:
+    include: Unset | GetWorkflowInclude = UNSET,
+) -> Response[ErrorsList | WorkflowResponse]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
@@ -162,11 +162,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetWorkflowInclude] = UNSET,
-) -> Optional[Union[ErrorsList, WorkflowResponse]]:
+    include: Unset | GetWorkflowInclude = UNSET,
+) -> ErrorsList | WorkflowResponse | None:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id

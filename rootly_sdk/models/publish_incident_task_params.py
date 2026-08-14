@@ -48,13 +48,13 @@ class PublishIncidentTaskParams:
     public_title: str
     status_page_id: str
     status: PublishIncidentTaskParamsStatus = "resolved"
-    task_type: Union[Unset, PublishIncidentTaskParamsTaskType] = UNSET
-    event: Union[Unset, str] = UNSET
-    notify_subscribers: Union[Unset, bool] = False
-    should_tweet: Union[Unset, bool] = False
+    task_type: Unset | PublishIncidentTaskParamsTaskType = UNSET
+    event: Unset | str = UNSET
+    notify_subscribers: Unset | bool = False
+    should_tweet: Unset | bool = False
     status_page_template: Union[Unset, "PublishIncidentTaskParamsStatusPageTemplate"] = UNSET
-    status_page_ids: Union[Unset, list[str]] = UNSET
-    integration_payload: Union[None, Unset, str] = UNSET
+    status_page_ids: Unset | list[str] = UNSET
+    integration_payload: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,7 +66,7 @@ class PublishIncidentTaskParams:
 
         status_page_id = self.status_page_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -76,15 +76,15 @@ class PublishIncidentTaskParams:
 
         should_tweet = self.should_tweet
 
-        status_page_template: Union[Unset, dict[str, Any]] = UNSET
+        status_page_template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.status_page_template, Unset):
             status_page_template = self.status_page_template.to_dict()
 
-        status_page_ids: Union[Unset, list[str]] = UNSET
+        status_page_ids: Unset | list[str] = UNSET
         if not isinstance(self.status_page_ids, Unset):
             status_page_ids = self.status_page_ids
 
-        integration_payload: Union[None, Unset, str]
+        integration_payload: None | Unset | str
         if isinstance(self.integration_payload, Unset):
             integration_payload = UNSET
         else:
@@ -134,7 +134,7 @@ class PublishIncidentTaskParams:
         status_page_id = d.pop("status_page_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, PublishIncidentTaskParamsTaskType]
+        task_type: Unset | PublishIncidentTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -147,7 +147,7 @@ class PublishIncidentTaskParams:
         should_tweet = d.pop("should_tweet", UNSET)
 
         _status_page_template = d.pop("status_page_template", UNSET)
-        status_page_template: Union[Unset, PublishIncidentTaskParamsStatusPageTemplate]
+        status_page_template: Unset | PublishIncidentTaskParamsStatusPageTemplate
         if isinstance(_status_page_template, Unset):
             status_page_template = UNSET
         else:
@@ -155,12 +155,12 @@ class PublishIncidentTaskParams:
 
         status_page_ids = cast(list[str], d.pop("status_page_ids", UNSET))
 
-        def _parse_integration_payload(data: object) -> Union[None, Unset, str]:
+        def _parse_integration_payload(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         integration_payload = _parse_integration_payload(d.pop("integration_payload", UNSET))
 

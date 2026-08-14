@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,8 +30,8 @@ class SendGoogleChatMessageTaskParams:
 
     spaces: list["SendGoogleChatMessageTaskParamsSpacesItem"]
     text: str
-    task_type: Union[Unset, SendGoogleChatMessageTaskParamsTaskType] = UNSET
-    thread_key: Union[None, Unset, str] = UNSET
+    task_type: Unset | SendGoogleChatMessageTaskParamsTaskType = UNSET
+    thread_key: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,11 +42,11 @@ class SendGoogleChatMessageTaskParams:
 
         text = self.text
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        thread_key: Union[None, Unset, str]
+        thread_key: None | Unset | str
         if isinstance(self.thread_key, Unset):
             thread_key = UNSET
         else:
@@ -82,18 +82,18 @@ class SendGoogleChatMessageTaskParams:
         text = d.pop("text")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, SendGoogleChatMessageTaskParamsTaskType]
+        task_type: Unset | SendGoogleChatMessageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_send_google_chat_message_task_params_task_type(_task_type)
 
-        def _parse_thread_key(data: object) -> Union[None, Unset, str]:
+        def _parse_thread_key(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         thread_key = _parse_thread_key(d.pop("thread_key", UNSET))
 

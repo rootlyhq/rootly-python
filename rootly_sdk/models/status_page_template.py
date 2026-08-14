@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,12 +32,12 @@ class StatusPageTemplate:
     body: str
     created_at: str
     updated_at: str
-    update_title: Union[None, Unset, str] = UNSET
-    update_status: Union[None, Unset, str] = UNSET
-    kind: Union[Unset, StatusPageTemplateKind] = UNSET
-    should_notify_subscribers: Union[None, Unset, bool] = UNSET
-    enabled: Union[None, Unset, bool] = UNSET
-    position: Union[Unset, int] = UNSET
+    update_title: None | Unset | str = UNSET
+    update_status: None | Unset | str = UNSET
+    kind: Unset | StatusPageTemplateKind = UNSET
+    should_notify_subscribers: None | Unset | bool = UNSET
+    enabled: None | Unset | bool = UNSET
+    position: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,29 +51,29 @@ class StatusPageTemplate:
 
         updated_at = self.updated_at
 
-        update_title: Union[None, Unset, str]
+        update_title: None | Unset | str
         if isinstance(self.update_title, Unset):
             update_title = UNSET
         else:
             update_title = self.update_title
 
-        update_status: Union[None, Unset, str]
+        update_status: None | Unset | str
         if isinstance(self.update_status, Unset):
             update_status = UNSET
         else:
             update_status = self.update_status
 
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        should_notify_subscribers: Union[None, Unset, bool]
+        should_notify_subscribers: None | Unset | bool
         if isinstance(self.should_notify_subscribers, Unset):
             should_notify_subscribers = UNSET
         else:
             should_notify_subscribers = self.should_notify_subscribers
 
-        enabled: Union[None, Unset, bool]
+        enabled: None | Unset | bool
         if isinstance(self.enabled, Unset):
             enabled = UNSET
         else:
@@ -120,46 +120,46 @@ class StatusPageTemplate:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_update_title(data: object) -> Union[None, Unset, str]:
+        def _parse_update_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         update_title = _parse_update_title(d.pop("update_title", UNSET))
 
-        def _parse_update_status(data: object) -> Union[None, Unset, str]:
+        def _parse_update_status(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         update_status = _parse_update_status(d.pop("update_status", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, StatusPageTemplateKind]
+        kind: Unset | StatusPageTemplateKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_status_page_template_kind(_kind)
 
-        def _parse_should_notify_subscribers(data: object) -> Union[None, Unset, bool]:
+        def _parse_should_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         should_notify_subscribers = _parse_should_notify_subscribers(d.pop("should_notify_subscribers", UNSET))
 
-        def _parse_enabled(data: object) -> Union[None, Unset, bool]:
+        def _parse_enabled(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         enabled = _parse_enabled(d.pop("enabled", UNSET))
 

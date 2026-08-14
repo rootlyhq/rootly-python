@@ -30,15 +30,15 @@ class OncallRelationships:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user: Union[Unset, dict[str, Any]] = UNSET
+        user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
-        schedule: Union[Unset, dict[str, Any]] = UNSET
+        schedule: Unset | dict[str, Any] = UNSET
         if not isinstance(self.schedule, Unset):
             schedule = self.schedule.to_dict()
 
-        escalation_policy: Union[Unset, dict[str, Any]] = UNSET
+        escalation_policy: Unset | dict[str, Any] = UNSET
         if not isinstance(self.escalation_policy, Unset):
             escalation_policy = self.escalation_policy.to_dict()
 
@@ -62,21 +62,21 @@ class OncallRelationships:
 
         d = dict(src_dict)
         _user = d.pop("user", UNSET)
-        user: Union[Unset, OncallRelationshipsUser]
+        user: Unset | OncallRelationshipsUser
         if isinstance(_user, Unset):
             user = UNSET
         else:
             user = OncallRelationshipsUser.from_dict(_user)
 
         _schedule = d.pop("schedule", UNSET)
-        schedule: Union[Unset, OncallRelationshipsSchedule]
+        schedule: Unset | OncallRelationshipsSchedule
         if isinstance(_schedule, Unset):
             schedule = UNSET
         else:
             schedule = OncallRelationshipsSchedule.from_dict(_schedule)
 
         _escalation_policy = d.pop("escalation_policy", UNSET)
-        escalation_policy: Union[Unset, OncallRelationshipsEscalationPolicy]
+        escalation_policy: Unset | OncallRelationshipsEscalationPolicy
         if isinstance(_escalation_policy, Unset):
             escalation_policy = UNSET
         else:

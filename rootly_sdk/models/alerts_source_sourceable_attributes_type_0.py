@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -33,23 +33,21 @@ class AlertsSourceSourceableAttributesType0:
                 list['AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem']]): Specify rules to auto resolve alerts
     """
 
-    id: Union[Unset, UUID] = UNSET
-    auto_resolve: Union[Unset, bool] = UNSET
-    resolve_state: Union[None, Unset, str] = UNSET
-    accept_threaded_emails: Union[Unset, bool] = UNSET
-    field_mappings_attributes: Union[
-        Unset, list["AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem"]
-    ] = UNSET
+    id: Unset | UUID = UNSET
+    auto_resolve: Unset | bool = UNSET
+    resolve_state: None | Unset | str = UNSET
+    accept_threaded_emails: Unset | bool = UNSET
+    field_mappings_attributes: Unset | list["AlertsSourceSourceableAttributesType0FieldMappingsAttributesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         auto_resolve = self.auto_resolve
 
-        resolve_state: Union[None, Unset, str]
+        resolve_state: None | Unset | str
         if isinstance(self.resolve_state, Unset):
             resolve_state = UNSET
         else:
@@ -57,7 +55,7 @@ class AlertsSourceSourceableAttributesType0:
 
         accept_threaded_emails = self.accept_threaded_emails
 
-        field_mappings_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        field_mappings_attributes: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.field_mappings_attributes, Unset):
             field_mappings_attributes = []
             for field_mappings_attributes_item_data in self.field_mappings_attributes:
@@ -88,7 +86,7 @@ class AlertsSourceSourceableAttributesType0:
 
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -96,12 +94,12 @@ class AlertsSourceSourceableAttributesType0:
 
         auto_resolve = d.pop("auto_resolve", UNSET)
 
-        def _parse_resolve_state(data: object) -> Union[None, Unset, str]:
+        def _parse_resolve_state(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         resolve_state = _parse_resolve_state(d.pop("resolve_state", UNSET))
 

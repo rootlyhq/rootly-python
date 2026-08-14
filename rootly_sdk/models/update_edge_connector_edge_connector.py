@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,10 +23,10 @@ class UpdateEdgeConnectorEdgeConnector:
         subscriptions (Union[Unset, list[str]]):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdateEdgeConnectorEdgeConnectorStatus] = UNSET
-    subscriptions: Union[Unset, list[str]] = UNSET
+    name: Unset | str = UNSET
+    description: Unset | str = UNSET
+    status: Unset | UpdateEdgeConnectorEdgeConnectorStatus = UNSET
+    subscriptions: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,11 +34,11 @@ class UpdateEdgeConnectorEdgeConnector:
 
         description = self.description
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: Union[Unset, list[str]] = UNSET
+        subscriptions: Unset | list[str] = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
@@ -64,7 +64,7 @@ class UpdateEdgeConnectorEdgeConnector:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateEdgeConnectorEdgeConnectorStatus]
+        status: Unset | UpdateEdgeConnectorEdgeConnectorStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

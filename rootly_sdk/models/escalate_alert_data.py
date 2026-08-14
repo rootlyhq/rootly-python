@@ -22,16 +22,16 @@ class EscalateAlertData:
         attributes (Union[Unset, EscalateAlertDataAttributes]):
     """
 
-    type_: Union[Unset, EscalateAlertDataType] = UNSET
+    type_: Unset | EscalateAlertDataType = UNSET
     attributes: Union[Unset, "EscalateAlertDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -51,14 +51,14 @@ class EscalateAlertData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, EscalateAlertDataType]
+        type_: Unset | EscalateAlertDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_escalate_alert_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, EscalateAlertDataAttributes]
+        attributes: Unset | EscalateAlertDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

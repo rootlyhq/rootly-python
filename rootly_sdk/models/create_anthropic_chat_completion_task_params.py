@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,9 +30,9 @@ class CreateAnthropicChatCompletionTaskParams:
 
     model: "CreateAnthropicChatCompletionTaskParamsModel"
     prompt: str
-    task_type: Union[Unset, CreateAnthropicChatCompletionTaskParamsTaskType] = UNSET
-    system_prompt: Union[Unset, str] = UNSET
-    max_tokens: Union[Unset, int] = UNSET
+    task_type: Unset | CreateAnthropicChatCompletionTaskParamsTaskType = UNSET
+    system_prompt: Unset | str = UNSET
+    max_tokens: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +40,7 @@ class CreateAnthropicChatCompletionTaskParams:
 
         prompt = self.prompt
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -77,7 +77,7 @@ class CreateAnthropicChatCompletionTaskParams:
         prompt = d.pop("prompt")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateAnthropicChatCompletionTaskParamsTaskType]
+        task_type: Unset | CreateAnthropicChatCompletionTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

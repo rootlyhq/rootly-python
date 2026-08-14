@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -169,176 +169,174 @@ class PostMortemTriggerParams:
     """
 
     trigger_type: PostMortemTriggerParamsTriggerType
-    triggers: Union[Unset, list[str]] = UNSET
-    incident_visibilities: Union[Unset, list[bool]] = UNSET
-    incident_kinds: Union[Unset, list[PostMortemTriggerParamsIncidentKindsItem]] = UNSET
-    incident_statuses: Union[Unset, list[PostMortemTriggerParamsIncidentStatusesItem]] = UNSET
-    incident_inactivity_duration: Union[None, Unset, str] = UNSET
-    incident_condition: Union[Unset, PostMortemTriggerParamsIncidentCondition] = "ALL"
-    incident_condition_visibility: Union[Unset, PostMortemTriggerParamsIncidentConditionVisibility] = "ANY"
-    incident_condition_kind: Union[Unset, PostMortemTriggerParamsIncidentConditionKind] = "IS"
-    incident_condition_status: Union[Unset, PostMortemTriggerParamsIncidentConditionStatus] = "ANY"
-    incident_condition_sub_status: Union[Unset, PostMortemTriggerParamsIncidentConditionSubStatus] = "ANY"
-    incident_condition_environment: Union[Unset, PostMortemTriggerParamsIncidentConditionEnvironment] = "ANY"
-    incident_condition_severity: Union[Unset, PostMortemTriggerParamsIncidentConditionSeverity] = "ANY"
-    incident_condition_incident_type: Union[Unset, PostMortemTriggerParamsIncidentConditionIncidentType] = "ANY"
-    incident_condition_incident_roles: Union[Unset, PostMortemTriggerParamsIncidentConditionIncidentRoles] = "ANY"
-    incident_condition_service: Union[Unset, PostMortemTriggerParamsIncidentConditionService] = "ANY"
-    incident_condition_functionality: Union[Unset, PostMortemTriggerParamsIncidentConditionFunctionality] = "ANY"
-    incident_condition_group: Union[Unset, PostMortemTriggerParamsIncidentConditionGroup] = "ANY"
-    incident_condition_cause: Union[Unset, PostMortemTriggerParamsIncidentConditionCause] = "ANY"
-    incident_condition_label: Union[Unset, PostMortemTriggerParamsIncidentConditionLabel] = "ANY"
-    incident_condition_label_use_regexp: Union[Unset, bool] = False
-    incident_labels: Union[Unset, list[str]] = UNSET
-    incident_post_mortem_condition_cause: Union[Unset, PostMortemTriggerParamsIncidentPostMortemConditionCause] = "ANY"
-    incident_condition_summary: Union[Unset, PostMortemTriggerParamsIncidentConditionSummary] = UNSET
-    incident_condition_started_at: Union[Unset, PostMortemTriggerParamsIncidentConditionStartedAt] = UNSET
-    incident_condition_detected_at: Union[Unset, PostMortemTriggerParamsIncidentConditionDetectedAt] = UNSET
-    incident_condition_acknowledged_at: Union[Unset, PostMortemTriggerParamsIncidentConditionAcknowledgedAt] = UNSET
-    incident_condition_mitigated_at: Union[Unset, PostMortemTriggerParamsIncidentConditionMitigatedAt] = UNSET
-    incident_condition_resolved_at: Union[Unset, PostMortemTriggerParamsIncidentConditionResolvedAt] = UNSET
-    incident_conditional_inactivity: Union[Unset, PostMortemTriggerParamsIncidentConditionalInactivity] = UNSET
-    incident_post_mortem_condition: Union[Unset, PostMortemTriggerParamsIncidentPostMortemCondition] = UNSET
-    incident_post_mortem_condition_status: Union[Unset, PostMortemTriggerParamsIncidentPostMortemConditionStatus] = (
-        "ANY"
-    )
-    incident_post_mortem_statuses: Union[Unset, list[PostMortemTriggerParamsIncidentPostMortemStatusesItem]] = UNSET
+    triggers: Unset | list[str] = UNSET
+    incident_visibilities: Unset | list[bool] = UNSET
+    incident_kinds: Unset | list[PostMortemTriggerParamsIncidentKindsItem] = UNSET
+    incident_statuses: Unset | list[PostMortemTriggerParamsIncidentStatusesItem] = UNSET
+    incident_inactivity_duration: None | Unset | str = UNSET
+    incident_condition: Unset | PostMortemTriggerParamsIncidentCondition = "ALL"
+    incident_condition_visibility: Unset | PostMortemTriggerParamsIncidentConditionVisibility = "ANY"
+    incident_condition_kind: Unset | PostMortemTriggerParamsIncidentConditionKind = "IS"
+    incident_condition_status: Unset | PostMortemTriggerParamsIncidentConditionStatus = "ANY"
+    incident_condition_sub_status: Unset | PostMortemTriggerParamsIncidentConditionSubStatus = "ANY"
+    incident_condition_environment: Unset | PostMortemTriggerParamsIncidentConditionEnvironment = "ANY"
+    incident_condition_severity: Unset | PostMortemTriggerParamsIncidentConditionSeverity = "ANY"
+    incident_condition_incident_type: Unset | PostMortemTriggerParamsIncidentConditionIncidentType = "ANY"
+    incident_condition_incident_roles: Unset | PostMortemTriggerParamsIncidentConditionIncidentRoles = "ANY"
+    incident_condition_service: Unset | PostMortemTriggerParamsIncidentConditionService = "ANY"
+    incident_condition_functionality: Unset | PostMortemTriggerParamsIncidentConditionFunctionality = "ANY"
+    incident_condition_group: Unset | PostMortemTriggerParamsIncidentConditionGroup = "ANY"
+    incident_condition_cause: Unset | PostMortemTriggerParamsIncidentConditionCause = "ANY"
+    incident_condition_label: Unset | PostMortemTriggerParamsIncidentConditionLabel = "ANY"
+    incident_condition_label_use_regexp: Unset | bool = False
+    incident_labels: Unset | list[str] = UNSET
+    incident_post_mortem_condition_cause: Unset | PostMortemTriggerParamsIncidentPostMortemConditionCause = "ANY"
+    incident_condition_summary: Unset | PostMortemTriggerParamsIncidentConditionSummary = UNSET
+    incident_condition_started_at: Unset | PostMortemTriggerParamsIncidentConditionStartedAt = UNSET
+    incident_condition_detected_at: Unset | PostMortemTriggerParamsIncidentConditionDetectedAt = UNSET
+    incident_condition_acknowledged_at: Unset | PostMortemTriggerParamsIncidentConditionAcknowledgedAt = UNSET
+    incident_condition_mitigated_at: Unset | PostMortemTriggerParamsIncidentConditionMitigatedAt = UNSET
+    incident_condition_resolved_at: Unset | PostMortemTriggerParamsIncidentConditionResolvedAt = UNSET
+    incident_conditional_inactivity: Unset | PostMortemTriggerParamsIncidentConditionalInactivity = UNSET
+    incident_post_mortem_condition: Unset | PostMortemTriggerParamsIncidentPostMortemCondition = UNSET
+    incident_post_mortem_condition_status: Unset | PostMortemTriggerParamsIncidentPostMortemConditionStatus = "ANY"
+    incident_post_mortem_statuses: Unset | list[PostMortemTriggerParamsIncidentPostMortemStatusesItem] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Union[Unset, list[str]] = UNSET
+        triggers: Unset | list[str] = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = self.triggers
 
-        incident_visibilities: Union[Unset, list[bool]] = UNSET
+        incident_visibilities: Unset | list[bool] = UNSET
         if not isinstance(self.incident_visibilities, Unset):
             incident_visibilities = self.incident_visibilities
 
-        incident_kinds: Union[Unset, list[str]] = UNSET
+        incident_kinds: Unset | list[str] = UNSET
         if not isinstance(self.incident_kinds, Unset):
             incident_kinds = []
             for incident_kinds_item_data in self.incident_kinds:
                 incident_kinds_item: str = incident_kinds_item_data
                 incident_kinds.append(incident_kinds_item)
 
-        incident_statuses: Union[Unset, list[str]] = UNSET
+        incident_statuses: Unset | list[str] = UNSET
         if not isinstance(self.incident_statuses, Unset):
             incident_statuses = []
             for incident_statuses_item_data in self.incident_statuses:
                 incident_statuses_item: str = incident_statuses_item_data
                 incident_statuses.append(incident_statuses_item)
 
-        incident_inactivity_duration: Union[None, Unset, str]
+        incident_inactivity_duration: None | Unset | str
         if isinstance(self.incident_inactivity_duration, Unset):
             incident_inactivity_duration = UNSET
         else:
             incident_inactivity_duration = self.incident_inactivity_duration
 
-        incident_condition: Union[Unset, str] = UNSET
+        incident_condition: Unset | str = UNSET
         if not isinstance(self.incident_condition, Unset):
             incident_condition = self.incident_condition
 
-        incident_condition_visibility: Union[Unset, str] = UNSET
+        incident_condition_visibility: Unset | str = UNSET
         if not isinstance(self.incident_condition_visibility, Unset):
             incident_condition_visibility = self.incident_condition_visibility
 
-        incident_condition_kind: Union[Unset, str] = UNSET
+        incident_condition_kind: Unset | str = UNSET
         if not isinstance(self.incident_condition_kind, Unset):
             incident_condition_kind = self.incident_condition_kind
 
-        incident_condition_status: Union[Unset, str] = UNSET
+        incident_condition_status: Unset | str = UNSET
         if not isinstance(self.incident_condition_status, Unset):
             incident_condition_status = self.incident_condition_status
 
-        incident_condition_sub_status: Union[Unset, str] = UNSET
+        incident_condition_sub_status: Unset | str = UNSET
         if not isinstance(self.incident_condition_sub_status, Unset):
             incident_condition_sub_status = self.incident_condition_sub_status
 
-        incident_condition_environment: Union[Unset, str] = UNSET
+        incident_condition_environment: Unset | str = UNSET
         if not isinstance(self.incident_condition_environment, Unset):
             incident_condition_environment = self.incident_condition_environment
 
-        incident_condition_severity: Union[Unset, str] = UNSET
+        incident_condition_severity: Unset | str = UNSET
         if not isinstance(self.incident_condition_severity, Unset):
             incident_condition_severity = self.incident_condition_severity
 
-        incident_condition_incident_type: Union[Unset, str] = UNSET
+        incident_condition_incident_type: Unset | str = UNSET
         if not isinstance(self.incident_condition_incident_type, Unset):
             incident_condition_incident_type = self.incident_condition_incident_type
 
-        incident_condition_incident_roles: Union[Unset, str] = UNSET
+        incident_condition_incident_roles: Unset | str = UNSET
         if not isinstance(self.incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = self.incident_condition_incident_roles
 
-        incident_condition_service: Union[Unset, str] = UNSET
+        incident_condition_service: Unset | str = UNSET
         if not isinstance(self.incident_condition_service, Unset):
             incident_condition_service = self.incident_condition_service
 
-        incident_condition_functionality: Union[Unset, str] = UNSET
+        incident_condition_functionality: Unset | str = UNSET
         if not isinstance(self.incident_condition_functionality, Unset):
             incident_condition_functionality = self.incident_condition_functionality
 
-        incident_condition_group: Union[Unset, str] = UNSET
+        incident_condition_group: Unset | str = UNSET
         if not isinstance(self.incident_condition_group, Unset):
             incident_condition_group = self.incident_condition_group
 
-        incident_condition_cause: Union[Unset, str] = UNSET
+        incident_condition_cause: Unset | str = UNSET
         if not isinstance(self.incident_condition_cause, Unset):
             incident_condition_cause = self.incident_condition_cause
 
-        incident_condition_label: Union[Unset, str] = UNSET
+        incident_condition_label: Unset | str = UNSET
         if not isinstance(self.incident_condition_label, Unset):
             incident_condition_label = self.incident_condition_label
 
         incident_condition_label_use_regexp = self.incident_condition_label_use_regexp
 
-        incident_labels: Union[Unset, list[str]] = UNSET
+        incident_labels: Unset | list[str] = UNSET
         if not isinstance(self.incident_labels, Unset):
             incident_labels = self.incident_labels
 
-        incident_post_mortem_condition_cause: Union[Unset, str] = UNSET
+        incident_post_mortem_condition_cause: Unset | str = UNSET
         if not isinstance(self.incident_post_mortem_condition_cause, Unset):
             incident_post_mortem_condition_cause = self.incident_post_mortem_condition_cause
 
-        incident_condition_summary: Union[Unset, str] = UNSET
+        incident_condition_summary: Unset | str = UNSET
         if not isinstance(self.incident_condition_summary, Unset):
             incident_condition_summary = self.incident_condition_summary
 
-        incident_condition_started_at: Union[Unset, str] = UNSET
+        incident_condition_started_at: Unset | str = UNSET
         if not isinstance(self.incident_condition_started_at, Unset):
             incident_condition_started_at = self.incident_condition_started_at
 
-        incident_condition_detected_at: Union[Unset, str] = UNSET
+        incident_condition_detected_at: Unset | str = UNSET
         if not isinstance(self.incident_condition_detected_at, Unset):
             incident_condition_detected_at = self.incident_condition_detected_at
 
-        incident_condition_acknowledged_at: Union[Unset, str] = UNSET
+        incident_condition_acknowledged_at: Unset | str = UNSET
         if not isinstance(self.incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
 
-        incident_condition_mitigated_at: Union[Unset, str] = UNSET
+        incident_condition_mitigated_at: Unset | str = UNSET
         if not isinstance(self.incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = self.incident_condition_mitigated_at
 
-        incident_condition_resolved_at: Union[Unset, str] = UNSET
+        incident_condition_resolved_at: Unset | str = UNSET
         if not isinstance(self.incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = self.incident_condition_resolved_at
 
-        incident_conditional_inactivity: Union[Unset, str] = UNSET
+        incident_conditional_inactivity: Unset | str = UNSET
         if not isinstance(self.incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = self.incident_conditional_inactivity
 
-        incident_post_mortem_condition: Union[Unset, str] = UNSET
+        incident_post_mortem_condition: Unset | str = UNSET
         if not isinstance(self.incident_post_mortem_condition, Unset):
             incident_post_mortem_condition = self.incident_post_mortem_condition
 
-        incident_post_mortem_condition_status: Union[Unset, str] = UNSET
+        incident_post_mortem_condition_status: Unset | str = UNSET
         if not isinstance(self.incident_post_mortem_condition_status, Unset):
             incident_post_mortem_condition_status = self.incident_post_mortem_condition_status
 
-        incident_post_mortem_statuses: Union[Unset, list[str]] = UNSET
+        incident_post_mortem_statuses: Unset | list[str] = UNSET
         if not isinstance(self.incident_post_mortem_statuses, Unset):
             incident_post_mortem_statuses = []
             for incident_post_mortem_statuses_item_data in self.incident_post_mortem_statuses:
@@ -444,24 +442,24 @@ class PostMortemTriggerParams:
 
             incident_statuses.append(incident_statuses_item)
 
-        def _parse_incident_inactivity_duration(data: object) -> Union[None, Unset, str]:
+        def _parse_incident_inactivity_duration(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         incident_inactivity_duration = _parse_incident_inactivity_duration(d.pop("incident_inactivity_duration", UNSET))
 
         _incident_condition = d.pop("incident_condition", UNSET)
-        incident_condition: Union[Unset, PostMortemTriggerParamsIncidentCondition]
+        incident_condition: Unset | PostMortemTriggerParamsIncidentCondition
         if isinstance(_incident_condition, Unset):
             incident_condition = UNSET
         else:
             incident_condition = check_post_mortem_trigger_params_incident_condition(_incident_condition)
 
         _incident_condition_visibility = d.pop("incident_condition_visibility", UNSET)
-        incident_condition_visibility: Union[Unset, PostMortemTriggerParamsIncidentConditionVisibility]
+        incident_condition_visibility: Unset | PostMortemTriggerParamsIncidentConditionVisibility
         if isinstance(_incident_condition_visibility, Unset):
             incident_condition_visibility = UNSET
         else:
@@ -470,14 +468,14 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_kind = d.pop("incident_condition_kind", UNSET)
-        incident_condition_kind: Union[Unset, PostMortemTriggerParamsIncidentConditionKind]
+        incident_condition_kind: Unset | PostMortemTriggerParamsIncidentConditionKind
         if isinstance(_incident_condition_kind, Unset):
             incident_condition_kind = UNSET
         else:
             incident_condition_kind = check_post_mortem_trigger_params_incident_condition_kind(_incident_condition_kind)
 
         _incident_condition_status = d.pop("incident_condition_status", UNSET)
-        incident_condition_status: Union[Unset, PostMortemTriggerParamsIncidentConditionStatus]
+        incident_condition_status: Unset | PostMortemTriggerParamsIncidentConditionStatus
         if isinstance(_incident_condition_status, Unset):
             incident_condition_status = UNSET
         else:
@@ -486,7 +484,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_sub_status = d.pop("incident_condition_sub_status", UNSET)
-        incident_condition_sub_status: Union[Unset, PostMortemTriggerParamsIncidentConditionSubStatus]
+        incident_condition_sub_status: Unset | PostMortemTriggerParamsIncidentConditionSubStatus
         if isinstance(_incident_condition_sub_status, Unset):
             incident_condition_sub_status = UNSET
         else:
@@ -495,7 +493,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_environment = d.pop("incident_condition_environment", UNSET)
-        incident_condition_environment: Union[Unset, PostMortemTriggerParamsIncidentConditionEnvironment]
+        incident_condition_environment: Unset | PostMortemTriggerParamsIncidentConditionEnvironment
         if isinstance(_incident_condition_environment, Unset):
             incident_condition_environment = UNSET
         else:
@@ -504,7 +502,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_severity = d.pop("incident_condition_severity", UNSET)
-        incident_condition_severity: Union[Unset, PostMortemTriggerParamsIncidentConditionSeverity]
+        incident_condition_severity: Unset | PostMortemTriggerParamsIncidentConditionSeverity
         if isinstance(_incident_condition_severity, Unset):
             incident_condition_severity = UNSET
         else:
@@ -513,7 +511,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_incident_type = d.pop("incident_condition_incident_type", UNSET)
-        incident_condition_incident_type: Union[Unset, PostMortemTriggerParamsIncidentConditionIncidentType]
+        incident_condition_incident_type: Unset | PostMortemTriggerParamsIncidentConditionIncidentType
         if isinstance(_incident_condition_incident_type, Unset):
             incident_condition_incident_type = UNSET
         else:
@@ -522,7 +520,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_incident_roles = d.pop("incident_condition_incident_roles", UNSET)
-        incident_condition_incident_roles: Union[Unset, PostMortemTriggerParamsIncidentConditionIncidentRoles]
+        incident_condition_incident_roles: Unset | PostMortemTriggerParamsIncidentConditionIncidentRoles
         if isinstance(_incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = UNSET
         else:
@@ -531,7 +529,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_service = d.pop("incident_condition_service", UNSET)
-        incident_condition_service: Union[Unset, PostMortemTriggerParamsIncidentConditionService]
+        incident_condition_service: Unset | PostMortemTriggerParamsIncidentConditionService
         if isinstance(_incident_condition_service, Unset):
             incident_condition_service = UNSET
         else:
@@ -540,7 +538,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_functionality = d.pop("incident_condition_functionality", UNSET)
-        incident_condition_functionality: Union[Unset, PostMortemTriggerParamsIncidentConditionFunctionality]
+        incident_condition_functionality: Unset | PostMortemTriggerParamsIncidentConditionFunctionality
         if isinstance(_incident_condition_functionality, Unset):
             incident_condition_functionality = UNSET
         else:
@@ -549,7 +547,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_group = d.pop("incident_condition_group", UNSET)
-        incident_condition_group: Union[Unset, PostMortemTriggerParamsIncidentConditionGroup]
+        incident_condition_group: Unset | PostMortemTriggerParamsIncidentConditionGroup
         if isinstance(_incident_condition_group, Unset):
             incident_condition_group = UNSET
         else:
@@ -558,7 +556,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_cause = d.pop("incident_condition_cause", UNSET)
-        incident_condition_cause: Union[Unset, PostMortemTriggerParamsIncidentConditionCause]
+        incident_condition_cause: Unset | PostMortemTriggerParamsIncidentConditionCause
         if isinstance(_incident_condition_cause, Unset):
             incident_condition_cause = UNSET
         else:
@@ -567,7 +565,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_label = d.pop("incident_condition_label", UNSET)
-        incident_condition_label: Union[Unset, PostMortemTriggerParamsIncidentConditionLabel]
+        incident_condition_label: Unset | PostMortemTriggerParamsIncidentConditionLabel
         if isinstance(_incident_condition_label, Unset):
             incident_condition_label = UNSET
         else:
@@ -580,7 +578,7 @@ class PostMortemTriggerParams:
         incident_labels = cast(list[str], d.pop("incident_labels", UNSET))
 
         _incident_post_mortem_condition_cause = d.pop("incident_post_mortem_condition_cause", UNSET)
-        incident_post_mortem_condition_cause: Union[Unset, PostMortemTriggerParamsIncidentPostMortemConditionCause]
+        incident_post_mortem_condition_cause: Unset | PostMortemTriggerParamsIncidentPostMortemConditionCause
         if isinstance(_incident_post_mortem_condition_cause, Unset):
             incident_post_mortem_condition_cause = UNSET
         else:
@@ -591,7 +589,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_summary = d.pop("incident_condition_summary", UNSET)
-        incident_condition_summary: Union[Unset, PostMortemTriggerParamsIncidentConditionSummary]
+        incident_condition_summary: Unset | PostMortemTriggerParamsIncidentConditionSummary
         if isinstance(_incident_condition_summary, Unset):
             incident_condition_summary = UNSET
         else:
@@ -600,7 +598,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_started_at = d.pop("incident_condition_started_at", UNSET)
-        incident_condition_started_at: Union[Unset, PostMortemTriggerParamsIncidentConditionStartedAt]
+        incident_condition_started_at: Unset | PostMortemTriggerParamsIncidentConditionStartedAt
         if isinstance(_incident_condition_started_at, Unset):
             incident_condition_started_at = UNSET
         else:
@@ -609,7 +607,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_detected_at = d.pop("incident_condition_detected_at", UNSET)
-        incident_condition_detected_at: Union[Unset, PostMortemTriggerParamsIncidentConditionDetectedAt]
+        incident_condition_detected_at: Unset | PostMortemTriggerParamsIncidentConditionDetectedAt
         if isinstance(_incident_condition_detected_at, Unset):
             incident_condition_detected_at = UNSET
         else:
@@ -618,7 +616,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_acknowledged_at = d.pop("incident_condition_acknowledged_at", UNSET)
-        incident_condition_acknowledged_at: Union[Unset, PostMortemTriggerParamsIncidentConditionAcknowledgedAt]
+        incident_condition_acknowledged_at: Unset | PostMortemTriggerParamsIncidentConditionAcknowledgedAt
         if isinstance(_incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = UNSET
         else:
@@ -627,7 +625,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_mitigated_at = d.pop("incident_condition_mitigated_at", UNSET)
-        incident_condition_mitigated_at: Union[Unset, PostMortemTriggerParamsIncidentConditionMitigatedAt]
+        incident_condition_mitigated_at: Unset | PostMortemTriggerParamsIncidentConditionMitigatedAt
         if isinstance(_incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = UNSET
         else:
@@ -636,7 +634,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_condition_resolved_at = d.pop("incident_condition_resolved_at", UNSET)
-        incident_condition_resolved_at: Union[Unset, PostMortemTriggerParamsIncidentConditionResolvedAt]
+        incident_condition_resolved_at: Unset | PostMortemTriggerParamsIncidentConditionResolvedAt
         if isinstance(_incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = UNSET
         else:
@@ -645,7 +643,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_conditional_inactivity = d.pop("incident_conditional_inactivity", UNSET)
-        incident_conditional_inactivity: Union[Unset, PostMortemTriggerParamsIncidentConditionalInactivity]
+        incident_conditional_inactivity: Unset | PostMortemTriggerParamsIncidentConditionalInactivity
         if isinstance(_incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = UNSET
         else:
@@ -654,7 +652,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_post_mortem_condition = d.pop("incident_post_mortem_condition", UNSET)
-        incident_post_mortem_condition: Union[Unset, PostMortemTriggerParamsIncidentPostMortemCondition]
+        incident_post_mortem_condition: Unset | PostMortemTriggerParamsIncidentPostMortemCondition
         if isinstance(_incident_post_mortem_condition, Unset):
             incident_post_mortem_condition = UNSET
         else:
@@ -663,7 +661,7 @@ class PostMortemTriggerParams:
             )
 
         _incident_post_mortem_condition_status = d.pop("incident_post_mortem_condition_status", UNSET)
-        incident_post_mortem_condition_status: Union[Unset, PostMortemTriggerParamsIncidentPostMortemConditionStatus]
+        incident_post_mortem_condition_status: Unset | PostMortemTriggerParamsIncidentPostMortemConditionStatus
         if isinstance(_incident_post_mortem_condition_status, Unset):
             incident_post_mortem_condition_status = UNSET
         else:

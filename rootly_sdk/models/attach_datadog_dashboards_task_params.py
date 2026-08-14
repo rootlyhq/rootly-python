@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,9 +33,9 @@ class AttachDatadogDashboardsTaskParams:
     """
 
     dashboards: list["AttachDatadogDashboardsTaskParamsDashboardsItem"]
-    task_type: Union[Unset, AttachDatadogDashboardsTaskParamsTaskType] = UNSET
-    post_to_incident_timeline: Union[Unset, bool] = UNSET
-    post_to_slack_channels: Union[Unset, list["AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem"]] = UNSET
+    task_type: Unset | AttachDatadogDashboardsTaskParamsTaskType = UNSET
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +44,13 @@ class AttachDatadogDashboardsTaskParams:
             dashboards_item = dashboards_item_data.to_dict()
             dashboards.append(dashboards_item)
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -91,7 +91,7 @@ class AttachDatadogDashboardsTaskParams:
             dashboards.append(dashboards_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AttachDatadogDashboardsTaskParamsTaskType]
+        task_type: Unset | AttachDatadogDashboardsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

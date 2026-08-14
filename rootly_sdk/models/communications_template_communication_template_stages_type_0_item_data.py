@@ -28,19 +28,19 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemData:
         attributes (Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes]):
     """
 
-    id: Union[Unset, str] = UNSET
-    type_: Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemDataType] = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | CommunicationsTemplateCommunicationTemplateStagesType0ItemDataType = UNSET
     attributes: Union[Unset, "CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -66,14 +66,14 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemData:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemDataType]
+        type_: Unset | CommunicationsTemplateCommunicationTemplateStagesType0ItemDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_communications_template_communication_template_stages_type_0_item_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes]
+        attributes: Unset | CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -23,22 +23,22 @@ class NewIncidentRoleTaskDataAttributes:
     """
 
     task: str
-    incident_role_id: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    priority: Union[Unset, NewIncidentRoleTaskDataAttributesPriority] = UNSET
+    incident_role_id: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    priority: Unset | NewIncidentRoleTaskDataAttributesPriority = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         task = self.task
 
         incident_role_id = self.incident_role_id
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        priority: Union[Unset, str] = UNSET
+        priority: Unset | str = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
@@ -65,17 +65,17 @@ class NewIncidentRoleTaskDataAttributes:
 
         incident_role_id = d.pop("incident_role_id", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, NewIncidentRoleTaskDataAttributesPriority]
+        priority: Unset | NewIncidentRoleTaskDataAttributesPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

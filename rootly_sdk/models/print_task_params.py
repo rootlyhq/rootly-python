@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,13 +19,13 @@ class PrintTaskParams:
     """
 
     message: str
-    task_type: Union[Unset, PrintTaskParamsTaskType] = UNSET
+    task_type: Unset | PrintTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         message = self.message
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -47,7 +47,7 @@ class PrintTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, PrintTaskParamsTaskType]
+        task_type: Unset | PrintTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

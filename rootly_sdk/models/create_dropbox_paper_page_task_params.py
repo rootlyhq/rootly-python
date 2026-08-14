@@ -34,10 +34,10 @@ class CreateDropboxPaperPageTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateDropboxPaperPageTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
-    content: Union[Unset, str] = UNSET
+    task_type: Unset | CreateDropboxPaperPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
+    content: Unset | str = UNSET
     namespace: Union[Unset, "CreateDropboxPaperPageTaskParamsNamespace"] = UNSET
     parent_folder: Union[Unset, "CreateDropboxPaperPageTaskParamsParentFolder"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -45,7 +45,7 @@ class CreateDropboxPaperPageTaskParams:
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -55,11 +55,11 @@ class CreateDropboxPaperPageTaskParams:
 
         content = self.content
 
-        namespace: Union[Unset, dict[str, Any]] = UNSET
+        namespace: Unset | dict[str, Any] = UNSET
         if not isinstance(self.namespace, Unset):
             namespace = self.namespace.to_dict()
 
-        parent_folder: Union[Unset, dict[str, Any]] = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -96,7 +96,7 @@ class CreateDropboxPaperPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateDropboxPaperPageTaskParamsTaskType]
+        task_type: Unset | CreateDropboxPaperPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -109,14 +109,14 @@ class CreateDropboxPaperPageTaskParams:
         content = d.pop("content", UNSET)
 
         _namespace = d.pop("namespace", UNSET)
-        namespace: Union[Unset, CreateDropboxPaperPageTaskParamsNamespace]
+        namespace: Unset | CreateDropboxPaperPageTaskParamsNamespace
         if isinstance(_namespace, Unset):
             namespace = UNSET
         else:
             namespace = CreateDropboxPaperPageTaskParamsNamespace.from_dict(_namespace)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: Union[Unset, CreateDropboxPaperPageTaskParamsParentFolder]
+        parent_folder: Unset | CreateDropboxPaperPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

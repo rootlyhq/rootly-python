@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -19,8 +19,8 @@ class EscalateAlertDataAttributes:
             the next level (same EP) or level 1 (different EP).
     """
 
-    escalation_policy_id: Union[Unset, str] = UNSET
-    escalation_policy_level: Union[Unset, int] = UNSET
+    escalation_policy_id: Unset | str = UNSET
+    escalation_policy_level: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         escalation_policy_id = self.escalation_policy_id

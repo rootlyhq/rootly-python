@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,17 +13,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, ListShiftsInclude] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-    to: Union[Unset, str] = UNSET,
-    user_ids: Union[Unset, list[int]] = UNSET,
-    schedule_ids: Union[Unset, list[str]] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListShiftsInclude = UNSET,
+    from_: Unset | str = UNSET,
+    to: Unset | str = UNSET,
+    user_ids: Unset | list[int] = UNSET,
+    schedule_ids: Unset | list[str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -33,13 +33,13 @@ def _get_kwargs(
 
     params["to"] = to
 
-    json_user_ids: Union[Unset, list[int]] = UNSET
+    json_user_ids: Unset | list[int] = UNSET
     if not isinstance(user_ids, Unset):
         json_user_ids = user_ids
 
     params["user_ids[]"] = json_user_ids
 
-    json_schedule_ids: Union[Unset, list[str]] = UNSET
+    json_schedule_ids: Unset | list[str] = UNSET
     if not isinstance(schedule_ids, Unset):
         json_schedule_ids = schedule_ids
 
@@ -60,9 +60,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, ShiftList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | ShiftList | None:
     if response.status_code == 200:
         response_200 = ShiftList.from_dict(response.json())
 
@@ -80,8 +78,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, ShiftList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ShiftList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,14 +91,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListShiftsInclude] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-    to: Union[Unset, str] = UNSET,
-    user_ids: Union[Unset, list[int]] = UNSET,
-    schedule_ids: Union[Unset, list[str]] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[ErrorsList, ShiftList]]:
+    include: Unset | ListShiftsInclude = UNSET,
+    from_: Unset | str = UNSET,
+    to: Unset | str = UNSET,
+    user_ids: Unset | list[int] = UNSET,
+    schedule_ids: Unset | list[str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[ErrorsList | ShiftList]:
     """List shifts
 
      List shifts
@@ -142,14 +140,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListShiftsInclude] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-    to: Union[Unset, str] = UNSET,
-    user_ids: Union[Unset, list[int]] = UNSET,
-    schedule_ids: Union[Unset, list[str]] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[ErrorsList, ShiftList]]:
+    include: Unset | ListShiftsInclude = UNSET,
+    from_: Unset | str = UNSET,
+    to: Unset | str = UNSET,
+    user_ids: Unset | list[int] = UNSET,
+    schedule_ids: Unset | list[str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> ErrorsList | ShiftList | None:
     """List shifts
 
      List shifts
@@ -186,14 +184,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListShiftsInclude] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-    to: Union[Unset, str] = UNSET,
-    user_ids: Union[Unset, list[int]] = UNSET,
-    schedule_ids: Union[Unset, list[str]] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[ErrorsList, ShiftList]]:
+    include: Unset | ListShiftsInclude = UNSET,
+    from_: Unset | str = UNSET,
+    to: Unset | str = UNSET,
+    user_ids: Unset | list[int] = UNSET,
+    schedule_ids: Unset | list[str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[ErrorsList | ShiftList]:
     """List shifts
 
      List shifts
@@ -233,14 +231,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListShiftsInclude] = UNSET,
-    from_: Union[Unset, str] = UNSET,
-    to: Union[Unset, str] = UNSET,
-    user_ids: Union[Unset, list[int]] = UNSET,
-    schedule_ids: Union[Unset, list[str]] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[ErrorsList, ShiftList]]:
+    include: Unset | ListShiftsInclude = UNSET,
+    from_: Unset | str = UNSET,
+    to: Unset | str = UNSET,
+    user_ids: Unset | list[int] = UNSET,
+    schedule_ids: Unset | list[str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> ErrorsList | ShiftList | None:
     """List shifts
 
      List shifts

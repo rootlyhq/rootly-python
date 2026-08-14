@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -40,11 +40,11 @@ class NewAlertRoutingRuleDataAttributes:
     name: str
     alerts_source_id: UUID
     destination: "NewAlertRoutingRuleDataAttributesDestination"
-    enabled: Union[Unset, bool] = UNSET
-    owning_team_ids: Union[Unset, list[UUID]] = UNSET
-    position: Union[Unset, int] = UNSET
-    condition_type: Union[Unset, NewAlertRoutingRuleDataAttributesConditionType] = UNSET
-    conditions: Union[Unset, list["NewAlertRoutingRuleDataAttributesConditionsItem"]] = UNSET
+    enabled: Unset | bool = UNSET
+    owning_team_ids: Unset | list[UUID] = UNSET
+    position: Unset | int = UNSET
+    condition_type: Unset | NewAlertRoutingRuleDataAttributesConditionType = UNSET
+    conditions: Unset | list["NewAlertRoutingRuleDataAttributesConditionsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -55,7 +55,7 @@ class NewAlertRoutingRuleDataAttributes:
 
         enabled = self.enabled
 
-        owning_team_ids: Union[Unset, list[str]] = UNSET
+        owning_team_ids: Unset | list[str] = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
@@ -64,11 +64,11 @@ class NewAlertRoutingRuleDataAttributes:
 
         position = self.position
 
-        condition_type: Union[Unset, str] = UNSET
+        condition_type: Unset | str = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -125,7 +125,7 @@ class NewAlertRoutingRuleDataAttributes:
         position = d.pop("position", UNSET)
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: Union[Unset, NewAlertRoutingRuleDataAttributesConditionType]
+        condition_type: Unset | NewAlertRoutingRuleDataAttributesConditionType
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:

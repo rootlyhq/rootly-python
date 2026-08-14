@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -26,9 +26,9 @@ class NewWorkflowCustomFieldSelectionDataAttributes:
 
     custom_field_id: int
     incident_condition: NewWorkflowCustomFieldSelectionDataAttributesIncidentCondition = "ANY"
-    workflow_id: Union[Unset, str] = UNSET
-    values: Union[Unset, list[str]] = UNSET
-    selected_option_ids: Union[Unset, list[int]] = UNSET
+    workflow_id: Unset | str = UNSET
+    values: Unset | list[str] = UNSET
+    selected_option_ids: Unset | list[int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         custom_field_id = self.custom_field_id
@@ -37,11 +37,11 @@ class NewWorkflowCustomFieldSelectionDataAttributes:
 
         workflow_id = self.workflow_id
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_option_ids: Union[Unset, list[int]] = UNSET
+        selected_option_ids: Unset | list[int] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 

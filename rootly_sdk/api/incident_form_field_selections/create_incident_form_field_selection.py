@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
     if response.status_code == 201:
         response_201 = IncidentFormFieldSelectionResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentFormFieldSelection,
-) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
     """Creates an incident form field selection
 
      Creates a new incident form field selection from provided data
@@ -105,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewIncidentFormFieldSelection,
-) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
     """Creates an incident form field selection
 
      Creates a new incident form field selection from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentFormFieldSelection,
-) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
     """Creates an incident form field selection
 
      Creates a new incident form field selection from provided data
@@ -166,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewIncidentFormFieldSelection,
-) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
+) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
     """Creates an incident form field selection
 
      Creates a new incident form field selection from provided data

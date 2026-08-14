@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -10,10 +10,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    page: Union[Unset, int] = UNSET,
-    per_page: Union[Unset, int] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
+    page: Unset | int = UNSET,
+    per_page: Unset | int = UNSET,
+    status: Unset | str = UNSET,
+    name: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -36,7 +36,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
     if response.status_code == 200:
         return None
 
@@ -46,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,10 +58,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    per_page: Union[Unset, int] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
+    page: Unset | int = UNSET,
+    per_page: Unset | int = UNSET,
+    status: Unset | str = UNSET,
+    name: Unset | str = UNSET,
 ) -> Response[Any]:
     """List edge connectors
 
@@ -96,10 +96,10 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    per_page: Union[Unset, int] = UNSET,
-    status: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
+    page: Unset | int = UNSET,
+    per_page: Unset | int = UNSET,
+    status: Unset | str = UNSET,
+    name: Unset | str = UNSET,
 ) -> Response[Any]:
     """List edge connectors
 

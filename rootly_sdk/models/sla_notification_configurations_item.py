@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -26,19 +26,19 @@ class SlaNotificationConfigurationsItem:
         updated_at (Union[Unset, str]): Date of last update
     """
 
-    id: Union[Unset, UUID] = UNSET
-    offset_type: Union[Unset, SlaNotificationConfigurationsItemOffsetType] = UNSET
-    offset_days: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    id: Unset | UUID = UNSET
+    offset_type: Unset | SlaNotificationConfigurationsItemOffsetType = UNSET
+    offset_days: Unset | int = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        offset_type: Union[Unset, str] = UNSET
+        offset_type: Unset | str = UNSET
         if not isinstance(self.offset_type, Unset):
             offset_type = self.offset_type
 
@@ -68,14 +68,14 @@ class SlaNotificationConfigurationsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _offset_type = d.pop("offset_type", UNSET)
-        offset_type: Union[Unset, SlaNotificationConfigurationsItemOffsetType]
+        offset_type: Unset | SlaNotificationConfigurationsItemOffsetType
         if isinstance(_offset_type, Unset):
             offset_type = UNSET
         else:

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -41,41 +41,41 @@ class UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem:
         alert_urgency_id (Union[Unset, str]): The ID of the alert urgency
     """
 
-    json_path: Union[None, Unset, str] = UNSET
-    operator: Union[Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator] = UNSET
-    value: Union[Unset, str] = UNSET
-    conditionable_type: Union[
-        Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType
-    ] = UNSET
-    conditionable_id: Union[None, Unset, str] = UNSET
-    kind: Union[Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind] = UNSET
-    alert_urgency_id: Union[Unset, str] = UNSET
+    json_path: None | Unset | str = UNSET
+    operator: Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator = UNSET
+    value: Unset | str = UNSET
+    conditionable_type: (
+        Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType
+    ) = UNSET
+    conditionable_id: None | Unset | str = UNSET
+    kind: Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind = UNSET
+    alert_urgency_id: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        json_path: Union[None, Unset, str]
+        json_path: None | Unset | str
         if isinstance(self.json_path, Unset):
             json_path = UNSET
         else:
             json_path = self.json_path
 
-        operator: Union[Unset, str] = UNSET
+        operator: Unset | str = UNSET
         if not isinstance(self.operator, Unset):
             operator = self.operator
 
         value = self.value
 
-        conditionable_type: Union[Unset, str] = UNSET
+        conditionable_type: Unset | str = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
-        conditionable_id: Union[None, Unset, str]
+        conditionable_id: None | Unset | str
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         else:
             conditionable_id = self.conditionable_id
 
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -105,17 +105,17 @@ class UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_json_path(data: object) -> Union[None, Unset, str]:
+        def _parse_json_path(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         json_path = _parse_json_path(d.pop("json_path", UNSET))
 
         _operator = d.pop("operator", UNSET)
-        operator: Union[Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator]
+        operator: Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator
         if isinstance(_operator, Unset):
             operator = UNSET
         else:
@@ -126,9 +126,9 @@ class UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem:
         value = d.pop("value", UNSET)
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
-        conditionable_type: Union[
-            Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType
-        ]
+        conditionable_type: (
+            Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType
+        )
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
         else:
@@ -136,17 +136,17 @@ class UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItem:
                 _conditionable_type
             )
 
-        def _parse_conditionable_id(data: object) -> Union[None, Unset, str]:
+        def _parse_conditionable_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind]
+        kind: Unset | UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:

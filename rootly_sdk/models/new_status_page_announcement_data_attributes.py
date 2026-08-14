@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -20,7 +20,7 @@ class NewStatusPageAnnouncementDataAttributes:
 
     title: str
     body: str
-    notify_subscribers: Union[Unset, bool] = UNSET
+    notify_subscribers: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title

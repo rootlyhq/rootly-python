@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -18,17 +18,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    pageafter: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListAlertEventsFeedSort] = UNSET,
-    filterkind: Union[Unset, ListAlertEventsFeedFilterkind] = UNSET,
-    filteraction: Union[Unset, ListAlertEventsFeedFilteraction] = UNSET,
-    filteralert_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagesize: Unset | int = UNSET,
+    pageafter: Unset | str = UNSET,
+    sort: Unset | ListAlertEventsFeedSort = UNSET,
+    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
+    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
+    filteralert_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -38,19 +38,19 @@ def _get_kwargs(
 
     params["page[after]"] = pageafter
 
-    json_sort: Union[Unset, str] = UNSET
+    json_sort: Unset | str = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
     params["sort"] = json_sort
 
-    json_filterkind: Union[Unset, str] = UNSET
+    json_filterkind: Unset | str = UNSET
     if not isinstance(filterkind, Unset):
         json_filterkind = filterkind
 
     params["filter[kind]"] = json_filterkind
 
-    json_filteraction: Union[Unset, str] = UNSET
+    json_filteraction: Unset | str = UNSET
     if not isinstance(filteraction, Unset):
         json_filteraction = filteraction
 
@@ -77,9 +77,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AlertEventFeedList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertEventFeedList | None:
     if response.status_code == 200:
         response_200 = AlertEventFeedList.from_dict(response.json())
 
@@ -91,9 +89,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AlertEventFeedList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertEventFeedList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -105,17 +101,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    pageafter: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListAlertEventsFeedSort] = UNSET,
-    filterkind: Union[Unset, ListAlertEventsFeedFilterkind] = UNSET,
-    filteraction: Union[Unset, ListAlertEventsFeedFilteraction] = UNSET,
-    filteralert_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagesize: Unset | int = UNSET,
+    pageafter: Unset | str = UNSET,
+    sort: Unset | ListAlertEventsFeedSort = UNSET,
+    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
+    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
+    filteralert_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[AlertEventFeedList]:
     """List alert events across alerts
 
@@ -168,18 +164,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    pageafter: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListAlertEventsFeedSort] = UNSET,
-    filterkind: Union[Unset, ListAlertEventsFeedFilterkind] = UNSET,
-    filteraction: Union[Unset, ListAlertEventsFeedFilteraction] = UNSET,
-    filteralert_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[AlertEventFeedList]:
+    include: Unset | str = UNSET,
+    pagesize: Unset | int = UNSET,
+    pageafter: Unset | str = UNSET,
+    sort: Unset | ListAlertEventsFeedSort = UNSET,
+    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
+    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
+    filteralert_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> AlertEventFeedList | None:
     """List alert events across alerts
 
      Returns a flat list of alert events across all alerts the requester can access. Designed for
@@ -226,17 +222,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    pageafter: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListAlertEventsFeedSort] = UNSET,
-    filterkind: Union[Unset, ListAlertEventsFeedFilterkind] = UNSET,
-    filteraction: Union[Unset, ListAlertEventsFeedFilteraction] = UNSET,
-    filteralert_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagesize: Unset | int = UNSET,
+    pageafter: Unset | str = UNSET,
+    sort: Unset | ListAlertEventsFeedSort = UNSET,
+    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
+    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
+    filteralert_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[AlertEventFeedList]:
     """List alert events across alerts
 
@@ -287,18 +283,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    pageafter: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListAlertEventsFeedSort] = UNSET,
-    filterkind: Union[Unset, ListAlertEventsFeedFilterkind] = UNSET,
-    filteraction: Union[Unset, ListAlertEventsFeedFilteraction] = UNSET,
-    filteralert_id: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[AlertEventFeedList]:
+    include: Unset | str = UNSET,
+    pagesize: Unset | int = UNSET,
+    pageafter: Unset | str = UNSET,
+    sort: Unset | ListAlertEventsFeedSort = UNSET,
+    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
+    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
+    filteralert_id: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> AlertEventFeedList | None:
     """List alert events across alerts
 
      Returns a flat list of alert events across all alerts the requester can access. Designed for

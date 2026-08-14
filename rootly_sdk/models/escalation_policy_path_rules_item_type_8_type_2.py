@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,8 +31,8 @@ class EscalationPolicyPathRulesItemType8Type2:
     rule_type: EscalationPolicyPathRulesItemType8Type2RuleType
     json_path: str
     operator: EscalationPolicyPathRulesItemType8Type2Operator
-    value: Union[None, Unset, str] = UNSET
-    values: Union[Unset, list[str]] = UNSET
+    value: None | Unset | str = UNSET
+    values: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,13 +42,13 @@ class EscalationPolicyPathRulesItemType8Type2:
 
         operator: str = self.operator
 
-        value: Union[None, Unset, str]
+        value: None | Unset | str
         if isinstance(self.value, Unset):
             value = UNSET
         else:
             value = self.value
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -77,12 +77,12 @@ class EscalationPolicyPathRulesItemType8Type2:
 
         operator = check_escalation_policy_path_rules_item_type_8_type_2_operator(d.pop("operator"))
 
-        def _parse_value(data: object) -> Union[None, Unset, str]:
+        def _parse_value(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         value = _parse_value(d.pop("value", UNSET))
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentTypeResponse | None:
     if response.status_code == 201:
         response_201 = IncidentTypeResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentTypeResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentType,
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+) -> Response[ErrorsList | IncidentTypeResponse]:
     """Creates an incident type
 
      Creates a new incident_type from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewIncidentType,
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+) -> ErrorsList | IncidentTypeResponse | None:
     """Creates an incident type
 
      Creates a new incident_type from provided data
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentType,
-) -> Response[Union[ErrorsList, IncidentTypeResponse]]:
+) -> Response[ErrorsList | IncidentTypeResponse]:
     """Creates an incident type
 
      Creates a new incident_type from provided data
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewIncidentType,
-) -> Optional[Union[ErrorsList, IncidentTypeResponse]]:
+) -> ErrorsList | IncidentTypeResponse | None:
     """Creates an incident type
 
      Creates a new incident_type from provided data

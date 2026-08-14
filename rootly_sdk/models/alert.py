@@ -84,35 +84,35 @@ class Alert:
     summary: str
     created_at: str
     updated_at: str
-    noise: Union[Unset, AlertNoise] = UNSET
-    status: Union[Unset, AlertStatus] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    services: Union[Unset, list["Service"]] = UNSET
-    groups: Union[Unset, list["Team"]] = UNSET
-    functionalities: Union[Unset, list["Functionality"]] = UNSET
-    environments: Union[Unset, list["Environment"]] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    group_ids: Union[None, Unset, list[str]] = UNSET
-    functionality_ids: Union[None, Unset, list[str]] = UNSET
-    environment_ids: Union[None, Unset, list[str]] = UNSET
-    external_id: Union[None, Unset, str] = UNSET
-    external_url: Union[None, Unset, str] = UNSET
-    alert_urgency_id: Union[None, Unset, str] = UNSET
+    noise: Unset | AlertNoise = UNSET
+    status: Unset | AlertStatus = UNSET
+    description: None | Unset | str = UNSET
+    services: Unset | list["Service"] = UNSET
+    groups: Unset | list["Team"] = UNSET
+    functionalities: Unset | list["Functionality"] = UNSET
+    environments: Unset | list["Environment"] = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    group_ids: None | Unset | list[str] = UNSET
+    functionality_ids: None | Unset | list[str] = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    external_id: None | Unset | str = UNSET
+    external_url: None | Unset | str = UNSET
+    alert_urgency_id: None | Unset | str = UNSET
     alert_urgency: Union[Unset, "AlertUrgency"] = UNSET
-    group_leader_alert_id: Union[None, Unset, str] = UNSET
-    is_group_leader_alert: Union[None, Unset, bool] = UNSET
-    labels: Union[Unset, list[Union["AlertLabelsItemType0", None]]] = UNSET
+    group_leader_alert_id: None | Unset | str = UNSET
+    is_group_leader_alert: None | Unset | bool = UNSET
+    labels: Unset | list[Union["AlertLabelsItemType0", None]] = UNSET
     data: Union["AlertDataType0", None, Unset] = UNSET
-    notification_target_type: Union[Unset, AlertNotificationTargetType] = UNSET
-    notification_target_id: Union[None, Unset, str] = UNSET
-    deduplication_key: Union[None, Unset, str] = UNSET
-    alert_field_values: Union[None, Unset, list["AlertAlertFieldValuesType0Item"]] = UNSET
-    responders: Union[None, Unset, list["UserFlatResponse"]] = UNSET
-    notified_users: Union[None, Unset, list["User"]] = UNSET
-    alerting_targets: Union[None, Unset, list["AlertAlertingTargetsType0Item"]] = UNSET
-    url: Union[Unset, str] = UNSET
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
-    ended_at: Union[None, Unset, datetime.datetime] = UNSET
+    notification_target_type: Unset | AlertNotificationTargetType = UNSET
+    notification_target_id: None | Unset | str = UNSET
+    deduplication_key: None | Unset | str = UNSET
+    alert_field_values: None | Unset | list["AlertAlertFieldValuesType0Item"] = UNSET
+    responders: None | Unset | list["UserFlatResponse"] = UNSET
+    notified_users: None | Unset | list["User"] = UNSET
+    alerting_targets: None | Unset | list["AlertAlertingTargetsType0Item"] = UNSET
+    url: Unset | str = UNSET
+    started_at: None | Unset | datetime.datetime = UNSET
+    ended_at: None | Unset | datetime.datetime = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -129,49 +129,49 @@ class Alert:
 
         updated_at = self.updated_at
 
-        noise: Union[Unset, str] = UNSET
+        noise: Unset | str = UNSET
         if not isinstance(self.noise, Unset):
             noise = self.noise
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        services: Union[Unset, list[dict[str, Any]]] = UNSET
+        services: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.services, Unset):
             services = []
             for services_item_data in self.services:
                 services_item = services_item_data.to_dict()
                 services.append(services_item)
 
-        groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        groups: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.groups, Unset):
             groups = []
             for groups_item_data in self.groups:
                 groups_item = groups_item_data.to_dict()
                 groups.append(groups_item)
 
-        functionalities: Union[Unset, list[dict[str, Any]]] = UNSET
+        functionalities: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.functionalities, Unset):
             functionalities = []
             for functionalities_item_data in self.functionalities:
                 functionalities_item = functionalities_item_data.to_dict()
                 functionalities.append(functionalities_item)
 
-        environments: Union[Unset, list[dict[str, Any]]] = UNSET
+        environments: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.environments, Unset):
             environments = []
             for environments_item_data in self.environments:
                 environments_item = environments_item_data.to_dict()
                 environments.append(environments_item)
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -180,7 +180,7 @@ class Alert:
         else:
             service_ids = self.service_ids
 
-        group_ids: Union[None, Unset, list[str]]
+        group_ids: None | Unset | list[str]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -189,7 +189,7 @@ class Alert:
         else:
             group_ids = self.group_ids
 
-        functionality_ids: Union[None, Unset, list[str]]
+        functionality_ids: None | Unset | list[str]
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -198,7 +198,7 @@ class Alert:
         else:
             functionality_ids = self.functionality_ids
 
-        environment_ids: Union[None, Unset, list[str]]
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -207,52 +207,52 @@ class Alert:
         else:
             environment_ids = self.environment_ids
 
-        external_id: Union[None, Unset, str]
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        external_url: Union[None, Unset, str]
+        external_url: None | Unset | str
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        alert_urgency_id: Union[None, Unset, str]
+        alert_urgency_id: None | Unset | str
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        alert_urgency: Union[Unset, dict[str, Any]] = UNSET
+        alert_urgency: Unset | dict[str, Any] = UNSET
         if not isinstance(self.alert_urgency, Unset):
             alert_urgency = self.alert_urgency.to_dict()
 
-        group_leader_alert_id: Union[None, Unset, str]
+        group_leader_alert_id: None | Unset | str
         if isinstance(self.group_leader_alert_id, Unset):
             group_leader_alert_id = UNSET
         else:
             group_leader_alert_id = self.group_leader_alert_id
 
-        is_group_leader_alert: Union[None, Unset, bool]
+        is_group_leader_alert: None | Unset | bool
         if isinstance(self.is_group_leader_alert, Unset):
             is_group_leader_alert = UNSET
         else:
             is_group_leader_alert = self.is_group_leader_alert
 
-        labels: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
+        labels: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: Union[None, dict[str, Any]]
+                labels_item: None | dict[str, Any]
                 if isinstance(labels_item_data, AlertLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, AlertDataType0):
@@ -260,23 +260,23 @@ class Alert:
         else:
             data = self.data
 
-        notification_target_type: Union[Unset, str] = UNSET
+        notification_target_type: Unset | str = UNSET
         if not isinstance(self.notification_target_type, Unset):
             notification_target_type = self.notification_target_type
 
-        notification_target_id: Union[None, Unset, str]
+        notification_target_id: None | Unset | str
         if isinstance(self.notification_target_id, Unset):
             notification_target_id = UNSET
         else:
             notification_target_id = self.notification_target_id
 
-        deduplication_key: Union[None, Unset, str]
+        deduplication_key: None | Unset | str
         if isinstance(self.deduplication_key, Unset):
             deduplication_key = UNSET
         else:
             deduplication_key = self.deduplication_key
 
-        alert_field_values: Union[None, Unset, list[dict[str, Any]]]
+        alert_field_values: None | Unset | list[dict[str, Any]]
         if isinstance(self.alert_field_values, Unset):
             alert_field_values = UNSET
         elif isinstance(self.alert_field_values, list):
@@ -288,7 +288,7 @@ class Alert:
         else:
             alert_field_values = self.alert_field_values
 
-        responders: Union[None, Unset, list[dict[str, Any]]]
+        responders: None | Unset | list[dict[str, Any]]
         if isinstance(self.responders, Unset):
             responders = UNSET
         elif isinstance(self.responders, list):
@@ -300,7 +300,7 @@ class Alert:
         else:
             responders = self.responders
 
-        notified_users: Union[None, Unset, list[dict[str, Any]]]
+        notified_users: None | Unset | list[dict[str, Any]]
         if isinstance(self.notified_users, Unset):
             notified_users = UNSET
         elif isinstance(self.notified_users, list):
@@ -312,7 +312,7 @@ class Alert:
         else:
             notified_users = self.notified_users
 
-        alerting_targets: Union[None, Unset, list[dict[str, Any]]]
+        alerting_targets: None | Unset | list[dict[str, Any]]
         if isinstance(self.alerting_targets, Unset):
             alerting_targets = UNSET
         elif isinstance(self.alerting_targets, list):
@@ -326,7 +326,7 @@ class Alert:
 
         url = self.url
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -334,7 +334,7 @@ class Alert:
         else:
             started_at = self.started_at
 
-        ended_at: Union[None, Unset, str]
+        ended_at: None | Unset | str
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -440,25 +440,25 @@ class Alert:
         updated_at = d.pop("updated_at")
 
         _noise = d.pop("noise", UNSET)
-        noise: Union[Unset, AlertNoise]
+        noise: Unset | AlertNoise
         if isinstance(_noise, Unset):
             noise = UNSET
         else:
             noise = check_alert_noise(_noise)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AlertStatus]
+        status: Unset | AlertStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_alert_status(_status)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -490,7 +490,7 @@ class Alert:
 
             environments.append(environments_item)
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -503,11 +503,11 @@ class Alert:
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -520,11 +520,11 @@ class Alert:
                 return group_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_functionality_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -537,11 +537,11 @@ class Alert:
                 return functionality_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -554,59 +554,59 @@ class Alert:
                 return environment_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_external_id(data: object) -> Union[None, Unset, str]:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_external_url(data: object) -> Union[None, Unset, str]:
+        def _parse_external_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
         _alert_urgency = d.pop("alert_urgency", UNSET)
-        alert_urgency: Union[Unset, AlertUrgency]
+        alert_urgency: Unset | AlertUrgency
         if isinstance(_alert_urgency, Unset):
             alert_urgency = UNSET
         else:
             alert_urgency = AlertUrgency.from_dict(_alert_urgency)
 
-        def _parse_group_leader_alert_id(data: object) -> Union[None, Unset, str]:
+        def _parse_group_leader_alert_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         group_leader_alert_id = _parse_group_leader_alert_id(d.pop("group_leader_alert_id", UNSET))
 
-        def _parse_is_group_leader_alert(data: object) -> Union[None, Unset, bool]:
+        def _parse_is_group_leader_alert(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         is_group_leader_alert = _parse_is_group_leader_alert(d.pop("is_group_leader_alert", UNSET))
 
@@ -649,31 +649,31 @@ class Alert:
         data = _parse_data(d.pop("data", UNSET))
 
         _notification_target_type = d.pop("notification_target_type", UNSET)
-        notification_target_type: Union[Unset, AlertNotificationTargetType]
+        notification_target_type: Unset | AlertNotificationTargetType
         if isinstance(_notification_target_type, Unset):
             notification_target_type = UNSET
         else:
             notification_target_type = check_alert_notification_target_type(_notification_target_type)
 
-        def _parse_notification_target_id(data: object) -> Union[None, Unset, str]:
+        def _parse_notification_target_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         notification_target_id = _parse_notification_target_id(d.pop("notification_target_id", UNSET))
 
-        def _parse_deduplication_key(data: object) -> Union[None, Unset, str]:
+        def _parse_deduplication_key(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         deduplication_key = _parse_deduplication_key(d.pop("deduplication_key", UNSET))
 
-        def _parse_alert_field_values(data: object) -> Union[None, Unset, list["AlertAlertFieldValuesType0Item"]]:
+        def _parse_alert_field_values(data: object) -> None | Unset | list["AlertAlertFieldValuesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -693,11 +693,11 @@ class Alert:
                 return alert_field_values_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["AlertAlertFieldValuesType0Item"]], data)
+            return cast(None | Unset | list["AlertAlertFieldValuesType0Item"], data)
 
         alert_field_values = _parse_alert_field_values(d.pop("alert_field_values", UNSET))
 
-        def _parse_responders(data: object) -> Union[None, Unset, list["UserFlatResponse"]]:
+        def _parse_responders(data: object) -> None | Unset | list["UserFlatResponse"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -715,11 +715,11 @@ class Alert:
                 return responders_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["UserFlatResponse"]], data)
+            return cast(None | Unset | list["UserFlatResponse"], data)
 
         responders = _parse_responders(d.pop("responders", UNSET))
 
-        def _parse_notified_users(data: object) -> Union[None, Unset, list["User"]]:
+        def _parse_notified_users(data: object) -> None | Unset | list["User"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -737,11 +737,11 @@ class Alert:
                 return notified_users_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["User"]], data)
+            return cast(None | Unset | list["User"], data)
 
         notified_users = _parse_notified_users(d.pop("notified_users", UNSET))
 
-        def _parse_alerting_targets(data: object) -> Union[None, Unset, list["AlertAlertingTargetsType0Item"]]:
+        def _parse_alerting_targets(data: object) -> None | Unset | list["AlertAlertingTargetsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -761,13 +761,13 @@ class Alert:
                 return alerting_targets_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["AlertAlertingTargetsType0Item"]], data)
+            return cast(None | Unset | list["AlertAlertingTargetsType0Item"], data)
 
         alerting_targets = _parse_alerting_targets(d.pop("alerting_targets", UNSET))
 
         url = d.pop("url", UNSET)
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -780,11 +780,11 @@ class Alert:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -797,7 +797,7 @@ class Alert:
                 return ended_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 

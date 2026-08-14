@@ -38,7 +38,7 @@ class UserListDataItem:
 
         attributes = self.attributes.to_dict()
 
-        relationships: Union[Unset, dict[str, Any]] = UNSET
+        relationships: Unset | dict[str, Any] = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -69,7 +69,7 @@ class UserListDataItem:
         attributes = User.from_dict(d.pop("attributes"))
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: Union[Unset, UserRelationships]
+        relationships: Unset | UserRelationships
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

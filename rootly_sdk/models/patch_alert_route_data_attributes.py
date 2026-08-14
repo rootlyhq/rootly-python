@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -24,32 +24,32 @@ class PatchAlertRouteDataAttributes:
         rules (Union[Unset, list['PatchAlertRouteDataAttributesRulesItem']]):
     """
 
-    name: Union[Unset, str] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    alerts_source_ids: Union[Unset, list[UUID]] = UNSET
-    owning_team_ids: Union[Unset, list[UUID]] = UNSET
-    rules: Union[Unset, list["PatchAlertRouteDataAttributesRulesItem"]] = UNSET
+    name: Unset | str = UNSET
+    enabled: Unset | bool = UNSET
+    alerts_source_ids: Unset | list[UUID] = UNSET
+    owning_team_ids: Unset | list[UUID] = UNSET
+    rules: Unset | list["PatchAlertRouteDataAttributesRulesItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         enabled = self.enabled
 
-        alerts_source_ids: Union[Unset, list[str]] = UNSET
+        alerts_source_ids: Unset | list[str] = UNSET
         if not isinstance(self.alerts_source_ids, Unset):
             alerts_source_ids = []
             for alerts_source_ids_item_data in self.alerts_source_ids:
                 alerts_source_ids_item = str(alerts_source_ids_item_data)
                 alerts_source_ids.append(alerts_source_ids_item)
 
-        owning_team_ids: Union[Unset, list[str]] = UNSET
+        owning_team_ids: Unset | list[str] = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
                 owning_team_ids_item = str(owning_team_ids_item_data)
                 owning_team_ids.append(owning_team_ids_item)
 
-        rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        rules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:

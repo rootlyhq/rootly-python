@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -13,11 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
+    include: Unset | GetMeetingRecordingInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -35,8 +35,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -53,8 +53,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,8 +67,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    include: Unset | GetMeetingRecordingInclude = UNSET,
+) -> Response[Any | MeetingRecordingResponse]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -102,8 +102,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    include: Unset | GetMeetingRecordingInclude = UNSET,
+) -> Any | MeetingRecordingResponse | None:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -132,8 +132,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    include: Unset | GetMeetingRecordingInclude = UNSET,
+) -> Response[Any | MeetingRecordingResponse]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -165,8 +165,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    include: Unset | GetMeetingRecordingInclude = UNSET,
+) -> Any | MeetingRecordingResponse | None:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word

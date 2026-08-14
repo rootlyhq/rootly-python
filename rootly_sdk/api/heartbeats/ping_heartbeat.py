@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -20,9 +20,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ErrorsList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
@@ -38,9 +36,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ErrorsList]]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +49,7 @@ def sync_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -84,7 +80,7 @@ def sync(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -110,7 +106,7 @@ async def asyncio_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -139,7 +135,7 @@ async def asyncio(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -28,14 +28,14 @@ class UpdateFormFieldPlacementConditionDataAttributes:
         values (Union[Unset, list[str]]): The values for comparison.
     """
 
-    conditioned: Union[Unset, UpdateFormFieldPlacementConditionDataAttributesConditioned] = UNSET
-    position: Union[Unset, int] = UNSET
-    form_field_id: Union[Unset, str] = UNSET
-    comparison: Union[Unset, UpdateFormFieldPlacementConditionDataAttributesComparison] = UNSET
-    values: Union[Unset, list[str]] = UNSET
+    conditioned: Unset | UpdateFormFieldPlacementConditionDataAttributesConditioned = UNSET
+    position: Unset | int = UNSET
+    form_field_id: Unset | str = UNSET
+    comparison: Unset | UpdateFormFieldPlacementConditionDataAttributesComparison = UNSET
+    values: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        conditioned: Union[Unset, str] = UNSET
+        conditioned: Unset | str = UNSET
         if not isinstance(self.conditioned, Unset):
             conditioned = self.conditioned
 
@@ -43,11 +43,11 @@ class UpdateFormFieldPlacementConditionDataAttributes:
 
         form_field_id = self.form_field_id
 
-        comparison: Union[Unset, str] = UNSET
+        comparison: Unset | str = UNSET
         if not isinstance(self.comparison, Unset):
             comparison = self.comparison
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -71,7 +71,7 @@ class UpdateFormFieldPlacementConditionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _conditioned = d.pop("conditioned", UNSET)
-        conditioned: Union[Unset, UpdateFormFieldPlacementConditionDataAttributesConditioned]
+        conditioned: Unset | UpdateFormFieldPlacementConditionDataAttributesConditioned
         if isinstance(_conditioned, Unset):
             conditioned = UNSET
         else:
@@ -82,7 +82,7 @@ class UpdateFormFieldPlacementConditionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _comparison = d.pop("comparison", UNSET)
-        comparison: Union[Unset, UpdateFormFieldPlacementConditionDataAttributesComparison]
+        comparison: Unset | UpdateFormFieldPlacementConditionDataAttributesComparison
         if isinstance(_comparison, Unset):
             comparison = UNSET
         else:

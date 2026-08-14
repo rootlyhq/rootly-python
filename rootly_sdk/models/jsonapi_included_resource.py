@@ -35,11 +35,11 @@ class JsonapiIncludedResource:
 
         type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        relationships: Union[Unset, dict[str, Any]] = UNSET
+        relationships: Unset | dict[str, Any] = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -69,14 +69,14 @@ class JsonapiIncludedResource:
         type_ = d.pop("type")
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, JsonapiIncludedResourceAttributes]
+        attributes: Unset | JsonapiIncludedResourceAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
             attributes = JsonapiIncludedResourceAttributes.from_dict(_attributes)
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: Union[Unset, JsonapiIncludedResourceRelationships]
+        relationships: Unset | JsonapiIncludedResourceRelationships
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

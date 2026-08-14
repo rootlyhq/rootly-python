@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,9 +20,9 @@ class Links:
 
     self_: str
     first: str
-    prev: Union[None, str]
-    next_: Union[None, str]
-    last: Union[None, str]
+    prev: None | str
+    next_: None | str
+    last: None | str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,13 +30,13 @@ class Links:
 
         first = self.first
 
-        prev: Union[None, str]
+        prev: None | str
         prev = self.prev
 
-        next_: Union[None, str]
+        next_: None | str
         next_ = self.next_
 
-        last: Union[None, str]
+        last: None | str
         last = self.last
 
         field_dict: dict[str, Any] = {}
@@ -60,24 +60,24 @@ class Links:
 
         first = d.pop("first")
 
-        def _parse_prev(data: object) -> Union[None, str]:
+        def _parse_prev(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         prev = _parse_prev(d.pop("prev"))
 
-        def _parse_next_(data: object) -> Union[None, str]:
+        def _parse_next_(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         next_ = _parse_next_(d.pop("next"))
 
-        def _parse_last(data: object) -> Union[None, str]:
+        def _parse_last(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         last = _parse_last(d.pop("last"))
 

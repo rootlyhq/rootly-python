@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,24 +11,24 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -79,7 +79,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[SlaList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SlaList | None:
     if response.status_code == 200:
         response_200 = SlaList.from_dict(response.json())
 
@@ -91,7 +91,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SlaList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SlaList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,24 +103,24 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[SlaList]:
     """List SLAs
 
@@ -185,25 +185,25 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[SlaList]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> SlaList | None:
     """List SLAs
 
      List SLAs
@@ -262,24 +262,24 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[SlaList]:
     """List SLAs
 
@@ -342,25 +342,25 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterslug: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[SlaList]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterslug: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> SlaList | None:
     """List SLAs
 
      List SLAs

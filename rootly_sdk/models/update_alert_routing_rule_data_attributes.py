@@ -37,13 +37,13 @@ class UpdateAlertRoutingRuleDataAttributes:
         destination (Union[Unset, UpdateAlertRoutingRuleDataAttributesDestination]):
     """
 
-    name: Union[Unset, str] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    alerts_source_id: Union[Unset, UUID] = UNSET
-    position: Union[Unset, int] = UNSET
-    owning_team_ids: Union[Unset, list[UUID]] = UNSET
-    condition_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesConditionType] = UNSET
-    conditions: Union[Unset, list["UpdateAlertRoutingRuleDataAttributesConditionsItem"]] = UNSET
+    name: Unset | str = UNSET
+    enabled: Unset | bool = UNSET
+    alerts_source_id: Unset | UUID = UNSET
+    position: Unset | int = UNSET
+    owning_team_ids: Unset | list[UUID] = UNSET
+    condition_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionType = UNSET
+    conditions: Unset | list["UpdateAlertRoutingRuleDataAttributesConditionsItem"] = UNSET
     destination: Union[Unset, "UpdateAlertRoutingRuleDataAttributesDestination"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,31 +51,31 @@ class UpdateAlertRoutingRuleDataAttributes:
 
         enabled = self.enabled
 
-        alerts_source_id: Union[Unset, str] = UNSET
+        alerts_source_id: Unset | str = UNSET
         if not isinstance(self.alerts_source_id, Unset):
             alerts_source_id = str(self.alerts_source_id)
 
         position = self.position
 
-        owning_team_ids: Union[Unset, list[str]] = UNSET
+        owning_team_ids: Unset | list[str] = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
                 owning_team_ids_item = str(owning_team_ids_item_data)
                 owning_team_ids.append(owning_team_ids_item)
 
-        condition_type: Union[Unset, str] = UNSET
+        condition_type: Unset | str = UNSET
         if not isinstance(self.condition_type, Unset):
             condition_type = self.condition_type
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
-        destination: Union[Unset, dict[str, Any]] = UNSET
+        destination: Unset | dict[str, Any] = UNSET
         if not isinstance(self.destination, Unset):
             destination = self.destination.to_dict()
 
@@ -116,7 +116,7 @@ class UpdateAlertRoutingRuleDataAttributes:
         enabled = d.pop("enabled", UNSET)
 
         _alerts_source_id = d.pop("alerts_source_id", UNSET)
-        alerts_source_id: Union[Unset, UUID]
+        alerts_source_id: Unset | UUID
         if isinstance(_alerts_source_id, Unset):
             alerts_source_id = UNSET
         else:
@@ -132,7 +132,7 @@ class UpdateAlertRoutingRuleDataAttributes:
             owning_team_ids.append(owning_team_ids_item)
 
         _condition_type = d.pop("condition_type", UNSET)
-        condition_type: Union[Unset, UpdateAlertRoutingRuleDataAttributesConditionType]
+        condition_type: Unset | UpdateAlertRoutingRuleDataAttributesConditionType
         if isinstance(_condition_type, Unset):
             condition_type = UNSET
         else:
@@ -146,7 +146,7 @@ class UpdateAlertRoutingRuleDataAttributes:
             conditions.append(conditions_item)
 
         _destination = d.pop("destination", UNSET)
-        destination: Union[Unset, UpdateAlertRoutingRuleDataAttributesDestination]
+        destination: Unset | UpdateAlertRoutingRuleDataAttributesDestination
         if isinstance(_destination, Unset):
             destination = UNSET
         else:

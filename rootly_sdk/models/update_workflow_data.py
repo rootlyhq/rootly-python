@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -25,7 +25,7 @@ class UpdateWorkflowData:
 
     type_: UpdateWorkflowDataType
     attributes: "UpdateWorkflowDataAttributes"
-    id: Union[Unset, str] = UNSET
+    id: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -41,62 +41,62 @@ class CreateJsmopsAlertTaskParams:
     """
 
     message: str
-    task_type: Union[Unset, CreateJsmopsAlertTaskParamsTaskType] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    teams: Union[Unset, list["CreateJsmopsAlertTaskParamsTeamsItem"]] = UNSET
-    users: Union[Unset, list["CreateJsmopsAlertTaskParamsUsersItem"]] = UNSET
-    schedules: Union[Unset, list["CreateJsmopsAlertTaskParamsSchedulesItem"]] = UNSET
-    escalations: Union[Unset, list["CreateJsmopsAlertTaskParamsEscalationsItem"]] = UNSET
-    priority: Union[Unset, CreateJsmopsAlertTaskParamsPriority] = "P3"
-    details: Union[None, Unset, str] = UNSET
+    task_type: Unset | CreateJsmopsAlertTaskParamsTaskType = UNSET
+    description: None | Unset | str = UNSET
+    teams: Unset | list["CreateJsmopsAlertTaskParamsTeamsItem"] = UNSET
+    users: Unset | list["CreateJsmopsAlertTaskParamsUsersItem"] = UNSET
+    schedules: Unset | list["CreateJsmopsAlertTaskParamsSchedulesItem"] = UNSET
+    escalations: Unset | list["CreateJsmopsAlertTaskParamsEscalationsItem"] = UNSET
+    priority: Unset | CreateJsmopsAlertTaskParamsPriority = "P3"
+    details: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         message = self.message
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        teams: Union[Unset, list[dict[str, Any]]] = UNSET
+        teams: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.teams, Unset):
             teams = []
             for teams_item_data in self.teams:
                 teams_item = teams_item_data.to_dict()
                 teams.append(teams_item)
 
-        users: Union[Unset, list[dict[str, Any]]] = UNSET
+        users: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        schedules: Union[Unset, list[dict[str, Any]]] = UNSET
+        schedules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.schedules, Unset):
             schedules = []
             for schedules_item_data in self.schedules:
                 schedules_item = schedules_item_data.to_dict()
                 schedules.append(schedules_item)
 
-        escalations: Union[Unset, list[dict[str, Any]]] = UNSET
+        escalations: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.escalations, Unset):
             escalations = []
             for escalations_item_data in self.escalations:
                 escalations_item = escalations_item_data.to_dict()
                 escalations.append(escalations_item)
 
-        priority: Union[Unset, str] = UNSET
+        priority: Unset | str = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
-        details: Union[None, Unset, str]
+        details: None | Unset | str
         if isinstance(self.details, Unset):
             details = UNSET
         else:
@@ -139,18 +139,18 @@ class CreateJsmopsAlertTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateJsmopsAlertTaskParamsTaskType]
+        task_type: Unset | CreateJsmopsAlertTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_jsmops_alert_task_params_task_type(_task_type)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -183,18 +183,18 @@ class CreateJsmopsAlertTaskParams:
             escalations.append(escalations_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, CreateJsmopsAlertTaskParamsPriority]
+        priority: Unset | CreateJsmopsAlertTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = check_create_jsmops_alert_task_params_priority(_priority)
 
-        def _parse_details(data: object) -> Union[None, Unset, str]:
+        def _parse_details(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         details = _parse_details(d.pop("details", UNSET))
 

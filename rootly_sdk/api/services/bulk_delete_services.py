@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 import httpx
 
@@ -36,8 +36,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkDestroyServicesResponse.from_dict(response.json())
 
@@ -76,8 +76,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -90,7 +90,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyServicesType0", "BulkDestroyServicesType1"],
-) -> Response[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+) -> Response[BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"]]:
     """Bulk delete Services
 
      Delete services by external_id list, or prune by managed_by source. Two mutually exclusive modes.
@@ -123,7 +123,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyServicesType0", "BulkDestroyServicesType1"],
-) -> Optional[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+) -> BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"] | None:
     """Bulk delete Services
 
      Delete services by external_id list, or prune by managed_by source. Two mutually exclusive modes.
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyServicesType0", "BulkDestroyServicesType1"],
-) -> Response[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+) -> Response[BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"]]:
     """Bulk delete Services
 
      Delete services by external_id list, or prune by managed_by source. Two mutually exclusive modes.
@@ -182,7 +182,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyServicesType0", "BulkDestroyServicesType1"],
-) -> Optional[Union[BulkDestroyServicesResponse, ErrorsList, Union["BulkDestroyServicesResponse", "ErrorsList"]]]:
+) -> BulkDestroyServicesResponse | ErrorsList | Union["BulkDestroyServicesResponse", "ErrorsList"] | None:
     """Bulk delete Services
 
      Delete services by external_id list, or prune by managed_by source. Two mutually exclusive modes.

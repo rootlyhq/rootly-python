@@ -28,13 +28,13 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
         severity_params (Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams]):
     """
 
-    kind: Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesKind] = UNSET
-    private: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = UNSET
+    kind: Unset | UpdateIncidentPermissionSetBooleanDataAttributesKind = UNSET
+    private: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
     severity_params: Union[Unset, "UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        kind: Union[Unset, str] = UNSET
+        kind: Unset | str = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -42,7 +42,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
 
         enabled = self.enabled
 
-        severity_params: Union[Unset, dict[str, Any]] = UNSET
+        severity_params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -68,7 +68,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
 
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesKind]
+        kind: Unset | UpdateIncidentPermissionSetBooleanDataAttributesKind
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -79,7 +79,7 @@ class UpdateIncidentPermissionSetBooleanDataAttributes:
         enabled = d.pop("enabled", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Union[Unset, UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams]
+        severity_params: Unset | UpdateIncidentPermissionSetBooleanDataAttributesSeverityParams
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

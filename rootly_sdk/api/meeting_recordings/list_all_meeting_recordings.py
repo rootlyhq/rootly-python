@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,9 +11,9 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    status: Union[Unset, str] = UNSET,
-    platform: Union[Unset, str] = UNSET,
-    created_by: Union[Unset, str] = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -34,9 +34,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[MeetingRecordingList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> MeetingRecordingList | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingList.from_dict(response.json())
 
@@ -49,7 +47,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[MeetingRecordingList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -62,9 +60,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    status: Union[Unset, str] = UNSET,
-    platform: Union[Unset, str] = UNSET,
-    created_by: Union[Unset, str] = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> Response[MeetingRecordingList]:
     """List all meeting recordings
 
@@ -101,10 +99,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    status: Union[Unset, str] = UNSET,
-    platform: Union[Unset, str] = UNSET,
-    created_by: Union[Unset, str] = UNSET,
-) -> Optional[MeetingRecordingList]:
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
+) -> MeetingRecordingList | None:
     """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings
@@ -135,9 +133,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    status: Union[Unset, str] = UNSET,
-    platform: Union[Unset, str] = UNSET,
-    created_by: Union[Unset, str] = UNSET,
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
 ) -> Response[MeetingRecordingList]:
     """List all meeting recordings
 
@@ -172,10 +170,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    status: Union[Unset, str] = UNSET,
-    platform: Union[Unset, str] = UNSET,
-    created_by: Union[Unset, str] = UNSET,
-) -> Optional[MeetingRecordingList]:
+    status: Unset | str = UNSET,
+    platform: Unset | str = UNSET,
+    created_by: Unset | str = UNSET,
+) -> MeetingRecordingList | None:
     """List all meeting recordings
 
      List meeting recordings across the organization. Returns the current user's standalone recordings

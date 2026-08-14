@@ -23,15 +23,15 @@ class ScheduleRotationActiveDayResponse:
     """
 
     data: Union[Unset, "ScheduleRotationActiveDayResponseData"] = UNSET
-    included: Union[Unset, list["JsonapiIncludedResource"]] = UNSET
+    included: Unset | list["JsonapiIncludedResource"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Union[Unset, dict[str, Any]] = UNSET
+        data: Unset | dict[str, Any] = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
-        included: Union[Unset, list[dict[str, Any]]] = UNSET
+        included: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -55,7 +55,7 @@ class ScheduleRotationActiveDayResponse:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Union[Unset, ScheduleRotationActiveDayResponseData]
+        data: Unset | ScheduleRotationActiveDayResponseData
         if isinstance(_data, Unset):
             data = UNSET
         else:

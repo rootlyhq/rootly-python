@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,23 +30,23 @@ class AlertRetriggerRule:
         updated_at (Union[Unset, datetime.datetime]):
     """
 
-    name: Union[Unset, str] = UNSET
-    match_mode: Union[Unset, AlertRetriggerRuleMatchMode] = UNSET
-    timeout_minutes: Union[None, Unset, int] = UNSET
-    position: Union[Unset, int] = UNSET
-    conditions: Union[Unset, list["AlertRetriggerRuleConditionsItem"]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
+    name: Unset | str = UNSET
+    match_mode: Unset | AlertRetriggerRuleMatchMode = UNSET
+    timeout_minutes: None | Unset | int = UNSET
+    position: Unset | int = UNSET
+    conditions: Unset | list["AlertRetriggerRuleConditionsItem"] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        match_mode: Union[Unset, str] = UNSET
+        match_mode: Unset | str = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
-        timeout_minutes: Union[None, Unset, int]
+        timeout_minutes: None | Unset | int
         if isinstance(self.timeout_minutes, Unset):
             timeout_minutes = UNSET
         else:
@@ -54,18 +54,18 @@ class AlertRetriggerRule:
 
         position = self.position
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -97,18 +97,18 @@ class AlertRetriggerRule:
         name = d.pop("name", UNSET)
 
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: Union[Unset, AlertRetriggerRuleMatchMode]
+        match_mode: Unset | AlertRetriggerRuleMatchMode
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
             match_mode = check_alert_retrigger_rule_match_mode(_match_mode)
 
-        def _parse_timeout_minutes(data: object) -> Union[None, Unset, int]:
+        def _parse_timeout_minutes(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         timeout_minutes = _parse_timeout_minutes(d.pop("timeout_minutes", UNSET))
 
@@ -122,14 +122,14 @@ class AlertRetriggerRule:
             conditions.append(conditions_item)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:

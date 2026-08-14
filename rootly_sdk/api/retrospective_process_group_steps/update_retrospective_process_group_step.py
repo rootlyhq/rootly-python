@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RetrospectiveProcessGroupStepResponse]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RetrospectiveProcessGroupStepResponse | None:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessGroupStepResponse.from_dict(response.json())
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RetrospectiveProcessGroupStepResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -94,7 +94,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroupStep,
-) -> Optional[RetrospectiveProcessGroupStepResponse]:
+) -> RetrospectiveProcessGroupStepResponse | None:
     """Update RetrospectiveProcessGroup Step
 
      Update a specific RetrospectiveProcessGroup Step by id
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroupStep,
-) -> Optional[RetrospectiveProcessGroupStepResponse]:
+) -> RetrospectiveProcessGroupStepResponse | None:
     """Update RetrospectiveProcessGroup Step
 
      Update a specific RetrospectiveProcessGroup Step by id

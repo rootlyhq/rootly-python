@@ -41,13 +41,13 @@ class CreateLinearIssueTaskParams:
     title: str
     team: "CreateLinearIssueTaskParamsTeam"
     state: "CreateLinearIssueTaskParamsState"
-    task_type: Union[Unset, CreateLinearIssueTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
+    task_type: Unset | CreateLinearIssueTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
     project: Union[Unset, "CreateLinearIssueTaskParamsProject"] = UNSET
-    labels: Union[Unset, list["CreateLinearIssueTaskParamsLabelsItem"]] = UNSET
+    labels: Unset | list["CreateLinearIssueTaskParamsLabelsItem"] = UNSET
     priority: Union[Unset, "CreateLinearIssueTaskParamsPriority"] = UNSET
-    assign_user_email: Union[Unset, str] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    assign_user_email: Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,30 +57,30 @@ class CreateLinearIssueTaskParams:
 
         state = self.state.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        project: Union[Unset, dict[str, Any]] = UNSET
+        project: Unset | dict[str, Any] = UNSET
         if not isinstance(self.project, Unset):
             project = self.project.to_dict()
 
-        labels: Union[Unset, list[dict[str, Any]]] = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
         assign_user_email = self.assign_user_email
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -128,7 +128,7 @@ class CreateLinearIssueTaskParams:
         state = CreateLinearIssueTaskParamsState.from_dict(d.pop("state"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateLinearIssueTaskParamsTaskType]
+        task_type: Unset | CreateLinearIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -137,7 +137,7 @@ class CreateLinearIssueTaskParams:
         description = d.pop("description", UNSET)
 
         _project = d.pop("project", UNSET)
-        project: Union[Unset, CreateLinearIssueTaskParamsProject]
+        project: Unset | CreateLinearIssueTaskParamsProject
         if isinstance(_project, Unset):
             project = UNSET
         else:
@@ -151,7 +151,7 @@ class CreateLinearIssueTaskParams:
             labels.append(labels_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, CreateLinearIssueTaskParamsPriority]
+        priority: Unset | CreateLinearIssueTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
@@ -159,12 +159,12 @@ class CreateLinearIssueTaskParams:
 
         assign_user_email = d.pop("assign_user_email", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

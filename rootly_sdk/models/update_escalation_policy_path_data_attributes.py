@@ -160,21 +160,21 @@ class UpdateEscalationPolicyPathDataAttributes:
             the rules.
     """
 
-    name: Union[Unset, str] = UNSET
-    notification_type: Union[Unset, UpdateEscalationPolicyPathDataAttributesNotificationType] = "audible"
-    path_type: Union[Unset, UpdateEscalationPolicyPathDataAttributesPathType] = UNSET
-    after_deferral_behavior: Union[Unset, UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior] = UNSET
-    after_deferral_path_id: Union[None, Unset, str] = UNSET
-    default: Union[None, Unset, bool] = UNSET
-    match_mode: Union[Unset, UpdateEscalationPolicyPathDataAttributesMatchMode] = "match-all-rules"
-    position: Union[Unset, int] = UNSET
-    repeat: Union[None, Unset, bool] = UNSET
-    repeat_count: Union[None, Unset, int] = UNSET
-    initial_delay: Union[Unset, int] = UNSET
-    retrigger_timeout_minutes: Union[None, Unset, int] = UNSET
-    rules: Union[
-        Unset,
-        list[
+    name: Unset | str = UNSET
+    notification_type: Unset | UpdateEscalationPolicyPathDataAttributesNotificationType = "audible"
+    path_type: Unset | UpdateEscalationPolicyPathDataAttributesPathType = UNSET
+    after_deferral_behavior: Unset | UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior = UNSET
+    after_deferral_path_id: None | Unset | str = UNSET
+    default: None | Unset | bool = UNSET
+    match_mode: Unset | UpdateEscalationPolicyPathDataAttributesMatchMode = "match-all-rules"
+    position: Unset | int = UNSET
+    repeat: None | Unset | bool = UNSET
+    repeat_count: None | Unset | int = UNSET
+    initial_delay: Unset | int = UNSET
+    retrigger_timeout_minutes: None | Unset | int = UNSET
+    rules: (
+        Unset
+        | list[
             Union[
                 "UpdateEscalationPolicyPathDataAttributesRulesItemType0",
                 "UpdateEscalationPolicyPathDataAttributesRulesItemType1",
@@ -201,10 +201,10 @@ class UpdateEscalationPolicyPathDataAttributes:
                 "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6",
                 "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7",
             ]
-        ],
-    ] = UNSET
-    time_restriction_time_zone: Union[Unset, UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone] = UNSET
-    time_restrictions: Union[Unset, list["UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem"]] = UNSET
+        ]
+    ) = UNSET
+    time_restriction_time_zone: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone = UNSET
+    time_restrictions: Unset | list["UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
@@ -279,43 +279,43 @@ class UpdateEscalationPolicyPathDataAttributes:
 
         name = self.name
 
-        notification_type: Union[Unset, str] = UNSET
+        notification_type: Unset | str = UNSET
         if not isinstance(self.notification_type, Unset):
             notification_type = self.notification_type
 
-        path_type: Union[Unset, str] = UNSET
+        path_type: Unset | str = UNSET
         if not isinstance(self.path_type, Unset):
             path_type = self.path_type
 
-        after_deferral_behavior: Union[Unset, str] = UNSET
+        after_deferral_behavior: Unset | str = UNSET
         if not isinstance(self.after_deferral_behavior, Unset):
             after_deferral_behavior = self.after_deferral_behavior
 
-        after_deferral_path_id: Union[None, Unset, str]
+        after_deferral_path_id: None | Unset | str
         if isinstance(self.after_deferral_path_id, Unset):
             after_deferral_path_id = UNSET
         else:
             after_deferral_path_id = self.after_deferral_path_id
 
-        default: Union[None, Unset, bool]
+        default: None | Unset | bool
         if isinstance(self.default, Unset):
             default = UNSET
         else:
             default = self.default
 
-        match_mode: Union[Unset, str] = UNSET
+        match_mode: Unset | str = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
         position = self.position
 
-        repeat: Union[None, Unset, bool]
+        repeat: None | Unset | bool
         if isinstance(self.repeat, Unset):
             repeat = UNSET
         else:
             repeat = self.repeat
 
-        repeat_count: Union[None, Unset, int]
+        repeat_count: None | Unset | int
         if isinstance(self.repeat_count, Unset):
             repeat_count = UNSET
         else:
@@ -323,13 +323,13 @@ class UpdateEscalationPolicyPathDataAttributes:
 
         initial_delay = self.initial_delay
 
-        retrigger_timeout_minutes: Union[None, Unset, int]
+        retrigger_timeout_minutes: None | Unset | int
         if isinstance(self.retrigger_timeout_minutes, Unset):
             retrigger_timeout_minutes = UNSET
         else:
             retrigger_timeout_minutes = self.retrigger_timeout_minutes
 
-        rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        rules: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
@@ -385,11 +385,11 @@ class UpdateEscalationPolicyPathDataAttributes:
 
                 rules.append(rules_item)
 
-        time_restriction_time_zone: Union[Unset, str] = UNSET
+        time_restriction_time_zone: Unset | str = UNSET
         if not isinstance(self.time_restriction_time_zone, Unset):
             time_restriction_time_zone = self.time_restriction_time_zone
 
-        time_restrictions: Union[Unset, list[dict[str, Any]]] = UNSET
+        time_restrictions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.time_restrictions, Unset):
             time_restrictions = []
             for time_restrictions_item_data in self.time_restrictions:
@@ -514,7 +514,7 @@ class UpdateEscalationPolicyPathDataAttributes:
         name = d.pop("name", UNSET)
 
         _notification_type = d.pop("notification_type", UNSET)
-        notification_type: Union[Unset, UpdateEscalationPolicyPathDataAttributesNotificationType]
+        notification_type: Unset | UpdateEscalationPolicyPathDataAttributesNotificationType
         if isinstance(_notification_type, Unset):
             notification_type = UNSET
         else:
@@ -523,14 +523,14 @@ class UpdateEscalationPolicyPathDataAttributes:
             )
 
         _path_type = d.pop("path_type", UNSET)
-        path_type: Union[Unset, UpdateEscalationPolicyPathDataAttributesPathType]
+        path_type: Unset | UpdateEscalationPolicyPathDataAttributesPathType
         if isinstance(_path_type, Unset):
             path_type = UNSET
         else:
             path_type = check_update_escalation_policy_path_data_attributes_path_type(_path_type)
 
         _after_deferral_behavior = d.pop("after_deferral_behavior", UNSET)
-        after_deferral_behavior: Union[Unset, UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior]
+        after_deferral_behavior: Unset | UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior
         if isinstance(_after_deferral_behavior, Unset):
             after_deferral_behavior = UNSET
         else:
@@ -538,26 +538,26 @@ class UpdateEscalationPolicyPathDataAttributes:
                 _after_deferral_behavior
             )
 
-        def _parse_after_deferral_path_id(data: object) -> Union[None, Unset, str]:
+        def _parse_after_deferral_path_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         after_deferral_path_id = _parse_after_deferral_path_id(d.pop("after_deferral_path_id", UNSET))
 
-        def _parse_default(data: object) -> Union[None, Unset, bool]:
+        def _parse_default(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: Union[Unset, UpdateEscalationPolicyPathDataAttributesMatchMode]
+        match_mode: Unset | UpdateEscalationPolicyPathDataAttributesMatchMode
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
@@ -565,32 +565,32 @@ class UpdateEscalationPolicyPathDataAttributes:
 
         position = d.pop("position", UNSET)
 
-        def _parse_repeat(data: object) -> Union[None, Unset, bool]:
+        def _parse_repeat(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         repeat = _parse_repeat(d.pop("repeat", UNSET))
 
-        def _parse_repeat_count(data: object) -> Union[None, Unset, int]:
+        def _parse_repeat_count(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         repeat_count = _parse_repeat_count(d.pop("repeat_count", UNSET))
 
         initial_delay = d.pop("initial_delay", UNSET)
 
-        def _parse_retrigger_timeout_minutes(data: object) -> Union[None, Unset, int]:
+        def _parse_retrigger_timeout_minutes(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         retrigger_timeout_minutes = _parse_retrigger_timeout_minutes(d.pop("retrigger_timeout_minutes", UNSET))
 
@@ -851,7 +851,7 @@ class UpdateEscalationPolicyPathDataAttributes:
             rules.append(rules_item)
 
         _time_restriction_time_zone = d.pop("time_restriction_time_zone", UNSET)
-        time_restriction_time_zone: Union[Unset, UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone]
+        time_restriction_time_zone: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone
         if isinstance(_time_restriction_time_zone, Unset):
             time_restriction_time_zone = UNSET
         else:

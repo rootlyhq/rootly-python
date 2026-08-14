@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,11 +20,11 @@ class UserEmailAddress:
         updated_at (Union[Unset, str]): Date of last update
     """
 
-    user_id: Union[Unset, int] = UNSET
-    email: Union[Unset, str] = UNSET
-    primary: Union[Unset, bool] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    user_id: Unset | int = UNSET
+    email: Unset | str = UNSET
+    primary: Unset | bool = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

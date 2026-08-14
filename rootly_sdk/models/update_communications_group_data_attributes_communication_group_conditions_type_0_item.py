@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,29 +27,29 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
         incident_type_ids (Union[None, Unset, list[str]]): Array of incident type IDs
     """
 
-    id: Union[None, Unset, str] = UNSET
-    property_type: Union[
-        Unset, UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType
-    ] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    severity_ids: Union[None, Unset, list[str]] = UNSET
-    functionality_ids: Union[None, Unset, list[str]] = UNSET
-    group_ids: Union[None, Unset, list[str]] = UNSET
-    incident_type_ids: Union[None, Unset, list[str]] = UNSET
+    id: None | Unset | str = UNSET
+    property_type: Unset | UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType = (
+        UNSET
+    )
+    service_ids: None | Unset | list[str] = UNSET
+    severity_ids: None | Unset | list[str] = UNSET
+    functionality_ids: None | Unset | list[str] = UNSET
+    group_ids: None | Unset | list[str] = UNSET
+    incident_type_ids: None | Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[None, Unset, str]
+        id: None | Unset | str
         if isinstance(self.id, Unset):
             id = UNSET
         else:
             id = self.id
 
-        property_type: Union[Unset, str] = UNSET
+        property_type: Unset | str = UNSET
         if not isinstance(self.property_type, Unset):
             property_type = self.property_type
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -58,7 +58,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
         else:
             service_ids = self.service_ids
 
-        severity_ids: Union[None, Unset, list[str]]
+        severity_ids: None | Unset | list[str]
         if isinstance(self.severity_ids, Unset):
             severity_ids = UNSET
         elif isinstance(self.severity_ids, list):
@@ -67,7 +67,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
         else:
             severity_ids = self.severity_ids
 
-        functionality_ids: Union[None, Unset, list[str]]
+        functionality_ids: None | Unset | list[str]
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -76,7 +76,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
         else:
             functionality_ids = self.functionality_ids
 
-        group_ids: Union[None, Unset, list[str]]
+        group_ids: None | Unset | list[str]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -85,7 +85,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
         else:
             group_ids = self.group_ids
 
-        incident_type_ids: Union[None, Unset, list[str]]
+        incident_type_ids: None | Unset | list[str]
         if isinstance(self.incident_type_ids, Unset):
             incident_type_ids = UNSET
         elif isinstance(self.incident_type_ids, list):
@@ -118,19 +118,17 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> Union[None, Unset, str]:
+        def _parse_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         id = _parse_id(d.pop("id", UNSET))
 
         _property_type = d.pop("property_type", UNSET)
-        property_type: Union[
-            Unset, UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType
-        ]
+        property_type: Unset | UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType
         if isinstance(_property_type, Unset):
             property_type = UNSET
         else:
@@ -138,7 +136,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 _property_type
             )
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -151,11 +149,11 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_severity_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_severity_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -168,11 +166,11 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 return severity_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         severity_ids = _parse_severity_ids(d.pop("severity_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_functionality_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -185,11 +183,11 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 return functionality_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_group_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -202,11 +200,11 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 return group_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_incident_type_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_incident_type_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -219,7 +217,7 @@ class UpdateCommunicationsGroupDataAttributesCommunicationGroupConditionsType0It
                 return incident_type_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 

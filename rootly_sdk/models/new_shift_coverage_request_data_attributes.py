@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -22,7 +22,7 @@ class NewShiftCoverageRequestDataAttributes:
 
     starts_at: datetime.datetime
     ends_at: datetime.datetime
-    user_id: Union[Unset, int] = UNSET
+    user_id: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         starts_at = self.starts_at.isoformat()

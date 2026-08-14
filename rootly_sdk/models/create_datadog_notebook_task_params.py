@@ -36,11 +36,11 @@ class CreateDatadogNotebookTaskParams:
 
     title: str
     kind: CreateDatadogNotebookTaskParamsKind
-    task_type: Union[Unset, CreateDatadogNotebookTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
+    task_type: Unset | CreateDatadogNotebookTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
     template: Union[Unset, "CreateDatadogNotebookTaskParamsTemplate"] = UNSET
-    content: Union[Unset, str] = UNSET
+    content: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,7 +48,7 @@ class CreateDatadogNotebookTaskParams:
 
         kind: str = self.kind
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -56,7 +56,7 @@ class CreateDatadogNotebookTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        template: Union[Unset, dict[str, Any]] = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -93,7 +93,7 @@ class CreateDatadogNotebookTaskParams:
         kind = check_create_datadog_notebook_task_params_kind(d.pop("kind"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateDatadogNotebookTaskParamsTaskType]
+        task_type: Unset | CreateDatadogNotebookTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -104,7 +104,7 @@ class CreateDatadogNotebookTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Union[Unset, CreateDatadogNotebookTaskParamsTemplate]
+        template: Unset | CreateDatadogNotebookTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:

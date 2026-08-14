@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,7 +13,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | OnCallPayReportResponse | None:
     if response.status_code == 200:
         response_200 = OnCallPayReportResponse.from_dict(response.json())
 
@@ -50,8 +50,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | OnCallPayReportResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,8 +64,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
+    include: Unset | str = UNSET,
+) -> Response[ErrorsList | OnCallPayReportResponse]:
     """Retrieves an On-Call Pay Report
 
      Retrieves a specific on-call pay report by id
@@ -98,8 +98,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
+    include: Unset | str = UNSET,
+) -> ErrorsList | OnCallPayReportResponse | None:
     """Retrieves an On-Call Pay Report
 
      Retrieves a specific on-call pay report by id
@@ -127,8 +127,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
+    include: Unset | str = UNSET,
+) -> Response[ErrorsList | OnCallPayReportResponse]:
     """Retrieves an On-Call Pay Report
 
      Retrieves a specific on-call pay report by id
@@ -159,8 +159,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
+    include: Unset | str = UNSET,
+) -> ErrorsList | OnCallPayReportResponse | None:
     """Retrieves an On-Call Pay Report
 
      Retrieves a specific on-call pay report by id

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -22,22 +22,22 @@ class NewCustomFormDataAttributes:
 
     name: str
     command: str
-    slug: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    enabled: Union[Unset, bool] = UNSET
+    slug: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    enabled: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         command = self.command
 
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -69,21 +69,21 @@ class NewCustomFormDataAttributes:
 
         command = d.pop("command")
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

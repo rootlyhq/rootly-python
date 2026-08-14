@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -14,16 +14,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filteremail: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListUsersSort] = UNSET,
-    include: Union[Unset, ListUsersInclude] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filteremail: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | ListUsersSort = UNSET,
+    include: Unset | ListUsersInclude = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -43,13 +43,13 @@ def _get_kwargs(
 
     params["filter[created_at][lte]"] = filtercreated_atlte
 
-    json_sort: Union[Unset, str] = UNSET
+    json_sort: Unset | str = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
     params["sort"] = json_sort
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -66,9 +66,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | UserList | None:
     if response.status_code == 200:
         response_200 = UserList.from_dict(response.json())
 
@@ -86,8 +84,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -99,17 +97,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filteremail: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListUsersSort] = UNSET,
-    include: Union[Unset, ListUsersInclude] = UNSET,
-) -> Response[Union[ErrorsList, UserList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filteremail: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | ListUsersSort = UNSET,
+    include: Unset | ListUsersInclude = UNSET,
+) -> Response[ErrorsList | UserList]:
     """List users
 
      List users
@@ -157,17 +155,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filteremail: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListUsersSort] = UNSET,
-    include: Union[Unset, ListUsersInclude] = UNSET,
-) -> Optional[Union[ErrorsList, UserList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filteremail: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | ListUsersSort = UNSET,
+    include: Unset | ListUsersInclude = UNSET,
+) -> ErrorsList | UserList | None:
     """List users
 
      List users
@@ -210,17 +208,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filteremail: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListUsersSort] = UNSET,
-    include: Union[Unset, ListUsersInclude] = UNSET,
-) -> Response[Union[ErrorsList, UserList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filteremail: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | ListUsersSort = UNSET,
+    include: Unset | ListUsersInclude = UNSET,
+) -> Response[ErrorsList | UserList]:
     """List users
 
      List users
@@ -266,17 +264,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filteremail: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-    sort: Union[Unset, ListUsersSort] = UNSET,
-    include: Union[Unset, ListUsersInclude] = UNSET,
-) -> Optional[Union[ErrorsList, UserList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filteremail: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+    sort: Unset | ListUsersSort = UNSET,
+    include: Unset | ListUsersInclude = UNSET,
+) -> ErrorsList | UserList | None:
     """List users
 
      List users

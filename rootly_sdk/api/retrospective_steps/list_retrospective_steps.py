@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,10 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     retrospective_process_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -38,9 +38,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RetrospectiveStepList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RetrospectiveStepList | None:
     if response.status_code == 200:
         response_200 = RetrospectiveStepList.from_dict(response.json())
 
@@ -53,7 +51,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RetrospectiveStepList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -67,10 +65,10 @@ def sync_detailed(
     retrospective_process_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[RetrospectiveStepList]:
     """List retrospective steps
 
@@ -110,11 +108,11 @@ def sync(
     retrospective_process_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[RetrospectiveStepList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
+) -> RetrospectiveStepList | None:
     """List retrospective steps
 
      List retrospective steps
@@ -148,10 +146,10 @@ async def asyncio_detailed(
     retrospective_process_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[RetrospectiveStepList]:
     """List retrospective steps
 
@@ -189,11 +187,11 @@ async def asyncio(
     retrospective_process_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[RetrospectiveStepList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    sort: Unset | str = UNSET,
+) -> RetrospectiveStepList | None:
     """List retrospective steps
 
      List retrospective steps

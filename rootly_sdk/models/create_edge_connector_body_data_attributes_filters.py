@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -19,25 +19,25 @@ class CreateEdgeConnectorBodyDataAttributesFilters:
         functionality_ids (Union[Unset, list[str]]): Filter by functionality UUIDs
     """
 
-    group_ids: Union[Unset, list[str]] = UNSET
-    service_ids: Union[Unset, list[str]] = UNSET
-    environment_ids: Union[Unset, list[str]] = UNSET
-    functionality_ids: Union[Unset, list[str]] = UNSET
+    group_ids: Unset | list[str] = UNSET
+    service_ids: Unset | list[str] = UNSET
+    environment_ids: Unset | list[str] = UNSET
+    functionality_ids: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        group_ids: Union[Unset, list[str]] = UNSET
+        group_ids: Unset | list[str] = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        service_ids: Union[Unset, list[str]] = UNSET
+        service_ids: Unset | list[str] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        environment_ids: Union[Unset, list[str]] = UNSET
+        environment_ids: Unset | list[str] = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        functionality_ids: Union[Unset, list[str]] = UNSET
+        functionality_ids: Unset | list[str] = UNSET
         if not isinstance(self.functionality_ids, Unset):
             functionality_ids = self.functionality_ids
 

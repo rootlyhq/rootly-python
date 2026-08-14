@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -32,9 +32,9 @@ class ImportMeetingRecording:
     source: ImportMeetingRecordingSource
     recall_recording_id: UUID
     platform: ImportMeetingRecordingPlatform
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
-    ended_at: Union[None, Unset, datetime.datetime] = UNSET
-    meeting_url: Union[None, Unset, str] = UNSET
+    started_at: None | Unset | datetime.datetime = UNSET
+    ended_at: None | Unset | datetime.datetime = UNSET
+    meeting_url: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +44,7 @@ class ImportMeetingRecording:
 
         platform: str = self.platform
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -52,7 +52,7 @@ class ImportMeetingRecording:
         else:
             started_at = self.started_at
 
-        ended_at: Union[None, Unset, str]
+        ended_at: None | Unset | str
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -60,7 +60,7 @@ class ImportMeetingRecording:
         else:
             ended_at = self.ended_at
 
-        meeting_url: Union[None, Unset, str]
+        meeting_url: None | Unset | str
         if isinstance(self.meeting_url, Unset):
             meeting_url = UNSET
         else:
@@ -93,7 +93,7 @@ class ImportMeetingRecording:
 
         platform = check_import_meeting_recording_platform(d.pop("platform"))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -106,11 +106,11 @@ class ImportMeetingRecording:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -123,16 +123,16 @@ class ImportMeetingRecording:
                 return ended_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 
-        def _parse_meeting_url(data: object) -> Union[None, Unset, str]:
+        def _parse_meeting_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         meeting_url = _parse_meeting_url(d.pop("meeting_url", UNSET))
 

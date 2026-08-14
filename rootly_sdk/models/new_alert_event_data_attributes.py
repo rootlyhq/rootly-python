@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -23,7 +23,7 @@ class NewAlertEventDataAttributes:
 
     kind: NewAlertEventDataAttributesKind
     details: str
-    user_id: Union[Unset, int] = UNSET
+    user_id: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         kind: str = self.kind

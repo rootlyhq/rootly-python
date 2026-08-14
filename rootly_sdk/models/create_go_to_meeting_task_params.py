@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -37,25 +37,25 @@ class CreateGoToMeetingTaskParams:
     """
 
     subject: str
-    task_type: Union[Unset, CreateGoToMeetingTaskParamsTaskType] = UNSET
-    conference_call_info: Union[Unset, CreateGoToMeetingTaskParamsConferenceCallInfo] = "voip"
-    password_required: Union[None, Unset, bool] = UNSET
-    post_to_incident_timeline: Union[Unset, bool] = UNSET
-    post_to_slack_channels: Union[Unset, list["CreateGoToMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
+    task_type: Unset | CreateGoToMeetingTaskParamsTaskType = UNSET
+    conference_call_info: Unset | CreateGoToMeetingTaskParamsConferenceCallInfo = "voip"
+    password_required: None | Unset | bool = UNSET
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["CreateGoToMeetingTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         subject = self.subject
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        conference_call_info: Union[Unset, str] = UNSET
+        conference_call_info: Unset | str = UNSET
         if not isinstance(self.conference_call_info, Unset):
             conference_call_info = self.conference_call_info
 
-        password_required: Union[None, Unset, bool]
+        password_required: None | Unset | bool
         if isinstance(self.password_required, Unset):
             password_required = UNSET
         else:
@@ -63,7 +63,7 @@ class CreateGoToMeetingTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -100,25 +100,25 @@ class CreateGoToMeetingTaskParams:
         subject = d.pop("subject")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateGoToMeetingTaskParamsTaskType]
+        task_type: Unset | CreateGoToMeetingTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_go_to_meeting_task_params_task_type(_task_type)
 
         _conference_call_info = d.pop("conference_call_info", UNSET)
-        conference_call_info: Union[Unset, CreateGoToMeetingTaskParamsConferenceCallInfo]
+        conference_call_info: Unset | CreateGoToMeetingTaskParamsConferenceCallInfo
         if isinstance(_conference_call_info, Unset):
             conference_call_info = UNSET
         else:
             conference_call_info = check_create_go_to_meeting_task_params_conference_call_info(_conference_call_info)
 
-        def _parse_password_required(data: object) -> Union[None, Unset, bool]:
+        def _parse_password_required(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         password_required = _parse_password_required(d.pop("password_required", UNSET))
 

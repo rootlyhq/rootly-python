@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -25,16 +25,16 @@ class NewOnCallPayReportDataAttributes:
 
     start_date: datetime.date
     end_date: datetime.date
-    schedule_ids: Union[Unset, list[str]] = UNSET
-    time_zone: Union[Unset, str] = UNSET
-    use_responders_time_zone: Union[Unset, bool] = UNSET
+    schedule_ids: Unset | list[str] = UNSET
+    time_zone: Unset | str = UNSET
+    use_responders_time_zone: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         start_date = self.start_date.isoformat()
 
         end_date = self.end_date.isoformat()
 
-        schedule_ids: Union[Unset, list[str]] = UNSET
+        schedule_ids: Unset | list[str] = UNSET
         if not isinstance(self.schedule_ids, Unset):
             schedule_ids = self.schedule_ids
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 import httpx
 
@@ -33,10 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkUpsertCatalogEntitiesResponse.from_dict(response.json())
 
@@ -75,10 +73,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,9 +88,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Response[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -129,9 +123,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Optional[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -161,9 +153,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Response[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -196,9 +186,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Optional[
-    Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]
-]:
+) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -18,26 +18,26 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     catalog_entity_id: str,
     *,
-    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
-    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtercatalog_field_id: Union[Unset, str] = UNSET,
-    filterkey: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCatalogEntityPropertiesInclude = UNSET,
+    sort: Unset | ListCatalogEntityPropertiesSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtercatalog_field_id: Unset | str = UNSET,
+    filterkey: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Union[Unset, str] = UNSET
+    json_sort: Unset | str = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -71,8 +71,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[CatalogEntityPropertyList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityPropertyList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityPropertyList.from_dict(response.json())
 
@@ -85,7 +85,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[CatalogEntityPropertyList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -99,16 +99,16 @@ def sync_detailed(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
-    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtercatalog_field_id: Union[Unset, str] = UNSET,
-    filterkey: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCatalogEntityPropertiesInclude = UNSET,
+    sort: Unset | ListCatalogEntityPropertiesSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtercatalog_field_id: Unset | str = UNSET,
+    filterkey: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
@@ -164,17 +164,17 @@ def sync(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
-    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtercatalog_field_id: Union[Unset, str] = UNSET,
-    filterkey: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[CatalogEntityPropertyList]:
+    include: Unset | ListCatalogEntityPropertiesInclude = UNSET,
+    sort: Unset | ListCatalogEntityPropertiesSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtercatalog_field_id: Unset | str = UNSET,
+    filterkey: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> CatalogEntityPropertyList | None:
     """List catalog properties
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -224,16 +224,16 @@ async def asyncio_detailed(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
-    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtercatalog_field_id: Union[Unset, str] = UNSET,
-    filterkey: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
+    include: Unset | ListCatalogEntityPropertiesInclude = UNSET,
+    sort: Unset | ListCatalogEntityPropertiesSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtercatalog_field_id: Unset | str = UNSET,
+    filterkey: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
@@ -287,17 +287,17 @@ async def asyncio(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
-    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtercatalog_field_id: Union[Unset, str] = UNSET,
-    filterkey: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, str] = UNSET,
-    filtercreated_atgte: Union[Unset, str] = UNSET,
-    filtercreated_atlt: Union[Unset, str] = UNSET,
-    filtercreated_atlte: Union[Unset, str] = UNSET,
-) -> Optional[CatalogEntityPropertyList]:
+    include: Unset | ListCatalogEntityPropertiesInclude = UNSET,
+    sort: Unset | ListCatalogEntityPropertiesSort = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtercatalog_field_id: Unset | str = UNSET,
+    filterkey: Unset | str = UNSET,
+    filtercreated_atgt: Unset | str = UNSET,
+    filtercreated_atgte: Unset | str = UNSET,
+    filtercreated_atlt: Unset | str = UNSET,
+    filtercreated_atlte: Unset | str = UNSET,
+) -> CatalogEntityPropertyList | None:
     """List catalog properties
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or

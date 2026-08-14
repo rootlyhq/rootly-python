@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -18,31 +18,31 @@ class UpdateUserDataAttributes:
         on_call_role_id (Union[None, Unset, str]): ID of the on-call role to assign
     """
 
-    first_name: Union[None, Unset, str] = UNSET
-    last_name: Union[None, Unset, str] = UNSET
-    role_id: Union[None, Unset, str] = UNSET
-    on_call_role_id: Union[None, Unset, str] = UNSET
+    first_name: None | Unset | str = UNSET
+    last_name: None | Unset | str = UNSET
+    role_id: None | Unset | str = UNSET
+    on_call_role_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        first_name: Union[None, Unset, str]
+        first_name: None | Unset | str
         if isinstance(self.first_name, Unset):
             first_name = UNSET
         else:
             first_name = self.first_name
 
-        last_name: Union[None, Unset, str]
+        last_name: None | Unset | str
         if isinstance(self.last_name, Unset):
             last_name = UNSET
         else:
             last_name = self.last_name
 
-        role_id: Union[None, Unset, str]
+        role_id: None | Unset | str
         if isinstance(self.role_id, Unset):
             role_id = UNSET
         else:
             role_id = self.role_id
 
-        on_call_role_id: Union[None, Unset, str]
+        on_call_role_id: None | Unset | str
         if isinstance(self.on_call_role_id, Unset):
             on_call_role_id = UNSET
         else:
@@ -66,39 +66,39 @@ class UpdateUserDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_first_name(data: object) -> Union[None, Unset, str]:
+        def _parse_first_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         first_name = _parse_first_name(d.pop("first_name", UNSET))
 
-        def _parse_last_name(data: object) -> Union[None, Unset, str]:
+        def _parse_last_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         last_name = _parse_last_name(d.pop("last_name", UNSET))
 
-        def _parse_role_id(data: object) -> Union[None, Unset, str]:
+        def _parse_role_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         role_id = _parse_role_id(d.pop("role_id", UNSET))
 
-        def _parse_on_call_role_id(data: object) -> Union[None, Unset, str]:
+        def _parse_on_call_role_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         on_call_role_id = _parse_on_call_role_id(d.pop("on_call_role_id", UNSET))
 

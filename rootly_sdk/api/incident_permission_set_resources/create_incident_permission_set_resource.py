@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentPermissionSetResourceResponse | None:
     if response.status_code == 201:
         response_201 = IncidentPermissionSetResourceResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentPermissionSetResourceResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentPermissionSetResource,
-) -> Response[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+) -> Response[ErrorsList | IncidentPermissionSetResourceResponse]:
     """Creates an incident_permission_set_resource
 
      Creates a new incident_permission_set_resource from provided data
@@ -105,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewIncidentPermissionSetResource,
-) -> Optional[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+) -> ErrorsList | IncidentPermissionSetResourceResponse | None:
     """Creates an incident_permission_set_resource
 
      Creates a new incident_permission_set_resource from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentPermissionSetResource,
-) -> Response[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+) -> Response[ErrorsList | IncidentPermissionSetResourceResponse]:
     """Creates an incident_permission_set_resource
 
      Creates a new incident_permission_set_resource from provided data
@@ -166,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewIncidentPermissionSetResource,
-) -> Optional[Union[ErrorsList, IncidentPermissionSetResourceResponse]]:
+) -> ErrorsList | IncidentPermissionSetResourceResponse | None:
     """Creates an incident_permission_set_resource
 
      Creates a new incident_permission_set_resource from provided data

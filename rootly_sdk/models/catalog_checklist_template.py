@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -44,10 +44,10 @@ class CatalogChecklistTemplate:
     scope_id: str
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    fields: Union[None, Unset, list["CatalogChecklistTemplateFieldsType0Item"]] = UNSET
-    owners: Union[None, Unset, list["CatalogChecklistTemplateOwnersType0Item"]] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    fields: None | Unset | list["CatalogChecklistTemplateFieldsType0Item"] = UNSET
+    owners: None | Unset | list["CatalogChecklistTemplateOwnersType0Item"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,13 +65,13 @@ class CatalogChecklistTemplate:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        fields: Union[None, Unset, list[dict[str, Any]]]
+        fields: None | Unset | list[dict[str, Any]]
         if isinstance(self.fields, Unset):
             fields = UNSET
         elif isinstance(self.fields, list):
@@ -83,7 +83,7 @@ class CatalogChecklistTemplate:
         else:
             fields = self.fields
 
-        owners: Union[None, Unset, list[dict[str, Any]]]
+        owners: None | Unset | list[dict[str, Any]]
         if isinstance(self.owners, Unset):
             owners = UNSET
         elif isinstance(self.owners, list):
@@ -138,16 +138,16 @@ class CatalogChecklistTemplate:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_fields(data: object) -> Union[None, Unset, list["CatalogChecklistTemplateFieldsType0Item"]]:
+        def _parse_fields(data: object) -> None | Unset | list["CatalogChecklistTemplateFieldsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -165,11 +165,11 @@ class CatalogChecklistTemplate:
                 return fields_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CatalogChecklistTemplateFieldsType0Item"]], data)
+            return cast(None | Unset | list["CatalogChecklistTemplateFieldsType0Item"], data)
 
         fields = _parse_fields(d.pop("fields", UNSET))
 
-        def _parse_owners(data: object) -> Union[None, Unset, list["CatalogChecklistTemplateOwnersType0Item"]]:
+        def _parse_owners(data: object) -> None | Unset | list["CatalogChecklistTemplateOwnersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -187,7 +187,7 @@ class CatalogChecklistTemplate:
                 return owners_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CatalogChecklistTemplateOwnersType0Item"]], data)
+            return cast(None | Unset | list["CatalogChecklistTemplateOwnersType0Item"], data)
 
         owners = _parse_owners(d.pop("owners", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -23,16 +23,16 @@ class UpdateRetrospectiveStepDataAttributes:
         skippable (Union[Unset, bool]): Is the step skippable?
     """
 
-    slug: Union[None, Unset, str] = UNSET
-    title: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    incident_role_id: Union[None, Unset, str] = UNSET
-    due_after_days: Union[None, Unset, int] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    skippable: Union[Unset, bool] = UNSET
+    slug: None | Unset | str = UNSET
+    title: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    incident_role_id: None | Unset | str = UNSET
+    due_after_days: None | Unset | int = UNSET
+    position: None | Unset | int = UNSET
+    skippable: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -40,25 +40,25 @@ class UpdateRetrospectiveStepDataAttributes:
 
         title = self.title
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        incident_role_id: Union[None, Unset, str]
+        incident_role_id: None | Unset | str
         if isinstance(self.incident_role_id, Unset):
             incident_role_id = UNSET
         else:
             incident_role_id = self.incident_role_id
 
-        due_after_days: Union[None, Unset, int]
+        due_after_days: None | Unset | int
         if isinstance(self.due_after_days, Unset):
             due_after_days = UNSET
         else:
             due_after_days = self.due_after_days
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -90,50 +90,50 @@ class UpdateRetrospectiveStepDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         title = d.pop("title", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_incident_role_id(data: object) -> Union[None, Unset, str]:
+        def _parse_incident_role_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         incident_role_id = _parse_incident_role_id(d.pop("incident_role_id", UNSET))
 
-        def _parse_due_after_days(data: object) -> Union[None, Unset, int]:
+        def _parse_due_after_days(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         due_after_days = _parse_due_after_days(d.pop("due_after_days", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

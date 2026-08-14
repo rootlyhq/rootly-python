@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -27,35 +27,35 @@ class UpdateIncidentStatusPageEventDataAttributes:
         started_at (Union[None, Unset, datetime.datetime]): When the event started.
     """
 
-    event: Union[Unset, str] = UNSET
-    status_page_id: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdateIncidentStatusPageEventDataAttributesStatus] = UNSET
-    notify_subscribers: Union[None, Unset, bool] = False
-    should_tweet: Union[None, Unset, bool] = False
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
+    event: Unset | str = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus = UNSET
+    notify_subscribers: None | Unset | bool = False
+    should_tweet: None | Unset | bool = False
+    started_at: None | Unset | datetime.datetime = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
         status_page_id = self.status_page_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: Union[None, Unset, bool]
+        notify_subscribers: None | Unset | bool
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: Union[None, Unset, bool]
+        should_tweet: None | Unset | bool
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
             should_tweet = self.should_tweet
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -89,31 +89,31 @@ class UpdateIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateIncidentStatusPageEventDataAttributesStatus]
+        status: Unset | UpdateIncidentStatusPageEventDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> Union[None, Unset, bool]:
+        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> Union[None, Unset, bool]:
+        def _parse_should_tweet(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -126,7 +126,7 @@ class UpdateIncidentStatusPageEventDataAttributes:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 

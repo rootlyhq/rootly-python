@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,11 +30,11 @@ class Cause:
     name: str
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    public_description: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    properties: Union[Unset, list["CausePropertiesItem"]] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    properties: Unset | list["CausePropertiesItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,25 +46,25 @@ class Cause:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: Union[None, Unset, str]
+        public_description: None | Unset | str
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        properties: Union[Unset, list[dict[str, Any]]] = UNSET
+        properties: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -106,30 +106,30 @@ class Cause:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> Union[None, Unset, str]:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

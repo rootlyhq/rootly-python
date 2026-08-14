@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -26,38 +26,38 @@ class NewCatalogDataAttributes:
     """
 
     name: str
-    slug: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    icon: Union[Unset, NewCatalogDataAttributesIcon] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    external_id: Union[None, Unset, str] = UNSET
+    slug: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    icon: Unset | NewCatalogDataAttributesIcon = UNSET
+    position: None | Unset | int = UNSET
+    external_id: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        icon: Union[Unset, str] = UNSET
+        icon: Unset | str = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        external_id: Union[None, Unset, str]
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
@@ -88,46 +88,46 @@ class NewCatalogDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: Union[Unset, NewCatalogDataAttributesIcon]
+        icon: Unset | NewCatalogDataAttributesIcon
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_new_catalog_data_attributes_icon(_icon)
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_external_id(data: object) -> Union[None, Unset, str]:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 

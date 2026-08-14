@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,7 +31,7 @@ class ArchiveMicrosoftTeamsChannelsTaskParams:
 
     team: "ArchiveMicrosoftTeamsChannelsTaskParamsTeam"
     channels: list["ArchiveMicrosoftTeamsChannelsTaskParamsChannelsItem"]
-    task_type: Union[Unset, ArchiveMicrosoftTeamsChannelsTaskParamsTaskType] = UNSET
+    task_type: Unset | ArchiveMicrosoftTeamsChannelsTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +42,7 @@ class ArchiveMicrosoftTeamsChannelsTaskParams:
             channels_item = channels_item_data.to_dict()
             channels.append(channels_item)
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -79,7 +79,7 @@ class ArchiveMicrosoftTeamsChannelsTaskParams:
             channels.append(channels_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, ArchiveMicrosoftTeamsChannelsTaskParamsTaskType]
+        task_type: Unset | ArchiveMicrosoftTeamsChannelsTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

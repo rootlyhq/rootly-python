@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -15,11 +15,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    platform: Union[Unset, CreateMeetingRecordingPlatform] = UNSET,
+    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_platform: Union[Unset, str] = UNSET
+    json_platform: Unset | str = UNSET
     if not isinstance(platform, Unset):
         json_platform = platform
 
@@ -37,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 201:
         response_201 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,8 +69,8 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Union[Unset, CreateMeetingRecordingPlatform] = UNSET,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+) -> Response[Any | MeetingRecordingResponse]:
     """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
@@ -105,8 +105,8 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Union[Unset, CreateMeetingRecordingPlatform] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+) -> Any | MeetingRecordingResponse | None:
     """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
@@ -136,8 +136,8 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Union[Unset, CreateMeetingRecordingPlatform] = UNSET,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+) -> Response[Any | MeetingRecordingResponse]:
     """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,
@@ -170,8 +170,8 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Union[Unset, CreateMeetingRecordingPlatform] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+) -> Any | MeetingRecordingResponse | None:
     """Create meeting recording
 
      Invite a recording bot to the incident's meeting. If no previous recordings exist for the platform,

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,21 +13,21 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, ListOncallsInclude] = UNSET,
-    since: Union[Unset, str] = UNSET,
-    until: Union[Unset, str] = UNSET,
-    earliest: Union[Unset, bool] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-    filterescalation_policy_ids: Union[Unset, str] = UNSET,
-    filterschedule_ids: Union[Unset, str] = UNSET,
-    filteruser_ids: Union[Unset, str] = UNSET,
-    filterservice_ids: Union[Unset, str] = UNSET,
-    filtergroup_ids: Union[Unset, str] = UNSET,
-    filternotification_types: Union[Unset, str] = UNSET,
+    include: Unset | ListOncallsInclude = UNSET,
+    since: Unset | str = UNSET,
+    until: Unset | str = UNSET,
+    earliest: Unset | bool = UNSET,
+    time_zone: Unset | str = UNSET,
+    filterescalation_policy_ids: Unset | str = UNSET,
+    filterschedule_ids: Unset | str = UNSET,
+    filteruser_ids: Unset | str = UNSET,
+    filterservice_ids: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filternotification_types: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -65,8 +65,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, OncallList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | OncallList | None:
     if response.status_code == 200:
         response_200 = OncallList.from_dict(response.json())
 
@@ -89,8 +89,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, OncallList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | OncallList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -102,18 +102,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListOncallsInclude] = UNSET,
-    since: Union[Unset, str] = UNSET,
-    until: Union[Unset, str] = UNSET,
-    earliest: Union[Unset, bool] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-    filterescalation_policy_ids: Union[Unset, str] = UNSET,
-    filterschedule_ids: Union[Unset, str] = UNSET,
-    filteruser_ids: Union[Unset, str] = UNSET,
-    filterservice_ids: Union[Unset, str] = UNSET,
-    filtergroup_ids: Union[Unset, str] = UNSET,
-    filternotification_types: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, OncallList]]:
+    include: Unset | ListOncallsInclude = UNSET,
+    since: Unset | str = UNSET,
+    until: Unset | str = UNSET,
+    earliest: Unset | bool = UNSET,
+    time_zone: Unset | str = UNSET,
+    filterescalation_policy_ids: Unset | str = UNSET,
+    filterschedule_ids: Unset | str = UNSET,
+    filteruser_ids: Unset | str = UNSET,
+    filterservice_ids: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filternotification_types: Unset | str = UNSET,
+) -> Response[ErrorsList | OncallList]:
     """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
@@ -164,18 +164,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListOncallsInclude] = UNSET,
-    since: Union[Unset, str] = UNSET,
-    until: Union[Unset, str] = UNSET,
-    earliest: Union[Unset, bool] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-    filterescalation_policy_ids: Union[Unset, str] = UNSET,
-    filterschedule_ids: Union[Unset, str] = UNSET,
-    filteruser_ids: Union[Unset, str] = UNSET,
-    filterservice_ids: Union[Unset, str] = UNSET,
-    filtergroup_ids: Union[Unset, str] = UNSET,
-    filternotification_types: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, OncallList]]:
+    include: Unset | ListOncallsInclude = UNSET,
+    since: Unset | str = UNSET,
+    until: Unset | str = UNSET,
+    earliest: Unset | bool = UNSET,
+    time_zone: Unset | str = UNSET,
+    filterescalation_policy_ids: Unset | str = UNSET,
+    filterschedule_ids: Unset | str = UNSET,
+    filteruser_ids: Unset | str = UNSET,
+    filterservice_ids: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filternotification_types: Unset | str = UNSET,
+) -> ErrorsList | OncallList | None:
     """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
@@ -221,18 +221,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListOncallsInclude] = UNSET,
-    since: Union[Unset, str] = UNSET,
-    until: Union[Unset, str] = UNSET,
-    earliest: Union[Unset, bool] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-    filterescalation_policy_ids: Union[Unset, str] = UNSET,
-    filterschedule_ids: Union[Unset, str] = UNSET,
-    filteruser_ids: Union[Unset, str] = UNSET,
-    filterservice_ids: Union[Unset, str] = UNSET,
-    filtergroup_ids: Union[Unset, str] = UNSET,
-    filternotification_types: Union[Unset, str] = UNSET,
-) -> Response[Union[ErrorsList, OncallList]]:
+    include: Unset | ListOncallsInclude = UNSET,
+    since: Unset | str = UNSET,
+    until: Unset | str = UNSET,
+    earliest: Unset | bool = UNSET,
+    time_zone: Unset | str = UNSET,
+    filterescalation_policy_ids: Unset | str = UNSET,
+    filterschedule_ids: Unset | str = UNSET,
+    filteruser_ids: Unset | str = UNSET,
+    filterservice_ids: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filternotification_types: Unset | str = UNSET,
+) -> Response[ErrorsList | OncallList]:
     """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.
@@ -281,18 +281,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListOncallsInclude] = UNSET,
-    since: Union[Unset, str] = UNSET,
-    until: Union[Unset, str] = UNSET,
-    earliest: Union[Unset, bool] = UNSET,
-    time_zone: Union[Unset, str] = UNSET,
-    filterescalation_policy_ids: Union[Unset, str] = UNSET,
-    filterschedule_ids: Union[Unset, str] = UNSET,
-    filteruser_ids: Union[Unset, str] = UNSET,
-    filterservice_ids: Union[Unset, str] = UNSET,
-    filtergroup_ids: Union[Unset, str] = UNSET,
-    filternotification_types: Union[Unset, str] = UNSET,
-) -> Optional[Union[ErrorsList, OncallList]]:
+    include: Unset | ListOncallsInclude = UNSET,
+    since: Unset | str = UNSET,
+    until: Unset | str = UNSET,
+    earliest: Unset | bool = UNSET,
+    time_zone: Unset | str = UNSET,
+    filterescalation_policy_ids: Unset | str = UNSET,
+    filterschedule_ids: Unset | str = UNSET,
+    filteruser_ids: Unset | str = UNSET,
+    filterservice_ids: Unset | str = UNSET,
+    filtergroup_ids: Unset | str = UNSET,
+    filternotification_types: Unset | str = UNSET,
+) -> ErrorsList | OncallList | None:
     """List on-calls
 
      List who is currently on-call, with support for filtering by escalation policy, schedule, and user.

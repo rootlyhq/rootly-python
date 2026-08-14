@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,10 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     form_field_placement_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterform_field_id: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform_field_id: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -39,8 +39,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[FormFieldPlacementConditionList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> FormFieldPlacementConditionList | None:
     if response.status_code == 200:
         response_200 = FormFieldPlacementConditionList.from_dict(response.json())
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[FormFieldPlacementConditionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -67,10 +67,10 @@ def sync_detailed(
     form_field_placement_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterform_field_id: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform_field_id: Unset | str = UNSET,
 ) -> Response[FormFieldPlacementConditionList]:
     """List Form Set Conditions
 
@@ -110,11 +110,11 @@ def sync(
     form_field_placement_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterform_field_id: Union[Unset, str] = UNSET,
-) -> Optional[FormFieldPlacementConditionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform_field_id: Unset | str = UNSET,
+) -> FormFieldPlacementConditionList | None:
     """List Form Set Conditions
 
      List form_field_placement_conditions
@@ -148,10 +148,10 @@ async def asyncio_detailed(
     form_field_placement_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterform_field_id: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform_field_id: Unset | str = UNSET,
 ) -> Response[FormFieldPlacementConditionList]:
     """List Form Set Conditions
 
@@ -189,11 +189,11 @@ async def asyncio(
     form_field_placement_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterform_field_id: Union[Unset, str] = UNSET,
-) -> Optional[FormFieldPlacementConditionList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterform_field_id: Unset | str = UNSET,
+) -> FormFieldPlacementConditionList | None:
     """List Form Set Conditions
 
      List form_field_placement_conditions

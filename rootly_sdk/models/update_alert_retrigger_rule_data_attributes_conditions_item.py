@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -37,9 +37,9 @@ class UpdateAlertRetriggerRuleDataAttributesConditionsItem:
 
     kind: UpdateAlertRetriggerRuleDataAttributesConditionsItemKind
     operator: UpdateAlertRetriggerRuleDataAttributesConditionsItemOperator
-    record_ids: Union[Unset, list[UUID]] = UNSET
-    values: Union[Unset, list[str]] = UNSET
-    property_field_name: Union[Unset, str] = UNSET
+    record_ids: Unset | list[UUID] = UNSET
+    values: Unset | list[str] = UNSET
+    property_field_name: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,14 +47,14 @@ class UpdateAlertRetriggerRuleDataAttributesConditionsItem:
 
         operator: str = self.operator
 
-        record_ids: Union[Unset, list[str]] = UNSET
+        record_ids: Unset | list[str] = UNSET
         if not isinstance(self.record_ids, Unset):
             record_ids = []
             for record_ids_item_data in self.record_ids:
                 record_ids_item = str(record_ids_item_data)
                 record_ids.append(record_ids_item)
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 

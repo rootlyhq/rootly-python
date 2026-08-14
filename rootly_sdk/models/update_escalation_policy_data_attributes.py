@@ -27,11 +27,11 @@ class UpdateEscalationPolicyDataAttributes:
         business_hours (Union['UpdateEscalationPolicyDataAttributesBusinessHoursType0', None, Unset]):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    repeat_count: Union[Unset, int] = UNSET
-    group_ids: Union[Unset, list[str]] = UNSET
-    service_ids: Union[Unset, list[str]] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    repeat_count: Unset | int = UNSET
+    group_ids: Unset | list[str] = UNSET
+    service_ids: Unset | list[str] = UNSET
     business_hours: Union["UpdateEscalationPolicyDataAttributesBusinessHoursType0", None, Unset] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,7 +41,7 @@ class UpdateEscalationPolicyDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -49,15 +49,15 @@ class UpdateEscalationPolicyDataAttributes:
 
         repeat_count = self.repeat_count
 
-        group_ids: Union[Unset, list[str]] = UNSET
+        group_ids: Unset | list[str] = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        service_ids: Union[Unset, list[str]] = UNSET
+        service_ids: Unset | list[str] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        business_hours: Union[None, Unset, dict[str, Any]]
+        business_hours: None | Unset | dict[str, Any]
         if isinstance(self.business_hours, Unset):
             business_hours = UNSET
         elif isinstance(self.business_hours, UpdateEscalationPolicyDataAttributesBusinessHoursType0):
@@ -92,12 +92,12 @@ class UpdateEscalationPolicyDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

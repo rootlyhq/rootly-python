@@ -32,9 +32,9 @@ class NewIncidentPermissionSetResourceDataAttributes:
 
     incident_permission_set_id: str
     kind: NewIncidentPermissionSetResourceDataAttributesKind
-    private: Union[Unset, bool] = UNSET
-    resource_id: Union[Unset, str] = UNSET
-    resource_type: Union[Unset, str] = UNSET
+    private: Unset | bool = UNSET
+    resource_id: Unset | str = UNSET
+    resource_type: Unset | str = UNSET
     severity_params: Union[Unset, "NewIncidentPermissionSetResourceDataAttributesSeverityParams"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,7 +48,7 @@ class NewIncidentPermissionSetResourceDataAttributes:
 
         resource_type = self.resource_type
 
-        severity_params: Union[Unset, dict[str, Any]] = UNSET
+        severity_params: Unset | dict[str, Any] = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -89,7 +89,7 @@ class NewIncidentPermissionSetResourceDataAttributes:
         resource_type = d.pop("resource_type", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Union[Unset, NewIncidentPermissionSetResourceDataAttributesSeverityParams]
+        severity_params: Unset | NewIncidentPermissionSetResourceDataAttributesSeverityParams
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

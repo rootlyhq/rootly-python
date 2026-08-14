@@ -32,8 +32,8 @@ class UpdateRetrospectiveProcessDataAttributes:
             'UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType2', Unset]):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
     retrospective_process_matching_criteria: Union[
         "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType0",
         "UpdateRetrospectiveProcessDataAttributesRetrospectiveProcessMatchingCriteriaType1",
@@ -51,13 +51,13 @@ class UpdateRetrospectiveProcessDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        retrospective_process_matching_criteria: Union[Unset, dict[str, Any]]
+        retrospective_process_matching_criteria: Unset | dict[str, Any]
         if isinstance(self.retrospective_process_matching_criteria, Unset):
             retrospective_process_matching_criteria = UNSET
         elif isinstance(
@@ -100,12 +100,12 @@ class UpdateRetrospectiveProcessDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

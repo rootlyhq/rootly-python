@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -33,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ApiKeyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = ApiKeyResponse.from_dict(response.json())
 
@@ -52,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ApiKeyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,7 +67,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -107,7 +107,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+) -> ApiKeyResponse | ErrorsList | None:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -142,7 +142,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -180,7 +180,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+) -> ApiKeyResponse | ErrorsList | None:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.

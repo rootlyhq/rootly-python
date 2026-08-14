@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,11 +32,11 @@ class UpdateShortcutStoryTaskParams:
 
     story_id: str
     archivation: "UpdateShortcutStoryTaskParamsArchivation"
-    task_type: Union[Unset, UpdateShortcutStoryTaskParamsTaskType] = UNSET
-    title: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    labels: Union[Unset, str] = UNSET
-    due_date: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateShortcutStoryTaskParamsTaskType = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    labels: Unset | str = UNSET
+    due_date: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +44,7 @@ class UpdateShortcutStoryTaskParams:
 
         archivation = self.archivation.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -87,7 +87,7 @@ class UpdateShortcutStoryTaskParams:
         archivation = UpdateShortcutStoryTaskParamsArchivation.from_dict(d.pop("archivation"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateShortcutStoryTaskParamsTaskType]
+        task_type: Unset | UpdateShortcutStoryTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

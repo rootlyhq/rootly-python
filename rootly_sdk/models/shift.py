@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,18 +23,18 @@ class Shift:
     """
 
     schedule_id: str
-    rotation_id: Union[None, str]
+    rotation_id: None | str
     starts_at: str
     ends_at: str
     is_override: bool
     is_shadow: bool
-    user_id: Union[None, Unset, int] = UNSET
+    user_id: None | Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         schedule_id = self.schedule_id
 
-        rotation_id: Union[None, str]
+        rotation_id: None | str
         rotation_id = self.rotation_id
 
         starts_at = self.starts_at
@@ -45,7 +45,7 @@ class Shift:
 
         is_shadow = self.is_shadow
 
-        user_id: Union[None, Unset, int]
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
@@ -73,10 +73,10 @@ class Shift:
         d = dict(src_dict)
         schedule_id = d.pop("schedule_id")
 
-        def _parse_rotation_id(data: object) -> Union[None, str]:
+        def _parse_rotation_id(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         rotation_id = _parse_rotation_id(d.pop("rotation_id"))
 
@@ -88,12 +88,12 @@ class Shift:
 
         is_shadow = d.pop("is_shadow")
 
-        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 

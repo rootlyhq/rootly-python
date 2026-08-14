@@ -26,7 +26,7 @@ class OncallRelationshipsUser:
     def to_dict(self) -> dict[str, Any]:
         from ..models.oncall_relationships_user_data_type_0 import OncallRelationshipsUserDataType0
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, OncallRelationshipsUserDataType0):

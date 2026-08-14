@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 from uuid import UUID
 
 import httpx
@@ -13,8 +13,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     session_id: UUID,
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -34,8 +34,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AiChatSessionMessageList, Any]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AiChatSessionMessageList | Any | None:
     if response.status_code == 200:
         response_200 = AiChatSessionMessageList.from_dict(response.json())
 
@@ -52,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AiChatSessionMessageList, Any]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AiChatSessionMessageList | Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,9 +66,9 @@ def sync_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[AiChatSessionMessageList, Any]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[AiChatSessionMessageList | Any]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -104,9 +104,9 @@ def sync(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[AiChatSessionMessageList, Any]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> AiChatSessionMessageList | Any | None:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -137,9 +137,9 @@ async def asyncio_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[AiChatSessionMessageList, Any]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[AiChatSessionMessageList | Any]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -173,9 +173,9 @@ async def asyncio(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[AiChatSessionMessageList, Any]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> AiChatSessionMessageList | Any | None:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.

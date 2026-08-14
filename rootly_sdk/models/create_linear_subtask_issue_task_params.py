@@ -40,12 +40,12 @@ class CreateLinearSubtaskIssueTaskParams:
     parent_issue_id: str
     title: str
     state: "CreateLinearSubtaskIssueTaskParamsState"
-    task_type: Union[Unset, CreateLinearSubtaskIssueTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
+    task_type: Unset | CreateLinearSubtaskIssueTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
     priority: Union[Unset, "CreateLinearSubtaskIssueTaskParamsPriority"] = UNSET
-    labels: Union[Unset, list["CreateLinearSubtaskIssueTaskParamsLabelsItem"]] = UNSET
-    assign_user_email: Union[Unset, str] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    labels: Unset | list["CreateLinearSubtaskIssueTaskParamsLabelsItem"] = UNSET
+    assign_user_email: Unset | str = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,17 +55,17 @@ class CreateLinearSubtaskIssueTaskParams:
 
         state = self.state.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        labels: Union[Unset, list[dict[str, Any]]] = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
@@ -74,7 +74,7 @@ class CreateLinearSubtaskIssueTaskParams:
 
         assign_user_email = self.assign_user_email
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -120,7 +120,7 @@ class CreateLinearSubtaskIssueTaskParams:
         state = CreateLinearSubtaskIssueTaskParamsState.from_dict(d.pop("state"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateLinearSubtaskIssueTaskParamsTaskType]
+        task_type: Unset | CreateLinearSubtaskIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -129,7 +129,7 @@ class CreateLinearSubtaskIssueTaskParams:
         description = d.pop("description", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, CreateLinearSubtaskIssueTaskParamsPriority]
+        priority: Unset | CreateLinearSubtaskIssueTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
@@ -144,12 +144,12 @@ class CreateLinearSubtaskIssueTaskParams:
 
         assign_user_email = d.pop("assign_user_email", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -23,8 +23,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ApiKeyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = ApiKeyResponse.from_dict(response.json())
 
@@ -42,8 +42,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ApiKeyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,7 +56,7 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Revoke an API key
 
      Revoke an API key. The key is immediately invalidated and can no longer be used for authentication.
@@ -91,7 +91,7 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+) -> ApiKeyResponse | ErrorsList | None:
     """Revoke an API key
 
      Revoke an API key. The key is immediately invalidated and can no longer be used for authentication.
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Revoke an API key
 
      Revoke an API key. The key is immediately invalidated and can no longer be used for authentication.
@@ -154,7 +154,7 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+) -> ApiKeyResponse | ErrorsList | None:
     """Revoke an API key
 
      Revoke an API key. The key is immediately invalidated and can no longer be used for authentication.

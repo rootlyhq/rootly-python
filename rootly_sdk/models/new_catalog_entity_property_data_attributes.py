@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -26,7 +26,7 @@ class NewCatalogEntityPropertyDataAttributes:
     catalog_field_id: str
     key: NewCatalogEntityPropertyDataAttributesKey
     value: str
-    catalog_entity_id: Union[Unset, str] = UNSET
+    catalog_entity_id: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         catalog_field_id = self.catalog_field_id

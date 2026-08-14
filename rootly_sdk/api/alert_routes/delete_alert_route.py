@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> DeleteAlertRouteResponse200 | ErrorsList | None:
     if response.status_code == 200:
         response_200 = DeleteAlertRouteResponse200.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[DeleteAlertRouteResponse200 | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,7 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+) -> Response[DeleteAlertRouteResponse200 | ErrorsList]:
     """Delete an alert route
 
      Delete a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -98,7 +98,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+) -> DeleteAlertRouteResponse200 | ErrorsList | None:
     """Delete an alert route
 
      Delete a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+) -> Response[DeleteAlertRouteResponse200 | ErrorsList]:
     """Delete an alert route
 
      Delete a specific alert route by id. **Note: This endpoint requires access to Advanced Alert
@@ -157,7 +157,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[DeleteAlertRouteResponse200, ErrorsList]]:
+) -> DeleteAlertRouteResponse200 | ErrorsList | None:
     """Delete an alert route
 
      Delete a specific alert route by id. **Note: This endpoint requires access to Advanced Alert

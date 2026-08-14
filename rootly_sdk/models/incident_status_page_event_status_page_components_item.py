@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,13 +23,13 @@ class IncidentStatusPageEventStatusPageComponentsItem:
     """
 
     status_page_component_id: str
-    status: Union[Unset, IncidentStatusPageEventStatusPageComponentsItemStatus] = UNSET
+    status: Unset | IncidentStatusPageEventStatusPageComponentsItemStatus = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         status_page_component_id = self.status_page_component_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -51,7 +51,7 @@ class IncidentStatusPageEventStatusPageComponentsItem:
         status_page_component_id = d.pop("status_page_component_id")
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, IncidentStatusPageEventStatusPageComponentsItemStatus]
+        status: Unset | IncidentStatusPageEventStatusPageComponentsItemStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

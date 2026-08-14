@@ -262,10 +262,10 @@ class UpdateWorkflowTaskDataAttributes:
             'UpdateTrelloCardTaskParams', 'UpdateVictorOpsIncidentTaskParams', 'UpdateZendeskTicketTaskParams', Unset]):
     """
 
-    name: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    skip_on_failure: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = True
+    name: Unset | str = UNSET
+    position: Unset | int = UNSET
+    skip_on_failure: Unset | bool = UNSET
+    enabled: Unset | bool = True
     task_params: Union[
         "AddActionItemTaskParams",
         "AddMicrosoftTeamsChatTabTaskParams",
@@ -625,7 +625,7 @@ class UpdateWorkflowTaskDataAttributes:
 
         enabled = self.enabled
 
-        task_params: Union[Unset, dict[str, Any]]
+        task_params: Unset | dict[str, Any]
         if isinstance(self.task_params, Unset):
             task_params = UNSET
         elif isinstance(self.task_params, AddActionItemTaskParams):

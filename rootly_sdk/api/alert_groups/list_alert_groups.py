@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,15 +11,15 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -52,9 +52,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AlertGroupList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertGroupList | None:
     if response.status_code == 200:
         response_200 = AlertGroupList.from_dict(response.json())
 
@@ -66,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AlertGroupList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertGroupList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,15 +76,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
@@ -135,16 +131,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-) -> Optional[AlertGroupList]:
+    include: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+) -> AlertGroupList | None:
     """List alert groups
 
      List alert groups
@@ -185,15 +181,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
@@ -238,16 +234,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-) -> Optional[AlertGroupList]:
+    include: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+) -> AlertGroupList | None:
     """List alert groups
 
      List alert groups

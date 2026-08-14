@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -16,8 +16,8 @@ class UpdateRetrospectiveProcessGroupDataAttributes:
         position (Union[Unset, int]):
     """
 
-    sub_status_id: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
+    sub_status_id: Unset | str = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         sub_status_id = self.sub_status_id

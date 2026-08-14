@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,8 +29,8 @@ class StatusPageComponentGroup:
     position: int
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    description: Union[None, Unset, str] = UNSET
-    collapsed_by_default: Union[Unset, bool] = UNSET
+    description: None | Unset | str = UNSET
+    collapsed_by_default: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +44,7 @@ class StatusPageComponentGroup:
 
         updated_at = self.updated_at.isoformat()
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -83,12 +83,12 @@ class StatusPageComponentGroup:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

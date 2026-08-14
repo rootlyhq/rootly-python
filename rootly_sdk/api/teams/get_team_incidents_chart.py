@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentsChartResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentsChartResponse | None:
     if response.status_code == 200:
         response_200 = IncidentsChartResponse.from_dict(response.json())
 
@@ -50,8 +50,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentsChartResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentsChartResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,7 +65,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     period: str,
-) -> Response[Union[ErrorsList, IncidentsChartResponse]]:
+) -> Response[ErrorsList | IncidentsChartResponse]:
     """Get team incidents chart
 
      Get team incidents chart
@@ -99,7 +99,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     period: str,
-) -> Optional[Union[ErrorsList, IncidentsChartResponse]]:
+) -> ErrorsList | IncidentsChartResponse | None:
     """Get team incidents chart
 
      Get team incidents chart
@@ -128,7 +128,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     period: str,
-) -> Response[Union[ErrorsList, IncidentsChartResponse]]:
+) -> Response[ErrorsList | IncidentsChartResponse]:
     """Get team incidents chart
 
      Get team incidents chart
@@ -160,7 +160,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     period: str,
-) -> Optional[Union[ErrorsList, IncidentsChartResponse]]:
+) -> ErrorsList | IncidentsChartResponse | None:
     """Get team incidents chart
 
      Get team incidents chart

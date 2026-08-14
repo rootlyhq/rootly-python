@@ -51,20 +51,20 @@ class MeetingRecordingDetail:
     status: MeetingRecordingStatus
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
-    ended_at: Union[None, Unset, datetime.datetime] = UNSET
-    duration_minutes: Union[None, Unset, float] = UNSET
-    speaker_count: Union[Unset, int] = UNSET
-    word_count: Union[Unset, int] = UNSET
-    transcript_summary: Union[None, Unset, str] = UNSET
-    title: Union[None, Unset, str] = UNSET
-    meeting_url: Union[None, Unset, str] = UNSET
-    video_url: Union[None, Unset, str] = UNSET
-    created_by: Union[None, Unset, str] = UNSET
+    started_at: None | Unset | datetime.datetime = UNSET
+    ended_at: None | Unset | datetime.datetime = UNSET
+    duration_minutes: None | Unset | float = UNSET
+    speaker_count: Unset | int = UNSET
+    word_count: Unset | int = UNSET
+    transcript_summary: None | Unset | str = UNSET
+    title: None | Unset | str = UNSET
+    meeting_url: None | Unset | str = UNSET
+    video_url: None | Unset | str = UNSET
+    created_by: None | Unset | str = UNSET
     transcript: Union["MeetingRecordingDetailTranscriptType1", Unset, list["MeetingRecordingTranscriptSegment"]] = UNSET
-    recall_upload_id: Union[None, Unset, str] = UNSET
-    recordable_id: Union[None, Unset, str] = UNSET
-    recordable_type: Union[None, Unset, str] = UNSET
+    recall_upload_id: None | Unset | str = UNSET
+    recordable_id: None | Unset | str = UNSET
+    recordable_type: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -78,7 +78,7 @@ class MeetingRecordingDetail:
 
         updated_at = self.updated_at.isoformat()
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -86,7 +86,7 @@ class MeetingRecordingDetail:
         else:
             started_at = self.started_at
 
-        ended_at: Union[None, Unset, str]
+        ended_at: None | Unset | str
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -94,7 +94,7 @@ class MeetingRecordingDetail:
         else:
             ended_at = self.ended_at
 
-        duration_minutes: Union[None, Unset, float]
+        duration_minutes: None | Unset | float
         if isinstance(self.duration_minutes, Unset):
             duration_minutes = UNSET
         else:
@@ -104,37 +104,37 @@ class MeetingRecordingDetail:
 
         word_count = self.word_count
 
-        transcript_summary: Union[None, Unset, str]
+        transcript_summary: None | Unset | str
         if isinstance(self.transcript_summary, Unset):
             transcript_summary = UNSET
         else:
             transcript_summary = self.transcript_summary
 
-        title: Union[None, Unset, str]
+        title: None | Unset | str
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        meeting_url: Union[None, Unset, str]
+        meeting_url: None | Unset | str
         if isinstance(self.meeting_url, Unset):
             meeting_url = UNSET
         else:
             meeting_url = self.meeting_url
 
-        video_url: Union[None, Unset, str]
+        video_url: None | Unset | str
         if isinstance(self.video_url, Unset):
             video_url = UNSET
         else:
             video_url = self.video_url
 
-        created_by: Union[None, Unset, str]
+        created_by: None | Unset | str
         if isinstance(self.created_by, Unset):
             created_by = UNSET
         else:
             created_by = self.created_by
 
-        transcript: Union[Unset, dict[str, Any], list[dict[str, Any]]]
+        transcript: Unset | dict[str, Any] | list[dict[str, Any]]
         if isinstance(self.transcript, Unset):
             transcript = UNSET
         elif isinstance(self.transcript, list):
@@ -146,19 +146,19 @@ class MeetingRecordingDetail:
         else:
             transcript = self.transcript.to_dict()
 
-        recall_upload_id: Union[None, Unset, str]
+        recall_upload_id: None | Unset | str
         if isinstance(self.recall_upload_id, Unset):
             recall_upload_id = UNSET
         else:
             recall_upload_id = self.recall_upload_id
 
-        recordable_id: Union[None, Unset, str]
+        recordable_id: None | Unset | str
         if isinstance(self.recordable_id, Unset):
             recordable_id = UNSET
         else:
             recordable_id = self.recordable_id
 
-        recordable_type: Union[None, Unset, str]
+        recordable_type: None | Unset | str
         if isinstance(self.recordable_type, Unset):
             recordable_type = UNSET
         else:
@@ -222,7 +222,7 @@ class MeetingRecordingDetail:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -235,11 +235,11 @@ class MeetingRecordingDetail:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -252,16 +252,16 @@ class MeetingRecordingDetail:
                 return ended_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 
-        def _parse_duration_minutes(data: object) -> Union[None, Unset, float]:
+        def _parse_duration_minutes(data: object) -> None | Unset | float:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, float], data)
+            return cast(None | Unset | float, data)
 
         duration_minutes = _parse_duration_minutes(d.pop("duration_minutes", UNSET))
 
@@ -269,48 +269,48 @@ class MeetingRecordingDetail:
 
         word_count = d.pop("word_count", UNSET)
 
-        def _parse_transcript_summary(data: object) -> Union[None, Unset, str]:
+        def _parse_transcript_summary(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         transcript_summary = _parse_transcript_summary(d.pop("transcript_summary", UNSET))
 
-        def _parse_title(data: object) -> Union[None, Unset, str]:
+        def _parse_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_meeting_url(data: object) -> Union[None, Unset, str]:
+        def _parse_meeting_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         meeting_url = _parse_meeting_url(d.pop("meeting_url", UNSET))
 
-        def _parse_video_url(data: object) -> Union[None, Unset, str]:
+        def _parse_video_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         video_url = _parse_video_url(d.pop("video_url", UNSET))
 
-        def _parse_created_by(data: object) -> Union[None, Unset, str]:
+        def _parse_created_by(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         created_by = _parse_created_by(d.pop("created_by", UNSET))
 
@@ -340,30 +340,30 @@ class MeetingRecordingDetail:
 
         transcript = _parse_transcript(d.pop("transcript", UNSET))
 
-        def _parse_recall_upload_id(data: object) -> Union[None, Unset, str]:
+        def _parse_recall_upload_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         recall_upload_id = _parse_recall_upload_id(d.pop("recall_upload_id", UNSET))
 
-        def _parse_recordable_id(data: object) -> Union[None, Unset, str]:
+        def _parse_recordable_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         recordable_id = _parse_recordable_id(d.pop("recordable_id", UNSET))
 
-        def _parse_recordable_type(data: object) -> Union[None, Unset, str]:
+        def _parse_recordable_type(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         recordable_type = _parse_recordable_type(d.pop("recordable_type", UNSET))
 

@@ -21,7 +21,7 @@ jobs:
         run: pip install uv
 
       - name: Install dependencies
-        run: uv pip install --system "ruff>=0.15.0"
+        run: uv pip install --system "ruff==0.16.3"
 
       - name: Ruff check
         run: ruff check .

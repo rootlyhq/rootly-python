@@ -25,16 +25,16 @@ class UpdateDashboardPanelData:
         attributes (Union[Unset, UpdateDashboardPanelDataAttributes]):
     """
 
-    type_: Union[Unset, UpdateDashboardPanelDataType] = UNSET
+    type_: Unset | UpdateDashboardPanelDataType = UNSET
     attributes: Union[Unset, "UpdateDashboardPanelDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +54,14 @@ class UpdateDashboardPanelData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, UpdateDashboardPanelDataType]
+        type_: Unset | UpdateDashboardPanelDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_update_dashboard_panel_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, UpdateDashboardPanelDataAttributes]
+        attributes: Unset | UpdateDashboardPanelDataAttributes
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

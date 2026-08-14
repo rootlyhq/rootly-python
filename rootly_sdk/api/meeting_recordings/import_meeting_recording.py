@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingResponse | None:
     if response.status_code == 201:
         response_201 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -49,8 +49,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ImportMeetingRecording,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+) -> Response[Any | MeetingRecordingResponse]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -101,7 +101,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ImportMeetingRecording,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+) -> Any | MeetingRecordingResponse | None:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -133,7 +133,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ImportMeetingRecording,
-) -> Response[Union[Any, MeetingRecordingResponse]]:
+) -> Response[Any | MeetingRecordingResponse]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -168,7 +168,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ImportMeetingRecording,
-) -> Optional[Union[Any, MeetingRecordingResponse]]:
+) -> Any | MeetingRecordingResponse | None:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript

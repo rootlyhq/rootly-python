@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -24,20 +24,20 @@ class AiChatResponseDataAttributes:
     """
 
     session_id: UUID
-    reply: Union[None, Unset, str] = UNSET
-    status: Union[Unset, AiChatResponseDataAttributesStatus] = UNSET
+    reply: None | Unset | str = UNSET
+    status: Unset | AiChatResponseDataAttributesStatus = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         session_id = str(self.session_id)
 
-        reply: Union[None, Unset, str]
+        reply: None | Unset | str
         if isinstance(self.reply, Unset):
             reply = UNSET
         else:
             reply = self.reply
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -60,17 +60,17 @@ class AiChatResponseDataAttributes:
         d = dict(src_dict)
         session_id = UUID(d.pop("session_id"))
 
-        def _parse_reply(data: object) -> Union[None, Unset, str]:
+        def _parse_reply(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         reply = _parse_reply(d.pop("reply", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, AiChatResponseDataAttributesStatus]
+        status: Unset | AiChatResponseDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

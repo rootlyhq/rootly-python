@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,16 +33,16 @@ class Dashboard:
     name: str
     owner: DashboardOwner
     public: bool
-    team_id: Union[Unset, int] = UNSET
-    user_id: Union[None, Unset, int] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    range_: Union[None, Unset, str] = UNSET
-    period: Union[None, Unset, str] = UNSET
-    auto_refresh: Union[Unset, bool] = UNSET
-    color: Union[Unset, DashboardColor] = UNSET
-    icon: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    team_id: Unset | int = UNSET
+    user_id: None | Unset | int = UNSET
+    description: None | Unset | str = UNSET
+    range_: None | Unset | str = UNSET
+    period: None | Unset | str = UNSET
+    auto_refresh: Unset | bool = UNSET
+    color: Unset | DashboardColor = UNSET
+    icon: Unset | str = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,25 +54,25 @@ class Dashboard:
 
         team_id = self.team_id
 
-        user_id: Union[None, Unset, int]
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        range_: Union[None, Unset, str]
+        range_: None | Unset | str
         if isinstance(self.range_, Unset):
             range_ = UNSET
         else:
             range_ = self.range_
 
-        period: Union[None, Unset, str]
+        period: None | Unset | str
         if isinstance(self.period, Unset):
             period = UNSET
         else:
@@ -80,7 +80,7 @@ class Dashboard:
 
         auto_refresh = self.auto_refresh
 
-        color: Union[Unset, str] = UNSET
+        color: Unset | str = UNSET
         if not isinstance(self.color, Unset):
             color = self.color
 
@@ -133,46 +133,46 @@ class Dashboard:
 
         team_id = d.pop("team_id", UNSET)
 
-        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_range_(data: object) -> Union[None, Unset, str]:
+        def _parse_range_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         range_ = _parse_range_(d.pop("range", UNSET))
 
-        def _parse_period(data: object) -> Union[None, Unset, str]:
+        def _parse_period(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         period = _parse_period(d.pop("period", UNSET))
 
         auto_refresh = d.pop("auto_refresh", UNSET)
 
         _color = d.pop("color", UNSET)
-        color: Union[Unset, DashboardColor]
+        color: Unset | DashboardColor
         if isinstance(_color, Unset):
             color = UNSET
         else:

@@ -31,18 +31,18 @@ class UpdateCodaPageTaskParams:
     """
 
     page_id: str
-    task_type: Union[Unset, UpdateCodaPageTaskParamsTaskType] = UNSET
-    doc_id: Union[Unset, str] = UNSET
-    title: Union[Unset, str] = UNSET
-    subtitle: Union[Unset, str] = UNSET
-    content: Union[Unset, str] = UNSET
+    task_type: Unset | UpdateCodaPageTaskParamsTaskType = UNSET
+    doc_id: Unset | str = UNSET
+    title: Unset | str = UNSET
+    subtitle: Unset | str = UNSET
+    content: Unset | str = UNSET
     template: Union[Unset, "UpdateCodaPageTaskParamsTemplate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         page_id = self.page_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,7 +54,7 @@ class UpdateCodaPageTaskParams:
 
         content = self.content
 
-        template: Union[Unset, dict[str, Any]] = UNSET
+        template: Unset | dict[str, Any] = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -88,7 +88,7 @@ class UpdateCodaPageTaskParams:
         page_id = d.pop("page_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateCodaPageTaskParamsTaskType]
+        task_type: Unset | UpdateCodaPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -103,7 +103,7 @@ class UpdateCodaPageTaskParams:
         content = d.pop("content", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Union[Unset, UpdateCodaPageTaskParamsTemplate]
+        template: Unset | UpdateCodaPageTaskParamsTemplate
         if isinstance(_template, Unset):
             template = UNSET
         else:

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -39,37 +39,37 @@ class NewIncidentStatusPageEventDataAttributes:
     """
 
     event: str
-    status_page_id: Union[Unset, str] = UNSET
-    status: Union[Unset, NewIncidentStatusPageEventDataAttributesStatus] = UNSET
-    notify_subscribers: Union[None, Unset, bool] = False
-    should_tweet: Union[None, Unset, bool] = False
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
-    status_page_components: Union[
-        None, Unset, list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]
-    ] = UNSET
+    status_page_id: Unset | str = UNSET
+    status: Unset | NewIncidentStatusPageEventDataAttributesStatus = UNSET
+    notify_subscribers: None | Unset | bool = False
+    should_tweet: None | Unset | bool = False
+    started_at: None | Unset | datetime.datetime = UNSET
+    status_page_components: (
+        None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]
+    ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
         status_page_id = self.status_page_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: Union[None, Unset, bool]
+        notify_subscribers: None | Unset | bool
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: Union[None, Unset, bool]
+        should_tweet: None | Unset | bool
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
             should_tweet = self.should_tweet
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -77,7 +77,7 @@ class NewIncidentStatusPageEventDataAttributes:
         else:
             started_at = self.started_at
 
-        status_page_components: Union[None, Unset, list[dict[str, Any]]]
+        status_page_components: None | Unset | list[dict[str, Any]]
         if isinstance(self.status_page_components, Unset):
             status_page_components = UNSET
         elif isinstance(self.status_page_components, list):
@@ -123,31 +123,31 @@ class NewIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, NewIncidentStatusPageEventDataAttributesStatus]
+        status: Unset | NewIncidentStatusPageEventDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_new_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> Union[None, Unset, bool]:
+        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> Union[None, Unset, bool]:
+        def _parse_should_tweet(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -160,13 +160,13 @@ class NewIncidentStatusPageEventDataAttributes:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
         def _parse_status_page_components(
             data: object,
-        ) -> Union[None, Unset, list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]]:
+        ) -> None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -189,7 +189,7 @@ class NewIncidentStatusPageEventDataAttributes:
             except:  # noqa: E722
                 pass
             return cast(
-                Union[None, Unset, list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]], data
+                None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"], data
             )
 
         status_page_components = _parse_status_page_components(d.pop("status_page_components", UNSET))

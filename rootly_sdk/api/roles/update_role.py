@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     body: UpdateRole,
 ) -> dict[str, Any]:
@@ -33,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, RoleResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | RoleResponse | None:
     if response.status_code == 200:
         response_200 = RoleResponse.from_dict(response.json())
 
@@ -52,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, RoleResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | RoleResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,11 +63,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateRole,
-) -> Response[Union[ErrorsList, RoleResponse]]:
+) -> Response[ErrorsList | RoleResponse]:
     """Update a role
 
      Update a specific role by id
@@ -97,11 +97,11 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateRole,
-) -> Optional[Union[ErrorsList, RoleResponse]]:
+) -> ErrorsList | RoleResponse | None:
     """Update a role
 
      Update a specific role by id
@@ -126,11 +126,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateRole,
-) -> Response[Union[ErrorsList, RoleResponse]]:
+) -> Response[ErrorsList | RoleResponse]:
     """Update a role
 
      Update a specific role by id
@@ -158,11 +158,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
     body: UpdateRole,
-) -> Optional[Union[ErrorsList, RoleResponse]]:
+) -> ErrorsList | RoleResponse | None:
     """Update a role
 
      Update a specific role by id

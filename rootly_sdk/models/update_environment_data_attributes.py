@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -41,20 +41,20 @@ class UpdateEnvironmentDataAttributes:
             this environment.
     """
 
-    slug: Union[None, Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    public_description: Union[None, Unset, str] = UNSET
-    color: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    external_id: Union[None, Unset, str] = UNSET
-    notify_emails: Union[None, Unset, list[str]] = UNSET
-    slack_channels: Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"]] = UNSET
-    slack_aliases: Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"]] = UNSET
-    properties: Union[Unset, list["UpdateEnvironmentDataAttributesPropertiesItem"]] = UNSET
+    slug: None | Unset | str = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    public_description: None | Unset | str = UNSET
+    color: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    external_id: None | Unset | str = UNSET
+    notify_emails: None | Unset | list[str] = UNSET
+    slack_channels: None | Unset | list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"] = UNSET
+    slack_aliases: None | Unset | list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"] = UNSET
+    properties: Unset | list["UpdateEnvironmentDataAttributesPropertiesItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -62,37 +62,37 @@ class UpdateEnvironmentDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: Union[None, Unset, str]
+        public_description: None | Unset | str
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        color: Union[None, Unset, str]
+        color: None | Unset | str
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        external_id: Union[None, Unset, str]
+        external_id: None | Unset | str
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        notify_emails: Union[None, Unset, list[str]]
+        notify_emails: None | Unset | list[str]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -101,7 +101,7 @@ class UpdateEnvironmentDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        slack_channels: Union[None, Unset, list[dict[str, Any]]]
+        slack_channels: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -113,7 +113,7 @@ class UpdateEnvironmentDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
+        slack_aliases: None | Unset | list[dict[str, Any]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -125,7 +125,7 @@ class UpdateEnvironmentDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
-        properties: Union[Unset, list[dict[str, Any]]] = UNSET
+        properties: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -174,63 +174,63 @@ class UpdateEnvironmentDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> Union[None, Unset, str]:
+        def _parse_public_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_color(data: object) -> Union[None, Unset, str]:
+        def _parse_color(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_external_id(data: object) -> Union[None, Unset, str]:
+        def _parse_external_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -243,13 +243,13 @@ class UpdateEnvironmentDataAttributes:
                 return notify_emails_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
         def _parse_slack_channels(
             data: object,
-        ) -> Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"]]:
+        ) -> None | Unset | list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -269,13 +269,13 @@ class UpdateEnvironmentDataAttributes:
                 return slack_channels_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"]], data)
+            return cast(None | Unset | list["UpdateEnvironmentDataAttributesSlackChannelsType0Item"], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
         def _parse_slack_aliases(
             data: object,
-        ) -> Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"]]:
+        ) -> None | Unset | list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -295,7 +295,7 @@ class UpdateEnvironmentDataAttributes:
                 return slack_aliases_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"]], data)
+            return cast(None | Unset | list["UpdateEnvironmentDataAttributesSlackAliasesType0Item"], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -22,20 +22,20 @@ class UpdateWorkflowCustomFieldSelectionDataAttributes:
         selected_option_ids (Union[Unset, list[int]]):
     """
 
-    incident_condition: Union[Unset, UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition] = "ANY"
-    values: Union[Unset, list[str]] = UNSET
-    selected_option_ids: Union[Unset, list[int]] = UNSET
+    incident_condition: Unset | UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition = "ANY"
+    values: Unset | list[str] = UNSET
+    selected_option_ids: Unset | list[int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        incident_condition: Union[Unset, str] = UNSET
+        incident_condition: Unset | str = UNSET
         if not isinstance(self.incident_condition, Unset):
             incident_condition = self.incident_condition
 
-        values: Union[Unset, list[str]] = UNSET
+        values: Unset | list[str] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_option_ids: Union[Unset, list[int]] = UNSET
+        selected_option_ids: Unset | list[int] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
@@ -55,7 +55,7 @@ class UpdateWorkflowCustomFieldSelectionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _incident_condition = d.pop("incident_condition", UNSET)
-        incident_condition: Union[Unset, UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition]
+        incident_condition: Unset | UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition
         if isinstance(_incident_condition, Unset):
             incident_condition = UNSET
         else:

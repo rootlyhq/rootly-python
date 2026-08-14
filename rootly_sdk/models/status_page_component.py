@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,12 +33,12 @@ class StatusPageComponent:
     position: int
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    status_page_component_group_id: Union[None, Unset, str] = UNSET
-    name: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    source_type: Union[None, Unset, str] = UNSET
-    source_id: Union[None, Unset, str] = UNSET
-    status: Union[Unset, StatusPageComponentStatus] = UNSET
+    status_page_component_group_id: None | Unset | str = UNSET
+    name: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    source_type: None | Unset | str = UNSET
+    source_id: None | Unset | str = UNSET
+    status: Unset | StatusPageComponentStatus = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,37 +50,37 @@ class StatusPageComponent:
 
         updated_at = self.updated_at.isoformat()
 
-        status_page_component_group_id: Union[None, Unset, str]
+        status_page_component_group_id: None | Unset | str
         if isinstance(self.status_page_component_group_id, Unset):
             status_page_component_group_id = UNSET
         else:
             status_page_component_group_id = self.status_page_component_group_id
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        source_type: Union[None, Unset, str]
+        source_type: None | Unset | str
         if isinstance(self.source_type, Unset):
             source_type = UNSET
         else:
             source_type = self.source_type
 
-        source_id: Union[None, Unset, str]
+        source_id: None | Unset | str
         if isinstance(self.source_id, Unset):
             source_id = UNSET
         else:
             source_id = self.source_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -120,55 +120,55 @@ class StatusPageComponent:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_status_page_component_group_id(data: object) -> Union[None, Unset, str]:
+        def _parse_status_page_component_group_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         status_page_component_group_id = _parse_status_page_component_group_id(
             d.pop("status_page_component_group_id", UNSET)
         )
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_source_type(data: object) -> Union[None, Unset, str]:
+        def _parse_source_type(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         source_type = _parse_source_type(d.pop("source_type", UNSET))
 
-        def _parse_source_id(data: object) -> Union[None, Unset, str]:
+        def _parse_source_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         source_id = _parse_source_id(d.pop("source_id", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, StatusPageComponentStatus]
+        status: Unset | StatusPageComponentStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:

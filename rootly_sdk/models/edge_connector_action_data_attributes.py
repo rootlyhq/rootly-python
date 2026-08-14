@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -44,14 +44,14 @@ class EdgeConnectorActionDataAttributes:
 
     name: str
     action_type: EdgeConnectorActionDataAttributesActionType
-    slug: Union[Unset, str] = UNSET
-    icon: Union[Unset, EdgeConnectorActionDataAttributesIcon] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    timeout: Union[None, Unset, int] = UNSET
-    parameters: Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]] = UNSET
-    last_executed_at: Union[None, Unset, datetime.datetime] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
+    slug: Unset | str = UNSET
+    icon: Unset | EdgeConnectorActionDataAttributesIcon = UNSET
+    description: None | Unset | str = UNSET
+    timeout: None | Unset | int = UNSET
+    parameters: None | Unset | list["EdgeConnectorActionDataAttributesParametersType0Item"] = UNSET
+    last_executed_at: None | Unset | datetime.datetime = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,23 +61,23 @@ class EdgeConnectorActionDataAttributes:
 
         slug = self.slug
 
-        icon: Union[Unset, str] = UNSET
+        icon: Unset | str = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        timeout: Union[None, Unset, int]
+        timeout: None | Unset | int
         if isinstance(self.timeout, Unset):
             timeout = UNSET
         else:
             timeout = self.timeout
 
-        parameters: Union[None, Unset, list[dict[str, Any]]]
+        parameters: None | Unset | list[dict[str, Any]]
         if isinstance(self.parameters, Unset):
             parameters = UNSET
         elif isinstance(self.parameters, list):
@@ -89,7 +89,7 @@ class EdgeConnectorActionDataAttributes:
         else:
             parameters = self.parameters
 
-        last_executed_at: Union[None, Unset, str]
+        last_executed_at: None | Unset | str
         if isinstance(self.last_executed_at, Unset):
             last_executed_at = UNSET
         elif isinstance(self.last_executed_at, datetime.datetime):
@@ -97,11 +97,11 @@ class EdgeConnectorActionDataAttributes:
         else:
             last_executed_at = self.last_executed_at
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -146,33 +146,33 @@ class EdgeConnectorActionDataAttributes:
         slug = d.pop("slug", UNSET)
 
         _icon = d.pop("icon", UNSET)
-        icon: Union[Unset, EdgeConnectorActionDataAttributesIcon]
+        icon: Unset | EdgeConnectorActionDataAttributesIcon
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_edge_connector_action_data_attributes_icon(_icon)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_timeout(data: object) -> Union[None, Unset, int]:
+        def _parse_timeout(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         timeout = _parse_timeout(d.pop("timeout", UNSET))
 
         def _parse_parameters(
             data: object,
-        ) -> Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]]:
+        ) -> None | Unset | list["EdgeConnectorActionDataAttributesParametersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -192,11 +192,11 @@ class EdgeConnectorActionDataAttributes:
                 return parameters_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]], data)
+            return cast(None | Unset | list["EdgeConnectorActionDataAttributesParametersType0Item"], data)
 
         parameters = _parse_parameters(d.pop("parameters", UNSET))
 
-        def _parse_last_executed_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_last_executed_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -209,19 +209,19 @@ class EdgeConnectorActionDataAttributes:
                 return last_executed_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         last_executed_at = _parse_last_executed_at(d.pop("last_executed_at", UNSET))
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:

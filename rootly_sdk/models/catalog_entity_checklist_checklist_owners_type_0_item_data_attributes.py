@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,10 +19,10 @@ class CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes:
         updated_at (Union[Unset, str]): Date of last update
     """
 
-    catalog_entity_checklist_id: Union[Unset, str] = UNSET
-    owner_user_id: Union[Unset, str] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    catalog_entity_checklist_id: Unset | str = UNSET
+    owner_user_id: Unset | str = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

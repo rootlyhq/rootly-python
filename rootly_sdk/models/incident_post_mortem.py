@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -43,22 +43,22 @@ class IncidentPostMortem:
     title: str
     created_at: str
     updated_at: str
-    content: Union[None, Unset, str] = UNSET
-    status: Union[Unset, IncidentPostMortemStatus] = UNSET
-    started_at: Union[None, Unset, str] = UNSET
-    mitigated_at: Union[None, Unset, str] = UNSET
-    resolved_at: Union[None, Unset, str] = UNSET
-    show_timeline: Union[Unset, bool] = UNSET
-    show_timeline_trail: Union[Unset, bool] = UNSET
-    show_timeline_genius: Union[Unset, bool] = UNSET
-    show_timeline_tasks: Union[Unset, bool] = UNSET
-    show_timeline_action_items: Union[Unset, bool] = UNSET
-    show_timeline_order: Union[Unset, IncidentPostMortemShowTimelineOrder] = "desc"
-    show_services_impacted: Union[Unset, bool] = UNSET
-    show_functionalities_impacted: Union[Unset, bool] = UNSET
-    show_groups_impacted: Union[Unset, bool] = UNSET
-    show_alerts_attached: Union[Unset, bool] = UNSET
-    url: Union[Unset, str] = UNSET
+    content: None | Unset | str = UNSET
+    status: Unset | IncidentPostMortemStatus = UNSET
+    started_at: None | Unset | str = UNSET
+    mitigated_at: None | Unset | str = UNSET
+    resolved_at: None | Unset | str = UNSET
+    show_timeline: Unset | bool = UNSET
+    show_timeline_trail: Unset | bool = UNSET
+    show_timeline_genius: Unset | bool = UNSET
+    show_timeline_tasks: Unset | bool = UNSET
+    show_timeline_action_items: Unset | bool = UNSET
+    show_timeline_order: Unset | IncidentPostMortemShowTimelineOrder = "desc"
+    show_services_impacted: Unset | bool = UNSET
+    show_functionalities_impacted: Unset | bool = UNSET
+    show_groups_impacted: Unset | bool = UNSET
+    show_alerts_attached: Unset | bool = UNSET
+    url: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,29 +68,29 @@ class IncidentPostMortem:
 
         updated_at = self.updated_at
 
-        content: Union[None, Unset, str]
+        content: None | Unset | str
         if isinstance(self.content, Unset):
             content = UNSET
         else:
             content = self.content
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        mitigated_at: Union[None, Unset, str]
+        mitigated_at: None | Unset | str
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: Union[None, Unset, str]
+        resolved_at: None | Unset | str
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
@@ -106,7 +106,7 @@ class IncidentPostMortem:
 
         show_timeline_action_items = self.show_timeline_action_items
 
-        show_timeline_order: Union[Unset, str] = UNSET
+        show_timeline_order: Unset | str = UNSET
         if not isinstance(self.show_timeline_order, Unset):
             show_timeline_order = self.show_timeline_order
 
@@ -173,46 +173,46 @@ class IncidentPostMortem:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_content(data: object) -> Union[None, Unset, str]:
+        def _parse_content(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         content = _parse_content(d.pop("content", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, IncidentPostMortemStatus]
+        status: Unset | IncidentPostMortemStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_incident_post_mortem_status(_status)
 
-        def _parse_started_at(data: object) -> Union[None, Unset, str]:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> Union[None, Unset, str]:
+        def _parse_mitigated_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> Union[None, Unset, str]:
+        def _parse_resolved_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
@@ -227,7 +227,7 @@ class IncidentPostMortem:
         show_timeline_action_items = d.pop("show_timeline_action_items", UNSET)
 
         _show_timeline_order = d.pop("show_timeline_order", UNSET)
-        show_timeline_order: Union[Unset, IncidentPostMortemShowTimelineOrder]
+        show_timeline_order: Unset | IncidentPostMortemShowTimelineOrder
         if isinstance(_show_timeline_order, Unset):
             show_timeline_order = UNSET
         else:

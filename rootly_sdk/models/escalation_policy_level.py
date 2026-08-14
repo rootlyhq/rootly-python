@@ -64,23 +64,21 @@ class EscalationPolicyLevel:
     delay: int
     position: int
     notification_target_params: list[Union["EscalationPolicyLevelNotificationTargetParamsItemType0", None]]
-    escalation_policy_path_id: Union[None, Unset, str] = UNSET
-    paging_strategy_configuration_strategy: Union[Unset, EscalationPolicyLevelPagingStrategyConfigurationStrategy] = (
-        "default"
+    escalation_policy_path_id: None | Unset | str = UNSET
+    paging_strategy_configuration_strategy: Unset | EscalationPolicyLevelPagingStrategyConfigurationStrategy = "default"
+    paging_strategy_configuration_schedule_strategy: (
+        Unset | EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy
+    ) = "on_call_only"
+    paging_strategy_configuration_repeats: None | Unset | int = UNSET
+    paging_strategy_configuration_repeats_mode: Unset | EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode = (
+        UNSET
     )
-    paging_strategy_configuration_schedule_strategy: Union[
-        Unset, EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy
-    ] = "on_call_only"
-    paging_strategy_configuration_repeats: Union[None, Unset, int] = UNSET
-    paging_strategy_configuration_repeats_mode: Union[
-        Unset, EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode
-    ] = UNSET
-    paging_strategy_configuration_rotation_scope: Union[
-        Unset, EscalationPolicyLevelPagingStrategyConfigurationRotationScope
-    ] = UNSET
-    paging_strategy_configuration_page_users_count: Union[None, Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    paging_strategy_configuration_rotation_scope: (
+        Unset | EscalationPolicyLevelPagingStrategyConfigurationRotationScope
+    ) = UNSET
+    paging_strategy_configuration_page_users_count: None | Unset | int = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -96,42 +94,42 @@ class EscalationPolicyLevel:
 
         notification_target_params = []
         for notification_target_params_item_data in self.notification_target_params:
-            notification_target_params_item: Union[None, dict[str, Any]]
+            notification_target_params_item: None | dict[str, Any]
             if isinstance(notification_target_params_item_data, EscalationPolicyLevelNotificationTargetParamsItemType0):
                 notification_target_params_item = notification_target_params_item_data.to_dict()
             else:
                 notification_target_params_item = notification_target_params_item_data
             notification_target_params.append(notification_target_params_item)
 
-        escalation_policy_path_id: Union[None, Unset, str]
+        escalation_policy_path_id: None | Unset | str
         if isinstance(self.escalation_policy_path_id, Unset):
             escalation_policy_path_id = UNSET
         else:
             escalation_policy_path_id = self.escalation_policy_path_id
 
-        paging_strategy_configuration_strategy: Union[Unset, str] = UNSET
+        paging_strategy_configuration_strategy: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = self.paging_strategy_configuration_strategy
 
-        paging_strategy_configuration_schedule_strategy: Union[Unset, str] = UNSET
+        paging_strategy_configuration_schedule_strategy: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = self.paging_strategy_configuration_schedule_strategy
 
-        paging_strategy_configuration_repeats: Union[None, Unset, int]
+        paging_strategy_configuration_repeats: None | Unset | int
         if isinstance(self.paging_strategy_configuration_repeats, Unset):
             paging_strategy_configuration_repeats = UNSET
         else:
             paging_strategy_configuration_repeats = self.paging_strategy_configuration_repeats
 
-        paging_strategy_configuration_repeats_mode: Union[Unset, str] = UNSET
+        paging_strategy_configuration_repeats_mode: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_repeats_mode, Unset):
             paging_strategy_configuration_repeats_mode = self.paging_strategy_configuration_repeats_mode
 
-        paging_strategy_configuration_rotation_scope: Union[Unset, str] = UNSET
+        paging_strategy_configuration_rotation_scope: Unset | str = UNSET
         if not isinstance(self.paging_strategy_configuration_rotation_scope, Unset):
             paging_strategy_configuration_rotation_scope = self.paging_strategy_configuration_rotation_scope
 
-        paging_strategy_configuration_page_users_count: Union[None, Unset, int]
+        paging_strategy_configuration_page_users_count: None | Unset | int
         if isinstance(self.paging_strategy_configuration_page_users_count, Unset):
             paging_strategy_configuration_page_users_count = UNSET
         else:
@@ -216,17 +214,17 @@ class EscalationPolicyLevel:
 
             notification_target_params.append(notification_target_params_item)
 
-        def _parse_escalation_policy_path_id(data: object) -> Union[None, Unset, str]:
+        def _parse_escalation_policy_path_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         escalation_policy_path_id = _parse_escalation_policy_path_id(d.pop("escalation_policy_path_id", UNSET))
 
         _paging_strategy_configuration_strategy = d.pop("paging_strategy_configuration_strategy", UNSET)
-        paging_strategy_configuration_strategy: Union[Unset, EscalationPolicyLevelPagingStrategyConfigurationStrategy]
+        paging_strategy_configuration_strategy: Unset | EscalationPolicyLevelPagingStrategyConfigurationStrategy
         if isinstance(_paging_strategy_configuration_strategy, Unset):
             paging_strategy_configuration_strategy = UNSET
         else:
@@ -239,9 +237,9 @@ class EscalationPolicyLevel:
         _paging_strategy_configuration_schedule_strategy = d.pop(
             "paging_strategy_configuration_schedule_strategy", UNSET
         )
-        paging_strategy_configuration_schedule_strategy: Union[
-            Unset, EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy
-        ]
+        paging_strategy_configuration_schedule_strategy: (
+            Unset | EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy
+        )
         if isinstance(_paging_strategy_configuration_schedule_strategy, Unset):
             paging_strategy_configuration_schedule_strategy = UNSET
         else:
@@ -251,21 +249,19 @@ class EscalationPolicyLevel:
                 )
             )
 
-        def _parse_paging_strategy_configuration_repeats(data: object) -> Union[None, Unset, int]:
+        def _parse_paging_strategy_configuration_repeats(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         paging_strategy_configuration_repeats = _parse_paging_strategy_configuration_repeats(
             d.pop("paging_strategy_configuration_repeats", UNSET)
         )
 
         _paging_strategy_configuration_repeats_mode = d.pop("paging_strategy_configuration_repeats_mode", UNSET)
-        paging_strategy_configuration_repeats_mode: Union[
-            Unset, EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode
-        ]
+        paging_strategy_configuration_repeats_mode: Unset | EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode
         if isinstance(_paging_strategy_configuration_repeats_mode, Unset):
             paging_strategy_configuration_repeats_mode = UNSET
         else:
@@ -276,9 +272,9 @@ class EscalationPolicyLevel:
             )
 
         _paging_strategy_configuration_rotation_scope = d.pop("paging_strategy_configuration_rotation_scope", UNSET)
-        paging_strategy_configuration_rotation_scope: Union[
-            Unset, EscalationPolicyLevelPagingStrategyConfigurationRotationScope
-        ]
+        paging_strategy_configuration_rotation_scope: (
+            Unset | EscalationPolicyLevelPagingStrategyConfigurationRotationScope
+        )
         if isinstance(_paging_strategy_configuration_rotation_scope, Unset):
             paging_strategy_configuration_rotation_scope = UNSET
         else:
@@ -288,12 +284,12 @@ class EscalationPolicyLevel:
                 )
             )
 
-        def _parse_paging_strategy_configuration_page_users_count(data: object) -> Union[None, Unset, int]:
+        def _parse_paging_strategy_configuration_page_users_count(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         paging_strategy_configuration_page_users_count = _parse_paging_strategy_configuration_page_users_count(
             d.pop("paging_strategy_configuration_page_users_count", UNSET)

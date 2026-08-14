@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -43,14 +43,14 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType
     )
     property_field_type: NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldType
-    property_field_name: Union[Unset, str] = UNSET
-    property_field_value: Union[None, Unset, str] = UNSET
-    property_field_values: Union[None, Unset, list[str]] = UNSET
-    alert_urgency_ids: Union[None, Unset, list[str]] = UNSET
-    conditionable_type: Union[
-        Unset, NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
-    ] = UNSET
-    conditionable_id: Union[None, UUID, Unset] = UNSET
+    property_field_name: Unset | str = UNSET
+    property_field_value: None | Unset | str = UNSET
+    property_field_values: None | Unset | list[str] = UNSET
+    alert_urgency_ids: None | Unset | list[str] = UNSET
+    conditionable_type: (
+        Unset | NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
+    ) = UNSET
+    conditionable_id: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,13 +60,13 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
 
         property_field_name = self.property_field_name
 
-        property_field_value: Union[None, Unset, str]
+        property_field_value: None | Unset | str
         if isinstance(self.property_field_value, Unset):
             property_field_value = UNSET
         else:
             property_field_value = self.property_field_value
 
-        property_field_values: Union[None, Unset, list[str]]
+        property_field_values: None | Unset | list[str]
         if isinstance(self.property_field_values, Unset):
             property_field_values = UNSET
         elif isinstance(self.property_field_values, list):
@@ -75,7 +75,7 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         else:
             property_field_values = self.property_field_values
 
-        alert_urgency_ids: Union[None, Unset, list[str]]
+        alert_urgency_ids: None | Unset | list[str]
         if isinstance(self.alert_urgency_ids, Unset):
             alert_urgency_ids = UNSET
         elif isinstance(self.alert_urgency_ids, list):
@@ -84,11 +84,11 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
         else:
             alert_urgency_ids = self.alert_urgency_ids
 
-        conditionable_type: Union[Unset, str] = UNSET
+        conditionable_type: Unset | str = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
-        conditionable_id: Union[None, Unset, str]
+        conditionable_id: None | Unset | str
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         elif isinstance(self.conditionable_id, UUID):
@@ -134,16 +134,16 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
 
         property_field_name = d.pop("property_field_name", UNSET)
 
-        def _parse_property_field_value(data: object) -> Union[None, Unset, str]:
+        def _parse_property_field_value(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         property_field_value = _parse_property_field_value(d.pop("property_field_value", UNSET))
 
-        def _parse_property_field_values(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_property_field_values(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -156,11 +156,11 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 return property_field_values_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         property_field_values = _parse_property_field_values(d.pop("property_field_values", UNSET))
 
-        def _parse_alert_urgency_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_alert_urgency_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -173,14 +173,14 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 return alert_urgency_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         alert_urgency_ids = _parse_alert_urgency_ids(d.pop("alert_urgency_ids", UNSET))
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
-        conditionable_type: Union[
-            Unset, NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
-        ]
+        conditionable_type: (
+            Unset | NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemConditionableType
+        )
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
         else:
@@ -188,7 +188,7 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 _conditionable_type
             )
 
-        def _parse_conditionable_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_conditionable_id(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -201,7 +201,7 @@ class NewAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItem:
                 return conditionable_id_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 

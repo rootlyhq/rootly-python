@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | ShiftCoverageRequestList | None:
     if response.status_code == 201:
         response_201 = ShiftCoverageRequestList.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ShiftCoverageRequestList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
+) -> Response[ErrorsList | ShiftCoverageRequestList]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -103,7 +103,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
+) -> ErrorsList | ShiftCoverageRequestList | None:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -135,7 +135,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
+) -> Response[ErrorsList | ShiftCoverageRequestList]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -170,7 +170,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
+) -> ErrorsList | ShiftCoverageRequestList | None:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span

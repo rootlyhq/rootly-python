@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | StatusPageComponentGroupResponse | None:
     if response.status_code == 200:
         response_200 = StatusPageComponentGroupResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | StatusPageComponentGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPageComponentGroup,
-) -> Response[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+) -> Response[ErrorsList | StatusPageComponentGroupResponse]:
     """Update a status page component group
 
      Update a status page component group
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPageComponentGroup,
-) -> Optional[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+) -> ErrorsList | StatusPageComponentGroupResponse | None:
     """Update a status page component group
 
      Update a status page component group
@@ -129,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPageComponentGroup,
-) -> Response[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+) -> Response[ErrorsList | StatusPageComponentGroupResponse]:
     """Update a status page component group
 
      Update a status page component group
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPageComponentGroup,
-) -> Optional[Union[ErrorsList, StatusPageComponentGroupResponse]]:
+) -> ErrorsList | StatusPageComponentGroupResponse | None:
     """Update a status page component group
 
      Update a status page component group

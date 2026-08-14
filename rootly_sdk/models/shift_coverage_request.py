@@ -39,8 +39,8 @@ class ShiftCoverageRequest:
     created_by_user_id: int
     starts_at: str
     ends_at: str
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     schedule: Union[Unset, "ScheduleResponse"] = UNSET
     shift: Union[Unset, "Shift"] = UNSET
     original_shift_user: Union[Unset, "UserResponse"] = UNSET
@@ -64,19 +64,19 @@ class ShiftCoverageRequest:
 
         updated_at = self.updated_at
 
-        schedule: Union[Unset, dict[str, Any]] = UNSET
+        schedule: Unset | dict[str, Any] = UNSET
         if not isinstance(self.schedule, Unset):
             schedule = self.schedule.to_dict()
 
-        shift: Union[Unset, dict[str, Any]] = UNSET
+        shift: Unset | dict[str, Any] = UNSET
         if not isinstance(self.shift, Unset):
             shift = self.shift.to_dict()
 
-        original_shift_user: Union[Unset, dict[str, Any]] = UNSET
+        original_shift_user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.original_shift_user, Unset):
             original_shift_user = self.original_shift_user.to_dict()
 
-        created_by_user: Union[Unset, dict[str, Any]] = UNSET
+        created_by_user: Unset | dict[str, Any] = UNSET
         if not isinstance(self.created_by_user, Unset):
             created_by_user = self.created_by_user.to_dict()
 
@@ -131,28 +131,28 @@ class ShiftCoverageRequest:
         updated_at = d.pop("updated_at", UNSET)
 
         _schedule = d.pop("schedule", UNSET)
-        schedule: Union[Unset, ScheduleResponse]
+        schedule: Unset | ScheduleResponse
         if isinstance(_schedule, Unset):
             schedule = UNSET
         else:
             schedule = ScheduleResponse.from_dict(_schedule)
 
         _shift = d.pop("shift", UNSET)
-        shift: Union[Unset, Shift]
+        shift: Unset | Shift
         if isinstance(_shift, Unset):
             shift = UNSET
         else:
             shift = Shift.from_dict(_shift)
 
         _original_shift_user = d.pop("original_shift_user", UNSET)
-        original_shift_user: Union[Unset, UserResponse]
+        original_shift_user: Unset | UserResponse
         if isinstance(_original_shift_user, Unset):
             original_shift_user = UNSET
         else:
             original_shift_user = UserResponse.from_dict(_original_shift_user)
 
         _created_by_user = d.pop("created_by_user", UNSET)
-        created_by_user: Union[Unset, UserResponse]
+        created_by_user: Unset | UserResponse
         if isinstance(_created_by_user, Unset):
             created_by_user = UNSET
         else:

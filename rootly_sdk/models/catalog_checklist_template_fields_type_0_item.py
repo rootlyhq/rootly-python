@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,19 +22,19 @@ class CatalogChecklistTemplateFieldsType0Item:
         catalog_property_id (Union[None, Unset, str]): ID of the catalog property for custom fields
     """
 
-    field_source: Union[Unset, CatalogChecklistTemplateFieldsType0ItemFieldSource] = UNSET
-    field_key: Union[Unset, str] = UNSET
-    catalog_property_id: Union[None, Unset, str] = UNSET
+    field_source: Unset | CatalogChecklistTemplateFieldsType0ItemFieldSource = UNSET
+    field_key: Unset | str = UNSET
+    catalog_property_id: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field_source: Union[Unset, str] = UNSET
+        field_source: Unset | str = UNSET
         if not isinstance(self.field_source, Unset):
             field_source = self.field_source
 
         field_key = self.field_key
 
-        catalog_property_id: Union[None, Unset, str]
+        catalog_property_id: None | Unset | str
         if isinstance(self.catalog_property_id, Unset):
             catalog_property_id = UNSET
         else:
@@ -56,7 +56,7 @@ class CatalogChecklistTemplateFieldsType0Item:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _field_source = d.pop("field_source", UNSET)
-        field_source: Union[Unset, CatalogChecklistTemplateFieldsType0ItemFieldSource]
+        field_source: Unset | CatalogChecklistTemplateFieldsType0ItemFieldSource
         if isinstance(_field_source, Unset):
             field_source = UNSET
         else:
@@ -64,12 +64,12 @@ class CatalogChecklistTemplateFieldsType0Item:
 
         field_key = d.pop("field_key", UNSET)
 
-        def _parse_catalog_property_id(data: object) -> Union[None, Unset, str]:
+        def _parse_catalog_property_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         catalog_property_id = _parse_catalog_property_id(d.pop("catalog_property_id", UNSET))
 

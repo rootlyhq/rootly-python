@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,9 +30,9 @@ class IncidentPermissionSetResource:
     kind: IncidentPermissionSetResourceKind
     created_at: str
     updated_at: str
-    private: Union[Unset, bool] = UNSET
-    resource_id: Union[Unset, str] = UNSET
-    resource_type: Union[Unset, str] = UNSET
+    private: Unset | bool = UNSET
+    resource_id: Unset | str = UNSET
+    resource_type: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 from uuid import UUID
 
 import httpx
@@ -13,25 +13,25 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     message: str,
-    session_id: Union[Unset, UUID] = UNSET,
-    incident_id: Union[Unset, UUID] = UNSET,
-    alert_id: Union[Unset, UUID] = UNSET,
+    session_id: Unset | UUID = UNSET,
+    incident_id: Unset | UUID = UNSET,
+    alert_id: Unset | UUID = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["message"] = message
 
-    json_session_id: Union[Unset, str] = UNSET
+    json_session_id: Unset | str = UNSET
     if not isinstance(session_id, Unset):
         json_session_id = str(session_id)
     params["session_id"] = json_session_id
 
-    json_incident_id: Union[Unset, str] = UNSET
+    json_incident_id: Unset | str = UNSET
     if not isinstance(incident_id, Unset):
         json_incident_id = str(incident_id)
     params["incident_id"] = json_incident_id
 
-    json_alert_id: Union[Unset, str] = UNSET
+    json_alert_id: Unset | str = UNSET
     if not isinstance(alert_id, Unset):
         json_alert_id = str(alert_id)
     params["alert_id"] = json_alert_id
@@ -47,9 +47,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AiChatResponse, Any]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AiChatResponse | Any | None:
     if response.status_code == 200:
         response_200 = AiChatResponse.from_dict(response.json())
 
@@ -70,8 +68,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AiChatResponse, Any]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AiChatResponse | Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -84,10 +82,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: Union[Unset, UUID] = UNSET,
-    incident_id: Union[Unset, UUID] = UNSET,
-    alert_id: Union[Unset, UUID] = UNSET,
-) -> Response[Union[AiChatResponse, Any]]:
+    session_id: Unset | UUID = UNSET,
+    incident_id: Unset | UUID = UNSET,
+    alert_id: Unset | UUID = UNSET,
+) -> Response[AiChatResponse | Any]:
     """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
@@ -126,10 +124,10 @@ def sync(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: Union[Unset, UUID] = UNSET,
-    incident_id: Union[Unset, UUID] = UNSET,
-    alert_id: Union[Unset, UUID] = UNSET,
-) -> Optional[Union[AiChatResponse, Any]]:
+    session_id: Unset | UUID = UNSET,
+    incident_id: Unset | UUID = UNSET,
+    alert_id: Unset | UUID = UNSET,
+) -> AiChatResponse | Any | None:
     """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
@@ -163,10 +161,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: Union[Unset, UUID] = UNSET,
-    incident_id: Union[Unset, UUID] = UNSET,
-    alert_id: Union[Unset, UUID] = UNSET,
-) -> Response[Union[AiChatResponse, Any]]:
+    session_id: Unset | UUID = UNSET,
+    incident_id: Unset | UUID = UNSET,
+    alert_id: Unset | UUID = UNSET,
+) -> Response[AiChatResponse | Any]:
     """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation
@@ -203,10 +201,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: Union[Unset, UUID] = UNSET,
-    incident_id: Union[Unset, UUID] = UNSET,
-    alert_id: Union[Unset, UUID] = UNSET,
-) -> Optional[Union[AiChatResponse, Any]]:
+    session_id: Unset | UUID = UNSET,
+    incident_id: Unset | UUID = UNSET,
+    alert_id: Unset | UUID = UNSET,
+) -> AiChatResponse | Any | None:
     """Send AI chat message
 
      Send a message to the AI assistant and receive a synchronous reply. Optionally bind the conversation

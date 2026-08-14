@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, ScheduleResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | ScheduleResponse | None:
     if response.status_code == 201:
         response_201 = ScheduleResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, ScheduleResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | ScheduleResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewSchedule,
-) -> Response[Union[ErrorsList, ScheduleResponse]]:
+) -> Response[ErrorsList | ScheduleResponse]:
     """Creates a schedule
 
      Creates a new schedule from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewSchedule,
-) -> Optional[Union[ErrorsList, ScheduleResponse]]:
+) -> ErrorsList | ScheduleResponse | None:
     """Creates a schedule
 
      Creates a new schedule from provided data
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewSchedule,
-) -> Response[Union[ErrorsList, ScheduleResponse]]:
+) -> Response[ErrorsList | ScheduleResponse]:
     """Creates a schedule
 
      Creates a new schedule from provided data
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewSchedule,
-) -> Optional[Union[ErrorsList, ScheduleResponse]]:
+) -> ErrorsList | ScheduleResponse | None:
     """Creates a schedule
 
      Creates a new schedule from provided data

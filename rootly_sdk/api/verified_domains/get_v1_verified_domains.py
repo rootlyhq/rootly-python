@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,8 +11,8 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -31,9 +31,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[VerifiedDomainList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> VerifiedDomainList | None:
     if response.status_code == 200:
         response_200 = VerifiedDomainList.from_dict(response.json())
 
@@ -45,9 +43,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[VerifiedDomainList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[VerifiedDomainList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,8 +55,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[VerifiedDomainList]:
     """List verified domains
 
@@ -91,9 +87,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[VerifiedDomainList]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> VerifiedDomainList | None:
     """List verified domains
 
     Args:
@@ -118,8 +114,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[VerifiedDomainList]:
     """List verified domains
 
@@ -148,9 +144,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[VerifiedDomainList]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> VerifiedDomainList | None:
     """List verified domains
 
     Args:

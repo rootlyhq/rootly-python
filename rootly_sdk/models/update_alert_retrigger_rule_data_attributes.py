@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -36,26 +36,26 @@ class UpdateAlertRetriggerRuleDataAttributes:
             conditions; replaces the rule's existing conditions. An empty array applies to every alert.
     """
 
-    name: Union[Unset, str] = UNSET
-    match_mode: Union[Unset, UpdateAlertRetriggerRuleDataAttributesMatchMode] = UNSET
-    timeout_minutes: Union[Unset, UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes] = UNSET
-    position: Union[Unset, int] = UNSET
-    conditions: Union[Unset, list["UpdateAlertRetriggerRuleDataAttributesConditionsItem"]] = UNSET
+    name: Unset | str = UNSET
+    match_mode: Unset | UpdateAlertRetriggerRuleDataAttributesMatchMode = UNSET
+    timeout_minutes: Unset | UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes = UNSET
+    position: Unset | int = UNSET
+    conditions: Unset | list["UpdateAlertRetriggerRuleDataAttributesConditionsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        match_mode: Union[Unset, str] = UNSET
+        match_mode: Unset | str = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
-        timeout_minutes: Union[Unset, int] = UNSET
+        timeout_minutes: Unset | int = UNSET
         if not isinstance(self.timeout_minutes, Unset):
             timeout_minutes = self.timeout_minutes
 
         position = self.position
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -88,14 +88,14 @@ class UpdateAlertRetriggerRuleDataAttributes:
         name = d.pop("name", UNSET)
 
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: Union[Unset, UpdateAlertRetriggerRuleDataAttributesMatchMode]
+        match_mode: Unset | UpdateAlertRetriggerRuleDataAttributesMatchMode
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
             match_mode = check_update_alert_retrigger_rule_data_attributes_match_mode(_match_mode)
 
         _timeout_minutes = d.pop("timeout_minutes", UNSET)
-        timeout_minutes: Union[Unset, UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes]
+        timeout_minutes: Unset | UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes
         if isinstance(_timeout_minutes, Unset):
             timeout_minutes = UNSET
         else:

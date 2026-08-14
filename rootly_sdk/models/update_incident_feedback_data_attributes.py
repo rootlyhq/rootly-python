@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -21,14 +21,14 @@ class UpdateIncidentFeedbackDataAttributes:
         anonymous (Union[Unset, bool]): Is the feedback anonymous?
     """
 
-    feedback: Union[Unset, str] = UNSET
-    rating: Union[Unset, UpdateIncidentFeedbackDataAttributesRating] = UNSET
-    anonymous: Union[Unset, bool] = UNSET
+    feedback: Unset | str = UNSET
+    rating: Unset | UpdateIncidentFeedbackDataAttributesRating = UNSET
+    anonymous: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         feedback = self.feedback
 
-        rating: Union[Unset, int] = UNSET
+        rating: Unset | int = UNSET
         if not isinstance(self.rating, Unset):
             rating = self.rating
 
@@ -52,7 +52,7 @@ class UpdateIncidentFeedbackDataAttributes:
         feedback = d.pop("feedback", UNSET)
 
         _rating = d.pop("rating", UNSET)
-        rating: Union[Unset, UpdateIncidentFeedbackDataAttributesRating]
+        rating: Unset | UpdateIncidentFeedbackDataAttributesRating
         if isinstance(_rating, Unset):
             rating = UNSET
         else:

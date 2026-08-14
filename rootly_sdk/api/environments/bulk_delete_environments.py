@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 import httpx
 
@@ -36,10 +36,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkDestroyEnvironmentsResponse.from_dict(response.json())
 
@@ -78,10 +76,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,9 +90,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyEnvironmentsType0", "BulkDestroyEnvironmentsType1"],
-) -> Response[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+) -> Response[BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]:
     """Bulk delete Environments
 
      Delete environments by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -130,9 +124,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyEnvironmentsType0", "BulkDestroyEnvironmentsType1"],
-) -> Optional[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+) -> BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"] | None:
     """Bulk delete Environments
 
      Delete environments by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -161,9 +153,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyEnvironmentsType0", "BulkDestroyEnvironmentsType1"],
-) -> Response[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+) -> Response[BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]:
     """Bulk delete Environments
 
      Delete environments by external_id list, or prune by managed_by source. Two mutually exclusive
@@ -195,9 +185,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: Union["BulkDestroyEnvironmentsType0", "BulkDestroyEnvironmentsType1"],
-) -> Optional[
-    Union[BulkDestroyEnvironmentsResponse, ErrorsList, Union["BulkDestroyEnvironmentsResponse", "ErrorsList"]]
-]:
+) -> BulkDestroyEnvironmentsResponse | ErrorsList | Union["BulkDestroyEnvironmentsResponse", "ErrorsList"] | None:
     """Bulk delete Environments
 
      Delete environments by external_id list, or prune by managed_by source. Two mutually exclusive

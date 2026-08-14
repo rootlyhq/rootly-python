@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogChecklistTemplateResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = CatalogChecklistTemplateResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+) -> CatalogChecklistTemplateResponse | ErrorsList | None:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
+) -> CatalogChecklistTemplateResponse | ErrorsList | None:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template

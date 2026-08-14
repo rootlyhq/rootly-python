@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -20,11 +20,11 @@ class UpdateCatalogEntityPropertyDataAttributes:
         value (Union[Unset, str]):
     """
 
-    key: Union[Unset, UpdateCatalogEntityPropertyDataAttributesKey] = UNSET
-    value: Union[Unset, str] = UNSET
+    key: Unset | UpdateCatalogEntityPropertyDataAttributesKey = UNSET
+    value: Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        key: Union[Unset, str] = UNSET
+        key: Unset | str = UNSET
         if not isinstance(self.key, Unset):
             key = self.key
 
@@ -44,7 +44,7 @@ class UpdateCatalogEntityPropertyDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _key = d.pop("key", UNSET)
-        key: Union[Unset, UpdateCatalogEntityPropertyDataAttributesKey]
+        key: Unset | UpdateCatalogEntityPropertyDataAttributesKey
         if isinstance(_key, Unset):
             key = UNSET
         else:

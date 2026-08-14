@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -22,22 +22,22 @@ class UpdateOnCallPayReportDataAttributes:
             responder's personal timezone instead of the report-wide timezone.
     """
 
-    start_date: Union[Unset, datetime.date] = UNSET
-    end_date: Union[Unset, datetime.date] = UNSET
-    schedule_ids: Union[Unset, list[str]] = UNSET
-    time_zone: Union[Unset, str] = UNSET
-    use_responders_time_zone: Union[Unset, bool] = UNSET
+    start_date: Unset | datetime.date = UNSET
+    end_date: Unset | datetime.date = UNSET
+    schedule_ids: Unset | list[str] = UNSET
+    time_zone: Unset | str = UNSET
+    use_responders_time_zone: Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        start_date: Union[Unset, str] = UNSET
+        start_date: Unset | str = UNSET
         if not isinstance(self.start_date, Unset):
             start_date = self.start_date.isoformat()
 
-        end_date: Union[Unset, str] = UNSET
+        end_date: Unset | str = UNSET
         if not isinstance(self.end_date, Unset):
             end_date = self.end_date.isoformat()
 
-        schedule_ids: Union[Unset, list[str]] = UNSET
+        schedule_ids: Unset | list[str] = UNSET
         if not isinstance(self.schedule_ids, Unset):
             schedule_ids = self.schedule_ids
 
@@ -65,14 +65,14 @@ class UpdateOnCallPayReportDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _start_date = d.pop("start_date", UNSET)
-        start_date: Union[Unset, datetime.date]
+        start_date: Unset | datetime.date
         if isinstance(_start_date, Unset):
             start_date = UNSET
         else:
             start_date = isoparse(_start_date).date()
 
         _end_date = d.pop("end_date", UNSET)
-        end_date: Union[Unset, datetime.date]
+        end_date: Unset | datetime.date
         if isinstance(_end_date, Unset):
             end_date = UNSET
         else:

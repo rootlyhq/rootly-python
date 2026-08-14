@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -35,10 +35,10 @@ class NewSlaDataAttributesConditionsItem:
 
     conditionable_type: NewSlaDataAttributesConditionsItemConditionableType
     operator: str
-    property_: Union[Unset, NewSlaDataAttributesConditionsItemProperty] = UNSET
-    values: Union[None, Unset, list[str]] = UNSET
-    form_field_id: Union[None, UUID, Unset] = UNSET
-    position: Union[Unset, int] = UNSET
+    property_: Unset | NewSlaDataAttributesConditionsItemProperty = UNSET
+    values: None | Unset | list[str] = UNSET
+    form_field_id: None | UUID | Unset = UNSET
+    position: Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,11 +46,11 @@ class NewSlaDataAttributesConditionsItem:
 
         operator = self.operator
 
-        property_: Union[Unset, str] = UNSET
+        property_: Unset | str = UNSET
         if not isinstance(self.property_, Unset):
             property_ = self.property_
 
-        values: Union[None, Unset, list[str]]
+        values: None | Unset | list[str]
         if isinstance(self.values, Unset):
             values = UNSET
         elif isinstance(self.values, list):
@@ -59,7 +59,7 @@ class NewSlaDataAttributesConditionsItem:
         else:
             values = self.values
 
-        form_field_id: Union[None, Unset, str]
+        form_field_id: None | Unset | str
         if isinstance(self.form_field_id, Unset):
             form_field_id = UNSET
         elif isinstance(self.form_field_id, UUID):
@@ -98,13 +98,13 @@ class NewSlaDataAttributesConditionsItem:
         operator = d.pop("operator")
 
         _property_ = d.pop("property", UNSET)
-        property_: Union[Unset, NewSlaDataAttributesConditionsItemProperty]
+        property_: Unset | NewSlaDataAttributesConditionsItemProperty
         if isinstance(_property_, Unset):
             property_ = UNSET
         else:
             property_ = check_new_sla_data_attributes_conditions_item_property(_property_)
 
-        def _parse_values(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_values(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -117,11 +117,11 @@ class NewSlaDataAttributesConditionsItem:
                 return values_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         values = _parse_values(d.pop("values", UNSET))
 
-        def _parse_form_field_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_form_field_id(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -134,7 +134,7 @@ class NewSlaDataAttributesConditionsItem:
                 return form_field_id_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         form_field_id = _parse_form_field_id(d.pop("form_field_id", UNSET))
 

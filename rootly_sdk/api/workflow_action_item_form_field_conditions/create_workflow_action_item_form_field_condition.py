@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
     if response.status_code == 201:
         response_201 = WorkflowActionItemFormFieldConditionResponse.from_dict(response.json())
 
@@ -60,8 +60,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,7 +75,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-) -> Response[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
     """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
@@ -109,7 +109,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-) -> Optional[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
     """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
@@ -138,7 +138,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-) -> Response[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+) -> Response[Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
     """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data
@@ -170,7 +170,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowActionItemFormFieldCondition,
-) -> Optional[Union[Any, ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
+) -> Any | ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
     """Creates a workflow action item form field condition
 
      Creates a new workflow action item form field condition from provided data

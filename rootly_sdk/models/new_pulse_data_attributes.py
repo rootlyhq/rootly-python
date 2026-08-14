@@ -33,14 +33,14 @@ class NewPulseDataAttributes:
     """
 
     summary: str
-    source: Union[None, Unset, str] = UNSET
-    service_ids: Union[None, Unset, list[str]] = UNSET
-    environment_ids: Union[None, Unset, list[str]] = UNSET
-    started_at: Union[None, Unset, datetime.datetime] = UNSET
-    ended_at: Union[None, Unset, datetime.datetime] = UNSET
-    external_url: Union[None, Unset, str] = UNSET
-    labels: Union[Unset, list[Union["NewPulseDataAttributesLabelsItemType0", None]]] = UNSET
-    refs: Union[Unset, list[Union["NewPulseDataAttributesRefsItemType0", None]]] = UNSET
+    source: None | Unset | str = UNSET
+    service_ids: None | Unset | list[str] = UNSET
+    environment_ids: None | Unset | list[str] = UNSET
+    started_at: None | Unset | datetime.datetime = UNSET
+    ended_at: None | Unset | datetime.datetime = UNSET
+    external_url: None | Unset | str = UNSET
+    labels: Unset | list[Union["NewPulseDataAttributesLabelsItemType0", None]] = UNSET
+    refs: Unset | list[Union["NewPulseDataAttributesRefsItemType0", None]] = UNSET
     data: Union["NewPulseDataAttributesDataType0", None, Unset] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,13 +50,13 @@ class NewPulseDataAttributes:
 
         summary = self.summary
 
-        source: Union[None, Unset, str]
+        source: None | Unset | str
         if isinstance(self.source, Unset):
             source = UNSET
         else:
             source = self.source
 
-        service_ids: Union[None, Unset, list[str]]
+        service_ids: None | Unset | list[str]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -65,7 +65,7 @@ class NewPulseDataAttributes:
         else:
             service_ids = self.service_ids
 
-        environment_ids: Union[None, Unset, list[str]]
+        environment_ids: None | Unset | list[str]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -74,7 +74,7 @@ class NewPulseDataAttributes:
         else:
             environment_ids = self.environment_ids
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -82,7 +82,7 @@ class NewPulseDataAttributes:
         else:
             started_at = self.started_at
 
-        ended_at: Union[None, Unset, str]
+        ended_at: None | Unset | str
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -90,35 +90,35 @@ class NewPulseDataAttributes:
         else:
             ended_at = self.ended_at
 
-        external_url: Union[None, Unset, str]
+        external_url: None | Unset | str
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        labels: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
+        labels: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: Union[None, dict[str, Any]]
+                labels_item: None | dict[str, Any]
                 if isinstance(labels_item_data, NewPulseDataAttributesLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        refs: Union[Unset, list[Union[None, dict[str, Any]]]] = UNSET
+        refs: Unset | list[None | dict[str, Any]] = UNSET
         if not isinstance(self.refs, Unset):
             refs = []
             for refs_item_data in self.refs:
-                refs_item: Union[None, dict[str, Any]]
+                refs_item: None | dict[str, Any]
                 if isinstance(refs_item_data, NewPulseDataAttributesRefsItemType0):
                     refs_item = refs_item_data.to_dict()
                 else:
                     refs_item = refs_item_data
                 refs.append(refs_item)
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, NewPulseDataAttributesDataType0):
@@ -163,16 +163,16 @@ class NewPulseDataAttributes:
         d = dict(src_dict)
         summary = d.pop("summary")
 
-        def _parse_source(data: object) -> Union[None, Unset, str]:
+        def _parse_source(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         source = _parse_source(d.pop("source", UNSET))
 
-        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_service_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -185,11 +185,11 @@ class NewPulseDataAttributes:
                 return service_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
+        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -202,11 +202,11 @@ class NewPulseDataAttributes:
                 return environment_ids_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[str]], data)
+            return cast(None | Unset | list[str], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -219,11 +219,11 @@ class NewPulseDataAttributes:
                 return started_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -236,16 +236,16 @@ class NewPulseDataAttributes:
                 return ended_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 
-        def _parse_external_url(data: object) -> Union[None, Unset, str]:
+        def _parse_external_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 

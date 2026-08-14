@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +20,21 @@ class BulkDestroyServicesResponseData:
             caller (external_ids mode only)
     """
 
-    deleted_external_ids: Union[Unset, list[str]] = UNSET
-    failed_external_ids: Union[Unset, list[str]] = UNSET
-    not_found_external_ids: Union[Unset, list[str]] = UNSET
+    deleted_external_ids: Unset | list[str] = UNSET
+    failed_external_ids: Unset | list[str] = UNSET
+    not_found_external_ids: Unset | list[str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        deleted_external_ids: Union[Unset, list[str]] = UNSET
+        deleted_external_ids: Unset | list[str] = UNSET
         if not isinstance(self.deleted_external_ids, Unset):
             deleted_external_ids = self.deleted_external_ids
 
-        failed_external_ids: Union[Unset, list[str]] = UNSET
+        failed_external_ids: Unset | list[str] = UNSET
         if not isinstance(self.failed_external_ids, Unset):
             failed_external_ids = self.failed_external_ids
 
-        not_found_external_ids: Union[Unset, list[str]] = UNSET
+        not_found_external_ids: Unset | list[str] = UNSET
         if not isinstance(self.not_found_external_ids, Unset):
             not_found_external_ids = self.not_found_external_ids
 

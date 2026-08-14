@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -42,17 +42,17 @@ class HttpClientTaskParams:
 
     url: str
     succeed_on_status: str
-    task_type: Union[Unset, HttpClientTaskParamsTaskType] = UNSET
-    headers: Union[Unset, str] = UNSET
-    params: Union[Unset, str] = UNSET
-    body: Union[Unset, str] = UNSET
-    event_url: Union[Unset, str] = UNSET
-    event_message: Union[Unset, str] = UNSET
-    method: Union[Unset, HttpClientTaskParamsMethod] = "GET"
-    post_to_incident_timeline: Union[Unset, bool] = UNSET
-    post_to_slack_channels: Union[Unset, list["HttpClientTaskParamsPostToSlackChannelsItem"]] = UNSET
-    retry_count: Union[Unset, int] = 0
-    retry_wait_time: Union[Unset, int] = 1
+    task_type: Unset | HttpClientTaskParamsTaskType = UNSET
+    headers: Unset | str = UNSET
+    params: Unset | str = UNSET
+    body: Unset | str = UNSET
+    event_url: Unset | str = UNSET
+    event_message: Unset | str = UNSET
+    method: Unset | HttpClientTaskParamsMethod = "GET"
+    post_to_incident_timeline: Unset | bool = UNSET
+    post_to_slack_channels: Unset | list["HttpClientTaskParamsPostToSlackChannelsItem"] = UNSET
+    retry_count: Unset | int = 0
+    retry_wait_time: Unset | int = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,7 +60,7 @@ class HttpClientTaskParams:
 
         succeed_on_status = self.succeed_on_status
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -74,13 +74,13 @@ class HttpClientTaskParams:
 
         event_message = self.event_message
 
-        method: Union[Unset, str] = UNSET
+        method: Unset | str = UNSET
         if not isinstance(self.method, Unset):
             method = self.method
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -136,7 +136,7 @@ class HttpClientTaskParams:
         succeed_on_status = d.pop("succeed_on_status")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, HttpClientTaskParamsTaskType]
+        task_type: Unset | HttpClientTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -153,7 +153,7 @@ class HttpClientTaskParams:
         event_message = d.pop("event_message", UNSET)
 
         _method = d.pop("method", UNSET)
-        method: Union[Unset, HttpClientTaskParamsMethod]
+        method: Unset | HttpClientTaskParamsMethod
         if isinstance(_method, Unset):
             method = UNSET
         else:

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -34,16 +34,16 @@ class UserFlatResponse:
     email: str
     created_at: str
     updated_at: str
-    name: Union[Unset, str] = UNSET
-    phone: Union[None, Unset, str] = UNSET
-    phone_2: Union[None, Unset, str] = UNSET
-    first_name: Union[None, Unset, str] = UNSET
-    last_name: Union[None, Unset, str] = UNSET
-    preferred_name: Union[None, Unset, str] = UNSET
-    full_name: Union[None, Unset, str] = UNSET
-    full_name_with_team: Union[None, Unset, str] = UNSET
-    slack_id: Union[None, Unset, str] = UNSET
-    time_zone: Union[None, Unset, str] = UNSET
+    name: Unset | str = UNSET
+    phone: None | Unset | str = UNSET
+    phone_2: None | Unset | str = UNSET
+    first_name: None | Unset | str = UNSET
+    last_name: None | Unset | str = UNSET
+    preferred_name: None | Unset | str = UNSET
+    full_name: None | Unset | str = UNSET
+    full_name_with_team: None | Unset | str = UNSET
+    slack_id: None | Unset | str = UNSET
+    time_zone: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,55 +57,55 @@ class UserFlatResponse:
 
         name = self.name
 
-        phone: Union[None, Unset, str]
+        phone: None | Unset | str
         if isinstance(self.phone, Unset):
             phone = UNSET
         else:
             phone = self.phone
 
-        phone_2: Union[None, Unset, str]
+        phone_2: None | Unset | str
         if isinstance(self.phone_2, Unset):
             phone_2 = UNSET
         else:
             phone_2 = self.phone_2
 
-        first_name: Union[None, Unset, str]
+        first_name: None | Unset | str
         if isinstance(self.first_name, Unset):
             first_name = UNSET
         else:
             first_name = self.first_name
 
-        last_name: Union[None, Unset, str]
+        last_name: None | Unset | str
         if isinstance(self.last_name, Unset):
             last_name = UNSET
         else:
             last_name = self.last_name
 
-        preferred_name: Union[None, Unset, str]
+        preferred_name: None | Unset | str
         if isinstance(self.preferred_name, Unset):
             preferred_name = UNSET
         else:
             preferred_name = self.preferred_name
 
-        full_name: Union[None, Unset, str]
+        full_name: None | Unset | str
         if isinstance(self.full_name, Unset):
             full_name = UNSET
         else:
             full_name = self.full_name
 
-        full_name_with_team: Union[None, Unset, str]
+        full_name_with_team: None | Unset | str
         if isinstance(self.full_name_with_team, Unset):
             full_name_with_team = UNSET
         else:
             full_name_with_team = self.full_name_with_team
 
-        slack_id: Union[None, Unset, str]
+        slack_id: None | Unset | str
         if isinstance(self.slack_id, Unset):
             slack_id = UNSET
         else:
             slack_id = self.slack_id
 
-        time_zone: Union[None, Unset, str]
+        time_zone: None | Unset | str
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -157,84 +157,84 @@ class UserFlatResponse:
 
         name = d.pop("name", UNSET)
 
-        def _parse_phone(data: object) -> Union[None, Unset, str]:
+        def _parse_phone(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         phone = _parse_phone(d.pop("phone", UNSET))
 
-        def _parse_phone_2(data: object) -> Union[None, Unset, str]:
+        def _parse_phone_2(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         phone_2 = _parse_phone_2(d.pop("phone_2", UNSET))
 
-        def _parse_first_name(data: object) -> Union[None, Unset, str]:
+        def _parse_first_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         first_name = _parse_first_name(d.pop("first_name", UNSET))
 
-        def _parse_last_name(data: object) -> Union[None, Unset, str]:
+        def _parse_last_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         last_name = _parse_last_name(d.pop("last_name", UNSET))
 
-        def _parse_preferred_name(data: object) -> Union[None, Unset, str]:
+        def _parse_preferred_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         preferred_name = _parse_preferred_name(d.pop("preferred_name", UNSET))
 
-        def _parse_full_name(data: object) -> Union[None, Unset, str]:
+        def _parse_full_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         full_name = _parse_full_name(d.pop("full_name", UNSET))
 
-        def _parse_full_name_with_team(data: object) -> Union[None, Unset, str]:
+        def _parse_full_name_with_team(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         full_name_with_team = _parse_full_name_with_team(d.pop("full_name_with_team", UNSET))
 
-        def _parse_slack_id(data: object) -> Union[None, Unset, str]:
+        def _parse_slack_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slack_id = _parse_slack_id(d.pop("slack_id", UNSET))
 
-        def _parse_time_zone(data: object) -> Union[None, Unset, str]:
+        def _parse_time_zone(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 

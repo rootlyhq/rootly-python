@@ -32,31 +32,31 @@ class CreateServiceNowIncidentTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateServiceNowIncidentTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
+    task_type: Unset | CreateServiceNowIncidentTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
     priority: Union[Unset, "CreateServiceNowIncidentTaskParamsPriority"] = UNSET
     completion: Union[Unset, "CreateServiceNowIncidentTaskParamsCompletion"] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        priority: Union[Unset, dict[str, Any]] = UNSET
+        priority: Unset | dict[str, Any] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        completion: Union[Unset, dict[str, Any]] = UNSET
+        completion: Unset | dict[str, Any] = UNSET
         if not isinstance(self.completion, Unset):
             completion = self.completion.to_dict()
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -93,7 +93,7 @@ class CreateServiceNowIncidentTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateServiceNowIncidentTaskParamsTaskType]
+        task_type: Unset | CreateServiceNowIncidentTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -102,25 +102,25 @@ class CreateServiceNowIncidentTaskParams:
         description = d.pop("description", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, CreateServiceNowIncidentTaskParamsPriority]
+        priority: Unset | CreateServiceNowIncidentTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = CreateServiceNowIncidentTaskParamsPriority.from_dict(_priority)
 
         _completion = d.pop("completion", UNSET)
-        completion: Union[Unset, CreateServiceNowIncidentTaskParamsCompletion]
+        completion: Unset | CreateServiceNowIncidentTaskParamsCompletion
         if isinstance(_completion, Unset):
             completion = UNSET
         else:
             completion = CreateServiceNowIncidentTaskParamsCompletion.from_dict(_completion)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

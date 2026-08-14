@@ -37,11 +37,11 @@ class RetrospectiveProcess:
             'RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2', Unset]):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    is_default: Union[None, Unset, bool] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    is_default: None | Unset | bool = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     retrospective_process_matching_criteria: Union[
         "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0",
         "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1",
@@ -60,13 +60,13 @@ class RetrospectiveProcess:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        is_default: Union[None, Unset, bool]
+        is_default: None | Unset | bool
         if isinstance(self.is_default, Unset):
             is_default = UNSET
         else:
@@ -76,7 +76,7 @@ class RetrospectiveProcess:
 
         updated_at = self.updated_at
 
-        retrospective_process_matching_criteria: Union[Unset, dict[str, Any]]
+        retrospective_process_matching_criteria: Unset | dict[str, Any]
         if isinstance(self.retrospective_process_matching_criteria, Unset):
             retrospective_process_matching_criteria = UNSET
         elif isinstance(
@@ -123,21 +123,21 @@ class RetrospectiveProcess:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_is_default(data: object) -> Union[None, Unset, bool]:
+        def _parse_is_default(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         is_default = _parse_is_default(d.pop("is_default", UNSET))
 

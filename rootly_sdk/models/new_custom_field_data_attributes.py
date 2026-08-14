@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -29,29 +29,29 @@ class NewCustomFieldDataAttributes:
     """
 
     label: str
-    description: Union[None, Unset, str] = UNSET
-    shown: Union[Unset, list[NewCustomFieldDataAttributesShownItem]] = UNSET
-    required: Union[None, Unset, list[NewCustomFieldDataAttributesRequiredType0Item]] = UNSET
-    default: Union[None, Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
+    description: None | Unset | str = UNSET
+    shown: Unset | list[NewCustomFieldDataAttributesShownItem] = UNSET
+    required: None | Unset | list[NewCustomFieldDataAttributesRequiredType0Item] = UNSET
+    default: None | Unset | str = UNSET
+    position: Unset | int = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         label = self.label
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        shown: Union[Unset, list[str]] = UNSET
+        shown: Unset | list[str] = UNSET
         if not isinstance(self.shown, Unset):
             shown = []
             for shown_item_data in self.shown:
                 shown_item: str = shown_item_data
                 shown.append(shown_item)
 
-        required: Union[None, Unset, list[str]]
+        required: None | Unset | list[str]
         if isinstance(self.required, Unset):
             required = UNSET
         elif isinstance(self.required, list):
@@ -63,7 +63,7 @@ class NewCustomFieldDataAttributes:
         else:
             required = self.required
 
-        default: Union[None, Unset, str]
+        default: None | Unset | str
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -96,12 +96,12 @@ class NewCustomFieldDataAttributes:
         d = dict(src_dict)
         label = d.pop("label")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -112,7 +112,7 @@ class NewCustomFieldDataAttributes:
 
             shown.append(shown_item)
 
-        def _parse_required(data: object) -> Union[None, Unset, list[NewCustomFieldDataAttributesRequiredType0Item]]:
+        def _parse_required(data: object) -> None | Unset | list[NewCustomFieldDataAttributesRequiredType0Item]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -132,16 +132,16 @@ class NewCustomFieldDataAttributes:
                 return required_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[NewCustomFieldDataAttributesRequiredType0Item]], data)
+            return cast(None | Unset | list[NewCustomFieldDataAttributesRequiredType0Item], data)
 
         required = _parse_required(d.pop("required", UNSET))
 
-        def _parse_default(data: object) -> Union[None, Unset, str]:
+        def _parse_default(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         default = _parse_default(d.pop("default", UNSET))
 

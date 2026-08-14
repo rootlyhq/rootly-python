@@ -28,11 +28,11 @@ class TiptapBlockSchema:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        followup_component: Union[Unset, dict[str, Any]] = UNSET
+        followup_component: Unset | dict[str, Any] = UNSET
         if not isinstance(self.followup_component, Unset):
             followup_component = self.followup_component.to_dict()
 
-        timeline_component: Union[Unset, dict[str, Any]] = UNSET
+        timeline_component: Unset | dict[str, Any] = UNSET
         if not isinstance(self.timeline_component, Unset):
             timeline_component = self.timeline_component.to_dict()
 
@@ -53,14 +53,14 @@ class TiptapBlockSchema:
 
         d = dict(src_dict)
         _followup_component = d.pop("followup_component", UNSET)
-        followup_component: Union[Unset, TiptapBlockSchemaFollowupComponent]
+        followup_component: Unset | TiptapBlockSchemaFollowupComponent
         if isinstance(_followup_component, Unset):
             followup_component = UNSET
         else:
             followup_component = TiptapBlockSchemaFollowupComponent.from_dict(_followup_component)
 
         _timeline_component = d.pop("timeline_component", UNSET)
-        timeline_component: Union[Unset, TiptapBlockSchemaTimelineComponent]
+        timeline_component: Unset | TiptapBlockSchemaTimelineComponent
         if isinstance(_timeline_component, Unset):
             timeline_component = UNSET
         else:

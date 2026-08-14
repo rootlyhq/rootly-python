@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,7 +28,7 @@ class AutoAssignRoleOpsgenieTaskParams:
 
     incident_role_id: str
     schedule: "AutoAssignRoleOpsgenieTaskParamsSchedule"
-    task_type: Union[Unset, AutoAssignRoleOpsgenieTaskParamsTaskType] = UNSET
+    task_type: Unset | AutoAssignRoleOpsgenieTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +36,7 @@ class AutoAssignRoleOpsgenieTaskParams:
 
         schedule = self.schedule.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -63,7 +63,7 @@ class AutoAssignRoleOpsgenieTaskParams:
         schedule = AutoAssignRoleOpsgenieTaskParamsSchedule.from_dict(d.pop("schedule"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AutoAssignRoleOpsgenieTaskParamsTaskType]
+        task_type: Unset | AutoAssignRoleOpsgenieTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

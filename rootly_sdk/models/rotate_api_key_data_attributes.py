@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -19,11 +19,11 @@ class RotateApiKeyDataAttributes:
             grace period feature is enabled for your organization. Defaults to 30. Default: 30.
     """
 
-    expires_at: Union[None, Unset, datetime.datetime] = UNSET
-    grace_period_minutes: Union[Unset, int] = 30
+    expires_at: None | Unset | datetime.datetime = UNSET
+    grace_period_minutes: Unset | int = 30
 
     def to_dict(self) -> dict[str, Any]:
-        expires_at: Union[None, Unset, str]
+        expires_at: None | Unset | str
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         elif isinstance(self.expires_at, datetime.datetime):
@@ -47,7 +47,7 @@ class RotateApiKeyDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_expires_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -60,7 +60,7 @@ class RotateApiKeyDataAttributes:
                 return expires_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 

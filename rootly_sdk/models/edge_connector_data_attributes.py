@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -36,17 +36,17 @@ class EdgeConnectorDataAttributes:
 
     name: str
     status: EdgeConnectorDataAttributesStatus
-    description: Union[None, Unset, str] = UNSET
-    subscriptions: Union[Unset, list[str]] = UNSET
-    last_poll_at: Union[None, Unset, datetime.datetime] = UNSET
-    online: Union[Unset, bool] = UNSET
-    deliveries_count: Union[Unset, int] = UNSET
-    deliveries_queued_count: Union[Unset, int] = UNSET
-    deliveries_running_count: Union[Unset, int] = UNSET
-    deliveries_completed_count: Union[Unset, int] = UNSET
-    deliveries_failed_count: Union[Unset, int] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
+    description: None | Unset | str = UNSET
+    subscriptions: Unset | list[str] = UNSET
+    last_poll_at: None | Unset | datetime.datetime = UNSET
+    online: Unset | bool = UNSET
+    deliveries_count: Unset | int = UNSET
+    deliveries_queued_count: Unset | int = UNSET
+    deliveries_running_count: Unset | int = UNSET
+    deliveries_completed_count: Unset | int = UNSET
+    deliveries_failed_count: Unset | int = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,17 +54,17 @@ class EdgeConnectorDataAttributes:
 
         status: str = self.status
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        subscriptions: Union[Unset, list[str]] = UNSET
+        subscriptions: Unset | list[str] = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
-        last_poll_at: Union[None, Unset, str]
+        last_poll_at: None | Unset | str
         if isinstance(self.last_poll_at, Unset):
             last_poll_at = UNSET
         elif isinstance(self.last_poll_at, datetime.datetime):
@@ -84,11 +84,11 @@ class EdgeConnectorDataAttributes:
 
         deliveries_failed_count = self.deliveries_failed_count
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -132,18 +132,18 @@ class EdgeConnectorDataAttributes:
 
         status = check_edge_connector_data_attributes_status(d.pop("status"))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
-        def _parse_last_poll_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_last_poll_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -156,7 +156,7 @@ class EdgeConnectorDataAttributes:
                 return last_poll_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         last_poll_at = _parse_last_poll_at(d.pop("last_poll_at", UNSET))
 
@@ -173,14 +173,14 @@ class EdgeConnectorDataAttributes:
         deliveries_failed_count = d.pop("deliveries_failed_count", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:

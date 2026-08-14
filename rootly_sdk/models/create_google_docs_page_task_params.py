@@ -37,23 +37,23 @@ class CreateGoogleDocsPageTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateGoogleDocsPageTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
+    task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
     drive: Union[Unset, "CreateGoogleDocsPageTaskParamsDrive"] = UNSET
     parent_folder: Union[Unset, "CreateGoogleDocsPageTaskParamsParentFolder"] = UNSET
-    content: Union[Unset, str] = UNSET
-    template_id: Union[Unset, str] = UNSET
-    permissions: Union[Unset, str] = UNSET
-    include_overview: Union[Unset, bool] = True
-    include_timeline: Union[Unset, bool] = True
-    include_follow_ups: Union[Unset, bool] = True
+    content: Unset | str = UNSET
+    template_id: Unset | str = UNSET
+    permissions: Unset | str = UNSET
+    include_overview: Unset | bool = True
+    include_timeline: Unset | bool = True
+    include_follow_ups: Unset | bool = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -61,11 +61,11 @@ class CreateGoogleDocsPageTaskParams:
 
         mark_post_mortem_as_published = self.mark_post_mortem_as_published
 
-        drive: Union[Unset, dict[str, Any]] = UNSET
+        drive: Unset | dict[str, Any] = UNSET
         if not isinstance(self.drive, Unset):
             drive = self.drive.to_dict()
 
-        parent_folder: Union[Unset, dict[str, Any]] = UNSET
+        parent_folder: Unset | dict[str, Any] = UNSET
         if not isinstance(self.parent_folder, Unset):
             parent_folder = self.parent_folder.to_dict()
 
@@ -124,7 +124,7 @@ class CreateGoogleDocsPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateGoogleDocsPageTaskParamsTaskType]
+        task_type: Unset | CreateGoogleDocsPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -135,14 +135,14 @@ class CreateGoogleDocsPageTaskParams:
         mark_post_mortem_as_published = d.pop("mark_post_mortem_as_published", UNSET)
 
         _drive = d.pop("drive", UNSET)
-        drive: Union[Unset, CreateGoogleDocsPageTaskParamsDrive]
+        drive: Unset | CreateGoogleDocsPageTaskParamsDrive
         if isinstance(_drive, Unset):
             drive = UNSET
         else:
             drive = CreateGoogleDocsPageTaskParamsDrive.from_dict(_drive)
 
         _parent_folder = d.pop("parent_folder", UNSET)
-        parent_folder: Union[Unset, CreateGoogleDocsPageTaskParamsParentFolder]
+        parent_folder: Unset | CreateGoogleDocsPageTaskParamsParentFolder
         if isinstance(_parent_folder, Unset):
             parent_folder = UNSET
         else:

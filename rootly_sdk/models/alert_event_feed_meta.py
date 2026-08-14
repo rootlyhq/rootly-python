@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,43 +22,43 @@ class AlertEventFeedMeta:
         total_pages (Union[None, Unset, int]):
     """
 
-    next_cursor: Union[None, str]
-    current_page: Union[None, Unset, int] = UNSET
-    next_page: Union[None, Unset, int] = UNSET
-    prev_page: Union[None, Unset, int] = UNSET
-    total_count: Union[None, Unset, int] = UNSET
-    total_pages: Union[None, Unset, int] = UNSET
+    next_cursor: None | str
+    current_page: None | Unset | int = UNSET
+    next_page: None | Unset | int = UNSET
+    prev_page: None | Unset | int = UNSET
+    total_count: None | Unset | int = UNSET
+    total_pages: None | Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        next_cursor: Union[None, str]
+        next_cursor: None | str
         next_cursor = self.next_cursor
 
-        current_page: Union[None, Unset, int]
+        current_page: None | Unset | int
         if isinstance(self.current_page, Unset):
             current_page = UNSET
         else:
             current_page = self.current_page
 
-        next_page: Union[None, Unset, int]
+        next_page: None | Unset | int
         if isinstance(self.next_page, Unset):
             next_page = UNSET
         else:
             next_page = self.next_page
 
-        prev_page: Union[None, Unset, int]
+        prev_page: None | Unset | int
         if isinstance(self.prev_page, Unset):
             prev_page = UNSET
         else:
             prev_page = self.prev_page
 
-        total_count: Union[None, Unset, int]
+        total_count: None | Unset | int
         if isinstance(self.total_count, Unset):
             total_count = UNSET
         else:
             total_count = self.total_count
 
-        total_pages: Union[None, Unset, int]
+        total_pages: None | Unset | int
         if isinstance(self.total_pages, Unset):
             total_pages = UNSET
         else:
@@ -88,55 +88,55 @@ class AlertEventFeedMeta:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_next_cursor(data: object) -> Union[None, str]:
+        def _parse_next_cursor(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         next_cursor = _parse_next_cursor(d.pop("next_cursor"))
 
-        def _parse_current_page(data: object) -> Union[None, Unset, int]:
+        def _parse_current_page(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         current_page = _parse_current_page(d.pop("current_page", UNSET))
 
-        def _parse_next_page(data: object) -> Union[None, Unset, int]:
+        def _parse_next_page(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         next_page = _parse_next_page(d.pop("next_page", UNSET))
 
-        def _parse_prev_page(data: object) -> Union[None, Unset, int]:
+        def _parse_prev_page(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         prev_page = _parse_prev_page(d.pop("prev_page", UNSET))
 
-        def _parse_total_count(data: object) -> Union[None, Unset, int]:
+        def _parse_total_count(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         total_count = _parse_total_count(d.pop("total_count", UNSET))
 
-        def _parse_total_pages(data: object) -> Union[None, Unset, int]:
+        def _parse_total_pages(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         total_pages = _parse_total_pages(d.pop("total_pages", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,15 +22,15 @@ class Receipt:
     """
 
     state: ReceiptState
-    reason: Union[Unset, ReceiptReason] = UNSET
-    resource_type: Union[Unset, str] = UNSET
-    resource_id: Union[Unset, str] = UNSET
+    reason: Unset | ReceiptReason = UNSET
+    resource_type: Unset | str = UNSET
+    resource_id: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         state: str = self.state
 
-        reason: Union[Unset, str] = UNSET
+        reason: Unset | str = UNSET
         if not isinstance(self.reason, Unset):
             reason = self.reason
 
@@ -60,7 +60,7 @@ class Receipt:
         state = check_receipt_state(d.pop("state"))
 
         _reason = d.pop("reason", UNSET)
-        reason: Union[Unset, ReceiptReason]
+        reason: Unset | ReceiptReason
         if isinstance(_reason, Unset):
             reason = UNSET
         else:

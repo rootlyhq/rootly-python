@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,13 +19,13 @@ class AddTeamTaskParams:
     """
 
     group_id: str
-    task_type: Union[Unset, AddTeamTaskParamsTaskType] = UNSET
+    task_type: Unset | AddTeamTaskParamsTaskType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         group_id = self.group_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -47,7 +47,7 @@ class AddTeamTaskParams:
         group_id = d.pop("group_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AddTeamTaskParamsTaskType]
+        task_type: Unset | AddTeamTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

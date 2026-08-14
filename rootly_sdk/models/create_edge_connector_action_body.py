@@ -24,7 +24,7 @@ class CreateEdgeConnectorActionBody:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        action: Union[Unset, dict[str, Any]] = UNSET
+        action: Unset | dict[str, Any] = UNSET
         if not isinstance(self.action, Unset):
             action = self.action.to_dict()
 
@@ -42,7 +42,7 @@ class CreateEdgeConnectorActionBody:
 
         d = dict(src_dict)
         _action = d.pop("action", UNSET)
-        action: Union[Unset, CreateEdgeConnectorActionBodyAction]
+        action: Unset | CreateEdgeConnectorActionBodyAction
         if isinstance(_action, Unset):
             action = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 from uuid import UUID
 
 import httpx
@@ -11,7 +11,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: Union[UUID, str],
+    id: UUID | str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -21,9 +21,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ErrorsList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
     if response.status_code == 202:
         response_202 = cast(Any, None)
         return response_202
@@ -39,9 +37,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ErrorsList]]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,10 +47,10 @@ def _build_response(
 
 
 def sync_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
@@ -82,10 +78,10 @@ def sync_detailed(
 
 
 def sync(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
@@ -108,10 +104,10 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
@@ -137,10 +133,10 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: Union[UUID, str],
+    id: UUID | str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template

@@ -45,14 +45,14 @@ class UpdateGithubIssueTaskParams:
 
     issue_id: str
     completion: "UpdateGithubIssueTaskParamsCompletion"
-    task_type: Union[Unset, UpdateGithubIssueTaskParamsTaskType] = UNSET
+    task_type: Unset | UpdateGithubIssueTaskParamsTaskType = UNSET
     repository: Union[Unset, "UpdateGithubIssueTaskParamsRepository"] = UNSET
-    title: Union[Unset, str] = UNSET
-    body: Union[Unset, str] = UNSET
-    labels: Union[Unset, list["UpdateGithubIssueTaskParamsLabelsItem"]] = UNSET
-    labels_mode: Union[Unset, UpdateGithubIssueTaskParamsLabelsMode] = "replace"
+    title: Unset | str = UNSET
+    body: Unset | str = UNSET
+    labels: Unset | list["UpdateGithubIssueTaskParamsLabelsItem"] = UNSET
+    labels_mode: Unset | UpdateGithubIssueTaskParamsLabelsMode = "replace"
     issue_type: Union[Unset, "UpdateGithubIssueTaskParamsIssueType"] = UNSET
-    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    custom_fields_mapping: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,11 +60,11 @@ class UpdateGithubIssueTaskParams:
 
         completion = self.completion.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        repository: Union[Unset, dict[str, Any]] = UNSET
+        repository: Unset | dict[str, Any] = UNSET
         if not isinstance(self.repository, Unset):
             repository = self.repository.to_dict()
 
@@ -72,22 +72,22 @@ class UpdateGithubIssueTaskParams:
 
         body = self.body
 
-        labels: Union[Unset, list[dict[str, Any]]] = UNSET
+        labels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        labels_mode: Union[Unset, str] = UNSET
+        labels_mode: Unset | str = UNSET
         if not isinstance(self.labels_mode, Unset):
             labels_mode = self.labels_mode
 
-        issue_type: Union[Unset, dict[str, Any]] = UNSET
+        issue_type: Unset | dict[str, Any] = UNSET
         if not isinstance(self.issue_type, Unset):
             issue_type = self.issue_type.to_dict()
 
-        custom_fields_mapping: Union[None, Unset, str]
+        custom_fields_mapping: None | Unset | str
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -133,14 +133,14 @@ class UpdateGithubIssueTaskParams:
         completion = UpdateGithubIssueTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateGithubIssueTaskParamsTaskType]
+        task_type: Unset | UpdateGithubIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_github_issue_task_params_task_type(_task_type)
 
         _repository = d.pop("repository", UNSET)
-        repository: Union[Unset, UpdateGithubIssueTaskParamsRepository]
+        repository: Unset | UpdateGithubIssueTaskParamsRepository
         if isinstance(_repository, Unset):
             repository = UNSET
         else:
@@ -158,25 +158,25 @@ class UpdateGithubIssueTaskParams:
             labels.append(labels_item)
 
         _labels_mode = d.pop("labels_mode", UNSET)
-        labels_mode: Union[Unset, UpdateGithubIssueTaskParamsLabelsMode]
+        labels_mode: Unset | UpdateGithubIssueTaskParamsLabelsMode
         if isinstance(_labels_mode, Unset):
             labels_mode = UNSET
         else:
             labels_mode = check_update_github_issue_task_params_labels_mode(_labels_mode)
 
         _issue_type = d.pop("issue_type", UNSET)
-        issue_type: Union[Unset, UpdateGithubIssueTaskParamsIssueType]
+        issue_type: Unset | UpdateGithubIssueTaskParamsIssueType
         if isinstance(_issue_type, Unset):
             issue_type = UNSET
         else:
             issue_type = UpdateGithubIssueTaskParamsIssueType.from_dict(_issue_type)
 
-        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
+        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

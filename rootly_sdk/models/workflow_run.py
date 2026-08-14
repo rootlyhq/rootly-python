@@ -38,16 +38,16 @@ class WorkflowRun:
     workflow_id: str
     status: WorkflowRunStatus
     triggered_by: WorkflowRunTriggeredBy
-    status_message: Union[None, Unset, str] = UNSET
-    started_at: Union[None, Unset, str] = UNSET
-    completed_at: Union[None, Unset, str] = UNSET
-    failed_at: Union[None, Unset, str] = UNSET
-    canceled_at: Union[None, Unset, str] = UNSET
-    incident_id: Union[None, Unset, str] = UNSET
-    post_mortem_id: Union[None, Unset, str] = UNSET
-    action_item_id: Union[None, Unset, str] = UNSET
-    alert_id: Union[None, Unset, str] = UNSET
-    pulse_id: Union[None, Unset, str] = UNSET
+    status_message: None | Unset | str = UNSET
+    started_at: None | Unset | str = UNSET
+    completed_at: None | Unset | str = UNSET
+    failed_at: None | Unset | str = UNSET
+    canceled_at: None | Unset | str = UNSET
+    incident_id: None | Unset | str = UNSET
+    post_mortem_id: None | Unset | str = UNSET
+    action_item_id: None | Unset | str = UNSET
+    alert_id: None | Unset | str = UNSET
+    pulse_id: None | Unset | str = UNSET
     context: Union[Unset, "WorkflowRunContext"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -58,67 +58,67 @@ class WorkflowRun:
 
         triggered_by: str = self.triggered_by
 
-        status_message: Union[None, Unset, str]
+        status_message: None | Unset | str
         if isinstance(self.status_message, Unset):
             status_message = UNSET
         else:
             status_message = self.status_message
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        completed_at: Union[None, Unset, str]
+        completed_at: None | Unset | str
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
         else:
             completed_at = self.completed_at
 
-        failed_at: Union[None, Unset, str]
+        failed_at: None | Unset | str
         if isinstance(self.failed_at, Unset):
             failed_at = UNSET
         else:
             failed_at = self.failed_at
 
-        canceled_at: Union[None, Unset, str]
+        canceled_at: None | Unset | str
         if isinstance(self.canceled_at, Unset):
             canceled_at = UNSET
         else:
             canceled_at = self.canceled_at
 
-        incident_id: Union[None, Unset, str]
+        incident_id: None | Unset | str
         if isinstance(self.incident_id, Unset):
             incident_id = UNSET
         else:
             incident_id = self.incident_id
 
-        post_mortem_id: Union[None, Unset, str]
+        post_mortem_id: None | Unset | str
         if isinstance(self.post_mortem_id, Unset):
             post_mortem_id = UNSET
         else:
             post_mortem_id = self.post_mortem_id
 
-        action_item_id: Union[None, Unset, str]
+        action_item_id: None | Unset | str
         if isinstance(self.action_item_id, Unset):
             action_item_id = UNSET
         else:
             action_item_id = self.action_item_id
 
-        alert_id: Union[None, Unset, str]
+        alert_id: None | Unset | str
         if isinstance(self.alert_id, Unset):
             alert_id = UNSET
         else:
             alert_id = self.alert_id
 
-        pulse_id: Union[None, Unset, str]
+        pulse_id: None | Unset | str
         if isinstance(self.pulse_id, Unset):
             pulse_id = UNSET
         else:
             pulse_id = self.pulse_id
 
-        context: Union[Unset, dict[str, Any]] = UNSET
+        context: Unset | dict[str, Any] = UNSET
         if not isinstance(self.context, Unset):
             context = self.context.to_dict()
 
@@ -167,98 +167,98 @@ class WorkflowRun:
 
         triggered_by = check_workflow_run_triggered_by(d.pop("triggered_by"))
 
-        def _parse_status_message(data: object) -> Union[None, Unset, str]:
+        def _parse_status_message(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         status_message = _parse_status_message(d.pop("status_message", UNSET))
 
-        def _parse_started_at(data: object) -> Union[None, Unset, str]:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_completed_at(data: object) -> Union[None, Unset, str]:
+        def _parse_completed_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        def _parse_failed_at(data: object) -> Union[None, Unset, str]:
+        def _parse_failed_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         failed_at = _parse_failed_at(d.pop("failed_at", UNSET))
 
-        def _parse_canceled_at(data: object) -> Union[None, Unset, str]:
+        def _parse_canceled_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         canceled_at = _parse_canceled_at(d.pop("canceled_at", UNSET))
 
-        def _parse_incident_id(data: object) -> Union[None, Unset, str]:
+        def _parse_incident_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         incident_id = _parse_incident_id(d.pop("incident_id", UNSET))
 
-        def _parse_post_mortem_id(data: object) -> Union[None, Unset, str]:
+        def _parse_post_mortem_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         post_mortem_id = _parse_post_mortem_id(d.pop("post_mortem_id", UNSET))
 
-        def _parse_action_item_id(data: object) -> Union[None, Unset, str]:
+        def _parse_action_item_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         action_item_id = _parse_action_item_id(d.pop("action_item_id", UNSET))
 
-        def _parse_alert_id(data: object) -> Union[None, Unset, str]:
+        def _parse_alert_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         alert_id = _parse_alert_id(d.pop("alert_id", UNSET))
 
-        def _parse_pulse_id(data: object) -> Union[None, Unset, str]:
+        def _parse_pulse_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         pulse_id = _parse_pulse_id(d.pop("pulse_id", UNSET))
 
         _context = d.pop("context", UNSET)
-        context: Union[Unset, WorkflowRunContext]
+        context: Unset | WorkflowRunContext
         if isinstance(_context, Unset):
             context = UNSET
         else:

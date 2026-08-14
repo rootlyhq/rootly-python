@@ -26,7 +26,7 @@ class ShiftList:
 
     data: list["ShiftListDataItem"]
     meta: Union[Unset, "Meta"] = UNSET
-    included: Union[Unset, list["JsonapiIncludedResource"]] = UNSET
+    included: Unset | list["JsonapiIncludedResource"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,11 +35,11 @@ class ShiftList:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        meta: Union[Unset, dict[str, Any]] = UNSET
+        meta: Unset | dict[str, Any] = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
-        included: Union[Unset, list[dict[str, Any]]] = UNSET
+        included: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -75,7 +75,7 @@ class ShiftList:
             data.append(data_item)
 
         _meta = d.pop("meta", UNSET)
-        meta: Union[Unset, Meta]
+        meta: Unset | Meta
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

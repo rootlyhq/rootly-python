@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserPhoneNumberResponse | None:
     if response.status_code == 200:
         response_200 = UserPhoneNumberResponse.from_dict(response.json())
 
@@ -46,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +60,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     """Show user phone number
 
      Retrieves a specific user phone number
@@ -91,7 +91,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> ErrorsList | UserPhoneNumberResponse | None:
     """Show user phone number
 
      Retrieves a specific user phone number
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     """Show user phone number
 
      Retrieves a specific user phone number
@@ -146,7 +146,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> ErrorsList | UserPhoneNumberResponse | None:
     """Show user phone number
 
      Retrieves a specific user phone number

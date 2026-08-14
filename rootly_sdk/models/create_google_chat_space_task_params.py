@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,15 +25,15 @@ class CreateGoogleChatSpaceTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateGoogleChatSpaceTaskParamsTaskType] = UNSET
-    description: Union[Unset, str] = UNSET
-    audience: Union[Unset, str] = UNSET
+    task_type: Unset | CreateGoogleChatSpaceTaskParamsTaskType = UNSET
+    description: Unset | str = UNSET
+    audience: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -63,7 +63,7 @@ class CreateGoogleChatSpaceTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateGoogleChatSpaceTaskParamsTaskType]
+        task_type: Unset | CreateGoogleChatSpaceTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

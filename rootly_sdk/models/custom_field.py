@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -35,16 +35,16 @@ class CustomField:
 
     label: str
     shown: list[CustomFieldShownItem]
-    required: Union[None, list[CustomFieldRequiredType0Item]]
+    required: None | list[CustomFieldRequiredType0Item]
     position: int
     created_at: str
     updated_at: str
-    kind: Union[Unset, str] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    slug: Union[Unset, str] = UNSET
-    resource_type: Union[Unset, CustomFieldResourceType] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    default: Union[None, Unset, str] = UNSET
+    kind: Unset | str = UNSET
+    enabled: Unset | bool = UNSET
+    slug: Unset | str = UNSET
+    resource_type: Unset | CustomFieldResourceType = UNSET
+    description: None | Unset | str = UNSET
+    default: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,7 +55,7 @@ class CustomField:
             shown_item: str = shown_item_data
             shown.append(shown_item)
 
-        required: Union[None, list[str]]
+        required: None | list[str]
         if isinstance(self.required, list):
             required = []
             for required_type_0_item_data in self.required:
@@ -77,17 +77,17 @@ class CustomField:
 
         slug = self.slug
 
-        resource_type: Union[Unset, str] = UNSET
+        resource_type: Unset | str = UNSET
         if not isinstance(self.resource_type, Unset):
             resource_type = self.resource_type
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        default: Union[None, Unset, str]
+        default: None | Unset | str
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -132,7 +132,7 @@ class CustomField:
 
             shown.append(shown_item)
 
-        def _parse_required(data: object) -> Union[None, list[CustomFieldRequiredType0Item]]:
+        def _parse_required(data: object) -> None | list[CustomFieldRequiredType0Item]:
             if data is None:
                 return data
             try:
@@ -148,7 +148,7 @@ class CustomField:
                 return required_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, list[CustomFieldRequiredType0Item]], data)
+            return cast(None | list[CustomFieldRequiredType0Item], data)
 
         required = _parse_required(d.pop("required"))
 
@@ -165,27 +165,27 @@ class CustomField:
         slug = d.pop("slug", UNSET)
 
         _resource_type = d.pop("resource_type", UNSET)
-        resource_type: Union[Unset, CustomFieldResourceType]
+        resource_type: Unset | CustomFieldResourceType
         if isinstance(_resource_type, Unset):
             resource_type = UNSET
         else:
             resource_type = check_custom_field_resource_type(_resource_type)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_default(data: object) -> Union[None, Unset, str]:
+        def _parse_default(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         default = _parse_default(d.pop("default", UNSET))
 

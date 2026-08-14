@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -22,8 +22,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | OnCallShadowResponse | None:
     if response.status_code == 200:
         response_200 = OnCallShadowResponse.from_dict(response.json())
 
@@ -46,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | OnCallShadowResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +60,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
+) -> Response[ErrorsList | OnCallShadowResponse]:
     """Delete an on call shadow configuration
 
      Delete a specific on call shadow configuration by id. Future shadows are hard-deleted. Active
@@ -92,7 +92,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
+) -> ErrorsList | OnCallShadowResponse | None:
     """Delete an on call shadow configuration
 
      Delete a specific on call shadow configuration by id. Future shadows are hard-deleted. Active
@@ -119,7 +119,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
+) -> Response[ErrorsList | OnCallShadowResponse]:
     """Delete an on call shadow configuration
 
      Delete a specific on call shadow configuration by id. Future shadows are hard-deleted. Active
@@ -149,7 +149,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
+) -> ErrorsList | OnCallShadowResponse | None:
     """Delete an on call shadow configuration
 
      Delete a specific on call shadow configuration by id. Future shadows are hard-deleted. Active

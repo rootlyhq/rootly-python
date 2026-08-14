@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -12,8 +12,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -33,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, MeetingRecordingList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Any | MeetingRecordingList | None:
     if response.status_code == 200:
         response_200 = MeetingRecordingList.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, MeetingRecordingList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[Any | MeetingRecordingList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,9 +65,9 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[Any, MeetingRecordingList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[Any | MeetingRecordingList]:
     """List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
@@ -103,9 +103,9 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Any | MeetingRecordingList | None:
     """List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
@@ -136,9 +136,9 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Response[Union[Any, MeetingRecordingList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Response[Any | MeetingRecordingList]:
     """List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.
@@ -172,9 +172,9 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[Union[Any, MeetingRecordingList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> Any | MeetingRecordingList | None:
     """List meeting recordings
 
      List all meeting recording sessions for an incident. Returns recordings sorted by session number.

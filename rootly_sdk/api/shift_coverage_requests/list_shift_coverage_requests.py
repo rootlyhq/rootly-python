@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -21,8 +21,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ShiftCoverageRequestList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ShiftCoverageRequestList | None:
     if response.status_code == 200:
         response_200 = ShiftCoverageRequestList.from_dict(response.json())
 
@@ -35,7 +35,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ShiftCoverageRequestList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -80,7 +80,7 @@ def sync(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[ShiftCoverageRequestList]:
+) -> ShiftCoverageRequestList | None:
     """list shift coverage requests
 
      List active shift coverage requests for a schedule.
@@ -135,7 +135,7 @@ async def asyncio(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[ShiftCoverageRequestList]:
+) -> ShiftCoverageRequestList | None:
     """list shift coverage requests
 
      List active shift coverage requests for a schedule.

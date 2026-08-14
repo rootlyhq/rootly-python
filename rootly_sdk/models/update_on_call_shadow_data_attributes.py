@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -26,17 +26,17 @@ class UpdateOnCallShadowDataAttributes:
         ends_at (Union[Unset, datetime.datetime]): End datetime for shadow shift
     """
 
-    schedule_id: Union[Unset, str] = UNSET
-    shadowable_type: Union[Unset, UpdateOnCallShadowDataAttributesShadowableType] = UNSET
-    shadowable_id: Union[Unset, str] = UNSET
-    shadow_user_id: Union[Unset, int] = UNSET
-    starts_at: Union[Unset, datetime.datetime] = UNSET
-    ends_at: Union[Unset, datetime.datetime] = UNSET
+    schedule_id: Unset | str = UNSET
+    shadowable_type: Unset | UpdateOnCallShadowDataAttributesShadowableType = UNSET
+    shadowable_id: Unset | str = UNSET
+    shadow_user_id: Unset | int = UNSET
+    starts_at: Unset | datetime.datetime = UNSET
+    ends_at: Unset | datetime.datetime = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         schedule_id = self.schedule_id
 
-        shadowable_type: Union[Unset, str] = UNSET
+        shadowable_type: Unset | str = UNSET
         if not isinstance(self.shadowable_type, Unset):
             shadowable_type = self.shadowable_type
 
@@ -44,11 +44,11 @@ class UpdateOnCallShadowDataAttributes:
 
         shadow_user_id = self.shadow_user_id
 
-        starts_at: Union[Unset, str] = UNSET
+        starts_at: Unset | str = UNSET
         if not isinstance(self.starts_at, Unset):
             starts_at = self.starts_at.isoformat()
 
-        ends_at: Union[Unset, str] = UNSET
+        ends_at: Unset | str = UNSET
         if not isinstance(self.ends_at, Unset):
             ends_at = self.ends_at.isoformat()
 
@@ -76,7 +76,7 @@ class UpdateOnCallShadowDataAttributes:
         schedule_id = d.pop("schedule_id", UNSET)
 
         _shadowable_type = d.pop("shadowable_type", UNSET)
-        shadowable_type: Union[Unset, UpdateOnCallShadowDataAttributesShadowableType]
+        shadowable_type: Unset | UpdateOnCallShadowDataAttributesShadowableType
         if isinstance(_shadowable_type, Unset):
             shadowable_type = UNSET
         else:
@@ -87,14 +87,14 @@ class UpdateOnCallShadowDataAttributes:
         shadow_user_id = d.pop("shadow_user_id", UNSET)
 
         _starts_at = d.pop("starts_at", UNSET)
-        starts_at: Union[Unset, datetime.datetime]
+        starts_at: Unset | datetime.datetime
         if isinstance(_starts_at, Unset):
             starts_at = UNSET
         else:
             starts_at = isoparse(_starts_at)
 
         _ends_at = d.pop("ends_at", UNSET)
-        ends_at: Union[Unset, datetime.datetime]
+        ends_at: Unset | datetime.datetime
         if isinstance(_ends_at, Unset):
             ends_at = UNSET
         else:

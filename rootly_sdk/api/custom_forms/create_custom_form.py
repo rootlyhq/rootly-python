@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CustomFormResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CustomFormResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = CustomFormResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CustomFormResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CustomFormResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCustomForm,
-) -> Response[Union[CustomFormResponse, ErrorsList]]:
+) -> Response[CustomFormResponse | ErrorsList]:
     """Creates a custom form
 
      Creates a new custom form from provided data
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCustomForm,
-) -> Optional[Union[CustomFormResponse, ErrorsList]]:
+) -> CustomFormResponse | ErrorsList | None:
     """Creates a custom form
 
      Creates a new custom form from provided data
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCustomForm,
-) -> Response[Union[CustomFormResponse, ErrorsList]]:
+) -> Response[CustomFormResponse | ErrorsList]:
     """Creates a custom form
 
      Creates a new custom form from provided data
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCustomForm,
-) -> Optional[Union[CustomFormResponse, ErrorsList]]:
+) -> CustomFormResponse | ErrorsList | None:
     """Creates a custom form
 
      Creates a new custom form from provided data

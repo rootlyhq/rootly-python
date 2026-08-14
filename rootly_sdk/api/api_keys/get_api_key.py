@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -14,7 +14,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: UUID,
     *,
-    include: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ApiKeyResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = ApiKeyResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ApiKeyResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,8 +65,8 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+    include: Unset | str = UNSET,
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Retrieves an API key
 
      Retrieves a specific API key by its UUID. Returns key metadata including name, kind, expiration,
@@ -100,8 +100,8 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+    include: Unset | str = UNSET,
+) -> ApiKeyResponse | ErrorsList | None:
     """Retrieves an API key
 
      Retrieves a specific API key by its UUID. Returns key metadata including name, kind, expiration,
@@ -130,8 +130,8 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Response[Union[ApiKeyResponse, ErrorsList]]:
+    include: Unset | str = UNSET,
+) -> Response[ApiKeyResponse | ErrorsList]:
     """Retrieves an API key
 
      Retrieves a specific API key by its UUID. Returns key metadata including name, kind, expiration,
@@ -163,8 +163,8 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
+    include: Unset | str = UNSET,
+) -> ApiKeyResponse | ErrorsList | None:
     """Retrieves an API key
 
      Retrieves a specific API key by its UUID. Returns key metadata including name, kind, expiration,

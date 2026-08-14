@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -76,18 +76,18 @@ class NewSlaDataAttributes:
     assignment_deadline_parent_status: NewSlaDataAttributesAssignmentDeadlineParentStatus
     completion_deadline_days: NewSlaDataAttributesCompletionDeadlineDays
     completion_deadline_parent_status: NewSlaDataAttributesCompletionDeadlineParentStatus
-    slug: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    position: Union[None, Unset, int] = UNSET
-    condition_match_type: Union[Unset, NewSlaDataAttributesConditionMatchType] = UNSET
-    manager_role_id: Union[None, UUID, Unset] = UNSET
-    manager_user_id: Union[None, Unset, int] = UNSET
-    assignment_deadline_sub_status_id: Union[None, UUID, Unset] = UNSET
-    assignment_skip_weekends: Union[Unset, bool] = UNSET
-    completion_deadline_sub_status_id: Union[None, UUID, Unset] = UNSET
-    completion_skip_weekends: Union[Unset, bool] = UNSET
-    conditions: Union[Unset, list["NewSlaDataAttributesConditionsItem"]] = UNSET
-    notification_configurations: Union[Unset, list["NewSlaDataAttributesNotificationConfigurationsItem"]] = UNSET
+    slug: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    position: None | Unset | int = UNSET
+    condition_match_type: Unset | NewSlaDataAttributesConditionMatchType = UNSET
+    manager_role_id: None | UUID | Unset = UNSET
+    manager_user_id: None | Unset | int = UNSET
+    assignment_deadline_sub_status_id: None | UUID | Unset = UNSET
+    assignment_skip_weekends: Unset | bool = UNSET
+    completion_deadline_sub_status_id: None | UUID | Unset = UNSET
+    completion_skip_weekends: Unset | bool = UNSET
+    conditions: Unset | list["NewSlaDataAttributesConditionsItem"] = UNSET
+    notification_configurations: Unset | list["NewSlaDataAttributesNotificationConfigurationsItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -100,29 +100,29 @@ class NewSlaDataAttributes:
 
         completion_deadline_parent_status: str = self.completion_deadline_parent_status
 
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: Union[None, Unset, int]
+        position: None | Unset | int
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        condition_match_type: Union[Unset, str] = UNSET
+        condition_match_type: Unset | str = UNSET
         if not isinstance(self.condition_match_type, Unset):
             condition_match_type = self.condition_match_type
 
-        manager_role_id: Union[None, Unset, str]
+        manager_role_id: None | Unset | str
         if isinstance(self.manager_role_id, Unset):
             manager_role_id = UNSET
         elif isinstance(self.manager_role_id, UUID):
@@ -130,13 +130,13 @@ class NewSlaDataAttributes:
         else:
             manager_role_id = self.manager_role_id
 
-        manager_user_id: Union[None, Unset, int]
+        manager_user_id: None | Unset | int
         if isinstance(self.manager_user_id, Unset):
             manager_user_id = UNSET
         else:
             manager_user_id = self.manager_user_id
 
-        assignment_deadline_sub_status_id: Union[None, Unset, str]
+        assignment_deadline_sub_status_id: None | Unset | str
         if isinstance(self.assignment_deadline_sub_status_id, Unset):
             assignment_deadline_sub_status_id = UNSET
         elif isinstance(self.assignment_deadline_sub_status_id, UUID):
@@ -146,7 +146,7 @@ class NewSlaDataAttributes:
 
         assignment_skip_weekends = self.assignment_skip_weekends
 
-        completion_deadline_sub_status_id: Union[None, Unset, str]
+        completion_deadline_sub_status_id: None | Unset | str
         if isinstance(self.completion_deadline_sub_status_id, Unset):
             completion_deadline_sub_status_id = UNSET
         elif isinstance(self.completion_deadline_sub_status_id, UUID):
@@ -156,14 +156,14 @@ class NewSlaDataAttributes:
 
         completion_skip_weekends = self.completion_skip_weekends
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
-        notification_configurations: Union[Unset, list[dict[str, Any]]] = UNSET
+        notification_configurations: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.notification_configurations, Unset):
             notification_configurations = []
             for notification_configurations_item_data in self.notification_configurations:
@@ -234,41 +234,41 @@ class NewSlaDataAttributes:
             d.pop("completion_deadline_parent_status")
         )
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> Union[None, Unset, int]:
+        def _parse_position(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         _condition_match_type = d.pop("condition_match_type", UNSET)
-        condition_match_type: Union[Unset, NewSlaDataAttributesConditionMatchType]
+        condition_match_type: Unset | NewSlaDataAttributesConditionMatchType
         if isinstance(_condition_match_type, Unset):
             condition_match_type = UNSET
         else:
             condition_match_type = check_new_sla_data_attributes_condition_match_type(_condition_match_type)
 
-        def _parse_manager_role_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_manager_role_id(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -281,20 +281,20 @@ class NewSlaDataAttributes:
                 return manager_role_id_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         manager_role_id = _parse_manager_role_id(d.pop("manager_role_id", UNSET))
 
-        def _parse_manager_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_manager_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         manager_user_id = _parse_manager_user_id(d.pop("manager_user_id", UNSET))
 
-        def _parse_assignment_deadline_sub_status_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_assignment_deadline_sub_status_id(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -307,7 +307,7 @@ class NewSlaDataAttributes:
                 return assignment_deadline_sub_status_id_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         assignment_deadline_sub_status_id = _parse_assignment_deadline_sub_status_id(
             d.pop("assignment_deadline_sub_status_id", UNSET)
@@ -315,7 +315,7 @@ class NewSlaDataAttributes:
 
         assignment_skip_weekends = d.pop("assignment_skip_weekends", UNSET)
 
-        def _parse_completion_deadline_sub_status_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_completion_deadline_sub_status_id(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -328,7 +328,7 @@ class NewSlaDataAttributes:
                 return completion_deadline_sub_status_id_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         completion_deadline_sub_status_id = _parse_completion_deadline_sub_status_id(
             d.pop("completion_deadline_sub_status_id", UNSET)

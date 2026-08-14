@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -23,8 +23,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> CatalogEntityChecklistResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = CatalogEntityChecklistResponse.from_dict(response.json())
 
@@ -42,8 +42,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[CatalogEntityChecklistResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,7 +56,7 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+) -> Response[CatalogEntityChecklistResponse | ErrorsList]:
     """Retrieves a catalog entity checklist
 
      Retrieves a specific catalog entity checklist by id
@@ -87,7 +87,7 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+) -> CatalogEntityChecklistResponse | ErrorsList | None:
     """Retrieves a catalog entity checklist
 
      Retrieves a specific catalog entity checklist by id
@@ -113,7 +113,7 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+) -> Response[CatalogEntityChecklistResponse | ErrorsList]:
     """Retrieves a catalog entity checklist
 
      Retrieves a specific catalog entity checklist by id
@@ -142,7 +142,7 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[CatalogEntityChecklistResponse, ErrorsList]]:
+) -> CatalogEntityChecklistResponse | ErrorsList | None:
     """Retrieves a catalog entity checklist
 
      Retrieves a specific catalog entity checklist by id

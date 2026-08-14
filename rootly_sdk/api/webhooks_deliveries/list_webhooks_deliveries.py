@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -14,18 +14,18 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     endpoint_id: str,
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlte: Union[Unset, datetime.datetime] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -37,42 +37,42 @@ def _get_kwargs(
 
     params["filter[status]"] = filterstatus
 
-    json_filtercreated_atgt: Union[Unset, str] = UNSET
+    json_filtercreated_atgt: Unset | str = UNSET
     if not isinstance(filtercreated_atgt, Unset):
         json_filtercreated_atgt = filtercreated_atgt.isoformat()
     params["filter[created_at][gt]"] = json_filtercreated_atgt
 
-    json_filtercreated_atgte: Union[Unset, str] = UNSET
+    json_filtercreated_atgte: Unset | str = UNSET
     if not isinstance(filtercreated_atgte, Unset):
         json_filtercreated_atgte = filtercreated_atgte.isoformat()
     params["filter[created_at][gte]"] = json_filtercreated_atgte
 
-    json_filtercreated_atlt: Union[Unset, str] = UNSET
+    json_filtercreated_atlt: Unset | str = UNSET
     if not isinstance(filtercreated_atlt, Unset):
         json_filtercreated_atlt = filtercreated_atlt.isoformat()
     params["filter[created_at][lt]"] = json_filtercreated_atlt
 
-    json_filtercreated_atlte: Union[Unset, str] = UNSET
+    json_filtercreated_atlte: Unset | str = UNSET
     if not isinstance(filtercreated_atlte, Unset):
         json_filtercreated_atlte = filtercreated_atlte.isoformat()
     params["filter[created_at][lte]"] = json_filtercreated_atlte
 
-    json_filterdelivered_atgt: Union[Unset, str] = UNSET
+    json_filterdelivered_atgt: Unset | str = UNSET
     if not isinstance(filterdelivered_atgt, Unset):
         json_filterdelivered_atgt = filterdelivered_atgt.isoformat()
     params["filter[delivered_at][gt]"] = json_filterdelivered_atgt
 
-    json_filterdelivered_atgte: Union[Unset, str] = UNSET
+    json_filterdelivered_atgte: Unset | str = UNSET
     if not isinstance(filterdelivered_atgte, Unset):
         json_filterdelivered_atgte = filterdelivered_atgte.isoformat()
     params["filter[delivered_at][gte]"] = json_filterdelivered_atgte
 
-    json_filterdelivered_atlt: Union[Unset, str] = UNSET
+    json_filterdelivered_atlt: Unset | str = UNSET
     if not isinstance(filterdelivered_atlt, Unset):
         json_filterdelivered_atlt = filterdelivered_atlt.isoformat()
     params["filter[delivered_at][lt]"] = json_filterdelivered_atlt
 
-    json_filterdelivered_atlte: Union[Unset, str] = UNSET
+    json_filterdelivered_atlte: Unset | str = UNSET
     if not isinstance(filterdelivered_atlte, Unset):
         json_filterdelivered_atlte = filterdelivered_atlte.isoformat()
     params["filter[delivered_at][lte]"] = json_filterdelivered_atlte
@@ -89,8 +89,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, WebhooksDeliveryList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | WebhooksDeliveryList | None:
     if response.status_code == 200:
         response_200 = WebhooksDeliveryList.from_dict(response.json())
 
@@ -108,8 +108,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, WebhooksDeliveryList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -122,19 +122,19 @@ def sync_detailed(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlte: Union[Unset, datetime.datetime] = UNSET,
-) -> Response[Union[ErrorsList, WebhooksDeliveryList]]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
@@ -189,19 +189,19 @@ def sync(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlte: Union[Unset, datetime.datetime] = UNSET,
-) -> Optional[Union[ErrorsList, WebhooksDeliveryList]]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> ErrorsList | WebhooksDeliveryList | None:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
@@ -251,19 +251,19 @@ async def asyncio_detailed(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlte: Union[Unset, datetime.datetime] = UNSET,
-) -> Response[Union[ErrorsList, WebhooksDeliveryList]]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> Response[ErrorsList | WebhooksDeliveryList]:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint
@@ -316,19 +316,19 @@ async def asyncio(
     endpoint_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filterstatus: Union[Unset, str] = UNSET,
-    filtercreated_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filtercreated_atlte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atgte: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlt: Union[Unset, datetime.datetime] = UNSET,
-    filterdelivered_atlte: Union[Unset, datetime.datetime] = UNSET,
-) -> Optional[Union[ErrorsList, WebhooksDeliveryList]]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filterstatus: Unset | str = UNSET,
+    filtercreated_atgt: Unset | datetime.datetime = UNSET,
+    filtercreated_atgte: Unset | datetime.datetime = UNSET,
+    filtercreated_atlt: Unset | datetime.datetime = UNSET,
+    filtercreated_atlte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atgte: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlt: Unset | datetime.datetime = UNSET,
+    filterdelivered_atlte: Unset | datetime.datetime = UNSET,
+) -> ErrorsList | WebhooksDeliveryList | None:
     """List webhook deliveries
 
      List webhook deliveries for given endpoint

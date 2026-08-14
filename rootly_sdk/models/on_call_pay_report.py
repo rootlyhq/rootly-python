@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -49,22 +49,22 @@ class OnCallPayReport:
     end_date: datetime.date
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    total_duration: Union[Unset, int] = UNSET
-    users_count: Union[Unset, int] = UNSET
-    currency: Union[Unset, str] = UNSET
-    pay_type: Union[Unset, OnCallPayReportPayType] = UNSET
-    hourly_rate_cents: Union[Unset, int] = UNSET
-    daily_rate_cents: Union[Unset, int] = UNSET
-    total_pay_cents: Union[Unset, int] = UNSET
-    include_shadow: Union[Unset, bool] = UNSET
-    show_individual_shift_data: Union[Unset, bool] = UNSET
-    has_single_rate: Union[Unset, bool] = UNSET
-    enabled_granular_time_breakdown: Union[Unset, bool] = UNSET
-    last_generated_at: Union[None, Unset, datetime.datetime] = UNSET
-    time_zone: Union[None, Unset, str] = UNSET
-    use_responders_time_zone: Union[Unset, bool] = UNSET
-    csv_file_url: Union[None, Unset, str] = UNSET
-    xlsx_file_url: Union[None, Unset, str] = UNSET
+    total_duration: Unset | int = UNSET
+    users_count: Unset | int = UNSET
+    currency: Unset | str = UNSET
+    pay_type: Unset | OnCallPayReportPayType = UNSET
+    hourly_rate_cents: Unset | int = UNSET
+    daily_rate_cents: Unset | int = UNSET
+    total_pay_cents: Unset | int = UNSET
+    include_shadow: Unset | bool = UNSET
+    show_individual_shift_data: Unset | bool = UNSET
+    has_single_rate: Unset | bool = UNSET
+    enabled_granular_time_breakdown: Unset | bool = UNSET
+    last_generated_at: None | Unset | datetime.datetime = UNSET
+    time_zone: None | Unset | str = UNSET
+    use_responders_time_zone: Unset | bool = UNSET
+    csv_file_url: None | Unset | str = UNSET
+    xlsx_file_url: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -84,7 +84,7 @@ class OnCallPayReport:
 
         currency = self.currency
 
-        pay_type: Union[Unset, str] = UNSET
+        pay_type: Unset | str = UNSET
         if not isinstance(self.pay_type, Unset):
             pay_type = self.pay_type
 
@@ -102,7 +102,7 @@ class OnCallPayReport:
 
         enabled_granular_time_breakdown = self.enabled_granular_time_breakdown
 
-        last_generated_at: Union[None, Unset, str]
+        last_generated_at: None | Unset | str
         if isinstance(self.last_generated_at, Unset):
             last_generated_at = UNSET
         elif isinstance(self.last_generated_at, datetime.datetime):
@@ -110,7 +110,7 @@ class OnCallPayReport:
         else:
             last_generated_at = self.last_generated_at
 
-        time_zone: Union[None, Unset, str]
+        time_zone: None | Unset | str
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -118,13 +118,13 @@ class OnCallPayReport:
 
         use_responders_time_zone = self.use_responders_time_zone
 
-        csv_file_url: Union[None, Unset, str]
+        csv_file_url: None | Unset | str
         if isinstance(self.csv_file_url, Unset):
             csv_file_url = UNSET
         else:
             csv_file_url = self.csv_file_url
 
-        xlsx_file_url: Union[None, Unset, str]
+        xlsx_file_url: None | Unset | str
         if isinstance(self.xlsx_file_url, Unset):
             xlsx_file_url = UNSET
         else:
@@ -196,7 +196,7 @@ class OnCallPayReport:
         currency = d.pop("currency", UNSET)
 
         _pay_type = d.pop("pay_type", UNSET)
-        pay_type: Union[Unset, OnCallPayReportPayType]
+        pay_type: Unset | OnCallPayReportPayType
         if isinstance(_pay_type, Unset):
             pay_type = UNSET
         else:
@@ -216,7 +216,7 @@ class OnCallPayReport:
 
         enabled_granular_time_breakdown = d.pop("enabled_granular_time_breakdown", UNSET)
 
-        def _parse_last_generated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_last_generated_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -229,36 +229,36 @@ class OnCallPayReport:
                 return last_generated_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         last_generated_at = _parse_last_generated_at(d.pop("last_generated_at", UNSET))
 
-        def _parse_time_zone(data: object) -> Union[None, Unset, str]:
+        def _parse_time_zone(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 
         use_responders_time_zone = d.pop("use_responders_time_zone", UNSET)
 
-        def _parse_csv_file_url(data: object) -> Union[None, Unset, str]:
+        def _parse_csv_file_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         csv_file_url = _parse_csv_file_url(d.pop("csv_file_url", UNSET))
 
-        def _parse_xlsx_file_url(data: object) -> Union[None, Unset, str]:
+        def _parse_xlsx_file_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         xlsx_file_url = _parse_xlsx_file_url(d.pop("xlsx_file_url", UNSET))
 

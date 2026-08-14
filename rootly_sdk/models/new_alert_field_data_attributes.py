@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -18,12 +18,12 @@ class NewAlertFieldDataAttributes:
     """
 
     name: str
-    slug: Union[None, Unset, str] = UNSET
+    slug: None | Unset | str = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -46,12 +46,12 @@ class NewAlertFieldDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 

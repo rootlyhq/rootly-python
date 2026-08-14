@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,15 +11,15 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterstatuses: Union[Unset, str] = UNSET,
-    filtersource_types: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterstatuses: Unset | str = UNSET,
+    filtersource_types: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -52,9 +52,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AlertsSourceList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertsSourceList | None:
     if response.status_code == 200:
         response_200 = AlertsSourceList.from_dict(response.json())
 
@@ -66,9 +64,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AlertsSourceList]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertsSourceList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,15 +76,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterstatuses: Union[Unset, str] = UNSET,
-    filtersource_types: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterstatuses: Unset | str = UNSET,
+    filtersource_types: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
 
@@ -135,16 +131,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterstatuses: Union[Unset, str] = UNSET,
-    filtersource_types: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[AlertsSourceList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterstatuses: Unset | str = UNSET,
+    filtersource_types: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    sort: Unset | str = UNSET,
+) -> AlertsSourceList | None:
     """List alert sources
 
      List alert sources
@@ -185,15 +181,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterstatuses: Union[Unset, str] = UNSET,
-    filtersource_types: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterstatuses: Unset | str = UNSET,
+    filtersource_types: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    sort: Unset | str = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
 
@@ -238,16 +234,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, str] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filterstatuses: Union[Unset, str] = UNSET,
-    filtersource_types: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterenabled: Union[Unset, bool] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[AlertsSourceList]:
+    include: Unset | str = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filterstatuses: Unset | str = UNSET,
+    filtersource_types: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterenabled: Unset | bool = UNSET,
+    sort: Unset | str = UNSET,
+) -> AlertsSourceList | None:
     """List alert sources
 
      List alert sources

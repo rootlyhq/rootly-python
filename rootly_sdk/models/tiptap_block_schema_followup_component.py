@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,13 +26,13 @@ class TiptapBlockSchemaFollowupComponent:
     """
 
     html: str
-    data_sort: Union[Unset, TiptapBlockSchemaFollowupComponentDataSort] = "due_date"
+    data_sort: Unset | TiptapBlockSchemaFollowupComponentDataSort = "due_date"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         html = self.html
 
-        data_sort: Union[Unset, str] = UNSET
+        data_sort: Unset | str = UNSET
         if not isinstance(self.data_sort, Unset):
             data_sort = self.data_sort
 
@@ -54,7 +54,7 @@ class TiptapBlockSchemaFollowupComponent:
         html = d.pop("html")
 
         _data_sort = d.pop("data_sort", UNSET)
-        data_sort: Union[Unset, TiptapBlockSchemaFollowupComponentDataSort]
+        data_sort: Unset | TiptapBlockSchemaFollowupComponentDataSort
         if isinstance(_data_sort, Unset):
             data_sort = UNSET
         else:

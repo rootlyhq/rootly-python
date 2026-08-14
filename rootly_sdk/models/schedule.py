@@ -52,19 +52,19 @@ class Schedule:
     owner_user_id: int
     created_at: str
     updated_at: str
-    description: Union[None, Unset, str] = UNSET
-    all_time_coverage: Union[None, Unset, bool] = UNSET
+    description: None | Unset | str = UNSET
+    all_time_coverage: None | Unset | bool = UNSET
     slack_user_group: Union["ScheduleSlackUserGroupType0", None, Unset] = UNSET
     slack_channel: Union["ScheduleSlackChannelType0", None, Unset] = UNSET
-    owner_group_ids: Union[Unset, list[str]] = UNSET
-    sync_linear_enabled: Union[Unset, bool] = UNSET
-    include_shadows_in_slack_notifications: Union[Unset, bool] = UNSET
-    shift_start_notifications_enabled: Union[Unset, bool] = UNSET
-    shift_update_notifications_enabled: Union[Unset, bool] = UNSET
-    shift_report_enabled: Union[Unset, bool] = UNSET
-    shift_report_day_of_week: Union[Unset, ScheduleShiftReportDayOfWeek] = UNSET
-    shift_report_time_of_day: Union[Unset, str] = UNSET
-    shift_report_time_zone: Union[Unset, str] = UNSET
+    owner_group_ids: Unset | list[str] = UNSET
+    sync_linear_enabled: Unset | bool = UNSET
+    include_shadows_in_slack_notifications: Unset | bool = UNSET
+    shift_start_notifications_enabled: Unset | bool = UNSET
+    shift_update_notifications_enabled: Unset | bool = UNSET
+    shift_report_enabled: Unset | bool = UNSET
+    shift_report_day_of_week: Unset | ScheduleShiftReportDayOfWeek = UNSET
+    shift_report_time_of_day: Unset | str = UNSET
+    shift_report_time_zone: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,19 +79,19 @@ class Schedule:
 
         updated_at = self.updated_at
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        all_time_coverage: Union[None, Unset, bool]
+        all_time_coverage: None | Unset | bool
         if isinstance(self.all_time_coverage, Unset):
             all_time_coverage = UNSET
         else:
             all_time_coverage = self.all_time_coverage
 
-        slack_user_group: Union[None, Unset, dict[str, Any]]
+        slack_user_group: None | Unset | dict[str, Any]
         if isinstance(self.slack_user_group, Unset):
             slack_user_group = UNSET
         elif isinstance(self.slack_user_group, ScheduleSlackUserGroupType0):
@@ -99,7 +99,7 @@ class Schedule:
         else:
             slack_user_group = self.slack_user_group
 
-        slack_channel: Union[None, Unset, dict[str, Any]]
+        slack_channel: None | Unset | dict[str, Any]
         if isinstance(self.slack_channel, Unset):
             slack_channel = UNSET
         elif isinstance(self.slack_channel, ScheduleSlackChannelType0):
@@ -107,7 +107,7 @@ class Schedule:
         else:
             slack_channel = self.slack_channel
 
-        owner_group_ids: Union[Unset, list[str]] = UNSET
+        owner_group_ids: Unset | list[str] = UNSET
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
@@ -121,7 +121,7 @@ class Schedule:
 
         shift_report_enabled = self.shift_report_enabled
 
-        shift_report_day_of_week: Union[Unset, str] = UNSET
+        shift_report_day_of_week: Unset | str = UNSET
         if not isinstance(self.shift_report_day_of_week, Unset):
             shift_report_day_of_week = self.shift_report_day_of_week
 
@@ -182,21 +182,21 @@ class Schedule:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_all_time_coverage(data: object) -> Union[None, Unset, bool]:
+        def _parse_all_time_coverage(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         all_time_coverage = _parse_all_time_coverage(d.pop("all_time_coverage", UNSET))
 
@@ -247,7 +247,7 @@ class Schedule:
         shift_report_enabled = d.pop("shift_report_enabled", UNSET)
 
         _shift_report_day_of_week = d.pop("shift_report_day_of_week", UNSET)
-        shift_report_day_of_week: Union[Unset, ScheduleShiftReportDayOfWeek]
+        shift_report_day_of_week: Unset | ScheduleShiftReportDayOfWeek
         if isinstance(_shift_report_day_of_week, Unset):
             shift_report_day_of_week = UNSET
         else:

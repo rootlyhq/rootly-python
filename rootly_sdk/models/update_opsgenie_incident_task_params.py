@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -36,17 +36,17 @@ class UpdateOpsgenieIncidentTaskParams:
     """
 
     opsgenie_incident_id: str
-    task_type: Union[Unset, UpdateOpsgenieIncidentTaskParamsTaskType] = UNSET
-    message: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    status: Union[Unset, UpdateOpsgenieIncidentTaskParamsStatus] = UNSET
-    priority: Union[Unset, UpdateOpsgenieIncidentTaskParamsPriority] = UNSET
+    task_type: Unset | UpdateOpsgenieIncidentTaskParamsTaskType = UNSET
+    message: Unset | str = UNSET
+    description: Unset | str = UNSET
+    status: Unset | UpdateOpsgenieIncidentTaskParamsStatus = UNSET
+    priority: Unset | UpdateOpsgenieIncidentTaskParamsPriority = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         opsgenie_incident_id = self.opsgenie_incident_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,11 +54,11 @@ class UpdateOpsgenieIncidentTaskParams:
 
         description = self.description
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        priority: Union[Unset, str] = UNSET
+        priority: Unset | str = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
@@ -88,7 +88,7 @@ class UpdateOpsgenieIncidentTaskParams:
         opsgenie_incident_id = d.pop("opsgenie_incident_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateOpsgenieIncidentTaskParamsTaskType]
+        task_type: Unset | UpdateOpsgenieIncidentTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -99,14 +99,14 @@ class UpdateOpsgenieIncidentTaskParams:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, UpdateOpsgenieIncidentTaskParamsStatus]
+        status: Unset | UpdateOpsgenieIncidentTaskParamsStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_opsgenie_incident_task_params_status(_status)
 
         _priority = d.pop("priority", UNSET)
-        priority: Union[Unset, UpdateOpsgenieIncidentTaskParamsPriority]
+        priority: Unset | UpdateOpsgenieIncidentTaskParamsPriority
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

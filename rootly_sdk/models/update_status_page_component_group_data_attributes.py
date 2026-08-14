@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -19,15 +19,15 @@ class UpdateStatusPageComponentGroupDataAttributes:
         collapsed_by_default (Union[None, Unset, bool]): Whether the group renders collapsed on the public page
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    collapsed_by_default: Union[None, Unset, bool] = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    position: Unset | int = UNSET
+    collapsed_by_default: None | Unset | bool = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -35,7 +35,7 @@ class UpdateStatusPageComponentGroupDataAttributes:
 
         position = self.position
 
-        collapsed_by_default: Union[None, Unset, bool]
+        collapsed_by_default: None | Unset | bool
         if isinstance(self.collapsed_by_default, Unset):
             collapsed_by_default = UNSET
         else:
@@ -60,23 +60,23 @@ class UpdateStatusPageComponentGroupDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         position = d.pop("position", UNSET)
 
-        def _parse_collapsed_by_default(data: object) -> Union[None, Unset, bool]:
+        def _parse_collapsed_by_default(data: object) -> None | Unset | bool:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, bool], data)
+            return cast(None | Unset | bool, data)
 
         collapsed_by_default = _parse_collapsed_by_default(d.pop("collapsed_by_default", UNSET))
 

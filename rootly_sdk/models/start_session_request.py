@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,16 +18,16 @@ class StartSessionRequest:
         title (Union[None, Unset, str]): Human-readable label for the recording session
     """
 
-    platform: Union[Unset, StartSessionRequestPlatform] = UNSET
-    title: Union[None, Unset, str] = UNSET
+    platform: Unset | StartSessionRequestPlatform = UNSET
+    title: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        platform: Union[Unset, str] = UNSET
+        platform: Unset | str = UNSET
         if not isinstance(self.platform, Unset):
             platform = self.platform
 
-        title: Union[None, Unset, str]
+        title: None | Unset | str
         if isinstance(self.title, Unset):
             title = UNSET
         else:
@@ -47,18 +47,18 @@ class StartSessionRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _platform = d.pop("platform", UNSET)
-        platform: Union[Unset, StartSessionRequestPlatform]
+        platform: Unset | StartSessionRequestPlatform
         if isinstance(_platform, Unset):
             platform = UNSET
         else:
             platform = check_start_session_request_platform(_platform)
 
-        def _parse_title(data: object) -> Union[None, Unset, str]:
+        def _parse_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         title = _parse_title(d.pop("title", UNSET))
 

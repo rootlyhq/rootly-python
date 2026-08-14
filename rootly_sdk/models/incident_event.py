@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,7 +25,7 @@ class IncidentEvent:
     occurred_at: str
     created_at: str
     updated_at: str
-    visibility: Union[Unset, IncidentEventVisibility] = UNSET
+    visibility: Unset | IncidentEventVisibility = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,7 +37,7 @@ class IncidentEvent:
 
         updated_at = self.updated_at
 
-        visibility: Union[Unset, str] = UNSET
+        visibility: Unset | str = UNSET
         if not isinstance(self.visibility, Unset):
             visibility = self.visibility
 
@@ -68,7 +68,7 @@ class IncidentEvent:
         updated_at = d.pop("updated_at")
 
         _visibility = d.pop("visibility", UNSET)
-        visibility: Union[Unset, IncidentEventVisibility]
+        visibility: Unset | IncidentEventVisibility
         if isinstance(_visibility, Unset):
             visibility = UNSET
         else:

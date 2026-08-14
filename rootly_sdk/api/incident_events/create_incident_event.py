@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentEventResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentEventResponse | None:
     if response.status_code == 201:
         response_201 = IncidentEventResponse.from_dict(response.json())
 
@@ -56,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentEventResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentEventResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEvent,
-) -> Response[Union[ErrorsList, IncidentEventResponse]]:
+) -> Response[ErrorsList | IncidentEventResponse]:
     """Creates an incident event
 
      Creates a new event from provided data
@@ -105,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEvent,
-) -> Optional[Union[ErrorsList, IncidentEventResponse]]:
+) -> ErrorsList | IncidentEventResponse | None:
     """Creates an incident event
 
      Creates a new event from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEvent,
-) -> Response[Union[ErrorsList, IncidentEventResponse]]:
+) -> Response[ErrorsList | IncidentEventResponse]:
     """Creates an incident event
 
      Creates a new event from provided data
@@ -166,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEvent,
-) -> Optional[Union[ErrorsList, IncidentEventResponse]]:
+) -> ErrorsList | IncidentEventResponse | None:
     """Creates an incident event
 
      Creates a new event from provided data

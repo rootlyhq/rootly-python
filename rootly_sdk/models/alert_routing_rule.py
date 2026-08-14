@@ -45,9 +45,9 @@ class AlertRoutingRule:
     condition_type: AlertRoutingRuleConditionType
     created_at: str
     updated_at: str
-    conditions: Union[Unset, list["AlertRoutingRuleConditionsItem"]] = UNSET
+    conditions: Unset | list["AlertRoutingRuleConditionsItem"] = UNSET
     destination: Union["AlertRoutingRuleDestinationType0", None, Unset] = UNSET
-    condition_groups: Union[Unset, list["AlertRoutingRuleConditionGroupsItem"]] = UNSET
+    condition_groups: Unset | list["AlertRoutingRuleConditionGroupsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,14 +67,14 @@ class AlertRoutingRule:
 
         updated_at = self.updated_at
 
-        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
+        conditions: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
-        destination: Union[None, Unset, dict[str, Any]]
+        destination: None | Unset | dict[str, Any]
         if isinstance(self.destination, Unset):
             destination = UNSET
         elif isinstance(self.destination, AlertRoutingRuleDestinationType0):
@@ -82,7 +82,7 @@ class AlertRoutingRule:
         else:
             destination = self.destination
 
-        condition_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        condition_groups: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.condition_groups, Unset):
             condition_groups = []
             for condition_groups_item_data in self.condition_groups:

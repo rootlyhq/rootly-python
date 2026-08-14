@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertRetriggerRuleResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = AlertRetriggerRuleResponse.from_dict(response.json())
 
@@ -50,8 +50,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertRetriggerRuleResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRetriggerRule,
-) -> Response[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+) -> Response[AlertRetriggerRuleResponse | ErrorsList]:
     """Creates an alert re-trigger rule
 
     Args:
@@ -93,7 +93,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewAlertRetriggerRule,
-) -> Optional[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+) -> AlertRetriggerRuleResponse | ErrorsList | None:
     """Creates an alert re-trigger rule
 
     Args:
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewAlertRetriggerRule,
-) -> Response[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+) -> Response[AlertRetriggerRuleResponse | ErrorsList]:
     """Creates an alert re-trigger rule
 
     Args:
@@ -144,7 +144,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewAlertRetriggerRule,
-) -> Optional[Union[AlertRetriggerRuleResponse, ErrorsList]]:
+) -> AlertRetriggerRuleResponse | ErrorsList | None:
     """Creates an alert re-trigger rule
 
     Args:

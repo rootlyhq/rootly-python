@@ -25,7 +25,7 @@ class NewDashboardPanelDataAttributes:
     """
 
     params: "NewDashboardPanelDataAttributesParams"
-    name: Union[None, Unset, str] = UNSET
+    name: None | Unset | str = UNSET
     position: Union["NewDashboardPanelDataAttributesPositionType0", None, Unset] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,13 +35,13 @@ class NewDashboardPanelDataAttributes:
 
         params = self.params.to_dict()
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        position: Union[None, Unset, dict[str, Any]]
+        position: None | Unset | dict[str, Any]
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, NewDashboardPanelDataAttributesPositionType0):
@@ -73,12 +73,12 @@ class NewDashboardPanelDataAttributes:
         d = dict(src_dict)
         params = NewDashboardPanelDataAttributesParams.from_dict(d.pop("params"))
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 

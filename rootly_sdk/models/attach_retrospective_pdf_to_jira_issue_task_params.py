@@ -31,19 +31,19 @@ class AttachRetrospectivePdfToJiraIssueTaskParams:
     """
 
     issue_id: str
-    task_type: Union[Unset, AttachRetrospectivePdfToJiraIssueTaskParamsTaskType] = UNSET
+    task_type: Unset | AttachRetrospectivePdfToJiraIssueTaskParamsTaskType = UNSET
     integration: Union[Unset, "AttachRetrospectivePdfToJiraIssueTaskParamsIntegration"] = UNSET
-    filename: Union[Unset, str] = UNSET
+    filename: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         issue_id = self.issue_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        integration: Union[Unset, dict[str, Any]] = UNSET
+        integration: Unset | dict[str, Any] = UNSET
         if not isinstance(self.integration, Unset):
             integration = self.integration.to_dict()
 
@@ -75,14 +75,14 @@ class AttachRetrospectivePdfToJiraIssueTaskParams:
         issue_id = d.pop("issue_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AttachRetrospectivePdfToJiraIssueTaskParamsTaskType]
+        task_type: Unset | AttachRetrospectivePdfToJiraIssueTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_attach_retrospective_pdf_to_jira_issue_task_params_task_type(_task_type)
 
         _integration = d.pop("integration", UNSET)
-        integration: Union[Unset, AttachRetrospectivePdfToJiraIssueTaskParamsIntegration]
+        integration: Unset | AttachRetrospectivePdfToJiraIssueTaskParamsIntegration
         if isinstance(_integration, Unset):
             integration = UNSET
         else:

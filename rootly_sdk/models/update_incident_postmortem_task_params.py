@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,25 +24,25 @@ class UpdateIncidentPostmortemTaskParams:
     """
 
     postmortem_id: str
-    task_type: Union[Unset, UpdateIncidentPostmortemTaskParamsTaskType] = UNSET
-    title: Union[None, Unset, str] = UNSET
-    status: Union[None, Unset, str] = UNSET
+    task_type: Unset | UpdateIncidentPostmortemTaskParamsTaskType = UNSET
+    title: None | Unset | str = UNSET
+    status: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         postmortem_id = self.postmortem_id
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        title: Union[None, Unset, str]
+        title: None | Unset | str
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         else:
@@ -70,27 +70,27 @@ class UpdateIncidentPostmortemTaskParams:
         postmortem_id = d.pop("postmortem_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdateIncidentPostmortemTaskParamsTaskType]
+        task_type: Unset | UpdateIncidentPostmortemTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_incident_postmortem_task_params_task_type(_task_type)
 
-        def _parse_title(data: object) -> Union[None, Unset, str]:
+        def _parse_title(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_status(data: object) -> Union[None, Unset, str]:
+        def _parse_status(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         status = _parse_status(d.pop("status", UNSET))
 

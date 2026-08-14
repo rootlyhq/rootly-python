@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | UserPhoneNumberResponse | None:
     if response.status_code == 201:
         response_201 = UserPhoneNumberResponse.from_dict(response.json())
 
@@ -61,8 +61,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +76,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewUserPhoneNumber,
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     """Creates a user phone number
 
      Creates a new user phone number from provided data
@@ -110,7 +110,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewUserPhoneNumber,
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> ErrorsList | UserPhoneNumberResponse | None:
     """Creates a user phone number
 
      Creates a new user phone number from provided data
@@ -139,7 +139,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewUserPhoneNumber,
-) -> Response[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> Response[ErrorsList | UserPhoneNumberResponse]:
     """Creates a user phone number
 
      Creates a new user phone number from provided data
@@ -171,7 +171,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewUserPhoneNumber,
-) -> Optional[Union[ErrorsList, UserPhoneNumberResponse]]:
+) -> ErrorsList | UserPhoneNumberResponse | None:
     """Creates a user phone number
 
      Creates a new user phone number from provided data

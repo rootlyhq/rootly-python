@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,18 +28,18 @@ class ChangeGoogleChatSpacePrivacyTaskParams:
     """
 
     space: "ChangeGoogleChatSpacePrivacyTaskParamsSpace"
-    task_type: Union[Unset, ChangeGoogleChatSpacePrivacyTaskParamsTaskType] = UNSET
-    audience: Union[None, Unset, str] = UNSET
+    task_type: Unset | ChangeGoogleChatSpacePrivacyTaskParamsTaskType = UNSET
+    audience: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         space = self.space.to_dict()
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        audience: Union[None, Unset, str]
+        audience: None | Unset | str
         if isinstance(self.audience, Unset):
             audience = UNSET
         else:
@@ -69,18 +69,18 @@ class ChangeGoogleChatSpacePrivacyTaskParams:
         space = ChangeGoogleChatSpacePrivacyTaskParamsSpace.from_dict(d.pop("space"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, ChangeGoogleChatSpacePrivacyTaskParamsTaskType]
+        task_type: Unset | ChangeGoogleChatSpacePrivacyTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_change_google_chat_space_privacy_task_params_task_type(_task_type)
 
-        def _parse_audience(data: object) -> Union[None, Unset, str]:
+        def _parse_audience(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         audience = _parse_audience(d.pop("audience", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,12 +27,12 @@ class AlertEventScheduleType0:
         updated_at (Union[Unset, str]):
     """
 
-    id: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    escalation_policies: Union[Unset, list["AlertEventScheduleType0EscalationPoliciesItem"]] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    id: Unset | str = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    escalation_policies: Unset | list["AlertEventScheduleType0EscalationPoliciesItem"] = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,13 +40,13 @@ class AlertEventScheduleType0:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        escalation_policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        escalation_policies: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.escalation_policies, Unset):
             escalation_policies = []
             for escalation_policies_item_data in self.escalation_policies:
@@ -86,12 +86,12 @@ class AlertEventScheduleType0:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

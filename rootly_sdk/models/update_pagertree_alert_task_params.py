@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -41,19 +41,19 @@ class UpdatePagertreeAlertTaskParams:
         incident (Union[Unset, bool]): Setting to true makes an alert a Pagertree incident
     """
 
-    task_type: Union[Unset, UpdatePagertreeAlertTaskParamsTaskType] = UNSET
-    pagertree_alert_id: Union[Unset, str] = UNSET
-    title: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    urgency: Union[Unset, UpdatePagertreeAlertTaskParamsUrgency] = UNSET
-    severity: Union[Unset, UpdatePagertreeAlertTaskParamsSeverity] = UNSET
-    teams: Union[Unset, list["UpdatePagertreeAlertTaskParamsTeamsItem"]] = UNSET
-    users: Union[Unset, list["UpdatePagertreeAlertTaskParamsUsersItem"]] = UNSET
-    incident: Union[Unset, bool] = UNSET
+    task_type: Unset | UpdatePagertreeAlertTaskParamsTaskType = UNSET
+    pagertree_alert_id: Unset | str = UNSET
+    title: Unset | str = UNSET
+    description: Unset | str = UNSET
+    urgency: Unset | UpdatePagertreeAlertTaskParamsUrgency = UNSET
+    severity: Unset | UpdatePagertreeAlertTaskParamsSeverity = UNSET
+    teams: Unset | list["UpdatePagertreeAlertTaskParamsTeamsItem"] = UNSET
+    users: Unset | list["UpdatePagertreeAlertTaskParamsUsersItem"] = UNSET
+    incident: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -63,22 +63,22 @@ class UpdatePagertreeAlertTaskParams:
 
         description = self.description
 
-        urgency: Union[Unset, str] = UNSET
+        urgency: Unset | str = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
-        severity: Union[Unset, str] = UNSET
+        severity: Unset | str = UNSET
         if not isinstance(self.severity, Unset):
             severity = self.severity
 
-        teams: Union[Unset, list[dict[str, Any]]] = UNSET
+        teams: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.teams, Unset):
             teams = []
             for teams_item_data in self.teams:
                 teams_item = teams_item_data.to_dict()
                 teams.append(teams_item)
 
-        users: Union[Unset, list[dict[str, Any]]] = UNSET
+        users: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
@@ -118,7 +118,7 @@ class UpdatePagertreeAlertTaskParams:
 
         d = dict(src_dict)
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, UpdatePagertreeAlertTaskParamsTaskType]
+        task_type: Unset | UpdatePagertreeAlertTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -131,14 +131,14 @@ class UpdatePagertreeAlertTaskParams:
         description = d.pop("description", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: Union[Unset, UpdatePagertreeAlertTaskParamsUrgency]
+        urgency: Unset | UpdatePagertreeAlertTaskParamsUrgency
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:
             urgency = check_update_pagertree_alert_task_params_urgency(_urgency)
 
         _severity = d.pop("severity", UNSET)
-        severity: Union[Unset, UpdatePagertreeAlertTaskParamsSeverity]
+        severity: Unset | UpdatePagertreeAlertTaskParamsSeverity
         if isinstance(_severity, Unset):
             severity = UNSET
         else:

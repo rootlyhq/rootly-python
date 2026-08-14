@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,8 +27,8 @@ class WebhooksDelivery:
     endpoint_id: str
     payload: str
     status: WebhooksDeliveryStatus
-    response_status: Union[None, int]
-    delivered_at: Union[None, str]
+    response_status: None | int
+    delivered_at: None | str
     created_at: str
     updated_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -40,10 +40,10 @@ class WebhooksDelivery:
 
         status: str = self.status
 
-        response_status: Union[None, int]
+        response_status: None | int
         response_status = self.response_status
 
-        delivered_at: Union[None, str]
+        delivered_at: None | str
         delivered_at = self.delivered_at
 
         created_at = self.created_at
@@ -75,17 +75,17 @@ class WebhooksDelivery:
 
         status = check_webhooks_delivery_status(d.pop("status"))
 
-        def _parse_response_status(data: object) -> Union[None, int]:
+        def _parse_response_status(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(Union[None, int], data)
+            return cast(None | int, data)
 
         response_status = _parse_response_status(d.pop("response_status"))
 
-        def _parse_delivered_at(data: object) -> Union[None, str]:
+        def _parse_delivered_at(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         delivered_at = _parse_delivered_at(d.pop("delivered_at"))
 

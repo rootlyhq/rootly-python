@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,13 +24,13 @@ class UserPhoneNumber:
         updated_at (Union[Unset, str]): Date of last update
     """
 
-    user_id: Union[Unset, int] = UNSET
-    phone: Union[Unset, str] = UNSET
-    primary: Union[Unset, bool] = UNSET
-    verified_at: Union[None, Unset, datetime.datetime] = UNSET
-    verification_attempts_today: Union[Unset, int] = UNSET
-    created_at: Union[Unset, str] = UNSET
-    updated_at: Union[Unset, str] = UNSET
+    user_id: Unset | int = UNSET
+    phone: Unset | str = UNSET
+    primary: Unset | bool = UNSET
+    verified_at: None | Unset | datetime.datetime = UNSET
+    verification_attempts_today: Unset | int = UNSET
+    created_at: Unset | str = UNSET
+    updated_at: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +40,7 @@ class UserPhoneNumber:
 
         primary = self.primary
 
-        verified_at: Union[None, Unset, str]
+        verified_at: None | Unset | str
         if isinstance(self.verified_at, Unset):
             verified_at = UNSET
         elif isinstance(self.verified_at, datetime.datetime):
@@ -83,7 +83,7 @@ class UserPhoneNumber:
 
         primary = d.pop("primary", UNSET)
 
-        def _parse_verified_at(data: object) -> Union[None, Unset, datetime.datetime]:
+        def _parse_verified_at(data: object) -> None | Unset | datetime.datetime:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -96,7 +96,7 @@ class UserPhoneNumber:
                 return verified_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.datetime], data)
+            return cast(None | Unset | datetime.datetime, data)
 
         verified_at = _parse_verified_at(d.pop("verified_at", UNSET))
 

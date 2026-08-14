@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -30,18 +30,18 @@ class UpdateIncidentPermissionSetDataAttributes:
             list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]]):
     """
 
-    slug: Union[None, Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    private_incident_permissions: Union[
-        Unset, list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]
-    ] = UNSET
-    public_incident_permissions: Union[
-        Unset, list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]
-    ] = UNSET
+    slug: None | Unset | str = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    private_incident_permissions: (
+        Unset | list[UpdateIncidentPermissionSetDataAttributesPrivateIncidentPermissionsItem]
+    ) = UNSET
+    public_incident_permissions: (
+        Unset | list[UpdateIncidentPermissionSetDataAttributesPublicIncidentPermissionsItem]
+    ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -49,20 +49,20 @@ class UpdateIncidentPermissionSetDataAttributes:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        private_incident_permissions: Union[Unset, list[str]] = UNSET
+        private_incident_permissions: Unset | list[str] = UNSET
         if not isinstance(self.private_incident_permissions, Unset):
             private_incident_permissions = []
             for private_incident_permissions_item_data in self.private_incident_permissions:
                 private_incident_permissions_item: str = private_incident_permissions_item_data
                 private_incident_permissions.append(private_incident_permissions_item)
 
-        public_incident_permissions: Union[Unset, list[str]] = UNSET
+        public_incident_permissions: Unset | list[str] = UNSET
         if not isinstance(self.public_incident_permissions, Unset):
             public_incident_permissions = []
             for public_incident_permissions_item_data in self.public_incident_permissions:
@@ -89,23 +89,23 @@ class UpdateIncidentPermissionSetDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

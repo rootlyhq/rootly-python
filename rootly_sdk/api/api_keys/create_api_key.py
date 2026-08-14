@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ApiKeyWithTokenResponse | ErrorsList | None:
     if response.status_code == 201:
         response_201 = ApiKeyWithTokenResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -111,7 +111,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+) -> ApiKeyWithTokenResponse | ErrorsList | None:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -148,7 +148,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -188,7 +188,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
+) -> ApiKeyWithTokenResponse | ErrorsList | None:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —

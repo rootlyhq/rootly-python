@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,7 +28,7 @@ class EscalationPolicyPathResponseData:
 
     id: str
     attributes: "EscalationPolicyPath"
-    type_: Union[Unset, EscalationPolicyPathResponseDataType] = UNSET
+    type_: Unset | EscalationPolicyPathResponseDataType = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +36,7 @@ class EscalationPolicyPathResponseData:
 
         attributes = self.attributes.to_dict()
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -63,7 +63,7 @@ class EscalationPolicyPathResponseData:
         attributes = EscalationPolicyPath.from_dict(d.pop("attributes"))
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, EscalationPolicyPathResponseDataType]
+        type_: Unset | EscalationPolicyPathResponseDataType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

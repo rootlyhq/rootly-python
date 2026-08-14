@@ -40,19 +40,19 @@ class Audit:
 
     event: str
     created_at: str
-    item_type: Union[Unset, AuditItemType] = UNSET
-    item_type_display: Union[None, Unset, str] = UNSET
+    item_type: Unset | AuditItemType = UNSET
+    item_type_display: None | Unset | str = UNSET
     object_: Union["AuditObjectType0", None, Unset] = UNSET
     object_changes: Union["AuditObjectChangesType0", None, Unset] = UNSET
-    user_id: Union[None, Unset, int] = UNSET
-    user_name: Union[None, Unset, str] = UNSET
-    user_email: Union[None, Unset, str] = UNSET
-    ip_address: Union[None, Unset, str] = UNSET
-    user_agent: Union[None, Unset, str] = UNSET
-    request_id: Union[None, Unset, str] = UNSET
-    session_id: Union[None, Unset, str] = UNSET
-    item_id: Union[None, Unset, str] = UNSET
-    id: Union[None, Unset, int] = UNSET
+    user_id: None | Unset | int = UNSET
+    user_name: None | Unset | str = UNSET
+    user_email: None | Unset | str = UNSET
+    ip_address: None | Unset | str = UNSET
+    user_agent: None | Unset | str = UNSET
+    request_id: None | Unset | str = UNSET
+    session_id: None | Unset | str = UNSET
+    item_id: None | Unset | str = UNSET
+    id: None | Unset | int = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,17 +63,17 @@ class Audit:
 
         created_at = self.created_at
 
-        item_type: Union[Unset, str] = UNSET
+        item_type: Unset | str = UNSET
         if not isinstance(self.item_type, Unset):
             item_type = self.item_type
 
-        item_type_display: Union[None, Unset, str]
+        item_type_display: None | Unset | str
         if isinstance(self.item_type_display, Unset):
             item_type_display = UNSET
         else:
             item_type_display = self.item_type_display
 
-        object_: Union[None, Unset, dict[str, Any]]
+        object_: None | Unset | dict[str, Any]
         if isinstance(self.object_, Unset):
             object_ = UNSET
         elif isinstance(self.object_, AuditObjectType0):
@@ -81,7 +81,7 @@ class Audit:
         else:
             object_ = self.object_
 
-        object_changes: Union[None, Unset, dict[str, Any]]
+        object_changes: None | Unset | dict[str, Any]
         if isinstance(self.object_changes, Unset):
             object_changes = UNSET
         elif isinstance(self.object_changes, AuditObjectChangesType0):
@@ -89,55 +89,55 @@ class Audit:
         else:
             object_changes = self.object_changes
 
-        user_id: Union[None, Unset, int]
+        user_id: None | Unset | int
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        user_name: Union[None, Unset, str]
+        user_name: None | Unset | str
         if isinstance(self.user_name, Unset):
             user_name = UNSET
         else:
             user_name = self.user_name
 
-        user_email: Union[None, Unset, str]
+        user_email: None | Unset | str
         if isinstance(self.user_email, Unset):
             user_email = UNSET
         else:
             user_email = self.user_email
 
-        ip_address: Union[None, Unset, str]
+        ip_address: None | Unset | str
         if isinstance(self.ip_address, Unset):
             ip_address = UNSET
         else:
             ip_address = self.ip_address
 
-        user_agent: Union[None, Unset, str]
+        user_agent: None | Unset | str
         if isinstance(self.user_agent, Unset):
             user_agent = UNSET
         else:
             user_agent = self.user_agent
 
-        request_id: Union[None, Unset, str]
+        request_id: None | Unset | str
         if isinstance(self.request_id, Unset):
             request_id = UNSET
         else:
             request_id = self.request_id
 
-        session_id: Union[None, Unset, str]
+        session_id: None | Unset | str
         if isinstance(self.session_id, Unset):
             session_id = UNSET
         else:
             session_id = self.session_id
 
-        item_id: Union[None, Unset, str]
+        item_id: None | Unset | str
         if isinstance(self.item_id, Unset):
             item_id = UNSET
         else:
             item_id = self.item_id
 
-        id: Union[None, Unset, int]
+        id: None | Unset | int
         if isinstance(self.id, Unset):
             id = UNSET
         else:
@@ -191,18 +191,18 @@ class Audit:
         created_at = d.pop("created_at")
 
         _item_type = d.pop("item_type", UNSET)
-        item_type: Union[Unset, AuditItemType]
+        item_type: Unset | AuditItemType
         if isinstance(_item_type, Unset):
             item_type = UNSET
         else:
             item_type = check_audit_item_type(_item_type)
 
-        def _parse_item_type_display(data: object) -> Union[None, Unset, str]:
+        def _parse_item_type_display(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         item_type_display = _parse_item_type_display(d.pop("item_type_display", UNSET))
 
@@ -240,84 +240,84 @@ class Audit:
 
         object_changes = _parse_object_changes(d.pop("object_changes", UNSET))
 
-        def _parse_user_id(data: object) -> Union[None, Unset, int]:
+        def _parse_user_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_user_name(data: object) -> Union[None, Unset, str]:
+        def _parse_user_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         user_name = _parse_user_name(d.pop("user_name", UNSET))
 
-        def _parse_user_email(data: object) -> Union[None, Unset, str]:
+        def _parse_user_email(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         user_email = _parse_user_email(d.pop("user_email", UNSET))
 
-        def _parse_ip_address(data: object) -> Union[None, Unset, str]:
+        def _parse_ip_address(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ip_address = _parse_ip_address(d.pop("ip_address", UNSET))
 
-        def _parse_user_agent(data: object) -> Union[None, Unset, str]:
+        def _parse_user_agent(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         user_agent = _parse_user_agent(d.pop("user_agent", UNSET))
 
-        def _parse_request_id(data: object) -> Union[None, Unset, str]:
+        def _parse_request_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         request_id = _parse_request_id(d.pop("request_id", UNSET))
 
-        def _parse_session_id(data: object) -> Union[None, Unset, str]:
+        def _parse_session_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         session_id = _parse_session_id(d.pop("session_id", UNSET))
 
-        def _parse_item_id(data: object) -> Union[None, Unset, str]:
+        def _parse_item_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         item_id = _parse_item_id(d.pop("item_id", UNSET))
 
-        def _parse_id(data: object) -> Union[None, Unset, int]:
+        def _parse_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         id = _parse_id(d.pop("id", UNSET))
 

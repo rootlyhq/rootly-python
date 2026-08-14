@@ -28,7 +28,7 @@ class OncallRelationshipsEscalationPolicy:
             OncallRelationshipsEscalationPolicyDataType0,
         )
 
-        data: Union[None, Unset, dict[str, Any]]
+        data: None | Unset | dict[str, Any]
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, OncallRelationshipsEscalationPolicyDataType0):

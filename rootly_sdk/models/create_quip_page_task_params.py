@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,18 +27,18 @@ class CreateQuipPageTaskParams:
     """
 
     title: str
-    task_type: Union[Unset, CreateQuipPageTaskParamsTaskType] = UNSET
-    post_mortem_template_id: Union[Unset, str] = UNSET
-    parent_folder_id: Union[Unset, str] = UNSET
-    content: Union[Unset, str] = UNSET
-    template_id: Union[Unset, str] = UNSET
-    mark_post_mortem_as_published: Union[Unset, bool] = True
+    task_type: Unset | CreateQuipPageTaskParamsTaskType = UNSET
+    post_mortem_template_id: Unset | str = UNSET
+    parent_folder_id: Unset | str = UNSET
+    content: Unset | str = UNSET
+    template_id: Unset | str = UNSET
+    mark_post_mortem_as_published: Unset | bool = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -80,7 +80,7 @@ class CreateQuipPageTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateQuipPageTaskParamsTaskType]
+        task_type: Unset | CreateQuipPageTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

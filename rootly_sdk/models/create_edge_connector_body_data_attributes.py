@@ -30,9 +30,9 @@ class CreateEdgeConnectorBodyDataAttributes:
     """
 
     name: str
-    description: Union[Unset, str] = UNSET
-    status: Union[Unset, CreateEdgeConnectorBodyDataAttributesStatus] = UNSET
-    subscriptions: Union[Unset, list[str]] = UNSET
+    description: Unset | str = UNSET
+    status: Unset | CreateEdgeConnectorBodyDataAttributesStatus = UNSET
+    subscriptions: Unset | list[str] = UNSET
     filters: Union[Unset, "CreateEdgeConnectorBodyDataAttributesFilters"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,15 +41,15 @@ class CreateEdgeConnectorBodyDataAttributes:
 
         description = self.description
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: Union[Unset, list[str]] = UNSET
+        subscriptions: Unset | list[str] = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
-        filters: Union[Unset, dict[str, Any]] = UNSET
+        filters: Unset | dict[str, Any] = UNSET
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
@@ -83,7 +83,7 @@ class CreateEdgeConnectorBodyDataAttributes:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, CreateEdgeConnectorBodyDataAttributesStatus]
+        status: Unset | CreateEdgeConnectorBodyDataAttributesStatus
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -92,7 +92,7 @@ class CreateEdgeConnectorBodyDataAttributes:
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
         _filters = d.pop("filters", UNSET)
-        filters: Union[Unset, CreateEdgeConnectorBodyDataAttributesFilters]
+        filters: Unset | CreateEdgeConnectorBodyDataAttributesFilters
         if isinstance(_filters, Unset):
             filters = UNSET
         else:

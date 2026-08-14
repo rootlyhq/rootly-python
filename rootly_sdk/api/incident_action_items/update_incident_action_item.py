@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ErrorsList, IncidentActionItemResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ErrorsList | IncidentActionItemResponse | None:
     if response.status_code == 200:
         response_200 = IncidentActionItemResponse.from_dict(response.json())
 
@@ -51,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ErrorsList, IncidentActionItemResponse]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorsList | IncidentActionItemResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentActionItem,
-) -> Response[Union[ErrorsList, IncidentActionItemResponse]]:
+) -> Response[ErrorsList | IncidentActionItemResponse]:
     """Update an incident action item
 
      Update a specific incident action item by id
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentActionItem,
-) -> Optional[Union[ErrorsList, IncidentActionItemResponse]]:
+) -> ErrorsList | IncidentActionItemResponse | None:
     """Update an incident action item
 
      Update a specific incident action item by id
@@ -129,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentActionItem,
-) -> Response[Union[ErrorsList, IncidentActionItemResponse]]:
+) -> Response[ErrorsList | IncidentActionItemResponse]:
     """Update an incident action item
 
      Update a specific incident action item by id
@@ -161,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentActionItem,
-) -> Optional[Union[ErrorsList, IncidentActionItemResponse]]:
+) -> ErrorsList | IncidentActionItemResponse | None:
     """Update an incident action item
 
      Update a specific incident action item by id

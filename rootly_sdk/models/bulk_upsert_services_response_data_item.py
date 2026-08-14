@@ -26,19 +26,19 @@ class BulkUpsertServicesResponseDataItem:
         attributes (Union[Unset, Service]):
     """
 
-    id: Union[Unset, str] = UNSET
-    type_: Union[Unset, BulkUpsertServicesResponseDataItemType] = UNSET
+    id: Unset | str = UNSET
+    type_: Unset | BulkUpsertServicesResponseDataItemType = UNSET
     attributes: Union[Unset, "Service"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
+        attributes: Unset | dict[str, Any] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -62,14 +62,14 @@ class BulkUpsertServicesResponseDataItem:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, BulkUpsertServicesResponseDataItemType]
+        type_: Unset | BulkUpsertServicesResponseDataItemType
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_bulk_upsert_services_response_data_item_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, Service]
+        attributes: Unset | Service
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

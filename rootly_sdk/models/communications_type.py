@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,18 +23,18 @@ class CommunicationsType:
     """
 
     name: str
-    color: Union[None, str]
+    color: None | str
     position: int
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        color: Union[None, str]
+        color: None | str
         color = self.color
 
         position = self.position
@@ -45,7 +45,7 @@ class CommunicationsType:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -74,10 +74,10 @@ class CommunicationsType:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_color(data: object) -> Union[None, str]:
+        def _parse_color(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         color = _parse_color(d.pop("color"))
 
@@ -89,12 +89,12 @@ class CommunicationsType:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

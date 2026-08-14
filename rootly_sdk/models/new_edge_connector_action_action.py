@@ -36,7 +36,7 @@ class NewEdgeConnectorActionAction:
 
         action_type: str = self.action_type
 
-        metadata: Union[Unset, dict[str, Any]] = UNSET
+        metadata: Unset | dict[str, Any] = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -63,7 +63,7 @@ class NewEdgeConnectorActionAction:
         action_type = check_new_edge_connector_action_action_action_type(d.pop("action_type"))
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: Union[Unset, NewEdgeConnectorActionActionMetadata]
+        metadata: Unset | NewEdgeConnectorActionActionMetadata
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

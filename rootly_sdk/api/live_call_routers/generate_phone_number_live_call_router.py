@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, cast
 
 import httpx
 
@@ -39,9 +39,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ErrorsList]]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
     if response.status_code == 200:
         response_200 = cast(Any, None)
         return response_200
@@ -57,9 +55,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ErrorsList]]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,7 +69,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     country_code: GeneratePhoneNumberLiveCallRouterCountryCode,
     phone_type: GeneratePhoneNumberLiveCallRouterPhoneType,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Generates a phone number for Live Call Router
 
      Generates a phone number for Live Call Router
@@ -107,7 +103,7 @@ def sync(
     client: AuthenticatedClient,
     country_code: GeneratePhoneNumberLiveCallRouterCountryCode,
     phone_type: GeneratePhoneNumberLiveCallRouterPhoneType,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Generates a phone number for Live Call Router
 
      Generates a phone number for Live Call Router
@@ -136,7 +132,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     country_code: GeneratePhoneNumberLiveCallRouterCountryCode,
     phone_type: GeneratePhoneNumberLiveCallRouterPhoneType,
-) -> Response[Union[Any, ErrorsList]]:
+) -> Response[Any | ErrorsList]:
     """Generates a phone number for Live Call Router
 
      Generates a phone number for Live Call Router
@@ -168,7 +164,7 @@ async def asyncio(
     client: AuthenticatedClient,
     country_code: GeneratePhoneNumberLiveCallRouterCountryCode,
     phone_type: GeneratePhoneNumberLiveCallRouterPhoneType,
-) -> Optional[Union[Any, ErrorsList]]:
+) -> Any | ErrorsList | None:
     """Generates a phone number for Live Call Router
 
      Generates a phone number for Live Call Router

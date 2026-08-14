@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -16,20 +16,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     escalation_policy_id: str,
     *,
-    include: Union[Unset, ListEscalationPathsInclude] = UNSET,
-    filterpath_type: Union[Unset, ListEscalationPathsFilterpathType] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_include: Union[Unset, str] = UNSET
+    json_include: Unset | str = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_filterpath_type: Union[Unset, str] = UNSET
+    json_filterpath_type: Unset | str = UNSET
     if not isinstance(filterpath_type, Unset):
         json_filterpath_type = filterpath_type
 
@@ -51,8 +51,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[EscalationPolicyPathList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> EscalationPolicyPathList | None:
     if response.status_code == 200:
         response_200 = EscalationPolicyPathList.from_dict(response.json())
 
@@ -65,7 +65,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[EscalationPolicyPathList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -79,10 +79,10 @@ def sync_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListEscalationPathsInclude] = UNSET,
-    filterpath_type: Union[Unset, ListEscalationPathsFilterpathType] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyPathList]:
     """List escalation paths
 
@@ -122,11 +122,11 @@ def sync(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListEscalationPathsInclude] = UNSET,
-    filterpath_type: Union[Unset, ListEscalationPathsFilterpathType] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[EscalationPolicyPathList]:
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> EscalationPolicyPathList | None:
     """List escalation paths
 
      List escalation paths
@@ -160,10 +160,10 @@ async def asyncio_detailed(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListEscalationPathsInclude] = UNSET,
-    filterpath_type: Union[Unset, ListEscalationPathsFilterpathType] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
 ) -> Response[EscalationPolicyPathList]:
     """List escalation paths
 
@@ -201,11 +201,11 @@ async def asyncio(
     escalation_policy_id: str,
     *,
     client: AuthenticatedClient,
-    include: Union[Unset, ListEscalationPathsInclude] = UNSET,
-    filterpath_type: Union[Unset, ListEscalationPathsFilterpathType] = UNSET,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-) -> Optional[EscalationPolicyPathList]:
+    include: Unset | ListEscalationPathsInclude = UNSET,
+    filterpath_type: Unset | ListEscalationPathsFilterpathType = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+) -> EscalationPolicyPathList | None:
     """List escalation paths
 
      List escalation paths

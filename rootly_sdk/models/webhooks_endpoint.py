@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -40,8 +40,8 @@ class WebhooksEndpoint:
     enabled: bool
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    custom_headers: Union[Unset, list["WebhooksEndpointCustomHeadersItem"]] = UNSET
+    slug: Unset | str = UNSET
+    custom_headers: Unset | list["WebhooksEndpointCustomHeadersItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,7 +64,7 @@ class WebhooksEndpoint:
 
         slug = self.slug
 
-        custom_headers: Union[Unset, list[dict[str, Any]]] = UNSET
+        custom_headers: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.custom_headers, Unset):
             custom_headers = []
             for custom_headers_item_data in self.custom_headers:

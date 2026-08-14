@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -32,14 +32,14 @@ class UpdateWebhooksEndpointDataAttributes:
             rejected.
     """
 
-    slug: Union[None, Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
-    event_types: Union[Unset, list[UpdateWebhooksEndpointDataAttributesEventTypesItem]] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    custom_headers: Union[Unset, list["UpdateWebhooksEndpointDataAttributesCustomHeadersItem"]] = UNSET
+    slug: None | Unset | str = UNSET
+    name: Unset | str = UNSET
+    event_types: Unset | list[UpdateWebhooksEndpointDataAttributesEventTypesItem] = UNSET
+    enabled: Unset | bool = UNSET
+    custom_headers: Unset | list["UpdateWebhooksEndpointDataAttributesCustomHeadersItem"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: Union[None, Unset, str]
+        slug: None | Unset | str
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -47,7 +47,7 @@ class UpdateWebhooksEndpointDataAttributes:
 
         name = self.name
 
-        event_types: Union[Unset, list[str]] = UNSET
+        event_types: Unset | list[str] = UNSET
         if not isinstance(self.event_types, Unset):
             event_types = []
             for event_types_item_data in self.event_types:
@@ -56,7 +56,7 @@ class UpdateWebhooksEndpointDataAttributes:
 
         enabled = self.enabled
 
-        custom_headers: Union[Unset, list[dict[str, Any]]] = UNSET
+        custom_headers: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.custom_headers, Unset):
             custom_headers = []
             for custom_headers_item_data in self.custom_headers:
@@ -87,12 +87,12 @@ class UpdateWebhooksEndpointDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> Union[None, Unset, str]:
+        def _parse_slug(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 

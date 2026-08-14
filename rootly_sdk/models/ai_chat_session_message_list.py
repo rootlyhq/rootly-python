@@ -32,7 +32,7 @@ class AiChatSessionMessageList:
             messages_item = messages_item_data.to_dict()
             messages.append(messages_item)
 
-        meta: Union[Unset, dict[str, Any]] = UNSET
+        meta: Unset | dict[str, Any] = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
@@ -62,7 +62,7 @@ class AiChatSessionMessageList:
             messages.append(messages_item)
 
         _meta = d.pop("meta", UNSET)
-        meta: Union[Unset, AiChatSessionMessageListMeta]
+        meta: Unset | AiChatSessionMessageListMeta
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

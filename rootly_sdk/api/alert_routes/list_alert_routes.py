@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,19 +12,19 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -66,8 +66,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[AlertRouteList, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> AlertRouteList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = AlertRouteList.from_dict(response.json())
 
@@ -85,8 +85,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AlertRouteList, ErrorsList]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[AlertRouteList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -98,20 +98,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Response[Union[AlertRouteList, ErrorsList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
 
      List all alert routes for the current team with filtering and pagination. **Note: This endpoint
@@ -167,20 +167,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[Union[AlertRouteList, ErrorsList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> AlertRouteList | ErrorsList | None:
     """List alert routes
 
      List all alert routes for the current team with filtering and pagination. **Note: This endpoint
@@ -231,20 +231,20 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Response[Union[AlertRouteList, ErrorsList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
 
      List all alert routes for the current team with filtering and pagination. **Note: This endpoint
@@ -298,20 +298,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Union[Unset, int] = UNSET,
-    pagesize: Union[Unset, int] = UNSET,
-    filtersearch: Union[Unset, str] = UNSET,
-    filtername: Union[Unset, str] = UNSET,
-    filterslugeq: Union[Unset, str] = UNSET,
-    filterslugnot_eq: Union[Unset, str] = UNSET,
-    filterslugin: Union[Unset, str] = UNSET,
-    filterslugnot_in: Union[Unset, str] = UNSET,
-    filternameeq: Union[Unset, str] = UNSET,
-    filternamenot_eq: Union[Unset, str] = UNSET,
-    filternamein: Union[Unset, str] = UNSET,
-    filternamenot_in: Union[Unset, str] = UNSET,
-    sort: Union[Unset, str] = UNSET,
-) -> Optional[Union[AlertRouteList, ErrorsList]]:
+    pagenumber: Unset | int = UNSET,
+    pagesize: Unset | int = UNSET,
+    filtersearch: Unset | str = UNSET,
+    filtername: Unset | str = UNSET,
+    filterslugeq: Unset | str = UNSET,
+    filterslugnot_eq: Unset | str = UNSET,
+    filterslugin: Unset | str = UNSET,
+    filterslugnot_in: Unset | str = UNSET,
+    filternameeq: Unset | str = UNSET,
+    filternamenot_eq: Unset | str = UNSET,
+    filternamein: Unset | str = UNSET,
+    filternamenot_in: Unset | str = UNSET,
+    sort: Unset | str = UNSET,
+) -> AlertRouteList | ErrorsList | None:
     """List alert routes
 
      List all alert routes for the current team with filtering and pagination. **Note: This endpoint

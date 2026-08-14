@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -46,11 +46,11 @@ class CatalogEntityChecklist:
     status: CatalogEntityChecklistStatus
     created_at: str
     updated_at: str
-    started_at: Union[None, Unset, str] = UNSET
-    completed_at: Union[None, Unset, str] = UNSET
-    completed_by_user_id: Union[None, Unset, str] = UNSET
-    checklist_fields: Union[None, Unset, list["CatalogEntityChecklistChecklistFieldsType0Item"]] = UNSET
-    checklist_owners: Union[None, Unset, list["CatalogEntityChecklistChecklistOwnersType0Item"]] = UNSET
+    started_at: None | Unset | str = UNSET
+    completed_at: None | Unset | str = UNSET
+    completed_by_user_id: None | Unset | str = UNSET
+    checklist_fields: None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"] = UNSET
+    checklist_owners: None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,25 +66,25 @@ class CatalogEntityChecklist:
 
         updated_at = self.updated_at
 
-        started_at: Union[None, Unset, str]
+        started_at: None | Unset | str
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        completed_at: Union[None, Unset, str]
+        completed_at: None | Unset | str
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
         else:
             completed_at = self.completed_at
 
-        completed_by_user_id: Union[None, Unset, str]
+        completed_by_user_id: None | Unset | str
         if isinstance(self.completed_by_user_id, Unset):
             completed_by_user_id = UNSET
         else:
             completed_by_user_id = self.completed_by_user_id
 
-        checklist_fields: Union[None, Unset, list[dict[str, Any]]]
+        checklist_fields: None | Unset | list[dict[str, Any]]
         if isinstance(self.checklist_fields, Unset):
             checklist_fields = UNSET
         elif isinstance(self.checklist_fields, list):
@@ -96,7 +96,7 @@ class CatalogEntityChecklist:
         else:
             checklist_fields = self.checklist_fields
 
-        checklist_owners: Union[None, Unset, list[dict[str, Any]]]
+        checklist_owners: None | Unset | list[dict[str, Any]]
         if isinstance(self.checklist_owners, Unset):
             checklist_owners = UNSET
         elif isinstance(self.checklist_owners, list):
@@ -155,36 +155,36 @@ class CatalogEntityChecklist:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_started_at(data: object) -> Union[None, Unset, str]:
+        def _parse_started_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_completed_at(data: object) -> Union[None, Unset, str]:
+        def _parse_completed_at(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        def _parse_completed_by_user_id(data: object) -> Union[None, Unset, str]:
+        def _parse_completed_by_user_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         completed_by_user_id = _parse_completed_by_user_id(d.pop("completed_by_user_id", UNSET))
 
         def _parse_checklist_fields(
             data: object,
-        ) -> Union[None, Unset, list["CatalogEntityChecklistChecklistFieldsType0Item"]]:
+        ) -> None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -204,13 +204,13 @@ class CatalogEntityChecklist:
                 return checklist_fields_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CatalogEntityChecklistChecklistFieldsType0Item"]], data)
+            return cast(None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"], data)
 
         checklist_fields = _parse_checklist_fields(d.pop("checklist_fields", UNSET))
 
         def _parse_checklist_owners(
             data: object,
-        ) -> Union[None, Unset, list["CatalogEntityChecklistChecklistOwnersType0Item"]]:
+        ) -> None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -230,7 +230,7 @@ class CatalogEntityChecklist:
                 return checklist_owners_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CatalogEntityChecklistChecklistOwnersType0Item"]], data)
+            return cast(None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"], data)
 
         checklist_owners = _parse_checklist_owners(d.pop("checklist_owners", UNSET))
 

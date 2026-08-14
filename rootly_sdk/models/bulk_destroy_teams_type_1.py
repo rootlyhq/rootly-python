@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -22,12 +22,12 @@ class BulkDestroyTeamsType1:
     """
 
     managed_by: BulkDestroyTeamsType1ManagedBy
-    keep_external_ids: Union[Unset, list[str]] = UNSET
+    keep_external_ids: Unset | list[str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         managed_by: str = self.managed_by
 
-        keep_external_ids: Union[Unset, list[str]] = UNSET
+        keep_external_ids: Unset | list[str] = UNSET
         if not isinstance(self.keep_external_ids, Unset):
             keep_external_ids = self.keep_external_ids
 

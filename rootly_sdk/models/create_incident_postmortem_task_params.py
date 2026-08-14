@@ -32,8 +32,8 @@ class CreateIncidentPostmortemTaskParams:
 
     incident_id: str
     title: str
-    task_type: Union[Unset, CreateIncidentPostmortemTaskParamsTaskType] = UNSET
-    status: Union[None, Unset, str] = UNSET
+    task_type: Unset | CreateIncidentPostmortemTaskParamsTaskType = UNSET
+    status: None | Unset | str = UNSET
     template: Union["CreateIncidentPostmortemTaskParamsTemplateType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -46,17 +46,17 @@ class CreateIncidentPostmortemTaskParams:
 
         title = self.title
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         else:
             status = self.status
 
-        template: Union[None, Unset, dict[str, Any]]
+        template: None | Unset | dict[str, Any]
         if isinstance(self.template, Unset):
             template = UNSET
         elif isinstance(self.template, CreateIncidentPostmortemTaskParamsTemplateType0):
@@ -93,18 +93,18 @@ class CreateIncidentPostmortemTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, CreateIncidentPostmortemTaskParamsTaskType]
+        task_type: Unset | CreateIncidentPostmortemTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_incident_postmortem_task_params_task_type(_task_type)
 
-        def _parse_status(data: object) -> Union[None, Unset, str]:
+        def _parse_status(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         status = _parse_status(d.pop("status", UNSET))
 

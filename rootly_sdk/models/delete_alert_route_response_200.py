@@ -24,7 +24,7 @@ class DeleteAlertRouteResponse200:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Union[Unset, dict[str, Any]] = UNSET
+        data: Unset | dict[str, Any] = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
@@ -42,7 +42,7 @@ class DeleteAlertRouteResponse200:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Union[Unset, DeleteAlertRouteResponse200Data]
+        data: Unset | DeleteAlertRouteResponse200Data
         if isinstance(_data, Unset):
             data = UNSET
         else:

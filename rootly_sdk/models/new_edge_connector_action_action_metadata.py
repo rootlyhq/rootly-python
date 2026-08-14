@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,30 +29,30 @@ class NewEdgeConnectorActionActionMetadata:
         parameters (Union[None, Unset, list['NewEdgeConnectorActionActionMetadataParametersType0Item']]):
     """
 
-    description: Union[None, Unset, str] = UNSET
-    timeout: Union[None, Unset, int] = UNSET
-    icon: Union[Unset, NewEdgeConnectorActionActionMetadataIcon] = UNSET
-    parameters: Union[None, Unset, list["NewEdgeConnectorActionActionMetadataParametersType0Item"]] = UNSET
+    description: None | Unset | str = UNSET
+    timeout: None | Unset | int = UNSET
+    icon: Unset | NewEdgeConnectorActionActionMetadataIcon = UNSET
+    parameters: None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        timeout: Union[None, Unset, int]
+        timeout: None | Unset | int
         if isinstance(self.timeout, Unset):
             timeout = UNSET
         else:
             timeout = self.timeout
 
-        icon: Union[Unset, str] = UNSET
+        icon: Unset | str = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        parameters: Union[None, Unset, list[dict[str, Any]]]
+        parameters: None | Unset | list[dict[str, Any]]
         if isinstance(self.parameters, Unset):
             parameters = UNSET
         elif isinstance(self.parameters, list):
@@ -86,26 +86,26 @@ class NewEdgeConnectorActionActionMetadata:
 
         d = dict(src_dict)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_timeout(data: object) -> Union[None, Unset, int]:
+        def _parse_timeout(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         timeout = _parse_timeout(d.pop("timeout", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: Union[Unset, NewEdgeConnectorActionActionMetadataIcon]
+        icon: Unset | NewEdgeConnectorActionActionMetadataIcon
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
@@ -113,7 +113,7 @@ class NewEdgeConnectorActionActionMetadata:
 
         def _parse_parameters(
             data: object,
-        ) -> Union[None, Unset, list["NewEdgeConnectorActionActionMetadataParametersType0Item"]]:
+        ) -> None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -133,7 +133,7 @@ class NewEdgeConnectorActionActionMetadata:
                 return parameters_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["NewEdgeConnectorActionActionMetadataParametersType0Item"]], data)
+            return cast(None | Unset | list["NewEdgeConnectorActionActionMetadataParametersType0Item"], data)
 
         parameters = _parse_parameters(d.pop("parameters", UNSET))
 

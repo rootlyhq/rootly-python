@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     if response.status_code == 200:
         response_200 = BulkUpsertServicesResponse.from_dict(response.json())
 
@@ -72,8 +72,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +86,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Response[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -121,7 +121,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Optional[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Response[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+) -> Response[BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"]]:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertServices,
-) -> Optional[Union[BulkUpsertServicesResponse, ErrorsList, Union["BulkUpsertServicesError", "ErrorsList"]]]:
+) -> BulkUpsertServicesResponse | ErrorsList | Union["BulkUpsertServicesError", "ErrorsList"] | None:
     """Bulk upsert Services
 
      Create or update multiple services by external_id. Only attributes present in the payload are

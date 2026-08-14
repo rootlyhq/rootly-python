@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -45,13 +45,13 @@ class FormField:
     default_values: list[str]
     created_at: str
     updated_at: str
-    value_kind_catalog_id: Union[None, Unset, str] = UNSET
-    slug: Union[Unset, str] = UNSET
-    resource_type: Union[Unset, FormFieldResourceType] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    show_on_incident_details: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    auto_set_by_catalog_property_id: Union[None, Unset, str] = UNSET
+    value_kind_catalog_id: None | Unset | str = UNSET
+    slug: Unset | str = UNSET
+    resource_type: Unset | FormFieldResourceType = UNSET
+    description: None | Unset | str = UNSET
+    show_on_incident_details: Unset | bool = UNSET
+    enabled: Unset | bool = UNSET
+    auto_set_by_catalog_property_id: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,7 +73,7 @@ class FormField:
 
         updated_at = self.updated_at
 
-        value_kind_catalog_id: Union[None, Unset, str]
+        value_kind_catalog_id: None | Unset | str
         if isinstance(self.value_kind_catalog_id, Unset):
             value_kind_catalog_id = UNSET
         else:
@@ -81,11 +81,11 @@ class FormField:
 
         slug = self.slug
 
-        resource_type: Union[Unset, str] = UNSET
+        resource_type: Unset | str = UNSET
         if not isinstance(self.resource_type, Unset):
             resource_type = self.resource_type
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -95,7 +95,7 @@ class FormField:
 
         enabled = self.enabled
 
-        auto_set_by_catalog_property_id: Union[None, Unset, str]
+        auto_set_by_catalog_property_id: None | Unset | str
         if isinstance(self.auto_set_by_catalog_property_id, Unset):
             auto_set_by_catalog_property_id = UNSET
         else:
@@ -154,30 +154,30 @@ class FormField:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_value_kind_catalog_id(data: object) -> Union[None, Unset, str]:
+        def _parse_value_kind_catalog_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
         slug = d.pop("slug", UNSET)
 
         _resource_type = d.pop("resource_type", UNSET)
-        resource_type: Union[Unset, FormFieldResourceType]
+        resource_type: Unset | FormFieldResourceType
         if isinstance(_resource_type, Unset):
             resource_type = UNSET
         else:
             resource_type = check_form_field_resource_type(_resource_type)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -185,12 +185,12 @@ class FormField:
 
         enabled = d.pop("enabled", UNSET)
 
-        def _parse_auto_set_by_catalog_property_id(data: object) -> Union[None, Unset, str]:
+        def _parse_auto_set_by_catalog_property_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         auto_set_by_catalog_property_id = _parse_auto_set_by_catalog_property_id(
             d.pop("auto_set_by_catalog_property_id", UNSET)

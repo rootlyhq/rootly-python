@@ -430,10 +430,10 @@ class NewWorkflowTaskDataAttributes:
         "UpdateVictorOpsIncidentTaskParams",
         "UpdateZendeskTicketTaskParams",
     ]
-    name: Union[Unset, str] = UNSET
-    position: Union[Unset, int] = UNSET
-    skip_on_failure: Union[Unset, bool] = UNSET
-    enabled: Union[Unset, bool] = True
+    name: Unset | str = UNSET
+    position: Unset | int = UNSET
+    skip_on_failure: Unset | bool = UNSET
+    enabled: Unset | bool = True
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.add_action_item_task_params import AddActionItemTaskParams

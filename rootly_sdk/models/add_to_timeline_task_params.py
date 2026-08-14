@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,21 +30,21 @@ class AddToTimelineTaskParams:
     """
 
     event: str
-    task_type: Union[Unset, AddToTimelineTaskParamsTaskType] = UNSET
-    url: Union[Unset, str] = UNSET
-    post_to_slack_channels: Union[Unset, list["AddToTimelineTaskParamsPostToSlackChannelsItem"]] = UNSET
+    task_type: Unset | AddToTimelineTaskParamsTaskType = UNSET
+    url: Unset | str = UNSET
+    post_to_slack_channels: Unset | list["AddToTimelineTaskParamsPostToSlackChannelsItem"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         event = self.event
 
-        task_type: Union[Unset, str] = UNSET
+        task_type: Unset | str = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         url = self.url
 
-        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
+        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -77,7 +77,7 @@ class AddToTimelineTaskParams:
         event = d.pop("event")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Union[Unset, AddToTimelineTaskParamsTaskType]
+        task_type: Unset | AddToTimelineTaskParamsTaskType
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

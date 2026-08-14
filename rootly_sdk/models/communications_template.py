@@ -33,22 +33,22 @@ class CommunicationsTemplate:
     """
 
     name: str
-    position: Union[None, int]
+    position: None | int
     created_at: str
     updated_at: str
-    slug: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    communication_type_id: Union[Unset, str] = UNSET
-    communication_template_stages: Union[
-        None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]
-    ] = UNSET
+    slug: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    communication_type_id: Unset | str = UNSET
+    communication_template_stages: None | Unset | list["CommunicationsTemplateCommunicationTemplateStagesType0Item"] = (
+        UNSET
+    )
     communication_type: Union[Unset, "CommunicationsTemplateCommunicationType"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        position: Union[None, int]
+        position: None | int
         position = self.position
 
         created_at = self.created_at
@@ -57,7 +57,7 @@ class CommunicationsTemplate:
 
         slug = self.slug
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -65,7 +65,7 @@ class CommunicationsTemplate:
 
         communication_type_id = self.communication_type_id
 
-        communication_template_stages: Union[None, Unset, list[dict[str, Any]]]
+        communication_template_stages: None | Unset | list[dict[str, Any]]
         if isinstance(self.communication_template_stages, Unset):
             communication_template_stages = UNSET
         elif isinstance(self.communication_template_stages, list):
@@ -77,7 +77,7 @@ class CommunicationsTemplate:
         else:
             communication_template_stages = self.communication_template_stages
 
-        communication_type: Union[Unset, dict[str, Any]] = UNSET
+        communication_type: Unset | dict[str, Any] = UNSET
         if not isinstance(self.communication_type, Unset):
             communication_type = self.communication_type.to_dict()
 
@@ -114,10 +114,10 @@ class CommunicationsTemplate:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_position(data: object) -> Union[None, int]:
+        def _parse_position(data: object) -> None | int:
             if data is None:
                 return data
-            return cast(Union[None, int], data)
+            return cast(None | int, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -127,12 +127,12 @@ class CommunicationsTemplate:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -140,7 +140,7 @@ class CommunicationsTemplate:
 
         def _parse_communication_template_stages(
             data: object,
-        ) -> Union[None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]]:
+        ) -> None | Unset | list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -162,14 +162,14 @@ class CommunicationsTemplate:
                 return communication_template_stages_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]], data)
+            return cast(None | Unset | list["CommunicationsTemplateCommunicationTemplateStagesType0Item"], data)
 
         communication_template_stages = _parse_communication_template_stages(
             d.pop("communication_template_stages", UNSET)
         )
 
         _communication_type = d.pop("communication_type", UNSET)
-        communication_type: Union[Unset, CommunicationsTemplateCommunicationType]
+        communication_type: Unset | CommunicationsTemplateCommunicationType
         if isinstance(_communication_type, Unset):
             communication_type = UNSET
         else:
