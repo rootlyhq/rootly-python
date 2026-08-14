@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -14,12 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetMeetingRecordingInclude | Unset = UNSET,
+    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,9 +27,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/meeting_recordings/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/meeting_recordings/{id}",
         "params": params,
     }
 
@@ -39,8 +35,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | MeetingRecordingResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     if response.status_code == 200:
         response_200 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -57,8 +53,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | MeetingRecordingResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +67,8 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetMeetingRecordingInclude | Unset = UNSET,
-) -> Response[Any | MeetingRecordingResponse]:
+    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -80,14 +76,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (GetMeetingRecordingInclude | Unset):
+        include (Union[Unset, GetMeetingRecordingInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -106,8 +102,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetMeetingRecordingInclude | Unset = UNSET,
-) -> Any | MeetingRecordingResponse | None:
+    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -115,14 +111,14 @@ def sync(
 
     Args:
         id (str):
-        include (GetMeetingRecordingInclude | Unset):
+        include (Union[Unset, GetMeetingRecordingInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return sync_detailed(
@@ -136,8 +132,8 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetMeetingRecordingInclude | Unset = UNSET,
-) -> Response[Any | MeetingRecordingResponse]:
+    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -145,14 +141,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (GetMeetingRecordingInclude | Unset):
+        include (Union[Unset, GetMeetingRecordingInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -169,8 +165,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetMeetingRecordingInclude | Unset = UNSET,
-) -> Any | MeetingRecordingResponse | None:
+    include: Union[Unset, GetMeetingRecordingInclude] = UNSET,
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Get a meeting recording
 
      Retrieve a single meeting recording session including its status, duration, speaker count, word
@@ -178,14 +174,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (GetMeetingRecordingInclude | Unset):
+        include (Union[Unset, GetMeetingRecordingInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -18,39 +16,48 @@ T = TypeVar("T", bound="UpdateCatalogDataAttributes")
 class UpdateCatalogDataAttributes:
     """
     Attributes:
-        name (str | Unset):
-        description (None | str | Unset):
-        icon (UpdateCatalogDataAttributesIcon | Unset):
-        position (int | None | Unset): Default position of the catalog when displayed in a list.
-        external_id (None | str | Unset): An external identifier for this catalog. Must be unique within the team.
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        name (Union[Unset, str]):
+        description (Union[None, Unset, str]):
+        icon (Union[Unset, UpdateCatalogDataAttributesIcon]):
+        position (Union[None, Unset, int]): Default position of the catalog when displayed in a list.
+        external_id (Union[None, Unset, str]): An external identifier for this catalog. Must be unique within the team.
     """
 
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    icon: UpdateCatalogDataAttributesIcon | Unset = UNSET
-    position: int | None | Unset = UNSET
-    external_id: None | str | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    icon: Union[Unset, UpdateCatalogDataAttributesIcon] = UNSET
+    position: Union[None, Unset, int] = UNSET
+    external_id: Union[None, Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
         name = self.name
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        icon: str | Unset = UNSET
+        icon: Union[Unset, str] = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        external_id: None | str | Unset
+        external_id: Union[None, Unset, str]
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
@@ -59,6 +66,8 @@ class UpdateCatalogDataAttributes:
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
         if description is not UNSET:
@@ -75,43 +84,54 @@ class UpdateCatalogDataAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        name = d.pop("name", UNSET)
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: UpdateCatalogDataAttributesIcon | Unset
+        icon: Union[Unset, UpdateCatalogDataAttributesIcon]
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_update_catalog_data_attributes_icon(_icon)
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         update_catalog_data_attributes = cls(
+            slug=slug,
             name=name,
             description=description,
             icon=icon,

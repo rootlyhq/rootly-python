@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,12 +12,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     user_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -33,9 +31,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/notification_rules".format(
-            user_id=quote(str(user_id), safe=""),
-        ),
+        "url": f"/v1/users/{user_id}/notification_rules",
         "params": params,
     }
 
@@ -43,8 +39,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> UserNotificationRuleList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[UserNotificationRuleList]:
     if response.status_code == 200:
         response_200 = UserNotificationRuleList.from_dict(response.json())
 
@@ -57,7 +53,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[UserNotificationRuleList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -71,10 +67,10 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[UserNotificationRuleList]:
     """List user notification rules
 
@@ -82,10 +78,10 @@ def sync_detailed(
 
     Args:
         user_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,21 +110,21 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> UserNotificationRuleList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[UserNotificationRuleList]:
     """List user notification rules
 
      List user notification rules
 
     Args:
         user_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -152,10 +148,10 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[UserNotificationRuleList]:
     """List user notification rules
 
@@ -163,10 +159,10 @@ async def asyncio_detailed(
 
     Args:
         user_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -193,21 +189,21 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> UserNotificationRuleList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[UserNotificationRuleList]:
     """List user notification rules
 
      List user notification rules
 
     Args:
         user_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

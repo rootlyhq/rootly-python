@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,18 +13,17 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     workflow_id: str,
     *,
-    include: ListWorkflowRunsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListWorkflowRunsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -47,16 +45,16 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/workflows/{workflow_id}/workflow_runs".format(
-            workflow_id=quote(str(workflow_id), safe=""),
-        ),
+        "url": f"/v1/workflows/{workflow_id}/workflow_runs",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowRunsList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[WorkflowRunsList]:
     if response.status_code == 200:
         response_200 = WorkflowRunsList.from_dict(response.json())
 
@@ -68,7 +66,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WorkflowRunsList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[WorkflowRunsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -81,13 +81,13 @@ def sync_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListWorkflowRunsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListWorkflowRunsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[WorkflowRunsList]:
     """List workflow runs
 
@@ -95,13 +95,13 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        include (ListWorkflowRunsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListWorkflowRunsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,27 +133,27 @@ def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListWorkflowRunsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> WorkflowRunsList | None:
+    include: Union[Unset, ListWorkflowRunsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[WorkflowRunsList]:
     """List workflow runs
 
      List workflow runs
 
     Args:
         workflow_id (str):
-        include (ListWorkflowRunsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListWorkflowRunsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -180,13 +180,13 @@ async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListWorkflowRunsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListWorkflowRunsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[WorkflowRunsList]:
     """List workflow runs
 
@@ -194,13 +194,13 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        include (ListWorkflowRunsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListWorkflowRunsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -230,27 +230,27 @@ async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListWorkflowRunsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> WorkflowRunsList | None:
+    include: Union[Unset, ListWorkflowRunsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[WorkflowRunsList]:
     """List workflow runs
 
      List workflow runs
 
     Args:
         workflow_id (str):
-        include (ListWorkflowRunsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListWorkflowRunsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

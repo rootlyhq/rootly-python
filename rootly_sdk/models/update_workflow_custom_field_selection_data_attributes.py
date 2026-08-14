@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -18,26 +16,26 @@ T = TypeVar("T", bound="UpdateWorkflowCustomFieldSelectionDataAttributes")
 class UpdateWorkflowCustomFieldSelectionDataAttributes:
     """
     Attributes:
-        incident_condition (UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition | Unset): The trigger
-            condition Default: 'ANY'.
-        values (list[str] | Unset):
-        selected_option_ids (list[int] | Unset):
+        incident_condition (Union[Unset, UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition]): The
+            trigger condition Default: 'ANY'.
+        values (Union[Unset, list[str]]):
+        selected_option_ids (Union[Unset, list[int]]):
     """
 
-    incident_condition: UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition | Unset = "ANY"
-    values: list[str] | Unset = UNSET
-    selected_option_ids: list[int] | Unset = UNSET
+    incident_condition: Union[Unset, UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition] = "ANY"
+    values: Union[Unset, list[str]] = UNSET
+    selected_option_ids: Union[Unset, list[int]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        incident_condition: str | Unset = UNSET
+        incident_condition: Union[Unset, str] = UNSET
         if not isinstance(self.incident_condition, Unset):
             incident_condition = self.incident_condition
 
-        values: list[str] | Unset = UNSET
+        values: Union[Unset, list[str]] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_option_ids: list[int] | Unset = UNSET
+        selected_option_ids: Union[Unset, list[int]] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
@@ -57,7 +55,7 @@ class UpdateWorkflowCustomFieldSelectionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _incident_condition = d.pop("incident_condition", UNSET)
-        incident_condition: UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition | Unset
+        incident_condition: Union[Unset, UpdateWorkflowCustomFieldSelectionDataAttributesIncidentCondition]
         if isinstance(_incident_condition, Unset):
             incident_condition = UNSET
         else:

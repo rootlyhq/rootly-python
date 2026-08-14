@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/events/{incident_event_id}/services".format(
-            incident_event_id=quote(str(incident_event_id), safe=""),
-        ),
+        "url": f"/v1/events/{incident_event_id}/services",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | IncidentEventServiceResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, IncidentEventServiceResponse]]:
     if response.status_code == 201:
         response_201 = IncidentEventServiceResponse.from_dict(response.json())
 
@@ -59,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | IncidentEventServiceResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, IncidentEventServiceResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventService,
-) -> Response[ErrorsList | IncidentEventServiceResponse]:
+) -> Response[Union[ErrorsList, IncidentEventServiceResponse]]:
     """Creates an incident event service
 
      Creates a new event service from provided data
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentEventServiceResponse]
+        Response[Union[ErrorsList, IncidentEventServiceResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventService,
-) -> ErrorsList | IncidentEventServiceResponse | None:
+) -> Optional[Union[ErrorsList, IncidentEventServiceResponse]]:
     """Creates an incident event service
 
      Creates a new event service from provided data
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentEventServiceResponse
+        Union[ErrorsList, IncidentEventServiceResponse]
     """
 
     return sync_detailed(
@@ -137,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventService,
-) -> Response[ErrorsList | IncidentEventServiceResponse]:
+) -> Response[Union[ErrorsList, IncidentEventServiceResponse]]:
     """Creates an incident event service
 
      Creates a new event service from provided data
@@ -151,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentEventServiceResponse]
+        Response[Union[ErrorsList, IncidentEventServiceResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -169,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewIncidentEventService,
-) -> ErrorsList | IncidentEventServiceResponse | None:
+) -> Optional[Union[ErrorsList, IncidentEventServiceResponse]]:
     """Creates an incident event service
 
      Creates a new event service from provided data
@@ -183,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentEventServiceResponse
+        Union[ErrorsList, IncidentEventServiceResponse]
     """
 
     return (

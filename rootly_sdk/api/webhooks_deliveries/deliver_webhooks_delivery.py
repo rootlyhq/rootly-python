@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,20 +12,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/webhooks/deliveries/{id}/deliver".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/webhooks/deliveries/{id}/deliver",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> WebhooksDeliveryResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[WebhooksDeliveryResponse]:
     if response.status_code == 200:
         response_200 = WebhooksDeliveryResponse.from_dict(response.json())
 
@@ -39,7 +35,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[WebhooksDeliveryResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -84,7 +80,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> WebhooksDeliveryResponse | None:
+) -> Optional[WebhooksDeliveryResponse]:
     """Retries a webhook delivery
 
      Retries a webhook delivery
@@ -139,7 +135,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> WebhooksDeliveryResponse | None:
+) -> Optional[WebhooksDeliveryResponse]:
     """Retries a webhook delivery
 
      Retries a webhook delivery

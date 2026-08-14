@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,25 +14,25 @@ class CommunicationsStage:
     """
     Attributes:
         name (str): The name of the communications stage
-        position (int | None): Position of the communications stage
+        position (Union[None, int]): Position of the communications stage
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the communications stage
-        description (None | str | Unset): The description of the communications stage
+        slug (Union[Unset, str]): The slug of the communications stage
+        description (Union[None, Unset, str]): The description of the communications stage
     """
 
     name: str
-    position: int | None
+    position: Union[None, int]
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        position: int | None
+        position: Union[None, int]
         position = self.position
 
         created_at = self.created_at
@@ -43,7 +41,7 @@ class CommunicationsStage:
 
         slug = self.slug
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -71,10 +69,10 @@ class CommunicationsStage:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_position(data: object) -> int | None:
+        def _parse_position(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         position = _parse_position(d.pop("position"))
 
@@ -84,12 +82,12 @@ class CommunicationsStage:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 

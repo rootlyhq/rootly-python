@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/custom_fields/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/custom_fields/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CustomFieldResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[CustomFieldResponse, ErrorsList]]:
     if response.status_code == 200:
         response_200 = CustomFieldResponse.from_dict(response.json())
 
@@ -54,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CustomFieldResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[CustomFieldResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateCustomField,
-) -> Response[CustomFieldResponse | ErrorsList]:
+) -> Response[Union[CustomFieldResponse, ErrorsList]]:
     """[DEPRECATED] Update a Custom Field
 
      [DEPRECATED] Use form field endpoints instead. Update a specific custom field by id
@@ -83,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CustomFieldResponse | ErrorsList]
+        Response[Union[CustomFieldResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateCustomField,
-) -> CustomFieldResponse | ErrorsList | None:
+) -> Optional[Union[CustomFieldResponse, ErrorsList]]:
     """[DEPRECATED] Update a Custom Field
 
      [DEPRECATED] Use form field endpoints instead. Update a specific custom field by id
@@ -117,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CustomFieldResponse | ErrorsList
+        Union[CustomFieldResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -132,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateCustomField,
-) -> Response[CustomFieldResponse | ErrorsList]:
+) -> Response[Union[CustomFieldResponse, ErrorsList]]:
     """[DEPRECATED] Update a Custom Field
 
      [DEPRECATED] Use form field endpoints instead. Update a specific custom field by id
@@ -146,7 +143,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CustomFieldResponse | ErrorsList]
+        Response[Union[CustomFieldResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateCustomField,
-) -> CustomFieldResponse | ErrorsList | None:
+) -> Optional[Union[CustomFieldResponse, ErrorsList]]:
     """[DEPRECATED] Update a Custom Field
 
      [DEPRECATED] Use form field endpoints instead. Update a specific custom field by id
@@ -178,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CustomFieldResponse | ErrorsList
+        Union[CustomFieldResponse, ErrorsList]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,30 +13,30 @@ T = TypeVar("T", bound="NewEscalationPolicyPathDataAttributesRulesItemType5TimeB
 class NewEscalationPolicyPathDataAttributesRulesItemType5TimeBlocksItem:
     """
     Attributes:
-        monday (bool | Unset):  Default: False.
-        tuesday (bool | Unset):  Default: False.
-        wednesday (bool | Unset):  Default: False.
-        thursday (bool | Unset):  Default: False.
-        friday (bool | Unset):  Default: False.
-        saturday (bool | Unset):  Default: False.
-        sunday (bool | Unset):  Default: False.
-        start_time (str | Unset): Formatted as HH:MM
-        end_time (str | Unset): Formatted as HH:MM
-        all_day (bool | Unset):  Default: False.
-        position (int | None | Unset):
+        monday (Union[Unset, bool]):  Default: False.
+        tuesday (Union[Unset, bool]):  Default: False.
+        wednesday (Union[Unset, bool]):  Default: False.
+        thursday (Union[Unset, bool]):  Default: False.
+        friday (Union[Unset, bool]):  Default: False.
+        saturday (Union[Unset, bool]):  Default: False.
+        sunday (Union[Unset, bool]):  Default: False.
+        start_time (Union[Unset, str]): Formatted as HH:MM
+        end_time (Union[Unset, str]): Formatted as HH:MM
+        all_day (Union[Unset, bool]):  Default: False.
+        position (Union[None, Unset, int]):
     """
 
-    monday: bool | Unset = False
-    tuesday: bool | Unset = False
-    wednesday: bool | Unset = False
-    thursday: bool | Unset = False
-    friday: bool | Unset = False
-    saturday: bool | Unset = False
-    sunday: bool | Unset = False
-    start_time: str | Unset = UNSET
-    end_time: str | Unset = UNSET
-    all_day: bool | Unset = False
-    position: int | None | Unset = UNSET
+    monday: Union[Unset, bool] = False
+    tuesday: Union[Unset, bool] = False
+    wednesday: Union[Unset, bool] = False
+    thursday: Union[Unset, bool] = False
+    friday: Union[Unset, bool] = False
+    saturday: Union[Unset, bool] = False
+    sunday: Union[Unset, bool] = False
+    start_time: Union[Unset, str] = UNSET
+    end_time: Union[Unset, str] = UNSET
+    all_day: Union[Unset, bool] = False
+    position: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,7 +60,7 @@ class NewEscalationPolicyPathDataAttributesRulesItemType5TimeBlocksItem:
 
         all_day = self.all_day
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -119,12 +117,12 @@ class NewEscalationPolicyPathDataAttributesRulesItemType5TimeBlocksItem:
 
         all_day = d.pop("all_day", UNSET)
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 

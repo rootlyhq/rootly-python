@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,29 +25,28 @@ class RedisClientTaskParams:
     Attributes:
         url (str):  Example: redis://redis-12345.c1.us-east-1-2.ec2.cloud.redislabs.com:12345.
         commands (str):
-        task_type (RedisClientTaskParamsTaskType | Unset):
-        event_url (str | Unset):
-        event_message (str | Unset):
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[RedisClientTaskParamsPostToSlackChannelsItem] | Unset):
+        task_type (Union[Unset, RedisClientTaskParamsTaskType]):
+        event_url (Union[Unset, str]):
+        event_message (Union[Unset, str]):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['RedisClientTaskParamsPostToSlackChannelsItem']]):
     """
 
     url: str
     commands: str
-    task_type: RedisClientTaskParamsTaskType | Unset = UNSET
-    event_url: str | Unset = UNSET
-    event_message: str | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[RedisClientTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Union[Unset, RedisClientTaskParamsTaskType] = UNSET
+    event_url: Union[Unset, str] = UNSET
+    event_message: Union[Unset, str] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["RedisClientTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         url = self.url
 
         commands = self.commands
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,7 +56,7 @@ class RedisClientTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -99,7 +96,7 @@ class RedisClientTaskParams:
         commands = d.pop("commands")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: RedisClientTaskParamsTaskType | Unset
+        task_type: Union[Unset, RedisClientTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -111,16 +108,14 @@ class RedisClientTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[RedisClientTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = RedisClientTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = RedisClientTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         redis_client_task_params = cls(
             url=url,

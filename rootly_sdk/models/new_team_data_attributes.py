@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -31,71 +29,77 @@ class NewTeamDataAttributes:
     """
     Attributes:
         name (str): The name of the team
-        description (None | str | Unset): The description of the team
-        notify_emails (list[str] | None | Unset): Emails to attach to the team
-        color (None | str | Unset): The hex color of the team
-        position (int | None | Unset): Position of the team
-        backstage_id (None | str | Unset): The Backstage entity id associated to this team. eg:
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]): The description of the team
+        public_description (Union[None, Unset, str]): The status page description of the team
+        notify_emails (Union[None, Unset, list[str]]): Emails to attach to the team
+        color (Union[None, Unset, str]): The hex color of the team
+        position (Union[None, Unset, int]): Position of the team
+        backstage_id (Union[None, Unset, str]): The Backstage entity id associated to this team. eg:
             :namespace/:kind/:entity_name
-        external_id (None | str | Unset): The external id associated to this team
-        pagerduty_id (None | str | Unset): The PagerDuty group id associated to this team
-        pagerduty_service_id (None | str | Unset): The PagerDuty service id associated to this team
-        opsgenie_id (None | str | Unset): The Opsgenie group id associated to this team
-        opsgenie_team_id (None | str | Unset): The Opsgenie team id associated to this team
-        victor_ops_id (None | str | Unset): The VictorOps group id associated to this team
-        pagertree_id (None | str | Unset): The PagerTree group id associated to this team
-        cortex_id (None | str | Unset): The Cortex group id associated to this team
-        service_now_ci_sys_id (None | str | Unset): The Service Now CI sys id associated to this team
-        user_ids (list[int] | None | Unset): The user ids of the members of this team.
-        admin_ids (list[int] | None | Unset): The user ids of the admins of this team. These users must also be present
-            in user_ids attribute.
-        alerts_email_enabled (bool | None | Unset): Enable alerts through email
-        alert_urgency_id (None | str | Unset): The alert urgency id of the team
-        slack_channels (list[NewTeamDataAttributesSlackChannelsType0Item] | None | Unset): Slack Channels associated
+        external_id (Union[None, Unset, str]): The external id associated to this team
+        pagerduty_id (Union[None, Unset, str]): The PagerDuty group id associated to this team
+        pagerduty_service_id (Union[None, Unset, str]): The PagerDuty service id associated to this team
+        opsgenie_id (Union[None, Unset, str]): The Opsgenie group id associated to this team
+        opsgenie_team_id (Union[None, Unset, str]): The Opsgenie team id associated to this team
+        victor_ops_id (Union[None, Unset, str]): The VictorOps group id associated to this team
+        pagertree_id (Union[None, Unset, str]): The PagerTree group id associated to this team
+        cortex_id (Union[None, Unset, str]): The Cortex group id associated to this team
+        service_now_ci_sys_id (Union[None, Unset, str]): The Service Now CI sys id associated to this team
+        user_ids (Union[None, Unset, list[int]]): The user ids of the members of this team.
+        admin_ids (Union[None, Unset, list[int]]): The user ids of the admins of this team. These users must also be
+            present in user_ids attribute.
+        alerts_email_enabled (Union[None, Unset, bool]): Enable alerts through email
+        alert_urgency_id (Union[None, Unset, str]): The alert urgency id of the team
+        slack_channels (Union[None, Unset, list['NewTeamDataAttributesSlackChannelsType0Item']]): Slack Channels
+            associated with this team
+        slack_aliases (Union[None, Unset, list['NewTeamDataAttributesSlackAliasesType0Item']]): Slack Aliases associated
             with this team
-        slack_aliases (list[NewTeamDataAttributesSlackAliasesType0Item] | None | Unset): Slack Aliases associated with
-            this team
-        alert_broadcast_enabled (bool | None | Unset): Enable alerts to be broadcasted to a specific channel
-        alert_broadcast_channel (NewTeamDataAttributesAlertBroadcastChannelType0 | None | Unset): Slack channel to
-            broadcast alerts to
-        incident_broadcast_enabled (bool | None | Unset): Enable incidents to be broadcasted to a specific channel
-        incident_broadcast_channel (NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset): Slack channel to
-            broadcast incidents to
-        auto_add_members_when_attached (bool | None | Unset): Auto add members to incident channel when team is attached
-        auto_add_members_scope (NewTeamDataAttributesAutoAddMembersScope | Unset): Visibility-scoped auto-add behavior.
-            Only present when the `enable_scoped_incident_channel_auto_add` feature flag is on for the organization. When
-            set, it overrides `auto_add_members_when_attached`.
-        properties (list[NewTeamDataAttributesPropertiesItem] | Unset): Array of property values for this team.
+        alert_broadcast_enabled (Union[None, Unset, bool]): Enable alerts to be broadcasted to a specific channel
+        alert_broadcast_channel (Union['NewTeamDataAttributesAlertBroadcastChannelType0', None, Unset]): Slack channel
+            to broadcast alerts to
+        incident_broadcast_enabled (Union[None, Unset, bool]): Enable incidents to be broadcasted to a specific channel
+        incident_broadcast_channel (Union['NewTeamDataAttributesIncidentBroadcastChannelType0', None, Unset]): Slack
+            channel to broadcast incidents to
+        auto_add_members_when_attached (Union[None, Unset, bool]): Auto add members to incident channel when team is
+            attached
+        auto_add_members_scope (Union[Unset, NewTeamDataAttributesAutoAddMembersScope]): Visibility-scoped auto-add
+            behavior. Only present when the `enable_scoped_incident_channel_auto_add` feature flag is on for the
+            organization. When set, it overrides `auto_add_members_when_attached`.
+        properties (Union[Unset, list['NewTeamDataAttributesPropertiesItem']]): Array of property values for this team.
     """
 
     name: str
-    description: None | str | Unset = UNSET
-    notify_emails: list[str] | None | Unset = UNSET
-    color: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
-    backstage_id: None | str | Unset = UNSET
-    external_id: None | str | Unset = UNSET
-    pagerduty_id: None | str | Unset = UNSET
-    pagerduty_service_id: None | str | Unset = UNSET
-    opsgenie_id: None | str | Unset = UNSET
-    opsgenie_team_id: None | str | Unset = UNSET
-    victor_ops_id: None | str | Unset = UNSET
-    pagertree_id: None | str | Unset = UNSET
-    cortex_id: None | str | Unset = UNSET
-    service_now_ci_sys_id: None | str | Unset = UNSET
-    user_ids: list[int] | None | Unset = UNSET
-    admin_ids: list[int] | None | Unset = UNSET
-    alerts_email_enabled: bool | None | Unset = UNSET
-    alert_urgency_id: None | str | Unset = UNSET
-    slack_channels: list[NewTeamDataAttributesSlackChannelsType0Item] | None | Unset = UNSET
-    slack_aliases: list[NewTeamDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
-    alert_broadcast_enabled: bool | None | Unset = UNSET
-    alert_broadcast_channel: NewTeamDataAttributesAlertBroadcastChannelType0 | None | Unset = UNSET
-    incident_broadcast_enabled: bool | None | Unset = UNSET
-    incident_broadcast_channel: NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset = UNSET
-    auto_add_members_when_attached: bool | None | Unset = UNSET
-    auto_add_members_scope: NewTeamDataAttributesAutoAddMembersScope | Unset = UNSET
-    properties: list[NewTeamDataAttributesPropertiesItem] | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    public_description: Union[None, Unset, str] = UNSET
+    notify_emails: Union[None, Unset, list[str]] = UNSET
+    color: Union[None, Unset, str] = UNSET
+    position: Union[None, Unset, int] = UNSET
+    backstage_id: Union[None, Unset, str] = UNSET
+    external_id: Union[None, Unset, str] = UNSET
+    pagerduty_id: Union[None, Unset, str] = UNSET
+    pagerduty_service_id: Union[None, Unset, str] = UNSET
+    opsgenie_id: Union[None, Unset, str] = UNSET
+    opsgenie_team_id: Union[None, Unset, str] = UNSET
+    victor_ops_id: Union[None, Unset, str] = UNSET
+    pagertree_id: Union[None, Unset, str] = UNSET
+    cortex_id: Union[None, Unset, str] = UNSET
+    service_now_ci_sys_id: Union[None, Unset, str] = UNSET
+    user_ids: Union[None, Unset, list[int]] = UNSET
+    admin_ids: Union[None, Unset, list[int]] = UNSET
+    alerts_email_enabled: Union[None, Unset, bool] = UNSET
+    alert_urgency_id: Union[None, Unset, str] = UNSET
+    slack_channels: Union[None, Unset, list["NewTeamDataAttributesSlackChannelsType0Item"]] = UNSET
+    slack_aliases: Union[None, Unset, list["NewTeamDataAttributesSlackAliasesType0Item"]] = UNSET
+    alert_broadcast_enabled: Union[None, Unset, bool] = UNSET
+    alert_broadcast_channel: Union["NewTeamDataAttributesAlertBroadcastChannelType0", None, Unset] = UNSET
+    incident_broadcast_enabled: Union[None, Unset, bool] = UNSET
+    incident_broadcast_channel: Union["NewTeamDataAttributesIncidentBroadcastChannelType0", None, Unset] = UNSET
+    auto_add_members_when_attached: Union[None, Unset, bool] = UNSET
+    auto_add_members_scope: Union[Unset, NewTeamDataAttributesAutoAddMembersScope] = UNSET
+    properties: Union[Unset, list["NewTeamDataAttributesPropertiesItem"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_team_data_attributes_alert_broadcast_channel_type_0 import (
@@ -107,13 +111,25 @@ class NewTeamDataAttributes:
 
         name = self.name
 
-        description: None | str | Unset
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        notify_emails: list[str] | None | Unset
+        public_description: Union[None, Unset, str]
+        if isinstance(self.public_description, Unset):
+            public_description = UNSET
+        else:
+            public_description = self.public_description
+
+        notify_emails: Union[None, Unset, list[str]]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -122,79 +138,79 @@ class NewTeamDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        color: None | str | Unset
+        color: Union[None, Unset, str]
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        backstage_id: None | str | Unset
+        backstage_id: Union[None, Unset, str]
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: None | str | Unset
+        external_id: Union[None, Unset, str]
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        pagerduty_id: None | str | Unset
+        pagerduty_id: Union[None, Unset, str]
         if isinstance(self.pagerduty_id, Unset):
             pagerduty_id = UNSET
         else:
             pagerduty_id = self.pagerduty_id
 
-        pagerduty_service_id: None | str | Unset
+        pagerduty_service_id: Union[None, Unset, str]
         if isinstance(self.pagerduty_service_id, Unset):
             pagerduty_service_id = UNSET
         else:
             pagerduty_service_id = self.pagerduty_service_id
 
-        opsgenie_id: None | str | Unset
+        opsgenie_id: Union[None, Unset, str]
         if isinstance(self.opsgenie_id, Unset):
             opsgenie_id = UNSET
         else:
             opsgenie_id = self.opsgenie_id
 
-        opsgenie_team_id: None | str | Unset
+        opsgenie_team_id: Union[None, Unset, str]
         if isinstance(self.opsgenie_team_id, Unset):
             opsgenie_team_id = UNSET
         else:
             opsgenie_team_id = self.opsgenie_team_id
 
-        victor_ops_id: None | str | Unset
+        victor_ops_id: Union[None, Unset, str]
         if isinstance(self.victor_ops_id, Unset):
             victor_ops_id = UNSET
         else:
             victor_ops_id = self.victor_ops_id
 
-        pagertree_id: None | str | Unset
+        pagertree_id: Union[None, Unset, str]
         if isinstance(self.pagertree_id, Unset):
             pagertree_id = UNSET
         else:
             pagertree_id = self.pagertree_id
 
-        cortex_id: None | str | Unset
+        cortex_id: Union[None, Unset, str]
         if isinstance(self.cortex_id, Unset):
             cortex_id = UNSET
         else:
             cortex_id = self.cortex_id
 
-        service_now_ci_sys_id: None | str | Unset
+        service_now_ci_sys_id: Union[None, Unset, str]
         if isinstance(self.service_now_ci_sys_id, Unset):
             service_now_ci_sys_id = UNSET
         else:
             service_now_ci_sys_id = self.service_now_ci_sys_id
 
-        user_ids: list[int] | None | Unset
+        user_ids: Union[None, Unset, list[int]]
         if isinstance(self.user_ids, Unset):
             user_ids = UNSET
         elif isinstance(self.user_ids, list):
@@ -203,7 +219,7 @@ class NewTeamDataAttributes:
         else:
             user_ids = self.user_ids
 
-        admin_ids: list[int] | None | Unset
+        admin_ids: Union[None, Unset, list[int]]
         if isinstance(self.admin_ids, Unset):
             admin_ids = UNSET
         elif isinstance(self.admin_ids, list):
@@ -212,19 +228,19 @@ class NewTeamDataAttributes:
         else:
             admin_ids = self.admin_ids
 
-        alerts_email_enabled: bool | None | Unset
+        alerts_email_enabled: Union[None, Unset, bool]
         if isinstance(self.alerts_email_enabled, Unset):
             alerts_email_enabled = UNSET
         else:
             alerts_email_enabled = self.alerts_email_enabled
 
-        alert_urgency_id: None | str | Unset
+        alert_urgency_id: Union[None, Unset, str]
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        slack_channels: list[dict[str, Any]] | None | Unset
+        slack_channels: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -236,7 +252,7 @@ class NewTeamDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: list[dict[str, Any]] | None | Unset
+        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -248,13 +264,13 @@ class NewTeamDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
-        alert_broadcast_enabled: bool | None | Unset
+        alert_broadcast_enabled: Union[None, Unset, bool]
         if isinstance(self.alert_broadcast_enabled, Unset):
             alert_broadcast_enabled = UNSET
         else:
             alert_broadcast_enabled = self.alert_broadcast_enabled
 
-        alert_broadcast_channel: dict[str, Any] | None | Unset
+        alert_broadcast_channel: Union[None, Unset, dict[str, Any]]
         if isinstance(self.alert_broadcast_channel, Unset):
             alert_broadcast_channel = UNSET
         elif isinstance(self.alert_broadcast_channel, NewTeamDataAttributesAlertBroadcastChannelType0):
@@ -262,13 +278,13 @@ class NewTeamDataAttributes:
         else:
             alert_broadcast_channel = self.alert_broadcast_channel
 
-        incident_broadcast_enabled: bool | None | Unset
+        incident_broadcast_enabled: Union[None, Unset, bool]
         if isinstance(self.incident_broadcast_enabled, Unset):
             incident_broadcast_enabled = UNSET
         else:
             incident_broadcast_enabled = self.incident_broadcast_enabled
 
-        incident_broadcast_channel: dict[str, Any] | None | Unset
+        incident_broadcast_channel: Union[None, Unset, dict[str, Any]]
         if isinstance(self.incident_broadcast_channel, Unset):
             incident_broadcast_channel = UNSET
         elif isinstance(self.incident_broadcast_channel, NewTeamDataAttributesIncidentBroadcastChannelType0):
@@ -276,17 +292,17 @@ class NewTeamDataAttributes:
         else:
             incident_broadcast_channel = self.incident_broadcast_channel
 
-        auto_add_members_when_attached: bool | None | Unset
+        auto_add_members_when_attached: Union[None, Unset, bool]
         if isinstance(self.auto_add_members_when_attached, Unset):
             auto_add_members_when_attached = UNSET
         else:
             auto_add_members_when_attached = self.auto_add_members_when_attached
 
-        auto_add_members_scope: str | Unset = UNSET
+        auto_add_members_scope: Union[Unset, str] = UNSET
         if not isinstance(self.auto_add_members_scope, Unset):
             auto_add_members_scope = self.auto_add_members_scope
 
-        properties: list[dict[str, Any]] | Unset = UNSET
+        properties: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -300,8 +316,12 @@ class NewTeamDataAttributes:
                 "name": name,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
+        if public_description is not UNSET:
+            field_dict["public_description"] = public_description
         if notify_emails is not UNSET:
             field_dict["notify_emails"] = notify_emails
         if color is not UNSET:
@@ -376,16 +396,34 @@ class NewTeamDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_notify_emails(data: object) -> list[str] | None | Unset:
+        def _parse_public_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        public_description = _parse_public_description(d.pop("public_description", UNSET))
+
+        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -396,121 +434,121 @@ class NewTeamDataAttributes:
                 notify_emails_type_0 = cast(list[str], data)
 
                 return notify_emails_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
-        def _parse_color(data: object) -> None | str | Unset:
+        def _parse_color(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_backstage_id(data: object) -> None | str | Unset:
+        def _parse_backstage_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_pagerduty_id(data: object) -> None | str | Unset:
+        def _parse_pagerduty_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         pagerduty_id = _parse_pagerduty_id(d.pop("pagerduty_id", UNSET))
 
-        def _parse_pagerduty_service_id(data: object) -> None | str | Unset:
+        def _parse_pagerduty_service_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         pagerduty_service_id = _parse_pagerduty_service_id(d.pop("pagerduty_service_id", UNSET))
 
-        def _parse_opsgenie_id(data: object) -> None | str | Unset:
+        def _parse_opsgenie_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         opsgenie_id = _parse_opsgenie_id(d.pop("opsgenie_id", UNSET))
 
-        def _parse_opsgenie_team_id(data: object) -> None | str | Unset:
+        def _parse_opsgenie_team_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         opsgenie_team_id = _parse_opsgenie_team_id(d.pop("opsgenie_team_id", UNSET))
 
-        def _parse_victor_ops_id(data: object) -> None | str | Unset:
+        def _parse_victor_ops_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         victor_ops_id = _parse_victor_ops_id(d.pop("victor_ops_id", UNSET))
 
-        def _parse_pagertree_id(data: object) -> None | str | Unset:
+        def _parse_pagertree_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         pagertree_id = _parse_pagertree_id(d.pop("pagertree_id", UNSET))
 
-        def _parse_cortex_id(data: object) -> None | str | Unset:
+        def _parse_cortex_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         cortex_id = _parse_cortex_id(d.pop("cortex_id", UNSET))
 
-        def _parse_service_now_ci_sys_id(data: object) -> None | str | Unset:
+        def _parse_service_now_ci_sys_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         service_now_ci_sys_id = _parse_service_now_ci_sys_id(d.pop("service_now_ci_sys_id", UNSET))
 
-        def _parse_user_ids(data: object) -> list[int] | None | Unset:
+        def _parse_user_ids(data: object) -> Union[None, Unset, list[int]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -521,13 +559,13 @@ class NewTeamDataAttributes:
                 user_ids_type_0 = cast(list[int], data)
 
                 return user_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[int] | None | Unset, data)
+            return cast(Union[None, Unset, list[int]], data)
 
         user_ids = _parse_user_ids(d.pop("user_ids", UNSET))
 
-        def _parse_admin_ids(data: object) -> list[int] | None | Unset:
+        def _parse_admin_ids(data: object) -> Union[None, Unset, list[int]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -538,31 +576,33 @@ class NewTeamDataAttributes:
                 admin_ids_type_0 = cast(list[int], data)
 
                 return admin_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[int] | None | Unset, data)
+            return cast(Union[None, Unset, list[int]], data)
 
         admin_ids = _parse_admin_ids(d.pop("admin_ids", UNSET))
 
-        def _parse_alerts_email_enabled(data: object) -> bool | None | Unset:
+        def _parse_alerts_email_enabled(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         alerts_email_enabled = _parse_alerts_email_enabled(d.pop("alerts_email_enabled", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> None | str | Unset:
+        def _parse_alert_urgency_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
-        def _parse_slack_channels(data: object) -> list[NewTeamDataAttributesSlackChannelsType0Item] | None | Unset:
+        def _parse_slack_channels(
+            data: object,
+        ) -> Union[None, Unset, list["NewTeamDataAttributesSlackChannelsType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -580,13 +620,15 @@ class NewTeamDataAttributes:
                     slack_channels_type_0.append(slack_channels_type_0_item)
 
                 return slack_channels_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[NewTeamDataAttributesSlackChannelsType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["NewTeamDataAttributesSlackChannelsType0Item"]], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
-        def _parse_slack_aliases(data: object) -> list[NewTeamDataAttributesSlackAliasesType0Item] | None | Unset:
+        def _parse_slack_aliases(
+            data: object,
+        ) -> Union[None, Unset, list["NewTeamDataAttributesSlackAliasesType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -604,24 +646,24 @@ class NewTeamDataAttributes:
                     slack_aliases_type_0.append(slack_aliases_type_0_item)
 
                 return slack_aliases_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[NewTeamDataAttributesSlackAliasesType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["NewTeamDataAttributesSlackAliasesType0Item"]], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
-        def _parse_alert_broadcast_enabled(data: object) -> bool | None | Unset:
+        def _parse_alert_broadcast_enabled(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         alert_broadcast_enabled = _parse_alert_broadcast_enabled(d.pop("alert_broadcast_enabled", UNSET))
 
         def _parse_alert_broadcast_channel(
             data: object,
-        ) -> NewTeamDataAttributesAlertBroadcastChannelType0 | None | Unset:
+        ) -> Union["NewTeamDataAttributesAlertBroadcastChannelType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -632,24 +674,24 @@ class NewTeamDataAttributes:
                 alert_broadcast_channel_type_0 = NewTeamDataAttributesAlertBroadcastChannelType0.from_dict(data)
 
                 return alert_broadcast_channel_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(NewTeamDataAttributesAlertBroadcastChannelType0 | None | Unset, data)
+            return cast(Union["NewTeamDataAttributesAlertBroadcastChannelType0", None, Unset], data)
 
         alert_broadcast_channel = _parse_alert_broadcast_channel(d.pop("alert_broadcast_channel", UNSET))
 
-        def _parse_incident_broadcast_enabled(data: object) -> bool | None | Unset:
+        def _parse_incident_broadcast_enabled(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         incident_broadcast_enabled = _parse_incident_broadcast_enabled(d.pop("incident_broadcast_enabled", UNSET))
 
         def _parse_incident_broadcast_channel(
             data: object,
-        ) -> NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset:
+        ) -> Union["NewTeamDataAttributesIncidentBroadcastChannelType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -660,42 +702,42 @@ class NewTeamDataAttributes:
                 incident_broadcast_channel_type_0 = NewTeamDataAttributesIncidentBroadcastChannelType0.from_dict(data)
 
                 return incident_broadcast_channel_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(NewTeamDataAttributesIncidentBroadcastChannelType0 | None | Unset, data)
+            return cast(Union["NewTeamDataAttributesIncidentBroadcastChannelType0", None, Unset], data)
 
         incident_broadcast_channel = _parse_incident_broadcast_channel(d.pop("incident_broadcast_channel", UNSET))
 
-        def _parse_auto_add_members_when_attached(data: object) -> bool | None | Unset:
+        def _parse_auto_add_members_when_attached(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         auto_add_members_when_attached = _parse_auto_add_members_when_attached(
             d.pop("auto_add_members_when_attached", UNSET)
         )
 
         _auto_add_members_scope = d.pop("auto_add_members_scope", UNSET)
-        auto_add_members_scope: NewTeamDataAttributesAutoAddMembersScope | Unset
+        auto_add_members_scope: Union[Unset, NewTeamDataAttributesAutoAddMembersScope]
         if isinstance(_auto_add_members_scope, Unset):
             auto_add_members_scope = UNSET
         else:
             auto_add_members_scope = check_new_team_data_attributes_auto_add_members_scope(_auto_add_members_scope)
 
+        properties = []
         _properties = d.pop("properties", UNSET)
-        properties: list[NewTeamDataAttributesPropertiesItem] | Unset = UNSET
-        if _properties is not UNSET:
-            properties = []
-            for properties_item_data in _properties:
-                properties_item = NewTeamDataAttributesPropertiesItem.from_dict(properties_item_data)
+        for properties_item_data in _properties or []:
+            properties_item = NewTeamDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-                properties.append(properties_item)
+            properties.append(properties_item)
 
         new_team_data_attributes = cls(
             name=name,
+            slug=slug,
             description=description,
+            public_description=public_description,
             notify_emails=notify_emails,
             color=color,
             position=position,

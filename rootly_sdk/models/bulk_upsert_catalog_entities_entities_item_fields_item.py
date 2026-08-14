@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +15,14 @@ class BulkUpsertCatalogEntitiesEntitiesItemFieldsItem:
 
     Attributes:
         value (str): The value for this field
-        catalog_field_id (str | Unset): UUID, slug, or external_id of the catalog field (required if catalog_property_id
-            is absent)
-        catalog_property_id (str | Unset): Alias for catalog_field_id (required if catalog_field_id is absent)
+        catalog_field_id (Union[Unset, str]): UUID, slug, or external_id of the catalog field (required if
+            catalog_property_id is absent)
+        catalog_property_id (Union[Unset, str]): Alias for catalog_field_id (required if catalog_field_id is absent)
     """
 
     value: str
-    catalog_field_id: str | Unset = UNSET
-    catalog_property_id: str | Unset = UNSET
+    catalog_field_id: Union[Unset, str] = UNSET
+    catalog_property_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

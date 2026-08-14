@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/schedules/{schedule_id}/override_shifts".format(
-            schedule_id=quote(str(schedule_id), safe=""),
-        ),
+        "url": f"/v1/schedules/{schedule_id}/override_shifts",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | OverrideShiftResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, OverrideShiftResponse]]:
     if response.status_code == 200:
         response_200 = OverrideShiftResponse.from_dict(response.json())
 
@@ -64,8 +61,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | OverrideShiftResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, OverrideShiftResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -79,7 +76,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewOverrideShift,
-) -> Response[ErrorsList | OverrideShiftResponse]:
+) -> Response[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
@@ -96,7 +93,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OverrideShiftResponse]
+        Response[Union[ErrorsList, OverrideShiftResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -116,7 +113,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewOverrideShift,
-) -> ErrorsList | OverrideShiftResponse | None:
+) -> Optional[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
@@ -133,7 +130,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OverrideShiftResponse
+        Union[ErrorsList, OverrideShiftResponse]
     """
 
     return sync_detailed(
@@ -148,7 +145,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewOverrideShift,
-) -> Response[ErrorsList | OverrideShiftResponse]:
+) -> Response[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
@@ -165,7 +162,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OverrideShiftResponse]
+        Response[Union[ErrorsList, OverrideShiftResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +180,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewOverrideShift,
-) -> ErrorsList | OverrideShiftResponse | None:
+) -> Optional[Union[ErrorsList, OverrideShiftResponse]]:
     """creates an override shift
 
      Creates a new override shift from provided data. If any existing override shifts overlap with the
@@ -200,7 +197,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OverrideShiftResponse
+        Union[ErrorsList, OverrideShiftResponse]
     """
 
     return (

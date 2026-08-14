@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,20 +13,20 @@ T = TypeVar("T", bound="UpdateCommunicationsGroupDataAttributesCommunicationExte
 class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersType0Item:
     """
     Attributes:
-        id (None | str | Unset): ID of the external group member
-        name (str | Unset): Name of the external member
-        email (str | Unset): Email of the external member
-        phone_number (str | Unset): Phone number of the external member
+        id (Union[None, Unset, str]): ID of the external group member
+        name (Union[Unset, str]): Name of the external member
+        email (Union[Unset, str]): Email of the external member
+        phone_number (Union[Unset, str]): Phone number of the external member
     """
 
-    id: None | str | Unset = UNSET
-    name: str | Unset = UNSET
-    email: str | Unset = UNSET
-    phone_number: str | Unset = UNSET
+    id: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    email: Union[Unset, str] = UNSET
+    phone_number: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: None | str | Unset
+        id: Union[None, Unset, str]
         if isinstance(self.id, Unset):
             id = UNSET
         else:
@@ -58,12 +56,12 @@ class UpdateCommunicationsGroupDataAttributesCommunicationExternalGroupMembersTy
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_id(data: object) -> None | str | Unset:
+        def _parse_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         id = _parse_id(d.pop("id", UNSET))
 

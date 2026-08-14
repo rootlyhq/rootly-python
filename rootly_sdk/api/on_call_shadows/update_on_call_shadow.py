@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/on_call_shadows/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/on_call_shadows/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | OnCallShadowResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
     if response.status_code == 200:
         response_200 = OnCallShadowResponse.from_dict(response.json())
 
@@ -54,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | OnCallShadowResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateOnCallShadow,
-) -> Response[ErrorsList | OnCallShadowResponse]:
+) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
     """Update an On Call Shadow configuration
 
      Update a specific on call shadow configuration by id
@@ -83,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallShadowResponse]
+        Response[Union[ErrorsList, OnCallShadowResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateOnCallShadow,
-) -> ErrorsList | OnCallShadowResponse | None:
+) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
     """Update an On Call Shadow configuration
 
      Update a specific on call shadow configuration by id
@@ -117,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallShadowResponse
+        Union[ErrorsList, OnCallShadowResponse]
     """
 
     return sync_detailed(
@@ -132,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateOnCallShadow,
-) -> Response[ErrorsList | OnCallShadowResponse]:
+) -> Response[Union[ErrorsList, OnCallShadowResponse]]:
     """Update an On Call Shadow configuration
 
      Update a specific on call shadow configuration by id
@@ -146,7 +143,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallShadowResponse]
+        Response[Union[ErrorsList, OnCallShadowResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateOnCallShadow,
-) -> ErrorsList | OnCallShadowResponse | None:
+) -> Optional[Union[ErrorsList, OnCallShadowResponse]]:
     """Update an On Call Shadow configuration
 
      Update a specific on call shadow configuration by id
@@ -178,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallShadowResponse
+        Union[ErrorsList, OnCallShadowResponse]
     """
 
     return (

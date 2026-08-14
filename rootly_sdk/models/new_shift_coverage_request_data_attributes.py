@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -18,13 +16,13 @@ class NewShiftCoverageRequestDataAttributes:
     Attributes:
         starts_at (datetime.datetime): Start datetime of the time range to request coverage for
         ends_at (datetime.datetime): End datetime of the time range to request coverage for
-        user_id (int | Unset): Optional. Restrict coverage to shifts assigned to this user. When omitted, every shift
-            overlapping the time range is covered.
+        user_id (Union[Unset, int]): Optional. Restrict coverage to shifts assigned to this user. When omitted, every
+            shift overlapping the time range is covered.
     """
 
     starts_at: datetime.datetime
     ends_at: datetime.datetime
-    user_id: int | Unset = UNSET
+    user_id: Union[Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         starts_at = self.starts_at.isoformat()

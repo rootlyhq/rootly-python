@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,31 +18,31 @@ class NewEdgeConnectorEdgeConnector:
     """
     Attributes:
         name (str): Connector name
-        description (None | str | Unset): Connector description
-        status (NewEdgeConnectorEdgeConnectorStatus | Unset): Connector status
-        subscriptions (list[str] | Unset): Array of event types to subscribe to
+        description (Union[None, Unset, str]): Connector description
+        status (Union[Unset, NewEdgeConnectorEdgeConnectorStatus]): Connector status
+        subscriptions (Union[Unset, list[str]]): Array of event types to subscribe to
     """
 
     name: str
-    description: None | str | Unset = UNSET
-    status: NewEdgeConnectorEdgeConnectorStatus | Unset = UNSET
-    subscriptions: list[str] | Unset = UNSET
+    description: Union[None, Unset, str] = UNSET
+    status: Union[Unset, NewEdgeConnectorEdgeConnectorStatus] = UNSET
+    subscriptions: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: list[str] | Unset = UNSET
+        subscriptions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
@@ -69,17 +67,17 @@ class NewEdgeConnectorEdgeConnector:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: NewEdgeConnectorEdgeConnectorStatus | Unset
+        status: Union[Unset, NewEdgeConnectorEdgeConnectorStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:

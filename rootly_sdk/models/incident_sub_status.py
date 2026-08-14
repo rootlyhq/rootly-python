@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,13 +18,13 @@ class IncidentSubStatus:
             sub_status_id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was
             assigned.
         assigned_at (str):
-        assigned_by_user_id (int | None | Unset):
+        assigned_by_user_id (Union[None, Unset, int]):
     """
 
     incident_id: str
     sub_status_id: str
     assigned_at: str
-    assigned_by_user_id: int | None | Unset = UNSET
+    assigned_by_user_id: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +34,7 @@ class IncidentSubStatus:
 
         assigned_at = self.assigned_at
 
-        assigned_by_user_id: int | None | Unset
+        assigned_by_user_id: Union[None, Unset, int]
         if isinstance(self.assigned_by_user_id, Unset):
             assigned_by_user_id = UNSET
         else:
@@ -65,12 +63,12 @@ class IncidentSubStatus:
 
         assigned_at = d.pop("assigned_at")
 
-        def _parse_assigned_by_user_id(data: object) -> int | None | Unset:
+        def _parse_assigned_by_user_id(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         assigned_by_user_id = _parse_assigned_by_user_id(d.pop("assigned_by_user_id", UNSET))
 

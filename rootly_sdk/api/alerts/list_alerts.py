@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -12,61 +12,60 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: ListAlertsInclude | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filtergroups: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterupdated_atgt: str | Unset = UNSET,
-    filterupdated_atgte: str | Unset = UNSET,
-    filterupdated_atlt: str | Unset = UNSET,
-    filterupdated_atlte: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filtergroupseq: str | Unset = UNSET,
-    filtergroupsnot_eq: str | Unset = UNSET,
-    filtergroupsin: str | Unset = UNSET,
-    filtergroupsnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    pageafter: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListAlertsInclude] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtersource: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filtergroups: Union[Unset, str] = UNSET,
+    filterlabels: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filterended_atgt: Union[Unset, str] = UNSET,
+    filterended_atgte: Union[Unset, str] = UNSET,
+    filterended_atlt: Union[Unset, str] = UNSET,
+    filterended_atlte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterupdated_atgt: Union[Unset, str] = UNSET,
+    filterupdated_atgte: Union[Unset, str] = UNSET,
+    filterupdated_atlt: Union[Unset, str] = UNSET,
+    filterupdated_atlte: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filtersourceeq: Union[Unset, str] = UNSET,
+    filtersourcenot_eq: Union[Unset, str] = UNSET,
+    filtersourcein: Union[Unset, str] = UNSET,
+    filtersourcenot_in: Union[Unset, str] = UNSET,
+    filterserviceseq: Union[Unset, str] = UNSET,
+    filterservicesnot_eq: Union[Unset, str] = UNSET,
+    filterservicesin: Union[Unset, str] = UNSET,
+    filterservicesnot_in: Union[Unset, str] = UNSET,
+    filtergroupseq: Union[Unset, str] = UNSET,
+    filtergroupsnot_eq: Union[Unset, str] = UNSET,
+    filtergroupsin: Union[Unset, str] = UNSET,
+    filtergroupsnot_in: Union[Unset, str] = UNSET,
+    filterenvironmentseq: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_eq: Union[Unset, str] = UNSET,
+    filterenvironmentsin: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_in: Union[Unset, str] = UNSET,
+    filterlabelseq: Union[Unset, str] = UNSET,
+    filterlabelsnot_eq: Union[Unset, str] = UNSET,
+    filterlabelsin: Union[Unset, str] = UNSET,
+    filterlabelsnot_in: Union[Unset, str] = UNSET,
+    pageafter: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -181,7 +180,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertList | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[AlertList]:
     if response.status_code == 200:
         response_200 = AlertList.from_dict(response.json())
 
@@ -193,7 +192,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertList]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AlertList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -205,112 +204,112 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListAlertsInclude | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filtergroups: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterupdated_atgt: str | Unset = UNSET,
-    filterupdated_atgte: str | Unset = UNSET,
-    filterupdated_atlt: str | Unset = UNSET,
-    filterupdated_atlte: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filtergroupseq: str | Unset = UNSET,
-    filtergroupsnot_eq: str | Unset = UNSET,
-    filtergroupsin: str | Unset = UNSET,
-    filtergroupsnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    pageafter: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListAlertsInclude] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtersource: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filtergroups: Union[Unset, str] = UNSET,
+    filterlabels: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filterended_atgt: Union[Unset, str] = UNSET,
+    filterended_atgte: Union[Unset, str] = UNSET,
+    filterended_atlt: Union[Unset, str] = UNSET,
+    filterended_atlte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterupdated_atgt: Union[Unset, str] = UNSET,
+    filterupdated_atgte: Union[Unset, str] = UNSET,
+    filterupdated_atlt: Union[Unset, str] = UNSET,
+    filterupdated_atlte: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filtersourceeq: Union[Unset, str] = UNSET,
+    filtersourcenot_eq: Union[Unset, str] = UNSET,
+    filtersourcein: Union[Unset, str] = UNSET,
+    filtersourcenot_in: Union[Unset, str] = UNSET,
+    filterserviceseq: Union[Unset, str] = UNSET,
+    filterservicesnot_eq: Union[Unset, str] = UNSET,
+    filterservicesin: Union[Unset, str] = UNSET,
+    filterservicesnot_in: Union[Unset, str] = UNSET,
+    filtergroupseq: Union[Unset, str] = UNSET,
+    filtergroupsnot_eq: Union[Unset, str] = UNSET,
+    filtergroupsin: Union[Unset, str] = UNSET,
+    filtergroupsnot_in: Union[Unset, str] = UNSET,
+    filterenvironmentseq: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_eq: Union[Unset, str] = UNSET,
+    filterenvironmentsin: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_in: Union[Unset, str] = UNSET,
+    filterlabelseq: Union[Unset, str] = UNSET,
+    filterlabelsnot_eq: Union[Unset, str] = UNSET,
+    filterlabelsin: Union[Unset, str] = UNSET,
+    filterlabelsnot_in: Union[Unset, str] = UNSET,
+    pageafter: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (ListAlertsInclude | Unset):
-        filterstatus (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filtergroups (str | Unset):
-        filterlabels (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterupdated_atgt (str | Unset):
-        filterupdated_atgte (str | Unset):
-        filterupdated_atlt (str | Unset):
-        filterupdated_atlte (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filtergroupseq (str | Unset):
-        filtergroupsnot_eq (str | Unset):
-        filtergroupsin (str | Unset):
-        filtergroupsnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        pageafter (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListAlertsInclude]):
+        filterstatus (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filtergroups (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterupdated_atgt (Union[Unset, str]):
+        filterupdated_atgte (Union[Unset, str]):
+        filterupdated_atlt (Union[Unset, str]):
+        filterupdated_atlte (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filtergroupseq (Union[Unset, str]):
+        filtergroupsnot_eq (Union[Unset, str]):
+        filtergroupsin (Union[Unset, str]):
+        filtergroupsnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        pageafter (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -383,112 +382,112 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: ListAlertsInclude | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filtergroups: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterupdated_atgt: str | Unset = UNSET,
-    filterupdated_atgte: str | Unset = UNSET,
-    filterupdated_atlt: str | Unset = UNSET,
-    filterupdated_atlte: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filtergroupseq: str | Unset = UNSET,
-    filtergroupsnot_eq: str | Unset = UNSET,
-    filtergroupsin: str | Unset = UNSET,
-    filtergroupsnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    pageafter: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> AlertList | None:
+    include: Union[Unset, ListAlertsInclude] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtersource: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filtergroups: Union[Unset, str] = UNSET,
+    filterlabels: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filterended_atgt: Union[Unset, str] = UNSET,
+    filterended_atgte: Union[Unset, str] = UNSET,
+    filterended_atlt: Union[Unset, str] = UNSET,
+    filterended_atlte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterupdated_atgt: Union[Unset, str] = UNSET,
+    filterupdated_atgte: Union[Unset, str] = UNSET,
+    filterupdated_atlt: Union[Unset, str] = UNSET,
+    filterupdated_atlte: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filtersourceeq: Union[Unset, str] = UNSET,
+    filtersourcenot_eq: Union[Unset, str] = UNSET,
+    filtersourcein: Union[Unset, str] = UNSET,
+    filtersourcenot_in: Union[Unset, str] = UNSET,
+    filterserviceseq: Union[Unset, str] = UNSET,
+    filterservicesnot_eq: Union[Unset, str] = UNSET,
+    filterservicesin: Union[Unset, str] = UNSET,
+    filterservicesnot_in: Union[Unset, str] = UNSET,
+    filtergroupseq: Union[Unset, str] = UNSET,
+    filtergroupsnot_eq: Union[Unset, str] = UNSET,
+    filtergroupsin: Union[Unset, str] = UNSET,
+    filtergroupsnot_in: Union[Unset, str] = UNSET,
+    filterenvironmentseq: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_eq: Union[Unset, str] = UNSET,
+    filterenvironmentsin: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_in: Union[Unset, str] = UNSET,
+    filterlabelseq: Union[Unset, str] = UNSET,
+    filterlabelsnot_eq: Union[Unset, str] = UNSET,
+    filterlabelsin: Union[Unset, str] = UNSET,
+    filterlabelsnot_in: Union[Unset, str] = UNSET,
+    pageafter: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (ListAlertsInclude | Unset):
-        filterstatus (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filtergroups (str | Unset):
-        filterlabels (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterupdated_atgt (str | Unset):
-        filterupdated_atgte (str | Unset):
-        filterupdated_atlt (str | Unset):
-        filterupdated_atlte (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filtergroupseq (str | Unset):
-        filtergroupsnot_eq (str | Unset):
-        filtergroupsin (str | Unset):
-        filtergroupsnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        pageafter (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListAlertsInclude]):
+        filterstatus (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filtergroups (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterupdated_atgt (Union[Unset, str]):
+        filterupdated_atgte (Union[Unset, str]):
+        filterupdated_atlt (Union[Unset, str]):
+        filterupdated_atlte (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filtergroupseq (Union[Unset, str]):
+        filtergroupsnot_eq (Union[Unset, str]):
+        filtergroupsin (Union[Unset, str]):
+        filtergroupsnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        pageafter (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -556,112 +555,112 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListAlertsInclude | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filtergroups: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterupdated_atgt: str | Unset = UNSET,
-    filterupdated_atgte: str | Unset = UNSET,
-    filterupdated_atlt: str | Unset = UNSET,
-    filterupdated_atlte: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filtergroupseq: str | Unset = UNSET,
-    filtergroupsnot_eq: str | Unset = UNSET,
-    filtergroupsin: str | Unset = UNSET,
-    filtergroupsnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    pageafter: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListAlertsInclude] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtersource: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filtergroups: Union[Unset, str] = UNSET,
+    filterlabels: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filterended_atgt: Union[Unset, str] = UNSET,
+    filterended_atgte: Union[Unset, str] = UNSET,
+    filterended_atlt: Union[Unset, str] = UNSET,
+    filterended_atlte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterupdated_atgt: Union[Unset, str] = UNSET,
+    filterupdated_atgte: Union[Unset, str] = UNSET,
+    filterupdated_atlt: Union[Unset, str] = UNSET,
+    filterupdated_atlte: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filtersourceeq: Union[Unset, str] = UNSET,
+    filtersourcenot_eq: Union[Unset, str] = UNSET,
+    filtersourcein: Union[Unset, str] = UNSET,
+    filtersourcenot_in: Union[Unset, str] = UNSET,
+    filterserviceseq: Union[Unset, str] = UNSET,
+    filterservicesnot_eq: Union[Unset, str] = UNSET,
+    filterservicesin: Union[Unset, str] = UNSET,
+    filterservicesnot_in: Union[Unset, str] = UNSET,
+    filtergroupseq: Union[Unset, str] = UNSET,
+    filtergroupsnot_eq: Union[Unset, str] = UNSET,
+    filtergroupsin: Union[Unset, str] = UNSET,
+    filtergroupsnot_in: Union[Unset, str] = UNSET,
+    filterenvironmentseq: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_eq: Union[Unset, str] = UNSET,
+    filterenvironmentsin: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_in: Union[Unset, str] = UNSET,
+    filterlabelseq: Union[Unset, str] = UNSET,
+    filterlabelsnot_eq: Union[Unset, str] = UNSET,
+    filterlabelsin: Union[Unset, str] = UNSET,
+    filterlabelsnot_in: Union[Unset, str] = UNSET,
+    pageafter: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (ListAlertsInclude | Unset):
-        filterstatus (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filtergroups (str | Unset):
-        filterlabels (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterupdated_atgt (str | Unset):
-        filterupdated_atgte (str | Unset):
-        filterupdated_atlt (str | Unset):
-        filterupdated_atlte (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filtergroupseq (str | Unset):
-        filtergroupsnot_eq (str | Unset):
-        filtergroupsin (str | Unset):
-        filtergroupsnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        pageafter (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListAlertsInclude]):
+        filterstatus (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filtergroups (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterupdated_atgt (Union[Unset, str]):
+        filterupdated_atgte (Union[Unset, str]):
+        filterupdated_atlt (Union[Unset, str]):
+        filterupdated_atlte (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filtergroupseq (Union[Unset, str]):
+        filtergroupsnot_eq (Union[Unset, str]):
+        filtergroupsin (Union[Unset, str]):
+        filtergroupsnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        pageafter (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -732,112 +731,112 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: ListAlertsInclude | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtersource: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filtergroups: str | Unset = UNSET,
-    filterlabels: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filterended_atgt: str | Unset = UNSET,
-    filterended_atgte: str | Unset = UNSET,
-    filterended_atlt: str | Unset = UNSET,
-    filterended_atlte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterupdated_atgt: str | Unset = UNSET,
-    filterupdated_atgte: str | Unset = UNSET,
-    filterupdated_atlt: str | Unset = UNSET,
-    filterupdated_atlte: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filtersourceeq: str | Unset = UNSET,
-    filtersourcenot_eq: str | Unset = UNSET,
-    filtersourcein: str | Unset = UNSET,
-    filtersourcenot_in: str | Unset = UNSET,
-    filterserviceseq: str | Unset = UNSET,
-    filterservicesnot_eq: str | Unset = UNSET,
-    filterservicesin: str | Unset = UNSET,
-    filterservicesnot_in: str | Unset = UNSET,
-    filtergroupseq: str | Unset = UNSET,
-    filtergroupsnot_eq: str | Unset = UNSET,
-    filtergroupsin: str | Unset = UNSET,
-    filtergroupsnot_in: str | Unset = UNSET,
-    filterenvironmentseq: str | Unset = UNSET,
-    filterenvironmentsnot_eq: str | Unset = UNSET,
-    filterenvironmentsin: str | Unset = UNSET,
-    filterenvironmentsnot_in: str | Unset = UNSET,
-    filterlabelseq: str | Unset = UNSET,
-    filterlabelsnot_eq: str | Unset = UNSET,
-    filterlabelsin: str | Unset = UNSET,
-    filterlabelsnot_in: str | Unset = UNSET,
-    pageafter: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> AlertList | None:
+    include: Union[Unset, ListAlertsInclude] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtersource: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filtergroups: Union[Unset, str] = UNSET,
+    filterlabels: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filterended_atgt: Union[Unset, str] = UNSET,
+    filterended_atgte: Union[Unset, str] = UNSET,
+    filterended_atlt: Union[Unset, str] = UNSET,
+    filterended_atlte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterupdated_atgt: Union[Unset, str] = UNSET,
+    filterupdated_atgte: Union[Unset, str] = UNSET,
+    filterupdated_atlt: Union[Unset, str] = UNSET,
+    filterupdated_atlte: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filtersourceeq: Union[Unset, str] = UNSET,
+    filtersourcenot_eq: Union[Unset, str] = UNSET,
+    filtersourcein: Union[Unset, str] = UNSET,
+    filtersourcenot_in: Union[Unset, str] = UNSET,
+    filterserviceseq: Union[Unset, str] = UNSET,
+    filterservicesnot_eq: Union[Unset, str] = UNSET,
+    filterservicesin: Union[Unset, str] = UNSET,
+    filterservicesnot_in: Union[Unset, str] = UNSET,
+    filtergroupseq: Union[Unset, str] = UNSET,
+    filtergroupsnot_eq: Union[Unset, str] = UNSET,
+    filtergroupsin: Union[Unset, str] = UNSET,
+    filtergroupsnot_in: Union[Unset, str] = UNSET,
+    filterenvironmentseq: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_eq: Union[Unset, str] = UNSET,
+    filterenvironmentsin: Union[Unset, str] = UNSET,
+    filterenvironmentsnot_in: Union[Unset, str] = UNSET,
+    filterlabelseq: Union[Unset, str] = UNSET,
+    filterlabelsnot_eq: Union[Unset, str] = UNSET,
+    filterlabelsin: Union[Unset, str] = UNSET,
+    filterlabelsnot_in: Union[Unset, str] = UNSET,
+    pageafter: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[AlertList]:
     """List alerts
 
      List alerts
 
     Args:
-        include (ListAlertsInclude | Unset):
-        filterstatus (str | Unset):
-        filtersource (str | Unset):
-        filterservices (str | Unset):
-        filterenvironments (str | Unset):
-        filtergroups (str | Unset):
-        filterlabels (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filterended_atgt (str | Unset):
-        filterended_atgte (str | Unset):
-        filterended_atlt (str | Unset):
-        filterended_atlte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterupdated_atgt (str | Unset):
-        filterupdated_atgte (str | Unset):
-        filterupdated_atlt (str | Unset):
-        filterupdated_atlte (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filtersourceeq (str | Unset):
-        filtersourcenot_eq (str | Unset):
-        filtersourcein (str | Unset):
-        filtersourcenot_in (str | Unset):
-        filterserviceseq (str | Unset):
-        filterservicesnot_eq (str | Unset):
-        filterservicesin (str | Unset):
-        filterservicesnot_in (str | Unset):
-        filtergroupseq (str | Unset):
-        filtergroupsnot_eq (str | Unset):
-        filtergroupsin (str | Unset):
-        filtergroupsnot_in (str | Unset):
-        filterenvironmentseq (str | Unset):
-        filterenvironmentsnot_eq (str | Unset):
-        filterenvironmentsin (str | Unset):
-        filterenvironmentsnot_in (str | Unset):
-        filterlabelseq (str | Unset):
-        filterlabelsnot_eq (str | Unset):
-        filterlabelsin (str | Unset):
-        filterlabelsnot_in (str | Unset):
-        pageafter (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListAlertsInclude]):
+        filterstatus (Union[Unset, str]):
+        filtersource (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filtergroups (Union[Unset, str]):
+        filterlabels (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filterended_atgt (Union[Unset, str]):
+        filterended_atgte (Union[Unset, str]):
+        filterended_atlt (Union[Unset, str]):
+        filterended_atlte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterupdated_atgt (Union[Unset, str]):
+        filterupdated_atgte (Union[Unset, str]):
+        filterupdated_atlt (Union[Unset, str]):
+        filterupdated_atlte (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filtersourceeq (Union[Unset, str]):
+        filtersourcenot_eq (Union[Unset, str]):
+        filtersourcein (Union[Unset, str]):
+        filtersourcenot_in (Union[Unset, str]):
+        filterserviceseq (Union[Unset, str]):
+        filterservicesnot_eq (Union[Unset, str]):
+        filterservicesin (Union[Unset, str]):
+        filterservicesnot_in (Union[Unset, str]):
+        filtergroupseq (Union[Unset, str]):
+        filtergroupsnot_eq (Union[Unset, str]):
+        filtergroupsin (Union[Unset, str]):
+        filtergroupsnot_in (Union[Unset, str]):
+        filterenvironmentseq (Union[Unset, str]):
+        filterenvironmentsnot_eq (Union[Unset, str]):
+        filterenvironmentsin (Union[Unset, str]):
+        filterenvironmentsnot_in (Union[Unset, str]):
+        filterlabelseq (Union[Unset, str]):
+        filterlabelsnot_eq (Union[Unset, str]):
+        filterlabelsin (Union[Unset, str]):
+        filterlabelsnot_in (Union[Unset, str]):
+        pageafter (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

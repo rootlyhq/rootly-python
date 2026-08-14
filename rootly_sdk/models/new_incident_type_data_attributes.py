@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -25,50 +23,66 @@ class NewIncidentTypeDataAttributes:
     """
     Attributes:
         name (str): The name of the incident type
-        description (None | str | Unset): The description of the incident type
-        color (None | str | Unset): The hex color of the incident type
-        position (int | None | Unset): Position of the incident type
-        notify_emails (list[str] | None | Unset): Emails to attach to the incident type
-        slack_channels (list[NewIncidentTypeDataAttributesSlackChannelsType0Item] | None | Unset): Slack Channels
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]): The description of the incident type
+        public_description (Union[None, Unset, str]): The status page description of the incident type
+        color (Union[None, Unset, str]): The hex color of the incident type
+        position (Union[None, Unset, int]): Position of the incident type
+        notify_emails (Union[None, Unset, list[str]]): Emails to attach to the incident type
+        slack_channels (Union[None, Unset, list['NewIncidentTypeDataAttributesSlackChannelsType0Item']]): Slack Channels
             associated with this incident type
-        slack_aliases (list[NewIncidentTypeDataAttributesSlackAliasesType0Item] | None | Unset): Slack Aliases
+        slack_aliases (Union[None, Unset, list['NewIncidentTypeDataAttributesSlackAliasesType0Item']]): Slack Aliases
             associated with this incident type
-        properties (list[NewIncidentTypeDataAttributesPropertiesItem] | Unset): Array of property values for this
-            incident type.
+        properties (Union[Unset, list['NewIncidentTypeDataAttributesPropertiesItem']]): Array of property values for
+            this incident type.
     """
 
     name: str
-    description: None | str | Unset = UNSET
-    color: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
-    notify_emails: list[str] | None | Unset = UNSET
-    slack_channels: list[NewIncidentTypeDataAttributesSlackChannelsType0Item] | None | Unset = UNSET
-    slack_aliases: list[NewIncidentTypeDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
-    properties: list[NewIncidentTypeDataAttributesPropertiesItem] | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    public_description: Union[None, Unset, str] = UNSET
+    color: Union[None, Unset, str] = UNSET
+    position: Union[None, Unset, int] = UNSET
+    notify_emails: Union[None, Unset, list[str]] = UNSET
+    slack_channels: Union[None, Unset, list["NewIncidentTypeDataAttributesSlackChannelsType0Item"]] = UNSET
+    slack_aliases: Union[None, Unset, list["NewIncidentTypeDataAttributesSlackAliasesType0Item"]] = UNSET
+    properties: Union[Unset, list["NewIncidentTypeDataAttributesPropertiesItem"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
-        description: None | str | Unset
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        color: None | str | Unset
+        public_description: Union[None, Unset, str]
+        if isinstance(self.public_description, Unset):
+            public_description = UNSET
+        else:
+            public_description = self.public_description
+
+        color: Union[None, Unset, str]
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        notify_emails: list[str] | None | Unset
+        notify_emails: Union[None, Unset, list[str]]
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -77,7 +91,7 @@ class NewIncidentTypeDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        slack_channels: list[dict[str, Any]] | None | Unset
+        slack_channels: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -89,7 +103,7 @@ class NewIncidentTypeDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: list[dict[str, Any]] | None | Unset
+        slack_aliases: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -101,7 +115,7 @@ class NewIncidentTypeDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
-        properties: list[dict[str, Any]] | Unset = UNSET
+        properties: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -115,8 +129,12 @@ class NewIncidentTypeDataAttributes:
                 "name": name,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
+        if public_description is not UNSET:
+            field_dict["public_description"] = public_description
         if color is not UNSET:
             field_dict["color"] = color
         if position is not UNSET:
@@ -147,34 +165,52 @@ class NewIncidentTypeDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_color(data: object) -> None | str | Unset:
+        def _parse_public_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        public_description = _parse_public_description(d.pop("public_description", UNSET))
+
+        def _parse_color(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_notify_emails(data: object) -> list[str] | None | Unset:
+        def _parse_notify_emails(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -185,15 +221,15 @@ class NewIncidentTypeDataAttributes:
                 notify_emails_type_0 = cast(list[str], data)
 
                 return notify_emails_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
         def _parse_slack_channels(
             data: object,
-        ) -> list[NewIncidentTypeDataAttributesSlackChannelsType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["NewIncidentTypeDataAttributesSlackChannelsType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -211,15 +247,15 @@ class NewIncidentTypeDataAttributes:
                     slack_channels_type_0.append(slack_channels_type_0_item)
 
                 return slack_channels_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[NewIncidentTypeDataAttributesSlackChannelsType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["NewIncidentTypeDataAttributesSlackChannelsType0Item"]], data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
         def _parse_slack_aliases(
             data: object,
-        ) -> list[NewIncidentTypeDataAttributesSlackAliasesType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["NewIncidentTypeDataAttributesSlackAliasesType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -237,24 +273,24 @@ class NewIncidentTypeDataAttributes:
                     slack_aliases_type_0.append(slack_aliases_type_0_item)
 
                 return slack_aliases_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[NewIncidentTypeDataAttributesSlackAliasesType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["NewIncidentTypeDataAttributesSlackAliasesType0Item"]], data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
+        properties = []
         _properties = d.pop("properties", UNSET)
-        properties: list[NewIncidentTypeDataAttributesPropertiesItem] | Unset = UNSET
-        if _properties is not UNSET:
-            properties = []
-            for properties_item_data in _properties:
-                properties_item = NewIncidentTypeDataAttributesPropertiesItem.from_dict(properties_item_data)
+        for properties_item_data in _properties or []:
+            properties_item = NewIncidentTypeDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-                properties.append(properties_item)
+            properties.append(properties_item)
 
         new_incident_type_data_attributes = cls(
             name=name,
+            slug=slug,
             description=description,
+            public_description=public_description,
             color=color,
             position=position,
             notify_emails=notify_emails,

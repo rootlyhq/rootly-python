@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,34 +28,34 @@ class CreateGoToMeetingTaskParams:
     """
     Attributes:
         subject (str): The meeting subject
-        task_type (CreateGoToMeetingTaskParamsTaskType | Unset):
-        conference_call_info (CreateGoToMeetingTaskParamsConferenceCallInfo | Unset):  Default: 'voip'. Example: voip.
-        password_required (bool | None | Unset):
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[CreateGoToMeetingTaskParamsPostToSlackChannelsItem] | Unset):
+        task_type (Union[Unset, CreateGoToMeetingTaskParamsTaskType]):
+        conference_call_info (Union[Unset, CreateGoToMeetingTaskParamsConferenceCallInfo]):  Default: 'voip'. Example:
+            voip.
+        password_required (Union[None, Unset, bool]):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['CreateGoToMeetingTaskParamsPostToSlackChannelsItem']]):
     """
 
     subject: str
-    task_type: CreateGoToMeetingTaskParamsTaskType | Unset = UNSET
-    conference_call_info: CreateGoToMeetingTaskParamsConferenceCallInfo | Unset = "voip"
-    password_required: bool | None | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[CreateGoToMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Union[Unset, CreateGoToMeetingTaskParamsTaskType] = UNSET
+    conference_call_info: Union[Unset, CreateGoToMeetingTaskParamsConferenceCallInfo] = "voip"
+    password_required: Union[None, Unset, bool] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["CreateGoToMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         subject = self.subject
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        conference_call_info: str | Unset = UNSET
+        conference_call_info: Union[Unset, str] = UNSET
         if not isinstance(self.conference_call_info, Unset):
             conference_call_info = self.conference_call_info
 
-        password_required: bool | None | Unset
+        password_required: Union[None, Unset, bool]
         if isinstance(self.password_required, Unset):
             password_required = UNSET
         else:
@@ -65,7 +63,7 @@ class CreateGoToMeetingTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -102,40 +100,38 @@ class CreateGoToMeetingTaskParams:
         subject = d.pop("subject")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateGoToMeetingTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateGoToMeetingTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_go_to_meeting_task_params_task_type(_task_type)
 
         _conference_call_info = d.pop("conference_call_info", UNSET)
-        conference_call_info: CreateGoToMeetingTaskParamsConferenceCallInfo | Unset
+        conference_call_info: Union[Unset, CreateGoToMeetingTaskParamsConferenceCallInfo]
         if isinstance(_conference_call_info, Unset):
             conference_call_info = UNSET
         else:
             conference_call_info = check_create_go_to_meeting_task_params_conference_call_info(_conference_call_info)
 
-        def _parse_password_required(data: object) -> bool | None | Unset:
+        def _parse_password_required(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         password_required = _parse_password_required(d.pop("password_required", UNSET))
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[CreateGoToMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = CreateGoToMeetingTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = CreateGoToMeetingTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         create_go_to_meeting_task_params = cls(
             subject=subject,

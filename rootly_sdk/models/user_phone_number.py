@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,22 +15,22 @@ T = TypeVar("T", bound="UserPhoneNumber")
 class UserPhoneNumber:
     """
     Attributes:
-        user_id (int | Unset):
-        phone (str | Unset): Phone number in international format
-        primary (bool | Unset): Whether this is the primary phone number
-        verified_at (datetime.datetime | None | Unset): Date when phone number was verified
-        verification_attempts_today (int | Unset): Number of verification attempts made today
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        user_id (Union[Unset, int]):
+        phone (Union[Unset, str]): Phone number in international format
+        primary (Union[Unset, bool]): Whether this is the primary phone number
+        verified_at (Union[None, Unset, datetime.datetime]): Date when phone number was verified
+        verification_attempts_today (Union[Unset, int]): Number of verification attempts made today
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
-    user_id: int | Unset = UNSET
-    phone: str | Unset = UNSET
-    primary: bool | Unset = UNSET
-    verified_at: datetime.datetime | None | Unset = UNSET
-    verification_attempts_today: int | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    user_id: Union[Unset, int] = UNSET
+    phone: Union[Unset, str] = UNSET
+    primary: Union[Unset, bool] = UNSET
+    verified_at: Union[None, Unset, datetime.datetime] = UNSET
+    verification_attempts_today: Union[Unset, int] = UNSET
+    created_at: Union[Unset, str] = UNSET
+    updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +40,7 @@ class UserPhoneNumber:
 
         primary = self.primary
 
-        verified_at: None | str | Unset
+        verified_at: Union[None, Unset, str]
         if isinstance(self.verified_at, Unset):
             verified_at = UNSET
         elif isinstance(self.verified_at, datetime.datetime):
@@ -85,7 +83,7 @@ class UserPhoneNumber:
 
         primary = d.pop("primary", UNSET)
 
-        def _parse_verified_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_verified_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -96,9 +94,9 @@ class UserPhoneNumber:
                 verified_at_type_0 = isoparse(data)
 
                 return verified_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         verified_at = _parse_verified_at(d.pop("verified_at", UNSET))
 

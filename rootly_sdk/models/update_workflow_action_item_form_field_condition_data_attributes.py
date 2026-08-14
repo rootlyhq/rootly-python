@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -18,74 +16,77 @@ T = TypeVar("T", bound="UpdateWorkflowActionItemFormFieldConditionDataAttributes
 class UpdateWorkflowActionItemFormFieldConditionDataAttributes:
     """
     Attributes:
-        action_item_condition (UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition | Unset): The
-            trigger condition Default: 'ANY'.
-        values (list[str] | Unset):
-        selected_catalog_entity_ids (list[str] | Unset):
-        selected_functionality_ids (list[str] | Unset):
-        selected_group_ids (list[str] | Unset):
-        selected_option_ids (list[str] | Unset):
-        selected_service_ids (list[str] | Unset):
-        selected_user_ids (list[int] | Unset):
-        selected_cause_ids (list[str] | Unset):
-        selected_environment_ids (list[str] | Unset):
-        selected_incident_type_ids (list[str] | Unset):
+        action_item_condition (Union[Unset,
+            UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition]): The trigger condition Default:
+            'ANY'.
+        values (Union[Unset, list[str]]):
+        selected_catalog_entity_ids (Union[Unset, list[str]]):
+        selected_functionality_ids (Union[Unset, list[str]]):
+        selected_group_ids (Union[Unset, list[str]]):
+        selected_option_ids (Union[Unset, list[str]]):
+        selected_service_ids (Union[Unset, list[str]]):
+        selected_user_ids (Union[Unset, list[int]]):
+        selected_cause_ids (Union[Unset, list[str]]):
+        selected_environment_ids (Union[Unset, list[str]]):
+        selected_incident_type_ids (Union[Unset, list[str]]):
     """
 
-    action_item_condition: UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition | Unset = "ANY"
-    values: list[str] | Unset = UNSET
-    selected_catalog_entity_ids: list[str] | Unset = UNSET
-    selected_functionality_ids: list[str] | Unset = UNSET
-    selected_group_ids: list[str] | Unset = UNSET
-    selected_option_ids: list[str] | Unset = UNSET
-    selected_service_ids: list[str] | Unset = UNSET
-    selected_user_ids: list[int] | Unset = UNSET
-    selected_cause_ids: list[str] | Unset = UNSET
-    selected_environment_ids: list[str] | Unset = UNSET
-    selected_incident_type_ids: list[str] | Unset = UNSET
+    action_item_condition: Union[Unset, UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition] = (
+        "ANY"
+    )
+    values: Union[Unset, list[str]] = UNSET
+    selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
+    selected_functionality_ids: Union[Unset, list[str]] = UNSET
+    selected_group_ids: Union[Unset, list[str]] = UNSET
+    selected_option_ids: Union[Unset, list[str]] = UNSET
+    selected_service_ids: Union[Unset, list[str]] = UNSET
+    selected_user_ids: Union[Unset, list[int]] = UNSET
+    selected_cause_ids: Union[Unset, list[str]] = UNSET
+    selected_environment_ids: Union[Unset, list[str]] = UNSET
+    selected_incident_type_ids: Union[Unset, list[str]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        action_item_condition: str | Unset = UNSET
+        action_item_condition: Union[Unset, str] = UNSET
         if not isinstance(self.action_item_condition, Unset):
             action_item_condition = self.action_item_condition
 
-        values: list[str] | Unset = UNSET
+        values: Union[Unset, list[str]] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_catalog_entity_ids: list[str] | Unset = UNSET
+        selected_catalog_entity_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_catalog_entity_ids, Unset):
             selected_catalog_entity_ids = self.selected_catalog_entity_ids
 
-        selected_functionality_ids: list[str] | Unset = UNSET
+        selected_functionality_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_functionality_ids, Unset):
             selected_functionality_ids = self.selected_functionality_ids
 
-        selected_group_ids: list[str] | Unset = UNSET
+        selected_group_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_group_ids, Unset):
             selected_group_ids = self.selected_group_ids
 
-        selected_option_ids: list[str] | Unset = UNSET
+        selected_option_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
-        selected_service_ids: list[str] | Unset = UNSET
+        selected_service_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_service_ids, Unset):
             selected_service_ids = self.selected_service_ids
 
-        selected_user_ids: list[int] | Unset = UNSET
+        selected_user_ids: Union[Unset, list[int]] = UNSET
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
-        selected_cause_ids: list[str] | Unset = UNSET
+        selected_cause_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_cause_ids, Unset):
             selected_cause_ids = self.selected_cause_ids
 
-        selected_environment_ids: list[str] | Unset = UNSET
+        selected_environment_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_environment_ids, Unset):
             selected_environment_ids = self.selected_environment_ids
 
-        selected_incident_type_ids: list[str] | Unset = UNSET
+        selected_incident_type_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.selected_incident_type_ids, Unset):
             selected_incident_type_ids = self.selected_incident_type_ids
 
@@ -121,7 +122,7 @@ class UpdateWorkflowActionItemFormFieldConditionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _action_item_condition = d.pop("action_item_condition", UNSET)
-        action_item_condition: UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition | Unset
+        action_item_condition: Union[Unset, UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition]
         if isinstance(_action_item_condition, Unset):
             action_item_condition = UNSET
         else:

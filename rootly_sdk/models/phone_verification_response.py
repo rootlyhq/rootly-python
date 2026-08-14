@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +13,12 @@ T = TypeVar("T", bound="PhoneVerificationResponse")
 class PhoneVerificationResponse:
     """
     Attributes:
-        message (str | Unset): Success message
-        error (str | Unset): Error message
+        message (Union[Unset, str]): Success message
+        error (Union[Unset, str]): Error message
     """
 
-    message: str | Unset = UNSET
-    error: str | Unset = UNSET
+    message: Union[Unset, str] = UNSET
+    error: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

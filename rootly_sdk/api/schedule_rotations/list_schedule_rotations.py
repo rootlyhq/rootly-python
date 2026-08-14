@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,12 +12,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     schedule_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -33,16 +31,16 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/schedules/{schedule_id}/schedule_rotations".format(
-            schedule_id=quote(str(schedule_id), safe=""),
-        ),
+        "url": f"/v1/schedules/{schedule_id}/schedule_rotations",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ScheduleRotationList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[ScheduleRotationList]:
     if response.status_code == 200:
         response_200 = ScheduleRotationList.from_dict(response.json())
 
@@ -55,7 +53,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[ScheduleRotationList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -69,10 +67,10 @@ def sync_detailed(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[ScheduleRotationList]:
     """List schedule rotations
 
@@ -80,10 +78,10 @@ def sync_detailed(
 
     Args:
         schedule_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,21 +110,21 @@ def sync(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> ScheduleRotationList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[ScheduleRotationList]:
     """List schedule rotations
 
      List schedule rotations
 
     Args:
         schedule_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,10 +148,10 @@ async def asyncio_detailed(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[ScheduleRotationList]:
     """List schedule rotations
 
@@ -161,10 +159,10 @@ async def asyncio_detailed(
 
     Args:
         schedule_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -191,21 +189,21 @@ async def asyncio(
     schedule_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> ScheduleRotationList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[ScheduleRotationList]:
     """List schedule rotations
 
      List schedule rotations
 
     Args:
         schedule_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

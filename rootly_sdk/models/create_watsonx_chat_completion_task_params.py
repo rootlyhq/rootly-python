@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,26 +24,25 @@ class CreateWatsonxChatCompletionTaskParams:
         model (CreateWatsonxChatCompletionTaskParamsModel): The WatsonX model. eg: ibm/granite-3-b8b-instruct
         prompt (str): The prompt to send to WatsonX
         project_id (str):
-        task_type (CreateWatsonxChatCompletionTaskParamsTaskType | Unset):
-        system_prompt (str | Unset): The system prompt to send to WatsonX (optional)
+        task_type (Union[Unset, CreateWatsonxChatCompletionTaskParamsTaskType]):
+        system_prompt (Union[Unset, str]): The system prompt to send to WatsonX (optional)
     """
 
-    model: CreateWatsonxChatCompletionTaskParamsModel
+    model: "CreateWatsonxChatCompletionTaskParamsModel"
     prompt: str
     project_id: str
-    task_type: CreateWatsonxChatCompletionTaskParamsTaskType | Unset = UNSET
-    system_prompt: str | Unset = UNSET
+    task_type: Union[Unset, CreateWatsonxChatCompletionTaskParamsTaskType] = UNSET
+    system_prompt: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         model = self.model.to_dict()
 
         prompt = self.prompt
 
         project_id = self.project_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -79,7 +76,7 @@ class CreateWatsonxChatCompletionTaskParams:
         project_id = d.pop("project_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateWatsonxChatCompletionTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateWatsonxChatCompletionTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -34,39 +32,38 @@ class CreateZoomMeetingTaskParams:
     """
     Attributes:
         topic (str): The meeting topic
-        task_type (CreateZoomMeetingTaskParamsTaskType | Unset):
-        password (str | Unset): The meeting password
-        create_as_email (str | Unset): The email to use if creating as email
-        alternative_hosts (list[str] | Unset):
-        auto_recording (CreateZoomMeetingTaskParamsAutoRecording | Unset):  Default: 'none'.
-        record_meeting (bool | Unset): Rootly AI will record the meeting and automatically generate a transcript and
-            summary from your meeting
-        recording_mode (CreateZoomMeetingTaskParamsRecordingMode | Unset): The video layout for the bot's recording
-            (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
-        enable_zoom_bot_auto_join (bool | Unset): Allow the Rootly bot to start recording without waiting for host
+        task_type (Union[Unset, CreateZoomMeetingTaskParamsTaskType]):
+        password (Union[Unset, str]): The meeting password
+        create_as_email (Union[Unset, str]): The email to use if creating as email
+        alternative_hosts (Union[Unset, list[str]]):
+        auto_recording (Union[Unset, CreateZoomMeetingTaskParamsAutoRecording]):  Default: 'none'.
+        record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
+            and summary from your meeting
+        recording_mode (Union[Unset, CreateZoomMeetingTaskParamsRecordingMode]): The video layout for the bot's
+            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
+        enable_zoom_bot_auto_join (Union[Unset, bool]): Allow the Rootly bot to start recording without waiting for host
             approval
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['CreateZoomMeetingTaskParamsPostToSlackChannelsItem']]):
     """
 
     topic: str
-    task_type: CreateZoomMeetingTaskParamsTaskType | Unset = UNSET
-    password: str | Unset = UNSET
-    create_as_email: str | Unset = UNSET
-    alternative_hosts: list[str] | Unset = UNSET
-    auto_recording: CreateZoomMeetingTaskParamsAutoRecording | Unset = "none"
-    record_meeting: bool | Unset = UNSET
-    recording_mode: CreateZoomMeetingTaskParamsRecordingMode | Unset = UNSET
-    enable_zoom_bot_auto_join: bool | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Union[Unset, CreateZoomMeetingTaskParamsTaskType] = UNSET
+    password: Union[Unset, str] = UNSET
+    create_as_email: Union[Unset, str] = UNSET
+    alternative_hosts: Union[Unset, list[str]] = UNSET
+    auto_recording: Union[Unset, CreateZoomMeetingTaskParamsAutoRecording] = "none"
+    record_meeting: Union[Unset, bool] = UNSET
+    recording_mode: Union[Unset, CreateZoomMeetingTaskParamsRecordingMode] = UNSET
+    enable_zoom_bot_auto_join: Union[Unset, bool] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["CreateZoomMeetingTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         topic = self.topic
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -74,17 +71,17 @@ class CreateZoomMeetingTaskParams:
 
         create_as_email = self.create_as_email
 
-        alternative_hosts: list[str] | Unset = UNSET
+        alternative_hosts: Union[Unset, list[str]] = UNSET
         if not isinstance(self.alternative_hosts, Unset):
             alternative_hosts = self.alternative_hosts
 
-        auto_recording: str | Unset = UNSET
+        auto_recording: Union[Unset, str] = UNSET
         if not isinstance(self.auto_recording, Unset):
             auto_recording = self.auto_recording
 
         record_meeting = self.record_meeting
 
-        recording_mode: str | Unset = UNSET
+        recording_mode: Union[Unset, str] = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
 
@@ -92,7 +89,7 @@ class CreateZoomMeetingTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -139,7 +136,7 @@ class CreateZoomMeetingTaskParams:
         topic = d.pop("topic")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateZoomMeetingTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateZoomMeetingTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -152,7 +149,7 @@ class CreateZoomMeetingTaskParams:
         alternative_hosts = cast(list[str], d.pop("alternative_hosts", UNSET))
 
         _auto_recording = d.pop("auto_recording", UNSET)
-        auto_recording: CreateZoomMeetingTaskParamsAutoRecording | Unset
+        auto_recording: Union[Unset, CreateZoomMeetingTaskParamsAutoRecording]
         if isinstance(_auto_recording, Unset):
             auto_recording = UNSET
         else:
@@ -161,7 +158,7 @@ class CreateZoomMeetingTaskParams:
         record_meeting = d.pop("record_meeting", UNSET)
 
         _recording_mode = d.pop("recording_mode", UNSET)
-        recording_mode: CreateZoomMeetingTaskParamsRecordingMode | Unset
+        recording_mode: Union[Unset, CreateZoomMeetingTaskParamsRecordingMode]
         if isinstance(_recording_mode, Unset):
             recording_mode = UNSET
         else:
@@ -171,16 +168,14 @@ class CreateZoomMeetingTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = CreateZoomMeetingTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = CreateZoomMeetingTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         create_zoom_meeting_task_params = cls(
             topic=topic,

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,18 +26,17 @@ T = TypeVar("T", bound="InviteToSlackChannelOpsgenieTaskParams")
 class InviteToSlackChannelOpsgenieTaskParams:
     """
     Attributes:
-        channels (list[InviteToSlackChannelOpsgenieTaskParamsChannelsItem]):
+        channels (list['InviteToSlackChannelOpsgenieTaskParamsChannelsItem']):
         schedule (InviteToSlackChannelOpsgenieTaskParamsSchedule):
-        task_type (InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset):
+        task_type (Union[Unset, InviteToSlackChannelOpsgenieTaskParamsTaskType]):
     """
 
-    channels: list[InviteToSlackChannelOpsgenieTaskParamsChannelsItem]
-    schedule: InviteToSlackChannelOpsgenieTaskParamsSchedule
-    task_type: InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset = UNSET
+    channels: list["InviteToSlackChannelOpsgenieTaskParamsChannelsItem"]
+    schedule: "InviteToSlackChannelOpsgenieTaskParamsSchedule"
+    task_type: Union[Unset, InviteToSlackChannelOpsgenieTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         channels = []
         for channels_item_data in self.channels:
             channels_item = channels_item_data.to_dict()
@@ -47,7 +44,7 @@ class InviteToSlackChannelOpsgenieTaskParams:
 
         schedule = self.schedule.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -84,7 +81,7 @@ class InviteToSlackChannelOpsgenieTaskParams:
         schedule = InviteToSlackChannelOpsgenieTaskParamsSchedule.from_dict(d.pop("schedule"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: InviteToSlackChannelOpsgenieTaskParamsTaskType | Unset
+        task_type: Union[Unset, InviteToSlackChannelOpsgenieTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

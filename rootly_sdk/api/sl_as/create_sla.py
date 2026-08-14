@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | SlaResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, SlaResponse]]:
     if response.status_code == 201:
         response_201 = SlaResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | SlaResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, SlaResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewSla,
-) -> Response[ErrorsList | SlaResponse]:
+) -> Response[Union[ErrorsList, SlaResponse]]:
     """Creates an SLA
 
      Creates a new SLA from provided data
@@ -82,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | SlaResponse]
+        Response[Union[ErrorsList, SlaResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewSla,
-) -> ErrorsList | SlaResponse | None:
+) -> Optional[Union[ErrorsList, SlaResponse]]:
     """Creates an SLA
 
      Creates a new SLA from provided data
@@ -113,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | SlaResponse
+        Union[ErrorsList, SlaResponse]
     """
 
     return sync_detailed(
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewSla,
-) -> Response[ErrorsList | SlaResponse]:
+) -> Response[Union[ErrorsList, SlaResponse]]:
     """Creates an SLA
 
      Creates a new SLA from provided data
@@ -139,7 +139,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | SlaResponse]
+        Response[Union[ErrorsList, SlaResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewSla,
-) -> ErrorsList | SlaResponse | None:
+) -> Optional[Union[ErrorsList, SlaResponse]]:
     """Creates an SLA
 
      Creates a new SLA from provided data
@@ -168,7 +168,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | SlaResponse
+        Union[ErrorsList, SlaResponse]
     """
 
     return (

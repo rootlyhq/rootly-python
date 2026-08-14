@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -16,12 +15,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetRetrospectiveProcessGroupInclude | Unset = UNSET,
+    include: Union[Unset, GetRetrospectiveProcessGroupInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -31,9 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_process_groups/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/retrospective_process_groups/{id}",
         "params": params,
     }
 
@@ -41,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrospectiveProcessGroupResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[RetrospectiveProcessGroupResponse]:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessGroupResponse.from_dict(response.json())
 
@@ -55,7 +51,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[RetrospectiveProcessGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -69,7 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveProcessGroupInclude | Unset = UNSET,
+    include: Union[Unset, GetRetrospectiveProcessGroupInclude] = UNSET,
 ) -> Response[RetrospectiveProcessGroupResponse]:
     """Retrieves a Retrospective Process Group
 
@@ -77,7 +73,7 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (GetRetrospectiveProcessGroupInclude | Unset):
+        include (Union[Unset, GetRetrospectiveProcessGroupInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -103,15 +99,15 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveProcessGroupInclude | Unset = UNSET,
-) -> RetrospectiveProcessGroupResponse | None:
+    include: Union[Unset, GetRetrospectiveProcessGroupInclude] = UNSET,
+) -> Optional[RetrospectiveProcessGroupResponse]:
     """Retrieves a Retrospective Process Group
 
      Retrieves a specific Retrospective Process Group by id
 
     Args:
         id (str):
-        include (GetRetrospectiveProcessGroupInclude | Unset):
+        include (Union[Unset, GetRetrospectiveProcessGroupInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,7 +128,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveProcessGroupInclude | Unset = UNSET,
+    include: Union[Unset, GetRetrospectiveProcessGroupInclude] = UNSET,
 ) -> Response[RetrospectiveProcessGroupResponse]:
     """Retrieves a Retrospective Process Group
 
@@ -140,7 +136,7 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (GetRetrospectiveProcessGroupInclude | Unset):
+        include (Union[Unset, GetRetrospectiveProcessGroupInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,15 +160,15 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveProcessGroupInclude | Unset = UNSET,
-) -> RetrospectiveProcessGroupResponse | None:
+    include: Union[Unset, GetRetrospectiveProcessGroupInclude] = UNSET,
+) -> Optional[RetrospectiveProcessGroupResponse]:
     """Retrieves a Retrospective Process Group
 
      Retrieves a specific Retrospective Process Group by id
 
     Args:
         id (str):
-        include (GetRetrospectiveProcessGroupInclude | Unset):
+        include (Union[Unset, GetRetrospectiveProcessGroupInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

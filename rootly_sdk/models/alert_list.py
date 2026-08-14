@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,20 +20,19 @@ T = TypeVar("T", bound="AlertList")
 class AlertList:
     """
     Attributes:
-        data (list[AlertListDataItem]):
+        data (list['AlertListDataItem']):
         links (Links):
         meta (Meta):
-        included (list[JsonapiIncludedResource] | Unset):
+        included (Union[Unset, list['JsonapiIncludedResource']]):
     """
 
-    data: list[AlertListDataItem]
-    links: Links
-    meta: Meta
-    included: list[JsonapiIncludedResource] | Unset = UNSET
+    data: list["AlertListDataItem"]
+    links: "Links"
+    meta: "Meta"
+    included: Union[Unset, list["JsonapiIncludedResource"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()
@@ -45,7 +42,7 @@ class AlertList:
 
         meta = self.meta.to_dict()
 
-        included: list[dict[str, Any]] | Unset = UNSET
+        included: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -85,14 +82,12 @@ class AlertList:
 
         meta = Meta.from_dict(d.pop("meta"))
 
+        included = []
         _included = d.pop("included", UNSET)
-        included: list[JsonapiIncludedResource] | Unset = UNSET
-        if _included is not UNSET:
-            included = []
-            for included_item_data in _included:
-                included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        for included_item_data in _included or []:
+            included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-                included.append(included_item)
+            included.append(included_item)
 
         alert_list = cls(
             data=data,

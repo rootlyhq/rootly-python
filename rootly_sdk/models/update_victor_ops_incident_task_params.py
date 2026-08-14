@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,14 +24,14 @@ class UpdateVictorOpsIncidentTaskParams:
         victor_ops_incident_id (str): The victor_ops incident ID, this can also be a Rootly incident variable ex. {{
             incident.victor_ops_incident_id }}
         status (UpdateVictorOpsIncidentTaskParamsStatus):
-        task_type (UpdateVictorOpsIncidentTaskParamsTaskType | Unset):
-        resolution_message (str | Unset): Resolution message
+        task_type (Union[Unset, UpdateVictorOpsIncidentTaskParamsTaskType]):
+        resolution_message (Union[Unset, str]): Resolution message
     """
 
     victor_ops_incident_id: str
     status: UpdateVictorOpsIncidentTaskParamsStatus
-    task_type: UpdateVictorOpsIncidentTaskParamsTaskType | Unset = UNSET
-    resolution_message: str | Unset = UNSET
+    task_type: Union[Unset, UpdateVictorOpsIncidentTaskParamsTaskType] = UNSET
+    resolution_message: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,7 +39,7 @@ class UpdateVictorOpsIncidentTaskParams:
 
         status: str = self.status
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,7 +68,7 @@ class UpdateVictorOpsIncidentTaskParams:
         status = check_update_victor_ops_incident_task_params_status(d.pop("status"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateVictorOpsIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateVictorOpsIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,21 +23,20 @@ class CreateEdgeConnectorActionBodyAction:
     Attributes:
         name (str): Action name
         action_type (CreateEdgeConnectorActionBodyActionActionType): Action type
-        metadata (CreateEdgeConnectorActionBodyActionMetadata | Unset):
+        metadata (Union[Unset, CreateEdgeConnectorActionBodyActionMetadata]):
     """
 
     name: str
     action_type: CreateEdgeConnectorActionBodyActionActionType
-    metadata: CreateEdgeConnectorActionBodyActionMetadata | Unset = UNSET
+    metadata: Union[Unset, "CreateEdgeConnectorActionBodyActionMetadata"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         action_type: str = self.action_type
 
-        metadata: dict[str, Any] | Unset = UNSET
+        metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
@@ -68,7 +65,7 @@ class CreateEdgeConnectorActionBodyAction:
         action_type = check_create_edge_connector_action_body_action_action_type(d.pop("action_type"))
 
         _metadata = d.pop("metadata", UNSET)
-        metadata: CreateEdgeConnectorActionBodyActionMetadata | Unset
+        metadata: Union[Unset, CreateEdgeConnectorActionBodyActionMetadata]
         if isinstance(_metadata, Unset):
             metadata = UNSET
         else:

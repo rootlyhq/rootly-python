@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -15,31 +13,31 @@ class CreateEdgeConnectorBodyDataAttributesFilters:
     """Event filters. OR within dimension, AND across dimensions.
 
     Attributes:
-        group_ids (list[str] | Unset): Filter by group UUIDs
-        service_ids (list[str] | Unset): Filter by service UUIDs
-        environment_ids (list[str] | Unset): Filter by environment UUIDs
-        functionality_ids (list[str] | Unset): Filter by functionality UUIDs
+        group_ids (Union[Unset, list[str]]): Filter by group UUIDs
+        service_ids (Union[Unset, list[str]]): Filter by service UUIDs
+        environment_ids (Union[Unset, list[str]]): Filter by environment UUIDs
+        functionality_ids (Union[Unset, list[str]]): Filter by functionality UUIDs
     """
 
-    group_ids: list[str] | Unset = UNSET
-    service_ids: list[str] | Unset = UNSET
-    environment_ids: list[str] | Unset = UNSET
-    functionality_ids: list[str] | Unset = UNSET
+    group_ids: Union[Unset, list[str]] = UNSET
+    service_ids: Union[Unset, list[str]] = UNSET
+    environment_ids: Union[Unset, list[str]] = UNSET
+    functionality_ids: Union[Unset, list[str]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        group_ids: list[str] | Unset = UNSET
+        group_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        service_ids: list[str] | Unset = UNSET
+        service_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        environment_ids: list[str] | Unset = UNSET
+        environment_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        functionality_ids: list[str] | Unset = UNSET
+        functionality_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.functionality_ids, Unset):
             functionality_ids = self.functionality_ids
 

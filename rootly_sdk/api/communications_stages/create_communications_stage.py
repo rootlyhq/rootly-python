@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CommunicationsStageResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[CommunicationsStageResponse, ErrorsList]]:
     if response.status_code == 201:
         response_201 = CommunicationsStageResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CommunicationsStageResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[CommunicationsStageResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsStage,
-) -> Response[CommunicationsStageResponse | ErrorsList]:
+) -> Response[Union[CommunicationsStageResponse, ErrorsList]]:
     """Creates a communications stage
 
      Creates a new communications stage from provided data
@@ -82,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CommunicationsStageResponse | ErrorsList]
+        Response[Union[CommunicationsStageResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsStage,
-) -> CommunicationsStageResponse | ErrorsList | None:
+) -> Optional[Union[CommunicationsStageResponse, ErrorsList]]:
     """Creates a communications stage
 
      Creates a new communications stage from provided data
@@ -113,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CommunicationsStageResponse | ErrorsList
+        Union[CommunicationsStageResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsStage,
-) -> Response[CommunicationsStageResponse | ErrorsList]:
+) -> Response[Union[CommunicationsStageResponse, ErrorsList]]:
     """Creates a communications stage
 
      Creates a new communications stage from provided data
@@ -139,7 +139,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CommunicationsStageResponse | ErrorsList]
+        Response[Union[CommunicationsStageResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsStage,
-) -> CommunicationsStageResponse | ErrorsList | None:
+) -> Optional[Union[CommunicationsStageResponse, ErrorsList]]:
     """Creates a communications stage
 
      Creates a new communications stage from provided data
@@ -168,7 +168,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CommunicationsStageResponse | ErrorsList
+        Union[CommunicationsStageResponse, ErrorsList]
     """
 
     return (

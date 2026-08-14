@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,21 +23,20 @@ class EscalationPolicyLevelResponseData:
     Attributes:
         id (str): Unique ID of the escalation policy level
         attributes (EscalationPolicyLevel):
-        type_ (EscalationPolicyLevelResponseDataType | Unset):
+        type_ (Union[Unset, EscalationPolicyLevelResponseDataType]):
     """
 
     id: str
-    attributes: EscalationPolicyLevel
-    type_: EscalationPolicyLevelResponseDataType | Unset = UNSET
+    attributes: "EscalationPolicyLevel"
+    type_: Union[Unset, EscalationPolicyLevelResponseDataType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         attributes = self.attributes.to_dict()
 
-        type_: str | Unset = UNSET
+        type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -66,7 +63,7 @@ class EscalationPolicyLevelResponseData:
         attributes = EscalationPolicyLevel.from_dict(d.pop("attributes"))
 
         _type_ = d.pop("type", UNSET)
-        type_: EscalationPolicyLevelResponseDataType | Unset
+        type_: Union[Unset, EscalationPolicyLevelResponseDataType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

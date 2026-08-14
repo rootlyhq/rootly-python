@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/workflows/{workflow_id}/form_field_conditions".format(
-            workflow_id=quote(str(workflow_id), safe=""),
-        ),
+        "url": f"/v1/workflows/{workflow_id}/form_field_conditions",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     if response.status_code == 201:
         response_201 = WorkflowFormFieldConditionResponse.from_dict(response.json())
 
@@ -47,6 +44,11 @@ def _parse_response(
 
         return response_401
 
+    if response.status_code == 422:
+        response_422 = ErrorsList.from_dict(response.json())
+
+        return response_422
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -54,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
+) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -83,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
+) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -117,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowFormFieldConditionResponse
+        Union[ErrorsList, WorkflowFormFieldConditionResponse]
     """
 
     return sync_detailed(
@@ -132,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> Response[ErrorsList | WorkflowFormFieldConditionResponse]:
+) -> Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -146,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewWorkflowFormFieldCondition,
-) -> ErrorsList | WorkflowFormFieldConditionResponse | None:
+) -> Optional[Union[ErrorsList, WorkflowFormFieldConditionResponse]]:
     """Creates a workflow form field condition
 
      Creates a new workflow form field condition from provided data
@@ -178,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowFormFieldConditionResponse
+        Union[ErrorsList, WorkflowFormFieldConditionResponse]
     """
 
     return (

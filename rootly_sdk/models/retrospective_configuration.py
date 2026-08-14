@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,28 +17,29 @@ T = TypeVar("T", bound="RetrospectiveConfiguration")
 class RetrospectiveConfiguration:
     """
     Attributes:
-        kind (RetrospectiveConfigurationKind | Unset): The kind of the configuration.
-        severity_ids (list[str] | None | Unset): The Severity IDs to attach to the retrospective configuration
-        group_ids (list[str] | None | Unset): The Team IDs to attach to the retrospective configuration
-        incident_type_ids (list[str] | None | Unset): The Incident Type IDs to attach to the retrospective configuration
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        kind (Union[Unset, RetrospectiveConfigurationKind]): The kind of the configuration.
+        severity_ids (Union[None, Unset, list[str]]): The Severity IDs to attach to the retrospective configuration
+        group_ids (Union[None, Unset, list[str]]): The Team IDs to attach to the retrospective configuration
+        incident_type_ids (Union[None, Unset, list[str]]): The Incident Type IDs to attach to the retrospective
+            configuration
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
-    kind: RetrospectiveConfigurationKind | Unset = UNSET
-    severity_ids: list[str] | None | Unset = UNSET
-    group_ids: list[str] | None | Unset = UNSET
-    incident_type_ids: list[str] | None | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    kind: Union[Unset, RetrospectiveConfigurationKind] = UNSET
+    severity_ids: Union[None, Unset, list[str]] = UNSET
+    group_ids: Union[None, Unset, list[str]] = UNSET
+    incident_type_ids: Union[None, Unset, list[str]] = UNSET
+    created_at: Union[Unset, str] = UNSET
+    updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        kind: str | Unset = UNSET
+        kind: Union[Unset, str] = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        severity_ids: list[str] | None | Unset
+        severity_ids: Union[None, Unset, list[str]]
         if isinstance(self.severity_ids, Unset):
             severity_ids = UNSET
         elif isinstance(self.severity_ids, list):
@@ -49,7 +48,7 @@ class RetrospectiveConfiguration:
         else:
             severity_ids = self.severity_ids
 
-        group_ids: list[str] | None | Unset
+        group_ids: Union[None, Unset, list[str]]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -58,7 +57,7 @@ class RetrospectiveConfiguration:
         else:
             group_ids = self.group_ids
 
-        incident_type_ids: list[str] | None | Unset
+        incident_type_ids: Union[None, Unset, list[str]]
         if isinstance(self.incident_type_ids, Unset):
             incident_type_ids = UNSET
         elif isinstance(self.incident_type_ids, list):
@@ -93,13 +92,13 @@ class RetrospectiveConfiguration:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: RetrospectiveConfigurationKind | Unset
+        kind: Union[Unset, RetrospectiveConfigurationKind]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_retrospective_configuration_kind(_kind)
 
-        def _parse_severity_ids(data: object) -> list[str] | None | Unset:
+        def _parse_severity_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -110,13 +109,13 @@ class RetrospectiveConfiguration:
                 severity_ids_type_0 = cast(list[str], data)
 
                 return severity_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         severity_ids = _parse_severity_ids(d.pop("severity_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> list[str] | None | Unset:
+        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -127,13 +126,13 @@ class RetrospectiveConfiguration:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_incident_type_ids(data: object) -> list[str] | None | Unset:
+        def _parse_incident_type_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -144,9 +143,9 @@ class RetrospectiveConfiguration:
                 incident_type_ids_type_0 = cast(list[str], data)
 
                 return incident_type_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 

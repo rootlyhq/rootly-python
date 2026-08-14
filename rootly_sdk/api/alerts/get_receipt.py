@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -13,18 +12,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/alerts/receipts/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/alerts/receipts/{id}",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | Receipt | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, Receipt]]:
     if response.status_code == 200:
         response_200 = Receipt.from_dict(response.json())
 
@@ -40,7 +38,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | Receipt]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, Receipt]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +53,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | Receipt]:
+) -> Response[Union[Any, Receipt]]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -67,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Receipt]
+        Response[Union[Any, Receipt]]
     """
 
     kwargs = _get_kwargs(
@@ -85,7 +85,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | Receipt | None:
+) -> Optional[Union[Any, Receipt]]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -99,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Receipt
+        Union[Any, Receipt]
     """
 
     return sync_detailed(
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | Receipt]:
+) -> Response[Union[Any, Receipt]]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -126,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | Receipt]
+        Response[Union[Any, Receipt]]
     """
 
     kwargs = _get_kwargs(
@@ -142,7 +142,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | Receipt | None:
+) -> Optional[Union[Any, Receipt]]:
     """Get a receipt
 
      Retrieve the delivery receipt for a notification by ID, including its state and (when applicable)
@@ -156,7 +156,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | Receipt
+        Union[Any, Receipt]
     """
 
     return (

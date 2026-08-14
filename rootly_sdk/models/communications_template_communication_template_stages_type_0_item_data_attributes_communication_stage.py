@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +13,12 @@ T = TypeVar("T", bound="CommunicationsTemplateCommunicationTemplateStagesType0It
 class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage:
     """
     Attributes:
-        id (str | Unset): The communication stage ID
-        name (str | Unset): The communication stage name
+        id (Union[Unset, str]): The communication stage ID
+        name (Union[Unset, str]): The communication stage name
     """
 
-    id: str | Unset = UNSET
-    name: str | Unset = UNSET
+    id: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

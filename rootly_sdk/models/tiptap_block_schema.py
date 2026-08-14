@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,21 +19,20 @@ class TiptapBlockSchema:
     """TipTap block component schema for post mortem templates
 
     Attributes:
-        followup_component (TiptapBlockSchemaFollowupComponent | Unset): Followup component block
-        timeline_component (TiptapBlockSchemaTimelineComponent | Unset): Timeline component block
+        followup_component (Union[Unset, TiptapBlockSchemaFollowupComponent]): Followup component block
+        timeline_component (Union[Unset, TiptapBlockSchemaTimelineComponent]): Timeline component block
     """
 
-    followup_component: TiptapBlockSchemaFollowupComponent | Unset = UNSET
-    timeline_component: TiptapBlockSchemaTimelineComponent | Unset = UNSET
+    followup_component: Union[Unset, "TiptapBlockSchemaFollowupComponent"] = UNSET
+    timeline_component: Union[Unset, "TiptapBlockSchemaTimelineComponent"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        followup_component: dict[str, Any] | Unset = UNSET
+        followup_component: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.followup_component, Unset):
             followup_component = self.followup_component.to_dict()
 
-        timeline_component: dict[str, Any] | Unset = UNSET
+        timeline_component: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.timeline_component, Unset):
             timeline_component = self.timeline_component.to_dict()
 
@@ -56,14 +53,14 @@ class TiptapBlockSchema:
 
         d = dict(src_dict)
         _followup_component = d.pop("followup_component", UNSET)
-        followup_component: TiptapBlockSchemaFollowupComponent | Unset
+        followup_component: Union[Unset, TiptapBlockSchemaFollowupComponent]
         if isinstance(_followup_component, Unset):
             followup_component = UNSET
         else:
             followup_component = TiptapBlockSchemaFollowupComponent.from_dict(_followup_component)
 
         _timeline_component = d.pop("timeline_component", UNSET)
-        timeline_component: TiptapBlockSchemaTimelineComponent | Unset
+        timeline_component: Union[Unset, TiptapBlockSchemaTimelineComponent]
         if isinstance(_timeline_component, Unset):
             timeline_component = UNSET
         else:

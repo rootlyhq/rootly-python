@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,23 +18,23 @@ class UpdateDropboxPaperPageTaskParams:
     """
     Attributes:
         file_id (str): The Dropbox Paper document ID
-        task_type (UpdateDropboxPaperPageTaskParamsTaskType | Unset):
-        title (str | Unset): The Dropbox Paper document title
-        content (str | Unset): The Dropbox Paper document content
-        post_mortem_template_id (str | Unset): Retrospective template to use when updating document, if desired
+        task_type (Union[Unset, UpdateDropboxPaperPageTaskParamsTaskType]):
+        title (Union[Unset, str]): The Dropbox Paper document title
+        content (Union[Unset, str]): The Dropbox Paper document content
+        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating document, if desired
     """
 
     file_id: str
-    task_type: UpdateDropboxPaperPageTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    content: str | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
+    task_type: Union[Unset, UpdateDropboxPaperPageTaskParamsTaskType] = UNSET
+    title: Union[Unset, str] = UNSET
+    content: Union[Unset, str] = UNSET
+    post_mortem_template_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,7 +68,7 @@ class UpdateDropboxPaperPageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateDropboxPaperPageTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateDropboxPaperPageTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

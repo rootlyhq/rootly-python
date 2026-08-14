@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,44 +11,43 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterpriority: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterincident_status: str | Unset = UNSET,
-    filterincident_created_atgt: str | Unset = UNSET,
-    filterincident_created_atgte: str | Unset = UNSET,
-    filterincident_created_atlt: str | Unset = UNSET,
-    filterincident_created_atlte: str | Unset = UNSET,
-    filterdue_dategt: str | Unset = UNSET,
-    filterdue_dategte: str | Unset = UNSET,
-    filterdue_datelt: str | Unset = UNSET,
-    filterdue_datelte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterkindeq: str | Unset = UNSET,
-    filterkindnot_eq: str | Unset = UNSET,
-    filterkindin: str | Unset = UNSET,
-    filterkindnot_in: str | Unset = UNSET,
-    filterpriorityeq: str | Unset = UNSET,
-    filterprioritynot_eq: str | Unset = UNSET,
-    filterpriorityin: str | Unset = UNSET,
-    filterprioritynot_in: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filterincident_statuseq: str | Unset = UNSET,
-    filterincident_statusnot_eq: str | Unset = UNSET,
-    filterincident_statusin: str | Unset = UNSET,
-    filterincident_statusnot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterpriority: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterincident_status: Union[Unset, str] = UNSET,
+    filterincident_created_atgt: Union[Unset, str] = UNSET,
+    filterincident_created_atgte: Union[Unset, str] = UNSET,
+    filterincident_created_atlt: Union[Unset, str] = UNSET,
+    filterincident_created_atlte: Union[Unset, str] = UNSET,
+    filterdue_dategt: Union[Unset, str] = UNSET,
+    filterdue_dategte: Union[Unset, str] = UNSET,
+    filterdue_datelt: Union[Unset, str] = UNSET,
+    filterdue_datelte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterkindeq: Union[Unset, str] = UNSET,
+    filterkindnot_eq: Union[Unset, str] = UNSET,
+    filterkindin: Union[Unset, str] = UNSET,
+    filterkindnot_in: Union[Unset, str] = UNSET,
+    filterpriorityeq: Union[Unset, str] = UNSET,
+    filterprioritynot_eq: Union[Unset, str] = UNSET,
+    filterpriorityin: Union[Unset, str] = UNSET,
+    filterprioritynot_in: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filterincident_statuseq: Union[Unset, str] = UNSET,
+    filterincident_statusnot_eq: Union[Unset, str] = UNSET,
+    filterincident_statusin: Union[Unset, str] = UNSET,
+    filterincident_statusnot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -134,7 +133,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentActionItemList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[IncidentActionItemList]:
     if response.status_code == 200:
         response_200 = IncidentActionItemList.from_dict(response.json())
 
@@ -147,7 +148,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[IncidentActionItemList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -160,84 +161,84 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterpriority: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterincident_status: str | Unset = UNSET,
-    filterincident_created_atgt: str | Unset = UNSET,
-    filterincident_created_atgte: str | Unset = UNSET,
-    filterincident_created_atlt: str | Unset = UNSET,
-    filterincident_created_atlte: str | Unset = UNSET,
-    filterdue_dategt: str | Unset = UNSET,
-    filterdue_dategte: str | Unset = UNSET,
-    filterdue_datelt: str | Unset = UNSET,
-    filterdue_datelte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterkindeq: str | Unset = UNSET,
-    filterkindnot_eq: str | Unset = UNSET,
-    filterkindin: str | Unset = UNSET,
-    filterkindnot_in: str | Unset = UNSET,
-    filterpriorityeq: str | Unset = UNSET,
-    filterprioritynot_eq: str | Unset = UNSET,
-    filterpriorityin: str | Unset = UNSET,
-    filterprioritynot_in: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filterincident_statuseq: str | Unset = UNSET,
-    filterincident_statusnot_eq: str | Unset = UNSET,
-    filterincident_statusin: str | Unset = UNSET,
-    filterincident_statusnot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterpriority: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterincident_status: Union[Unset, str] = UNSET,
+    filterincident_created_atgt: Union[Unset, str] = UNSET,
+    filterincident_created_atgte: Union[Unset, str] = UNSET,
+    filterincident_created_atlt: Union[Unset, str] = UNSET,
+    filterincident_created_atlte: Union[Unset, str] = UNSET,
+    filterdue_dategt: Union[Unset, str] = UNSET,
+    filterdue_dategte: Union[Unset, str] = UNSET,
+    filterdue_datelt: Union[Unset, str] = UNSET,
+    filterdue_datelte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterkindeq: Union[Unset, str] = UNSET,
+    filterkindnot_eq: Union[Unset, str] = UNSET,
+    filterkindin: Union[Unset, str] = UNSET,
+    filterkindnot_in: Union[Unset, str] = UNSET,
+    filterpriorityeq: Union[Unset, str] = UNSET,
+    filterprioritynot_eq: Union[Unset, str] = UNSET,
+    filterpriorityin: Union[Unset, str] = UNSET,
+    filterprioritynot_in: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filterincident_statuseq: Union[Unset, str] = UNSET,
+    filterincident_statusnot_eq: Union[Unset, str] = UNSET,
+    filterincident_statusin: Union[Unset, str] = UNSET,
+    filterincident_statusnot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filterpriority (str | Unset):
-        filterstatus (str | Unset):
-        filterincident_status (str | Unset):
-        filterincident_created_atgt (str | Unset):
-        filterincident_created_atgte (str | Unset):
-        filterincident_created_atlt (str | Unset):
-        filterincident_created_atlte (str | Unset):
-        filterdue_dategt (str | Unset):
-        filterdue_dategte (str | Unset):
-        filterdue_datelt (str | Unset):
-        filterdue_datelte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterkindeq (str | Unset):
-        filterkindnot_eq (str | Unset):
-        filterkindin (str | Unset):
-        filterkindnot_in (str | Unset):
-        filterpriorityeq (str | Unset):
-        filterprioritynot_eq (str | Unset):
-        filterpriorityin (str | Unset):
-        filterprioritynot_in (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filterincident_statuseq (str | Unset):
-        filterincident_statusnot_eq (str | Unset):
-        filterincident_statusin (str | Unset):
-        filterincident_statusnot_in (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filterpriority (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterincident_status (Union[Unset, str]):
+        filterincident_created_atgt (Union[Unset, str]):
+        filterincident_created_atgte (Union[Unset, str]):
+        filterincident_created_atlt (Union[Unset, str]):
+        filterincident_created_atlte (Union[Unset, str]):
+        filterdue_dategt (Union[Unset, str]):
+        filterdue_dategte (Union[Unset, str]):
+        filterdue_datelt (Union[Unset, str]):
+        filterdue_datelte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterkindeq (Union[Unset, str]):
+        filterkindnot_eq (Union[Unset, str]):
+        filterkindin (Union[Unset, str]):
+        filterkindnot_in (Union[Unset, str]):
+        filterpriorityeq (Union[Unset, str]):
+        filterprioritynot_eq (Union[Unset, str]):
+        filterpriorityin (Union[Unset, str]):
+        filterprioritynot_in (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filterincident_statuseq (Union[Unset, str]):
+        filterincident_statusnot_eq (Union[Unset, str]):
+        filterincident_statusin (Union[Unset, str]):
+        filterincident_statusnot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -296,84 +297,84 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterpriority: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterincident_status: str | Unset = UNSET,
-    filterincident_created_atgt: str | Unset = UNSET,
-    filterincident_created_atgte: str | Unset = UNSET,
-    filterincident_created_atlt: str | Unset = UNSET,
-    filterincident_created_atlte: str | Unset = UNSET,
-    filterdue_dategt: str | Unset = UNSET,
-    filterdue_dategte: str | Unset = UNSET,
-    filterdue_datelt: str | Unset = UNSET,
-    filterdue_datelte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterkindeq: str | Unset = UNSET,
-    filterkindnot_eq: str | Unset = UNSET,
-    filterkindin: str | Unset = UNSET,
-    filterkindnot_in: str | Unset = UNSET,
-    filterpriorityeq: str | Unset = UNSET,
-    filterprioritynot_eq: str | Unset = UNSET,
-    filterpriorityin: str | Unset = UNSET,
-    filterprioritynot_in: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filterincident_statuseq: str | Unset = UNSET,
-    filterincident_statusnot_eq: str | Unset = UNSET,
-    filterincident_statusin: str | Unset = UNSET,
-    filterincident_statusnot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> IncidentActionItemList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterpriority: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterincident_status: Union[Unset, str] = UNSET,
+    filterincident_created_atgt: Union[Unset, str] = UNSET,
+    filterincident_created_atgte: Union[Unset, str] = UNSET,
+    filterincident_created_atlt: Union[Unset, str] = UNSET,
+    filterincident_created_atlte: Union[Unset, str] = UNSET,
+    filterdue_dategt: Union[Unset, str] = UNSET,
+    filterdue_dategte: Union[Unset, str] = UNSET,
+    filterdue_datelt: Union[Unset, str] = UNSET,
+    filterdue_datelte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterkindeq: Union[Unset, str] = UNSET,
+    filterkindnot_eq: Union[Unset, str] = UNSET,
+    filterkindin: Union[Unset, str] = UNSET,
+    filterkindnot_in: Union[Unset, str] = UNSET,
+    filterpriorityeq: Union[Unset, str] = UNSET,
+    filterprioritynot_eq: Union[Unset, str] = UNSET,
+    filterpriorityin: Union[Unset, str] = UNSET,
+    filterprioritynot_in: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filterincident_statuseq: Union[Unset, str] = UNSET,
+    filterincident_statusnot_eq: Union[Unset, str] = UNSET,
+    filterincident_statusin: Union[Unset, str] = UNSET,
+    filterincident_statusnot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filterpriority (str | Unset):
-        filterstatus (str | Unset):
-        filterincident_status (str | Unset):
-        filterincident_created_atgt (str | Unset):
-        filterincident_created_atgte (str | Unset):
-        filterincident_created_atlt (str | Unset):
-        filterincident_created_atlte (str | Unset):
-        filterdue_dategt (str | Unset):
-        filterdue_dategte (str | Unset):
-        filterdue_datelt (str | Unset):
-        filterdue_datelte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterkindeq (str | Unset):
-        filterkindnot_eq (str | Unset):
-        filterkindin (str | Unset):
-        filterkindnot_in (str | Unset):
-        filterpriorityeq (str | Unset):
-        filterprioritynot_eq (str | Unset):
-        filterpriorityin (str | Unset):
-        filterprioritynot_in (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filterincident_statuseq (str | Unset):
-        filterincident_statusnot_eq (str | Unset):
-        filterincident_statusin (str | Unset):
-        filterincident_statusnot_in (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filterpriority (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterincident_status (Union[Unset, str]):
+        filterincident_created_atgt (Union[Unset, str]):
+        filterincident_created_atgte (Union[Unset, str]):
+        filterincident_created_atlt (Union[Unset, str]):
+        filterincident_created_atlte (Union[Unset, str]):
+        filterdue_dategt (Union[Unset, str]):
+        filterdue_dategte (Union[Unset, str]):
+        filterdue_datelt (Union[Unset, str]):
+        filterdue_datelte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterkindeq (Union[Unset, str]):
+        filterkindnot_eq (Union[Unset, str]):
+        filterkindin (Union[Unset, str]):
+        filterkindnot_in (Union[Unset, str]):
+        filterpriorityeq (Union[Unset, str]):
+        filterprioritynot_eq (Union[Unset, str]):
+        filterpriorityin (Union[Unset, str]):
+        filterprioritynot_in (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filterincident_statuseq (Union[Unset, str]):
+        filterincident_statusnot_eq (Union[Unset, str]):
+        filterincident_statusin (Union[Unset, str]):
+        filterincident_statusnot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -427,84 +428,84 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterpriority: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterincident_status: str | Unset = UNSET,
-    filterincident_created_atgt: str | Unset = UNSET,
-    filterincident_created_atgte: str | Unset = UNSET,
-    filterincident_created_atlt: str | Unset = UNSET,
-    filterincident_created_atlte: str | Unset = UNSET,
-    filterdue_dategt: str | Unset = UNSET,
-    filterdue_dategte: str | Unset = UNSET,
-    filterdue_datelt: str | Unset = UNSET,
-    filterdue_datelte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterkindeq: str | Unset = UNSET,
-    filterkindnot_eq: str | Unset = UNSET,
-    filterkindin: str | Unset = UNSET,
-    filterkindnot_in: str | Unset = UNSET,
-    filterpriorityeq: str | Unset = UNSET,
-    filterprioritynot_eq: str | Unset = UNSET,
-    filterpriorityin: str | Unset = UNSET,
-    filterprioritynot_in: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filterincident_statuseq: str | Unset = UNSET,
-    filterincident_statusnot_eq: str | Unset = UNSET,
-    filterincident_statusin: str | Unset = UNSET,
-    filterincident_statusnot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterpriority: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterincident_status: Union[Unset, str] = UNSET,
+    filterincident_created_atgt: Union[Unset, str] = UNSET,
+    filterincident_created_atgte: Union[Unset, str] = UNSET,
+    filterincident_created_atlt: Union[Unset, str] = UNSET,
+    filterincident_created_atlte: Union[Unset, str] = UNSET,
+    filterdue_dategt: Union[Unset, str] = UNSET,
+    filterdue_dategte: Union[Unset, str] = UNSET,
+    filterdue_datelt: Union[Unset, str] = UNSET,
+    filterdue_datelte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterkindeq: Union[Unset, str] = UNSET,
+    filterkindnot_eq: Union[Unset, str] = UNSET,
+    filterkindin: Union[Unset, str] = UNSET,
+    filterkindnot_in: Union[Unset, str] = UNSET,
+    filterpriorityeq: Union[Unset, str] = UNSET,
+    filterprioritynot_eq: Union[Unset, str] = UNSET,
+    filterpriorityin: Union[Unset, str] = UNSET,
+    filterprioritynot_in: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filterincident_statuseq: Union[Unset, str] = UNSET,
+    filterincident_statusnot_eq: Union[Unset, str] = UNSET,
+    filterincident_statusin: Union[Unset, str] = UNSET,
+    filterincident_statusnot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filterpriority (str | Unset):
-        filterstatus (str | Unset):
-        filterincident_status (str | Unset):
-        filterincident_created_atgt (str | Unset):
-        filterincident_created_atgte (str | Unset):
-        filterincident_created_atlt (str | Unset):
-        filterincident_created_atlte (str | Unset):
-        filterdue_dategt (str | Unset):
-        filterdue_dategte (str | Unset):
-        filterdue_datelt (str | Unset):
-        filterdue_datelte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterkindeq (str | Unset):
-        filterkindnot_eq (str | Unset):
-        filterkindin (str | Unset):
-        filterkindnot_in (str | Unset):
-        filterpriorityeq (str | Unset):
-        filterprioritynot_eq (str | Unset):
-        filterpriorityin (str | Unset):
-        filterprioritynot_in (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filterincident_statuseq (str | Unset):
-        filterincident_statusnot_eq (str | Unset):
-        filterincident_statusin (str | Unset):
-        filterincident_statusnot_in (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filterpriority (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterincident_status (Union[Unset, str]):
+        filterincident_created_atgt (Union[Unset, str]):
+        filterincident_created_atgte (Union[Unset, str]):
+        filterincident_created_atlt (Union[Unset, str]):
+        filterincident_created_atlte (Union[Unset, str]):
+        filterdue_dategt (Union[Unset, str]):
+        filterdue_dategte (Union[Unset, str]):
+        filterdue_datelt (Union[Unset, str]):
+        filterdue_datelte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterkindeq (Union[Unset, str]):
+        filterkindnot_eq (Union[Unset, str]):
+        filterkindin (Union[Unset, str]):
+        filterkindnot_in (Union[Unset, str]):
+        filterpriorityeq (Union[Unset, str]):
+        filterprioritynot_eq (Union[Unset, str]):
+        filterpriorityin (Union[Unset, str]):
+        filterprioritynot_in (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filterincident_statuseq (Union[Unset, str]):
+        filterincident_statusnot_eq (Union[Unset, str]):
+        filterincident_statusin (Union[Unset, str]):
+        filterincident_statusnot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -561,84 +562,84 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterpriority: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterincident_status: str | Unset = UNSET,
-    filterincident_created_atgt: str | Unset = UNSET,
-    filterincident_created_atgte: str | Unset = UNSET,
-    filterincident_created_atlt: str | Unset = UNSET,
-    filterincident_created_atlte: str | Unset = UNSET,
-    filterdue_dategt: str | Unset = UNSET,
-    filterdue_dategte: str | Unset = UNSET,
-    filterdue_datelt: str | Unset = UNSET,
-    filterdue_datelte: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterkindeq: str | Unset = UNSET,
-    filterkindnot_eq: str | Unset = UNSET,
-    filterkindin: str | Unset = UNSET,
-    filterkindnot_in: str | Unset = UNSET,
-    filterpriorityeq: str | Unset = UNSET,
-    filterprioritynot_eq: str | Unset = UNSET,
-    filterpriorityin: str | Unset = UNSET,
-    filterprioritynot_in: str | Unset = UNSET,
-    filterstatuseq: str | Unset = UNSET,
-    filterstatusnot_eq: str | Unset = UNSET,
-    filterstatusin: str | Unset = UNSET,
-    filterstatusnot_in: str | Unset = UNSET,
-    filterincident_statuseq: str | Unset = UNSET,
-    filterincident_statusnot_eq: str | Unset = UNSET,
-    filterincident_statusin: str | Unset = UNSET,
-    filterincident_statusnot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> IncidentActionItemList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterpriority: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterincident_status: Union[Unset, str] = UNSET,
+    filterincident_created_atgt: Union[Unset, str] = UNSET,
+    filterincident_created_atgte: Union[Unset, str] = UNSET,
+    filterincident_created_atlt: Union[Unset, str] = UNSET,
+    filterincident_created_atlte: Union[Unset, str] = UNSET,
+    filterdue_dategt: Union[Unset, str] = UNSET,
+    filterdue_dategte: Union[Unset, str] = UNSET,
+    filterdue_datelt: Union[Unset, str] = UNSET,
+    filterdue_datelte: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterkindeq: Union[Unset, str] = UNSET,
+    filterkindnot_eq: Union[Unset, str] = UNSET,
+    filterkindin: Union[Unset, str] = UNSET,
+    filterkindnot_in: Union[Unset, str] = UNSET,
+    filterpriorityeq: Union[Unset, str] = UNSET,
+    filterprioritynot_eq: Union[Unset, str] = UNSET,
+    filterpriorityin: Union[Unset, str] = UNSET,
+    filterprioritynot_in: Union[Unset, str] = UNSET,
+    filterstatuseq: Union[Unset, str] = UNSET,
+    filterstatusnot_eq: Union[Unset, str] = UNSET,
+    filterstatusin: Union[Unset, str] = UNSET,
+    filterstatusnot_in: Union[Unset, str] = UNSET,
+    filterincident_statuseq: Union[Unset, str] = UNSET,
+    filterincident_statusnot_eq: Union[Unset, str] = UNSET,
+    filterincident_statusin: Union[Unset, str] = UNSET,
+    filterincident_statusnot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[IncidentActionItemList]:
     """List all action items for an organization
 
      List all action items for an organization
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
-        filterpriority (str | Unset):
-        filterstatus (str | Unset):
-        filterincident_status (str | Unset):
-        filterincident_created_atgt (str | Unset):
-        filterincident_created_atgte (str | Unset):
-        filterincident_created_atlt (str | Unset):
-        filterincident_created_atlte (str | Unset):
-        filterdue_dategt (str | Unset):
-        filterdue_dategte (str | Unset):
-        filterdue_datelt (str | Unset):
-        filterdue_datelte (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterkindeq (str | Unset):
-        filterkindnot_eq (str | Unset):
-        filterkindin (str | Unset):
-        filterkindnot_in (str | Unset):
-        filterpriorityeq (str | Unset):
-        filterprioritynot_eq (str | Unset):
-        filterpriorityin (str | Unset):
-        filterprioritynot_in (str | Unset):
-        filterstatuseq (str | Unset):
-        filterstatusnot_eq (str | Unset):
-        filterstatusin (str | Unset):
-        filterstatusnot_in (str | Unset):
-        filterincident_statuseq (str | Unset):
-        filterincident_statusnot_eq (str | Unset):
-        filterincident_statusin (str | Unset):
-        filterincident_statusnot_in (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
+        filterpriority (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterincident_status (Union[Unset, str]):
+        filterincident_created_atgt (Union[Unset, str]):
+        filterincident_created_atgte (Union[Unset, str]):
+        filterincident_created_atlt (Union[Unset, str]):
+        filterincident_created_atlte (Union[Unset, str]):
+        filterdue_dategt (Union[Unset, str]):
+        filterdue_dategte (Union[Unset, str]):
+        filterdue_datelt (Union[Unset, str]):
+        filterdue_datelte (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterkindeq (Union[Unset, str]):
+        filterkindnot_eq (Union[Unset, str]):
+        filterkindin (Union[Unset, str]):
+        filterkindnot_in (Union[Unset, str]):
+        filterpriorityeq (Union[Unset, str]):
+        filterprioritynot_eq (Union[Unset, str]):
+        filterpriorityin (Union[Unset, str]):
+        filterprioritynot_in (Union[Unset, str]):
+        filterstatuseq (Union[Unset, str]):
+        filterstatusnot_eq (Union[Unset, str]):
+        filterstatusin (Union[Unset, str]):
+        filterstatusnot_in (Union[Unset, str]):
+        filterincident_statuseq (Union[Unset, str]):
+        filterincident_statusnot_eq (Union[Unset, str]):
+        filterincident_statusin (Union[Unset, str]):
+        filterincident_statusnot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

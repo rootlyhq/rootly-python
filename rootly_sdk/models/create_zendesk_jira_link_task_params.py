@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,13 +20,13 @@ class CreateZendeskJiraLinkTaskParams:
         jira_issue_id (str): Jira Issue Id.
         jira_issue_key (str): Jira Issue Key.
         zendesk_ticket_id (str): Zendesk Ticket Id.
-        task_type (CreateZendeskJiraLinkTaskParamsTaskType | Unset):
+        task_type (Union[Unset, CreateZendeskJiraLinkTaskParamsTaskType]):
     """
 
     jira_issue_id: str
     jira_issue_key: str
     zendesk_ticket_id: str
-    task_type: CreateZendeskJiraLinkTaskParamsTaskType | Unset = UNSET
+    task_type: Union[Unset, CreateZendeskJiraLinkTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +36,7 @@ class CreateZendeskJiraLinkTaskParams:
 
         zendesk_ticket_id = self.zendesk_ticket_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -66,7 +64,7 @@ class CreateZendeskJiraLinkTaskParams:
         zendesk_ticket_id = d.pop("zendesk_ticket_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateZendeskJiraLinkTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateZendeskJiraLinkTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

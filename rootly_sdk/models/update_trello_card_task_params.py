@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,33 +26,32 @@ class UpdateTrelloCardTaskParams:
     Attributes:
         card_id (str): The card id
         archivation (UpdateTrelloCardTaskParamsArchivation): The archivation id and display name
-        task_type (UpdateTrelloCardTaskParamsTaskType | Unset):
-        title (str | Unset): The card title
-        description (str | Unset): The card description
-        due_date (str | Unset): The due date
-        board (UpdateTrelloCardTaskParamsBoard | Unset): The board id and display name
-        list_ (UpdateTrelloCardTaskParamsList | Unset): The list id and display name
-        labels (list[UpdateTrelloCardTaskParamsLabelsItem] | Unset):
+        task_type (Union[Unset, UpdateTrelloCardTaskParamsTaskType]):
+        title (Union[Unset, str]): The card title
+        description (Union[Unset, str]): The card description
+        due_date (Union[Unset, str]): The due date
+        board (Union[Unset, UpdateTrelloCardTaskParamsBoard]): The board id and display name
+        list_ (Union[Unset, UpdateTrelloCardTaskParamsList]): The list id and display name
+        labels (Union[Unset, list['UpdateTrelloCardTaskParamsLabelsItem']]):
     """
 
     card_id: str
-    archivation: UpdateTrelloCardTaskParamsArchivation
-    task_type: UpdateTrelloCardTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    description: str | Unset = UNSET
-    due_date: str | Unset = UNSET
-    board: UpdateTrelloCardTaskParamsBoard | Unset = UNSET
-    list_: UpdateTrelloCardTaskParamsList | Unset = UNSET
-    labels: list[UpdateTrelloCardTaskParamsLabelsItem] | Unset = UNSET
+    archivation: "UpdateTrelloCardTaskParamsArchivation"
+    task_type: Union[Unset, UpdateTrelloCardTaskParamsTaskType] = UNSET
+    title: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    due_date: Union[Unset, str] = UNSET
+    board: Union[Unset, "UpdateTrelloCardTaskParamsBoard"] = UNSET
+    list_: Union[Unset, "UpdateTrelloCardTaskParamsList"] = UNSET
+    labels: Union[Unset, list["UpdateTrelloCardTaskParamsLabelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         card_id = self.card_id
 
         archivation = self.archivation.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -64,15 +61,15 @@ class UpdateTrelloCardTaskParams:
 
         due_date = self.due_date
 
-        board: dict[str, Any] | Unset = UNSET
+        board: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.board, Unset):
             board = self.board.to_dict()
 
-        list_: dict[str, Any] | Unset = UNSET
+        list_: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.list_, Unset):
             list_ = self.list_.to_dict()
 
-        labels: list[dict[str, Any]] | Unset = UNSET
+        labels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
@@ -117,7 +114,7 @@ class UpdateTrelloCardTaskParams:
         archivation = UpdateTrelloCardTaskParamsArchivation.from_dict(d.pop("archivation"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateTrelloCardTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateTrelloCardTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -130,27 +127,25 @@ class UpdateTrelloCardTaskParams:
         due_date = d.pop("due_date", UNSET)
 
         _board = d.pop("board", UNSET)
-        board: UpdateTrelloCardTaskParamsBoard | Unset
+        board: Union[Unset, UpdateTrelloCardTaskParamsBoard]
         if isinstance(_board, Unset):
             board = UNSET
         else:
             board = UpdateTrelloCardTaskParamsBoard.from_dict(_board)
 
         _list_ = d.pop("list", UNSET)
-        list_: UpdateTrelloCardTaskParamsList | Unset
+        list_: Union[Unset, UpdateTrelloCardTaskParamsList]
         if isinstance(_list_, Unset):
             list_ = UNSET
         else:
             list_ = UpdateTrelloCardTaskParamsList.from_dict(_list_)
 
+        labels = []
         _labels = d.pop("labels", UNSET)
-        labels: list[UpdateTrelloCardTaskParamsLabelsItem] | Unset = UNSET
-        if _labels is not UNSET:
-            labels = []
-            for labels_item_data in _labels:
-                labels_item = UpdateTrelloCardTaskParamsLabelsItem.from_dict(labels_item_data)
+        for labels_item_data in _labels or []:
+            labels_item = UpdateTrelloCardTaskParamsLabelsItem.from_dict(labels_item_data)
 
-                labels.append(labels_item)
+            labels.append(labels_item)
 
         update_trello_card_task_params = cls(
             card_id=card_id,

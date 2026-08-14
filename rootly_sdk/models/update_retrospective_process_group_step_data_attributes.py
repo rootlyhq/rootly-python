@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
@@ -14,10 +12,10 @@ T = TypeVar("T", bound="UpdateRetrospectiveProcessGroupStepDataAttributes")
 class UpdateRetrospectiveProcessGroupStepDataAttributes:
     """
     Attributes:
-        position (int | Unset):
+        position (Union[Unset, int]):
     """
 
-    position: int | Unset = UNSET
+    position: Union[Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         position = self.position

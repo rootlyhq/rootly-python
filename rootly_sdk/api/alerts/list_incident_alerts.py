@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,12 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    include: ListIncidentAlertsInclude | Unset = UNSET,
+    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,16 +27,14 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incidents/{incident_id}/alerts".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": f"/v1/incidents/{incident_id}/alerts",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertList | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[AlertList]:
     if response.status_code == 200:
         response_200 = AlertList.from_dict(response.json())
 
@@ -50,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertList]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AlertList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,7 +59,7 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentAlertsInclude | Unset = UNSET,
+    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
 ) -> Response[AlertList]:
     """List Incident alerts
 
@@ -71,7 +67,7 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        include (ListIncidentAlertsInclude | Unset):
+        include (Union[Unset, ListIncidentAlertsInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,15 +93,15 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentAlertsInclude | Unset = UNSET,
-) -> AlertList | None:
+    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
+) -> Optional[AlertList]:
     """List Incident alerts
 
      List incident alerts
 
     Args:
         incident_id (str):
-        include (ListIncidentAlertsInclude | Unset):
+        include (Union[Unset, ListIncidentAlertsInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +122,7 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentAlertsInclude | Unset = UNSET,
+    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
 ) -> Response[AlertList]:
     """List Incident alerts
 
@@ -134,7 +130,7 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        include (ListIncidentAlertsInclude | Unset):
+        include (Union[Unset, ListIncidentAlertsInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -158,15 +154,15 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentAlertsInclude | Unset = UNSET,
-) -> AlertList | None:
+    include: Union[Unset, ListIncidentAlertsInclude] = UNSET,
+) -> Optional[AlertList]:
     """List Incident alerts
 
      List incident alerts
 
     Args:
         incident_id (str):
-        include (ListIncidentAlertsInclude | Unset):
+        include (Union[Unset, ListIncidentAlertsInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

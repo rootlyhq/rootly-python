@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -44,39 +42,39 @@ class ScheduleRotation:
         schedule_id (str): The ID of parent schedule
         name (str): The name of the schedule rotation
         schedule_rotationable_type (ScheduleRotationScheduleRotationableType): Schedule rotation type
-        schedule_rotationable_attributes (ScheduleRotationScheduleRotationableAttributesType0 |
-            ScheduleRotationScheduleRotationableAttributesType1 | ScheduleRotationScheduleRotationableAttributesType2 |
-            ScheduleRotationScheduleRotationableAttributesType3):
-        position (int | Unset): Position of the schedule rotation
-        active_all_week (bool | Unset): Schedule rotation active all week? Default: True.
-        active_days (list[ScheduleRotationActiveDaysItem] | Unset):
-        active_time_type (str | Unset):
-        active_time_attributes (list[ScheduleRotationActiveTimeAttributesItem] | Unset): Schedule rotation's active
-            times
-        time_zone (str | Unset): A valid IANA time zone name. Default: 'Etc/UTC'.
-        start_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation starts. Shifts will only be
+        schedule_rotationable_attributes (Union['ScheduleRotationScheduleRotationableAttributesType0',
+            'ScheduleRotationScheduleRotationableAttributesType1', 'ScheduleRotationScheduleRotationableAttributesType2',
+            'ScheduleRotationScheduleRotationableAttributesType3']):
+        position (Union[Unset, int]): Position of the schedule rotation
+        active_all_week (Union[Unset, bool]): Schedule rotation active all week? Default: True.
+        active_days (Union[Unset, list[ScheduleRotationActiveDaysItem]]):
+        active_time_type (Union[Unset, str]):
+        active_time_attributes (Union[Unset, list['ScheduleRotationActiveTimeAttributesItem']]): Schedule rotation's
+            active times
+        time_zone (Union[Unset, str]): A valid IANA time zone name. Default: 'Etc/UTC'.
+        start_time (Union[None, Unset, datetime.datetime]): RFC3339 date-time when rotation starts. Shifts will only be
             created after this time.
-        end_time (datetime.datetime | None | Unset): RFC3339 date-time when rotation ends. Shifts will only be created
-            before this time.
+        end_time (Union[None, Unset, datetime.datetime]): RFC3339 date-time when rotation ends. Shifts will only be
+            created before this time.
     """
 
     schedule_id: str
     name: str
     schedule_rotationable_type: ScheduleRotationScheduleRotationableType
-    schedule_rotationable_attributes: (
-        ScheduleRotationScheduleRotationableAttributesType0
-        | ScheduleRotationScheduleRotationableAttributesType1
-        | ScheduleRotationScheduleRotationableAttributesType2
-        | ScheduleRotationScheduleRotationableAttributesType3
-    )
-    position: int | Unset = UNSET
-    active_all_week: bool | Unset = True
-    active_days: list[ScheduleRotationActiveDaysItem] | Unset = UNSET
-    active_time_type: str | Unset = UNSET
-    active_time_attributes: list[ScheduleRotationActiveTimeAttributesItem] | Unset = UNSET
-    time_zone: str | Unset = "Etc/UTC"
-    start_time: datetime.datetime | None | Unset = UNSET
-    end_time: datetime.datetime | None | Unset = UNSET
+    schedule_rotationable_attributes: Union[
+        "ScheduleRotationScheduleRotationableAttributesType0",
+        "ScheduleRotationScheduleRotationableAttributesType1",
+        "ScheduleRotationScheduleRotationableAttributesType2",
+        "ScheduleRotationScheduleRotationableAttributesType3",
+    ]
+    position: Union[Unset, int] = UNSET
+    active_all_week: Union[Unset, bool] = True
+    active_days: Union[Unset, list[ScheduleRotationActiveDaysItem]] = UNSET
+    active_time_type: Union[Unset, str] = UNSET
+    active_time_attributes: Union[Unset, list["ScheduleRotationActiveTimeAttributesItem"]] = UNSET
+    time_zone: Union[Unset, str] = "Etc/UTC"
+    start_time: Union[None, Unset, datetime.datetime] = UNSET
+    end_time: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -110,7 +108,7 @@ class ScheduleRotation:
 
         active_all_week = self.active_all_week
 
-        active_days: list[str] | Unset = UNSET
+        active_days: Union[Unset, list[str]] = UNSET
         if not isinstance(self.active_days, Unset):
             active_days = []
             for active_days_item_data in self.active_days:
@@ -119,7 +117,7 @@ class ScheduleRotation:
 
         active_time_type = self.active_time_type
 
-        active_time_attributes: list[dict[str, Any]] | Unset = UNSET
+        active_time_attributes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.active_time_attributes, Unset):
             active_time_attributes = []
             for active_time_attributes_item_data in self.active_time_attributes:
@@ -128,7 +126,7 @@ class ScheduleRotation:
 
         time_zone = self.time_zone
 
-        start_time: None | str | Unset
+        start_time: Union[None, Unset, str]
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         elif isinstance(self.start_time, datetime.datetime):
@@ -136,7 +134,7 @@ class ScheduleRotation:
         else:
             start_time = self.start_time
 
-        end_time: None | str | Unset
+        end_time: Union[None, Unset, str]
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         elif isinstance(self.end_time, datetime.datetime):
@@ -200,12 +198,12 @@ class ScheduleRotation:
 
         def _parse_schedule_rotationable_attributes(
             data: object,
-        ) -> (
-            ScheduleRotationScheduleRotationableAttributesType0
-            | ScheduleRotationScheduleRotationableAttributesType1
-            | ScheduleRotationScheduleRotationableAttributesType2
-            | ScheduleRotationScheduleRotationableAttributesType3
-        ):
+        ) -> Union[
+            "ScheduleRotationScheduleRotationableAttributesType0",
+            "ScheduleRotationScheduleRotationableAttributesType1",
+            "ScheduleRotationScheduleRotationableAttributesType2",
+            "ScheduleRotationScheduleRotationableAttributesType3",
+        ]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
@@ -214,7 +212,7 @@ class ScheduleRotation:
                 )
 
                 return schedule_rotationable_attributes_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -224,7 +222,7 @@ class ScheduleRotation:
                 )
 
                 return schedule_rotationable_attributes_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -234,7 +232,7 @@ class ScheduleRotation:
                 )
 
                 return schedule_rotationable_attributes_type_2
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -252,31 +250,27 @@ class ScheduleRotation:
 
         active_all_week = d.pop("active_all_week", UNSET)
 
+        active_days = []
         _active_days = d.pop("active_days", UNSET)
-        active_days: list[ScheduleRotationActiveDaysItem] | Unset = UNSET
-        if _active_days is not UNSET:
-            active_days = []
-            for active_days_item_data in _active_days:
-                active_days_item = check_schedule_rotation_active_days_item(active_days_item_data)
+        for active_days_item_data in _active_days or []:
+            active_days_item = check_schedule_rotation_active_days_item(active_days_item_data)
 
-                active_days.append(active_days_item)
+            active_days.append(active_days_item)
 
         active_time_type = d.pop("active_time_type", UNSET)
 
+        active_time_attributes = []
         _active_time_attributes = d.pop("active_time_attributes", UNSET)
-        active_time_attributes: list[ScheduleRotationActiveTimeAttributesItem] | Unset = UNSET
-        if _active_time_attributes is not UNSET:
-            active_time_attributes = []
-            for active_time_attributes_item_data in _active_time_attributes:
-                active_time_attributes_item = ScheduleRotationActiveTimeAttributesItem.from_dict(
-                    active_time_attributes_item_data
-                )
+        for active_time_attributes_item_data in _active_time_attributes or []:
+            active_time_attributes_item = ScheduleRotationActiveTimeAttributesItem.from_dict(
+                active_time_attributes_item_data
+            )
 
-                active_time_attributes.append(active_time_attributes_item)
+            active_time_attributes.append(active_time_attributes_item)
 
         time_zone = d.pop("time_zone", UNSET)
 
-        def _parse_start_time(data: object) -> datetime.datetime | None | Unset:
+        def _parse_start_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -287,13 +281,13 @@ class ScheduleRotation:
                 start_time_type_0 = isoparse(data)
 
                 return start_time_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> datetime.datetime | None | Unset:
+        def _parse_end_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -304,9 +298,9 @@ class ScheduleRotation:
                 end_time_type_0 = isoparse(data)
 
                 return end_time_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 

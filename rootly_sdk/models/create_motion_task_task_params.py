@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,53 +26,50 @@ class CreateMotionTaskTaskParams:
     Attributes:
         workspace (CreateMotionTaskTaskParamsWorkspace):
         title (str): The task title
-        task_type (CreateMotionTaskTaskParamsTaskType | Unset):
-        project (CreateMotionTaskTaskParamsProject | Unset):
-        status (CreateMotionTaskTaskParamsStatus | Unset):
-        description (str | Unset): The task description
-        labels (list[str] | Unset):
-        priority (CreateMotionTaskTaskParamsPriority | Unset): The priority id and display name
-        duration (str | Unset): The duration. Eg.  "NONE", "REMINDER", or a integer greater than 0.
-        due_date (str | Unset): The due date
+        task_type (Union[Unset, CreateMotionTaskTaskParamsTaskType]):
+        project (Union[Unset, CreateMotionTaskTaskParamsProject]):
+        status (Union[Unset, CreateMotionTaskTaskParamsStatus]):
+        description (Union[Unset, str]): The task description
+        labels (Union[Unset, str]): The task labels
+        priority (Union[Unset, CreateMotionTaskTaskParamsPriority]): The priority id and display name
+        duration (Union[Unset, str]): The duration. Eg.  "NONE", "REMINDER", or a integer greater than 0.
+        due_date (Union[Unset, str]): The due date
     """
 
-    workspace: CreateMotionTaskTaskParamsWorkspace
+    workspace: "CreateMotionTaskTaskParamsWorkspace"
     title: str
-    task_type: CreateMotionTaskTaskParamsTaskType | Unset = UNSET
-    project: CreateMotionTaskTaskParamsProject | Unset = UNSET
-    status: CreateMotionTaskTaskParamsStatus | Unset = UNSET
-    description: str | Unset = UNSET
-    labels: list[str] | Unset = UNSET
-    priority: CreateMotionTaskTaskParamsPriority | Unset = UNSET
-    duration: str | Unset = UNSET
-    due_date: str | Unset = UNSET
+    task_type: Union[Unset, CreateMotionTaskTaskParamsTaskType] = UNSET
+    project: Union[Unset, "CreateMotionTaskTaskParamsProject"] = UNSET
+    status: Union[Unset, "CreateMotionTaskTaskParamsStatus"] = UNSET
+    description: Union[Unset, str] = UNSET
+    labels: Union[Unset, str] = UNSET
+    priority: Union[Unset, "CreateMotionTaskTaskParamsPriority"] = UNSET
+    duration: Union[Unset, str] = UNSET
+    due_date: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         workspace = self.workspace.to_dict()
 
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        project: dict[str, Any] | Unset = UNSET
+        project: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.project, Unset):
             project = self.project.to_dict()
 
-        status: dict[str, Any] | Unset = UNSET
+        status: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
         description = self.description
 
-        labels: list[str] | Unset = UNSET
-        if not isinstance(self.labels, Unset):
-            labels = self.labels
+        labels = self.labels
 
-        priority: dict[str, Any] | Unset = UNSET
+        priority: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
@@ -122,21 +117,21 @@ class CreateMotionTaskTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateMotionTaskTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateMotionTaskTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_create_motion_task_task_params_task_type(_task_type)
 
         _project = d.pop("project", UNSET)
-        project: CreateMotionTaskTaskParamsProject | Unset
+        project: Union[Unset, CreateMotionTaskTaskParamsProject]
         if isinstance(_project, Unset):
             project = UNSET
         else:
             project = CreateMotionTaskTaskParamsProject.from_dict(_project)
 
         _status = d.pop("status", UNSET)
-        status: CreateMotionTaskTaskParamsStatus | Unset
+        status: Union[Unset, CreateMotionTaskTaskParamsStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -144,10 +139,10 @@ class CreateMotionTaskTaskParams:
 
         description = d.pop("description", UNSET)
 
-        labels = cast(list[str], d.pop("labels", UNSET))
+        labels = d.pop("labels", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: CreateMotionTaskTaskParamsPriority | Unset
+        priority: Union[Unset, CreateMotionTaskTaskParamsPriority]
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

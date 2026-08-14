@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,37 +26,37 @@ class UpdatePagerdutyIncidentTaskParams:
     """
     Attributes:
         pagerduty_incident_id (str): Pagerduty incident id
-        task_type (UpdatePagerdutyIncidentTaskParamsTaskType | Unset):
-        title (str | Unset): Title to update to
-        status (UpdatePagerdutyIncidentTaskParamsStatus | Unset):
-        resolution (str | Unset): A message outlining the incident's resolution in PagerDuty
-        escalation_level (int | Unset): Escalation level of policy attached to incident Example: 1.
-        urgency (UpdatePagerdutyIncidentTaskParamsUrgency | Unset): PagerDuty incident urgency, selecting auto will let
-            Rootly auto map our incident severity
-        priority (str | Unset): PagerDuty incident priority, selecting auto will let Rootly auto map our incident
+        task_type (Union[Unset, UpdatePagerdutyIncidentTaskParamsTaskType]):
+        title (Union[Unset, str]): Title to update to
+        status (Union[Unset, UpdatePagerdutyIncidentTaskParamsStatus]):
+        resolution (Union[Unset, str]): A message outlining the incident's resolution in PagerDuty
+        escalation_level (Union[Unset, int]): Escalation level of policy attached to incident Example: 1.
+        urgency (Union[Unset, UpdatePagerdutyIncidentTaskParamsUrgency]): PagerDuty incident urgency, selecting auto
+            will let Rootly auto map our incident severity
+        priority (Union[Unset, str]): PagerDuty incident priority, selecting auto will let Rootly auto map our incident
             severity
     """
 
     pagerduty_incident_id: str
-    task_type: UpdatePagerdutyIncidentTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    status: UpdatePagerdutyIncidentTaskParamsStatus | Unset = UNSET
-    resolution: str | Unset = UNSET
-    escalation_level: int | Unset = UNSET
-    urgency: UpdatePagerdutyIncidentTaskParamsUrgency | Unset = UNSET
-    priority: str | Unset = UNSET
+    task_type: Union[Unset, UpdatePagerdutyIncidentTaskParamsTaskType] = UNSET
+    title: Union[Unset, str] = UNSET
+    status: Union[Unset, UpdatePagerdutyIncidentTaskParamsStatus] = UNSET
+    resolution: Union[Unset, str] = UNSET
+    escalation_level: Union[Unset, int] = UNSET
+    urgency: Union[Unset, UpdatePagerdutyIncidentTaskParamsUrgency] = UNSET
+    priority: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         pagerduty_incident_id = self.pagerduty_incident_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         title = self.title
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -66,7 +64,7 @@ class UpdatePagerdutyIncidentTaskParams:
 
         escalation_level = self.escalation_level
 
-        urgency: str | Unset = UNSET
+        urgency: Union[Unset, str] = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
@@ -102,7 +100,7 @@ class UpdatePagerdutyIncidentTaskParams:
         pagerduty_incident_id = d.pop("pagerduty_incident_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdatePagerdutyIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdatePagerdutyIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -111,7 +109,7 @@ class UpdatePagerdutyIncidentTaskParams:
         title = d.pop("title", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: UpdatePagerdutyIncidentTaskParamsStatus | Unset
+        status: Union[Unset, UpdatePagerdutyIncidentTaskParamsStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -122,7 +120,7 @@ class UpdatePagerdutyIncidentTaskParams:
         escalation_level = d.pop("escalation_level", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: UpdatePagerdutyIncidentTaskParamsUrgency | Unset
+        urgency: Union[Unset, UpdatePagerdutyIncidentTaskParamsUrgency]
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:

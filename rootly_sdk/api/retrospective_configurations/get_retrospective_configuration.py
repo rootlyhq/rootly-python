@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -17,12 +16,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
+    include: Union[Unset, GetRetrospectiveConfigurationInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -32,9 +30,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/retrospective_configurations/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/retrospective_configurations/{id}",
         "params": params,
     }
 
@@ -42,8 +38,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | RetrospectiveConfigurationResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     if response.status_code == 200:
         response_200 = RetrospectiveConfigurationResponse.from_dict(response.json())
 
@@ -61,8 +57,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | RetrospectiveConfigurationResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -75,22 +71,22 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
-) -> Response[ErrorsList | RetrospectiveConfigurationResponse]:
+    include: Union[Unset, GetRetrospectiveConfigurationInclude] = UNSET,
+) -> Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     """Retrieves a Retrospective Configuration
 
      Retrieves a specific retrospective_configuration by id
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveConfigurationResponse]
+        Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -109,22 +105,22 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
-) -> ErrorsList | RetrospectiveConfigurationResponse | None:
+    include: Union[Unset, GetRetrospectiveConfigurationInclude] = UNSET,
+) -> Optional[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     """Retrieves a Retrospective Configuration
 
      Retrieves a specific retrospective_configuration by id
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveConfigurationResponse
+        Union[ErrorsList, RetrospectiveConfigurationResponse]
     """
 
     return sync_detailed(
@@ -138,22 +134,22 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
-) -> Response[ErrorsList | RetrospectiveConfigurationResponse]:
+    include: Union[Unset, GetRetrospectiveConfigurationInclude] = UNSET,
+) -> Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     """Retrieves a Retrospective Configuration
 
      Retrieves a specific retrospective_configuration by id
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveConfigurationResponse]
+        Response[Union[ErrorsList, RetrospectiveConfigurationResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -170,22 +166,22 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetRetrospectiveConfigurationInclude | Unset = UNSET,
-) -> ErrorsList | RetrospectiveConfigurationResponse | None:
+    include: Union[Unset, GetRetrospectiveConfigurationInclude] = UNSET,
+) -> Optional[Union[ErrorsList, RetrospectiveConfigurationResponse]]:
     """Retrieves a Retrospective Configuration
 
      Retrieves a specific retrospective_configuration by id
 
     Args:
         id (str):
-        include (GetRetrospectiveConfigurationInclude | Unset):
+        include (Union[Unset, GetRetrospectiveConfigurationInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveConfigurationResponse
+        Union[ErrorsList, RetrospectiveConfigurationResponse]
     """
 
     return (

@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,13 +12,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     form_field_id: str,
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtervalue: str | Unset = UNSET,
-    filtercolor: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtervalue: Union[Unset, str] = UNSET,
+    filtercolor: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -36,16 +34,16 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_fields/{form_field_id}/options".format(
-            form_field_id=quote(str(form_field_id), safe=""),
-        ),
+        "url": f"/v1/form_fields/{form_field_id}/options",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FormFieldOptionList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[FormFieldOptionList]:
     if response.status_code == 200:
         response_200 = FormFieldOptionList.from_dict(response.json())
 
@@ -57,7 +55,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FormFieldOptionList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[FormFieldOptionList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,11 +70,11 @@ def sync_detailed(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtervalue: str | Unset = UNSET,
-    filtercolor: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtervalue: Union[Unset, str] = UNSET,
+    filtercolor: Union[Unset, str] = UNSET,
 ) -> Response[FormFieldOptionList]:
     """List FormField Options
 
@@ -82,11 +82,11 @@ def sync_detailed(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtervalue (str | Unset):
-        filtercolor (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtervalue (Union[Unset, str]):
+        filtercolor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,23 +116,23 @@ def sync(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtervalue: str | Unset = UNSET,
-    filtercolor: str | Unset = UNSET,
-) -> FormFieldOptionList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtervalue: Union[Unset, str] = UNSET,
+    filtercolor: Union[Unset, str] = UNSET,
+) -> Optional[FormFieldOptionList]:
     """List FormField Options
 
      List form_field_options
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtervalue (str | Unset):
-        filtercolor (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtervalue (Union[Unset, str]):
+        filtercolor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -157,11 +157,11 @@ async def asyncio_detailed(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtervalue: str | Unset = UNSET,
-    filtercolor: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtervalue: Union[Unset, str] = UNSET,
+    filtercolor: Union[Unset, str] = UNSET,
 ) -> Response[FormFieldOptionList]:
     """List FormField Options
 
@@ -169,11 +169,11 @@ async def asyncio_detailed(
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtervalue (str | Unset):
-        filtercolor (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtervalue (Union[Unset, str]):
+        filtercolor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -201,23 +201,23 @@ async def asyncio(
     form_field_id: str,
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtervalue: str | Unset = UNSET,
-    filtercolor: str | Unset = UNSET,
-) -> FormFieldOptionList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtervalue: Union[Unset, str] = UNSET,
+    filtercolor: Union[Unset, str] = UNSET,
+) -> Optional[FormFieldOptionList]:
     """List FormField Options
 
      List form_field_options
 
     Args:
         form_field_id (str):
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtervalue (str | Unset):
-        filtercolor (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtervalue (Union[Unset, str]):
+        filtercolor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

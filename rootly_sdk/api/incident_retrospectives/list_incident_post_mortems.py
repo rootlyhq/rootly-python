@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,45 +11,44 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterseverity: str | Unset = UNSET,
-    filtertype: str | Unset = UNSET,
-    filteruser_id: int | Unset = UNSET,
-    filtertypes: str | Unset = UNSET,
-    filtertype_ids: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterenvironment_ids: str | Unset = UNSET,
-    filterfunctionalities: str | Unset = UNSET,
-    filterfunctionality_ids: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterservice_ids: str | Unset = UNSET,
-    filterteams: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercauses: str | Unset = UNSET,
-    filtercause_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filtermitigated_atgt: str | Unset = UNSET,
-    filtermitigated_atgte: str | Unset = UNSET,
-    filtermitigated_atlt: str | Unset = UNSET,
-    filtermitigated_atlte: str | Unset = UNSET,
-    filterresolved_atgt: str | Unset = UNSET,
-    filterresolved_atgte: str | Unset = UNSET,
-    filterresolved_atlt: str | Unset = UNSET,
-    filterresolved_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterseverity: Union[Unset, str] = UNSET,
+    filtertype: Union[Unset, str] = UNSET,
+    filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
+    filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
+    filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filtermitigated_atgt: Union[Unset, str] = UNSET,
+    filtermitigated_atgte: Union[Unset, str] = UNSET,
+    filtermitigated_atlt: Union[Unset, str] = UNSET,
+    filtermitigated_atlte: Union[Unset, str] = UNSET,
+    filterresolved_atgt: Union[Unset, str] = UNSET,
+    filterresolved_atgte: Union[Unset, str] = UNSET,
+    filterresolved_atlt: Union[Unset, str] = UNSET,
+    filterresolved_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -137,7 +136,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentPostMortemList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[IncidentPostMortemList]:
     if response.status_code == 200:
         response_200 = IncidentPostMortemList.from_dict(response.json())
 
@@ -150,7 +151,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[IncidentPostMortemList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -163,86 +164,86 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterseverity: str | Unset = UNSET,
-    filtertype: str | Unset = UNSET,
-    filteruser_id: int | Unset = UNSET,
-    filtertypes: str | Unset = UNSET,
-    filtertype_ids: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterenvironment_ids: str | Unset = UNSET,
-    filterfunctionalities: str | Unset = UNSET,
-    filterfunctionality_ids: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterservice_ids: str | Unset = UNSET,
-    filterteams: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercauses: str | Unset = UNSET,
-    filtercause_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filtermitigated_atgt: str | Unset = UNSET,
-    filtermitigated_atgte: str | Unset = UNSET,
-    filtermitigated_atlt: str | Unset = UNSET,
-    filtermitigated_atlte: str | Unset = UNSET,
-    filterresolved_atgt: str | Unset = UNSET,
-    filterresolved_atgte: str | Unset = UNSET,
-    filterresolved_atlt: str | Unset = UNSET,
-    filterresolved_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterseverity: Union[Unset, str] = UNSET,
+    filtertype: Union[Unset, str] = UNSET,
+    filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
+    filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
+    filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filtermitigated_atgt: Union[Unset, str] = UNSET,
+    filtermitigated_atgte: Union[Unset, str] = UNSET,
+    filtermitigated_atlt: Union[Unset, str] = UNSET,
+    filtermitigated_atlte: Union[Unset, str] = UNSET,
+    filterresolved_atgt: Union[Unset, str] = UNSET,
+    filterresolved_atgte: Union[Unset, str] = UNSET,
+    filterresolved_atlt: Union[Unset, str] = UNSET,
+    filterresolved_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[IncidentPostMortemList]:
     """List incident retrospectives
 
      List incident retrospectives
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatus (str | Unset):
-        filterseverity (str | Unset):
-        filtertype (str | Unset):
-        filteruser_id (int | Unset):
-        filtertypes (str | Unset):
-        filtertype_ids (str | Unset):
-        filterenvironments (str | Unset):
-        filterenvironment_ids (str | Unset):
-        filterfunctionalities (str | Unset):
-        filterfunctionality_ids (str | Unset):
-        filterservices (str | Unset):
-        filterservice_ids (str | Unset):
-        filterteams (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercauses (str | Unset):
-        filtercause_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filtermitigated_atgt (str | Unset):
-        filtermitigated_atgte (str | Unset):
-        filtermitigated_atlt (str | Unset):
-        filtermitigated_atlte (str | Unset):
-        filterresolved_atgt (str | Unset):
-        filterresolved_atgte (str | Unset):
-        filterresolved_atlt (str | Unset):
-        filterresolved_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterseverity (Union[Unset, str]):
+        filtertype (Union[Unset, str]):
+        filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
+        filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
+        filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filtermitigated_atgt (Union[Unset, str]):
+        filtermitigated_atgte (Union[Unset, str]):
+        filtermitigated_atlt (Union[Unset, str]):
+        filtermitigated_atlte (Union[Unset, str]):
+        filterresolved_atgt (Union[Unset, str]):
+        filterresolved_atgte (Union[Unset, str]):
+        filterresolved_atlt (Union[Unset, str]):
+        filterresolved_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -302,86 +303,86 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterseverity: str | Unset = UNSET,
-    filtertype: str | Unset = UNSET,
-    filteruser_id: int | Unset = UNSET,
-    filtertypes: str | Unset = UNSET,
-    filtertype_ids: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterenvironment_ids: str | Unset = UNSET,
-    filterfunctionalities: str | Unset = UNSET,
-    filterfunctionality_ids: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterservice_ids: str | Unset = UNSET,
-    filterteams: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercauses: str | Unset = UNSET,
-    filtercause_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filtermitigated_atgt: str | Unset = UNSET,
-    filtermitigated_atgte: str | Unset = UNSET,
-    filtermitigated_atlt: str | Unset = UNSET,
-    filtermitigated_atlte: str | Unset = UNSET,
-    filterresolved_atgt: str | Unset = UNSET,
-    filterresolved_atgte: str | Unset = UNSET,
-    filterresolved_atlt: str | Unset = UNSET,
-    filterresolved_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> IncidentPostMortemList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterseverity: Union[Unset, str] = UNSET,
+    filtertype: Union[Unset, str] = UNSET,
+    filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
+    filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
+    filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filtermitigated_atgt: Union[Unset, str] = UNSET,
+    filtermitigated_atgte: Union[Unset, str] = UNSET,
+    filtermitigated_atlt: Union[Unset, str] = UNSET,
+    filtermitigated_atlte: Union[Unset, str] = UNSET,
+    filterresolved_atgt: Union[Unset, str] = UNSET,
+    filterresolved_atgte: Union[Unset, str] = UNSET,
+    filterresolved_atlt: Union[Unset, str] = UNSET,
+    filterresolved_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[IncidentPostMortemList]:
     """List incident retrospectives
 
      List incident retrospectives
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatus (str | Unset):
-        filterseverity (str | Unset):
-        filtertype (str | Unset):
-        filteruser_id (int | Unset):
-        filtertypes (str | Unset):
-        filtertype_ids (str | Unset):
-        filterenvironments (str | Unset):
-        filterenvironment_ids (str | Unset):
-        filterfunctionalities (str | Unset):
-        filterfunctionality_ids (str | Unset):
-        filterservices (str | Unset):
-        filterservice_ids (str | Unset):
-        filterteams (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercauses (str | Unset):
-        filtercause_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filtermitigated_atgt (str | Unset):
-        filtermitigated_atgte (str | Unset):
-        filtermitigated_atlt (str | Unset):
-        filtermitigated_atlte (str | Unset):
-        filterresolved_atgt (str | Unset):
-        filterresolved_atgte (str | Unset):
-        filterresolved_atlt (str | Unset):
-        filterresolved_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterseverity (Union[Unset, str]):
+        filtertype (Union[Unset, str]):
+        filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
+        filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
+        filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filtermitigated_atgt (Union[Unset, str]):
+        filtermitigated_atgte (Union[Unset, str]):
+        filtermitigated_atlt (Union[Unset, str]):
+        filtermitigated_atlte (Union[Unset, str]):
+        filterresolved_atgt (Union[Unset, str]):
+        filterresolved_atgte (Union[Unset, str]):
+        filterresolved_atlt (Union[Unset, str]):
+        filterresolved_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -436,86 +437,86 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterseverity: str | Unset = UNSET,
-    filtertype: str | Unset = UNSET,
-    filteruser_id: int | Unset = UNSET,
-    filtertypes: str | Unset = UNSET,
-    filtertype_ids: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterenvironment_ids: str | Unset = UNSET,
-    filterfunctionalities: str | Unset = UNSET,
-    filterfunctionality_ids: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterservice_ids: str | Unset = UNSET,
-    filterteams: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercauses: str | Unset = UNSET,
-    filtercause_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filtermitigated_atgt: str | Unset = UNSET,
-    filtermitigated_atgte: str | Unset = UNSET,
-    filtermitigated_atlt: str | Unset = UNSET,
-    filtermitigated_atlte: str | Unset = UNSET,
-    filterresolved_atgt: str | Unset = UNSET,
-    filterresolved_atgte: str | Unset = UNSET,
-    filterresolved_atlt: str | Unset = UNSET,
-    filterresolved_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterseverity: Union[Unset, str] = UNSET,
+    filtertype: Union[Unset, str] = UNSET,
+    filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
+    filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
+    filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filtermitigated_atgt: Union[Unset, str] = UNSET,
+    filtermitigated_atgte: Union[Unset, str] = UNSET,
+    filtermitigated_atlt: Union[Unset, str] = UNSET,
+    filtermitigated_atlte: Union[Unset, str] = UNSET,
+    filterresolved_atgt: Union[Unset, str] = UNSET,
+    filterresolved_atgte: Union[Unset, str] = UNSET,
+    filterresolved_atlt: Union[Unset, str] = UNSET,
+    filterresolved_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[IncidentPostMortemList]:
     """List incident retrospectives
 
      List incident retrospectives
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatus (str | Unset):
-        filterseverity (str | Unset):
-        filtertype (str | Unset):
-        filteruser_id (int | Unset):
-        filtertypes (str | Unset):
-        filtertype_ids (str | Unset):
-        filterenvironments (str | Unset):
-        filterenvironment_ids (str | Unset):
-        filterfunctionalities (str | Unset):
-        filterfunctionality_ids (str | Unset):
-        filterservices (str | Unset):
-        filterservice_ids (str | Unset):
-        filterteams (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercauses (str | Unset):
-        filtercause_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filtermitigated_atgt (str | Unset):
-        filtermitigated_atgte (str | Unset):
-        filtermitigated_atlt (str | Unset):
-        filtermitigated_atlte (str | Unset):
-        filterresolved_atgt (str | Unset):
-        filterresolved_atgte (str | Unset):
-        filterresolved_atlt (str | Unset):
-        filterresolved_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterseverity (Union[Unset, str]):
+        filtertype (Union[Unset, str]):
+        filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
+        filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
+        filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filtermitigated_atgt (Union[Unset, str]):
+        filtermitigated_atgte (Union[Unset, str]):
+        filtermitigated_atlt (Union[Unset, str]):
+        filtermitigated_atlte (Union[Unset, str]):
+        filterresolved_atgt (Union[Unset, str]):
+        filterresolved_atgte (Union[Unset, str]):
+        filterresolved_atlt (Union[Unset, str]):
+        filterresolved_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -573,86 +574,86 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filterseverity: str | Unset = UNSET,
-    filtertype: str | Unset = UNSET,
-    filteruser_id: int | Unset = UNSET,
-    filtertypes: str | Unset = UNSET,
-    filtertype_ids: str | Unset = UNSET,
-    filterenvironments: str | Unset = UNSET,
-    filterenvironment_ids: str | Unset = UNSET,
-    filterfunctionalities: str | Unset = UNSET,
-    filterfunctionality_ids: str | Unset = UNSET,
-    filterservices: str | Unset = UNSET,
-    filterservice_ids: str | Unset = UNSET,
-    filterteams: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercauses: str | Unset = UNSET,
-    filtercause_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterstarted_atgt: str | Unset = UNSET,
-    filterstarted_atgte: str | Unset = UNSET,
-    filterstarted_atlt: str | Unset = UNSET,
-    filterstarted_atlte: str | Unset = UNSET,
-    filtermitigated_atgt: str | Unset = UNSET,
-    filtermitigated_atgte: str | Unset = UNSET,
-    filtermitigated_atlt: str | Unset = UNSET,
-    filtermitigated_atlte: str | Unset = UNSET,
-    filterresolved_atgt: str | Unset = UNSET,
-    filterresolved_atgte: str | Unset = UNSET,
-    filterresolved_atlt: str | Unset = UNSET,
-    filterresolved_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> IncidentPostMortemList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filterseverity: Union[Unset, str] = UNSET,
+    filtertype: Union[Unset, str] = UNSET,
+    filteruser_id: Union[Unset, int] = UNSET,
+    filtertypes: Union[Unset, str] = UNSET,
+    filtertype_ids: Union[Unset, str] = UNSET,
+    filterenvironments: Union[Unset, str] = UNSET,
+    filterenvironment_ids: Union[Unset, str] = UNSET,
+    filterfunctionalities: Union[Unset, str] = UNSET,
+    filterfunctionality_ids: Union[Unset, str] = UNSET,
+    filterservices: Union[Unset, str] = UNSET,
+    filterservice_ids: Union[Unset, str] = UNSET,
+    filterteams: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercauses: Union[Unset, str] = UNSET,
+    filtercause_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterstarted_atgt: Union[Unset, str] = UNSET,
+    filterstarted_atgte: Union[Unset, str] = UNSET,
+    filterstarted_atlt: Union[Unset, str] = UNSET,
+    filterstarted_atlte: Union[Unset, str] = UNSET,
+    filtermitigated_atgt: Union[Unset, str] = UNSET,
+    filtermitigated_atgte: Union[Unset, str] = UNSET,
+    filtermitigated_atlt: Union[Unset, str] = UNSET,
+    filtermitigated_atlte: Union[Unset, str] = UNSET,
+    filterresolved_atgt: Union[Unset, str] = UNSET,
+    filterresolved_atgte: Union[Unset, str] = UNSET,
+    filterresolved_atlt: Union[Unset, str] = UNSET,
+    filterresolved_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[IncidentPostMortemList]:
     """List incident retrospectives
 
      List incident retrospectives
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatus (str | Unset):
-        filterseverity (str | Unset):
-        filtertype (str | Unset):
-        filteruser_id (int | Unset):
-        filtertypes (str | Unset):
-        filtertype_ids (str | Unset):
-        filterenvironments (str | Unset):
-        filterenvironment_ids (str | Unset):
-        filterfunctionalities (str | Unset):
-        filterfunctionality_ids (str | Unset):
-        filterservices (str | Unset):
-        filterservice_ids (str | Unset):
-        filterteams (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercauses (str | Unset):
-        filtercause_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterstarted_atgt (str | Unset):
-        filterstarted_atgte (str | Unset):
-        filterstarted_atlt (str | Unset):
-        filterstarted_atlte (str | Unset):
-        filtermitigated_atgt (str | Unset):
-        filtermitigated_atgte (str | Unset):
-        filtermitigated_atlt (str | Unset):
-        filtermitigated_atlte (str | Unset):
-        filterresolved_atgt (str | Unset):
-        filterresolved_atgte (str | Unset):
-        filterresolved_atlt (str | Unset):
-        filterresolved_atlte (str | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatus (Union[Unset, str]):
+        filterseverity (Union[Unset, str]):
+        filtertype (Union[Unset, str]):
+        filteruser_id (Union[Unset, int]):
+        filtertypes (Union[Unset, str]):
+        filtertype_ids (Union[Unset, str]):
+        filterenvironments (Union[Unset, str]):
+        filterenvironment_ids (Union[Unset, str]):
+        filterfunctionalities (Union[Unset, str]):
+        filterfunctionality_ids (Union[Unset, str]):
+        filterservices (Union[Unset, str]):
+        filterservice_ids (Union[Unset, str]):
+        filterteams (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercauses (Union[Unset, str]):
+        filtercause_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterstarted_atgt (Union[Unset, str]):
+        filterstarted_atgte (Union[Unset, str]):
+        filterstarted_atlt (Union[Unset, str]):
+        filterstarted_atlte (Union[Unset, str]):
+        filtermitigated_atgt (Union[Unset, str]):
+        filtermitigated_atgte (Union[Unset, str]):
+        filtermitigated_atlt (Union[Unset, str]):
+        filtermitigated_atlte (Union[Unset, str]):
+        filterresolved_atgt (Union[Unset, str]):
+        filterresolved_atgte (Union[Unset, str]):
+        filterresolved_atlt (Union[Unset, str]):
+        filterresolved_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

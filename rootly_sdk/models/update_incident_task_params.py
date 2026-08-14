@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,84 +22,84 @@ class UpdateIncidentTaskParams:
     """
     Attributes:
         incident_id (str): The incident id to update or id of any attribute on the incident
-        task_type (UpdateIncidentTaskParamsTaskType | Unset):
-        attribute_to_query_by (UpdateIncidentTaskParamsAttributeToQueryBy | Unset):  Default: 'id'.
-        title (None | str | Unset): The incident title
-        summary (None | str | Unset): The incident summary
-        status (None | str | Unset):
-        severity_id (None | str | Unset):
-        incident_type_ids (list[str] | None | Unset):
-        service_ids (list[str] | None | Unset): Array of service UUIDs
-        functionality_ids (list[str] | None | Unset): Array of functionality UUIDs
-        environment_ids (list[str] | None | Unset):
-        group_ids (list[str] | None | Unset): Array of group/team UUIDs
-        started_at (None | str | Unset):
-        detected_at (None | str | Unset):
-        acknowledged_at (None | str | Unset):
-        mitigated_at (None | str | Unset):
-        resolved_at (None | str | Unset):
-        private (bool | Unset):
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, UpdateIncidentTaskParamsTaskType]):
+        attribute_to_query_by (Union[Unset, UpdateIncidentTaskParamsAttributeToQueryBy]):  Default: 'id'.
+        title (Union[None, Unset, str]): The incident title
+        summary (Union[None, Unset, str]): The incident summary
+        status (Union[None, Unset, str]):
+        severity_id (Union[None, Unset, str]):
+        incident_type_ids (Union[None, Unset, list[str]]):
+        service_ids (Union[None, Unset, list[str]]): Array of service UUIDs
+        functionality_ids (Union[None, Unset, list[str]]): Array of functionality UUIDs
+        environment_ids (Union[None, Unset, list[str]]):
+        group_ids (Union[None, Unset, list[str]]): Array of group/team UUIDs
+        started_at (Union[None, Unset, str]):
+        detected_at (Union[None, Unset, str]):
+        acknowledged_at (Union[None, Unset, str]):
+        mitigated_at (Union[None, Unset, str]):
+        resolved_at (Union[None, Unset, str]):
+        private (Union[Unset, bool]):
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
     """
 
     incident_id: str
-    task_type: UpdateIncidentTaskParamsTaskType | Unset = UNSET
-    attribute_to_query_by: UpdateIncidentTaskParamsAttributeToQueryBy | Unset = "id"
-    title: None | str | Unset = UNSET
-    summary: None | str | Unset = UNSET
-    status: None | str | Unset = UNSET
-    severity_id: None | str | Unset = UNSET
-    incident_type_ids: list[str] | None | Unset = UNSET
-    service_ids: list[str] | None | Unset = UNSET
-    functionality_ids: list[str] | None | Unset = UNSET
-    environment_ids: list[str] | None | Unset = UNSET
-    group_ids: list[str] | None | Unset = UNSET
-    started_at: None | str | Unset = UNSET
-    detected_at: None | str | Unset = UNSET
-    acknowledged_at: None | str | Unset = UNSET
-    mitigated_at: None | str | Unset = UNSET
-    resolved_at: None | str | Unset = UNSET
-    private: bool | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
+    task_type: Union[Unset, UpdateIncidentTaskParamsTaskType] = UNSET
+    attribute_to_query_by: Union[Unset, UpdateIncidentTaskParamsAttributeToQueryBy] = "id"
+    title: Union[None, Unset, str] = UNSET
+    summary: Union[None, Unset, str] = UNSET
+    status: Union[None, Unset, str] = UNSET
+    severity_id: Union[None, Unset, str] = UNSET
+    incident_type_ids: Union[None, Unset, list[str]] = UNSET
+    service_ids: Union[None, Unset, list[str]] = UNSET
+    functionality_ids: Union[None, Unset, list[str]] = UNSET
+    environment_ids: Union[None, Unset, list[str]] = UNSET
+    group_ids: Union[None, Unset, list[str]] = UNSET
+    started_at: Union[None, Unset, str] = UNSET
+    detected_at: Union[None, Unset, str] = UNSET
+    acknowledged_at: Union[None, Unset, str] = UNSET
+    mitigated_at: Union[None, Unset, str] = UNSET
+    resolved_at: Union[None, Unset, str] = UNSET
+    private: Union[Unset, bool] = UNSET
+    custom_fields_mapping: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         incident_id = self.incident_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        attribute_to_query_by: str | Unset = UNSET
+        attribute_to_query_by: Union[Unset, str] = UNSET
         if not isinstance(self.attribute_to_query_by, Unset):
             attribute_to_query_by = self.attribute_to_query_by
 
-        title: None | str | Unset
+        title: Union[None, Unset, str]
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        summary: None | str | Unset
+        summary: Union[None, Unset, str]
         if isinstance(self.summary, Unset):
             summary = UNSET
         else:
             summary = self.summary
 
-        status: None | str | Unset
+        status: Union[None, Unset, str]
         if isinstance(self.status, Unset):
             status = UNSET
         else:
             status = self.status
 
-        severity_id: None | str | Unset
+        severity_id: Union[None, Unset, str]
         if isinstance(self.severity_id, Unset):
             severity_id = UNSET
         else:
             severity_id = self.severity_id
 
-        incident_type_ids: list[str] | None | Unset
+        incident_type_ids: Union[None, Unset, list[str]]
         if isinstance(self.incident_type_ids, Unset):
             incident_type_ids = UNSET
         elif isinstance(self.incident_type_ids, list):
@@ -110,7 +108,7 @@ class UpdateIncidentTaskParams:
         else:
             incident_type_ids = self.incident_type_ids
 
-        service_ids: list[str] | None | Unset
+        service_ids: Union[None, Unset, list[str]]
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -119,7 +117,7 @@ class UpdateIncidentTaskParams:
         else:
             service_ids = self.service_ids
 
-        functionality_ids: list[str] | None | Unset
+        functionality_ids: Union[None, Unset, list[str]]
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -128,7 +126,7 @@ class UpdateIncidentTaskParams:
         else:
             functionality_ids = self.functionality_ids
 
-        environment_ids: list[str] | None | Unset
+        environment_ids: Union[None, Unset, list[str]]
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -137,7 +135,7 @@ class UpdateIncidentTaskParams:
         else:
             environment_ids = self.environment_ids
 
-        group_ids: list[str] | None | Unset
+        group_ids: Union[None, Unset, list[str]]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -146,31 +144,31 @@ class UpdateIncidentTaskParams:
         else:
             group_ids = self.group_ids
 
-        started_at: None | str | Unset
+        started_at: Union[None, Unset, str]
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        detected_at: None | str | Unset
+        detected_at: Union[None, Unset, str]
         if isinstance(self.detected_at, Unset):
             detected_at = UNSET
         else:
             detected_at = self.detected_at
 
-        acknowledged_at: None | str | Unset
+        acknowledged_at: Union[None, Unset, str]
         if isinstance(self.acknowledged_at, Unset):
             acknowledged_at = UNSET
         else:
             acknowledged_at = self.acknowledged_at
 
-        mitigated_at: None | str | Unset
+        mitigated_at: Union[None, Unset, str]
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: None | str | Unset
+        resolved_at: Union[None, Unset, str]
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
@@ -178,7 +176,7 @@ class UpdateIncidentTaskParams:
 
         private = self.private
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: Union[None, Unset, str]
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -236,56 +234,56 @@ class UpdateIncidentTaskParams:
         incident_id = d.pop("incident_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_incident_task_params_task_type(_task_type)
 
         _attribute_to_query_by = d.pop("attribute_to_query_by", UNSET)
-        attribute_to_query_by: UpdateIncidentTaskParamsAttributeToQueryBy | Unset
+        attribute_to_query_by: Union[Unset, UpdateIncidentTaskParamsAttributeToQueryBy]
         if isinstance(_attribute_to_query_by, Unset):
             attribute_to_query_by = UNSET
         else:
             attribute_to_query_by = check_update_incident_task_params_attribute_to_query_by(_attribute_to_query_by)
 
-        def _parse_title(data: object) -> None | str | Unset:
+        def _parse_title(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_summary(data: object) -> None | str | Unset:
+        def _parse_summary(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         summary = _parse_summary(d.pop("summary", UNSET))
 
-        def _parse_status(data: object) -> None | str | Unset:
+        def _parse_status(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_severity_id(data: object) -> None | str | Unset:
+        def _parse_severity_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         severity_id = _parse_severity_id(d.pop("severity_id", UNSET))
 
-        def _parse_incident_type_ids(data: object) -> list[str] | None | Unset:
+        def _parse_incident_type_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -296,13 +294,13 @@ class UpdateIncidentTaskParams:
                 incident_type_ids_type_0 = cast(list[str], data)
 
                 return incident_type_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         incident_type_ids = _parse_incident_type_ids(d.pop("incident_type_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> list[str] | None | Unset:
+        def _parse_service_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -313,13 +311,13 @@ class UpdateIncidentTaskParams:
                 service_ids_type_0 = cast(list[str], data)
 
                 return service_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> list[str] | None | Unset:
+        def _parse_functionality_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -330,13 +328,13 @@ class UpdateIncidentTaskParams:
                 functionality_ids_type_0 = cast(list[str], data)
 
                 return functionality_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> list[str] | None | Unset:
+        def _parse_environment_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -347,13 +345,13 @@ class UpdateIncidentTaskParams:
                 environment_ids_type_0 = cast(list[str], data)
 
                 return environment_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> list[str] | None | Unset:
+        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -364,65 +362,65 @@ class UpdateIncidentTaskParams:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_started_at(data: object) -> None | str | Unset:
+        def _parse_started_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_detected_at(data: object) -> None | str | Unset:
+        def _parse_detected_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         detected_at = _parse_detected_at(d.pop("detected_at", UNSET))
 
-        def _parse_acknowledged_at(data: object) -> None | str | Unset:
+        def _parse_acknowledged_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         acknowledged_at = _parse_acknowledged_at(d.pop("acknowledged_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> None | str | Unset:
+        def _parse_mitigated_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> None | str | Unset:
+        def _parse_resolved_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
         private = d.pop("private", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

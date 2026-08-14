@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -29,36 +27,35 @@ class UpdateAsanaTaskTaskParams:
     Attributes:
         task_id (str): The task id
         completion (UpdateAsanaTaskTaskParamsCompletion):
-        task_type (UpdateAsanaTaskTaskParamsTaskType | Unset):
-        title (str | Unset): The task title
-        notes (str | Unset):
-        assign_user_email (str | Unset): The assigned user's email
-        due_date (str | Unset): The due date
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, UpdateAsanaTaskTaskParamsTaskType]):
+        title (Union[Unset, str]): The task title
+        notes (Union[Unset, str]):
+        assign_user_email (Union[Unset, str]): The assigned user's email
+        due_date (Union[Unset, str]): The due date
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        dependency_direction (UpdateAsanaTaskTaskParamsDependencyDirection | Unset):  Default: 'blocking'.
-        dependent_task_ids (list[str] | None | Unset): Dependent task ids. Supports liquid syntax
+        dependency_direction (Union[Unset, UpdateAsanaTaskTaskParamsDependencyDirection]):  Default: 'blocking'.
+        dependent_task_ids (Union[None, Unset, list[str]]): Dependent task ids. Supports liquid syntax
     """
 
     task_id: str
-    completion: UpdateAsanaTaskTaskParamsCompletion
-    task_type: UpdateAsanaTaskTaskParamsTaskType | Unset = UNSET
-    title: str | Unset = UNSET
-    notes: str | Unset = UNSET
-    assign_user_email: str | Unset = UNSET
-    due_date: str | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
-    dependency_direction: UpdateAsanaTaskTaskParamsDependencyDirection | Unset = "blocking"
-    dependent_task_ids: list[str] | None | Unset = UNSET
+    completion: "UpdateAsanaTaskTaskParamsCompletion"
+    task_type: Union[Unset, UpdateAsanaTaskTaskParamsTaskType] = UNSET
+    title: Union[Unset, str] = UNSET
+    notes: Union[Unset, str] = UNSET
+    assign_user_email: Union[Unset, str] = UNSET
+    due_date: Union[Unset, str] = UNSET
+    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    dependency_direction: Union[Unset, UpdateAsanaTaskTaskParamsDependencyDirection] = "blocking"
+    dependent_task_ids: Union[None, Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         task_id = self.task_id
 
         completion = self.completion.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,17 +67,17 @@ class UpdateAsanaTaskTaskParams:
 
         due_date = self.due_date
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: Union[None, Unset, str]
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        dependency_direction: str | Unset = UNSET
+        dependency_direction: Union[Unset, str] = UNSET
         if not isinstance(self.dependency_direction, Unset):
             dependency_direction = self.dependency_direction
 
-        dependent_task_ids: list[str] | None | Unset
+        dependent_task_ids: Union[None, Unset, list[str]]
         if isinstance(self.dependent_task_ids, Unset):
             dependent_task_ids = UNSET
         elif isinstance(self.dependent_task_ids, list):
@@ -126,7 +123,7 @@ class UpdateAsanaTaskTaskParams:
         completion = UpdateAsanaTaskTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateAsanaTaskTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateAsanaTaskTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -140,23 +137,23 @@ class UpdateAsanaTaskTaskParams:
 
         due_date = d.pop("due_date", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
         _dependency_direction = d.pop("dependency_direction", UNSET)
-        dependency_direction: UpdateAsanaTaskTaskParamsDependencyDirection | Unset
+        dependency_direction: Union[Unset, UpdateAsanaTaskTaskParamsDependencyDirection]
         if isinstance(_dependency_direction, Unset):
             dependency_direction = UNSET
         else:
             dependency_direction = check_update_asana_task_task_params_dependency_direction(_dependency_direction)
 
-        def _parse_dependent_task_ids(data: object) -> list[str] | None | Unset:
+        def _parse_dependent_task_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -167,9 +164,9 @@ class UpdateAsanaTaskTaskParams:
                 dependent_task_ids_type_0 = cast(list[str], data)
 
                 return dependent_task_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         dependent_task_ids = _parse_dependent_task_ids(d.pop("dependent_task_ids", UNSET))
 

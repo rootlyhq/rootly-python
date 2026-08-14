@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,15 +14,14 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: ListRetrospectiveConfigurationsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveConfigurationsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -46,8 +45,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrospectiveConfigurationList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[RetrospectiveConfigurationList]:
     if response.status_code == 200:
         response_200 = RetrospectiveConfigurationList.from_dict(response.json())
 
@@ -60,7 +59,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[RetrospectiveConfigurationList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -73,20 +72,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveConfigurationsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveConfigurationsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
 ) -> Response[RetrospectiveConfigurationList]:
     """List retrospective configurations
 
      List retrospective configurations
 
     Args:
-        include (ListRetrospectiveConfigurationsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
+        include (Union[Unset, ListRetrospectiveConfigurationsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,20 +112,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveConfigurationsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-) -> RetrospectiveConfigurationList | None:
+    include: Union[Unset, ListRetrospectiveConfigurationsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+) -> Optional[RetrospectiveConfigurationList]:
     """List retrospective configurations
 
      List retrospective configurations
 
     Args:
-        include (ListRetrospectiveConfigurationsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
+        include (Union[Unset, ListRetrospectiveConfigurationsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -148,20 +147,20 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveConfigurationsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveConfigurationsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
 ) -> Response[RetrospectiveConfigurationList]:
     """List retrospective configurations
 
      List retrospective configurations
 
     Args:
-        include (ListRetrospectiveConfigurationsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
+        include (Union[Unset, ListRetrospectiveConfigurationsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,20 +185,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveConfigurationsInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-) -> RetrospectiveConfigurationList | None:
+    include: Union[Unset, ListRetrospectiveConfigurationsInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+) -> Optional[RetrospectiveConfigurationList]:
     """List retrospective configurations
 
      List retrospective configurations
 
     Args:
-        include (ListRetrospectiveConfigurationsInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterkind (str | Unset):
+        include (Union[Unset, ListRetrospectiveConfigurationsInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterkind (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

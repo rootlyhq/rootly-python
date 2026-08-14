@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
@@ -14,10 +12,10 @@ T = TypeVar("T", bound="UpdateUserPhoneNumberDataAttributes")
 class UpdateUserPhoneNumberDataAttributes:
     """
     Attributes:
-        phone (str | Unset): Phone number in international format
+        phone (Union[Unset, str]): Phone number in international format
     """
 
-    phone: str | Unset = UNSET
+    phone: Union[Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         phone = self.phone

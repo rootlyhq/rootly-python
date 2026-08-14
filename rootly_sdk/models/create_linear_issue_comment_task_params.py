@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,12 +19,12 @@ class CreateLinearIssueCommentTaskParams:
     Attributes:
         issue_id (str): The issue id
         body (str): The issue description
-        task_type (CreateLinearIssueCommentTaskParamsTaskType | Unset):
+        task_type (Union[Unset, CreateLinearIssueCommentTaskParamsTaskType]):
     """
 
     issue_id: str
     body: str
-    task_type: CreateLinearIssueCommentTaskParamsTaskType | Unset = UNSET
+    task_type: Union[Unset, CreateLinearIssueCommentTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,7 +32,7 @@ class CreateLinearIssueCommentTaskParams:
 
         body = self.body
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,7 +57,7 @@ class CreateLinearIssueCommentTaskParams:
         body = d.pop("body")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateLinearIssueCommentTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateLinearIssueCommentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

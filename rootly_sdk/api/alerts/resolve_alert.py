@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -9,25 +8,22 @@ from ...client import AuthenticatedClient, Client
 from ...models.alert_response import AlertResponse
 from ...models.errors_list import ErrorsList
 from ...models.resolve_alert import ResolveAlert
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     id: str,
     *,
-    body: ResolveAlert | Unset = UNSET,
+    body: ResolveAlert,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/alerts/{id}/resolve".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/alerts/{id}/resolve",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -36,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[AlertResponse, ErrorsList]]:
     if response.status_code == 200:
         response_200 = AlertResponse.from_dict(response.json())
 
@@ -55,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[AlertResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,22 +65,22 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: ResolveAlert | Unset = UNSET,
-) -> Response[AlertResponse | ErrorsList]:
+    body: ResolveAlert,
+) -> Response[Union[AlertResponse, ErrorsList]]:
     """Resolves an alert
 
      Resolves a specific alert by id
 
     Args:
         id (str):
-        body (ResolveAlert | Unset):
+        body (ResolveAlert):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertResponse | ErrorsList]
+        Response[Union[AlertResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -103,22 +99,22 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: ResolveAlert | Unset = UNSET,
-) -> AlertResponse | ErrorsList | None:
+    body: ResolveAlert,
+) -> Optional[Union[AlertResponse, ErrorsList]]:
     """Resolves an alert
 
      Resolves a specific alert by id
 
     Args:
         id (str):
-        body (ResolveAlert | Unset):
+        body (ResolveAlert):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertResponse | ErrorsList
+        Union[AlertResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -132,22 +128,22 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: ResolveAlert | Unset = UNSET,
-) -> Response[AlertResponse | ErrorsList]:
+    body: ResolveAlert,
+) -> Response[Union[AlertResponse, ErrorsList]]:
     """Resolves an alert
 
      Resolves a specific alert by id
 
     Args:
         id (str):
-        body (ResolveAlert | Unset):
+        body (ResolveAlert):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertResponse | ErrorsList]
+        Response[Union[AlertResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -164,22 +160,22 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: ResolveAlert | Unset = UNSET,
-) -> AlertResponse | ErrorsList | None:
+    body: ResolveAlert,
+) -> Optional[Union[AlertResponse, ErrorsList]]:
     """Resolves an alert
 
      Resolves a specific alert by id
 
     Args:
         id (str):
-        body (ResolveAlert | Unset):
+        body (ResolveAlert):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertResponse | ErrorsList
+        Union[AlertResponse, ErrorsList]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -22,40 +20,39 @@ class NewCommunicationsTemplateDataAttributes:
     Attributes:
         name (str): The name of the communications template
         communication_type_id (str): The communication type ID
-        description (None | str | Unset): The description of the communications template
-        position (int | None | Unset): Position of the communications template
-        communication_template_stages_attributes
-            (list[NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item] | None | Unset):
-            Template stages attributes
+        description (Union[None, Unset, str]): The description of the communications template
+        position (Union[None, Unset, int]): Position of the communications template
+        communication_template_stages_attributes (Union[None, Unset,
+            list['NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item']]): Template stages
+            attributes
     """
 
     name: str
     communication_type_id: str
-    description: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
-    communication_template_stages_attributes: (
-        list[NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item] | None | Unset
-    ) = UNSET
+    description: Union[None, Unset, str] = UNSET
+    position: Union[None, Unset, int] = UNSET
+    communication_template_stages_attributes: Union[
+        None, Unset, list["NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"]
+    ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         communication_type_id = self.communication_type_id
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        communication_template_stages_attributes: list[dict[str, Any]] | None | Unset
+        communication_template_stages_attributes: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.communication_template_stages_attributes, Unset):
             communication_template_stages_attributes = UNSET
         elif isinstance(self.communication_template_stages_attributes, list):
@@ -99,27 +96,29 @@ class NewCommunicationsTemplateDataAttributes:
 
         communication_type_id = d.pop("communication_type_id")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         def _parse_communication_template_stages_attributes(
             data: object,
-        ) -> list[NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item] | None | Unset:
+        ) -> Union[
+            None, Unset, list["NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"]
+        ]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -143,12 +142,14 @@ class NewCommunicationsTemplateDataAttributes:
                     )
 
                 return communication_template_stages_attributes_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             return cast(
-                list[NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item]
-                | None
-                | Unset,
+                Union[
+                    None,
+                    Unset,
+                    list["NewCommunicationsTemplateDataAttributesCommunicationTemplateStagesAttributesType0Item"],
+                ],
                 data,
             )
 

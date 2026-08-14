@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/schedules/{schedule_id}/shift_coverage_requests".format(
-            schedule_id=quote(str(schedule_id), safe=""),
-        ),
+        "url": f"/v1/schedules/{schedule_id}/shift_coverage_requests",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | ShiftCoverageRequestList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
     if response.status_code == 201:
         response_201 = ShiftCoverageRequestList.from_dict(response.json())
 
@@ -54,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | ShiftCoverageRequestList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Response[ErrorsList | ShiftCoverageRequestList]:
+) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -86,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftCoverageRequestList]
+        Response[Union[ErrorsList, ShiftCoverageRequestList]]
     """
 
     kwargs = _get_kwargs(
@@ -106,7 +103,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> ErrorsList | ShiftCoverageRequestList | None:
+) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -123,7 +120,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftCoverageRequestList
+        Union[ErrorsList, ShiftCoverageRequestList]
     """
 
     return sync_detailed(
@@ -138,7 +135,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> Response[ErrorsList | ShiftCoverageRequestList]:
+) -> Response[Union[ErrorsList, ShiftCoverageRequestList]]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -155,7 +152,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftCoverageRequestList]
+        Response[Union[ErrorsList, ShiftCoverageRequestList]]
     """
 
     kwargs = _get_kwargs(
@@ -173,7 +170,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewShiftCoverageRequest,
-) -> ErrorsList | ShiftCoverageRequestList | None:
+) -> Optional[Union[ErrorsList, ShiftCoverageRequestList]]:
     """creates shift coverage requests
 
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
@@ -190,7 +187,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftCoverageRequestList
+        Union[ErrorsList, ShiftCoverageRequestList]
     """
 
     return (

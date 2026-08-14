@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,18 +23,17 @@ T = TypeVar("T", bound="SendMicrosoftTeamsChatMessageTaskParams")
 class SendMicrosoftTeamsChatMessageTaskParams:
     """
     Attributes:
-        chats (list[SendMicrosoftTeamsChatMessageTaskParamsChatsItem]):
+        chats (list['SendMicrosoftTeamsChatMessageTaskParamsChatsItem']):
         text (str): The message text
-        task_type (SendMicrosoftTeamsChatMessageTaskParamsTaskType | Unset):
+        task_type (Union[Unset, SendMicrosoftTeamsChatMessageTaskParamsTaskType]):
     """
 
-    chats: list[SendMicrosoftTeamsChatMessageTaskParamsChatsItem]
+    chats: list["SendMicrosoftTeamsChatMessageTaskParamsChatsItem"]
     text: str
-    task_type: SendMicrosoftTeamsChatMessageTaskParamsTaskType | Unset = UNSET
+    task_type: Union[Unset, SendMicrosoftTeamsChatMessageTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         chats = []
         for chats_item_data in self.chats:
             chats_item = chats_item_data.to_dict()
@@ -44,7 +41,7 @@ class SendMicrosoftTeamsChatMessageTaskParams:
 
         text = self.text
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -78,7 +75,7 @@ class SendMicrosoftTeamsChatMessageTaskParams:
         text = d.pop("text")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: SendMicrosoftTeamsChatMessageTaskParamsTaskType | Unset
+        task_type: Union[Unset, SendMicrosoftTeamsChatMessageTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

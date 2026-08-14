@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,24 +17,24 @@ T = TypeVar("T", bound="CreateEdgeConnectorActionBodyActionMetadataParametersIte
 class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
     """
     Attributes:
-        name (str | Unset):
-        type_ (CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset):
-        required (bool | Unset):
-        description (str | Unset):
-        options (list[str] | Unset):
+        name (Union[Unset, str]):
+        type_ (Union[Unset, CreateEdgeConnectorActionBodyActionMetadataParametersItemType]):
+        required (Union[Unset, bool]):
+        description (Union[Unset, str]):
+        options (Union[Unset, list[str]]):
     """
 
-    name: str | Unset = UNSET
-    type_: CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset = UNSET
-    required: bool | Unset = UNSET
-    description: str | Unset = UNSET
-    options: list[str] | Unset = UNSET
+    name: Union[Unset, str] = UNSET
+    type_: Union[Unset, CreateEdgeConnectorActionBodyActionMetadataParametersItemType] = UNSET
+    required: Union[Unset, bool] = UNSET
+    description: Union[Unset, str] = UNSET
+    options: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        type_: str | Unset = UNSET
+        type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -44,7 +42,7 @@ class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
 
         description = self.description
 
-        options: list[str] | Unset = UNSET
+        options: Union[Unset, list[str]] = UNSET
         if not isinstance(self.options, Unset):
             options = self.options
 
@@ -70,7 +68,7 @@ class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
         name = d.pop("name", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset
+        type_: Union[Unset, CreateEdgeConnectorActionBodyActionMetadataParametersItemType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

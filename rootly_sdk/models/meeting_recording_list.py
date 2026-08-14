@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,22 +18,21 @@ T = TypeVar("T", bound="MeetingRecordingList")
 class MeetingRecordingList:
     """
     Attributes:
-        data (list[MeetingRecordingListDataItem]):
-        meta (Meta | Unset):
+        data (list['MeetingRecordingListDataItem']):
+        meta (Union[Unset, Meta]):
     """
 
-    data: list[MeetingRecordingListDataItem]
-    meta: Meta | Unset = UNSET
+    data: list["MeetingRecordingListDataItem"]
+    meta: Union[Unset, "Meta"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         data = []
         for data_item_data in self.data:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        meta: dict[str, Any] | Unset = UNSET
+        meta: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
@@ -65,7 +62,7 @@ class MeetingRecordingList:
             data.append(data_item)
 
         _meta = d.pop("meta", UNSET)
-        meta: Meta | Unset
+        meta: Union[Unset, Meta]
         if isinstance(_meta, Unset):
             meta = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,32 +30,31 @@ T = TypeVar("T", bound="PageJsmopsOnCallRespondersTaskParams")
 class PageJsmopsOnCallRespondersTaskParams:
     """
     Attributes:
-        task_type (PageJsmopsOnCallRespondersTaskParamsTaskType | Unset):
-        title (None | str | Unset): Incident title.
-        message (str | Unset): Message of the incident
-        description (str | Unset): Description field of the incident that is generally used to provide a detailed
+        task_type (Union[Unset, PageJsmopsOnCallRespondersTaskParamsTaskType]):
+        title (Union[None, Unset, str]): Incident title.
+        message (Union[Unset, str]): Message of the incident
+        description (Union[Unset, str]): Description field of the incident that is generally used to provide a detailed
             information about the incident
-        teams (list[PageJsmopsOnCallRespondersTaskParamsTeamsItem] | Unset):
-        users (list[PageJsmopsOnCallRespondersTaskParamsUsersItem] | Unset):
-        priority (PageJsmopsOnCallRespondersTaskParamsPriority | Unset):  Default: 'P3'.
+        teams (Union[Unset, list['PageJsmopsOnCallRespondersTaskParamsTeamsItem']]):
+        users (Union[Unset, list['PageJsmopsOnCallRespondersTaskParamsUsersItem']]):
+        priority (Union[Unset, PageJsmopsOnCallRespondersTaskParamsPriority]):  Default: 'P3'.
     """
 
-    task_type: PageJsmopsOnCallRespondersTaskParamsTaskType | Unset = UNSET
-    title: None | str | Unset = UNSET
-    message: str | Unset = UNSET
-    description: str | Unset = UNSET
-    teams: list[PageJsmopsOnCallRespondersTaskParamsTeamsItem] | Unset = UNSET
-    users: list[PageJsmopsOnCallRespondersTaskParamsUsersItem] | Unset = UNSET
-    priority: PageJsmopsOnCallRespondersTaskParamsPriority | Unset = "P3"
+    task_type: Union[Unset, PageJsmopsOnCallRespondersTaskParamsTaskType] = UNSET
+    title: Union[None, Unset, str] = UNSET
+    message: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    teams: Union[Unset, list["PageJsmopsOnCallRespondersTaskParamsTeamsItem"]] = UNSET
+    users: Union[Unset, list["PageJsmopsOnCallRespondersTaskParamsUsersItem"]] = UNSET
+    priority: Union[Unset, PageJsmopsOnCallRespondersTaskParamsPriority] = "P3"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        title: None | str | Unset
+        title: Union[None, Unset, str]
         if isinstance(self.title, Unset):
             title = UNSET
         else:
@@ -67,21 +64,21 @@ class PageJsmopsOnCallRespondersTaskParams:
 
         description = self.description
 
-        teams: list[dict[str, Any]] | Unset = UNSET
+        teams: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.teams, Unset):
             teams = []
             for teams_item_data in self.teams:
                 teams_item = teams_item_data.to_dict()
                 teams.append(teams_item)
 
-        users: list[dict[str, Any]] | Unset = UNSET
+        users: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        priority: str | Unset = UNSET
+        priority: Union[Unset, str] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
@@ -116,18 +113,18 @@ class PageJsmopsOnCallRespondersTaskParams:
 
         d = dict(src_dict)
         _task_type = d.pop("task_type", UNSET)
-        task_type: PageJsmopsOnCallRespondersTaskParamsTaskType | Unset
+        task_type: Union[Unset, PageJsmopsOnCallRespondersTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_page_jsmops_on_call_responders_task_params_task_type(_task_type)
 
-        def _parse_title(data: object) -> None | str | Unset:
+        def _parse_title(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         title = _parse_title(d.pop("title", UNSET))
 
@@ -135,26 +132,22 @@ class PageJsmopsOnCallRespondersTaskParams:
 
         description = d.pop("description", UNSET)
 
+        teams = []
         _teams = d.pop("teams", UNSET)
-        teams: list[PageJsmopsOnCallRespondersTaskParamsTeamsItem] | Unset = UNSET
-        if _teams is not UNSET:
-            teams = []
-            for teams_item_data in _teams:
-                teams_item = PageJsmopsOnCallRespondersTaskParamsTeamsItem.from_dict(teams_item_data)
+        for teams_item_data in _teams or []:
+            teams_item = PageJsmopsOnCallRespondersTaskParamsTeamsItem.from_dict(teams_item_data)
 
-                teams.append(teams_item)
+            teams.append(teams_item)
 
+        users = []
         _users = d.pop("users", UNSET)
-        users: list[PageJsmopsOnCallRespondersTaskParamsUsersItem] | Unset = UNSET
-        if _users is not UNSET:
-            users = []
-            for users_item_data in _users:
-                users_item = PageJsmopsOnCallRespondersTaskParamsUsersItem.from_dict(users_item_data)
+        for users_item_data in _users or []:
+            users_item = PageJsmopsOnCallRespondersTaskParamsUsersItem.from_dict(users_item_data)
 
-                users.append(users_item)
+            users.append(users_item)
 
         _priority = d.pop("priority", UNSET)
-        priority: PageJsmopsOnCallRespondersTaskParamsPriority | Unset
+        priority: Union[Unset, PageJsmopsOnCallRespondersTaskParamsPriority]
         if isinstance(_priority, Unset):
             priority = UNSET
         else:

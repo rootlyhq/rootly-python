@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -20,31 +18,31 @@ T = TypeVar("T", bound="PatchAlertRouteDataAttributesRulesItemDestinationsItem")
 class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
     """
     Attributes:
-        id (UUID | Unset): The ID of the destination. Required for updating or deleting existing destinations.
-        field_destroy (bool | Unset): Set to true to delete this destination
-        target_type (PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType | Unset): The type of the target.
-            Please contact support if you encounter issues using `Functionality` as a target type.
-        target_id (UUID | Unset): The ID of the target
+        id (Union[Unset, UUID]): The ID of the destination. Required for updating or deleting existing destinations.
+        field_destroy (Union[Unset, bool]): Set to true to delete this destination
+        target_type (Union[Unset, PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType]): The type of the
+            target. Please contact support if you encounter issues using `Functionality` as a target type.
+        target_id (Union[Unset, UUID]): The ID of the target
     """
 
-    id: UUID | Unset = UNSET
-    field_destroy: bool | Unset = UNSET
-    target_type: PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType | Unset = UNSET
-    target_id: UUID | Unset = UNSET
+    id: Union[Unset, UUID] = UNSET
+    field_destroy: Union[Unset, bool] = UNSET
+    target_type: Union[Unset, PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType] = UNSET
+    target_id: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: str | Unset = UNSET
+        id: Union[Unset, str] = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         field_destroy = self.field_destroy
 
-        target_type: str | Unset = UNSET
+        target_type: Union[Unset, str] = UNSET
         if not isinstance(self.target_type, Unset):
             target_type = self.target_type
 
-        target_id: str | Unset = UNSET
+        target_id: Union[Unset, str] = UNSET
         if not isinstance(self.target_id, Unset):
             target_id = str(self.target_id)
 
@@ -66,7 +64,7 @@ class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: UUID | Unset
+        id: Union[Unset, UUID]
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -75,14 +73,14 @@ class PatchAlertRouteDataAttributesRulesItemDestinationsItem:
         field_destroy = d.pop("_destroy", UNSET)
 
         _target_type = d.pop("target_type", UNSET)
-        target_type: PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType | Unset
+        target_type: Union[Unset, PatchAlertRouteDataAttributesRulesItemDestinationsItemTargetType]
         if isinstance(_target_type, Unset):
             target_type = UNSET
         else:
             target_type = check_patch_alert_route_data_attributes_rules_item_destinations_item_target_type(_target_type)
 
         _target_id = d.pop("target_id", UNSET)
-        target_id: UUID | Unset
+        target_id: Union[Unset, UUID]
         if isinstance(_target_id, Unset):
             target_id = UNSET
         else:

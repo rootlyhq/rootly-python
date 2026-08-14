@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,21 +25,20 @@ class UpdateGoogleChatSpaceDescriptionTaskParams:
     Attributes:
         space (UpdateGoogleChatSpaceDescriptionTaskParamsSpace):
         description (str): The space description. Supports liquid markup
-        task_type (UpdateGoogleChatSpaceDescriptionTaskParamsTaskType | Unset):
+        task_type (Union[Unset, UpdateGoogleChatSpaceDescriptionTaskParamsTaskType]):
     """
 
-    space: UpdateGoogleChatSpaceDescriptionTaskParamsSpace
+    space: "UpdateGoogleChatSpaceDescriptionTaskParamsSpace"
     description: str
-    task_type: UpdateGoogleChatSpaceDescriptionTaskParamsTaskType | Unset = UNSET
+    task_type: Union[Unset, UpdateGoogleChatSpaceDescriptionTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         space = self.space.to_dict()
 
         description = self.description
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -70,7 +67,7 @@ class UpdateGoogleChatSpaceDescriptionTaskParams:
         description = d.pop("description")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateGoogleChatSpaceDescriptionTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateGoogleChatSpaceDescriptionTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

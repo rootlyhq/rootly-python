@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -15,12 +14,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: GetPlaybookInclude | Unset = UNSET,
+    include: Union[Unset, GetPlaybookInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -30,9 +28,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/playbooks/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/playbooks/{id}",
         "params": params,
     }
 
@@ -40,8 +36,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | PlaybookResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, PlaybookResponse]]:
     if response.status_code == 200:
         response_200 = PlaybookResponse.from_dict(response.json())
 
@@ -59,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | PlaybookResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, PlaybookResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,22 +69,22 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetPlaybookInclude | Unset = UNSET,
-) -> Response[ErrorsList | PlaybookResponse]:
+    include: Union[Unset, GetPlaybookInclude] = UNSET,
+) -> Response[Union[ErrorsList, PlaybookResponse]]:
     """Retrieves a playbook
 
      Retrieves a specific playbook by id
 
     Args:
         id (str):
-        include (GetPlaybookInclude | Unset):
+        include (Union[Unset, GetPlaybookInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | PlaybookResponse]
+        Response[Union[ErrorsList, PlaybookResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -107,22 +103,22 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetPlaybookInclude | Unset = UNSET,
-) -> ErrorsList | PlaybookResponse | None:
+    include: Union[Unset, GetPlaybookInclude] = UNSET,
+) -> Optional[Union[ErrorsList, PlaybookResponse]]:
     """Retrieves a playbook
 
      Retrieves a specific playbook by id
 
     Args:
         id (str):
-        include (GetPlaybookInclude | Unset):
+        include (Union[Unset, GetPlaybookInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | PlaybookResponse
+        Union[ErrorsList, PlaybookResponse]
     """
 
     return sync_detailed(
@@ -136,22 +132,22 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetPlaybookInclude | Unset = UNSET,
-) -> Response[ErrorsList | PlaybookResponse]:
+    include: Union[Unset, GetPlaybookInclude] = UNSET,
+) -> Response[Union[ErrorsList, PlaybookResponse]]:
     """Retrieves a playbook
 
      Retrieves a specific playbook by id
 
     Args:
         id (str):
-        include (GetPlaybookInclude | Unset):
+        include (Union[Unset, GetPlaybookInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | PlaybookResponse]
+        Response[Union[ErrorsList, PlaybookResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -168,22 +164,22 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: GetPlaybookInclude | Unset = UNSET,
-) -> ErrorsList | PlaybookResponse | None:
+    include: Union[Unset, GetPlaybookInclude] = UNSET,
+) -> Optional[Union[ErrorsList, PlaybookResponse]]:
     """Retrieves a playbook
 
      Retrieves a specific playbook by id
 
     Args:
         id (str):
-        include (GetPlaybookInclude | Unset):
+        include (Union[Unset, GetPlaybookInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | PlaybookResponse
+        Union[ErrorsList, PlaybookResponse]
     """
 
     return (

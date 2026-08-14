@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
@@ -24,22 +22,21 @@ T = TypeVar("T", bound="UpdateIncidentPermissionSetResourceDataAttributes")
 class UpdateIncidentPermissionSetResourceDataAttributes:
     """
     Attributes:
-        kind (UpdateIncidentPermissionSetResourceDataAttributesKind | Unset):
-        private (bool | Unset):
-        resource_id (str | Unset):
-        resource_type (str | Unset):
-        severity_params (UpdateIncidentPermissionSetResourceDataAttributesSeverityParams | Unset):
+        kind (Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesKind]):
+        private (Union[Unset, bool]):
+        resource_id (Union[Unset, str]):
+        resource_type (Union[Unset, str]):
+        severity_params (Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesSeverityParams]):
     """
 
-    kind: UpdateIncidentPermissionSetResourceDataAttributesKind | Unset = UNSET
-    private: bool | Unset = UNSET
-    resource_id: str | Unset = UNSET
-    resource_type: str | Unset = UNSET
-    severity_params: UpdateIncidentPermissionSetResourceDataAttributesSeverityParams | Unset = UNSET
+    kind: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesKind] = UNSET
+    private: Union[Unset, bool] = UNSET
+    resource_id: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, str] = UNSET
+    severity_params: Union[Unset, "UpdateIncidentPermissionSetResourceDataAttributesSeverityParams"] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-
-        kind: str | Unset = UNSET
+        kind: Union[Unset, str] = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -49,7 +46,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
 
         resource_type = self.resource_type
 
-        severity_params: dict[str, Any] | Unset = UNSET
+        severity_params: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -77,7 +74,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
 
         d = dict(src_dict)
         _kind = d.pop("kind", UNSET)
-        kind: UpdateIncidentPermissionSetResourceDataAttributesKind | Unset
+        kind: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesKind]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -90,7 +87,7 @@ class UpdateIncidentPermissionSetResourceDataAttributes:
         resource_type = d.pop("resource_type", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: UpdateIncidentPermissionSetResourceDataAttributesSeverityParams | Unset
+        severity_params: Union[Unset, UpdateIncidentPermissionSetResourceDataAttributesSeverityParams]
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

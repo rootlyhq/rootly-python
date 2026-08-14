@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,24 +24,23 @@ class CreateShortcutTaskTaskParams:
         parent_story_id (str): The parent story
         description (str): The task description
         completion (CreateShortcutTaskTaskParamsCompletion): The completion id and display name
-        task_type (CreateShortcutTaskTaskParamsTaskType | Unset):
+        task_type (Union[Unset, CreateShortcutTaskTaskParamsTaskType]):
     """
 
     parent_story_id: str
     description: str
-    completion: CreateShortcutTaskTaskParamsCompletion
-    task_type: CreateShortcutTaskTaskParamsTaskType | Unset = UNSET
+    completion: "CreateShortcutTaskTaskParamsCompletion"
+    task_type: Union[Unset, CreateShortcutTaskTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         parent_story_id = self.parent_story_id
 
         description = self.description
 
         completion = self.completion.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -73,7 +70,7 @@ class CreateShortcutTaskTaskParams:
         completion = CreateShortcutTaskTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateShortcutTaskTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateShortcutTaskTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

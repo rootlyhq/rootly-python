@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -32,58 +30,57 @@ T = TypeVar("T", bound="UpdateIncidentActionItemDataAttributes")
 class UpdateIncidentActionItemDataAttributes:
     """
     Attributes:
-        summary (str | Unset): The summary of the action item
-        description (None | str | Unset): The description of the action item
-        kind (UpdateIncidentActionItemDataAttributesKind | Unset): The kind of the action item
-        assigned_to_user_id (int | None | Unset): ID of user you wish to assign this action item
-        assigned_to_group_ids (list[str] | None | Unset): IDs of groups you wish to assign this action item
-        priority (UpdateIncidentActionItemDataAttributesPriority | Unset): The priority of the action item
-        status (UpdateIncidentActionItemDataAttributesStatus | Unset): The status of the action item
-        due_date (None | str | Unset): The due date of the action item
-        jira_issue_id (None | str | Unset): The Jira issue ID.
-        jira_issue_key (None | str | Unset): The Jira issue key.
-        jira_issue_url (None | str | Unset): The Jira issue URL.
-        form_field_selections (list[UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset):
-            Custom field values to set on the action item. Ignored unless custom fields for action items are enabled for the
-            organization.
+        summary (Union[Unset, str]): The summary of the action item
+        description (Union[None, Unset, str]): The description of the action item
+        kind (Union[Unset, UpdateIncidentActionItemDataAttributesKind]): The kind of the action item
+        assigned_to_user_id (Union[None, Unset, int]): ID of user you wish to assign this action item
+        assigned_to_group_ids (Union[None, Unset, list[str]]): IDs of groups you wish to assign this action item
+        priority (Union[Unset, UpdateIncidentActionItemDataAttributesPriority]): The priority of the action item
+        status (Union[Unset, UpdateIncidentActionItemDataAttributesStatus]): The status of the action item
+        due_date (Union[None, Unset, str]): The due date of the action item
+        jira_issue_id (Union[None, Unset, str]): The Jira issue ID.
+        jira_issue_key (Union[None, Unset, str]): The Jira issue key.
+        jira_issue_url (Union[None, Unset, str]): The Jira issue URL.
+        form_field_selections (Union[None, Unset,
+            list['UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item']]): Custom field values to set on the
+            action item. Ignored unless custom fields for action items are enabled for the organization.
     """
 
-    summary: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    kind: UpdateIncidentActionItemDataAttributesKind | Unset = UNSET
-    assigned_to_user_id: int | None | Unset = UNSET
-    assigned_to_group_ids: list[str] | None | Unset = UNSET
-    priority: UpdateIncidentActionItemDataAttributesPriority | Unset = UNSET
-    status: UpdateIncidentActionItemDataAttributesStatus | Unset = UNSET
-    due_date: None | str | Unset = UNSET
-    jira_issue_id: None | str | Unset = UNSET
-    jira_issue_key: None | str | Unset = UNSET
-    jira_issue_url: None | str | Unset = UNSET
-    form_field_selections: list[UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset = (
-        UNSET
-    )
+    summary: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    kind: Union[Unset, UpdateIncidentActionItemDataAttributesKind] = UNSET
+    assigned_to_user_id: Union[None, Unset, int] = UNSET
+    assigned_to_group_ids: Union[None, Unset, list[str]] = UNSET
+    priority: Union[Unset, UpdateIncidentActionItemDataAttributesPriority] = UNSET
+    status: Union[Unset, UpdateIncidentActionItemDataAttributesStatus] = UNSET
+    due_date: Union[None, Unset, str] = UNSET
+    jira_issue_id: Union[None, Unset, str] = UNSET
+    jira_issue_key: Union[None, Unset, str] = UNSET
+    jira_issue_url: Union[None, Unset, str] = UNSET
+    form_field_selections: Union[
+        None, Unset, list["UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item"]
+    ] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-
         summary = self.summary
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        kind: str | Unset = UNSET
+        kind: Union[Unset, str] = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        assigned_to_user_id: int | None | Unset
+        assigned_to_user_id: Union[None, Unset, int]
         if isinstance(self.assigned_to_user_id, Unset):
             assigned_to_user_id = UNSET
         else:
             assigned_to_user_id = self.assigned_to_user_id
 
-        assigned_to_group_ids: list[str] | None | Unset
+        assigned_to_group_ids: Union[None, Unset, list[str]]
         if isinstance(self.assigned_to_group_ids, Unset):
             assigned_to_group_ids = UNSET
         elif isinstance(self.assigned_to_group_ids, list):
@@ -92,39 +89,39 @@ class UpdateIncidentActionItemDataAttributes:
         else:
             assigned_to_group_ids = self.assigned_to_group_ids
 
-        priority: str | Unset = UNSET
+        priority: Union[Unset, str] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        due_date: None | str | Unset
+        due_date: Union[None, Unset, str]
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         else:
             due_date = self.due_date
 
-        jira_issue_id: None | str | Unset
+        jira_issue_id: Union[None, Unset, str]
         if isinstance(self.jira_issue_id, Unset):
             jira_issue_id = UNSET
         else:
             jira_issue_id = self.jira_issue_id
 
-        jira_issue_key: None | str | Unset
+        jira_issue_key: Union[None, Unset, str]
         if isinstance(self.jira_issue_key, Unset):
             jira_issue_key = UNSET
         else:
             jira_issue_key = self.jira_issue_key
 
-        jira_issue_url: None | str | Unset
+        jira_issue_url: Union[None, Unset, str]
         if isinstance(self.jira_issue_url, Unset):
             jira_issue_url = UNSET
         else:
             jira_issue_url = self.jira_issue_url
 
-        form_field_selections: list[dict[str, Any]] | None | Unset
+        form_field_selections: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.form_field_selections, Unset):
             form_field_selections = UNSET
         elif isinstance(self.form_field_selections, list):
@@ -175,32 +172,32 @@ class UpdateIncidentActionItemDataAttributes:
         d = dict(src_dict)
         summary = d.pop("summary", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: UpdateIncidentActionItemDataAttributesKind | Unset
+        kind: Union[Unset, UpdateIncidentActionItemDataAttributesKind]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_update_incident_action_item_data_attributes_kind(_kind)
 
-        def _parse_assigned_to_user_id(data: object) -> int | None | Unset:
+        def _parse_assigned_to_user_id(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         assigned_to_user_id = _parse_assigned_to_user_id(d.pop("assigned_to_user_id", UNSET))
 
-        def _parse_assigned_to_group_ids(data: object) -> list[str] | None | Unset:
+        def _parse_assigned_to_group_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -211,65 +208,65 @@ class UpdateIncidentActionItemDataAttributes:
                 assigned_to_group_ids_type_0 = cast(list[str], data)
 
                 return assigned_to_group_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         assigned_to_group_ids = _parse_assigned_to_group_ids(d.pop("assigned_to_group_ids", UNSET))
 
         _priority = d.pop("priority", UNSET)
-        priority: UpdateIncidentActionItemDataAttributesPriority | Unset
+        priority: Union[Unset, UpdateIncidentActionItemDataAttributesPriority]
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = check_update_incident_action_item_data_attributes_priority(_priority)
 
         _status = d.pop("status", UNSET)
-        status: UpdateIncidentActionItemDataAttributesStatus | Unset
+        status: Union[Unset, UpdateIncidentActionItemDataAttributesStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_incident_action_item_data_attributes_status(_status)
 
-        def _parse_due_date(data: object) -> None | str | Unset:
+        def _parse_due_date(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
-        def _parse_jira_issue_id(data: object) -> None | str | Unset:
+        def _parse_jira_issue_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         jira_issue_id = _parse_jira_issue_id(d.pop("jira_issue_id", UNSET))
 
-        def _parse_jira_issue_key(data: object) -> None | str | Unset:
+        def _parse_jira_issue_key(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         jira_issue_key = _parse_jira_issue_key(d.pop("jira_issue_key", UNSET))
 
-        def _parse_jira_issue_url(data: object) -> None | str | Unset:
+        def _parse_jira_issue_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
 
         def _parse_form_field_selections(
             data: object,
-        ) -> list[UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -289,9 +286,11 @@ class UpdateIncidentActionItemDataAttributes:
                     form_field_selections_type_0.append(form_field_selections_type_0_item)
 
                 return form_field_selections_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item] | None | Unset, data)
+            return cast(
+                Union[None, Unset, list["UpdateIncidentActionItemDataAttributesFormFieldSelectionsType0Item"]], data
+            )
 
         form_field_selections = _parse_form_field_selections(d.pop("form_field_selections", UNSET))
 

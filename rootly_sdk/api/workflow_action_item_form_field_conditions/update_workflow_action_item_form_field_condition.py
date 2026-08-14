@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/workflow_action_item_form_field_conditions/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/workflow_action_item_form_field_conditions/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     if response.status_code == 200:
         response_200 = WorkflowActionItemFormFieldConditionResponse.from_dict(response.json())
 
@@ -54,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowActionItemFormFieldCondition,
-) -> Response[ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
+) -> Response[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     """Update a workflow action item form field condition
 
      Update a specific workflow action item form field condition by id
@@ -83,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowActionItemFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowActionItemFormFieldCondition,
-) -> ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
+) -> Optional[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     """Update a workflow action item form field condition
 
      Update a specific workflow action item form field condition by id
@@ -117,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowActionItemFormFieldConditionResponse
+        Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]
     """
 
     return sync_detailed(
@@ -132,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowActionItemFormFieldCondition,
-) -> Response[ErrorsList | WorkflowActionItemFormFieldConditionResponse]:
+) -> Response[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     """Update a workflow action item form field condition
 
      Update a specific workflow action item form field condition by id
@@ -146,7 +143,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowActionItemFormFieldConditionResponse]
+        Response[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateWorkflowActionItemFormFieldCondition,
-) -> ErrorsList | WorkflowActionItemFormFieldConditionResponse | None:
+) -> Optional[Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]]:
     """Update a workflow action item form field condition
 
      Update a specific workflow action item form field condition by id
@@ -178,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowActionItemFormFieldConditionResponse
+        Union[ErrorsList, WorkflowActionItemFormFieldConditionResponse]
     """
 
     return (

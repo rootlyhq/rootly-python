@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,11 +12,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    range_: str | Unset = UNSET,
-    period: str | Unset = UNSET,
-    time_zone: str | Unset = UNSET,
+    range_: Union[Unset, str] = UNSET,
+    period: Union[Unset, str] = UNSET,
+    time_zone: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["range"] = range_
@@ -30,16 +28,16 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/dashboard_panels/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/dashboard_panels/{id}",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardPanelResponse | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[DashboardPanelResponse]:
     if response.status_code == 200:
         response_200 = DashboardPanelResponse.from_dict(response.json())
 
@@ -52,7 +50,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[DashboardPanelResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -66,9 +64,9 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: str | Unset = UNSET,
-    period: str | Unset = UNSET,
-    time_zone: str | Unset = UNSET,
+    range_: Union[Unset, str] = UNSET,
+    period: Union[Unset, str] = UNSET,
+    time_zone: Union[Unset, str] = UNSET,
 ) -> Response[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
@@ -76,9 +74,9 @@ def sync_detailed(
 
     Args:
         id (str):
-        range_ (str | Unset):
-        period (str | Unset):
-        time_zone (str | Unset):
+        range_ (Union[Unset, str]):
+        period (Union[Unset, str]):
+        time_zone (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -106,19 +104,19 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: str | Unset = UNSET,
-    period: str | Unset = UNSET,
-    time_zone: str | Unset = UNSET,
-) -> DashboardPanelResponse | None:
+    range_: Union[Unset, str] = UNSET,
+    period: Union[Unset, str] = UNSET,
+    time_zone: Union[Unset, str] = UNSET,
+) -> Optional[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
      Retrieves a specific dashboard panel by id
 
     Args:
         id (str):
-        range_ (str | Unset):
-        period (str | Unset):
-        time_zone (str | Unset):
+        range_ (Union[Unset, str]):
+        period (Union[Unset, str]):
+        time_zone (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -141,9 +139,9 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: str | Unset = UNSET,
-    period: str | Unset = UNSET,
-    time_zone: str | Unset = UNSET,
+    range_: Union[Unset, str] = UNSET,
+    period: Union[Unset, str] = UNSET,
+    time_zone: Union[Unset, str] = UNSET,
 ) -> Response[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
@@ -151,9 +149,9 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        range_ (str | Unset):
-        period (str | Unset):
-        time_zone (str | Unset):
+        range_ (Union[Unset, str]):
+        period (Union[Unset, str]):
+        time_zone (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,19 +177,19 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    range_: str | Unset = UNSET,
-    period: str | Unset = UNSET,
-    time_zone: str | Unset = UNSET,
-) -> DashboardPanelResponse | None:
+    range_: Union[Unset, str] = UNSET,
+    period: Union[Unset, str] = UNSET,
+    time_zone: Union[Unset, str] = UNSET,
+) -> Optional[DashboardPanelResponse]:
     """Retrieves a dashboard panel
 
      Retrieves a specific dashboard panel by id
 
     Args:
         id (str):
-        range_ (str | Unset):
-        period (str | Unset):
-        time_zone (str | Unset):
+        range_ (Union[Unset, str]):
+        period (Union[Unset, str]):
+        time_zone (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

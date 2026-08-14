@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,20 +13,17 @@ from ...types import Response
 def _get_kwargs(
     user_id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/users/{user_id}/phone_numbers".format(
-            user_id=quote(str(user_id), safe=""),
-        ),
+        "url": f"/v1/users/{user_id}/phone_numbers",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | UserPhoneNumberList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, UserPhoneNumberList]]:
     if response.status_code == 200:
         response_200 = UserPhoneNumberList.from_dict(response.json())
 
@@ -50,8 +46,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | UserPhoneNumberList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, UserPhoneNumberList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +60,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | UserPhoneNumberList]:
+) -> Response[Union[ErrorsList, UserPhoneNumberList]]:
     """Retrieves user phone numbers
 
      Retrieves all phone numbers for the specified user
@@ -77,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserPhoneNumberList]
+        Response[Union[ErrorsList, UserPhoneNumberList]]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +91,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | UserPhoneNumberList | None:
+) -> Optional[Union[ErrorsList, UserPhoneNumberList]]:
     """Retrieves user phone numbers
 
      Retrieves all phone numbers for the specified user
@@ -108,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserPhoneNumberList
+        Union[ErrorsList, UserPhoneNumberList]
     """
 
     return sync_detailed(
@@ -121,7 +117,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | UserPhoneNumberList]:
+) -> Response[Union[ErrorsList, UserPhoneNumberList]]:
     """Retrieves user phone numbers
 
      Retrieves all phone numbers for the specified user
@@ -134,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserPhoneNumberList]
+        Response[Union[ErrorsList, UserPhoneNumberList]]
     """
 
     kwargs = _get_kwargs(
@@ -150,7 +146,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | UserPhoneNumberList | None:
+) -> Optional[Union[ErrorsList, UserPhoneNumberList]]:
     """Retrieves user phone numbers
 
      Retrieves all phone numbers for the specified user
@@ -163,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserPhoneNumberList
+        Union[ErrorsList, UserPhoneNumberList]
     """
 
     return (

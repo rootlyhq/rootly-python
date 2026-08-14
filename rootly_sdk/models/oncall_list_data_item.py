@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,24 +22,23 @@ class OncallListDataItem:
         id (str): Unique ID of the on-call entry
         type_ (OncallListDataItemType):
         attributes (Oncall):
-        relationships (OncallRelationships | Unset):
+        relationships (Union[Unset, OncallRelationships]):
     """
 
     id: str
     type_: OncallListDataItemType
-    attributes: Oncall
-    relationships: OncallRelationships | Unset = UNSET
+    attributes: "Oncall"
+    relationships: Union[Unset, "OncallRelationships"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()
 
-        relationships: dict[str, Any] | Unset = UNSET
+        relationships: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -72,7 +69,7 @@ class OncallListDataItem:
         attributes = Oncall.from_dict(d.pop("attributes"))
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: OncallRelationships | Unset
+        relationships: Union[Unset, OncallRelationships]
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

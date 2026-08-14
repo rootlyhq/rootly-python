@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,54 +25,55 @@ T = TypeVar("T", bound="AlertsSourceResolutionRuleAttributesType0ConditionsAttri
 class AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem:
     """
     Attributes:
-        field (None | str | Unset): JSON path expression to extract a specific value from the alert's payload for
+        field (Union[None, Unset, str]): JSON path expression to extract a specific value from the alert's payload for
             evaluation
-        operator (AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset): Comparison
+        operator (Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator]): Comparison
             operator used to evaluate the extracted value against the specified condition
-        value (str | Unset): Value that the extracted payload data is compared to using the specified operator to
+        value (Union[Unset, str]): Value that the extracted payload data is compared to using the specified operator to
             determine a match
-        conditionable_type (AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset):
-            The type of the conditionable
-        conditionable_id (None | str | Unset): The ID of the conditionable. If conditionable_type is AlertField, this is
-            the ID of the alert field.
-        kind (AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset): The kind of the
+        conditionable_type (Union[Unset,
+            AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType]): The type of the
+            conditionable
+        conditionable_id (Union[None, Unset, str]): The ID of the conditionable. If conditionable_type is AlertField,
+            this is the ID of the alert field.
+        kind (Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind]): The kind of the
             conditionable
     """
 
-    field: None | str | Unset = UNSET
-    operator: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset = UNSET
-    value: str | Unset = UNSET
-    conditionable_type: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset = (
-        UNSET
-    )
-    conditionable_id: None | str | Unset = UNSET
-    kind: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset = UNSET
+    field: Union[None, Unset, str] = UNSET
+    operator: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator] = UNSET
+    value: Union[Unset, str] = UNSET
+    conditionable_type: Union[
+        Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType
+    ] = UNSET
+    conditionable_id: Union[None, Unset, str] = UNSET
+    kind: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        field: None | str | Unset
+        field: Union[None, Unset, str]
         if isinstance(self.field, Unset):
             field = UNSET
         else:
             field = self.field
 
-        operator: str | Unset = UNSET
+        operator: Union[Unset, str] = UNSET
         if not isinstance(self.operator, Unset):
             operator = self.operator
 
         value = self.value
 
-        conditionable_type: str | Unset = UNSET
+        conditionable_type: Union[Unset, str] = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
-        conditionable_id: None | str | Unset
+        conditionable_id: Union[None, Unset, str]
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         else:
             conditionable_id = self.conditionable_id
 
-        kind: str | Unset = UNSET
+        kind: Union[Unset, str] = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
@@ -100,17 +99,17 @@ class AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_field(data: object) -> None | str | Unset:
+        def _parse_field(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         field = _parse_field(d.pop("field", UNSET))
 
         _operator = d.pop("operator", UNSET)
-        operator: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset
+        operator: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator]
         if isinstance(_operator, Unset):
             operator = UNSET
         else:
@@ -121,7 +120,9 @@ class AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem:
         value = d.pop("value", UNSET)
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
-        conditionable_type: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset
+        conditionable_type: Union[
+            Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemConditionableType
+        ]
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
         else:
@@ -131,17 +132,17 @@ class AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItem:
                 )
             )
 
-        def _parse_conditionable_id(data: object) -> None | str | Unset:
+        def _parse_conditionable_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset
+        kind: Union[Unset, AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemKind]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,35 +18,35 @@ class NewWorkflowRunDataAttributesType3:
     """
     Attributes:
         action_item_id (str):
-        immediate (bool | None | Unset): If false, this will respect wait time configured on the workflow Default: True.
-        check_conditions (bool | None | Unset): If true, this will check conditions. If conditions are not satisfied the
-            run will not be created Default: False.
-        context (NewWorkflowRunDataAttributesType3Context | Unset):
+        immediate (Union[None, Unset, bool]): If false, this will respect wait time configured on the workflow Default:
+            True.
+        check_conditions (Union[None, Unset, bool]): If true, this will check conditions. If conditions are not
+            satisfied the run will not be created Default: False.
+        context (Union[Unset, NewWorkflowRunDataAttributesType3Context]):
     """
 
     action_item_id: str
-    immediate: bool | None | Unset = True
-    check_conditions: bool | None | Unset = False
-    context: NewWorkflowRunDataAttributesType3Context | Unset = UNSET
+    immediate: Union[None, Unset, bool] = True
+    check_conditions: Union[None, Unset, bool] = False
+    context: Union[Unset, "NewWorkflowRunDataAttributesType3Context"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         action_item_id = self.action_item_id
 
-        immediate: bool | None | Unset
+        immediate: Union[None, Unset, bool]
         if isinstance(self.immediate, Unset):
             immediate = UNSET
         else:
             immediate = self.immediate
 
-        check_conditions: bool | None | Unset
+        check_conditions: Union[None, Unset, bool]
         if isinstance(self.check_conditions, Unset):
             check_conditions = UNSET
         else:
             check_conditions = self.check_conditions
 
-        context: dict[str, Any] | Unset = UNSET
+        context: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.context, Unset):
             context = self.context.to_dict()
 
@@ -75,26 +73,26 @@ class NewWorkflowRunDataAttributesType3:
         d = dict(src_dict)
         action_item_id = d.pop("action_item_id")
 
-        def _parse_immediate(data: object) -> bool | None | Unset:
+        def _parse_immediate(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         immediate = _parse_immediate(d.pop("immediate", UNSET))
 
-        def _parse_check_conditions(data: object) -> bool | None | Unset:
+        def _parse_check_conditions(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         check_conditions = _parse_check_conditions(d.pop("check_conditions", UNSET))
 
         _context = d.pop("context", UNSET)
-        context: NewWorkflowRunDataAttributesType3Context | Unset
+        context: Union[Unset, NewWorkflowRunDataAttributesType3Context]
         if isinstance(_context, Unset):
             context = UNSET
         else:

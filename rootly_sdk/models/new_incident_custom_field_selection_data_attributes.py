@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -15,21 +13,21 @@ class NewIncidentCustomFieldSelectionDataAttributes:
     """
     Attributes:
         custom_field_id (int): The custom field for this selection
-        value (None | str): The selected value for text kind custom fields
-        selected_option_ids (list[int] | Unset):
+        value (Union[None, str]): The selected value for text kind custom fields
+        selected_option_ids (Union[Unset, list[int]]):
     """
 
     custom_field_id: int
-    value: None | str
-    selected_option_ids: list[int] | Unset = UNSET
+    value: Union[None, str]
+    selected_option_ids: Union[Unset, list[int]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         custom_field_id = self.custom_field_id
 
-        value: None | str
+        value: Union[None, str]
         value = self.value
 
-        selected_option_ids: list[int] | Unset = UNSET
+        selected_option_ids: Union[Unset, list[int]] = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
@@ -51,10 +49,10 @@ class NewIncidentCustomFieldSelectionDataAttributes:
         d = dict(src_dict)
         custom_field_id = d.pop("custom_field_id")
 
-        def _parse_value(data: object) -> None | str:
+        def _parse_value(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(None | str, data)
+            return cast(Union[None, str], data)
 
         value = _parse_value(d.pop("value"))
 

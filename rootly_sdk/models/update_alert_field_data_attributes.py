@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -14,17 +12,28 @@ T = TypeVar("T", bound="UpdateAlertFieldDataAttributes")
 class UpdateAlertFieldDataAttributes:
     """
     Attributes:
-        name (str | Unset): The name of the alert field
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        name (Union[Unset, str]): The name of the alert field
     """
 
-    name: str | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
         name = self.name
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
 
@@ -33,9 +42,20 @@ class UpdateAlertFieldDataAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
         name = d.pop("name", UNSET)
 
         update_alert_field_data_attributes = cls(
+            slug=slug,
             name=name,
         )
 

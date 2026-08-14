@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
@@ -18,19 +16,19 @@ T = TypeVar("T", bound="UpdateIncidentFeedbackDataAttributes")
 class UpdateIncidentFeedbackDataAttributes:
     """
     Attributes:
-        feedback (str | Unset): The feedback of the incident feedback
-        rating (UpdateIncidentFeedbackDataAttributesRating | Unset): The rating of the incident feedback
-        anonymous (bool | Unset): Is the feedback anonymous?
+        feedback (Union[Unset, str]): The feedback of the incident feedback
+        rating (Union[Unset, UpdateIncidentFeedbackDataAttributesRating]): The rating of the incident feedback
+        anonymous (Union[Unset, bool]): Is the feedback anonymous?
     """
 
-    feedback: str | Unset = UNSET
-    rating: UpdateIncidentFeedbackDataAttributesRating | Unset = UNSET
-    anonymous: bool | Unset = UNSET
+    feedback: Union[Unset, str] = UNSET
+    rating: Union[Unset, UpdateIncidentFeedbackDataAttributesRating] = UNSET
+    anonymous: Union[Unset, bool] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         feedback = self.feedback
 
-        rating: int | Unset = UNSET
+        rating: Union[Unset, int] = UNSET
         if not isinstance(self.rating, Unset):
             rating = self.rating
 
@@ -54,7 +52,7 @@ class UpdateIncidentFeedbackDataAttributes:
         feedback = d.pop("feedback", UNSET)
 
         _rating = d.pop("rating", UNSET)
-        rating: UpdateIncidentFeedbackDataAttributesRating | Unset
+        rating: Union[Unset, UpdateIncidentFeedbackDataAttributesRating]
         if isinstance(_rating, Unset):
             rating = UNSET
         else:

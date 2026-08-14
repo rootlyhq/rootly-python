@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +18,20 @@ T = TypeVar("T", bound="UpdateDashboardData")
 class UpdateDashboardData:
     """
     Attributes:
-        type_ (UpdateDashboardDataType | Unset):
-        attributes (UpdateDashboardDataAttributes | Unset):
+        type_ (Union[Unset, UpdateDashboardDataType]):
+        attributes (Union[Unset, UpdateDashboardDataAttributes]):
     """
 
-    type_: UpdateDashboardDataType | Unset = UNSET
-    attributes: UpdateDashboardDataAttributes | Unset = UNSET
+    type_: Union[Unset, UpdateDashboardDataType] = UNSET
+    attributes: Union[Unset, "UpdateDashboardDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        type_: str | Unset = UNSET
+        type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -54,14 +51,14 @@ class UpdateDashboardData:
 
         d = dict(src_dict)
         _type_ = d.pop("type", UNSET)
-        type_: UpdateDashboardDataType | Unset
+        type_: Union[Unset, UpdateDashboardDataType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_update_dashboard_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: UpdateDashboardDataAttributes | Unset
+        attributes: Union[Unset, UpdateDashboardDataAttributes]
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

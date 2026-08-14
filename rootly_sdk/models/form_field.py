@@ -1,13 +1,12 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.form_field_input_kind import FormFieldInputKind, check_form_field_input_kind
 from ..models.form_field_kind import FormFieldKind, check_form_field_kind
+from ..models.form_field_resource_type import FormFieldResourceType, check_form_field_resource_type
 from ..models.form_field_value_kind import FormFieldValueKind, check_form_field_value_kind
 from ..types import UNSET, Unset
 
@@ -27,12 +26,13 @@ class FormField:
         default_values (list[str]):
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        value_kind_catalog_id (None | str | Unset): The ID of the catalog used when value_kind is `catalog_entity`
-        slug (str | Unset): The slug of the form field
-        description (None | str | Unset): The description of the form field
-        show_on_incident_details (bool | Unset): Whether the form field is shown on the incident details panel
-        enabled (bool | Unset): Whether the form field is enabled
-        auto_set_by_catalog_property_id (None | str | Unset): Catalog property ID to auto-set this form field. Only
+        value_kind_catalog_id (Union[None, Unset, str]): The ID of the catalog used when value_kind is `catalog_entity`
+        slug (Union[Unset, str]): The slug of the form field
+        resource_type (Union[Unset, FormFieldResourceType]): The resource type this field belongs to
+        description (Union[None, Unset, str]): The description of the form field
+        show_on_incident_details (Union[Unset, bool]): Whether the form field is shown on the incident details panel
+        enabled (Union[Unset, bool]): Whether the form field is enabled
+        auto_set_by_catalog_property_id (Union[None, Unset, str]): Catalog property ID to auto-set this form field. Only
             reference-kind catalog properties are supported.
     """
 
@@ -45,12 +45,13 @@ class FormField:
     default_values: list[str]
     created_at: str
     updated_at: str
-    value_kind_catalog_id: None | str | Unset = UNSET
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    show_on_incident_details: bool | Unset = UNSET
-    enabled: bool | Unset = UNSET
-    auto_set_by_catalog_property_id: None | str | Unset = UNSET
+    value_kind_catalog_id: Union[None, Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, FormFieldResourceType] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    show_on_incident_details: Union[Unset, bool] = UNSET
+    enabled: Union[Unset, bool] = UNSET
+    auto_set_by_catalog_property_id: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,7 +73,7 @@ class FormField:
 
         updated_at = self.updated_at
 
-        value_kind_catalog_id: None | str | Unset
+        value_kind_catalog_id: Union[None, Unset, str]
         if isinstance(self.value_kind_catalog_id, Unset):
             value_kind_catalog_id = UNSET
         else:
@@ -80,7 +81,11 @@ class FormField:
 
         slug = self.slug
 
-        description: None | str | Unset
+        resource_type: Union[Unset, str] = UNSET
+        if not isinstance(self.resource_type, Unset):
+            resource_type = self.resource_type
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -90,7 +95,7 @@ class FormField:
 
         enabled = self.enabled
 
-        auto_set_by_catalog_property_id: None | str | Unset
+        auto_set_by_catalog_property_id: Union[None, Unset, str]
         if isinstance(self.auto_set_by_catalog_property_id, Unset):
             auto_set_by_catalog_property_id = UNSET
         else:
@@ -115,6 +120,8 @@ class FormField:
             field_dict["value_kind_catalog_id"] = value_kind_catalog_id
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
         if description is not UNSET:
             field_dict["description"] = description
         if show_on_incident_details is not UNSET:
@@ -147,23 +154,30 @@ class FormField:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_value_kind_catalog_id(data: object) -> None | str | Unset:
+        def _parse_value_kind_catalog_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         value_kind_catalog_id = _parse_value_kind_catalog_id(d.pop("value_kind_catalog_id", UNSET))
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        _resource_type = d.pop("resource_type", UNSET)
+        resource_type: Union[Unset, FormFieldResourceType]
+        if isinstance(_resource_type, Unset):
+            resource_type = UNSET
+        else:
+            resource_type = check_form_field_resource_type(_resource_type)
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -171,12 +185,12 @@ class FormField:
 
         enabled = d.pop("enabled", UNSET)
 
-        def _parse_auto_set_by_catalog_property_id(data: object) -> None | str | Unset:
+        def _parse_auto_set_by_catalog_property_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         auto_set_by_catalog_property_id = _parse_auto_set_by_catalog_property_id(
             d.pop("auto_set_by_catalog_property_id", UNSET)
@@ -194,6 +208,7 @@ class FormField:
             updated_at=updated_at,
             value_kind_catalog_id=value_kind_catalog_id,
             slug=slug,
+            resource_type=resource_type,
             description=description,
             show_on_incident_details=show_on_incident_details,
             enabled=enabled,

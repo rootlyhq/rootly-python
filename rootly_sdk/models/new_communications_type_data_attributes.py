@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -15,29 +13,38 @@ class NewCommunicationsTypeDataAttributes:
     """
     Attributes:
         name (str): The name of the communications type
-        color (None | str): The color of the communications type
-        description (None | str | Unset): The description of the communications type
-        position (int | None | Unset): Position of the communications type
+        color (Union[None, str]): The color of the communications type
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]): The description of the communications type
+        position (Union[None, Unset, int]): Position of the communications type
     """
 
     name: str
-    color: None | str
-    description: None | str | Unset = UNSET
-    position: int | None | Unset = UNSET
+    color: Union[None, str]
+    slug: Union[None, Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    position: Union[None, Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        color: None | str
+        color: Union[None, str]
         color = self.color
 
-        description: None | str | Unset
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: int | None | Unset
+        position: Union[None, Unset, int]
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -51,6 +58,8 @@ class NewCommunicationsTypeDataAttributes:
                 "color": color,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if position is not UNSET:
@@ -63,34 +72,44 @@ class NewCommunicationsTypeDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_color(data: object) -> None | str:
+        def _parse_color(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(None | str, data)
+            return cast(Union[None, str], data)
 
         color = _parse_color(d.pop("color"))
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> int | None | Unset:
+        def _parse_position(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         position = _parse_position(d.pop("position", UNSET))
 
         new_communications_type_data_attributes = cls(
             name=name,
             color=color,
+            slug=slug,
             description=description,
             position=position,
         )

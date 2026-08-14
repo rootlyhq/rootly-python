@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     if response.status_code == 200:
         response_200 = BulkUpsertTeamsResponse.from_dict(response.json())
 
@@ -46,14 +46,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> BulkUpsertTeamsError | ErrorsList:
+        def _parse_response_422(data: object) -> Union["BulkUpsertTeamsError", "ErrorsList"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -72,8 +72,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +86,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
+) -> Response[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
@@ -103,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]
+        Response[Union[BulkUpsertTeamsResponse, ErrorsList, Union['BulkUpsertTeamsError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -121,7 +121,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
+) -> Optional[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
@@ -138,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList
+        Union[BulkUpsertTeamsResponse, ErrorsList, Union['BulkUpsertTeamsError', 'ErrorsList']]
     """
 
     return sync_detailed(
@@ -151,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-) -> Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]:
+) -> Response[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
@@ -168,7 +168,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList]
+        Response[Union[BulkUpsertTeamsResponse, ErrorsList, Union['BulkUpsertTeamsError', 'ErrorsList']]]
     """
 
     kwargs = _get_kwargs(
@@ -184,7 +184,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertTeams,
-) -> BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList | None:
+) -> Optional[Union[BulkUpsertTeamsResponse, ErrorsList, Union["BulkUpsertTeamsError", "ErrorsList"]]]:
     """Bulk upsert Teams
 
      Create or update multiple teams by external_id. Only attributes present in the payload are written
@@ -201,7 +201,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BulkUpsertTeamsError | ErrorsList | BulkUpsertTeamsResponse | ErrorsList
+        Union[BulkUpsertTeamsResponse, ErrorsList, Union['BulkUpsertTeamsError', 'ErrorsList']]
     """
 
     return (

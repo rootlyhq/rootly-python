@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -33,10 +31,11 @@ class AlertRoutingRule:
         condition_type (AlertRoutingRuleConditionType): The type of condition for the alert routing rule
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        conditions (list[AlertRoutingRuleConditionsItem] | Unset): The conditions for the alert routing rule
-        destination (AlertRoutingRuleDestinationType0 | None | Unset): The destinations for the alert routing rule
-        condition_groups (list[AlertRoutingRuleConditionGroupsItem] | Unset): The condition groups for the alert routing
+        conditions (Union[Unset, list['AlertRoutingRuleConditionsItem']]): The conditions for the alert routing rule
+        destination (Union['AlertRoutingRuleDestinationType0', None, Unset]): The destinations for the alert routing
             rule
+        condition_groups (Union[Unset, list['AlertRoutingRuleConditionGroupsItem']]): The condition groups for the alert
+            routing rule
     """
 
     name: str
@@ -46,9 +45,9 @@ class AlertRoutingRule:
     condition_type: AlertRoutingRuleConditionType
     created_at: str
     updated_at: str
-    conditions: list[AlertRoutingRuleConditionsItem] | Unset = UNSET
-    destination: AlertRoutingRuleDestinationType0 | None | Unset = UNSET
-    condition_groups: list[AlertRoutingRuleConditionGroupsItem] | Unset = UNSET
+    conditions: Union[Unset, list["AlertRoutingRuleConditionsItem"]] = UNSET
+    destination: Union["AlertRoutingRuleDestinationType0", None, Unset] = UNSET
+    condition_groups: Union[Unset, list["AlertRoutingRuleConditionGroupsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,14 +67,14 @@ class AlertRoutingRule:
 
         updated_at = self.updated_at
 
-        conditions: list[dict[str, Any]] | Unset = UNSET
+        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
                 conditions_item = conditions_item_data.to_dict()
                 conditions.append(conditions_item)
 
-        destination: dict[str, Any] | None | Unset
+        destination: Union[None, Unset, dict[str, Any]]
         if isinstance(self.destination, Unset):
             destination = UNSET
         elif isinstance(self.destination, AlertRoutingRuleDestinationType0):
@@ -83,7 +82,7 @@ class AlertRoutingRule:
         else:
             destination = self.destination
 
-        condition_groups: list[dict[str, Any]] | Unset = UNSET
+        condition_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.condition_groups, Unset):
             condition_groups = []
             for condition_groups_item_data in self.condition_groups:
@@ -133,16 +132,14 @@ class AlertRoutingRule:
 
         updated_at = d.pop("updated_at")
 
+        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        conditions: list[AlertRoutingRuleConditionsItem] | Unset = UNSET
-        if _conditions is not UNSET:
-            conditions = []
-            for conditions_item_data in _conditions:
-                conditions_item = AlertRoutingRuleConditionsItem.from_dict(conditions_item_data)
+        for conditions_item_data in _conditions or []:
+            conditions_item = AlertRoutingRuleConditionsItem.from_dict(conditions_item_data)
 
-                conditions.append(conditions_item)
+            conditions.append(conditions_item)
 
-        def _parse_destination(data: object) -> AlertRoutingRuleDestinationType0 | None | Unset:
+        def _parse_destination(data: object) -> Union["AlertRoutingRuleDestinationType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -153,20 +150,18 @@ class AlertRoutingRule:
                 destination_type_0 = AlertRoutingRuleDestinationType0.from_dict(data)
 
                 return destination_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(AlertRoutingRuleDestinationType0 | None | Unset, data)
+            return cast(Union["AlertRoutingRuleDestinationType0", None, Unset], data)
 
         destination = _parse_destination(d.pop("destination", UNSET))
 
+        condition_groups = []
         _condition_groups = d.pop("condition_groups", UNSET)
-        condition_groups: list[AlertRoutingRuleConditionGroupsItem] | Unset = UNSET
-        if _condition_groups is not UNSET:
-            condition_groups = []
-            for condition_groups_item_data in _condition_groups:
-                condition_groups_item = AlertRoutingRuleConditionGroupsItem.from_dict(condition_groups_item_data)
+        for condition_groups_item_data in _condition_groups or []:
+            condition_groups_item = AlertRoutingRuleConditionGroupsItem.from_dict(condition_groups_item_data)
 
-                condition_groups.append(condition_groups_item)
+            condition_groups.append(condition_groups_item)
 
         alert_routing_rule = cls(
             name=name,

@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/retrospective_process_groups/{retrospective_process_group_id}/steps".format(
-            retrospective_process_group_id=quote(str(retrospective_process_group_id), safe=""),
-        ),
+        "url": f"/v1/retrospective_process_groups/{retrospective_process_group_id}/steps",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | RetrospectiveProcessGroupStepResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     if response.status_code == 201:
         response_201 = RetrospectiveProcessGroupStepResponse.from_dict(response.json())
 
@@ -54,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | RetrospectiveProcessGroupStepResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +66,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewRetrospectiveProcessGroupStep,
-) -> Response[ErrorsList | RetrospectiveProcessGroupStepResponse]:
+) -> Response[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     """Creates a retrospective process group step
 
      Creates a new retrospective process group step from provided data
@@ -83,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveProcessGroupStepResponse]
+        Response[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewRetrospectiveProcessGroupStep,
-) -> ErrorsList | RetrospectiveProcessGroupStepResponse | None:
+) -> Optional[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     """Creates a retrospective process group step
 
      Creates a new retrospective process group step from provided data
@@ -117,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveProcessGroupStepResponse
+        Union[ErrorsList, RetrospectiveProcessGroupStepResponse]
     """
 
     return sync_detailed(
@@ -132,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewRetrospectiveProcessGroupStep,
-) -> Response[ErrorsList | RetrospectiveProcessGroupStepResponse]:
+) -> Response[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     """Creates a retrospective process group step
 
      Creates a new retrospective process group step from provided data
@@ -146,7 +143,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | RetrospectiveProcessGroupStepResponse]
+        Response[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +161,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewRetrospectiveProcessGroupStep,
-) -> ErrorsList | RetrospectiveProcessGroupStepResponse | None:
+) -> Optional[Union[ErrorsList, RetrospectiveProcessGroupStepResponse]]:
     """Creates a retrospective process group step
 
      Creates a new retrospective process group step from provided data
@@ -178,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | RetrospectiveProcessGroupStepResponse
+        Union[ErrorsList, RetrospectiveProcessGroupStepResponse]
     """
 
     return (

@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -9,25 +8,22 @@ from ...client import AuthenticatedClient, Client
 from ...models.errors_list import ErrorsList
 from ...models.update_user import UpdateUser
 from ...models.user_response import UserResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     id: str,
     *,
-    body: UpdateUser | Unset = UNSET,
+    body: UpdateUser,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/users/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/users/{id}",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -36,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | UserResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, UserResponse]]:
     if response.status_code == 200:
         response_200 = UserResponse.from_dict(response.json())
 
@@ -55,8 +51,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | UserResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, UserResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,22 +65,22 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser | Unset = UNSET,
-) -> Response[ErrorsList | UserResponse]:
+    body: UpdateUser,
+) -> Response[Union[ErrorsList, UserResponse]]:
     """Update a user
 
      Update a specific user by id
 
     Args:
         id (str):
-        body (UpdateUser | Unset):
+        body (UpdateUser):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserResponse]
+        Response[Union[ErrorsList, UserResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -103,22 +99,22 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser | Unset = UNSET,
-) -> ErrorsList | UserResponse | None:
+    body: UpdateUser,
+) -> Optional[Union[ErrorsList, UserResponse]]:
     """Update a user
 
      Update a specific user by id
 
     Args:
         id (str):
-        body (UpdateUser | Unset):
+        body (UpdateUser):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserResponse
+        Union[ErrorsList, UserResponse]
     """
 
     return sync_detailed(
@@ -132,22 +128,22 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser | Unset = UNSET,
-) -> Response[ErrorsList | UserResponse]:
+    body: UpdateUser,
+) -> Response[Union[ErrorsList, UserResponse]]:
     """Update a user
 
      Update a specific user by id
 
     Args:
         id (str):
-        body (UpdateUser | Unset):
+        body (UpdateUser):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | UserResponse]
+        Response[Union[ErrorsList, UserResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -164,22 +160,22 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser | Unset = UNSET,
-) -> ErrorsList | UserResponse | None:
+    body: UpdateUser,
+) -> Optional[Union[ErrorsList, UserResponse]]:
     """Update a user
 
      Update a specific user by id
 
     Args:
         id (str):
-        body (UpdateUser | Unset):
+        body (UpdateUser):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | UserResponse
+        Union[ErrorsList, UserResponse]
     """
 
     return (

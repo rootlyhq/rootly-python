@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 from uuid import UUID
 
 import httpx
@@ -14,10 +13,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     session_id: UUID,
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -28,9 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/ai/chat/sessions/{session_id}/messages".format(
-            session_id=quote(str(session_id), safe=""),
-        ),
+        "url": f"/v1/ai/chat/sessions/{session_id}/messages",
         "params": params,
     }
 
@@ -38,8 +34,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AiChatSessionMessageList | Any | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[AiChatSessionMessageList, Any]]:
     if response.status_code == 200:
         response_200 = AiChatSessionMessageList.from_dict(response.json())
 
@@ -56,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AiChatSessionMessageList | Any]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[AiChatSessionMessageList, Any]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,9 +66,9 @@ def sync_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[AiChatSessionMessageList | Any]:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Response[Union[AiChatSessionMessageList, Any]]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -80,15 +76,15 @@ def sync_detailed(
 
     Args:
         session_id (UUID):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AiChatSessionMessageList | Any]
+        Response[Union[AiChatSessionMessageList, Any]]
     """
 
     kwargs = _get_kwargs(
@@ -108,9 +104,9 @@ def sync(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> AiChatSessionMessageList | Any | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[Union[AiChatSessionMessageList, Any]]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -118,15 +114,15 @@ def sync(
 
     Args:
         session_id (UUID):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AiChatSessionMessageList | Any
+        Union[AiChatSessionMessageList, Any]
     """
 
     return sync_detailed(
@@ -141,9 +137,9 @@ async def asyncio_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[AiChatSessionMessageList | Any]:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Response[Union[AiChatSessionMessageList, Any]]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -151,15 +147,15 @@ async def asyncio_detailed(
 
     Args:
         session_id (UUID):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AiChatSessionMessageList | Any]
+        Response[Union[AiChatSessionMessageList, Any]]
     """
 
     kwargs = _get_kwargs(
@@ -177,9 +173,9 @@ async def asyncio(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> AiChatSessionMessageList | Any | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[Union[AiChatSessionMessageList, Any]]:
     """List AI chat session messages
 
      Returns the user and assistant message history for a session, paginated and chronologically ordered.
@@ -187,15 +183,15 @@ async def asyncio(
 
     Args:
         session_id (UUID):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AiChatSessionMessageList | Any
+        Union[AiChatSessionMessageList, Any]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,15 +18,14 @@ class AlertEventEscalationTargetType0:
     """JSON:API-wrapped escalation target (User or EscalationPolicy).
 
     Attributes:
-        data (AlertEventEscalationTargetType0Data | Unset):
+        data (Union[Unset, AlertEventEscalationTargetType0Data]):
     """
 
-    data: AlertEventEscalationTargetType0Data | Unset = UNSET
+    data: Union[Unset, "AlertEventEscalationTargetType0Data"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        data: dict[str, Any] | Unset = UNSET
+        data: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
@@ -46,7 +43,7 @@ class AlertEventEscalationTargetType0:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: AlertEventEscalationTargetType0Data | Unset
+        data: Union[Unset, AlertEventEscalationTargetType0Data]
         if isinstance(_data, Unset):
             data = UNSET
         else:

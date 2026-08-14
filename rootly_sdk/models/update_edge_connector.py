@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -20,11 +18,10 @@ class UpdateEdgeConnector:
         edge_connector (UpdateEdgeConnectorEdgeConnector):
     """
 
-    edge_connector: UpdateEdgeConnectorEdgeConnector
+    edge_connector: "UpdateEdgeConnectorEdgeConnector"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         edge_connector = self.edge_connector.to_dict()
 
         field_dict: dict[str, Any] = {}

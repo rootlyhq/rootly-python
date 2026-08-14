@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,17 +11,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -53,7 +52,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertGroupList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[AlertGroupList]:
     if response.status_code == 200:
         response_200 = AlertGroupList.from_dict(response.json())
 
@@ -65,7 +66,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertGroupList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[AlertGroupList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -77,30 +80,30 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
      List alert groups
 
     Args:
-        include (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
+        include (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,30 +135,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-) -> AlertGroupList | None:
+    include: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+) -> Optional[AlertGroupList]:
     """List alert groups
 
      List alert groups
 
     Args:
-        include (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
+        include (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,30 +185,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
 ) -> Response[AlertGroupList]:
     """List alert groups
 
      List alert groups
 
     Args:
-        include (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
+        include (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -235,30 +238,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-) -> AlertGroupList | None:
+    include: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+) -> Optional[AlertGroupList]:
     """List alert groups
 
      List alert groups
 
     Args:
-        include (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
+        include (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -158,6 +158,17 @@ from .alert_notification_target_type import AlertNotificationTargetType
 from .alert_response import AlertResponse
 from .alert_response_data import AlertResponseData
 from .alert_response_data_type import AlertResponseDataType
+from .alert_retrigger_rule import AlertRetriggerRule
+from .alert_retrigger_rule_conditions_item import AlertRetriggerRuleConditionsItem
+from .alert_retrigger_rule_conditions_item_kind import AlertRetriggerRuleConditionsItemKind
+from .alert_retrigger_rule_conditions_item_operator import AlertRetriggerRuleConditionsItemOperator
+from .alert_retrigger_rule_list import AlertRetriggerRuleList
+from .alert_retrigger_rule_list_data_item import AlertRetriggerRuleListDataItem
+from .alert_retrigger_rule_list_data_item_type import AlertRetriggerRuleListDataItemType
+from .alert_retrigger_rule_match_mode import AlertRetriggerRuleMatchMode
+from .alert_retrigger_rule_response import AlertRetriggerRuleResponse
+from .alert_retrigger_rule_response_data import AlertRetriggerRuleResponseData
+from .alert_retrigger_rule_response_data_type import AlertRetriggerRuleResponseDataType
 from .alert_route import AlertRoute
 from .alert_route_list import AlertRouteList
 from .alert_route_list_data_item import AlertRouteListDataItem
@@ -330,6 +341,12 @@ from .attach_datadog_dashboards_task_params_post_to_slack_channels_item import (
     AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem,
 )
 from .attach_datadog_dashboards_task_params_task_type import AttachDatadogDashboardsTaskParamsTaskType
+from .attach_retrospective_pdf_to_freshservice_ticket_task_params import (
+    AttachRetrospectivePdfToFreshserviceTicketTaskParams,
+)
+from .attach_retrospective_pdf_to_freshservice_ticket_task_params_task_type import (
+    AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType,
+)
 from .attach_retrospective_pdf_to_jira_issue_task_params import AttachRetrospectivePdfToJiraIssueTaskParams
 from .attach_retrospective_pdf_to_jira_issue_task_params_integration import (
     AttachRetrospectivePdfToJiraIssueTaskParamsIntegration,
@@ -361,15 +378,15 @@ from .auto_assign_role_pagerduty_task_params_type_0_schedule import AutoAssignRo
 from .auto_assign_role_pagerduty_task_params_type_1_escalation_policy import (
     AutoAssignRolePagerdutyTaskParamsType1EscalationPolicy,
 )
-from .auto_assign_role_rootly_task_params import AutoAssignRoleRootlyTaskParams
-from .auto_assign_role_rootly_task_params_escalation_policy_target import (
-    AutoAssignRoleRootlyTaskParamsEscalationPolicyTarget,
+from .auto_assign_role_rootly_task_params_type_0_escalation_policy_target import (
+    AutoAssignRoleRootlyTaskParamsType0EscalationPolicyTarget,
 )
-from .auto_assign_role_rootly_task_params_group_target import AutoAssignRoleRootlyTaskParamsGroupTarget
-from .auto_assign_role_rootly_task_params_schedule_target import AutoAssignRoleRootlyTaskParamsScheduleTarget
-from .auto_assign_role_rootly_task_params_service_target import AutoAssignRoleRootlyTaskParamsServiceTarget
-from .auto_assign_role_rootly_task_params_task_type import AutoAssignRoleRootlyTaskParamsTaskType
-from .auto_assign_role_rootly_task_params_user_target import AutoAssignRoleRootlyTaskParamsUserTarget
+from .auto_assign_role_rootly_task_params_type_1_service_target import AutoAssignRoleRootlyTaskParamsType1ServiceTarget
+from .auto_assign_role_rootly_task_params_type_2_user_target import AutoAssignRoleRootlyTaskParamsType2UserTarget
+from .auto_assign_role_rootly_task_params_type_3_group_target import AutoAssignRoleRootlyTaskParamsType3GroupTarget
+from .auto_assign_role_rootly_task_params_type_4_schedule_target import (
+    AutoAssignRoleRootlyTaskParamsType4ScheduleTarget,
+)
 from .auto_assign_role_victor_ops_task_params import AutoAssignRoleVictorOpsTaskParams
 from .auto_assign_role_victor_ops_task_params_task_type import AutoAssignRoleVictorOpsTaskParamsTaskType
 from .auto_assign_role_victor_ops_task_params_team import AutoAssignRoleVictorOpsTaskParamsTeam
@@ -627,6 +644,7 @@ from .create_asana_task_task_params_projects_item import CreateAsanaTaskTaskPara
 from .create_asana_task_task_params_task_type import CreateAsanaTaskTaskParamsTaskType
 from .create_asana_task_task_params_workspace import CreateAsanaTaskTaskParamsWorkspace
 from .create_clickup_task_task_params import CreateClickupTaskTaskParams
+from .create_clickup_task_task_params_list import CreateClickupTaskTaskParamsList
 from .create_clickup_task_task_params_priority import CreateClickupTaskTaskParamsPriority
 from .create_clickup_task_task_params_task_type import CreateClickupTaskTaskParamsTaskType
 from .create_coda_page_task_params import CreateCodaPageTaskParams
@@ -868,6 +886,7 @@ from .custom_field_option_response import CustomFieldOptionResponse
 from .custom_field_option_response_data import CustomFieldOptionResponseData
 from .custom_field_option_response_data_type import CustomFieldOptionResponseDataType
 from .custom_field_required_type_0_item import CustomFieldRequiredType0Item
+from .custom_field_resource_type import CustomFieldResourceType
 from .custom_field_response import CustomFieldResponse
 from .custom_field_response_data import CustomFieldResponseData
 from .custom_field_response_data_type import CustomFieldResponseDataType
@@ -983,6 +1002,12 @@ from .escalation_policy_level_notification_target_params_item_type_0_team_member
 )
 from .escalation_policy_level_notification_target_params_item_type_0_type import (
     EscalationPolicyLevelNotificationTargetParamsItemType0Type,
+)
+from .escalation_policy_level_paging_strategy_configuration_repeats_mode import (
+    EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode,
+)
+from .escalation_policy_level_paging_strategy_configuration_rotation_scope import (
+    EscalationPolicyLevelPagingStrategyConfigurationRotationScope,
 )
 from .escalation_policy_level_paging_strategy_configuration_schedule_strategy import (
     EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy,
@@ -1121,6 +1146,7 @@ from .form_field_position_list_data_item_type import FormFieldPositionListDataIt
 from .form_field_position_response import FormFieldPositionResponse
 from .form_field_position_response_data import FormFieldPositionResponseData
 from .form_field_position_response_data_type import FormFieldPositionResponseDataType
+from .form_field_resource_type import FormFieldResourceType
 from .form_field_response import FormFieldResponse
 from .form_field_response_data import FormFieldResponseData
 from .form_field_response_data_type import FormFieldResponseDataType
@@ -1338,6 +1364,10 @@ from .incident_status_page_event_response import IncidentStatusPageEventResponse
 from .incident_status_page_event_response_data import IncidentStatusPageEventResponseData
 from .incident_status_page_event_response_data_type import IncidentStatusPageEventResponseDataType
 from .incident_status_page_event_status import IncidentStatusPageEventStatus
+from .incident_status_page_event_status_page_components_item import IncidentStatusPageEventStatusPageComponentsItem
+from .incident_status_page_event_status_page_components_item_status import (
+    IncidentStatusPageEventStatusPageComponentsItemStatus,
+)
 from .incident_sub_status import IncidentSubStatus
 from .incident_sub_status_list import IncidentSubStatusList
 from .incident_sub_status_list_data_item import IncidentSubStatusListDataItem
@@ -1600,6 +1630,19 @@ from .new_alert_group_data_attributes_group_by_alert_urgency import NewAlertGrou
 from .new_alert_group_data_attributes_targets_item import NewAlertGroupDataAttributesTargetsItem
 from .new_alert_group_data_attributes_targets_item_target_type import NewAlertGroupDataAttributesTargetsItemTargetType
 from .new_alert_group_data_type import NewAlertGroupDataType
+from .new_alert_retrigger_rule import NewAlertRetriggerRule
+from .new_alert_retrigger_rule_data import NewAlertRetriggerRuleData
+from .new_alert_retrigger_rule_data_attributes import NewAlertRetriggerRuleDataAttributes
+from .new_alert_retrigger_rule_data_attributes_conditions_item import NewAlertRetriggerRuleDataAttributesConditionsItem
+from .new_alert_retrigger_rule_data_attributes_conditions_item_kind import (
+    NewAlertRetriggerRuleDataAttributesConditionsItemKind,
+)
+from .new_alert_retrigger_rule_data_attributes_conditions_item_operator import (
+    NewAlertRetriggerRuleDataAttributesConditionsItemOperator,
+)
+from .new_alert_retrigger_rule_data_attributes_match_mode import NewAlertRetriggerRuleDataAttributesMatchMode
+from .new_alert_retrigger_rule_data_attributes_timeout_minutes import NewAlertRetriggerRuleDataAttributesTimeoutMinutes
+from .new_alert_retrigger_rule_data_type import NewAlertRetriggerRuleDataType
 from .new_alert_route import NewAlertRoute
 from .new_alert_route_data import NewAlertRouteData
 from .new_alert_route_data_attributes import NewAlertRouteDataAttributes
@@ -1914,6 +1957,12 @@ from .new_escalation_policy_level_data_attributes_notification_target_params_ite
 from .new_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type import (
     NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type,
 )
+from .new_escalation_policy_level_data_attributes_paging_strategy_configuration_repeats_mode import (
+    NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRepeatsMode,
+)
+from .new_escalation_policy_level_data_attributes_paging_strategy_configuration_rotation_scope import (
+    NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope,
+)
 from .new_escalation_policy_level_data_attributes_paging_strategy_configuration_schedule_strategy import (
     NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy,
 )
@@ -2160,6 +2209,12 @@ from .new_incident_status_page_event import NewIncidentStatusPageEvent
 from .new_incident_status_page_event_data import NewIncidentStatusPageEventData
 from .new_incident_status_page_event_data_attributes import NewIncidentStatusPageEventDataAttributes
 from .new_incident_status_page_event_data_attributes_status import NewIncidentStatusPageEventDataAttributesStatus
+from .new_incident_status_page_event_data_attributes_status_page_components_type_0_item import (
+    NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item,
+)
+from .new_incident_status_page_event_data_attributes_status_page_components_type_0_item_status import (
+    NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0ItemStatus,
+)
 from .new_incident_status_page_event_data_type import NewIncidentStatusPageEventDataType
 from .new_incident_sub_status import NewIncidentSubStatus
 from .new_incident_sub_status_data import NewIncidentSubStatusData
@@ -2479,6 +2534,19 @@ from .new_sla_data_attributes_notification_configurations_item_offset_type impor
 )
 from .new_sla_data_type import NewSlaDataType
 from .new_status_page import NewStatusPage
+from .new_status_page_announcement import NewStatusPageAnnouncement
+from .new_status_page_announcement_data import NewStatusPageAnnouncementData
+from .new_status_page_announcement_data_attributes import NewStatusPageAnnouncementDataAttributes
+from .new_status_page_announcement_data_type import NewStatusPageAnnouncementDataType
+from .new_status_page_component import NewStatusPageComponent
+from .new_status_page_component_data import NewStatusPageComponentData
+from .new_status_page_component_data_attributes import NewStatusPageComponentDataAttributes
+from .new_status_page_component_data_attributes_source_type import NewStatusPageComponentDataAttributesSourceType
+from .new_status_page_component_data_type import NewStatusPageComponentDataType
+from .new_status_page_component_group import NewStatusPageComponentGroup
+from .new_status_page_component_group_data import NewStatusPageComponentGroupData
+from .new_status_page_component_group_data_attributes import NewStatusPageComponentGroupDataAttributes
+from .new_status_page_component_group_data_type import NewStatusPageComponentGroupDataType
 from .new_status_page_data import NewStatusPageData
 from .new_status_page_data_attributes import NewStatusPageDataAttributes
 from .new_status_page_data_attributes_authentication_method import NewStatusPageDataAttributesAuthenticationMethod
@@ -2526,6 +2594,10 @@ from .new_user_phone_number import NewUserPhoneNumber
 from .new_user_phone_number_data import NewUserPhoneNumberData
 from .new_user_phone_number_data_attributes import NewUserPhoneNumberDataAttributes
 from .new_user_phone_number_data_type import NewUserPhoneNumberDataType
+from .new_verified_domain import NewVerifiedDomain
+from .new_verified_domain_data import NewVerifiedDomainData
+from .new_verified_domain_data_attributes import NewVerifiedDomainDataAttributes
+from .new_verified_domain_data_type import NewVerifiedDomainDataType
 from .new_webhooks_endpoint import NewWebhooksEndpoint
 from .new_webhooks_endpoint_data import NewWebhooksEndpointData
 from .new_webhooks_endpoint_data_attributes import NewWebhooksEndpointDataAttributes
@@ -3157,8 +3229,30 @@ from .status_list import StatusList
 from .status_list_data_item import StatusListDataItem
 from .status_list_data_item_type import StatusListDataItemType
 from .status_page import StatusPage
+from .status_page_announcement import StatusPageAnnouncement
+from .status_page_announcement_list import StatusPageAnnouncementList
+from .status_page_announcement_list_data_item import StatusPageAnnouncementListDataItem
+from .status_page_announcement_list_data_item_type import StatusPageAnnouncementListDataItemType
+from .status_page_announcement_response import StatusPageAnnouncementResponse
+from .status_page_announcement_response_data import StatusPageAnnouncementResponseData
+from .status_page_announcement_response_data_type import StatusPageAnnouncementResponseDataType
 from .status_page_authentication_method import StatusPageAuthenticationMethod
 from .status_page_cname_records_type_0 import StatusPageCnameRecordsType0
+from .status_page_component import StatusPageComponent
+from .status_page_component_group import StatusPageComponentGroup
+from .status_page_component_group_list import StatusPageComponentGroupList
+from .status_page_component_group_list_data_item import StatusPageComponentGroupListDataItem
+from .status_page_component_group_list_data_item_type import StatusPageComponentGroupListDataItemType
+from .status_page_component_group_response import StatusPageComponentGroupResponse
+from .status_page_component_group_response_data import StatusPageComponentGroupResponseData
+from .status_page_component_group_response_data_type import StatusPageComponentGroupResponseDataType
+from .status_page_component_list import StatusPageComponentList
+from .status_page_component_list_data_item import StatusPageComponentListDataItem
+from .status_page_component_list_data_item_type import StatusPageComponentListDataItemType
+from .status_page_component_response import StatusPageComponentResponse
+from .status_page_component_response_data import StatusPageComponentResponseData
+from .status_page_component_response_data_type import StatusPageComponentResponseDataType
+from .status_page_component_status import StatusPageComponentStatus
 from .status_page_list import StatusPageList
 from .status_page_list_data_item import StatusPageListDataItem
 from .status_page_list_data_item_type import StatusPageListDataItemType
@@ -3265,6 +3359,23 @@ from .update_alert_group_data_attributes_targets_item_target_type import (
     UpdateAlertGroupDataAttributesTargetsItemTargetType,
 )
 from .update_alert_group_data_type import UpdateAlertGroupDataType
+from .update_alert_retrigger_rule import UpdateAlertRetriggerRule
+from .update_alert_retrigger_rule_data import UpdateAlertRetriggerRuleData
+from .update_alert_retrigger_rule_data_attributes import UpdateAlertRetriggerRuleDataAttributes
+from .update_alert_retrigger_rule_data_attributes_conditions_item import (
+    UpdateAlertRetriggerRuleDataAttributesConditionsItem,
+)
+from .update_alert_retrigger_rule_data_attributes_conditions_item_kind import (
+    UpdateAlertRetriggerRuleDataAttributesConditionsItemKind,
+)
+from .update_alert_retrigger_rule_data_attributes_conditions_item_operator import (
+    UpdateAlertRetriggerRuleDataAttributesConditionsItemOperator,
+)
+from .update_alert_retrigger_rule_data_attributes_match_mode import UpdateAlertRetriggerRuleDataAttributesMatchMode
+from .update_alert_retrigger_rule_data_attributes_timeout_minutes import (
+    UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes,
+)
+from .update_alert_retrigger_rule_data_type import UpdateAlertRetriggerRuleDataType
 from .update_alert_route import UpdateAlertRoute
 from .update_alert_route_data import UpdateAlertRouteData
 from .update_alert_route_data_attributes import UpdateAlertRouteDataAttributes
@@ -3607,6 +3718,12 @@ from .update_escalation_policy_level_data_attributes_notification_target_params_
 )
 from .update_escalation_policy_level_data_attributes_notification_target_params_item_type_0_type import (
     UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type,
+)
+from .update_escalation_policy_level_data_attributes_paging_strategy_configuration_repeats_mode import (
+    UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRepeatsMode,
+)
+from .update_escalation_policy_level_data_attributes_paging_strategy_configuration_rotation_scope import (
+    UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope,
 )
 from .update_escalation_policy_level_data_attributes_paging_strategy_configuration_schedule_strategy import (
     UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy,
@@ -4436,6 +4553,18 @@ from .update_slack_channel_topic_task_params import UpdateSlackChannelTopicTaskP
 from .update_slack_channel_topic_task_params_channel import UpdateSlackChannelTopicTaskParamsChannel
 from .update_slack_channel_topic_task_params_task_type import UpdateSlackChannelTopicTaskParamsTaskType
 from .update_status_page import UpdateStatusPage
+from .update_status_page_announcement import UpdateStatusPageAnnouncement
+from .update_status_page_announcement_data import UpdateStatusPageAnnouncementData
+from .update_status_page_announcement_data_attributes import UpdateStatusPageAnnouncementDataAttributes
+from .update_status_page_announcement_data_type import UpdateStatusPageAnnouncementDataType
+from .update_status_page_component import UpdateStatusPageComponent
+from .update_status_page_component_data import UpdateStatusPageComponentData
+from .update_status_page_component_data_attributes import UpdateStatusPageComponentDataAttributes
+from .update_status_page_component_data_type import UpdateStatusPageComponentDataType
+from .update_status_page_component_group import UpdateStatusPageComponentGroup
+from .update_status_page_component_group_data import UpdateStatusPageComponentGroupData
+from .update_status_page_component_group_data_attributes import UpdateStatusPageComponentGroupDataAttributes
+from .update_status_page_component_group_data_type import UpdateStatusPageComponentGroupDataType
 from .update_status_page_data import UpdateStatusPageData
 from .update_status_page_data_attributes import UpdateStatusPageDataAttributes
 from .update_status_page_data_attributes_authentication_method import UpdateStatusPageDataAttributesAuthenticationMethod
@@ -4590,6 +4719,15 @@ from .user_relationships import UserRelationships
 from .user_response import UserResponse
 from .user_response_data import UserResponseData
 from .user_response_data_type import UserResponseDataType
+from .verified_domain import VerifiedDomain
+from .verified_domain_list import VerifiedDomainList
+from .verified_domain_list_data_item import VerifiedDomainListDataItem
+from .verified_domain_list_data_item_type import VerifiedDomainListDataItemType
+from .verified_domain_response import VerifiedDomainResponse
+from .verified_domain_response_data import VerifiedDomainResponseData
+from .verified_domain_response_data_type import VerifiedDomainResponseDataType
+from .verified_domain_source import VerifiedDomainSource
+from .verified_domain_verification_status import VerifiedDomainVerificationStatus
 from .verify_phone_number_request import VerifyPhoneNumberRequest
 from .webhooks_delivery import WebhooksDelivery
 from .webhooks_delivery_list import WebhooksDeliveryList
@@ -4598,6 +4736,7 @@ from .webhooks_delivery_list_data_item_type import WebhooksDeliveryListDataItemT
 from .webhooks_delivery_response import WebhooksDeliveryResponse
 from .webhooks_delivery_response_data import WebhooksDeliveryResponseData
 from .webhooks_delivery_response_data_type import WebhooksDeliveryResponseDataType
+from .webhooks_delivery_status import WebhooksDeliveryStatus
 from .webhooks_endpoint import WebhooksEndpoint
 from .webhooks_endpoint_custom_headers_item import WebhooksEndpointCustomHeadersItem
 from .webhooks_endpoint_event_types_item import WebhooksEndpointEventTypesItem
@@ -4794,6 +4933,17 @@ __all__ = (
     "AlertResponse",
     "AlertResponseData",
     "AlertResponseDataType",
+    "AlertRetriggerRule",
+    "AlertRetriggerRuleConditionsItem",
+    "AlertRetriggerRuleConditionsItemKind",
+    "AlertRetriggerRuleConditionsItemOperator",
+    "AlertRetriggerRuleList",
+    "AlertRetriggerRuleListDataItem",
+    "AlertRetriggerRuleListDataItemType",
+    "AlertRetriggerRuleMatchMode",
+    "AlertRetriggerRuleResponse",
+    "AlertRetriggerRuleResponseData",
+    "AlertRetriggerRuleResponseDataType",
     "AlertRoute",
     "AlertRouteList",
     "AlertRouteListDataItem",
@@ -4916,6 +5066,8 @@ __all__ = (
     "AttachDatadogDashboardsTaskParamsDashboardsItem",
     "AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem",
     "AttachDatadogDashboardsTaskParamsTaskType",
+    "AttachRetrospectivePdfToFreshserviceTicketTaskParams",
+    "AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType",
     "AttachRetrospectivePdfToJiraIssueTaskParams",
     "AttachRetrospectivePdfToJiraIssueTaskParamsIntegration",
     "AttachRetrospectivePdfToJiraIssueTaskParamsTaskType",
@@ -4941,13 +5093,11 @@ __all__ = (
     "AutoAssignRoleOpsgenieTaskParamsTaskType",
     "AutoAssignRolePagerdutyTaskParamsType0Schedule",
     "AutoAssignRolePagerdutyTaskParamsType1EscalationPolicy",
-    "AutoAssignRoleRootlyTaskParams",
-    "AutoAssignRoleRootlyTaskParamsEscalationPolicyTarget",
-    "AutoAssignRoleRootlyTaskParamsGroupTarget",
-    "AutoAssignRoleRootlyTaskParamsScheduleTarget",
-    "AutoAssignRoleRootlyTaskParamsServiceTarget",
-    "AutoAssignRoleRootlyTaskParamsTaskType",
-    "AutoAssignRoleRootlyTaskParamsUserTarget",
+    "AutoAssignRoleRootlyTaskParamsType0EscalationPolicyTarget",
+    "AutoAssignRoleRootlyTaskParamsType1ServiceTarget",
+    "AutoAssignRoleRootlyTaskParamsType2UserTarget",
+    "AutoAssignRoleRootlyTaskParamsType3GroupTarget",
+    "AutoAssignRoleRootlyTaskParamsType4ScheduleTarget",
     "AutoAssignRoleVictorOpsTaskParams",
     "AutoAssignRoleVictorOpsTaskParamsTaskType",
     "AutoAssignRoleVictorOpsTaskParamsTeam",
@@ -5171,6 +5321,7 @@ __all__ = (
     "CreateAsanaTaskTaskParamsTaskType",
     "CreateAsanaTaskTaskParamsWorkspace",
     "CreateClickupTaskTaskParams",
+    "CreateClickupTaskTaskParamsList",
     "CreateClickupTaskTaskParamsPriority",
     "CreateClickupTaskTaskParamsTaskType",
     "CreateCodaPageTaskParams",
@@ -5382,6 +5533,7 @@ __all__ = (
     "CustomFieldOptionResponseData",
     "CustomFieldOptionResponseDataType",
     "CustomFieldRequiredType0Item",
+    "CustomFieldResourceType",
     "CustomFieldResponse",
     "CustomFieldResponseData",
     "CustomFieldResponseDataType",
@@ -5474,6 +5626,8 @@ __all__ = (
     "EscalationPolicyLevelNotificationTargetParamsItemType0",
     "EscalationPolicyLevelNotificationTargetParamsItemType0TeamMembers",
     "EscalationPolicyLevelNotificationTargetParamsItemType0Type",
+    "EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode",
+    "EscalationPolicyLevelPagingStrategyConfigurationRotationScope",
     "EscalationPolicyLevelPagingStrategyConfigurationScheduleStrategy",
     "EscalationPolicyLevelPagingStrategyConfigurationStrategy",
     "EscalationPolicyLevelResponse",
@@ -5603,6 +5757,7 @@ __all__ = (
     "FormFieldPositionResponse",
     "FormFieldPositionResponseData",
     "FormFieldPositionResponseDataType",
+    "FormFieldResourceType",
     "FormFieldResponse",
     "FormFieldResponseData",
     "FormFieldResponseDataType",
@@ -5817,6 +5972,8 @@ __all__ = (
     "IncidentStatusPageEventResponseData",
     "IncidentStatusPageEventResponseDataType",
     "IncidentStatusPageEventStatus",
+    "IncidentStatusPageEventStatusPageComponentsItem",
+    "IncidentStatusPageEventStatusPageComponentsItemStatus",
     "IncidentSubStatus",
     "IncidentSubStatusList",
     "IncidentSubStatusListDataItem",
@@ -6030,6 +6187,15 @@ __all__ = (
     "NewAlertGroupDataAttributesTargetsItem",
     "NewAlertGroupDataAttributesTargetsItemTargetType",
     "NewAlertGroupDataType",
+    "NewAlertRetriggerRule",
+    "NewAlertRetriggerRuleData",
+    "NewAlertRetriggerRuleDataAttributes",
+    "NewAlertRetriggerRuleDataAttributesConditionsItem",
+    "NewAlertRetriggerRuleDataAttributesConditionsItemKind",
+    "NewAlertRetriggerRuleDataAttributesConditionsItemOperator",
+    "NewAlertRetriggerRuleDataAttributesMatchMode",
+    "NewAlertRetriggerRuleDataAttributesTimeoutMinutes",
+    "NewAlertRetriggerRuleDataType",
     "NewAlertRoute",
     "NewAlertRouteData",
     "NewAlertRouteDataAttributes",
@@ -6228,6 +6394,8 @@ __all__ = (
     "NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0",
     "NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers",
     "NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type",
+    "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRepeatsMode",
+    "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope",
     "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy",
     "NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy",
     "NewEscalationPolicyLevelDataType",
@@ -6390,6 +6558,8 @@ __all__ = (
     "NewIncidentStatusPageEventData",
     "NewIncidentStatusPageEventDataAttributes",
     "NewIncidentStatusPageEventDataAttributesStatus",
+    "NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item",
+    "NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0ItemStatus",
     "NewIncidentStatusPageEventDataType",
     "NewIncidentSubStatus",
     "NewIncidentSubStatusData",
@@ -6605,6 +6775,19 @@ __all__ = (
     "NewSlaDataAttributesNotificationConfigurationsItemOffsetType",
     "NewSlaDataType",
     "NewStatusPage",
+    "NewStatusPageAnnouncement",
+    "NewStatusPageAnnouncementData",
+    "NewStatusPageAnnouncementDataAttributes",
+    "NewStatusPageAnnouncementDataType",
+    "NewStatusPageComponent",
+    "NewStatusPageComponentData",
+    "NewStatusPageComponentDataAttributes",
+    "NewStatusPageComponentDataAttributesSourceType",
+    "NewStatusPageComponentDataType",
+    "NewStatusPageComponentGroup",
+    "NewStatusPageComponentGroupData",
+    "NewStatusPageComponentGroupDataAttributes",
+    "NewStatusPageComponentGroupDataType",
     "NewStatusPageData",
     "NewStatusPageDataAttributes",
     "NewStatusPageDataAttributesAuthenticationMethod",
@@ -6646,6 +6829,10 @@ __all__ = (
     "NewUserPhoneNumberData",
     "NewUserPhoneNumberDataAttributes",
     "NewUserPhoneNumberDataType",
+    "NewVerifiedDomain",
+    "NewVerifiedDomainData",
+    "NewVerifiedDomainDataAttributes",
+    "NewVerifiedDomainDataType",
     "NewWebhooksEndpoint",
     "NewWebhooksEndpointData",
     "NewWebhooksEndpointDataAttributes",
@@ -7177,8 +7364,30 @@ __all__ = (
     "StatusListDataItem",
     "StatusListDataItemType",
     "StatusPage",
+    "StatusPageAnnouncement",
+    "StatusPageAnnouncementList",
+    "StatusPageAnnouncementListDataItem",
+    "StatusPageAnnouncementListDataItemType",
+    "StatusPageAnnouncementResponse",
+    "StatusPageAnnouncementResponseData",
+    "StatusPageAnnouncementResponseDataType",
     "StatusPageAuthenticationMethod",
     "StatusPageCnameRecordsType0",
+    "StatusPageComponent",
+    "StatusPageComponentGroup",
+    "StatusPageComponentGroupList",
+    "StatusPageComponentGroupListDataItem",
+    "StatusPageComponentGroupListDataItemType",
+    "StatusPageComponentGroupResponse",
+    "StatusPageComponentGroupResponseData",
+    "StatusPageComponentGroupResponseDataType",
+    "StatusPageComponentList",
+    "StatusPageComponentListDataItem",
+    "StatusPageComponentListDataItemType",
+    "StatusPageComponentResponse",
+    "StatusPageComponentResponseData",
+    "StatusPageComponentResponseDataType",
+    "StatusPageComponentStatus",
     "StatusPageList",
     "StatusPageListDataItem",
     "StatusPageListDataItemType",
@@ -7275,6 +7484,15 @@ __all__ = (
     "UpdateAlertGroupDataAttributesTargetsItem",
     "UpdateAlertGroupDataAttributesTargetsItemTargetType",
     "UpdateAlertGroupDataType",
+    "UpdateAlertRetriggerRule",
+    "UpdateAlertRetriggerRuleData",
+    "UpdateAlertRetriggerRuleDataAttributes",
+    "UpdateAlertRetriggerRuleDataAttributesConditionsItem",
+    "UpdateAlertRetriggerRuleDataAttributesConditionsItemKind",
+    "UpdateAlertRetriggerRuleDataAttributesConditionsItemOperator",
+    "UpdateAlertRetriggerRuleDataAttributesMatchMode",
+    "UpdateAlertRetriggerRuleDataAttributesTimeoutMinutes",
+    "UpdateAlertRetriggerRuleDataType",
     "UpdateAlertRoute",
     "UpdateAlertRouteData",
     "UpdateAlertRouteDataAttributes",
@@ -7498,6 +7716,8 @@ __all__ = (
     "UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0",
     "UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers",
     "UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type",
+    "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRepeatsMode",
+    "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope",
     "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationScheduleStrategy",
     "UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy",
     "UpdateEscalationPolicyLevelDataType",
@@ -8002,6 +8222,18 @@ __all__ = (
     "UpdateSlaDataAttributesNotificationConfigurationsItemOffsetType",
     "UpdateSlaDataType",
     "UpdateStatusPage",
+    "UpdateStatusPageAnnouncement",
+    "UpdateStatusPageAnnouncementData",
+    "UpdateStatusPageAnnouncementDataAttributes",
+    "UpdateStatusPageAnnouncementDataType",
+    "UpdateStatusPageComponent",
+    "UpdateStatusPageComponentData",
+    "UpdateStatusPageComponentDataAttributes",
+    "UpdateStatusPageComponentDataType",
+    "UpdateStatusPageComponentGroup",
+    "UpdateStatusPageComponentGroupData",
+    "UpdateStatusPageComponentGroupDataAttributes",
+    "UpdateStatusPageComponentGroupDataType",
     "UpdateStatusPageData",
     "UpdateStatusPageDataAttributes",
     "UpdateStatusPageDataAttributesAuthenticationMethod",
@@ -8130,6 +8362,15 @@ __all__ = (
     "UserResponse",
     "UserResponseData",
     "UserResponseDataType",
+    "VerifiedDomain",
+    "VerifiedDomainList",
+    "VerifiedDomainListDataItem",
+    "VerifiedDomainListDataItemType",
+    "VerifiedDomainResponse",
+    "VerifiedDomainResponseData",
+    "VerifiedDomainResponseDataType",
+    "VerifiedDomainSource",
+    "VerifiedDomainVerificationStatus",
     "VerifyPhoneNumberRequest",
     "WebhooksDelivery",
     "WebhooksDeliveryList",
@@ -8138,6 +8379,7 @@ __all__ = (
     "WebhooksDeliveryResponse",
     "WebhooksDeliveryResponseData",
     "WebhooksDeliveryResponseDataType",
+    "WebhooksDeliveryStatus",
     "WebhooksEndpoint",
     "WebhooksEndpointCustomHeadersItem",
     "WebhooksEndpointEventTypesItem",

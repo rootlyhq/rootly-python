@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -10,12 +10,11 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    page: int | Unset = UNSET,
-    per_page: int | Unset = UNSET,
-    status: str | Unset = UNSET,
-    name: str | Unset = UNSET,
+    page: Union[Unset, int] = UNSET,
+    per_page: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page"] = page
@@ -37,7 +36,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
     if response.status_code == 200:
         return None
 
@@ -47,7 +46,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,18 +58,18 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    page: int | Unset = UNSET,
-    per_page: int | Unset = UNSET,
-    status: str | Unset = UNSET,
-    name: str | Unset = UNSET,
+    page: Union[Unset, int] = UNSET,
+    per_page: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """List edge connectors
 
     Args:
-        page (int | Unset):
-        per_page (int | Unset):
-        status (str | Unset):
-        name (str | Unset):
+        page (Union[Unset, int]):
+        per_page (Union[Unset, int]):
+        status (Union[Unset, str]):
+        name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -97,18 +96,18 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    page: int | Unset = UNSET,
-    per_page: int | Unset = UNSET,
-    status: str | Unset = UNSET,
-    name: str | Unset = UNSET,
+    page: Union[Unset, int] = UNSET,
+    per_page: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """List edge connectors
 
     Args:
-        page (int | Unset):
-        per_page (int | Unset):
-        status (str | Unset):
-        name (str | Unset):
+        page (Union[Unset, int]):
+        per_page (Union[Unset, int]):
+        status (Union[Unset, str]):
+        name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

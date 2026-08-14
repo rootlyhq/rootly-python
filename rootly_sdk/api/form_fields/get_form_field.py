@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -14,14 +13,13 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
-    include: GetFormFieldInclude | Unset = UNSET,
+    include: Union[Unset, GetFormFieldInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -31,9 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/form_fields/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/form_fields/{id}",
         "params": params,
     }
 
@@ -41,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | FormFieldResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     if response.status_code == 200:
         response_200 = FormFieldResponse.from_dict(response.json())
 
@@ -60,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | FormFieldResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,25 +67,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetFormFieldInclude | Unset = UNSET,
-) -> Response[ErrorsList | FormFieldResponse]:
+    include: Union[Unset, GetFormFieldInclude] = UNSET,
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (str | UUID):
-        include (GetFormFieldInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetFormFieldInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldResponse]
+        Response[Union[ErrorsList, FormFieldResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -105,25 +101,25 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetFormFieldInclude | Unset = UNSET,
-) -> ErrorsList | FormFieldResponse | None:
+    include: Union[Unset, GetFormFieldInclude] = UNSET,
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (str | UUID):
-        include (GetFormFieldInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetFormFieldInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldResponse
+        Union[ErrorsList, FormFieldResponse]
     """
 
     return sync_detailed(
@@ -134,25 +130,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetFormFieldInclude | Unset = UNSET,
-) -> Response[ErrorsList | FormFieldResponse]:
+    include: Union[Unset, GetFormFieldInclude] = UNSET,
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (str | UUID):
-        include (GetFormFieldInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetFormFieldInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldResponse]
+        Response[Union[ErrorsList, FormFieldResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -166,25 +162,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetFormFieldInclude | Unset = UNSET,
-) -> ErrorsList | FormFieldResponse | None:
+    include: Union[Unset, GetFormFieldInclude] = UNSET,
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (str | UUID):
-        include (GetFormFieldInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetFormFieldInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldResponse
+        Union[ErrorsList, FormFieldResponse]
     """
 
     return (

@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -14,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     body: UpdateFormField,
 ) -> dict[str, Any]:
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/form_fields/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/form_fields/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -36,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | FormFieldResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     if response.status_code == 200:
         response_200 = FormFieldResponse.from_dict(response.json())
 
@@ -55,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | FormFieldResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,17 +63,17 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateFormField,
-) -> Response[ErrorsList | FormFieldResponse]:
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     """Update a Form Field
 
      Update a specific form_field by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateFormField):
 
     Raises:
@@ -84,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldResponse]
+        Response[Union[ErrorsList, FormFieldResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -100,17 +97,17 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateFormField,
-) -> ErrorsList | FormFieldResponse | None:
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     """Update a Form Field
 
      Update a specific form_field by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateFormField):
 
     Raises:
@@ -118,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldResponse
+        Union[ErrorsList, FormFieldResponse]
     """
 
     return sync_detailed(
@@ -129,17 +126,17 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateFormField,
-) -> Response[ErrorsList | FormFieldResponse]:
+) -> Response[Union[ErrorsList, FormFieldResponse]]:
     """Update a Form Field
 
      Update a specific form_field by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateFormField):
 
     Raises:
@@ -147,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldResponse]
+        Response[Union[ErrorsList, FormFieldResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -161,17 +158,17 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateFormField,
-) -> ErrorsList | FormFieldResponse | None:
+) -> Optional[Union[ErrorsList, FormFieldResponse]]:
     """Update a Form Field
 
      Update a specific form_field by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateFormField):
 
     Raises:
@@ -179,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldResponse
+        Union[ErrorsList, FormFieldResponse]
     """
 
     return (

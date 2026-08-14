@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-08-14
+
+### Added
+- Alert retrigger rule endpoints and models
+- Status page announcement, component, and component group endpoints and models
+- Verified domain endpoints and models
+- Freshservice retrospective PDF workflow task support
+
+### Changed
+- Regenerated the client from the latest OpenAPI specification
+- **BREAKING**: Replaced `AutoAssignRoleRootlyTaskParams` with target-specific variants for escalation policies,
+  services, users, groups, and schedules
+
+### Fixed
+- Applied the nullable enum fix to generated model files
+
 ## [1.4.0] - 2026-07-20
 
 ### Added

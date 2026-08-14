@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,17 +29,17 @@ class AlertEvent:
         source (str):
         created_at (str):
         updated_at (str):
-        user_id (int | None | Unset): Author of the note.
-        details (None | str | Unset): Note message.
-        user (AlertEventUser | Unset):
-        incident (AlertEventIncidentType0 | None | Unset):
-        schedule (AlertEventScheduleType0 | None | Unset):
-        escalation_level (int | None | Unset):
-        escalation_target_type (None | str | Unset): e.g. EscalationPolicy, User.
-        escalation_target (AlertEventEscalationTargetType0 | None | Unset): JSON:API-wrapped escalation target (User or
-            EscalationPolicy).
-        slack_channel (SlackChannel | Unset):
-        incident_ids (list[str] | None | Unset):
+        user_id (Union[None, Unset, int]): Author of the note.
+        details (Union[None, Unset, str]): Note message.
+        user (Union[Unset, AlertEventUser]):
+        incident (Union['AlertEventIncidentType0', None, Unset]):
+        schedule (Union['AlertEventScheduleType0', None, Unset]):
+        escalation_level (Union[None, Unset, int]):
+        escalation_target_type (Union[None, Unset, str]): e.g. EscalationPolicy, User.
+        escalation_target (Union['AlertEventEscalationTargetType0', None, Unset]): JSON:API-wrapped escalation target
+            (User or EscalationPolicy).
+        slack_channel (Union[Unset, SlackChannel]):
+        incident_ids (Union[None, Unset, list[str]]):
     """
 
     alert_id: str
@@ -50,16 +48,16 @@ class AlertEvent:
     source: str
     created_at: str
     updated_at: str
-    user_id: int | None | Unset = UNSET
-    details: None | str | Unset = UNSET
-    user: AlertEventUser | Unset = UNSET
-    incident: AlertEventIncidentType0 | None | Unset = UNSET
-    schedule: AlertEventScheduleType0 | None | Unset = UNSET
-    escalation_level: int | None | Unset = UNSET
-    escalation_target_type: None | str | Unset = UNSET
-    escalation_target: AlertEventEscalationTargetType0 | None | Unset = UNSET
-    slack_channel: SlackChannel | Unset = UNSET
-    incident_ids: list[str] | None | Unset = UNSET
+    user_id: Union[None, Unset, int] = UNSET
+    details: Union[None, Unset, str] = UNSET
+    user: Union[Unset, "AlertEventUser"] = UNSET
+    incident: Union["AlertEventIncidentType0", None, Unset] = UNSET
+    schedule: Union["AlertEventScheduleType0", None, Unset] = UNSET
+    escalation_level: Union[None, Unset, int] = UNSET
+    escalation_target_type: Union[None, Unset, str] = UNSET
+    escalation_target: Union["AlertEventEscalationTargetType0", None, Unset] = UNSET
+    slack_channel: Union[Unset, "SlackChannel"] = UNSET
+    incident_ids: Union[None, Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,23 +77,23 @@ class AlertEvent:
 
         updated_at = self.updated_at
 
-        user_id: int | None | Unset
+        user_id: Union[None, Unset, int]
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
             user_id = self.user_id
 
-        details: None | str | Unset
+        details: Union[None, Unset, str]
         if isinstance(self.details, Unset):
             details = UNSET
         else:
             details = self.details
 
-        user: dict[str, Any] | Unset = UNSET
+        user: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
-        incident: dict[str, Any] | None | Unset
+        incident: Union[None, Unset, dict[str, Any]]
         if isinstance(self.incident, Unset):
             incident = UNSET
         elif isinstance(self.incident, AlertEventIncidentType0):
@@ -103,7 +101,7 @@ class AlertEvent:
         else:
             incident = self.incident
 
-        schedule: dict[str, Any] | None | Unset
+        schedule: Union[None, Unset, dict[str, Any]]
         if isinstance(self.schedule, Unset):
             schedule = UNSET
         elif isinstance(self.schedule, AlertEventScheduleType0):
@@ -111,19 +109,19 @@ class AlertEvent:
         else:
             schedule = self.schedule
 
-        escalation_level: int | None | Unset
+        escalation_level: Union[None, Unset, int]
         if isinstance(self.escalation_level, Unset):
             escalation_level = UNSET
         else:
             escalation_level = self.escalation_level
 
-        escalation_target_type: None | str | Unset
+        escalation_target_type: Union[None, Unset, str]
         if isinstance(self.escalation_target_type, Unset):
             escalation_target_type = UNSET
         else:
             escalation_target_type = self.escalation_target_type
 
-        escalation_target: dict[str, Any] | None | Unset
+        escalation_target: Union[None, Unset, dict[str, Any]]
         if isinstance(self.escalation_target, Unset):
             escalation_target = UNSET
         elif isinstance(self.escalation_target, AlertEventEscalationTargetType0):
@@ -131,11 +129,11 @@ class AlertEvent:
         else:
             escalation_target = self.escalation_target
 
-        slack_channel: dict[str, Any] | Unset = UNSET
+        slack_channel: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.slack_channel, Unset):
             slack_channel = self.slack_channel.to_dict()
 
-        incident_ids: list[str] | None | Unset
+        incident_ids: Union[None, Unset, list[str]]
         if isinstance(self.incident_ids, Unset):
             incident_ids = UNSET
         elif isinstance(self.incident_ids, list):
@@ -200,32 +198,32 @@ class AlertEvent:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_user_id(data: object) -> int | None | Unset:
+        def _parse_user_id(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 
-        def _parse_details(data: object) -> None | str | Unset:
+        def _parse_details(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         details = _parse_details(d.pop("details", UNSET))
 
         _user = d.pop("user", UNSET)
-        user: AlertEventUser | Unset
+        user: Union[Unset, AlertEventUser]
         if isinstance(_user, Unset):
             user = UNSET
         else:
             user = AlertEventUser.from_dict(_user)
 
-        def _parse_incident(data: object) -> AlertEventIncidentType0 | None | Unset:
+        def _parse_incident(data: object) -> Union["AlertEventIncidentType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -236,13 +234,13 @@ class AlertEvent:
                 incident_type_0 = AlertEventIncidentType0.from_dict(data)
 
                 return incident_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(AlertEventIncidentType0 | None | Unset, data)
+            return cast(Union["AlertEventIncidentType0", None, Unset], data)
 
         incident = _parse_incident(d.pop("incident", UNSET))
 
-        def _parse_schedule(data: object) -> AlertEventScheduleType0 | None | Unset:
+        def _parse_schedule(data: object) -> Union["AlertEventScheduleType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -253,31 +251,31 @@ class AlertEvent:
                 schedule_type_0 = AlertEventScheduleType0.from_dict(data)
 
                 return schedule_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(AlertEventScheduleType0 | None | Unset, data)
+            return cast(Union["AlertEventScheduleType0", None, Unset], data)
 
         schedule = _parse_schedule(d.pop("schedule", UNSET))
 
-        def _parse_escalation_level(data: object) -> int | None | Unset:
+        def _parse_escalation_level(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         escalation_level = _parse_escalation_level(d.pop("escalation_level", UNSET))
 
-        def _parse_escalation_target_type(data: object) -> None | str | Unset:
+        def _parse_escalation_target_type(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         escalation_target_type = _parse_escalation_target_type(d.pop("escalation_target_type", UNSET))
 
-        def _parse_escalation_target(data: object) -> AlertEventEscalationTargetType0 | None | Unset:
+        def _parse_escalation_target(data: object) -> Union["AlertEventEscalationTargetType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -288,20 +286,20 @@ class AlertEvent:
                 escalation_target_type_0 = AlertEventEscalationTargetType0.from_dict(data)
 
                 return escalation_target_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(AlertEventEscalationTargetType0 | None | Unset, data)
+            return cast(Union["AlertEventEscalationTargetType0", None, Unset], data)
 
         escalation_target = _parse_escalation_target(d.pop("escalation_target", UNSET))
 
         _slack_channel = d.pop("slack_channel", UNSET)
-        slack_channel: SlackChannel | Unset
+        slack_channel: Union[Unset, SlackChannel]
         if isinstance(_slack_channel, Unset):
             slack_channel = UNSET
         else:
             slack_channel = SlackChannel.from_dict(_slack_channel)
 
-        def _parse_incident_ids(data: object) -> list[str] | None | Unset:
+        def _parse_incident_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -312,9 +310,9 @@ class AlertEvent:
                 incident_ids_type_0 = cast(list[str], data)
 
                 return incident_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         incident_ids = _parse_incident_ids(d.pop("incident_ids", UNSET))
 

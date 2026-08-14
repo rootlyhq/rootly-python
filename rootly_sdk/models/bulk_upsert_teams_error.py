@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -17,14 +15,13 @@ T = TypeVar("T", bound="BulkUpsertTeamsError")
 class BulkUpsertTeamsError:
     """
     Attributes:
-        errors (list[BulkUpsertTeamsErrorErrorsItem]):
+        errors (list['BulkUpsertTeamsErrorErrorsItem']):
     """
 
-    errors: list[BulkUpsertTeamsErrorErrorsItem]
+    errors: list["BulkUpsertTeamsErrorErrorsItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         errors = []
         for errors_item_data in self.errors:
             errors_item = errors_item_data.to_dict()

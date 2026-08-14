@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,21 +23,20 @@ class UpdateAlertRouteDataAttributesRulesItem:
     """
     Attributes:
         name (str): The name of the alert routing rule
-        destinations (list[UpdateAlertRouteDataAttributesRulesItemDestinationsItem]):
-        condition_groups (list[UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem]):
-        position (int | Unset): The position of the alert routing rule for ordering evaluation
-        fallback_rule (bool | Unset): Whether this is a fallback rule Default: False.
+        destinations (list['UpdateAlertRouteDataAttributesRulesItemDestinationsItem']):
+        condition_groups (list['UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem']):
+        position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
+        fallback_rule (Union[Unset, bool]): Whether this is a fallback rule Default: False.
     """
 
     name: str
-    destinations: list[UpdateAlertRouteDataAttributesRulesItemDestinationsItem]
-    condition_groups: list[UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem]
-    position: int | Unset = UNSET
-    fallback_rule: bool | Unset = False
+    destinations: list["UpdateAlertRouteDataAttributesRulesItemDestinationsItem"]
+    condition_groups: list["UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem"]
+    position: Union[Unset, int] = UNSET
+    fallback_rule: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         destinations = []

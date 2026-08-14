@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,18 +21,17 @@ class CatalogEntityPropertyResponse:
 
         Attributes:
             data (CatalogEntityPropertyResponseData):
-            included (list[JsonapiIncludedResource] | Unset):
+            included (Union[Unset, list['JsonapiIncludedResource']]):
     """
 
-    data: CatalogEntityPropertyResponseData
-    included: list[JsonapiIncludedResource] | Unset = UNSET
+    data: "CatalogEntityPropertyResponseData"
+    included: Union[Unset, list["JsonapiIncludedResource"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         data = self.data.to_dict()
 
-        included: list[dict[str, Any]] | Unset = UNSET
+        included: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -61,14 +58,12 @@ class CatalogEntityPropertyResponse:
         d = dict(src_dict)
         data = CatalogEntityPropertyResponseData.from_dict(d.pop("data"))
 
+        included = []
         _included = d.pop("included", UNSET)
-        included: list[JsonapiIncludedResource] | Unset = UNSET
-        if _included is not UNSET:
-            included = []
-            for included_item_data in _included:
-                included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        for included_item_data in _included or []:
+            included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-                included.append(included_item)
+            included.append(included_item)
 
         catalog_entity_property_response = cls(
             data=data,

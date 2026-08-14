@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -20,9 +19,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/retrospective_process_group_steps/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/retrospective_process_group_steps/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -34,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrospectiveProcessGroupStepResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[RetrospectiveProcessGroupStepResponse]:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessGroupStepResponse.from_dict(response.json())
 
@@ -48,7 +45,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[RetrospectiveProcessGroupStepResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -97,7 +94,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroupStep,
-) -> RetrospectiveProcessGroupStepResponse | None:
+) -> Optional[RetrospectiveProcessGroupStepResponse]:
     """Update RetrospectiveProcessGroup Step
 
      Update a specific RetrospectiveProcessGroup Step by id
@@ -158,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateRetrospectiveProcessGroupStep,
-) -> RetrospectiveProcessGroupStepResponse | None:
+) -> Optional[RetrospectiveProcessGroupStepResponse]:
     """Update RetrospectiveProcessGroup Step
 
      Update a specific RetrospectiveProcessGroup Step by id

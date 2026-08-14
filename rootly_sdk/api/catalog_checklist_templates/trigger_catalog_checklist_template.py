@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 from uuid import UUID
 
 import httpx
@@ -12,20 +11,19 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/catalog_checklist_templates/{id}/trigger".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/catalog_checklist_templates/{id}/trigger",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, ErrorsList]]:
     if response.status_code == 202:
         response_202 = cast(Any, None)
         return response_202
@@ -41,7 +39,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,23 +51,23 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorsList]:
+) -> Response[Union[Any, ErrorsList]]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
+        Response[Union[Any, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -82,23 +82,23 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorsList | None:
+) -> Optional[Union[Any, ErrorsList]]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
+        Union[Any, ErrorsList]
     """
 
     return sync_detailed(
@@ -108,23 +108,23 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorsList]:
+) -> Response[Union[Any, ErrorsList]]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
+        Response[Union[Any, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -137,23 +137,23 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorsList | None:
+) -> Optional[Union[Any, ErrorsList]]:
     """Trigger an audit for a catalog checklist template
 
      Triggers an audit for all applicable entities of the checklist template
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
+        Union[Any, ErrorsList]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,59 +24,58 @@ class GetPulsesTaskParams:
     Attributes:
         past_duration (str): How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.) Example:
             1 hour.
-        task_type (GetPulsesTaskParamsTaskType | Unset):
-        service_ids (list[str] | Unset):
-        environment_ids (list[str] | Unset):
-        labels (list[str] | Unset):
-        refs (list[str] | Unset):
-        sources (list[str] | Unset):
-        services_impacted_by_incident (bool | Unset):
-        environments_impacted_by_incident (bool | Unset):
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[GetPulsesTaskParamsPostToSlackChannelsItem] | Unset):
-        parent_message_thread_task (GetPulsesTaskParamsParentMessageThreadTask | Unset): A hash where [id] is the task
-            id of the parent task that sent a message, and [name] is the name of the parent task
+        task_type (Union[Unset, GetPulsesTaskParamsTaskType]):
+        service_ids (Union[Unset, list[str]]):
+        environment_ids (Union[Unset, list[str]]):
+        labels (Union[Unset, list[str]]):
+        refs (Union[Unset, list[str]]):
+        sources (Union[Unset, list[str]]):
+        services_impacted_by_incident (Union[Unset, bool]):
+        environments_impacted_by_incident (Union[Unset, bool]):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['GetPulsesTaskParamsPostToSlackChannelsItem']]):
+        parent_message_thread_task (Union[Unset, GetPulsesTaskParamsParentMessageThreadTask]): A hash where [id] is the
+            task id of the parent task that sent a message, and [name] is the name of the parent task
     """
 
     past_duration: str
-    task_type: GetPulsesTaskParamsTaskType | Unset = UNSET
-    service_ids: list[str] | Unset = UNSET
-    environment_ids: list[str] | Unset = UNSET
-    labels: list[str] | Unset = UNSET
-    refs: list[str] | Unset = UNSET
-    sources: list[str] | Unset = UNSET
-    services_impacted_by_incident: bool | Unset = UNSET
-    environments_impacted_by_incident: bool | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[GetPulsesTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-    parent_message_thread_task: GetPulsesTaskParamsParentMessageThreadTask | Unset = UNSET
+    task_type: Union[Unset, GetPulsesTaskParamsTaskType] = UNSET
+    service_ids: Union[Unset, list[str]] = UNSET
+    environment_ids: Union[Unset, list[str]] = UNSET
+    labels: Union[Unset, list[str]] = UNSET
+    refs: Union[Unset, list[str]] = UNSET
+    sources: Union[Unset, list[str]] = UNSET
+    services_impacted_by_incident: Union[Unset, bool] = UNSET
+    environments_impacted_by_incident: Union[Unset, bool] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["GetPulsesTaskParamsPostToSlackChannelsItem"]] = UNSET
+    parent_message_thread_task: Union[Unset, "GetPulsesTaskParamsParentMessageThreadTask"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         past_duration = self.past_duration
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        service_ids: list[str] | Unset = UNSET
+        service_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        environment_ids: list[str] | Unset = UNSET
+        environment_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        labels: list[str] | Unset = UNSET
+        labels: Union[Unset, list[str]] = UNSET
         if not isinstance(self.labels, Unset):
             labels = self.labels
 
-        refs: list[str] | Unset = UNSET
+        refs: Union[Unset, list[str]] = UNSET
         if not isinstance(self.refs, Unset):
             refs = self.refs
 
-        sources: list[str] | Unset = UNSET
+        sources: Union[Unset, list[str]] = UNSET
         if not isinstance(self.sources, Unset):
             sources = self.sources
 
@@ -88,14 +85,14 @@ class GetPulsesTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
                 post_to_slack_channels_item = post_to_slack_channels_item_data.to_dict()
                 post_to_slack_channels.append(post_to_slack_channels_item)
 
-        parent_message_thread_task: dict[str, Any] | Unset = UNSET
+        parent_message_thread_task: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.parent_message_thread_task, Unset):
             parent_message_thread_task = self.parent_message_thread_task.to_dict()
 
@@ -144,7 +141,7 @@ class GetPulsesTaskParams:
         past_duration = d.pop("past_duration")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: GetPulsesTaskParamsTaskType | Unset
+        task_type: Union[Unset, GetPulsesTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -166,19 +163,17 @@ class GetPulsesTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[GetPulsesTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = GetPulsesTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = GetPulsesTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         _parent_message_thread_task = d.pop("parent_message_thread_task", UNSET)
-        parent_message_thread_task: GetPulsesTaskParamsParentMessageThreadTask | Unset
+        parent_message_thread_task: Union[Unset, GetPulsesTaskParamsParentMessageThreadTask]
         if isinstance(_parent_message_thread_task, Unset):
             parent_message_thread_task = UNSET
         else:

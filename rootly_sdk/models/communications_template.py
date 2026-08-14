@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,35 +21,34 @@ class CommunicationsTemplate:
     """
     Attributes:
         name (str): The name of the communications template
-        position (int | None): Position of the communications template
+        position (Union[None, int]): Position of the communications template
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the communications template
-        description (None | str | Unset): The description of the communications template
-        communication_type_id (str | Unset): The communication type ID
-        communication_template_stages (list[CommunicationsTemplateCommunicationTemplateStagesType0Item] | None | Unset):
-            Communication template stages
-        communication_type (CommunicationsTemplateCommunicationType | Unset):
+        slug (Union[Unset, str]): The slug of the communications template
+        description (Union[None, Unset, str]): The description of the communications template
+        communication_type_id (Union[Unset, str]): The communication type ID
+        communication_template_stages (Union[None, Unset,
+            list['CommunicationsTemplateCommunicationTemplateStagesType0Item']]): Communication template stages
+        communication_type (Union[Unset, CommunicationsTemplateCommunicationType]):
     """
 
     name: str
-    position: int | None
+    position: Union[None, int]
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    communication_type_id: str | Unset = UNSET
-    communication_template_stages: list[CommunicationsTemplateCommunicationTemplateStagesType0Item] | None | Unset = (
-        UNSET
-    )
-    communication_type: CommunicationsTemplateCommunicationType | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    communication_type_id: Union[Unset, str] = UNSET
+    communication_template_stages: Union[
+        None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]
+    ] = UNSET
+    communication_type: Union[Unset, "CommunicationsTemplateCommunicationType"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
-        position: int | None
+        position: Union[None, int]
         position = self.position
 
         created_at = self.created_at
@@ -60,7 +57,7 @@ class CommunicationsTemplate:
 
         slug = self.slug
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -68,7 +65,7 @@ class CommunicationsTemplate:
 
         communication_type_id = self.communication_type_id
 
-        communication_template_stages: list[dict[str, Any]] | None | Unset
+        communication_template_stages: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.communication_template_stages, Unset):
             communication_template_stages = UNSET
         elif isinstance(self.communication_template_stages, list):
@@ -80,7 +77,7 @@ class CommunicationsTemplate:
         else:
             communication_template_stages = self.communication_template_stages
 
-        communication_type: dict[str, Any] | Unset = UNSET
+        communication_type: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.communication_type, Unset):
             communication_type = self.communication_type.to_dict()
 
@@ -117,10 +114,10 @@ class CommunicationsTemplate:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_position(data: object) -> int | None:
+        def _parse_position(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         position = _parse_position(d.pop("position"))
 
@@ -130,12 +127,12 @@ class CommunicationsTemplate:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -143,7 +140,7 @@ class CommunicationsTemplate:
 
         def _parse_communication_template_stages(
             data: object,
-        ) -> list[CommunicationsTemplateCommunicationTemplateStagesType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -163,16 +160,16 @@ class CommunicationsTemplate:
                     communication_template_stages_type_0.append(communication_template_stages_type_0_item)
 
                 return communication_template_stages_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[CommunicationsTemplateCommunicationTemplateStagesType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["CommunicationsTemplateCommunicationTemplateStagesType0Item"]], data)
 
         communication_template_stages = _parse_communication_template_stages(
             d.pop("communication_template_stages", UNSET)
         )
 
         _communication_type = d.pop("communication_type", UNSET)
-        communication_type: CommunicationsTemplateCommunicationType | Unset
+        communication_type: Union[Unset, CommunicationsTemplateCommunicationType]
         if isinstance(_communication_type, Unset):
             communication_type = UNSET
         else:

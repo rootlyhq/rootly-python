@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,18 +21,18 @@ class IncidentPermissionSetResource:
         kind (IncidentPermissionSetResourceKind):
         created_at (str):
         updated_at (str):
-        private (bool | Unset):
-        resource_id (str | Unset):
-        resource_type (str | Unset):
+        private (Union[Unset, bool]):
+        resource_id (Union[Unset, str]):
+        resource_type (Union[Unset, str]):
     """
 
     incident_permission_set_id: str
     kind: IncidentPermissionSetResourceKind
     created_at: str
     updated_at: str
-    private: bool | Unset = UNSET
-    resource_id: str | Unset = UNSET
-    resource_type: str | Unset = UNSET
+    private: Union[Unset, bool] = UNSET
+    resource_id: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

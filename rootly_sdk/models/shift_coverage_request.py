@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,12 +25,12 @@ class ShiftCoverageRequest:
         created_by_user_id (int): ID of the user who created the coverage request
         starts_at (str): Start datetime of the coverage request
         ends_at (str): End datetime of the coverage request
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
-        schedule (ScheduleResponse | Unset):
-        shift (Shift | Unset):
-        original_shift_user (UserResponse | Unset):
-        created_by_user (UserResponse | Unset):
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
+        schedule (Union[Unset, ScheduleResponse]):
+        shift (Union[Unset, Shift]):
+        original_shift_user (Union[Unset, UserResponse]):
+        created_by_user (Union[Unset, UserResponse]):
     """
 
     schedule_id: str
@@ -41,16 +39,15 @@ class ShiftCoverageRequest:
     created_by_user_id: int
     starts_at: str
     ends_at: str
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
-    schedule: ScheduleResponse | Unset = UNSET
-    shift: Shift | Unset = UNSET
-    original_shift_user: UserResponse | Unset = UNSET
-    created_by_user: UserResponse | Unset = UNSET
+    created_at: Union[Unset, str] = UNSET
+    updated_at: Union[Unset, str] = UNSET
+    schedule: Union[Unset, "ScheduleResponse"] = UNSET
+    shift: Union[Unset, "Shift"] = UNSET
+    original_shift_user: Union[Unset, "UserResponse"] = UNSET
+    created_by_user: Union[Unset, "UserResponse"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         schedule_id = self.schedule_id
 
         shift_id = self.shift_id
@@ -67,19 +64,19 @@ class ShiftCoverageRequest:
 
         updated_at = self.updated_at
 
-        schedule: dict[str, Any] | Unset = UNSET
+        schedule: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.schedule, Unset):
             schedule = self.schedule.to_dict()
 
-        shift: dict[str, Any] | Unset = UNSET
+        shift: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.shift, Unset):
             shift = self.shift.to_dict()
 
-        original_shift_user: dict[str, Any] | Unset = UNSET
+        original_shift_user: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.original_shift_user, Unset):
             original_shift_user = self.original_shift_user.to_dict()
 
-        created_by_user: dict[str, Any] | Unset = UNSET
+        created_by_user: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.created_by_user, Unset):
             created_by_user = self.created_by_user.to_dict()
 
@@ -134,28 +131,28 @@ class ShiftCoverageRequest:
         updated_at = d.pop("updated_at", UNSET)
 
         _schedule = d.pop("schedule", UNSET)
-        schedule: ScheduleResponse | Unset
+        schedule: Union[Unset, ScheduleResponse]
         if isinstance(_schedule, Unset):
             schedule = UNSET
         else:
             schedule = ScheduleResponse.from_dict(_schedule)
 
         _shift = d.pop("shift", UNSET)
-        shift: Shift | Unset
+        shift: Union[Unset, Shift]
         if isinstance(_shift, Unset):
             shift = UNSET
         else:
             shift = Shift.from_dict(_shift)
 
         _original_shift_user = d.pop("original_shift_user", UNSET)
-        original_shift_user: UserResponse | Unset
+        original_shift_user: Union[Unset, UserResponse]
         if isinstance(_original_shift_user, Unset):
             original_shift_user = UNSET
         else:
             original_shift_user = UserResponse.from_dict(_original_shift_user)
 
         _created_by_user = d.pop("created_by_user", UNSET)
-        created_by_user: UserResponse | Unset
+        created_by_user: Union[Unset, UserResponse]
         if isinstance(_created_by_user, Unset):
             created_by_user = UNSET
         else:

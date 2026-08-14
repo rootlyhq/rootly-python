@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,29 +14,28 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: ListEscalationPoliciesInclude | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    filterteam_idseq: str | Unset = UNSET,
-    filterteam_idsnot_eq: str | Unset = UNSET,
-    filterteam_idsin: str | Unset = UNSET,
-    filterteam_idsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListEscalationPoliciesInclude] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    filterteam_idseq: Union[Unset, str] = UNSET,
+    filterteam_idsnot_eq: Union[Unset, str] = UNSET,
+    filterteam_idsin: Union[Unset, str] = UNSET,
+    filterteam_idsnot_in: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -87,7 +86,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> EscalationPolicyList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[EscalationPolicyList]:
     if response.status_code == 200:
         response_200 = EscalationPolicyList.from_dict(response.json())
 
@@ -100,7 +101,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[EscalationPolicyList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -113,48 +114,48 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPoliciesInclude | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    filterteam_idseq: str | Unset = UNSET,
-    filterteam_idsnot_eq: str | Unset = UNSET,
-    filterteam_idsin: str | Unset = UNSET,
-    filterteam_idsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListEscalationPoliciesInclude] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    filterteam_idseq: Union[Unset, str] = UNSET,
+    filterteam_idsnot_eq: Union[Unset, str] = UNSET,
+    filterteam_idsin: Union[Unset, str] = UNSET,
+    filterteam_idsnot_in: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[EscalationPolicyList]:
     """List escalation policies
 
      List escalation policies
 
     Args:
-        include (ListEscalationPoliciesInclude | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        filterteam_idseq (str | Unset):
-        filterteam_idsnot_eq (str | Unset):
-        filterteam_idsin (str | Unset):
-        filterteam_idsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPoliciesInclude]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,48 +196,48 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPoliciesInclude | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    filterteam_idseq: str | Unset = UNSET,
-    filterteam_idsnot_eq: str | Unset = UNSET,
-    filterteam_idsin: str | Unset = UNSET,
-    filterteam_idsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> EscalationPolicyList | None:
+    include: Union[Unset, ListEscalationPoliciesInclude] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    filterteam_idseq: Union[Unset, str] = UNSET,
+    filterteam_idsnot_eq: Union[Unset, str] = UNSET,
+    filterteam_idsin: Union[Unset, str] = UNSET,
+    filterteam_idsnot_in: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[EscalationPolicyList]:
     """List escalation policies
 
      List escalation policies
 
     Args:
-        include (ListEscalationPoliciesInclude | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        filterteam_idseq (str | Unset):
-        filterteam_idsnot_eq (str | Unset):
-        filterteam_idsin (str | Unset):
-        filterteam_idsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPoliciesInclude]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -272,48 +273,48 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPoliciesInclude | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    filterteam_idseq: str | Unset = UNSET,
-    filterteam_idsnot_eq: str | Unset = UNSET,
-    filterteam_idsin: str | Unset = UNSET,
-    filterteam_idsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListEscalationPoliciesInclude] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    filterteam_idseq: Union[Unset, str] = UNSET,
+    filterteam_idsnot_eq: Union[Unset, str] = UNSET,
+    filterteam_idsin: Union[Unset, str] = UNSET,
+    filterteam_idsnot_in: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[EscalationPolicyList]:
     """List escalation policies
 
      List escalation policies
 
     Args:
-        include (ListEscalationPoliciesInclude | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        filterteam_idseq (str | Unset):
-        filterteam_idsnot_eq (str | Unset):
-        filterteam_idsin (str | Unset):
-        filterteam_idsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPoliciesInclude]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -352,48 +353,48 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: ListEscalationPoliciesInclude | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterteam_ids: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    filterteam_idseq: str | Unset = UNSET,
-    filterteam_idsnot_eq: str | Unset = UNSET,
-    filterteam_idsin: str | Unset = UNSET,
-    filterteam_idsnot_in: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> EscalationPolicyList | None:
+    include: Union[Unset, ListEscalationPoliciesInclude] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterteam_ids: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    filterteam_idseq: Union[Unset, str] = UNSET,
+    filterteam_idsnot_eq: Union[Unset, str] = UNSET,
+    filterteam_idsin: Union[Unset, str] = UNSET,
+    filterteam_idsnot_in: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[EscalationPolicyList]:
     """List escalation policies
 
      List escalation policies
 
     Args:
-        include (ListEscalationPoliciesInclude | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterteam_ids (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        filterteam_idseq (str | Unset):
-        filterteam_idsnot_eq (str | Unset):
-        filterteam_idsin (str | Unset):
-        filterteam_idsnot_in (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListEscalationPoliciesInclude]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterteam_ids (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        filterteam_idseq (Union[Unset, str]):
+        filterteam_idsnot_eq (Union[Unset, str]):
+        filterteam_idsin (Union[Unset, str]):
+        filterteam_idsnot_in (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

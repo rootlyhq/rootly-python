@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,14 +14,13 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: ListRetrospectiveProcessesInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -43,8 +42,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> RetrospectiveProcessList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[RetrospectiveProcessList]:
     if response.status_code == 200:
         response_200 = RetrospectiveProcessList.from_dict(response.json())
 
@@ -57,7 +56,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[RetrospectiveProcessList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -70,18 +69,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveProcessesInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[RetrospectiveProcessList]:
     """List retrospective processes
 
      List retrospective processes
 
     Args:
-        include (ListRetrospectiveProcessesInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListRetrospectiveProcessesInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -107,18 +106,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveProcessesInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> RetrospectiveProcessList | None:
+    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[RetrospectiveProcessList]:
     """List retrospective processes
 
      List retrospective processes
 
     Args:
-        include (ListRetrospectiveProcessesInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListRetrospectiveProcessesInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,18 +138,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveProcessesInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> Response[RetrospectiveProcessList]:
     """List retrospective processes
 
      List retrospective processes
 
     Args:
-        include (ListRetrospectiveProcessesInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListRetrospectiveProcessesInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -174,18 +173,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: ListRetrospectiveProcessesInclude | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> RetrospectiveProcessList | None:
+    include: Union[Unset, ListRetrospectiveProcessesInclude] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[RetrospectiveProcessList]:
     """List retrospective processes
 
      List retrospective processes
 
     Args:
-        include (ListRetrospectiveProcessesInclude | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListRetrospectiveProcessesInclude]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

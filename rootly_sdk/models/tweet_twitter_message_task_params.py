@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,17 +18,17 @@ class TweetTwitterMessageTaskParams:
     """
     Attributes:
         message (str):
-        task_type (TweetTwitterMessageTaskParamsTaskType | Unset):
+        task_type (Union[Unset, TweetTwitterMessageTaskParamsTaskType]):
     """
 
     message: str
-    task_type: TweetTwitterMessageTaskParamsTaskType | Unset = UNSET
+    task_type: Union[Unset, TweetTwitterMessageTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         message = self.message
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -52,7 +50,7 @@ class TweetTwitterMessageTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: TweetTwitterMessageTaskParamsTaskType | Unset
+        task_type: Union[Unset, TweetTwitterMessageTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

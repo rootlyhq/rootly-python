@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -30,17 +28,16 @@ class EscalationPolicyPathRulesItemType9Type5:
     Attributes:
         rule_type (EscalationPolicyPathRulesItemType9Type5RuleType): The type of the escalation path rule
         time_zone (EscalationPolicyPathRulesItemType9Type5TimeZone): Time zone for the deferral window
-        time_blocks (list[EscalationPolicyPathRulesItemType9Type5TimeBlocksItem]): Time windows during which alerts are
-            deferred
+        time_blocks (list['EscalationPolicyPathRulesItemType9Type5TimeBlocksItem']): Time windows during which alerts
+            are deferred
     """
 
     rule_type: EscalationPolicyPathRulesItemType9Type5RuleType
     time_zone: EscalationPolicyPathRulesItemType9Type5TimeZone
-    time_blocks: list[EscalationPolicyPathRulesItemType9Type5TimeBlocksItem]
+    time_blocks: list["EscalationPolicyPathRulesItemType9Type5TimeBlocksItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         rule_type: str = self.rule_type
 
         time_zone: str = self.time_zone

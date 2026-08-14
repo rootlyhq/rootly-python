@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,18 +13,18 @@ T = TypeVar("T", bound="UserEmailAddress")
 class UserEmailAddress:
     """
     Attributes:
-        user_id (int | Unset):
-        email (str | Unset): Email address
-        primary (bool | Unset): Whether this is the primary email address
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        user_id (Union[Unset, int]):
+        email (Union[Unset, str]): Email address
+        primary (Union[Unset, bool]): Whether this is the primary email address
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
-    user_id: int | Unset = UNSET
-    email: str | Unset = UNSET
-    primary: bool | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    user_id: Union[Unset, int] = UNSET
+    email: Union[Unset, str] = UNSET
+    primary: Union[Unset, bool] = UNSET
+    created_at: Union[Unset, str] = UNSET
+    updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

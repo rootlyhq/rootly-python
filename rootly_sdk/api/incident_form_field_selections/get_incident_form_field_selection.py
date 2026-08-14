@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,20 +13,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incident_form_field_selections/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/incident_form_field_selections/{id}",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     if response.status_code == 200:
         response_200 = IncidentFormFieldSelectionResponse.from_dict(response.json())
 
@@ -45,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
+) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     """Retrieves an incident form field selection
 
      Retrieves a specific incident form field selection by id
@@ -72,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentFormFieldSelectionResponse]
+        Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
+) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     """Retrieves an incident form field selection
 
      Retrieves a specific incident form field selection by id
@@ -103,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentFormFieldSelectionResponse
+        Union[ErrorsList, IncidentFormFieldSelectionResponse]
     """
 
     return sync_detailed(
@@ -116,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | IncidentFormFieldSelectionResponse]:
+) -> Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     """Retrieves an incident form field selection
 
      Retrieves a specific incident form field selection by id
@@ -129,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | IncidentFormFieldSelectionResponse]
+        Response[Union[ErrorsList, IncidentFormFieldSelectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | IncidentFormFieldSelectionResponse | None:
+) -> Optional[Union[ErrorsList, IncidentFormFieldSelectionResponse]]:
     """Retrieves an incident form field selection
 
      Retrieves a specific incident form field selection by id
@@ -158,7 +154,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | IncidentFormFieldSelectionResponse
+        Union[ErrorsList, IncidentFormFieldSelectionResponse]
     """
 
     return (

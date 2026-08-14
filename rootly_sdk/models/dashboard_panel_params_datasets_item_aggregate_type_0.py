@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,28 +17,28 @@ T = TypeVar("T", bound="DashboardPanelParamsDatasetsItemAggregateType0")
 class DashboardPanelParamsDatasetsItemAggregateType0:
     """
     Attributes:
-        operation (DashboardPanelParamsDatasetsItemAggregateType0Operation | Unset):
-        key (None | str | Unset):
-        cumulative (bool | None | Unset):
+        operation (Union[Unset, DashboardPanelParamsDatasetsItemAggregateType0Operation]):
+        key (Union[None, Unset, str]):
+        cumulative (Union[None, Unset, bool]):
     """
 
-    operation: DashboardPanelParamsDatasetsItemAggregateType0Operation | Unset = UNSET
-    key: None | str | Unset = UNSET
-    cumulative: bool | None | Unset = UNSET
+    operation: Union[Unset, DashboardPanelParamsDatasetsItemAggregateType0Operation] = UNSET
+    key: Union[None, Unset, str] = UNSET
+    cumulative: Union[None, Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        operation: str | Unset = UNSET
+        operation: Union[Unset, str] = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation
 
-        key: None | str | Unset
+        key: Union[None, Unset, str]
         if isinstance(self.key, Unset):
             key = UNSET
         else:
             key = self.key
 
-        cumulative: bool | None | Unset
+        cumulative: Union[None, Unset, bool]
         if isinstance(self.cumulative, Unset):
             cumulative = UNSET
         else:
@@ -62,27 +60,27 @@ class DashboardPanelParamsDatasetsItemAggregateType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _operation = d.pop("operation", UNSET)
-        operation: DashboardPanelParamsDatasetsItemAggregateType0Operation | Unset
+        operation: Union[Unset, DashboardPanelParamsDatasetsItemAggregateType0Operation]
         if isinstance(_operation, Unset):
             operation = UNSET
         else:
             operation = check_dashboard_panel_params_datasets_item_aggregate_type_0_operation(_operation)
 
-        def _parse_key(data: object) -> None | str | Unset:
+        def _parse_key(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         key = _parse_key(d.pop("key", UNSET))
 
-        def _parse_cumulative(data: object) -> bool | None | Unset:
+        def _parse_cumulative(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         cumulative = _parse_cumulative(d.pop("cumulative", UNSET))
 

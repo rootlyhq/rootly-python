@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -16,21 +14,30 @@ class NewCustomFormDataAttributes:
     Attributes:
         name (str): The name of the custom form.
         command (str): The Slack command used to trigger this form.
-        description (None | str | Unset):
-        enabled (bool | Unset):
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]):
+        enabled (Union[Unset, bool]):
     """
 
     name: str
     command: str
-    description: None | str | Unset = UNSET
-    enabled: bool | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    enabled: Union[Unset, bool] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         command = self.command
 
-        description: None | str | Unset
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -46,6 +53,8 @@ class NewCustomFormDataAttributes:
                 "command": command,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -60,12 +69,21 @@ class NewCustomFormDataAttributes:
 
         command = d.pop("command")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -74,6 +92,7 @@ class NewCustomFormDataAttributes:
         new_custom_form_data_attributes = cls(
             name=name,
             command=command,
+            slug=slug,
             description=description,
             enabled=enabled,
         )

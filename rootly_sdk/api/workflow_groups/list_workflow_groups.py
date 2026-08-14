@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,17 +11,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterexpanded: bool | Unset = UNSET,
-    filterposition: int | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterexpanded: Union[Unset, bool] = UNSET,
+    filterposition: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -53,7 +52,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> WorkflowGroupList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[WorkflowGroupList]:
     if response.status_code == 200:
         response_200 = WorkflowGroupList.from_dict(response.json())
 
@@ -65,7 +66,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[WorkflowGroupList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[WorkflowGroupList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -77,30 +80,30 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterexpanded: bool | Unset = UNSET,
-    filterposition: int | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterexpanded: Union[Unset, bool] = UNSET,
+    filterposition: Union[Unset, int] = UNSET,
 ) -> Response[WorkflowGroupList]:
     """List workflow groups
 
      List workflow groups
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filterkind (str | Unset):
-        filterexpanded (bool | Unset):
-        filterposition (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filterkind (Union[Unset, str]):
+        filterexpanded (Union[Unset, bool]):
+        filterposition (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,30 +135,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterexpanded: bool | Unset = UNSET,
-    filterposition: int | Unset = UNSET,
-) -> WorkflowGroupList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterexpanded: Union[Unset, bool] = UNSET,
+    filterposition: Union[Unset, int] = UNSET,
+) -> Optional[WorkflowGroupList]:
     """List workflow groups
 
      List workflow groups
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filterkind (str | Unset):
-        filterexpanded (bool | Unset):
-        filterposition (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filterkind (Union[Unset, str]):
+        filterexpanded (Union[Unset, bool]):
+        filterposition (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,30 +185,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterexpanded: bool | Unset = UNSET,
-    filterposition: int | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterexpanded: Union[Unset, bool] = UNSET,
+    filterposition: Union[Unset, int] = UNSET,
 ) -> Response[WorkflowGroupList]:
     """List workflow groups
 
      List workflow groups
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filterkind (str | Unset):
-        filterexpanded (bool | Unset):
-        filterposition (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filterkind (Union[Unset, str]):
+        filterexpanded (Union[Unset, bool]):
+        filterposition (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -235,30 +238,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filterkind: str | Unset = UNSET,
-    filterexpanded: bool | Unset = UNSET,
-    filterposition: int | Unset = UNSET,
-) -> WorkflowGroupList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filterkind: Union[Unset, str] = UNSET,
+    filterexpanded: Union[Unset, bool] = UNSET,
+    filterposition: Union[Unset, int] = UNSET,
+) -> Optional[WorkflowGroupList]:
     """List workflow groups
 
      List workflow groups
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filterkind (str | Unset):
-        filterexpanded (bool | Unset):
-        filterposition (int | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filterkind (Union[Unset, str]):
+        filterexpanded (Union[Unset, bool]):
+        filterposition (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

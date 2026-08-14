@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -12,19 +12,18 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtercommand: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtercommand: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -61,8 +60,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CustomFormList | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[CustomFormList, ErrorsList]]:
     if response.status_code == 200:
         response_200 = CustomFormList.from_dict(response.json())
 
@@ -80,8 +79,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CustomFormList | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[CustomFormList, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -93,41 +92,41 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtercommand: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> Response[CustomFormList | ErrorsList]:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtercommand: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Response[Union[CustomFormList, ErrorsList]]:
     """List custom forms
 
      List custom forms
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filtercommand (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtercommand (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CustomFormList | ErrorsList]
+        Response[Union[CustomFormList, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -154,41 +153,41 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtercommand: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> CustomFormList | ErrorsList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtercommand: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[Union[CustomFormList, ErrorsList]]:
     """List custom forms
 
      List custom forms
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filtercommand (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtercommand (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CustomFormList | ErrorsList
+        Union[CustomFormList, ErrorsList]
     """
 
     return sync_detailed(
@@ -210,41 +209,41 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtercommand: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> Response[CustomFormList | ErrorsList]:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtercommand: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Response[Union[CustomFormList, ErrorsList]]:
     """List custom forms
 
      List custom forms
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filtercommand (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtercommand (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CustomFormList | ErrorsList]
+        Response[Union[CustomFormList, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -269,41 +268,41 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtercommand: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> CustomFormList | ErrorsList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtercommand: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[Union[CustomFormList, ErrorsList]]:
     """List custom forms
 
      List custom forms
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filtercommand (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtercommand (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CustomFormList | ErrorsList
+        Union[CustomFormList, ErrorsList]
     """
 
     return (

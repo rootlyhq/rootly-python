@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ApiKeyWithTokenResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     if response.status_code == 201:
         response_201 = ApiKeyWithTokenResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
+) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -93,7 +93,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyWithTokenResponse | ErrorsList]
+        Response[Union[ApiKeyWithTokenResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -111,7 +111,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> ApiKeyWithTokenResponse | ErrorsList | None:
+) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -135,7 +135,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyWithTokenResponse | ErrorsList
+        Union[ApiKeyWithTokenResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -148,7 +148,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> Response[ApiKeyWithTokenResponse | ErrorsList]:
+) -> Response[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -172,7 +172,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyWithTokenResponse | ErrorsList]
+        Response[Union[ApiKeyWithTokenResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -188,7 +188,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewApiKey,
-) -> ApiKeyWithTokenResponse | ErrorsList | None:
+) -> Optional[Union[ApiKeyWithTokenResponse, ErrorsList]]:
     """Creates an API key
 
      Creates a new API key and returns it with the plaintext token. **The token is only returned once** —
@@ -212,7 +212,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyWithTokenResponse | ErrorsList
+        Union[ApiKeyWithTokenResponse, ErrorsList]
     """
 
     return (

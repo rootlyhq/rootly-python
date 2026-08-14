@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,29 +19,29 @@ T = TypeVar("T", bound="CatalogEntityChecklistChecklistFieldsType0ItemDataAttrib
 class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
     """
     Attributes:
-        catalog_entity_checklist_id (str | Unset): The ID of the parent checklist
-        catalog_checklist_template_field_id (None | str | Unset): The ID of the template field
-        field_key (str | Unset): The field key
-        checked (bool | Unset): Whether the field is checked
-        value_snapshot (CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0 | None | Unset):
-            The value snapshot at time of checking
-        completed_by_user_id (None | str | Unset): The ID of the user who checked the field
-        completed_at (None | str | Unset): When the field was checked
-        created_at (str | Unset): Date of creation
-        updated_at (str | Unset): Date of last update
+        catalog_entity_checklist_id (Union[Unset, str]): The ID of the parent checklist
+        catalog_checklist_template_field_id (Union[None, Unset, str]): The ID of the template field
+        field_key (Union[Unset, str]): The field key
+        checked (Union[Unset, bool]): Whether the field is checked
+        value_snapshot (Union['CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0', None,
+            Unset]): The value snapshot at time of checking
+        completed_by_user_id (Union[None, Unset, str]): The ID of the user who checked the field
+        completed_at (Union[None, Unset, str]): When the field was checked
+        created_at (Union[Unset, str]): Date of creation
+        updated_at (Union[Unset, str]): Date of last update
     """
 
-    catalog_entity_checklist_id: str | Unset = UNSET
-    catalog_checklist_template_field_id: None | str | Unset = UNSET
-    field_key: str | Unset = UNSET
-    checked: bool | Unset = UNSET
-    value_snapshot: CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0 | None | Unset = (
-        UNSET
-    )
-    completed_by_user_id: None | str | Unset = UNSET
-    completed_at: None | str | Unset = UNSET
-    created_at: str | Unset = UNSET
-    updated_at: str | Unset = UNSET
+    catalog_entity_checklist_id: Union[Unset, str] = UNSET
+    catalog_checklist_template_field_id: Union[None, Unset, str] = UNSET
+    field_key: Union[Unset, str] = UNSET
+    checked: Union[Unset, bool] = UNSET
+    value_snapshot: Union[
+        "CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0", None, Unset
+    ] = UNSET
+    completed_by_user_id: Union[None, Unset, str] = UNSET
+    completed_at: Union[None, Unset, str] = UNSET
+    created_at: Union[Unset, str] = UNSET
+    updated_at: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,7 +51,7 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
 
         catalog_entity_checklist_id = self.catalog_entity_checklist_id
 
-        catalog_checklist_template_field_id: None | str | Unset
+        catalog_checklist_template_field_id: Union[None, Unset, str]
         if isinstance(self.catalog_checklist_template_field_id, Unset):
             catalog_checklist_template_field_id = UNSET
         else:
@@ -63,7 +61,7 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
 
         checked = self.checked
 
-        value_snapshot: dict[str, Any] | None | Unset
+        value_snapshot: Union[None, Unset, dict[str, Any]]
         if isinstance(self.value_snapshot, Unset):
             value_snapshot = UNSET
         elif isinstance(
@@ -73,13 +71,13 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
         else:
             value_snapshot = self.value_snapshot
 
-        completed_by_user_id: None | str | Unset
+        completed_by_user_id: Union[None, Unset, str]
         if isinstance(self.completed_by_user_id, Unset):
             completed_by_user_id = UNSET
         else:
             completed_by_user_id = self.completed_by_user_id
 
-        completed_at: None | str | Unset
+        completed_at: Union[None, Unset, str]
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
         else:
@@ -122,12 +120,12 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
         d = dict(src_dict)
         catalog_entity_checklist_id = d.pop("catalog_entity_checklist_id", UNSET)
 
-        def _parse_catalog_checklist_template_field_id(data: object) -> None | str | Unset:
+        def _parse_catalog_checklist_template_field_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         catalog_checklist_template_field_id = _parse_catalog_checklist_template_field_id(
             d.pop("catalog_checklist_template_field_id", UNSET)
@@ -139,7 +137,7 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
 
         def _parse_value_snapshot(
             data: object,
-        ) -> CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0 | None | Unset:
+        ) -> Union["CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -152,29 +150,30 @@ class CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes:
                 )
 
                 return value_snapshot_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             return cast(
-                CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0 | None | Unset, data
+                Union["CatalogEntityChecklistChecklistFieldsType0ItemDataAttributesValueSnapshotType0", None, Unset],
+                data,
             )
 
         value_snapshot = _parse_value_snapshot(d.pop("value_snapshot", UNSET))
 
-        def _parse_completed_by_user_id(data: object) -> None | str | Unset:
+        def _parse_completed_by_user_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         completed_by_user_id = _parse_completed_by_user_id(d.pop("completed_by_user_id", UNSET))
 
-        def _parse_completed_at(data: object) -> None | str | Unset:
+        def _parse_completed_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CommunicationsTypeResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[CommunicationsTypeResponse, ErrorsList]]:
     if response.status_code == 201:
         response_201 = CommunicationsTypeResponse.from_dict(response.json())
 
@@ -50,8 +50,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CommunicationsTypeResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[CommunicationsTypeResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,7 +64,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsType,
-) -> Response[CommunicationsTypeResponse | ErrorsList]:
+) -> Response[Union[CommunicationsTypeResponse, ErrorsList]]:
     """Creates a communications type
 
      Creates a new communications type from provided data
@@ -77,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CommunicationsTypeResponse | ErrorsList]
+        Response[Union[CommunicationsTypeResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +95,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsType,
-) -> CommunicationsTypeResponse | ErrorsList | None:
+) -> Optional[Union[CommunicationsTypeResponse, ErrorsList]]:
     """Creates a communications type
 
      Creates a new communications type from provided data
@@ -108,7 +108,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CommunicationsTypeResponse | ErrorsList
+        Union[CommunicationsTypeResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -121,7 +121,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsType,
-) -> Response[CommunicationsTypeResponse | ErrorsList]:
+) -> Response[Union[CommunicationsTypeResponse, ErrorsList]]:
     """Creates a communications type
 
      Creates a new communications type from provided data
@@ -134,7 +134,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CommunicationsTypeResponse | ErrorsList]
+        Response[Union[CommunicationsTypeResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -150,7 +150,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCommunicationsType,
-) -> CommunicationsTypeResponse | ErrorsList | None:
+) -> Optional[Union[CommunicationsTypeResponse, ErrorsList]]:
     """Creates a communications type
 
      Creates a new communications type from provided data
@@ -163,7 +163,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CommunicationsTypeResponse | ErrorsList
+        Union[CommunicationsTypeResponse, ErrorsList]
     """
 
     return (

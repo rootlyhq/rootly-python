@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,35 +21,34 @@ T = TypeVar("T", bound="UpdateEdgeConnectorBodyDataAttributes")
 class UpdateEdgeConnectorBodyDataAttributes:
     """
     Attributes:
-        name (str | Unset):
-        description (str | Unset):
-        status (UpdateEdgeConnectorBodyDataAttributesStatus | Unset):
-        subscriptions (list[str] | Unset):
-        filters (UpdateEdgeConnectorBodyDataAttributesFilters | Unset): Event filters
+        name (Union[Unset, str]):
+        description (Union[Unset, str]):
+        status (Union[Unset, UpdateEdgeConnectorBodyDataAttributesStatus]):
+        subscriptions (Union[Unset, list[str]]):
+        filters (Union[Unset, UpdateEdgeConnectorBodyDataAttributesFilters]): Event filters
     """
 
-    name: str | Unset = UNSET
-    description: str | Unset = UNSET
-    status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset = UNSET
-    subscriptions: list[str] | Unset = UNSET
-    filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset = UNSET
+    name: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    status: Union[Unset, UpdateEdgeConnectorBodyDataAttributesStatus] = UNSET
+    subscriptions: Union[Unset, list[str]] = UNSET
+    filters: Union[Unset, "UpdateEdgeConnectorBodyDataAttributesFilters"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         description = self.description
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: list[str] | Unset = UNSET
+        subscriptions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
-        filters: dict[str, Any] | Unset = UNSET
+        filters: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
@@ -83,7 +80,7 @@ class UpdateEdgeConnectorBodyDataAttributes:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset
+        status: Union[Unset, UpdateEdgeConnectorBodyDataAttributesStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -92,7 +89,7 @@ class UpdateEdgeConnectorBodyDataAttributes:
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
         _filters = d.pop("filters", UNSET)
-        filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset
+        filters: Union[Unset, UpdateEdgeConnectorBodyDataAttributesFilters]
         if isinstance(_filters, Unset):
             filters = UNSET
         else:

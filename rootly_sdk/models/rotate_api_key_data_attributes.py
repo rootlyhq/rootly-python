@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from dateutil.parser import isoparse
@@ -16,16 +14,16 @@ T = TypeVar("T", bound="RotateApiKeyDataAttributes")
 class RotateApiKeyDataAttributes:
     """
     Attributes:
-        expires_at (datetime.datetime | None | Unset): The new expiration date after rotation (ISO 8601)
-        grace_period_minutes (int | Unset): How many minutes to keep the old token valid. Only applies when the grace
-            period feature is enabled for your organization. Defaults to 30. Default: 30.
+        expires_at (Union[None, Unset, datetime.datetime]): The new expiration date after rotation (ISO 8601)
+        grace_period_minutes (Union[Unset, int]): How many minutes to keep the old token valid. Only applies when the
+            grace period feature is enabled for your organization. Defaults to 30. Default: 30.
     """
 
-    expires_at: datetime.datetime | None | Unset = UNSET
-    grace_period_minutes: int | Unset = 30
+    expires_at: Union[None, Unset, datetime.datetime] = UNSET
+    grace_period_minutes: Union[Unset, int] = 30
 
     def to_dict(self) -> dict[str, Any]:
-        expires_at: None | str | Unset
+        expires_at: Union[None, Unset, str]
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         elif isinstance(self.expires_at, datetime.datetime):
@@ -49,7 +47,7 @@ class RotateApiKeyDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_expires_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -60,9 +58,9 @@ class RotateApiKeyDataAttributes:
                 expires_at_type_0 = isoparse(data)
 
                 return expires_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 

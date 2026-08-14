@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -13,18 +12,17 @@ from ...types import Response
 def _get_kwargs(
     heartbeat_id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/heartbeats/{heartbeat_id}/ping".format(
-            heartbeat_id=quote(str(heartbeat_id), safe=""),
-        ),
+        "url": f"/v1/heartbeats/{heartbeat_id}/ping",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | ErrorsList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, ErrorsList]]:
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
@@ -40,7 +38,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any | ErrorsList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +53,7 @@ def sync_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorsList]:
+) -> Response[Union[Any, ErrorsList]]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -66,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
+        Response[Union[Any, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -84,7 +84,7 @@ def sync(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorsList | None:
+) -> Optional[Union[Any, ErrorsList]]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -97,7 +97,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
+        Union[Any, ErrorsList]
     """
 
     return sync_detailed(
@@ -110,7 +110,7 @@ async def asyncio_detailed(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | ErrorsList]:
+) -> Response[Union[Any, ErrorsList]]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -123,7 +123,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | ErrorsList]
+        Response[Union[Any, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +139,7 @@ async def asyncio(
     heartbeat_id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | ErrorsList | None:
+) -> Optional[Union[Any, ErrorsList]]:
     """Ping a heartbeat
 
      Ping a specific heartbeat by id
@@ -152,7 +152,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | ErrorsList
+        Union[Any, ErrorsList]
     """
 
     return (

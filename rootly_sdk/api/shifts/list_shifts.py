@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -13,18 +13,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: ListShiftsInclude | Unset = UNSET,
-    from_: str | Unset = UNSET,
-    to: str | Unset = UNSET,
-    user_ids: list[int] | Unset = UNSET,
-    schedule_ids: list[str] | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
+    include: Union[Unset, ListShiftsInclude] = UNSET,
+    from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
+    user_ids: Union[Unset, list[int]] = UNSET,
+    schedule_ids: Union[Unset, list[str]] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -34,13 +33,13 @@ def _get_kwargs(
 
     params["to"] = to
 
-    json_user_ids: list[int] | Unset = UNSET
+    json_user_ids: Union[Unset, list[int]] = UNSET
     if not isinstance(user_ids, Unset):
         json_user_ids = user_ids
 
     params["user_ids[]"] = json_user_ids
 
-    json_schedule_ids: list[str] | Unset = UNSET
+    json_schedule_ids: Union[Unset, list[str]] = UNSET
     if not isinstance(schedule_ids, Unset):
         json_schedule_ids = schedule_ids
 
@@ -61,7 +60,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorsList | ShiftList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, ShiftList]]:
     if response.status_code == 200:
         response_200 = ShiftList.from_dict(response.json())
 
@@ -79,8 +80,8 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | ShiftList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, ShiftList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,33 +93,33 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListShiftsInclude | Unset = UNSET,
-    from_: str | Unset = UNSET,
-    to: str | Unset = UNSET,
-    user_ids: list[int] | Unset = UNSET,
-    schedule_ids: list[str] | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[ErrorsList | ShiftList]:
+    include: Union[Unset, ListShiftsInclude] = UNSET,
+    from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
+    user_ids: Union[Unset, list[int]] = UNSET,
+    schedule_ids: Union[Unset, list[str]] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Response[Union[ErrorsList, ShiftList]]:
     """List shifts
 
      List shifts
 
     Args:
-        include (ListShiftsInclude | Unset):
-        from_ (str | Unset):
-        to (str | Unset):
-        user_ids (list[int] | Unset):
-        schedule_ids (list[str] | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListShiftsInclude]):
+        from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
+        user_ids (Union[Unset, list[int]]):
+        schedule_ids (Union[Unset, list[str]]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftList]
+        Response[Union[ErrorsList, ShiftList]]
     """
 
     kwargs = _get_kwargs(
@@ -141,33 +142,33 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: ListShiftsInclude | Unset = UNSET,
-    from_: str | Unset = UNSET,
-    to: str | Unset = UNSET,
-    user_ids: list[int] | Unset = UNSET,
-    schedule_ids: list[str] | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> ErrorsList | ShiftList | None:
+    include: Union[Unset, ListShiftsInclude] = UNSET,
+    from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
+    user_ids: Union[Unset, list[int]] = UNSET,
+    schedule_ids: Union[Unset, list[str]] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[Union[ErrorsList, ShiftList]]:
     """List shifts
 
      List shifts
 
     Args:
-        include (ListShiftsInclude | Unset):
-        from_ (str | Unset):
-        to (str | Unset):
-        user_ids (list[int] | Unset):
-        schedule_ids (list[str] | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListShiftsInclude]):
+        from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
+        user_ids (Union[Unset, list[int]]):
+        schedule_ids (Union[Unset, list[str]]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftList
+        Union[ErrorsList, ShiftList]
     """
 
     return sync_detailed(
@@ -185,33 +186,33 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: ListShiftsInclude | Unset = UNSET,
-    from_: str | Unset = UNSET,
-    to: str | Unset = UNSET,
-    user_ids: list[int] | Unset = UNSET,
-    schedule_ids: list[str] | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> Response[ErrorsList | ShiftList]:
+    include: Union[Unset, ListShiftsInclude] = UNSET,
+    from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
+    user_ids: Union[Unset, list[int]] = UNSET,
+    schedule_ids: Union[Unset, list[str]] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Response[Union[ErrorsList, ShiftList]]:
     """List shifts
 
      List shifts
 
     Args:
-        include (ListShiftsInclude | Unset):
-        from_ (str | Unset):
-        to (str | Unset):
-        user_ids (list[int] | Unset):
-        schedule_ids (list[str] | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListShiftsInclude]):
+        from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
+        user_ids (Union[Unset, list[int]]):
+        schedule_ids (Union[Unset, list[str]]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | ShiftList]
+        Response[Union[ErrorsList, ShiftList]]
     """
 
     kwargs = _get_kwargs(
@@ -232,33 +233,33 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: ListShiftsInclude | Unset = UNSET,
-    from_: str | Unset = UNSET,
-    to: str | Unset = UNSET,
-    user_ids: list[int] | Unset = UNSET,
-    schedule_ids: list[str] | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-) -> ErrorsList | ShiftList | None:
+    include: Union[Unset, ListShiftsInclude] = UNSET,
+    from_: Union[Unset, str] = UNSET,
+    to: Union[Unset, str] = UNSET,
+    user_ids: Union[Unset, list[int]] = UNSET,
+    schedule_ids: Union[Unset, list[str]] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+) -> Optional[Union[ErrorsList, ShiftList]]:
     """List shifts
 
      List shifts
 
     Args:
-        include (ListShiftsInclude | Unset):
-        from_ (str | Unset):
-        to (str | Unset):
-        user_ids (list[int] | Unset):
-        schedule_ids (list[str] | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
+        include (Union[Unset, ListShiftsInclude]):
+        from_ (Union[Unset, str]):
+        to (Union[Unset, str]):
+        user_ids (Union[Unset, list[int]]):
+        schedule_ids (Union[Unset, list[str]]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | ShiftList
+        Union[ErrorsList, ShiftList]
     """
 
     return (

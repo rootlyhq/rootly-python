@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,18 +17,18 @@ T = TypeVar("T", bound="ShiftRelationshipsShiftOverrideDataType0")
 class ShiftRelationshipsShiftOverrideDataType0:
     """
     Attributes:
-        id (str | Unset):
-        type_ (ShiftRelationshipsShiftOverrideDataType0Type | Unset):
+        id (Union[Unset, str]):
+        type_ (Union[Unset, ShiftRelationshipsShiftOverrideDataType0Type]):
     """
 
-    id: str | Unset = UNSET
-    type_: ShiftRelationshipsShiftOverrideDataType0Type | Unset = UNSET
+    id: Union[Unset, str] = UNSET
+    type_: Union[Unset, ShiftRelationshipsShiftOverrideDataType0Type] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: str | Unset = UNSET
+        type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -50,7 +48,7 @@ class ShiftRelationshipsShiftOverrideDataType0:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: ShiftRelationshipsShiftOverrideDataType0Type | Unset
+        type_: Union[Unset, ShiftRelationshipsShiftOverrideDataType0Type]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

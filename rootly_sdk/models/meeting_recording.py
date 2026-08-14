@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,17 +23,17 @@ class MeetingRecording:
         status (MeetingRecordingStatus): Current recording lifecycle status
         created_at (datetime.datetime): When the recording session was created
         updated_at (datetime.datetime): When the recording session was last updated
-        started_at (datetime.datetime | None | Unset): When the bot started recording (null if bot never joined)
-        ended_at (datetime.datetime | None | Unset): When the recording ended
-        duration_minutes (float | None | Unset): Recording duration in minutes (null if not started)
-        speaker_count (int | Unset): Number of unique speakers detected in the transcript
-        word_count (int | Unset): Total word count across all transcript segments
-        transcript_summary (None | str | Unset): AI-generated summary of the meeting transcript (null if no transcript
-            or not yet analyzed)
-        title (None | str | Unset): Human-readable label for the recording session
-        meeting_url (None | str | Unset): Original meeting URL
-        video_url (None | str | Unset): Signed URL to stream/download the video recording
-        created_by (None | str | Unset): Source that created the recording (e.g. desktop_sdk, recall_bot)
+        started_at (Union[None, Unset, datetime.datetime]): When the bot started recording (null if bot never joined)
+        ended_at (Union[None, Unset, datetime.datetime]): When the recording ended
+        duration_minutes (Union[None, Unset, float]): Recording duration in minutes (null if not started)
+        speaker_count (Union[Unset, int]): Number of unique speakers detected in the transcript
+        word_count (Union[Unset, int]): Total word count across all transcript segments
+        transcript_summary (Union[None, Unset, str]): AI-generated summary of the meeting transcript (null if no
+            transcript or not yet analyzed)
+        title (Union[None, Unset, str]): Human-readable label for the recording session
+        meeting_url (Union[None, Unset, str]): Original meeting URL
+        video_url (Union[None, Unset, str]): Signed URL to stream/download the video recording
+        created_by (Union[None, Unset, str]): Source that created the recording (e.g. desktop_sdk, recall_bot)
     """
 
     platform: MeetingRecordingPlatform
@@ -43,16 +41,16 @@ class MeetingRecording:
     status: MeetingRecordingStatus
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    started_at: datetime.datetime | None | Unset = UNSET
-    ended_at: datetime.datetime | None | Unset = UNSET
-    duration_minutes: float | None | Unset = UNSET
-    speaker_count: int | Unset = UNSET
-    word_count: int | Unset = UNSET
-    transcript_summary: None | str | Unset = UNSET
-    title: None | str | Unset = UNSET
-    meeting_url: None | str | Unset = UNSET
-    video_url: None | str | Unset = UNSET
-    created_by: None | str | Unset = UNSET
+    started_at: Union[None, Unset, datetime.datetime] = UNSET
+    ended_at: Union[None, Unset, datetime.datetime] = UNSET
+    duration_minutes: Union[None, Unset, float] = UNSET
+    speaker_count: Union[Unset, int] = UNSET
+    word_count: Union[Unset, int] = UNSET
+    transcript_summary: Union[None, Unset, str] = UNSET
+    title: Union[None, Unset, str] = UNSET
+    meeting_url: Union[None, Unset, str] = UNSET
+    video_url: Union[None, Unset, str] = UNSET
+    created_by: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,7 +64,7 @@ class MeetingRecording:
 
         updated_at = self.updated_at.isoformat()
 
-        started_at: None | str | Unset
+        started_at: Union[None, Unset, str]
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -74,7 +72,7 @@ class MeetingRecording:
         else:
             started_at = self.started_at
 
-        ended_at: None | str | Unset
+        ended_at: Union[None, Unset, str]
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
@@ -82,7 +80,7 @@ class MeetingRecording:
         else:
             ended_at = self.ended_at
 
-        duration_minutes: float | None | Unset
+        duration_minutes: Union[None, Unset, float]
         if isinstance(self.duration_minutes, Unset):
             duration_minutes = UNSET
         else:
@@ -92,31 +90,31 @@ class MeetingRecording:
 
         word_count = self.word_count
 
-        transcript_summary: None | str | Unset
+        transcript_summary: Union[None, Unset, str]
         if isinstance(self.transcript_summary, Unset):
             transcript_summary = UNSET
         else:
             transcript_summary = self.transcript_summary
 
-        title: None | str | Unset
+        title: Union[None, Unset, str]
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        meeting_url: None | str | Unset
+        meeting_url: Union[None, Unset, str]
         if isinstance(self.meeting_url, Unset):
             meeting_url = UNSET
         else:
             meeting_url = self.meeting_url
 
-        video_url: None | str | Unset
+        video_url: Union[None, Unset, str]
         if isinstance(self.video_url, Unset):
             video_url = UNSET
         else:
             video_url = self.video_url
 
-        created_by: None | str | Unset
+        created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
             created_by = UNSET
         else:
@@ -169,7 +167,7 @@ class MeetingRecording:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_started_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -180,13 +178,13 @@ class MeetingRecording:
                 started_at_type_0 = isoparse(data)
 
                 return started_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_ended_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -197,18 +195,18 @@ class MeetingRecording:
                 ended_at_type_0 = isoparse(data)
 
                 return ended_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
 
-        def _parse_duration_minutes(data: object) -> float | None | Unset:
+        def _parse_duration_minutes(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(float | None | Unset, data)
+            return cast(Union[None, Unset, float], data)
 
         duration_minutes = _parse_duration_minutes(d.pop("duration_minutes", UNSET))
 
@@ -216,48 +214,48 @@ class MeetingRecording:
 
         word_count = d.pop("word_count", UNSET)
 
-        def _parse_transcript_summary(data: object) -> None | str | Unset:
+        def _parse_transcript_summary(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         transcript_summary = _parse_transcript_summary(d.pop("transcript_summary", UNSET))
 
-        def _parse_title(data: object) -> None | str | Unset:
+        def _parse_title(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_meeting_url(data: object) -> None | str | Unset:
+        def _parse_meeting_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         meeting_url = _parse_meeting_url(d.pop("meeting_url", UNSET))
 
-        def _parse_video_url(data: object) -> None | str | Unset:
+        def _parse_video_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         video_url = _parse_video_url(d.pop("video_url", UNSET))
 
-        def _parse_created_by(data: object) -> None | str | Unset:
+        def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         created_by = _parse_created_by(d.pop("created_by", UNSET))
 

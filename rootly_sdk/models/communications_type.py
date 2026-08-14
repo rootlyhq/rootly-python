@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,27 +14,27 @@ class CommunicationsType:
     """
     Attributes:
         name (str): The name of the communications type
-        color (None | str): The color of the communications type
+        color (Union[None, str]): The color of the communications type
         position (int): Position of the communications type
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the communications type
-        description (None | str | Unset): The description of the communications type
+        slug (Union[Unset, str]): The slug of the communications type
+        description (Union[None, Unset, str]): The description of the communications type
     """
 
     name: str
-    color: None | str
+    color: Union[None, str]
     position: int
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
-    description: None | str | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        color: None | str
+        color: Union[None, str]
         color = self.color
 
         position = self.position
@@ -47,7 +45,7 @@ class CommunicationsType:
 
         slug = self.slug
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -76,10 +74,10 @@ class CommunicationsType:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_color(data: object) -> None | str:
+        def _parse_color(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(None | str, data)
+            return cast(Union[None, str], data)
 
         color = _parse_color(d.pop("color"))
 
@@ -91,12 +89,12 @@ class CommunicationsType:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 

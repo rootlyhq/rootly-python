@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,36 +18,36 @@ class CreateIncidentTaskParams:
     """
     Attributes:
         title (str): The incident title
-        task_type (CreateIncidentTaskParamsTaskType | Unset):
-        summary (str | Unset): The incident summary
-        severity_id (str | Unset):
-        incident_type_ids (list[str] | Unset):
-        service_ids (list[str] | Unset): Array of service UUIDs
-        functionality_ids (list[str] | Unset): Array of functionality UUIDs
-        environment_ids (list[str] | Unset):
-        group_ids (list[str] | Unset): Array of group/team UUIDs
-        private (bool | Unset):
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, CreateIncidentTaskParamsTaskType]):
+        summary (Union[Unset, str]): The incident summary
+        severity_id (Union[Unset, str]):
+        incident_type_ids (Union[Unset, list[str]]):
+        service_ids (Union[Unset, list[str]]): Array of service UUIDs
+        functionality_ids (Union[Unset, list[str]]): Array of functionality UUIDs
+        environment_ids (Union[Unset, list[str]]):
+        group_ids (Union[Unset, list[str]]): Array of group/team UUIDs
+        private (Union[Unset, bool]):
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
     """
 
     title: str
-    task_type: CreateIncidentTaskParamsTaskType | Unset = UNSET
-    summary: str | Unset = UNSET
-    severity_id: str | Unset = UNSET
-    incident_type_ids: list[str] | Unset = UNSET
-    service_ids: list[str] | Unset = UNSET
-    functionality_ids: list[str] | Unset = UNSET
-    environment_ids: list[str] | Unset = UNSET
-    group_ids: list[str] | Unset = UNSET
-    private: bool | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
+    task_type: Union[Unset, CreateIncidentTaskParamsTaskType] = UNSET
+    summary: Union[Unset, str] = UNSET
+    severity_id: Union[Unset, str] = UNSET
+    incident_type_ids: Union[Unset, list[str]] = UNSET
+    service_ids: Union[Unset, list[str]] = UNSET
+    functionality_ids: Union[Unset, list[str]] = UNSET
+    environment_ids: Union[Unset, list[str]] = UNSET
+    group_ids: Union[Unset, list[str]] = UNSET
+    private: Union[Unset, bool] = UNSET
+    custom_fields_mapping: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -57,29 +55,29 @@ class CreateIncidentTaskParams:
 
         severity_id = self.severity_id
 
-        incident_type_ids: list[str] | Unset = UNSET
+        incident_type_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.incident_type_ids, Unset):
             incident_type_ids = self.incident_type_ids
 
-        service_ids: list[str] | Unset = UNSET
+        service_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        functionality_ids: list[str] | Unset = UNSET
+        functionality_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.functionality_ids, Unset):
             functionality_ids = self.functionality_ids
 
-        environment_ids: list[str] | Unset = UNSET
+        environment_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        group_ids: list[str] | Unset = UNSET
+        group_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
         private = self.private
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: Union[None, Unset, str]
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -121,7 +119,7 @@ class CreateIncidentTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -143,12 +141,12 @@ class CreateIncidentTaskParams:
 
         private = d.pop("private", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

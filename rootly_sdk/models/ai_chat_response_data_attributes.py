@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -21,25 +19,25 @@ class AiChatResponseDataAttributes:
     """
     Attributes:
         session_id (UUID): AI chat session UUID
-        reply (None | str | Unset): Assistant reply text
-        status (AiChatResponseDataAttributesStatus | Unset): Response status (present when user input is required)
+        reply (Union[None, Unset, str]): Assistant reply text
+        status (Union[Unset, AiChatResponseDataAttributesStatus]): Response status (present when user input is required)
     """
 
     session_id: UUID
-    reply: None | str | Unset = UNSET
-    status: AiChatResponseDataAttributesStatus | Unset = UNSET
+    reply: Union[None, Unset, str] = UNSET
+    status: Union[Unset, AiChatResponseDataAttributesStatus] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         session_id = str(self.session_id)
 
-        reply: None | str | Unset
+        reply: Union[None, Unset, str]
         if isinstance(self.reply, Unset):
             reply = UNSET
         else:
             reply = self.reply
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -62,17 +60,17 @@ class AiChatResponseDataAttributes:
         d = dict(src_dict)
         session_id = UUID(d.pop("session_id"))
 
-        def _parse_reply(data: object) -> None | str | Unset:
+        def _parse_reply(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         reply = _parse_reply(d.pop("reply", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: AiChatResponseDataAttributesStatus | Unset
+        status: Union[Unset, AiChatResponseDataAttributesStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,28 +13,28 @@ T = TypeVar("T", bound="BulkDestroyCatalogEntitiesResponseData")
 class BulkDestroyCatalogEntitiesResponseData:
     """
     Attributes:
-        deleted_external_ids (list[str] | Unset): External IDs that were successfully deleted
-        failed_external_ids (list[str] | Unset): External IDs whose deletion the record itself blocked (e.g. minimum-one
-            guard, restrict associations). Records the caller is not authorized to destroy are NOT listed here.
-        not_found_external_ids (list[str] | Unset): External IDs that were not found or not accessible to the caller
-            (external_ids mode only)
+        deleted_external_ids (Union[Unset, list[str]]): External IDs that were successfully deleted
+        failed_external_ids (Union[Unset, list[str]]): External IDs whose deletion the record itself blocked (e.g.
+            minimum-one guard, restrict associations). Records the caller is not authorized to destroy are NOT listed here.
+        not_found_external_ids (Union[Unset, list[str]]): External IDs that were not found or not accessible to the
+            caller (external_ids mode only)
     """
 
-    deleted_external_ids: list[str] | Unset = UNSET
-    failed_external_ids: list[str] | Unset = UNSET
-    not_found_external_ids: list[str] | Unset = UNSET
+    deleted_external_ids: Union[Unset, list[str]] = UNSET
+    failed_external_ids: Union[Unset, list[str]] = UNSET
+    not_found_external_ids: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        deleted_external_ids: list[str] | Unset = UNSET
+        deleted_external_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.deleted_external_ids, Unset):
             deleted_external_ids = self.deleted_external_ids
 
-        failed_external_ids: list[str] | Unset = UNSET
+        failed_external_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.failed_external_ids, Unset):
             failed_external_ids = self.failed_external_ids
 
-        not_found_external_ids: list[str] | Unset = UNSET
+        not_found_external_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.not_found_external_ids, Unset):
             not_found_external_ids = self.not_found_external_ids
 

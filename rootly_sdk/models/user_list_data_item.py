@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -24,24 +22,23 @@ class UserListDataItem:
         id (str): Unique ID of the user
         type_ (UserListDataItemType):
         attributes (User):
-        relationships (UserRelationships | Unset):
+        relationships (Union[Unset, UserRelationships]):
     """
 
     id: str
     type_: UserListDataItemType
-    attributes: User
-    relationships: UserRelationships | Unset = UNSET
+    attributes: "User"
+    relationships: Union[Unset, "UserRelationships"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()
 
-        relationships: dict[str, Any] | Unset = UNSET
+        relationships: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -72,7 +69,7 @@ class UserListDataItem:
         attributes = User.from_dict(d.pop("attributes"))
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: UserRelationships | Unset
+        relationships: Union[Unset, UserRelationships]
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,25 +23,24 @@ T = TypeVar("T", bound="CatalogEntityChecklistChecklistFieldsType0ItemData")
 class CatalogEntityChecklistChecklistFieldsType0ItemData:
     """
     Attributes:
-        id (str | Unset): ID of the checklist field
-        type_ (CatalogEntityChecklistChecklistFieldsType0ItemDataType | Unset):
-        attributes (CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes | Unset):
+        id (Union[Unset, str]): ID of the checklist field
+        type_ (Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemDataType]):
+        attributes (Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes]):
     """
 
-    id: str | Unset = UNSET
-    type_: CatalogEntityChecklistChecklistFieldsType0ItemDataType | Unset = UNSET
-    attributes: CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes | Unset = UNSET
+    id: Union[Unset, str] = UNSET
+    type_: Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemDataType] = UNSET
+    attributes: Union[Unset, "CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
-        type_: str | Unset = UNSET
+        type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -69,14 +66,14 @@ class CatalogEntityChecklistChecklistFieldsType0ItemData:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: CatalogEntityChecklistChecklistFieldsType0ItemDataType | Unset
+        type_: Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemDataType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_catalog_entity_checklist_checklist_fields_type_0_item_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes | Unset
+        attributes: Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemDataAttributes]
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,16 +20,15 @@ class AlertFieldResponseData:
     Attributes:
         type_ (AlertFieldResponseDataType):
         attributes (AlertField):
-        id (str | Unset): The ID of the alert field
+        id (Union[Unset, str]): The ID of the alert field
     """
 
     type_: AlertFieldResponseDataType
-    attributes: AlertField
-    id: str | Unset = UNSET
+    attributes: "AlertField"
+    id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()

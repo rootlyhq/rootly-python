@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -14,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     body: UpdateAlertGroup,
 ) -> dict[str, Any]:
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
-        "url": "/v1/alert_groups/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/alert_groups/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -36,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertGroupResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     if response.status_code == 200:
         response_200 = AlertGroupResponse.from_dict(response.json())
 
@@ -55,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertGroupResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,11 +63,11 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Response[AlertGroupResponse | ErrorsList]:
+) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -78,7 +75,7 @@ def sync_detailed(
     `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateAlertGroup):
 
     Raises:
@@ -86,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertGroupResponse | ErrorsList]
+        Response[Union[AlertGroupResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -102,11 +99,11 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> AlertGroupResponse | ErrorsList | None:
+) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -114,7 +111,7 @@ def sync(
     `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateAlertGroup):
 
     Raises:
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertGroupResponse | ErrorsList
+        Union[AlertGroupResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -133,11 +130,11 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> Response[AlertGroupResponse | ErrorsList]:
+) -> Response[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -145,7 +142,7 @@ async def asyncio_detailed(
     `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateAlertGroup):
 
     Raises:
@@ -153,7 +150,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertGroupResponse | ErrorsList]
+        Response[Union[AlertGroupResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -167,11 +164,11 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateAlertGroup,
-) -> AlertGroupResponse | ErrorsList | None:
+) -> Optional[Union[AlertGroupResponse, ErrorsList]]:
     """Update an alert group
 
      Update a specific alert group by id. **Note**: For enhanced functionality and future compatibility,
@@ -179,7 +176,7 @@ async def asyncio(
     `group_by_alert_title`, `group_by_alert_urgency`, and `attributes` fields.
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateAlertGroup):
 
     Raises:
@@ -187,7 +184,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertGroupResponse | ErrorsList
+        Union[AlertGroupResponse, ErrorsList]
     """
 
     return (

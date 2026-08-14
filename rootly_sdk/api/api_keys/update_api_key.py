@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/api_keys/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/api_keys/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -36,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ApiKeyResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
     if response.status_code == 200:
         response_200 = ApiKeyResponse.from_dict(response.json())
 
@@ -55,8 +52,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ApiKeyResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ApiKeyResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,7 +67,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Response[ApiKeyResponse | ErrorsList]:
+) -> Response[Union[ApiKeyResponse, ErrorsList]]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -90,7 +87,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyResponse | ErrorsList]
+        Response[Union[ApiKeyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -110,7 +107,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> ApiKeyResponse | ErrorsList | None:
+) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -130,7 +127,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyResponse | ErrorsList
+        Union[ApiKeyResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -145,7 +142,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> Response[ApiKeyResponse | ErrorsList]:
+) -> Response[Union[ApiKeyResponse, ErrorsList]]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -165,7 +162,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiKeyResponse | ErrorsList]
+        Response[Union[ApiKeyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +180,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateApiKey,
-) -> ApiKeyResponse | ErrorsList | None:
+) -> Optional[Union[ApiKeyResponse, ErrorsList]]:
     """Update an API key
 
      Update an API key's mutable attributes: `name`, `description`, and `expires_at`.
@@ -203,7 +200,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiKeyResponse | ErrorsList
+        Union[ApiKeyResponse, ErrorsList]
     """
 
     return (

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,17 +11,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatuses: str | Unset = UNSET,
-    filtersource_types: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterenabled: bool | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatuses: Union[Unset, str] = UNSET,
+    filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterenabled: Union[Unset, bool] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -53,7 +52,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AlertsSourceList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[AlertsSourceList]:
     if response.status_code == 200:
         response_200 = AlertsSourceList.from_dict(response.json())
 
@@ -65,7 +66,9 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AlertsSourceList]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[AlertsSourceList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -77,30 +80,30 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatuses: str | Unset = UNSET,
-    filtersource_types: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterenabled: bool | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatuses: Union[Unset, str] = UNSET,
+    filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterenabled: Union[Unset, bool] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
 
      List alert sources
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatuses (str | Unset):
-        filtersource_types (str | Unset):
-        filtername (str | Unset):
-        filterenabled (bool | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatuses (Union[Unset, str]):
+        filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterenabled (Union[Unset, bool]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,30 +135,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatuses: str | Unset = UNSET,
-    filtersource_types: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterenabled: bool | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> AlertsSourceList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatuses: Union[Unset, str] = UNSET,
+    filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterenabled: Union[Unset, bool] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[AlertsSourceList]:
     """List alert sources
 
      List alert sources
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatuses (str | Unset):
-        filtersource_types (str | Unset):
-        filtername (str | Unset):
-        filterenabled (bool | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatuses (Union[Unset, str]):
+        filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterenabled (Union[Unset, bool]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,30 +185,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatuses: str | Unset = UNSET,
-    filtersource_types: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterenabled: bool | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatuses: Union[Unset, str] = UNSET,
+    filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterenabled: Union[Unset, bool] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[AlertsSourceList]:
     """List alert sources
 
      List alert sources
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatuses (str | Unset):
-        filtersource_types (str | Unset):
-        filtername (str | Unset):
-        filterenabled (bool | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatuses (Union[Unset, str]):
+        filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterenabled (Union[Unset, bool]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -235,30 +238,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: str | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterstatuses: str | Unset = UNSET,
-    filtersource_types: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterenabled: bool | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> AlertsSourceList | None:
+    include: Union[Unset, str] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterstatuses: Union[Unset, str] = UNSET,
+    filtersource_types: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterenabled: Union[Unset, bool] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[AlertsSourceList]:
     """List alert sources
 
      List alert sources
 
     Args:
-        include (str | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterstatuses (str | Unset):
-        filtersource_types (str | Unset):
-        filtername (str | Unset):
-        filterenabled (bool | Unset):
-        sort (str | Unset):
+        include (Union[Unset, str]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterstatuses (Union[Unset, str]):
+        filtersource_types (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterenabled (Union[Unset, bool]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

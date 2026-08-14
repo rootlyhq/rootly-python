@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -38,41 +36,41 @@ class UpdateActionItemTaskParams:
         query_value (str): Value that attribute_to_query_by to uses to match against
         attribute_to_query_by (UpdateActionItemTaskParamsAttributeToQueryBy): Attribute of the action item to match
             against Default: 'id'.
-        task_type (UpdateActionItemTaskParamsTaskType | Unset):
-        summary (str | Unset): Brief description of the action item
-        assigned_to_user_id (str | Unset): [DEPRECATED] Use assigned_to_user attribute instead. The user id this action
-            item is assigned to
-        assigned_to_user (UpdateActionItemTaskParamsAssignedToUser | Unset):  The user this action item is assigned to
-        group_ids (list[str] | None | Unset):
-        description (str | Unset): The action item description
-        priority (UpdateActionItemTaskParamsPriority | Unset): The action item priority
-        status (UpdateActionItemTaskParamsStatus | Unset): The action item status
-        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
+        task_type (Union[Unset, UpdateActionItemTaskParamsTaskType]):
+        summary (Union[Unset, str]): Brief description of the action item
+        assigned_to_user_id (Union[Unset, str]): [DEPRECATED] Use assigned_to_user attribute instead. The user id this
+            action item is assigned to
+        assigned_to_user (Union[Unset, UpdateActionItemTaskParamsAssignedToUser]):  The user this action item is
+            assigned to
+        group_ids (Union[None, Unset, list[str]]):
+        description (Union[Unset, str]): The action item description
+        priority (Union[Unset, UpdateActionItemTaskParamsPriority]): The action item priority
+        status (Union[Unset, UpdateActionItemTaskParamsStatus]): The action item status
+        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        post_to_incident_timeline (bool | Unset):
+        post_to_incident_timeline (Union[Unset, bool]):
     """
 
     query_value: str
     attribute_to_query_by: UpdateActionItemTaskParamsAttributeToQueryBy = "id"
-    task_type: UpdateActionItemTaskParamsTaskType | Unset = UNSET
-    summary: str | Unset = UNSET
-    assigned_to_user_id: str | Unset = UNSET
-    assigned_to_user: UpdateActionItemTaskParamsAssignedToUser | Unset = UNSET
-    group_ids: list[str] | None | Unset = UNSET
-    description: str | Unset = UNSET
-    priority: UpdateActionItemTaskParamsPriority | Unset = UNSET
-    status: UpdateActionItemTaskParamsStatus | Unset = UNSET
-    custom_fields_mapping: None | str | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
+    task_type: Union[Unset, UpdateActionItemTaskParamsTaskType] = UNSET
+    summary: Union[Unset, str] = UNSET
+    assigned_to_user_id: Union[Unset, str] = UNSET
+    assigned_to_user: Union[Unset, "UpdateActionItemTaskParamsAssignedToUser"] = UNSET
+    group_ids: Union[None, Unset, list[str]] = UNSET
+    description: Union[Unset, str] = UNSET
+    priority: Union[Unset, UpdateActionItemTaskParamsPriority] = UNSET
+    status: Union[Unset, UpdateActionItemTaskParamsStatus] = UNSET
+    custom_fields_mapping: Union[None, Unset, str] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         query_value = self.query_value
 
         attribute_to_query_by: str = self.attribute_to_query_by
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -80,11 +78,11 @@ class UpdateActionItemTaskParams:
 
         assigned_to_user_id = self.assigned_to_user_id
 
-        assigned_to_user: dict[str, Any] | Unset = UNSET
+        assigned_to_user: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.assigned_to_user, Unset):
             assigned_to_user = self.assigned_to_user.to_dict()
 
-        group_ids: list[str] | None | Unset
+        group_ids: Union[None, Unset, list[str]]
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -95,15 +93,15 @@ class UpdateActionItemTaskParams:
 
         description = self.description
 
-        priority: str | Unset = UNSET
+        priority: Union[Unset, str] = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        custom_fields_mapping: None | str | Unset
+        custom_fields_mapping: Union[None, Unset, str]
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -154,7 +152,7 @@ class UpdateActionItemTaskParams:
         )
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateActionItemTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateActionItemTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -165,13 +163,13 @@ class UpdateActionItemTaskParams:
         assigned_to_user_id = d.pop("assigned_to_user_id", UNSET)
 
         _assigned_to_user = d.pop("assigned_to_user", UNSET)
-        assigned_to_user: UpdateActionItemTaskParamsAssignedToUser | Unset
+        assigned_to_user: Union[Unset, UpdateActionItemTaskParamsAssignedToUser]
         if isinstance(_assigned_to_user, Unset):
             assigned_to_user = UNSET
         else:
             assigned_to_user = UpdateActionItemTaskParamsAssignedToUser.from_dict(_assigned_to_user)
 
-        def _parse_group_ids(data: object) -> list[str] | None | Unset:
+        def _parse_group_ids(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -182,34 +180,34 @@ class UpdateActionItemTaskParams:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[str] | None | Unset, data)
+            return cast(Union[None, Unset, list[str]], data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
         description = d.pop("description", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: UpdateActionItemTaskParamsPriority | Unset
+        priority: Union[Unset, UpdateActionItemTaskParamsPriority]
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = check_update_action_item_task_params_priority(_priority)
 
         _status = d.pop("status", UNSET)
-        status: UpdateActionItemTaskParamsStatus | Unset
+        status: Union[Unset, UpdateActionItemTaskParamsStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_update_action_item_task_params_status(_status)
 
-        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
+        def _parse_custom_fields_mapping(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

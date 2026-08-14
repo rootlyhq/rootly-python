@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -37,27 +35,33 @@ class NewCatalogChecklistTemplateDataAttributes:
         name (str): The name of the checklist template
         catalog_type (NewCatalogChecklistTemplateDataAttributesCatalogType): The catalog type
         scope_type (NewCatalogChecklistTemplateDataAttributesScopeType): The scope type
-        description (None | str | Unset): The description of the checklist template
-        scope_id (str | Unset): The scope ID (team or catalog UUID)
-        fields (list[NewCatalogChecklistTemplateDataAttributesBuiltinField |
-            NewCatalogChecklistTemplateDataAttributesCustomField] | None | Unset): Template fields. Position is determined
-            by array order.
-        owners (list[NewCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset): Template owners
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        description (Union[None, Unset, str]): The description of the checklist template
+        scope_id (Union[Unset, str]): The scope ID (team or catalog UUID)
+        fields (Union[None, Unset, list[Union['NewCatalogChecklistTemplateDataAttributesBuiltinField',
+            'NewCatalogChecklistTemplateDataAttributesCustomField']]]): Template fields. Position is determined by array
+            order.
+        owners (Union[None, Unset, list['NewCatalogChecklistTemplateDataAttributesOwnersType0Item']]): Template owners
     """
 
     name: str
     catalog_type: NewCatalogChecklistTemplateDataAttributesCatalogType
     scope_type: NewCatalogChecklistTemplateDataAttributesScopeType
-    description: None | str | Unset = UNSET
-    scope_id: str | Unset = UNSET
-    fields: (
+    slug: Union[None, Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    scope_id: Union[Unset, str] = UNSET
+    fields: Union[
+        None,
+        Unset,
         list[
-            NewCatalogChecklistTemplateDataAttributesBuiltinField | NewCatalogChecklistTemplateDataAttributesCustomField
-        ]
-        | None
-        | Unset
-    ) = UNSET
-    owners: list[NewCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset = UNSET
+            Union[
+                "NewCatalogChecklistTemplateDataAttributesBuiltinField",
+                "NewCatalogChecklistTemplateDataAttributesCustomField",
+            ]
+        ],
+    ] = UNSET
+    owners: Union[None, Unset, list["NewCatalogChecklistTemplateDataAttributesOwnersType0Item"]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_catalog_checklist_template_data_attributes_builtin_field import (
@@ -70,7 +74,13 @@ class NewCatalogChecklistTemplateDataAttributes:
 
         scope_type: str = self.scope_type
 
-        description: None | str | Unset
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -78,7 +88,7 @@ class NewCatalogChecklistTemplateDataAttributes:
 
         scope_id = self.scope_id
 
-        fields: list[dict[str, Any]] | None | Unset
+        fields: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.fields, Unset):
             fields = UNSET
         elif isinstance(self.fields, list):
@@ -95,7 +105,7 @@ class NewCatalogChecklistTemplateDataAttributes:
         else:
             fields = self.fields
 
-        owners: list[dict[str, Any]] | None | Unset
+        owners: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.owners, Unset):
             owners = UNSET
         elif isinstance(self.owners, list):
@@ -116,6 +126,8 @@ class NewCatalogChecklistTemplateDataAttributes:
                 "scope_type": scope_type,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if scope_id is not UNSET:
@@ -146,12 +158,21 @@ class NewCatalogChecklistTemplateDataAttributes:
 
         scope_type = check_new_catalog_checklist_template_data_attributes_scope_type(d.pop("scope_type"))
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -159,14 +180,16 @@ class NewCatalogChecklistTemplateDataAttributes:
 
         def _parse_fields(
             data: object,
-        ) -> (
+        ) -> Union[
+            None,
+            Unset,
             list[
-                NewCatalogChecklistTemplateDataAttributesBuiltinField
-                | NewCatalogChecklistTemplateDataAttributesCustomField
-            ]
-            | None
-            | Unset
-        ):
+                Union[
+                    "NewCatalogChecklistTemplateDataAttributesBuiltinField",
+                    "NewCatalogChecklistTemplateDataAttributesCustomField",
+                ]
+            ],
+        ]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -180,10 +203,10 @@ class NewCatalogChecklistTemplateDataAttributes:
 
                     def _parse_fields_type_0_item(
                         data: object,
-                    ) -> (
-                        NewCatalogChecklistTemplateDataAttributesBuiltinField
-                        | NewCatalogChecklistTemplateDataAttributesCustomField
-                    ):
+                    ) -> Union[
+                        "NewCatalogChecklistTemplateDataAttributesBuiltinField",
+                        "NewCatalogChecklistTemplateDataAttributesCustomField",
+                    ]:
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
@@ -192,7 +215,7 @@ class NewCatalogChecklistTemplateDataAttributes:
                             )
 
                             return fields_type_0_item_builtin_field
-                        except (TypeError, ValueError, AttributeError, KeyError):
+                        except:  # noqa: E722
                             pass
                         if not isinstance(data, dict):
                             raise TypeError()
@@ -207,15 +230,19 @@ class NewCatalogChecklistTemplateDataAttributes:
                     fields_type_0.append(fields_type_0_item)
 
                 return fields_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             return cast(
-                list[
-                    NewCatalogChecklistTemplateDataAttributesBuiltinField
-                    | NewCatalogChecklistTemplateDataAttributesCustomField
-                ]
-                | None
-                | Unset,
+                Union[
+                    None,
+                    Unset,
+                    list[
+                        Union[
+                            "NewCatalogChecklistTemplateDataAttributesBuiltinField",
+                            "NewCatalogChecklistTemplateDataAttributesCustomField",
+                        ]
+                    ],
+                ],
                 data,
             )
 
@@ -223,7 +250,7 @@ class NewCatalogChecklistTemplateDataAttributes:
 
         def _parse_owners(
             data: object,
-        ) -> list[NewCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["NewCatalogChecklistTemplateDataAttributesOwnersType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -241,9 +268,9 @@ class NewCatalogChecklistTemplateDataAttributes:
                     owners_type_0.append(owners_type_0_item)
 
                 return owners_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[NewCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["NewCatalogChecklistTemplateDataAttributesOwnersType0Item"]], data)
 
         owners = _parse_owners(d.pop("owners", UNSET))
 
@@ -251,6 +278,7 @@ class NewCatalogChecklistTemplateDataAttributes:
             name=name,
             catalog_type=catalog_type,
             scope_type=scope_type,
+            slug=slug,
             description=description,
             scope_id=scope_id,
             fields=fields,

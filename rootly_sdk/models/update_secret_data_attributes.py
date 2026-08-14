@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -15,36 +13,36 @@ class UpdateSecretDataAttributes:
     """
     Attributes:
         name (str): The name of the secret
-        secret (str | Unset): The secret
-        hashicorp_vault_mount (None | str | Unset): The HashiCorp Vault secret mount path Default: 'secret'.
-        hashicorp_vault_path (None | str | Unset): The HashiCorp Vault secret path
-        hashicorp_vault_version (int | None | Unset): The HashiCorp Vault secret version Default: 0.
+        secret (Union[Unset, str]): The secret
+        hashicorp_vault_mount (Union[None, Unset, str]): The HashiCorp Vault secret mount path Default: 'secret'.
+        hashicorp_vault_path (Union[None, Unset, str]): The HashiCorp Vault secret path
+        hashicorp_vault_version (Union[None, Unset, int]): The HashiCorp Vault secret version Default: 0.
     """
 
     name: str
-    secret: str | Unset = UNSET
-    hashicorp_vault_mount: None | str | Unset = "secret"
-    hashicorp_vault_path: None | str | Unset = UNSET
-    hashicorp_vault_version: int | None | Unset = 0
+    secret: Union[Unset, str] = UNSET
+    hashicorp_vault_mount: Union[None, Unset, str] = "secret"
+    hashicorp_vault_path: Union[None, Unset, str] = UNSET
+    hashicorp_vault_version: Union[None, Unset, int] = 0
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         secret = self.secret
 
-        hashicorp_vault_mount: None | str | Unset
+        hashicorp_vault_mount: Union[None, Unset, str]
         if isinstance(self.hashicorp_vault_mount, Unset):
             hashicorp_vault_mount = UNSET
         else:
             hashicorp_vault_mount = self.hashicorp_vault_mount
 
-        hashicorp_vault_path: None | str | Unset
+        hashicorp_vault_path: Union[None, Unset, str]
         if isinstance(self.hashicorp_vault_path, Unset):
             hashicorp_vault_path = UNSET
         else:
             hashicorp_vault_path = self.hashicorp_vault_path
 
-        hashicorp_vault_version: int | None | Unset
+        hashicorp_vault_version: Union[None, Unset, int]
         if isinstance(self.hashicorp_vault_version, Unset):
             hashicorp_vault_version = UNSET
         else:
@@ -75,30 +73,30 @@ class UpdateSecretDataAttributes:
 
         secret = d.pop("secret", UNSET)
 
-        def _parse_hashicorp_vault_mount(data: object) -> None | str | Unset:
+        def _parse_hashicorp_vault_mount(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         hashicorp_vault_mount = _parse_hashicorp_vault_mount(d.pop("hashicorp_vault_mount", UNSET))
 
-        def _parse_hashicorp_vault_path(data: object) -> None | str | Unset:
+        def _parse_hashicorp_vault_path(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         hashicorp_vault_path = _parse_hashicorp_vault_path(d.pop("hashicorp_vault_path", UNSET))
 
-        def _parse_hashicorp_vault_version(data: object) -> int | None | Unset:
+        def _parse_hashicorp_vault_version(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         hashicorp_vault_version = _parse_hashicorp_vault_version(d.pop("hashicorp_vault_version", UNSET))
 

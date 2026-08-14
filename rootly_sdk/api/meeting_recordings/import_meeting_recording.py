@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -8,25 +7,22 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.import_meeting_recording import ImportMeetingRecording
 from ...models.meeting_recording_response import MeetingRecordingResponse
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     incident_id: str,
     *,
-    body: ImportMeetingRecording | Unset = UNSET,
+    body: ImportMeetingRecording,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/incidents/{incident_id}/meeting_recordings/import".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": f"/v1/incidents/{incident_id}/meeting_recordings/import",
     }
 
-    if not isinstance(body, Unset):
-        _kwargs["json"] = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -35,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | MeetingRecordingResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     if response.status_code == 201:
         response_201 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -53,8 +49,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | MeetingRecordingResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,8 +63,8 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
-) -> Response[Any | MeetingRecordingResponse]:
+    body: ImportMeetingRecording,
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -78,14 +74,14 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -104,8 +100,8 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
-) -> Any | MeetingRecordingResponse | None:
+    body: ImportMeetingRecording,
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -115,14 +111,14 @@ def sync(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return sync_detailed(
@@ -136,8 +132,8 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
-) -> Response[Any | MeetingRecordingResponse]:
+    body: ImportMeetingRecording,
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -147,14 +143,14 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -171,8 +167,8 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    body: ImportMeetingRecording | Unset = UNSET,
-) -> Any | MeetingRecordingResponse | None:
+    body: ImportMeetingRecording,
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Import a meeting recording
 
      Import an externally captured meeting recording and attach it to an incident. Video and transcript
@@ -182,14 +178,14 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        body (ImportMeetingRecording | Unset):
+        body (ImportMeetingRecording):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return (

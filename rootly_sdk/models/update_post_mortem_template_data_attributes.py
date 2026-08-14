@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -18,22 +16,31 @@ T = TypeVar("T", bound="UpdatePostMortemTemplateDataAttributes")
 class UpdatePostMortemTemplateDataAttributes:
     """
     Attributes:
-        name (str | Unset): The name of the postmortem template
-        default (bool | None | Unset): Default selected template when editing a postmortem
-        content (str | Unset): The postmortem template. Supports TipTap blocks (followup and timeline components),
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        name (Union[Unset, str]): The name of the postmortem template
+        default (Union[None, Unset, bool]): Default selected template when editing a postmortem
+        content (Union[Unset, str]): The postmortem template. Supports TipTap blocks (followup and timeline components),
             Liquid syntax, and HTML. Will be sanitized and applied to both content and content_html fields.
-        format_ (UpdatePostMortemTemplateDataAttributesFormat | Unset): The format of the input Default: 'html'.
+        format_ (Union[Unset, UpdatePostMortemTemplateDataAttributesFormat]): The format of the input Default: 'html'.
     """
 
-    name: str | Unset = UNSET
-    default: bool | None | Unset = UNSET
-    content: str | Unset = UNSET
-    format_: UpdatePostMortemTemplateDataAttributesFormat | Unset = "html"
+    slug: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    default: Union[None, Unset, bool] = UNSET
+    content: Union[Unset, str] = UNSET
+    format_: Union[Unset, UpdatePostMortemTemplateDataAttributesFormat] = "html"
 
     def to_dict(self) -> dict[str, Any]:
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
         name = self.name
 
-        default: bool | None | Unset
+        default: Union[None, Unset, bool]
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -41,13 +48,15 @@ class UpdatePostMortemTemplateDataAttributes:
 
         content = self.content
 
-        format_: str | Unset = UNSET
+        format_: Union[Unset, str] = UNSET
         if not isinstance(self.format_, Unset):
             format_ = self.format_
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
         if default is not UNSET:
@@ -62,27 +71,38 @@ class UpdatePostMortemTemplateDataAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
 
-        def _parse_default(data: object) -> bool | None | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        name = d.pop("name", UNSET)
+
+        def _parse_default(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
 
         default = _parse_default(d.pop("default", UNSET))
 
         content = d.pop("content", UNSET)
 
         _format_ = d.pop("format", UNSET)
-        format_: UpdatePostMortemTemplateDataAttributesFormat | Unset
+        format_: Union[Unset, UpdatePostMortemTemplateDataAttributesFormat]
         if isinstance(_format_, Unset):
             format_ = UNSET
         else:
             format_ = check_update_post_mortem_template_data_attributes_format(_format_)
 
         update_post_mortem_template_data_attributes = cls(
+            slug=slug,
             name=name,
             default=default,
             content=content,

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,32 +23,31 @@ class CreateNotionPageTaskParams:
     Attributes:
         title (str): The Notion page title
         parent_page (CreateNotionPageTaskParamsParentPage): The parent page id and display name
-        task_type (CreateNotionPageTaskParamsTaskType | Unset):
-        post_mortem_template_id (str | Unset): Retrospective template to use when creating page task, if desired
-        content (str | Unset): Custom page content with liquid templating support. When provided, only this content will
-            be rendered (no default sections)
-        mark_post_mortem_as_published (bool | Unset):  Default: True.
-        show_timeline_as_table (bool | Unset):
-        show_action_items_as_table (bool | Unset):
+        task_type (Union[Unset, CreateNotionPageTaskParamsTaskType]):
+        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when creating page task, if desired
+        content (Union[Unset, str]): Custom page content with liquid templating support. When provided, only this
+            content will be rendered (no default sections)
+        mark_post_mortem_as_published (Union[Unset, bool]):  Default: True.
+        show_timeline_as_table (Union[Unset, bool]):
+        show_action_items_as_table (Union[Unset, bool]):
     """
 
     title: str
-    parent_page: CreateNotionPageTaskParamsParentPage
-    task_type: CreateNotionPageTaskParamsTaskType | Unset = UNSET
-    post_mortem_template_id: str | Unset = UNSET
-    content: str | Unset = UNSET
-    mark_post_mortem_as_published: bool | Unset = True
-    show_timeline_as_table: bool | Unset = UNSET
-    show_action_items_as_table: bool | Unset = UNSET
+    parent_page: "CreateNotionPageTaskParamsParentPage"
+    task_type: Union[Unset, CreateNotionPageTaskParamsTaskType] = UNSET
+    post_mortem_template_id: Union[Unset, str] = UNSET
+    content: Union[Unset, str] = UNSET
+    mark_post_mortem_as_published: Union[Unset, bool] = True
+    show_timeline_as_table: Union[Unset, bool] = UNSET
+    show_action_items_as_table: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         title = self.title
 
         parent_page = self.parent_page.to_dict()
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -97,7 +94,7 @@ class CreateNotionPageTaskParams:
         parent_page = CreateNotionPageTaskParamsParentPage.from_dict(d.pop("parent_page"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateNotionPageTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateNotionPageTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

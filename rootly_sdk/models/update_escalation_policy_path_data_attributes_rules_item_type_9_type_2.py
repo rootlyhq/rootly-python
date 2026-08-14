@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,15 +26,15 @@ class UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2:
         json_path (str): JSON path to extract value from payload
         operator (UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2Operator): How JSON path value should be
             matched
-        value (None | str | Unset): Value with which JSON path value should be matched
-        values (list[str] | Unset): Values to match against (for is_one_of / is_not_one_of operators)
+        value (Union[None, Unset, str]): Value with which JSON path value should be matched
+        values (Union[Unset, list[str]]): Values to match against (for is_one_of / is_not_one_of operators)
     """
 
     rule_type: UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2RuleType
     json_path: str
     operator: UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2Operator
-    value: None | str | Unset = UNSET
-    values: list[str] | Unset = UNSET
+    value: Union[None, Unset, str] = UNSET
+    values: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,13 +44,13 @@ class UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2:
 
         operator: str = self.operator
 
-        value: None | str | Unset
+        value: Union[None, Unset, str]
         if isinstance(self.value, Unset):
             value = UNSET
         else:
             value = self.value
 
-        values: list[str] | Unset = UNSET
+        values: Union[Unset, list[str]] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -85,12 +83,12 @@ class UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2:
             d.pop("operator")
         )
 
-        def _parse_value(data: object) -> None | str | Unset:
+        def _parse_value(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         value = _parse_value(d.pop("value", UNSET))
 

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,37 +13,37 @@ T = TypeVar("T", bound="Meta")
 class Meta:
     """
     Attributes:
-        current_page (int | None):
-        next_page (int | None):
-        prev_page (int | None):
+        current_page (Union[None, int]):
+        next_page (Union[None, int]):
+        prev_page (Union[None, int]):
         total_count (int):
         total_pages (int):
-        next_cursor (None | str | Unset):
+        next_cursor (Union[None, Unset, str]):
     """
 
-    current_page: int | None
-    next_page: int | None
-    prev_page: int | None
+    current_page: Union[None, int]
+    next_page: Union[None, int]
+    prev_page: Union[None, int]
     total_count: int
     total_pages: int
-    next_cursor: None | str | Unset = UNSET
+    next_cursor: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        current_page: int | None
+        current_page: Union[None, int]
         current_page = self.current_page
 
-        next_page: int | None
+        next_page: Union[None, int]
         next_page = self.next_page
 
-        prev_page: int | None
+        prev_page: Union[None, int]
         prev_page = self.prev_page
 
         total_count = self.total_count
 
         total_pages = self.total_pages
 
-        next_cursor: None | str | Unset
+        next_cursor: Union[None, Unset, str]
         if isinstance(self.next_cursor, Unset):
             next_cursor = UNSET
         else:
@@ -71,24 +69,24 @@ class Meta:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_current_page(data: object) -> int | None:
+        def _parse_current_page(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         current_page = _parse_current_page(d.pop("current_page"))
 
-        def _parse_next_page(data: object) -> int | None:
+        def _parse_next_page(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         next_page = _parse_next_page(d.pop("next_page"))
 
-        def _parse_prev_page(data: object) -> int | None:
+        def _parse_prev_page(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         prev_page = _parse_prev_page(d.pop("prev_page"))
 
@@ -96,12 +94,12 @@ class Meta:
 
         total_pages = d.pop("total_pages")
 
-        def _parse_next_cursor(data: object) -> None | str | Unset:
+        def _parse_next_cursor(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         next_cursor = _parse_next_cursor(d.pop("next_cursor", UNSET))
 

@@ -1,12 +1,14 @@
 from typing import Literal, cast
 
 ListAlertEventsFeedFilteraction = Literal[
+    "ack_timeout_retriggered",
     "acknowledged",
     "added",
     "answered",
     "attached",
     "call_lifecycle",
     "called",
+    "cleared",
     "created",
     "deferred",
     "emailed",
@@ -25,6 +27,7 @@ ListAlertEventsFeedFilteraction = Literal[
     "paged",
     "removed",
     "resolved",
+    "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
@@ -35,12 +38,14 @@ ListAlertEventsFeedFilteraction = Literal[
 ]
 
 LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES: set[ListAlertEventsFeedFilteraction] = {
+    "ack_timeout_retriggered",
     "acknowledged",
     "added",
     "answered",
     "attached",
     "call_lifecycle",
     "called",
+    "cleared",
     "created",
     "deferred",
     "emailed",
@@ -59,6 +64,7 @@ LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES: set[ListAlertEventsFeedFilteraction]
     "paged",
     "removed",
     "resolved",
+    "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,22 +17,24 @@ class Catalog:
     Attributes:
         name (str):
         icon (CatalogIcon):
-        position (int | None): Default position of the catalog when displayed in a list.
+        position (Union[None, int]): Default position of the catalog when displayed in a list.
         created_at (str):
         updated_at (str):
-        description (None | str | Unset):
-        external_id (None | str | Unset): An external identifier for this catalog. Must be unique within the team.
-        managed_by (CatalogManagedBy | Unset): Which source manages this resource (read-only).
+        slug (Union[Unset, str]): The slug of the catalog. Derived from `name`.
+        description (Union[None, Unset, str]):
+        external_id (Union[None, Unset, str]): An external identifier for this catalog. Must be unique within the team.
+        managed_by (Union[Unset, CatalogManagedBy]): Which source manages this resource (read-only).
     """
 
     name: str
     icon: CatalogIcon
-    position: int | None
+    position: Union[None, int]
     created_at: str
     updated_at: str
-    description: None | str | Unset = UNSET
-    external_id: None | str | Unset = UNSET
-    managed_by: CatalogManagedBy | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    external_id: Union[None, Unset, str] = UNSET
+    managed_by: Union[Unset, CatalogManagedBy] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,26 +42,28 @@ class Catalog:
 
         icon: str = self.icon
 
-        position: int | None
+        position: Union[None, int]
         position = self.position
 
         created_at = self.created_at
 
         updated_at = self.updated_at
 
-        description: None | str | Unset
+        slug = self.slug
+
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        external_id: None | str | Unset
+        external_id: Union[None, Unset, str]
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        managed_by: str | Unset = UNSET
+        managed_by: Union[Unset, str] = UNSET
         if not isinstance(self.managed_by, Unset):
             managed_by = self.managed_by
 
@@ -76,6 +78,8 @@ class Catalog:
                 "updated_at": updated_at,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if external_id is not UNSET:
@@ -92,10 +96,10 @@ class Catalog:
 
         icon = check_catalog_icon(d.pop("icon"))
 
-        def _parse_position(data: object) -> int | None:
+        def _parse_position(data: object) -> Union[None, int]:
             if data is None:
                 return data
-            return cast(int | None, data)
+            return cast(Union[None, int], data)
 
         position = _parse_position(d.pop("position"))
 
@@ -103,26 +107,28 @@ class Catalog:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | str | Unset:
+        slug = d.pop("slug", UNSET)
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_external_id(data: object) -> None | str | Unset:
+        def _parse_external_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         _managed_by = d.pop("managed_by", UNSET)
-        managed_by: CatalogManagedBy | Unset
+        managed_by: Union[Unset, CatalogManagedBy]
         if isinstance(_managed_by, Unset):
             managed_by = UNSET
         else:
@@ -134,6 +140,7 @@ class Catalog:
             position=position,
             created_at=created_at,
             updated_at=updated_at,
+            slug=slug,
             description=description,
             external_id=external_id,
             managed_by=managed_by,

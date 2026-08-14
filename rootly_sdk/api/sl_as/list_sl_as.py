@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,26 +11,25 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -80,7 +79,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SlaList | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[SlaList]:
     if response.status_code == 200:
         response_200 = SlaList.from_dict(response.json())
 
@@ -92,7 +91,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SlaList]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SlaList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -104,48 +103,48 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[SlaList]:
     """List SLAs
 
      List SLAs
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterslug (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,48 +185,48 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> SlaList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[SlaList]:
     """List SLAs
 
      List SLAs
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterslug (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -263,48 +262,48 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[SlaList]:
     """List SLAs
 
      List SLAs
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterslug (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -343,48 +342,48 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    filterslugeq: str | Unset = UNSET,
-    filterslugnot_eq: str | Unset = UNSET,
-    filterslugin: str | Unset = UNSET,
-    filterslugnot_in: str | Unset = UNSET,
-    filternameeq: str | Unset = UNSET,
-    filternamenot_eq: str | Unset = UNSET,
-    filternamein: str | Unset = UNSET,
-    filternamenot_in: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> SlaList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    filterslugeq: Union[Unset, str] = UNSET,
+    filterslugnot_eq: Union[Unset, str] = UNSET,
+    filterslugin: Union[Unset, str] = UNSET,
+    filterslugnot_in: Union[Unset, str] = UNSET,
+    filternameeq: Union[Unset, str] = UNSET,
+    filternamenot_eq: Union[Unset, str] = UNSET,
+    filternamein: Union[Unset, str] = UNSET,
+    filternamenot_in: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[SlaList]:
     """List SLAs
 
      List SLAs
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filterslug (str | Unset):
-        filtername (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        filterslugeq (str | Unset):
-        filterslugnot_eq (str | Unset):
-        filterslugin (str | Unset):
-        filterslugnot_in (str | Unset):
-        filternameeq (str | Unset):
-        filternamenot_eq (str | Unset):
-        filternamein (str | Unset):
-        filternamenot_in (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        filterslugeq (Union[Unset, str]):
+        filterslugnot_eq (Union[Unset, str]):
+        filterslugin (Union[Unset, str]):
+        filterslugnot_in (Union[Unset, str]):
+        filternameeq (Union[Unset, str]):
+        filternamenot_eq (Union[Unset, str]):
+        filternamein (Union[Unset, str]):
+        filternamenot_in (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

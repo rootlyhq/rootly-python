@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -19,27 +18,26 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     catalog_entity_id: str,
     *,
-    include: ListCatalogEntityPropertiesInclude | Unset = UNSET,
-    sort: ListCatalogEntityPropertiesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercatalog_field_id: str | Unset = UNSET,
-    filterkey: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
+    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercatalog_field_id: Union[Unset, str] = UNSET,
+    filterkey: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: str | Unset = UNSET
+    json_sort: Union[Unset, str] = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -65,9 +63,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/catalog_entities/{catalog_entity_id}/properties".format(
-            catalog_entity_id=quote(str(catalog_entity_id), safe=""),
-        ),
+        "url": f"/v1/catalog_entities/{catalog_entity_id}/properties",
         "params": params,
     }
 
@@ -75,8 +71,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CatalogEntityPropertyList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[CatalogEntityPropertyList]:
     if response.status_code == 200:
         response_200 = CatalogEntityPropertyList.from_dict(response.json())
 
@@ -89,7 +85,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[CatalogEntityPropertyList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -103,16 +99,16 @@ def sync_detailed(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListCatalogEntityPropertiesInclude | Unset = UNSET,
-    sort: ListCatalogEntityPropertiesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercatalog_field_id: str | Unset = UNSET,
-    filterkey: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
+    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercatalog_field_id: Union[Unset, str] = UNSET,
+    filterkey: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
@@ -124,16 +120,16 @@ def sync_detailed(
 
     Args:
         catalog_entity_id (str):
-        include (ListCatalogEntityPropertiesInclude | Unset):
-        sort (ListCatalogEntityPropertiesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercatalog_field_id (str | Unset):
-        filterkey (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListCatalogEntityPropertiesInclude]):
+        sort (Union[Unset, ListCatalogEntityPropertiesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercatalog_field_id (Union[Unset, str]):
+        filterkey (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,17 +164,17 @@ def sync(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListCatalogEntityPropertiesInclude | Unset = UNSET,
-    sort: ListCatalogEntityPropertiesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercatalog_field_id: str | Unset = UNSET,
-    filterkey: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> CatalogEntityPropertyList | None:
+    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
+    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercatalog_field_id: Union[Unset, str] = UNSET,
+    filterkey: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[CatalogEntityPropertyList]:
     """List catalog properties
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -189,16 +185,16 @@ def sync(
 
     Args:
         catalog_entity_id (str):
-        include (ListCatalogEntityPropertiesInclude | Unset):
-        sort (ListCatalogEntityPropertiesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercatalog_field_id (str | Unset):
-        filterkey (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListCatalogEntityPropertiesInclude]):
+        sort (Union[Unset, ListCatalogEntityPropertiesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercatalog_field_id (Union[Unset, str]):
+        filterkey (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -228,16 +224,16 @@ async def asyncio_detailed(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListCatalogEntityPropertiesInclude | Unset = UNSET,
-    sort: ListCatalogEntityPropertiesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercatalog_field_id: str | Unset = UNSET,
-    filterkey: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
+    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercatalog_field_id: Union[Unset, str] = UNSET,
+    filterkey: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[CatalogEntityPropertyList]:
     """List catalog properties
 
@@ -249,16 +245,16 @@ async def asyncio_detailed(
 
     Args:
         catalog_entity_id (str):
-        include (ListCatalogEntityPropertiesInclude | Unset):
-        sort (ListCatalogEntityPropertiesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercatalog_field_id (str | Unset):
-        filterkey (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListCatalogEntityPropertiesInclude]):
+        sort (Union[Unset, ListCatalogEntityPropertiesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercatalog_field_id (Union[Unset, str]):
+        filterkey (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -291,17 +287,17 @@ async def asyncio(
     catalog_entity_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListCatalogEntityPropertiesInclude | Unset = UNSET,
-    sort: ListCatalogEntityPropertiesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtercatalog_field_id: str | Unset = UNSET,
-    filterkey: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> CatalogEntityPropertyList | None:
+    include: Union[Unset, ListCatalogEntityPropertiesInclude] = UNSET,
+    sort: Union[Unset, ListCatalogEntityPropertiesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtercatalog_field_id: Union[Unset, str] = UNSET,
+    filterkey: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[CatalogEntityPropertyList]:
     """List catalog properties
 
      **Deprecated:** This endpoint is deprecated, please use `include=fields` on catalog entities or
@@ -312,16 +308,16 @@ async def asyncio(
 
     Args:
         catalog_entity_id (str):
-        include (ListCatalogEntityPropertiesInclude | Unset):
-        sort (ListCatalogEntityPropertiesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtercatalog_field_id (str | Unset):
-        filterkey (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        include (Union[Unset, ListCatalogEntityPropertiesInclude]):
+        sort (Union[Unset, ListCatalogEntityPropertiesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtercatalog_field_id (Union[Unset, str]):
+        filterkey (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

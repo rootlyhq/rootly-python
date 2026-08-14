@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,43 +20,42 @@ class AlertGroup:
     """
     Attributes:
         name (str): The name of the alert group
-        description (None | str): The description of the alert group
+        description (Union[None, str]): The description of the alert group
         condition_type (str): Grouping condition for the alert group
         time_window (int): Time window for the alert grouping
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        deleted_at (None | str): Date or deletion
-        slug (str | Unset): The slug of the alert group
-        group_by_alert_title (bool | Unset): [DEPRECATED] Whether the alerts are grouped by title or not. This field is
-            deprecated. Please use the `conditions` field with advanced alert grouping instead.
-        group_by_alert_urgency (bool | Unset): [DEPRECATED] Whether the alerts are grouped by urgency or not. This field
-            is deprecated. Please use the `conditions` field with advanced alert grouping instead.
-        targets (list[AlertGroupTargetsItem] | Unset):
-        attributes (list[AlertGroupAttributesItem] | Unset): This field is deprecated. Please use the `conditions` field
-            instead, `attributes` will be removed in the future.
-        conditions (list[AlertGroupConditionsItem] | Unset): The conditions for the alert group
+        deleted_at (Union[None, str]): Date or deletion
+        slug (Union[Unset, str]): The slug of the alert group
+        group_by_alert_title (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by title or not. This
+            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
+        group_by_alert_urgency (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by urgency or not. This
+            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
+        targets (Union[Unset, list['AlertGroupTargetsItem']]):
+        attributes (Union[Unset, list['AlertGroupAttributesItem']]): This field is deprecated. Please use the
+            `conditions` field instead, `attributes` will be removed in the future.
+        conditions (Union[Unset, list['AlertGroupConditionsItem']]): The conditions for the alert group
     """
 
     name: str
-    description: None | str
+    description: Union[None, str]
     condition_type: str
     time_window: int
     created_at: str
     updated_at: str
-    deleted_at: None | str
-    slug: str | Unset = UNSET
-    group_by_alert_title: bool | Unset = UNSET
-    group_by_alert_urgency: bool | Unset = UNSET
-    targets: list[AlertGroupTargetsItem] | Unset = UNSET
-    attributes: list[AlertGroupAttributesItem] | Unset = UNSET
-    conditions: list[AlertGroupConditionsItem] | Unset = UNSET
+    deleted_at: Union[None, str]
+    slug: Union[Unset, str] = UNSET
+    group_by_alert_title: Union[Unset, bool] = UNSET
+    group_by_alert_urgency: Union[Unset, bool] = UNSET
+    targets: Union[Unset, list["AlertGroupTargetsItem"]] = UNSET
+    attributes: Union[Unset, list["AlertGroupAttributesItem"]] = UNSET
+    conditions: Union[Unset, list["AlertGroupConditionsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
-        description: None | str
+        description: Union[None, str]
         description = self.description
 
         condition_type = self.condition_type
@@ -69,7 +66,7 @@ class AlertGroup:
 
         updated_at = self.updated_at
 
-        deleted_at: None | str
+        deleted_at: Union[None, str]
         deleted_at = self.deleted_at
 
         slug = self.slug
@@ -78,21 +75,21 @@ class AlertGroup:
 
         group_by_alert_urgency = self.group_by_alert_urgency
 
-        targets: list[dict[str, Any]] | Unset = UNSET
+        targets: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.targets, Unset):
             targets = []
             for targets_item_data in self.targets:
                 targets_item = targets_item_data.to_dict()
                 targets.append(targets_item)
 
-        attributes: list[dict[str, Any]] | Unset = UNSET
+        attributes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = []
             for attributes_item_data in self.attributes:
                 attributes_item = attributes_item_data.to_dict()
                 attributes.append(attributes_item)
 
-        conditions: list[dict[str, Any]] | Unset = UNSET
+        conditions: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -136,10 +133,10 @@ class AlertGroup:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_description(data: object) -> None | str:
+        def _parse_description(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(None | str, data)
+            return cast(Union[None, str], data)
 
         description = _parse_description(d.pop("description"))
 
@@ -151,10 +148,10 @@ class AlertGroup:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_deleted_at(data: object) -> None | str:
+        def _parse_deleted_at(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(None | str, data)
+            return cast(Union[None, str], data)
 
         deleted_at = _parse_deleted_at(d.pop("deleted_at"))
 
@@ -164,32 +161,26 @@ class AlertGroup:
 
         group_by_alert_urgency = d.pop("group_by_alert_urgency", UNSET)
 
+        targets = []
         _targets = d.pop("targets", UNSET)
-        targets: list[AlertGroupTargetsItem] | Unset = UNSET
-        if _targets is not UNSET:
-            targets = []
-            for targets_item_data in _targets:
-                targets_item = AlertGroupTargetsItem.from_dict(targets_item_data)
+        for targets_item_data in _targets or []:
+            targets_item = AlertGroupTargetsItem.from_dict(targets_item_data)
 
-                targets.append(targets_item)
+            targets.append(targets_item)
 
+        attributes = []
         _attributes = d.pop("attributes", UNSET)
-        attributes: list[AlertGroupAttributesItem] | Unset = UNSET
-        if _attributes is not UNSET:
-            attributes = []
-            for attributes_item_data in _attributes:
-                attributes_item = AlertGroupAttributesItem.from_dict(attributes_item_data)
+        for attributes_item_data in _attributes or []:
+            attributes_item = AlertGroupAttributesItem.from_dict(attributes_item_data)
 
-                attributes.append(attributes_item)
+            attributes.append(attributes_item)
 
+        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        conditions: list[AlertGroupConditionsItem] | Unset = UNSET
-        if _conditions is not UNSET:
-            conditions = []
-            for conditions_item_data in _conditions:
-                conditions_item = AlertGroupConditionsItem.from_dict(conditions_item_data)
+        for conditions_item_data in _conditions or []:
+            conditions_item = AlertGroupConditionsItem.from_dict(conditions_item_data)
 
-                conditions.append(conditions_item)
+            conditions.append(conditions_item)
 
         alert_group = cls(
             name=name,

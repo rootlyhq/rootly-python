@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,20 +13,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/alert_urgencies/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/alert_urgencies/{id}",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> AlertUrgencyResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[AlertUrgencyResponse, ErrorsList]]:
     if response.status_code == 200:
         response_200 = AlertUrgencyResponse.from_dict(response.json())
 
@@ -45,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[AlertUrgencyResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[AlertUrgencyResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AlertUrgencyResponse | ErrorsList]:
+) -> Response[Union[AlertUrgencyResponse, ErrorsList]]:
     """Delete an alert urgency
 
      Delete a specific alert urgency by id
@@ -72,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertUrgencyResponse | ErrorsList]
+        Response[Union[AlertUrgencyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> AlertUrgencyResponse | ErrorsList | None:
+) -> Optional[Union[AlertUrgencyResponse, ErrorsList]]:
     """Delete an alert urgency
 
      Delete a specific alert urgency by id
@@ -103,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertUrgencyResponse | ErrorsList
+        Union[AlertUrgencyResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -116,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[AlertUrgencyResponse | ErrorsList]:
+) -> Response[Union[AlertUrgencyResponse, ErrorsList]]:
     """Delete an alert urgency
 
      Delete a specific alert urgency by id
@@ -129,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AlertUrgencyResponse | ErrorsList]
+        Response[Union[AlertUrgencyResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> AlertUrgencyResponse | ErrorsList | None:
+) -> Optional[Union[AlertUrgencyResponse, ErrorsList]]:
     """Delete an alert urgency
 
      Delete a specific alert urgency by id
@@ -158,7 +154,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AlertUrgencyResponse | ErrorsList
+        Union[AlertUrgencyResponse, ErrorsList]
     """
 
     return (

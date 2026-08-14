@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -14,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     body: UpdateStatusPage,
 ) -> dict[str, Any]:
@@ -22,9 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/status-pages/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/status-pages/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -36,8 +33,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | StatusPageResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, StatusPageResponse]]:
     if response.status_code == 200:
         response_200 = StatusPageResponse.from_dict(response.json())
 
@@ -60,8 +57,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | StatusPageResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, StatusPageResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,17 +68,17 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPage,
-) -> Response[ErrorsList | StatusPageResponse]:
+) -> Response[Union[ErrorsList, StatusPageResponse]]:
     """Update a status page
 
      Update a specific status page by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateStatusPage):
 
     Raises:
@@ -89,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | StatusPageResponse]
+        Response[Union[ErrorsList, StatusPageResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -105,17 +102,17 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPage,
-) -> ErrorsList | StatusPageResponse | None:
+) -> Optional[Union[ErrorsList, StatusPageResponse]]:
     """Update a status page
 
      Update a specific status page by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateStatusPage):
 
     Raises:
@@ -123,7 +120,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | StatusPageResponse
+        Union[ErrorsList, StatusPageResponse]
     """
 
     return sync_detailed(
@@ -134,17 +131,17 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPage,
-) -> Response[ErrorsList | StatusPageResponse]:
+) -> Response[Union[ErrorsList, StatusPageResponse]]:
     """Update a status page
 
      Update a specific status page by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateStatusPage):
 
     Raises:
@@ -152,7 +149,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | StatusPageResponse]
+        Response[Union[ErrorsList, StatusPageResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -166,17 +163,17 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
     body: UpdateStatusPage,
-) -> ErrorsList | StatusPageResponse | None:
+) -> Optional[Union[ErrorsList, StatusPageResponse]]:
     """Update a status page
 
      Update a specific status page by id
 
     Args:
-        id (str | UUID):
+        id (Union[UUID, str]):
         body (UpdateStatusPage):
 
     Raises:
@@ -184,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | StatusPageResponse
+        Union[ErrorsList, StatusPageResponse]
     """
 
     return (

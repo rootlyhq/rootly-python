@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,23 +17,22 @@ T = TypeVar("T", bound="DeleteAlertRouteResponse200Data")
 class DeleteAlertRouteResponse200Data:
     """
     Attributes:
-        id (str | Unset):
-        type_ (str | Unset):
-        attributes (DeleteAlertRouteResponse200DataAttributes | Unset):
+        id (Union[Unset, str]):
+        type_ (Union[Unset, str]):
+        attributes (Union[Unset, DeleteAlertRouteResponse200DataAttributes]):
     """
 
-    id: str | Unset = UNSET
-    type_: str | Unset = UNSET
-    attributes: DeleteAlertRouteResponse200DataAttributes | Unset = UNSET
+    id: Union[Unset, str] = UNSET
+    type_: Union[Unset, str] = UNSET
+    attributes: Union[Unset, "DeleteAlertRouteResponse200DataAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         id = self.id
 
         type_ = self.type_
 
-        attributes: dict[str, Any] | Unset = UNSET
+        attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -61,7 +58,7 @@ class DeleteAlertRouteResponse200Data:
         type_ = d.pop("type", UNSET)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: DeleteAlertRouteResponse200DataAttributes | Unset
+        attributes: Union[Unset, DeleteAlertRouteResponse200DataAttributes]
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

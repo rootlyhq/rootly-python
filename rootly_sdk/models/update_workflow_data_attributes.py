@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -22,66 +20,69 @@ T = TypeVar("T", bound="UpdateWorkflowDataAttributes")
 class UpdateWorkflowDataAttributes:
     """
     Attributes:
-        name (str | Unset): The title of the workflow
-        description (None | str | Unset): The description of the workflow
-        command (None | str | Unset): Workflow command
-        command_feedback_enabled (bool | None | Unset): This will notify you back when the workflow is starting
-        wait (None | str | Unset): Wait this duration before executing
-        repeat_every_duration (None | str | Unset): Repeat workflow every duration
-        repeat_condition_duration_since_first_run (None | str | Unset): The workflow will stop repeating if its runtime
-            since it's first workflow run exceeds the duration set in this field
-        repeat_condition_number_of_repeats (int | Unset): The workflow will stop repeating if the number of repeats
-            exceeds the value set in this field
-        continuously_repeat (bool | Unset): When continuously repeat is true, repeat workflows aren't automatically
-            stopped when conditions aren't met. This setting won't override your conditions set by
+        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+            property will be removed from the request schema in a future version.
+        name (Union[Unset, str]): The title of the workflow
+        description (Union[None, Unset, str]): The description of the workflow
+        command (Union[None, Unset, str]): Workflow command
+        command_feedback_enabled (Union[None, Unset, bool]): This will notify you back when the workflow is starting
+        wait (Union[None, Unset, str]): Wait this duration before executing
+        repeat_every_duration (Union[None, Unset, str]): Repeat workflow every duration
+        repeat_condition_duration_since_first_run (Union[None, Unset, str]): The workflow will stop repeating if its
+            runtime since it's first workflow run exceeds the duration set in this field
+        repeat_condition_number_of_repeats (Union[Unset, int]): The workflow will stop repeating if the number of
+            repeats exceeds the value set in this field
+        continuously_repeat (Union[Unset, bool]): When continuously repeat is true, repeat workflows aren't
+            automatically stopped when conditions aren't met. This setting won't override your conditions set by
             repeat_condition_duration_since_first_run and repeat_condition_number_of_repeats parameters.
-        enabled (bool | Unset):
-        locked (bool | Unset): Restricts workflow edits to admins when turned on. Only admins can set this field.
-        position (int | Unset): The order which the workflow should run with other workflows.
-        workflow_group_id (None | str | Unset): The group this workflow belongs to.
-        trigger_params (ActionItemTriggerParams | AlertTriggerParams | IncidentTriggerParams | PulseTriggerParams |
-            SimpleTriggerParams | Unset):
-        environment_ids (list[str] | Unset):
-        severity_ids (list[str] | Unset):
-        incident_type_ids (list[str] | Unset):
-        incident_role_ids (list[str] | Unset):
-        service_ids (list[str] | Unset):
-        functionality_ids (list[str] | Unset):
-        group_ids (list[str] | Unset):
-        cause_ids (list[str] | Unset):
-        sub_status_ids (list[str] | Unset):
+        enabled (Union[Unset, bool]):
+        locked (Union[Unset, bool]): Restricts workflow edits to admins when turned on. Only admins can set this field.
+        position (Union[Unset, int]): The order which the workflow should run with other workflows.
+        workflow_group_id (Union[None, Unset, str]): The group this workflow belongs to.
+        trigger_params (Union['ActionItemTriggerParams', 'AlertTriggerParams', 'IncidentTriggerParams',
+            'PulseTriggerParams', 'SimpleTriggerParams', Unset]):
+        environment_ids (Union[Unset, list[str]]):
+        severity_ids (Union[Unset, list[str]]):
+        incident_type_ids (Union[Unset, list[str]]):
+        incident_role_ids (Union[Unset, list[str]]):
+        service_ids (Union[Unset, list[str]]):
+        functionality_ids (Union[Unset, list[str]]):
+        group_ids (Union[Unset, list[str]]):
+        cause_ids (Union[Unset, list[str]]):
+        sub_status_ids (Union[Unset, list[str]]):
     """
 
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    command: None | str | Unset = UNSET
-    command_feedback_enabled: bool | None | Unset = UNSET
-    wait: None | str | Unset = UNSET
-    repeat_every_duration: None | str | Unset = UNSET
-    repeat_condition_duration_since_first_run: None | str | Unset = UNSET
-    repeat_condition_number_of_repeats: int | Unset = UNSET
-    continuously_repeat: bool | Unset = UNSET
-    enabled: bool | Unset = UNSET
-    locked: bool | Unset = UNSET
-    position: int | Unset = UNSET
-    workflow_group_id: None | str | Unset = UNSET
-    trigger_params: (
-        ActionItemTriggerParams
-        | AlertTriggerParams
-        | IncidentTriggerParams
-        | PulseTriggerParams
-        | SimpleTriggerParams
-        | Unset
-    ) = UNSET
-    environment_ids: list[str] | Unset = UNSET
-    severity_ids: list[str] | Unset = UNSET
-    incident_type_ids: list[str] | Unset = UNSET
-    incident_role_ids: list[str] | Unset = UNSET
-    service_ids: list[str] | Unset = UNSET
-    functionality_ids: list[str] | Unset = UNSET
-    group_ids: list[str] | Unset = UNSET
-    cause_ids: list[str] | Unset = UNSET
-    sub_status_ids: list[str] | Unset = UNSET
+    slug: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    command: Union[None, Unset, str] = UNSET
+    command_feedback_enabled: Union[None, Unset, bool] = UNSET
+    wait: Union[None, Unset, str] = UNSET
+    repeat_every_duration: Union[None, Unset, str] = UNSET
+    repeat_condition_duration_since_first_run: Union[None, Unset, str] = UNSET
+    repeat_condition_number_of_repeats: Union[Unset, int] = UNSET
+    continuously_repeat: Union[Unset, bool] = UNSET
+    enabled: Union[Unset, bool] = UNSET
+    locked: Union[Unset, bool] = UNSET
+    position: Union[Unset, int] = UNSET
+    workflow_group_id: Union[None, Unset, str] = UNSET
+    trigger_params: Union[
+        "ActionItemTriggerParams",
+        "AlertTriggerParams",
+        "IncidentTriggerParams",
+        "PulseTriggerParams",
+        "SimpleTriggerParams",
+        Unset,
+    ] = UNSET
+    environment_ids: Union[Unset, list[str]] = UNSET
+    severity_ids: Union[Unset, list[str]] = UNSET
+    incident_type_ids: Union[Unset, list[str]] = UNSET
+    incident_role_ids: Union[Unset, list[str]] = UNSET
+    service_ids: Union[Unset, list[str]] = UNSET
+    functionality_ids: Union[Unset, list[str]] = UNSET
+    group_ids: Union[Unset, list[str]] = UNSET
+    cause_ids: Union[Unset, list[str]] = UNSET
+    sub_status_ids: Union[Unset, list[str]] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.action_item_trigger_params import ActionItemTriggerParams
@@ -89,39 +90,45 @@ class UpdateWorkflowDataAttributes:
         from ..models.incident_trigger_params import IncidentTriggerParams
         from ..models.pulse_trigger_params import PulseTriggerParams
 
+        slug: Union[None, Unset, str]
+        if isinstance(self.slug, Unset):
+            slug = UNSET
+        else:
+            slug = self.slug
+
         name = self.name
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        command: None | str | Unset
+        command: Union[None, Unset, str]
         if isinstance(self.command, Unset):
             command = UNSET
         else:
             command = self.command
 
-        command_feedback_enabled: bool | None | Unset
+        command_feedback_enabled: Union[None, Unset, bool]
         if isinstance(self.command_feedback_enabled, Unset):
             command_feedback_enabled = UNSET
         else:
             command_feedback_enabled = self.command_feedback_enabled
 
-        wait: None | str | Unset
+        wait: Union[None, Unset, str]
         if isinstance(self.wait, Unset):
             wait = UNSET
         else:
             wait = self.wait
 
-        repeat_every_duration: None | str | Unset
+        repeat_every_duration: Union[None, Unset, str]
         if isinstance(self.repeat_every_duration, Unset):
             repeat_every_duration = UNSET
         else:
             repeat_every_duration = self.repeat_every_duration
 
-        repeat_condition_duration_since_first_run: None | str | Unset
+        repeat_condition_duration_since_first_run: Union[None, Unset, str]
         if isinstance(self.repeat_condition_duration_since_first_run, Unset):
             repeat_condition_duration_since_first_run = UNSET
         else:
@@ -137,13 +144,13 @@ class UpdateWorkflowDataAttributes:
 
         position = self.position
 
-        workflow_group_id: None | str | Unset
+        workflow_group_id: Union[None, Unset, str]
         if isinstance(self.workflow_group_id, Unset):
             workflow_group_id = UNSET
         else:
             workflow_group_id = self.workflow_group_id
 
-        trigger_params: dict[str, Any] | Unset
+        trigger_params: Union[Unset, dict[str, Any]]
         if isinstance(self.trigger_params, Unset):
             trigger_params = UNSET
         elif isinstance(self.trigger_params, IncidentTriggerParams):
@@ -157,45 +164,47 @@ class UpdateWorkflowDataAttributes:
         else:
             trigger_params = self.trigger_params.to_dict()
 
-        environment_ids: list[str] | Unset = UNSET
+        environment_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        severity_ids: list[str] | Unset = UNSET
+        severity_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.severity_ids, Unset):
             severity_ids = self.severity_ids
 
-        incident_type_ids: list[str] | Unset = UNSET
+        incident_type_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.incident_type_ids, Unset):
             incident_type_ids = self.incident_type_ids
 
-        incident_role_ids: list[str] | Unset = UNSET
+        incident_role_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.incident_role_ids, Unset):
             incident_role_ids = self.incident_role_ids
 
-        service_ids: list[str] | Unset = UNSET
+        service_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        functionality_ids: list[str] | Unset = UNSET
+        functionality_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.functionality_ids, Unset):
             functionality_ids = self.functionality_ids
 
-        group_ids: list[str] | Unset = UNSET
+        group_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        cause_ids: list[str] | Unset = UNSET
+        cause_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.cause_ids, Unset):
             cause_ids = self.cause_ids
 
-        sub_status_ids: list[str] | Unset = UNSET
+        sub_status_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.sub_status_ids, Unset):
             sub_status_ids = self.sub_status_ids
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({})
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
         if description is not UNSET:
@@ -254,59 +263,69 @@ class UpdateWorkflowDataAttributes:
         from ..models.simple_trigger_params import SimpleTriggerParams
 
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
+
+        slug = _parse_slug(d.pop("slug", UNSET))
+
+        name = d.pop("name", UNSET)
+
+        def _parse_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_command(data: object) -> None | str | Unset:
+        def _parse_command(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         command = _parse_command(d.pop("command", UNSET))
 
-        def _parse_command_feedback_enabled(data: object) -> bool | None | Unset:
+        def _parse_command_feedback_enabled(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(bool | None | Unset, data)
+            return cast(Union[None, Unset, bool], data)
 
         command_feedback_enabled = _parse_command_feedback_enabled(d.pop("command_feedback_enabled", UNSET))
 
-        def _parse_wait(data: object) -> None | str | Unset:
+        def _parse_wait(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         wait = _parse_wait(d.pop("wait", UNSET))
 
-        def _parse_repeat_every_duration(data: object) -> None | str | Unset:
+        def _parse_repeat_every_duration(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         repeat_every_duration = _parse_repeat_every_duration(d.pop("repeat_every_duration", UNSET))
 
-        def _parse_repeat_condition_duration_since_first_run(data: object) -> None | str | Unset:
+        def _parse_repeat_condition_duration_since_first_run(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         repeat_condition_duration_since_first_run = _parse_repeat_condition_duration_since_first_run(
             d.pop("repeat_condition_duration_since_first_run", UNSET)
@@ -322,25 +341,25 @@ class UpdateWorkflowDataAttributes:
 
         position = d.pop("position", UNSET)
 
-        def _parse_workflow_group_id(data: object) -> None | str | Unset:
+        def _parse_workflow_group_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         workflow_group_id = _parse_workflow_group_id(d.pop("workflow_group_id", UNSET))
 
         def _parse_trigger_params(
             data: object,
-        ) -> (
-            ActionItemTriggerParams
-            | AlertTriggerParams
-            | IncidentTriggerParams
-            | PulseTriggerParams
-            | SimpleTriggerParams
-            | Unset
-        ):
+        ) -> Union[
+            "ActionItemTriggerParams",
+            "AlertTriggerParams",
+            "IncidentTriggerParams",
+            "PulseTriggerParams",
+            "SimpleTriggerParams",
+            Unset,
+        ]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -349,7 +368,7 @@ class UpdateWorkflowDataAttributes:
                 trigger_params_type_0 = IncidentTriggerParams.from_dict(data)
 
                 return trigger_params_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -357,7 +376,7 @@ class UpdateWorkflowDataAttributes:
                 trigger_params_type_1 = ActionItemTriggerParams.from_dict(data)
 
                 return trigger_params_type_1
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -365,7 +384,7 @@ class UpdateWorkflowDataAttributes:
                 trigger_params_type_2 = AlertTriggerParams.from_dict(data)
 
                 return trigger_params_type_2
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             try:
                 if not isinstance(data, dict):
@@ -373,7 +392,7 @@ class UpdateWorkflowDataAttributes:
                 trigger_params_type_3 = PulseTriggerParams.from_dict(data)
 
                 return trigger_params_type_3
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -402,6 +421,7 @@ class UpdateWorkflowDataAttributes:
         sub_status_ids = cast(list[str], d.pop("sub_status_ids", UNSET))
 
         update_workflow_data_attributes = cls(
+            slug=slug,
             name=name,
             description=description,
             command=command,

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +15,14 @@ class ErrorsListErrorsItem:
     Attributes:
         title (str):
         status (str):
-        code (None | str | Unset):
-        detail (None | str | Unset):
+        code (Union[None, Unset, str]):
+        detail (Union[None, Unset, str]):
     """
 
     title: str
     status: str
-    code: None | str | Unset = UNSET
-    detail: None | str | Unset = UNSET
+    code: Union[None, Unset, str] = UNSET
+    detail: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,13 +30,13 @@ class ErrorsListErrorsItem:
 
         status = self.status
 
-        code: None | str | Unset
+        code: Union[None, Unset, str]
         if isinstance(self.code, Unset):
             code = UNSET
         else:
             code = self.code
 
-        detail: None | str | Unset
+        detail: Union[None, Unset, str]
         if isinstance(self.detail, Unset):
             detail = UNSET
         else:
@@ -66,21 +64,21 @@ class ErrorsListErrorsItem:
 
         status = d.pop("status")
 
-        def _parse_code(data: object) -> None | str | Unset:
+        def _parse_code(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         code = _parse_code(d.pop("code", UNSET))
 
-        def _parse_detail(data: object) -> None | str | Unset:
+        def _parse_detail(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         detail = _parse_detail(d.pop("detail", UNSET))
 

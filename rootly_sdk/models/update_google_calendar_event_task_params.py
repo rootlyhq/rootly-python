@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,53 +28,52 @@ class UpdateGoogleCalendarEventTaskParams:
     """
     Attributes:
         event_id (str): The event ID
-        task_type (UpdateGoogleCalendarEventTaskParamsTaskType | Unset):
-        calendar_id (None | str | Unset):  Default: 'primary'.
-        summary (str | Unset): The event summary
-        description (str | Unset): The event description
-        adjustment_days (int | Unset): Days to adjust meeting by
-        time_of_meeting (str | Unset): Time of meeting in format HH:MM
-        meeting_duration (str | Unset): Meeting duration in format like '1 hour', '30 minutes' Example: 1 hour.
-        send_updates (bool | Unset): Send an email to the attendees notifying them of the event
-        can_guests_modify_event (bool | Unset):
-        can_guests_see_other_guests (bool | Unset):
-        can_guests_invite_others (bool | Unset):
-        attendees (list[str] | Unset): Emails of attendees
-        replace_attendees (bool | Unset):
-        conference_solution_key (UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey | Unset): Sets the video
+        task_type (Union[Unset, UpdateGoogleCalendarEventTaskParamsTaskType]):
+        calendar_id (Union[None, Unset, str]):  Default: 'primary'.
+        summary (Union[Unset, str]): The event summary
+        description (Union[Unset, str]): The event description
+        adjustment_days (Union[Unset, int]): Days to adjust meeting by
+        time_of_meeting (Union[Unset, str]): Time of meeting in format HH:MM
+        meeting_duration (Union[Unset, str]): Meeting duration in format like '1 hour', '30 minutes' Example: 1 hour.
+        send_updates (Union[Unset, bool]): Send an email to the attendees notifying them of the event
+        can_guests_modify_event (Union[Unset, bool]):
+        can_guests_see_other_guests (Union[Unset, bool]):
+        can_guests_invite_others (Union[Unset, bool]):
+        attendees (Union[Unset, list[str]]): Emails of attendees
+        replace_attendees (Union[Unset, bool]):
+        conference_solution_key (Union[Unset, UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey]): Sets the video
             conference type attached to the meeting
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem] | Unset):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem']]):
     """
 
     event_id: str
-    task_type: UpdateGoogleCalendarEventTaskParamsTaskType | Unset = UNSET
-    calendar_id: None | str | Unset = "primary"
-    summary: str | Unset = UNSET
-    description: str | Unset = UNSET
-    adjustment_days: int | Unset = UNSET
-    time_of_meeting: str | Unset = UNSET
-    meeting_duration: str | Unset = UNSET
-    send_updates: bool | Unset = UNSET
-    can_guests_modify_event: bool | Unset = UNSET
-    can_guests_see_other_guests: bool | Unset = UNSET
-    can_guests_invite_others: bool | Unset = UNSET
-    attendees: list[str] | Unset = UNSET
-    replace_attendees: bool | Unset = UNSET
-    conference_solution_key: UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    task_type: Union[Unset, UpdateGoogleCalendarEventTaskParamsTaskType] = UNSET
+    calendar_id: Union[None, Unset, str] = "primary"
+    summary: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    adjustment_days: Union[Unset, int] = UNSET
+    time_of_meeting: Union[Unset, str] = UNSET
+    meeting_duration: Union[Unset, str] = UNSET
+    send_updates: Union[Unset, bool] = UNSET
+    can_guests_modify_event: Union[Unset, bool] = UNSET
+    can_guests_see_other_guests: Union[Unset, bool] = UNSET
+    can_guests_invite_others: Union[Unset, bool] = UNSET
+    attendees: Union[Unset, list[str]] = UNSET
+    replace_attendees: Union[Unset, bool] = UNSET
+    conference_solution_key: Union[Unset, UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         event_id = self.event_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        calendar_id: None | str | Unset
+        calendar_id: Union[None, Unset, str]
         if isinstance(self.calendar_id, Unset):
             calendar_id = UNSET
         else:
@@ -100,19 +97,19 @@ class UpdateGoogleCalendarEventTaskParams:
 
         can_guests_invite_others = self.can_guests_invite_others
 
-        attendees: list[str] | Unset = UNSET
+        attendees: Union[Unset, list[str]] = UNSET
         if not isinstance(self.attendees, Unset):
             attendees = self.attendees
 
         replace_attendees = self.replace_attendees
 
-        conference_solution_key: str | Unset = UNSET
+        conference_solution_key: Union[Unset, str] = UNSET
         if not isinstance(self.conference_solution_key, Unset):
             conference_solution_key = self.conference_solution_key
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -171,18 +168,18 @@ class UpdateGoogleCalendarEventTaskParams:
         event_id = d.pop("event_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: UpdateGoogleCalendarEventTaskParamsTaskType | Unset
+        task_type: Union[Unset, UpdateGoogleCalendarEventTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_google_calendar_event_task_params_task_type(_task_type)
 
-        def _parse_calendar_id(data: object) -> None | str | Unset:
+        def _parse_calendar_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         calendar_id = _parse_calendar_id(d.pop("calendar_id", UNSET))
 
@@ -209,7 +206,7 @@ class UpdateGoogleCalendarEventTaskParams:
         replace_attendees = d.pop("replace_attendees", UNSET)
 
         _conference_solution_key = d.pop("conference_solution_key", UNSET)
-        conference_solution_key: UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey | Unset
+        conference_solution_key: Union[Unset, UpdateGoogleCalendarEventTaskParamsConferenceSolutionKey]
         if isinstance(_conference_solution_key, Unset):
             conference_solution_key = UNSET
         else:
@@ -219,16 +216,14 @@ class UpdateGoogleCalendarEventTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = UpdateGoogleCalendarEventTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         update_google_calendar_event_task_params = cls(
             event_id=event_id,

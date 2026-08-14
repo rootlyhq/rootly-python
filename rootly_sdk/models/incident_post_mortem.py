@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,44 +21,44 @@ class IncidentPostMortem:
         title (str): The title of the incident retrospective
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        content (None | str | Unset): The content of the incident retrospective (Only if internal)
-        status (IncidentPostMortemStatus | Unset): The status of the incident retrospective
-        started_at (None | str | Unset): Date of started at
-        mitigated_at (None | str | Unset): Date of mitigation
-        resolved_at (None | str | Unset): Date of resolution
-        show_timeline (bool | Unset): Show events timeline of the incident retrospective
-        show_timeline_trail (bool | Unset): Show trail events in the timeline of the incident retrospective
-        show_timeline_genius (bool | Unset): Show workflow events in the timeline of the incident retrospective
-        show_timeline_tasks (bool | Unset): Show tasks in the timeline of the incident retrospective
-        show_timeline_action_items (bool | Unset): Show action items in the timeline of the incident retrospective
-        show_timeline_order (IncidentPostMortemShowTimelineOrder | Unset): The order of the incident retrospective
+        content (Union[None, Unset, str]): The content of the incident retrospective (Only if internal)
+        status (Union[Unset, IncidentPostMortemStatus]): The status of the incident retrospective
+        started_at (Union[None, Unset, str]): Date of started at
+        mitigated_at (Union[None, Unset, str]): Date of mitigation
+        resolved_at (Union[None, Unset, str]): Date of resolution
+        show_timeline (Union[Unset, bool]): Show events timeline of the incident retrospective
+        show_timeline_trail (Union[Unset, bool]): Show trail events in the timeline of the incident retrospective
+        show_timeline_genius (Union[Unset, bool]): Show workflow events in the timeline of the incident retrospective
+        show_timeline_tasks (Union[Unset, bool]): Show tasks in the timeline of the incident retrospective
+        show_timeline_action_items (Union[Unset, bool]): Show action items in the timeline of the incident retrospective
+        show_timeline_order (Union[Unset, IncidentPostMortemShowTimelineOrder]): The order of the incident retrospective
             timeline Default: 'desc'.
-        show_services_impacted (bool | Unset): Show functionalities impacted of the incident retrospective
-        show_functionalities_impacted (bool | Unset): Show services impacted of the incident retrospective
-        show_groups_impacted (bool | Unset): Show groups impacted of the incident retrospective
-        show_alerts_attached (bool | Unset): Show alerts attached to the incident
-        url (str | Unset): The url to the incident retrospective
+        show_services_impacted (Union[Unset, bool]): Show functionalities impacted of the incident retrospective
+        show_functionalities_impacted (Union[Unset, bool]): Show services impacted of the incident retrospective
+        show_groups_impacted (Union[Unset, bool]): Show groups impacted of the incident retrospective
+        show_alerts_attached (Union[Unset, bool]): Show alerts attached to the incident
+        url (Union[Unset, str]): The url to the incident retrospective
     """
 
     title: str
     created_at: str
     updated_at: str
-    content: None | str | Unset = UNSET
-    status: IncidentPostMortemStatus | Unset = UNSET
-    started_at: None | str | Unset = UNSET
-    mitigated_at: None | str | Unset = UNSET
-    resolved_at: None | str | Unset = UNSET
-    show_timeline: bool | Unset = UNSET
-    show_timeline_trail: bool | Unset = UNSET
-    show_timeline_genius: bool | Unset = UNSET
-    show_timeline_tasks: bool | Unset = UNSET
-    show_timeline_action_items: bool | Unset = UNSET
-    show_timeline_order: IncidentPostMortemShowTimelineOrder | Unset = "desc"
-    show_services_impacted: bool | Unset = UNSET
-    show_functionalities_impacted: bool | Unset = UNSET
-    show_groups_impacted: bool | Unset = UNSET
-    show_alerts_attached: bool | Unset = UNSET
-    url: str | Unset = UNSET
+    content: Union[None, Unset, str] = UNSET
+    status: Union[Unset, IncidentPostMortemStatus] = UNSET
+    started_at: Union[None, Unset, str] = UNSET
+    mitigated_at: Union[None, Unset, str] = UNSET
+    resolved_at: Union[None, Unset, str] = UNSET
+    show_timeline: Union[Unset, bool] = UNSET
+    show_timeline_trail: Union[Unset, bool] = UNSET
+    show_timeline_genius: Union[Unset, bool] = UNSET
+    show_timeline_tasks: Union[Unset, bool] = UNSET
+    show_timeline_action_items: Union[Unset, bool] = UNSET
+    show_timeline_order: Union[Unset, IncidentPostMortemShowTimelineOrder] = "desc"
+    show_services_impacted: Union[Unset, bool] = UNSET
+    show_functionalities_impacted: Union[Unset, bool] = UNSET
+    show_groups_impacted: Union[Unset, bool] = UNSET
+    show_alerts_attached: Union[Unset, bool] = UNSET
+    url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,29 +68,29 @@ class IncidentPostMortem:
 
         updated_at = self.updated_at
 
-        content: None | str | Unset
+        content: Union[None, Unset, str]
         if isinstance(self.content, Unset):
             content = UNSET
         else:
             content = self.content
 
-        status: str | Unset = UNSET
+        status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        started_at: None | str | Unset
+        started_at: Union[None, Unset, str]
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        mitigated_at: None | str | Unset
+        mitigated_at: Union[None, Unset, str]
         if isinstance(self.mitigated_at, Unset):
             mitigated_at = UNSET
         else:
             mitigated_at = self.mitigated_at
 
-        resolved_at: None | str | Unset
+        resolved_at: Union[None, Unset, str]
         if isinstance(self.resolved_at, Unset):
             resolved_at = UNSET
         else:
@@ -108,7 +106,7 @@ class IncidentPostMortem:
 
         show_timeline_action_items = self.show_timeline_action_items
 
-        show_timeline_order: str | Unset = UNSET
+        show_timeline_order: Union[Unset, str] = UNSET
         if not isinstance(self.show_timeline_order, Unset):
             show_timeline_order = self.show_timeline_order
 
@@ -175,46 +173,46 @@ class IncidentPostMortem:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_content(data: object) -> None | str | Unset:
+        def _parse_content(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         content = _parse_content(d.pop("content", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: IncidentPostMortemStatus | Unset
+        status: Union[Unset, IncidentPostMortemStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_incident_post_mortem_status(_status)
 
-        def _parse_started_at(data: object) -> None | str | Unset:
+        def _parse_started_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_mitigated_at(data: object) -> None | str | Unset:
+        def _parse_mitigated_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         mitigated_at = _parse_mitigated_at(d.pop("mitigated_at", UNSET))
 
-        def _parse_resolved_at(data: object) -> None | str | Unset:
+        def _parse_resolved_at(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
@@ -229,7 +227,7 @@ class IncidentPostMortem:
         show_timeline_action_items = d.pop("show_timeline_action_items", UNSET)
 
         _show_timeline_order = d.pop("show_timeline_order", UNSET)
-        show_timeline_order: IncidentPostMortemShowTimelineOrder | Unset
+        show_timeline_order: Union[Unset, IncidentPostMortemShowTimelineOrder]
         if isinstance(_show_timeline_order, Unset):
             show_timeline_order = UNSET
         else:

@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/form_fields/{form_field_id}/placements".format(
-            form_field_id=quote(str(form_field_id), safe=""),
-        ),
+        "url": f"/v1/form_fields/{form_field_id}/placements",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | FormFieldPlacementResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, FormFieldPlacementResponse]]:
     if response.status_code == 201:
         response_201 = FormFieldPlacementResponse.from_dict(response.json())
 
@@ -59,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | FormFieldPlacementResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, FormFieldPlacementResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormFieldPlacement,
-) -> Response[ErrorsList | FormFieldPlacementResponse]:
+) -> Response[Union[ErrorsList, FormFieldPlacementResponse]]:
     """Creates a Form Field Placement
 
      Creates a new form_field_placement from provided data
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldPlacementResponse]
+        Response[Union[ErrorsList, FormFieldPlacementResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewFormFieldPlacement,
-) -> ErrorsList | FormFieldPlacementResponse | None:
+) -> Optional[Union[ErrorsList, FormFieldPlacementResponse]]:
     """Creates a Form Field Placement
 
      Creates a new form_field_placement from provided data
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldPlacementResponse
+        Union[ErrorsList, FormFieldPlacementResponse]
     """
 
     return sync_detailed(
@@ -137,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewFormFieldPlacement,
-) -> Response[ErrorsList | FormFieldPlacementResponse]:
+) -> Response[Union[ErrorsList, FormFieldPlacementResponse]]:
     """Creates a Form Field Placement
 
      Creates a new form_field_placement from provided data
@@ -151,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | FormFieldPlacementResponse]
+        Response[Union[ErrorsList, FormFieldPlacementResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -169,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewFormFieldPlacement,
-) -> ErrorsList | FormFieldPlacementResponse | None:
+) -> Optional[Union[ErrorsList, FormFieldPlacementResponse]]:
     """Creates a Form Field Placement
 
      Creates a new form_field_placement from provided data
@@ -183,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | FormFieldPlacementResponse
+        Union[ErrorsList, FormFieldPlacementResponse]
     """
 
     return (

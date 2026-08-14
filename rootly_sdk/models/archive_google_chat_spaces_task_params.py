@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,22 +21,21 @@ T = TypeVar("T", bound="ArchiveGoogleChatSpacesTaskParams")
 class ArchiveGoogleChatSpacesTaskParams:
     """
     Attributes:
-        spaces (list[ArchiveGoogleChatSpacesTaskParamsSpacesItem]):
-        task_type (ArchiveGoogleChatSpacesTaskParamsTaskType | Unset):
+        spaces (list['ArchiveGoogleChatSpacesTaskParamsSpacesItem']):
+        task_type (Union[Unset, ArchiveGoogleChatSpacesTaskParamsTaskType]):
     """
 
-    spaces: list[ArchiveGoogleChatSpacesTaskParamsSpacesItem]
-    task_type: ArchiveGoogleChatSpacesTaskParamsTaskType | Unset = UNSET
+    spaces: list["ArchiveGoogleChatSpacesTaskParamsSpacesItem"]
+    task_type: Union[Unset, ArchiveGoogleChatSpacesTaskParamsTaskType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         spaces = []
         for spaces_item_data in self.spaces:
             spaces_item = spaces_item_data.to_dict()
             spaces.append(spaces_item)
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -69,7 +66,7 @@ class ArchiveGoogleChatSpacesTaskParams:
             spaces.append(spaces_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: ArchiveGoogleChatSpacesTaskParamsTaskType | Unset
+        task_type: Union[Unset, ArchiveGoogleChatSpacesTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

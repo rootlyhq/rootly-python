@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,20 +13,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/on_call_pay_reports/{id}/regenerate".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/on_call_pay_reports/{id}/regenerate",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | OnCallPayReportResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
     if response.status_code == 200:
         response_200 = OnCallPayReportResponse.from_dict(response.json())
 
@@ -45,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | OnCallPayReportResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | OnCallPayReportResponse]:
+) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
     """Regenerate an On-Call Pay Report
 
      Triggers regeneration of an existing on-call pay report.
@@ -72,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallPayReportResponse]
+        Response[Union[ErrorsList, OnCallPayReportResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | OnCallPayReportResponse | None:
+) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
     """Regenerate an On-Call Pay Report
 
      Triggers regeneration of an existing on-call pay report.
@@ -103,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallPayReportResponse
+        Union[ErrorsList, OnCallPayReportResponse]
     """
 
     return sync_detailed(
@@ -116,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | OnCallPayReportResponse]:
+) -> Response[Union[ErrorsList, OnCallPayReportResponse]]:
     """Regenerate an On-Call Pay Report
 
      Triggers regeneration of an existing on-call pay report.
@@ -129,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | OnCallPayReportResponse]
+        Response[Union[ErrorsList, OnCallPayReportResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | OnCallPayReportResponse | None:
+) -> Optional[Union[ErrorsList, OnCallPayReportResponse]]:
     """Regenerate an On-Call Pay Report
 
      Triggers regeneration of an existing on-call pay report.
@@ -158,7 +154,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | OnCallPayReportResponse
+        Union[ErrorsList, OnCallPayReportResponse]
     """
 
     return (

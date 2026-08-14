@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,19 +18,19 @@ class CreateSubIncidentTaskParams:
     """
     Attributes:
         title (str): The sub incident title
-        task_type (CreateSubIncidentTaskParamsTaskType | Unset):
-        summary (str | Unset): The sub incident summary
+        task_type (Union[Unset, CreateSubIncidentTaskParamsTaskType]):
+        summary (Union[Unset, str]): The sub incident summary
     """
 
     title: str
-    task_type: CreateSubIncidentTaskParamsTaskType | Unset = UNSET
-    summary: str | Unset = UNSET
+    task_type: Union[Unset, CreateSubIncidentTaskParamsTaskType] = UNSET
+    summary: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -58,7 +56,7 @@ class CreateSubIncidentTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: CreateSubIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, CreateSubIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

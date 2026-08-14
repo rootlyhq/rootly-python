@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -12,26 +12,25 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     message: str,
-    session_id: UUID | Unset = UNSET,
-    incident_id: UUID | Unset = UNSET,
-    alert_id: UUID | Unset = UNSET,
+    session_id: Union[Unset, UUID] = UNSET,
+    incident_id: Union[Unset, UUID] = UNSET,
+    alert_id: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["message"] = message
 
-    json_session_id: str | Unset = UNSET
+    json_session_id: Union[Unset, str] = UNSET
     if not isinstance(session_id, Unset):
         json_session_id = str(session_id)
     params["session_id"] = json_session_id
 
-    json_incident_id: str | Unset = UNSET
+    json_incident_id: Union[Unset, str] = UNSET
     if not isinstance(incident_id, Unset):
         json_incident_id = str(incident_id)
     params["incident_id"] = json_incident_id
 
-    json_alert_id: str | Unset = UNSET
+    json_alert_id: Union[Unset, str] = UNSET
     if not isinstance(alert_id, Unset):
         json_alert_id = str(alert_id)
     params["alert_id"] = json_alert_id
@@ -47,7 +46,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Any | None:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
     if response.status_code == 200:
         return None
 
@@ -60,7 +59,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
         return None
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,9 +72,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: UUID | Unset = UNSET,
-    incident_id: UUID | Unset = UNSET,
-    alert_id: UUID | Unset = UNSET,
+    session_id: Union[Unset, UUID] = UNSET,
+    incident_id: Union[Unset, UUID] = UNSET,
+    alert_id: Union[Unset, UUID] = UNSET,
 ) -> Response[Any]:
     """Stream AI chat response (SSE)
 
@@ -86,9 +85,9 @@ def sync_detailed(
 
     Args:
         message (str):
-        session_id (UUID | Unset):
-        incident_id (UUID | Unset):
-        alert_id (UUID | Unset):
+        session_id (Union[Unset, UUID]):
+        incident_id (Union[Unset, UUID]):
+        alert_id (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -116,9 +115,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     message: str,
-    session_id: UUID | Unset = UNSET,
-    incident_id: UUID | Unset = UNSET,
-    alert_id: UUID | Unset = UNSET,
+    session_id: Union[Unset, UUID] = UNSET,
+    incident_id: Union[Unset, UUID] = UNSET,
+    alert_id: Union[Unset, UUID] = UNSET,
 ) -> Response[Any]:
     """Stream AI chat response (SSE)
 
@@ -129,9 +128,9 @@ async def asyncio_detailed(
 
     Args:
         message (str):
-        session_id (UUID | Unset):
-        incident_id (UUID | Unset):
-        alert_id (UUID | Unset):
+        session_id (Union[Unset, UUID]):
+        incident_id (Union[Unset, UUID]):
+        alert_id (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

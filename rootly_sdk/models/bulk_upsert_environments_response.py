@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,15 +17,14 @@ T = TypeVar("T", bound="BulkUpsertEnvironmentsResponse")
 class BulkUpsertEnvironmentsResponse:
     """
     Attributes:
-        data (list[BulkUpsertEnvironmentsResponseDataItem] | Unset):
+        data (Union[Unset, list['BulkUpsertEnvironmentsResponseDataItem']]):
     """
 
-    data: list[BulkUpsertEnvironmentsResponseDataItem] | Unset = UNSET
+    data: Union[Unset, list["BulkUpsertEnvironmentsResponseDataItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        data: list[dict[str, Any]] | Unset = UNSET
+        data: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.data, Unset):
             data = []
             for data_item_data in self.data:
@@ -47,14 +44,12 @@ class BulkUpsertEnvironmentsResponse:
         from ..models.bulk_upsert_environments_response_data_item import BulkUpsertEnvironmentsResponseDataItem
 
         d = dict(src_dict)
+        data = []
         _data = d.pop("data", UNSET)
-        data: list[BulkUpsertEnvironmentsResponseDataItem] | Unset = UNSET
-        if _data is not UNSET:
-            data = []
-            for data_item_data in _data:
-                data_item = BulkUpsertEnvironmentsResponseDataItem.from_dict(data_item_data)
+        for data_item_data in _data or []:
+            data_item = BulkUpsertEnvironmentsResponseDataItem.from_dict(data_item_data)
 
-                data.append(data_item)
+            data.append(data_item)
 
         bulk_upsert_environments_response = cls(
             data=data,

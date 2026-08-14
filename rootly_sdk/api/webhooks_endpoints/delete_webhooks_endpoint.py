@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -14,20 +13,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": "/v1/webhooks/endpoints/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/webhooks/endpoints/{id}",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WebhooksEndpointResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, WebhooksEndpointResponse]]:
     if response.status_code == 200:
         response_200 = WebhooksEndpointResponse.from_dict(response.json())
 
@@ -45,8 +41,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WebhooksEndpointResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, WebhooksEndpointResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | WebhooksEndpointResponse]:
+) -> Response[Union[ErrorsList, WebhooksEndpointResponse]]:
     """Delete a webhook endpoint
 
      Delete a specific webhook endpoint by id
@@ -72,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WebhooksEndpointResponse]
+        Response[Union[ErrorsList, WebhooksEndpointResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | WebhooksEndpointResponse | None:
+) -> Optional[Union[ErrorsList, WebhooksEndpointResponse]]:
     """Delete a webhook endpoint
 
      Delete a specific webhook endpoint by id
@@ -103,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WebhooksEndpointResponse
+        Union[ErrorsList, WebhooksEndpointResponse]
     """
 
     return sync_detailed(
@@ -116,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[ErrorsList | WebhooksEndpointResponse]:
+) -> Response[Union[ErrorsList, WebhooksEndpointResponse]]:
     """Delete a webhook endpoint
 
      Delete a specific webhook endpoint by id
@@ -129,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WebhooksEndpointResponse]
+        Response[Union[ErrorsList, WebhooksEndpointResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> ErrorsList | WebhooksEndpointResponse | None:
+) -> Optional[Union[ErrorsList, WebhooksEndpointResponse]]:
     """Delete a webhook endpoint
 
      Delete a specific webhook endpoint by id
@@ -158,7 +154,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WebhooksEndpointResponse
+        Union[ErrorsList, WebhooksEndpointResponse]
     """
 
     return (

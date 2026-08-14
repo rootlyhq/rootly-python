@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -21,9 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/escalation_policies/{escalation_policy_id}/escalation_paths".format(
-            escalation_policy_id=quote(str(escalation_policy_id), safe=""),
-        ),
+        "url": f"/v1/escalation_policies/{escalation_policy_id}/escalation_paths",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -35,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | EscalationPolicyPathResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
     if response.status_code == 201:
         response_201 = EscalationPolicyPathResponse.from_dict(response.json())
 
@@ -59,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | EscalationPolicyPathResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,7 +71,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewEscalationPolicyPath,
-) -> Response[ErrorsList | EscalationPolicyPathResponse]:
+) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
     """Creates an escalation path
 
      Creates a new escalation path from provided data
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | EscalationPolicyPathResponse]
+        Response[Union[ErrorsList, EscalationPolicyPathResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +105,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewEscalationPolicyPath,
-) -> ErrorsList | EscalationPolicyPathResponse | None:
+) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
     """Creates an escalation path
 
      Creates a new escalation path from provided data
@@ -122,7 +119,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | EscalationPolicyPathResponse
+        Union[ErrorsList, EscalationPolicyPathResponse]
     """
 
     return sync_detailed(
@@ -137,7 +134,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewEscalationPolicyPath,
-) -> Response[ErrorsList | EscalationPolicyPathResponse]:
+) -> Response[Union[ErrorsList, EscalationPolicyPathResponse]]:
     """Creates an escalation path
 
      Creates a new escalation path from provided data
@@ -151,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | EscalationPolicyPathResponse]
+        Response[Union[ErrorsList, EscalationPolicyPathResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -169,7 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewEscalationPolicyPath,
-) -> ErrorsList | EscalationPolicyPathResponse | None:
+) -> Optional[Union[ErrorsList, EscalationPolicyPathResponse]]:
     """Creates an escalation path
 
      Creates a new escalation path from provided data
@@ -183,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | EscalationPolicyPathResponse
+        Union[ErrorsList, EscalationPolicyPathResponse]
     """
 
     return (

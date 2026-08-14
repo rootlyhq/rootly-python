@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -33,53 +31,53 @@ class EdgeConnectorActionDataAttributes:
     Attributes:
         name (str): Action name
         action_type (EdgeConnectorActionDataAttributesActionType): Action type
-        slug (str | Unset): Action slug
-        icon (EdgeConnectorActionDataAttributesIcon | Unset): Action icon
-        description (None | str | Unset): Action description
-        timeout (int | None | Unset): Timeout in seconds
-        parameters (list[EdgeConnectorActionDataAttributesParametersType0Item] | None | Unset): Parameter definitions
-        last_executed_at (datetime.datetime | None | Unset):
-        created_at (datetime.datetime | Unset):
-        updated_at (datetime.datetime | Unset):
+        slug (Union[Unset, str]): Action slug
+        icon (Union[Unset, EdgeConnectorActionDataAttributesIcon]): Action icon
+        description (Union[None, Unset, str]): Action description
+        timeout (Union[None, Unset, int]): Timeout in seconds
+        parameters (Union[None, Unset, list['EdgeConnectorActionDataAttributesParametersType0Item']]): Parameter
+            definitions
+        last_executed_at (Union[None, Unset, datetime.datetime]):
+        created_at (Union[Unset, datetime.datetime]):
+        updated_at (Union[Unset, datetime.datetime]):
     """
 
     name: str
     action_type: EdgeConnectorActionDataAttributesActionType
-    slug: str | Unset = UNSET
-    icon: EdgeConnectorActionDataAttributesIcon | Unset = UNSET
-    description: None | str | Unset = UNSET
-    timeout: int | None | Unset = UNSET
-    parameters: list[EdgeConnectorActionDataAttributesParametersType0Item] | None | Unset = UNSET
-    last_executed_at: datetime.datetime | None | Unset = UNSET
-    created_at: datetime.datetime | Unset = UNSET
-    updated_at: datetime.datetime | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
+    icon: Union[Unset, EdgeConnectorActionDataAttributesIcon] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    timeout: Union[None, Unset, int] = UNSET
+    parameters: Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]] = UNSET
+    last_executed_at: Union[None, Unset, datetime.datetime] = UNSET
+    created_at: Union[Unset, datetime.datetime] = UNSET
+    updated_at: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         name = self.name
 
         action_type: str = self.action_type
 
         slug = self.slug
 
-        icon: str | Unset = UNSET
+        icon: Union[Unset, str] = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        timeout: int | None | Unset
+        timeout: Union[None, Unset, int]
         if isinstance(self.timeout, Unset):
             timeout = UNSET
         else:
             timeout = self.timeout
 
-        parameters: list[dict[str, Any]] | None | Unset
+        parameters: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.parameters, Unset):
             parameters = UNSET
         elif isinstance(self.parameters, list):
@@ -91,7 +89,7 @@ class EdgeConnectorActionDataAttributes:
         else:
             parameters = self.parameters
 
-        last_executed_at: None | str | Unset
+        last_executed_at: Union[None, Unset, str]
         if isinstance(self.last_executed_at, Unset):
             last_executed_at = UNSET
         elif isinstance(self.last_executed_at, datetime.datetime):
@@ -99,11 +97,11 @@ class EdgeConnectorActionDataAttributes:
         else:
             last_executed_at = self.last_executed_at
 
-        created_at: str | Unset = UNSET
+        created_at: Union[Unset, str] = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: str | Unset = UNSET
+        updated_at: Union[Unset, str] = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -148,33 +146,33 @@ class EdgeConnectorActionDataAttributes:
         slug = d.pop("slug", UNSET)
 
         _icon = d.pop("icon", UNSET)
-        icon: EdgeConnectorActionDataAttributesIcon | Unset
+        icon: Union[Unset, EdgeConnectorActionDataAttributesIcon]
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_edge_connector_action_data_attributes_icon(_icon)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_timeout(data: object) -> int | None | Unset:
+        def _parse_timeout(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(int | None | Unset, data)
+            return cast(Union[None, Unset, int], data)
 
         timeout = _parse_timeout(d.pop("timeout", UNSET))
 
         def _parse_parameters(
             data: object,
-        ) -> list[EdgeConnectorActionDataAttributesParametersType0Item] | None | Unset:
+        ) -> Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -192,13 +190,13 @@ class EdgeConnectorActionDataAttributes:
                     parameters_type_0.append(parameters_type_0_item)
 
                 return parameters_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(list[EdgeConnectorActionDataAttributesParametersType0Item] | None | Unset, data)
+            return cast(Union[None, Unset, list["EdgeConnectorActionDataAttributesParametersType0Item"]], data)
 
         parameters = _parse_parameters(d.pop("parameters", UNSET))
 
-        def _parse_last_executed_at(data: object) -> datetime.datetime | None | Unset:
+        def _parse_last_executed_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -209,21 +207,21 @@ class EdgeConnectorActionDataAttributes:
                 last_executed_at_type_0 = isoparse(data)
 
                 return last_executed_at_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(datetime.datetime | None | Unset, data)
+            return cast(Union[None, Unset, datetime.datetime], data)
 
         last_executed_at = _parse_last_executed_at(d.pop("last_executed_at", UNSET))
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: datetime.datetime | Unset
+        created_at: Union[Unset, datetime.datetime]
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: datetime.datetime | Unset
+        updated_at: Union[Unset, datetime.datetime]
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:

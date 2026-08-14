@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,20 +14,20 @@ T = TypeVar("T", bound="StartSessionRequest")
 class StartSessionRequest:
     """
     Attributes:
-        platform (StartSessionRequestPlatform | Unset): Meeting platform
-        title (None | str | Unset): Human-readable label for the recording session
+        platform (Union[Unset, StartSessionRequestPlatform]): Meeting platform
+        title (Union[None, Unset, str]): Human-readable label for the recording session
     """
 
-    platform: StartSessionRequestPlatform | Unset = UNSET
-    title: None | str | Unset = UNSET
+    platform: Union[Unset, StartSessionRequestPlatform] = UNSET
+    title: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        platform: str | Unset = UNSET
+        platform: Union[Unset, str] = UNSET
         if not isinstance(self.platform, Unset):
             platform = self.platform
 
-        title: None | str | Unset
+        title: Union[None, Unset, str]
         if isinstance(self.title, Unset):
             title = UNSET
         else:
@@ -49,18 +47,18 @@ class StartSessionRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _platform = d.pop("platform", UNSET)
-        platform: StartSessionRequestPlatform | Unset
+        platform: Union[Unset, StartSessionRequestPlatform]
         if isinstance(_platform, Unset):
             platform = UNSET
         else:
             platform = check_start_session_request_platform(_platform)
 
-        def _parse_title(data: object) -> None | str | Unset:
+        def _parse_title(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         title = _parse_title(d.pop("title", UNSET))
 

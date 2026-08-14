@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -20,9 +19,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": "/v1/dashboard_panels/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/dashboard_panels/{id}",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -33,7 +30,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> DashboardPanelResponse | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[DashboardPanelResponse]:
     if response.status_code == 200:
         response_200 = DashboardPanelResponse.from_dict(response.json())
 
@@ -46,7 +45,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[DashboardPanelResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -95,7 +94,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UpdateDashboardPanel,
-) -> DashboardPanelResponse | None:
+) -> Optional[DashboardPanelResponse]:
     """Update a dashboard panel
 
      Update a specific dashboard panel by id
@@ -156,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UpdateDashboardPanel,
-) -> DashboardPanelResponse | None:
+) -> Optional[DashboardPanelResponse]:
     """Update a dashboard panel
 
      Update a specific dashboard panel by id

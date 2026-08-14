@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,31 +30,34 @@ class PublishIncidentTaskParams:
         public_title (str):
         status (PublishIncidentTaskParamsStatus):  Default: 'resolved'.
         status_page_id (str):
-        task_type (PublishIncidentTaskParamsTaskType | Unset):
-        event (str | Unset): Incident event description
-        notify_subscribers (bool | Unset): When true notifies subscribers of the status page by email/text Default:
-            False.
-        should_tweet (bool | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update Default:
-            False.
-        status_page_template (PublishIncidentTaskParamsStatusPageTemplate | Unset):
-        integration_payload (None | str | Unset): Additional API Payload you can pass to statuspage.io for example. Can
-            contain liquid markup and need to be valid JSON
+        task_type (Union[Unset, PublishIncidentTaskParamsTaskType]):
+        event (Union[Unset, str]): Incident event description
+        notify_subscribers (Union[Unset, bool]): When true notifies subscribers of the status page by email/text
+            Default: False.
+        should_tweet (Union[Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your update
+            Default: False.
+        status_page_template (Union[Unset, PublishIncidentTaskParamsStatusPageTemplate]):
+        status_page_ids (Union[Unset, list[str]]): Publishes the update to every listed status page (requires the
+            status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status_page_id and the first
+            entry becomes status_page_id.
+        integration_payload (Union[None, Unset, str]): Additional API Payload you can pass to statuspage.io for example.
+            Can contain liquid markup and need to be valid JSON
     """
 
-    incident: PublishIncidentTaskParamsIncident
+    incident: "PublishIncidentTaskParamsIncident"
     public_title: str
     status_page_id: str
     status: PublishIncidentTaskParamsStatus = "resolved"
-    task_type: PublishIncidentTaskParamsTaskType | Unset = UNSET
-    event: str | Unset = UNSET
-    notify_subscribers: bool | Unset = False
-    should_tweet: bool | Unset = False
-    status_page_template: PublishIncidentTaskParamsStatusPageTemplate | Unset = UNSET
-    integration_payload: None | str | Unset = UNSET
+    task_type: Union[Unset, PublishIncidentTaskParamsTaskType] = UNSET
+    event: Union[Unset, str] = UNSET
+    notify_subscribers: Union[Unset, bool] = False
+    should_tweet: Union[Unset, bool] = False
+    status_page_template: Union[Unset, "PublishIncidentTaskParamsStatusPageTemplate"] = UNSET
+    status_page_ids: Union[Unset, list[str]] = UNSET
+    integration_payload: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         incident = self.incident.to_dict()
 
         public_title = self.public_title
@@ -65,7 +66,7 @@ class PublishIncidentTaskParams:
 
         status_page_id = self.status_page_id
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -75,11 +76,15 @@ class PublishIncidentTaskParams:
 
         should_tweet = self.should_tweet
 
-        status_page_template: dict[str, Any] | Unset = UNSET
+        status_page_template: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.status_page_template, Unset):
             status_page_template = self.status_page_template.to_dict()
 
-        integration_payload: None | str | Unset
+        status_page_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.status_page_ids, Unset):
+            status_page_ids = self.status_page_ids
+
+        integration_payload: Union[None, Unset, str]
         if isinstance(self.integration_payload, Unset):
             integration_payload = UNSET
         else:
@@ -105,6 +110,8 @@ class PublishIncidentTaskParams:
             field_dict["should_tweet"] = should_tweet
         if status_page_template is not UNSET:
             field_dict["status_page_template"] = status_page_template
+        if status_page_ids is not UNSET:
+            field_dict["status_page_ids"] = status_page_ids
         if integration_payload is not UNSET:
             field_dict["integration_payload"] = integration_payload
 
@@ -127,7 +134,7 @@ class PublishIncidentTaskParams:
         status_page_id = d.pop("status_page_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: PublishIncidentTaskParamsTaskType | Unset
+        task_type: Union[Unset, PublishIncidentTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -140,18 +147,20 @@ class PublishIncidentTaskParams:
         should_tweet = d.pop("should_tweet", UNSET)
 
         _status_page_template = d.pop("status_page_template", UNSET)
-        status_page_template: PublishIncidentTaskParamsStatusPageTemplate | Unset
+        status_page_template: Union[Unset, PublishIncidentTaskParamsStatusPageTemplate]
         if isinstance(_status_page_template, Unset):
             status_page_template = UNSET
         else:
             status_page_template = PublishIncidentTaskParamsStatusPageTemplate.from_dict(_status_page_template)
 
-        def _parse_integration_payload(data: object) -> None | str | Unset:
+        status_page_ids = cast(list[str], d.pop("status_page_ids", UNSET))
+
+        def _parse_integration_payload(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         integration_payload = _parse_integration_payload(d.pop("integration_payload", UNSET))
 
@@ -165,6 +174,7 @@ class PublishIncidentTaskParams:
             notify_subscribers=notify_subscribers,
             should_tweet=should_tweet,
             status_page_template=status_page_template,
+            status_page_ids=status_page_ids,
             integration_payload=integration_payload,
         )
 

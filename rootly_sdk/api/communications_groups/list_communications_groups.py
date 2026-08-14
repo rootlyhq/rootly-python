@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,21 +11,20 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filteris_private: str | Unset = UNSET,
-    filtercommunication_type_id: str | Unset = UNSET,
-    filtercondition_type: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filteris_private: Union[Unset, str] = UNSET,
+    filtercommunication_type_id: Union[Unset, str] = UNSET,
+    filtercondition_type: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -66,8 +65,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CommunicationsGroupsResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[CommunicationsGroupsResponse]:
     if response.status_code == 200:
         response_200 = CommunicationsGroupsResponse.from_dict(response.json())
 
@@ -80,7 +79,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[CommunicationsGroupsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -93,38 +92,38 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filteris_private: str | Unset = UNSET,
-    filtercommunication_type_id: str | Unset = UNSET,
-    filtercondition_type: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filteris_private: Union[Unset, str] = UNSET,
+    filtercommunication_type_id: Union[Unset, str] = UNSET,
+    filtercondition_type: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[CommunicationsGroupsResponse]:
     """Lists communications groups
 
      Lists communications groups
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filteris_private (str | Unset):
-        filtercommunication_type_id (str | Unset):
-        filtercondition_type (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filteris_private (Union[Unset, str]):
+        filtercommunication_type_id (Union[Unset, str]):
+        filtercondition_type (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -160,38 +159,38 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filteris_private: str | Unset = UNSET,
-    filtercommunication_type_id: str | Unset = UNSET,
-    filtercondition_type: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> CommunicationsGroupsResponse | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filteris_private: Union[Unset, str] = UNSET,
+    filtercommunication_type_id: Union[Unset, str] = UNSET,
+    filtercondition_type: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[CommunicationsGroupsResponse]:
     """Lists communications groups
 
      Lists communications groups
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filteris_private (str | Unset):
-        filtercommunication_type_id (str | Unset):
-        filtercondition_type (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filteris_private (Union[Unset, str]):
+        filtercommunication_type_id (Union[Unset, str]):
+        filtercondition_type (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -222,38 +221,38 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filteris_private: str | Unset = UNSET,
-    filtercommunication_type_id: str | Unset = UNSET,
-    filtercondition_type: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filteris_private: Union[Unset, str] = UNSET,
+    filtercommunication_type_id: Union[Unset, str] = UNSET,
+    filtercondition_type: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
 ) -> Response[CommunicationsGroupsResponse]:
     """Lists communications groups
 
      Lists communications groups
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filteris_private (str | Unset):
-        filtercommunication_type_id (str | Unset):
-        filtercondition_type (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filteris_private (Union[Unset, str]):
+        filtercommunication_type_id (Union[Unset, str]):
+        filtercondition_type (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -287,38 +286,38 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersearch: str | Unset = UNSET,
-    filtername: str | Unset = UNSET,
-    filterslug: str | Unset = UNSET,
-    filteris_private: str | Unset = UNSET,
-    filtercommunication_type_id: str | Unset = UNSET,
-    filtercondition_type: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-    sort: str | Unset = UNSET,
-) -> CommunicationsGroupsResponse | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersearch: Union[Unset, str] = UNSET,
+    filtername: Union[Unset, str] = UNSET,
+    filterslug: Union[Unset, str] = UNSET,
+    filteris_private: Union[Unset, str] = UNSET,
+    filtercommunication_type_id: Union[Unset, str] = UNSET,
+    filtercondition_type: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+    sort: Union[Unset, str] = UNSET,
+) -> Optional[CommunicationsGroupsResponse]:
     """Lists communications groups
 
      Lists communications groups
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersearch (str | Unset):
-        filtername (str | Unset):
-        filterslug (str | Unset):
-        filteris_private (str | Unset):
-        filtercommunication_type_id (str | Unset):
-        filtercondition_type (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
-        sort (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersearch (Union[Unset, str]):
+        filtername (Union[Unset, str]):
+        filterslug (Union[Unset, str]):
+        filteris_private (Union[Unset, str]):
+        filtercommunication_type_id (Union[Unset, str]):
+        filtercondition_type (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
+        sort (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

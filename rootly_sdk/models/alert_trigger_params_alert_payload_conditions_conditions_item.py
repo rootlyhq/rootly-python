@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,14 +19,14 @@ class AlertTriggerParamsAlertPayloadConditionsConditionsItem:
     Attributes:
         query (str):
         operator (AlertTriggerParamsAlertPayloadConditionsConditionsItemOperator):
-        values (list[str] | Unset):
-        use_regexp (bool | Unset):
+        values (Union[Unset, list[str]]):
+        use_regexp (Union[Unset, bool]):
     """
 
     query: str
     operator: AlertTriggerParamsAlertPayloadConditionsConditionsItemOperator
-    values: list[str] | Unset = UNSET
-    use_regexp: bool | Unset = UNSET
+    values: Union[Unset, list[str]] = UNSET
+    use_regexp: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +34,7 @@ class AlertTriggerParamsAlertPayloadConditionsConditionsItem:
 
         operator: str = self.operator
 
-        values: list[str] | Unset = UNSET
+        values: Union[Unset, list[str]] = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 

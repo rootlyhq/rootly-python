@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,10 +21,11 @@ class FormSet:
             `web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `slack_new_incident_form`,
             `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
             `slack_incident_resolution_form`, `slack_incident_cancellation_form`, `slack_scheduled_incident_form`,
-            `slack_update_scheduled_incident_form`, `google_chat_new_incident_form`, `google_chat_update_incident_form`
+            `slack_update_scheduled_incident_form`, `google_chat_new_incident_form`, `google_chat_update_incident_form`,
+            `microsoft_teams_new_incident_form`
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (str | Unset): The slug of the form set
+        slug (Union[Unset, str]): The slug of the form set
     """
 
     name: str
@@ -34,7 +33,7 @@ class FormSet:
     forms: list[str]
     created_at: str
     updated_at: str
-    slug: str | Unset = UNSET
+    slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

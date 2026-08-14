@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -31,8 +31,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CatalogChecklistTemplateResponse | ErrorsList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     if response.status_code == 201:
         response_201 = CatalogChecklistTemplateResponse.from_dict(response.json())
 
@@ -55,8 +55,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,7 +69,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
+) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -82,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CatalogChecklistTemplateResponse | ErrorsList]
+        Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> CatalogChecklistTemplateResponse | ErrorsList | None:
+) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -113,7 +113,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CatalogChecklistTemplateResponse | ErrorsList
+        Union[CatalogChecklistTemplateResponse, ErrorsList]
     """
 
     return sync_detailed(
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> Response[CatalogChecklistTemplateResponse | ErrorsList]:
+) -> Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -139,7 +139,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CatalogChecklistTemplateResponse | ErrorsList]
+        Response[Union[CatalogChecklistTemplateResponse, ErrorsList]]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +155,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NewCatalogChecklistTemplate,
-) -> CatalogChecklistTemplateResponse | ErrorsList | None:
+) -> Optional[Union[CatalogChecklistTemplateResponse, ErrorsList]]:
     """Creates a catalog checklist template
 
      Creates a new catalog checklist template
@@ -168,7 +168,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CatalogChecklistTemplateResponse | ErrorsList
+        Union[CatalogChecklistTemplateResponse, ErrorsList]
     """
 
     return (

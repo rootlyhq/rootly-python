@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 from uuid import UUID
 
 import httpx
@@ -14,14 +13,13 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
-    include: GetWorkflowInclude | Unset = UNSET,
+    include: Union[Unset, GetWorkflowInclude] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -31,9 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/workflows/{id}".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/workflows/{id}",
         "params": params,
     }
 
@@ -41,8 +37,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> ErrorsList | WorkflowResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[ErrorsList, WorkflowResponse]]:
     if response.status_code == 200:
         response_200 = WorkflowResponse.from_dict(response.json())
 
@@ -60,8 +56,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[ErrorsList | WorkflowResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ErrorsList, WorkflowResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,25 +67,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetWorkflowInclude | Unset = UNSET,
-) -> Response[ErrorsList | WorkflowResponse]:
+    include: Union[Unset, GetWorkflowInclude] = UNSET,
+) -> Response[Union[ErrorsList, WorkflowResponse]]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
 
     Args:
-        id (str | UUID):
-        include (GetWorkflowInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetWorkflowInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowResponse]
+        Response[Union[ErrorsList, WorkflowResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -105,25 +101,25 @@ def sync_detailed(
 
 
 def sync(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetWorkflowInclude | Unset = UNSET,
-) -> ErrorsList | WorkflowResponse | None:
+    include: Union[Unset, GetWorkflowInclude] = UNSET,
+) -> Optional[Union[ErrorsList, WorkflowResponse]]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
 
     Args:
-        id (str | UUID):
-        include (GetWorkflowInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetWorkflowInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowResponse
+        Union[ErrorsList, WorkflowResponse]
     """
 
     return sync_detailed(
@@ -134,25 +130,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetWorkflowInclude | Unset = UNSET,
-) -> Response[ErrorsList | WorkflowResponse]:
+    include: Union[Unset, GetWorkflowInclude] = UNSET,
+) -> Response[Union[ErrorsList, WorkflowResponse]]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
 
     Args:
-        id (str | UUID):
-        include (GetWorkflowInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetWorkflowInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorsList | WorkflowResponse]
+        Response[Union[ErrorsList, WorkflowResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -166,25 +162,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: str | UUID,
+    id: Union[UUID, str],
     *,
     client: AuthenticatedClient,
-    include: GetWorkflowInclude | Unset = UNSET,
-) -> ErrorsList | WorkflowResponse | None:
+    include: Union[Unset, GetWorkflowInclude] = UNSET,
+) -> Optional[Union[ErrorsList, WorkflowResponse]]:
     """Retrieves a workflow
 
      Retrieves a specific workflow by id
 
     Args:
-        id (str | UUID):
-        include (GetWorkflowInclude | Unset):
+        id (Union[UUID, str]):
+        include (Union[Unset, GetWorkflowInclude]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorsList | WorkflowResponse
+        Union[ErrorsList, WorkflowResponse]
     """
 
     return (

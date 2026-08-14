@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -28,32 +26,31 @@ T = TypeVar("T", bound="AttachDatadogDashboardsTaskParams")
 class AttachDatadogDashboardsTaskParams:
     """
     Attributes:
-        dashboards (list[AttachDatadogDashboardsTaskParamsDashboardsItem]):
-        task_type (AttachDatadogDashboardsTaskParamsTaskType | Unset):
-        post_to_incident_timeline (bool | Unset):
-        post_to_slack_channels (list[AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem] | Unset):
+        dashboards (list['AttachDatadogDashboardsTaskParamsDashboardsItem']):
+        task_type (Union[Unset, AttachDatadogDashboardsTaskParamsTaskType]):
+        post_to_incident_timeline (Union[Unset, bool]):
+        post_to_slack_channels (Union[Unset, list['AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem']]):
     """
 
-    dashboards: list[AttachDatadogDashboardsTaskParamsDashboardsItem]
-    task_type: AttachDatadogDashboardsTaskParamsTaskType | Unset = UNSET
-    post_to_incident_timeline: bool | Unset = UNSET
-    post_to_slack_channels: list[AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    dashboards: list["AttachDatadogDashboardsTaskParamsDashboardsItem"]
+    task_type: Union[Unset, AttachDatadogDashboardsTaskParamsTaskType] = UNSET
+    post_to_incident_timeline: Union[Unset, bool] = UNSET
+    post_to_slack_channels: Union[Unset, list["AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
         dashboards = []
         for dashboards_item_data in self.dashboards:
             dashboards_item = dashboards_item_data.to_dict()
             dashboards.append(dashboards_item)
 
-        task_type: str | Unset = UNSET
+        task_type: Union[Unset, str] = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
+        post_to_slack_channels: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -94,7 +91,7 @@ class AttachDatadogDashboardsTaskParams:
             dashboards.append(dashboards_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: AttachDatadogDashboardsTaskParamsTaskType | Unset
+        task_type: Union[Unset, AttachDatadogDashboardsTaskParamsTaskType]
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -102,16 +99,14 @@ class AttachDatadogDashboardsTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
+        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        post_to_slack_channels: list[AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem] | Unset = UNSET
-        if _post_to_slack_channels is not UNSET:
-            post_to_slack_channels = []
-            for post_to_slack_channels_item_data in _post_to_slack_channels:
-                post_to_slack_channels_item = AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem.from_dict(
-                    post_to_slack_channels_item_data
-                )
+        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
+            post_to_slack_channels_item = AttachDatadogDashboardsTaskParamsPostToSlackChannelsItem.from_dict(
+                post_to_slack_channels_item_data
+            )
 
-                post_to_slack_channels.append(post_to_slack_channels_item)
+            post_to_slack_channels.append(post_to_slack_channels_item)
 
         attach_datadog_dashboards_task_params = cls(
             dashboards=dashboards,

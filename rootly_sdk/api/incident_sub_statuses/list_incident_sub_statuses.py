@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any
-from urllib.parse import quote
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -17,26 +16,25 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    include: ListIncidentSubStatusesInclude | Unset = UNSET,
-    sort: ListIncidentSubStatusesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersub_status_id: str | Unset = UNSET,
-    filterassigned_atgt: str | Unset = UNSET,
-    filterassigned_atgte: str | Unset = UNSET,
-    filterassigned_atlt: str | Unset = UNSET,
-    filterassigned_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListIncidentSubStatusesInclude] = UNSET,
+    sort: Union[Unset, ListIncidentSubStatusesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersub_status_id: Union[Unset, str] = UNSET,
+    filterassigned_atgt: Union[Unset, str] = UNSET,
+    filterassigned_atgte: Union[Unset, str] = UNSET,
+    filterassigned_atlt: Union[Unset, str] = UNSET,
+    filterassigned_atlte: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
-    json_include: str | Unset = UNSET
+    json_include: Union[Unset, str] = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: str | Unset = UNSET
+    json_sort: Union[Unset, str] = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -60,16 +58,16 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/v1/incidents/{incident_id}/sub_statuses".format(
-            incident_id=quote(str(incident_id), safe=""),
-        ),
+        "url": f"/v1/incidents/{incident_id}/sub_statuses",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> IncidentSubStatusList | None:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[IncidentSubStatusList]:
     if response.status_code == 200:
         response_200 = IncidentSubStatusList.from_dict(response.json())
 
@@ -82,7 +80,7 @@ def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[IncidentSubStatusList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -96,15 +94,15 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentSubStatusesInclude | Unset = UNSET,
-    sort: ListIncidentSubStatusesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersub_status_id: str | Unset = UNSET,
-    filterassigned_atgt: str | Unset = UNSET,
-    filterassigned_atgte: str | Unset = UNSET,
-    filterassigned_atlt: str | Unset = UNSET,
-    filterassigned_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListIncidentSubStatusesInclude] = UNSET,
+    sort: Union[Unset, ListIncidentSubStatusesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersub_status_id: Union[Unset, str] = UNSET,
+    filterassigned_atgt: Union[Unset, str] = UNSET,
+    filterassigned_atgte: Union[Unset, str] = UNSET,
+    filterassigned_atlt: Union[Unset, str] = UNSET,
+    filterassigned_atlte: Union[Unset, str] = UNSET,
 ) -> Response[IncidentSubStatusList]:
     """List incident_sub_statuses
 
@@ -112,15 +110,15 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        include (ListIncidentSubStatusesInclude | Unset):
-        sort (ListIncidentSubStatusesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersub_status_id (str | Unset):
-        filterassigned_atgt (str | Unset):
-        filterassigned_atgte (str | Unset):
-        filterassigned_atlt (str | Unset):
-        filterassigned_atlte (str | Unset):
+        include (Union[Unset, ListIncidentSubStatusesInclude]):
+        sort (Union[Unset, ListIncidentSubStatusesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersub_status_id (Union[Unset, str]):
+        filterassigned_atgt (Union[Unset, str]):
+        filterassigned_atgte (Union[Unset, str]):
+        filterassigned_atlt (Union[Unset, str]):
+        filterassigned_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,31 +152,31 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentSubStatusesInclude | Unset = UNSET,
-    sort: ListIncidentSubStatusesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersub_status_id: str | Unset = UNSET,
-    filterassigned_atgt: str | Unset = UNSET,
-    filterassigned_atgte: str | Unset = UNSET,
-    filterassigned_atlt: str | Unset = UNSET,
-    filterassigned_atlte: str | Unset = UNSET,
-) -> IncidentSubStatusList | None:
+    include: Union[Unset, ListIncidentSubStatusesInclude] = UNSET,
+    sort: Union[Unset, ListIncidentSubStatusesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersub_status_id: Union[Unset, str] = UNSET,
+    filterassigned_atgt: Union[Unset, str] = UNSET,
+    filterassigned_atgte: Union[Unset, str] = UNSET,
+    filterassigned_atlt: Union[Unset, str] = UNSET,
+    filterassigned_atlte: Union[Unset, str] = UNSET,
+) -> Optional[IncidentSubStatusList]:
     """List incident_sub_statuses
 
      List incident_sub_statuses
 
     Args:
         incident_id (str):
-        include (ListIncidentSubStatusesInclude | Unset):
-        sort (ListIncidentSubStatusesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersub_status_id (str | Unset):
-        filterassigned_atgt (str | Unset):
-        filterassigned_atgte (str | Unset):
-        filterassigned_atlt (str | Unset):
-        filterassigned_atlte (str | Unset):
+        include (Union[Unset, ListIncidentSubStatusesInclude]):
+        sort (Union[Unset, ListIncidentSubStatusesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersub_status_id (Union[Unset, str]):
+        filterassigned_atgt (Union[Unset, str]):
+        filterassigned_atgte (Union[Unset, str]):
+        filterassigned_atlt (Union[Unset, str]):
+        filterassigned_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -207,15 +205,15 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentSubStatusesInclude | Unset = UNSET,
-    sort: ListIncidentSubStatusesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersub_status_id: str | Unset = UNSET,
-    filterassigned_atgt: str | Unset = UNSET,
-    filterassigned_atgte: str | Unset = UNSET,
-    filterassigned_atlt: str | Unset = UNSET,
-    filterassigned_atlte: str | Unset = UNSET,
+    include: Union[Unset, ListIncidentSubStatusesInclude] = UNSET,
+    sort: Union[Unset, ListIncidentSubStatusesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersub_status_id: Union[Unset, str] = UNSET,
+    filterassigned_atgt: Union[Unset, str] = UNSET,
+    filterassigned_atgte: Union[Unset, str] = UNSET,
+    filterassigned_atlt: Union[Unset, str] = UNSET,
+    filterassigned_atlte: Union[Unset, str] = UNSET,
 ) -> Response[IncidentSubStatusList]:
     """List incident_sub_statuses
 
@@ -223,15 +221,15 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        include (ListIncidentSubStatusesInclude | Unset):
-        sort (ListIncidentSubStatusesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersub_status_id (str | Unset):
-        filterassigned_atgt (str | Unset):
-        filterassigned_atgte (str | Unset):
-        filterassigned_atlt (str | Unset):
-        filterassigned_atlte (str | Unset):
+        include (Union[Unset, ListIncidentSubStatusesInclude]):
+        sort (Union[Unset, ListIncidentSubStatusesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersub_status_id (Union[Unset, str]):
+        filterassigned_atgt (Union[Unset, str]):
+        filterassigned_atgte (Union[Unset, str]):
+        filterassigned_atlt (Union[Unset, str]):
+        filterassigned_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -263,31 +261,31 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: ListIncidentSubStatusesInclude | Unset = UNSET,
-    sort: ListIncidentSubStatusesSort | Unset = UNSET,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filtersub_status_id: str | Unset = UNSET,
-    filterassigned_atgt: str | Unset = UNSET,
-    filterassigned_atgte: str | Unset = UNSET,
-    filterassigned_atlt: str | Unset = UNSET,
-    filterassigned_atlte: str | Unset = UNSET,
-) -> IncidentSubStatusList | None:
+    include: Union[Unset, ListIncidentSubStatusesInclude] = UNSET,
+    sort: Union[Unset, ListIncidentSubStatusesSort] = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filtersub_status_id: Union[Unset, str] = UNSET,
+    filterassigned_atgt: Union[Unset, str] = UNSET,
+    filterassigned_atgte: Union[Unset, str] = UNSET,
+    filterassigned_atlt: Union[Unset, str] = UNSET,
+    filterassigned_atlte: Union[Unset, str] = UNSET,
+) -> Optional[IncidentSubStatusList]:
     """List incident_sub_statuses
 
      List incident_sub_statuses
 
     Args:
         incident_id (str):
-        include (ListIncidentSubStatusesInclude | Unset):
-        sort (ListIncidentSubStatusesSort | Unset):
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filtersub_status_id (str | Unset):
-        filterassigned_atgt (str | Unset):
-        filterassigned_atgte (str | Unset):
-        filterassigned_atlt (str | Unset):
-        filterassigned_atlte (str | Unset):
+        include (Union[Unset, ListIncidentSubStatusesInclude]):
+        sort (Union[Unset, ListIncidentSubStatusesSort]):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filtersub_status_id (Union[Unset, str]):
+        filterassigned_atgt (Union[Unset, str]):
+        filterassigned_atgte (Union[Unset, str]):
+        filterassigned_atlt (Union[Unset, str]):
+        filterassigned_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

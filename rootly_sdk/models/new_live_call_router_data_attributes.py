@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -47,30 +45,34 @@ class NewLiveCallRouterDataAttributes:
             [generate_phone_number](#//api/v1/live_call_routers/generate_phone_number) API and pass that phone number here
             to register
         voicemail_greeting (str): The voicemail greeting of the live_call_router
-        paging_targets (list[NewLiveCallRouterDataAttributesPagingTargetsItem]): Paging targets that callers can select
-            from when this live call router is configured as a phone tree.
-        enabled (bool | Unset): Whether the live_call_router is enabled
-        caller_greeting (str | Unset): The caller greeting message of the live_call_router
-        unavailable_responder_message (None | str | Unset): The message played to the caller when a responder doesn't
-            answer and the call moves on to the next person in the escalation. Leave blank to use the default message.
-        waiting_music_url (NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset): The waiting music URL of the
+        paging_targets (list['NewLiveCallRouterDataAttributesPagingTargetsItem']): Paging targets that callers can
+            select from when this live call router is configured as a phone tree.
+        enabled (Union[Unset, bool]): Whether the live_call_router is enabled
+        caller_greeting (Union[Unset, str]): The caller greeting message of the live_call_router
+        unavailable_responder_message (Union[None, Unset, str]): The message played to the caller when a responder
+            doesn't answer and the call moves on to the next person in the escalation. Leave blank to use the default
+            message.
+        waiting_music_url (Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl]): The waiting music URL of the
             live_call_router
-        sent_to_voicemail_delay (int | Unset): The delay (seconds) after which the caller in redirected to voicemail
-        should_redirect_to_voicemail_on_no_answer (bool | Unset): This prompts the caller to choose voicemail or connect
-            live
-        escalation_level_delay_in_seconds (int | Unset): This overrides the delay (seconds) in escalation levels
-        should_auto_resolve_alert_on_call_end (bool | Unset): This overrides the delay (seconds) in escalation levels
-        notify_via_sms (bool | Unset): Whether responders are also notified via SMS when this router pages them
-        notify_via_push_notification (bool | Unset): Whether responders are also notified via push notification when
-            this router pages them
-        informational_notification_message (None | str | Unset): Optional message included in the SMS/push notification.
-            Supports variables such as {{ alert.url }}, {{ alert.data.* }}, and {{ alert.alert_urgency.name }}.
-        alert_urgency_id (str | Unset): This is used in escalation paths to determine who to page
-        calling_tree_enabled (bool | Unset): Whether the live call router is configured as a phone tree, requiring
+        sent_to_voicemail_delay (Union[Unset, int]): The delay (seconds) after which the caller in redirected to
+            voicemail
+        should_redirect_to_voicemail_on_no_answer (Union[Unset, bool]): This prompts the caller to choose voicemail or
+            connect live
+        escalation_level_delay_in_seconds (Union[Unset, int]): This overrides the delay (seconds) in escalation levels
+        should_auto_resolve_alert_on_call_end (Union[Unset, bool]): This overrides the delay (seconds) in escalation
+            levels
+        notify_via_sms (Union[Unset, bool]): Whether responders are also notified via SMS when this router pages them
+        notify_via_push_notification (Union[Unset, bool]): Whether responders are also notified via push notification
+            when this router pages them
+        informational_notification_message (Union[None, Unset, str]): Optional message included in the SMS/push
+            notification. Supports variables such as {{ alert.url }}, {{ alert.data.* }}, and {{ alert.alert_urgency.name
+            }}.
+        alert_urgency_id (Union[Unset, str]): This is used in escalation paths to determine who to page
+        calling_tree_enabled (Union[Unset, bool]): Whether the live call router is configured as a phone tree, requiring
             callers to press a key before being connected
-        calling_tree_prompt (str | Unset): The audio instructions callers will hear when they call this number,
+        calling_tree_prompt (Union[Unset, str]): The audio instructions callers will hear when they call this number,
             prompting them to select from available options to route their call
-        escalation_policy_trigger_params (NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset):
+        escalation_policy_trigger_params (Union[Unset, NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams]):
     """
 
     kind: NewLiveCallRouterDataAttributesKind
@@ -79,25 +81,26 @@ class NewLiveCallRouterDataAttributes:
     phone_type: NewLiveCallRouterDataAttributesPhoneType
     phone_number: str
     voicemail_greeting: str
-    paging_targets: list[NewLiveCallRouterDataAttributesPagingTargetsItem]
-    enabled: bool | Unset = UNSET
-    caller_greeting: str | Unset = UNSET
-    unavailable_responder_message: None | str | Unset = UNSET
-    waiting_music_url: NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset = UNSET
-    sent_to_voicemail_delay: int | Unset = UNSET
-    should_redirect_to_voicemail_on_no_answer: bool | Unset = UNSET
-    escalation_level_delay_in_seconds: int | Unset = UNSET
-    should_auto_resolve_alert_on_call_end: bool | Unset = UNSET
-    notify_via_sms: bool | Unset = UNSET
-    notify_via_push_notification: bool | Unset = UNSET
-    informational_notification_message: None | str | Unset = UNSET
-    alert_urgency_id: str | Unset = UNSET
-    calling_tree_enabled: bool | Unset = UNSET
-    calling_tree_prompt: str | Unset = UNSET
-    escalation_policy_trigger_params: NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset = UNSET
+    paging_targets: list["NewLiveCallRouterDataAttributesPagingTargetsItem"]
+    enabled: Union[Unset, bool] = UNSET
+    caller_greeting: Union[Unset, str] = UNSET
+    unavailable_responder_message: Union[None, Unset, str] = UNSET
+    waiting_music_url: Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl] = UNSET
+    sent_to_voicemail_delay: Union[Unset, int] = UNSET
+    should_redirect_to_voicemail_on_no_answer: Union[Unset, bool] = UNSET
+    escalation_level_delay_in_seconds: Union[Unset, int] = UNSET
+    should_auto_resolve_alert_on_call_end: Union[Unset, bool] = UNSET
+    notify_via_sms: Union[Unset, bool] = UNSET
+    notify_via_push_notification: Union[Unset, bool] = UNSET
+    informational_notification_message: Union[None, Unset, str] = UNSET
+    alert_urgency_id: Union[Unset, str] = UNSET
+    calling_tree_enabled: Union[Unset, bool] = UNSET
+    calling_tree_prompt: Union[Unset, str] = UNSET
+    escalation_policy_trigger_params: Union[Unset, "NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams"] = (
+        UNSET
+    )
 
     def to_dict(self) -> dict[str, Any]:
-
         kind: str = self.kind
 
         name = self.name
@@ -119,13 +122,13 @@ class NewLiveCallRouterDataAttributes:
 
         caller_greeting = self.caller_greeting
 
-        unavailable_responder_message: None | str | Unset
+        unavailable_responder_message: Union[None, Unset, str]
         if isinstance(self.unavailable_responder_message, Unset):
             unavailable_responder_message = UNSET
         else:
             unavailable_responder_message = self.unavailable_responder_message
 
-        waiting_music_url: str | Unset = UNSET
+        waiting_music_url: Union[Unset, str] = UNSET
         if not isinstance(self.waiting_music_url, Unset):
             waiting_music_url = self.waiting_music_url
 
@@ -141,7 +144,7 @@ class NewLiveCallRouterDataAttributes:
 
         notify_via_push_notification = self.notify_via_push_notification
 
-        informational_notification_message: None | str | Unset
+        informational_notification_message: Union[None, Unset, str]
         if isinstance(self.informational_notification_message, Unset):
             informational_notification_message = UNSET
         else:
@@ -153,7 +156,7 @@ class NewLiveCallRouterDataAttributes:
 
         calling_tree_prompt = self.calling_tree_prompt
 
-        escalation_policy_trigger_params: dict[str, Any] | Unset = UNSET
+        escalation_policy_trigger_params: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.escalation_policy_trigger_params, Unset):
             escalation_policy_trigger_params = self.escalation_policy_trigger_params.to_dict()
 
@@ -236,19 +239,19 @@ class NewLiveCallRouterDataAttributes:
 
         caller_greeting = d.pop("caller_greeting", UNSET)
 
-        def _parse_unavailable_responder_message(data: object) -> None | str | Unset:
+        def _parse_unavailable_responder_message(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         unavailable_responder_message = _parse_unavailable_responder_message(
             d.pop("unavailable_responder_message", UNSET)
         )
 
         _waiting_music_url = d.pop("waiting_music_url", UNSET)
-        waiting_music_url: NewLiveCallRouterDataAttributesWaitingMusicUrl | Unset
+        waiting_music_url: Union[Unset, NewLiveCallRouterDataAttributesWaitingMusicUrl]
         if isinstance(_waiting_music_url, Unset):
             waiting_music_url = UNSET
         else:
@@ -266,12 +269,12 @@ class NewLiveCallRouterDataAttributes:
 
         notify_via_push_notification = d.pop("notify_via_push_notification", UNSET)
 
-        def _parse_informational_notification_message(data: object) -> None | str | Unset:
+        def _parse_informational_notification_message(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         informational_notification_message = _parse_informational_notification_message(
             d.pop("informational_notification_message", UNSET)
@@ -284,7 +287,7 @@ class NewLiveCallRouterDataAttributes:
         calling_tree_prompt = d.pop("calling_tree_prompt", UNSET)
 
         _escalation_policy_trigger_params = d.pop("escalation_policy_trigger_params", UNSET)
-        escalation_policy_trigger_params: NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams | Unset
+        escalation_policy_trigger_params: Union[Unset, NewLiveCallRouterDataAttributesEscalationPolicyTriggerParams]
         if isinstance(_escalation_policy_trigger_params, Unset):
             escalation_policy_trigger_params = UNSET
         else:

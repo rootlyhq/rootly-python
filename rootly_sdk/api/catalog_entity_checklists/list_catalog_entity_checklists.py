@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any
+from typing import Any, Optional, Union
 
 import httpx
 
@@ -11,18 +11,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtercatalog_checklist_template_id: str | Unset = UNSET,
-    filterauditable_type: str | Unset = UNSET,
-    filterauditable_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtercatalog_checklist_template_id: Union[Unset, str] = UNSET,
+    filterauditable_type: Union[Unset, str] = UNSET,
+    filterauditable_id: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
-
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -57,8 +56,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> CatalogEntityChecklistList | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[CatalogEntityChecklistList]:
     if response.status_code == 200:
         response_200 = CatalogEntityChecklistList.from_dict(response.json())
 
@@ -71,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[CatalogEntityChecklistList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -84,32 +83,32 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtercatalog_checklist_template_id: str | Unset = UNSET,
-    filterauditable_type: str | Unset = UNSET,
-    filterauditable_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtercatalog_checklist_template_id: Union[Unset, str] = UNSET,
+    filterauditable_type: Union[Unset, str] = UNSET,
+    filterauditable_id: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[CatalogEntityChecklistList]:
     """List catalog entity checklists
 
      List catalog entity checklists
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterstatus (str | Unset):
-        filtercatalog_checklist_template_id (str | Unset):
-        filterauditable_type (str | Unset):
-        filterauditable_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercatalog_checklist_template_id (Union[Unset, str]):
+        filterauditable_type (Union[Unset, str]):
+        filterauditable_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,32 +141,32 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtercatalog_checklist_template_id: str | Unset = UNSET,
-    filterauditable_type: str | Unset = UNSET,
-    filterauditable_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> CatalogEntityChecklistList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtercatalog_checklist_template_id: Union[Unset, str] = UNSET,
+    filterauditable_type: Union[Unset, str] = UNSET,
+    filterauditable_id: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[CatalogEntityChecklistList]:
     """List catalog entity checklists
 
      List catalog entity checklists
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterstatus (str | Unset):
-        filtercatalog_checklist_template_id (str | Unset):
-        filterauditable_type (str | Unset):
-        filterauditable_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercatalog_checklist_template_id (Union[Unset, str]):
+        filterauditable_type (Union[Unset, str]):
+        filterauditable_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -195,32 +194,32 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtercatalog_checklist_template_id: str | Unset = UNSET,
-    filterauditable_type: str | Unset = UNSET,
-    filterauditable_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtercatalog_checklist_template_id: Union[Unset, str] = UNSET,
+    filterauditable_type: Union[Unset, str] = UNSET,
+    filterauditable_id: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
 ) -> Response[CatalogEntityChecklistList]:
     """List catalog entity checklists
 
      List catalog entity checklists
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterstatus (str | Unset):
-        filtercatalog_checklist_template_id (str | Unset):
-        filterauditable_type (str | Unset):
-        filterauditable_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercatalog_checklist_template_id (Union[Unset, str]):
+        filterauditable_type (Union[Unset, str]):
+        filterauditable_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -251,32 +250,32 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: int | Unset = UNSET,
-    pagesize: int | Unset = UNSET,
-    filterstatus: str | Unset = UNSET,
-    filtercatalog_checklist_template_id: str | Unset = UNSET,
-    filterauditable_type: str | Unset = UNSET,
-    filterauditable_id: str | Unset = UNSET,
-    filtercreated_atgt: str | Unset = UNSET,
-    filtercreated_atgte: str | Unset = UNSET,
-    filtercreated_atlt: str | Unset = UNSET,
-    filtercreated_atlte: str | Unset = UNSET,
-) -> CatalogEntityChecklistList | None:
+    pagenumber: Union[Unset, int] = UNSET,
+    pagesize: Union[Unset, int] = UNSET,
+    filterstatus: Union[Unset, str] = UNSET,
+    filtercatalog_checklist_template_id: Union[Unset, str] = UNSET,
+    filterauditable_type: Union[Unset, str] = UNSET,
+    filterauditable_id: Union[Unset, str] = UNSET,
+    filtercreated_atgt: Union[Unset, str] = UNSET,
+    filtercreated_atgte: Union[Unset, str] = UNSET,
+    filtercreated_atlt: Union[Unset, str] = UNSET,
+    filtercreated_atlte: Union[Unset, str] = UNSET,
+) -> Optional[CatalogEntityChecklistList]:
     """List catalog entity checklists
 
      List catalog entity checklists
 
     Args:
-        pagenumber (int | Unset):
-        pagesize (int | Unset):
-        filterstatus (str | Unset):
-        filtercatalog_checklist_template_id (str | Unset):
-        filterauditable_type (str | Unset):
-        filterauditable_id (str | Unset):
-        filtercreated_atgt (str | Unset):
-        filtercreated_atgte (str | Unset):
-        filtercreated_atlt (str | Unset):
-        filtercreated_atlte (str | Unset):
+        pagenumber (Union[Unset, int]):
+        pagesize (Union[Unset, int]):
+        filterstatus (Union[Unset, str]):
+        filtercatalog_checklist_template_id (Union[Unset, str]):
+        filterauditable_type (Union[Unset, str]):
+        filterauditable_id (Union[Unset, str]):
+        filtercreated_atgt (Union[Unset, str]):
+        filtercreated_atgte (Union[Unset, str]):
+        filtercreated_atlt (Union[Unset, str]):
+        filtercreated_atlte (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

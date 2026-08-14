@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -31,18 +29,18 @@ T = TypeVar("T", bound="UpdateDashboardPanelDataAttributesParamsDatasetsItem")
 class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
     """
     Attributes:
-        name (None | str | Unset):
-        collection (UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection | Unset):
-        filter_ (list[UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem] | Unset):
-        group_by (None | str | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0):
-        aggregate (None | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0):
+        name (Union[None, Unset, str]):
+        collection (Union[Unset, UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection]):
+        filter_ (Union[Unset, list['UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem']]):
+        group_by (Union['UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0', None, Unset, str]):
+        aggregate (Union['UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0', None, Unset]):
     """
 
-    name: None | str | Unset = UNSET
-    collection: UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection | Unset = UNSET
-    filter_: list[UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem] | Unset = UNSET
-    group_by: None | str | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0 = UNSET
-    aggregate: None | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0 = UNSET
+    name: Union[None, Unset, str] = UNSET
+    collection: Union[Unset, UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection] = UNSET
+    filter_: Union[Unset, list["UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem"]] = UNSET
+    group_by: Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str] = UNSET
+    aggregate: Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,24 +51,24 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
             UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0,
         )
 
-        name: None | str | Unset
+        name: Union[None, Unset, str]
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        collection: str | Unset = UNSET
+        collection: Union[Unset, str] = UNSET
         if not isinstance(self.collection, Unset):
             collection = self.collection
 
-        filter_: list[dict[str, Any]] | Unset = UNSET
+        filter_: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.filter_, Unset):
             filter_ = []
             for filter_item_data in self.filter_:
                 filter_item = filter_item_data.to_dict()
                 filter_.append(filter_item)
 
-        group_by: dict[str, Any] | None | str | Unset
+        group_by: Union[None, Unset, dict[str, Any], str]
         if isinstance(self.group_by, Unset):
             group_by = UNSET
         elif isinstance(self.group_by, UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0):
@@ -78,7 +76,7 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
         else:
             group_by = self.group_by
 
-        aggregate: dict[str, Any] | None | Unset
+        aggregate: Union[None, Unset, dict[str, Any]]
         if isinstance(self.aggregate, Unset):
             aggregate = UNSET
         elif isinstance(self.aggregate, UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0):
@@ -116,34 +114,32 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
 
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | str | Unset:
+        def _parse_name(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         name = _parse_name(d.pop("name", UNSET))
 
         _collection = d.pop("collection", UNSET)
-        collection: UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection | Unset
+        collection: Union[Unset, UpdateDashboardPanelDataAttributesParamsDatasetsItemCollection]
         if isinstance(_collection, Unset):
             collection = UNSET
         else:
             collection = check_update_dashboard_panel_data_attributes_params_datasets_item_collection(_collection)
 
+        filter_ = []
         _filter_ = d.pop("filter", UNSET)
-        filter_: list[UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem] | Unset = UNSET
-        if _filter_ is not UNSET:
-            filter_ = []
-            for filter_item_data in _filter_:
-                filter_item = UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem.from_dict(filter_item_data)
+        for filter_item_data in _filter_ or []:
+            filter_item = UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItem.from_dict(filter_item_data)
 
-                filter_.append(filter_item)
+            filter_.append(filter_item)
 
         def _parse_group_by(
             data: object,
-        ) -> None | str | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0:
+        ) -> Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -156,17 +152,17 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
                 )
 
                 return group_by_type_1_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
             return cast(
-                None | str | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0, data
+                Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0", None, Unset, str], data
             )
 
         group_by = _parse_group_by(d.pop("group_by", UNSET))
 
         def _parse_aggregate(
             data: object,
-        ) -> None | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0:
+        ) -> Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0", None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -177,9 +173,9 @@ class UpdateDashboardPanelDataAttributesParamsDatasetsItem:
                 aggregate_type_0 = UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0.from_dict(data)
 
                 return aggregate_type_0
-            except (TypeError, ValueError, AttributeError, KeyError):
+            except:  # noqa: E722
                 pass
-            return cast(None | Unset | UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0, data)
+            return cast(Union["UpdateDashboardPanelDataAttributesParamsDatasetsItemAggregateType0", None, Unset], data)
 
         aggregate = _parse_aggregate(d.pop("aggregate", UNSET))
 

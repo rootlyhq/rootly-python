@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +18,20 @@ T = TypeVar("T", bound="UserRelationships")
 class UserRelationships:
     """
     Attributes:
-        role (RoleRelationship | Unset):
-        on_call_role (OnCallRoleRelationship | Unset):
+        role (Union[Unset, RoleRelationship]):
+        on_call_role (Union[Unset, OnCallRoleRelationship]):
     """
 
-    role: RoleRelationship | Unset = UNSET
-    on_call_role: OnCallRoleRelationship | Unset = UNSET
+    role: Union[Unset, "RoleRelationship"] = UNSET
+    on_call_role: Union[Unset, "OnCallRoleRelationship"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-
-        role: dict[str, Any] | Unset = UNSET
+        role: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.role, Unset):
             role = self.role.to_dict()
 
-        on_call_role: dict[str, Any] | Unset = UNSET
+        on_call_role: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.on_call_role, Unset):
             on_call_role = self.on_call_role.to_dict()
 
@@ -55,14 +52,14 @@ class UserRelationships:
 
         d = dict(src_dict)
         _role = d.pop("role", UNSET)
-        role: RoleRelationship | Unset
+        role: Union[Unset, RoleRelationship]
         if isinstance(_role, Unset):
             role = UNSET
         else:
             role = RoleRelationship.from_dict(_role)
 
         _on_call_role = d.pop("on_call_role", UNSET)
-        on_call_role: OnCallRoleRelationship | Unset
+        on_call_role: Union[Unset, OnCallRoleRelationship]
         if isinstance(_on_call_role, Unset):
             on_call_role = UNSET
         else:

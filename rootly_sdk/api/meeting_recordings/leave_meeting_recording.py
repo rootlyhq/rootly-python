@@ -1,6 +1,5 @@
 from http import HTTPStatus
-from typing import Any, cast
-from urllib.parse import quote
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -13,20 +12,17 @@ from ...types import Response
 def _get_kwargs(
     id: str,
 ) -> dict[str, Any]:
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/v1/meeting_recordings/{id}/leave".format(
-            id=quote(str(id), safe=""),
-        ),
+        "url": f"/v1/meeting_recordings/{id}/leave",
     }
 
     return _kwargs
 
 
 def _parse_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Any | MeetingRecordingResponse | None:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     if response.status_code == 200:
         response_200 = MeetingRecordingResponse.from_dict(response.json())
 
@@ -43,8 +39,8 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[Any | MeetingRecordingResponse]:
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +53,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | MeetingRecordingResponse]:
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Leave a meeting call
 
      Remove the recording bot from the meeting entirely. Unlike stop, this immediately disconnects the
@@ -72,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | MeetingRecordingResponse | None:
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Leave a meeting call
 
      Remove the recording bot from the meeting entirely. Unlike stop, this immediately disconnects the
@@ -105,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return sync_detailed(
@@ -118,7 +114,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any | MeetingRecordingResponse]:
+) -> Response[Union[Any, MeetingRecordingResponse]]:
     """Leave a meeting call
 
      Remove the recording bot from the meeting entirely. Unlike stop, this immediately disconnects the
@@ -133,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any | MeetingRecordingResponse]
+        Response[Union[Any, MeetingRecordingResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -149,7 +145,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Any | MeetingRecordingResponse | None:
+) -> Optional[Union[Any, MeetingRecordingResponse]]:
     """Leave a meeting call
 
      Remove the recording bot from the meeting entirely. Unlike stop, this immediately disconnects the
@@ -164,7 +160,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Any | MeetingRecordingResponse
+        Union[Any, MeetingRecordingResponse]
     """
 
     return (

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 
@@ -26,43 +24,43 @@ T = TypeVar("T", bound="UpdateDashboardDataAttributes")
 class UpdateDashboardDataAttributes:
     """
     Attributes:
-        name (str | Unset): The name of the dashboard
-        description (None | str | Unset): The description of the dashboard
-        owner (UpdateDashboardDataAttributesOwner | Unset): The owner type of the dashboard
-        public (bool | Unset): Whether the dashboard is public
-        range_ (None | str | Unset): The date range for dashboard panel data
-        auto_refresh (bool | Unset): Whether the dashboard auto-updates the UI with new data.
-        color (UpdateDashboardDataAttributesColor | Unset): The hex color of the dashboard
-        icon (str | Unset): The emoji icon of the dashboard
-        period (UpdateDashboardDataAttributesPeriod | Unset): The grouping period for dashboard panel data
+        name (Union[Unset, str]): The name of the dashboard
+        description (Union[None, Unset, str]): The description of the dashboard
+        owner (Union[Unset, UpdateDashboardDataAttributesOwner]): The owner type of the dashboard
+        public (Union[Unset, bool]): Whether the dashboard is public
+        range_ (Union[None, Unset, str]): The date range for dashboard panel data
+        auto_refresh (Union[Unset, bool]): Whether the dashboard auto-updates the UI with new data.
+        color (Union[Unset, UpdateDashboardDataAttributesColor]): The hex color of the dashboard
+        icon (Union[Unset, str]): The emoji icon of the dashboard
+        period (Union[Unset, UpdateDashboardDataAttributesPeriod]): The grouping period for dashboard panel data
     """
 
-    name: str | Unset = UNSET
-    description: None | str | Unset = UNSET
-    owner: UpdateDashboardDataAttributesOwner | Unset = UNSET
-    public: bool | Unset = UNSET
-    range_: None | str | Unset = UNSET
-    auto_refresh: bool | Unset = UNSET
-    color: UpdateDashboardDataAttributesColor | Unset = UNSET
-    icon: str | Unset = UNSET
-    period: UpdateDashboardDataAttributesPeriod | Unset = UNSET
+    name: Union[Unset, str] = UNSET
+    description: Union[None, Unset, str] = UNSET
+    owner: Union[Unset, UpdateDashboardDataAttributesOwner] = UNSET
+    public: Union[Unset, bool] = UNSET
+    range_: Union[None, Unset, str] = UNSET
+    auto_refresh: Union[Unset, bool] = UNSET
+    color: Union[Unset, UpdateDashboardDataAttributesColor] = UNSET
+    icon: Union[Unset, str] = UNSET
+    period: Union[Unset, UpdateDashboardDataAttributesPeriod] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | str | Unset
+        description: Union[None, Unset, str]
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        owner: str | Unset = UNSET
+        owner: Union[Unset, str] = UNSET
         if not isinstance(self.owner, Unset):
             owner = self.owner
 
         public = self.public
 
-        range_: None | str | Unset
+        range_: Union[None, Unset, str]
         if isinstance(self.range_, Unset):
             range_ = UNSET
         else:
@@ -70,13 +68,13 @@ class UpdateDashboardDataAttributes:
 
         auto_refresh = self.auto_refresh
 
-        color: str | Unset = UNSET
+        color: Union[Unset, str] = UNSET
         if not isinstance(self.color, Unset):
             color = self.color
 
         icon = self.icon
 
-        period: str | Unset = UNSET
+        period: Union[Unset, str] = UNSET
         if not isinstance(self.period, Unset):
             period = self.period
 
@@ -109,17 +107,17 @@ class UpdateDashboardDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | str | Unset:
+        def _parse_description(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _owner = d.pop("owner", UNSET)
-        owner: UpdateDashboardDataAttributesOwner | Unset
+        owner: Union[Unset, UpdateDashboardDataAttributesOwner]
         if isinstance(_owner, Unset):
             owner = UNSET
         else:
@@ -127,19 +125,19 @@ class UpdateDashboardDataAttributes:
 
         public = d.pop("public", UNSET)
 
-        def _parse_range_(data: object) -> None | str | Unset:
+        def _parse_range_(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | str | Unset, data)
+            return cast(Union[None, Unset, str], data)
 
         range_ = _parse_range_(d.pop("range", UNSET))
 
         auto_refresh = d.pop("auto_refresh", UNSET)
 
         _color = d.pop("color", UNSET)
-        color: UpdateDashboardDataAttributesColor | Unset
+        color: Union[Unset, UpdateDashboardDataAttributesColor]
         if isinstance(_color, Unset):
             color = UNSET
         else:
@@ -148,7 +146,7 @@ class UpdateDashboardDataAttributes:
         icon = d.pop("icon", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: UpdateDashboardDataAttributesPeriod | Unset
+        period: Union[Unset, UpdateDashboardDataAttributesPeriod]
         if isinstance(_period, Unset):
             period = UNSET
         else:

@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 
@@ -15,11 +13,11 @@ class UpdateAlertEventDataAttributes:
     """
     Attributes:
         details (str): Note message.
-        user_id (int | Unset): Author of the note.
+        user_id (Union[Unset, int]): Author of the note.
     """
 
     details: str
-    user_id: int | Unset = UNSET
+    user_id: Union[Unset, int] = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         details = self.details
