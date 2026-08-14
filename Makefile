@@ -43,9 +43,9 @@ regenerate:
 	@echo "Applying nullable enum fix..."
 	@python tools/fix_nullable_enums.py
 	@echo "Fixing lint errors..."
-	@uvx --from ruff==$(RUFF_VERSION) ruff check --fix rootly_sdk/
+	@uvx --from ruff==$(RUFF_VERSION) ruff check --fix .
 	@echo "Formatting patched files..."
-	@uvx --from ruff==$(RUFF_VERSION) ruff format rootly_sdk/
+	@uvx --from ruff==$(RUFF_VERSION) ruff format .
 
 test:
 	python -c "import rootly_sdk; print('SDK imports successfully')"
