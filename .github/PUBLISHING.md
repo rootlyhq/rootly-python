@@ -4,25 +4,18 @@ This repository uses GitHub Actions to automatically publish packages to PyPI wh
 
 ## Setup Instructions
 
-### 1. PyPI API Token
+### 1. PyPI Trusted Publisher
 
-1. Go to [PyPI Account Settings](https://pypi.org/manage/account/)
-2. Scroll to "API tokens" section
-3. Click "Add API token"
-4. Set the token name (e.g., "rootly-python-github-actions")
-5. Set the scope to "Entire account" or specific to this project
-6. Copy the generated token (starts with `pypi-`)
+The `rootly` project uses PyPI Trusted Publishing with these values:
 
-### 2. GitHub Repository Secrets
+- **Owner**: `rootlyhq`
+- **Repository**: `rootly-python`
+- **Workflow**: `publish.yml`
+- **Environment**: `pypi`
 
-1. Go to your GitHub repository
-2. Navigate to Settings → Secrets and variables → Actions
-3. Click "New repository secret"
-4. Add the following secret:
-   - **Name**: `PYPI_API_TOKEN`
-   - **Value**: The PyPI API token from step 1
+The GitHub `pypi` environment requires approval and only permits tags matching `v*`. The publishing job obtains a short-lived PyPI credential through OpenID Connect, so no long-lived PyPI token is stored in GitHub.
 
-### 3. Publishing a New Version
+### 2. Publishing a New Version
 
 To publish a new version:
 
@@ -44,30 +37,31 @@ To publish a new version:
    - Go to the "Actions" tab in your GitHub repository
    - Watch the "Publish Python 🐍 distribution 📦 to PyPI on tag" workflow run
    - The workflow will:
-     - Install build tools (uv, build, twine)
+     - Install build tools (uv and build)
      - Test the SDK imports
      - Build the package using Python build
-     - Publish to PyPI using twine
+     - Wait for approval on the `pypi` environment
+     - Publish to PyPI using a short-lived Trusted Publishing credential
 
-### 4. Version Numbering
+### 3. Version Numbering
 
 Follow [Semantic Versioning](https://semver.org/):
 - **MAJOR**: Incompatible API changes (e.g., `v2.0.0`)
 - **MINOR**: New functionality, backward compatible (e.g., `v1.1.0`)
 - **PATCH**: Bug fixes, backward compatible (e.g., `v1.0.1`)
 
-### 5. Workflow Details
+### 4. Workflow Details
 
 The GitHub Action workflow (`.github/workflows/publish.yml`) will:
 
-1. **Trigger**: On any tag push (pattern `*`)
-2. **Environment**: Ubuntu latest with Python 3.12
-3. **Dependencies**: Install uv, build, and twine
+1. **Trigger**: On version tag pushes (pattern `v*`)
+2. **Environment**: Blacksmith Ubuntu 24.04 runner with Python 3.12
+3. **Dependencies**: Install uv and build
 4. **Testing**: Verify SDK imports correctly
 5. **Build**: Create distribution packages using Python build
-6. **Publish**: Upload to PyPI using twine with API token
+6. **Publish**: Upload to PyPI using Trusted Publishing after environment approval
 
-### 6. Manual Publishing (Alternative)
+### 5. Manual Publishing (Alternative)
 
 If you need to publish manually:
 
@@ -85,19 +79,19 @@ poetry build
 poetry publish
 ```
 
-### 7. Testing on Test PyPI
+### 6. Testing on Test PyPI
 
 For testing the publishing process, you can use Test PyPI:
 
-1. Create a Test PyPI account and API token
-2. Add `PYPI_TEST_TOKEN` to GitHub secrets
-3. Modify the workflow to use `--repository testpypi` flag
+1. Create a TestPyPI account
+2. Register a TestPyPI trusted publisher using a `testpypi` GitHub environment
+3. Add a publishing job using `repository-url: https://test.pypi.org/legacy/`
 
-### 8. Troubleshooting
+### 7. Troubleshooting
 
 **Common Issues:**
 
-- **Permission denied**: Ensure the `PYPI_TOKEN` secret is correctly set
+- **Permission denied**: Ensure the PyPI publisher values match the workflow and `pypi` environment exactly
 - **Version conflict**: Make sure the version tag doesn't already exist on PyPI
 - **Import errors**: Check that all dependencies are correctly specified in `pyproject.toml`
 - **Build failures**: Verify the package structure and ensure all required files are included
@@ -109,7 +103,7 @@ For testing the publishing process, you can use Test PyPI:
 
 ## Security Notes
 
-- Never commit PyPI tokens to the repository
-- Use repository secrets for sensitive information
-- Consider using environment-specific tokens for different deployment stages
-- Regularly rotate API tokens for security
+- Keep the build and publishing jobs separate
+- Require approval on the production `pypi` environment
+- Restrict production deployments to version tags
+- Do not add a long-lived PyPI API token to GitHub
