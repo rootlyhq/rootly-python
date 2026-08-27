@@ -1,9 +1,29 @@
-[tool.poetry]
+[project]
 name = "rootly"
 version = "2.0.0"
 description = "A client library for accessing Rootly API v1"
 authors = []
 readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+dynamic = ["dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/rootlyhq/rootly-python"
+Issues = "https://github.com/rootlyhq/rootly-python/issues"
+Repository = "https://github.com/rootlyhq/rootly-python.git"
+Changelog = "https://github.com/rootlyhq/rootly-python/blob/master/CHANGELOG.md"
+
+[tool.poetry]
 packages = [
     { include = "rootly_sdk" },
 ]
