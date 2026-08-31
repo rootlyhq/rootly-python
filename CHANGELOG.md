@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-08-31
+
+### Fixed
+- Allow incident responses with no assigned severity to deserialize successfully ([#18](https://github.com/rootlyhq/rootly-python/issues/18))
+
 ## [2.0.0] - 2026-08-14
 
 ### Added

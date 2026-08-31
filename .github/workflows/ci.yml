@@ -48,5 +48,5 @@ jobs:
       - name: Install package
         run: uv pip install --system .
 
-      - name: Test SDK imports
-        run: python -c "import rootly_sdk; print('SDK imports successfully')"
+      - name: Test SDK
+        run: make test
