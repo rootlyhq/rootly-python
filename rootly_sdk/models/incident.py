@@ -54,7 +54,7 @@ class Incident:
         short_url (Union[None, Unset, str]): The short url to the incident
         public_title (Union[None, Unset, str]): The public title of the incident
         user (Union['IncidentUserType0', None, Unset]): The user who created the incident
-        severity (Union[Unset, SeverityResponse]):
+        severity (Union[None, Unset, SeverityResponse]):
         environments (Union[None, Unset, list['EnvironmentResponse']]): The Environments of the incident
         incident_types (Union[None, Unset, list['IncidentTypeResponse']]): The Incident Types of the incident
         services (Union[None, Unset, list['ServiceResponse']]): The Services of the incident
@@ -195,7 +195,7 @@ class Incident:
     short_url: None | Unset | str = UNSET
     public_title: None | Unset | str = UNSET
     user: Union["IncidentUserType0", None, Unset] = UNSET
-    severity: Union[Unset, "SeverityResponse"] = UNSET
+    severity: Union[None, Unset, "SeverityResponse"] = UNSET
     environments: None | Unset | list["EnvironmentResponse"] = UNSET
     incident_types: None | Unset | list["IncidentTypeResponse"] = UNSET
     services: None | Unset | list["ServiceResponse"] = UNSET
@@ -324,6 +324,7 @@ class Incident:
         from ..models.incident_resolved_by_type_0 import IncidentResolvedByType0
         from ..models.incident_started_by_type_0 import IncidentStartedByType0
         from ..models.incident_user_type_0 import IncidentUserType0
+        from ..models.severity_response import SeverityResponse
 
         title = self.title
 
@@ -397,9 +398,13 @@ class Incident:
         else:
             user = self.user
 
-        severity: Unset | dict[str, Any] = UNSET
-        if not isinstance(self.severity, Unset):
+        severity: None | Unset | dict[str, Any]
+        if isinstance(self.severity, Unset):
+            severity = UNSET
+        elif isinstance(self.severity, SeverityResponse):
             severity = self.severity.to_dict()
+        else:
+            severity = self.severity
 
         environments: None | Unset | list[dict[str, Any]]
         if isinstance(self.environments, Unset):
@@ -1558,12 +1563,16 @@ class Incident:
 
         user = _parse_user(d.pop("user", UNSET))
 
-        _severity = d.pop("severity", UNSET)
-        severity: Unset | SeverityResponse
-        if isinstance(_severity, Unset):
-            severity = UNSET
-        else:
-            severity = SeverityResponse.from_dict(_severity)
+        def _parse_severity(data: object) -> None | Unset | SeverityResponse:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            if not isinstance(data, dict):
+                raise TypeError()
+            return SeverityResponse.from_dict(data)
+
+        severity = _parse_severity(d.pop("severity", UNSET))
 
         def _parse_environments(data: object) -> None | Unset | list["EnvironmentResponse"]:
             if data is None:

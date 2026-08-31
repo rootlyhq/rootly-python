@@ -48,4 +48,5 @@ regenerate:
 	@uvx --from ruff==$(RUFF_VERSION) ruff format .
 
 test:
+	python -m unittest discover -s tests
 	python -c "import rootly_sdk; print('SDK imports successfully')"
