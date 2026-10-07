@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 VerifiedDomainResponseDataType = Literal["verified_domains"]
 
@@ -11,5 +11,5 @@ def check_verified_domain_response_data_type(value: str | None) -> VerifiedDomai
     if value is None:
         return None
     if value in VERIFIED_DOMAIN_RESPONSE_DATA_TYPE_VALUES:
-        return cast(VerifiedDomainResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {VERIFIED_DOMAIN_RESPONSE_DATA_TYPE_VALUES!r}")

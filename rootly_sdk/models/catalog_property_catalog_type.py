@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogPropertyCatalogType = Literal[
     "catalog", "cause", "environment", "functionality", "incident_type", "service", "team"
@@ -19,5 +19,5 @@ def check_catalog_property_catalog_type(value: str | None) -> CatalogPropertyCat
     if value is None:
         return None
     if value in CATALOG_PROPERTY_CATALOG_TYPE_VALUES:
-        return cast(CatalogPropertyCatalogType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_PROPERTY_CATALOG_TYPE_VALUES!r}")

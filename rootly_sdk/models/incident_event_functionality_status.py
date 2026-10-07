@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentEventFunctionalityStatus = Literal["major_outage", "operational", "partial_outage"]
 
@@ -13,5 +13,5 @@ def check_incident_event_functionality_status(value: str | None) -> IncidentEven
     if value is None:
         return None
     if value in INCIDENT_EVENT_FUNCTIONALITY_STATUS_VALUES:
-        return cast(IncidentEventFunctionalityStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_EVENT_FUNCTIONALITY_STATUS_VALUES!r}")

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -19,16 +21,16 @@ class CreateGoogleDocsPermissionsTaskParams:
     Attributes:
         file_id (str): The Google Doc file ID
         permissions (str): Page permissions JSON
-        task_type (Union[Unset, CreateGoogleDocsPermissionsTaskParamsTaskType]):
-        send_notification_email (Union[Unset, bool]):
-        email_message (Union[None, Unset, str]): Email message notification
+        task_type (CreateGoogleDocsPermissionsTaskParamsTaskType | Unset):
+        send_notification_email (bool | Unset):
+        email_message (None | str | Unset): Email message notification
     """
 
     file_id: str
     permissions: str
-    task_type: Unset | CreateGoogleDocsPermissionsTaskParamsTaskType = UNSET
-    send_notification_email: Unset | bool = UNSET
-    email_message: None | Unset | str = UNSET
+    task_type: CreateGoogleDocsPermissionsTaskParamsTaskType | Unset = UNSET
+    send_notification_email: bool | Unset = UNSET
+    email_message: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,13 +38,13 @@ class CreateGoogleDocsPermissionsTaskParams:
 
         permissions = self.permissions
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         send_notification_email = self.send_notification_email
 
-        email_message: None | Unset | str
+        email_message: None | str | Unset
         if isinstance(self.email_message, Unset):
             email_message = UNSET
         else:
@@ -73,7 +75,7 @@ class CreateGoogleDocsPermissionsTaskParams:
         permissions = d.pop("permissions")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateGoogleDocsPermissionsTaskParamsTaskType
+        task_type: CreateGoogleDocsPermissionsTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -81,12 +83,12 @@ class CreateGoogleDocsPermissionsTaskParams:
 
         send_notification_email = d.pop("send_notification_email", UNSET)
 
-        def _parse_email_message(data: object) -> None | Unset | str:
+        def _parse_email_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         email_message = _parse_email_message(d.pop("email_message", UNSET))
 

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallRoleContactsPermissionsItem = Literal["read"]
 
@@ -11,5 +11,5 @@ def check_on_call_role_contacts_permissions_item(value: str | None) -> OnCallRol
     if value is None:
         return None
     if value in ON_CALL_ROLE_CONTACTS_PERMISSIONS_ITEM_VALUES:
-        return cast(OnCallRoleContactsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_ROLE_CONTACTS_PERMISSIONS_ITEM_VALUES!r}")

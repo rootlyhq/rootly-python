@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListShiftsInclude = Literal["assignee", "shift_override", "shift_shadow", "user"]
 
@@ -14,5 +14,5 @@ def check_list_shifts_include(value: str | None) -> ListShiftsInclude | None:
     if value is None:
         return None
     if value in LIST_SHIFTS_INCLUDE_VALUES:
-        return cast(ListShiftsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_SHIFTS_INCLUDE_VALUES!r}")

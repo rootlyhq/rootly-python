@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation = Literal["and", "or"]
 
@@ -16,7 +16,7 @@ def check_update_dashboard_panel_data_attributes_params_datasets_item_filter_ite
     if value is None:
         return None
     if value in UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_FILTER_ITEM_RULES_ITEM_OPERATION_VALUES:
-        return cast(UpdateDashboardPanelDataAttributesParamsDatasetsItemFilterItemRulesItemOperation, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_FILTER_ITEM_RULES_ITEM_OPERATION_VALUES!r}"
     )

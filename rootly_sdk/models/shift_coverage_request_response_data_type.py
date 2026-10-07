@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ShiftCoverageRequestResponseDataType = Literal["shift_coverage_requests"]
 
@@ -11,5 +11,5 @@ def check_shift_coverage_request_response_data_type(value: str | None) -> ShiftC
     if value is None:
         return None
     if value in SHIFT_COVERAGE_REQUEST_RESPONSE_DATA_TYPE_VALUES:
-        return cast(ShiftCoverageRequestResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SHIFT_COVERAGE_REQUEST_RESPONSE_DATA_TYPE_VALUES!r}")

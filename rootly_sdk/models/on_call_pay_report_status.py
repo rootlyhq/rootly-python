@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallPayReportStatus = Literal["downloaded", "generated", "processing"]
 
@@ -13,5 +13,5 @@ def check_on_call_pay_report_status(value: str | None) -> OnCallPayReportStatus 
     if value is None:
         return None
     if value in ON_CALL_PAY_REPORT_STATUS_VALUES:
-        return cast(OnCallPayReportStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_PAY_REPORT_STATUS_VALUES!r}")

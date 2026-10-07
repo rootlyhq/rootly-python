@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -14,11 +15,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Unset | GetEscalationPathInclude = UNSET,
+    include: GetEscalationPathInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -28,7 +30,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/escalation_paths/{id}",
+        "url": "/v1/escalation_paths/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -69,7 +73,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetEscalationPathInclude = UNSET,
+    include: GetEscalationPathInclude | Unset = UNSET,
 ) -> Response[ErrorsList | EscalationPolicyPathResponse]:
     """Retrieves an escalation path
 
@@ -77,14 +81,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetEscalationPathInclude]):
+        include (GetEscalationPathInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, EscalationPolicyPathResponse]]
+        Response[ErrorsList | EscalationPolicyPathResponse]
     """
 
     kwargs = _get_kwargs(
@@ -103,7 +107,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetEscalationPathInclude = UNSET,
+    include: GetEscalationPathInclude | Unset = UNSET,
 ) -> ErrorsList | EscalationPolicyPathResponse | None:
     """Retrieves an escalation path
 
@@ -111,14 +115,14 @@ def sync(
 
     Args:
         id (str):
-        include (Union[Unset, GetEscalationPathInclude]):
+        include (GetEscalationPathInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, EscalationPolicyPathResponse]
+        ErrorsList | EscalationPolicyPathResponse
     """
 
     return sync_detailed(
@@ -132,7 +136,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetEscalationPathInclude = UNSET,
+    include: GetEscalationPathInclude | Unset = UNSET,
 ) -> Response[ErrorsList | EscalationPolicyPathResponse]:
     """Retrieves an escalation path
 
@@ -140,14 +144,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetEscalationPathInclude]):
+        include (GetEscalationPathInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, EscalationPolicyPathResponse]]
+        Response[ErrorsList | EscalationPolicyPathResponse]
     """
 
     kwargs = _get_kwargs(
@@ -164,7 +168,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetEscalationPathInclude = UNSET,
+    include: GetEscalationPathInclude | Unset = UNSET,
 ) -> ErrorsList | EscalationPolicyPathResponse | None:
     """Retrieves an escalation path
 
@@ -172,14 +176,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (Union[Unset, GetEscalationPathInclude]):
+        include (GetEscalationPathInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, EscalationPolicyPathResponse]
+        ErrorsList | EscalationPolicyPathResponse
     """
 
     return (

@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -13,31 +14,42 @@ T = TypeVar("T", bound="UpdateAlertsSourceDataAttributesAlertSourceFieldsAttribu
 class UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem:
     """
     Attributes:
-        alert_field_id (Union[Unset, str]): The ID of the alert field
-        template_body (Union[None, Unset, str]): Liquid expression to extract a specific value from the alert's payload
-            for evaluation
+        alert_field_id (str | Unset): The ID of the alert field. Must be visible to the caller; unknown or hidden IDs
+            return 404
+        template_body (None | str | Unset): Liquid expression to extract a specific value from the alert's payload for
+            evaluation
+        field_destroy (bool | None | Unset): Set to true to unbind the alert field from the alert source. Built-in
+            fields cannot be unbound (422)
     """
 
-    alert_field_id: Unset | str = UNSET
-    template_body: None | Unset | str = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    alert_field_id: str | Unset = UNSET
+    template_body: None | str | Unset = UNSET
+    field_destroy: bool | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         alert_field_id = self.alert_field_id
 
-        template_body: None | Unset | str
+        template_body: None | str | Unset
         if isinstance(self.template_body, Unset):
             template_body = UNSET
         else:
             template_body = self.template_body
 
+        field_destroy: bool | None | Unset
+        if isinstance(self.field_destroy, Unset):
+            field_destroy = UNSET
+        else:
+            field_destroy = self.field_destroy
+
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if alert_field_id is not UNSET:
             field_dict["alert_field_id"] = alert_field_id
         if template_body is not UNSET:
             field_dict["template_body"] = template_body
+        if field_destroy is not UNSET:
+            field_dict["_destroy"] = field_destroy
 
         return field_dict
 
@@ -46,35 +58,28 @@ class UpdateAlertsSourceDataAttributesAlertSourceFieldsAttributesItem:
         d = dict(src_dict)
         alert_field_id = d.pop("alert_field_id", UNSET)
 
-        def _parse_template_body(data: object) -> None | Unset | str:
+        def _parse_template_body(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         template_body = _parse_template_body(d.pop("template_body", UNSET))
+
+        def _parse_field_destroy(data: object) -> bool | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(bool | None | Unset, data)
+
+        field_destroy = _parse_field_destroy(d.pop("_destroy", UNSET))
 
         update_alerts_source_data_attributes_alert_source_fields_attributes_item = cls(
             alert_field_id=alert_field_id,
             template_body=template_body,
+            field_destroy=field_destroy,
         )
 
-        update_alerts_source_data_attributes_alert_source_fields_attributes_item.additional_properties = d
         return update_alerts_source_data_attributes_alert_source_fields_attributes_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

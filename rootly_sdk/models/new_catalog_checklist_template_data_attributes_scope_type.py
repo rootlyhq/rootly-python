@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCatalogChecklistTemplateDataAttributesScopeType = Literal["Catalog", "Team"]
 
@@ -16,7 +16,7 @@ def check_new_catalog_checklist_template_data_attributes_scope_type(
     if value is None:
         return None
     if value in NEW_CATALOG_CHECKLIST_TEMPLATE_DATA_ATTRIBUTES_SCOPE_TYPE_VALUES:
-        return cast(NewCatalogChecklistTemplateDataAttributesScopeType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_CATALOG_CHECKLIST_TEMPLATE_DATA_ATTRIBUTES_SCOPE_TYPE_VALUES!r}"
     )

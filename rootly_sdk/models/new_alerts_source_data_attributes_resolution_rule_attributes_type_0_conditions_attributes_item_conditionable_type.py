@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType = Literal[
     "AlertField"
@@ -20,9 +20,7 @@ def check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_co
         value
         in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES
     ):
-        return cast(
-            NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType, value
-        )
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES!r}"
     )

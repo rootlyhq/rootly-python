@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -12,12 +14,12 @@ T = TypeVar("T", bound="UpdateStatusPageAnnouncementDataAttributes")
 class UpdateStatusPageAnnouncementDataAttributes:
     """
     Attributes:
-        title (Union[Unset, str]): Title of the announcement
-        body (Union[Unset, str]): Body of the announcement
+        title (str | Unset): Title of the announcement
+        body (str | Unset): Body of the announcement
     """
 
-    title: Unset | str = UNSET
-    body: Unset | str = UNSET
+    title: str | Unset = UNSET
+    body: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title

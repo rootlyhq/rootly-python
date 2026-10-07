@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode = Literal["all", "users"]
 
@@ -16,7 +16,7 @@ def check_escalation_policy_level_paging_strategy_configuration_repeats_mode(
     if value is None:
         return None
     if value in ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_REPEATS_MODE_VALUES:
-        return cast(EscalationPolicyLevelPagingStrategyConfigurationRepeatsMode, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ESCALATION_POLICY_LEVEL_PAGING_STRATEGY_CONFIGURATION_REPEATS_MODE_VALUES!r}"
     )

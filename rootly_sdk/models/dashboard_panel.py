@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,17 +22,17 @@ class DashboardPanel:
     """
     Attributes:
         params (DashboardPanelParams):
-        dashboard_id (Union[Unset, str]): The panel dashboard
-        name (Union[None, Unset, str]): The name of the dashboard_panel
-        position (Union['DashboardPanelPositionType0', None, Unset]):
-        data (Union[Unset, list['DashboardPanelDataItem']]):
+        dashboard_id (str | Unset): The panel dashboard
+        name (None | str | Unset): The name of the dashboard_panel
+        position (DashboardPanelPositionType0 | None | Unset):
+        data (list[DashboardPanelDataItem] | Unset):
     """
 
-    params: "DashboardPanelParams"
-    dashboard_id: Unset | str = UNSET
-    name: None | Unset | str = UNSET
-    position: Union["DashboardPanelPositionType0", None, Unset] = UNSET
-    data: Unset | list["DashboardPanelDataItem"] = UNSET
+    params: DashboardPanelParams
+    dashboard_id: str | Unset = UNSET
+    name: None | str | Unset = UNSET
+    position: DashboardPanelPositionType0 | None | Unset = UNSET
+    data: list[DashboardPanelDataItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,13 +42,13 @@ class DashboardPanel:
 
         dashboard_id = self.dashboard_id
 
-        name: None | Unset | str
+        name: None | str | Unset
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        position: None | Unset | dict[str, Any]
+        position: dict[str, Any] | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         elif isinstance(self.position, DashboardPanelPositionType0):
@@ -54,7 +56,7 @@ class DashboardPanel:
         else:
             position = self.position
 
-        data: Unset | list[dict[str, Any]] = UNSET
+        data: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = []
             for data_item_data in self.data:
@@ -90,16 +92,16 @@ class DashboardPanel:
 
         dashboard_id = d.pop("dashboard_id", UNSET)
 
-        def _parse_name(data: object) -> None | Unset | str:
+        def _parse_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_position(data: object) -> Union["DashboardPanelPositionType0", None, Unset]:
+        def _parse_position(data: object) -> DashboardPanelPositionType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -110,18 +112,20 @@ class DashboardPanel:
                 position_type_0 = DashboardPanelPositionType0.from_dict(data)
 
                 return position_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["DashboardPanelPositionType0", None, Unset], data)
+            return cast(DashboardPanelPositionType0 | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        data = []
         _data = d.pop("data", UNSET)
-        for data_item_data in _data or []:
-            data_item = DashboardPanelDataItem.from_dict(data_item_data)
+        data: list[DashboardPanelDataItem] | Unset = UNSET
+        if _data is not UNSET:
+            data = []
+            for data_item_data in _data:
+                data_item = DashboardPanelDataItem.from_dict(data_item_data)
 
-            data.append(data_item)
+                data.append(data_item)
 
         dashboard_panel = cls(
             params=params,

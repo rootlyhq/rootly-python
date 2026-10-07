@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,18 +19,18 @@ T = TypeVar("T", bound="CatalogChecklistTemplateOwnersType0Item")
 class CatalogChecklistTemplateOwnersType0Item:
     """
     Attributes:
-        id (Union[Unset, str]): User ID for user owners, or field key for field owners
-        type_ (Union[Unset, CatalogChecklistTemplateOwnersType0ItemType]): Type of owner
+        id (str | Unset): User ID for user owners, or field key for field owners
+        type_ (CatalogChecklistTemplateOwnersType0ItemType | Unset): Type of owner
     """
 
-    id: Unset | str = UNSET
-    type_: Unset | CatalogChecklistTemplateOwnersType0ItemType = UNSET
+    id: str | Unset = UNSET
+    type_: CatalogChecklistTemplateOwnersType0ItemType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -48,7 +50,7 @@ class CatalogChecklistTemplateOwnersType0Item:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | CatalogChecklistTemplateOwnersType0ItemType
+        type_: CatalogChecklistTemplateOwnersType0ItemType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

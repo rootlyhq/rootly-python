@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ResolveAlertDataType = Literal["alerts"]
 
@@ -11,5 +11,5 @@ def check_resolve_alert_data_type(value: str | None) -> ResolveAlertDataType | N
     if value is None:
         return None
     if value in RESOLVE_ALERT_DATA_TYPE_VALUES:
-        return cast(ResolveAlertDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RESOLVE_ALERT_DATA_TYPE_VALUES!r}")

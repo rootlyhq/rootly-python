@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -20,16 +22,16 @@ class AlertRoute:
     Attributes:
         name (str): The name of the alert route
         alerts_source_ids (list[UUID]):
-        enabled (Union[Unset, bool]): Whether the alert route is enabled
-        owning_team_ids (Union[Unset, list[UUID]]):
-        rules (Union[Unset, list['AlertRouteRulesItem']]):
+        enabled (bool | Unset): Whether the alert route is enabled
+        owning_team_ids (list[UUID] | Unset):
+        rules (list[AlertRouteRulesItem] | Unset):
     """
 
     name: str
     alerts_source_ids: list[UUID]
-    enabled: Unset | bool = UNSET
-    owning_team_ids: Unset | list[UUID] = UNSET
-    rules: Unset | list["AlertRouteRulesItem"] = UNSET
+    enabled: bool | Unset = UNSET
+    owning_team_ids: list[UUID] | Unset = UNSET
+    rules: list[AlertRouteRulesItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,14 +44,14 @@ class AlertRoute:
 
         enabled = self.enabled
 
-        owning_team_ids: Unset | list[str] = UNSET
+        owning_team_ids: list[str] | Unset = UNSET
         if not isinstance(self.owning_team_ids, Unset):
             owning_team_ids = []
             for owning_team_ids_item_data in self.owning_team_ids:
                 owning_team_ids_item = str(owning_team_ids_item_data)
                 owning_team_ids.append(owning_team_ids_item)
 
-        rules: Unset | list[dict[str, Any]] = UNSET
+        rules: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
@@ -89,19 +91,23 @@ class AlertRoute:
 
         enabled = d.pop("enabled", UNSET)
 
-        owning_team_ids = []
         _owning_team_ids = d.pop("owning_team_ids", UNSET)
-        for owning_team_ids_item_data in _owning_team_ids or []:
-            owning_team_ids_item = UUID(owning_team_ids_item_data)
+        owning_team_ids: list[UUID] | Unset = UNSET
+        if _owning_team_ids is not UNSET:
+            owning_team_ids = []
+            for owning_team_ids_item_data in _owning_team_ids:
+                owning_team_ids_item = UUID(owning_team_ids_item_data)
 
-            owning_team_ids.append(owning_team_ids_item)
+                owning_team_ids.append(owning_team_ids_item)
 
-        rules = []
         _rules = d.pop("rules", UNSET)
-        for rules_item_data in _rules or []:
-            rules_item = AlertRouteRulesItem.from_dict(rules_item_data)
+        rules: list[AlertRouteRulesItem] | Unset = UNSET
+        if _rules is not UNSET:
+            rules = []
+            for rules_item_data in _rules:
+                rules_item = AlertRouteRulesItem.from_dict(rules_item_data)
 
-            rules.append(rules_item)
+                rules.append(rules_item)
 
         alert_route = cls(
             name=name,

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewStatusPageTemplateDataAttributesUpdateStatus = Literal[
     "completed", "identified", "in_progress", "investigating", "monitoring", "resolved", "scheduled"
@@ -21,7 +21,7 @@ def check_new_status_page_template_data_attributes_update_status(
     if value is None:
         return None
     if value in NEW_STATUS_PAGE_TEMPLATE_DATA_ATTRIBUTES_UPDATE_STATUS_VALUES:
-        return cast(NewStatusPageTemplateDataAttributesUpdateStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_STATUS_PAGE_TEMPLATE_DATA_ATTRIBUTES_UPDATE_STATUS_VALUES!r}"
     )

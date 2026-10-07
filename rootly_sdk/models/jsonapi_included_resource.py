@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,14 +22,14 @@ class JsonapiIncludedResource:
     Attributes:
         id (str):
         type_ (str):
-        attributes (Union[Unset, JsonapiIncludedResourceAttributes]):
-        relationships (Union[Unset, JsonapiIncludedResourceRelationships]):
+        attributes (JsonapiIncludedResourceAttributes | Unset):
+        relationships (JsonapiIncludedResourceRelationships | Unset):
     """
 
     id: str
     type_: str
-    attributes: Union[Unset, "JsonapiIncludedResourceAttributes"] = UNSET
-    relationships: Union[Unset, "JsonapiIncludedResourceRelationships"] = UNSET
+    attributes: JsonapiIncludedResourceAttributes | Unset = UNSET
+    relationships: JsonapiIncludedResourceRelationships | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,11 +37,11 @@ class JsonapiIncludedResource:
 
         type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        relationships: Unset | dict[str, Any] = UNSET
+        relationships: dict[str, Any] | Unset = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -69,14 +71,14 @@ class JsonapiIncludedResource:
         type_ = d.pop("type")
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | JsonapiIncludedResourceAttributes
+        attributes: JsonapiIncludedResourceAttributes | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
             attributes = JsonapiIncludedResourceAttributes.from_dict(_attributes)
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: Unset | JsonapiIncludedResourceRelationships
+        relationships: JsonapiIncludedResourceRelationships | Unset
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

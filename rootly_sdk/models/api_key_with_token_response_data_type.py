@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ApiKeyWithTokenResponseDataType = Literal["api_keys"]
 
@@ -11,5 +11,5 @@ def check_api_key_with_token_response_data_type(value: str | None) -> ApiKeyWith
     if value is None:
         return None
     if value in API_KEY_WITH_TOKEN_RESPONSE_DATA_TYPE_VALUES:
-        return cast(ApiKeyWithTokenResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {API_KEY_WITH_TOKEN_RESPONSE_DATA_TYPE_VALUES!r}")

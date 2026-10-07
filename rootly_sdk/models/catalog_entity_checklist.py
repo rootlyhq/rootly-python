@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -33,11 +35,11 @@ class CatalogEntityChecklist:
         status (CatalogEntityChecklistStatus): The status of the checklist
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        started_at (Union[None, Unset, str]): When the checklist was started
-        completed_at (Union[None, Unset, str]): When the checklist was completed
-        completed_by_user_id (Union[None, Unset, str]): The ID of the user who completed the checklist
-        checklist_fields (Union[None, Unset, list['CatalogEntityChecklistChecklistFieldsType0Item']]): Checklist fields
-        checklist_owners (Union[None, Unset, list['CatalogEntityChecklistChecklistOwnersType0Item']]): Checklist owners
+        started_at (None | str | Unset): When the checklist was started
+        completed_at (None | str | Unset): When the checklist was completed
+        completed_by_user_id (None | str | Unset): The ID of the user who completed the checklist
+        checklist_fields (list[CatalogEntityChecklistChecklistFieldsType0Item] | None | Unset): Checklist fields
+        checklist_owners (list[CatalogEntityChecklistChecklistOwnersType0Item] | None | Unset): Checklist owners
     """
 
     catalog_checklist_template_id: str
@@ -46,11 +48,11 @@ class CatalogEntityChecklist:
     status: CatalogEntityChecklistStatus
     created_at: str
     updated_at: str
-    started_at: None | Unset | str = UNSET
-    completed_at: None | Unset | str = UNSET
-    completed_by_user_id: None | Unset | str = UNSET
-    checklist_fields: None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"] = UNSET
-    checklist_owners: None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"] = UNSET
+    started_at: None | str | Unset = UNSET
+    completed_at: None | str | Unset = UNSET
+    completed_by_user_id: None | str | Unset = UNSET
+    checklist_fields: list[CatalogEntityChecklistChecklistFieldsType0Item] | None | Unset = UNSET
+    checklist_owners: list[CatalogEntityChecklistChecklistOwnersType0Item] | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,25 +68,25 @@ class CatalogEntityChecklist:
 
         updated_at = self.updated_at
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        completed_at: None | Unset | str
+        completed_at: None | str | Unset
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
         else:
             completed_at = self.completed_at
 
-        completed_by_user_id: None | Unset | str
+        completed_by_user_id: None | str | Unset
         if isinstance(self.completed_by_user_id, Unset):
             completed_by_user_id = UNSET
         else:
             completed_by_user_id = self.completed_by_user_id
 
-        checklist_fields: None | Unset | list[dict[str, Any]]
+        checklist_fields: list[dict[str, Any]] | None | Unset
         if isinstance(self.checklist_fields, Unset):
             checklist_fields = UNSET
         elif isinstance(self.checklist_fields, list):
@@ -96,7 +98,7 @@ class CatalogEntityChecklist:
         else:
             checklist_fields = self.checklist_fields
 
-        checklist_owners: None | Unset | list[dict[str, Any]]
+        checklist_owners: list[dict[str, Any]] | None | Unset
         if isinstance(self.checklist_owners, Unset):
             checklist_owners = UNSET
         elif isinstance(self.checklist_owners, list):
@@ -155,36 +157,36 @@ class CatalogEntityChecklist:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_started_at(data: object) -> None | Unset | str:
+        def _parse_started_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_completed_at(data: object) -> None | Unset | str:
+        def _parse_completed_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        def _parse_completed_by_user_id(data: object) -> None | Unset | str:
+        def _parse_completed_by_user_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         completed_by_user_id = _parse_completed_by_user_id(d.pop("completed_by_user_id", UNSET))
 
         def _parse_checklist_fields(
             data: object,
-        ) -> None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"]:
+        ) -> list[CatalogEntityChecklistChecklistFieldsType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -202,15 +204,15 @@ class CatalogEntityChecklist:
                     checklist_fields_type_0.append(checklist_fields_type_0_item)
 
                 return checklist_fields_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["CatalogEntityChecklistChecklistFieldsType0Item"], data)
+            return cast(list[CatalogEntityChecklistChecklistFieldsType0Item] | None | Unset, data)
 
         checklist_fields = _parse_checklist_fields(d.pop("checklist_fields", UNSET))
 
         def _parse_checklist_owners(
             data: object,
-        ) -> None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"]:
+        ) -> list[CatalogEntityChecklistChecklistOwnersType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -228,9 +230,9 @@ class CatalogEntityChecklist:
                     checklist_owners_type_0.append(checklist_owners_type_0_item)
 
                 return checklist_owners_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["CatalogEntityChecklistChecklistOwnersType0Item"], data)
+            return cast(list[CatalogEntityChecklistChecklistOwnersType0Item] | None | Unset, data)
 
         checklist_owners = _parse_checklist_owners(d.pop("checklist_owners", UNSET))
 

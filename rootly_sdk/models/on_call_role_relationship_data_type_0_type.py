@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallRoleRelationshipDataType0Type = Literal["on_call_roles"]
 
@@ -11,7 +11,7 @@ def check_on_call_role_relationship_data_type_0_type(value: str | None) -> OnCal
     if value is None:
         return None
     if value in ON_CALL_ROLE_RELATIONSHIP_DATA_TYPE_0_TYPE_VALUES:
-        return cast(OnCallRoleRelationshipDataType0Type, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ON_CALL_ROLE_RELATIONSHIP_DATA_TYPE_0_TYPE_VALUES!r}"
     )

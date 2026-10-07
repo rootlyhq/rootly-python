@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCommunicationsGroupDataType = Literal["communications_groups"]
 
@@ -11,5 +11,5 @@ def check_new_communications_group_data_type(value: str | None) -> NewCommunicat
     if value is None:
         return None
     if value in NEW_COMMUNICATIONS_GROUP_DATA_TYPE_VALUES:
-        return cast(NewCommunicationsGroupDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_COMMUNICATIONS_GROUP_DATA_TYPE_VALUES!r}")

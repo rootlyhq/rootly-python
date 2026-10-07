@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FormFieldPlacementConditionResponseDataType = Literal["form_field_placement_conditions"]
 
@@ -13,7 +13,7 @@ def check_form_field_placement_condition_response_data_type(
     if value is None:
         return None
     if value in FORM_FIELD_PLACEMENT_CONDITION_RESPONSE_DATA_TYPE_VALUES:
-        return cast(FormFieldPlacementConditionResponseDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {FORM_FIELD_PLACEMENT_CONDITION_RESPONSE_DATA_TYPE_VALUES!r}"
     )

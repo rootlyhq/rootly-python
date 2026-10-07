@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,38 +25,38 @@ class UpdateConfluencePageTaskParams:
     """
     Attributes:
         file_id (str): The Confluence page ID
-        task_type (Union[Unset, UpdateConfluencePageTaskParamsTaskType]):
-        integration (Union[Unset, UpdateConfluencePageTaskParamsIntegration]): Specify integration id if you have more
-            than one Confluence instance
-        title (Union[Unset, str]): The Confluence page title
-        content (Union[Unset, str]): The Confluence page content
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating page, if desired
-        template (Union[Unset, UpdateConfluencePageTaskParamsTemplate]): The Confluence template to use
-        include_overview (Union[Unset, bool]):  Default: True.
-        include_timeline (Union[Unset, bool]):  Default: True.
-        include_follow_ups (Union[Unset, bool]):  Default: True.
+        task_type (UpdateConfluencePageTaskParamsTaskType | Unset):
+        integration (UpdateConfluencePageTaskParamsIntegration | Unset): Specify integration id if you have more than
+            one Confluence instance
+        title (str | Unset): The Confluence page title
+        content (str | Unset): The Confluence page content
+        post_mortem_template_id (str | Unset): Retrospective template to use when updating page, if desired
+        template (UpdateConfluencePageTaskParamsTemplate | Unset): The Confluence template to use
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
+        include_follow_ups (bool | Unset):  Default: True.
     """
 
     file_id: str
-    task_type: Unset | UpdateConfluencePageTaskParamsTaskType = UNSET
-    integration: Union[Unset, "UpdateConfluencePageTaskParamsIntegration"] = UNSET
-    title: Unset | str = UNSET
-    content: Unset | str = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    template: Union[Unset, "UpdateConfluencePageTaskParamsTemplate"] = UNSET
-    include_overview: Unset | bool = True
-    include_timeline: Unset | bool = True
-    include_follow_ups: Unset | bool = True
+    task_type: UpdateConfluencePageTaskParamsTaskType | Unset = UNSET
+    integration: UpdateConfluencePageTaskParamsIntegration | Unset = UNSET
+    title: str | Unset = UNSET
+    content: str | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    template: UpdateConfluencePageTaskParamsTemplate | Unset = UNSET
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
+    include_follow_ups: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        integration: Unset | dict[str, Any] = UNSET
+        integration: dict[str, Any] | Unset = UNSET
         if not isinstance(self.integration, Unset):
             integration = self.integration.to_dict()
 
@@ -64,7 +66,7 @@ class UpdateConfluencePageTaskParams:
 
         post_mortem_template_id = self.post_mortem_template_id
 
-        template: Unset | dict[str, Any] = UNSET
+        template: dict[str, Any] | Unset = UNSET
         if not isinstance(self.template, Unset):
             template = self.template.to_dict()
 
@@ -111,14 +113,14 @@ class UpdateConfluencePageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateConfluencePageTaskParamsTaskType
+        task_type: UpdateConfluencePageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_confluence_page_task_params_task_type(_task_type)
 
         _integration = d.pop("integration", UNSET)
-        integration: Unset | UpdateConfluencePageTaskParamsIntegration
+        integration: UpdateConfluencePageTaskParamsIntegration | Unset
         if isinstance(_integration, Unset):
             integration = UNSET
         else:
@@ -131,7 +133,7 @@ class UpdateConfluencePageTaskParams:
         post_mortem_template_id = d.pop("post_mortem_template_id", UNSET)
 
         _template = d.pop("template", UNSET)
-        template: Unset | UpdateConfluencePageTaskParamsTemplate
+        template: UpdateConfluencePageTaskParamsTemplate | Unset
         if isinstance(_template, Unset):
             template = UNSET
         else:

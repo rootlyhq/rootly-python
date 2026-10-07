@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListCustomFieldsSort = Literal["-created_at", "-position", "-updated_at", "created_at", "position", "updated_at"]
 
@@ -16,5 +16,5 @@ def check_list_custom_fields_sort(value: str | None) -> ListCustomFieldsSort | N
     if value is None:
         return None
     if value in LIST_CUSTOM_FIELDS_SORT_VALUES:
-        return cast(ListCustomFieldsSort, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CUSTOM_FIELDS_SORT_VALUES!r}")

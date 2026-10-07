@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PageJsmopsOnCallRespondersTaskParamsPriority = Literal["auto", "P1", "P2", "P3", "P4", "P5"]
 
@@ -18,7 +18,7 @@ def check_page_jsmops_on_call_responders_task_params_priority(
     if value is None:
         return None
     if value in PAGE_JSMOPS_ON_CALL_RESPONDERS_TASK_PARAMS_PRIORITY_VALUES:
-        return cast(PageJsmopsOnCallRespondersTaskParamsPriority, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {PAGE_JSMOPS_ON_CALL_RESPONDERS_TASK_PARAMS_PRIORITY_VALUES!r}"
     )

@@ -13,44 +13,45 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | ListCustomFieldsInclude = UNSET,
-    sort: Unset | ListCustomFieldsSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterslug: Unset | str = UNSET,
-    filterlabel: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterenabled: Unset | bool = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filterlabeleq: Unset | str = UNSET,
-    filterlabelnot_eq: Unset | str = UNSET,
-    filterlabelin: Unset | str = UNSET,
-    filterlabelnot_in: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterenabledeq: Unset | str = UNSET,
-    filterenablednot_eq: Unset | str = UNSET,
-    filterenabledin: Unset | str = UNSET,
-    filterenablednot_in: Unset | str = UNSET,
+    include: ListCustomFieldsInclude | Unset = UNSET,
+    sort: ListCustomFieldsSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filterlabel: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -143,68 +144,68 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCustomFieldsInclude = UNSET,
-    sort: Unset | ListCustomFieldsSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterslug: Unset | str = UNSET,
-    filterlabel: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterenabled: Unset | bool = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filterlabeleq: Unset | str = UNSET,
-    filterlabelnot_eq: Unset | str = UNSET,
-    filterlabelin: Unset | str = UNSET,
-    filterlabelnot_in: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterenabledeq: Unset | str = UNSET,
-    filterenablednot_eq: Unset | str = UNSET,
-    filterenabledin: Unset | str = UNSET,
-    filterenablednot_in: Unset | str = UNSET,
+    include: ListCustomFieldsInclude | Unset = UNSET,
+    sort: ListCustomFieldsSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filterlabel: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
 ) -> Response[CustomFieldList]:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
     Args:
-        include (Union[Unset, ListCustomFieldsInclude]):
-        sort (Union[Unset, ListCustomFieldsSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterslug (Union[Unset, str]):
-        filterlabel (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterenabled (Union[Unset, bool]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filterlabeleq (Union[Unset, str]):
-        filterlabelnot_eq (Union[Unset, str]):
-        filterlabelin (Union[Unset, str]):
-        filterlabelnot_in (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterenabledeq (Union[Unset, str]):
-        filterenablednot_eq (Union[Unset, str]):
-        filterenabledin (Union[Unset, str]):
-        filterenablednot_in (Union[Unset, str]):
+        include (ListCustomFieldsInclude | Unset):
+        sort (ListCustomFieldsSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterslug (str | Unset):
+        filterlabel (str | Unset):
+        filterkind (str | Unset):
+        filterenabled (bool | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -255,68 +256,68 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCustomFieldsInclude = UNSET,
-    sort: Unset | ListCustomFieldsSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterslug: Unset | str = UNSET,
-    filterlabel: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterenabled: Unset | bool = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filterlabeleq: Unset | str = UNSET,
-    filterlabelnot_eq: Unset | str = UNSET,
-    filterlabelin: Unset | str = UNSET,
-    filterlabelnot_in: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterenabledeq: Unset | str = UNSET,
-    filterenablednot_eq: Unset | str = UNSET,
-    filterenabledin: Unset | str = UNSET,
-    filterenablednot_in: Unset | str = UNSET,
+    include: ListCustomFieldsInclude | Unset = UNSET,
+    sort: ListCustomFieldsSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filterlabel: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
 ) -> CustomFieldList | None:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
     Args:
-        include (Union[Unset, ListCustomFieldsInclude]):
-        sort (Union[Unset, ListCustomFieldsSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterslug (Union[Unset, str]):
-        filterlabel (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterenabled (Union[Unset, bool]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filterlabeleq (Union[Unset, str]):
-        filterlabelnot_eq (Union[Unset, str]):
-        filterlabelin (Union[Unset, str]):
-        filterlabelnot_in (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterenabledeq (Union[Unset, str]):
-        filterenablednot_eq (Union[Unset, str]):
-        filterenabledin (Union[Unset, str]):
-        filterenablednot_in (Union[Unset, str]):
+        include (ListCustomFieldsInclude | Unset):
+        sort (ListCustomFieldsSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterslug (str | Unset):
+        filterlabel (str | Unset):
+        filterkind (str | Unset):
+        filterenabled (bool | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -362,68 +363,68 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCustomFieldsInclude = UNSET,
-    sort: Unset | ListCustomFieldsSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterslug: Unset | str = UNSET,
-    filterlabel: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterenabled: Unset | bool = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filterlabeleq: Unset | str = UNSET,
-    filterlabelnot_eq: Unset | str = UNSET,
-    filterlabelin: Unset | str = UNSET,
-    filterlabelnot_in: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterenabledeq: Unset | str = UNSET,
-    filterenablednot_eq: Unset | str = UNSET,
-    filterenabledin: Unset | str = UNSET,
-    filterenablednot_in: Unset | str = UNSET,
+    include: ListCustomFieldsInclude | Unset = UNSET,
+    sort: ListCustomFieldsSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filterlabel: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
 ) -> Response[CustomFieldList]:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
     Args:
-        include (Union[Unset, ListCustomFieldsInclude]):
-        sort (Union[Unset, ListCustomFieldsSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterslug (Union[Unset, str]):
-        filterlabel (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterenabled (Union[Unset, bool]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filterlabeleq (Union[Unset, str]):
-        filterlabelnot_eq (Union[Unset, str]):
-        filterlabelin (Union[Unset, str]):
-        filterlabelnot_in (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterenabledeq (Union[Unset, str]):
-        filterenablednot_eq (Union[Unset, str]):
-        filterenabledin (Union[Unset, str]):
-        filterenablednot_in (Union[Unset, str]):
+        include (ListCustomFieldsInclude | Unset):
+        sort (ListCustomFieldsSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterslug (str | Unset):
+        filterlabel (str | Unset):
+        filterkind (str | Unset):
+        filterenabled (bool | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -472,68 +473,68 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCustomFieldsInclude = UNSET,
-    sort: Unset | ListCustomFieldsSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filterslug: Unset | str = UNSET,
-    filterlabel: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterenabled: Unset | bool = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filterlabeleq: Unset | str = UNSET,
-    filterlabelnot_eq: Unset | str = UNSET,
-    filterlabelin: Unset | str = UNSET,
-    filterlabelnot_in: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterenabledeq: Unset | str = UNSET,
-    filterenablednot_eq: Unset | str = UNSET,
-    filterenabledin: Unset | str = UNSET,
-    filterenablednot_in: Unset | str = UNSET,
+    include: ListCustomFieldsInclude | Unset = UNSET,
+    sort: ListCustomFieldsSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filterlabel: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterenabled: bool | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filterlabeleq: str | Unset = UNSET,
+    filterlabelnot_eq: str | Unset = UNSET,
+    filterlabelin: str | Unset = UNSET,
+    filterlabelnot_in: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterenabledeq: str | Unset = UNSET,
+    filterenablednot_eq: str | Unset = UNSET,
+    filterenabledin: str | Unset = UNSET,
+    filterenablednot_in: str | Unset = UNSET,
 ) -> CustomFieldList | None:
     """[DEPRECATED] List Custom Fields
 
      [DEPRECATED] Use form field endpoints instead. List Custom fields
 
     Args:
-        include (Union[Unset, ListCustomFieldsInclude]):
-        sort (Union[Unset, ListCustomFieldsSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filterslug (Union[Unset, str]):
-        filterlabel (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterenabled (Union[Unset, bool]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filterlabeleq (Union[Unset, str]):
-        filterlabelnot_eq (Union[Unset, str]):
-        filterlabelin (Union[Unset, str]):
-        filterlabelnot_in (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterenabledeq (Union[Unset, str]):
-        filterenablednot_eq (Union[Unset, str]):
-        filterenabledin (Union[Unset, str]):
-        filterenablednot_in (Union[Unset, str]):
+        include (ListCustomFieldsInclude | Unset):
+        sort (ListCustomFieldsSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filterslug (str | Unset):
+        filterlabel (str | Unset):
+        filterkind (str | Unset):
+        filterenabled (bool | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filterlabeleq (str | Unset):
+        filterlabelnot_eq (str | Unset):
+        filterlabelin (str | Unset):
+        filterlabelnot_in (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterenabledeq (str | Unset):
+        filterenablednot_eq (str | Unset):
+        filterenabledin (str | Unset):
+        filterenablednot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

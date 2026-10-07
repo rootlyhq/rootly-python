@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AuthorizationPermissionsItem = Literal["authorize", "destroy", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_authorization_permissions_item(value: str | None) -> AuthorizationPerm
     if value is None:
         return None
     if value in AUTHORIZATION_PERMISSIONS_ITEM_VALUES:
-        return cast(AuthorizationPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AUTHORIZATION_PERMISSIONS_ITEM_VALUES!r}")

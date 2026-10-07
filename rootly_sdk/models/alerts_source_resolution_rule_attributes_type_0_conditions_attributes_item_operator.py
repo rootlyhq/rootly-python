@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator = Literal[
     "contains", "does_not_contain", "ends_with", "is", "is_not", "starts_with"
@@ -22,7 +22,7 @@ def check_alerts_source_resolution_rule_attributes_type_0_conditions_attributes_
     if value is None:
         return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_OPERATOR_VALUES:
-        return cast(AlertsSourceResolutionRuleAttributesType0ConditionsAttributesItemOperator, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITIONS_ATTRIBUTES_ITEM_OPERATOR_VALUES!r}"
     )

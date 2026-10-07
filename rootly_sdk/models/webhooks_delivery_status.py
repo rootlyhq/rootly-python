@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WebhooksDeliveryStatus = Literal["failed", "pending", "success"]
 
@@ -13,5 +13,5 @@ def check_webhooks_delivery_status(value: str | None) -> WebhooksDeliveryStatus 
     if value is None:
         return None
     if value in WEBHOOKS_DELIVERY_STATUS_VALUES:
-        return cast(WebhooksDeliveryStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WEBHOOKS_DELIVERY_STATUS_VALUES!r}")

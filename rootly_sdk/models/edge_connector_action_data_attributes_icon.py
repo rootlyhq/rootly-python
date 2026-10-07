@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EdgeConnectorActionDataAttributesIcon = Literal[
     "arrow-path",
@@ -35,7 +35,7 @@ def check_edge_connector_action_data_attributes_icon(value: str | None) -> EdgeC
     if value is None:
         return None
     if value in EDGE_CONNECTOR_ACTION_DATA_ATTRIBUTES_ICON_VALUES:
-        return cast(EdgeConnectorActionDataAttributesIcon, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {EDGE_CONNECTOR_ACTION_DATA_ATTRIBUTES_ICON_VALUES!r}"
     )

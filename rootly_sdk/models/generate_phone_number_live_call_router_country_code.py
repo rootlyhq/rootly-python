@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GeneratePhoneNumberLiveCallRouterCountryCode = Literal["AU", "CA", "CH", "DE", "GB", "NL", "NZ", "SE", "US"]
 
@@ -21,7 +21,7 @@ def check_generate_phone_number_live_call_router_country_code(
     if value is None:
         return None
     if value in GENERATE_PHONE_NUMBER_LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES:
-        return cast(GeneratePhoneNumberLiveCallRouterCountryCode, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {GENERATE_PHONE_NUMBER_LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES!r}"
     )

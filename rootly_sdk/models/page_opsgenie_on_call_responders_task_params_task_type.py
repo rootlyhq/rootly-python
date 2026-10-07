@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PageOpsgenieOnCallRespondersTaskParamsTaskType = Literal["page_opsgenie_on_call_responders"]
 
@@ -13,7 +13,7 @@ def check_page_opsgenie_on_call_responders_task_params_task_type(
     if value is None:
         return None
     if value in PAGE_OPSGENIE_ON_CALL_RESPONDERS_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(PageOpsgenieOnCallRespondersTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {PAGE_OPSGENIE_ON_CALL_RESPONDERS_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

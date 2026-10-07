@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleSlasPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_slas_permissions_item(value: str | None) -> RoleSlasPermissionsIt
     if value is None:
         return None
     if value in ROLE_SLAS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleSlasPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_SLAS_PERMISSIONS_ITEM_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListDashboardsInclude = Literal["panels"]
 
@@ -11,5 +11,5 @@ def check_list_dashboards_include(value: str | None) -> ListDashboardsInclude | 
     if value is None:
         return None
     if value in LIST_DASHBOARDS_INCLUDE_VALUES:
-        return cast(ListDashboardsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_DASHBOARDS_INCLUDE_VALUES!r}")

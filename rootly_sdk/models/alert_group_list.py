@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -18,12 +20,12 @@ T = TypeVar("T", bound="AlertGroupList")
 class AlertGroupList:
     """
     Attributes:
-        data (list['AlertGroupListDataItem']):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        data (list[AlertGroupListDataItem]):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: list["AlertGroupListDataItem"]
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: list[AlertGroupListDataItem]
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +34,7 @@ class AlertGroupList:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -64,12 +66,14 @@ class AlertGroupList:
 
             data.append(data_item)
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         alert_group_list = cls(
             data=data,

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 MeetingRecordingListDataItemType = Literal["meeting_recordings"]
 
@@ -11,5 +11,5 @@ def check_meeting_recording_list_data_item_type(value: str | None) -> MeetingRec
     if value is None:
         return None
     if value in MEETING_RECORDING_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(MeetingRecordingListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {MEETING_RECORDING_LIST_DATA_ITEM_TYPE_VALUES!r}")

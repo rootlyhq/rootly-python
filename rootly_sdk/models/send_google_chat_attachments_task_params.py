@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,14 +25,14 @@ T = TypeVar("T", bound="SendGoogleChatAttachmentsTaskParams")
 class SendGoogleChatAttachmentsTaskParams:
     """
     Attributes:
-        spaces (list['SendGoogleChatAttachmentsTaskParamsSpacesItem']):
+        spaces (list[SendGoogleChatAttachmentsTaskParamsSpacesItem]):
         attachments (str):
-        task_type (Union[Unset, SendGoogleChatAttachmentsTaskParamsTaskType]):
+        task_type (SendGoogleChatAttachmentsTaskParamsTaskType | Unset):
     """
 
-    spaces: list["SendGoogleChatAttachmentsTaskParamsSpacesItem"]
+    spaces: list[SendGoogleChatAttachmentsTaskParamsSpacesItem]
     attachments: str
-    task_type: Unset | SendGoogleChatAttachmentsTaskParamsTaskType = UNSET
+    task_type: SendGoogleChatAttachmentsTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,7 +43,7 @@ class SendGoogleChatAttachmentsTaskParams:
 
         attachments = self.attachments
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -75,7 +77,7 @@ class SendGoogleChatAttachmentsTaskParams:
         attachments = d.pop("attachments")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | SendGoogleChatAttachmentsTaskParamsTaskType
+        task_type: SendGoogleChatAttachmentsTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

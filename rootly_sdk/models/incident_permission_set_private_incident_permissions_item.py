@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentPermissionSetPrivateIncidentPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -18,7 +18,7 @@ def check_incident_permission_set_private_incident_permissions_item(
     if value is None:
         return None
     if value in INCIDENT_PERMISSION_SET_PRIVATE_INCIDENT_PERMISSIONS_ITEM_VALUES:
-        return cast(IncidentPermissionSetPrivateIncidentPermissionsItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_PERMISSION_SET_PRIVATE_INCIDENT_PERMISSIONS_ITEM_VALUES!r}"
     )

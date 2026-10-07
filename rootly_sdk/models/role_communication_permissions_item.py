@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleCommunicationPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_communication_permissions_item(value: str | None) -> RoleCommunic
     if value is None:
         return None
     if value in ROLE_COMMUNICATION_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleCommunicationPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_COMMUNICATION_PERMISSIONS_ITEM_VALUES!r}")

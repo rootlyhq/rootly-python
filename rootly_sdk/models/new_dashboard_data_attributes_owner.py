@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardDataAttributesOwner = Literal["team", "user"]
 
@@ -12,5 +12,5 @@ def check_new_dashboard_data_attributes_owner(value: str | None) -> NewDashboard
     if value is None:
         return None
     if value in NEW_DASHBOARD_DATA_ATTRIBUTES_OWNER_VALUES:
-        return cast(NewDashboardDataAttributesOwner, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_DATA_ATTRIBUTES_OWNER_VALUES!r}")

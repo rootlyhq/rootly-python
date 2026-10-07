@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType = Literal["AlertField"]
 
@@ -15,7 +15,7 @@ def check_alerts_source_resolution_rule_attributes_type_0_identifier_matchable_t
     if value is None:
         return None
     if value in ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_MATCHABLE_TYPE_VALUES:
-        return cast(AlertsSourceResolutionRuleAttributesType0IdentifierMatchableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_MATCHABLE_TYPE_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CustomFieldRequiredType0Item = Literal[
     "incident_form",
@@ -25,5 +25,5 @@ def check_custom_field_required_type_0_item(value: str | None) -> CustomFieldReq
     if value is None:
         return None
     if value in CUSTOM_FIELD_REQUIRED_TYPE_0_ITEM_VALUES:
-        return cast(CustomFieldRequiredType0Item, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CUSTOM_FIELD_REQUIRED_TYPE_0_ITEM_VALUES!r}")

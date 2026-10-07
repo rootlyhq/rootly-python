@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -20,8 +21,8 @@ class StatusPageComponentGroup:
         position (int): Position of the group on the status page's top-level list
         created_at (datetime.datetime): Date of creation
         updated_at (datetime.datetime): Date of last update
-        description (Union[None, Unset, str]): Description of the component group
-        collapsed_by_default (Union[Unset, bool]): Whether the group renders collapsed on the public page
+        description (None | str | Unset): Description of the component group
+        collapsed_by_default (bool | Unset): Whether the group renders collapsed on the public page
     """
 
     status_page_id: str
@@ -29,8 +30,8 @@ class StatusPageComponentGroup:
     position: int
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    description: None | Unset | str = UNSET
-    collapsed_by_default: Unset | bool = UNSET
+    description: None | str | Unset = UNSET
+    collapsed_by_default: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +45,7 @@ class StatusPageComponentGroup:
 
         updated_at = self.updated_at.isoformat()
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -79,16 +80,16 @@ class StatusPageComponentGroup:
 
         position = d.pop("position")
 
-        created_at = isoparse(d.pop("created_at"))
+        created_at = datetime.datetime.fromisoformat(d.pop("created_at"))
 
-        updated_at = isoparse(d.pop("updated_at"))
+        updated_at = datetime.datetime.fromisoformat(d.pop("updated_at"))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

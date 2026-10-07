@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,22 +14,22 @@ T = TypeVar("T", bound="UpdateStatusPageComponentGroupDataAttributes")
 class UpdateStatusPageComponentGroupDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): Name of the component group
-        description (Union[None, Unset, str]): Description of the component group
-        position (Union[Unset, int]): Position of the group on the status page's top-level list (shared with ungrouped
+        name (str | Unset): Name of the component group
+        description (None | str | Unset): Description of the component group
+        position (int | Unset): Position of the group on the status page's top-level list (shared with ungrouped
             components)
-        collapsed_by_default (Union[None, Unset, bool]): Whether the group renders collapsed on the public page
+        collapsed_by_default (bool | None | Unset): Whether the group renders collapsed on the public page
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    position: Unset | int = UNSET
-    collapsed_by_default: None | Unset | bool = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    position: int | Unset = UNSET
+    collapsed_by_default: bool | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -35,7 +37,7 @@ class UpdateStatusPageComponentGroupDataAttributes:
 
         position = self.position
 
-        collapsed_by_default: None | Unset | bool
+        collapsed_by_default: bool | None | Unset
         if isinstance(self.collapsed_by_default, Unset):
             collapsed_by_default = UNSET
         else:
@@ -60,23 +62,23 @@ class UpdateStatusPageComponentGroupDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         position = d.pop("position", UNSET)
 
-        def _parse_collapsed_by_default(data: object) -> None | Unset | bool:
+        def _parse_collapsed_by_default(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         collapsed_by_default = _parse_collapsed_by_default(d.pop("collapsed_by_default", UNSET))
 

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 MeetingRecordingResponseDataType = Literal["meeting_recordings"]
 
@@ -11,5 +11,5 @@ def check_meeting_recording_response_data_type(value: str | None) -> MeetingReco
     if value is None:
         return None
     if value in MEETING_RECORDING_RESPONSE_DATA_TYPE_VALUES:
-        return cast(MeetingRecordingResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {MEETING_RECORDING_RESPONSE_DATA_TYPE_VALUES!r}")

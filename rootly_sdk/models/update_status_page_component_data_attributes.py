@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,33 +14,33 @@ T = TypeVar("T", bound="UpdateStatusPageComponentDataAttributes")
 class UpdateStatusPageComponentDataAttributes:
     """
     Attributes:
-        name (Union[None, Unset, str]): Name of the component (ad-hoc components only)
-        description (Union[None, Unset, str]): Description of the component (ad-hoc components only)
-        status_page_component_group_id (Union[None, Unset, str]): ID of the component group on the same status page
-            (null moves the component to the top level)
-        position (Union[Unset, int]): Position of the component (within its group, or on the page's top-level list when
+        name (None | str | Unset): Name of the component (ad-hoc components only)
+        description (None | str | Unset): Description of the component (ad-hoc components only)
+        status_page_component_group_id (None | str | Unset): ID of the component group on the same status page (null
+            moves the component to the top level)
+        position (int | Unset): Position of the component (within its group, or on the page's top-level list when
             ungrouped)
     """
 
-    name: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    status_page_component_group_id: None | Unset | str = UNSET
-    position: Unset | int = UNSET
+    name: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    status_page_component_group_id: None | str | Unset = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        name: None | Unset | str
+        name: None | str | Unset
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        status_page_component_group_id: None | Unset | str
+        status_page_component_group_id: None | str | Unset
         if isinstance(self.status_page_component_group_id, Unset):
             status_page_component_group_id = UNSET
         else:
@@ -64,30 +66,30 @@ class UpdateStatusPageComponentDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | Unset | str:
+        def _parse_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_status_page_component_group_id(data: object) -> None | Unset | str:
+        def _parse_status_page_component_group_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status_page_component_group_id = _parse_status_page_component_group_id(
             d.pop("status_page_component_group_id", UNSET)

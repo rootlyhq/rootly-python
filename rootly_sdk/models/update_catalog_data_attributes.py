@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,24 +18,24 @@ T = TypeVar("T", bound="UpdateCatalogDataAttributes")
 class UpdateCatalogDataAttributes:
     """
     Attributes:
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        name (Union[Unset, str]):
-        description (Union[None, Unset, str]):
-        icon (Union[Unset, UpdateCatalogDataAttributesIcon]):
-        position (Union[None, Unset, int]): Default position of the catalog when displayed in a list.
-        external_id (Union[None, Unset, str]): An external identifier for this catalog. Must be unique within the team.
+        name (str | Unset):
+        description (None | str | Unset):
+        icon (UpdateCatalogDataAttributesIcon | Unset):
+        position (int | None | Unset): Default position of the catalog when displayed in a list.
+        external_id (None | str | Unset): An external identifier for this catalog. Must be unique within the team.
     """
 
-    slug: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    icon: Unset | UpdateCatalogDataAttributesIcon = UNSET
-    position: None | Unset | int = UNSET
-    external_id: None | Unset | str = UNSET
+    slug: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    icon: UpdateCatalogDataAttributesIcon | Unset = UNSET
+    position: int | None | Unset = UNSET
+    external_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -41,23 +43,23 @@ class UpdateCatalogDataAttributes:
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        icon: Unset | str = UNSET
+        icon: str | Unset = UNSET
         if not isinstance(self.icon, Unset):
             icon = self.icon
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
@@ -85,48 +87,48 @@ class UpdateCatalogDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _icon = d.pop("icon", UNSET)
-        icon: Unset | UpdateCatalogDataAttributesIcon
+        icon: UpdateCatalogDataAttributesIcon | Unset
         if isinstance(_icon, Unset):
             icon = UNSET
         else:
             icon = check_update_catalog_data_attributes_icon(_icon)
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 

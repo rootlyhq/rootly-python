@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SecretResponseDataType = Literal["secrets"]
 
@@ -11,5 +11,5 @@ def check_secret_response_data_type(value: str | None) -> SecretResponseDataType
     if value is None:
         return None
     if value in SECRET_RESPONSE_DATA_TYPE_VALUES:
-        return cast(SecretResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SECRET_RESPONSE_DATA_TYPE_VALUES!r}")

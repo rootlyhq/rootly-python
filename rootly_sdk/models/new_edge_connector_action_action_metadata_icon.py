@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewEdgeConnectorActionActionMetadataIcon = Literal[
     "arrow-path",
@@ -37,7 +37,7 @@ def check_new_edge_connector_action_action_metadata_icon(
     if value is None:
         return None
     if value in NEW_EDGE_CONNECTOR_ACTION_ACTION_METADATA_ICON_VALUES:
-        return cast(NewEdgeConnectorActionActionMetadataIcon, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_EDGE_CONNECTOR_ACTION_ACTION_METADATA_ICON_VALUES!r}"
     )

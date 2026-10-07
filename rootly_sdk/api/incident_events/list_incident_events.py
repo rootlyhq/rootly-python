@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -12,10 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -28,7 +30,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/incidents/{incident_id}/events",
+        "url": "/v1/incidents/{incident_id}/events".format(
+            incident_id=quote(str(incident_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -60,9 +64,9 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[IncidentEventList]:
     """List incident events
 
@@ -70,9 +74,9 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -100,9 +104,9 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> IncidentEventList | None:
     """List incident events
 
@@ -110,9 +114,9 @@ def sync(
 
     Args:
         incident_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -135,9 +139,9 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[IncidentEventList]:
     """List incident events
 
@@ -145,9 +149,9 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,9 +177,9 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> IncidentEventList | None:
     """List incident events
 
@@ -183,9 +187,9 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 StatusPageTemplateKind = Literal["normal", "scheduled"]
 
@@ -12,5 +12,5 @@ def check_status_page_template_kind(value: str | None) -> StatusPageTemplateKind
     if value is None:
         return None
     if value in STATUS_PAGE_TEMPLATE_KIND_VALUES:
-        return cast(StatusPageTemplateKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_TEMPLATE_KIND_VALUES!r}")

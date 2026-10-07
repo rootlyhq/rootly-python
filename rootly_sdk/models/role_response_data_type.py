@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleResponseDataType = Literal["roles"]
 
@@ -11,5 +11,5 @@ def check_role_response_data_type(value: str | None) -> RoleResponseDataType | N
     if value is None:
         return None
     if value in ROLE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(RoleResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_RESPONSE_DATA_TYPE_VALUES!r}")

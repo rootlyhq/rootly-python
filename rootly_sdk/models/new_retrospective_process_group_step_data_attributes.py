@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,11 +15,11 @@ class NewRetrospectiveProcessGroupStepDataAttributes:
     """
     Attributes:
         retrospective_step_id (str):
-        position (Union[Unset, int]):
+        position (int | Unset):
     """
 
     retrospective_step_id: str
-    position: Unset | int = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         retrospective_step_id = self.retrospective_step_id

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateCustomFieldDataAttributesShownItem = Literal[
     "incident_form",
@@ -29,7 +29,7 @@ def check_update_custom_field_data_attributes_shown_item(
     if value is None:
         return None
     if value in UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_SHOWN_ITEM_VALUES:
-        return cast(UpdateCustomFieldDataAttributesShownItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_CUSTOM_FIELD_DATA_ATTRIBUTES_SHOWN_ITEM_VALUES!r}"
     )

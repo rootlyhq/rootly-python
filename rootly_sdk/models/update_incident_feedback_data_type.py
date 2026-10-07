@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentFeedbackDataType = Literal["incident_feedbacks"]
 
@@ -11,5 +11,5 @@ def check_update_incident_feedback_data_type(value: str | None) -> UpdateInciden
     if value is None:
         return None
     if value in UPDATE_INCIDENT_FEEDBACK_DATA_TYPE_VALUES:
-        return cast(UpdateIncidentFeedbackDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_FEEDBACK_DATA_TYPE_VALUES!r}")

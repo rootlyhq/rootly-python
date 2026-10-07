@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -20,16 +22,16 @@ T = TypeVar("T", bound="DashboardPanelList")
 class DashboardPanelList:
     """
     Attributes:
-        data (list['DashboardPanelListDataItem']):
+        data (list[DashboardPanelListDataItem]):
         links (Links):
         meta (Meta):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: list["DashboardPanelListDataItem"]
-    links: "Links"
-    meta: "Meta"
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: list[DashboardPanelListDataItem]
+    links: Links
+    meta: Meta
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +44,7 @@ class DashboardPanelList:
 
         meta = self.meta.to_dict()
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -82,12 +84,14 @@ class DashboardPanelList:
 
         meta = Meta.from_dict(d.pop("meta"))
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         dashboard_panel_list = cls(
             data=data,

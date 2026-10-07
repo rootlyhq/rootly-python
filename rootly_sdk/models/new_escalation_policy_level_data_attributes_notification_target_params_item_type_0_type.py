@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type = Literal[
     "microsoft_teams_channel", "schedule", "service", "slack_channel", "team", "user"
@@ -22,7 +22,7 @@ def check_new_escalation_policy_level_data_attributes_notification_target_params
     if value is None:
         return None
     if value in NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TYPE_VALUES:
-        return cast(NewEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0Type, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TYPE_VALUES!r}"
     )

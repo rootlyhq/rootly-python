@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertGroupResponseDataType = Literal["alert_groups"]
 
@@ -11,5 +11,5 @@ def check_alert_group_response_data_type(value: str | None) -> AlertGroupRespons
     if value is None:
         return None
     if value in ALERT_GROUP_RESPONSE_DATA_TYPE_VALUES:
-        return cast(AlertGroupResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_GROUP_RESPONSE_DATA_TYPE_VALUES!r}")

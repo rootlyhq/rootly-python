@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,16 +22,16 @@ T = TypeVar("T", bound="CommunicationsTemplatesResponse")
 class CommunicationsTemplatesResponse:
     """
     Attributes:
-        data (list['CommunicationsTemplatesResponseDataItem']):
-        links (Union[Unset, Links]):
-        meta (Union[Unset, Meta]):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        data (list[CommunicationsTemplatesResponseDataItem]):
+        links (Links | Unset):
+        meta (Meta | Unset):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: list["CommunicationsTemplatesResponseDataItem"]
-    links: Union[Unset, "Links"] = UNSET
-    meta: Union[Unset, "Meta"] = UNSET
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: list[CommunicationsTemplatesResponseDataItem]
+    links: Links | Unset = UNSET
+    meta: Meta | Unset = UNSET
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,15 +40,15 @@ class CommunicationsTemplatesResponse:
             data_item = data_item_data.to_dict()
             data.append(data_item)
 
-        links: Unset | dict[str, Any] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        meta: Unset | dict[str, Any] = UNSET
+        meta: dict[str, Any] | Unset = UNSET
         if not isinstance(self.meta, Unset):
             meta = self.meta.to_dict()
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -85,25 +87,27 @@ class CommunicationsTemplatesResponse:
             data.append(data_item)
 
         _links = d.pop("links", UNSET)
-        links: Unset | Links
+        links: Links | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = Links.from_dict(_links)
 
         _meta = d.pop("meta", UNSET)
-        meta: Unset | Meta
+        meta: Meta | Unset
         if isinstance(_meta, Unset):
             meta = UNSET
         else:
             meta = Meta.from_dict(_meta)
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         communications_templates_response = cls(
             data=data,

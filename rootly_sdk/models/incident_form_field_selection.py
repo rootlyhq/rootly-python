@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -15,30 +17,30 @@ class IncidentFormFieldSelection:
     Attributes:
         incident_id (str):
         form_field_id (str): The custom field for this selection
-        value (Union[None, Unset, str]): The selected value for text kind custom fields
-        selected_catalog_entity_ids (Union[Unset, list[str]]):
-        selected_group_ids (Union[Unset, list[str]]):
-        selected_option_ids (Union[Unset, list[str]]):
-        selected_service_ids (Union[Unset, list[str]]):
-        selected_functionality_ids (Union[Unset, list[str]]):
-        selected_user_ids (Union[Unset, list[int]]):
-        selected_environment_ids (Union[Unset, list[str]]):
-        selected_cause_ids (Union[Unset, list[str]]):
-        selected_incident_type_ids (Union[Unset, list[str]]):
+        value (None | str | Unset): The selected value for text kind custom fields
+        selected_catalog_entity_ids (list[str] | Unset):
+        selected_group_ids (list[str] | Unset):
+        selected_option_ids (list[str] | Unset):
+        selected_service_ids (list[str] | Unset):
+        selected_functionality_ids (list[str] | Unset):
+        selected_user_ids (list[int] | Unset):
+        selected_environment_ids (list[str] | Unset):
+        selected_cause_ids (list[str] | Unset):
+        selected_incident_type_ids (list[str] | Unset):
     """
 
     incident_id: str
     form_field_id: str
-    value: None | Unset | str = UNSET
-    selected_catalog_entity_ids: Unset | list[str] = UNSET
-    selected_group_ids: Unset | list[str] = UNSET
-    selected_option_ids: Unset | list[str] = UNSET
-    selected_service_ids: Unset | list[str] = UNSET
-    selected_functionality_ids: Unset | list[str] = UNSET
-    selected_user_ids: Unset | list[int] = UNSET
-    selected_environment_ids: Unset | list[str] = UNSET
-    selected_cause_ids: Unset | list[str] = UNSET
-    selected_incident_type_ids: Unset | list[str] = UNSET
+    value: None | str | Unset = UNSET
+    selected_catalog_entity_ids: list[str] | Unset = UNSET
+    selected_group_ids: list[str] | Unset = UNSET
+    selected_option_ids: list[str] | Unset = UNSET
+    selected_service_ids: list[str] | Unset = UNSET
+    selected_functionality_ids: list[str] | Unset = UNSET
+    selected_user_ids: list[int] | Unset = UNSET
+    selected_environment_ids: list[str] | Unset = UNSET
+    selected_cause_ids: list[str] | Unset = UNSET
+    selected_incident_type_ids: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,45 +48,45 @@ class IncidentFormFieldSelection:
 
         form_field_id = self.form_field_id
 
-        value: None | Unset | str
+        value: None | str | Unset
         if isinstance(self.value, Unset):
             value = UNSET
         else:
             value = self.value
 
-        selected_catalog_entity_ids: Unset | list[str] = UNSET
+        selected_catalog_entity_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_catalog_entity_ids, Unset):
             selected_catalog_entity_ids = self.selected_catalog_entity_ids
 
-        selected_group_ids: Unset | list[str] = UNSET
+        selected_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_group_ids, Unset):
             selected_group_ids = self.selected_group_ids
 
-        selected_option_ids: Unset | list[str] = UNSET
+        selected_option_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 
-        selected_service_ids: Unset | list[str] = UNSET
+        selected_service_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_service_ids, Unset):
             selected_service_ids = self.selected_service_ids
 
-        selected_functionality_ids: Unset | list[str] = UNSET
+        selected_functionality_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_functionality_ids, Unset):
             selected_functionality_ids = self.selected_functionality_ids
 
-        selected_user_ids: Unset | list[int] = UNSET
+        selected_user_ids: list[int] | Unset = UNSET
         if not isinstance(self.selected_user_ids, Unset):
             selected_user_ids = self.selected_user_ids
 
-        selected_environment_ids: Unset | list[str] = UNSET
+        selected_environment_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_environment_ids, Unset):
             selected_environment_ids = self.selected_environment_ids
 
-        selected_cause_ids: Unset | list[str] = UNSET
+        selected_cause_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_cause_ids, Unset):
             selected_cause_ids = self.selected_cause_ids
 
-        selected_incident_type_ids: Unset | list[str] = UNSET
+        selected_incident_type_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_incident_type_ids, Unset):
             selected_incident_type_ids = self.selected_incident_type_ids
 
@@ -126,12 +128,12 @@ class IncidentFormFieldSelection:
 
         form_field_id = d.pop("form_field_id")
 
-        def _parse_value(data: object) -> None | Unset | str:
+        def _parse_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         value = _parse_value(d.pop("value", UNSET))
 

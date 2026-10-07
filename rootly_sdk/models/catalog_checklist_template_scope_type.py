@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogChecklistTemplateScopeType = Literal["Catalog", "Team"]
 
@@ -12,5 +12,5 @@ def check_catalog_checklist_template_scope_type(value: str | None) -> CatalogChe
     if value is None:
         return None
     if value in CATALOG_CHECKLIST_TEMPLATE_SCOPE_TYPE_VALUES:
-        return cast(CatalogChecklistTemplateScopeType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_CHECKLIST_TEMPLATE_SCOPE_TYPE_VALUES!r}")

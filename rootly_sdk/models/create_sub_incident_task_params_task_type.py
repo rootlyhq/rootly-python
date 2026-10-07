@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateSubIncidentTaskParamsTaskType = Literal["create_sub_incident"]
 
@@ -11,5 +11,5 @@ def check_create_sub_incident_task_params_task_type(value: str | None) -> Create
     if value is None:
         return None
     if value in CREATE_SUB_INCIDENT_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(CreateSubIncidentTaskParamsTaskType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CREATE_SUB_INCIDENT_TASK_PARAMS_TASK_TYPE_VALUES!r}")

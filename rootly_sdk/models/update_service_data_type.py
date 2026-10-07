@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateServiceDataType = Literal["services"]
 
@@ -11,5 +11,5 @@ def check_update_service_data_type(value: str | None) -> UpdateServiceDataType |
     if value is None:
         return None
     if value in UPDATE_SERVICE_DATA_TYPE_VALUES:
-        return cast(UpdateServiceDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_SERVICE_DATA_TYPE_VALUES!r}")

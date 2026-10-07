@@ -12,20 +12,21 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -98,19 +99,19 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
 
@@ -119,26 +120,26 @@ def sync_detailed(
     please contact Rootly customer support.**
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRouteList, ErrorsList]]
+        Response[AlertRouteList | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -167,19 +168,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AlertRouteList | ErrorsList | None:
     """List alert routes
 
@@ -188,26 +189,26 @@ def sync(
     please contact Rootly customer support.**
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRouteList, ErrorsList]
+        AlertRouteList | ErrorsList
     """
 
     return sync_detailed(
@@ -231,19 +232,19 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AlertRouteList | ErrorsList]:
     """List alert routes
 
@@ -252,26 +253,26 @@ async def asyncio_detailed(
     please contact Rootly customer support.**
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRouteList, ErrorsList]]
+        Response[AlertRouteList | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -298,19 +299,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AlertRouteList | ErrorsList | None:
     """List alert routes
 
@@ -319,26 +320,26 @@ async def asyncio(
     please contact Rootly customer support.**
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRouteList, ErrorsList]
+        AlertRouteList | ErrorsList
     """
 
     return (

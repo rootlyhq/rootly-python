@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListPlaybooksInclude = Literal[
     "causes", "environments", "functionalities", "groups", "incident_types", "services", "severities"
@@ -19,5 +19,5 @@ def check_list_playbooks_include(value: str | None) -> ListPlaybooksInclude | No
     if value is None:
         return None
     if value in LIST_PLAYBOOKS_INCLUDE_VALUES:
-        return cast(ListPlaybooksInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_PLAYBOOKS_INCLUDE_VALUES!r}")

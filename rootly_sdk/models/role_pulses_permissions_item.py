@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RolePulsesPermissionsItem = Literal["create", "read", "update"]
 
@@ -13,5 +13,5 @@ def check_role_pulses_permissions_item(value: str | None) -> RolePulsesPermissio
     if value is None:
         return None
     if value in ROLE_PULSES_PERMISSIONS_ITEM_VALUES:
-        return cast(RolePulsesPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_PULSES_PERMISSIONS_ITEM_VALUES!r}")

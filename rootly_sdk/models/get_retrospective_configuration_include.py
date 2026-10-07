@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GetRetrospectiveConfigurationInclude = Literal["groups", "incident_types", "severities"]
 
@@ -13,5 +13,5 @@ def check_get_retrospective_configuration_include(value: str | None) -> GetRetro
     if value is None:
         return None
     if value in GET_RETROSPECTIVE_CONFIGURATION_INCLUDE_VALUES:
-        return cast(GetRetrospectiveConfigurationInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_RETROSPECTIVE_CONFIGURATION_INCLUDE_VALUES!r}")

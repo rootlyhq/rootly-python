@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GetRetrospectiveProcessGroupInclude = Literal["retrospective_process_group_steps"]
 
@@ -11,5 +11,5 @@ def check_get_retrospective_process_group_include(value: str | None) -> GetRetro
     if value is None:
         return None
     if value in GET_RETROSPECTIVE_PROCESS_GROUP_INCLUDE_VALUES:
-        return cast(GetRetrospectiveProcessGroupInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_RETROSPECTIVE_PROCESS_GROUP_INCLUDE_VALUES!r}")

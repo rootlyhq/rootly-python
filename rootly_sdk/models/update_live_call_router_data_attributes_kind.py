@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateLiveCallRouterDataAttributesKind = Literal["live", "voicemail"]
 
@@ -14,7 +14,7 @@ def check_update_live_call_router_data_attributes_kind(
     if value is None:
         return None
     if value in UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(UpdateLiveCallRouterDataAttributesKind, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_KIND_VALUES!r}"
     )

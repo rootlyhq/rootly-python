@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateCommunicationsTypeDataType = Literal["communications_types"]
 
@@ -11,5 +11,5 @@ def check_update_communications_type_data_type(value: str | None) -> UpdateCommu
     if value is None:
         return None
     if value in UPDATE_COMMUNICATIONS_TYPE_DATA_TYPE_VALUES:
-        return cast(UpdateCommunicationsTypeDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_COMMUNICATIONS_TYPE_DATA_TYPE_VALUES!r}")

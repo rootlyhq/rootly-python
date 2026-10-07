@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ScheduleRotationActiveDayListDataItemType = Literal["schedule_rotation_active_days"]
 
@@ -13,7 +13,7 @@ def check_schedule_rotation_active_day_list_data_item_type(
     if value is None:
         return None
     if value in SCHEDULE_ROTATION_ACTIVE_DAY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(ScheduleRotationActiveDayListDataItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SCHEDULE_ROTATION_ACTIVE_DAY_LIST_DATA_ITEM_TYPE_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListIncidentsSort = Literal[
     "-created_at",
@@ -35,5 +35,5 @@ def check_list_incidents_sort(value: str | None) -> ListIncidentsSort | None:
     if value is None:
         return None
     if value in LIST_INCIDENTS_SORT_VALUES:
-        return cast(ListIncidentsSort, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_INCIDENTS_SORT_VALUES!r}")

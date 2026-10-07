@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CustomFieldShownItem = Literal[
     "incident_form",
@@ -27,5 +27,5 @@ def check_custom_field_shown_item(value: str | None) -> CustomFieldShownItem | N
     if value is None:
         return None
     if value in CUSTOM_FIELD_SHOWN_ITEM_VALUES:
-        return cast(CustomFieldShownItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CUSTOM_FIELD_SHOWN_ITEM_VALUES!r}")

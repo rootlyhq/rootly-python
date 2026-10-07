@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ApiKeyListDataItemType = Literal["api_keys"]
 
@@ -11,5 +11,5 @@ def check_api_key_list_data_item_type(value: str | None) -> ApiKeyListDataItemTy
     if value is None:
         return None
     if value in API_KEY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(ApiKeyListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {API_KEY_LIST_DATA_ITEM_TYPE_VALUES!r}")

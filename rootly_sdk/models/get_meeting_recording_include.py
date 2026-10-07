@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GetMeetingRecordingInclude = Literal["transcript"]
 
@@ -11,5 +11,5 @@ def check_get_meeting_recording_include(value: str | None) -> GetMeetingRecordin
     if value is None:
         return None
     if value in GET_MEETING_RECORDING_INCLUDE_VALUES:
-        return cast(GetMeetingRecordingInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_MEETING_RECORDING_INCLUDE_VALUES!r}")

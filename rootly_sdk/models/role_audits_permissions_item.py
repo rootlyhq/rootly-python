@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleAuditsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_audits_permissions_item(value: str | None) -> RoleAuditsPermissio
     if value is None:
         return None
     if value in ROLE_AUDITS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleAuditsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_AUDITS_PERMISSIONS_ITEM_VALUES!r}")

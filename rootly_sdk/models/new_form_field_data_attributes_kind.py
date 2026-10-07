@@ -1,8 +1,9 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewFormFieldDataAttributesKind = Literal[
     "acknowledged_at",
     "attach_alerts",
+    "cancellation_message",
     "causes",
     "closed_at",
     "custom",
@@ -37,6 +38,7 @@ NewFormFieldDataAttributesKind = Literal[
 NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES: set[NewFormFieldDataAttributesKind] = {
     "acknowledged_at",
     "attach_alerts",
+    "cancellation_message",
     "causes",
     "closed_at",
     "custom",
@@ -73,5 +75,5 @@ def check_new_form_field_data_attributes_kind(value: str | None) -> NewFormField
     if value is None:
         return None
     if value in NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(NewFormFieldDataAttributesKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateCatalogPropertyDataType = Literal["catalog_properties"]
 
@@ -11,5 +11,5 @@ def check_update_catalog_property_data_type(value: str | None) -> UpdateCatalogP
     if value is None:
         return None
     if value in UPDATE_CATALOG_PROPERTY_DATA_TYPE_VALUES:
-        return cast(UpdateCatalogPropertyDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_CATALOG_PROPERTY_DATA_TYPE_VALUES!r}")

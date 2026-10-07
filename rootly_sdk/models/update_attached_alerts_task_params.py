@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -22,17 +24,17 @@ class UpdateAttachedAlertsTaskParams:
     """
     Attributes:
         status (UpdateAttachedAlertsTaskParamsStatus):
-        task_type (Union[Unset, UpdateAttachedAlertsTaskParamsTaskType]):
+        task_type (UpdateAttachedAlertsTaskParamsTaskType | Unset):
     """
 
     status: UpdateAttachedAlertsTaskParamsStatus
-    task_type: Unset | UpdateAttachedAlertsTaskParamsTaskType = UNSET
+    task_type: UpdateAttachedAlertsTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         status: str = self.status
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -54,7 +56,7 @@ class UpdateAttachedAlertsTaskParams:
         status = check_update_attached_alerts_task_params_status(d.pop("status"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateAttachedAlertsTaskParamsTaskType
+        task_type: UpdateAttachedAlertsTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

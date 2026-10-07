@@ -51,6 +51,7 @@ def fix_spec(data: dict) -> int:
 
         ref_name = RULE_NAMES[rule_type]
         variant["type"] = "object"
+        variant.pop("title", None)
         schemas[ref_name] = variant
         extracted += 1
 

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 TriggerWorkflowTaskParamsTaskType = Literal["trigger_workflow"]
 
@@ -11,5 +11,5 @@ def check_trigger_workflow_task_params_task_type(value: str | None) -> TriggerWo
     if value is None:
         return None
     if value in TRIGGER_WORKFLOW_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(TriggerWorkflowTaskParamsTaskType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {TRIGGER_WORKFLOW_TASK_PARAMS_TASK_TYPE_VALUES!r}")

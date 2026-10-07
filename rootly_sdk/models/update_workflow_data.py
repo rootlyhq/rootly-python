@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -19,13 +21,13 @@ class UpdateWorkflowData:
     Attributes:
         type_ (UpdateWorkflowDataType):
         attributes (UpdateWorkflowDataAttributes):
-        id (Union[Unset, str]): Accepted for JSON:API client compatibility, but ignored. The workflow to update is
-            identified by the id in the path.
+        id (str | Unset): Accepted for JSON:API client compatibility, but ignored. The workflow to update is identified
+            by the id in the path.
     """
 
     type_: UpdateWorkflowDataType
-    attributes: "UpdateWorkflowDataAttributes"
-    id: Unset | str = UNSET
+    attributes: UpdateWorkflowDataAttributes
+    id: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_

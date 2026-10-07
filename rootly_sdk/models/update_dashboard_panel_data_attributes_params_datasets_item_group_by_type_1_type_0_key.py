@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0Key = Literal[
     "alert_field", "custom_field", "incident_role"
@@ -19,7 +19,7 @@ def check_update_dashboard_panel_data_attributes_params_datasets_item_group_by_t
     if value is None:
         return None
     if value in UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_GROUP_BY_TYPE_1_TYPE_0_KEY_VALUES:
-        return cast(UpdateDashboardPanelDataAttributesParamsDatasetsItemGroupByType1Type0Key, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_GROUP_BY_TYPE_1_TYPE_0_KEY_VALUES!r}"
     )

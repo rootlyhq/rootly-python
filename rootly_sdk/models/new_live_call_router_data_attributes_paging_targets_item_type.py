@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewLiveCallRouterDataAttributesPagingTargetsItemType = Literal["escalation_policy", "functionality", "service", "team"]
 
@@ -18,7 +18,7 @@ def check_new_live_call_router_data_attributes_paging_targets_item_type(
     if value is None:
         return None
     if value in NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PAGING_TARGETS_ITEM_TYPE_VALUES:
-        return cast(NewLiveCallRouterDataAttributesPagingTargetsItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PAGING_TARGETS_ITEM_TYPE_VALUES!r}"
     )

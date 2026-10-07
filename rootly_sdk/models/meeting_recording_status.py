@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 MeetingRecordingStatus = Literal["analyzing", "call_ended", "completed", "failed", "paused", "pending", "recording"]
 
@@ -17,5 +17,5 @@ def check_meeting_recording_status(value: str | None) -> MeetingRecordingStatus 
     if value is None:
         return None
     if value in MEETING_RECORDING_STATUS_VALUES:
-        return cast(MeetingRecordingStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {MEETING_RECORDING_STATUS_VALUES!r}")

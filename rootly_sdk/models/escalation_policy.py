@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,25 +22,25 @@ class EscalationPolicy:
         name (str): The name of the escalation policy
         repeat_count (int): The number of times this policy will be executed until someone acknowledges the alert
         created_by_user_id (int): User who created the escalation policy
-        description (Union[None, Unset, str]): The description of the escalation policy
-        last_updated_by_user_id (Union[Unset, int]): User who updated the escalation policy
-        group_ids (Union[Unset, list[str]]): Associated groups (alerting the group will trigger escalation policy)
-        service_ids (Union[Unset, list[str]]): Associated services (alerting the service will trigger escalation policy)
-        business_hours (Union['EscalationPolicyBusinessHoursType0', None, Unset]):
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        description (None | str | Unset): The description of the escalation policy
+        last_updated_by_user_id (int | Unset): User who updated the escalation policy
+        group_ids (list[str] | Unset): Associated groups (alerting the group will trigger escalation policy)
+        service_ids (list[str] | Unset): Associated services (alerting the service will trigger escalation policy)
+        business_hours (EscalationPolicyBusinessHoursType0 | None | Unset):
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
     name: str
     repeat_count: int
     created_by_user_id: int
-    description: None | Unset | str = UNSET
-    last_updated_by_user_id: Unset | int = UNSET
-    group_ids: Unset | list[str] = UNSET
-    service_ids: Unset | list[str] = UNSET
-    business_hours: Union["EscalationPolicyBusinessHoursType0", None, Unset] = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    description: None | str | Unset = UNSET
+    last_updated_by_user_id: int | Unset = UNSET
+    group_ids: list[str] | Unset = UNSET
+    service_ids: list[str] | Unset = UNSET
+    business_hours: EscalationPolicyBusinessHoursType0 | None | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,7 +52,7 @@ class EscalationPolicy:
 
         created_by_user_id = self.created_by_user_id
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -58,15 +60,15 @@ class EscalationPolicy:
 
         last_updated_by_user_id = self.last_updated_by_user_id
 
-        group_ids: Unset | list[str] = UNSET
+        group_ids: list[str] | Unset = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        service_ids: Unset | list[str] = UNSET
+        service_ids: list[str] | Unset = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        business_hours: None | Unset | dict[str, Any]
+        business_hours: dict[str, Any] | None | Unset
         if isinstance(self.business_hours, Unset):
             business_hours = UNSET
         elif isinstance(self.business_hours, EscalationPolicyBusinessHoursType0):
@@ -115,12 +117,12 @@ class EscalationPolicy:
 
         created_by_user_id = d.pop("created_by_user_id")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -130,7 +132,7 @@ class EscalationPolicy:
 
         service_ids = cast(list[str], d.pop("service_ids", UNSET))
 
-        def _parse_business_hours(data: object) -> Union["EscalationPolicyBusinessHoursType0", None, Unset]:
+        def _parse_business_hours(data: object) -> EscalationPolicyBusinessHoursType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -141,9 +143,9 @@ class EscalationPolicy:
                 business_hours_type_0 = EscalationPolicyBusinessHoursType0.from_dict(data)
 
                 return business_hours_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["EscalationPolicyBusinessHoursType0", None, Unset], data)
+            return cast(EscalationPolicyBusinessHoursType0 | None | Unset, data)
 
         business_hours = _parse_business_hours(d.pop("business_hours", UNSET))
 

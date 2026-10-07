@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.update_sla_data_attributes_conditions_item_conditionable_type import (
     UpdateSlaDataAttributesConditionsItemConditionableType,
@@ -24,33 +25,32 @@ class UpdateSlaDataAttributesConditionsItem:
     Attributes:
         conditionable_type (UpdateSlaDataAttributesConditionsItemConditionableType): The type of condition
         operator (str): The comparison operator
-        property_ (Union[Unset, UpdateSlaDataAttributesConditionsItemProperty]): The property to evaluate (for built-in
-            field conditions). When the team has custom lifecycle statuses enabled, use 'sub_status' (with sub-status IDs as
+        property_ (UpdateSlaDataAttributesConditionsItemProperty | Unset): The property to evaluate (for built-in field
+            conditions). When the team has custom lifecycle statuses enabled, use 'sub_status' (with sub-status IDs as
             values); otherwise use 'status' (with parent status names). Sending the wrong one will return a validation
             error.
-        values (Union[None, Unset, list[str]]): The values to compare against
-        form_field_id (Union[None, UUID, Unset]): The ID of the form field (for custom field conditions)
-        position (Union[Unset, int]): The position of the condition for ordering
+        values (list[str] | None | Unset): The values to compare against
+        form_field_id (None | Unset | UUID): The ID of the form field (for custom field conditions)
+        position (int | Unset): The position of the condition for ordering
     """
 
     conditionable_type: UpdateSlaDataAttributesConditionsItemConditionableType
     operator: str
-    property_: Unset | UpdateSlaDataAttributesConditionsItemProperty = UNSET
-    values: None | Unset | list[str] = UNSET
-    form_field_id: None | UUID | Unset = UNSET
-    position: Unset | int = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    property_: UpdateSlaDataAttributesConditionsItemProperty | Unset = UNSET
+    values: list[str] | None | Unset = UNSET
+    form_field_id: None | Unset | UUID = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         conditionable_type: str = self.conditionable_type
 
         operator = self.operator
 
-        property_: Unset | str = UNSET
+        property_: str | Unset = UNSET
         if not isinstance(self.property_, Unset):
             property_ = self.property_
 
-        values: None | Unset | list[str]
+        values: list[str] | None | Unset
         if isinstance(self.values, Unset):
             values = UNSET
         elif isinstance(self.values, list):
@@ -59,7 +59,7 @@ class UpdateSlaDataAttributesConditionsItem:
         else:
             values = self.values
 
-        form_field_id: None | Unset | str
+        form_field_id: None | str | Unset
         if isinstance(self.form_field_id, Unset):
             form_field_id = UNSET
         elif isinstance(self.form_field_id, UUID):
@@ -70,7 +70,7 @@ class UpdateSlaDataAttributesConditionsItem:
         position = self.position
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "conditionable_type": conditionable_type,
@@ -98,13 +98,13 @@ class UpdateSlaDataAttributesConditionsItem:
         operator = d.pop("operator")
 
         _property_ = d.pop("property", UNSET)
-        property_: Unset | UpdateSlaDataAttributesConditionsItemProperty
+        property_: UpdateSlaDataAttributesConditionsItemProperty | Unset
         if isinstance(_property_, Unset):
             property_ = UNSET
         else:
             property_ = check_update_sla_data_attributes_conditions_item_property(_property_)
 
-        def _parse_values(data: object) -> None | Unset | list[str]:
+        def _parse_values(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -115,13 +115,13 @@ class UpdateSlaDataAttributesConditionsItem:
                 values_type_0 = cast(list[str], data)
 
                 return values_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         values = _parse_values(d.pop("values", UNSET))
 
-        def _parse_form_field_id(data: object) -> None | UUID | Unset:
+        def _parse_form_field_id(data: object) -> None | Unset | UUID:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -132,9 +132,9 @@ class UpdateSlaDataAttributesConditionsItem:
                 form_field_id_type_0 = UUID(data)
 
                 return form_field_id_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | UUID | Unset, data)
+            return cast(None | Unset | UUID, data)
 
         form_field_id = _parse_form_field_id(d.pop("form_field_id", UNSET))
 
@@ -149,21 +149,4 @@ class UpdateSlaDataAttributesConditionsItem:
             position=position,
         )
 
-        update_sla_data_attributes_conditions_item.additional_properties = d
         return update_sla_data_attributes_conditions_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

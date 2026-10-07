@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentEventDataAttributesVisibility = Literal["external", "internal"]
 
@@ -14,7 +14,7 @@ def check_update_incident_event_data_attributes_visibility(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES:
-        return cast(UpdateIncidentEventDataAttributesVisibility, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_EVENT_DATA_ATTRIBUTES_VISIBILITY_VALUES!r}"
     )

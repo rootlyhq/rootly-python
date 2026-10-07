@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SnoozeAlertDataType = Literal["alerts"]
 
@@ -11,5 +11,5 @@ def check_snooze_alert_data_type(value: str | None) -> SnoozeAlertDataType | Non
     if value is None:
         return None
     if value in SNOOZE_ALERT_DATA_TYPE_VALUES:
-        return cast(SnoozeAlertDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SNOOZE_ALERT_DATA_TYPE_VALUES!r}")

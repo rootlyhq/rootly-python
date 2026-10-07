@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleIncidentCausesPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_incident_causes_permissions_item(value: str | None) -> RoleIncide
     if value is None:
         return None
     if value in ROLE_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleIncidentCausesPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_INCIDENT_CAUSES_PERMISSIONS_ITEM_VALUES!r}")

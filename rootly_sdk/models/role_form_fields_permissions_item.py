@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleFormFieldsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_form_fields_permissions_item(value: str | None) -> RoleFormFields
     if value is None:
         return None
     if value in ROLE_FORM_FIELDS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleFormFieldsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_FORM_FIELDS_PERMISSIONS_ITEM_VALUES!r}")

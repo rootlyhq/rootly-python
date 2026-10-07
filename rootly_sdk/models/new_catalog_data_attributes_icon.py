@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCatalogDataAttributesIcon = Literal[
     "chart-bar", "cursor-arrow-ripple", "globe-alt", "light-bulb", "server-stack", "shapes", "user-group", "users"
@@ -20,5 +20,5 @@ def check_new_catalog_data_attributes_icon(value: str | None) -> NewCatalogDataA
     if value is None:
         return None
     if value in NEW_CATALOG_DATA_ATTRIBUTES_ICON_VALUES:
-        return cast(NewCatalogDataAttributesIcon, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_CATALOG_DATA_ATTRIBUTES_ICON_VALUES!r}")

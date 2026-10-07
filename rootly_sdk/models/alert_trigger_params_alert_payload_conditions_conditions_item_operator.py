@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertTriggerParamsAlertPayloadConditionsConditionsItemOperator = Literal[
     "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
@@ -25,7 +25,7 @@ def check_alert_trigger_params_alert_payload_conditions_conditions_item_operator
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_PAYLOAD_CONDITIONS_CONDITIONS_ITEM_OPERATOR_VALUES:
-        return cast(AlertTriggerParamsAlertPayloadConditionsConditionsItemOperator, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_TRIGGER_PARAMS_ALERT_PAYLOAD_CONDITIONS_CONDITIONS_ITEM_OPERATOR_VALUES!r}"
     )

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -43,24 +45,22 @@ class InviteToMicrosoftTeamsChannelRootlyTaskParams:
     Attributes:
         team (InviteToMicrosoftTeamsChannelRootlyTaskParamsTeam):
         channel (InviteToMicrosoftTeamsChannelRootlyTaskParamsChannel):
-        task_type (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType]):
-        escalation_policy_target (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget]):
-        service_target (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget]):
-        user_target (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget]):
-        group_target (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget]):
-        schedule_target (Union[Unset, InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget]):
+        task_type (InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType | Unset):
+        escalation_policy_target (InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget | Unset):
+        service_target (InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget | Unset):
+        user_target (InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget | Unset):
+        group_target (InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget | Unset):
+        schedule_target (InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget | Unset):
     """
 
-    team: "InviteToMicrosoftTeamsChannelRootlyTaskParamsTeam"
-    channel: "InviteToMicrosoftTeamsChannelRootlyTaskParamsChannel"
-    task_type: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType = UNSET
-    escalation_policy_target: Union[Unset, "InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget"] = (
-        UNSET
-    )
-    service_target: Union[Unset, "InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget"] = UNSET
-    user_target: Union[Unset, "InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget"] = UNSET
-    group_target: Union[Unset, "InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget"] = UNSET
-    schedule_target: Union[Unset, "InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget"] = UNSET
+    team: InviteToMicrosoftTeamsChannelRootlyTaskParamsTeam
+    channel: InviteToMicrosoftTeamsChannelRootlyTaskParamsChannel
+    task_type: InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType | Unset = UNSET
+    escalation_policy_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget | Unset = UNSET
+    service_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget | Unset = UNSET
+    user_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget | Unset = UNSET
+    group_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget | Unset = UNSET
+    schedule_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,27 +68,27 @@ class InviteToMicrosoftTeamsChannelRootlyTaskParams:
 
         channel = self.channel.to_dict()
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policy_target: Unset | dict[str, Any] = UNSET
+        escalation_policy_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.escalation_policy_target, Unset):
             escalation_policy_target = self.escalation_policy_target.to_dict()
 
-        service_target: Unset | dict[str, Any] = UNSET
+        service_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.service_target, Unset):
             service_target = self.service_target.to_dict()
 
-        user_target: Unset | dict[str, Any] = UNSET
+        user_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user_target, Unset):
             user_target = self.user_target.to_dict()
 
-        group_target: Unset | dict[str, Any] = UNSET
+        group_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.group_target, Unset):
             group_target = self.group_target.to_dict()
 
-        schedule_target: Unset | dict[str, Any] = UNSET
+        schedule_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.schedule_target, Unset):
             schedule_target = self.schedule_target.to_dict()
 
@@ -145,14 +145,14 @@ class InviteToMicrosoftTeamsChannelRootlyTaskParams:
         channel = InviteToMicrosoftTeamsChannelRootlyTaskParamsChannel.from_dict(d.pop("channel"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType
+        task_type: InviteToMicrosoftTeamsChannelRootlyTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_invite_to_microsoft_teams_channel_rootly_task_params_task_type(_task_type)
 
         _escalation_policy_target = d.pop("escalation_policy_target", UNSET)
-        escalation_policy_target: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget
+        escalation_policy_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsEscalationPolicyTarget | Unset
         if isinstance(_escalation_policy_target, Unset):
             escalation_policy_target = UNSET
         else:
@@ -161,28 +161,28 @@ class InviteToMicrosoftTeamsChannelRootlyTaskParams:
             )
 
         _service_target = d.pop("service_target", UNSET)
-        service_target: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget
+        service_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget | Unset
         if isinstance(_service_target, Unset):
             service_target = UNSET
         else:
             service_target = InviteToMicrosoftTeamsChannelRootlyTaskParamsServiceTarget.from_dict(_service_target)
 
         _user_target = d.pop("user_target", UNSET)
-        user_target: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget
+        user_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget | Unset
         if isinstance(_user_target, Unset):
             user_target = UNSET
         else:
             user_target = InviteToMicrosoftTeamsChannelRootlyTaskParamsUserTarget.from_dict(_user_target)
 
         _group_target = d.pop("group_target", UNSET)
-        group_target: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget
+        group_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget | Unset
         if isinstance(_group_target, Unset):
             group_target = UNSET
         else:
             group_target = InviteToMicrosoftTeamsChannelRootlyTaskParamsGroupTarget.from_dict(_group_target)
 
         _schedule_target = d.pop("schedule_target", UNSET)
-        schedule_target: Unset | InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget
+        schedule_target: InviteToMicrosoftTeamsChannelRootlyTaskParamsScheduleTarget | Unset
         if isinstance(_schedule_target, Unset):
             schedule_target = UNSET
         else:

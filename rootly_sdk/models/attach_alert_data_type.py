@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AttachAlertDataType = Literal["alerts"]
 
@@ -11,5 +11,5 @@ def check_attach_alert_data_type(value: str | None) -> AttachAlertDataType | Non
     if value is None:
         return None
     if value in ATTACH_ALERT_DATA_TYPE_VALUES:
-        return cast(AttachAlertDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ATTACH_ALERT_DATA_TYPE_VALUES!r}")

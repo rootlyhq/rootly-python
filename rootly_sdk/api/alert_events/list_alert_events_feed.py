@@ -18,18 +18,19 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | str = UNSET,
-    pagesize: Unset | int = UNSET,
-    pageafter: Unset | str = UNSET,
-    sort: Unset | ListAlertEventsFeedSort = UNSET,
-    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
-    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
-    filteralert_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    sort: ListAlertEventsFeedSort | Unset = UNSET,
+    filterkind: ListAlertEventsFeedFilterkind | Unset = UNSET,
+    filteraction: ListAlertEventsFeedFilteraction | Unset = UNSET,
+    filteralert_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -38,19 +39,19 @@ def _get_kwargs(
 
     params["page[after]"] = pageafter
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
     params["sort"] = json_sort
 
-    json_filterkind: Unset | str = UNSET
+    json_filterkind: str | Unset = UNSET
     if not isinstance(filterkind, Unset):
         json_filterkind = filterkind
 
     params["filter[kind]"] = json_filterkind
 
-    json_filteraction: Unset | str = UNSET
+    json_filteraction: str | Unset = UNSET
     if not isinstance(filteraction, Unset):
         json_filteraction = filteraction
 
@@ -101,17 +102,17 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagesize: Unset | int = UNSET,
-    pageafter: Unset | str = UNSET,
-    sort: Unset | ListAlertEventsFeedSort = UNSET,
-    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
-    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
-    filteralert_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    sort: ListAlertEventsFeedSort | Unset = UNSET,
+    filterkind: ListAlertEventsFeedFilterkind | Unset = UNSET,
+    filteraction: ListAlertEventsFeedFilteraction | Unset = UNSET,
+    filteralert_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
 ) -> Response[AlertEventFeedList]:
     """List alert events across alerts
 
@@ -120,17 +121,17 @@ def sync_detailed(
     stream forward.
 
     Args:
-        include (Union[Unset, str]):
-        pagesize (Union[Unset, int]):
-        pageafter (Union[Unset, str]):
-        sort (Union[Unset, ListAlertEventsFeedSort]):
-        filterkind (Union[Unset, ListAlertEventsFeedFilterkind]):
-        filteraction (Union[Unset, ListAlertEventsFeedFilteraction]):
-        filteralert_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
+        include (str | Unset):
+        pagesize (int | Unset):
+        pageafter (str | Unset):
+        sort (ListAlertEventsFeedSort | Unset):
+        filterkind (ListAlertEventsFeedFilterkind | Unset):
+        filteraction (ListAlertEventsFeedFilteraction | Unset):
+        filteralert_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -164,17 +165,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagesize: Unset | int = UNSET,
-    pageafter: Unset | str = UNSET,
-    sort: Unset | ListAlertEventsFeedSort = UNSET,
-    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
-    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
-    filteralert_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    sort: ListAlertEventsFeedSort | Unset = UNSET,
+    filterkind: ListAlertEventsFeedFilterkind | Unset = UNSET,
+    filteraction: ListAlertEventsFeedFilteraction | Unset = UNSET,
+    filteralert_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
 ) -> AlertEventFeedList | None:
     """List alert events across alerts
 
@@ -183,17 +184,17 @@ def sync(
     stream forward.
 
     Args:
-        include (Union[Unset, str]):
-        pagesize (Union[Unset, int]):
-        pageafter (Union[Unset, str]):
-        sort (Union[Unset, ListAlertEventsFeedSort]):
-        filterkind (Union[Unset, ListAlertEventsFeedFilterkind]):
-        filteraction (Union[Unset, ListAlertEventsFeedFilteraction]):
-        filteralert_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
+        include (str | Unset):
+        pagesize (int | Unset):
+        pageafter (str | Unset):
+        sort (ListAlertEventsFeedSort | Unset):
+        filterkind (ListAlertEventsFeedFilterkind | Unset):
+        filteraction (ListAlertEventsFeedFilteraction | Unset):
+        filteralert_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -222,17 +223,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagesize: Unset | int = UNSET,
-    pageafter: Unset | str = UNSET,
-    sort: Unset | ListAlertEventsFeedSort = UNSET,
-    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
-    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
-    filteralert_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    sort: ListAlertEventsFeedSort | Unset = UNSET,
+    filterkind: ListAlertEventsFeedFilterkind | Unset = UNSET,
+    filteraction: ListAlertEventsFeedFilteraction | Unset = UNSET,
+    filteralert_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
 ) -> Response[AlertEventFeedList]:
     """List alert events across alerts
 
@@ -241,17 +242,17 @@ async def asyncio_detailed(
     stream forward.
 
     Args:
-        include (Union[Unset, str]):
-        pagesize (Union[Unset, int]):
-        pageafter (Union[Unset, str]):
-        sort (Union[Unset, ListAlertEventsFeedSort]):
-        filterkind (Union[Unset, ListAlertEventsFeedFilterkind]):
-        filteraction (Union[Unset, ListAlertEventsFeedFilteraction]):
-        filteralert_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
+        include (str | Unset):
+        pagesize (int | Unset):
+        pageafter (str | Unset):
+        sort (ListAlertEventsFeedSort | Unset):
+        filterkind (ListAlertEventsFeedFilterkind | Unset):
+        filteraction (ListAlertEventsFeedFilteraction | Unset):
+        filteralert_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -283,17 +284,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagesize: Unset | int = UNSET,
-    pageafter: Unset | str = UNSET,
-    sort: Unset | ListAlertEventsFeedSort = UNSET,
-    filterkind: Unset | ListAlertEventsFeedFilterkind = UNSET,
-    filteraction: Unset | ListAlertEventsFeedFilteraction = UNSET,
-    filteralert_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    pageafter: str | Unset = UNSET,
+    sort: ListAlertEventsFeedSort | Unset = UNSET,
+    filterkind: ListAlertEventsFeedFilterkind | Unset = UNSET,
+    filteraction: ListAlertEventsFeedFilteraction | Unset = UNSET,
+    filteralert_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
 ) -> AlertEventFeedList | None:
     """List alert events across alerts
 
@@ -302,17 +303,17 @@ async def asyncio(
     stream forward.
 
     Args:
-        include (Union[Unset, str]):
-        pagesize (Union[Unset, int]):
-        pageafter (Union[Unset, str]):
-        sort (Union[Unset, ListAlertEventsFeedSort]):
-        filterkind (Union[Unset, ListAlertEventsFeedFilterkind]):
-        filteraction (Union[Unset, ListAlertEventsFeedFilteraction]):
-        filteralert_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
+        include (str | Unset):
+        pagesize (int | Unset):
+        pageafter (str | Unset):
+        sort (ListAlertEventsFeedSort | Unset):
+        filterkind (ListAlertEventsFeedFilterkind | Unset):
+        filteraction (ListAlertEventsFeedFilteraction | Unset):
+        filteralert_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

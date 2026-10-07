@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateLinearIssueCommentTaskParamsTaskType = Literal["create_linear_issue_comment"]
 
@@ -13,7 +13,7 @@ def check_create_linear_issue_comment_task_params_task_type(
     if value is None:
         return None
     if value in CREATE_LINEAR_ISSUE_COMMENT_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(CreateLinearIssueCommentTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_LINEAR_ISSUE_COMMENT_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

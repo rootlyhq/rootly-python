@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreatePagertreeAlertTaskParamsUrgency = Literal["auto", "critical", "high", "low", "medium"]
 
@@ -15,7 +15,7 @@ def check_create_pagertree_alert_task_params_urgency(value: str | None) -> Creat
     if value is None:
         return None
     if value in CREATE_PAGERTREE_ALERT_TASK_PARAMS_URGENCY_VALUES:
-        return cast(CreatePagertreeAlertTaskParamsUrgency, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_PAGERTREE_ALERT_TASK_PARAMS_URGENCY_VALUES!r}"
     )

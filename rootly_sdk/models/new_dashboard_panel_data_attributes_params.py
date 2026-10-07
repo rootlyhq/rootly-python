@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,42 +29,42 @@ T = TypeVar("T", bound="NewDashboardPanelDataAttributesParams")
 class NewDashboardPanelDataAttributesParams:
     """
     Attributes:
-        display (Union[Unset, NewDashboardPanelDataAttributesParamsDisplay]):
-        description (Union[Unset, str]):
-        table_fields (Union[Unset, list[str]]):
-        legend (Union[Unset, NewDashboardPanelDataAttributesParamsLegend]):
-        datalabels (Union[Unset, NewDashboardPanelDataAttributesParamsDatalabels]):
-        datasets (Union[Unset, list['NewDashboardPanelDataAttributesParamsDatasetsItem']]):
+        display (NewDashboardPanelDataAttributesParamsDisplay | Unset):
+        description (str | Unset):
+        table_fields (list[str] | Unset):
+        legend (NewDashboardPanelDataAttributesParamsLegend | Unset):
+        datalabels (NewDashboardPanelDataAttributesParamsDatalabels | Unset):
+        datasets (list[NewDashboardPanelDataAttributesParamsDatasetsItem] | Unset):
     """
 
-    display: Unset | NewDashboardPanelDataAttributesParamsDisplay = UNSET
-    description: Unset | str = UNSET
-    table_fields: Unset | list[str] = UNSET
-    legend: Union[Unset, "NewDashboardPanelDataAttributesParamsLegend"] = UNSET
-    datalabels: Union[Unset, "NewDashboardPanelDataAttributesParamsDatalabels"] = UNSET
-    datasets: Unset | list["NewDashboardPanelDataAttributesParamsDatasetsItem"] = UNSET
+    display: NewDashboardPanelDataAttributesParamsDisplay | Unset = UNSET
+    description: str | Unset = UNSET
+    table_fields: list[str] | Unset = UNSET
+    legend: NewDashboardPanelDataAttributesParamsLegend | Unset = UNSET
+    datalabels: NewDashboardPanelDataAttributesParamsDatalabels | Unset = UNSET
+    datasets: list[NewDashboardPanelDataAttributesParamsDatasetsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        display: Unset | str = UNSET
+        display: str | Unset = UNSET
         if not isinstance(self.display, Unset):
             display = self.display
 
         description = self.description
 
-        table_fields: Unset | list[str] = UNSET
+        table_fields: list[str] | Unset = UNSET
         if not isinstance(self.table_fields, Unset):
             table_fields = self.table_fields
 
-        legend: Unset | dict[str, Any] = UNSET
+        legend: dict[str, Any] | Unset = UNSET
         if not isinstance(self.legend, Unset):
             legend = self.legend.to_dict()
 
-        datalabels: Unset | dict[str, Any] = UNSET
+        datalabels: dict[str, Any] | Unset = UNSET
         if not isinstance(self.datalabels, Unset):
             datalabels = self.datalabels.to_dict()
 
-        datasets: Unset | list[dict[str, Any]] = UNSET
+        datasets: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.datasets, Unset):
             datasets = []
             for datasets_item_data in self.datasets:
@@ -101,7 +103,7 @@ class NewDashboardPanelDataAttributesParams:
 
         d = dict(src_dict)
         _display = d.pop("display", UNSET)
-        display: Unset | NewDashboardPanelDataAttributesParamsDisplay
+        display: NewDashboardPanelDataAttributesParamsDisplay | Unset
         if isinstance(_display, Unset):
             display = UNSET
         else:
@@ -112,25 +114,27 @@ class NewDashboardPanelDataAttributesParams:
         table_fields = cast(list[str], d.pop("table_fields", UNSET))
 
         _legend = d.pop("legend", UNSET)
-        legend: Unset | NewDashboardPanelDataAttributesParamsLegend
+        legend: NewDashboardPanelDataAttributesParamsLegend | Unset
         if isinstance(_legend, Unset):
             legend = UNSET
         else:
             legend = NewDashboardPanelDataAttributesParamsLegend.from_dict(_legend)
 
         _datalabels = d.pop("datalabels", UNSET)
-        datalabels: Unset | NewDashboardPanelDataAttributesParamsDatalabels
+        datalabels: NewDashboardPanelDataAttributesParamsDatalabels | Unset
         if isinstance(_datalabels, Unset):
             datalabels = UNSET
         else:
             datalabels = NewDashboardPanelDataAttributesParamsDatalabels.from_dict(_datalabels)
 
-        datasets = []
         _datasets = d.pop("datasets", UNSET)
-        for datasets_item_data in _datasets or []:
-            datasets_item = NewDashboardPanelDataAttributesParamsDatasetsItem.from_dict(datasets_item_data)
+        datasets: list[NewDashboardPanelDataAttributesParamsDatasetsItem] | Unset = UNSET
+        if _datasets is not UNSET:
+            datasets = []
+            for datasets_item_data in _datasets:
+                datasets_item = NewDashboardPanelDataAttributesParamsDatasetsItem.from_dict(datasets_item_data)
 
-            datasets.append(datasets_item)
+                datasets.append(datasets_item)
 
         new_dashboard_panel_data_attributes_params = cls(
             display=display,

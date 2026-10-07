@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentEventVisibility = Literal["external", "internal"]
 
@@ -12,5 +12,5 @@ def check_incident_event_visibility(value: str | None) -> IncidentEventVisibilit
     if value is None:
         return None
     if value in INCIDENT_EVENT_VISIBILITY_VALUES:
-        return cast(IncidentEventVisibility, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_EVENT_VISIBILITY_VALUES!r}")

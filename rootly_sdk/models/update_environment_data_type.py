@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEnvironmentDataType = Literal["environments"]
 
@@ -11,5 +11,5 @@ def check_update_environment_data_type(value: str | None) -> UpdateEnvironmentDa
     if value is None:
         return None
     if value in UPDATE_ENVIRONMENT_DATA_TYPE_VALUES:
-        return cast(UpdateEnvironmentDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ENVIRONMENT_DATA_TYPE_VALUES!r}")

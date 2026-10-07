@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FunctionalityManagedBy = Literal["admin_web", "api", "backstage", "catalog_sync", "pulumi", "terraform", "web"]
 
@@ -17,5 +17,5 @@ def check_functionality_managed_by(value: str | None) -> FunctionalityManagedBy 
     if value is None:
         return None
     if value in FUNCTIONALITY_MANAGED_BY_VALUES:
-        return cast(FunctionalityManagedBy, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FUNCTIONALITY_MANAGED_BY_VALUES!r}")

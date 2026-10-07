@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -14,42 +15,43 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     catalog_id: str,
     *,
-    include: Unset | ListCatalogEntitiesInclude = UNSET,
-    sort: Unset | ListCatalogEntitiesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterbackstage_id: Unset | str = UNSET,
-    filterexternal_id: Unset | str = UNSET,
-    filtermanaged_by: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtermanaged_byeq: Unset | str = UNSET,
-    filtermanaged_bynot_eq: Unset | str = UNSET,
-    filtermanaged_byin: Unset | str = UNSET,
-    filtermanaged_bynot_in: Unset | str = UNSET,
+    include: ListCatalogEntitiesInclude | Unset = UNSET,
+    sort: ListCatalogEntitiesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterbackstage_id: str | Unset = UNSET,
+    filterexternal_id: str | Unset = UNSET,
+    filtermanaged_by: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtermanaged_byeq: str | Unset = UNSET,
+    filtermanaged_bynot_eq: str | Unset = UNSET,
+    filtermanaged_byin: str | Unset = UNSET,
+    filtermanaged_bynot_in: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -107,7 +109,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/catalogs/{catalog_id}/entities",
+        "url": "/v1/catalogs/{catalog_id}/entities".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -139,32 +143,32 @@ def sync_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCatalogEntitiesInclude = UNSET,
-    sort: Unset | ListCatalogEntitiesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterbackstage_id: Unset | str = UNSET,
-    filterexternal_id: Unset | str = UNSET,
-    filtermanaged_by: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtermanaged_byeq: Unset | str = UNSET,
-    filtermanaged_bynot_eq: Unset | str = UNSET,
-    filtermanaged_byin: Unset | str = UNSET,
-    filtermanaged_bynot_in: Unset | str = UNSET,
+    include: ListCatalogEntitiesInclude | Unset = UNSET,
+    sort: ListCatalogEntitiesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterbackstage_id: str | Unset = UNSET,
+    filterexternal_id: str | Unset = UNSET,
+    filtermanaged_by: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtermanaged_byeq: str | Unset = UNSET,
+    filtermanaged_bynot_eq: str | Unset = UNSET,
+    filtermanaged_byin: str | Unset = UNSET,
+    filtermanaged_bynot_in: str | Unset = UNSET,
 ) -> Response[CatalogEntityList]:
     """List Catalog Entities
 
@@ -172,32 +176,32 @@ def sync_detailed(
 
     Args:
         catalog_id (str):
-        include (Union[Unset, ListCatalogEntitiesInclude]):
-        sort (Union[Unset, ListCatalogEntitiesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterbackstage_id (Union[Unset, str]):
-        filterexternal_id (Union[Unset, str]):
-        filtermanaged_by (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtermanaged_byeq (Union[Unset, str]):
-        filtermanaged_bynot_eq (Union[Unset, str]):
-        filtermanaged_byin (Union[Unset, str]):
-        filtermanaged_bynot_in (Union[Unset, str]):
+        include (ListCatalogEntitiesInclude | Unset):
+        sort (ListCatalogEntitiesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filterbackstage_id (str | Unset):
+        filterexternal_id (str | Unset):
+        filtermanaged_by (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtermanaged_byeq (str | Unset):
+        filtermanaged_bynot_eq (str | Unset):
+        filtermanaged_byin (str | Unset):
+        filtermanaged_bynot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -248,32 +252,32 @@ def sync(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCatalogEntitiesInclude = UNSET,
-    sort: Unset | ListCatalogEntitiesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterbackstage_id: Unset | str = UNSET,
-    filterexternal_id: Unset | str = UNSET,
-    filtermanaged_by: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtermanaged_byeq: Unset | str = UNSET,
-    filtermanaged_bynot_eq: Unset | str = UNSET,
-    filtermanaged_byin: Unset | str = UNSET,
-    filtermanaged_bynot_in: Unset | str = UNSET,
+    include: ListCatalogEntitiesInclude | Unset = UNSET,
+    sort: ListCatalogEntitiesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterbackstage_id: str | Unset = UNSET,
+    filterexternal_id: str | Unset = UNSET,
+    filtermanaged_by: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtermanaged_byeq: str | Unset = UNSET,
+    filtermanaged_bynot_eq: str | Unset = UNSET,
+    filtermanaged_byin: str | Unset = UNSET,
+    filtermanaged_bynot_in: str | Unset = UNSET,
 ) -> CatalogEntityList | None:
     """List Catalog Entities
 
@@ -281,32 +285,32 @@ def sync(
 
     Args:
         catalog_id (str):
-        include (Union[Unset, ListCatalogEntitiesInclude]):
-        sort (Union[Unset, ListCatalogEntitiesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterbackstage_id (Union[Unset, str]):
-        filterexternal_id (Union[Unset, str]):
-        filtermanaged_by (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtermanaged_byeq (Union[Unset, str]):
-        filtermanaged_bynot_eq (Union[Unset, str]):
-        filtermanaged_byin (Union[Unset, str]):
-        filtermanaged_bynot_in (Union[Unset, str]):
+        include (ListCatalogEntitiesInclude | Unset):
+        sort (ListCatalogEntitiesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filterbackstage_id (str | Unset):
+        filterexternal_id (str | Unset):
+        filtermanaged_by (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtermanaged_byeq (str | Unset):
+        filtermanaged_bynot_eq (str | Unset):
+        filtermanaged_byin (str | Unset):
+        filtermanaged_bynot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -352,32 +356,32 @@ async def asyncio_detailed(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCatalogEntitiesInclude = UNSET,
-    sort: Unset | ListCatalogEntitiesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterbackstage_id: Unset | str = UNSET,
-    filterexternal_id: Unset | str = UNSET,
-    filtermanaged_by: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtermanaged_byeq: Unset | str = UNSET,
-    filtermanaged_bynot_eq: Unset | str = UNSET,
-    filtermanaged_byin: Unset | str = UNSET,
-    filtermanaged_bynot_in: Unset | str = UNSET,
+    include: ListCatalogEntitiesInclude | Unset = UNSET,
+    sort: ListCatalogEntitiesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterbackstage_id: str | Unset = UNSET,
+    filterexternal_id: str | Unset = UNSET,
+    filtermanaged_by: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtermanaged_byeq: str | Unset = UNSET,
+    filtermanaged_bynot_eq: str | Unset = UNSET,
+    filtermanaged_byin: str | Unset = UNSET,
+    filtermanaged_bynot_in: str | Unset = UNSET,
 ) -> Response[CatalogEntityList]:
     """List Catalog Entities
 
@@ -385,32 +389,32 @@ async def asyncio_detailed(
 
     Args:
         catalog_id (str):
-        include (Union[Unset, ListCatalogEntitiesInclude]):
-        sort (Union[Unset, ListCatalogEntitiesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterbackstage_id (Union[Unset, str]):
-        filterexternal_id (Union[Unset, str]):
-        filtermanaged_by (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtermanaged_byeq (Union[Unset, str]):
-        filtermanaged_bynot_eq (Union[Unset, str]):
-        filtermanaged_byin (Union[Unset, str]):
-        filtermanaged_bynot_in (Union[Unset, str]):
+        include (ListCatalogEntitiesInclude | Unset):
+        sort (ListCatalogEntitiesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filterbackstage_id (str | Unset):
+        filterexternal_id (str | Unset):
+        filtermanaged_by (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtermanaged_byeq (str | Unset):
+        filtermanaged_bynot_eq (str | Unset):
+        filtermanaged_byin (str | Unset):
+        filtermanaged_bynot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -459,32 +463,32 @@ async def asyncio(
     catalog_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListCatalogEntitiesInclude = UNSET,
-    sort: Unset | ListCatalogEntitiesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterbackstage_id: Unset | str = UNSET,
-    filterexternal_id: Unset | str = UNSET,
-    filtermanaged_by: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtermanaged_byeq: Unset | str = UNSET,
-    filtermanaged_bynot_eq: Unset | str = UNSET,
-    filtermanaged_byin: Unset | str = UNSET,
-    filtermanaged_bynot_in: Unset | str = UNSET,
+    include: ListCatalogEntitiesInclude | Unset = UNSET,
+    sort: ListCatalogEntitiesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterbackstage_id: str | Unset = UNSET,
+    filterexternal_id: str | Unset = UNSET,
+    filtermanaged_by: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtermanaged_byeq: str | Unset = UNSET,
+    filtermanaged_bynot_eq: str | Unset = UNSET,
+    filtermanaged_byin: str | Unset = UNSET,
+    filtermanaged_bynot_in: str | Unset = UNSET,
 ) -> CatalogEntityList | None:
     """List Catalog Entities
 
@@ -492,32 +496,32 @@ async def asyncio(
 
     Args:
         catalog_id (str):
-        include (Union[Unset, ListCatalogEntitiesInclude]):
-        sort (Union[Unset, ListCatalogEntitiesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterbackstage_id (Union[Unset, str]):
-        filterexternal_id (Union[Unset, str]):
-        filtermanaged_by (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtermanaged_byeq (Union[Unset, str]):
-        filtermanaged_bynot_eq (Union[Unset, str]):
-        filtermanaged_byin (Union[Unset, str]):
-        filtermanaged_bynot_in (Union[Unset, str]):
+        include (ListCatalogEntitiesInclude | Unset):
+        sort (ListCatalogEntitiesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filterbackstage_id (str | Unset):
+        filterexternal_id (str | Unset):
+        filtermanaged_by (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtermanaged_byeq (str | Unset):
+        filtermanaged_bynot_eq (str | Unset):
+        filtermanaged_byin (str | Unset):
+        filtermanaged_bynot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

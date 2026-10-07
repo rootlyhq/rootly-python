@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -12,11 +13,14 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/alert_routing_rules/{id}",
+        "url": "/v1/alert_routing_rules/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     return _kwargs
@@ -53,7 +57,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[AlertRoutingRuleResponse | ErrorsList]:
@@ -64,14 +68,14 @@ def sync_detailed(
     an advanced user, please contact Rootly customer support.**
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRoutingRuleResponse, ErrorsList]]
+        Response[AlertRoutingRuleResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +90,7 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> AlertRoutingRuleResponse | ErrorsList | None:
@@ -97,14 +101,14 @@ def sync(
     an advanced user, please contact Rootly customer support.**
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRoutingRuleResponse, ErrorsList]
+        AlertRoutingRuleResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -114,7 +118,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[AlertRoutingRuleResponse | ErrorsList]:
@@ -125,14 +129,14 @@ async def asyncio_detailed(
     an advanced user, please contact Rootly customer support.**
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRoutingRuleResponse, ErrorsList]]
+        Response[AlertRoutingRuleResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +149,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> AlertRoutingRuleResponse | ErrorsList | None:
@@ -156,14 +160,14 @@ async def asyncio(
     an advanced user, please contact Rootly customer support.**
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRoutingRuleResponse, ErrorsList]
+        AlertRoutingRuleResponse | ErrorsList
     """
 
     return (

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -24,15 +26,15 @@ class ScheduleRotationActiveDay:
     Attributes:
         schedule_rotation_id (str):
         day_name (ScheduleRotationActiveDayDayName): Schedule rotation day name for which active times to be created
-        active_time_attributes (list['ScheduleRotationActiveDayActiveTimeAttributesItem']): Schedule rotation active
-            times per day
+        active_time_attributes (list[ScheduleRotationActiveDayActiveTimeAttributesItem]): Schedule rotation active times
+            per day
         created_at (str): Date of creation
         updated_at (str): Date of last update
     """
 
     schedule_rotation_id: str
     day_name: ScheduleRotationActiveDayDayName
-    active_time_attributes: list["ScheduleRotationActiveDayActiveTimeAttributesItem"]
+    active_time_attributes: list[ScheduleRotationActiveDayActiveTimeAttributesItem]
     created_at: str
     updated_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

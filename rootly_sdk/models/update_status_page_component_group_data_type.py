@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateStatusPageComponentGroupDataType = Literal["status_page_component_groups"]
 
@@ -13,7 +13,7 @@ def check_update_status_page_component_group_data_type(
     if value is None:
         return None
     if value in UPDATE_STATUS_PAGE_COMPONENT_GROUP_DATA_TYPE_VALUES:
-        return cast(UpdateStatusPageComponentGroupDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_STATUS_PAGE_COMPONENT_GROUP_DATA_TYPE_VALUES!r}"
     )

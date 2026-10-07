@@ -1,27 +1,31 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_edge_connector_action_body import CreateEdgeConnectorActionBody
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     edge_connector_id: str,
     *,
-    body: CreateEdgeConnectorActionBody,
+    body: CreateEdgeConnectorActionBody | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/edge_connectors/{edge_connector_id}/actions",
+        "url": "/v1/edge_connectors/{edge_connector_id}/actions".format(
+            edge_connector_id=quote(str(edge_connector_id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -55,13 +59,13 @@ def sync_detailed(
     edge_connector_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreateEdgeConnectorActionBody,
+    body: CreateEdgeConnectorActionBody | Unset = UNSET,
 ) -> Response[Any]:
     """Create edge connector action
 
     Args:
         edge_connector_id (str):
-        body (CreateEdgeConnectorActionBody):
+        body (CreateEdgeConnectorActionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -87,13 +91,13 @@ async def asyncio_detailed(
     edge_connector_id: str,
     *,
     client: AuthenticatedClient,
-    body: CreateEdgeConnectorActionBody,
+    body: CreateEdgeConnectorActionBody | Unset = UNSET,
 ) -> Response[Any]:
     """Create edge connector action
 
     Args:
         edge_connector_id (str):
-        body (CreateEdgeConnectorActionBody):
+        body (CreateEdgeConnectorActionBody | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

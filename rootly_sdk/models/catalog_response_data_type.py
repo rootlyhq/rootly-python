@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogResponseDataType = Literal["catalogs"]
 
@@ -11,5 +11,5 @@ def check_catalog_response_data_type(value: str | None) -> CatalogResponseDataTy
     if value is None:
         return None
     if value in CATALOG_RESPONSE_DATA_TYPE_VALUES:
-        return cast(CatalogResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_RESPONSE_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateWorkflowGroupDataType = Literal["workflow_groups"]
 
@@ -11,5 +11,5 @@ def check_update_workflow_group_data_type(value: str | None) -> UpdateWorkflowGr
     if value is None:
         return None
     if value in UPDATE_WORKFLOW_GROUP_DATA_TYPE_VALUES:
-        return cast(UpdateWorkflowGroupDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_WORKFLOW_GROUP_DATA_TYPE_VALUES!r}")

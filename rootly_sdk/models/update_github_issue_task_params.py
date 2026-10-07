@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,29 +32,29 @@ class UpdateGithubIssueTaskParams:
     Attributes:
         issue_id (str): The issue id
         completion (UpdateGithubIssueTaskParamsCompletion):
-        task_type (Union[Unset, UpdateGithubIssueTaskParamsTaskType]):
-        repository (Union[Unset, UpdateGithubIssueTaskParamsRepository]): The repository (used for loading labels and
-            issue types)
-        title (Union[Unset, str]): The issue title
-        body (Union[Unset, str]): The issue body
-        labels (Union[Unset, list['UpdateGithubIssueTaskParamsLabelsItem']]): The issue labels
-        labels_mode (Union[Unset, UpdateGithubIssueTaskParamsLabelsMode]): How to apply labels. 'replace' (default)
-            overwrites all existing labels. 'append' adds to existing labels without removing them. Default: 'replace'.
-        issue_type (Union[Unset, UpdateGithubIssueTaskParamsIssueType]): The issue type
-        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
+        task_type (UpdateGithubIssueTaskParamsTaskType | Unset):
+        repository (UpdateGithubIssueTaskParamsRepository | Unset): The repository (used for loading labels and issue
+            types)
+        title (str | Unset): The issue title
+        body (str | Unset): The issue body
+        labels (list[UpdateGithubIssueTaskParamsLabelsItem] | Unset): The issue labels
+        labels_mode (UpdateGithubIssueTaskParamsLabelsMode | Unset): How to apply labels. 'replace' (default) overwrites
+            all existing labels. 'append' adds to existing labels without removing them. Default: 'replace'.
+        issue_type (UpdateGithubIssueTaskParamsIssueType | Unset): The issue type
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
     """
 
     issue_id: str
-    completion: "UpdateGithubIssueTaskParamsCompletion"
-    task_type: Unset | UpdateGithubIssueTaskParamsTaskType = UNSET
-    repository: Union[Unset, "UpdateGithubIssueTaskParamsRepository"] = UNSET
-    title: Unset | str = UNSET
-    body: Unset | str = UNSET
-    labels: Unset | list["UpdateGithubIssueTaskParamsLabelsItem"] = UNSET
-    labels_mode: Unset | UpdateGithubIssueTaskParamsLabelsMode = "replace"
-    issue_type: Union[Unset, "UpdateGithubIssueTaskParamsIssueType"] = UNSET
-    custom_fields_mapping: None | Unset | str = UNSET
+    completion: UpdateGithubIssueTaskParamsCompletion
+    task_type: UpdateGithubIssueTaskParamsTaskType | Unset = UNSET
+    repository: UpdateGithubIssueTaskParamsRepository | Unset = UNSET
+    title: str | Unset = UNSET
+    body: str | Unset = UNSET
+    labels: list[UpdateGithubIssueTaskParamsLabelsItem] | Unset = UNSET
+    labels_mode: UpdateGithubIssueTaskParamsLabelsMode | Unset = "replace"
+    issue_type: UpdateGithubIssueTaskParamsIssueType | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,11 +62,11 @@ class UpdateGithubIssueTaskParams:
 
         completion = self.completion.to_dict()
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        repository: Unset | dict[str, Any] = UNSET
+        repository: dict[str, Any] | Unset = UNSET
         if not isinstance(self.repository, Unset):
             repository = self.repository.to_dict()
 
@@ -72,22 +74,22 @@ class UpdateGithubIssueTaskParams:
 
         body = self.body
 
-        labels: Unset | list[dict[str, Any]] = UNSET
+        labels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
                 labels_item = labels_item_data.to_dict()
                 labels.append(labels_item)
 
-        labels_mode: Unset | str = UNSET
+        labels_mode: str | Unset = UNSET
         if not isinstance(self.labels_mode, Unset):
             labels_mode = self.labels_mode
 
-        issue_type: Unset | dict[str, Any] = UNSET
+        issue_type: dict[str, Any] | Unset = UNSET
         if not isinstance(self.issue_type, Unset):
             issue_type = self.issue_type.to_dict()
 
-        custom_fields_mapping: None | Unset | str
+        custom_fields_mapping: None | str | Unset
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -133,14 +135,14 @@ class UpdateGithubIssueTaskParams:
         completion = UpdateGithubIssueTaskParamsCompletion.from_dict(d.pop("completion"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateGithubIssueTaskParamsTaskType
+        task_type: UpdateGithubIssueTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_github_issue_task_params_task_type(_task_type)
 
         _repository = d.pop("repository", UNSET)
-        repository: Unset | UpdateGithubIssueTaskParamsRepository
+        repository: UpdateGithubIssueTaskParamsRepository | Unset
         if isinstance(_repository, Unset):
             repository = UNSET
         else:
@@ -150,33 +152,35 @@ class UpdateGithubIssueTaskParams:
 
         body = d.pop("body", UNSET)
 
-        labels = []
         _labels = d.pop("labels", UNSET)
-        for labels_item_data in _labels or []:
-            labels_item = UpdateGithubIssueTaskParamsLabelsItem.from_dict(labels_item_data)
+        labels: list[UpdateGithubIssueTaskParamsLabelsItem] | Unset = UNSET
+        if _labels is not UNSET:
+            labels = []
+            for labels_item_data in _labels:
+                labels_item = UpdateGithubIssueTaskParamsLabelsItem.from_dict(labels_item_data)
 
-            labels.append(labels_item)
+                labels.append(labels_item)
 
         _labels_mode = d.pop("labels_mode", UNSET)
-        labels_mode: Unset | UpdateGithubIssueTaskParamsLabelsMode
+        labels_mode: UpdateGithubIssueTaskParamsLabelsMode | Unset
         if isinstance(_labels_mode, Unset):
             labels_mode = UNSET
         else:
             labels_mode = check_update_github_issue_task_params_labels_mode(_labels_mode)
 
         _issue_type = d.pop("issue_type", UNSET)
-        issue_type: Unset | UpdateGithubIssueTaskParamsIssueType
+        issue_type: UpdateGithubIssueTaskParamsIssueType | Unset
         if isinstance(_issue_type, Unset):
             issue_type = UNSET
         else:
             issue_type = UpdateGithubIssueTaskParamsIssueType.from_dict(_issue_type)
 
-        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentEventDataType = Literal["incident_events"]
 
@@ -11,5 +11,5 @@ def check_new_incident_event_data_type(value: str | None) -> NewIncidentEventDat
     if value is None:
         return None
     if value in NEW_INCIDENT_EVENT_DATA_TYPE_VALUES:
-        return cast(NewIncidentEventDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_EVENT_DATA_TYPE_VALUES!r}")

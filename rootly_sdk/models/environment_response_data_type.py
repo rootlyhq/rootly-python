@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EnvironmentResponseDataType = Literal["environments"]
 
@@ -11,5 +11,5 @@ def check_environment_response_data_type(value: str | None) -> EnvironmentRespon
     if value is None:
         return None
     if value in ENVIRONMENT_RESPONSE_DATA_TYPE_VALUES:
-        return cast(EnvironmentResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ENVIRONMENT_RESPONSE_DATA_TYPE_VALUES!r}")

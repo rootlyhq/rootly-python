@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListRetrospectiveConfigurationsInclude = Literal["groups", "incident_types", "severities"]
 
@@ -13,5 +13,5 @@ def check_list_retrospective_configurations_include(value: str | None) -> ListRe
     if value is None:
         return None
     if value in LIST_RETROSPECTIVE_CONFIGURATIONS_INCLUDE_VALUES:
-        return cast(ListRetrospectiveConfigurationsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_RETROSPECTIVE_CONFIGURATIONS_INCLUDE_VALUES!r}")

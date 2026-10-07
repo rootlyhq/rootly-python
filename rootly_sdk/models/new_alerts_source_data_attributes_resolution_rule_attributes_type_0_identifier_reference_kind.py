@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind = Literal["alert_field", "payload"]
 
@@ -16,7 +16,7 @@ def check_new_alerts_source_data_attributes_resolution_rule_attributes_type_0_id
     if value is None:
         return None
     if value in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_REFERENCE_KIND_VALUES:
-        return cast(NewAlertsSourceDataAttributesResolutionRuleAttributesType0IdentifierReferenceKind, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_IDENTIFIER_REFERENCE_KIND_VALUES!r}"
     )

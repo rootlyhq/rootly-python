@@ -14,6 +14,7 @@ NEW_PATCH := $(MAJOR).$(MINOR).$(shell echo $$(($(PATCH) + 1)))
 # Today's date
 TODAY := $(shell date +%Y-%m-%d)
 RUFF_VERSION := 0.16.3
+OPENAPI_PYTHON_CLIENT_VERSION := 0.29.0
 
 bump-major:
 	@echo "Bumping version: $(CURRENT_VERSION) -> $(NEW_MAJOR)"
@@ -34,8 +35,11 @@ bump-patch:
 	@echo "Version bumped to $(NEW_PATCH)"
 
 regenerate:
-	openapi-python-client generate \
-		--url https://rootly-heroku.s3.amazonaws.com/swagger/v1/swagger.json \
+	curl -fsSL https://rootly-heroku.s3.amazonaws.com/swagger/v1/swagger.json -o tools/swagger.json
+	python tools/fix_openapi_escalation_paths.py tools/swagger.json
+	python tools/fix_nullable_severity.py tools/swagger.json
+	uvx --from openapi-python-client==$(OPENAPI_PYTHON_CLIENT_VERSION) openapi-python-client generate \
+		--path tools/swagger.json \
 		--no-fail-on-warning \
 		--output-path . \
 		--overwrite \

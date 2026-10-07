@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateApiKeyDataType = Literal["api_keys"]
 
@@ -11,5 +11,5 @@ def check_update_api_key_data_type(value: str | None) -> UpdateApiKeyDataType | 
     if value is None:
         return None
     if value in UPDATE_API_KEY_DATA_TYPE_VALUES:
-        return cast(UpdateApiKeyDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_API_KEY_DATA_TYPE_VALUES!r}")

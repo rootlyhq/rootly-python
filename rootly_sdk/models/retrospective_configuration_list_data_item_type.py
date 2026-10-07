@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RetrospectiveConfigurationListDataItemType = Literal["retrospective_configurations"]
 
@@ -13,7 +13,7 @@ def check_retrospective_configuration_list_data_item_type(
     if value is None:
         return None
     if value in RETROSPECTIVE_CONFIGURATION_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(RetrospectiveConfigurationListDataItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {RETROSPECTIVE_CONFIGURATION_LIST_DATA_ITEM_TYPE_VALUES!r}"
     )

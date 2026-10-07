@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 StatusPageAuthenticationMethod = Literal["none", "password", "saml"]
 
@@ -13,5 +13,5 @@ def check_status_page_authentication_method(value: str | None) -> StatusPageAuth
     if value is None:
         return None
     if value in STATUS_PAGE_AUTHENTICATION_METHOD_VALUES:
-        return cast(StatusPageAuthenticationMethod, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_AUTHENTICATION_METHOD_VALUES!r}")

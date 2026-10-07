@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UserPhoneNumberResponseDataType = Literal["user_phone_numbers"]
 
@@ -11,5 +11,5 @@ def check_user_phone_number_response_data_type(value: str | None) -> UserPhoneNu
     if value is None:
         return None
     if value in USER_PHONE_NUMBER_RESPONSE_DATA_TYPE_VALUES:
-        return cast(UserPhoneNumberResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {USER_PHONE_NUMBER_RESPONSE_DATA_TYPE_VALUES!r}")

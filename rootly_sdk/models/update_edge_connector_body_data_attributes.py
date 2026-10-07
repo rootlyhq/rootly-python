@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,18 +24,20 @@ T = TypeVar("T", bound="UpdateEdgeConnectorBodyDataAttributes")
 class UpdateEdgeConnectorBodyDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]):
-        description (Union[Unset, str]):
-        status (Union[Unset, UpdateEdgeConnectorBodyDataAttributesStatus]):
-        subscriptions (Union[Unset, list[str]]):
-        filters (Union[Unset, UpdateEdgeConnectorBodyDataAttributesFilters]): Event filters
+        name (str | Unset):
+        description (str | Unset):
+        status (UpdateEdgeConnectorBodyDataAttributesStatus | Unset):
+        subscriptions (list[str] | Unset):
+        owner_group_ids (list[UUID] | Unset): IDs of the teams (groups) that own this connector
+        filters (UpdateEdgeConnectorBodyDataAttributesFilters | Unset): Event filters
     """
 
-    name: Unset | str = UNSET
-    description: Unset | str = UNSET
-    status: Unset | UpdateEdgeConnectorBodyDataAttributesStatus = UNSET
-    subscriptions: Unset | list[str] = UNSET
-    filters: Union[Unset, "UpdateEdgeConnectorBodyDataAttributesFilters"] = UNSET
+    name: str | Unset = UNSET
+    description: str | Unset = UNSET
+    status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset = UNSET
+    subscriptions: list[str] | Unset = UNSET
+    owner_group_ids: list[UUID] | Unset = UNSET
+    filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,15 +45,22 @@ class UpdateEdgeConnectorBodyDataAttributes:
 
         description = self.description
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        subscriptions: Unset | list[str] = UNSET
+        subscriptions: list[str] | Unset = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
-        filters: Unset | dict[str, Any] = UNSET
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = []
+            for owner_group_ids_item_data in self.owner_group_ids:
+                owner_group_ids_item = str(owner_group_ids_item_data)
+                owner_group_ids.append(owner_group_ids_item)
+
+        filters: dict[str, Any] | Unset = UNSET
         if not isinstance(self.filters, Unset):
             filters = self.filters.to_dict()
 
@@ -63,6 +75,8 @@ class UpdateEdgeConnectorBodyDataAttributes:
             field_dict["status"] = status
         if subscriptions is not UNSET:
             field_dict["subscriptions"] = subscriptions
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if filters is not UNSET:
             field_dict["filters"] = filters
 
@@ -80,7 +94,7 @@ class UpdateEdgeConnectorBodyDataAttributes:
         description = d.pop("description", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | UpdateEdgeConnectorBodyDataAttributesStatus
+        status: UpdateEdgeConnectorBodyDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
@@ -88,8 +102,17 @@ class UpdateEdgeConnectorBodyDataAttributes:
 
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
+        _owner_group_ids = d.pop("owner_group_ids", UNSET)
+        owner_group_ids: list[UUID] | Unset = UNSET
+        if _owner_group_ids is not UNSET:
+            owner_group_ids = []
+            for owner_group_ids_item_data in _owner_group_ids:
+                owner_group_ids_item = UUID(owner_group_ids_item_data)
+
+                owner_group_ids.append(owner_group_ids_item)
+
         _filters = d.pop("filters", UNSET)
-        filters: Unset | UpdateEdgeConnectorBodyDataAttributesFilters
+        filters: UpdateEdgeConnectorBodyDataAttributesFilters | Unset
         if isinstance(_filters, Unset):
             filters = UNSET
         else:
@@ -100,6 +123,7 @@ class UpdateEdgeConnectorBodyDataAttributes:
             description=description,
             status=status,
             subscriptions=subscriptions,
+            owner_group_ids=owner_group_ids,
             filters=filters,
         )
 

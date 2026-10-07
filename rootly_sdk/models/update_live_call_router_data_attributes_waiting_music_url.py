@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateLiveCallRouterDataAttributesWaitingMusicUrl = Literal[
     "https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3",
@@ -29,7 +29,7 @@ def check_update_live_call_router_data_attributes_waiting_music_url(
     if value is None:
         return None
     if value in UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_WAITING_MUSIC_URL_VALUES:
-        return cast(UpdateLiveCallRouterDataAttributesWaitingMusicUrl, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_WAITING_MUSIC_URL_VALUES!r}"
     )

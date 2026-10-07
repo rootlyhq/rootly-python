@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,22 +22,22 @@ T = TypeVar("T", bound="UpdateFormFieldPlacementConditionDataAttributes")
 class UpdateFormFieldPlacementConditionDataAttributes:
     """
     Attributes:
-        conditioned (Union[Unset, UpdateFormFieldPlacementConditionDataAttributesConditioned]): The resource or
-            attribute the condition applies.
-        position (Union[Unset, int]): The condition position.
-        form_field_id (Union[Unset, str]): The condition field.
-        comparison (Union[Unset, UpdateFormFieldPlacementConditionDataAttributesComparison]): The condition comparison.
-        values (Union[Unset, list[str]]): The values for comparison.
+        conditioned (UpdateFormFieldPlacementConditionDataAttributesConditioned | Unset): The resource or attribute the
+            condition applies.
+        position (int | Unset): The condition position.
+        form_field_id (str | Unset): The condition field.
+        comparison (UpdateFormFieldPlacementConditionDataAttributesComparison | Unset): The condition comparison.
+        values (list[str] | Unset): The values for comparison.
     """
 
-    conditioned: Unset | UpdateFormFieldPlacementConditionDataAttributesConditioned = UNSET
-    position: Unset | int = UNSET
-    form_field_id: Unset | str = UNSET
-    comparison: Unset | UpdateFormFieldPlacementConditionDataAttributesComparison = UNSET
-    values: Unset | list[str] = UNSET
+    conditioned: UpdateFormFieldPlacementConditionDataAttributesConditioned | Unset = UNSET
+    position: int | Unset = UNSET
+    form_field_id: str | Unset = UNSET
+    comparison: UpdateFormFieldPlacementConditionDataAttributesComparison | Unset = UNSET
+    values: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        conditioned: Unset | str = UNSET
+        conditioned: str | Unset = UNSET
         if not isinstance(self.conditioned, Unset):
             conditioned = self.conditioned
 
@@ -43,11 +45,11 @@ class UpdateFormFieldPlacementConditionDataAttributes:
 
         form_field_id = self.form_field_id
 
-        comparison: Unset | str = UNSET
+        comparison: str | Unset = UNSET
         if not isinstance(self.comparison, Unset):
             comparison = self.comparison
 
-        values: Unset | list[str] = UNSET
+        values: list[str] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
@@ -71,7 +73,7 @@ class UpdateFormFieldPlacementConditionDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _conditioned = d.pop("conditioned", UNSET)
-        conditioned: Unset | UpdateFormFieldPlacementConditionDataAttributesConditioned
+        conditioned: UpdateFormFieldPlacementConditionDataAttributesConditioned | Unset
         if isinstance(_conditioned, Unset):
             conditioned = UNSET
         else:
@@ -82,7 +84,7 @@ class UpdateFormFieldPlacementConditionDataAttributes:
         form_field_id = d.pop("form_field_id", UNSET)
 
         _comparison = d.pop("comparison", UNSET)
-        comparison: Unset | UpdateFormFieldPlacementConditionDataAttributesComparison
+        comparison: UpdateFormFieldPlacementConditionDataAttributesComparison | Unset
         if isinstance(_comparison, Unset):
             comparison = UNSET
         else:

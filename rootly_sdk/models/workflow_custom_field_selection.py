@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -21,14 +23,14 @@ class WorkflowCustomFieldSelection:
         custom_field_id (int): The custom field for this selection
         incident_condition (WorkflowCustomFieldSelectionIncidentCondition): The trigger condition Default: 'ANY'.
         selected_option_ids (list[int]):
-        values (Union[Unset, list[str]]):
+        values (list[str] | Unset):
     """
 
     workflow_id: str
     custom_field_id: int
     selected_option_ids: list[int]
     incident_condition: WorkflowCustomFieldSelectionIncidentCondition = "ANY"
-    values: Unset | list[str] = UNSET
+    values: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,7 +42,7 @@ class WorkflowCustomFieldSelection:
 
         selected_option_ids = self.selected_option_ids
 
-        values: Unset | list[str] = UNSET
+        values: list[str] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 

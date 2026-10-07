@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -14,8 +15,9 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: UUID,
     *,
-    include: Unset | str = UNSET,
+    include: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -24,7 +26,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/api_keys/{id}",
+        "url": "/v1/api_keys/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -65,7 +69,7 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
+    include: str | Unset = UNSET,
 ) -> Response[ApiKeyResponse | ErrorsList]:
     """Retrieves an API key
 
@@ -74,14 +78,14 @@ def sync_detailed(
 
     Args:
         id (UUID):
-        include (Union[Unset, str]):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiKeyResponse, ErrorsList]]
+        Response[ApiKeyResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +104,7 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
+    include: str | Unset = UNSET,
 ) -> ApiKeyResponse | ErrorsList | None:
     """Retrieves an API key
 
@@ -109,14 +113,14 @@ def sync(
 
     Args:
         id (UUID):
-        include (Union[Unset, str]):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiKeyResponse, ErrorsList]
+        ApiKeyResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -130,7 +134,7 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
+    include: str | Unset = UNSET,
 ) -> Response[ApiKeyResponse | ErrorsList]:
     """Retrieves an API key
 
@@ -139,14 +143,14 @@ async def asyncio_detailed(
 
     Args:
         id (UUID):
-        include (Union[Unset, str]):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiKeyResponse, ErrorsList]]
+        Response[ApiKeyResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -163,7 +167,7 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
+    include: str | Unset = UNSET,
 ) -> ApiKeyResponse | ErrorsList | None:
     """Retrieves an API key
 
@@ -172,14 +176,14 @@ async def asyncio(
 
     Args:
         id (UUID):
-        include (Union[Unset, str]):
+        include (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiKeyResponse, ErrorsList]
+        ApiKeyResponse | ErrorsList
     """
 
     return (

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CustomFieldOptionListDataItemType = Literal["custom_field_options"]
 
@@ -11,5 +11,5 @@ def check_custom_field_option_list_data_item_type(value: str | None) -> CustomFi
     if value is None:
         return None
     if value in CUSTOM_FIELD_OPTION_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(CustomFieldOptionListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CUSTOM_FIELD_OPTION_LIST_DATA_ITEM_TYPE_VALUES!r}")

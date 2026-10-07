@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 BulkDestroyCatalogEntitiesType1ManagedBy = Literal["api", "backstage", "catalog_sync", "pulumi", "terraform"]
 
@@ -17,7 +17,7 @@ def check_bulk_destroy_catalog_entities_type_1_managed_by(
     if value is None:
         return None
     if value in BULK_DESTROY_CATALOG_ENTITIES_TYPE_1_MANAGED_BY_VALUES:
-        return cast(BulkDestroyCatalogEntitiesType1ManagedBy, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {BULK_DESTROY_CATALOG_ENTITIES_TYPE_1_MANAGED_BY_VALUES!r}"
     )

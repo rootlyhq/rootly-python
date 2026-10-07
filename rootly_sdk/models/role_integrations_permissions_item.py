@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleIntegrationsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_integrations_permissions_item(value: str | None) -> RoleIntegrati
     if value is None:
         return None
     if value in ROLE_INTEGRATIONS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleIntegrationsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_INTEGRATIONS_PERMISSIONS_ITEM_VALUES!r}")

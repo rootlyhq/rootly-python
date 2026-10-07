@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertDataAttributesNoise = Literal["noise", "not_noise"]
 
@@ -12,5 +12,5 @@ def check_update_alert_data_attributes_noise(value: str | None) -> UpdateAlertDa
     if value is None:
         return None
     if value in UPDATE_ALERT_DATA_ATTRIBUTES_NOISE_VALUES:
-        return cast(UpdateAlertDataAttributesNoise, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ALERT_DATA_ATTRIBUTES_NOISE_VALUES!r}")

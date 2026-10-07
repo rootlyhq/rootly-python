@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardPanelDataAttributesParamsDisplay = Literal[
     "aggregate_value",
@@ -29,7 +29,7 @@ def check_new_dashboard_panel_data_attributes_params_display(
     if value is None:
         return None
     if value in NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DISPLAY_VALUES:
-        return cast(NewDashboardPanelDataAttributesParamsDisplay, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DISPLAY_VALUES!r}"
     )

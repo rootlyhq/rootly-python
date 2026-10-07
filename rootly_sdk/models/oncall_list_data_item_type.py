@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OncallListDataItemType = Literal["on_call_resources"]
 
@@ -11,5 +11,5 @@ def check_oncall_list_data_item_type(value: str | None) -> OncallListDataItemTyp
     if value is None:
         return None
     if value in ONCALL_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(OncallListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ONCALL_LIST_DATA_ITEM_TYPE_VALUES!r}")

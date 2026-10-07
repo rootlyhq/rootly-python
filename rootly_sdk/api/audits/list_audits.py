@@ -11,35 +11,36 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterapi_key_ideq: Unset | str = UNSET,
-    filterapi_key_idnot_eq: Unset | str = UNSET,
-    filterapi_key_idin: Unset | str = UNSET,
-    filterapi_key_idnot_in: Unset | str = UNSET,
-    filtersourceeq: Unset | str = UNSET,
-    filtersourcenot_eq: Unset | str = UNSET,
-    filtersourcein: Unset | str = UNSET,
-    filtersourcenot_in: Unset | str = UNSET,
-    filteritem_typeeq: Unset | str = UNSET,
-    filteritem_typenot_eq: Unset | str = UNSET,
-    filteritem_typein: Unset | str = UNSET,
-    filteritem_typenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterapi_key_ideq: str | Unset = UNSET,
+    filterapi_key_idnot_eq: str | Unset = UNSET,
+    filterapi_key_idin: str | Unset = UNSET,
+    filterapi_key_idnot_in: str | Unset = UNSET,
+    filtersourceeq: str | Unset = UNSET,
+    filtersourcenot_eq: str | Unset = UNSET,
+    filtersourcein: str | Unset = UNSET,
+    filtersourcenot_in: str | Unset = UNSET,
+    filteritem_typeeq: str | Unset = UNSET,
+    filteritem_typenot_eq: str | Unset = UNSET,
+    filteritem_typein: str | Unset = UNSET,
+    filteritem_typenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -133,68 +134,68 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterapi_key_ideq: Unset | str = UNSET,
-    filterapi_key_idnot_eq: Unset | str = UNSET,
-    filterapi_key_idin: Unset | str = UNSET,
-    filterapi_key_idnot_in: Unset | str = UNSET,
-    filtersourceeq: Unset | str = UNSET,
-    filtersourcenot_eq: Unset | str = UNSET,
-    filtersourcein: Unset | str = UNSET,
-    filtersourcenot_in: Unset | str = UNSET,
-    filteritem_typeeq: Unset | str = UNSET,
-    filteritem_typenot_eq: Unset | str = UNSET,
-    filteritem_typein: Unset | str = UNSET,
-    filteritem_typenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterapi_key_ideq: str | Unset = UNSET,
+    filterapi_key_idnot_eq: str | Unset = UNSET,
+    filterapi_key_idin: str | Unset = UNSET,
+    filterapi_key_idnot_in: str | Unset = UNSET,
+    filtersourceeq: str | Unset = UNSET,
+    filtersourcenot_eq: str | Unset = UNSET,
+    filtersourcein: str | Unset = UNSET,
+    filtersourcenot_in: str | Unset = UNSET,
+    filteritem_typeeq: str | Unset = UNSET,
+    filteritem_typenot_eq: str | Unset = UNSET,
+    filteritem_typein: str | Unset = UNSET,
+    filteritem_typenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AuditsList]:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterapi_key_ideq (Union[Unset, str]):
-        filterapi_key_idnot_eq (Union[Unset, str]):
-        filterapi_key_idin (Union[Unset, str]):
-        filterapi_key_idnot_in (Union[Unset, str]):
-        filtersourceeq (Union[Unset, str]):
-        filtersourcenot_eq (Union[Unset, str]):
-        filtersourcein (Union[Unset, str]):
-        filtersourcenot_in (Union[Unset, str]):
-        filteritem_typeeq (Union[Unset, str]):
-        filteritem_typenot_eq (Union[Unset, str]):
-        filteritem_typein (Union[Unset, str]):
-        filteritem_typenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterapi_key_ideq (str | Unset):
+        filterapi_key_idnot_eq (str | Unset):
+        filterapi_key_idin (str | Unset):
+        filterapi_key_idnot_in (str | Unset):
+        filtersourceeq (str | Unset):
+        filtersourcenot_eq (str | Unset):
+        filtersourcein (str | Unset):
+        filtersourcenot_in (str | Unset):
+        filteritem_typeeq (str | Unset):
+        filteritem_typenot_eq (str | Unset):
+        filteritem_typein (str | Unset):
+        filteritem_typenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -245,68 +246,68 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterapi_key_ideq: Unset | str = UNSET,
-    filterapi_key_idnot_eq: Unset | str = UNSET,
-    filterapi_key_idin: Unset | str = UNSET,
-    filterapi_key_idnot_in: Unset | str = UNSET,
-    filtersourceeq: Unset | str = UNSET,
-    filtersourcenot_eq: Unset | str = UNSET,
-    filtersourcein: Unset | str = UNSET,
-    filtersourcenot_in: Unset | str = UNSET,
-    filteritem_typeeq: Unset | str = UNSET,
-    filteritem_typenot_eq: Unset | str = UNSET,
-    filteritem_typein: Unset | str = UNSET,
-    filteritem_typenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterapi_key_ideq: str | Unset = UNSET,
+    filterapi_key_idnot_eq: str | Unset = UNSET,
+    filterapi_key_idin: str | Unset = UNSET,
+    filterapi_key_idnot_in: str | Unset = UNSET,
+    filtersourceeq: str | Unset = UNSET,
+    filtersourcenot_eq: str | Unset = UNSET,
+    filtersourcein: str | Unset = UNSET,
+    filtersourcenot_in: str | Unset = UNSET,
+    filteritem_typeeq: str | Unset = UNSET,
+    filteritem_typenot_eq: str | Unset = UNSET,
+    filteritem_typein: str | Unset = UNSET,
+    filteritem_typenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AuditsList | None:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterapi_key_ideq (Union[Unset, str]):
-        filterapi_key_idnot_eq (Union[Unset, str]):
-        filterapi_key_idin (Union[Unset, str]):
-        filterapi_key_idnot_in (Union[Unset, str]):
-        filtersourceeq (Union[Unset, str]):
-        filtersourcenot_eq (Union[Unset, str]):
-        filtersourcein (Union[Unset, str]):
-        filtersourcenot_in (Union[Unset, str]):
-        filteritem_typeeq (Union[Unset, str]):
-        filteritem_typenot_eq (Union[Unset, str]):
-        filteritem_typein (Union[Unset, str]):
-        filteritem_typenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterapi_key_ideq (str | Unset):
+        filterapi_key_idnot_eq (str | Unset):
+        filterapi_key_idin (str | Unset):
+        filterapi_key_idnot_in (str | Unset):
+        filtersourceeq (str | Unset):
+        filtersourcenot_eq (str | Unset):
+        filtersourcein (str | Unset):
+        filtersourcenot_in (str | Unset):
+        filteritem_typeeq (str | Unset):
+        filteritem_typenot_eq (str | Unset):
+        filteritem_typein (str | Unset):
+        filteritem_typenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -352,68 +353,68 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterapi_key_ideq: Unset | str = UNSET,
-    filterapi_key_idnot_eq: Unset | str = UNSET,
-    filterapi_key_idin: Unset | str = UNSET,
-    filterapi_key_idnot_in: Unset | str = UNSET,
-    filtersourceeq: Unset | str = UNSET,
-    filtersourcenot_eq: Unset | str = UNSET,
-    filtersourcein: Unset | str = UNSET,
-    filtersourcenot_in: Unset | str = UNSET,
-    filteritem_typeeq: Unset | str = UNSET,
-    filteritem_typenot_eq: Unset | str = UNSET,
-    filteritem_typein: Unset | str = UNSET,
-    filteritem_typenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterapi_key_ideq: str | Unset = UNSET,
+    filterapi_key_idnot_eq: str | Unset = UNSET,
+    filterapi_key_idin: str | Unset = UNSET,
+    filterapi_key_idnot_in: str | Unset = UNSET,
+    filtersourceeq: str | Unset = UNSET,
+    filtersourcenot_eq: str | Unset = UNSET,
+    filtersourcein: str | Unset = UNSET,
+    filtersourcenot_in: str | Unset = UNSET,
+    filteritem_typeeq: str | Unset = UNSET,
+    filteritem_typenot_eq: str | Unset = UNSET,
+    filteritem_typein: str | Unset = UNSET,
+    filteritem_typenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[AuditsList]:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterapi_key_ideq (Union[Unset, str]):
-        filterapi_key_idnot_eq (Union[Unset, str]):
-        filterapi_key_idin (Union[Unset, str]):
-        filterapi_key_idnot_in (Union[Unset, str]):
-        filtersourceeq (Union[Unset, str]):
-        filtersourcenot_eq (Union[Unset, str]):
-        filtersourcein (Union[Unset, str]):
-        filtersourcenot_in (Union[Unset, str]):
-        filteritem_typeeq (Union[Unset, str]):
-        filteritem_typenot_eq (Union[Unset, str]):
-        filteritem_typein (Union[Unset, str]):
-        filteritem_typenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterapi_key_ideq (str | Unset):
+        filterapi_key_idnot_eq (str | Unset):
+        filterapi_key_idin (str | Unset):
+        filterapi_key_idnot_in (str | Unset):
+        filtersourceeq (str | Unset):
+        filtersourcenot_eq (str | Unset):
+        filtersourcein (str | Unset):
+        filtersourcenot_in (str | Unset):
+        filteritem_typeeq (str | Unset):
+        filteritem_typenot_eq (str | Unset):
+        filteritem_typein (str | Unset):
+        filteritem_typenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -462,68 +463,68 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filteruser_id: Unset | str = UNSET,
-    filterapi_key_id: Unset | str = UNSET,
-    filtersource: Unset | str = UNSET,
-    filteritem_type: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterapi_key_ideq: Unset | str = UNSET,
-    filterapi_key_idnot_eq: Unset | str = UNSET,
-    filterapi_key_idin: Unset | str = UNSET,
-    filterapi_key_idnot_in: Unset | str = UNSET,
-    filtersourceeq: Unset | str = UNSET,
-    filtersourcenot_eq: Unset | str = UNSET,
-    filtersourcein: Unset | str = UNSET,
-    filtersourcenot_in: Unset | str = UNSET,
-    filteritem_typeeq: Unset | str = UNSET,
-    filteritem_typenot_eq: Unset | str = UNSET,
-    filteritem_typein: Unset | str = UNSET,
-    filteritem_typenot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filteruser_id: str | Unset = UNSET,
+    filterapi_key_id: str | Unset = UNSET,
+    filtersource: str | Unset = UNSET,
+    filteritem_type: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterapi_key_ideq: str | Unset = UNSET,
+    filterapi_key_idnot_eq: str | Unset = UNSET,
+    filterapi_key_idin: str | Unset = UNSET,
+    filterapi_key_idnot_in: str | Unset = UNSET,
+    filtersourceeq: str | Unset = UNSET,
+    filtersourcenot_eq: str | Unset = UNSET,
+    filtersourcein: str | Unset = UNSET,
+    filtersourcenot_in: str | Unset = UNSET,
+    filteritem_typeeq: str | Unset = UNSET,
+    filteritem_typenot_eq: str | Unset = UNSET,
+    filteritem_typein: str | Unset = UNSET,
+    filteritem_typenot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> AuditsList | None:
     """List audits
 
      List audits
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filteruser_id (Union[Unset, str]):
-        filterapi_key_id (Union[Unset, str]):
-        filtersource (Union[Unset, str]):
-        filteritem_type (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterapi_key_ideq (Union[Unset, str]):
-        filterapi_key_idnot_eq (Union[Unset, str]):
-        filterapi_key_idin (Union[Unset, str]):
-        filterapi_key_idnot_in (Union[Unset, str]):
-        filtersourceeq (Union[Unset, str]):
-        filtersourcenot_eq (Union[Unset, str]):
-        filtersourcein (Union[Unset, str]):
-        filtersourcenot_in (Union[Unset, str]):
-        filteritem_typeeq (Union[Unset, str]):
-        filteritem_typenot_eq (Union[Unset, str]):
-        filteritem_typein (Union[Unset, str]):
-        filteritem_typenot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filteruser_id (str | Unset):
+        filterapi_key_id (str | Unset):
+        filtersource (str | Unset):
+        filteritem_type (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterapi_key_ideq (str | Unset):
+        filterapi_key_idnot_eq (str | Unset):
+        filterapi_key_idin (str | Unset):
+        filterapi_key_idnot_in (str | Unset):
+        filtersourceeq (str | Unset):
+        filtersourcenot_eq (str | Unset):
+        filtersourcein (str | Unset):
+        filtersourcenot_in (str | Unset):
+        filteritem_typeeq (str | Unset):
+        filteritem_typenot_eq (str | Unset):
+        filteritem_typein (str | Unset):
+        filteritem_typenot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

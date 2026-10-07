@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SimpleTriggerParamsTriggerType = Literal["simple"]
 
@@ -11,5 +11,5 @@ def check_simple_trigger_params_trigger_type(value: str | None) -> SimpleTrigger
     if value is None:
         return None
     if value in SIMPLE_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES:
-        return cast(SimpleTriggerParamsTriggerType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SIMPLE_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES!r}")

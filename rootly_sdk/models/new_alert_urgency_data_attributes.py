@@ -1,8 +1,14 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
+from ..models.new_alert_urgency_data_attributes_retrigger_timeout_minutes import (
+    NewAlertUrgencyDataAttributesRetriggerTimeoutMinutes,
+    check_new_alert_urgency_data_attributes_retrigger_timeout_minutes,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NewAlertUrgencyDataAttributes")
@@ -14,31 +20,29 @@ class NewAlertUrgencyDataAttributes:
     Attributes:
         name (str): The name of the alert urgency
         description (str): The description of the alert urgency
-        position (Union[None, Unset, int]): Position of the alert urgency
-        retrigger_timeout_minutes (Union[None, Unset, int]): Re-trigger acknowledged alerts of this urgency after N
-            minutes; null inherits the workspace default, negative = never.
+        position (int | None | Unset): Position of the alert urgency
+        retrigger_timeout_minutes (NewAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset): Re-trigger
+            acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.
     """
 
     name: str
     description: str
-    position: None | Unset | int = UNSET
-    retrigger_timeout_minutes: None | Unset | int = UNSET
+    position: int | None | Unset = UNSET
+    retrigger_timeout_minutes: NewAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        retrigger_timeout_minutes: None | Unset | int
-        if isinstance(self.retrigger_timeout_minutes, Unset):
-            retrigger_timeout_minutes = UNSET
-        else:
+        retrigger_timeout_minutes: int | Unset = UNSET
+        if not isinstance(self.retrigger_timeout_minutes, Unset):
             retrigger_timeout_minutes = self.retrigger_timeout_minutes
 
         field_dict: dict[str, Any] = {}
@@ -63,23 +67,23 @@ class NewAlertUrgencyDataAttributes:
 
         description = d.pop("description")
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_retrigger_timeout_minutes(data: object) -> None | Unset | int:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | Unset | int, data)
-
-        retrigger_timeout_minutes = _parse_retrigger_timeout_minutes(d.pop("retrigger_timeout_minutes", UNSET))
+        _retrigger_timeout_minutes = d.pop("retrigger_timeout_minutes", UNSET)
+        retrigger_timeout_minutes: NewAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset
+        if isinstance(_retrigger_timeout_minutes, Unset):
+            retrigger_timeout_minutes = UNSET
+        else:
+            retrigger_timeout_minutes = check_new_alert_urgency_data_attributes_retrigger_timeout_minutes(
+                _retrigger_timeout_minutes
+            )
 
         new_alert_urgency_data_attributes = cls(
             name=name,

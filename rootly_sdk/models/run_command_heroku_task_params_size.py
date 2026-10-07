@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RunCommandHerokuTaskParamsSize = Literal["standard-1X", "standard-2X"]
 
@@ -12,5 +12,5 @@ def check_run_command_heroku_task_params_size(value: str | None) -> RunCommandHe
     if value is None:
         return None
     if value in RUN_COMMAND_HEROKU_TASK_PARAMS_SIZE_VALUES:
-        return cast(RunCommandHerokuTaskParamsSize, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RUN_COMMAND_HEROKU_TASK_PARAMS_SIZE_VALUES!r}")

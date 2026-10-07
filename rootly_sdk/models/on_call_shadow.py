@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.on_call_shadow_shadowable_type import OnCallShadowShadowableType, check_on_call_shadow_shadowable_type
 from ..types import UNSET, Unset
@@ -22,8 +23,8 @@ class OnCallShadow:
         shadow_user_id (int): Which user the shadow shift belongs to.
         starts_at (datetime.datetime): Start datetime of shadow shift
         ends_at (datetime.datetime): End datetime for shadow shift
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
     schedule_id: str
@@ -32,8 +33,8 @@ class OnCallShadow:
     shadow_user_id: int
     starts_at: datetime.datetime
     ends_at: datetime.datetime
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -83,9 +84,9 @@ class OnCallShadow:
 
         shadow_user_id = d.pop("shadow_user_id")
 
-        starts_at = isoparse(d.pop("starts_at"))
+        starts_at = datetime.datetime.fromisoformat(d.pop("starts_at"))
 
-        ends_at = isoparse(d.pop("ends_at"))
+        ends_at = datetime.datetime.fromisoformat(d.pop("ends_at"))
 
         created_at = d.pop("created_at", UNSET)
 

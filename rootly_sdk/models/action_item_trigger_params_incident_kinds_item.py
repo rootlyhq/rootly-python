@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ActionItemTriggerParamsIncidentKindsItem = Literal[
     "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "scheduled_sub", "test", "test_sub"
@@ -23,7 +23,7 @@ def check_action_item_trigger_params_incident_kinds_item(
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES:
-        return cast(ActionItemTriggerParamsIncidentKindsItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_KINDS_ITEM_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FormSetConditionComparison = Literal["equal"]
 
@@ -11,5 +11,5 @@ def check_form_set_condition_comparison(value: str | None) -> FormSetConditionCo
     if value is None:
         return None
     if value in FORM_SET_CONDITION_COMPARISON_VALUES:
-        return cast(FormSetConditionComparison, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FORM_SET_CONDITION_COMPARISON_VALUES!r}")

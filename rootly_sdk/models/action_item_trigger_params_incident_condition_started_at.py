@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ActionItemTriggerParamsIncidentConditionStartedAt = Literal["SET", "UNSET"]
 
@@ -16,7 +16,7 @@ def check_action_item_trigger_params_incident_condition_started_at(
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_STARTED_AT_VALUES:
-        return cast(ActionItemTriggerParamsIncidentConditionStartedAt, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITION_STARTED_AT_VALUES!r}"
     )

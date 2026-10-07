@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardPanelDataType = Literal["dashboard_panels"]
 
@@ -11,5 +11,5 @@ def check_new_dashboard_panel_data_type(value: str | None) -> NewDashboardPanelD
     if value is None:
         return None
     if value in NEW_DASHBOARD_PANEL_DATA_TYPE_VALUES:
-        return cast(NewDashboardPanelDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_PANEL_DATA_TYPE_VALUES!r}")

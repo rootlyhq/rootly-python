@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -18,27 +20,27 @@ T = TypeVar("T", bound="SlaNotificationConfigurationsItem")
 class SlaNotificationConfigurationsItem:
     """
     Attributes:
-        id (Union[Unset, UUID]): Unique ID of the notification configuration
-        offset_type (Union[Unset, SlaNotificationConfigurationsItemOffsetType]): When to send the notification relative
-            to the deadline
-        offset_days (Union[Unset, int]): Number of days offset from the deadline
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
+        id (UUID | Unset): Unique ID of the notification configuration
+        offset_type (SlaNotificationConfigurationsItemOffsetType | Unset): When to send the notification relative to the
+            deadline
+        offset_days (int | Unset): Number of days offset from the deadline
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
     """
 
-    id: Unset | UUID = UNSET
-    offset_type: Unset | SlaNotificationConfigurationsItemOffsetType = UNSET
-    offset_days: Unset | int = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    id: UUID | Unset = UNSET
+    offset_type: SlaNotificationConfigurationsItemOffsetType | Unset = UNSET
+    offset_days: int | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Unset | str = UNSET
+        id: str | Unset = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        offset_type: Unset | str = UNSET
+        offset_type: str | Unset = UNSET
         if not isinstance(self.offset_type, Unset):
             offset_type = self.offset_type
 
@@ -68,14 +70,14 @@ class SlaNotificationConfigurationsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Unset | UUID
+        id: UUID | Unset
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _offset_type = d.pop("offset_type", UNSET)
-        offset_type: Unset | SlaNotificationConfigurationsItemOffsetType
+        offset_type: SlaNotificationConfigurationsItemOffsetType | Unset
         if isinstance(_offset_type, Unset):
             offset_type = UNSET
         else:

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentRoleDataType = Literal["incident_roles"]
 
@@ -11,5 +11,5 @@ def check_update_incident_role_data_type(value: str | None) -> UpdateIncidentRol
     if value is None:
         return None
     if value in UPDATE_INCIDENT_ROLE_DATA_TYPE_VALUES:
-        return cast(UpdateIncidentRoleDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_ROLE_DATA_TYPE_VALUES!r}")

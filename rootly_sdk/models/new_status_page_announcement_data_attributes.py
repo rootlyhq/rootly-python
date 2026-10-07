@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -14,13 +16,12 @@ class NewStatusPageAnnouncementDataAttributes:
     Attributes:
         title (str): Title of the announcement
         body (str): Body of the announcement
-        notify_subscribers (Union[Unset, bool]): Controls if status page subscribers should be notified. Defaults to
-            true
+        notify_subscribers (bool | Unset): Controls if status page subscribers should be notified. Defaults to true
     """
 
     title: str
     body: str
-    notify_subscribers: Unset | bool = UNSET
+    notify_subscribers: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         title = self.title

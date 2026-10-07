@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope = Literal[
     "active_rotation", "entire_schedule"
@@ -18,7 +18,7 @@ def check_new_escalation_policy_level_data_attributes_paging_strategy_configurat
     if value is None:
         return None
     if value in NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_ROTATION_SCOPE_VALUES:
-        return cast(NewEscalationPolicyLevelDataAttributesPagingStrategyConfigurationRotationScope, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_ROTATION_SCOPE_VALUES!r}"
     )

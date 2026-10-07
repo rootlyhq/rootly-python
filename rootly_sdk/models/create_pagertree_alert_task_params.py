@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -30,28 +32,28 @@ T = TypeVar("T", bound="CreatePagertreeAlertTaskParams")
 class CreatePagertreeAlertTaskParams:
     """
     Attributes:
-        task_type (Union[Unset, CreatePagertreeAlertTaskParamsTaskType]):
-        title (Union[Unset, str]): Title of alert as text
-        description (Union[Unset, str]): Description of alert as text
-        urgency (Union[Unset, CreatePagertreeAlertTaskParamsUrgency]):
-        severity (Union[Unset, CreatePagertreeAlertTaskParamsSeverity]):
-        teams (Union[Unset, list['CreatePagertreeAlertTaskParamsTeamsItem']]):
-        users (Union[Unset, list['CreatePagertreeAlertTaskParamsUsersItem']]):
-        incident (Union[Unset, bool]): Setting to true makes an alert a Pagertree incident
+        task_type (CreatePagertreeAlertTaskParamsTaskType | Unset):
+        title (str | Unset): Title of alert as text
+        description (str | Unset): Description of alert as text
+        urgency (CreatePagertreeAlertTaskParamsUrgency | Unset):
+        severity (CreatePagertreeAlertTaskParamsSeverity | Unset):
+        teams (list[CreatePagertreeAlertTaskParamsTeamsItem] | Unset):
+        users (list[CreatePagertreeAlertTaskParamsUsersItem] | Unset):
+        incident (bool | Unset): Setting to true makes an alert a Pagertree incident
     """
 
-    task_type: Unset | CreatePagertreeAlertTaskParamsTaskType = UNSET
-    title: Unset | str = UNSET
-    description: Unset | str = UNSET
-    urgency: Unset | CreatePagertreeAlertTaskParamsUrgency = UNSET
-    severity: Unset | CreatePagertreeAlertTaskParamsSeverity = UNSET
-    teams: Unset | list["CreatePagertreeAlertTaskParamsTeamsItem"] = UNSET
-    users: Unset | list["CreatePagertreeAlertTaskParamsUsersItem"] = UNSET
-    incident: Unset | bool = UNSET
+    task_type: CreatePagertreeAlertTaskParamsTaskType | Unset = UNSET
+    title: str | Unset = UNSET
+    description: str | Unset = UNSET
+    urgency: CreatePagertreeAlertTaskParamsUrgency | Unset = UNSET
+    severity: CreatePagertreeAlertTaskParamsSeverity | Unset = UNSET
+    teams: list[CreatePagertreeAlertTaskParamsTeamsItem] | Unset = UNSET
+    users: list[CreatePagertreeAlertTaskParamsUsersItem] | Unset = UNSET
+    incident: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -59,22 +61,22 @@ class CreatePagertreeAlertTaskParams:
 
         description = self.description
 
-        urgency: Unset | str = UNSET
+        urgency: str | Unset = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
-        severity: Unset | str = UNSET
+        severity: str | Unset = UNSET
         if not isinstance(self.severity, Unset):
             severity = self.severity
 
-        teams: Unset | list[dict[str, Any]] = UNSET
+        teams: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.teams, Unset):
             teams = []
             for teams_item_data in self.teams:
                 teams_item = teams_item_data.to_dict()
                 teams.append(teams_item)
 
-        users: Unset | list[dict[str, Any]] = UNSET
+        users: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
@@ -112,7 +114,7 @@ class CreatePagertreeAlertTaskParams:
 
         d = dict(src_dict)
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreatePagertreeAlertTaskParamsTaskType
+        task_type: CreatePagertreeAlertTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -123,32 +125,36 @@ class CreatePagertreeAlertTaskParams:
         description = d.pop("description", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: Unset | CreatePagertreeAlertTaskParamsUrgency
+        urgency: CreatePagertreeAlertTaskParamsUrgency | Unset
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:
             urgency = check_create_pagertree_alert_task_params_urgency(_urgency)
 
         _severity = d.pop("severity", UNSET)
-        severity: Unset | CreatePagertreeAlertTaskParamsSeverity
+        severity: CreatePagertreeAlertTaskParamsSeverity | Unset
         if isinstance(_severity, Unset):
             severity = UNSET
         else:
             severity = check_create_pagertree_alert_task_params_severity(_severity)
 
-        teams = []
         _teams = d.pop("teams", UNSET)
-        for teams_item_data in _teams or []:
-            teams_item = CreatePagertreeAlertTaskParamsTeamsItem.from_dict(teams_item_data)
+        teams: list[CreatePagertreeAlertTaskParamsTeamsItem] | Unset = UNSET
+        if _teams is not UNSET:
+            teams = []
+            for teams_item_data in _teams:
+                teams_item = CreatePagertreeAlertTaskParamsTeamsItem.from_dict(teams_item_data)
 
-            teams.append(teams_item)
+                teams.append(teams_item)
 
-        users = []
         _users = d.pop("users", UNSET)
-        for users_item_data in _users or []:
-            users_item = CreatePagertreeAlertTaskParamsUsersItem.from_dict(users_item_data)
+        users: list[CreatePagertreeAlertTaskParamsUsersItem] | Unset = UNSET
+        if _users is not UNSET:
+            users = []
+            for users_item_data in _users:
+                users_item = CreatePagertreeAlertTaskParamsUsersItem.from_dict(users_item_data)
 
-            users.append(users_item)
+                users.append(users_item)
 
         incident = d.pop("incident", UNSET)
 

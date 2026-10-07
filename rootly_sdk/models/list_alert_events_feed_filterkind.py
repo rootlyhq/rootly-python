@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListAlertEventsFeedFilterkind = Literal[
     "action",
@@ -35,5 +35,5 @@ def check_list_alert_events_feed_filterkind(value: str | None) -> ListAlertEvent
     if value is None:
         return None
     if value in LIST_ALERT_EVENTS_FEED_FILTERKIND_VALUES:
-        return cast(ListAlertEventsFeedFilterkind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ALERT_EVENTS_FEED_FILTERKIND_VALUES!r}")

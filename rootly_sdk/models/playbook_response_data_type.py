@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PlaybookResponseDataType = Literal["playbooks"]
 
@@ -11,5 +11,5 @@ def check_playbook_response_data_type(value: str | None) -> PlaybookResponseData
     if value is None:
         return None
     if value in PLAYBOOK_RESPONSE_DATA_TYPE_VALUES:
-        return cast(PlaybookResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {PLAYBOOK_RESPONSE_DATA_TYPE_VALUES!r}")

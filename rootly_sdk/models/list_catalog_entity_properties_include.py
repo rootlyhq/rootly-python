@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListCatalogEntityPropertiesInclude = Literal["catalog_entity", "catalog_field"]
 
@@ -12,5 +12,5 @@ def check_list_catalog_entity_properties_include(value: str | None) -> ListCatal
     if value is None:
         return None
     if value in LIST_CATALOG_ENTITY_PROPERTIES_INCLUDE_VALUES:
-        return cast(ListCatalogEntityPropertiesInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CATALOG_ENTITY_PROPERTIES_INCLUDE_VALUES!r}")

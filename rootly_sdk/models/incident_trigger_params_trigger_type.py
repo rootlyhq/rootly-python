@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentTriggerParamsTriggerType = Literal["incident"]
 
@@ -11,5 +11,5 @@ def check_incident_trigger_params_trigger_type(value: str | None) -> IncidentTri
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES:
-        return cast(IncidentTriggerParamsTriggerType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES!r}")

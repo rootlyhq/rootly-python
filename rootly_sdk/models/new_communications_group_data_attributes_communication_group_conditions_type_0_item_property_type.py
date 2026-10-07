@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType = Literal[
     "functionality", "group", "incident_type", "service", "severity"
@@ -24,7 +24,7 @@ def check_new_communications_group_data_attributes_communication_group_condition
         value
         in NEW_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_COMMUNICATION_GROUP_CONDITIONS_TYPE_0_ITEM_PROPERTY_TYPE_VALUES
     ):
-        return cast(NewCommunicationsGroupDataAttributesCommunicationGroupConditionsType0ItemPropertyType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_COMMUNICATION_GROUP_CONDITIONS_TYPE_0_ITEM_PROPERTY_TYPE_VALUES!r}"
     )

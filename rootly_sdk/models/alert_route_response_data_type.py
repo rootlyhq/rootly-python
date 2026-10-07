@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRouteResponseDataType = Literal["alert_routes"]
 
@@ -11,5 +11,5 @@ def check_alert_route_response_data_type(value: str | None) -> AlertRouteRespons
     if value is None:
         return None
     if value in ALERT_ROUTE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(AlertRouteResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_ROUTE_RESPONSE_DATA_TYPE_VALUES!r}")

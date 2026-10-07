@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewSecretDataAttributesKind = Literal["built_in", "hashicorp_vault"]
 
@@ -12,5 +12,5 @@ def check_new_secret_data_attributes_kind(value: str | None) -> NewSecretDataAtt
     if value is None:
         return None
     if value in NEW_SECRET_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(NewSecretDataAttributesKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_SECRET_DATA_ATTRIBUTES_KIND_VALUES!r}")

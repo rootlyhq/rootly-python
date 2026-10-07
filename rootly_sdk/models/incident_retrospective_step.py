@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -22,12 +24,12 @@ class IncidentRetrospectiveStep:
         title (str): The name of the step
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        description (Union[None, Unset, str]): The description of the step
-        status (Union[Unset, IncidentRetrospectiveStepStatus]): Status of the incident retrospective step
-        kind (Union[None, Unset, str]): Due date
-        due_date (Union[None, Unset, str]): Due date
-        position (Union[Unset, int]): Position of the step
-        skippable (Union[Unset, bool]): Is the step skippable?
+        description (None | str | Unset): The description of the step
+        status (IncidentRetrospectiveStepStatus | Unset): Status of the incident retrospective step
+        kind (None | str | Unset): Due date
+        due_date (None | str | Unset): Due date
+        position (int | Unset): Position of the step
+        skippable (bool | Unset): Is the step skippable?
     """
 
     retrospective_step_id: str
@@ -35,12 +37,12 @@ class IncidentRetrospectiveStep:
     title: str
     created_at: str
     updated_at: str
-    description: None | Unset | str = UNSET
-    status: Unset | IncidentRetrospectiveStepStatus = UNSET
-    kind: None | Unset | str = UNSET
-    due_date: None | Unset | str = UNSET
-    position: Unset | int = UNSET
-    skippable: Unset | bool = UNSET
+    description: None | str | Unset = UNSET
+    status: IncidentRetrospectiveStepStatus | Unset = UNSET
+    kind: None | str | Unset = UNSET
+    due_date: None | str | Unset = UNSET
+    position: int | Unset = UNSET
+    skippable: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,23 +56,23 @@ class IncidentRetrospectiveStep:
 
         updated_at = self.updated_at
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        kind: None | Unset | str
+        kind: None | str | Unset
         if isinstance(self.kind, Unset):
             kind = UNSET
         else:
             kind = self.kind
 
-        due_date: None | Unset | str
+        due_date: None | str | Unset
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         else:
@@ -119,37 +121,37 @@ class IncidentRetrospectiveStep:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Unset | IncidentRetrospectiveStepStatus
+        status: IncidentRetrospectiveStepStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_incident_retrospective_step_status(_status)
 
-        def _parse_kind(data: object) -> None | Unset | str:
+        def _parse_kind(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         kind = _parse_kind(d.pop("kind", UNSET))
 
-        def _parse_due_date(data: object) -> None | Unset | str:
+        def _parse_due_date(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 

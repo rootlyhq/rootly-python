@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -14,16 +16,16 @@ class NewFormFieldOptionDataAttributes:
     Attributes:
         form_field_id (str): The ID of the form field
         value (str): The value of the form field option
-        color (Union[Unset, str]): The hex color of the form field option
-        default (Union[Unset, bool]):
-        position (Union[Unset, int]): The position of the form field option
+        color (str | Unset): The hex color of the form field option
+        default (bool | Unset):
+        position (int | Unset): The position of the form field option
     """
 
     form_field_id: str
     value: str
-    color: Unset | str = UNSET
-    default: Unset | bool = UNSET
-    position: Unset | int = UNSET
+    color: str | Unset = UNSET
+    default: bool | Unset = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         form_field_id = self.form_field_id

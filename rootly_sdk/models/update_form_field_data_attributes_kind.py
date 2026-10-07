@@ -1,8 +1,9 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateFormFieldDataAttributesKind = Literal[
     "acknowledged_at",
     "attach_alerts",
+    "cancellation_message",
     "causes",
     "closed_at",
     "custom",
@@ -37,6 +38,7 @@ UpdateFormFieldDataAttributesKind = Literal[
 UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES: set[UpdateFormFieldDataAttributesKind] = {
     "acknowledged_at",
     "attach_alerts",
+    "cancellation_message",
     "causes",
     "closed_at",
     "custom",
@@ -73,5 +75,5 @@ def check_update_form_field_data_attributes_kind(value: str | None) -> UpdateFor
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(UpdateFormFieldDataAttributesKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_DATA_ATTRIBUTES_KIND_VALUES!r}")

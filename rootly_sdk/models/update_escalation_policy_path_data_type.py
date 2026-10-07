@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEscalationPolicyPathDataType = Literal["escalation_paths"]
 
@@ -11,5 +11,5 @@ def check_update_escalation_policy_path_data_type(value: str | None) -> UpdateEs
     if value is None:
         return None
     if value in UPDATE_ESCALATION_POLICY_PATH_DATA_TYPE_VALUES:
-        return cast(UpdateEscalationPolicyPathDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ESCALATION_POLICY_PATH_DATA_TYPE_VALUES!r}")

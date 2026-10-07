@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,10 +15,10 @@ T = TypeVar("T", bound="DashboardPanelParamsDatalabels")
 class DashboardPanelParamsDatalabels:
     """
     Attributes:
-        enabled (Union[Unset, bool]):
+        enabled (bool | Unset):
     """
 
-    enabled: Unset | bool = UNSET
+    enabled: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

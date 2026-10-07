@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateMicrosoftTeamsChannelTaskParamsPrivate = Literal["auto", "false", "true"]
 
@@ -15,7 +15,7 @@ def check_create_microsoft_teams_channel_task_params_private(
     if value is None:
         return None
     if value in CREATE_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_PRIVATE_VALUES:
-        return cast(CreateMicrosoftTeamsChannelTaskParamsPrivate, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_MICROSOFT_TEAMS_CHANNEL_TASK_PARAMS_PRIVATE_VALUES!r}"
     )

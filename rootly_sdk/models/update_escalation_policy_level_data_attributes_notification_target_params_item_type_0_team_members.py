@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers = Literal[
     "admins", "all", "escalate"
@@ -22,7 +22,7 @@ def check_update_escalation_policy_level_data_attributes_notification_target_par
         value
         in UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TEAM_MEMBERS_VALUES
     ):
-        return cast(UpdateEscalationPolicyLevelDataAttributesNotificationTargetParamsItemType0TeamMembers, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_NOTIFICATION_TARGET_PARAMS_ITEM_TYPE_0_TEAM_MEMBERS_VALUES!r}"
     )

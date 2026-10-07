@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 StatusPageTemplateListDataItemType = Literal["status_page_templates"]
 
@@ -11,5 +11,5 @@ def check_status_page_template_list_data_item_type(value: str | None) -> StatusP
     if value is None:
         return None
     if value in STATUS_PAGE_TEMPLATE_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(StatusPageTemplateListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_TEMPLATE_LIST_DATA_ITEM_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAuthorizationDataAttributesPermissionsItem = Literal["authorize", "destroy", "read", "update"]
 
@@ -16,7 +16,7 @@ def check_update_authorization_data_attributes_permissions_item(
     if value is None:
         return None
     if value in UPDATE_AUTHORIZATION_DATA_ATTRIBUTES_PERMISSIONS_ITEM_VALUES:
-        return cast(UpdateAuthorizationDataAttributesPermissionsItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_AUTHORIZATION_DATA_ATTRIBUTES_PERMISSIONS_ITEM_VALUES!r}"
     )

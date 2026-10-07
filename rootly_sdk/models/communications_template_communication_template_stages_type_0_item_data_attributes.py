@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,52 +24,52 @@ T = TypeVar("T", bound="CommunicationsTemplateCommunicationTemplateStagesType0It
 class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
     """
     Attributes:
-        email_body (Union[None, Unset, str]): Email body for the stage
-        email_subject (Union[None, Unset, str]): Email subject for the stage
-        slack_content (Union[None, Unset, str]): Slack content for the stage
-        sms_content (Union[None, Unset, str]): SMS content for the stage
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
-        communication_stage (Union[Unset,
-            CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage]):
-        communication_template (Union[Unset,
-            CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate]):
+        email_body (None | str | Unset): Email body for the stage
+        email_subject (None | str | Unset): Email subject for the stage
+        slack_content (None | str | Unset): Slack content for the stage
+        sms_content (None | str | Unset): SMS content for the stage
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
+        communication_stage (CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage
+            | Unset):
+        communication_template
+            (CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate | Unset):
     """
 
-    email_body: None | Unset | str = UNSET
-    email_subject: None | Unset | str = UNSET
-    slack_content: None | Unset | str = UNSET
-    sms_content: None | Unset | str = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
-    communication_stage: Union[
-        Unset, "CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage"
-    ] = UNSET
-    communication_template: Union[
-        Unset, "CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate"
-    ] = UNSET
+    email_body: None | str | Unset = UNSET
+    email_subject: None | str | Unset = UNSET
+    slack_content: None | str | Unset = UNSET
+    sms_content: None | str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    communication_stage: (
+        CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage | Unset
+    ) = UNSET
+    communication_template: (
+        CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate | Unset
+    ) = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        email_body: None | Unset | str
+        email_body: None | str | Unset
         if isinstance(self.email_body, Unset):
             email_body = UNSET
         else:
             email_body = self.email_body
 
-        email_subject: None | Unset | str
+        email_subject: None | str | Unset
         if isinstance(self.email_subject, Unset):
             email_subject = UNSET
         else:
             email_subject = self.email_subject
 
-        slack_content: None | Unset | str
+        slack_content: None | str | Unset
         if isinstance(self.slack_content, Unset):
             slack_content = UNSET
         else:
             slack_content = self.slack_content
 
-        sms_content: None | Unset | str
+        sms_content: None | str | Unset
         if isinstance(self.sms_content, Unset):
             sms_content = UNSET
         else:
@@ -77,11 +79,11 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
 
         updated_at = self.updated_at
 
-        communication_stage: Unset | dict[str, Any] = UNSET
+        communication_stage: dict[str, Any] | Unset = UNSET
         if not isinstance(self.communication_stage, Unset):
             communication_stage = self.communication_stage.to_dict()
 
-        communication_template: Unset | dict[str, Any] = UNSET
+        communication_template: dict[str, Any] | Unset = UNSET
         if not isinstance(self.communication_template, Unset):
             communication_template = self.communication_template.to_dict()
 
@@ -118,39 +120,39 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_email_body(data: object) -> None | Unset | str:
+        def _parse_email_body(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         email_body = _parse_email_body(d.pop("email_body", UNSET))
 
-        def _parse_email_subject(data: object) -> None | Unset | str:
+        def _parse_email_subject(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         email_subject = _parse_email_subject(d.pop("email_subject", UNSET))
 
-        def _parse_slack_content(data: object) -> None | Unset | str:
+        def _parse_slack_content(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slack_content = _parse_slack_content(d.pop("slack_content", UNSET))
 
-        def _parse_sms_content(data: object) -> None | Unset | str:
+        def _parse_sms_content(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         sms_content = _parse_sms_content(d.pop("sms_content", UNSET))
 
@@ -160,7 +162,7 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
 
         _communication_stage = d.pop("communication_stage", UNSET)
         communication_stage: (
-            Unset | CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage
+            CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationStage | Unset
         )
         if isinstance(_communication_stage, Unset):
             communication_stage = UNSET
@@ -173,7 +175,7 @@ class CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributes:
 
         _communication_template = d.pop("communication_template", UNSET)
         communication_template: (
-            Unset | CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate
+            CommunicationsTemplateCommunicationTemplateStagesType0ItemDataAttributesCommunicationTemplate | Unset
         )
         if isinstance(_communication_template, Unset):
             communication_template = UNSET

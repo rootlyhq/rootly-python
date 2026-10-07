@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCustomFieldDataAttributesRequiredType0Item = Literal[
     "incident_form",
@@ -27,7 +27,7 @@ def check_new_custom_field_data_attributes_required_type_0_item(
     if value is None:
         return None
     if value in NEW_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES:
-        return cast(NewCustomFieldDataAttributesRequiredType0Item, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_CUSTOM_FIELD_DATA_ATTRIBUTES_REQUIRED_TYPE_0_ITEM_VALUES!r}"
     )

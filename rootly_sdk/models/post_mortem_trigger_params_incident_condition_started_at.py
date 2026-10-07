@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PostMortemTriggerParamsIncidentConditionStartedAt = Literal["SET", "UNSET"]
 
@@ -16,7 +16,7 @@ def check_post_mortem_trigger_params_incident_condition_started_at(
     if value is None:
         return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_STARTED_AT_VALUES:
-        return cast(PostMortemTriggerParamsIncidentConditionStartedAt, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_STARTED_AT_VALUES!r}"
     )

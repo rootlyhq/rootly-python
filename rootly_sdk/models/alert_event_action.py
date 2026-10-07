@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertEventAction = Literal[
     "ack_timeout_retriggered",
@@ -27,14 +27,17 @@ AlertEventAction = Literal[
     "paged",
     "removed",
     "resolved",
+    "retrigger_cancelled",
     "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
     "snoozed",
+    "team_attached_from_payload",
     "texted",
     "triggered",
     "updated",
+    "user_paged",
 ]
 
 ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
@@ -64,14 +67,17 @@ ALERT_EVENT_ACTION_VALUES: set[AlertEventAction] = {
     "paged",
     "removed",
     "resolved",
+    "retrigger_cancelled",
     "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
     "snoozed",
+    "team_attached_from_payload",
     "texted",
     "triggered",
     "updated",
+    "user_paged",
 }
 
 
@@ -79,5 +85,5 @@ def check_alert_event_action(value: str | None) -> AlertEventAction | None:
     if value is None:
         return None
     if value in ALERT_EVENT_ACTION_VALUES:
-        return cast(AlertEventAction, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_EVENT_ACTION_VALUES!r}")

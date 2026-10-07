@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateJsmopsAlertTaskParamsPriority = Literal["auto", "P1", "P2", "P3", "P4", "P5"]
 
@@ -16,5 +16,5 @@ def check_create_jsmops_alert_task_params_priority(value: str | None) -> CreateJ
     if value is None:
         return None
     if value in CREATE_JSMOPS_ALERT_TASK_PARAMS_PRIORITY_VALUES:
-        return cast(CreateJsmopsAlertTaskParamsPriority, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CREATE_JSMOPS_ALERT_TASK_PARAMS_PRIORITY_VALUES!r}")

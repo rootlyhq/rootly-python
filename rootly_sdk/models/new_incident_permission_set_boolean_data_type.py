@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentPermissionSetBooleanDataType = Literal["incident_permission_set_booleans"]
 
@@ -13,7 +13,7 @@ def check_new_incident_permission_set_boolean_data_type(
     if value is None:
         return None
     if value in NEW_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_TYPE_VALUES:
-        return cast(NewIncidentPermissionSetBooleanDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_PERMISSION_SET_BOOLEAN_DATA_TYPE_VALUES!r}"
     )

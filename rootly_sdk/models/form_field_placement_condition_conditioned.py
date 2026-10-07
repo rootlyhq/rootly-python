@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FormFieldPlacementConditionConditioned = Literal["placement", "required"]
 
@@ -14,7 +14,7 @@ def check_form_field_placement_condition_conditioned(
     if value is None:
         return None
     if value in FORM_FIELD_PLACEMENT_CONDITION_CONDITIONED_VALUES:
-        return cast(FormFieldPlacementConditionConditioned, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {FORM_FIELD_PLACEMENT_CONDITION_CONDITIONED_VALUES!r}"
     )

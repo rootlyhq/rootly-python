@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,42 +27,42 @@ class UpdateJiraIssueTaskParams:
     Attributes:
         issue_id (str): The issue id
         project_key (str): The project key
-        task_type (Union[Unset, UpdateJiraIssueTaskParamsTaskType]):
-        integration (Union[Unset, UpdateJiraIssueTaskParamsIntegration]): Specify integration id if you have more than
-            one Jira instance
-        title (Union[Unset, str]): The issue title
-        description (Union[Unset, str]): The issue description
-        labels (Union[Unset, str]): The issue labels
-        assign_user_email (Union[Unset, str]): The assigned user's email
-        reporter_user_email (Union[Unset, str]): The reporter user's email
-        due_date (Union[Unset, str]): The due date
-        priority (Union[Unset, UpdateJiraIssueTaskParamsPriority]): The priority id and display name
-        status (Union[Unset, UpdateJiraIssueTaskParamsStatus]): The status id and display name
-        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
+        task_type (UpdateJiraIssueTaskParamsTaskType | Unset):
+        integration (UpdateJiraIssueTaskParamsIntegration | Unset): Specify integration id if you have more than one
+            Jira instance
+        title (str | Unset): The issue title
+        description (str | Unset): The issue description
+        labels (str | Unset): The issue labels
+        assign_user_email (str | Unset): The assigned user's email
+        reporter_user_email (str | Unset): The reporter user's email
+        due_date (str | Unset): The due date
+        priority (UpdateJiraIssueTaskParamsPriority | Unset): The priority id and display name
+        status (UpdateJiraIssueTaskParamsStatus | Unset): The status id and display name
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        update_payload (Union[None, Unset, str]): Update payload. Can contain liquid markup and need to be valid JSON
-        retry_count (Union[Unset, int]): Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables
-            retry. Default: 0. Example: 3.
-        retry_wait_time (Union[Unset, int]): Seconds to wait before each retry (1-15). Retry-After header is honored
-            when present and <= 90s, taking the larger of retry_wait_time and the header value. Default: 1. Example: 2.
+        update_payload (None | str | Unset): Update payload. Can contain liquid markup and need to be valid JSON
+        retry_count (int | Unset): Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+            Default: 0. Example: 3.
+        retry_wait_time (int | Unset): Seconds to wait before each retry (1-15). Retry-After header is honored when
+            present and <= 90s, taking the larger of retry_wait_time and the header value. Default: 1. Example: 2.
     """
 
     issue_id: str
     project_key: str
-    task_type: Unset | UpdateJiraIssueTaskParamsTaskType = UNSET
-    integration: Union[Unset, "UpdateJiraIssueTaskParamsIntegration"] = UNSET
-    title: Unset | str = UNSET
-    description: Unset | str = UNSET
-    labels: Unset | str = UNSET
-    assign_user_email: Unset | str = UNSET
-    reporter_user_email: Unset | str = UNSET
-    due_date: Unset | str = UNSET
-    priority: Union[Unset, "UpdateJiraIssueTaskParamsPriority"] = UNSET
-    status: Union[Unset, "UpdateJiraIssueTaskParamsStatus"] = UNSET
-    custom_fields_mapping: None | Unset | str = UNSET
-    update_payload: None | Unset | str = UNSET
-    retry_count: Unset | int = 0
-    retry_wait_time: Unset | int = 1
+    task_type: UpdateJiraIssueTaskParamsTaskType | Unset = UNSET
+    integration: UpdateJiraIssueTaskParamsIntegration | Unset = UNSET
+    title: str | Unset = UNSET
+    description: str | Unset = UNSET
+    labels: str | Unset = UNSET
+    assign_user_email: str | Unset = UNSET
+    reporter_user_email: str | Unset = UNSET
+    due_date: str | Unset = UNSET
+    priority: UpdateJiraIssueTaskParamsPriority | Unset = UNSET
+    status: UpdateJiraIssueTaskParamsStatus | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
+    update_payload: None | str | Unset = UNSET
+    retry_count: int | Unset = 0
+    retry_wait_time: int | Unset = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,11 +70,11 @@ class UpdateJiraIssueTaskParams:
 
         project_key = self.project_key
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        integration: Unset | dict[str, Any] = UNSET
+        integration: dict[str, Any] | Unset = UNSET
         if not isinstance(self.integration, Unset):
             integration = self.integration.to_dict()
 
@@ -88,21 +90,21 @@ class UpdateJiraIssueTaskParams:
 
         due_date = self.due_date
 
-        priority: Unset | dict[str, Any] = UNSET
+        priority: dict[str, Any] | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority.to_dict()
 
-        status: Unset | dict[str, Any] = UNSET
+        status: dict[str, Any] | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.to_dict()
 
-        custom_fields_mapping: None | Unset | str
+        custom_fields_mapping: None | str | Unset
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        update_payload: None | Unset | str
+        update_payload: None | str | Unset
         if isinstance(self.update_payload, Unset):
             update_payload = UNSET
         else:
@@ -163,14 +165,14 @@ class UpdateJiraIssueTaskParams:
         project_key = d.pop("project_key")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateJiraIssueTaskParamsTaskType
+        task_type: UpdateJiraIssueTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_jira_issue_task_params_task_type(_task_type)
 
         _integration = d.pop("integration", UNSET)
-        integration: Unset | UpdateJiraIssueTaskParamsIntegration
+        integration: UpdateJiraIssueTaskParamsIntegration | Unset
         if isinstance(_integration, Unset):
             integration = UNSET
         else:
@@ -189,34 +191,34 @@ class UpdateJiraIssueTaskParams:
         due_date = d.pop("due_date", UNSET)
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | UpdateJiraIssueTaskParamsPriority
+        priority: UpdateJiraIssueTaskParamsPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = UpdateJiraIssueTaskParamsPriority.from_dict(_priority)
 
         _status = d.pop("status", UNSET)
-        status: Unset | UpdateJiraIssueTaskParamsStatus
+        status: UpdateJiraIssueTaskParamsStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = UpdateJiraIssueTaskParamsStatus.from_dict(_status)
 
-        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        def _parse_update_payload(data: object) -> None | Unset | str:
+        def _parse_update_payload(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         update_payload = _parse_update_payload(d.pop("update_payload", UNSET))
 

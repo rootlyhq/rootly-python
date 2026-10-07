@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdatePostMortemTemplateDataAttributesFormat = Literal["html", "markdown"]
 
@@ -14,7 +14,7 @@ def check_update_post_mortem_template_data_attributes_format(
     if value is None:
         return None
     if value in UPDATE_POST_MORTEM_TEMPLATE_DATA_ATTRIBUTES_FORMAT_VALUES:
-        return cast(UpdatePostMortemTemplateDataAttributesFormat, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_POST_MORTEM_TEMPLATE_DATA_ATTRIBUTES_FORMAT_VALUES!r}"
     )

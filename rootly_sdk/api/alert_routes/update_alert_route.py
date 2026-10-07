@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -20,7 +21,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": f"/v1/alert_routes/{id}",
+        "url": "/v1/alert_routes/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -83,9 +86,15 @@ def sync_detailed(
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
 
-    **Important**: When async processing is enabled, the rules list in the API response will not be up-
-    to-date immediately after update. You should refetch the alert route after a few minutes to get the
-    updated rules.
+    Asynchronous processing is also applied automatically, whether or not it is enabled for your
+    organization, when a request carries a rule graph too large to save within the request timeout. Size
+    is measured in total dependent records — rules plus their condition groups, conditions and
+    destinations — and includes the rules already on the route, not just those in the payload, so a
+    small payload against a large route may still be processed asynchronously.
+
+    **Important**: Whenever rules are processed asynchronously, the rules list in the API response will
+    not be up-to-date immediately after update. You should refetch the alert route, or poll the async
+    rule creation status endpoint with the `request_id` you supplied, to confirm the rules have landed.
 
     If you experience slow operations when managing alert routes with many rules, contact Rootly
     customer support to enable asynchronous rule processing for your organization.
@@ -99,7 +108,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRouteResponse, ErrorsList]]
+        Response[AlertRouteResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -131,9 +140,15 @@ def sync(
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
 
-    **Important**: When async processing is enabled, the rules list in the API response will not be up-
-    to-date immediately after update. You should refetch the alert route after a few minutes to get the
-    updated rules.
+    Asynchronous processing is also applied automatically, whether or not it is enabled for your
+    organization, when a request carries a rule graph too large to save within the request timeout. Size
+    is measured in total dependent records — rules plus their condition groups, conditions and
+    destinations — and includes the rules already on the route, not just those in the payload, so a
+    small payload against a large route may still be processed asynchronously.
+
+    **Important**: Whenever rules are processed asynchronously, the rules list in the API response will
+    not be up-to-date immediately after update. You should refetch the alert route, or poll the async
+    rule creation status endpoint with the `request_id` you supplied, to confirm the rules have landed.
 
     If you experience slow operations when managing alert routes with many rules, contact Rootly
     customer support to enable asynchronous rule processing for your organization.
@@ -147,7 +162,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRouteResponse, ErrorsList]
+        AlertRouteResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -174,9 +189,15 @@ async def asyncio_detailed(
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
 
-    **Important**: When async processing is enabled, the rules list in the API response will not be up-
-    to-date immediately after update. You should refetch the alert route after a few minutes to get the
-    updated rules.
+    Asynchronous processing is also applied automatically, whether or not it is enabled for your
+    organization, when a request carries a rule graph too large to save within the request timeout. Size
+    is measured in total dependent records — rules plus their condition groups, conditions and
+    destinations — and includes the rules already on the route, not just those in the payload, so a
+    small payload against a large route may still be processed asynchronously.
+
+    **Important**: Whenever rules are processed asynchronously, the rules list in the API response will
+    not be up-to-date immediately after update. You should refetch the alert route, or poll the async
+    rule creation status endpoint with the `request_id` you supplied, to confirm the rules have landed.
 
     If you experience slow operations when managing alert routes with many rules, contact Rootly
     customer support to enable asynchronous rule processing for your organization.
@@ -190,7 +211,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertRouteResponse, ErrorsList]]
+        Response[AlertRouteResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -220,9 +241,15 @@ async def asyncio(
     For organizations with large numbers of routing rules, Rootly supports asynchronous rule processing
     to improve performance. When enabled, rule updates happen in the background.
 
-    **Important**: When async processing is enabled, the rules list in the API response will not be up-
-    to-date immediately after update. You should refetch the alert route after a few minutes to get the
-    updated rules.
+    Asynchronous processing is also applied automatically, whether or not it is enabled for your
+    organization, when a request carries a rule graph too large to save within the request timeout. Size
+    is measured in total dependent records — rules plus their condition groups, conditions and
+    destinations — and includes the rules already on the route, not just those in the payload, so a
+    small payload against a large route may still be processed asynchronously.
+
+    **Important**: Whenever rules are processed asynchronously, the rules list in the API response will
+    not be up-to-date immediately after update. You should refetch the alert route, or poll the async
+    rule creation status endpoint with the `request_id` you supplied, to confirm the rules have landed.
 
     If you experience slow operations when managing alert routes with many rules, contact Rootly
     customer support to enable asynchronous rule processing for your organization.
@@ -236,7 +263,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertRouteResponse, ErrorsList]
+        AlertRouteResponse | ErrorsList
     """
 
     return (

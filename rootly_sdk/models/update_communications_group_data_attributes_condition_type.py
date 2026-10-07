@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateCommunicationsGroupDataAttributesConditionType = Literal["all", "any"]
 
@@ -16,7 +16,7 @@ def check_update_communications_group_data_attributes_condition_type(
     if value is None:
         return None
     if value in UPDATE_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:
-        return cast(UpdateCommunicationsGroupDataAttributesConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_COMMUNICATIONS_GROUP_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES!r}"
     )

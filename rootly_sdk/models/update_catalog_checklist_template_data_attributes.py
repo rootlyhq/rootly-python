@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -24,38 +26,36 @@ T = TypeVar("T", bound="UpdateCatalogChecklistTemplateDataAttributes")
 class UpdateCatalogChecklistTemplateDataAttributes:
     """
     Attributes:
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        name (Union[Unset, str]): The name of the checklist template
-        description (Union[None, Unset, str]): The description of the checklist template
-        fields (Union[None, Unset, list[Union['UpdateCatalogChecklistTemplateDataAttributesBuiltinField',
-            'UpdateCatalogChecklistTemplateDataAttributesCustomField']]]): Template fields. Position is determined by array
-            order. Replaces all existing fields.
-        owners (Union[None, Unset, list['UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item']]): Template
-            owners. Replaces all existing owners.
+        name (str | Unset): The name of the checklist template
+        description (None | str | Unset): The description of the checklist template
+        fields (list[UpdateCatalogChecklistTemplateDataAttributesBuiltinField |
+            UpdateCatalogChecklistTemplateDataAttributesCustomField] | None | Unset): Template fields. Position is
+            determined by array order. Replaces all existing fields.
+        owners (list[UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset): Template owners.
+            Replaces all existing owners.
     """
 
-    slug: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
+    slug: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
     fields: (
-        None
-        | Unset
-        | list[
-            Union[
-                "UpdateCatalogChecklistTemplateDataAttributesBuiltinField",
-                "UpdateCatalogChecklistTemplateDataAttributesCustomField",
-            ]
+        list[
+            UpdateCatalogChecklistTemplateDataAttributesBuiltinField
+            | UpdateCatalogChecklistTemplateDataAttributesCustomField
         ]
+        | None
+        | Unset
     ) = UNSET
-    owners: None | Unset | list["UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item"] = UNSET
+    owners: list[UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.update_catalog_checklist_template_data_attributes_builtin_field import (
             UpdateCatalogChecklistTemplateDataAttributesBuiltinField,
         )
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -63,13 +63,13 @@ class UpdateCatalogChecklistTemplateDataAttributes:
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        fields: None | Unset | list[dict[str, Any]]
+        fields: list[dict[str, Any]] | None | Unset
         if isinstance(self.fields, Unset):
             fields = UNSET
         elif isinstance(self.fields, list):
@@ -86,7 +86,7 @@ class UpdateCatalogChecklistTemplateDataAttributes:
         else:
             fields = self.fields
 
-        owners: None | Unset | list[dict[str, Any]]
+        owners: list[dict[str, Any]] | None | Unset
         if isinstance(self.owners, Unset):
             owners = UNSET
         elif isinstance(self.owners, list):
@@ -128,37 +128,35 @@ class UpdateCatalogChecklistTemplateDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         def _parse_fields(
             data: object,
         ) -> (
-            None
-            | Unset
-            | list[
-                Union[
-                    "UpdateCatalogChecklistTemplateDataAttributesBuiltinField",
-                    "UpdateCatalogChecklistTemplateDataAttributesCustomField",
-                ]
+            list[
+                UpdateCatalogChecklistTemplateDataAttributesBuiltinField
+                | UpdateCatalogChecklistTemplateDataAttributesCustomField
             ]
+            | None
+            | Unset
         ):
             if data is None:
                 return data
@@ -173,10 +171,10 @@ class UpdateCatalogChecklistTemplateDataAttributes:
 
                     def _parse_fields_type_0_item(
                         data: object,
-                    ) -> Union[
-                        "UpdateCatalogChecklistTemplateDataAttributesBuiltinField",
-                        "UpdateCatalogChecklistTemplateDataAttributesCustomField",
-                    ]:
+                    ) -> (
+                        UpdateCatalogChecklistTemplateDataAttributesBuiltinField
+                        | UpdateCatalogChecklistTemplateDataAttributesCustomField
+                    ):
                         try:
                             if not isinstance(data, dict):
                                 raise TypeError()
@@ -185,7 +183,7 @@ class UpdateCatalogChecklistTemplateDataAttributes:
                             )
 
                             return fields_type_0_item_builtin_field
-                        except:  # noqa: E722
+                        except (TypeError, ValueError, AttributeError, KeyError):
                             pass
                         if not isinstance(data, dict):
                             raise TypeError()
@@ -200,17 +198,15 @@ class UpdateCatalogChecklistTemplateDataAttributes:
                     fields_type_0.append(fields_type_0_item)
 
                 return fields_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(
-                None
-                | Unset
-                | list[
-                    Union[
-                        "UpdateCatalogChecklistTemplateDataAttributesBuiltinField",
-                        "UpdateCatalogChecklistTemplateDataAttributesCustomField",
-                    ]
-                ],
+                list[
+                    UpdateCatalogChecklistTemplateDataAttributesBuiltinField
+                    | UpdateCatalogChecklistTemplateDataAttributesCustomField
+                ]
+                | None
+                | Unset,
                 data,
             )
 
@@ -218,7 +214,7 @@ class UpdateCatalogChecklistTemplateDataAttributes:
 
         def _parse_owners(
             data: object,
-        ) -> None | Unset | list["UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item"]:
+        ) -> list[UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -236,9 +232,9 @@ class UpdateCatalogChecklistTemplateDataAttributes:
                     owners_type_0.append(owners_type_0_item)
 
                 return owners_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item"], data)
+            return cast(list[UpdateCatalogChecklistTemplateDataAttributesOwnersType0Item] | None | Unset, data)
 
         owners = _parse_owners(d.pop("owners", UNSET))
 

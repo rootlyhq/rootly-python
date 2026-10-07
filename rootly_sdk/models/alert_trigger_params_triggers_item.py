@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertTriggerParamsTriggersItem = Literal["alert_created", "alert_status_updated"]
 
@@ -12,5 +12,5 @@ def check_alert_trigger_params_triggers_item(value: str | None) -> AlertTriggerP
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES:
-        return cast(AlertTriggerParamsTriggersItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES!r}")

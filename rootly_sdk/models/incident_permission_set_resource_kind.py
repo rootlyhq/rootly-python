@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentPermissionSetResourceKind = Literal["incident_types", "severities", "statuses", "sub_statuses"]
 
@@ -14,5 +14,5 @@ def check_incident_permission_set_resource_kind(value: str | None) -> IncidentPe
     if value is None:
         return None
     if value in INCIDENT_PERMISSION_SET_RESOURCE_KIND_VALUES:
-        return cast(IncidentPermissionSetResourceKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_PERMISSION_SET_RESOURCE_KIND_VALUES!r}")

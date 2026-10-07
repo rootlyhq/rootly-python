@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentTriggerParamsIncidentConditionSummary = Literal["SET", "UNSET"]
 
@@ -14,7 +14,7 @@ def check_incident_trigger_params_incident_condition_summary(
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_VALUES:
-        return cast(IncidentTriggerParamsIncidentConditionSummary, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_VALUES!r}"
     )

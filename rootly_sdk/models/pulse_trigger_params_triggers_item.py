@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PulseTriggerParamsTriggersItem = Literal["pulse_created"]
 
@@ -11,5 +11,5 @@ def check_pulse_trigger_params_triggers_item(value: str | None) -> PulseTriggerP
     if value is None:
         return None
     if value in PULSE_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES:
-        return cast(PulseTriggerParamsTriggersItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {PULSE_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES!r}")

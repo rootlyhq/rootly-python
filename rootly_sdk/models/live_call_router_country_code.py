@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 LiveCallRouterCountryCode = Literal["AU", "CA", "CH", "DE", "GB", "NL", "NZ", "SE", "US"]
 
@@ -19,5 +19,5 @@ def check_live_call_router_country_code(value: str | None) -> LiveCallRouterCoun
     if value is None:
         return None
     if value in LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES:
-        return cast(LiveCallRouterCountryCode, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIVE_CALL_ROUTER_COUNTRY_CODE_VALUES!r}")

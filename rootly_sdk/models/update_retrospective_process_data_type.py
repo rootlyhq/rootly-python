@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateRetrospectiveProcessDataType = Literal["retrospective_processes"]
 
@@ -11,5 +11,5 @@ def check_update_retrospective_process_data_type(value: str | None) -> UpdateRet
     if value is None:
         return None
     if value in UPDATE_RETROSPECTIVE_PROCESS_DATA_TYPE_VALUES:
-        return cast(UpdateRetrospectiveProcessDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_RETROSPECTIVE_PROCESS_DATA_TYPE_VALUES!r}")

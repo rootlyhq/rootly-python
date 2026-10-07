@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AddActionItemTaskParamsPriority = Literal["high", "low", "medium"]
 
@@ -13,5 +13,5 @@ def check_add_action_item_task_params_priority(value: str | None) -> AddActionIt
     if value is None:
         return None
     if value in ADD_ACTION_ITEM_TASK_PARAMS_PRIORITY_VALUES:
-        return cast(AddActionItemTaskParamsPriority, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ADD_ACTION_ITEM_TASK_PARAMS_PRIORITY_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewWorkflowFormFieldConditionDataType = Literal["workflow_form_field_conditions"]
 
@@ -13,7 +13,7 @@ def check_new_workflow_form_field_condition_data_type(
     if value is None:
         return None
     if value in NEW_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES:
-        return cast(NewWorkflowFormFieldConditionDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_WORKFLOW_FORM_FIELD_CONDITION_DATA_TYPE_VALUES!r}"
     )

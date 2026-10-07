@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -27,16 +29,16 @@ class CreateMicrosoftTeamsChannelTaskParams:
     Attributes:
         team (CreateMicrosoftTeamsChannelTaskParamsTeam):
         title (str): Microsoft Team channel title
-        task_type (Union[Unset, CreateMicrosoftTeamsChannelTaskParamsTaskType]):
-        description (Union[Unset, str]): Microsoft Team channel description
-        private (Union[Unset, CreateMicrosoftTeamsChannelTaskParamsPrivate]):  Default: 'auto'.
+        task_type (CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset):
+        description (str | Unset): Microsoft Team channel description
+        private (CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset):  Default: 'auto'.
     """
 
-    team: "CreateMicrosoftTeamsChannelTaskParamsTeam"
+    team: CreateMicrosoftTeamsChannelTaskParamsTeam
     title: str
-    task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType = UNSET
-    description: Unset | str = UNSET
-    private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate = "auto"
+    task_type: CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset = UNSET
+    description: str | Unset = UNSET
+    private: CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset = "auto"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,13 +46,13 @@ class CreateMicrosoftTeamsChannelTaskParams:
 
         title = self.title
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
         description = self.description
 
-        private: Unset | str = UNSET
+        private: str | Unset = UNSET
         if not isinstance(self.private, Unset):
             private = self.private
 
@@ -81,7 +83,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         title = d.pop("title")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateMicrosoftTeamsChannelTaskParamsTaskType
+        task_type: CreateMicrosoftTeamsChannelTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -90,7 +92,7 @@ class CreateMicrosoftTeamsChannelTaskParams:
         description = d.pop("description", UNSET)
 
         _private = d.pop("private", UNSET)
-        private: Unset | CreateMicrosoftTeamsChannelTaskParamsPrivate
+        private: CreateMicrosoftTeamsChannelTaskParamsPrivate | Unset
         if isinstance(_private, Unset):
             private = UNSET
         else:

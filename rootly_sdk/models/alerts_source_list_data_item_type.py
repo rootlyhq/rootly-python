@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertsSourceListDataItemType = Literal["alert_sources"]
 
@@ -11,5 +11,5 @@ def check_alerts_source_list_data_item_type(value: str | None) -> AlertsSourceLi
     if value is None:
         return None
     if value in ALERTS_SOURCE_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(AlertsSourceListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_LIST_DATA_ITEM_TYPE_VALUES!r}")

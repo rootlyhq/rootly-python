@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -25,11 +27,11 @@ class VerifiedDomain:
         txt_value (str): The TXT record value to add
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        verified_at (Union[None, Unset, str]): When the domain was first verified
-        last_checked_at (Union[None, Unset, str]): When the domain was last checked
-        last_check_passed_at (Union[None, Unset, str]): When the TXT record was last found
-        check_failures_count (Union[Unset, int]): Number of consecutive check failures
-        source (Union[Unset, VerifiedDomainSource]): How the domain was added
+        verified_at (None | str | Unset): When the domain was first verified
+        last_checked_at (None | str | Unset): When the domain was last checked
+        last_check_passed_at (None | str | Unset): When the TXT record was last found
+        check_failures_count (int | Unset): Number of consecutive check failures
+        source (VerifiedDomainSource | Unset): How the domain was added
     """
 
     domain: str
@@ -39,11 +41,11 @@ class VerifiedDomain:
     txt_value: str
     created_at: str
     updated_at: str
-    verified_at: None | Unset | str = UNSET
-    last_checked_at: None | Unset | str = UNSET
-    last_check_passed_at: None | Unset | str = UNSET
-    check_failures_count: Unset | int = UNSET
-    source: Unset | VerifiedDomainSource = UNSET
+    verified_at: None | str | Unset = UNSET
+    last_checked_at: None | str | Unset = UNSET
+    last_check_passed_at: None | str | Unset = UNSET
+    check_failures_count: int | Unset = UNSET
+    source: VerifiedDomainSource | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,19 +63,19 @@ class VerifiedDomain:
 
         updated_at = self.updated_at
 
-        verified_at: None | Unset | str
+        verified_at: None | str | Unset
         if isinstance(self.verified_at, Unset):
             verified_at = UNSET
         else:
             verified_at = self.verified_at
 
-        last_checked_at: None | Unset | str
+        last_checked_at: None | str | Unset
         if isinstance(self.last_checked_at, Unset):
             last_checked_at = UNSET
         else:
             last_checked_at = self.last_checked_at
 
-        last_check_passed_at: None | Unset | str
+        last_check_passed_at: None | str | Unset
         if isinstance(self.last_check_passed_at, Unset):
             last_check_passed_at = UNSET
         else:
@@ -81,7 +83,7 @@ class VerifiedDomain:
 
         check_failures_count = self.check_failures_count
 
-        source: Unset | str = UNSET
+        source: str | Unset = UNSET
         if not isinstance(self.source, Unset):
             source = self.source
 
@@ -128,37 +130,37 @@ class VerifiedDomain:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_verified_at(data: object) -> None | Unset | str:
+        def _parse_verified_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         verified_at = _parse_verified_at(d.pop("verified_at", UNSET))
 
-        def _parse_last_checked_at(data: object) -> None | Unset | str:
+        def _parse_last_checked_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         last_checked_at = _parse_last_checked_at(d.pop("last_checked_at", UNSET))
 
-        def _parse_last_check_passed_at(data: object) -> None | Unset | str:
+        def _parse_last_check_passed_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         last_check_passed_at = _parse_last_check_passed_at(d.pop("last_check_passed_at", UNSET))
 
         check_failures_count = d.pop("check_failures_count", UNSET)
 
         _source = d.pop("source", UNSET)
-        source: Unset | VerifiedDomainSource
+        source: VerifiedDomainSource | Unset
         if isinstance(_source, Unset):
             source = UNSET
         else:

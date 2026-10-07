@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,18 +23,18 @@ class TiptapBlockSchemaFollowupComponent:
         html (str): HTML representation: <div data-sort="due_date" data-followup-component="true" class="followups-node-
             placeholder"></div> Example: <div data-sort="due_date" data-followup-component="true" class="followups-node-
             placeholder"></div>.
-        data_sort (Union[Unset, TiptapBlockSchemaFollowupComponentDataSort]): Sort order for followups. Valid values:
+        data_sort (TiptapBlockSchemaFollowupComponentDataSort | Unset): Sort order for followups. Valid values:
             due_date, status, priority Default: 'due_date'.
     """
 
     html: str
-    data_sort: Unset | TiptapBlockSchemaFollowupComponentDataSort = "due_date"
+    data_sort: TiptapBlockSchemaFollowupComponentDataSort | Unset = "due_date"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         html = self.html
 
-        data_sort: Unset | str = UNSET
+        data_sort: str | Unset = UNSET
         if not isinstance(self.data_sort, Unset):
             data_sort = self.data_sort
 
@@ -54,7 +56,7 @@ class TiptapBlockSchemaFollowupComponent:
         html = d.pop("html")
 
         _data_sort = d.pop("data_sort", UNSET)
-        data_sort: Unset | TiptapBlockSchemaFollowupComponentDataSort
+        data_sort: TiptapBlockSchemaFollowupComponentDataSort | Unset
         if isinstance(_data_sort, Unset):
             data_sort = UNSET
         else:

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateStatusPageComponentDataType = Literal["status_page_components"]
 
@@ -11,5 +11,5 @@ def check_update_status_page_component_data_type(value: str | None) -> UpdateSta
     if value is None:
         return None
     if value in UPDATE_STATUS_PAGE_COMPONENT_DATA_TYPE_VALUES:
-        return cast(UpdateStatusPageComponentDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_STATUS_PAGE_COMPONENT_DATA_TYPE_VALUES!r}")

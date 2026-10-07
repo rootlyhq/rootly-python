@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FunctionalityResponseDataType = Literal["functionalities"]
 
@@ -11,5 +11,5 @@ def check_functionality_response_data_type(value: str | None) -> FunctionalityRe
     if value is None:
         return None
     if value in FUNCTIONALITY_RESPONSE_DATA_TYPE_VALUES:
-        return cast(FunctionalityResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FUNCTIONALITY_RESPONSE_DATA_TYPE_VALUES!r}")

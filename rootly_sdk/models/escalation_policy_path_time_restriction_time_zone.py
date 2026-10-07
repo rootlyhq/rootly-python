@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Abu Dhabi",
@@ -84,6 +84,7 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Asia/Urumqi",
     "Asia/Vladivostok",
     "Asia/Yakutsk",
+    "Asia/Yangon",
     "Asia/Yekaterinburg",
     "Asia/Yerevan",
     "Astana",
@@ -157,6 +158,7 @@ EscalationPolicyPathTimeRestrictionTimeZone = Literal[
     "Europe/Istanbul",
     "Europe/Kaliningrad",
     "Europe/Kiev",
+    "Europe/Kyiv",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -392,6 +394,7 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Asia/Urumqi",
     "Asia/Vladivostok",
     "Asia/Yakutsk",
+    "Asia/Yangon",
     "Asia/Yekaterinburg",
     "Asia/Yerevan",
     "Astana",
@@ -465,6 +468,7 @@ ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES: set[EscalationPolicyPa
     "Europe/Istanbul",
     "Europe/Kaliningrad",
     "Europe/Kiev",
+    "Europe/Kyiv",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -623,7 +627,7 @@ def check_escalation_policy_path_time_restriction_time_zone(
     if value is None:
         return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES:
-        return cast(EscalationPolicyPathTimeRestrictionTimeZone, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ESCALATION_POLICY_PATH_TIME_RESTRICTION_TIME_ZONE_VALUES!r}"
     )

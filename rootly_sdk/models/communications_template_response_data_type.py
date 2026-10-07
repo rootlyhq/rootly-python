@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CommunicationsTemplateResponseDataType = Literal["communications_templates"]
 
@@ -13,7 +13,7 @@ def check_communications_template_response_data_type(
     if value is None:
         return None
     if value in COMMUNICATIONS_TEMPLATE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(CommunicationsTemplateResponseDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {COMMUNICATIONS_TEMPLATE_RESPONSE_DATA_TYPE_VALUES!r}"
     )

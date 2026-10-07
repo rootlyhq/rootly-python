@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SlaConditionMatchType = Literal["ALL", "ANY"]
 
@@ -12,5 +12,5 @@ def check_sla_condition_match_type(value: str | None) -> SlaConditionMatchType |
     if value is None:
         return None
     if value in SLA_CONDITION_MATCH_TYPE_VALUES:
-        return cast(SlaConditionMatchType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SLA_CONDITION_MATCH_TYPE_VALUES!r}")

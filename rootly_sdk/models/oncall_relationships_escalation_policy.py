@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,10 +19,10 @@ T = TypeVar("T", bound="OncallRelationshipsEscalationPolicy")
 class OncallRelationshipsEscalationPolicy:
     """
     Attributes:
-        data (Union['OncallRelationshipsEscalationPolicyDataType0', None, Unset]):
+        data (None | OncallRelationshipsEscalationPolicyDataType0 | Unset):
     """
 
-    data: Union["OncallRelationshipsEscalationPolicyDataType0", None, Unset] = UNSET
+    data: None | OncallRelationshipsEscalationPolicyDataType0 | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,7 +30,7 @@ class OncallRelationshipsEscalationPolicy:
             OncallRelationshipsEscalationPolicyDataType0,
         )
 
-        data: None | Unset | dict[str, Any]
+        data: dict[str, Any] | None | Unset
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, OncallRelationshipsEscalationPolicyDataType0):
@@ -52,7 +54,7 @@ class OncallRelationshipsEscalationPolicy:
 
         d = dict(src_dict)
 
-        def _parse_data(data: object) -> Union["OncallRelationshipsEscalationPolicyDataType0", None, Unset]:
+        def _parse_data(data: object) -> None | OncallRelationshipsEscalationPolicyDataType0 | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -63,9 +65,9 @@ class OncallRelationshipsEscalationPolicy:
                 data_type_0 = OncallRelationshipsEscalationPolicyDataType0.from_dict(data)
 
                 return data_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["OncallRelationshipsEscalationPolicyDataType0", None, Unset], data)
+            return cast(None | OncallRelationshipsEscalationPolicyDataType0 | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 

@@ -1,0 +1,15 @@
+from typing import Literal
+
+UpdateStatusPageTeamDataType = Literal["status_page_groups"]
+
+UPDATE_STATUS_PAGE_TEAM_DATA_TYPE_VALUES: set[UpdateStatusPageTeamDataType] = {
+    "status_page_groups",
+}
+
+
+def check_update_status_page_team_data_type(value: str | None) -> UpdateStatusPageTeamDataType | None:
+    if value is None:
+        return None
+    if value in UPDATE_STATUS_PAGE_TEAM_DATA_TYPE_VALUES:
+        return value
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_STATUS_PAGE_TEAM_DATA_TYPE_VALUES!r}")

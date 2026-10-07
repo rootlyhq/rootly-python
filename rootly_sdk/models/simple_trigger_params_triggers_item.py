@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SimpleTriggerParamsTriggersItem = Literal["slack_command"]
 
@@ -11,5 +11,5 @@ def check_simple_trigger_params_triggers_item(value: str | None) -> SimpleTrigge
     if value is None:
         return None
     if value in SIMPLE_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES:
-        return cast(SimpleTriggerParamsTriggersItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SIMPLE_TRIGGER_PARAMS_TRIGGERS_ITEM_VALUES!r}")

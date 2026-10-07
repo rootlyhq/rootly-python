@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0ItemStatus = Literal[
     "degraded_performance", "major_outage", "operational", "partial_outage"
@@ -20,7 +20,7 @@ def check_new_incident_status_page_event_data_attributes_status_page_components_
     if value is None:
         return None
     if value in NEW_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_PAGE_COMPONENTS_TYPE_0_ITEM_STATUS_VALUES:
-        return cast(NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0ItemStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_STATUS_PAGE_EVENT_DATA_ATTRIBUTES_STATUS_PAGE_COMPONENTS_TYPE_0_ITEM_STATUS_VALUES!r}"
     )

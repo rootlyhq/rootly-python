@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind = Literal["alert_field", "payload"]
 
@@ -16,7 +16,7 @@ def check_new_alerts_source_data_attributes_alert_source_urgency_rules_attribute
     if value is None:
         return None
     if value in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_KIND_VALUES:
-        return cast(NewAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemKind, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_KIND_VALUES!r}"
     )

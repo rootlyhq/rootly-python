@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
@@ -23,18 +24,17 @@ class UpdateAlertRouteDataAttributesRulesItem:
     """
     Attributes:
         name (str): The name of the alert routing rule
-        destinations (list['UpdateAlertRouteDataAttributesRulesItemDestinationsItem']):
-        condition_groups (list['UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem']):
-        position (Union[Unset, int]): The position of the alert routing rule for ordering evaluation
-        fallback_rule (Union[Unset, bool]): Whether this is a fallback rule Default: False.
+        destinations (list[UpdateAlertRouteDataAttributesRulesItemDestinationsItem]):
+        condition_groups (list[UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem]):
+        position (int | Unset): The position of the alert routing rule for ordering evaluation
+        fallback_rule (bool | Unset): Whether this is a fallback rule Default: False.
     """
 
     name: str
-    destinations: list["UpdateAlertRouteDataAttributesRulesItemDestinationsItem"]
-    condition_groups: list["UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem"]
-    position: Unset | int = UNSET
-    fallback_rule: Unset | bool = False
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    destinations: list[UpdateAlertRouteDataAttributesRulesItemDestinationsItem]
+    condition_groups: list[UpdateAlertRouteDataAttributesRulesItemConditionGroupsItem]
+    position: int | Unset = UNSET
+    fallback_rule: bool | Unset = False
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -54,7 +54,7 @@ class UpdateAlertRouteDataAttributesRulesItem:
         fallback_rule = self.fallback_rule
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "name": name,
@@ -111,21 +111,4 @@ class UpdateAlertRouteDataAttributesRulesItem:
             fallback_rule=fallback_rule,
         )
 
-        update_alert_route_data_attributes_rules_item.additional_properties = d
         return update_alert_route_data_attributes_rules_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,14 +19,16 @@ class AlertField:
         kind (str): The kind of alert field
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (Union[Unset, str]): The slug of the alert field
+        slug (str | Unset): The slug of the alert field
+        owner_group_ids (list[str] | Unset): IDs of the teams that own the alert field. Empty for org-wide fields.
     """
 
     name: str
     kind: str
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
+    slug: str | Unset = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,6 +42,10 @@ class AlertField:
 
         slug = self.slug
 
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = self.owner_group_ids
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -50,6 +58,8 @@ class AlertField:
         )
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
 
         return field_dict
 
@@ -66,12 +76,15 @@ class AlertField:
 
         slug = d.pop("slug", UNSET)
 
+        owner_group_ids = cast(list[str], d.pop("owner_group_ids", UNSET))
+
         alert_field = cls(
             name=name,
             kind=kind,
             created_at=created_at,
             updated_at=updated_at,
             slug=slug,
+            owner_group_ids=owner_group_ids,
         )
 
         alert_field.additional_properties = d

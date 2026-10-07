@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,7 +14,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
     body: ResolveIncident,
 ) -> dict[str, Any]:
@@ -21,7 +22,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": f"/v1/incidents/{id}/duplicate",
+        "url": "/v1/incidents/{id}/duplicate".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -63,7 +66,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: ResolveIncident,
@@ -73,7 +76,7 @@ def sync_detailed(
      Mark an incident as a duplicate
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (ResolveIncident):
 
     Raises:
@@ -81,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentResponse]]
+        Response[ErrorsList | IncidentResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,7 +100,7 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: ResolveIncident,
@@ -107,7 +110,7 @@ def sync(
      Mark an incident as a duplicate
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (ResolveIncident):
 
     Raises:
@@ -115,7 +118,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentResponse]
+        ErrorsList | IncidentResponse
     """
 
     return sync_detailed(
@@ -126,7 +129,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: ResolveIncident,
@@ -136,7 +139,7 @@ async def asyncio_detailed(
      Mark an incident as a duplicate
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (ResolveIncident):
 
     Raises:
@@ -144,7 +147,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentResponse]]
+        Response[ErrorsList | IncidentResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,7 +161,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: ResolveIncident,
@@ -168,7 +171,7 @@ async def asyncio(
      Mark an incident as a duplicate
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (ResolveIncident):
 
     Raises:
@@ -176,7 +179,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentResponse]
+        ErrorsList | IncidentResponse
     """
 
     return (

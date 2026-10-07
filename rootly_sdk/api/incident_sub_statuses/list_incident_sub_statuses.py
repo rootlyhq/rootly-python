@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -16,25 +17,26 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    include: Unset | ListIncidentSubStatusesInclude = UNSET,
-    sort: Unset | ListIncidentSubStatusesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersub_status_id: Unset | str = UNSET,
-    filterassigned_atgt: Unset | str = UNSET,
-    filterassigned_atgte: Unset | str = UNSET,
-    filterassigned_atlt: Unset | str = UNSET,
-    filterassigned_atlte: Unset | str = UNSET,
+    include: ListIncidentSubStatusesInclude | Unset = UNSET,
+    sort: ListIncidentSubStatusesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersub_status_id: str | Unset = UNSET,
+    filterassigned_atgt: str | Unset = UNSET,
+    filterassigned_atgte: str | Unset = UNSET,
+    filterassigned_atlt: str | Unset = UNSET,
+    filterassigned_atlte: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
     params["include"] = json_include
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
@@ -58,7 +60,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/incidents/{incident_id}/sub_statuses",
+        "url": "/v1/incidents/{incident_id}/sub_statuses".format(
+            incident_id=quote(str(incident_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -92,15 +96,15 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListIncidentSubStatusesInclude = UNSET,
-    sort: Unset | ListIncidentSubStatusesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersub_status_id: Unset | str = UNSET,
-    filterassigned_atgt: Unset | str = UNSET,
-    filterassigned_atgte: Unset | str = UNSET,
-    filterassigned_atlt: Unset | str = UNSET,
-    filterassigned_atlte: Unset | str = UNSET,
+    include: ListIncidentSubStatusesInclude | Unset = UNSET,
+    sort: ListIncidentSubStatusesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersub_status_id: str | Unset = UNSET,
+    filterassigned_atgt: str | Unset = UNSET,
+    filterassigned_atgte: str | Unset = UNSET,
+    filterassigned_atlt: str | Unset = UNSET,
+    filterassigned_atlte: str | Unset = UNSET,
 ) -> Response[IncidentSubStatusList]:
     """List incident_sub_statuses
 
@@ -108,15 +112,15 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        include (Union[Unset, ListIncidentSubStatusesInclude]):
-        sort (Union[Unset, ListIncidentSubStatusesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersub_status_id (Union[Unset, str]):
-        filterassigned_atgt (Union[Unset, str]):
-        filterassigned_atgte (Union[Unset, str]):
-        filterassigned_atlt (Union[Unset, str]):
-        filterassigned_atlte (Union[Unset, str]):
+        include (ListIncidentSubStatusesInclude | Unset):
+        sort (ListIncidentSubStatusesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersub_status_id (str | Unset):
+        filterassigned_atgt (str | Unset):
+        filterassigned_atgte (str | Unset):
+        filterassigned_atlt (str | Unset):
+        filterassigned_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,15 +154,15 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListIncidentSubStatusesInclude = UNSET,
-    sort: Unset | ListIncidentSubStatusesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersub_status_id: Unset | str = UNSET,
-    filterassigned_atgt: Unset | str = UNSET,
-    filterassigned_atgte: Unset | str = UNSET,
-    filterassigned_atlt: Unset | str = UNSET,
-    filterassigned_atlte: Unset | str = UNSET,
+    include: ListIncidentSubStatusesInclude | Unset = UNSET,
+    sort: ListIncidentSubStatusesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersub_status_id: str | Unset = UNSET,
+    filterassigned_atgt: str | Unset = UNSET,
+    filterassigned_atgte: str | Unset = UNSET,
+    filterassigned_atlt: str | Unset = UNSET,
+    filterassigned_atlte: str | Unset = UNSET,
 ) -> IncidentSubStatusList | None:
     """List incident_sub_statuses
 
@@ -166,15 +170,15 @@ def sync(
 
     Args:
         incident_id (str):
-        include (Union[Unset, ListIncidentSubStatusesInclude]):
-        sort (Union[Unset, ListIncidentSubStatusesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersub_status_id (Union[Unset, str]):
-        filterassigned_atgt (Union[Unset, str]):
-        filterassigned_atgte (Union[Unset, str]):
-        filterassigned_atlt (Union[Unset, str]):
-        filterassigned_atlte (Union[Unset, str]):
+        include (ListIncidentSubStatusesInclude | Unset):
+        sort (ListIncidentSubStatusesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersub_status_id (str | Unset):
+        filterassigned_atgt (str | Unset):
+        filterassigned_atgte (str | Unset):
+        filterassigned_atlt (str | Unset):
+        filterassigned_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -203,15 +207,15 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListIncidentSubStatusesInclude = UNSET,
-    sort: Unset | ListIncidentSubStatusesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersub_status_id: Unset | str = UNSET,
-    filterassigned_atgt: Unset | str = UNSET,
-    filterassigned_atgte: Unset | str = UNSET,
-    filterassigned_atlt: Unset | str = UNSET,
-    filterassigned_atlte: Unset | str = UNSET,
+    include: ListIncidentSubStatusesInclude | Unset = UNSET,
+    sort: ListIncidentSubStatusesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersub_status_id: str | Unset = UNSET,
+    filterassigned_atgt: str | Unset = UNSET,
+    filterassigned_atgte: str | Unset = UNSET,
+    filterassigned_atlt: str | Unset = UNSET,
+    filterassigned_atlte: str | Unset = UNSET,
 ) -> Response[IncidentSubStatusList]:
     """List incident_sub_statuses
 
@@ -219,15 +223,15 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        include (Union[Unset, ListIncidentSubStatusesInclude]):
-        sort (Union[Unset, ListIncidentSubStatusesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersub_status_id (Union[Unset, str]):
-        filterassigned_atgt (Union[Unset, str]):
-        filterassigned_atgte (Union[Unset, str]):
-        filterassigned_atlt (Union[Unset, str]):
-        filterassigned_atlte (Union[Unset, str]):
+        include (ListIncidentSubStatusesInclude | Unset):
+        sort (ListIncidentSubStatusesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersub_status_id (str | Unset):
+        filterassigned_atgt (str | Unset):
+        filterassigned_atgte (str | Unset):
+        filterassigned_atlt (str | Unset):
+        filterassigned_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -259,15 +263,15 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | ListIncidentSubStatusesInclude = UNSET,
-    sort: Unset | ListIncidentSubStatusesSort = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersub_status_id: Unset | str = UNSET,
-    filterassigned_atgt: Unset | str = UNSET,
-    filterassigned_atgte: Unset | str = UNSET,
-    filterassigned_atlt: Unset | str = UNSET,
-    filterassigned_atlte: Unset | str = UNSET,
+    include: ListIncidentSubStatusesInclude | Unset = UNSET,
+    sort: ListIncidentSubStatusesSort | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersub_status_id: str | Unset = UNSET,
+    filterassigned_atgt: str | Unset = UNSET,
+    filterassigned_atgte: str | Unset = UNSET,
+    filterassigned_atlt: str | Unset = UNSET,
+    filterassigned_atlte: str | Unset = UNSET,
 ) -> IncidentSubStatusList | None:
     """List incident_sub_statuses
 
@@ -275,15 +279,15 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        include (Union[Unset, ListIncidentSubStatusesInclude]):
-        sort (Union[Unset, ListIncidentSubStatusesSort]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersub_status_id (Union[Unset, str]):
-        filterassigned_atgt (Union[Unset, str]):
-        filterassigned_atgte (Union[Unset, str]):
-        filterassigned_atlt (Union[Unset, str]):
-        filterassigned_atlte (Union[Unset, str]):
+        include (ListIncidentSubStatusesInclude | Unset):
+        sort (ListIncidentSubStatusesSort | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersub_status_id (str | Unset):
+        filterassigned_atgt (str | Unset):
+        filterassigned_atgte (str | Unset):
+        filterassigned_atlt (str | Unset):
+        filterassigned_atlte (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

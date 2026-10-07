@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAuthorizationDataType = Literal["authorizations"]
 
@@ -11,5 +11,5 @@ def check_new_authorization_data_type(value: str | None) -> NewAuthorizationData
     if value is None:
         return None
     if value in NEW_AUTHORIZATION_DATA_TYPE_VALUES:
-        return cast(NewAuthorizationDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_AUTHORIZATION_DATA_TYPE_VALUES!r}")

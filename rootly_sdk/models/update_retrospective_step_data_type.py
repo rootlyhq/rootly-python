@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateRetrospectiveStepDataType = Literal["retrospective_steps"]
 
@@ -11,5 +11,5 @@ def check_update_retrospective_step_data_type(value: str | None) -> UpdateRetros
     if value is None:
         return None
     if value in UPDATE_RETROSPECTIVE_STEP_DATA_TYPE_VALUES:
-        return cast(UpdateRetrospectiveStepDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_RETROSPECTIVE_STEP_DATA_TYPE_VALUES!r}")

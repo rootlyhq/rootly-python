@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 HeartbeatStatus = Literal["active", "expired", "waiting"]
 
@@ -13,5 +13,5 @@ def check_heartbeat_status(value: str | None) -> HeartbeatStatus | None:
     if value is None:
         return None
     if value in HEARTBEAT_STATUS_VALUES:
-        return cast(HeartbeatStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {HEARTBEAT_STATUS_VALUES!r}")

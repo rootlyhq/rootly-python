@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Alert configuration endpoints to get and update team alert configuration
+- Private agents endpoints to create enrollment tokens, list/get/update agents, and revoke agents
+- Problems and problem action item endpoints for listing, creating, getting, updating, deleting, and linking incidents
+- Status page team endpoints to list, add, get, update, and remove teams
+- Phone number verification and resend-verification endpoints
+
+### Removed
+- **BREAKING**: Alert re-trigger rule endpoints (`GET`/`POST /v1/alert_retrigger_rules` and `GET`/`PUT`/`DELETE /v1/alert_retrigger_rules/{id}`) and their models
+
+### Dependencies
+- No package dependency versions changed; regeneration used openapi-python-client 0.29.0 and Ruff 0.16.3
+
 ## [2.0.1] - 2026-08-31
 
 ### Fixed

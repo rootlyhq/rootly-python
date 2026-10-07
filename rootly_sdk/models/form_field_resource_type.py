@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 FormFieldResourceType = Literal["incident", "problem"]
 
@@ -12,5 +12,5 @@ def check_form_field_resource_type(value: str | None) -> FormFieldResourceType |
     if value is None:
         return None
     if value in FORM_FIELD_RESOURCE_TYPE_VALUES:
-        return cast(FormFieldResourceType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {FORM_FIELD_RESOURCE_TYPE_VALUES!r}")

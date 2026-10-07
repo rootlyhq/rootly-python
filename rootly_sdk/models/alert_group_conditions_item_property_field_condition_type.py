@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertGroupConditionsItemPropertyFieldConditionType = Literal[
     "contains",
@@ -33,7 +33,7 @@ def check_alert_group_conditions_item_property_field_condition_type(
     if value is None:
         return None
     if value in ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
-        return cast(AlertGroupConditionsItemPropertyFieldConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_GROUP_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES!r}"
     )

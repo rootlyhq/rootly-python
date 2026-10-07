@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType = Literal["all", "any"]
 
@@ -16,7 +16,7 @@ def check_update_alerts_source_data_attributes_resolution_rule_attributes_type_0
     if value is None:
         return None
     if value in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITION_TYPE_VALUES:
-        return cast(UpdateAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_RESOLUTION_RULE_ATTRIBUTES_TYPE_0_CONDITION_TYPE_VALUES!r}"
     )

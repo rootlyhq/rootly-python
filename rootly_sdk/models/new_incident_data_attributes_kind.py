@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentDataAttributesKind = Literal[
     "backfilled", "example", "example_sub", "normal", "normal_sub", "scheduled", "scheduled_sub", "test", "test_sub"
@@ -21,5 +21,5 @@ def check_new_incident_data_attributes_kind(value: str | None) -> NewIncidentDat
     if value is None:
         return None
     if value in NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(NewIncidentDataAttributesKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_DATA_ATTRIBUTES_KIND_VALUES!r}")

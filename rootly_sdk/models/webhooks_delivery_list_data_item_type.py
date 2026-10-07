@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WebhooksDeliveryListDataItemType = Literal["webhooks_deliveries"]
 
@@ -11,5 +11,5 @@ def check_webhooks_delivery_list_data_item_type(value: str | None) -> WebhooksDe
     if value is None:
         return None
     if value in WEBHOOKS_DELIVERY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(WebhooksDeliveryListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WEBHOOKS_DELIVERY_LIST_DATA_ITEM_TYPE_VALUES!r}")

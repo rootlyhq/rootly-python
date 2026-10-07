@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WorkflowListDataItemType = Literal["workflows"]
 
@@ -11,5 +11,5 @@ def check_workflow_list_data_item_type(value: str | None) -> WorkflowListDataIte
     if value is None:
         return None
     if value in WORKFLOW_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(WorkflowListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WORKFLOW_LIST_DATA_ITEM_TYPE_VALUES!r}")

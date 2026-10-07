@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType = Literal[
     "contains",
@@ -31,7 +31,7 @@ def check_new_alert_routing_rule_data_attributes_conditions_item_property_field_
     if value is None:
         return None
     if value in NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
-        return cast(NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES!r}"
     )

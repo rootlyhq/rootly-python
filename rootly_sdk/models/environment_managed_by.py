@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EnvironmentManagedBy = Literal["admin_web", "api", "backstage", "catalog_sync", "pulumi", "terraform", "web"]
 
@@ -17,5 +17,5 @@ def check_environment_managed_by(value: str | None) -> EnvironmentManagedBy | No
     if value is None:
         return None
     if value in ENVIRONMENT_MANAGED_BY_VALUES:
-        return cast(EnvironmentManagedBy, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ENVIRONMENT_MANAGED_BY_VALUES!r}")

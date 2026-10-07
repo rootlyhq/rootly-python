@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition = Literal[
     "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
@@ -25,7 +25,7 @@ def check_update_workflow_action_item_form_field_condition_data_attributes_actio
     if value is None:
         return None
     if value in UPDATE_WORKFLOW_ACTION_ITEM_FORM_FIELD_CONDITION_DATA_ATTRIBUTES_ACTION_ITEM_CONDITION_VALUES:
-        return cast(UpdateWorkflowActionItemFormFieldConditionDataAttributesActionItemCondition, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_WORKFLOW_ACTION_ITEM_FORM_FIELD_CONDITION_DATA_ATTRIBUTES_ACTION_ITEM_CONDITION_VALUES!r}"
     )

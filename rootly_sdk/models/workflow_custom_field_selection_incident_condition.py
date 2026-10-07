@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WorkflowCustomFieldSelectionIncidentCondition = Literal[
     "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
@@ -23,7 +23,7 @@ def check_workflow_custom_field_selection_incident_condition(
     if value is None:
         return None
     if value in WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES:
-        return cast(WorkflowCustomFieldSelectionIncidentCondition, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {WORKFLOW_CUSTOM_FIELD_SELECTION_INCIDENT_CONDITION_VALUES!r}"
     )

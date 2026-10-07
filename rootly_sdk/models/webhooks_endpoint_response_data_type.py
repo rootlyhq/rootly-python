@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WebhooksEndpointResponseDataType = Literal["webhooks_endpoints"]
 
@@ -11,5 +11,5 @@ def check_webhooks_endpoint_response_data_type(value: str | None) -> WebhooksEnd
     if value is None:
         return None
     if value in WEBHOOKS_ENDPOINT_RESPONSE_DATA_TYPE_VALUES:
-        return cast(WebhooksEndpointResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WEBHOOKS_ENDPOINT_RESPONSE_DATA_TYPE_VALUES!r}")

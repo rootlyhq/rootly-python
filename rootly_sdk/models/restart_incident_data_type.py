@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RestartIncidentDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_restart_incident_data_type(value: str | None) -> RestartIncidentDataTy
     if value is None:
         return None
     if value in RESTART_INCIDENT_DATA_TYPE_VALUES:
-        return cast(RestartIncidentDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RESTART_INCIDENT_DATA_TYPE_VALUES!r}")

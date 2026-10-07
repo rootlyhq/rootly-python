@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WebhooksDeliveryResponseDataType = Literal["webhooks_deliveries"]
 
@@ -11,5 +11,5 @@ def check_webhooks_delivery_response_data_type(value: str | None) -> WebhooksDel
     if value is None:
         return None
     if value in WEBHOOKS_DELIVERY_RESPONSE_DATA_TYPE_VALUES:
-        return cast(WebhooksDeliveryResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WEBHOOKS_DELIVERY_RESPONSE_DATA_TYPE_VALUES!r}")

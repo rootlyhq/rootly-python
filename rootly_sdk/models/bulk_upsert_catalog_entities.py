@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -15,11 +17,11 @@ T = TypeVar("T", bound="BulkUpsertCatalogEntities")
 class BulkUpsertCatalogEntities:
     """
     Attributes:
-        entities (list['BulkUpsertCatalogEntitiesEntitiesItem']): Array of catalog entities to upsert. Each must have an
+        entities (list[BulkUpsertCatalogEntitiesEntitiesItem]): Array of catalog entities to upsert. Each must have an
             external_id. Max 100 per request. external_ids must be unique within a batch.
     """
 
-    entities: list["BulkUpsertCatalogEntitiesEntitiesItem"]
+    entities: list[BulkUpsertCatalogEntitiesEntitiesItem]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

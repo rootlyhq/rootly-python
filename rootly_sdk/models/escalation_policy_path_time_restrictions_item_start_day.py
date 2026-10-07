@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EscalationPolicyPathTimeRestrictionsItemStartDay = Literal[
     "friday", "monday", "saturday", "sunday", "thursday", "tuesday", "wednesday"
@@ -23,7 +23,7 @@ def check_escalation_policy_path_time_restrictions_item_start_day(
     if value is None:
         return None
     if value in ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_START_DAY_VALUES:
-        return cast(EscalationPolicyPathTimeRestrictionsItemStartDay, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ESCALATION_POLICY_PATH_TIME_RESTRICTIONS_ITEM_START_DAY_VALUES!r}"
     )

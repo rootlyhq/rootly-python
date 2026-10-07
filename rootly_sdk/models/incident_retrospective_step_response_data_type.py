@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentRetrospectiveStepResponseDataType = Literal["incident_retrospective_steps"]
 
@@ -13,7 +13,7 @@ def check_incident_retrospective_step_response_data_type(
     if value is None:
         return None
     if value in INCIDENT_RETROSPECTIVE_STEP_RESPONSE_DATA_TYPE_VALUES:
-        return cast(IncidentRetrospectiveStepResponseDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_RETROSPECTIVE_STEP_RESPONSE_DATA_TYPE_VALUES!r}"
     )

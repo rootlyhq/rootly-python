@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListAlertEventsFeedFilteraction = Literal[
     "ack_timeout_retriggered",
@@ -27,14 +27,17 @@ ListAlertEventsFeedFilteraction = Literal[
     "paged",
     "removed",
     "resolved",
+    "retrigger_cancelled",
     "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
     "snoozed",
+    "team_attached_from_payload",
     "texted",
     "triggered",
     "updated",
+    "user_paged",
 ]
 
 LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES: set[ListAlertEventsFeedFilteraction] = {
@@ -64,14 +67,17 @@ LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES: set[ListAlertEventsFeedFilteraction]
     "paged",
     "removed",
     "resolved",
+    "retrigger_cancelled",
     "retrigger_suppressed",
     "retriggered",
     "skipped",
     "slacked",
     "snoozed",
+    "team_attached_from_payload",
     "texted",
     "triggered",
     "updated",
+    "user_paged",
 }
 
 
@@ -79,5 +85,5 @@ def check_list_alert_events_feed_filteraction(value: str | None) -> ListAlertEve
     if value is None:
         return None
     if value in LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES:
-        return cast(ListAlertEventsFeedFilteraction, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ALERT_EVENTS_FEED_FILTERACTION_VALUES!r}")

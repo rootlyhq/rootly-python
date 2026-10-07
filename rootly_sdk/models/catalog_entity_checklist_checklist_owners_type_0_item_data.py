@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,24 +25,24 @@ T = TypeVar("T", bound="CatalogEntityChecklistChecklistOwnersType0ItemData")
 class CatalogEntityChecklistChecklistOwnersType0ItemData:
     """
     Attributes:
-        id (Union[Unset, str]): ID of the checklist owner
-        type_ (Union[Unset, CatalogEntityChecklistChecklistOwnersType0ItemDataType]):
-        attributes (Union[Unset, CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes]):
+        id (str | Unset): ID of the checklist owner
+        type_ (CatalogEntityChecklistChecklistOwnersType0ItemDataType | Unset):
+        attributes (CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes | Unset):
     """
 
-    id: Unset | str = UNSET
-    type_: Unset | CatalogEntityChecklistChecklistOwnersType0ItemDataType = UNSET
-    attributes: Union[Unset, "CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes"] = UNSET
+    id: str | Unset = UNSET
+    type_: CatalogEntityChecklistChecklistOwnersType0ItemDataType | Unset = UNSET
+    attributes: CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -66,14 +68,14 @@ class CatalogEntityChecklistChecklistOwnersType0ItemData:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | CatalogEntityChecklistChecklistOwnersType0ItemDataType
+        type_: CatalogEntityChecklistChecklistOwnersType0ItemDataType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_catalog_entity_checklist_checklist_owners_type_0_item_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes
+        attributes: CatalogEntityChecklistChecklistOwnersType0ItemDataAttributes | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

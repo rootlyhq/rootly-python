@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -18,31 +20,31 @@ class UpdateIncidentPostmortemTaskParams:
     """
     Attributes:
         postmortem_id (str): UUID of the retrospective that needs to be updated
-        task_type (Union[Unset, UpdateIncidentPostmortemTaskParamsTaskType]):
-        title (Union[None, Unset, str]): The incident title
-        status (Union[None, Unset, str]):
+        task_type (UpdateIncidentPostmortemTaskParamsTaskType | Unset):
+        title (None | str | Unset): The incident title
+        status (None | str | Unset):
     """
 
     postmortem_id: str
-    task_type: Unset | UpdateIncidentPostmortemTaskParamsTaskType = UNSET
-    title: None | Unset | str = UNSET
-    status: None | Unset | str = UNSET
+    task_type: UpdateIncidentPostmortemTaskParamsTaskType | Unset = UNSET
+    title: None | str | Unset = UNSET
+    status: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         postmortem_id = self.postmortem_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        title: None | Unset | str
+        title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
-        status: None | Unset | str
+        status: None | str | Unset
         if isinstance(self.status, Unset):
             status = UNSET
         else:
@@ -70,27 +72,27 @@ class UpdateIncidentPostmortemTaskParams:
         postmortem_id = d.pop("postmortem_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateIncidentPostmortemTaskParamsTaskType
+        task_type: UpdateIncidentPostmortemTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_incident_postmortem_task_params_task_type(_task_type)
 
-        def _parse_title(data: object) -> None | Unset | str:
+        def _parse_title(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
-        def _parse_status(data: object) -> None | Unset | str:
+        def _parse_status(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 

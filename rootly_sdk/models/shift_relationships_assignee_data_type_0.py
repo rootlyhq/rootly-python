@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="ShiftRelationshipsAssigneeDataType0")
 class ShiftRelationshipsAssigneeDataType0:
     """
     Attributes:
-        id (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        id (str | Unset):
+        type_ (str | Unset):
     """
 
-    id: Unset | str = UNSET
-    type_: Unset | str = UNSET
+    id: str | Unset = UNSET
+    type_: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

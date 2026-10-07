@@ -1,8 +1,14 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
+from ..models.update_alert_urgency_data_attributes_retrigger_timeout_minutes import (
+    UpdateAlertUrgencyDataAttributesRetriggerTimeoutMinutes,
+    check_update_alert_urgency_data_attributes_retrigger_timeout_minutes,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UpdateAlertUrgencyDataAttributes")
@@ -12,33 +18,31 @@ T = TypeVar("T", bound="UpdateAlertUrgencyDataAttributes")
 class UpdateAlertUrgencyDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the alert urgency
-        description (Union[Unset, str]): The description of the alert urgency
-        position (Union[None, Unset, int]): Position of the alert urgency
-        retrigger_timeout_minutes (Union[None, Unset, int]): Re-trigger acknowledged alerts of this urgency after N
-            minutes; null inherits the workspace default, negative = never.
+        name (str | Unset): The name of the alert urgency
+        description (str | Unset): The description of the alert urgency
+        position (int | None | Unset): Position of the alert urgency
+        retrigger_timeout_minutes (UpdateAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset): Re-trigger
+            acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.
     """
 
-    name: Unset | str = UNSET
-    description: Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    retrigger_timeout_minutes: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    description: str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    retrigger_timeout_minutes: UpdateAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        retrigger_timeout_minutes: None | Unset | int
-        if isinstance(self.retrigger_timeout_minutes, Unset):
-            retrigger_timeout_minutes = UNSET
-        else:
+        retrigger_timeout_minutes: int | Unset = UNSET
+        if not isinstance(self.retrigger_timeout_minutes, Unset):
             retrigger_timeout_minutes = self.retrigger_timeout_minutes
 
         field_dict: dict[str, Any] = {}
@@ -62,23 +66,23 @@ class UpdateAlertUrgencyDataAttributes:
 
         description = d.pop("description", UNSET)
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_retrigger_timeout_minutes(data: object) -> None | Unset | int:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | Unset | int, data)
-
-        retrigger_timeout_minutes = _parse_retrigger_timeout_minutes(d.pop("retrigger_timeout_minutes", UNSET))
+        _retrigger_timeout_minutes = d.pop("retrigger_timeout_minutes", UNSET)
+        retrigger_timeout_minutes: UpdateAlertUrgencyDataAttributesRetriggerTimeoutMinutes | Unset
+        if isinstance(_retrigger_timeout_minutes, Unset):
+            retrigger_timeout_minutes = UNSET
+        else:
+            retrigger_timeout_minutes = check_update_alert_urgency_data_attributes_retrigger_timeout_minutes(
+                _retrigger_timeout_minutes
+            )
 
         update_alert_urgency_data_attributes = cls(
             name=name,

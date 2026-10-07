@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.update_pulse_data_type import UpdatePulseDataType, check_update_pulse_data_type
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.update_pulse_data_attributes import UpdatePulseDataAttributes
@@ -19,25 +21,31 @@ class UpdatePulseData:
     Attributes:
         type_ (UpdatePulseDataType):
         attributes (UpdatePulseDataAttributes):
+        id (str | Unset): Accepted for JSON:API client compatibility, but ignored. The resource to update is identified
+            by the id in the path.
     """
 
     type_: UpdatePulseDataType
-    attributes: "UpdatePulseDataAttributes"
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    attributes: UpdatePulseDataAttributes
+    id: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_
 
         attributes = self.attributes.to_dict()
 
+        id = self.id
+
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "type": type_,
                 "attributes": attributes,
             }
         )
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -50,26 +58,12 @@ class UpdatePulseData:
 
         attributes = UpdatePulseDataAttributes.from_dict(d.pop("attributes"))
 
+        id = d.pop("id", UNSET)
+
         update_pulse_data = cls(
             type_=type_,
             attributes=attributes,
+            id=id,
         )
 
-        update_pulse_data.additional_properties = d
         return update_pulse_data
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

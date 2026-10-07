@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,10 +18,10 @@ class WebhooksDelivery:
         endpoint_id (str):
         payload (str):
         status (WebhooksDeliveryStatus): Delivery status
-        response_status (Union[None, int]): HTTP status code recorded for the delivery attempt. It is null before the
-            first attempt. For SSRF and transport failures, Rootly generates this code because no destination response was
+        response_status (int | None): HTTP status code recorded for the delivery attempt. It is null before the first
+            attempt. For SSRF and transport failures, Rootly generates this code because no destination response was
             received.
-        delivered_at (Union[None, str]):
+        delivered_at (None | str):
         created_at (str): Date of creation
         updated_at (str): Date of last update
     """
@@ -27,7 +29,7 @@ class WebhooksDelivery:
     endpoint_id: str
     payload: str
     status: WebhooksDeliveryStatus
-    response_status: None | int
+    response_status: int | None
     delivered_at: None | str
     created_at: str
     updated_at: str
@@ -40,7 +42,7 @@ class WebhooksDelivery:
 
         status: str = self.status
 
-        response_status: None | int
+        response_status: int | None
         response_status = self.response_status
 
         delivered_at: None | str
@@ -75,10 +77,10 @@ class WebhooksDelivery:
 
         status = check_webhooks_delivery_status(d.pop("status"))
 
-        def _parse_response_status(data: object) -> None | int:
+        def _parse_response_status(data: object) -> int | None:
             if data is None:
                 return data
-            return cast(None | int, data)
+            return cast(int | None, data)
 
         response_status = _parse_response_status(d.pop("response_status"))
 

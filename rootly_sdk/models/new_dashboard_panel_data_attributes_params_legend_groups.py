@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardPanelDataAttributesParamsLegendGroups = Literal["all", "charted"]
 
@@ -16,7 +16,7 @@ def check_new_dashboard_panel_data_attributes_params_legend_groups(
     if value is None:
         return None
     if value in NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_LEGEND_GROUPS_VALUES:
-        return cast(NewDashboardPanelDataAttributesParamsLegendGroups, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_LEGEND_GROUPS_VALUES!r}"
     )

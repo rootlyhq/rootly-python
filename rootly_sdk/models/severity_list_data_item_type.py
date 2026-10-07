@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SeverityListDataItemType = Literal["severities"]
 
@@ -11,5 +11,5 @@ def check_severity_list_data_item_type(value: str | None) -> SeverityListDataIte
     if value is None:
         return None
     if value in SEVERITY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(SeverityListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SEVERITY_LIST_DATA_ITEM_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewWorkflowTaskDataType = Literal["workflow_tasks"]
 
@@ -11,5 +11,5 @@ def check_new_workflow_task_data_type(value: str | None) -> NewWorkflowTaskDataT
     if value is None:
         return None
     if value in NEW_WORKFLOW_TASK_DATA_TYPE_VALUES:
-        return cast(NewWorkflowTaskDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_WORKFLOW_TASK_DATA_TYPE_VALUES!r}")

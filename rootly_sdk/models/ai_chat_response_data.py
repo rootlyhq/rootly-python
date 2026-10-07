@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
@@ -25,7 +27,7 @@ class AiChatResponseData:
 
     id: UUID
     type_: AiChatResponseDataType
-    attributes: "AiChatResponseDataAttributes"
+    attributes: AiChatResponseDataAttributes
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

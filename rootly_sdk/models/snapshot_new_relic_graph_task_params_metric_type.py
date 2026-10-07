@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SnapshotNewRelicGraphTaskParamsMetricType = Literal[
     "APDEX",
@@ -45,7 +45,7 @@ def check_snapshot_new_relic_graph_task_params_metric_type(
     if value is None:
         return None
     if value in SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_METRIC_TYPE_VALUES:
-        return cast(SnapshotNewRelicGraphTaskParamsMetricType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_METRIC_TYPE_VALUES!r}"
     )

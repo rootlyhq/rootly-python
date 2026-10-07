@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,24 +23,24 @@ T = TypeVar("T", bound="BulkUpsertCatalogEntitiesResponseDataItem")
 class BulkUpsertCatalogEntitiesResponseDataItem:
     """
     Attributes:
-        id (Union[Unset, str]):
-        type_ (Union[Unset, BulkUpsertCatalogEntitiesResponseDataItemType]):
-        attributes (Union[Unset, CatalogEntity]):
+        id (str | Unset):
+        type_ (BulkUpsertCatalogEntitiesResponseDataItemType | Unset):
+        attributes (CatalogEntity | Unset):
     """
 
-    id: Unset | str = UNSET
-    type_: Unset | BulkUpsertCatalogEntitiesResponseDataItemType = UNSET
-    attributes: Union[Unset, "CatalogEntity"] = UNSET
+    id: str | Unset = UNSET
+    type_: BulkUpsertCatalogEntitiesResponseDataItemType | Unset = UNSET
+    attributes: CatalogEntity | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -62,14 +64,14 @@ class BulkUpsertCatalogEntitiesResponseDataItem:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | BulkUpsertCatalogEntitiesResponseDataItemType
+        type_: BulkUpsertCatalogEntitiesResponseDataItemType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_bulk_upsert_catalog_entities_response_data_item_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | CatalogEntity
+        attributes: CatalogEntity | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListAlertsInclude = Literal[
     "alert_call_recording",
@@ -47,5 +47,5 @@ def check_list_alerts_include(value: str | None) -> ListAlertsInclude | None:
     if value is None:
         return None
     if value in LIST_ALERTS_INCLUDE_VALUES:
-        return cast(ListAlertsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ALERTS_INCLUDE_VALUES!r}")

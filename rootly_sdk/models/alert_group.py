@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,21 +23,24 @@ class AlertGroup:
     """
     Attributes:
         name (str): The name of the alert group
-        description (Union[None, str]): The description of the alert group
+        description (None | str): The description of the alert group
         condition_type (str): Grouping condition for the alert group
         time_window (int): Time window for the alert grouping
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        deleted_at (Union[None, str]): Date or deletion
-        slug (Union[Unset, str]): The slug of the alert group
-        group_by_alert_title (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by title or not. This
-            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
-        group_by_alert_urgency (Union[Unset, bool]): [DEPRECATED] Whether the alerts are grouped by urgency or not. This
-            field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
-        targets (Union[Unset, list['AlertGroupTargetsItem']]):
-        attributes (Union[Unset, list['AlertGroupAttributesItem']]): This field is deprecated. Please use the
-            `conditions` field instead, `attributes` will be removed in the future.
-        conditions (Union[Unset, list['AlertGroupConditionsItem']]): The conditions for the alert group
+        deleted_at (None | str): Date or deletion
+        slug (str | Unset): The slug of the alert group
+        group_by_alert_title (bool | Unset): [DEPRECATED] Whether the alerts are grouped by title or not. This field is
+            deprecated. Please use the `conditions` field with advanced alert grouping instead.
+        group_by_alert_urgency (bool | Unset): [DEPRECATED] Whether the alerts are grouped by urgency or not. This field
+            is deprecated. Please use the `conditions` field with advanced alert grouping instead.
+        owner_group_ids (list[UUID] | Unset): Teams that own this alert group. Admins of an owning team can manage it,
+            and an owned alert group can only target destinations that belong to its owning teams. Only available when
+            owning teams for alert groups are enabled for the organization.
+        targets (list[AlertGroupTargetsItem] | Unset):
+        attributes (list[AlertGroupAttributesItem] | Unset): This field is deprecated. Please use the `conditions` field
+            instead, `attributes` will be removed in the future.
+        conditions (list[AlertGroupConditionsItem] | Unset): The conditions for the alert group
     """
 
     name: str
@@ -44,12 +50,13 @@ class AlertGroup:
     created_at: str
     updated_at: str
     deleted_at: None | str
-    slug: Unset | str = UNSET
-    group_by_alert_title: Unset | bool = UNSET
-    group_by_alert_urgency: Unset | bool = UNSET
-    targets: Unset | list["AlertGroupTargetsItem"] = UNSET
-    attributes: Unset | list["AlertGroupAttributesItem"] = UNSET
-    conditions: Unset | list["AlertGroupConditionsItem"] = UNSET
+    slug: str | Unset = UNSET
+    group_by_alert_title: bool | Unset = UNSET
+    group_by_alert_urgency: bool | Unset = UNSET
+    owner_group_ids: list[UUID] | Unset = UNSET
+    targets: list[AlertGroupTargetsItem] | Unset = UNSET
+    attributes: list[AlertGroupAttributesItem] | Unset = UNSET
+    conditions: list[AlertGroupConditionsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -75,21 +82,28 @@ class AlertGroup:
 
         group_by_alert_urgency = self.group_by_alert_urgency
 
-        targets: Unset | list[dict[str, Any]] = UNSET
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = []
+            for owner_group_ids_item_data in self.owner_group_ids:
+                owner_group_ids_item = str(owner_group_ids_item_data)
+                owner_group_ids.append(owner_group_ids_item)
+
+        targets: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.targets, Unset):
             targets = []
             for targets_item_data in self.targets:
                 targets_item = targets_item_data.to_dict()
                 targets.append(targets_item)
 
-        attributes: Unset | list[dict[str, Any]] = UNSET
+        attributes: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = []
             for attributes_item_data in self.attributes:
                 attributes_item = attributes_item_data.to_dict()
                 attributes.append(attributes_item)
 
-        conditions: Unset | list[dict[str, Any]] = UNSET
+        conditions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -115,6 +129,8 @@ class AlertGroup:
             field_dict["group_by_alert_title"] = group_by_alert_title
         if group_by_alert_urgency is not UNSET:
             field_dict["group_by_alert_urgency"] = group_by_alert_urgency
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if targets is not UNSET:
             field_dict["targets"] = targets
         if attributes is not UNSET:
@@ -161,26 +177,41 @@ class AlertGroup:
 
         group_by_alert_urgency = d.pop("group_by_alert_urgency", UNSET)
 
-        targets = []
+        _owner_group_ids = d.pop("owner_group_ids", UNSET)
+        owner_group_ids: list[UUID] | Unset = UNSET
+        if _owner_group_ids is not UNSET:
+            owner_group_ids = []
+            for owner_group_ids_item_data in _owner_group_ids:
+                owner_group_ids_item = UUID(owner_group_ids_item_data)
+
+                owner_group_ids.append(owner_group_ids_item)
+
         _targets = d.pop("targets", UNSET)
-        for targets_item_data in _targets or []:
-            targets_item = AlertGroupTargetsItem.from_dict(targets_item_data)
+        targets: list[AlertGroupTargetsItem] | Unset = UNSET
+        if _targets is not UNSET:
+            targets = []
+            for targets_item_data in _targets:
+                targets_item = AlertGroupTargetsItem.from_dict(targets_item_data)
 
-            targets.append(targets_item)
+                targets.append(targets_item)
 
-        attributes = []
         _attributes = d.pop("attributes", UNSET)
-        for attributes_item_data in _attributes or []:
-            attributes_item = AlertGroupAttributesItem.from_dict(attributes_item_data)
+        attributes: list[AlertGroupAttributesItem] | Unset = UNSET
+        if _attributes is not UNSET:
+            attributes = []
+            for attributes_item_data in _attributes:
+                attributes_item = AlertGroupAttributesItem.from_dict(attributes_item_data)
 
-            attributes.append(attributes_item)
+                attributes.append(attributes_item)
 
-        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        for conditions_item_data in _conditions or []:
-            conditions_item = AlertGroupConditionsItem.from_dict(conditions_item_data)
+        conditions: list[AlertGroupConditionsItem] | Unset = UNSET
+        if _conditions is not UNSET:
+            conditions = []
+            for conditions_item_data in _conditions:
+                conditions_item = AlertGroupConditionsItem.from_dict(conditions_item_data)
 
-            conditions.append(conditions_item)
+                conditions.append(conditions_item)
 
         alert_group = cls(
             name=name,
@@ -193,6 +224,7 @@ class AlertGroup:
             slug=slug,
             group_by_alert_title=group_by_alert_title,
             group_by_alert_urgency=group_by_alert_urgency,
+            owner_group_ids=owner_group_ids,
             targets=targets,
             attributes=attributes,
             conditions=conditions,

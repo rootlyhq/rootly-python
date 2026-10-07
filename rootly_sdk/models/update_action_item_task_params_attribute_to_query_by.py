@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateActionItemTaskParamsAttributeToQueryBy = Literal[
     "airtable_record_id",
@@ -43,7 +43,7 @@ def check_update_action_item_task_params_attribute_to_query_by(
     if value is None:
         return None
     if value in UPDATE_ACTION_ITEM_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
-        return cast(UpdateActionItemTaskParamsAttributeToQueryBy, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ACTION_ITEM_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES!r}"
     )

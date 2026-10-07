@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListIncidentsInclude = Literal[
     "action_items",
@@ -43,5 +43,5 @@ def check_list_incidents_include(value: str | None) -> ListIncidentsInclude | No
     if value is None:
         return None
     if value in LIST_INCIDENTS_INCLUDE_VALUES:
-        return cast(ListIncidentsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_INCIDENTS_INCLUDE_VALUES!r}")

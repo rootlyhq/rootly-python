@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,19 +20,19 @@ class AttachRetrospectivePdfToFreshserviceTicketTaskParams:
     """
     Attributes:
         ticket_id (str): The Freshservice ticket id
-        task_type (Union[Unset, AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType]):
-        filename (Union[Unset, str]): The attachment filename
+        task_type (AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType | Unset):
+        filename (str | Unset): The attachment filename
     """
 
     ticket_id: str
-    task_type: Unset | AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType = UNSET
-    filename: Unset | str = UNSET
+    task_type: AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType | Unset = UNSET
+    filename: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         ticket_id = self.ticket_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -56,7 +58,7 @@ class AttachRetrospectivePdfToFreshserviceTicketTaskParams:
         ticket_id = d.pop("ticket_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType
+        task_type: AttachRetrospectivePdfToFreshserviceTicketTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

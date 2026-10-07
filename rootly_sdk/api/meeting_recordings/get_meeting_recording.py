@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
@@ -13,11 +14,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: str,
     *,
-    include: Unset | GetMeetingRecordingInclude = UNSET,
+    include: GetMeetingRecordingInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -27,7 +29,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/meeting_recordings/{id}",
+        "url": "/v1/meeting_recordings/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -67,7 +71,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetMeetingRecordingInclude = UNSET,
+    include: GetMeetingRecordingInclude | Unset = UNSET,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Get a meeting recording
 
@@ -76,14 +80,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetMeetingRecordingInclude]):
+        include (GetMeetingRecordingInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, MeetingRecordingResponse]]
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -102,7 +106,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetMeetingRecordingInclude = UNSET,
+    include: GetMeetingRecordingInclude | Unset = UNSET,
 ) -> Any | MeetingRecordingResponse | None:
     """Get a meeting recording
 
@@ -111,14 +115,14 @@ def sync(
 
     Args:
         id (str):
-        include (Union[Unset, GetMeetingRecordingInclude]):
+        include (GetMeetingRecordingInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, MeetingRecordingResponse]
+        Any | MeetingRecordingResponse
     """
 
     return sync_detailed(
@@ -132,7 +136,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetMeetingRecordingInclude = UNSET,
+    include: GetMeetingRecordingInclude | Unset = UNSET,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Get a meeting recording
 
@@ -141,14 +145,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        include (Union[Unset, GetMeetingRecordingInclude]):
+        include (GetMeetingRecordingInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, MeetingRecordingResponse]]
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -165,7 +169,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetMeetingRecordingInclude = UNSET,
+    include: GetMeetingRecordingInclude | Unset = UNSET,
 ) -> Any | MeetingRecordingResponse | None:
     """Get a meeting recording
 
@@ -174,14 +178,14 @@ async def asyncio(
 
     Args:
         id (str):
-        include (Union[Unset, GetMeetingRecordingInclude]):
+        include (GetMeetingRecordingInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, MeetingRecordingResponse]
+        Any | MeetingRecordingResponse
     """
 
     return (

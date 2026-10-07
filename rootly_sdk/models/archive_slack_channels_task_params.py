@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -21,12 +23,18 @@ T = TypeVar("T", bound="ArchiveSlackChannelsTaskParams")
 class ArchiveSlackChannelsTaskParams:
     """
     Attributes:
-        channels (list['ArchiveSlackChannelsTaskParamsChannelsItem']):
-        task_type (Union[Unset, ArchiveSlackChannelsTaskParamsTaskType]):
+        channels (list[ArchiveSlackChannelsTaskParamsChannelsItem]):
+        task_type (ArchiveSlackChannelsTaskParamsTaskType | Unset):
+        retry_count (int | Unset): Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+            Default: 0. Example: 3.
+        retry_wait_time (int | Unset): Seconds to wait before each retry (1-15). Retry-After header is honored when
+            present and <= 90s, taking the larger of retry_wait_time and the header value. Default: 1. Example: 2.
     """
 
-    channels: list["ArchiveSlackChannelsTaskParamsChannelsItem"]
-    task_type: Unset | ArchiveSlackChannelsTaskParamsTaskType = UNSET
+    channels: list[ArchiveSlackChannelsTaskParamsChannelsItem]
+    task_type: ArchiveSlackChannelsTaskParamsTaskType | Unset = UNSET
+    retry_count: int | Unset = 0
+    retry_wait_time: int | Unset = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,9 +43,13 @@ class ArchiveSlackChannelsTaskParams:
             channels_item = channels_item_data.to_dict()
             channels.append(channels_item)
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
+
+        retry_count = self.retry_count
+
+        retry_wait_time = self.retry_wait_time
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -48,6 +60,10 @@ class ArchiveSlackChannelsTaskParams:
         )
         if task_type is not UNSET:
             field_dict["task_type"] = task_type
+        if retry_count is not UNSET:
+            field_dict["retry_count"] = retry_count
+        if retry_wait_time is not UNSET:
+            field_dict["retry_wait_time"] = retry_wait_time
 
         return field_dict
 
@@ -64,15 +80,21 @@ class ArchiveSlackChannelsTaskParams:
             channels.append(channels_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | ArchiveSlackChannelsTaskParamsTaskType
+        task_type: ArchiveSlackChannelsTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_archive_slack_channels_task_params_task_type(_task_type)
 
+        retry_count = d.pop("retry_count", UNSET)
+
+        retry_wait_time = d.pop("retry_wait_time", UNSET)
+
         archive_slack_channels_task_params = cls(
             channels=channels,
             task_type=task_type,
+            retry_count=retry_count,
+            retry_wait_time=retry_wait_time,
         )
 
         archive_slack_channels_task_params.additional_properties = d

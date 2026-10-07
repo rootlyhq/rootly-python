@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateOpsgenieAlertTaskParamsPriority = Literal["auto", "P1", "P2", "P3", "P4", "P5"]
 
@@ -16,7 +16,7 @@ def check_create_opsgenie_alert_task_params_priority(value: str | None) -> Creat
     if value is None:
         return None
     if value in CREATE_OPSGENIE_ALERT_TASK_PARAMS_PRIORITY_VALUES:
-        return cast(CreateOpsgenieAlertTaskParamsPriority, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_OPSGENIE_ALERT_TASK_PARAMS_PRIORITY_VALUES!r}"
     )

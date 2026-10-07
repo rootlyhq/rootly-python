@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateFormSetConditionDataAttributesComparison = Literal["equal"]
 
@@ -13,7 +13,7 @@ def check_update_form_set_condition_data_attributes_comparison(
     if value is None:
         return None
     if value in UPDATE_FORM_SET_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES:
-        return cast(UpdateFormSetConditionDataAttributesComparison, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_SET_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES!r}"
     )

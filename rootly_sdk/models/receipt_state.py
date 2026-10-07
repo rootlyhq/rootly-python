@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ReceiptState = Literal["done", "failed", "pending"]
 
@@ -13,5 +13,5 @@ def check_receipt_state(value: str | None) -> ReceiptState | None:
     if value is None:
         return None
     if value in RECEIPT_STATE_VALUES:
-        return cast(ReceiptState, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RECEIPT_STATE_VALUES!r}")

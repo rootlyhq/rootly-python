@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
@@ -15,9 +17,17 @@ from ..models.update_escalation_policy_path_data_attributes_notification_type im
     UpdateEscalationPolicyPathDataAttributesNotificationType,
     check_update_escalation_policy_path_data_attributes_notification_type,
 )
+from ..models.update_escalation_policy_path_data_attributes_notification_type_fallback import (
+    UpdateEscalationPolicyPathDataAttributesNotificationTypeFallback,
+    check_update_escalation_policy_path_data_attributes_notification_type_fallback,
+)
 from ..models.update_escalation_policy_path_data_attributes_path_type import (
     UpdateEscalationPolicyPathDataAttributesPathType,
     check_update_escalation_policy_path_data_attributes_path_type,
+)
+from ..models.update_escalation_policy_path_data_attributes_retrigger_timeout_minutes import (
+    UpdateEscalationPolicyPathDataAttributesRetriggerTimeoutMinutes,
+    check_update_escalation_policy_path_data_attributes_retrigger_timeout_minutes,
 )
 from ..models.update_escalation_policy_path_data_attributes_time_restriction_time_zone import (
     UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone,
@@ -26,77 +36,14 @@ from ..models.update_escalation_policy_path_data_attributes_time_restriction_tim
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType0,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_1 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType1,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_2 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType2,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_3 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType3,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_4 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType4,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType5,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_6 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType6,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_7 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType7,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_0 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_1 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_2 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_3 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_4 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_5 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_6 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_7 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_0 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_1 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_2 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_3 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_4 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_5 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_6 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6,
-    )
-    from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_7 import (
-        UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7,
+    from ..models.escalation_path_rule_alert_urgency import EscalationPathRuleAlertUrgency
+    from ..models.escalation_path_rule_deferral_window import EscalationPathRuleDeferralWindow
+    from ..models.escalation_path_rule_field import EscalationPathRuleField
+    from ..models.escalation_path_rule_json_path import EscalationPathRuleJsonPath
+    from ..models.escalation_path_rule_service import EscalationPathRuleService
+    from ..models.escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
+    from ..models.update_escalation_policy_path_data_attributes_notification_type_rules_item import (
+        UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem,
     )
     from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item import (
         UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
@@ -110,212 +57,120 @@ T = TypeVar("T", bound="UpdateEscalationPolicyPathDataAttributes")
 class UpdateEscalationPolicyPathDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the escalation path
-        notification_type (Union[Unset, UpdateEscalationPolicyPathDataAttributesNotificationType]): Position of the
-            escalation policy level Default: 'audible'.
-        path_type (Union[Unset, UpdateEscalationPolicyPathDataAttributesPathType]): The type of escalation path. Cannot
-            be changed after creation.
-        after_deferral_behavior (Union[Unset, UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior]): What
-            happens after a deferral path finishes.
-        after_deferral_path_id (Union[None, Unset, str]): The escalation path to execute after this deferral path when
+        name (str | Unset): The name of the escalation path
+        notification_type (UpdateEscalationPolicyPathDataAttributesNotificationType | Unset): Position of the escalation
+            policy level Default: 'audible'.
+        path_type (UpdateEscalationPolicyPathDataAttributesPathType | Unset): The type of escalation path. Cannot be
+            changed after creation.
+        after_deferral_behavior (UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset): What happens
+            after a deferral path finishes.
+        after_deferral_path_id (None | str | Unset): The escalation path to execute after this deferral path when
             after_deferral_behavior is execute_path.
-        default (Union[None, Unset, bool]): Whether this escalation path is the default path
-        match_mode (Union[Unset, UpdateEscalationPolicyPathDataAttributesMatchMode]): How path rules are matched.
-            Default: 'match-all-rules'.
-        position (Union[Unset, int]): The position of this path in the paths for this EP.
-        repeat (Union[None, Unset, bool]): Whether this path should be repeated until someone acknowledges the alert
-        repeat_count (Union[None, Unset, int]): The number of times this path will be executed until someone
-            acknowledges the alert
-        initial_delay (Union[Unset, int]): Initial delay for escalation path in minutes. Maximum 1 week (10080).
-        retrigger_timeout_minutes (Union[None, Unset, int]): Re-trigger acknowledged alerts on this path after N
-            minutes; null inherits the urgency/workspace default, negative = never.
-        rules (Union[Unset, list[Union['UpdateEscalationPolicyPathDataAttributesRulesItemType0',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType1',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType2',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType3',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType4',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType5',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType6',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType7',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6',
-            'UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7']]]): Escalation path conditions
-        time_restriction_time_zone (Union[Unset, UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone]): Time
-            zone used for time restrictions.
-        time_restrictions (Union[Unset, list['UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem']]): If time
+        default (bool | None | Unset): Whether this escalation path is the default path
+        match_mode (UpdateEscalationPolicyPathDataAttributesMatchMode | Unset): How path rules are matched. Default:
+            'match-all-rules'.
+        position (int | Unset): The position of this path in the paths for this EP.
+        repeat (bool | None | Unset): Whether this path should be repeated until someone acknowledges the alert
+        repeat_count (int | None | Unset): The number of times this path will be executed until someone acknowledges the
+            alert
+        initial_delay (int | Unset): Initial delay for escalation path in minutes. Maximum 1 week (10080).
+        retrigger_timeout_minutes (UpdateEscalationPolicyPathDataAttributesRetriggerTimeoutMinutes | Unset): Re-trigger
+            acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, -1 = never.
+        rules (list[EscalationPathRuleAlertUrgency | EscalationPathRuleDeferralWindow | EscalationPathRuleField |
+            EscalationPathRuleJsonPath | EscalationPathRuleService | EscalationPathRuleWorkingHour | None] | Unset):
+            Escalation path conditions
+        notification_type_rules (list[UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem] | Unset): Rules
+            deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's
+            notification_type wins, otherwise notification_type_fallback applies. When present, the path's notification_type
+            is aligned to notification_type_fallback. Only available when notification type conditions are enabled for the
+            team.
+        notification_type_fallback (UpdateEscalationPolicyPathDataAttributesNotificationTypeFallback | Unset): Paged
+            when no notification type rule matches. Considered only when notification_type_rules are present — the path's
+            notification_type is aligned to it; without rules it is aligned to notification_type instead. Only available
+            when notification type conditions are enabled for the team. Default: 'audible'.
+        time_restriction_time_zone (UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset): Time zone
+            used for time restrictions.
+        time_restrictions (list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset): If time
             restrictions are set, alerts will follow this path when they arrive within the specified time ranges and meet
             the rules.
     """
 
-    name: Unset | str = UNSET
-    notification_type: Unset | UpdateEscalationPolicyPathDataAttributesNotificationType = "audible"
-    path_type: Unset | UpdateEscalationPolicyPathDataAttributesPathType = UNSET
-    after_deferral_behavior: Unset | UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior = UNSET
-    after_deferral_path_id: None | Unset | str = UNSET
-    default: None | Unset | bool = UNSET
-    match_mode: Unset | UpdateEscalationPolicyPathDataAttributesMatchMode = "match-all-rules"
-    position: Unset | int = UNSET
-    repeat: None | Unset | bool = UNSET
-    repeat_count: None | Unset | int = UNSET
-    initial_delay: Unset | int = UNSET
-    retrigger_timeout_minutes: None | Unset | int = UNSET
+    name: str | Unset = UNSET
+    notification_type: UpdateEscalationPolicyPathDataAttributesNotificationType | Unset = "audible"
+    path_type: UpdateEscalationPolicyPathDataAttributesPathType | Unset = UNSET
+    after_deferral_behavior: UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset = UNSET
+    after_deferral_path_id: None | str | Unset = UNSET
+    default: bool | None | Unset = UNSET
+    match_mode: UpdateEscalationPolicyPathDataAttributesMatchMode | Unset = "match-all-rules"
+    position: int | Unset = UNSET
+    repeat: bool | None | Unset = UNSET
+    repeat_count: int | None | Unset = UNSET
+    initial_delay: int | Unset = UNSET
+    retrigger_timeout_minutes: UpdateEscalationPolicyPathDataAttributesRetriggerTimeoutMinutes | Unset = UNSET
     rules: (
-        Unset
-        | list[
-            Union[
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType7",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7",
-            ]
+        list[
+            EscalationPathRuleAlertUrgency
+            | EscalationPathRuleDeferralWindow
+            | EscalationPathRuleField
+            | EscalationPathRuleJsonPath
+            | EscalationPathRuleService
+            | EscalationPathRuleWorkingHour
+            | None
         ]
+        | Unset
     ) = UNSET
-    time_restriction_time_zone: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone = UNSET
-    time_restrictions: Unset | list["UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem"] = UNSET
+    notification_type_rules: list[UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem] | Unset = UNSET
+    notification_type_fallback: UpdateEscalationPolicyPathDataAttributesNotificationTypeFallback | Unset = "audible"
+    time_restriction_time_zone: UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset = UNSET
+    time_restrictions: list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType7,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6,
-        )
+        from ..models.escalation_path_rule_alert_urgency import EscalationPathRuleAlertUrgency
+        from ..models.escalation_path_rule_deferral_window import EscalationPathRuleDeferralWindow
+        from ..models.escalation_path_rule_field import EscalationPathRuleField
+        from ..models.escalation_path_rule_json_path import EscalationPathRuleJsonPath
+        from ..models.escalation_path_rule_service import EscalationPathRuleService
+        from ..models.escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
 
         name = self.name
 
-        notification_type: Unset | str = UNSET
+        notification_type: str | Unset = UNSET
         if not isinstance(self.notification_type, Unset):
             notification_type = self.notification_type
 
-        path_type: Unset | str = UNSET
+        path_type: str | Unset = UNSET
         if not isinstance(self.path_type, Unset):
             path_type = self.path_type
 
-        after_deferral_behavior: Unset | str = UNSET
+        after_deferral_behavior: str | Unset = UNSET
         if not isinstance(self.after_deferral_behavior, Unset):
             after_deferral_behavior = self.after_deferral_behavior
 
-        after_deferral_path_id: None | Unset | str
+        after_deferral_path_id: None | str | Unset
         if isinstance(self.after_deferral_path_id, Unset):
             after_deferral_path_id = UNSET
         else:
             after_deferral_path_id = self.after_deferral_path_id
 
-        default: None | Unset | bool
+        default: bool | None | Unset
         if isinstance(self.default, Unset):
             default = UNSET
         else:
             default = self.default
 
-        match_mode: Unset | str = UNSET
+        match_mode: str | Unset = UNSET
         if not isinstance(self.match_mode, Unset):
             match_mode = self.match_mode
 
         position = self.position
 
-        repeat: None | Unset | bool
+        repeat: bool | None | Unset
         if isinstance(self.repeat, Unset):
             repeat = UNSET
         else:
             repeat = self.repeat
 
-        repeat_count: None | Unset | int
+        repeat_count: int | None | Unset
         if isinstance(self.repeat_count, Unset):
             repeat_count = UNSET
         else:
@@ -323,73 +178,47 @@ class UpdateEscalationPolicyPathDataAttributes:
 
         initial_delay = self.initial_delay
 
-        retrigger_timeout_minutes: None | Unset | int
-        if isinstance(self.retrigger_timeout_minutes, Unset):
-            retrigger_timeout_minutes = UNSET
-        else:
+        retrigger_timeout_minutes: int | Unset = UNSET
+        if not isinstance(self.retrigger_timeout_minutes, Unset):
             retrigger_timeout_minutes = self.retrigger_timeout_minutes
 
-        rules: Unset | list[dict[str, Any]] = UNSET
+        rules: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.rules, Unset):
             rules = []
             for rules_item_data in self.rules:
-                rules_item: dict[str, Any]
-                if isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType0):
+                rules_item: dict[str, Any] | None
+                if isinstance(rules_item_data, EscalationPathRuleAlertUrgency):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType1):
+                elif isinstance(rules_item_data, EscalationPathRuleWorkingHour):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType2):
+                elif isinstance(rules_item_data, EscalationPathRuleJsonPath):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType3):
+                elif isinstance(rules_item_data, EscalationPathRuleField):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType4):
+                elif isinstance(rules_item_data, EscalationPathRuleService):
                     rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType5):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType6):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType7):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5):
-                    rules_item = rules_item_data.to_dict()
-                elif isinstance(rules_item_data, UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6):
+                elif isinstance(rules_item_data, EscalationPathRuleDeferralWindow):
                     rules_item = rules_item_data.to_dict()
                 else:
-                    rules_item = rules_item_data.to_dict()
-
+                    rules_item = rules_item_data
                 rules.append(rules_item)
 
-        time_restriction_time_zone: Unset | str = UNSET
+        notification_type_rules: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.notification_type_rules, Unset):
+            notification_type_rules = []
+            for notification_type_rules_item_data in self.notification_type_rules:
+                notification_type_rules_item = notification_type_rules_item_data.to_dict()
+                notification_type_rules.append(notification_type_rules_item)
+
+        notification_type_fallback: str | Unset = UNSET
+        if not isinstance(self.notification_type_fallback, Unset):
+            notification_type_fallback = self.notification_type_fallback
+
+        time_restriction_time_zone: str | Unset = UNSET
         if not isinstance(self.time_restriction_time_zone, Unset):
             time_restriction_time_zone = self.time_restriction_time_zone
 
-        time_restrictions: Unset | list[dict[str, Any]] = UNSET
+        time_restrictions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.time_restrictions, Unset):
             time_restrictions = []
             for time_restrictions_item_data in self.time_restrictions:
@@ -425,6 +254,10 @@ class UpdateEscalationPolicyPathDataAttributes:
             field_dict["retrigger_timeout_minutes"] = retrigger_timeout_minutes
         if rules is not UNSET:
             field_dict["rules"] = rules
+        if notification_type_rules is not UNSET:
+            field_dict["notification_type_rules"] = notification_type_rules
+        if notification_type_fallback is not UNSET:
+            field_dict["notification_type_fallback"] = notification_type_fallback
         if time_restriction_time_zone is not UNSET:
             field_dict["time_restriction_time_zone"] = time_restriction_time_zone
         if time_restrictions is not UNSET:
@@ -434,77 +267,14 @@ class UpdateEscalationPolicyPathDataAttributes:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType7,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_8_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_0 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_1 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_2 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_3 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_4 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_5 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_6 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6,
-        )
-        from ..models.update_escalation_policy_path_data_attributes_rules_item_type_9_type_7 import (
-            UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7,
+        from ..models.escalation_path_rule_alert_urgency import EscalationPathRuleAlertUrgency
+        from ..models.escalation_path_rule_deferral_window import EscalationPathRuleDeferralWindow
+        from ..models.escalation_path_rule_field import EscalationPathRuleField
+        from ..models.escalation_path_rule_json_path import EscalationPathRuleJsonPath
+        from ..models.escalation_path_rule_service import EscalationPathRuleService
+        from ..models.escalation_path_rule_working_hour import EscalationPathRuleWorkingHour
+        from ..models.update_escalation_policy_path_data_attributes_notification_type_rules_item import (
+            UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem,
         )
         from ..models.update_escalation_policy_path_data_attributes_time_restrictions_item import (
             UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem,
@@ -514,7 +284,7 @@ class UpdateEscalationPolicyPathDataAttributes:
         name = d.pop("name", UNSET)
 
         _notification_type = d.pop("notification_type", UNSET)
-        notification_type: Unset | UpdateEscalationPolicyPathDataAttributesNotificationType
+        notification_type: UpdateEscalationPolicyPathDataAttributesNotificationType | Unset
         if isinstance(_notification_type, Unset):
             notification_type = UNSET
         else:
@@ -523,14 +293,14 @@ class UpdateEscalationPolicyPathDataAttributes:
             )
 
         _path_type = d.pop("path_type", UNSET)
-        path_type: Unset | UpdateEscalationPolicyPathDataAttributesPathType
+        path_type: UpdateEscalationPolicyPathDataAttributesPathType | Unset
         if isinstance(_path_type, Unset):
             path_type = UNSET
         else:
             path_type = check_update_escalation_policy_path_data_attributes_path_type(_path_type)
 
         _after_deferral_behavior = d.pop("after_deferral_behavior", UNSET)
-        after_deferral_behavior: Unset | UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior
+        after_deferral_behavior: UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior | Unset
         if isinstance(_after_deferral_behavior, Unset):
             after_deferral_behavior = UNSET
         else:
@@ -538,26 +308,26 @@ class UpdateEscalationPolicyPathDataAttributes:
                 _after_deferral_behavior
             )
 
-        def _parse_after_deferral_path_id(data: object) -> None | Unset | str:
+        def _parse_after_deferral_path_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         after_deferral_path_id = _parse_after_deferral_path_id(d.pop("after_deferral_path_id", UNSET))
 
-        def _parse_default(data: object) -> None | Unset | bool:
+        def _parse_default(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
         _match_mode = d.pop("match_mode", UNSET)
-        match_mode: Unset | UpdateEscalationPolicyPathDataAttributesMatchMode
+        match_mode: UpdateEscalationPolicyPathDataAttributesMatchMode | Unset
         if isinstance(_match_mode, Unset):
             match_mode = UNSET
         else:
@@ -565,293 +335,152 @@ class UpdateEscalationPolicyPathDataAttributes:
 
         position = d.pop("position", UNSET)
 
-        def _parse_repeat(data: object) -> None | Unset | bool:
+        def _parse_repeat(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         repeat = _parse_repeat(d.pop("repeat", UNSET))
 
-        def _parse_repeat_count(data: object) -> None | Unset | int:
+        def _parse_repeat_count(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         repeat_count = _parse_repeat_count(d.pop("repeat_count", UNSET))
 
         initial_delay = d.pop("initial_delay", UNSET)
 
-        def _parse_retrigger_timeout_minutes(data: object) -> None | Unset | int:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(None | Unset | int, data)
+        _retrigger_timeout_minutes = d.pop("retrigger_timeout_minutes", UNSET)
+        retrigger_timeout_minutes: UpdateEscalationPolicyPathDataAttributesRetriggerTimeoutMinutes | Unset
+        if isinstance(_retrigger_timeout_minutes, Unset):
+            retrigger_timeout_minutes = UNSET
+        else:
+            retrigger_timeout_minutes = check_update_escalation_policy_path_data_attributes_retrigger_timeout_minutes(
+                _retrigger_timeout_minutes
+            )
 
-        retrigger_timeout_minutes = _parse_retrigger_timeout_minutes(d.pop("retrigger_timeout_minutes", UNSET))
-
-        rules = []
         _rules = d.pop("rules", UNSET)
-        for rules_item_data in _rules or []:
+        rules: (
+            list[
+                EscalationPathRuleAlertUrgency
+                | EscalationPathRuleDeferralWindow
+                | EscalationPathRuleField
+                | EscalationPathRuleJsonPath
+                | EscalationPathRuleService
+                | EscalationPathRuleWorkingHour
+                | None
+            ]
+            | Unset
+        ) = UNSET
+        if _rules is not UNSET:
+            rules = []
+            for rules_item_data in _rules:
 
-            def _parse_rules_item(
-                data: object,
-            ) -> Union[
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType7",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6",
-                "UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7",
-            ]:
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_0 = UpdateEscalationPolicyPathDataAttributesRulesItemType0.from_dict(data)
+                def _parse_rules_item(
+                    data: object,
+                ) -> (
+                    EscalationPathRuleAlertUrgency
+                    | EscalationPathRuleDeferralWindow
+                    | EscalationPathRuleField
+                    | EscalationPathRuleJsonPath
+                    | EscalationPathRuleService
+                    | EscalationPathRuleWorkingHour
+                    | None
+                ):
+                    if data is None:
+                        return data
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_0 = EscalationPathRuleAlertUrgency.from_dict(data)
 
-                    return rules_item_type_0
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_1 = UpdateEscalationPolicyPathDataAttributesRulesItemType1.from_dict(data)
+                        return rules_item_type_0
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_1 = EscalationPathRuleWorkingHour.from_dict(data)
 
-                    return rules_item_type_1
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_2 = UpdateEscalationPolicyPathDataAttributesRulesItemType2.from_dict(data)
+                        return rules_item_type_1
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_2 = EscalationPathRuleJsonPath.from_dict(data)
 
-                    return rules_item_type_2
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_3 = UpdateEscalationPolicyPathDataAttributesRulesItemType3.from_dict(data)
+                        return rules_item_type_2
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_3 = EscalationPathRuleField.from_dict(data)
 
-                    return rules_item_type_3
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_4 = UpdateEscalationPolicyPathDataAttributesRulesItemType4.from_dict(data)
+                        return rules_item_type_3
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_4 = EscalationPathRuleService.from_dict(data)
 
-                    return rules_item_type_4
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_5 = UpdateEscalationPolicyPathDataAttributesRulesItemType5.from_dict(data)
+                        return rules_item_type_4
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        rules_item_type_5 = EscalationPathRuleDeferralWindow.from_dict(data)
 
-                    return rules_item_type_5
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_6 = UpdateEscalationPolicyPathDataAttributesRulesItemType6.from_dict(data)
-
-                    return rules_item_type_6
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_7 = UpdateEscalationPolicyPathDataAttributesRulesItemType7.from_dict(data)
-
-                    return rules_item_type_7
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_0 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type0.from_dict(
-                        data
+                        return rules_item_type_5
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    return cast(
+                        EscalationPathRuleAlertUrgency
+                        | EscalationPathRuleDeferralWindow
+                        | EscalationPathRuleField
+                        | EscalationPathRuleJsonPath
+                        | EscalationPathRuleService
+                        | EscalationPathRuleWorkingHour
+                        | None,
+                        data,
                     )
 
-                    return rules_item_type_8_type_0
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_1 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type1.from_dict(
-                        data
+                rules_item = _parse_rules_item(rules_item_data)
+
+                rules.append(rules_item)
+
+        _notification_type_rules = d.pop("notification_type_rules", UNSET)
+        notification_type_rules: list[UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem] | Unset = UNSET
+        if _notification_type_rules is not UNSET:
+            notification_type_rules = []
+            for notification_type_rules_item_data in _notification_type_rules:
+                notification_type_rules_item = (
+                    UpdateEscalationPolicyPathDataAttributesNotificationTypeRulesItem.from_dict(
+                        notification_type_rules_item_data
                     )
+                )
 
-                    return rules_item_type_8_type_1
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_2 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type2.from_dict(
-                        data
-                    )
+                notification_type_rules.append(notification_type_rules_item)
 
-                    return rules_item_type_8_type_2
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_3 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type3.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_8_type_3
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_4 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type4.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_8_type_4
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_5 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type5.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_8_type_5
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_6 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type6.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_8_type_6
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_8_type_7 = UpdateEscalationPolicyPathDataAttributesRulesItemType8Type7.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_8_type_7
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_0 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type0.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_0
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_1 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type1.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_1
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_2 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type2.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_2
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_3 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type3.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_3
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_4 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type4.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_4
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_5 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type5.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_5
-                except:  # noqa: E722
-                    pass
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    rules_item_type_9_type_6 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type6.from_dict(
-                        data
-                    )
-
-                    return rules_item_type_9_type_6
-                except:  # noqa: E722
-                    pass
-                if not isinstance(data, dict):
-                    raise TypeError()
-                rules_item_type_9_type_7 = UpdateEscalationPolicyPathDataAttributesRulesItemType9Type7.from_dict(data)
-
-                return rules_item_type_9_type_7
-
-            rules_item = _parse_rules_item(rules_item_data)
-
-            rules.append(rules_item)
+        _notification_type_fallback = d.pop("notification_type_fallback", UNSET)
+        notification_type_fallback: UpdateEscalationPolicyPathDataAttributesNotificationTypeFallback | Unset
+        if isinstance(_notification_type_fallback, Unset):
+            notification_type_fallback = UNSET
+        else:
+            notification_type_fallback = check_update_escalation_policy_path_data_attributes_notification_type_fallback(
+                _notification_type_fallback
+            )
 
         _time_restriction_time_zone = d.pop("time_restriction_time_zone", UNSET)
-        time_restriction_time_zone: Unset | UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone
+        time_restriction_time_zone: UpdateEscalationPolicyPathDataAttributesTimeRestrictionTimeZone | Unset
         if isinstance(_time_restriction_time_zone, Unset):
             time_restriction_time_zone = UNSET
         else:
@@ -859,14 +488,16 @@ class UpdateEscalationPolicyPathDataAttributes:
                 _time_restriction_time_zone
             )
 
-        time_restrictions = []
         _time_restrictions = d.pop("time_restrictions", UNSET)
-        for time_restrictions_item_data in _time_restrictions or []:
-            time_restrictions_item = UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem.from_dict(
-                time_restrictions_item_data
-            )
+        time_restrictions: list[UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem] | Unset = UNSET
+        if _time_restrictions is not UNSET:
+            time_restrictions = []
+            for time_restrictions_item_data in _time_restrictions:
+                time_restrictions_item = UpdateEscalationPolicyPathDataAttributesTimeRestrictionsItem.from_dict(
+                    time_restrictions_item_data
+                )
 
-            time_restrictions.append(time_restrictions_item)
+                time_restrictions.append(time_restrictions_item)
 
         update_escalation_policy_path_data_attributes = cls(
             name=name,
@@ -882,6 +513,8 @@ class UpdateEscalationPolicyPathDataAttributes:
             initial_delay=initial_delay,
             retrigger_timeout_minutes=retrigger_timeout_minutes,
             rules=rules,
+            notification_type_rules=notification_type_rules,
+            notification_type_fallback=notification_type_fallback,
             time_restriction_time_zone=time_restriction_time_zone,
             time_restrictions=time_restrictions,
         )

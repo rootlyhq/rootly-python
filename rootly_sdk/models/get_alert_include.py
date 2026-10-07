@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GetAlertInclude = Literal[
     "alert_call_recording",
@@ -47,5 +47,5 @@ def check_get_alert_include(value: str | None) -> GetAlertInclude | None:
     if value is None:
         return None
     if value in GET_ALERT_INCLUDE_VALUES:
-        return cast(GetAlertInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_ALERT_INCLUDE_VALUES!r}")

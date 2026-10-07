@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.oncall_notification_type import OncallNotificationType, check_oncall_notification_type
 from ..types import UNSET, Unset
@@ -21,14 +22,13 @@ class Oncall:
         user_id (int): ID of the on-call user
         starts_at (datetime.datetime): Start datetime of the on-call shift
         ends_at (datetime.datetime): End datetime of the on-call shift
-        escalation_policy_path_id (Union[None, Unset, str]): ID of the escalation policy path
-        escalation_policy_path_name (Union[None, Unset, str]): Name of the escalation policy path
-        notification_type (Union[Unset, OncallNotificationType]): Notification type of the escalation path (audible or
-            quiet)
-        is_default_path (Union[None, Unset, bool]): Whether this is the default escalation path
-        escalation_level (Union[Unset, int]): Level within the escalation policy
-        schedule_id (Union[None, Unset, str]): ID of the schedule
-        schedule_name (Union[None, Unset, str]): Name of the schedule
+        escalation_policy_path_id (None | str | Unset): ID of the escalation policy path
+        escalation_policy_path_name (None | str | Unset): Name of the escalation policy path
+        notification_type (OncallNotificationType | Unset): Notification type of the escalation path (audible or quiet)
+        is_default_path (bool | None | Unset): Whether this is the default escalation path
+        escalation_level (int | Unset): Level within the escalation policy
+        schedule_id (None | str | Unset): ID of the schedule
+        schedule_name (None | str | Unset): Name of the schedule
     """
 
     escalation_policy_id: str
@@ -36,13 +36,13 @@ class Oncall:
     user_id: int
     starts_at: datetime.datetime
     ends_at: datetime.datetime
-    escalation_policy_path_id: None | Unset | str = UNSET
-    escalation_policy_path_name: None | Unset | str = UNSET
-    notification_type: Unset | OncallNotificationType = UNSET
-    is_default_path: None | Unset | bool = UNSET
-    escalation_level: Unset | int = UNSET
-    schedule_id: None | Unset | str = UNSET
-    schedule_name: None | Unset | str = UNSET
+    escalation_policy_path_id: None | str | Unset = UNSET
+    escalation_policy_path_name: None | str | Unset = UNSET
+    notification_type: OncallNotificationType | Unset = UNSET
+    is_default_path: bool | None | Unset = UNSET
+    escalation_level: int | Unset = UNSET
+    schedule_id: None | str | Unset = UNSET
+    schedule_name: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,23 +56,23 @@ class Oncall:
 
         ends_at = self.ends_at.isoformat()
 
-        escalation_policy_path_id: None | Unset | str
+        escalation_policy_path_id: None | str | Unset
         if isinstance(self.escalation_policy_path_id, Unset):
             escalation_policy_path_id = UNSET
         else:
             escalation_policy_path_id = self.escalation_policy_path_id
 
-        escalation_policy_path_name: None | Unset | str
+        escalation_policy_path_name: None | str | Unset
         if isinstance(self.escalation_policy_path_name, Unset):
             escalation_policy_path_name = UNSET
         else:
             escalation_policy_path_name = self.escalation_policy_path_name
 
-        notification_type: Unset | str = UNSET
+        notification_type: str | Unset = UNSET
         if not isinstance(self.notification_type, Unset):
             notification_type = self.notification_type
 
-        is_default_path: None | Unset | bool
+        is_default_path: bool | None | Unset
         if isinstance(self.is_default_path, Unset):
             is_default_path = UNSET
         else:
@@ -80,13 +80,13 @@ class Oncall:
 
         escalation_level = self.escalation_level
 
-        schedule_id: None | Unset | str
+        schedule_id: None | str | Unset
         if isinstance(self.schedule_id, Unset):
             schedule_id = UNSET
         else:
             schedule_id = self.schedule_id
 
-        schedule_name: None | Unset | str
+        schedule_name: None | str | Unset
         if isinstance(self.schedule_name, Unset):
             schedule_name = UNSET
         else:
@@ -129,61 +129,61 @@ class Oncall:
 
         user_id = d.pop("user_id")
 
-        starts_at = isoparse(d.pop("starts_at"))
+        starts_at = datetime.datetime.fromisoformat(d.pop("starts_at"))
 
-        ends_at = isoparse(d.pop("ends_at"))
+        ends_at = datetime.datetime.fromisoformat(d.pop("ends_at"))
 
-        def _parse_escalation_policy_path_id(data: object) -> None | Unset | str:
+        def _parse_escalation_policy_path_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         escalation_policy_path_id = _parse_escalation_policy_path_id(d.pop("escalation_policy_path_id", UNSET))
 
-        def _parse_escalation_policy_path_name(data: object) -> None | Unset | str:
+        def _parse_escalation_policy_path_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         escalation_policy_path_name = _parse_escalation_policy_path_name(d.pop("escalation_policy_path_name", UNSET))
 
         _notification_type = d.pop("notification_type", UNSET)
-        notification_type: Unset | OncallNotificationType
+        notification_type: OncallNotificationType | Unset
         if isinstance(_notification_type, Unset):
             notification_type = UNSET
         else:
             notification_type = check_oncall_notification_type(_notification_type)
 
-        def _parse_is_default_path(data: object) -> None | Unset | bool:
+        def _parse_is_default_path(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         is_default_path = _parse_is_default_path(d.pop("is_default_path", UNSET))
 
         escalation_level = d.pop("escalation_level", UNSET)
 
-        def _parse_schedule_id(data: object) -> None | Unset | str:
+        def _parse_schedule_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         schedule_id = _parse_schedule_id(d.pop("schedule_id", UNSET))
 
-        def _parse_schedule_name(data: object) -> None | Unset | str:
+        def _parse_schedule_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         schedule_name = _parse_schedule_name(d.pop("schedule_name", UNSET))
 

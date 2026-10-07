@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ScheduleResponseDataType = Literal["schedules"]
 
@@ -11,5 +11,5 @@ def check_schedule_response_data_type(value: str | None) -> ScheduleResponseData
     if value is None:
         return None
     if value in SCHEDULE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(ScheduleResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SCHEDULE_RESPONSE_DATA_TYPE_VALUES!r}")

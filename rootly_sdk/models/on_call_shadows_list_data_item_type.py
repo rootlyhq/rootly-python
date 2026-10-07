@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallShadowsListDataItemType = Literal["on_call_shadows"]
 
@@ -11,5 +11,5 @@ def check_on_call_shadows_list_data_item_type(value: str | None) -> OnCallShadow
     if value is None:
         return None
     if value in ON_CALL_SHADOWS_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(OnCallShadowsListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_SHADOWS_LIST_DATA_ITEM_TYPE_VALUES!r}")

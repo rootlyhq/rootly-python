@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListRetrospectiveProcessGroupsSort = Literal[
     "-created_at", "-position", "-updated_at", "created_at", "position", "updated_at"
@@ -18,5 +18,5 @@ def check_list_retrospective_process_groups_sort(value: str | None) -> ListRetro
     if value is None:
         return None
     if value in LIST_RETROSPECTIVE_PROCESS_GROUPS_SORT_VALUES:
-        return cast(ListRetrospectiveProcessGroupsSort, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_RETROSPECTIVE_PROCESS_GROUPS_SORT_VALUES!r}")

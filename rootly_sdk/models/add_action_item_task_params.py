@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -39,37 +41,36 @@ class AddActionItemTaskParams:
         priority (AddActionItemTaskParamsPriority): The action item priority
         summary (str): The action item summary
         status (AddActionItemTaskParamsStatus): The action item status
-        task_type (Union[Unset, AddActionItemTaskParamsTaskType]):
-        attribute_to_query_by (Union[Unset, AddActionItemTaskParamsAttributeToQueryBy]): Attribute of the Incident to
-            match against
-        query_value (Union[None, Unset, str]): Value that attribute_to_query_by to uses to match against
-        incident_role_id (Union[Unset, str]): The role id this action item is associated with
-        assigned_to_user_id (Union[Unset, str]): [DEPRECATED] Use assigned_to_user attribute instead. The user id this
-            action item is assigned to
-        assigned_to_user (Union[Unset, AddActionItemTaskParamsAssignedToUser]):  The user this action item is assigned
-            to
-        kind (Union[Unset, str]): The action item kind
-        description (Union[Unset, str]): The action item description
-        post_to_incident_timeline (Union[Unset, bool]):
-        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
+        task_type (AddActionItemTaskParamsTaskType | Unset):
+        attribute_to_query_by (AddActionItemTaskParamsAttributeToQueryBy | Unset): Attribute of the Incident to match
+            against
+        query_value (None | str | Unset): Value that attribute_to_query_by to uses to match against
+        incident_role_id (str | Unset): The role id this action item is associated with
+        assigned_to_user_id (str | Unset): [DEPRECATED] Use assigned_to_user attribute instead. The user id this action
+            item is assigned to
+        assigned_to_user (AddActionItemTaskParamsAssignedToUser | Unset):  The user this action item is assigned to
+        kind (str | Unset): The action item kind
+        description (str | Unset): The action item description
+        post_to_incident_timeline (bool | Unset):
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
-        post_to_slack_channels (Union[Unset, list['AddActionItemTaskParamsPostToSlackChannelsItem']]):
+        post_to_slack_channels (list[AddActionItemTaskParamsPostToSlackChannelsItem] | Unset):
     """
 
     priority: AddActionItemTaskParamsPriority
     summary: str
     status: AddActionItemTaskParamsStatus
-    task_type: Unset | AddActionItemTaskParamsTaskType = UNSET
-    attribute_to_query_by: Unset | AddActionItemTaskParamsAttributeToQueryBy = UNSET
-    query_value: None | Unset | str = UNSET
-    incident_role_id: Unset | str = UNSET
-    assigned_to_user_id: Unset | str = UNSET
-    assigned_to_user: Union[Unset, "AddActionItemTaskParamsAssignedToUser"] = UNSET
-    kind: Unset | str = UNSET
-    description: Unset | str = UNSET
-    post_to_incident_timeline: Unset | bool = UNSET
-    custom_fields_mapping: None | Unset | str = UNSET
-    post_to_slack_channels: Unset | list["AddActionItemTaskParamsPostToSlackChannelsItem"] = UNSET
+    task_type: AddActionItemTaskParamsTaskType | Unset = UNSET
+    attribute_to_query_by: AddActionItemTaskParamsAttributeToQueryBy | Unset = UNSET
+    query_value: None | str | Unset = UNSET
+    incident_role_id: str | Unset = UNSET
+    assigned_to_user_id: str | Unset = UNSET
+    assigned_to_user: AddActionItemTaskParamsAssignedToUser | Unset = UNSET
+    kind: str | Unset = UNSET
+    description: str | Unset = UNSET
+    post_to_incident_timeline: bool | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
+    post_to_slack_channels: list[AddActionItemTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,15 +80,15 @@ class AddActionItemTaskParams:
 
         status: str = self.status
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        attribute_to_query_by: Unset | str = UNSET
+        attribute_to_query_by: str | Unset = UNSET
         if not isinstance(self.attribute_to_query_by, Unset):
             attribute_to_query_by = self.attribute_to_query_by
 
-        query_value: None | Unset | str
+        query_value: None | str | Unset
         if isinstance(self.query_value, Unset):
             query_value = UNSET
         else:
@@ -97,7 +98,7 @@ class AddActionItemTaskParams:
 
         assigned_to_user_id = self.assigned_to_user_id
 
-        assigned_to_user: Unset | dict[str, Any] = UNSET
+        assigned_to_user: dict[str, Any] | Unset = UNSET
         if not isinstance(self.assigned_to_user, Unset):
             assigned_to_user = self.assigned_to_user.to_dict()
 
@@ -107,13 +108,13 @@ class AddActionItemTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        custom_fields_mapping: None | Unset | str
+        custom_fields_mapping: None | str | Unset
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
             custom_fields_mapping = self.custom_fields_mapping
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -169,25 +170,25 @@ class AddActionItemTaskParams:
         status = check_add_action_item_task_params_status(d.pop("status"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | AddActionItemTaskParamsTaskType
+        task_type: AddActionItemTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_add_action_item_task_params_task_type(_task_type)
 
         _attribute_to_query_by = d.pop("attribute_to_query_by", UNSET)
-        attribute_to_query_by: Unset | AddActionItemTaskParamsAttributeToQueryBy
+        attribute_to_query_by: AddActionItemTaskParamsAttributeToQueryBy | Unset
         if isinstance(_attribute_to_query_by, Unset):
             attribute_to_query_by = UNSET
         else:
             attribute_to_query_by = check_add_action_item_task_params_attribute_to_query_by(_attribute_to_query_by)
 
-        def _parse_query_value(data: object) -> None | Unset | str:
+        def _parse_query_value(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         query_value = _parse_query_value(d.pop("query_value", UNSET))
 
@@ -196,7 +197,7 @@ class AddActionItemTaskParams:
         assigned_to_user_id = d.pop("assigned_to_user_id", UNSET)
 
         _assigned_to_user = d.pop("assigned_to_user", UNSET)
-        assigned_to_user: Unset | AddActionItemTaskParamsAssignedToUser
+        assigned_to_user: AddActionItemTaskParamsAssignedToUser | Unset
         if isinstance(_assigned_to_user, Unset):
             assigned_to_user = UNSET
         else:
@@ -208,23 +209,25 @@ class AddActionItemTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
-        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = AddActionItemTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[AddActionItemTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = AddActionItemTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
 
         add_action_item_task_params = cls(
             priority=priority,

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -32,38 +34,44 @@ class CreateZoomMeetingTaskParams:
     """
     Attributes:
         topic (str): The meeting topic
-        task_type (Union[Unset, CreateZoomMeetingTaskParamsTaskType]):
-        password (Union[Unset, str]): The meeting password
-        create_as_email (Union[Unset, str]): The email to use if creating as email
-        alternative_hosts (Union[Unset, list[str]]):
-        auto_recording (Union[Unset, CreateZoomMeetingTaskParamsAutoRecording]):  Default: 'none'.
-        record_meeting (Union[Unset, bool]): Rootly AI will record the meeting and automatically generate a transcript
-            and summary from your meeting
-        recording_mode (Union[Unset, CreateZoomMeetingTaskParamsRecordingMode]): The video layout for the bot's
-            recording (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
-        enable_zoom_bot_auto_join (Union[Unset, bool]): Allow the Rootly bot to start recording without waiting for host
+        task_type (CreateZoomMeetingTaskParamsTaskType | Unset):
+        password (str | Unset): The meeting password
+        create_as_email (str | Unset): The email to use if creating as email
+        alternative_hosts (list[str] | Unset):
+        auto_recording (CreateZoomMeetingTaskParamsAutoRecording | Unset):  Default: 'none'.
+        record_meeting (bool | Unset): Rootly AI will record the meeting and automatically generate a transcript and
+            summary from your meeting
+        recording_mode (CreateZoomMeetingTaskParamsRecordingMode | Unset): The video layout for the bot's recording
+            (e.g. speaker_view, gallery_view, gallery_view_v2, audio_only)
+        enable_zoom_bot_auto_join (bool | Unset): Allow the Rootly bot to start recording without waiting for host
             approval
-        post_to_incident_timeline (Union[Unset, bool]):
-        post_to_slack_channels (Union[Unset, list['CreateZoomMeetingTaskParamsPostToSlackChannelsItem']]):
+        post_to_incident_timeline (bool | Unset):
+        post_to_slack_channels (list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset):
+        retry_count (int | Unset): Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+            Default: 0. Example: 3.
+        retry_wait_time (int | Unset): Seconds to wait before each retry (1-15). Retry-After header is honored when
+            present and <= 90s, taking the larger of retry_wait_time and the header value. Default: 1. Example: 2.
     """
 
     topic: str
-    task_type: Unset | CreateZoomMeetingTaskParamsTaskType = UNSET
-    password: Unset | str = UNSET
-    create_as_email: Unset | str = UNSET
-    alternative_hosts: Unset | list[str] = UNSET
-    auto_recording: Unset | CreateZoomMeetingTaskParamsAutoRecording = "none"
-    record_meeting: Unset | bool = UNSET
-    recording_mode: Unset | CreateZoomMeetingTaskParamsRecordingMode = UNSET
-    enable_zoom_bot_auto_join: Unset | bool = UNSET
-    post_to_incident_timeline: Unset | bool = UNSET
-    post_to_slack_channels: Unset | list["CreateZoomMeetingTaskParamsPostToSlackChannelsItem"] = UNSET
+    task_type: CreateZoomMeetingTaskParamsTaskType | Unset = UNSET
+    password: str | Unset = UNSET
+    create_as_email: str | Unset = UNSET
+    alternative_hosts: list[str] | Unset = UNSET
+    auto_recording: CreateZoomMeetingTaskParamsAutoRecording | Unset = "none"
+    record_meeting: bool | Unset = UNSET
+    recording_mode: CreateZoomMeetingTaskParamsRecordingMode | Unset = UNSET
+    enable_zoom_bot_auto_join: bool | Unset = UNSET
+    post_to_incident_timeline: bool | Unset = UNSET
+    post_to_slack_channels: list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+    retry_count: int | Unset = 0
+    retry_wait_time: int | Unset = 1
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         topic = self.topic
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -71,17 +79,17 @@ class CreateZoomMeetingTaskParams:
 
         create_as_email = self.create_as_email
 
-        alternative_hosts: Unset | list[str] = UNSET
+        alternative_hosts: list[str] | Unset = UNSET
         if not isinstance(self.alternative_hosts, Unset):
             alternative_hosts = self.alternative_hosts
 
-        auto_recording: Unset | str = UNSET
+        auto_recording: str | Unset = UNSET
         if not isinstance(self.auto_recording, Unset):
             auto_recording = self.auto_recording
 
         record_meeting = self.record_meeting
 
-        recording_mode: Unset | str = UNSET
+        recording_mode: str | Unset = UNSET
         if not isinstance(self.recording_mode, Unset):
             recording_mode = self.recording_mode
 
@@ -89,12 +97,16 @@ class CreateZoomMeetingTaskParams:
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
                 post_to_slack_channels_item = post_to_slack_channels_item_data.to_dict()
                 post_to_slack_channels.append(post_to_slack_channels_item)
+
+        retry_count = self.retry_count
+
+        retry_wait_time = self.retry_wait_time
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -123,6 +135,10 @@ class CreateZoomMeetingTaskParams:
             field_dict["post_to_incident_timeline"] = post_to_incident_timeline
         if post_to_slack_channels is not UNSET:
             field_dict["post_to_slack_channels"] = post_to_slack_channels
+        if retry_count is not UNSET:
+            field_dict["retry_count"] = retry_count
+        if retry_wait_time is not UNSET:
+            field_dict["retry_wait_time"] = retry_wait_time
 
         return field_dict
 
@@ -136,7 +152,7 @@ class CreateZoomMeetingTaskParams:
         topic = d.pop("topic")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateZoomMeetingTaskParamsTaskType
+        task_type: CreateZoomMeetingTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
@@ -149,7 +165,7 @@ class CreateZoomMeetingTaskParams:
         alternative_hosts = cast(list[str], d.pop("alternative_hosts", UNSET))
 
         _auto_recording = d.pop("auto_recording", UNSET)
-        auto_recording: Unset | CreateZoomMeetingTaskParamsAutoRecording
+        auto_recording: CreateZoomMeetingTaskParamsAutoRecording | Unset
         if isinstance(_auto_recording, Unset):
             auto_recording = UNSET
         else:
@@ -158,7 +174,7 @@ class CreateZoomMeetingTaskParams:
         record_meeting = d.pop("record_meeting", UNSET)
 
         _recording_mode = d.pop("recording_mode", UNSET)
-        recording_mode: Unset | CreateZoomMeetingTaskParamsRecordingMode
+        recording_mode: CreateZoomMeetingTaskParamsRecordingMode | Unset
         if isinstance(_recording_mode, Unset):
             recording_mode = UNSET
         else:
@@ -168,14 +184,20 @@ class CreateZoomMeetingTaskParams:
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = CreateZoomMeetingTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[CreateZoomMeetingTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = CreateZoomMeetingTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
+
+        retry_count = d.pop("retry_count", UNSET)
+
+        retry_wait_time = d.pop("retry_wait_time", UNSET)
 
         create_zoom_meeting_task_params = cls(
             topic=topic,
@@ -189,6 +211,8 @@ class CreateZoomMeetingTaskParams:
             enable_zoom_bot_auto_join=enable_zoom_bot_auto_join,
             post_to_incident_timeline=post_to_incident_timeline,
             post_to_slack_channels=post_to_slack_channels,
+            retry_count=retry_count,
+            retry_wait_time=retry_wait_time,
         )
 
         create_zoom_meeting_task_params.additional_properties = d

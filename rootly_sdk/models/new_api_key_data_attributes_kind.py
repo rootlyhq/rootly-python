@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewApiKeyDataAttributesKind = Literal["organization", "personal", "team"]
 
@@ -13,5 +13,5 @@ def check_new_api_key_data_attributes_kind(value: str | None) -> NewApiKeyDataAt
     if value is None:
         return None
     if value in NEW_API_KEY_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(NewApiKeyDataAttributesKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_API_KEY_DATA_ATTRIBUTES_KIND_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RemoveSubscribersDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_remove_subscribers_data_type(value: str | None) -> RemoveSubscribersDa
     if value is None:
         return None
     if value in REMOVE_SUBSCRIBERS_DATA_TYPE_VALUES:
-        return cast(RemoveSubscribersDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {REMOVE_SUBSCRIBERS_DATA_TYPE_VALUES!r}")

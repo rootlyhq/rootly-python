@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ChangeGoogleChatSpacePrivacyTaskParamsTaskType = Literal["change_google_chat_space_privacy"]
 
@@ -13,7 +13,7 @@ def check_change_google_chat_space_privacy_task_params_task_type(
     if value is None:
         return None
     if value in CHANGE_GOOGLE_CHAT_SPACE_PRIVACY_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(ChangeGoogleChatSpacePrivacyTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CHANGE_GOOGLE_CHAT_SPACE_PRIVACY_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

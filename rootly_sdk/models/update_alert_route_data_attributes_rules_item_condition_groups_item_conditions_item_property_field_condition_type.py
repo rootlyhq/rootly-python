@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType = Literal[
     "contains",
@@ -34,9 +34,7 @@ def check_update_alert_route_data_attributes_rules_item_condition_groups_item_co
         value
         in UPDATE_ALERT_ROUTE_DATA_ATTRIBUTES_RULES_ITEM_CONDITION_GROUPS_ITEM_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES
     ):
-        return cast(
-            UpdateAlertRouteDataAttributesRulesItemConditionGroupsItemConditionsItemPropertyFieldConditionType, value
-        )
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ALERT_ROUTE_DATA_ATTRIBUTES_RULES_ITEM_CONDITION_GROUPS_ITEM_CONDITIONS_ITEM_PROPERTY_FIELD_CONDITION_TYPE_VALUES!r}"
     )

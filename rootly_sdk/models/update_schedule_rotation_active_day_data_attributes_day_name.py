@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateScheduleRotationActiveDayDataAttributesDayName = Literal["F", "M", "R", "S", "T", "U", "W"]
 
@@ -21,7 +21,7 @@ def check_update_schedule_rotation_active_day_data_attributes_day_name(
     if value is None:
         return None
     if value in UPDATE_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_ATTRIBUTES_DAY_NAME_VALUES:
-        return cast(UpdateScheduleRotationActiveDayDataAttributesDayName, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_ATTRIBUTES_DAY_NAME_VALUES!r}"
     )

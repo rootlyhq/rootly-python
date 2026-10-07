@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,16 +15,16 @@ T = TypeVar("T", bound="AlertEventScheduleType0EscalationPoliciesItem")
 class AlertEventScheduleType0EscalationPoliciesItem:
     """
     Attributes:
-        id (Union[Unset, str]):
-        name (Union[Unset, str]):
-        created_at (Union[Unset, str]):
-        updated_at (Union[Unset, str]):
+        id (str | Unset):
+        name (str | Unset):
+        created_at (str | Unset):
+        updated_at (str | Unset):
     """
 
-    id: Unset | str = UNSET
-    name: Unset | str = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
+    id: str | Unset = UNSET
+    name: str | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListRetrospectiveProcessesInclude = Literal["groups", "incident_types", "retrospective_steps", "severities"]
 
@@ -14,5 +14,5 @@ def check_list_retrospective_processes_include(value: str | None) -> ListRetrosp
     if value is None:
         return None
     if value in LIST_RETROSPECTIVE_PROCESSES_INCLUDE_VALUES:
-        return cast(ListRetrospectiveProcessesInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_RETROSPECTIVE_PROCESSES_INCLUDE_VALUES!r}")

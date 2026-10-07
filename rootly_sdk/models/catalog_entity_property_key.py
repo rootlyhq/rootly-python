@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogEntityPropertyKey = Literal["catalog_entity", "slack", "text"]
 
@@ -13,5 +13,5 @@ def check_catalog_entity_property_key(value: str | None) -> CatalogEntityPropert
     if value is None:
         return None
     if value in CATALOG_ENTITY_PROPERTY_KEY_VALUES:
-        return cast(CatalogEntityPropertyKey, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_ENTITY_PROPERTY_KEY_VALUES!r}")
