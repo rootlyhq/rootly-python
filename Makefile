@@ -19,19 +19,16 @@ OPENAPI_PYTHON_CLIENT_VERSION := 0.29.0
 bump-major:
 	@echo "Bumping version: $(CURRENT_VERSION) -> $(NEW_MAJOR)"
 	@sed -i '' 's/version = "$(CURRENT_VERSION)"/version = "$(NEW_MAJOR)"/' pyproject.toml
-	@sed -i '' 's/## \[Unreleased\]/## [Unreleased]\n\n## [$(NEW_MAJOR)] - $(TODAY)/' CHANGELOG.md
 	@echo "Version bumped to $(NEW_MAJOR)"
 
 bump-minor:
 	@echo "Bumping version: $(CURRENT_VERSION) -> $(NEW_MINOR)"
 	@sed -i '' 's/version = "$(CURRENT_VERSION)"/version = "$(NEW_MINOR)"/' pyproject.toml
-	@sed -i '' 's/## \[Unreleased\]/## [Unreleased]\n\n## [$(NEW_MINOR)] - $(TODAY)/' CHANGELOG.md
 	@echo "Version bumped to $(NEW_MINOR)"
 
 bump-patch:
 	@echo "Bumping version: $(CURRENT_VERSION) -> $(NEW_PATCH)"
 	@sed -i '' 's/version = "$(CURRENT_VERSION)"/version = "$(NEW_PATCH)"/' pyproject.toml
-	@sed -i '' 's/## \[Unreleased\]/## [Unreleased]\n\n## [$(NEW_PATCH)] - $(TODAY)/' CHANGELOG.md
 	@echo "Version bumped to $(NEW_PATCH)"
 
 regenerate:

@@ -21,7 +21,7 @@ dynamic = ["dependencies"]
 Homepage = "https://github.com/rootlyhq/rootly-python"
 Issues = "https://github.com/rootlyhq/rootly-python/issues"
 Repository = "https://github.com/rootlyhq/rootly-python.git"
-Changelog = "https://github.com/rootlyhq/rootly-python/blob/master/CHANGELOG.md"
+Changelog = "https://github.com/rootlyhq/rootly-python/releases"
 
 [tool.poetry]
 packages = [
