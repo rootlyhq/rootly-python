@@ -2,6 +2,4 @@ project_name_override: rootly
 package_name_override: rootly_sdk
 literal_enums: true
 
-post_hooks:
-   - "ruff check . --fix"
-   - "ruff format ."
+post_hooks: []

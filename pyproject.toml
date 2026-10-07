@@ -17,6 +17,9 @@ classifiers = [
 ]
 dynamic = ["dependencies"]
 
+[dependency-groups]
+dev = ["openapi-python-client==0.29.0; python_version >= '3.11'", "ruff==0.16.3"]
+
 [project.urls]
 Homepage = "https://github.com/rootlyhq/rootly-python"
 Issues = "https://github.com/rootlyhq/rootly-python/issues"
