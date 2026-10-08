@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewSlaDataAttributesConditionsItemProperty = Literal[
     "acknowledged_at",
@@ -49,7 +49,7 @@ def check_new_sla_data_attributes_conditions_item_property(
     if value is None:
         return None
     if value in NEW_SLA_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_VALUES:
-        return cast(NewSlaDataAttributesConditionsItemProperty, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_SLA_DATA_ATTRIBUTES_CONDITIONS_ITEM_PROPERTY_VALUES!r}"
     )

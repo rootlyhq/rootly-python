@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WorkflowRunTriggeredBy = Literal["system", "user", "workflow"]
 
@@ -13,5 +13,5 @@ def check_workflow_run_triggered_by(value: str | None) -> WorkflowRunTriggeredBy
     if value is None:
         return None
     if value in WORKFLOW_RUN_TRIGGERED_BY_VALUES:
-        return cast(WorkflowRunTriggeredBy, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WORKFLOW_RUN_TRIGGERED_BY_VALUES!r}")

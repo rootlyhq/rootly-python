@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -8,22 +9,25 @@ from ...client import AuthenticatedClient, Client
 from ...models.alert_event_response import AlertEventResponse
 from ...models.errors_list import ErrorsList
 from ...models.new_alert_event import NewAlertEvent
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     alert_id: str,
     *,
-    body: NewAlertEvent,
+    body: NewAlertEvent | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/alerts/{alert_id}/events",
+        "url": "/v1/alerts/{alert_id}/events".format(
+            alert_id=quote(str(alert_id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -65,7 +69,7 @@ def sync_detailed(
     alert_id: str,
     *,
     client: AuthenticatedClient,
-    body: NewAlertEvent,
+    body: NewAlertEvent | Unset = UNSET,
 ) -> Response[AlertEventResponse | ErrorsList]:
     """Create alert event
 
@@ -73,14 +77,14 @@ def sync_detailed(
 
     Args:
         alert_id (str):
-        body (NewAlertEvent):
+        body (NewAlertEvent | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertEventResponse, ErrorsList]]
+        Response[AlertEventResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -99,7 +103,7 @@ def sync(
     alert_id: str,
     *,
     client: AuthenticatedClient,
-    body: NewAlertEvent,
+    body: NewAlertEvent | Unset = UNSET,
 ) -> AlertEventResponse | ErrorsList | None:
     """Create alert event
 
@@ -107,14 +111,14 @@ def sync(
 
     Args:
         alert_id (str):
-        body (NewAlertEvent):
+        body (NewAlertEvent | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertEventResponse, ErrorsList]
+        AlertEventResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -128,7 +132,7 @@ async def asyncio_detailed(
     alert_id: str,
     *,
     client: AuthenticatedClient,
-    body: NewAlertEvent,
+    body: NewAlertEvent | Unset = UNSET,
 ) -> Response[AlertEventResponse | ErrorsList]:
     """Create alert event
 
@@ -136,14 +140,14 @@ async def asyncio_detailed(
 
     Args:
         alert_id (str):
-        body (NewAlertEvent):
+        body (NewAlertEvent | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AlertEventResponse, ErrorsList]]
+        Response[AlertEventResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -160,7 +164,7 @@ async def asyncio(
     alert_id: str,
     *,
     client: AuthenticatedClient,
-    body: NewAlertEvent,
+    body: NewAlertEvent | Unset = UNSET,
 ) -> AlertEventResponse | ErrorsList | None:
     """Create alert event
 
@@ -168,14 +172,14 @@ async def asyncio(
 
     Args:
         alert_id (str):
-        body (NewAlertEvent):
+        body (NewAlertEvent | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AlertEventResponse, ErrorsList]
+        AlertEventResponse | ErrorsList
     """
 
     return (

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RetrospectiveProcessListDataItemType = Literal["retrospective_processes"]
 
@@ -11,5 +11,5 @@ def check_retrospective_process_list_data_item_type(value: str | None) -> Retros
     if value is None:
         return None
     if value in RETROSPECTIVE_PROCESS_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(RetrospectiveProcessListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RETROSPECTIVE_PROCESS_LIST_DATA_ITEM_TYPE_VALUES!r}")

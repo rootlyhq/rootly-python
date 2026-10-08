@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewLiveCallRouterDataAttributesPhoneType = Literal["local", "mobile", "toll_free"]
 
@@ -15,7 +15,7 @@ def check_new_live_call_router_data_attributes_phone_type(
     if value is None:
         return None
     if value in NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PHONE_TYPE_VALUES:
-        return cast(NewLiveCallRouterDataAttributesPhoneType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_LIVE_CALL_ROUTER_DATA_ATTRIBUTES_PHONE_TYPE_VALUES!r}"
     )

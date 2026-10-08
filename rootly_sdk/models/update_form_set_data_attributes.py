@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -12,11 +14,11 @@ T = TypeVar("T", bound="UpdateFormSetDataAttributes")
 class UpdateFormSetDataAttributes:
     """
     Attributes:
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        name (Union[Unset, str]): The name of the form set
-        forms (Union[Unset, list[str]]): The forms included in the form set. Add custom forms using the custom form's
-            `slug` field. Or choose a built-in form: `web_new_incident_form`, `web_update_incident_form`,
+        name (str | Unset): The name of the form set
+        forms (list[str] | Unset): The forms included in the form set. Add custom forms using the custom form's `slug`
+            field. Or choose a built-in form: `web_new_incident_form`, `web_update_incident_form`,
             `web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`,
             `web_incident_cancellation_form`, `web_scheduled_incident_form`, `web_update_scheduled_incident_form`,
             `slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,
@@ -25,12 +27,12 @@ class UpdateFormSetDataAttributes:
             `google_chat_update_incident_form`, `microsoft_teams_new_incident_form`
     """
 
-    slug: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    forms: Unset | list[str] = UNSET
+    slug: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    forms: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -38,7 +40,7 @@ class UpdateFormSetDataAttributes:
 
         name = self.name
 
-        forms: Unset | list[str] = UNSET
+        forms: list[str] | Unset = UNSET
         if not isinstance(self.forms, Unset):
             forms = self.forms
 
@@ -58,12 +60,12 @@ class UpdateFormSetDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 

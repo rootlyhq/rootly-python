@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -12,21 +13,22 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     workflow_id: str,
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -61,7 +63,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/workflow_tasks",
+        "url": "/v1/workflows/{workflow_id}/workflow_tasks".format(
+            workflow_id=quote(str(workflow_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -93,20 +97,20 @@ def sync_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> Response[WorkflowTaskList]:
     """List workflow tasks
 
@@ -114,20 +118,20 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -166,20 +170,20 @@ def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> WorkflowTaskList | None:
     """List workflow tasks
 
@@ -187,20 +191,20 @@ def sync(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -234,20 +238,20 @@ async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> Response[WorkflowTaskList]:
     """List workflow tasks
 
@@ -255,20 +259,20 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -305,20 +309,20 @@ async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
 ) -> WorkflowTaskList | None:
     """List workflow tasks
 
@@ -326,20 +330,20 @@ async def asyncio(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filtername (str | Unset):
+        filterslug (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

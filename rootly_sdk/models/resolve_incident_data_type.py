@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ResolveIncidentDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_resolve_incident_data_type(value: str | None) -> ResolveIncidentDataTy
     if value is None:
         return None
     if value in RESOLVE_INCIDENT_DATA_TYPE_VALUES:
-        return cast(ResolveIncidentDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RESOLVE_INCIDENT_DATA_TYPE_VALUES!r}")

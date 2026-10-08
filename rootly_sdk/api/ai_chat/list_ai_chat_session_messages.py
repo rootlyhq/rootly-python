@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,9 +14,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     session_id: UUID,
     *,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -26,7 +28,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/ai/chat/sessions/{session_id}/messages",
+        "url": "/v1/ai/chat/sessions/{session_id}/messages".format(
+            session_id=quote(str(session_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -66,8 +70,8 @@ def sync_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[AiChatSessionMessageList | Any]:
     """List AI chat session messages
 
@@ -76,15 +80,15 @@ def sync_detailed(
 
     Args:
         session_id (UUID):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AiChatSessionMessageList, Any]]
+        Response[AiChatSessionMessageList | Any]
     """
 
     kwargs = _get_kwargs(
@@ -104,8 +108,8 @@ def sync(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> AiChatSessionMessageList | Any | None:
     """List AI chat session messages
 
@@ -114,15 +118,15 @@ def sync(
 
     Args:
         session_id (UUID):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AiChatSessionMessageList, Any]
+        AiChatSessionMessageList | Any
     """
 
     return sync_detailed(
@@ -137,8 +141,8 @@ async def asyncio_detailed(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[AiChatSessionMessageList | Any]:
     """List AI chat session messages
 
@@ -147,15 +151,15 @@ async def asyncio_detailed(
 
     Args:
         session_id (UUID):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AiChatSessionMessageList, Any]]
+        Response[AiChatSessionMessageList | Any]
     """
 
     kwargs = _get_kwargs(
@@ -173,8 +177,8 @@ async def asyncio(
     session_id: UUID,
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> AiChatSessionMessageList | Any | None:
     """List AI chat session messages
 
@@ -183,15 +187,15 @@ async def asyncio(
 
     Args:
         session_id (UUID):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AiChatSessionMessageList, Any]
+        AiChatSessionMessageList | Any
     """
 
     return (

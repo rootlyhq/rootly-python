@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AuthorizationGranteeType = Literal["Team", "User"]
 
@@ -12,5 +12,5 @@ def check_authorization_grantee_type(value: str | None) -> AuthorizationGranteeT
     if value is None:
         return None
     if value in AUTHORIZATION_GRANTEE_TYPE_VALUES:
-        return cast(AuthorizationGranteeType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AUTHORIZATION_GRANTEE_TYPE_VALUES!r}")

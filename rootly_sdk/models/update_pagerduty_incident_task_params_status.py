@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdatePagerdutyIncidentTaskParamsStatus = Literal["acknowledged", "auto", "resolved"]
 
@@ -15,7 +15,7 @@ def check_update_pagerduty_incident_task_params_status(
     if value is None:
         return None
     if value in UPDATE_PAGERDUTY_INCIDENT_TASK_PARAMS_STATUS_VALUES:
-        return cast(UpdatePagerdutyIncidentTaskParamsStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_PAGERDUTY_INCIDENT_TASK_PARAMS_STATUS_VALUES!r}"
     )

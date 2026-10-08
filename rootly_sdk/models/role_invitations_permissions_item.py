@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleInvitationsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_invitations_permissions_item(value: str | None) -> RoleInvitation
     if value is None:
         return None
     if value in ROLE_INVITATIONS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleInvitationsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_INVITATIONS_PERMISSIONS_ITEM_VALUES!r}")

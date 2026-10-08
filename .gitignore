@@ -24,3 +24,5 @@ dmypy.json
 
 # Serena
 .serena/
+
+tools/swagger.json

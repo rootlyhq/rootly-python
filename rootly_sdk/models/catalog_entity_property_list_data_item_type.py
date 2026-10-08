@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogEntityPropertyListDataItemType = Literal["catalog_entity_properties"]
 
@@ -13,7 +13,7 @@ def check_catalog_entity_property_list_data_item_type(
     if value is None:
         return None
     if value in CATALOG_ENTITY_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(CatalogEntityPropertyListDataItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CATALOG_ENTITY_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES!r}"
     )

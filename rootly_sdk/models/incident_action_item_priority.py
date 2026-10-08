@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentActionItemPriority = Literal["high", "low", "medium"]
 
@@ -13,5 +13,5 @@ def check_incident_action_item_priority(value: str | None) -> IncidentActionItem
     if value is None:
         return None
     if value in INCIDENT_ACTION_ITEM_PRIORITY_VALUES:
-        return cast(IncidentActionItemPriority, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_ACTION_ITEM_PRIORITY_VALUES!r}")

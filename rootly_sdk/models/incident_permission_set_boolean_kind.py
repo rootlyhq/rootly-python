@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentPermissionSetBooleanKind = Literal[
     "assign_incident_roles",
@@ -35,5 +35,5 @@ def check_incident_permission_set_boolean_kind(value: str | None) -> IncidentPer
     if value is None:
         return None
     if value in INCIDENT_PERMISSION_SET_BOOLEAN_KIND_VALUES:
-        return cast(IncidentPermissionSetBooleanKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_PERMISSION_SET_BOOLEAN_KIND_VALUES!r}")

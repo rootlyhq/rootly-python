@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 DuplicateIncidentDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_duplicate_incident_data_type(value: str | None) -> DuplicateIncidentDa
     if value is None:
         return None
     if value in DUPLICATE_INCIDENT_DATA_TYPE_VALUES:
-        return cast(DuplicateIncidentDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {DUPLICATE_INCIDENT_DATA_TYPE_VALUES!r}")

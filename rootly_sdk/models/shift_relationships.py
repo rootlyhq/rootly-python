@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,26 +21,26 @@ T = TypeVar("T", bound="ShiftRelationships")
 class ShiftRelationships:
     """
     Attributes:
-        shift_override (Union[Unset, ShiftRelationshipsShiftOverride]):
-        user (Union[Unset, ShiftRelationshipsUser]):
-        assignee (Union[Unset, ShiftRelationshipsAssignee]): Assignee can be either a User or Schedule
+        shift_override (ShiftRelationshipsShiftOverride | Unset):
+        user (ShiftRelationshipsUser | Unset):
+        assignee (ShiftRelationshipsAssignee | Unset): Assignee can be either a User or Schedule
     """
 
-    shift_override: Union[Unset, "ShiftRelationshipsShiftOverride"] = UNSET
-    user: Union[Unset, "ShiftRelationshipsUser"] = UNSET
-    assignee: Union[Unset, "ShiftRelationshipsAssignee"] = UNSET
+    shift_override: ShiftRelationshipsShiftOverride | Unset = UNSET
+    user: ShiftRelationshipsUser | Unset = UNSET
+    assignee: ShiftRelationshipsAssignee | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        shift_override: Unset | dict[str, Any] = UNSET
+        shift_override: dict[str, Any] | Unset = UNSET
         if not isinstance(self.shift_override, Unset):
             shift_override = self.shift_override.to_dict()
 
-        user: Unset | dict[str, Any] = UNSET
+        user: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
-        assignee: Unset | dict[str, Any] = UNSET
+        assignee: dict[str, Any] | Unset = UNSET
         if not isinstance(self.assignee, Unset):
             assignee = self.assignee.to_dict()
 
@@ -62,21 +64,21 @@ class ShiftRelationships:
 
         d = dict(src_dict)
         _shift_override = d.pop("shift_override", UNSET)
-        shift_override: Unset | ShiftRelationshipsShiftOverride
+        shift_override: ShiftRelationshipsShiftOverride | Unset
         if isinstance(_shift_override, Unset):
             shift_override = UNSET
         else:
             shift_override = ShiftRelationshipsShiftOverride.from_dict(_shift_override)
 
         _user = d.pop("user", UNSET)
-        user: Unset | ShiftRelationshipsUser
+        user: ShiftRelationshipsUser | Unset
         if isinstance(_user, Unset):
             user = UNSET
         else:
             user = ShiftRelationshipsUser.from_dict(_user)
 
         _assignee = d.pop("assignee", UNSET)
-        assignee: Unset | ShiftRelationshipsAssignee
+        assignee: ShiftRelationshipsAssignee | Unset
         if isinstance(_assignee, Unset):
             assignee = UNSET
         else:

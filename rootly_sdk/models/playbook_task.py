@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,17 +18,17 @@ class PlaybookTask:
         task (str): The task of the task
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        playbook_id (Union[Unset, str]):
-        description (Union[None, Unset, str]): The description of task
-        position (Union[None, Unset, int]): The position of the task
+        playbook_id (str | Unset):
+        description (None | str | Unset): The description of task
+        position (int | None | Unset): The position of the task
     """
 
     task: str
     created_at: str
     updated_at: str
-    playbook_id: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
+    playbook_id: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,13 +40,13 @@ class PlaybookTask:
 
         playbook_id = self.playbook_id
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -79,21 +81,21 @@ class PlaybookTask:
 
         playbook_id = d.pop("playbook_id", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

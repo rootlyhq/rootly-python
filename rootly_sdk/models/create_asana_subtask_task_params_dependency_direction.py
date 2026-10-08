@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateAsanaSubtaskTaskParamsDependencyDirection = Literal["blocked_by", "blocking"]
 
@@ -14,7 +14,7 @@ def check_create_asana_subtask_task_params_dependency_direction(
     if value is None:
         return None
     if value in CREATE_ASANA_SUBTASK_TASK_PARAMS_DEPENDENCY_DIRECTION_VALUES:
-        return cast(CreateAsanaSubtaskTaskParamsDependencyDirection, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_ASANA_SUBTASK_TASK_PARAMS_DEPENDENCY_DIRECTION_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ShiftListDataItemType = Literal["shifts"]
 
@@ -11,5 +11,5 @@ def check_shift_list_data_item_type(value: str | None) -> ShiftListDataItemType 
     if value is None:
         return None
     if value in SHIFT_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(ShiftListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SHIFT_LIST_DATA_ITEM_TYPE_VALUES!r}")

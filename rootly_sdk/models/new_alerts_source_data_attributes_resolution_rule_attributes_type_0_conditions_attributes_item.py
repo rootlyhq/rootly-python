@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item_conditionable_type import (
     NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType,
@@ -25,61 +26,59 @@ T = TypeVar("T", bound="NewAlertsSourceDataAttributesResolutionRuleAttributesTyp
 class NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItem:
     """
     Attributes:
-        field (Union[None, Unset, str]): JSON path expression to extract a specific value from the alert's payload for
+        field (None | str | Unset): JSON path expression to extract a specific value from the alert's payload for
             evaluation
-        operator (Union[Unset,
-            NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator]): Comparison
-            operator used to evaluate the extracted value against the specified condition
-        value (Union[Unset, str]): Value that the extracted payload data is compared to using the specified operator to
+        operator (NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset):
+            Comparison operator used to evaluate the extracted value against the specified condition
+        value (str | Unset): Value that the extracted payload data is compared to using the specified operator to
             determine a match
-        conditionable_type (Union[Unset,
-            NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType]): The type
+        conditionable_type
+            (NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset):
+            The type of the conditionable
+        conditionable_id (None | str | Unset): The ID of the conditionable. If conditionable_type is AlertField, this is
+            the ID of the alert field.
+        kind (NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset): The kind
             of the conditionable
-        conditionable_id (Union[None, Unset, str]): The ID of the conditionable. If conditionable_type is AlertField,
-            this is the ID of the alert field.
-        kind (Union[Unset, NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind]): The
-            kind of the conditionable
     """
 
-    field: None | Unset | str = UNSET
-    operator: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator = UNSET
-    value: Unset | str = UNSET
+    field: None | str | Unset = UNSET
+    operator: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset = UNSET
+    value: str | Unset = UNSET
     conditionable_type: (
-        Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType
+        NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset
     ) = UNSET
-    conditionable_id: None | Unset | str = UNSET
-    kind: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    conditionable_id: None | str | Unset = UNSET
+    kind: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        field: None | Unset | str
+        field: None | str | Unset
         if isinstance(self.field, Unset):
             field = UNSET
         else:
             field = self.field
 
-        operator: Unset | str = UNSET
+        operator: str | Unset = UNSET
         if not isinstance(self.operator, Unset):
             operator = self.operator
 
         value = self.value
 
-        conditionable_type: Unset | str = UNSET
+        conditionable_type: str | Unset = UNSET
         if not isinstance(self.conditionable_type, Unset):
             conditionable_type = self.conditionable_type
 
-        conditionable_id: None | Unset | str
+        conditionable_id: None | str | Unset
         if isinstance(self.conditionable_id, Unset):
             conditionable_id = UNSET
         else:
             conditionable_id = self.conditionable_id
 
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if field is not UNSET:
             field_dict["field"] = field
@@ -100,17 +99,17 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttrib
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_field(data: object) -> None | Unset | str:
+        def _parse_field(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         field = _parse_field(d.pop("field", UNSET))
 
         _operator = d.pop("operator", UNSET)
-        operator: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator
+        operator: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemOperator | Unset
         if isinstance(_operator, Unset):
             operator = UNSET
         else:
@@ -122,7 +121,7 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttrib
 
         _conditionable_type = d.pop("conditionable_type", UNSET)
         conditionable_type: (
-            Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType
+            NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemConditionableType | Unset
         )
         if isinstance(_conditionable_type, Unset):
             conditionable_type = UNSET
@@ -131,17 +130,17 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttrib
                 _conditionable_type
             )
 
-        def _parse_conditionable_id(data: object) -> None | Unset | str:
+        def _parse_conditionable_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         conditionable_id = _parse_conditionable_id(d.pop("conditionable_id", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Unset | NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind
+        kind: NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttributesItemKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -158,21 +157,4 @@ class NewAlertsSourceDataAttributesResolutionRuleAttributesType0ConditionsAttrib
             kind=kind,
         )
 
-        new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item.additional_properties = d
         return new_alerts_source_data_attributes_resolution_rule_attributes_type_0_conditions_attributes_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

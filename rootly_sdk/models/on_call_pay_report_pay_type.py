@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallPayReportPayType = Literal["daily", "hourly"]
 
@@ -12,5 +12,5 @@ def check_on_call_pay_report_pay_type(value: str | None) -> OnCallPayReportPayTy
     if value is None:
         return None
     if value in ON_CALL_PAY_REPORT_PAY_TYPE_VALUES:
-        return cast(OnCallPayReportPayType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_PAY_REPORT_PAY_TYPE_VALUES!r}")

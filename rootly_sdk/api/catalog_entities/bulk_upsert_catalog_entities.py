@@ -1,5 +1,6 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -21,7 +22,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/catalogs/{catalog_id}/entities/bulk_upsert",
+        "url": "/v1/catalogs/{catalog_id}/entities/bulk_upsert".format(
+            catalog_id=quote(str(catalog_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -34,7 +37,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
+) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkUpsertCatalogEntitiesResponse.from_dict(response.json())
 
@@ -47,14 +50,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]:
+        def _parse_response_422(data: object) -> BulkUpsertCatalogEntitiesError | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -74,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
+) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -88,7 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
+) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -103,7 +106,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union['BulkUpsertCatalogEntitiesError', 'ErrorsList']]]
+        Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -123,7 +126,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
+) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -138,7 +141,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union['BulkUpsertCatalogEntitiesError', 'ErrorsList']]
+        BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -153,7 +156,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> Response[BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"]]:
+) -> Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -168,7 +171,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union['BulkUpsertCatalogEntitiesError', 'ErrorsList']]]
+        Response[BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -186,7 +189,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: BulkUpsertCatalogEntities,
-) -> BulkUpsertCatalogEntitiesResponse | ErrorsList | Union["BulkUpsertCatalogEntitiesError", "ErrorsList"] | None:
+) -> BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList | None:
     """Bulk upsert Catalog Entities
 
      Create or update multiple catalog entities by external_id. Only attributes present in the payload
@@ -201,7 +204,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[BulkUpsertCatalogEntitiesResponse, ErrorsList, Union['BulkUpsertCatalogEntitiesError', 'ErrorsList']]
+        BulkUpsertCatalogEntitiesError | ErrorsList | BulkUpsertCatalogEntitiesResponse | ErrorsList
     """
 
     return (

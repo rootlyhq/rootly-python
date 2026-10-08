@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentRetrospectiveStepStatus = Literal["completed", "in_progress", "skipped", "todo"]
 
@@ -14,5 +14,5 @@ def check_incident_retrospective_step_status(value: str | None) -> IncidentRetro
     if value is None:
         return None
     if value in INCIDENT_RETROSPECTIVE_STEP_STATUS_VALUES:
-        return cast(IncidentRetrospectiveStepStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_RETROSPECTIVE_STEP_STATUS_VALUES!r}")

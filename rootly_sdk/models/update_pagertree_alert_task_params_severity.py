@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdatePagertreeAlertTaskParamsSeverity = Literal["auto", "SEV-1", "SEV-2", "SEV-3", "SEV-4"]
 
@@ -17,7 +17,7 @@ def check_update_pagertree_alert_task_params_severity(
     if value is None:
         return None
     if value in UPDATE_PAGERTREE_ALERT_TASK_PARAMS_SEVERITY_VALUES:
-        return cast(UpdatePagertreeAlertTaskParamsSeverity, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_PAGERTREE_ALERT_TASK_PARAMS_SEVERITY_VALUES!r}"
     )

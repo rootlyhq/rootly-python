@@ -11,9 +11,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page[number]"] = pagenumber
@@ -55,14 +56,14 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[VerifiedDomainList]:
     """List verified domains
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -87,14 +88,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> VerifiedDomainList | None:
     """List verified domains
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,14 +115,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[VerifiedDomainList]:
     """List verified domains
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -144,14 +145,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> VerifiedDomainList | None:
     """List verified domains
 
     Args:
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

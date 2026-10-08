@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -14,25 +15,25 @@ T = TypeVar("T", bound="UpdateApiKeyDataAttributes")
 class UpdateApiKeyDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the API key
-        description (Union[None, Unset, str]): A description of the API key
-        expires_at (Union[None, Unset, datetime.datetime]): The expiration date of the API key (ISO 8601)
+        name (str | Unset): The name of the API key
+        description (None | str | Unset): A description of the API key
+        expires_at (datetime.datetime | None | Unset): The expiration date of the API key (ISO 8601)
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    expires_at: None | Unset | datetime.datetime = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    expires_at: datetime.datetime | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        expires_at: None | Unset | str
+        expires_at: None | str | Unset
         if isinstance(self.expires_at, Unset):
             expires_at = UNSET
         elif isinstance(self.expires_at, datetime.datetime):
@@ -57,16 +58,16 @@ class UpdateApiKeyDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_expires_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_expires_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -74,12 +75,12 @@ class UpdateApiKeyDataAttributes:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                expires_at_type_0 = isoparse(data)
+                expires_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return expires_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 

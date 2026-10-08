@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,14 +21,14 @@ T = TypeVar("T", bound="CatalogEntityChecklistChecklistFieldsType0Item")
 class CatalogEntityChecklistChecklistFieldsType0Item:
     """
     Attributes:
-        data (Union[Unset, CatalogEntityChecklistChecklistFieldsType0ItemData]):
+        data (CatalogEntityChecklistChecklistFieldsType0ItemData | Unset):
     """
 
-    data: Union[Unset, "CatalogEntityChecklistChecklistFieldsType0ItemData"] = UNSET
+    data: CatalogEntityChecklistChecklistFieldsType0ItemData | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Unset | dict[str, Any] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
@@ -46,7 +48,7 @@ class CatalogEntityChecklistChecklistFieldsType0Item:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Unset | CatalogEntityChecklistChecklistFieldsType0ItemData
+        data: CatalogEntityChecklistChecklistFieldsType0ItemData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:

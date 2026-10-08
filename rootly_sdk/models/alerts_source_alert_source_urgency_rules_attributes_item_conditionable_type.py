@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertsSourceAlertSourceUrgencyRulesAttributesItemConditionableType = Literal["AlertField"]
 
@@ -15,7 +15,7 @@ def check_alerts_source_alert_source_urgency_rules_attributes_item_conditionable
     if value is None:
         return None
     if value in ALERTS_SOURCE_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES:
-        return cast(AlertsSourceAlertSourceUrgencyRulesAttributesItemConditionableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES!r}"
     )

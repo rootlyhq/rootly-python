@@ -11,31 +11,32 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtercoloreq: Unset | str = UNSET,
-    filtercolornot_eq: Unset | str = UNSET,
-    filtercolorin: Unset | str = UNSET,
-    filtercolornot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -121,60 +122,60 @@ def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Res
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtercoloreq: Unset | str = UNSET,
-    filtercolornot_eq: Unset | str = UNSET,
-    filtercolorin: Unset | str = UNSET,
-    filtercolornot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[EnvironmentList]:
     """List environments
 
      List environments
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtercoloreq (Union[Unset, str]):
-        filtercolornot_eq (Union[Unset, str]):
-        filtercolorin (Union[Unset, str]):
-        filtercolornot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filtercolor (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -221,60 +222,60 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtercoloreq: Unset | str = UNSET,
-    filtercolornot_eq: Unset | str = UNSET,
-    filtercolorin: Unset | str = UNSET,
-    filtercolornot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> EnvironmentList | None:
     """List environments
 
      List environments
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtercoloreq (Union[Unset, str]):
-        filtercolornot_eq (Union[Unset, str]):
-        filtercolorin (Union[Unset, str]):
-        filtercolornot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filtercolor (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -316,60 +317,60 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtercoloreq: Unset | str = UNSET,
-    filtercolornot_eq: Unset | str = UNSET,
-    filtercolorin: Unset | str = UNSET,
-    filtercolornot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> Response[EnvironmentList]:
     """List environments
 
      List environments
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtercoloreq (Union[Unset, str]):
-        filtercolornot_eq (Union[Unset, str]):
-        filtercolorin (Union[Unset, str]):
-        filtercolornot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filtercolor (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -414,60 +415,60 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterslug: Unset | str = UNSET,
-    filtername: Unset | str = UNSET,
-    filtercolor: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterslugeq: Unset | str = UNSET,
-    filterslugnot_eq: Unset | str = UNSET,
-    filterslugin: Unset | str = UNSET,
-    filterslugnot_in: Unset | str = UNSET,
-    filternameeq: Unset | str = UNSET,
-    filternamenot_eq: Unset | str = UNSET,
-    filternamein: Unset | str = UNSET,
-    filternamenot_in: Unset | str = UNSET,
-    filtercoloreq: Unset | str = UNSET,
-    filtercolornot_eq: Unset | str = UNSET,
-    filtercolorin: Unset | str = UNSET,
-    filtercolornot_in: Unset | str = UNSET,
-    sort: Unset | str = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterslug: str | Unset = UNSET,
+    filtername: str | Unset = UNSET,
+    filtercolor: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterslugeq: str | Unset = UNSET,
+    filterslugnot_eq: str | Unset = UNSET,
+    filterslugin: str | Unset = UNSET,
+    filterslugnot_in: str | Unset = UNSET,
+    filternameeq: str | Unset = UNSET,
+    filternamenot_eq: str | Unset = UNSET,
+    filternamein: str | Unset = UNSET,
+    filternamenot_in: str | Unset = UNSET,
+    filtercoloreq: str | Unset = UNSET,
+    filtercolornot_eq: str | Unset = UNSET,
+    filtercolorin: str | Unset = UNSET,
+    filtercolornot_in: str | Unset = UNSET,
+    sort: str | Unset = UNSET,
 ) -> EnvironmentList | None:
     """List environments
 
      List environments
 
     Args:
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterslug (Union[Unset, str]):
-        filtername (Union[Unset, str]):
-        filtercolor (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterslugeq (Union[Unset, str]):
-        filterslugnot_eq (Union[Unset, str]):
-        filterslugin (Union[Unset, str]):
-        filterslugnot_in (Union[Unset, str]):
-        filternameeq (Union[Unset, str]):
-        filternamenot_eq (Union[Unset, str]):
-        filternamein (Union[Unset, str]):
-        filternamenot_in (Union[Unset, str]):
-        filtercoloreq (Union[Unset, str]):
-        filtercolornot_eq (Union[Unset, str]):
-        filtercolorin (Union[Unset, str]):
-        filtercolornot_in (Union[Unset, str]):
-        sort (Union[Unset, str]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterslug (str | Unset):
+        filtername (str | Unset):
+        filtercolor (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterslugeq (str | Unset):
+        filterslugnot_eq (str | Unset):
+        filterslugin (str | Unset):
+        filterslugnot_in (str | Unset):
+        filternameeq (str | Unset):
+        filternamenot_eq (str | Unset):
+        filternamein (str | Unset):
+        filternamenot_in (str | Unset):
+        filtercoloreq (str | Unset):
+        filtercolornot_eq (str | Unset):
+        filtercolorin (str | Unset):
+        filtercolornot_in (str | Unset):
+        sort (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

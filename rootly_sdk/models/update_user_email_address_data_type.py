@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateUserEmailAddressDataType = Literal["user_email_addresses"]
 
@@ -11,5 +11,5 @@ def check_update_user_email_address_data_type(value: str | None) -> UpdateUserEm
     if value is None:
         return None
     if value in UPDATE_USER_EMAIL_ADDRESS_DATA_TYPE_VALUES:
-        return cast(UpdateUserEmailAddressDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_USER_EMAIL_ADDRESS_DATA_TYPE_VALUES!r}")

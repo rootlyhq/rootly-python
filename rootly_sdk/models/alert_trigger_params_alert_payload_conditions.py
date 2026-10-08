@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,20 +25,20 @@ T = TypeVar("T", bound="AlertTriggerParamsAlertPayloadConditions")
 class AlertTriggerParamsAlertPayloadConditions:
     """
     Attributes:
-        logic (Union[Unset, AlertTriggerParamsAlertPayloadConditionsLogic]):
-        conditions (Union[Unset, list['AlertTriggerParamsAlertPayloadConditionsConditionsItem']]):
+        logic (AlertTriggerParamsAlertPayloadConditionsLogic | Unset):
+        conditions (list[AlertTriggerParamsAlertPayloadConditionsConditionsItem] | Unset):
     """
 
-    logic: Unset | AlertTriggerParamsAlertPayloadConditionsLogic = UNSET
-    conditions: Unset | list["AlertTriggerParamsAlertPayloadConditionsConditionsItem"] = UNSET
+    logic: AlertTriggerParamsAlertPayloadConditionsLogic | Unset = UNSET
+    conditions: list[AlertTriggerParamsAlertPayloadConditionsConditionsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        logic: Unset | str = UNSET
+        logic: str | Unset = UNSET
         if not isinstance(self.logic, Unset):
             logic = self.logic
 
-        conditions: Unset | list[dict[str, Any]] = UNSET
+        conditions: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.conditions, Unset):
             conditions = []
             for conditions_item_data in self.conditions:
@@ -61,18 +63,20 @@ class AlertTriggerParamsAlertPayloadConditions:
 
         d = dict(src_dict)
         _logic = d.pop("logic", UNSET)
-        logic: Unset | AlertTriggerParamsAlertPayloadConditionsLogic
+        logic: AlertTriggerParamsAlertPayloadConditionsLogic | Unset
         if isinstance(_logic, Unset):
             logic = UNSET
         else:
             logic = check_alert_trigger_params_alert_payload_conditions_logic(_logic)
 
-        conditions = []
         _conditions = d.pop("conditions", UNSET)
-        for conditions_item_data in _conditions or []:
-            conditions_item = AlertTriggerParamsAlertPayloadConditionsConditionsItem.from_dict(conditions_item_data)
+        conditions: list[AlertTriggerParamsAlertPayloadConditionsConditionsItem] | Unset = UNSET
+        if _conditions is not UNSET:
+            conditions = []
+            for conditions_item_data in _conditions:
+                conditions_item = AlertTriggerParamsAlertPayloadConditionsConditionsItem.from_dict(conditions_item_data)
 
-            conditions.append(conditions_item)
+                conditions.append(conditions_item)
 
         alert_trigger_params_alert_payload_conditions = cls(
             logic=logic,

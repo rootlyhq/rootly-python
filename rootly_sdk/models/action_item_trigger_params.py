@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -84,6 +86,14 @@ from ..models.action_item_trigger_params_incident_condition_resolved_at import (
     ActionItemTriggerParamsIncidentConditionResolvedAt,
     check_action_item_trigger_params_incident_condition_resolved_at,
 )
+from ..models.action_item_trigger_params_incident_condition_scheduled_for import (
+    ActionItemTriggerParamsIncidentConditionScheduledFor,
+    check_action_item_trigger_params_incident_condition_scheduled_for,
+)
+from ..models.action_item_trigger_params_incident_condition_scheduled_until import (
+    ActionItemTriggerParamsIncidentConditionScheduledUntil,
+    check_action_item_trigger_params_incident_condition_scheduled_until,
+)
 from ..models.action_item_trigger_params_incident_condition_service import (
     ActionItemTriggerParamsIncidentConditionService,
     check_action_item_trigger_params_incident_condition_service,
@@ -138,252 +148,261 @@ class ActionItemTriggerParams:
     """
     Attributes:
         trigger_type (ActionItemTriggerParamsTriggerType):
-        triggers (Union[Unset, list[str]]):
-        incident_visibilities (Union[Unset, list[bool]]):
-        incident_kinds (Union[Unset, list[ActionItemTriggerParamsIncidentKindsItem]]):
-        incident_statuses (Union[Unset, list[ActionItemTriggerParamsIncidentStatusesItem]]):
-        incident_inactivity_duration (Union[None, Unset, str]): ex. 10 min, 1h, 3 days, 2 weeks
-        incident_condition (Union[Unset, ActionItemTriggerParamsIncidentCondition]):  Default: 'ALL'.
-        incident_condition_visibility (Union[Unset, ActionItemTriggerParamsIncidentConditionVisibility]):  Default:
+        triggers (list[str] | Unset):
+        incident_visibilities (list[bool] | Unset):
+        incident_kinds (list[ActionItemTriggerParamsIncidentKindsItem] | Unset):
+        incident_statuses (list[ActionItemTriggerParamsIncidentStatusesItem] | Unset):
+        incident_inactivity_duration (None | str | Unset): ex. 10 min, 1h, 3 days, 2 weeks
+        incident_condition (ActionItemTriggerParamsIncidentCondition | Unset):  Default: 'ALL'.
+        incident_condition_visibility (ActionItemTriggerParamsIncidentConditionVisibility | Unset):  Default: 'ANY'.
+        incident_condition_kind (ActionItemTriggerParamsIncidentConditionKind | Unset):  Default: 'IS'.
+        incident_condition_status (ActionItemTriggerParamsIncidentConditionStatus | Unset):  Default: 'ANY'.
+        incident_condition_sub_status (ActionItemTriggerParamsIncidentConditionSubStatus | Unset):  Default: 'ANY'.
+        incident_condition_environment (ActionItemTriggerParamsIncidentConditionEnvironment | Unset):  Default: 'ANY'.
+        incident_condition_severity (ActionItemTriggerParamsIncidentConditionSeverity | Unset):  Default: 'ANY'.
+        incident_condition_incident_type (ActionItemTriggerParamsIncidentConditionIncidentType | Unset):  Default:
             'ANY'.
-        incident_condition_kind (Union[Unset, ActionItemTriggerParamsIncidentConditionKind]):  Default: 'IS'.
-        incident_condition_status (Union[Unset, ActionItemTriggerParamsIncidentConditionStatus]):  Default: 'ANY'.
-        incident_condition_sub_status (Union[Unset, ActionItemTriggerParamsIncidentConditionSubStatus]):  Default:
+        incident_condition_incident_roles (ActionItemTriggerParamsIncidentConditionIncidentRoles | Unset):  Default:
             'ANY'.
-        incident_condition_environment (Union[Unset, ActionItemTriggerParamsIncidentConditionEnvironment]):  Default:
+        incident_condition_service (ActionItemTriggerParamsIncidentConditionService | Unset):  Default: 'ANY'.
+        incident_condition_functionality (ActionItemTriggerParamsIncidentConditionFunctionality | Unset):  Default:
             'ANY'.
-        incident_condition_severity (Union[Unset, ActionItemTriggerParamsIncidentConditionSeverity]):  Default: 'ANY'.
-        incident_condition_incident_type (Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentType]):  Default:
+        incident_condition_group (ActionItemTriggerParamsIncidentConditionGroup | Unset):  Default: 'ANY'.
+        incident_condition_label (ActionItemTriggerParamsIncidentConditionLabel | Unset):  Default: 'ANY'.
+        incident_condition_label_use_regexp (bool | Unset):  Default: False.
+        incident_labels (list[str] | Unset):
+        incident_condition_summary (ActionItemTriggerParamsIncidentConditionSummary | Unset):
+        incident_condition_started_at (ActionItemTriggerParamsIncidentConditionStartedAt | Unset):
+        incident_condition_detected_at (ActionItemTriggerParamsIncidentConditionDetectedAt | Unset):
+        incident_condition_acknowledged_at (ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset):
+        incident_condition_mitigated_at (ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset):
+        incident_condition_resolved_at (ActionItemTriggerParamsIncidentConditionResolvedAt | Unset):
+        incident_condition_scheduled_for (ActionItemTriggerParamsIncidentConditionScheduledFor | Unset):
+        incident_condition_scheduled_until (ActionItemTriggerParamsIncidentConditionScheduledUntil | Unset):
+        incident_conditional_inactivity (ActionItemTriggerParamsIncidentConditionalInactivity | Unset):
+        incident_action_item_condition (ActionItemTriggerParamsIncidentActionItemCondition | Unset):
+        incident_action_item_condition_kind (ActionItemTriggerParamsIncidentActionItemConditionKind | Unset):  Default:
             'ANY'.
-        incident_condition_incident_roles (Union[Unset, ActionItemTriggerParamsIncidentConditionIncidentRoles]):
+        incident_action_item_kinds (list[ActionItemTriggerParamsIncidentActionItemKindsItem] | Unset):
+        incident_action_item_condition_status (ActionItemTriggerParamsIncidentActionItemConditionStatus | Unset):
             Default: 'ANY'.
-        incident_condition_service (Union[Unset, ActionItemTriggerParamsIncidentConditionService]):  Default: 'ANY'.
-        incident_condition_functionality (Union[Unset, ActionItemTriggerParamsIncidentConditionFunctionality]):
+        incident_action_item_statuses (list[ActionItemTriggerParamsIncidentActionItemStatusesItem] | Unset):
+        incident_action_item_condition_priority (ActionItemTriggerParamsIncidentActionItemConditionPriority | Unset):
             Default: 'ANY'.
-        incident_condition_group (Union[Unset, ActionItemTriggerParamsIncidentConditionGroup]):  Default: 'ANY'.
-        incident_condition_label (Union[Unset, ActionItemTriggerParamsIncidentConditionLabel]):  Default: 'ANY'.
-        incident_condition_label_use_regexp (Union[Unset, bool]):  Default: False.
-        incident_labels (Union[Unset, list[str]]):
-        incident_condition_summary (Union[Unset, ActionItemTriggerParamsIncidentConditionSummary]):
-        incident_condition_started_at (Union[Unset, ActionItemTriggerParamsIncidentConditionStartedAt]):
-        incident_condition_detected_at (Union[Unset, ActionItemTriggerParamsIncidentConditionDetectedAt]):
-        incident_condition_acknowledged_at (Union[Unset, ActionItemTriggerParamsIncidentConditionAcknowledgedAt]):
-        incident_condition_mitigated_at (Union[Unset, ActionItemTriggerParamsIncidentConditionMitigatedAt]):
-        incident_condition_resolved_at (Union[Unset, ActionItemTriggerParamsIncidentConditionResolvedAt]):
-        incident_conditional_inactivity (Union[Unset, ActionItemTriggerParamsIncidentConditionalInactivity]):
-        incident_action_item_condition (Union[Unset, ActionItemTriggerParamsIncidentActionItemCondition]):
-        incident_action_item_condition_kind (Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionKind]):
+        incident_action_item_priorities (list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem] | Unset):
+        incident_action_item_condition_group (ActionItemTriggerParamsIncidentActionItemConditionGroup | Unset):
             Default: 'ANY'.
-        incident_action_item_kinds (Union[Unset, list[ActionItemTriggerParamsIncidentActionItemKindsItem]]):
-        incident_action_item_condition_status (Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionStatus]):
-            Default: 'ANY'.
-        incident_action_item_statuses (Union[Unset, list[ActionItemTriggerParamsIncidentActionItemStatusesItem]]):
-        incident_action_item_condition_priority (Union[Unset,
-            ActionItemTriggerParamsIncidentActionItemConditionPriority]):  Default: 'ANY'.
-        incident_action_item_priorities (Union[Unset, list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem]]):
-        incident_action_item_condition_group (Union[Unset, ActionItemTriggerParamsIncidentActionItemConditionGroup]):
-            Default: 'ANY'.
-        incident_action_item_group_ids (Union[Unset, list[str]]):
+        incident_action_item_group_ids (list[str] | Unset):
     """
 
     trigger_type: ActionItemTriggerParamsTriggerType
-    triggers: Unset | list[str] = UNSET
-    incident_visibilities: Unset | list[bool] = UNSET
-    incident_kinds: Unset | list[ActionItemTriggerParamsIncidentKindsItem] = UNSET
-    incident_statuses: Unset | list[ActionItemTriggerParamsIncidentStatusesItem] = UNSET
-    incident_inactivity_duration: None | Unset | str = UNSET
-    incident_condition: Unset | ActionItemTriggerParamsIncidentCondition = "ALL"
-    incident_condition_visibility: Unset | ActionItemTriggerParamsIncidentConditionVisibility = "ANY"
-    incident_condition_kind: Unset | ActionItemTriggerParamsIncidentConditionKind = "IS"
-    incident_condition_status: Unset | ActionItemTriggerParamsIncidentConditionStatus = "ANY"
-    incident_condition_sub_status: Unset | ActionItemTriggerParamsIncidentConditionSubStatus = "ANY"
-    incident_condition_environment: Unset | ActionItemTriggerParamsIncidentConditionEnvironment = "ANY"
-    incident_condition_severity: Unset | ActionItemTriggerParamsIncidentConditionSeverity = "ANY"
-    incident_condition_incident_type: Unset | ActionItemTriggerParamsIncidentConditionIncidentType = "ANY"
-    incident_condition_incident_roles: Unset | ActionItemTriggerParamsIncidentConditionIncidentRoles = "ANY"
-    incident_condition_service: Unset | ActionItemTriggerParamsIncidentConditionService = "ANY"
-    incident_condition_functionality: Unset | ActionItemTriggerParamsIncidentConditionFunctionality = "ANY"
-    incident_condition_group: Unset | ActionItemTriggerParamsIncidentConditionGroup = "ANY"
-    incident_condition_label: Unset | ActionItemTriggerParamsIncidentConditionLabel = "ANY"
-    incident_condition_label_use_regexp: Unset | bool = False
-    incident_labels: Unset | list[str] = UNSET
-    incident_condition_summary: Unset | ActionItemTriggerParamsIncidentConditionSummary = UNSET
-    incident_condition_started_at: Unset | ActionItemTriggerParamsIncidentConditionStartedAt = UNSET
-    incident_condition_detected_at: Unset | ActionItemTriggerParamsIncidentConditionDetectedAt = UNSET
-    incident_condition_acknowledged_at: Unset | ActionItemTriggerParamsIncidentConditionAcknowledgedAt = UNSET
-    incident_condition_mitigated_at: Unset | ActionItemTriggerParamsIncidentConditionMitigatedAt = UNSET
-    incident_condition_resolved_at: Unset | ActionItemTriggerParamsIncidentConditionResolvedAt = UNSET
-    incident_conditional_inactivity: Unset | ActionItemTriggerParamsIncidentConditionalInactivity = UNSET
-    incident_action_item_condition: Unset | ActionItemTriggerParamsIncidentActionItemCondition = UNSET
-    incident_action_item_condition_kind: Unset | ActionItemTriggerParamsIncidentActionItemConditionKind = "ANY"
-    incident_action_item_kinds: Unset | list[ActionItemTriggerParamsIncidentActionItemKindsItem] = UNSET
-    incident_action_item_condition_status: Unset | ActionItemTriggerParamsIncidentActionItemConditionStatus = "ANY"
-    incident_action_item_statuses: Unset | list[ActionItemTriggerParamsIncidentActionItemStatusesItem] = UNSET
-    incident_action_item_condition_priority: Unset | ActionItemTriggerParamsIncidentActionItemConditionPriority = "ANY"
-    incident_action_item_priorities: Unset | list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem] = UNSET
-    incident_action_item_condition_group: Unset | ActionItemTriggerParamsIncidentActionItemConditionGroup = "ANY"
-    incident_action_item_group_ids: Unset | list[str] = UNSET
+    triggers: list[str] | Unset = UNSET
+    incident_visibilities: list[bool] | Unset = UNSET
+    incident_kinds: list[ActionItemTriggerParamsIncidentKindsItem] | Unset = UNSET
+    incident_statuses: list[ActionItemTriggerParamsIncidentStatusesItem] | Unset = UNSET
+    incident_inactivity_duration: None | str | Unset = UNSET
+    incident_condition: ActionItemTriggerParamsIncidentCondition | Unset = "ALL"
+    incident_condition_visibility: ActionItemTriggerParamsIncidentConditionVisibility | Unset = "ANY"
+    incident_condition_kind: ActionItemTriggerParamsIncidentConditionKind | Unset = "IS"
+    incident_condition_status: ActionItemTriggerParamsIncidentConditionStatus | Unset = "ANY"
+    incident_condition_sub_status: ActionItemTriggerParamsIncidentConditionSubStatus | Unset = "ANY"
+    incident_condition_environment: ActionItemTriggerParamsIncidentConditionEnvironment | Unset = "ANY"
+    incident_condition_severity: ActionItemTriggerParamsIncidentConditionSeverity | Unset = "ANY"
+    incident_condition_incident_type: ActionItemTriggerParamsIncidentConditionIncidentType | Unset = "ANY"
+    incident_condition_incident_roles: ActionItemTriggerParamsIncidentConditionIncidentRoles | Unset = "ANY"
+    incident_condition_service: ActionItemTriggerParamsIncidentConditionService | Unset = "ANY"
+    incident_condition_functionality: ActionItemTriggerParamsIncidentConditionFunctionality | Unset = "ANY"
+    incident_condition_group: ActionItemTriggerParamsIncidentConditionGroup | Unset = "ANY"
+    incident_condition_label: ActionItemTriggerParamsIncidentConditionLabel | Unset = "ANY"
+    incident_condition_label_use_regexp: bool | Unset = False
+    incident_labels: list[str] | Unset = UNSET
+    incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummary | Unset = UNSET
+    incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAt | Unset = UNSET
+    incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAt | Unset = UNSET
+    incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset = UNSET
+    incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset = UNSET
+    incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAt | Unset = UNSET
+    incident_condition_scheduled_for: ActionItemTriggerParamsIncidentConditionScheduledFor | Unset = UNSET
+    incident_condition_scheduled_until: ActionItemTriggerParamsIncidentConditionScheduledUntil | Unset = UNSET
+    incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivity | Unset = UNSET
+    incident_action_item_condition: ActionItemTriggerParamsIncidentActionItemCondition | Unset = UNSET
+    incident_action_item_condition_kind: ActionItemTriggerParamsIncidentActionItemConditionKind | Unset = "ANY"
+    incident_action_item_kinds: list[ActionItemTriggerParamsIncidentActionItemKindsItem] | Unset = UNSET
+    incident_action_item_condition_status: ActionItemTriggerParamsIncidentActionItemConditionStatus | Unset = "ANY"
+    incident_action_item_statuses: list[ActionItemTriggerParamsIncidentActionItemStatusesItem] | Unset = UNSET
+    incident_action_item_condition_priority: ActionItemTriggerParamsIncidentActionItemConditionPriority | Unset = "ANY"
+    incident_action_item_priorities: list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem] | Unset = UNSET
+    incident_action_item_condition_group: ActionItemTriggerParamsIncidentActionItemConditionGroup | Unset = "ANY"
+    incident_action_item_group_ids: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         trigger_type: str = self.trigger_type
 
-        triggers: Unset | list[str] = UNSET
+        triggers: list[str] | Unset = UNSET
         if not isinstance(self.triggers, Unset):
             triggers = self.triggers
 
-        incident_visibilities: Unset | list[bool] = UNSET
+        incident_visibilities: list[bool] | Unset = UNSET
         if not isinstance(self.incident_visibilities, Unset):
             incident_visibilities = self.incident_visibilities
 
-        incident_kinds: Unset | list[str] = UNSET
+        incident_kinds: list[str] | Unset = UNSET
         if not isinstance(self.incident_kinds, Unset):
             incident_kinds = []
             for incident_kinds_item_data in self.incident_kinds:
                 incident_kinds_item: str = incident_kinds_item_data
                 incident_kinds.append(incident_kinds_item)
 
-        incident_statuses: Unset | list[str] = UNSET
+        incident_statuses: list[str] | Unset = UNSET
         if not isinstance(self.incident_statuses, Unset):
             incident_statuses = []
             for incident_statuses_item_data in self.incident_statuses:
                 incident_statuses_item: str = incident_statuses_item_data
                 incident_statuses.append(incident_statuses_item)
 
-        incident_inactivity_duration: None | Unset | str
+        incident_inactivity_duration: None | str | Unset
         if isinstance(self.incident_inactivity_duration, Unset):
             incident_inactivity_duration = UNSET
         else:
             incident_inactivity_duration = self.incident_inactivity_duration
 
-        incident_condition: Unset | str = UNSET
+        incident_condition: str | Unset = UNSET
         if not isinstance(self.incident_condition, Unset):
             incident_condition = self.incident_condition
 
-        incident_condition_visibility: Unset | str = UNSET
+        incident_condition_visibility: str | Unset = UNSET
         if not isinstance(self.incident_condition_visibility, Unset):
             incident_condition_visibility = self.incident_condition_visibility
 
-        incident_condition_kind: Unset | str = UNSET
+        incident_condition_kind: str | Unset = UNSET
         if not isinstance(self.incident_condition_kind, Unset):
             incident_condition_kind = self.incident_condition_kind
 
-        incident_condition_status: Unset | str = UNSET
+        incident_condition_status: str | Unset = UNSET
         if not isinstance(self.incident_condition_status, Unset):
             incident_condition_status = self.incident_condition_status
 
-        incident_condition_sub_status: Unset | str = UNSET
+        incident_condition_sub_status: str | Unset = UNSET
         if not isinstance(self.incident_condition_sub_status, Unset):
             incident_condition_sub_status = self.incident_condition_sub_status
 
-        incident_condition_environment: Unset | str = UNSET
+        incident_condition_environment: str | Unset = UNSET
         if not isinstance(self.incident_condition_environment, Unset):
             incident_condition_environment = self.incident_condition_environment
 
-        incident_condition_severity: Unset | str = UNSET
+        incident_condition_severity: str | Unset = UNSET
         if not isinstance(self.incident_condition_severity, Unset):
             incident_condition_severity = self.incident_condition_severity
 
-        incident_condition_incident_type: Unset | str = UNSET
+        incident_condition_incident_type: str | Unset = UNSET
         if not isinstance(self.incident_condition_incident_type, Unset):
             incident_condition_incident_type = self.incident_condition_incident_type
 
-        incident_condition_incident_roles: Unset | str = UNSET
+        incident_condition_incident_roles: str | Unset = UNSET
         if not isinstance(self.incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = self.incident_condition_incident_roles
 
-        incident_condition_service: Unset | str = UNSET
+        incident_condition_service: str | Unset = UNSET
         if not isinstance(self.incident_condition_service, Unset):
             incident_condition_service = self.incident_condition_service
 
-        incident_condition_functionality: Unset | str = UNSET
+        incident_condition_functionality: str | Unset = UNSET
         if not isinstance(self.incident_condition_functionality, Unset):
             incident_condition_functionality = self.incident_condition_functionality
 
-        incident_condition_group: Unset | str = UNSET
+        incident_condition_group: str | Unset = UNSET
         if not isinstance(self.incident_condition_group, Unset):
             incident_condition_group = self.incident_condition_group
 
-        incident_condition_label: Unset | str = UNSET
+        incident_condition_label: str | Unset = UNSET
         if not isinstance(self.incident_condition_label, Unset):
             incident_condition_label = self.incident_condition_label
 
         incident_condition_label_use_regexp = self.incident_condition_label_use_regexp
 
-        incident_labels: Unset | list[str] = UNSET
+        incident_labels: list[str] | Unset = UNSET
         if not isinstance(self.incident_labels, Unset):
             incident_labels = self.incident_labels
 
-        incident_condition_summary: Unset | str = UNSET
+        incident_condition_summary: str | Unset = UNSET
         if not isinstance(self.incident_condition_summary, Unset):
             incident_condition_summary = self.incident_condition_summary
 
-        incident_condition_started_at: Unset | str = UNSET
+        incident_condition_started_at: str | Unset = UNSET
         if not isinstance(self.incident_condition_started_at, Unset):
             incident_condition_started_at = self.incident_condition_started_at
 
-        incident_condition_detected_at: Unset | str = UNSET
+        incident_condition_detected_at: str | Unset = UNSET
         if not isinstance(self.incident_condition_detected_at, Unset):
             incident_condition_detected_at = self.incident_condition_detected_at
 
-        incident_condition_acknowledged_at: Unset | str = UNSET
+        incident_condition_acknowledged_at: str | Unset = UNSET
         if not isinstance(self.incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = self.incident_condition_acknowledged_at
 
-        incident_condition_mitigated_at: Unset | str = UNSET
+        incident_condition_mitigated_at: str | Unset = UNSET
         if not isinstance(self.incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = self.incident_condition_mitigated_at
 
-        incident_condition_resolved_at: Unset | str = UNSET
+        incident_condition_resolved_at: str | Unset = UNSET
         if not isinstance(self.incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = self.incident_condition_resolved_at
 
-        incident_conditional_inactivity: Unset | str = UNSET
+        incident_condition_scheduled_for: str | Unset = UNSET
+        if not isinstance(self.incident_condition_scheduled_for, Unset):
+            incident_condition_scheduled_for = self.incident_condition_scheduled_for
+
+        incident_condition_scheduled_until: str | Unset = UNSET
+        if not isinstance(self.incident_condition_scheduled_until, Unset):
+            incident_condition_scheduled_until = self.incident_condition_scheduled_until
+
+        incident_conditional_inactivity: str | Unset = UNSET
         if not isinstance(self.incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = self.incident_conditional_inactivity
 
-        incident_action_item_condition: Unset | str = UNSET
+        incident_action_item_condition: str | Unset = UNSET
         if not isinstance(self.incident_action_item_condition, Unset):
             incident_action_item_condition = self.incident_action_item_condition
 
-        incident_action_item_condition_kind: Unset | str = UNSET
+        incident_action_item_condition_kind: str | Unset = UNSET
         if not isinstance(self.incident_action_item_condition_kind, Unset):
             incident_action_item_condition_kind = self.incident_action_item_condition_kind
 
-        incident_action_item_kinds: Unset | list[str] = UNSET
+        incident_action_item_kinds: list[str] | Unset = UNSET
         if not isinstance(self.incident_action_item_kinds, Unset):
             incident_action_item_kinds = []
             for incident_action_item_kinds_item_data in self.incident_action_item_kinds:
                 incident_action_item_kinds_item: str = incident_action_item_kinds_item_data
                 incident_action_item_kinds.append(incident_action_item_kinds_item)
 
-        incident_action_item_condition_status: Unset | str = UNSET
+        incident_action_item_condition_status: str | Unset = UNSET
         if not isinstance(self.incident_action_item_condition_status, Unset):
             incident_action_item_condition_status = self.incident_action_item_condition_status
 
-        incident_action_item_statuses: Unset | list[str] = UNSET
+        incident_action_item_statuses: list[str] | Unset = UNSET
         if not isinstance(self.incident_action_item_statuses, Unset):
             incident_action_item_statuses = []
             for incident_action_item_statuses_item_data in self.incident_action_item_statuses:
                 incident_action_item_statuses_item: str = incident_action_item_statuses_item_data
                 incident_action_item_statuses.append(incident_action_item_statuses_item)
 
-        incident_action_item_condition_priority: Unset | str = UNSET
+        incident_action_item_condition_priority: str | Unset = UNSET
         if not isinstance(self.incident_action_item_condition_priority, Unset):
             incident_action_item_condition_priority = self.incident_action_item_condition_priority
 
-        incident_action_item_priorities: Unset | list[str] = UNSET
+        incident_action_item_priorities: list[str] | Unset = UNSET
         if not isinstance(self.incident_action_item_priorities, Unset):
             incident_action_item_priorities = []
             for incident_action_item_priorities_item_data in self.incident_action_item_priorities:
                 incident_action_item_priorities_item: str = incident_action_item_priorities_item_data
                 incident_action_item_priorities.append(incident_action_item_priorities_item)
 
-        incident_action_item_condition_group: Unset | str = UNSET
+        incident_action_item_condition_group: str | Unset = UNSET
         if not isinstance(self.incident_action_item_condition_group, Unset):
             incident_action_item_condition_group = self.incident_action_item_condition_group
 
-        incident_action_item_group_ids: Unset | list[str] = UNSET
+        incident_action_item_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.incident_action_item_group_ids, Unset):
             incident_action_item_group_ids = self.incident_action_item_group_ids
 
@@ -446,6 +465,10 @@ class ActionItemTriggerParams:
             field_dict["incident_condition_mitigated_at"] = incident_condition_mitigated_at
         if incident_condition_resolved_at is not UNSET:
             field_dict["incident_condition_resolved_at"] = incident_condition_resolved_at
+        if incident_condition_scheduled_for is not UNSET:
+            field_dict["incident_condition_scheduled_for"] = incident_condition_scheduled_for
+        if incident_condition_scheduled_until is not UNSET:
+            field_dict["incident_condition_scheduled_until"] = incident_condition_scheduled_until
         if incident_conditional_inactivity is not UNSET:
             field_dict["incident_conditional_inactivity"] = incident_conditional_inactivity
         if incident_action_item_condition is not UNSET:
@@ -478,40 +501,44 @@ class ActionItemTriggerParams:
 
         incident_visibilities = cast(list[bool], d.pop("incident_visibilities", UNSET))
 
-        incident_kinds = []
         _incident_kinds = d.pop("incident_kinds", UNSET)
-        for incident_kinds_item_data in _incident_kinds or []:
-            incident_kinds_item = check_action_item_trigger_params_incident_kinds_item(incident_kinds_item_data)
+        incident_kinds: list[ActionItemTriggerParamsIncidentKindsItem] | Unset = UNSET
+        if _incident_kinds is not UNSET:
+            incident_kinds = []
+            for incident_kinds_item_data in _incident_kinds:
+                incident_kinds_item = check_action_item_trigger_params_incident_kinds_item(incident_kinds_item_data)
 
-            incident_kinds.append(incident_kinds_item)
+                incident_kinds.append(incident_kinds_item)
 
-        incident_statuses = []
         _incident_statuses = d.pop("incident_statuses", UNSET)
-        for incident_statuses_item_data in _incident_statuses or []:
-            incident_statuses_item = check_action_item_trigger_params_incident_statuses_item(
-                incident_statuses_item_data
-            )
+        incident_statuses: list[ActionItemTriggerParamsIncidentStatusesItem] | Unset = UNSET
+        if _incident_statuses is not UNSET:
+            incident_statuses = []
+            for incident_statuses_item_data in _incident_statuses:
+                incident_statuses_item = check_action_item_trigger_params_incident_statuses_item(
+                    incident_statuses_item_data
+                )
 
-            incident_statuses.append(incident_statuses_item)
+                incident_statuses.append(incident_statuses_item)
 
-        def _parse_incident_inactivity_duration(data: object) -> None | Unset | str:
+        def _parse_incident_inactivity_duration(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         incident_inactivity_duration = _parse_incident_inactivity_duration(d.pop("incident_inactivity_duration", UNSET))
 
         _incident_condition = d.pop("incident_condition", UNSET)
-        incident_condition: Unset | ActionItemTriggerParamsIncidentCondition
+        incident_condition: ActionItemTriggerParamsIncidentCondition | Unset
         if isinstance(_incident_condition, Unset):
             incident_condition = UNSET
         else:
             incident_condition = check_action_item_trigger_params_incident_condition(_incident_condition)
 
         _incident_condition_visibility = d.pop("incident_condition_visibility", UNSET)
-        incident_condition_visibility: Unset | ActionItemTriggerParamsIncidentConditionVisibility
+        incident_condition_visibility: ActionItemTriggerParamsIncidentConditionVisibility | Unset
         if isinstance(_incident_condition_visibility, Unset):
             incident_condition_visibility = UNSET
         else:
@@ -520,14 +547,14 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_kind = d.pop("incident_condition_kind", UNSET)
-        incident_condition_kind: Unset | ActionItemTriggerParamsIncidentConditionKind
+        incident_condition_kind: ActionItemTriggerParamsIncidentConditionKind | Unset
         if isinstance(_incident_condition_kind, Unset):
             incident_condition_kind = UNSET
         else:
             incident_condition_kind = check_action_item_trigger_params_incident_condition_kind(_incident_condition_kind)
 
         _incident_condition_status = d.pop("incident_condition_status", UNSET)
-        incident_condition_status: Unset | ActionItemTriggerParamsIncidentConditionStatus
+        incident_condition_status: ActionItemTriggerParamsIncidentConditionStatus | Unset
         if isinstance(_incident_condition_status, Unset):
             incident_condition_status = UNSET
         else:
@@ -536,7 +563,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_sub_status = d.pop("incident_condition_sub_status", UNSET)
-        incident_condition_sub_status: Unset | ActionItemTriggerParamsIncidentConditionSubStatus
+        incident_condition_sub_status: ActionItemTriggerParamsIncidentConditionSubStatus | Unset
         if isinstance(_incident_condition_sub_status, Unset):
             incident_condition_sub_status = UNSET
         else:
@@ -545,7 +572,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_environment = d.pop("incident_condition_environment", UNSET)
-        incident_condition_environment: Unset | ActionItemTriggerParamsIncidentConditionEnvironment
+        incident_condition_environment: ActionItemTriggerParamsIncidentConditionEnvironment | Unset
         if isinstance(_incident_condition_environment, Unset):
             incident_condition_environment = UNSET
         else:
@@ -554,7 +581,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_severity = d.pop("incident_condition_severity", UNSET)
-        incident_condition_severity: Unset | ActionItemTriggerParamsIncidentConditionSeverity
+        incident_condition_severity: ActionItemTriggerParamsIncidentConditionSeverity | Unset
         if isinstance(_incident_condition_severity, Unset):
             incident_condition_severity = UNSET
         else:
@@ -563,7 +590,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_incident_type = d.pop("incident_condition_incident_type", UNSET)
-        incident_condition_incident_type: Unset | ActionItemTriggerParamsIncidentConditionIncidentType
+        incident_condition_incident_type: ActionItemTriggerParamsIncidentConditionIncidentType | Unset
         if isinstance(_incident_condition_incident_type, Unset):
             incident_condition_incident_type = UNSET
         else:
@@ -572,7 +599,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_incident_roles = d.pop("incident_condition_incident_roles", UNSET)
-        incident_condition_incident_roles: Unset | ActionItemTriggerParamsIncidentConditionIncidentRoles
+        incident_condition_incident_roles: ActionItemTriggerParamsIncidentConditionIncidentRoles | Unset
         if isinstance(_incident_condition_incident_roles, Unset):
             incident_condition_incident_roles = UNSET
         else:
@@ -581,7 +608,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_service = d.pop("incident_condition_service", UNSET)
-        incident_condition_service: Unset | ActionItemTriggerParamsIncidentConditionService
+        incident_condition_service: ActionItemTriggerParamsIncidentConditionService | Unset
         if isinstance(_incident_condition_service, Unset):
             incident_condition_service = UNSET
         else:
@@ -590,7 +617,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_functionality = d.pop("incident_condition_functionality", UNSET)
-        incident_condition_functionality: Unset | ActionItemTriggerParamsIncidentConditionFunctionality
+        incident_condition_functionality: ActionItemTriggerParamsIncidentConditionFunctionality | Unset
         if isinstance(_incident_condition_functionality, Unset):
             incident_condition_functionality = UNSET
         else:
@@ -599,7 +626,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_group = d.pop("incident_condition_group", UNSET)
-        incident_condition_group: Unset | ActionItemTriggerParamsIncidentConditionGroup
+        incident_condition_group: ActionItemTriggerParamsIncidentConditionGroup | Unset
         if isinstance(_incident_condition_group, Unset):
             incident_condition_group = UNSET
         else:
@@ -608,7 +635,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_label = d.pop("incident_condition_label", UNSET)
-        incident_condition_label: Unset | ActionItemTriggerParamsIncidentConditionLabel
+        incident_condition_label: ActionItemTriggerParamsIncidentConditionLabel | Unset
         if isinstance(_incident_condition_label, Unset):
             incident_condition_label = UNSET
         else:
@@ -621,7 +648,7 @@ class ActionItemTriggerParams:
         incident_labels = cast(list[str], d.pop("incident_labels", UNSET))
 
         _incident_condition_summary = d.pop("incident_condition_summary", UNSET)
-        incident_condition_summary: Unset | ActionItemTriggerParamsIncidentConditionSummary
+        incident_condition_summary: ActionItemTriggerParamsIncidentConditionSummary | Unset
         if isinstance(_incident_condition_summary, Unset):
             incident_condition_summary = UNSET
         else:
@@ -630,7 +657,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_started_at = d.pop("incident_condition_started_at", UNSET)
-        incident_condition_started_at: Unset | ActionItemTriggerParamsIncidentConditionStartedAt
+        incident_condition_started_at: ActionItemTriggerParamsIncidentConditionStartedAt | Unset
         if isinstance(_incident_condition_started_at, Unset):
             incident_condition_started_at = UNSET
         else:
@@ -639,7 +666,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_detected_at = d.pop("incident_condition_detected_at", UNSET)
-        incident_condition_detected_at: Unset | ActionItemTriggerParamsIncidentConditionDetectedAt
+        incident_condition_detected_at: ActionItemTriggerParamsIncidentConditionDetectedAt | Unset
         if isinstance(_incident_condition_detected_at, Unset):
             incident_condition_detected_at = UNSET
         else:
@@ -648,7 +675,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_acknowledged_at = d.pop("incident_condition_acknowledged_at", UNSET)
-        incident_condition_acknowledged_at: Unset | ActionItemTriggerParamsIncidentConditionAcknowledgedAt
+        incident_condition_acknowledged_at: ActionItemTriggerParamsIncidentConditionAcknowledgedAt | Unset
         if isinstance(_incident_condition_acknowledged_at, Unset):
             incident_condition_acknowledged_at = UNSET
         else:
@@ -657,7 +684,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_mitigated_at = d.pop("incident_condition_mitigated_at", UNSET)
-        incident_condition_mitigated_at: Unset | ActionItemTriggerParamsIncidentConditionMitigatedAt
+        incident_condition_mitigated_at: ActionItemTriggerParamsIncidentConditionMitigatedAt | Unset
         if isinstance(_incident_condition_mitigated_at, Unset):
             incident_condition_mitigated_at = UNSET
         else:
@@ -666,7 +693,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_condition_resolved_at = d.pop("incident_condition_resolved_at", UNSET)
-        incident_condition_resolved_at: Unset | ActionItemTriggerParamsIncidentConditionResolvedAt
+        incident_condition_resolved_at: ActionItemTriggerParamsIncidentConditionResolvedAt | Unset
         if isinstance(_incident_condition_resolved_at, Unset):
             incident_condition_resolved_at = UNSET
         else:
@@ -674,8 +701,26 @@ class ActionItemTriggerParams:
                 _incident_condition_resolved_at
             )
 
+        _incident_condition_scheduled_for = d.pop("incident_condition_scheduled_for", UNSET)
+        incident_condition_scheduled_for: ActionItemTriggerParamsIncidentConditionScheduledFor | Unset
+        if isinstance(_incident_condition_scheduled_for, Unset):
+            incident_condition_scheduled_for = UNSET
+        else:
+            incident_condition_scheduled_for = check_action_item_trigger_params_incident_condition_scheduled_for(
+                _incident_condition_scheduled_for
+            )
+
+        _incident_condition_scheduled_until = d.pop("incident_condition_scheduled_until", UNSET)
+        incident_condition_scheduled_until: ActionItemTriggerParamsIncidentConditionScheduledUntil | Unset
+        if isinstance(_incident_condition_scheduled_until, Unset):
+            incident_condition_scheduled_until = UNSET
+        else:
+            incident_condition_scheduled_until = check_action_item_trigger_params_incident_condition_scheduled_until(
+                _incident_condition_scheduled_until
+            )
+
         _incident_conditional_inactivity = d.pop("incident_conditional_inactivity", UNSET)
-        incident_conditional_inactivity: Unset | ActionItemTriggerParamsIncidentConditionalInactivity
+        incident_conditional_inactivity: ActionItemTriggerParamsIncidentConditionalInactivity | Unset
         if isinstance(_incident_conditional_inactivity, Unset):
             incident_conditional_inactivity = UNSET
         else:
@@ -684,7 +729,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_action_item_condition = d.pop("incident_action_item_condition", UNSET)
-        incident_action_item_condition: Unset | ActionItemTriggerParamsIncidentActionItemCondition
+        incident_action_item_condition: ActionItemTriggerParamsIncidentActionItemCondition | Unset
         if isinstance(_incident_action_item_condition, Unset):
             incident_action_item_condition = UNSET
         else:
@@ -693,7 +738,7 @@ class ActionItemTriggerParams:
             )
 
         _incident_action_item_condition_kind = d.pop("incident_action_item_condition_kind", UNSET)
-        incident_action_item_condition_kind: Unset | ActionItemTriggerParamsIncidentActionItemConditionKind
+        incident_action_item_condition_kind: ActionItemTriggerParamsIncidentActionItemConditionKind | Unset
         if isinstance(_incident_action_item_condition_kind, Unset):
             incident_action_item_condition_kind = UNSET
         else:
@@ -701,17 +746,19 @@ class ActionItemTriggerParams:
                 _incident_action_item_condition_kind
             )
 
-        incident_action_item_kinds = []
         _incident_action_item_kinds = d.pop("incident_action_item_kinds", UNSET)
-        for incident_action_item_kinds_item_data in _incident_action_item_kinds or []:
-            incident_action_item_kinds_item = check_action_item_trigger_params_incident_action_item_kinds_item(
-                incident_action_item_kinds_item_data
-            )
+        incident_action_item_kinds: list[ActionItemTriggerParamsIncidentActionItemKindsItem] | Unset = UNSET
+        if _incident_action_item_kinds is not UNSET:
+            incident_action_item_kinds = []
+            for incident_action_item_kinds_item_data in _incident_action_item_kinds:
+                incident_action_item_kinds_item = check_action_item_trigger_params_incident_action_item_kinds_item(
+                    incident_action_item_kinds_item_data
+                )
 
-            incident_action_item_kinds.append(incident_action_item_kinds_item)
+                incident_action_item_kinds.append(incident_action_item_kinds_item)
 
         _incident_action_item_condition_status = d.pop("incident_action_item_condition_status", UNSET)
-        incident_action_item_condition_status: Unset | ActionItemTriggerParamsIncidentActionItemConditionStatus
+        incident_action_item_condition_status: ActionItemTriggerParamsIncidentActionItemConditionStatus | Unset
         if isinstance(_incident_action_item_condition_status, Unset):
             incident_action_item_condition_status = UNSET
         else:
@@ -721,17 +768,21 @@ class ActionItemTriggerParams:
                 )
             )
 
-        incident_action_item_statuses = []
         _incident_action_item_statuses = d.pop("incident_action_item_statuses", UNSET)
-        for incident_action_item_statuses_item_data in _incident_action_item_statuses or []:
-            incident_action_item_statuses_item = check_action_item_trigger_params_incident_action_item_statuses_item(
-                incident_action_item_statuses_item_data
-            )
+        incident_action_item_statuses: list[ActionItemTriggerParamsIncidentActionItemStatusesItem] | Unset = UNSET
+        if _incident_action_item_statuses is not UNSET:
+            incident_action_item_statuses = []
+            for incident_action_item_statuses_item_data in _incident_action_item_statuses:
+                incident_action_item_statuses_item = (
+                    check_action_item_trigger_params_incident_action_item_statuses_item(
+                        incident_action_item_statuses_item_data
+                    )
+                )
 
-            incident_action_item_statuses.append(incident_action_item_statuses_item)
+                incident_action_item_statuses.append(incident_action_item_statuses_item)
 
         _incident_action_item_condition_priority = d.pop("incident_action_item_condition_priority", UNSET)
-        incident_action_item_condition_priority: Unset | ActionItemTriggerParamsIncidentActionItemConditionPriority
+        incident_action_item_condition_priority: ActionItemTriggerParamsIncidentActionItemConditionPriority | Unset
         if isinstance(_incident_action_item_condition_priority, Unset):
             incident_action_item_condition_priority = UNSET
         else:
@@ -741,19 +792,21 @@ class ActionItemTriggerParams:
                 )
             )
 
-        incident_action_item_priorities = []
         _incident_action_item_priorities = d.pop("incident_action_item_priorities", UNSET)
-        for incident_action_item_priorities_item_data in _incident_action_item_priorities or []:
-            incident_action_item_priorities_item = (
-                check_action_item_trigger_params_incident_action_item_priorities_item(
-                    incident_action_item_priorities_item_data
+        incident_action_item_priorities: list[ActionItemTriggerParamsIncidentActionItemPrioritiesItem] | Unset = UNSET
+        if _incident_action_item_priorities is not UNSET:
+            incident_action_item_priorities = []
+            for incident_action_item_priorities_item_data in _incident_action_item_priorities:
+                incident_action_item_priorities_item = (
+                    check_action_item_trigger_params_incident_action_item_priorities_item(
+                        incident_action_item_priorities_item_data
+                    )
                 )
-            )
 
-            incident_action_item_priorities.append(incident_action_item_priorities_item)
+                incident_action_item_priorities.append(incident_action_item_priorities_item)
 
         _incident_action_item_condition_group = d.pop("incident_action_item_condition_group", UNSET)
-        incident_action_item_condition_group: Unset | ActionItemTriggerParamsIncidentActionItemConditionGroup
+        incident_action_item_condition_group: ActionItemTriggerParamsIncidentActionItemConditionGroup | Unset
         if isinstance(_incident_action_item_condition_group, Unset):
             incident_action_item_condition_group = UNSET
         else:
@@ -793,6 +846,8 @@ class ActionItemTriggerParams:
             incident_condition_acknowledged_at=incident_condition_acknowledged_at,
             incident_condition_mitigated_at=incident_condition_mitigated_at,
             incident_condition_resolved_at=incident_condition_resolved_at,
+            incident_condition_scheduled_for=incident_condition_scheduled_for,
+            incident_condition_scheduled_until=incident_condition_scheduled_until,
             incident_conditional_inactivity=incident_conditional_inactivity,
             incident_action_item_condition=incident_action_item_condition,
             incident_action_item_condition_kind=incident_action_item_condition_kind,

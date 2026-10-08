@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IpRangesResponseDataType = Literal["ip_ranges"]
 
@@ -11,5 +11,5 @@ def check_ip_ranges_response_data_type(value: str | None) -> IpRangesResponseDat
     if value is None:
         return None
     if value in IP_RANGES_RESPONSE_DATA_TYPE_VALUES:
-        return cast(IpRangesResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {IP_RANGES_RESPONSE_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SendWhatsappMessageTaskParamsTaskType = Literal["send_whatsapp_message"]
 
@@ -13,7 +13,7 @@ def check_send_whatsapp_message_task_params_task_type(
     if value is None:
         return None
     if value in SEND_WHATSAPP_MESSAGE_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(SendWhatsappMessageTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SEND_WHATSAPP_MESSAGE_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

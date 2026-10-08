@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogChecklistTemplateFieldsType0ItemFieldSource = Literal["builtin", "custom"]
 
@@ -16,7 +16,7 @@ def check_catalog_checklist_template_fields_type_0_item_field_source(
     if value is None:
         return None
     if value in CATALOG_CHECKLIST_TEMPLATE_FIELDS_TYPE_0_ITEM_FIELD_SOURCE_VALUES:
-        return cast(CatalogChecklistTemplateFieldsType0ItemFieldSource, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CATALOG_CHECKLIST_TEMPLATE_FIELDS_TYPE_0_ITEM_FIELD_SOURCE_VALUES!r}"
     )

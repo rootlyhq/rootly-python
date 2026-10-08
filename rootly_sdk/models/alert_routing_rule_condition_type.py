@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRoutingRuleConditionType = Literal["all", "any"]
 
@@ -12,5 +12,5 @@ def check_alert_routing_rule_condition_type(value: str | None) -> AlertRoutingRu
     if value is None:
         return None
     if value in ALERT_ROUTING_RULE_CONDITION_TYPE_VALUES:
-        return cast(AlertRoutingRuleConditionType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_ROUTING_RULE_CONDITION_TYPE_VALUES!r}")

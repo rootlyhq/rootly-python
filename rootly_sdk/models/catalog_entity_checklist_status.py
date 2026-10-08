@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogEntityChecklistStatus = Literal["cancelled", "completed", "in_progress", "triggered"]
 
@@ -14,5 +14,5 @@ def check_catalog_entity_checklist_status(value: str | None) -> CatalogEntityChe
     if value is None:
         return None
     if value in CATALOG_ENTITY_CHECKLIST_STATUS_VALUES:
-        return cast(CatalogEntityChecklistStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_ENTITY_CHECKLIST_STATUS_VALUES!r}")

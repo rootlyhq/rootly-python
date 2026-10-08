@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -14,30 +15,30 @@ T = TypeVar("T", bound="UpdateOnCallPayReportDataAttributes")
 class UpdateOnCallPayReportDataAttributes:
     """
     Attributes:
-        start_date (Union[Unset, datetime.date]): The start date for the report period.
-        end_date (Union[Unset, datetime.date]): The end date for the report period.
-        schedule_ids (Union[Unset, list[str]]): List of schedule UUIDs to scope the report.
-        time_zone (Union[Unset, str]): IANA timezone used to compute day and weekend boundaries.
-        use_responders_time_zone (Union[Unset, bool]): When true, day and weekend boundaries are computed in each
-            responder's personal timezone instead of the report-wide timezone.
+        start_date (datetime.date | Unset): The start date for the report period.
+        end_date (datetime.date | Unset): The end date for the report period.
+        schedule_ids (list[str] | Unset): List of schedule UUIDs to scope the report.
+        time_zone (str | Unset): IANA timezone used to compute day and weekend boundaries.
+        use_responders_time_zone (bool | Unset): When true, day and weekend boundaries are computed in each responder's
+            personal timezone instead of the report-wide timezone.
     """
 
-    start_date: Unset | datetime.date = UNSET
-    end_date: Unset | datetime.date = UNSET
-    schedule_ids: Unset | list[str] = UNSET
-    time_zone: Unset | str = UNSET
-    use_responders_time_zone: Unset | bool = UNSET
+    start_date: datetime.date | Unset = UNSET
+    end_date: datetime.date | Unset = UNSET
+    schedule_ids: list[str] | Unset = UNSET
+    time_zone: str | Unset = UNSET
+    use_responders_time_zone: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        start_date: Unset | str = UNSET
+        start_date: str | Unset = UNSET
         if not isinstance(self.start_date, Unset):
             start_date = self.start_date.isoformat()
 
-        end_date: Unset | str = UNSET
+        end_date: str | Unset = UNSET
         if not isinstance(self.end_date, Unset):
             end_date = self.end_date.isoformat()
 
-        schedule_ids: Unset | list[str] = UNSET
+        schedule_ids: list[str] | Unset = UNSET
         if not isinstance(self.schedule_ids, Unset):
             schedule_ids = self.schedule_ids
 
@@ -65,18 +66,18 @@ class UpdateOnCallPayReportDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _start_date = d.pop("start_date", UNSET)
-        start_date: Unset | datetime.date
+        start_date: datetime.date | Unset
         if isinstance(_start_date, Unset):
             start_date = UNSET
         else:
-            start_date = isoparse(_start_date).date()
+            start_date = datetime.date.fromisoformat(_start_date)
 
         _end_date = d.pop("end_date", UNSET)
-        end_date: Unset | datetime.date
+        end_date: datetime.date | Unset
         if isinstance(_end_date, Unset):
             end_date = UNSET
         else:
-            end_date = isoparse(_end_date).date()
+            end_date = datetime.date.fromisoformat(_end_date)
 
         schedule_ids = cast(list[str], d.pop("schedule_ids", UNSET))
 

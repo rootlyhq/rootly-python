@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewStatusPageTemplateDataAttributesKind = Literal["normal", "scheduled"]
 
@@ -14,7 +14,7 @@ def check_new_status_page_template_data_attributes_kind(
     if value is None:
         return None
     if value in NEW_STATUS_PAGE_TEMPLATE_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(NewStatusPageTemplateDataAttributesKind, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_STATUS_PAGE_TEMPLATE_DATA_ATTRIBUTES_KIND_VALUES!r}"
     )

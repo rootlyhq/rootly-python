@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertTriggerParamsAlertConditionUrgency = Literal[
     "ANY", "CONTAINS", "CONTAINS_ALL", "CONTAINS_NONE", "IS", "IS NOT", "NONE", "SET", "UNSET"
@@ -23,7 +23,7 @@ def check_alert_trigger_params_alert_condition_urgency(
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_CONDITION_URGENCY_VALUES:
-        return cast(AlertTriggerParamsAlertConditionUrgency, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_TRIGGER_PARAMS_ALERT_CONDITION_URGENCY_VALUES!r}"
     )

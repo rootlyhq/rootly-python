@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewOnCallShadowDataAttributesShadowableType = Literal["Schedule", "User"]
 
@@ -14,7 +14,7 @@ def check_new_on_call_shadow_data_attributes_shadowable_type(
     if value is None:
         return None
     if value in NEW_ON_CALL_SHADOW_DATA_ATTRIBUTES_SHADOWABLE_TYPE_VALUES:
-        return cast(NewOnCallShadowDataAttributesShadowableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ON_CALL_SHADOW_DATA_ATTRIBUTES_SHADOWABLE_TYPE_VALUES!r}"
     )

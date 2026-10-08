@@ -19,15 +19,14 @@ The GitHub `pypi` environment requires approval and only permits tags matching `
 
 To publish a new version:
 
-1. **Update the changelog** (if not already done):
-   ```bash
-   # Edit CHANGELOG.md to add new version details
-   ```
+1. **Review the Release Drafter draft**:
+   - Label merged pull requests `breaking` for a major version or `enhancement` for a minor version; unlabelled changes default to patch.
+   - Review the draft release notes and OpenAPI diff; do not edit `CHANGELOG.md`.
 
 2. **Create and push a version tag**:
    ```bash
    # Create a new version tag (e.g., v1.2.3)
-   git tag v1.2.3
+   git tag -a v1.2.3 -m "<highlights>"
    
    # Push the tag to trigger the workflow
    git push origin v1.2.3
@@ -42,6 +41,7 @@ To publish a new version:
      - Build the package using Python build
      - Wait for approval on the `pypi` environment
      - Publish to PyPI using a short-lived Trusted Publishing credential
+     - Publish the most recent Release Drafter draft regardless of its current tag, rename it to the pushed tag, and prepend the annotated tag message under "Highlights"; or create a release with generated notes if no draft exists
 
 ### 3. Version Numbering
 

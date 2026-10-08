@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -16,13 +18,13 @@ T = TypeVar("T", bound="UpdateAuthorizationDataAttributes")
 class UpdateAuthorizationDataAttributes:
     """
     Attributes:
-        permissions (Union[Unset, list[UpdateAuthorizationDataAttributesPermissionsItem]]):
+        permissions (list[UpdateAuthorizationDataAttributesPermissionsItem] | Unset):
     """
 
-    permissions: Unset | list[UpdateAuthorizationDataAttributesPermissionsItem] = UNSET
+    permissions: list[UpdateAuthorizationDataAttributesPermissionsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        permissions: Unset | list[str] = UNSET
+        permissions: list[str] | Unset = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = []
             for permissions_item_data in self.permissions:
@@ -40,12 +42,14 @@ class UpdateAuthorizationDataAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        permissions = []
         _permissions = d.pop("permissions", UNSET)
-        for permissions_item_data in _permissions or []:
-            permissions_item = check_update_authorization_data_attributes_permissions_item(permissions_item_data)
+        permissions: list[UpdateAuthorizationDataAttributesPermissionsItem] | Unset = UNSET
+        if _permissions is not UNSET:
+            permissions = []
+            for permissions_item_data in _permissions:
+                permissions_item = check_update_authorization_data_attributes_permissions_item(permissions_item_data)
 
-            permissions.append(permissions_item)
+                permissions.append(permissions_item)
 
         update_authorization_data_attributes = cls(
             permissions=permissions,

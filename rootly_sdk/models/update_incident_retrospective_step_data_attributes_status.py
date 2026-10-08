@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentRetrospectiveStepDataAttributesStatus = Literal["completed", "in_progress", "skipped", "todo"]
 
@@ -18,7 +18,7 @@ def check_update_incident_retrospective_step_data_attributes_status(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_RETROSPECTIVE_STEP_DATA_ATTRIBUTES_STATUS_VALUES:
-        return cast(UpdateIncidentRetrospectiveStepDataAttributesStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_RETROSPECTIVE_STEP_DATA_ATTRIBUTES_STATUS_VALUES!r}"
     )

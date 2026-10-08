@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 LiveCallRouterPhoneType = Literal["local", "mobile", "toll_free"]
 
@@ -13,5 +13,5 @@ def check_live_call_router_phone_type(value: str | None) -> LiveCallRouterPhoneT
     if value is None:
         return None
     if value in LIVE_CALL_ROUTER_PHONE_TYPE_VALUES:
-        return cast(LiveCallRouterPhoneType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIVE_CALL_ROUTER_PHONE_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UserListDataItemType = Literal["users"]
 
@@ -11,5 +11,5 @@ def check_user_list_data_item_type(value: str | None) -> UserListDataItemType | 
     if value is None:
         return None
     if value in USER_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(UserListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {USER_LIST_DATA_ITEM_TYPE_VALUES!r}")

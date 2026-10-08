@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateRoleDataAttributesIncidentCommunicationPermissionsItem = Literal["create", "delete", "read", "send", "update"]
 
@@ -19,7 +19,7 @@ def check_update_role_data_attributes_incident_communication_permissions_item(
     if value is None:
         return None
     if value in UPDATE_ROLE_DATA_ATTRIBUTES_INCIDENT_COMMUNICATION_PERMISSIONS_ITEM_VALUES:
-        return cast(UpdateRoleDataAttributesIncidentCommunicationPermissionsItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ROLE_DATA_ATTRIBUTES_INCIDENT_COMMUNICATION_PERMISSIONS_ITEM_VALUES!r}"
     )

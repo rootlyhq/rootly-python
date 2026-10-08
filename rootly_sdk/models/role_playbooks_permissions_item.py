@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RolePlaybooksPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_playbooks_permissions_item(value: str | None) -> RolePlaybooksPer
     if value is None:
         return None
     if value in ROLE_PLAYBOOKS_PERMISSIONS_ITEM_VALUES:
-        return cast(RolePlaybooksPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_PLAYBOOKS_PERMISSIONS_ITEM_VALUES!r}")

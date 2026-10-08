@@ -13,21 +13,22 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    include: Unset | ListOncallsInclude = UNSET,
-    since: Unset | str = UNSET,
-    until: Unset | str = UNSET,
-    earliest: Unset | bool = UNSET,
-    time_zone: Unset | str = UNSET,
-    filterescalation_policy_ids: Unset | str = UNSET,
-    filterschedule_ids: Unset | str = UNSET,
-    filteruser_ids: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filtergroup_ids: Unset | str = UNSET,
-    filternotification_types: Unset | str = UNSET,
+    include: ListOncallsInclude | Unset = UNSET,
+    since: str | Unset = UNSET,
+    until: str | Unset = UNSET,
+    earliest: bool | Unset = UNSET,
+    time_zone: str | Unset = UNSET,
+    filterescalation_policy_ids: str | Unset = UNSET,
+    filterschedule_ids: str | Unset = UNSET,
+    filteruser_ids: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -102,17 +103,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListOncallsInclude = UNSET,
-    since: Unset | str = UNSET,
-    until: Unset | str = UNSET,
-    earliest: Unset | bool = UNSET,
-    time_zone: Unset | str = UNSET,
-    filterescalation_policy_ids: Unset | str = UNSET,
-    filterschedule_ids: Unset | str = UNSET,
-    filteruser_ids: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filtergroup_ids: Unset | str = UNSET,
-    filternotification_types: Unset | str = UNSET,
+    include: ListOncallsInclude | Unset = UNSET,
+    since: str | Unset = UNSET,
+    until: str | Unset = UNSET,
+    earliest: bool | Unset = UNSET,
+    time_zone: str | Unset = UNSET,
+    filterescalation_policy_ids: str | Unset = UNSET,
+    filterschedule_ids: str | Unset = UNSET,
+    filteruser_ids: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Response[ErrorsList | OncallList]:
     """List on-calls
 
@@ -120,24 +121,24 @@ def sync_detailed(
     Returns on-call entries grouped by escalation policy level.
 
     Args:
-        include (Union[Unset, ListOncallsInclude]):
-        since (Union[Unset, str]):
-        until (Union[Unset, str]):
-        earliest (Union[Unset, bool]):
-        time_zone (Union[Unset, str]):
-        filterescalation_policy_ids (Union[Unset, str]):
-        filterschedule_ids (Union[Unset, str]):
-        filteruser_ids (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filtergroup_ids (Union[Unset, str]):
-        filternotification_types (Union[Unset, str]):
+        include (ListOncallsInclude | Unset):
+        since (str | Unset):
+        until (str | Unset):
+        earliest (bool | Unset):
+        time_zone (str | Unset):
+        filterescalation_policy_ids (str | Unset):
+        filterschedule_ids (str | Unset):
+        filteruser_ids (str | Unset):
+        filterservice_ids (str | Unset):
+        filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, OncallList]]
+        Response[ErrorsList | OncallList]
     """
 
     kwargs = _get_kwargs(
@@ -164,17 +165,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListOncallsInclude = UNSET,
-    since: Unset | str = UNSET,
-    until: Unset | str = UNSET,
-    earliest: Unset | bool = UNSET,
-    time_zone: Unset | str = UNSET,
-    filterescalation_policy_ids: Unset | str = UNSET,
-    filterschedule_ids: Unset | str = UNSET,
-    filteruser_ids: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filtergroup_ids: Unset | str = UNSET,
-    filternotification_types: Unset | str = UNSET,
+    include: ListOncallsInclude | Unset = UNSET,
+    since: str | Unset = UNSET,
+    until: str | Unset = UNSET,
+    earliest: bool | Unset = UNSET,
+    time_zone: str | Unset = UNSET,
+    filterescalation_policy_ids: str | Unset = UNSET,
+    filterschedule_ids: str | Unset = UNSET,
+    filteruser_ids: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> ErrorsList | OncallList | None:
     """List on-calls
 
@@ -182,24 +183,24 @@ def sync(
     Returns on-call entries grouped by escalation policy level.
 
     Args:
-        include (Union[Unset, ListOncallsInclude]):
-        since (Union[Unset, str]):
-        until (Union[Unset, str]):
-        earliest (Union[Unset, bool]):
-        time_zone (Union[Unset, str]):
-        filterescalation_policy_ids (Union[Unset, str]):
-        filterschedule_ids (Union[Unset, str]):
-        filteruser_ids (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filtergroup_ids (Union[Unset, str]):
-        filternotification_types (Union[Unset, str]):
+        include (ListOncallsInclude | Unset):
+        since (str | Unset):
+        until (str | Unset):
+        earliest (bool | Unset):
+        time_zone (str | Unset):
+        filterescalation_policy_ids (str | Unset):
+        filterschedule_ids (str | Unset):
+        filteruser_ids (str | Unset):
+        filterservice_ids (str | Unset):
+        filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, OncallList]
+        ErrorsList | OncallList
     """
 
     return sync_detailed(
@@ -221,17 +222,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListOncallsInclude = UNSET,
-    since: Unset | str = UNSET,
-    until: Unset | str = UNSET,
-    earliest: Unset | bool = UNSET,
-    time_zone: Unset | str = UNSET,
-    filterescalation_policy_ids: Unset | str = UNSET,
-    filterschedule_ids: Unset | str = UNSET,
-    filteruser_ids: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filtergroup_ids: Unset | str = UNSET,
-    filternotification_types: Unset | str = UNSET,
+    include: ListOncallsInclude | Unset = UNSET,
+    since: str | Unset = UNSET,
+    until: str | Unset = UNSET,
+    earliest: bool | Unset = UNSET,
+    time_zone: str | Unset = UNSET,
+    filterescalation_policy_ids: str | Unset = UNSET,
+    filterschedule_ids: str | Unset = UNSET,
+    filteruser_ids: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> Response[ErrorsList | OncallList]:
     """List on-calls
 
@@ -239,24 +240,24 @@ async def asyncio_detailed(
     Returns on-call entries grouped by escalation policy level.
 
     Args:
-        include (Union[Unset, ListOncallsInclude]):
-        since (Union[Unset, str]):
-        until (Union[Unset, str]):
-        earliest (Union[Unset, bool]):
-        time_zone (Union[Unset, str]):
-        filterescalation_policy_ids (Union[Unset, str]):
-        filterschedule_ids (Union[Unset, str]):
-        filteruser_ids (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filtergroup_ids (Union[Unset, str]):
-        filternotification_types (Union[Unset, str]):
+        include (ListOncallsInclude | Unset):
+        since (str | Unset):
+        until (str | Unset):
+        earliest (bool | Unset):
+        time_zone (str | Unset):
+        filterescalation_policy_ids (str | Unset):
+        filterschedule_ids (str | Unset):
+        filteruser_ids (str | Unset):
+        filterservice_ids (str | Unset):
+        filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, OncallList]]
+        Response[ErrorsList | OncallList]
     """
 
     kwargs = _get_kwargs(
@@ -281,17 +282,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    include: Unset | ListOncallsInclude = UNSET,
-    since: Unset | str = UNSET,
-    until: Unset | str = UNSET,
-    earliest: Unset | bool = UNSET,
-    time_zone: Unset | str = UNSET,
-    filterescalation_policy_ids: Unset | str = UNSET,
-    filterschedule_ids: Unset | str = UNSET,
-    filteruser_ids: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filtergroup_ids: Unset | str = UNSET,
-    filternotification_types: Unset | str = UNSET,
+    include: ListOncallsInclude | Unset = UNSET,
+    since: str | Unset = UNSET,
+    until: str | Unset = UNSET,
+    earliest: bool | Unset = UNSET,
+    time_zone: str | Unset = UNSET,
+    filterescalation_policy_ids: str | Unset = UNSET,
+    filterschedule_ids: str | Unset = UNSET,
+    filteruser_ids: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filtergroup_ids: str | Unset = UNSET,
+    filternotification_types: str | Unset = UNSET,
 ) -> ErrorsList | OncallList | None:
     """List on-calls
 
@@ -299,24 +300,24 @@ async def asyncio(
     Returns on-call entries grouped by escalation policy level.
 
     Args:
-        include (Union[Unset, ListOncallsInclude]):
-        since (Union[Unset, str]):
-        until (Union[Unset, str]):
-        earliest (Union[Unset, bool]):
-        time_zone (Union[Unset, str]):
-        filterescalation_policy_ids (Union[Unset, str]):
-        filterschedule_ids (Union[Unset, str]):
-        filteruser_ids (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filtergroup_ids (Union[Unset, str]):
-        filternotification_types (Union[Unset, str]):
+        include (ListOncallsInclude | Unset):
+        since (str | Unset):
+        until (str | Unset):
+        earliest (bool | Unset):
+        time_zone (str | Unset):
+        filterescalation_policy_ids (str | Unset):
+        filterschedule_ids (str | Unset):
+        filteruser_ids (str | Unset):
+        filterservice_ids (str | Unset):
+        filtergroup_ids (str | Unset):
+        filternotification_types (str | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, OncallList]
+        ErrorsList | OncallList
     """
 
     return (

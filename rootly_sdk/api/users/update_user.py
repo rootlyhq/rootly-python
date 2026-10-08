@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -8,22 +9,25 @@ from ...client import AuthenticatedClient, Client
 from ...models.errors_list import ErrorsList
 from ...models.update_user import UpdateUser
 from ...models.user_response import UserResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     id: str,
     *,
-    body: UpdateUser,
+    body: UpdateUser | Unset = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": f"/v1/users/{id}",
+        "url": "/v1/users/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
-    _kwargs["json"] = body.to_dict()
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
 
     headers["Content-Type"] = "application/vnd.api+json"
 
@@ -65,7 +69,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser,
+    body: UpdateUser | Unset = UNSET,
 ) -> Response[ErrorsList | UserResponse]:
     """Update a user
 
@@ -73,14 +77,14 @@ def sync_detailed(
 
     Args:
         id (str):
-        body (UpdateUser):
+        body (UpdateUser | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, UserResponse]]
+        Response[ErrorsList | UserResponse]
     """
 
     kwargs = _get_kwargs(
@@ -99,7 +103,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser,
+    body: UpdateUser | Unset = UNSET,
 ) -> ErrorsList | UserResponse | None:
     """Update a user
 
@@ -107,14 +111,14 @@ def sync(
 
     Args:
         id (str):
-        body (UpdateUser):
+        body (UpdateUser | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, UserResponse]
+        ErrorsList | UserResponse
     """
 
     return sync_detailed(
@@ -128,7 +132,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser,
+    body: UpdateUser | Unset = UNSET,
 ) -> Response[ErrorsList | UserResponse]:
     """Update a user
 
@@ -136,14 +140,14 @@ async def asyncio_detailed(
 
     Args:
         id (str):
-        body (UpdateUser):
+        body (UpdateUser | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, UserResponse]]
+        Response[ErrorsList | UserResponse]
     """
 
     kwargs = _get_kwargs(
@@ -160,7 +164,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: UpdateUser,
+    body: UpdateUser | Unset = UNSET,
 ) -> ErrorsList | UserResponse | None:
     """Update a user
 
@@ -168,14 +172,14 @@ async def asyncio(
 
     Args:
         id (str):
-        body (UpdateUser):
+        body (UpdateUser | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, UserResponse]
+        ErrorsList | UserResponse
     """
 
     return (

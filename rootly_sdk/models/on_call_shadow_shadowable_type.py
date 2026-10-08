@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallShadowShadowableType = Literal["Schedule", "User"]
 
@@ -12,5 +12,5 @@ def check_on_call_shadow_shadowable_type(value: str | None) -> OnCallShadowShado
     if value is None:
         return None
     if value in ON_CALL_SHADOW_SHADOWABLE_TYPE_VALUES:
-        return cast(OnCallShadowShadowableType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_SHADOW_SHADOWABLE_TYPE_VALUES!r}")

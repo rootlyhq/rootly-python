@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 GetFormFieldInclude = Literal["options", "positions"]
 
@@ -12,5 +12,5 @@ def check_get_form_field_include(value: str | None) -> GetFormFieldInclude | Non
     if value is None:
         return None
     if value in GET_FORM_FIELD_INCLUDE_VALUES:
-        return cast(GetFormFieldInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {GET_FORM_FIELD_INCLUDE_VALUES!r}")

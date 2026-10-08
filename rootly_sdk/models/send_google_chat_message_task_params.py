@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -21,17 +23,17 @@ T = TypeVar("T", bound="SendGoogleChatMessageTaskParams")
 class SendGoogleChatMessageTaskParams:
     """
     Attributes:
-        spaces (list['SendGoogleChatMessageTaskParamsSpacesItem']):
+        spaces (list[SendGoogleChatMessageTaskParamsSpacesItem]):
         text (str):
-        task_type (Union[Unset, SendGoogleChatMessageTaskParamsTaskType]):
-        thread_key (Union[None, Unset, str]): Thread key to reply within a thread. Messages with the same thread key are
+        task_type (SendGoogleChatMessageTaskParamsTaskType | Unset):
+        thread_key (None | str | Unset): Thread key to reply within a thread. Messages with the same thread key are
             grouped together
     """
 
-    spaces: list["SendGoogleChatMessageTaskParamsSpacesItem"]
+    spaces: list[SendGoogleChatMessageTaskParamsSpacesItem]
     text: str
-    task_type: Unset | SendGoogleChatMessageTaskParamsTaskType = UNSET
-    thread_key: None | Unset | str = UNSET
+    task_type: SendGoogleChatMessageTaskParamsTaskType | Unset = UNSET
+    thread_key: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,11 +44,11 @@ class SendGoogleChatMessageTaskParams:
 
         text = self.text
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        thread_key: None | Unset | str
+        thread_key: None | str | Unset
         if isinstance(self.thread_key, Unset):
             thread_key = UNSET
         else:
@@ -82,18 +84,18 @@ class SendGoogleChatMessageTaskParams:
         text = d.pop("text")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | SendGoogleChatMessageTaskParamsTaskType
+        task_type: SendGoogleChatMessageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_send_google_chat_message_task_params_task_type(_task_type)
 
-        def _parse_thread_key(data: object) -> None | Unset | str:
+        def _parse_thread_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         thread_key = _parse_thread_key(d.pop("thread_key", UNSET))
 

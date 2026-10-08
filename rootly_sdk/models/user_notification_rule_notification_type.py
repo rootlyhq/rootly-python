@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UserNotificationRuleNotificationType = Literal["audible", "quiet"]
 
@@ -12,5 +12,5 @@ def check_user_notification_rule_notification_type(value: str | None) -> UserNot
     if value is None:
         return None
     if value in USER_NOTIFICATION_RULE_NOTIFICATION_TYPE_VALUES:
-        return cast(UserNotificationRuleNotificationType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {USER_NOTIFICATION_RULE_NOTIFICATION_TYPE_VALUES!r}")

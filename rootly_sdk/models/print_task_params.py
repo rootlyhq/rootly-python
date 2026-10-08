@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -15,17 +17,17 @@ class PrintTaskParams:
     """
     Attributes:
         message (str): The message to print
-        task_type (Union[Unset, PrintTaskParamsTaskType]):
+        task_type (PrintTaskParamsTaskType | Unset):
     """
 
     message: str
-    task_type: Unset | PrintTaskParamsTaskType = UNSET
+    task_type: PrintTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         message = self.message
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -47,7 +49,7 @@ class PrintTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | PrintTaskParamsTaskType
+        task_type: PrintTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

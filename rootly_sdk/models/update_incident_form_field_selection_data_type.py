@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentFormFieldSelectionDataType = Literal["incident_form_field_selections"]
 
@@ -13,7 +13,7 @@ def check_update_incident_form_field_selection_data_type(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES:
-        return cast(UpdateIncidentFormFieldSelectionDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_FORM_FIELD_SELECTION_DATA_TYPE_VALUES!r}"
     )

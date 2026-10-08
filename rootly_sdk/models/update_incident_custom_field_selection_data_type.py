@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentCustomFieldSelectionDataType = Literal["incident_custom_field_selections"]
 
@@ -13,7 +13,7 @@ def check_update_incident_custom_field_selection_data_type(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_CUSTOM_FIELD_SELECTION_DATA_TYPE_VALUES:
-        return cast(UpdateIncidentCustomFieldSelectionDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_CUSTOM_FIELD_SELECTION_DATA_TYPE_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AssignRoleToUserDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_assign_role_to_user_data_type(value: str | None) -> AssignRoleToUserDa
     if value is None:
         return None
     if value in ASSIGN_ROLE_TO_USER_DATA_TYPE_VALUES:
-        return cast(AssignRoleToUserDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ASSIGN_ROLE_TO_USER_DATA_TYPE_VALUES!r}")

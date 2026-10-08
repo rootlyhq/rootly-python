@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogChecklistTemplateOwnersType0ItemType = Literal["field", "user"]
 
@@ -14,7 +14,7 @@ def check_catalog_checklist_template_owners_type_0_item_type(
     if value is None:
         return None
     if value in CATALOG_CHECKLIST_TEMPLATE_OWNERS_TYPE_0_ITEM_TYPE_VALUES:
-        return cast(CatalogChecklistTemplateOwnersType0ItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CATALOG_CHECKLIST_TEMPLATE_OWNERS_TYPE_0_ITEM_TYPE_VALUES!r}"
     )

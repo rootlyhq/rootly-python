@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField = Literal[
     "alert_description",
@@ -29,7 +29,7 @@ def check_alerts_source_sourceable_attributes_type_0_field_mappings_attributes_i
     if value is None:
         return None
     if value in ALERTS_SOURCE_SOURCEABLE_ATTRIBUTES_TYPE_0_FIELD_MAPPINGS_ATTRIBUTES_ITEM_FIELD_VALUES:
-        return cast(AlertsSourceSourceableAttributesType0FieldMappingsAttributesItemField, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERTS_SOURCE_SOURCEABLE_ATTRIBUTES_TYPE_0_FIELD_MAPPINGS_ATTRIBUTES_ITEM_FIELD_VALUES!r}"
     )

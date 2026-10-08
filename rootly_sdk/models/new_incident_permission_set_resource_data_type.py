@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentPermissionSetResourceDataType = Literal["incident_permission_set_resources"]
 
@@ -13,7 +13,7 @@ def check_new_incident_permission_set_resource_data_type(
     if value is None:
         return None
     if value in NEW_INCIDENT_PERMISSION_SET_RESOURCE_DATA_TYPE_VALUES:
-        return cast(NewIncidentPermissionSetResourceDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_PERMISSION_SET_RESOURCE_DATA_TYPE_VALUES!r}"
     )

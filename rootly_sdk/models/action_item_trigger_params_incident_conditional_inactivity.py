@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ActionItemTriggerParamsIncidentConditionalInactivity = Literal["IS"]
 
@@ -15,7 +15,7 @@ def check_action_item_trigger_params_incident_conditional_inactivity(
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITIONAL_INACTIVITY_VALUES:
-        return cast(ActionItemTriggerParamsIncidentConditionalInactivity, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_CONDITIONAL_INACTIVITY_VALUES!r}"
     )

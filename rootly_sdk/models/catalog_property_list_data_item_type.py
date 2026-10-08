@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogPropertyListDataItemType = Literal["catalog_properties"]
 
@@ -11,5 +11,5 @@ def check_catalog_property_list_data_item_type(value: str | None) -> CatalogProp
     if value is None:
         return None
     if value in CATALOG_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(CatalogPropertyListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_PROPERTY_LIST_DATA_ITEM_TYPE_VALUES!r}")

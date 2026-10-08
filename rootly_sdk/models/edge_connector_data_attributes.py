@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.edge_connector_data_attributes_status import (
     EdgeConnectorDataAttributesStatus,
@@ -21,32 +23,35 @@ class EdgeConnectorDataAttributes:
     Attributes:
         name (str): Connector name
         status (EdgeConnectorDataAttributesStatus): Connector status
-        description (Union[None, Unset, str]): Connector description
-        subscriptions (Union[Unset, list[str]]): Array of event types to subscribe to
-        last_poll_at (Union[None, Unset, datetime.datetime]): Last time connector polled
-        online (Union[Unset, bool]): Whether connector is currently online
-        deliveries_count (Union[Unset, int]): Total number of deliveries
-        deliveries_queued_count (Union[Unset, int]): Number of queued deliveries
-        deliveries_running_count (Union[Unset, int]): Number of running deliveries
-        deliveries_completed_count (Union[Unset, int]): Number of completed deliveries
-        deliveries_failed_count (Union[Unset, int]): Number of failed deliveries
-        created_at (Union[Unset, datetime.datetime]):
-        updated_at (Union[Unset, datetime.datetime]):
+        description (None | str | Unset): Connector description
+        subscriptions (list[str] | Unset): Array of event types to subscribe to
+        owner_group_ids (list[UUID] | Unset): IDs of the teams (groups) that own this connector. Empty means the
+            connector is not scoped to a team
+        last_poll_at (datetime.datetime | None | Unset): Last time connector polled
+        online (bool | Unset): Whether connector is currently online
+        deliveries_count (int | Unset): Total number of deliveries
+        deliveries_queued_count (int | Unset): Number of queued deliveries
+        deliveries_running_count (int | Unset): Number of running deliveries
+        deliveries_completed_count (int | Unset): Number of completed deliveries
+        deliveries_failed_count (int | Unset): Number of failed deliveries
+        created_at (datetime.datetime | Unset):
+        updated_at (datetime.datetime | Unset):
     """
 
     name: str
     status: EdgeConnectorDataAttributesStatus
-    description: None | Unset | str = UNSET
-    subscriptions: Unset | list[str] = UNSET
-    last_poll_at: None | Unset | datetime.datetime = UNSET
-    online: Unset | bool = UNSET
-    deliveries_count: Unset | int = UNSET
-    deliveries_queued_count: Unset | int = UNSET
-    deliveries_running_count: Unset | int = UNSET
-    deliveries_completed_count: Unset | int = UNSET
-    deliveries_failed_count: Unset | int = UNSET
-    created_at: Unset | datetime.datetime = UNSET
-    updated_at: Unset | datetime.datetime = UNSET
+    description: None | str | Unset = UNSET
+    subscriptions: list[str] | Unset = UNSET
+    owner_group_ids: list[UUID] | Unset = UNSET
+    last_poll_at: datetime.datetime | None | Unset = UNSET
+    online: bool | Unset = UNSET
+    deliveries_count: int | Unset = UNSET
+    deliveries_queued_count: int | Unset = UNSET
+    deliveries_running_count: int | Unset = UNSET
+    deliveries_completed_count: int | Unset = UNSET
+    deliveries_failed_count: int | Unset = UNSET
+    created_at: datetime.datetime | Unset = UNSET
+    updated_at: datetime.datetime | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,17 +59,24 @@ class EdgeConnectorDataAttributes:
 
         status: str = self.status
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        subscriptions: Unset | list[str] = UNSET
+        subscriptions: list[str] | Unset = UNSET
         if not isinstance(self.subscriptions, Unset):
             subscriptions = self.subscriptions
 
-        last_poll_at: None | Unset | str
+        owner_group_ids: list[str] | Unset = UNSET
+        if not isinstance(self.owner_group_ids, Unset):
+            owner_group_ids = []
+            for owner_group_ids_item_data in self.owner_group_ids:
+                owner_group_ids_item = str(owner_group_ids_item_data)
+                owner_group_ids.append(owner_group_ids_item)
+
+        last_poll_at: None | str | Unset
         if isinstance(self.last_poll_at, Unset):
             last_poll_at = UNSET
         elif isinstance(self.last_poll_at, datetime.datetime):
@@ -84,11 +96,11 @@ class EdgeConnectorDataAttributes:
 
         deliveries_failed_count = self.deliveries_failed_count
 
-        created_at: Unset | str = UNSET
+        created_at: str | Unset = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Unset | str = UNSET
+        updated_at: str | Unset = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -104,6 +116,8 @@ class EdgeConnectorDataAttributes:
             field_dict["description"] = description
         if subscriptions is not UNSET:
             field_dict["subscriptions"] = subscriptions
+        if owner_group_ids is not UNSET:
+            field_dict["owner_group_ids"] = owner_group_ids
         if last_poll_at is not UNSET:
             field_dict["last_poll_at"] = last_poll_at
         if online is not UNSET:
@@ -132,18 +146,27 @@ class EdgeConnectorDataAttributes:
 
         status = check_edge_connector_data_attributes_status(d.pop("status"))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         subscriptions = cast(list[str], d.pop("subscriptions", UNSET))
 
-        def _parse_last_poll_at(data: object) -> None | Unset | datetime.datetime:
+        _owner_group_ids = d.pop("owner_group_ids", UNSET)
+        owner_group_ids: list[UUID] | Unset = UNSET
+        if _owner_group_ids is not UNSET:
+            owner_group_ids = []
+            for owner_group_ids_item_data in _owner_group_ids:
+                owner_group_ids_item = UUID(owner_group_ids_item_data)
+
+                owner_group_ids.append(owner_group_ids_item)
+
+        def _parse_last_poll_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -151,12 +174,12 @@ class EdgeConnectorDataAttributes:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                last_poll_at_type_0 = isoparse(data)
+                last_poll_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return last_poll_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         last_poll_at = _parse_last_poll_at(d.pop("last_poll_at", UNSET))
 
@@ -173,24 +196,25 @@ class EdgeConnectorDataAttributes:
         deliveries_failed_count = d.pop("deliveries_failed_count", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Unset | datetime.datetime
+        created_at: datetime.datetime | Unset
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
-            created_at = isoparse(_created_at)
+            created_at = datetime.datetime.fromisoformat(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Unset | datetime.datetime
+        updated_at: datetime.datetime | Unset
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
-            updated_at = isoparse(_updated_at)
+            updated_at = datetime.datetime.fromisoformat(_updated_at)
 
         edge_connector_data_attributes = cls(
             name=name,
             status=status,
             description=description,
             subscriptions=subscriptions,
+            owner_group_ids=owner_group_ids,
             last_poll_at=last_poll_at,
             online=online,
             deliveries_count=deliveries_count,

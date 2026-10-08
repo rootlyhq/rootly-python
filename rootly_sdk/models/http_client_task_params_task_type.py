@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 HttpClientTaskParamsTaskType = Literal["http_client"]
 
@@ -11,5 +11,5 @@ def check_http_client_task_params_task_type(value: str | None) -> HttpClientTask
     if value is None:
         return None
     if value in HTTP_CLIENT_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(HttpClientTaskParamsTaskType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {HTTP_CLIENT_TASK_PARAMS_TASK_TYPE_VALUES!r}")

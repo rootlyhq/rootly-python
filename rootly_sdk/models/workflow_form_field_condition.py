@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -23,13 +25,13 @@ class WorkflowFormFieldCondition:
         selected_catalog_entity_ids (list[str]):
         selected_option_ids (list[str]):
         selected_user_ids (list[int]):
-        values (Union[Unset, list[str]]):
-        selected_functionality_ids (Union[Unset, list[str]]):
-        selected_group_ids (Union[Unset, list[str]]):
-        selected_service_ids (Union[Unset, list[str]]):
-        selected_cause_ids (Union[Unset, list[str]]):
-        selected_environment_ids (Union[Unset, list[str]]):
-        selected_incident_type_ids (Union[Unset, list[str]]):
+        values (list[str] | Unset):
+        selected_functionality_ids (list[str] | Unset):
+        selected_group_ids (list[str] | Unset):
+        selected_service_ids (list[str] | Unset):
+        selected_cause_ids (list[str] | Unset):
+        selected_environment_ids (list[str] | Unset):
+        selected_incident_type_ids (list[str] | Unset):
     """
 
     workflow_id: str
@@ -38,13 +40,13 @@ class WorkflowFormFieldCondition:
     selected_option_ids: list[str]
     selected_user_ids: list[int]
     incident_condition: WorkflowFormFieldConditionIncidentCondition = "ANY"
-    values: Unset | list[str] = UNSET
-    selected_functionality_ids: Unset | list[str] = UNSET
-    selected_group_ids: Unset | list[str] = UNSET
-    selected_service_ids: Unset | list[str] = UNSET
-    selected_cause_ids: Unset | list[str] = UNSET
-    selected_environment_ids: Unset | list[str] = UNSET
-    selected_incident_type_ids: Unset | list[str] = UNSET
+    values: list[str] | Unset = UNSET
+    selected_functionality_ids: list[str] | Unset = UNSET
+    selected_group_ids: list[str] | Unset = UNSET
+    selected_service_ids: list[str] | Unset = UNSET
+    selected_cause_ids: list[str] | Unset = UNSET
+    selected_environment_ids: list[str] | Unset = UNSET
+    selected_incident_type_ids: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,31 +62,31 @@ class WorkflowFormFieldCondition:
 
         selected_user_ids = self.selected_user_ids
 
-        values: Unset | list[str] = UNSET
+        values: list[str] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_functionality_ids: Unset | list[str] = UNSET
+        selected_functionality_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_functionality_ids, Unset):
             selected_functionality_ids = self.selected_functionality_ids
 
-        selected_group_ids: Unset | list[str] = UNSET
+        selected_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_group_ids, Unset):
             selected_group_ids = self.selected_group_ids
 
-        selected_service_ids: Unset | list[str] = UNSET
+        selected_service_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_service_ids, Unset):
             selected_service_ids = self.selected_service_ids
 
-        selected_cause_ids: Unset | list[str] = UNSET
+        selected_cause_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_cause_ids, Unset):
             selected_cause_ids = self.selected_cause_ids
 
-        selected_environment_ids: Unset | list[str] = UNSET
+        selected_environment_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_environment_ids, Unset):
             selected_environment_ids = self.selected_environment_ids
 
-        selected_incident_type_ids: Unset | list[str] = UNSET
+        selected_incident_type_ids: list[str] | Unset = UNSET
         if not isinstance(self.selected_incident_type_ids, Unset):
             selected_incident_type_ids = self.selected_incident_type_ids
 

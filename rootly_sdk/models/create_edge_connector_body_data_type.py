@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateEdgeConnectorBodyDataType = Literal["edge_connectors"]
 
@@ -11,5 +11,5 @@ def check_create_edge_connector_body_data_type(value: str | None) -> CreateEdgeC
     if value is None:
         return None
     if value in CREATE_EDGE_CONNECTOR_BODY_DATA_TYPE_VALUES:
-        return cast(CreateEdgeConnectorBodyDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CREATE_EDGE_CONNECTOR_BODY_DATA_TYPE_VALUES!r}")

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,29 +27,29 @@ T = TypeVar("T", bound="RetrospectiveProcess")
 class RetrospectiveProcess:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the retrospective process
-        description (Union[None, Unset, str]): The description of the retrospective process
-        is_default (Union[None, Unset, bool]): Indicates the default process that Rootly created. This will be used as a
+        name (str | Unset): The name of the retrospective process
+        description (None | str | Unset): The description of the retrospective process
+        is_default (bool | None | Unset): Indicates the default process that Rootly created. This will be used as a
             fallback if no processes match the incident's conditions. The default process cannot have conditions and cannot
             be changed.
-        created_at (Union[Unset, str]): Date of creation
-        updated_at (Union[Unset, str]): Date of last update
-        retrospective_process_matching_criteria (Union['RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0',
-            'RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1',
-            'RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2', Unset]):
+        created_at (str | Unset): Date of creation
+        updated_at (str | Unset): Date of last update
+        retrospective_process_matching_criteria (RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0 |
+            RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1 |
+            RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2 | Unset):
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    is_default: None | Unset | bool = UNSET
-    created_at: Unset | str = UNSET
-    updated_at: Unset | str = UNSET
-    retrospective_process_matching_criteria: Union[
-        "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0",
-        "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1",
-        "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2",
-        Unset,
-    ] = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    is_default: bool | None | Unset = UNSET
+    created_at: str | Unset = UNSET
+    updated_at: str | Unset = UNSET
+    retrospective_process_matching_criteria: (
+        RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0
+        | RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1
+        | RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2
+        | Unset
+    ) = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,13 +62,13 @@ class RetrospectiveProcess:
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        is_default: None | Unset | bool
+        is_default: bool | None | Unset
         if isinstance(self.is_default, Unset):
             is_default = UNSET
         else:
@@ -76,7 +78,7 @@ class RetrospectiveProcess:
 
         updated_at = self.updated_at
 
-        retrospective_process_matching_criteria: Unset | dict[str, Any]
+        retrospective_process_matching_criteria: dict[str, Any] | Unset
         if isinstance(self.retrospective_process_matching_criteria, Unset):
             retrospective_process_matching_criteria = UNSET
         elif isinstance(
@@ -123,21 +125,21 @@ class RetrospectiveProcess:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_is_default(data: object) -> None | Unset | bool:
+        def _parse_is_default(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         is_default = _parse_is_default(d.pop("is_default", UNSET))
 
@@ -147,12 +149,12 @@ class RetrospectiveProcess:
 
         def _parse_retrospective_process_matching_criteria(
             data: object,
-        ) -> Union[
-            "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0",
-            "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1",
-            "RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2",
-            Unset,
-        ]:
+        ) -> (
+            RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType0
+            | RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType1
+            | RetrospectiveProcessRetrospectiveProcessMatchingCriteriaType2
+            | Unset
+        ):
             if isinstance(data, Unset):
                 return data
             try:
@@ -163,7 +165,7 @@ class RetrospectiveProcess:
                 )
 
                 return retrospective_process_matching_criteria_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -173,7 +175,7 @@ class RetrospectiveProcess:
                 )
 
                 return retrospective_process_matching_criteria_type_1
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()

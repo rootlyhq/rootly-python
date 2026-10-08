@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListCauseCatalogPropertiesInclude = Literal["catalog"]
 
@@ -11,5 +11,5 @@ def check_list_cause_catalog_properties_include(value: str | None) -> ListCauseC
     if value is None:
         return None
     if value in LIST_CAUSE_CATALOG_PROPERTIES_INCLUDE_VALUES:
-        return cast(ListCauseCatalogPropertiesInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CAUSE_CATALOG_PROPERTIES_INCLUDE_VALUES!r}")

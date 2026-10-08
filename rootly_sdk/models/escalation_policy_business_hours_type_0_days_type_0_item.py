@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EscalationPolicyBusinessHoursType0DaysType0Item = Literal["F", "M", "R", "S", "T", "U", "W"]
 
@@ -21,7 +21,7 @@ def check_escalation_policy_business_hours_type_0_days_type_0_item(
     if value is None:
         return None
     if value in ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_DAYS_TYPE_0_ITEM_VALUES:
-        return cast(EscalationPolicyBusinessHoursType0DaysType0Item, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ESCALATION_POLICY_BUSINESS_HOURS_TYPE_0_DAYS_TYPE_0_ITEM_VALUES!r}"
     )

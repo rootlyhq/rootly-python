@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewStatusPageDataType = Literal["status_pages"]
 
@@ -11,5 +11,5 @@ def check_new_status_page_data_type(value: str | None) -> NewStatusPageDataType 
     if value is None:
         return None
     if value in NEW_STATUS_PAGE_DATA_TYPE_VALUES:
-        return cast(NewStatusPageDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_STATUS_PAGE_DATA_TYPE_VALUES!r}")

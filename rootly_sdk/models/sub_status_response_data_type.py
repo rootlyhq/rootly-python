@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SubStatusResponseDataType = Literal["sub_statuses"]
 
@@ -11,5 +11,5 @@ def check_sub_status_response_data_type(value: str | None) -> SubStatusResponseD
     if value is None:
         return None
     if value in SUB_STATUS_RESPONSE_DATA_TYPE_VALUES:
-        return cast(SubStatusResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SUB_STATUS_RESPONSE_DATA_TYPE_VALUES!r}")

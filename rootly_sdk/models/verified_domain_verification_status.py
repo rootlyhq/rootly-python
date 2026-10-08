@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 VerifiedDomainVerificationStatus = Literal["expired", "failing", "pending", "verified"]
 
@@ -14,5 +14,5 @@ def check_verified_domain_verification_status(value: str | None) -> VerifiedDoma
     if value is None:
         return None
     if value in VERIFIED_DOMAIN_VERIFICATION_STATUS_VALUES:
-        return cast(VerifiedDomainVerificationStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {VERIFIED_DOMAIN_VERIFICATION_STATUS_VALUES!r}")

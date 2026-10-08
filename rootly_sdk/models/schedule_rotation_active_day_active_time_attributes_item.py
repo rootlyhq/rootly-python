@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -13,12 +15,12 @@ T = TypeVar("T", bound="ScheduleRotationActiveDayActiveTimeAttributesItem")
 class ScheduleRotationActiveDayActiveTimeAttributesItem:
     """
     Attributes:
-        start_time (Union[Unset, str]): Start time for schedule rotation active time
-        end_time (Union[Unset, str]): End time for schedule rotation active time
+        start_time (str | Unset): Start time for schedule rotation active time
+        end_time (str | Unset): End time for schedule rotation active time
     """
 
-    start_time: Unset | str = UNSET
-    end_time: Unset | str = UNSET
+    start_time: str | Unset = UNSET
+    end_time: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

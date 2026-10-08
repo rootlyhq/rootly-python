@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,35 +18,35 @@ T = TypeVar("T", bound="CatalogField")
 class CatalogField:
     """
     Attributes:
-        catalog_id (Union[None, str]):
+        catalog_id (None | str):
         name (str):
         kind (CatalogFieldKind):
         multiple (bool): Whether the attribute accepts multiple values.
-        position (Union[None, int]): Default position of the item when displayed in a list.
+        position (int | None): Default position of the item when displayed in a list.
         created_at (str):
         updated_at (str):
-        slug (Union[Unset, str]):
-        kind_catalog_id (Union[None, Unset, str]): Restricts values to items of specified catalog.
-        required (Union[Unset, bool]): Whether the field is required.
-        catalog_type (Union[Unset, CatalogFieldCatalogType]): The type of catalog the field belongs to.
-        external_id (Union[None, Unset, str]): An external identifier for this catalog field. Must be unique within the
+        slug (str | Unset):
+        kind_catalog_id (None | str | Unset): Restricts values to items of specified catalog.
+        required (bool | Unset): Whether the field is required.
+        catalog_type (CatalogFieldCatalogType | Unset): The type of catalog the field belongs to.
+        external_id (None | str | Unset): An external identifier for this catalog field. Must be unique within the
             scope.
-        managed_by (Union[Unset, CatalogFieldManagedBy]): Which source manages this resource (read-only).
+        managed_by (CatalogFieldManagedBy | Unset): Which source manages this resource (read-only).
     """
 
     catalog_id: None | str
     name: str
     kind: CatalogFieldKind
     multiple: bool
-    position: None | int
+    position: int | None
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
-    kind_catalog_id: None | Unset | str = UNSET
-    required: Unset | bool = UNSET
-    catalog_type: Unset | CatalogFieldCatalogType = UNSET
-    external_id: None | Unset | str = UNSET
-    managed_by: Unset | CatalogFieldManagedBy = UNSET
+    slug: str | Unset = UNSET
+    kind_catalog_id: None | str | Unset = UNSET
+    required: bool | Unset = UNSET
+    catalog_type: CatalogFieldCatalogType | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    managed_by: CatalogFieldManagedBy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,7 +59,7 @@ class CatalogField:
 
         multiple = self.multiple
 
-        position: None | int
+        position: int | None
         position = self.position
 
         created_at = self.created_at
@@ -66,7 +68,7 @@ class CatalogField:
 
         slug = self.slug
 
-        kind_catalog_id: None | Unset | str
+        kind_catalog_id: None | str | Unset
         if isinstance(self.kind_catalog_id, Unset):
             kind_catalog_id = UNSET
         else:
@@ -74,17 +76,17 @@ class CatalogField:
 
         required = self.required
 
-        catalog_type: Unset | str = UNSET
+        catalog_type: str | Unset = UNSET
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        managed_by: Unset | str = UNSET
+        managed_by: str | Unset = UNSET
         if not isinstance(self.managed_by, Unset):
             managed_by = self.managed_by
 
@@ -133,10 +135,10 @@ class CatalogField:
 
         multiple = d.pop("multiple")
 
-        def _parse_position(data: object) -> None | int:
+        def _parse_position(data: object) -> int | None:
             if data is None:
                 return data
-            return cast(None | int, data)
+            return cast(int | None, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -146,35 +148,35 @@ class CatalogField:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_kind_catalog_id(data: object) -> None | Unset | str:
+        def _parse_kind_catalog_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         kind_catalog_id = _parse_kind_catalog_id(d.pop("kind_catalog_id", UNSET))
 
         required = d.pop("required", UNSET)
 
         _catalog_type = d.pop("catalog_type", UNSET)
-        catalog_type: Unset | CatalogFieldCatalogType
+        catalog_type: CatalogFieldCatalogType | Unset
         if isinstance(_catalog_type, Unset):
             catalog_type = UNSET
         else:
             catalog_type = check_catalog_field_catalog_type(_catalog_type)
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         _managed_by = d.pop("managed_by", UNSET)
-        managed_by: Unset | CatalogFieldManagedBy
+        managed_by: CatalogFieldManagedBy | Unset
         if isinstance(_managed_by, Unset):
             managed_by = UNSET
         else:

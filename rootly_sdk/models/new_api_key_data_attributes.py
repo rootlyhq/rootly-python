@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 from ..models.new_api_key_data_attributes_kind import (
     NewApiKeyDataAttributesKind,
@@ -21,19 +22,19 @@ class NewApiKeyDataAttributes:
         name (str): The name of the API key
         kind (NewApiKeyDataAttributesKind): The kind of the API key
         expires_at (datetime.datetime): The expiration date of the API key (ISO 8601)
-        description (Union[None, Unset, str]): A description of the API key
-        group_id (Union[None, Unset, str]): The group (team) ID. Required when kind is 'team'.
-        role_id (Union[None, Unset, str]): The role ID for organization API keys
-        on_call_role_id (Union[None, Unset, str]): The on-call role ID for organization API keys
+        description (None | str | Unset): A description of the API key
+        group_id (None | str | Unset): The group (team) ID. Required when kind is 'team'.
+        role_id (None | str | Unset): The role ID for organization API keys
+        on_call_role_id (None | str | Unset): The on-call role ID for organization API keys
     """
 
     name: str
     kind: NewApiKeyDataAttributesKind
     expires_at: datetime.datetime
-    description: None | Unset | str = UNSET
-    group_id: None | Unset | str = UNSET
-    role_id: None | Unset | str = UNSET
-    on_call_role_id: None | Unset | str = UNSET
+    description: None | str | Unset = UNSET
+    group_id: None | str | Unset = UNSET
+    role_id: None | str | Unset = UNSET
+    on_call_role_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -42,25 +43,25 @@ class NewApiKeyDataAttributes:
 
         expires_at = self.expires_at.isoformat()
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        group_id: None | Unset | str
+        group_id: None | str | Unset
         if isinstance(self.group_id, Unset):
             group_id = UNSET
         else:
             group_id = self.group_id
 
-        role_id: None | Unset | str
+        role_id: None | str | Unset
         if isinstance(self.role_id, Unset):
             role_id = UNSET
         else:
             role_id = self.role_id
 
-        on_call_role_id: None | Unset | str
+        on_call_role_id: None | str | Unset
         if isinstance(self.on_call_role_id, Unset):
             on_call_role_id = UNSET
         else:
@@ -93,41 +94,41 @@ class NewApiKeyDataAttributes:
 
         kind = check_new_api_key_data_attributes_kind(d.pop("kind"))
 
-        expires_at = isoparse(d.pop("expires_at"))
+        expires_at = datetime.datetime.fromisoformat(d.pop("expires_at"))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_group_id(data: object) -> None | Unset | str:
+        def _parse_group_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         group_id = _parse_group_id(d.pop("group_id", UNSET))
 
-        def _parse_role_id(data: object) -> None | Unset | str:
+        def _parse_role_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         role_id = _parse_role_id(d.pop("role_id", UNSET))
 
-        def _parse_on_call_role_id(data: object) -> None | Unset | str:
+        def _parse_on_call_role_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         on_call_role_id = _parse_on_call_role_id(d.pop("on_call_role_id", UNSET))
 

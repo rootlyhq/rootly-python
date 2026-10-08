@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateUserNotificationRuleDataAttributesEnabledContactTypesItem = Literal[
     "call", "device", "email", "google_chat", "microsoft_teams", "non_critical_device", "slack", "sms"
@@ -24,7 +24,7 @@ def check_update_user_notification_rule_data_attributes_enabled_contact_types_it
     if value is None:
         return None
     if value in UPDATE_USER_NOTIFICATION_RULE_DATA_ATTRIBUTES_ENABLED_CONTACT_TYPES_ITEM_VALUES:
-        return cast(UpdateUserNotificationRuleDataAttributesEnabledContactTypesItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_USER_NOTIFICATION_RULE_DATA_ATTRIBUTES_ENABLED_CONTACT_TYPES_ITEM_VALUES!r}"
     )

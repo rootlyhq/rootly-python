@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -12,11 +13,14 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
 ) -> dict[str, Any]:
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": f"/v1/heartbeats/{id}",
+        "url": "/v1/heartbeats/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     return _kwargs
@@ -53,7 +57,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorsList | HeartbeatResponse]:
@@ -62,14 +66,14 @@ def sync_detailed(
      Delete a specific heartbeat by id
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, HeartbeatResponse]]
+        Response[ErrorsList | HeartbeatResponse]
     """
 
     kwargs = _get_kwargs(
@@ -84,7 +88,7 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> ErrorsList | HeartbeatResponse | None:
@@ -93,14 +97,14 @@ def sync(
      Delete a specific heartbeat by id
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, HeartbeatResponse]
+        ErrorsList | HeartbeatResponse
     """
 
     return sync_detailed(
@@ -110,7 +114,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[ErrorsList | HeartbeatResponse]:
@@ -119,14 +123,14 @@ async def asyncio_detailed(
      Delete a specific heartbeat by id
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, HeartbeatResponse]]
+        Response[ErrorsList | HeartbeatResponse]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +143,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
 ) -> ErrorsList | HeartbeatResponse | None:
@@ -148,14 +152,14 @@ async def asyncio(
      Delete a specific heartbeat by id
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, HeartbeatResponse]
+        ErrorsList | HeartbeatResponse
     """
 
     return (

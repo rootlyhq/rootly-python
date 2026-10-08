@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertsSourceDataAttributesSourceType = Literal[
     "alertmanager",
@@ -61,7 +61,7 @@ def check_new_alerts_source_data_attributes_source_type(
     if value is None:
         return None
     if value in NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCE_TYPE_VALUES:
-        return cast(NewAlertsSourceDataAttributesSourceType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERTS_SOURCE_DATA_ATTRIBUTES_SOURCE_TYPE_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OverrideShiftResponseDataType = Literal["shifts"]
 
@@ -11,5 +11,5 @@ def check_override_shift_response_data_type(value: str | None) -> OverrideShiftR
     if value is None:
         return None
     if value in OVERRIDE_SHIFT_RESPONSE_DATA_TYPE_VALUES:
-        return cast(OverrideShiftResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {OVERRIDE_SHIFT_RESPONSE_DATA_TYPE_VALUES!r}")

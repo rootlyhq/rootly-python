@@ -13,14 +13,14 @@ This is a Python SDK for the Rootly API v1.
 
 ## Dependencies
 
-- Python 3.9+
+- Python 3.10+
 - httpx (HTTP client)
 - attrs (data classes)
 - python-dateutil (date parsing)
 
 ## Development
 
-- Uses Poetry for dependency management
+- Uses uv for dependency management
 - Follows Ruff linting rules (line length 120, select F/I/UP)
 - Generated from OpenAPI specification
 
@@ -33,11 +33,12 @@ python -c "import rootly_sdk; print('SDK imports successfully')"
 
 ## Regenerating the Client
 
-To regenerate the client from the OpenAPI specification:
+Use `make regenerate` to fetch and preprocess the OpenAPI specification, run the generator pinned in `uv.lock`, and apply the post-generation fixes. Never run a global `openapi-python-client`.
+
 ```bash
-openapi-python-client generate --url https://rootly-heroku.s3.amazonaws.com/swagger/v1/swagger.json --no-fail-on-warning --output-path . --overwrite --config tools/config.yaml
+make regenerate
 ```
 
 ## Building
 
-Uses Poetry build system with `poetry-core` backend.
+Uses `poetry-core` as the build backend.

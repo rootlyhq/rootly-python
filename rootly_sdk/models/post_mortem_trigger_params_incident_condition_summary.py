@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PostMortemTriggerParamsIncidentConditionSummary = Literal["SET", "UNSET"]
 
@@ -14,7 +14,7 @@ def check_post_mortem_trigger_params_incident_condition_summary(
     if value is None:
         return None
     if value in POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_VALUES:
-        return cast(PostMortemTriggerParamsIncidentConditionSummary, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {POST_MORTEM_TRIGGER_PARAMS_INCIDENT_CONDITION_SUMMARY_VALUES!r}"
     )

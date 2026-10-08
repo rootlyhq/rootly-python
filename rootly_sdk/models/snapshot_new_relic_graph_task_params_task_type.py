@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SnapshotNewRelicGraphTaskParamsTaskType = Literal["snapshot_looker_graph"]
 
@@ -13,7 +13,7 @@ def check_snapshot_new_relic_graph_task_params_task_type(
     if value is None:
         return None
     if value in SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(SnapshotNewRelicGraphTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SNAPSHOT_NEW_RELIC_GRAPH_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RolePagingPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_paging_permissions_item(value: str | None) -> RolePagingPermissio
     if value is None:
         return None
     if value in ROLE_PAGING_PERMISSIONS_ITEM_VALUES:
-        return cast(RolePagingPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_PAGING_PERMISSIONS_ITEM_VALUES!r}")

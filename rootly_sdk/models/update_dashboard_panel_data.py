@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.update_dashboard_panel_data_type import (
     UpdateDashboardPanelDataType,
@@ -21,26 +22,32 @@ T = TypeVar("T", bound="UpdateDashboardPanelData")
 class UpdateDashboardPanelData:
     """
     Attributes:
-        type_ (Union[Unset, UpdateDashboardPanelDataType]):
-        attributes (Union[Unset, UpdateDashboardPanelDataAttributes]):
+        id (str | Unset): Accepted for JSON:API client compatibility, but ignored. The resource to update is identified
+            by the id in the path.
+        type_ (UpdateDashboardPanelDataType | Unset):
+        attributes (UpdateDashboardPanelDataAttributes | Unset):
     """
 
-    type_: Unset | UpdateDashboardPanelDataType = UNSET
-    attributes: Union[Unset, "UpdateDashboardPanelDataAttributes"] = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    id: str | Unset = UNSET
+    type_: UpdateDashboardPanelDataType | Unset = UNSET
+    attributes: UpdateDashboardPanelDataAttributes | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        type_: Unset | str = UNSET
+        id = self.id
+
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
+        if id is not UNSET:
+            field_dict["id"] = id
         if type_ is not UNSET:
             field_dict["type"] = type_
         if attributes is not UNSET:
@@ -53,40 +60,26 @@ class UpdateDashboardPanelData:
         from ..models.update_dashboard_panel_data_attributes import UpdateDashboardPanelDataAttributes
 
         d = dict(src_dict)
+        id = d.pop("id", UNSET)
+
         _type_ = d.pop("type", UNSET)
-        type_: Unset | UpdateDashboardPanelDataType
+        type_: UpdateDashboardPanelDataType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_update_dashboard_panel_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | UpdateDashboardPanelDataAttributes
+        attributes: UpdateDashboardPanelDataAttributes | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
             attributes = UpdateDashboardPanelDataAttributes.from_dict(_attributes)
 
         update_dashboard_panel_data = cls(
+            id=id,
             type_=type_,
             attributes=attributes,
         )
 
-        update_dashboard_panel_data.additional_properties = d
         return update_dashboard_panel_data
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

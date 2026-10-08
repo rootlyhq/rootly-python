@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateFormFieldPositionDataAttributesForm = Literal[
     "incident_post_mortem",
@@ -55,7 +55,7 @@ def check_update_form_field_position_data_attributes_form(
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES:
-        return cast(UpdateFormFieldPositionDataAttributesForm, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES!r}"
     )

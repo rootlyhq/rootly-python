@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRoutingRuleConditionPropertyFieldType = Literal["attribute", "payload"]
 
@@ -14,7 +14,7 @@ def check_alert_routing_rule_condition_property_field_type(
     if value is None:
         return None
     if value in ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_TYPE_VALUES:
-        return cast(AlertRoutingRuleConditionPropertyFieldType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_TYPE_VALUES!r}"
     )

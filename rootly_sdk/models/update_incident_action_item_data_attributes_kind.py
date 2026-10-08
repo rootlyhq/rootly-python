@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentActionItemDataAttributesKind = Literal["follow_up", "task"]
 
@@ -14,7 +14,7 @@ def check_update_incident_action_item_data_attributes_kind(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_KIND_VALUES:
-        return cast(UpdateIncidentActionItemDataAttributesKind, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_ACTION_ITEM_DATA_ATTRIBUTES_KIND_VALUES!r}"
     )

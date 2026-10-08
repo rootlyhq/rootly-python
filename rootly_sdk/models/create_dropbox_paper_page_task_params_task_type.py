@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateDropboxPaperPageTaskParamsTaskType = Literal["create_dropbox_paper_page"]
 
@@ -13,7 +13,7 @@ def check_create_dropbox_paper_page_task_params_task_type(
     if value is None:
         return None
     if value in CREATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(CreateDropboxPaperPageTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_DROPBOX_PAPER_PAGE_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

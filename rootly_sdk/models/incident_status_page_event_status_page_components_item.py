@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,18 +20,17 @@ class IncidentStatusPageEventStatusPageComponentsItem:
     """
     Attributes:
         status_page_component_id (str): Unique ID of a component on the event's status page
-        status (Union[Unset, IncidentStatusPageEventStatusPageComponentsItemStatus]): The status recorded for the
-            component
+        status (IncidentStatusPageEventStatusPageComponentsItemStatus | Unset): The status recorded for the component
     """
 
     status_page_component_id: str
-    status: Unset | IncidentStatusPageEventStatusPageComponentsItemStatus = UNSET
+    status: IncidentStatusPageEventStatusPageComponentsItemStatus | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         status_page_component_id = self.status_page_component_id
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
@@ -51,7 +52,7 @@ class IncidentStatusPageEventStatusPageComponentsItem:
         status_page_component_id = d.pop("status_page_component_id")
 
         _status = d.pop("status", UNSET)
-        status: Unset | IncidentStatusPageEventStatusPageComponentsItemStatus
+        status: IncidentStatusPageEventStatusPageComponentsItemStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:

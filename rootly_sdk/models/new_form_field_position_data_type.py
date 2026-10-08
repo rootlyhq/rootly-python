@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewFormFieldPositionDataType = Literal["form_field_positions"]
 
@@ -11,5 +11,5 @@ def check_new_form_field_position_data_type(value: str | None) -> NewFormFieldPo
     if value is None:
         return None
     if value in NEW_FORM_FIELD_POSITION_DATA_TYPE_VALUES:
-        return cast(NewFormFieldPositionDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_FORM_FIELD_POSITION_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateEdgeConnectorBodyDataAttributesStatus = Literal["active", "paused"]
 
@@ -14,7 +14,7 @@ def check_create_edge_connector_body_data_attributes_status(
     if value is None:
         return None
     if value in CREATE_EDGE_CONNECTOR_BODY_DATA_ATTRIBUTES_STATUS_VALUES:
-        return cast(CreateEdgeConnectorBodyDataAttributesStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_EDGE_CONNECTOR_BODY_DATA_ATTRIBUTES_STATUS_VALUES!r}"
     )

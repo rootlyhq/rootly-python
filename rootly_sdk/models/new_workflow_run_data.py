@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.new_workflow_run_data_type import NewWorkflowRunDataType, check_new_workflow_run_data_type
 
@@ -23,21 +24,20 @@ class NewWorkflowRunData:
     """
     Attributes:
         type_ (NewWorkflowRunDataType):
-        attributes (Union['NewWorkflowRunDataAttributesType0', 'NewWorkflowRunDataAttributesType1',
-            'NewWorkflowRunDataAttributesType2', 'NewWorkflowRunDataAttributesType3', 'NewWorkflowRunDataAttributesType4',
-            'NewWorkflowRunDataAttributesType5']):
+        attributes (NewWorkflowRunDataAttributesType0 | NewWorkflowRunDataAttributesType1 |
+            NewWorkflowRunDataAttributesType2 | NewWorkflowRunDataAttributesType3 | NewWorkflowRunDataAttributesType4 |
+            NewWorkflowRunDataAttributesType5):
     """
 
     type_: NewWorkflowRunDataType
-    attributes: Union[
-        "NewWorkflowRunDataAttributesType0",
-        "NewWorkflowRunDataAttributesType1",
-        "NewWorkflowRunDataAttributesType2",
-        "NewWorkflowRunDataAttributesType3",
-        "NewWorkflowRunDataAttributesType4",
-        "NewWorkflowRunDataAttributesType5",
-    ]
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    attributes: (
+        NewWorkflowRunDataAttributesType0
+        | NewWorkflowRunDataAttributesType1
+        | NewWorkflowRunDataAttributesType2
+        | NewWorkflowRunDataAttributesType3
+        | NewWorkflowRunDataAttributesType4
+        | NewWorkflowRunDataAttributesType5
+    )
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.new_workflow_run_data_attributes_type_0 import NewWorkflowRunDataAttributesType0
@@ -63,7 +63,7 @@ class NewWorkflowRunData:
             attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "type": type_,
@@ -87,21 +87,21 @@ class NewWorkflowRunData:
 
         def _parse_attributes(
             data: object,
-        ) -> Union[
-            "NewWorkflowRunDataAttributesType0",
-            "NewWorkflowRunDataAttributesType1",
-            "NewWorkflowRunDataAttributesType2",
-            "NewWorkflowRunDataAttributesType3",
-            "NewWorkflowRunDataAttributesType4",
-            "NewWorkflowRunDataAttributesType5",
-        ]:
+        ) -> (
+            NewWorkflowRunDataAttributesType0
+            | NewWorkflowRunDataAttributesType1
+            | NewWorkflowRunDataAttributesType2
+            | NewWorkflowRunDataAttributesType3
+            | NewWorkflowRunDataAttributesType4
+            | NewWorkflowRunDataAttributesType5
+        ):
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 attributes_type_0 = NewWorkflowRunDataAttributesType0.from_dict(data)
 
                 return attributes_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -109,7 +109,7 @@ class NewWorkflowRunData:
                 attributes_type_1 = NewWorkflowRunDataAttributesType1.from_dict(data)
 
                 return attributes_type_1
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -117,7 +117,7 @@ class NewWorkflowRunData:
                 attributes_type_2 = NewWorkflowRunDataAttributesType2.from_dict(data)
 
                 return attributes_type_2
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -125,7 +125,7 @@ class NewWorkflowRunData:
                 attributes_type_3 = NewWorkflowRunDataAttributesType3.from_dict(data)
 
                 return attributes_type_3
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -133,7 +133,7 @@ class NewWorkflowRunData:
                 attributes_type_4 = NewWorkflowRunDataAttributesType4.from_dict(data)
 
                 return attributes_type_4
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -148,21 +148,4 @@ class NewWorkflowRunData:
             attributes=attributes,
         )
 
-        new_workflow_run_data.additional_properties = d
         return new_workflow_run_data
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewSlaDataAttributesConditionsItemConditionableType = Literal[
     "SLAs::BuiltInFieldCondition", "SLAs::CustomFieldCondition"
@@ -18,7 +18,7 @@ def check_new_sla_data_attributes_conditions_item_conditionable_type(
     if value is None:
         return None
     if value in NEW_SLA_DATA_ATTRIBUTES_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES:
-        return cast(NewSlaDataAttributesConditionsItemConditionableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_SLA_DATA_ATTRIBUTES_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES!r}"
     )

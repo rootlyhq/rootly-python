@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,38 +18,37 @@ T = TypeVar("T", bound="NewStatusPageComponentDataAttributes")
 class NewStatusPageComponentDataAttributes:
     """
     Attributes:
-        name (Union[None, Unset, str]): Name of the component (required for ad-hoc components; derived from the source
-            for catalog-backed ones)
-        description (Union[None, Unset, str]): Description of the component (ad-hoc components only)
-        status_page_component_group_id (Union[None, Unset, str]): ID of the component group on the same status page
-        position (Union[Unset, int]): Position of the component (within its group, or on the page's top-level list when
+        name (None | str | Unset): Name of the component (required for ad-hoc components; derived from the source for
+            catalog-backed ones)
+        description (None | str | Unset): Description of the component (ad-hoc components only)
+        status_page_component_group_id (None | str | Unset): ID of the component group on the same status page
+        position (int | Unset): Position of the component (within its group, or on the page's top-level list when
             ungrouped)
-        source_type (Union[Unset, NewStatusPageComponentDataAttributesSourceType]): Catalog source type backing the
-            component
-        source_id (Union[None, Unset, str]): ID of the catalog source backing the component
+        source_type (NewStatusPageComponentDataAttributesSourceType | Unset): Catalog source type backing the component
+        source_id (None | str | Unset): ID of the catalog source backing the component
     """
 
-    name: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    status_page_component_group_id: None | Unset | str = UNSET
-    position: Unset | int = UNSET
-    source_type: Unset | NewStatusPageComponentDataAttributesSourceType = UNSET
-    source_id: None | Unset | str = UNSET
+    name: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    status_page_component_group_id: None | str | Unset = UNSET
+    position: int | Unset = UNSET
+    source_type: NewStatusPageComponentDataAttributesSourceType | Unset = UNSET
+    source_id: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        name: None | Unset | str
+        name: None | str | Unset
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        status_page_component_group_id: None | Unset | str
+        status_page_component_group_id: None | str | Unset
         if isinstance(self.status_page_component_group_id, Unset):
             status_page_component_group_id = UNSET
         else:
@@ -55,11 +56,11 @@ class NewStatusPageComponentDataAttributes:
 
         position = self.position
 
-        source_type: Unset | str = UNSET
+        source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
             source_type = self.source_type
 
-        source_id: None | Unset | str
+        source_id: None | str | Unset
         if isinstance(self.source_id, Unset):
             source_id = UNSET
         else:
@@ -87,30 +88,30 @@ class NewStatusPageComponentDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_name(data: object) -> None | Unset | str:
+        def _parse_name(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_status_page_component_group_id(data: object) -> None | Unset | str:
+        def _parse_status_page_component_group_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status_page_component_group_id = _parse_status_page_component_group_id(
             d.pop("status_page_component_group_id", UNSET)
@@ -119,18 +120,18 @@ class NewStatusPageComponentDataAttributes:
         position = d.pop("position", UNSET)
 
         _source_type = d.pop("source_type", UNSET)
-        source_type: Unset | NewStatusPageComponentDataAttributesSourceType
+        source_type: NewStatusPageComponentDataAttributesSourceType | Unset
         if isinstance(_source_type, Unset):
             source_type = UNSET
         else:
             source_type = check_new_status_page_component_data_attributes_source_type(_source_type)
 
-        def _parse_source_id(data: object) -> None | Unset | str:
+        def _parse_source_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         source_id = _parse_source_id(d.pop("source_id", UNSET))
 

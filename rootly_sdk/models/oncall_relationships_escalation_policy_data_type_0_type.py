@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OncallRelationshipsEscalationPolicyDataType0Type = Literal["escalation_policies"]
 
@@ -15,7 +15,7 @@ def check_oncall_relationships_escalation_policy_data_type_0_type(
     if value is None:
         return None
     if value in ONCALL_RELATIONSHIPS_ESCALATION_POLICY_DATA_TYPE_0_TYPE_VALUES:
-        return cast(OncallRelationshipsEscalationPolicyDataType0Type, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ONCALL_RELATIONSHIPS_ESCALATION_POLICY_DATA_TYPE_0_TYPE_VALUES!r}"
     )

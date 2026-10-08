@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewHeartbeatDataType = Literal["heartbeats"]
 
@@ -11,5 +11,5 @@ def check_new_heartbeat_data_type(value: str | None) -> NewHeartbeatDataType | N
     if value is None:
         return None
     if value in NEW_HEARTBEAT_DATA_TYPE_VALUES:
-        return cast(NewHeartbeatDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_HEARTBEAT_DATA_TYPE_VALUES!r}")

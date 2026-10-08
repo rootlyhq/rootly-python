@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -17,67 +19,67 @@ class NewCatalogEntityDataAttributes:
     """
     Attributes:
         name (str):
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        description (Union[None, Unset, str]):
-        public_description (Union[None, Unset, str]): The status page description of the catalog entity
-        position (Union[None, Unset, int]): Default position of the item when displayed in a list.
-        backstage_id (Union[None, Unset, str]): The Backstage entity ID this catalog entity is linked to.
-        external_id (Union[None, Unset, str]): An external identifier for this catalog entity. Must be unique within the
+        description (None | str | Unset):
+        public_description (None | str | Unset): The status page description of the catalog entity
+        position (int | None | Unset): Default position of the item when displayed in a list.
+        backstage_id (None | str | Unset): The Backstage entity ID this catalog entity is linked to.
+        external_id (None | str | Unset): An external identifier for this catalog entity. Must be unique within the
             catalog.
-        properties (Union[Unset, list['NewCatalogEntityDataAttributesPropertiesItem']]): Array of property values for
-            this catalog entity
+        properties (list[NewCatalogEntityDataAttributesPropertiesItem] | Unset): Array of property values for this
+            catalog entity
     """
 
     name: str
-    slug: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    public_description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    backstage_id: None | Unset | str = UNSET
-    external_id: None | Unset | str = UNSET
-    properties: Unset | list["NewCatalogEntityDataAttributesPropertiesItem"] = UNSET
+    slug: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    public_description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    backstage_id: None | str | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    properties: list[NewCatalogEntityDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: None | Unset | str
+        public_description: None | str | Unset
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        backstage_id: None | Unset | str
+        backstage_id: None | str | Unset
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        properties: Unset | list[dict[str, Any]] = UNSET
+        properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -117,66 +119,68 @@ class NewCatalogEntityDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> None | Unset | str:
+        def _parse_public_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_backstage_id(data: object) -> None | Unset | str:
+        def _parse_backstage_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        properties = []
         _properties = d.pop("properties", UNSET)
-        for properties_item_data in _properties or []:
-            properties_item = NewCatalogEntityDataAttributesPropertiesItem.from_dict(properties_item_data)
+        properties: list[NewCatalogEntityDataAttributesPropertiesItem] | Unset = UNSET
+        if _properties is not UNSET:
+            properties = []
+            for properties_item_data in _properties:
+                properties_item = NewCatalogEntityDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-            properties.append(properties_item)
+                properties.append(properties_item)
 
         new_catalog_entity_data_attributes = cls(
             name=name,

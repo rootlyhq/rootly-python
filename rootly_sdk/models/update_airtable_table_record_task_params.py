@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,16 +22,16 @@ class UpdateAirtableTableRecordTaskParams:
         base_key (str): The base key
         table_name (str): The table name
         record_id (str): The record id
-        task_type (Union[Unset, UpdateAirtableTableRecordTaskParamsTaskType]):
-        custom_fields_mapping (Union[None, Unset, str]): Custom field mappings. Can contain liquid markup and need to be
+        task_type (UpdateAirtableTableRecordTaskParamsTaskType | Unset):
+        custom_fields_mapping (None | str | Unset): Custom field mappings. Can contain liquid markup and need to be
             valid JSON
     """
 
     base_key: str
     table_name: str
     record_id: str
-    task_type: Unset | UpdateAirtableTableRecordTaskParamsTaskType = UNSET
-    custom_fields_mapping: None | Unset | str = UNSET
+    task_type: UpdateAirtableTableRecordTaskParamsTaskType | Unset = UNSET
+    custom_fields_mapping: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,11 +41,11 @@ class UpdateAirtableTableRecordTaskParams:
 
         record_id = self.record_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        custom_fields_mapping: None | Unset | str
+        custom_fields_mapping: None | str | Unset
         if isinstance(self.custom_fields_mapping, Unset):
             custom_fields_mapping = UNSET
         else:
@@ -75,18 +77,18 @@ class UpdateAirtableTableRecordTaskParams:
         record_id = d.pop("record_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateAirtableTableRecordTaskParamsTaskType
+        task_type: UpdateAirtableTableRecordTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_update_airtable_table_record_task_params_task_type(_task_type)
 
-        def _parse_custom_fields_mapping(data: object) -> None | Unset | str:
+        def _parse_custom_fields_mapping(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         custom_fields_mapping = _parse_custom_fields_mapping(d.pop("custom_fields_mapping", UNSET))
 

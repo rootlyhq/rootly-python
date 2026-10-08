@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,13 +14,14 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
-    include: Unset | GetCatalogEntityInclude = UNSET,
+    include: GetCatalogEntityInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,7 +31,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/catalog_entities/{id}",
+        "url": "/v1/catalog_entities/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -67,25 +71,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetCatalogEntityInclude = UNSET,
+    include: GetCatalogEntityInclude | Unset = UNSET,
 ) -> Response[CatalogEntityResponse | ErrorsList]:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetCatalogEntityInclude]):
+        id (str | UUID):
+        include (GetCatalogEntityInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[CatalogEntityResponse, ErrorsList]]
+        Response[CatalogEntityResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -101,25 +105,25 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetCatalogEntityInclude = UNSET,
+    include: GetCatalogEntityInclude | Unset = UNSET,
 ) -> CatalogEntityResponse | ErrorsList | None:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetCatalogEntityInclude]):
+        id (str | UUID):
+        include (GetCatalogEntityInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[CatalogEntityResponse, ErrorsList]
+        CatalogEntityResponse | ErrorsList
     """
 
     return sync_detailed(
@@ -130,25 +134,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetCatalogEntityInclude = UNSET,
+    include: GetCatalogEntityInclude | Unset = UNSET,
 ) -> Response[CatalogEntityResponse | ErrorsList]:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetCatalogEntityInclude]):
+        id (str | UUID):
+        include (GetCatalogEntityInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[CatalogEntityResponse, ErrorsList]]
+        Response[CatalogEntityResponse | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -162,25 +166,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetCatalogEntityInclude = UNSET,
+    include: GetCatalogEntityInclude | Unset = UNSET,
 ) -> CatalogEntityResponse | ErrorsList | None:
     """Retrieves a Catalog Entity
 
      Retrieves a specific Catalog Entity by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetCatalogEntityInclude]):
+        id (str | UUID):
+        include (GetCatalogEntityInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[CatalogEntityResponse, ErrorsList]
+        CatalogEntityResponse | ErrorsList
     """
 
     return (

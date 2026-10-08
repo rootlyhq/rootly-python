@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertTriggerParamsAlertPayloadConditionsLogic = Literal["ALL", "ANY", "NONE"]
 
@@ -15,7 +15,7 @@ def check_alert_trigger_params_alert_payload_conditions_logic(
     if value is None:
         return None
     if value in ALERT_TRIGGER_PARAMS_ALERT_PAYLOAD_CONDITIONS_LOGIC_VALUES:
-        return cast(AlertTriggerParamsAlertPayloadConditionsLogic, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_TRIGGER_PARAMS_ALERT_PAYLOAD_CONDITIONS_LOGIC_VALUES!r}"
     )

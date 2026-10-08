@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.update_escalation_policy_data_attributes_business_hours_type_0_days_type_0_item import (
     UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item,
@@ -21,26 +22,23 @@ T = TypeVar("T", bound="UpdateEscalationPolicyDataAttributesBusinessHoursType0")
 class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
     """
     Attributes:
-        time_zone (Union[Unset, UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone]): Time zone for business
-            hours
-        days (Union[None, Unset, list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]]): Business
-            days
-        start_time (Union[None, Unset, str]): Start time for business hours (HH:MM)
-        end_time (Union[None, Unset, str]): End time for business hours (HH:MM)
+        time_zone (UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset): Time zone for business hours
+        days (list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset): Business days
+        start_time (None | str | Unset): Start time for business hours (HH:MM)
+        end_time (None | str | Unset): End time for business hours (HH:MM)
     """
 
-    time_zone: Unset | UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = UNSET
-    days: None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] = UNSET
-    start_time: None | Unset | str = UNSET
-    end_time: None | Unset | str = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    time_zone: UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset = UNSET
+    days: list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset = UNSET
+    start_time: None | str | Unset = UNSET
+    end_time: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        time_zone: Unset | str = UNSET
+        time_zone: str | Unset = UNSET
         if not isinstance(self.time_zone, Unset):
             time_zone = self.time_zone
 
-        days: None | Unset | list[str]
+        days: list[str] | None | Unset
         if isinstance(self.days, Unset):
             days = UNSET
         elif isinstance(self.days, list):
@@ -52,20 +50,20 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
         else:
             days = self.days
 
-        start_time: None | Unset | str
+        start_time: None | str | Unset
         if isinstance(self.start_time, Unset):
             start_time = UNSET
         else:
             start_time = self.start_time
 
-        end_time: None | Unset | str
+        end_time: None | str | Unset
         if isinstance(self.end_time, Unset):
             end_time = UNSET
         else:
             end_time = self.end_time
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update({})
         if time_zone is not UNSET:
             field_dict["time_zone"] = time_zone
@@ -82,7 +80,7 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _time_zone = d.pop("time_zone", UNSET)
-        time_zone: Unset | UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone
+        time_zone: UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone | Unset
         if isinstance(_time_zone, Unset):
             time_zone = UNSET
         else:
@@ -90,7 +88,7 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
 
         def _parse_days(
             data: object,
-        ) -> None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item]:
+        ) -> list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -110,27 +108,27 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
                     days_type_0.append(days_type_0_item)
 
                 return days_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item], data)
+            return cast(list[UpdateEscalationPolicyDataAttributesBusinessHoursType0DaysType0Item] | None | Unset, data)
 
         days = _parse_days(d.pop("days", UNSET))
 
-        def _parse_start_time(data: object) -> None | Unset | str:
+        def _parse_start_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         start_time = _parse_start_time(d.pop("start_time", UNSET))
 
-        def _parse_end_time(data: object) -> None | Unset | str:
+        def _parse_end_time(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         end_time = _parse_end_time(d.pop("end_time", UNSET))
 
@@ -141,21 +139,4 @@ class UpdateEscalationPolicyDataAttributesBusinessHoursType0:
             end_time=end_time,
         )
 
-        update_escalation_policy_data_attributes_business_hours_type_0.additional_properties = d
         return update_escalation_policy_data_attributes_business_hours_type_0
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

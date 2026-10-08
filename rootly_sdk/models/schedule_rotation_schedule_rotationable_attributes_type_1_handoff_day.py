@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ScheduleRotationScheduleRotationableAttributesType1HandoffDay = Literal["F", "M", "R", "S", "T", "U", "W"]
 
@@ -21,7 +21,7 @@ def check_schedule_rotation_schedule_rotationable_attributes_type_1_handoff_day(
     if value is None:
         return None
     if value in SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_1_HANDOFF_DAY_VALUES:
-        return cast(ScheduleRotationScheduleRotationableAttributesType1HandoffDay, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SCHEDULE_ROTATION_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_1_HANDOFF_DAY_VALUES!r}"
     )

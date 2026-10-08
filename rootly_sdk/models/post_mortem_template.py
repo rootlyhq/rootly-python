@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,25 +23,24 @@ class PostMortemTemplate:
         name (str): The name of the postmortem template
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (Union[Unset, str]): The slugified name of the postmortem template
-        default (Union[None, Unset, bool]): Default selected template when editing a postmortem
-        content (Union[Unset, str]): The postmortem template. Liquid syntax and markdown are supported
-        content_html (Union[None, Unset, str]): The postmortem template in HTML format with TipTap blocks support.
-            Supports followup and timeline components. Liquid syntax is supported.
-        content_json (Union['PostMortemTemplateContentJsonType0', None, Unset]): The postmortem template in TipTap JSON
-            format
-        format_ (Union[Unset, PostMortemTemplateFormat]): The format of the input
+        slug (str | Unset): The slugified name of the postmortem template
+        default (bool | None | Unset): Default selected template when editing a postmortem
+        content (str | Unset): The postmortem template. Liquid syntax and markdown are supported
+        content_html (None | str | Unset): The postmortem template in HTML format with TipTap blocks support. Supports
+            followup and timeline components. Liquid syntax is supported.
+        content_json (None | PostMortemTemplateContentJsonType0 | Unset): The postmortem template in TipTap JSON format
+        format_ (PostMortemTemplateFormat | Unset): The format of the input
     """
 
     name: str
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
-    default: None | Unset | bool = UNSET
-    content: Unset | str = UNSET
-    content_html: None | Unset | str = UNSET
-    content_json: Union["PostMortemTemplateContentJsonType0", None, Unset] = UNSET
-    format_: Unset | PostMortemTemplateFormat = UNSET
+    slug: str | Unset = UNSET
+    default: bool | None | Unset = UNSET
+    content: str | Unset = UNSET
+    content_html: None | str | Unset = UNSET
+    content_json: None | PostMortemTemplateContentJsonType0 | Unset = UNSET
+    format_: PostMortemTemplateFormat | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,7 +54,7 @@ class PostMortemTemplate:
 
         slug = self.slug
 
-        default: None | Unset | bool
+        default: bool | None | Unset
         if isinstance(self.default, Unset):
             default = UNSET
         else:
@@ -61,13 +62,13 @@ class PostMortemTemplate:
 
         content = self.content
 
-        content_html: None | Unset | str
+        content_html: None | str | Unset
         if isinstance(self.content_html, Unset):
             content_html = UNSET
         else:
             content_html = self.content_html
 
-        content_json: None | Unset | dict[str, Any]
+        content_json: dict[str, Any] | None | Unset
         if isinstance(self.content_json, Unset):
             content_json = UNSET
         elif isinstance(self.content_json, PostMortemTemplateContentJsonType0):
@@ -75,7 +76,7 @@ class PostMortemTemplate:
         else:
             content_json = self.content_json
 
-        format_: Unset | str = UNSET
+        format_: str | Unset = UNSET
         if not isinstance(self.format_, Unset):
             format_ = self.format_
 
@@ -116,27 +117,27 @@ class PostMortemTemplate:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_default(data: object) -> None | Unset | bool:
+        def _parse_default(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         default = _parse_default(d.pop("default", UNSET))
 
         content = d.pop("content", UNSET)
 
-        def _parse_content_html(data: object) -> None | Unset | str:
+        def _parse_content_html(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         content_html = _parse_content_html(d.pop("content_html", UNSET))
 
-        def _parse_content_json(data: object) -> Union["PostMortemTemplateContentJsonType0", None, Unset]:
+        def _parse_content_json(data: object) -> None | PostMortemTemplateContentJsonType0 | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -147,14 +148,14 @@ class PostMortemTemplate:
                 content_json_type_0 = PostMortemTemplateContentJsonType0.from_dict(data)
 
                 return content_json_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["PostMortemTemplateContentJsonType0", None, Unset], data)
+            return cast(None | PostMortemTemplateContentJsonType0 | Unset, data)
 
         content_json = _parse_content_json(d.pop("content_json", UNSET))
 
         _format_ = d.pop("format", UNSET)
-        format_: Unset | PostMortemTemplateFormat
+        format_: PostMortemTemplateFormat | Unset
         if isinstance(_format_, Unset):
             format_ = UNSET
         else:

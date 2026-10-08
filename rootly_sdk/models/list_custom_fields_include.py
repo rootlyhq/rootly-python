@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListCustomFieldsInclude = Literal["options"]
 
@@ -11,5 +11,5 @@ def check_list_custom_fields_include(value: str | None) -> ListCustomFieldsInclu
     if value is None:
         return None
     if value in LIST_CUSTOM_FIELDS_INCLUDE_VALUES:
-        return cast(ListCustomFieldsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_CUSTOM_FIELDS_INCLUDE_VALUES!r}")

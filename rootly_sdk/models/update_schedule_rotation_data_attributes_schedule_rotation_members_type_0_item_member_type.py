@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateScheduleRotationDataAttributesScheduleRotationMembersType0ItemMemberType = Literal["Schedule", "User"]
 
@@ -16,7 +16,7 @@ def check_update_schedule_rotation_data_attributes_schedule_rotation_members_typ
     if value is None:
         return None
     if value in UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATION_MEMBERS_TYPE_0_ITEM_MEMBER_TYPE_VALUES:
-        return cast(UpdateScheduleRotationDataAttributesScheduleRotationMembersType0ItemMemberType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATION_MEMBERS_TYPE_0_ITEM_MEMBER_TYPE_VALUES!r}"
     )

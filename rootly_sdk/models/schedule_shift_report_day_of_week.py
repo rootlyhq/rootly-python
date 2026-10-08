@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ScheduleShiftReportDayOfWeek = Literal["friday", "monday", "saturday", "sunday", "thursday", "tuesday", "wednesday"]
 
@@ -17,5 +17,5 @@ def check_schedule_shift_report_day_of_week(value: str | None) -> ScheduleShiftR
     if value is None:
         return None
     if value in SCHEDULE_SHIFT_REPORT_DAY_OF_WEEK_VALUES:
-        return cast(ScheduleShiftReportDayOfWeek, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SCHEDULE_SHIFT_REPORT_DAY_OF_WEEK_VALUES!r}")

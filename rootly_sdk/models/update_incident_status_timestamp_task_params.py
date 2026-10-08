@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,12 +21,12 @@ class UpdateIncidentStatusTimestampTaskParams:
     Attributes:
         sub_status_id (str): Sub-status to update timestamp for
         assigned_at (str): Timestamp of when the sub-status was assigned
-        task_type (Union[Unset, UpdateIncidentStatusTimestampTaskParamsTaskType]):
+        task_type (UpdateIncidentStatusTimestampTaskParamsTaskType | Unset):
     """
 
     sub_status_id: str
     assigned_at: str
-    task_type: Unset | UpdateIncidentStatusTimestampTaskParamsTaskType = UNSET
+    task_type: UpdateIncidentStatusTimestampTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +34,7 @@ class UpdateIncidentStatusTimestampTaskParams:
 
         assigned_at = self.assigned_at
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -57,7 +59,7 @@ class UpdateIncidentStatusTimestampTaskParams:
         assigned_at = d.pop("assigned_at")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateIncidentStatusTimestampTaskParamsTaskType
+        task_type: UpdateIncidentStatusTimestampTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

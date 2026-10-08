@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,7 +14,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
     body: UpdateIncidentPostMortem,
 ) -> dict[str, Any]:
@@ -21,7 +22,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": f"/v1/post_mortems/{id}",
+        "url": "/v1/post_mortems/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -45,6 +48,16 @@ def _parse_response(
 
         return response_404
 
+    if response.status_code == 409:
+        response_409 = ErrorsList.from_dict(response.json())
+
+        return response_409
+
+    if response.status_code == 503:
+        response_503 = ErrorsList.from_dict(response.json())
+
+        return response_503
+
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -63,17 +76,21 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentPostMortem,
 ) -> Response[ErrorsList | IncidentPostMortemResponse]:
     """Update an incident retrospective
 
-     Update a specific incident retrospective by id
+     Update a specific incident retrospective by id. The body may be written as `content` (or its alias
+    `smart_content`) and is sanitized to the tags the retrospective editor supports. When no `title` is
+    sent and the body opens with an `<h1>`, that heading becomes the retrospective title, matching the
+    editor. Once a retrospective has been opened in the collaborative editor that editor owns the body,
+    and body writes are rejected with a 409.
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (UpdateIncidentPostMortem):
 
     Raises:
@@ -81,7 +98,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentPostMortemResponse]]
+        Response[ErrorsList | IncidentPostMortemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,17 +114,21 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentPostMortem,
 ) -> ErrorsList | IncidentPostMortemResponse | None:
     """Update an incident retrospective
 
-     Update a specific incident retrospective by id
+     Update a specific incident retrospective by id. The body may be written as `content` (or its alias
+    `smart_content`) and is sanitized to the tags the retrospective editor supports. When no `title` is
+    sent and the body opens with an `<h1>`, that heading becomes the retrospective title, matching the
+    editor. Once a retrospective has been opened in the collaborative editor that editor owns the body,
+    and body writes are rejected with a 409.
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (UpdateIncidentPostMortem):
 
     Raises:
@@ -115,7 +136,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentPostMortemResponse]
+        ErrorsList | IncidentPostMortemResponse
     """
 
     return sync_detailed(
@@ -126,17 +147,21 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentPostMortem,
 ) -> Response[ErrorsList | IncidentPostMortemResponse]:
     """Update an incident retrospective
 
-     Update a specific incident retrospective by id
+     Update a specific incident retrospective by id. The body may be written as `content` (or its alias
+    `smart_content`) and is sanitized to the tags the retrospective editor supports. When no `title` is
+    sent and the body opens with an `<h1>`, that heading becomes the retrospective title, matching the
+    editor. Once a retrospective has been opened in the collaborative editor that editor owns the body,
+    and body writes are rejected with a 409.
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (UpdateIncidentPostMortem):
 
     Raises:
@@ -144,7 +169,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentPostMortemResponse]]
+        Response[ErrorsList | IncidentPostMortemResponse]
     """
 
     kwargs = _get_kwargs(
@@ -158,17 +183,21 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
     body: UpdateIncidentPostMortem,
 ) -> ErrorsList | IncidentPostMortemResponse | None:
     """Update an incident retrospective
 
-     Update a specific incident retrospective by id
+     Update a specific incident retrospective by id. The body may be written as `content` (or its alias
+    `smart_content`) and is sanitized to the tags the retrospective editor supports. When no `title` is
+    sent and the body opens with an `<h1>`, that heading becomes the retrospective title, matching the
+    editor. Once a retrospective has been opened in the collaborative editor that editor owns the body,
+    and body writes are rejected with a 409.
 
     Args:
-        id (Union[UUID, str]):
+        id (str | UUID):
         body (UpdateIncidentPostMortem):
 
     Raises:
@@ -176,7 +205,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentPostMortemResponse]
+        ErrorsList | IncidentPostMortemResponse
     """
 
     return (

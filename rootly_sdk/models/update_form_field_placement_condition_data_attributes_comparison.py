@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateFormFieldPlacementConditionDataAttributesComparison = Literal["equal", "is_not_set", "is_set", "not_equal"]
 
@@ -18,7 +18,7 @@ def check_update_form_field_placement_condition_data_attributes_comparison(
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES:
-        return cast(UpdateFormFieldPlacementConditionDataAttributesComparison, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_COMPARISON_VALUES!r}"
     )

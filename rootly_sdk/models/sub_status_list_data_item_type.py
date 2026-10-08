@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 SubStatusListDataItemType = Literal["sub_statuses"]
 
@@ -11,5 +11,5 @@ def check_sub_status_list_data_item_type(value: str | None) -> SubStatusListData
     if value is None:
         return None
     if value in SUB_STATUS_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(SubStatusListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SUB_STATUS_LIST_DATA_ITEM_TYPE_VALUES!r}")

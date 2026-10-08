@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RetrospectiveConfigurationKind = Literal["mandatory", "skip"]
 
@@ -12,5 +12,5 @@ def check_retrospective_configuration_kind(value: str | None) -> RetrospectiveCo
     if value is None:
         return None
     if value in RETROSPECTIVE_CONFIGURATION_KIND_VALUES:
-        return cast(RetrospectiveConfigurationKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {RETROSPECTIVE_CONFIGURATION_KIND_VALUES!r}")

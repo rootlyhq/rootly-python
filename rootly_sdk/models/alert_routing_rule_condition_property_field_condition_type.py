@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRoutingRuleConditionPropertyFieldConditionType = Literal[
     "contains",
@@ -31,7 +31,7 @@ def check_alert_routing_rule_condition_property_field_condition_type(
     if value is None:
         return None
     if value in ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_CONDITION_TYPE_VALUES:
-        return cast(AlertRoutingRuleConditionPropertyFieldConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_ROUTING_RULE_CONDITION_PROPERTY_FIELD_CONDITION_TYPE_VALUES!r}"
     )

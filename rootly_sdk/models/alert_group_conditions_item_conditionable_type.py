@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertGroupConditionsItemConditionableType = Literal["AlertField"]
 
@@ -13,7 +13,7 @@ def check_alert_group_conditions_item_conditionable_type(
     if value is None:
         return None
     if value in ALERT_GROUP_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES:
-        return cast(AlertGroupConditionsItemConditionableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_GROUP_CONDITIONS_ITEM_CONDITIONABLE_TYPE_VALUES!r}"
     )

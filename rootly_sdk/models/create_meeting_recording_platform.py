@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateMeetingRecordingPlatform = Literal["google_meet", "microsoft_teams", "webex", "zoom"]
 
@@ -14,5 +14,5 @@ def check_create_meeting_recording_platform(value: str | None) -> CreateMeetingR
     if value is None:
         return None
     if value in CREATE_MEETING_RECORDING_PLATFORM_VALUES:
-        return cast(CreateMeetingRecordingPlatform, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CREATE_MEETING_RECORDING_PLATFORM_VALUES!r}")

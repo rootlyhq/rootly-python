@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AuthorizationAuthorizableType = Literal["Dashboard"]
 
@@ -11,5 +11,5 @@ def check_authorization_authorizable_type(value: str | None) -> AuthorizationAut
     if value is None:
         return None
     if value in AUTHORIZATION_AUTHORIZABLE_TYPE_VALUES:
-        return cast(AuthorizationAuthorizableType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AUTHORIZATION_AUTHORIZABLE_TYPE_VALUES!r}")

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,24 +19,24 @@ class Catalog:
     Attributes:
         name (str):
         icon (CatalogIcon):
-        position (Union[None, int]): Default position of the catalog when displayed in a list.
+        position (int | None): Default position of the catalog when displayed in a list.
         created_at (str):
         updated_at (str):
-        slug (Union[Unset, str]): The slug of the catalog. Derived from `name`.
-        description (Union[None, Unset, str]):
-        external_id (Union[None, Unset, str]): An external identifier for this catalog. Must be unique within the team.
-        managed_by (Union[Unset, CatalogManagedBy]): Which source manages this resource (read-only).
+        slug (str | Unset): The slug of the catalog. Derived from `name`.
+        description (None | str | Unset):
+        external_id (None | str | Unset): An external identifier for this catalog. Must be unique within the team.
+        managed_by (CatalogManagedBy | Unset): Which source manages this resource (read-only).
     """
 
     name: str
     icon: CatalogIcon
-    position: None | int
+    position: int | None
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    external_id: None | Unset | str = UNSET
-    managed_by: Unset | CatalogManagedBy = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    managed_by: CatalogManagedBy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +44,7 @@ class Catalog:
 
         icon: str = self.icon
 
-        position: None | int
+        position: int | None
         position = self.position
 
         created_at = self.created_at
@@ -51,19 +53,19 @@ class Catalog:
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        managed_by: Unset | str = UNSET
+        managed_by: str | Unset = UNSET
         if not isinstance(self.managed_by, Unset):
             managed_by = self.managed_by
 
@@ -96,10 +98,10 @@ class Catalog:
 
         icon = check_catalog_icon(d.pop("icon"))
 
-        def _parse_position(data: object) -> None | int:
+        def _parse_position(data: object) -> int | None:
             if data is None:
                 return data
-            return cast(None | int, data)
+            return cast(int | None, data)
 
         position = _parse_position(d.pop("position"))
 
@@ -109,26 +111,26 @@ class Catalog:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
         _managed_by = d.pop("managed_by", UNSET)
-        managed_by: Unset | CatalogManagedBy
+        managed_by: CatalogManagedBy | Unset
         if isinstance(_managed_by, Unset):
             managed_by = UNSET
         else:

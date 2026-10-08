@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateIncidentEventFunctionalityDataAttributesStatus = Literal["major_outage", "operational", "partial_outage"]
 
@@ -17,7 +17,7 @@ def check_update_incident_event_functionality_data_attributes_status(
     if value is None:
         return None
     if value in UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_ATTRIBUTES_STATUS_VALUES:
-        return cast(UpdateIncidentEventFunctionalityDataAttributesStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_INCIDENT_EVENT_FUNCTIONALITY_DATA_ATTRIBUTES_STATUS_VALUES!r}"
     )

@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,26 +21,26 @@ T = TypeVar("T", bound="OncallRelationships")
 class OncallRelationships:
     """
     Attributes:
-        user (Union[Unset, OncallRelationshipsUser]):
-        schedule (Union[Unset, OncallRelationshipsSchedule]):
-        escalation_policy (Union[Unset, OncallRelationshipsEscalationPolicy]):
+        user (OncallRelationshipsUser | Unset):
+        schedule (OncallRelationshipsSchedule | Unset):
+        escalation_policy (OncallRelationshipsEscalationPolicy | Unset):
     """
 
-    user: Union[Unset, "OncallRelationshipsUser"] = UNSET
-    schedule: Union[Unset, "OncallRelationshipsSchedule"] = UNSET
-    escalation_policy: Union[Unset, "OncallRelationshipsEscalationPolicy"] = UNSET
+    user: OncallRelationshipsUser | Unset = UNSET
+    schedule: OncallRelationshipsSchedule | Unset = UNSET
+    escalation_policy: OncallRelationshipsEscalationPolicy | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user: Unset | dict[str, Any] = UNSET
+        user: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user, Unset):
             user = self.user.to_dict()
 
-        schedule: Unset | dict[str, Any] = UNSET
+        schedule: dict[str, Any] | Unset = UNSET
         if not isinstance(self.schedule, Unset):
             schedule = self.schedule.to_dict()
 
-        escalation_policy: Unset | dict[str, Any] = UNSET
+        escalation_policy: dict[str, Any] | Unset = UNSET
         if not isinstance(self.escalation_policy, Unset):
             escalation_policy = self.escalation_policy.to_dict()
 
@@ -62,21 +64,21 @@ class OncallRelationships:
 
         d = dict(src_dict)
         _user = d.pop("user", UNSET)
-        user: Unset | OncallRelationshipsUser
+        user: OncallRelationshipsUser | Unset
         if isinstance(_user, Unset):
             user = UNSET
         else:
             user = OncallRelationshipsUser.from_dict(_user)
 
         _schedule = d.pop("schedule", UNSET)
-        schedule: Unset | OncallRelationshipsSchedule
+        schedule: OncallRelationshipsSchedule | Unset
         if isinstance(_schedule, Unset):
             schedule = UNSET
         else:
             schedule = OncallRelationshipsSchedule.from_dict(_schedule)
 
         _escalation_policy = d.pop("escalation_policy", UNSET)
-        escalation_policy: Unset | OncallRelationshipsEscalationPolicy
+        escalation_policy: OncallRelationshipsEscalationPolicy | Unset
         if isinstance(_escalation_policy, Unset):
             escalation_policy = UNSET
         else:

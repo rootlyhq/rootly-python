@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewFormSetDataType = Literal["form_sets"]
 
@@ -11,5 +11,5 @@ def check_new_form_set_data_type(value: str | None) -> NewFormSetDataType | None
     if value is None:
         return None
     if value in NEW_FORM_SET_DATA_TYPE_VALUES:
-        return cast(NewFormSetDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_FORM_SET_DATA_TYPE_VALUES!r}")

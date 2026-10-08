@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertDataAttributesStatus = Literal["open", "triggered"]
 
@@ -12,5 +12,5 @@ def check_new_alert_data_attributes_status(value: str | None) -> NewAlertDataAtt
     if value is None:
         return None
     if value in NEW_ALERT_DATA_ATTRIBUTES_STATUS_VALUES:
-        return cast(NewAlertDataAttributesStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_ALERT_DATA_ATTRIBUTES_STATUS_VALUES!r}")

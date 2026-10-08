@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EscalateAlertDataType = Literal["alerts"]
 
@@ -11,5 +11,5 @@ def check_escalate_alert_data_type(value: str | None) -> EscalateAlertDataType |
     if value is None:
         return None
     if value in ESCALATE_ALERT_DATA_TYPE_VALUES:
-        return cast(EscalateAlertDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ESCALATE_ALERT_DATA_TYPE_VALUES!r}")

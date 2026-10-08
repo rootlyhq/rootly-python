@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateSlaDataAttributesAssignmentDeadlineParentStatus = Literal[
     "cancelled", "closed", "in_triage", "mitigated", "resolved", "started"
@@ -22,7 +22,7 @@ def check_update_sla_data_attributes_assignment_deadline_parent_status(
     if value is None:
         return None
     if value in UPDATE_SLA_DATA_ATTRIBUTES_ASSIGNMENT_DEADLINE_PARENT_STATUS_VALUES:
-        return cast(UpdateSlaDataAttributesAssignmentDeadlineParentStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_SLA_DATA_ATTRIBUTES_ASSIGNMENT_DEADLINE_PARENT_STATUS_VALUES!r}"
     )

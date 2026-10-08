@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,13 +14,14 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
-    include: Unset | GetIncidentInclude = UNSET,
+    include: GetIncidentInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,7 +31,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/incidents/{id}",
+        "url": "/v1/incidents/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -67,25 +71,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetIncidentInclude = UNSET,
+    include: GetIncidentInclude | Unset = UNSET,
 ) -> Response[ErrorsList | IncidentResponse]:
     """Retrieves an incident
 
      Retrieves a specific incident by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetIncidentInclude]):
+        id (str | UUID):
+        include (GetIncidentInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentResponse]]
+        Response[ErrorsList | IncidentResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,25 +105,25 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetIncidentInclude = UNSET,
+    include: GetIncidentInclude | Unset = UNSET,
 ) -> ErrorsList | IncidentResponse | None:
     """Retrieves an incident
 
      Retrieves a specific incident by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetIncidentInclude]):
+        id (str | UUID):
+        include (GetIncidentInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentResponse]
+        ErrorsList | IncidentResponse
     """
 
     return sync_detailed(
@@ -130,25 +134,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetIncidentInclude = UNSET,
+    include: GetIncidentInclude | Unset = UNSET,
 ) -> Response[ErrorsList | IncidentResponse]:
     """Retrieves an incident
 
      Retrieves a specific incident by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetIncidentInclude]):
+        id (str | UUID):
+        include (GetIncidentInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentResponse]]
+        Response[ErrorsList | IncidentResponse]
     """
 
     kwargs = _get_kwargs(
@@ -162,25 +166,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetIncidentInclude = UNSET,
+    include: GetIncidentInclude | Unset = UNSET,
 ) -> ErrorsList | IncidentResponse | None:
     """Retrieves an incident
 
      Retrieves a specific incident by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetIncidentInclude]):
+        id (str | UUID):
+        include (GetIncidentInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentResponse]
+        ErrorsList | IncidentResponse
     """
 
     return (

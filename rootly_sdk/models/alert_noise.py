@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertNoise = Literal["noise", "not_noise"]
 
@@ -12,5 +12,5 @@ def check_alert_noise(value: str | None) -> AlertNoise | None:
     if value is None:
         return None
     if value in ALERT_NOISE_VALUES:
-        return cast(AlertNoise, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_NOISE_VALUES!r}")

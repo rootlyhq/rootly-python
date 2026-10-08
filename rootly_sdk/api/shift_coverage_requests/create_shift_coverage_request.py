@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -20,7 +21,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/schedules/{schedule_id}/shift_coverage_requests",
+        "url": "/v1/schedules/{schedule_id}/shift_coverage_requests".format(
+            schedule_id=quote(str(schedule_id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -72,7 +75,8 @@ def sync_detailed(
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
     multiple consecutive shifts (e.g. across a handoff), so one or more coverage requests may be
     created; the response is always a list. A coverage request broadcasts to schedule members so someone
-    can volunteer to cover the shift.
+    can volunteer to cover the shift, or targets recipient_user_ids when targeted-shift-coverage is
+    enabled.
 
     Args:
         schedule_id (str):
@@ -83,7 +87,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, ShiftCoverageRequestList]]
+        Response[ErrorsList | ShiftCoverageRequestList]
     """
 
     kwargs = _get_kwargs(
@@ -109,7 +113,8 @@ def sync(
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
     multiple consecutive shifts (e.g. across a handoff), so one or more coverage requests may be
     created; the response is always a list. A coverage request broadcasts to schedule members so someone
-    can volunteer to cover the shift.
+    can volunteer to cover the shift, or targets recipient_user_ids when targeted-shift-coverage is
+    enabled.
 
     Args:
         schedule_id (str):
@@ -120,7 +125,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, ShiftCoverageRequestList]
+        ErrorsList | ShiftCoverageRequestList
     """
 
     return sync_detailed(
@@ -141,7 +146,8 @@ async def asyncio_detailed(
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
     multiple consecutive shifts (e.g. across a handoff), so one or more coverage requests may be
     created; the response is always a list. A coverage request broadcasts to schedule members so someone
-    can volunteer to cover the shift.
+    can volunteer to cover the shift, or targets recipient_user_ids when targeted-shift-coverage is
+    enabled.
 
     Args:
         schedule_id (str):
@@ -152,7 +158,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, ShiftCoverageRequestList]]
+        Response[ErrorsList | ShiftCoverageRequestList]
     """
 
     kwargs = _get_kwargs(
@@ -176,7 +182,8 @@ async def asyncio(
      Creates coverage requests for the shifts overlapping the requested time range. A range can span
     multiple consecutive shifts (e.g. across a handoff), so one or more coverage requests may be
     created; the response is always a list. A coverage request broadcasts to schedule members so someone
-    can volunteer to cover the shift.
+    can volunteer to cover the shift, or targets recipient_user_ids when targeted-shift-coverage is
+    enabled.
 
     Args:
         schedule_id (str):
@@ -187,7 +194,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, ShiftCoverageRequestList]
+        ErrorsList | ShiftCoverageRequestList
     """
 
     return (

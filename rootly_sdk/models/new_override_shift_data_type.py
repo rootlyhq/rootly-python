@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewOverrideShiftDataType = Literal["shifts"]
 
@@ -11,5 +11,5 @@ def check_new_override_shift_data_type(value: str | None) -> NewOverrideShiftDat
     if value is None:
         return None
     if value in NEW_OVERRIDE_SHIFT_DATA_TYPE_VALUES:
-        return cast(NewOverrideShiftDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_OVERRIDE_SHIFT_DATA_TYPE_VALUES!r}")

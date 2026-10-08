@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewFormFieldPositionDataAttributesForm = Literal[
     "incident_post_mortem",
@@ -55,7 +55,7 @@ def check_new_form_field_position_data_attributes_form(
     if value is None:
         return None
     if value in NEW_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES:
-        return cast(NewFormFieldPositionDataAttributesForm, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_FORM_FIELD_POSITION_DATA_ATTRIBUTES_FORM_VALUES!r}"
     )

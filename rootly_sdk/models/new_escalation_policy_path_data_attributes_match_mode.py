@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewEscalationPolicyPathDataAttributesMatchMode = Literal["match-all-rules", "match-any-rule"]
 
@@ -14,7 +14,7 @@ def check_new_escalation_policy_path_data_attributes_match_mode(
     if value is None:
         return None
     if value in NEW_ESCALATION_POLICY_PATH_DATA_ATTRIBUTES_MATCH_MODE_VALUES:
-        return cast(NewEscalationPolicyPathDataAttributesMatchMode, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ESCALATION_POLICY_PATH_DATA_ATTRIBUTES_MATCH_MODE_VALUES!r}"
     )

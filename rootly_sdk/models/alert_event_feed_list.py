@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -20,17 +22,17 @@ T = TypeVar("T", bound="AlertEventFeedList")
 class AlertEventFeedList:
     """
     Attributes:
-        data (list['AlertEventFeedListDataItem']):
+        data (list[AlertEventFeedListDataItem]):
         meta (AlertEventFeedMeta): Cursor-pagination meta. `total_count` and `total_pages` are nullable because the feed
             does not run a COUNT query.
-        links (Union[Unset, Links]):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        links (Links | Unset):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: list["AlertEventFeedListDataItem"]
-    meta: "AlertEventFeedMeta"
-    links: Union[Unset, "Links"] = UNSET
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: list[AlertEventFeedListDataItem]
+    meta: AlertEventFeedMeta
+    links: Links | Unset = UNSET
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,11 +43,11 @@ class AlertEventFeedList:
 
         meta = self.meta.to_dict()
 
-        links: Unset | dict[str, Any] = UNSET
+        links: dict[str, Any] | Unset = UNSET
         if not isinstance(self.links, Unset):
             links = self.links.to_dict()
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -85,18 +87,20 @@ class AlertEventFeedList:
         meta = AlertEventFeedMeta.from_dict(d.pop("meta"))
 
         _links = d.pop("links", UNSET)
-        links: Unset | Links
+        links: Links | Unset
         if isinstance(_links, Unset):
             links = UNSET
         else:
             links = Links.from_dict(_links)
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         alert_event_feed_list = cls(
             data=data,

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -12,12 +14,12 @@ T = TypeVar("T", bound="UpdateScheduleRotationUserDataAttributes")
 class UpdateScheduleRotationUserDataAttributes:
     """
     Attributes:
-        user_id (Union[Unset, int]): Schedule rotation user
-        position (Union[Unset, int]): Position of the user inside rotation
+        user_id (int | Unset): Schedule rotation user
+        position (int | Unset): Position of the user inside rotation
     """
 
-    user_id: Unset | int = UNSET
-    position: Unset | int = UNSET
+    user_id: int | Unset = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         user_id = self.user_id

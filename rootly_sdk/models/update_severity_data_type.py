@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateSeverityDataType = Literal["severities"]
 
@@ -11,5 +11,5 @@ def check_update_severity_data_type(value: str | None) -> UpdateSeverityDataType
     if value is None:
         return None
     if value in UPDATE_SEVERITY_DATA_TYPE_VALUES:
-        return cast(UpdateSeverityDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_SEVERITY_DATA_TYPE_VALUES!r}")

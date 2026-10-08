@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AiChatSessionMessageRole = Literal["assistant", "user"]
 
@@ -12,5 +12,5 @@ def check_ai_chat_session_message_role(value: str | None) -> AiChatSessionMessag
     if value is None:
         return None
     if value in AI_CHAT_SESSION_MESSAGE_ROLE_VALUES:
-        return cast(AiChatSessionMessageRole, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AI_CHAT_SESSION_MESSAGE_ROLE_VALUES!r}")

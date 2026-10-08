@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRouteListDataItemType = Literal["alert_routes"]
 
@@ -11,5 +11,5 @@ def check_alert_route_list_data_item_type(value: str | None) -> AlertRouteListDa
     if value is None:
         return None
     if value in ALERT_ROUTE_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(AlertRouteListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_ROUTE_LIST_DATA_ITEM_TYPE_VALUES!r}")

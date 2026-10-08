@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Abu Dhabi",
@@ -84,6 +84,7 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Asia/Urumqi",
     "Asia/Vladivostok",
     "Asia/Yakutsk",
+    "Asia/Yangon",
     "Asia/Yekaterinburg",
     "Asia/Yerevan",
     "Astana",
@@ -157,6 +158,7 @@ UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone = Literal[
     "Europe/Istanbul",
     "Europe/Kaliningrad",
     "Europe/Kiev",
+    "Europe/Kyiv",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -394,6 +396,7 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Asia/Urumqi",
     "Asia/Vladivostok",
     "Asia/Yakutsk",
+    "Asia/Yangon",
     "Asia/Yekaterinburg",
     "Asia/Yerevan",
     "Astana",
@@ -467,6 +470,7 @@ UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
     "Europe/Istanbul",
     "Europe/Kaliningrad",
     "Europe/Kiev",
+    "Europe/Kyiv",
     "Europe/Lisbon",
     "Europe/Ljubljana",
     "Europe/London",
@@ -625,7 +629,7 @@ def check_update_escalation_policy_data_attributes_business_hours_type_0_time_zo
     if value is None:
         return None
     if value in UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES:
-        return cast(UpdateEscalationPolicyDataAttributesBusinessHoursType0TimeZone, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ESCALATION_POLICY_DATA_ATTRIBUTES_BUSINESS_HOURS_TYPE_0_TIME_ZONE_VALUES!r}"
     )

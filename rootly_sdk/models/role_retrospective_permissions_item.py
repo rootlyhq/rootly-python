@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleRetrospectivePermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_retrospective_permissions_item(value: str | None) -> RoleRetrospe
     if value is None:
         return None
     if value in ROLE_RETROSPECTIVE_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleRetrospectivePermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_RETROSPECTIVE_PERMISSIONS_ITEM_VALUES!r}")

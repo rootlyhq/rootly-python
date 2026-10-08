@@ -10,6 +10,16 @@ template: |
   <!-- OPENAPI_DIFF -->
 
 categories:
+  - type: version-resolver
+    semver-increment: major
+    when:
+      label: breaking
+  - type: version-resolver
+    semver-increment: minor
+    when:
+      label: enhancement
+  - type: version-resolver
+    semver-increment: patch
   - title: 🚀 New features and improvements
     labels:
       - enhancement
@@ -34,16 +44,6 @@ categories:
   - title: 🔐 Security
     labels:
       - "🔐 security"
-  - type: version-resolver
-    semver-increment: major
-    when:
-      label: major
-  - type: version-resolver
-    semver-increment: minor
-    when:
-      label: minor
-  - type: version-resolver
-    semver-increment: patch
 
 exclude-labels:
   - skip-changelog

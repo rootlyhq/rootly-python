@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,13 +24,13 @@ class ShiftListDataItem:
         id (str): Unique ID of the shift
         type_ (ShiftListDataItemType):
         attributes (Shift):
-        relationships (Union[Unset, ShiftRelationships]):
+        relationships (ShiftRelationships | Unset):
     """
 
     id: str
     type_: ShiftListDataItemType
-    attributes: "Shift"
-    relationships: Union[Unset, "ShiftRelationships"] = UNSET
+    attributes: Shift
+    relationships: ShiftRelationships | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +40,7 @@ class ShiftListDataItem:
 
         attributes = self.attributes.to_dict()
 
-        relationships: Unset | dict[str, Any] = UNSET
+        relationships: dict[str, Any] | Unset = UNSET
         if not isinstance(self.relationships, Unset):
             relationships = self.relationships.to_dict()
 
@@ -69,7 +71,7 @@ class ShiftListDataItem:
         attributes = Shift.from_dict(d.pop("attributes"))
 
         _relationships = d.pop("relationships", UNSET)
-        relationships: Unset | ShiftRelationships
+        relationships: ShiftRelationships | Unset
         if isinstance(_relationships, Unset):
             relationships = UNSET
         else:

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 StatusPageSamlNameIdentifierFormat = Literal[
     "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
@@ -19,5 +19,5 @@ def check_status_page_saml_name_identifier_format(value: str | None) -> StatusPa
     if value is None:
         return None
     if value in STATUS_PAGE_SAML_NAME_IDENTIFIER_FORMAT_VALUES:
-        return cast(StatusPageSamlNameIdentifierFormat, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_SAML_NAME_IDENTIFIER_FORMAT_VALUES!r}")

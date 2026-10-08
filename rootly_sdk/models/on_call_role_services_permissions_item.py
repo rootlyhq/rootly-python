@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallRoleServicesPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_on_call_role_services_permissions_item(value: str | None) -> OnCallRol
     if value is None:
         return None
     if value in ON_CALL_ROLE_SERVICES_PERMISSIONS_ITEM_VALUES:
-        return cast(OnCallRoleServicesPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ON_CALL_ROLE_SERVICES_PERMISSIONS_ITEM_VALUES!r}")

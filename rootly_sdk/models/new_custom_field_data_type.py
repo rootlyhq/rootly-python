@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCustomFieldDataType = Literal["custom_fields"]
 
@@ -11,5 +11,5 @@ def check_new_custom_field_data_type(value: str | None) -> NewCustomFieldDataTyp
     if value is None:
         return None
     if value in NEW_CUSTOM_FIELD_DATA_TYPE_VALUES:
-        return cast(NewCustomFieldDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_CUSTOM_FIELD_DATA_TYPE_VALUES!r}")

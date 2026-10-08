@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 
@@ -24,16 +26,16 @@ class NewIncidentPermissionSetBooleanDataAttributes:
     Attributes:
         incident_permission_set_id (str):
         kind (NewIncidentPermissionSetBooleanDataAttributesKind):
-        private (Union[Unset, bool]):
-        enabled (Union[Unset, bool]):
-        severity_params (Union[Unset, NewIncidentPermissionSetBooleanDataAttributesSeverityParams]):
+        private (bool | Unset):
+        enabled (bool | Unset):
+        severity_params (NewIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset):
     """
 
     incident_permission_set_id: str
     kind: NewIncidentPermissionSetBooleanDataAttributesKind
-    private: Unset | bool = UNSET
-    enabled: Unset | bool = UNSET
-    severity_params: Union[Unset, "NewIncidentPermissionSetBooleanDataAttributesSeverityParams"] = UNSET
+    private: bool | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    severity_params: NewIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         incident_permission_set_id = self.incident_permission_set_id
@@ -44,7 +46,7 @@ class NewIncidentPermissionSetBooleanDataAttributes:
 
         enabled = self.enabled
 
-        severity_params: Unset | dict[str, Any] = UNSET
+        severity_params: dict[str, Any] | Unset = UNSET
         if not isinstance(self.severity_params, Unset):
             severity_params = self.severity_params.to_dict()
 
@@ -81,7 +83,7 @@ class NewIncidentPermissionSetBooleanDataAttributes:
         enabled = d.pop("enabled", UNSET)
 
         _severity_params = d.pop("severity_params", UNSET)
-        severity_params: Unset | NewIncidentPermissionSetBooleanDataAttributesSeverityParams
+        severity_params: NewIncidentPermissionSetBooleanDataAttributesSeverityParams | Unset
         if isinstance(_severity_params, Unset):
             severity_params = UNSET
         else:

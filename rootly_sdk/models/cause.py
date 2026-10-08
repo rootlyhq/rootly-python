@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -20,21 +22,21 @@ class Cause:
         name (str): The name of the cause
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        slug (Union[Unset, str]): The slug of the cause
-        description (Union[None, Unset, str]): The description of the cause
-        public_description (Union[None, Unset, str]): The status page description of the cause
-        position (Union[None, Unset, int]): Position of the cause
-        properties (Union[Unset, list['CausePropertiesItem']]): Array of property values for this cause.
+        slug (str | Unset): The slug of the cause
+        description (None | str | Unset): The description of the cause
+        public_description (None | str | Unset): The status page description of the cause
+        position (int | None | Unset): Position of the cause
+        properties (list[CausePropertiesItem] | Unset): Array of property values for this cause.
     """
 
     name: str
     created_at: str
     updated_at: str
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    public_description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    properties: Unset | list["CausePropertiesItem"] = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    public_description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    properties: list[CausePropertiesItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,25 +48,25 @@ class Cause:
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: None | Unset | str
+        public_description: None | str | Unset
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        properties: Unset | list[dict[str, Any]] = UNSET
+        properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -106,39 +108,41 @@ class Cause:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> None | Unset | str:
+        def _parse_public_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        properties = []
         _properties = d.pop("properties", UNSET)
-        for properties_item_data in _properties or []:
-            properties_item = CausePropertiesItem.from_dict(properties_item_data)
+        properties: list[CausePropertiesItem] | Unset = UNSET
+        if _properties is not UNSET:
+            properties = []
+            for properties_item_data in _properties:
+                properties_item = CausePropertiesItem.from_dict(properties_item_data)
 
-            properties.append(properties_item)
+                properties.append(properties_item)
 
         cause = cls(
             name=name,

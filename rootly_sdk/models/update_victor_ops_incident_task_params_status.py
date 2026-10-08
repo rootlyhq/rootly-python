@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateVictorOpsIncidentTaskParamsStatus = Literal["ack", "auto", "resolve"]
 
@@ -15,7 +15,7 @@ def check_update_victor_ops_incident_task_params_status(
     if value is None:
         return None
     if value in UPDATE_VICTOR_OPS_INCIDENT_TASK_PARAMS_STATUS_VALUES:
-        return cast(UpdateVictorOpsIncidentTaskParamsStatus, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_VICTOR_OPS_INCIDENT_TASK_PARAMS_STATUS_VALUES!r}"
     )

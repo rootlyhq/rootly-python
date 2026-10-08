@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ShiftRelationshipsShiftOverrideDataType0Type = Literal["shift_overrides"]
 
@@ -13,7 +13,7 @@ def check_shift_relationships_shift_override_data_type_0_type(
     if value is None:
         return None
     if value in SHIFT_RELATIONSHIPS_SHIFT_OVERRIDE_DATA_TYPE_0_TYPE_VALUES:
-        return cast(ShiftRelationshipsShiftOverrideDataType0Type, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {SHIFT_RELATIONSHIPS_SHIFT_OVERRIDE_DATA_TYPE_0_TYPE_VALUES!r}"
     )

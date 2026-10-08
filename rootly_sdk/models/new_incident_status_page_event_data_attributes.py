@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 from ..models.new_incident_status_page_event_data_attributes_status import (
     NewIncidentStatusPageEventDataAttributesStatus,
@@ -25,27 +26,26 @@ class NewIncidentStatusPageEventDataAttributes:
     """
     Attributes:
         event (str): The summary of the incident event
-        status_page_id (Union[Unset, str]): Unique ID of the status page you wish to post the event to
-        status (Union[Unset, NewIncidentStatusPageEventDataAttributesStatus]): The status of the incident event
-        notify_subscribers (Union[None, Unset, bool]): Notify all status pages subscribers Default: False.
-        should_tweet (Union[None, Unset, bool]): For Statuspage.io integrated pages auto publishes a tweet for your
-            update Default: False.
-        started_at (Union[None, Unset, datetime.datetime]): When the event started. Defaults to the time of creation.
-        status_page_components (Union[None, Unset,
-            list['NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item']]): Affected status page components
-            and their statuses. Requires the status-page-v3-phase-1 feature. Ignored for terminal event statuses (resolved,
-            completed), which clear component impact. A status is required per component except for scheduled maintenance
-            incidents.
+        status_page_id (str | Unset): Unique ID of the status page you wish to post the event to
+        status (NewIncidentStatusPageEventDataAttributesStatus | Unset): The status of the incident event
+        notify_subscribers (bool | None | Unset): Notify all status pages subscribers Default: False.
+        should_tweet (bool | None | Unset): For Statuspage.io integrated pages auto publishes a tweet for your update
+            Default: False.
+        started_at (datetime.datetime | None | Unset): When the event started. Defaults to the time of creation.
+        status_page_components (list[NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item] | None |
+            Unset): Affected status page components and their statuses. This field is in Early Access and is not generally
+            available; contact Rootly Support to request access. Ignored for terminal event statuses (resolved, completed),
+            which clear component impact. A status is required per component except for scheduled maintenance incidents.
     """
 
     event: str
-    status_page_id: Unset | str = UNSET
-    status: Unset | NewIncidentStatusPageEventDataAttributesStatus = UNSET
-    notify_subscribers: None | Unset | bool = False
-    should_tweet: None | Unset | bool = False
-    started_at: None | Unset | datetime.datetime = UNSET
+    status_page_id: str | Unset = UNSET
+    status: NewIncidentStatusPageEventDataAttributesStatus | Unset = UNSET
+    notify_subscribers: bool | None | Unset = False
+    should_tweet: bool | None | Unset = False
+    started_at: datetime.datetime | None | Unset = UNSET
     status_page_components: (
-        None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]
+        list[NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item] | None | Unset
     ) = UNSET
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,23 +53,23 @@ class NewIncidentStatusPageEventDataAttributes:
 
         status_page_id = self.status_page_id
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        notify_subscribers: None | Unset | bool
+        notify_subscribers: bool | None | Unset
         if isinstance(self.notify_subscribers, Unset):
             notify_subscribers = UNSET
         else:
             notify_subscribers = self.notify_subscribers
 
-        should_tweet: None | Unset | bool
+        should_tweet: bool | None | Unset
         if isinstance(self.should_tweet, Unset):
             should_tweet = UNSET
         else:
             should_tweet = self.should_tweet
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -77,7 +77,7 @@ class NewIncidentStatusPageEventDataAttributes:
         else:
             started_at = self.started_at
 
-        status_page_components: None | Unset | list[dict[str, Any]]
+        status_page_components: list[dict[str, Any]] | None | Unset
         if isinstance(self.status_page_components, Unset):
             status_page_components = UNSET
         elif isinstance(self.status_page_components, list):
@@ -123,31 +123,31 @@ class NewIncidentStatusPageEventDataAttributes:
         status_page_id = d.pop("status_page_id", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Unset | NewIncidentStatusPageEventDataAttributesStatus
+        status: NewIncidentStatusPageEventDataAttributesStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_new_incident_status_page_event_data_attributes_status(_status)
 
-        def _parse_notify_subscribers(data: object) -> None | Unset | bool:
+        def _parse_notify_subscribers(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         notify_subscribers = _parse_notify_subscribers(d.pop("notify_subscribers", UNSET))
 
-        def _parse_should_tweet(data: object) -> None | Unset | bool:
+        def _parse_should_tweet(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         should_tweet = _parse_should_tweet(d.pop("should_tweet", UNSET))
 
-        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -155,18 +155,18 @@ class NewIncidentStatusPageEventDataAttributes:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                started_at_type_0 = isoparse(data)
+                started_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return started_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
         def _parse_status_page_components(
             data: object,
-        ) -> None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"]:
+        ) -> list[NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -186,10 +186,10 @@ class NewIncidentStatusPageEventDataAttributes:
                     status_page_components_type_0.append(status_page_components_type_0_item)
 
                 return status_page_components_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             return cast(
-                None | Unset | list["NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item"], data
+                list[NewIncidentStatusPageEventDataAttributesStatusPageComponentsType0Item] | None | Unset, data
             )
 
         status_page_components = _parse_status_page_components(d.pop("status_page_components", UNSET))

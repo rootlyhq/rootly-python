@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateStatusPageTemplateDataType = Literal["status_page_templates"]
 
@@ -11,5 +11,5 @@ def check_update_status_page_template_data_type(value: str | None) -> UpdateStat
     if value is None:
         return None
     if value in UPDATE_STATUS_PAGE_TEMPLATE_DATA_TYPE_VALUES:
-        return cast(UpdateStatusPageTemplateDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_STATUS_PAGE_TEMPLATE_DATA_TYPE_VALUES!r}")

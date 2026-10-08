@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListIncidentTypeCatalogPropertiesSort = Literal[
     "-created_at", "-position", "-updated_at", "created_at", "position", "updated_at"
@@ -18,7 +18,7 @@ def check_list_incident_type_catalog_properties_sort(value: str | None) -> ListI
     if value is None:
         return None
     if value in LIST_INCIDENT_TYPE_CATALOG_PROPERTIES_SORT_VALUES:
-        return cast(ListIncidentTypeCatalogPropertiesSort, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {LIST_INCIDENT_TYPE_CATALOG_PROPERTIES_SORT_VALUES!r}"
     )

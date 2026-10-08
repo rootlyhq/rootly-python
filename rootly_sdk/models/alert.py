@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.alert_noise import AlertNoise, check_alert_noise
 from ..models.alert_notification_target_type import AlertNotificationTargetType, check_alert_notification_target_type
@@ -16,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.alert_alerting_targets_type_0_item import AlertAlertingTargetsType0Item
     from ..models.alert_data_type_0 import AlertDataType0
     from ..models.alert_labels_item_type_0 import AlertLabelsItemType0
+    from ..models.alert_slack_notifications_type_0_item import AlertSlackNotificationsType0Item
     from ..models.alert_urgency import AlertUrgency
     from ..models.environment import Environment
     from ..models.functionality import Functionality
@@ -37,46 +39,53 @@ class Alert:
         summary (str): The summary of the alert
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        noise (Union[Unset, AlertNoise]): Whether the alert is marked as noise
-        status (Union[Unset, AlertStatus]): The status of the alert
-        description (Union[None, Unset, str]): The description of the alert
-        services (Union[Unset, list['Service']]): Services attached to the alert
-        groups (Union[Unset, list['Team']]): Groups attached to the alert
-        functionalities (Union[Unset, list['Functionality']]): Functionalities attached to the alert
-        environments (Union[Unset, list['Environment']]): Environments attached to the alert
-        service_ids (Union[None, Unset, list[str]]): The Service IDs to attach to the alert. If your organization has
-            On-Call enabled and your notification target is a Service. This field will be automatically set for you.
-        group_ids (Union[None, Unset, list[str]]): The Group IDs to attach to the alert. If your organization has On-
-            Call enabled and your notification target is a Group. This field will be automatically set for you.
-        functionality_ids (Union[None, Unset, list[str]]): The Functionality IDs to attach to the alert
-        environment_ids (Union[None, Unset, list[str]]): The Environment IDs to attach to the alert
-        external_id (Union[None, Unset, str]): External ID
-        external_url (Union[None, Unset, str]): External Url
-        alert_urgency_id (Union[None, Unset, str]): The ID of the alert urgency
-        alert_urgency (Union[Unset, AlertUrgency]):
-        group_leader_alert_id (Union[None, Unset, str]): The ID of the group leader alert
-        is_group_leader_alert (Union[None, Unset, bool]): Whether the alert is a group leader alert
-        labels (Union[Unset, list[Union['AlertLabelsItemType0', None]]]):
-        data (Union['AlertDataType0', None, Unset]): Additional data
-        notification_target_type (Union[Unset, AlertNotificationTargetType]): Only available for organizations with
-            Rootly On-Call enabled. Can be one of Group, Service, EscalationPolicy, Functionality, User.
-        notification_target_id (Union[None, Unset, str]): Only available for organizations with Rootly On-Call enabled.
-            The identifier of the notification target object.
-        deduplication_key (Union[None, Unset, str]): Alerts sharing the same deduplication key are treated as a single
-            alert.
-        alert_field_values (Union[None, Unset, list['AlertAlertFieldValuesType0Item']]): Custom alert field values
-            associated with the alert. Only present when the enable_alert_fields feature flag is enabled for the team.
-        responders (Union[None, Unset, list['UserFlatResponse']]): Users who responded to the alert. Included on all
-            non-list responses (show, create, update, resolve, etc.); on list responses only when `include=responders` is
+        noise (AlertNoise | Unset): Whether the alert is marked as noise
+        status (AlertStatus | Unset): The status of the alert
+        description (None | str | Unset): The description of the alert
+        services (list[Service] | Unset): Services attached to the alert
+        groups (list[Team] | Unset): Groups attached to the alert
+        functionalities (list[Functionality] | Unset): Functionalities attached to the alert
+        environments (list[Environment] | Unset): Environments attached to the alert
+        service_ids (list[str] | None | Unset): The Service IDs to attach to the alert. If your organization has On-Call
+            enabled and your notification target is a Service. This field will be automatically set for you.
+        group_ids (list[str] | None | Unset): The Group IDs to attach to the alert. If your organization has On-Call
+            enabled and your notification target is a Group. This field will be automatically set for you.
+        functionality_ids (list[str] | None | Unset): The Functionality IDs to attach to the alert
+        environment_ids (list[str] | None | Unset): The Environment IDs to attach to the alert
+        external_id (None | str | Unset): External ID
+        external_url (None | str | Unset): External Url
+        alert_urgency_id (None | str | Unset): The ID of the alert urgency
+        alert_urgency (AlertUrgency | Unset):
+        group_leader_alert_id (None | str | Unset): The ID of the group leader alert
+        is_group_leader_alert (bool | None | Unset): Whether the alert is a group leader alert
+        labels (list[AlertLabelsItemType0 | None] | Unset):
+        data (AlertDataType0 | None | Unset): Additional data
+        notification_target_type (AlertNotificationTargetType | Unset): Only available for organizations with Rootly On-
+            Call enabled. Can be one of Group, Service, EscalationPolicy, Functionality, User.
+        notification_target_id (None | str | Unset): Only available for organizations with Rootly On-Call enabled. The
+            identifier of the notification target object.
+        deduplication_key (None | str | Unset): Alerts sharing the same deduplication key are treated as a single alert.
+        alert_field_values (list[AlertAlertFieldValuesType0Item] | None | Unset): Custom alert field values associated
+            with the alert. Only present when the enable_alert_fields feature flag is enabled for the team.
+        responders (list[UserFlatResponse] | None | Unset): Users who responded to the alert. Included on all non-list
+            responses (show, create, update, resolve, etc.); on list responses only when `include=responders` is requested.
+        notified_users (list[User] | None | Unset): Users who were notified about the alert. Included on all non-list
+            responses (show, create, update, resolve, etc.); on list responses only when `include=notified_users` is
             requested.
-        notified_users (Union[None, Unset, list['User']]): Users who were notified about the alert. Included on all non-
-            list responses (show, create, update, resolve, etc.); on list responses only when `include=notified_users` is
-            requested.
-        alerting_targets (Union[None, Unset, list['AlertAlertingTargetsType0Item']]): Alerting targets associated with
-            the alert. Only present when advanced routing is enabled for the team.
-        url (Union[Unset, str]): The Rootly dashboard URL for the alert
-        started_at (Union[None, Unset, datetime.datetime]): When the alert started
-        ended_at (Union[None, Unset, datetime.datetime]): When the alert ended
+        alerting_targets (list[AlertAlertingTargetsType0Item] | None | Unset): Alerting targets associated with the
+            alert. Only present when advanced routing is enabled for the team.
+        slack_notifications (list[AlertSlackNotificationsType0Item] | None | Unset): Slack channel and root thread ts of
+            each announcement Rootly posted for the alert. Only present when the alert-slack-message-references feature flag
+            is enabled for the team.
+        url (str | Unset): The Rootly dashboard URL for the alert
+        started_at (datetime.datetime | None | Unset): When the alert started
+        ended_at (datetime.datetime | None | Unset): When the alert ended
+        acknowledged_at (datetime.datetime | None | Unset): When the alert was first acknowledged. Null if it has never
+            been acknowledged. An alert that is retriggered and acknowledged again keeps its original acknowledgement
+            timestamp.
+        resolved_at (datetime.datetime | None | Unset): When the alert was first resolved. Null if it has never been
+            resolved. Like `acknowledged_at`, an alert that is retriggered and resolved again keeps its original resolution
+            timestamp; use `ended_at` for the current resolution state.
     """
 
     short_id: str
@@ -84,35 +93,38 @@ class Alert:
     summary: str
     created_at: str
     updated_at: str
-    noise: Unset | AlertNoise = UNSET
-    status: Unset | AlertStatus = UNSET
-    description: None | Unset | str = UNSET
-    services: Unset | list["Service"] = UNSET
-    groups: Unset | list["Team"] = UNSET
-    functionalities: Unset | list["Functionality"] = UNSET
-    environments: Unset | list["Environment"] = UNSET
-    service_ids: None | Unset | list[str] = UNSET
-    group_ids: None | Unset | list[str] = UNSET
-    functionality_ids: None | Unset | list[str] = UNSET
-    environment_ids: None | Unset | list[str] = UNSET
-    external_id: None | Unset | str = UNSET
-    external_url: None | Unset | str = UNSET
-    alert_urgency_id: None | Unset | str = UNSET
-    alert_urgency: Union[Unset, "AlertUrgency"] = UNSET
-    group_leader_alert_id: None | Unset | str = UNSET
-    is_group_leader_alert: None | Unset | bool = UNSET
-    labels: Unset | list[Union["AlertLabelsItemType0", None]] = UNSET
-    data: Union["AlertDataType0", None, Unset] = UNSET
-    notification_target_type: Unset | AlertNotificationTargetType = UNSET
-    notification_target_id: None | Unset | str = UNSET
-    deduplication_key: None | Unset | str = UNSET
-    alert_field_values: None | Unset | list["AlertAlertFieldValuesType0Item"] = UNSET
-    responders: None | Unset | list["UserFlatResponse"] = UNSET
-    notified_users: None | Unset | list["User"] = UNSET
-    alerting_targets: None | Unset | list["AlertAlertingTargetsType0Item"] = UNSET
-    url: Unset | str = UNSET
-    started_at: None | Unset | datetime.datetime = UNSET
-    ended_at: None | Unset | datetime.datetime = UNSET
+    noise: AlertNoise | Unset = UNSET
+    status: AlertStatus | Unset = UNSET
+    description: None | str | Unset = UNSET
+    services: list[Service] | Unset = UNSET
+    groups: list[Team] | Unset = UNSET
+    functionalities: list[Functionality] | Unset = UNSET
+    environments: list[Environment] | Unset = UNSET
+    service_ids: list[str] | None | Unset = UNSET
+    group_ids: list[str] | None | Unset = UNSET
+    functionality_ids: list[str] | None | Unset = UNSET
+    environment_ids: list[str] | None | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    external_url: None | str | Unset = UNSET
+    alert_urgency_id: None | str | Unset = UNSET
+    alert_urgency: AlertUrgency | Unset = UNSET
+    group_leader_alert_id: None | str | Unset = UNSET
+    is_group_leader_alert: bool | None | Unset = UNSET
+    labels: list[AlertLabelsItemType0 | None] | Unset = UNSET
+    data: AlertDataType0 | None | Unset = UNSET
+    notification_target_type: AlertNotificationTargetType | Unset = UNSET
+    notification_target_id: None | str | Unset = UNSET
+    deduplication_key: None | str | Unset = UNSET
+    alert_field_values: list[AlertAlertFieldValuesType0Item] | None | Unset = UNSET
+    responders: list[UserFlatResponse] | None | Unset = UNSET
+    notified_users: list[User] | None | Unset = UNSET
+    alerting_targets: list[AlertAlertingTargetsType0Item] | None | Unset = UNSET
+    slack_notifications: list[AlertSlackNotificationsType0Item] | None | Unset = UNSET
+    url: str | Unset = UNSET
+    started_at: datetime.datetime | None | Unset = UNSET
+    ended_at: datetime.datetime | None | Unset = UNSET
+    acknowledged_at: datetime.datetime | None | Unset = UNSET
+    resolved_at: datetime.datetime | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -129,49 +141,49 @@ class Alert:
 
         updated_at = self.updated_at
 
-        noise: Unset | str = UNSET
+        noise: str | Unset = UNSET
         if not isinstance(self.noise, Unset):
             noise = self.noise
 
-        status: Unset | str = UNSET
+        status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
             status = self.status
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        services: Unset | list[dict[str, Any]] = UNSET
+        services: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.services, Unset):
             services = []
             for services_item_data in self.services:
                 services_item = services_item_data.to_dict()
                 services.append(services_item)
 
-        groups: Unset | list[dict[str, Any]] = UNSET
+        groups: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.groups, Unset):
             groups = []
             for groups_item_data in self.groups:
                 groups_item = groups_item_data.to_dict()
                 groups.append(groups_item)
 
-        functionalities: Unset | list[dict[str, Any]] = UNSET
+        functionalities: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.functionalities, Unset):
             functionalities = []
             for functionalities_item_data in self.functionalities:
                 functionalities_item = functionalities_item_data.to_dict()
                 functionalities.append(functionalities_item)
 
-        environments: Unset | list[dict[str, Any]] = UNSET
+        environments: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.environments, Unset):
             environments = []
             for environments_item_data in self.environments:
                 environments_item = environments_item_data.to_dict()
                 environments.append(environments_item)
 
-        service_ids: None | Unset | list[str]
+        service_ids: list[str] | None | Unset
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -180,7 +192,7 @@ class Alert:
         else:
             service_ids = self.service_ids
 
-        group_ids: None | Unset | list[str]
+        group_ids: list[str] | None | Unset
         if isinstance(self.group_ids, Unset):
             group_ids = UNSET
         elif isinstance(self.group_ids, list):
@@ -189,7 +201,7 @@ class Alert:
         else:
             group_ids = self.group_ids
 
-        functionality_ids: None | Unset | list[str]
+        functionality_ids: list[str] | None | Unset
         if isinstance(self.functionality_ids, Unset):
             functionality_ids = UNSET
         elif isinstance(self.functionality_ids, list):
@@ -198,7 +210,7 @@ class Alert:
         else:
             functionality_ids = self.functionality_ids
 
-        environment_ids: None | Unset | list[str]
+        environment_ids: list[str] | None | Unset
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -207,52 +219,52 @@ class Alert:
         else:
             environment_ids = self.environment_ids
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        external_url: None | Unset | str
+        external_url: None | str | Unset
         if isinstance(self.external_url, Unset):
             external_url = UNSET
         else:
             external_url = self.external_url
 
-        alert_urgency_id: None | Unset | str
+        alert_urgency_id: None | str | Unset
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
             alert_urgency_id = self.alert_urgency_id
 
-        alert_urgency: Unset | dict[str, Any] = UNSET
+        alert_urgency: dict[str, Any] | Unset = UNSET
         if not isinstance(self.alert_urgency, Unset):
             alert_urgency = self.alert_urgency.to_dict()
 
-        group_leader_alert_id: None | Unset | str
+        group_leader_alert_id: None | str | Unset
         if isinstance(self.group_leader_alert_id, Unset):
             group_leader_alert_id = UNSET
         else:
             group_leader_alert_id = self.group_leader_alert_id
 
-        is_group_leader_alert: None | Unset | bool
+        is_group_leader_alert: bool | None | Unset
         if isinstance(self.is_group_leader_alert, Unset):
             is_group_leader_alert = UNSET
         else:
             is_group_leader_alert = self.is_group_leader_alert
 
-        labels: Unset | list[None | dict[str, Any]] = UNSET
+        labels: list[dict[str, Any] | None] | Unset = UNSET
         if not isinstance(self.labels, Unset):
             labels = []
             for labels_item_data in self.labels:
-                labels_item: None | dict[str, Any]
+                labels_item: dict[str, Any] | None
                 if isinstance(labels_item_data, AlertLabelsItemType0):
                     labels_item = labels_item_data.to_dict()
                 else:
                     labels_item = labels_item_data
                 labels.append(labels_item)
 
-        data: None | Unset | dict[str, Any]
+        data: dict[str, Any] | None | Unset
         if isinstance(self.data, Unset):
             data = UNSET
         elif isinstance(self.data, AlertDataType0):
@@ -260,23 +272,23 @@ class Alert:
         else:
             data = self.data
 
-        notification_target_type: Unset | str = UNSET
+        notification_target_type: str | Unset = UNSET
         if not isinstance(self.notification_target_type, Unset):
             notification_target_type = self.notification_target_type
 
-        notification_target_id: None | Unset | str
+        notification_target_id: None | str | Unset
         if isinstance(self.notification_target_id, Unset):
             notification_target_id = UNSET
         else:
             notification_target_id = self.notification_target_id
 
-        deduplication_key: None | Unset | str
+        deduplication_key: None | str | Unset
         if isinstance(self.deduplication_key, Unset):
             deduplication_key = UNSET
         else:
             deduplication_key = self.deduplication_key
 
-        alert_field_values: None | Unset | list[dict[str, Any]]
+        alert_field_values: list[dict[str, Any]] | None | Unset
         if isinstance(self.alert_field_values, Unset):
             alert_field_values = UNSET
         elif isinstance(self.alert_field_values, list):
@@ -288,7 +300,7 @@ class Alert:
         else:
             alert_field_values = self.alert_field_values
 
-        responders: None | Unset | list[dict[str, Any]]
+        responders: list[dict[str, Any]] | None | Unset
         if isinstance(self.responders, Unset):
             responders = UNSET
         elif isinstance(self.responders, list):
@@ -300,7 +312,7 @@ class Alert:
         else:
             responders = self.responders
 
-        notified_users: None | Unset | list[dict[str, Any]]
+        notified_users: list[dict[str, Any]] | None | Unset
         if isinstance(self.notified_users, Unset):
             notified_users = UNSET
         elif isinstance(self.notified_users, list):
@@ -312,7 +324,7 @@ class Alert:
         else:
             notified_users = self.notified_users
 
-        alerting_targets: None | Unset | list[dict[str, Any]]
+        alerting_targets: list[dict[str, Any]] | None | Unset
         if isinstance(self.alerting_targets, Unset):
             alerting_targets = UNSET
         elif isinstance(self.alerting_targets, list):
@@ -324,9 +336,21 @@ class Alert:
         else:
             alerting_targets = self.alerting_targets
 
+        slack_notifications: list[dict[str, Any]] | None | Unset
+        if isinstance(self.slack_notifications, Unset):
+            slack_notifications = UNSET
+        elif isinstance(self.slack_notifications, list):
+            slack_notifications = []
+            for slack_notifications_type_0_item_data in self.slack_notifications:
+                slack_notifications_type_0_item = slack_notifications_type_0_item_data.to_dict()
+                slack_notifications.append(slack_notifications_type_0_item)
+
+        else:
+            slack_notifications = self.slack_notifications
+
         url = self.url
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         elif isinstance(self.started_at, datetime.datetime):
@@ -334,13 +358,29 @@ class Alert:
         else:
             started_at = self.started_at
 
-        ended_at: None | Unset | str
+        ended_at: None | str | Unset
         if isinstance(self.ended_at, Unset):
             ended_at = UNSET
         elif isinstance(self.ended_at, datetime.datetime):
             ended_at = self.ended_at.isoformat()
         else:
             ended_at = self.ended_at
+
+        acknowledged_at: None | str | Unset
+        if isinstance(self.acknowledged_at, Unset):
+            acknowledged_at = UNSET
+        elif isinstance(self.acknowledged_at, datetime.datetime):
+            acknowledged_at = self.acknowledged_at.isoformat()
+        else:
+            acknowledged_at = self.acknowledged_at
+
+        resolved_at: None | str | Unset
+        if isinstance(self.resolved_at, Unset):
+            resolved_at = UNSET
+        elif isinstance(self.resolved_at, datetime.datetime):
+            resolved_at = self.resolved_at.isoformat()
+        else:
+            resolved_at = self.resolved_at
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -405,12 +445,18 @@ class Alert:
             field_dict["notified_users"] = notified_users
         if alerting_targets is not UNSET:
             field_dict["alerting_targets"] = alerting_targets
+        if slack_notifications is not UNSET:
+            field_dict["slack_notifications"] = slack_notifications
         if url is not UNSET:
             field_dict["url"] = url
         if started_at is not UNSET:
             field_dict["started_at"] = started_at
         if ended_at is not UNSET:
             field_dict["ended_at"] = ended_at
+        if acknowledged_at is not UNSET:
+            field_dict["acknowledged_at"] = acknowledged_at
+        if resolved_at is not UNSET:
+            field_dict["resolved_at"] = resolved_at
 
         return field_dict
 
@@ -420,6 +466,7 @@ class Alert:
         from ..models.alert_alerting_targets_type_0_item import AlertAlertingTargetsType0Item
         from ..models.alert_data_type_0 import AlertDataType0
         from ..models.alert_labels_item_type_0 import AlertLabelsItemType0
+        from ..models.alert_slack_notifications_type_0_item import AlertSlackNotificationsType0Item
         from ..models.alert_urgency import AlertUrgency
         from ..models.environment import Environment
         from ..models.functionality import Functionality
@@ -440,57 +487,65 @@ class Alert:
         updated_at = d.pop("updated_at")
 
         _noise = d.pop("noise", UNSET)
-        noise: Unset | AlertNoise
+        noise: AlertNoise | Unset
         if isinstance(_noise, Unset):
             noise = UNSET
         else:
             noise = check_alert_noise(_noise)
 
         _status = d.pop("status", UNSET)
-        status: Unset | AlertStatus
+        status: AlertStatus | Unset
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = check_alert_status(_status)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        services = []
         _services = d.pop("services", UNSET)
-        for services_item_data in _services or []:
-            services_item = Service.from_dict(services_item_data)
+        services: list[Service] | Unset = UNSET
+        if _services is not UNSET:
+            services = []
+            for services_item_data in _services:
+                services_item = Service.from_dict(services_item_data)
 
-            services.append(services_item)
+                services.append(services_item)
 
-        groups = []
         _groups = d.pop("groups", UNSET)
-        for groups_item_data in _groups or []:
-            groups_item = Team.from_dict(groups_item_data)
+        groups: list[Team] | Unset = UNSET
+        if _groups is not UNSET:
+            groups = []
+            for groups_item_data in _groups:
+                groups_item = Team.from_dict(groups_item_data)
 
-            groups.append(groups_item)
+                groups.append(groups_item)
 
-        functionalities = []
         _functionalities = d.pop("functionalities", UNSET)
-        for functionalities_item_data in _functionalities or []:
-            functionalities_item = Functionality.from_dict(functionalities_item_data)
+        functionalities: list[Functionality] | Unset = UNSET
+        if _functionalities is not UNSET:
+            functionalities = []
+            for functionalities_item_data in _functionalities:
+                functionalities_item = Functionality.from_dict(functionalities_item_data)
 
-            functionalities.append(functionalities_item)
+                functionalities.append(functionalities_item)
 
-        environments = []
         _environments = d.pop("environments", UNSET)
-        for environments_item_data in _environments or []:
-            environments_item = Environment.from_dict(environments_item_data)
+        environments: list[Environment] | Unset = UNSET
+        if _environments is not UNSET:
+            environments = []
+            for environments_item_data in _environments:
+                environments_item = Environment.from_dict(environments_item_data)
 
-            environments.append(environments_item)
+                environments.append(environments_item)
 
-        def _parse_service_ids(data: object) -> None | Unset | list[str]:
+        def _parse_service_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -501,13 +556,13 @@ class Alert:
                 service_ids_type_0 = cast(list[str], data)
 
                 return service_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_group_ids(data: object) -> None | Unset | list[str]:
+        def _parse_group_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -518,13 +573,13 @@ class Alert:
                 group_ids_type_0 = cast(list[str], data)
 
                 return group_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         group_ids = _parse_group_ids(d.pop("group_ids", UNSET))
 
-        def _parse_functionality_ids(data: object) -> None | Unset | list[str]:
+        def _parse_functionality_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -535,13 +590,13 @@ class Alert:
                 functionality_ids_type_0 = cast(list[str], data)
 
                 return functionality_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         functionality_ids = _parse_functionality_ids(d.pop("functionality_ids", UNSET))
 
-        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
+        def _parse_environment_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -552,86 +607,88 @@ class Alert:
                 environment_ids_type_0 = cast(list[str], data)
 
                 return environment_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_external_url(data: object) -> None | Unset | str:
+        def _parse_external_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
+        def _parse_alert_urgency_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
         _alert_urgency = d.pop("alert_urgency", UNSET)
-        alert_urgency: Unset | AlertUrgency
+        alert_urgency: AlertUrgency | Unset
         if isinstance(_alert_urgency, Unset):
             alert_urgency = UNSET
         else:
             alert_urgency = AlertUrgency.from_dict(_alert_urgency)
 
-        def _parse_group_leader_alert_id(data: object) -> None | Unset | str:
+        def _parse_group_leader_alert_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         group_leader_alert_id = _parse_group_leader_alert_id(d.pop("group_leader_alert_id", UNSET))
 
-        def _parse_is_group_leader_alert(data: object) -> None | Unset | bool:
+        def _parse_is_group_leader_alert(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         is_group_leader_alert = _parse_is_group_leader_alert(d.pop("is_group_leader_alert", UNSET))
 
-        labels = []
         _labels = d.pop("labels", UNSET)
-        for labels_item_data in _labels or []:
+        labels: list[AlertLabelsItemType0 | None] | Unset = UNSET
+        if _labels is not UNSET:
+            labels = []
+            for labels_item_data in _labels:
 
-            def _parse_labels_item(data: object) -> Union["AlertLabelsItemType0", None]:
-                if data is None:
-                    return data
-                try:
-                    if not isinstance(data, dict):
-                        raise TypeError()
-                    labels_item_type_0 = AlertLabelsItemType0.from_dict(data)
+                def _parse_labels_item(data: object) -> AlertLabelsItemType0 | None:
+                    if data is None:
+                        return data
+                    try:
+                        if not isinstance(data, dict):
+                            raise TypeError()
+                        labels_item_type_0 = AlertLabelsItemType0.from_dict(data)
 
-                    return labels_item_type_0
-                except:  # noqa: E722
-                    pass
-                return cast(Union["AlertLabelsItemType0", None], data)
+                        return labels_item_type_0
+                    except (TypeError, ValueError, AttributeError, KeyError):
+                        pass
+                    return cast(AlertLabelsItemType0 | None, data)
 
-            labels_item = _parse_labels_item(labels_item_data)
+                labels_item = _parse_labels_item(labels_item_data)
 
-            labels.append(labels_item)
+                labels.append(labels_item)
 
-        def _parse_data(data: object) -> Union["AlertDataType0", None, Unset]:
+        def _parse_data(data: object) -> AlertDataType0 | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -642,38 +699,38 @@ class Alert:
                 data_type_0 = AlertDataType0.from_dict(data)
 
                 return data_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(Union["AlertDataType0", None, Unset], data)
+            return cast(AlertDataType0 | None | Unset, data)
 
         data = _parse_data(d.pop("data", UNSET))
 
         _notification_target_type = d.pop("notification_target_type", UNSET)
-        notification_target_type: Unset | AlertNotificationTargetType
+        notification_target_type: AlertNotificationTargetType | Unset
         if isinstance(_notification_target_type, Unset):
             notification_target_type = UNSET
         else:
             notification_target_type = check_alert_notification_target_type(_notification_target_type)
 
-        def _parse_notification_target_id(data: object) -> None | Unset | str:
+        def _parse_notification_target_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         notification_target_id = _parse_notification_target_id(d.pop("notification_target_id", UNSET))
 
-        def _parse_deduplication_key(data: object) -> None | Unset | str:
+        def _parse_deduplication_key(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         deduplication_key = _parse_deduplication_key(d.pop("deduplication_key", UNSET))
 
-        def _parse_alert_field_values(data: object) -> None | Unset | list["AlertAlertFieldValuesType0Item"]:
+        def _parse_alert_field_values(data: object) -> list[AlertAlertFieldValuesType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -691,13 +748,13 @@ class Alert:
                     alert_field_values_type_0.append(alert_field_values_type_0_item)
 
                 return alert_field_values_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["AlertAlertFieldValuesType0Item"], data)
+            return cast(list[AlertAlertFieldValuesType0Item] | None | Unset, data)
 
         alert_field_values = _parse_alert_field_values(d.pop("alert_field_values", UNSET))
 
-        def _parse_responders(data: object) -> None | Unset | list["UserFlatResponse"]:
+        def _parse_responders(data: object) -> list[UserFlatResponse] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -713,13 +770,13 @@ class Alert:
                     responders_type_0.append(responders_type_0_item)
 
                 return responders_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["UserFlatResponse"], data)
+            return cast(list[UserFlatResponse] | None | Unset, data)
 
         responders = _parse_responders(d.pop("responders", UNSET))
 
-        def _parse_notified_users(data: object) -> None | Unset | list["User"]:
+        def _parse_notified_users(data: object) -> list[User] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -735,13 +792,13 @@ class Alert:
                     notified_users_type_0.append(notified_users_type_0_item)
 
                 return notified_users_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["User"], data)
+            return cast(list[User] | None | Unset, data)
 
         notified_users = _parse_notified_users(d.pop("notified_users", UNSET))
 
-        def _parse_alerting_targets(data: object) -> None | Unset | list["AlertAlertingTargetsType0Item"]:
+        def _parse_alerting_targets(data: object) -> list[AlertAlertingTargetsType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -759,15 +816,39 @@ class Alert:
                     alerting_targets_type_0.append(alerting_targets_type_0_item)
 
                 return alerting_targets_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["AlertAlertingTargetsType0Item"], data)
+            return cast(list[AlertAlertingTargetsType0Item] | None | Unset, data)
 
         alerting_targets = _parse_alerting_targets(d.pop("alerting_targets", UNSET))
 
+        def _parse_slack_notifications(data: object) -> list[AlertSlackNotificationsType0Item] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                slack_notifications_type_0 = []
+                _slack_notifications_type_0 = data
+                for slack_notifications_type_0_item_data in _slack_notifications_type_0:
+                    slack_notifications_type_0_item = AlertSlackNotificationsType0Item.from_dict(
+                        slack_notifications_type_0_item_data
+                    )
+
+                    slack_notifications_type_0.append(slack_notifications_type_0_item)
+
+                return slack_notifications_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[AlertSlackNotificationsType0Item] | None | Unset, data)
+
+        slack_notifications = _parse_slack_notifications(d.pop("slack_notifications", UNSET))
+
         url = d.pop("url", UNSET)
 
-        def _parse_started_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_started_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -775,16 +856,16 @@ class Alert:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                started_at_type_0 = isoparse(data)
+                started_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return started_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_ended_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_ended_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -792,14 +873,48 @@ class Alert:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                ended_at_type_0 = isoparse(data)
+                ended_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return ended_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         ended_at = _parse_ended_at(d.pop("ended_at", UNSET))
+
+        def _parse_acknowledged_at(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                acknowledged_at_type_0 = datetime.datetime.fromisoformat(data)
+
+                return acknowledged_at_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        acknowledged_at = _parse_acknowledged_at(d.pop("acknowledged_at", UNSET))
+
+        def _parse_resolved_at(data: object) -> datetime.datetime | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resolved_at_type_0 = datetime.datetime.fromisoformat(data)
+
+                return resolved_at_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(datetime.datetime | None | Unset, data)
+
+        resolved_at = _parse_resolved_at(d.pop("resolved_at", UNSET))
 
         alert = cls(
             short_id=short_id,
@@ -833,9 +948,12 @@ class Alert:
             responders=responders,
             notified_users=notified_users,
             alerting_targets=alerting_targets,
+            slack_notifications=slack_notifications,
             url=url,
             started_at=started_at,
             ended_at=ended_at,
+            acknowledged_at=acknowledged_at,
+            resolved_at=resolved_at,
         )
 
         alert.additional_properties = d

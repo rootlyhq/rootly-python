@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.new_workflow_group_data_attributes_kind import (
     NewWorkflowGroupDataAttributesKind,
@@ -18,38 +19,37 @@ class NewWorkflowGroupDataAttributes:
     """
     Attributes:
         name (str): The name of the workflow group.
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name` and `kind`; any submitted value is
-            ignored. This property will be removed from the request schema in a future version.
-        kind (Union[Unset, NewWorkflowGroupDataAttributesKind]): The kind of the workflow group
-        description (Union[None, Unset, str]): A description of the workflow group.
-        icon (Union[Unset, str]): An emoji icon displayed next to the workflow group.
-        expanded (Union[Unset, bool]): Whether the group is expanded or collapsed.
-        position (Union[Unset, int]): The position of the workflow group
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored.
+            This property will be removed from the request schema in a future version.
+        kind (NewWorkflowGroupDataAttributesKind | Unset): The kind of the workflow group
+        description (None | str | Unset): A description of the workflow group.
+        icon (str | Unset): An emoji icon displayed next to the workflow group.
+        expanded (bool | Unset): Whether the group is expanded or collapsed.
+        position (int | Unset): The position of the workflow group
     """
 
     name: str
-    slug: None | Unset | str = UNSET
-    kind: Unset | NewWorkflowGroupDataAttributesKind = UNSET
-    description: None | Unset | str = UNSET
-    icon: Unset | str = UNSET
-    expanded: Unset | bool = UNSET
-    position: Unset | int = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    slug: None | str | Unset = UNSET
+    kind: NewWorkflowGroupDataAttributesKind | Unset = UNSET
+    description: None | str | Unset = UNSET
+    icon: str | Unset = UNSET
+    expanded: bool | Unset = UNSET
+    position: int | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -62,7 +62,7 @@ class NewWorkflowGroupDataAttributes:
         position = self.position
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "name": name,
@@ -88,28 +88,28 @@ class NewWorkflowGroupDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Unset | NewWorkflowGroupDataAttributesKind
+        kind: NewWorkflowGroupDataAttributesKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
             kind = check_new_workflow_group_data_attributes_kind(_kind)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -129,21 +129,4 @@ class NewWorkflowGroupDataAttributes:
             position=position,
         )
 
-        new_workflow_group_data_attributes.additional_properties = d
         return new_workflow_group_data_attributes
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

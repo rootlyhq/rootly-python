@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateCatalogChecklistTemplateDataAttributesBuiltinFieldFieldSource = Literal["builtin"]
 
@@ -15,7 +15,7 @@ def check_update_catalog_checklist_template_data_attributes_builtin_field_field_
     if value is None:
         return None
     if value in UPDATE_CATALOG_CHECKLIST_TEMPLATE_DATA_ATTRIBUTES_BUILTIN_FIELD_FIELD_SOURCE_VALUES:
-        return cast(UpdateCatalogChecklistTemplateDataAttributesBuiltinFieldFieldSource, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_CATALOG_CHECKLIST_TEMPLATE_DATA_ATTRIBUTES_BUILTIN_FIELD_FIELD_SOURCE_VALUES!r}"
     )

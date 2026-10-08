@@ -14,170 +14,171 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    pageafter: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filterslack_channel_id: Unset | str = UNSET,
-    filtersequential_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterstatuseq: Unset | str = UNSET,
-    filterstatusnot_eq: Unset | str = UNSET,
-    filterstatusin: Unset | str = UNSET,
-    filterstatusnot_in: Unset | str = UNSET,
-    filterprivateeq: Unset | str = UNSET,
-    filterprivatenot_eq: Unset | str = UNSET,
-    filterprivatein: Unset | str = UNSET,
-    filterprivatenot_in: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterseverityeq: Unset | str = UNSET,
-    filterseveritynot_eq: Unset | str = UNSET,
-    filterseverityin: Unset | str = UNSET,
-    filterseveritynot_in: Unset | str = UNSET,
-    filterseverity_ideq: Unset | str = UNSET,
-    filterseverity_idnot_eq: Unset | str = UNSET,
-    filterseverity_idin: Unset | str = UNSET,
-    filterseverity_idnot_in: Unset | str = UNSET,
-    filterlabelseq: Unset | str = UNSET,
-    filterlabelsnot_eq: Unset | str = UNSET,
-    filterlabelsin: Unset | str = UNSET,
-    filterlabelsnot_in: Unset | str = UNSET,
-    filterzendesk_ticket_ideq: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_eq: Unset | str = UNSET,
-    filterzendesk_ticket_idin: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_in: Unset | str = UNSET,
-    filtersequential_ideq: Unset | str = UNSET,
-    filtersequential_idnot_eq: Unset | str = UNSET,
-    filtersequential_idin: Unset | str = UNSET,
-    filtersequential_idnot_in: Unset | str = UNSET,
-    filtertypeseq: Unset | str = UNSET,
-    filtertypesnot_eq: Unset | str = UNSET,
-    filtertypesin: Unset | str = UNSET,
-    filtertypesnot_in: Unset | str = UNSET,
-    filtertype_idseq: Unset | str = UNSET,
-    filtertype_idsnot_eq: Unset | str = UNSET,
-    filtertype_idsin: Unset | str = UNSET,
-    filtertype_idsnot_in: Unset | str = UNSET,
-    filterenvironmentseq: Unset | str = UNSET,
-    filterenvironmentsnot_eq: Unset | str = UNSET,
-    filterenvironmentsin: Unset | str = UNSET,
-    filterenvironmentsnot_in: Unset | str = UNSET,
-    filterenvironment_idseq: Unset | str = UNSET,
-    filterenvironment_idsnot_eq: Unset | str = UNSET,
-    filterenvironment_idsin: Unset | str = UNSET,
-    filterenvironment_idsnot_in: Unset | str = UNSET,
-    filterserviceseq: Unset | str = UNSET,
-    filterservicesnot_eq: Unset | str = UNSET,
-    filterservicesin: Unset | str = UNSET,
-    filterservicesnot_in: Unset | str = UNSET,
-    filterservice_idseq: Unset | str = UNSET,
-    filterservice_idsnot_eq: Unset | str = UNSET,
-    filterservice_idsin: Unset | str = UNSET,
-    filterservice_idsnot_in: Unset | str = UNSET,
-    filterservice_nameseq: Unset | str = UNSET,
-    filterservice_namesnot_eq: Unset | str = UNSET,
-    filterservice_namesin: Unset | str = UNSET,
-    filterservice_namesnot_in: Unset | str = UNSET,
-    filterfunctionalitieseq: Unset | str = UNSET,
-    filterfunctionalitiesnot_eq: Unset | str = UNSET,
-    filterfunctionalitiesin: Unset | str = UNSET,
-    filterfunctionalitiesnot_in: Unset | str = UNSET,
-    filterfunctionality_idseq: Unset | str = UNSET,
-    filterfunctionality_idsnot_eq: Unset | str = UNSET,
-    filterfunctionality_idsin: Unset | str = UNSET,
-    filterfunctionality_idsnot_in: Unset | str = UNSET,
-    filterfunctionality_nameseq: Unset | str = UNSET,
-    filterfunctionality_namesnot_eq: Unset | str = UNSET,
-    filterfunctionality_namesin: Unset | str = UNSET,
-    filterfunctionality_namesnot_in: Unset | str = UNSET,
-    filtercauseseq: Unset | str = UNSET,
-    filtercausesnot_eq: Unset | str = UNSET,
-    filtercausesin: Unset | str = UNSET,
-    filtercausesnot_in: Unset | str = UNSET,
-    filtercause_idseq: Unset | str = UNSET,
-    filtercause_idsnot_eq: Unset | str = UNSET,
-    filtercause_idsin: Unset | str = UNSET,
-    filtercause_idsnot_in: Unset | str = UNSET,
-    filterteamseq: Unset | str = UNSET,
-    filterteamsnot_eq: Unset | str = UNSET,
-    filterteamsin: Unset | str = UNSET,
-    filterteamsnot_in: Unset | str = UNSET,
-    filterteam_idseq: Unset | str = UNSET,
-    filterteam_idsnot_eq: Unset | str = UNSET,
-    filterteam_idsin: Unset | str = UNSET,
-    filterteam_idsnot_in: Unset | str = UNSET,
-    filterteam_nameseq: Unset | str = UNSET,
-    filterteam_namesnot_eq: Unset | str = UNSET,
-    filterteam_namesin: Unset | str = UNSET,
-    filterteam_namesnot_in: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtersequential_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterprivateeq: str | Unset = UNSET,
+    filterprivatenot_eq: str | Unset = UNSET,
+    filterprivatein: str | Unset = UNSET,
+    filterprivatenot_in: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filterseverity_ideq: str | Unset = UNSET,
+    filterseverity_idnot_eq: str | Unset = UNSET,
+    filterseverity_idin: str | Unset = UNSET,
+    filterseverity_idnot_in: str | Unset = UNSET,
+    filterlabelseq: str | Unset = UNSET,
+    filterlabelsnot_eq: str | Unset = UNSET,
+    filterlabelsin: str | Unset = UNSET,
+    filterlabelsnot_in: str | Unset = UNSET,
+    filterzendesk_ticket_ideq: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_eq: str | Unset = UNSET,
+    filterzendesk_ticket_idin: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_in: str | Unset = UNSET,
+    filtersequential_ideq: str | Unset = UNSET,
+    filtersequential_idnot_eq: str | Unset = UNSET,
+    filtersequential_idin: str | Unset = UNSET,
+    filtersequential_idnot_in: str | Unset = UNSET,
+    filtertypeseq: str | Unset = UNSET,
+    filtertypesnot_eq: str | Unset = UNSET,
+    filtertypesin: str | Unset = UNSET,
+    filtertypesnot_in: str | Unset = UNSET,
+    filtertype_idseq: str | Unset = UNSET,
+    filtertype_idsnot_eq: str | Unset = UNSET,
+    filtertype_idsin: str | Unset = UNSET,
+    filtertype_idsnot_in: str | Unset = UNSET,
+    filterenvironmentseq: str | Unset = UNSET,
+    filterenvironmentsnot_eq: str | Unset = UNSET,
+    filterenvironmentsin: str | Unset = UNSET,
+    filterenvironmentsnot_in: str | Unset = UNSET,
+    filterenvironment_idseq: str | Unset = UNSET,
+    filterenvironment_idsnot_eq: str | Unset = UNSET,
+    filterenvironment_idsin: str | Unset = UNSET,
+    filterenvironment_idsnot_in: str | Unset = UNSET,
+    filterserviceseq: str | Unset = UNSET,
+    filterservicesnot_eq: str | Unset = UNSET,
+    filterservicesin: str | Unset = UNSET,
+    filterservicesnot_in: str | Unset = UNSET,
+    filterservice_idseq: str | Unset = UNSET,
+    filterservice_idsnot_eq: str | Unset = UNSET,
+    filterservice_idsin: str | Unset = UNSET,
+    filterservice_idsnot_in: str | Unset = UNSET,
+    filterservice_nameseq: str | Unset = UNSET,
+    filterservice_namesnot_eq: str | Unset = UNSET,
+    filterservice_namesin: str | Unset = UNSET,
+    filterservice_namesnot_in: str | Unset = UNSET,
+    filterfunctionalitieseq: str | Unset = UNSET,
+    filterfunctionalitiesnot_eq: str | Unset = UNSET,
+    filterfunctionalitiesin: str | Unset = UNSET,
+    filterfunctionalitiesnot_in: str | Unset = UNSET,
+    filterfunctionality_idseq: str | Unset = UNSET,
+    filterfunctionality_idsnot_eq: str | Unset = UNSET,
+    filterfunctionality_idsin: str | Unset = UNSET,
+    filterfunctionality_idsnot_in: str | Unset = UNSET,
+    filterfunctionality_nameseq: str | Unset = UNSET,
+    filterfunctionality_namesnot_eq: str | Unset = UNSET,
+    filterfunctionality_namesin: str | Unset = UNSET,
+    filterfunctionality_namesnot_in: str | Unset = UNSET,
+    filtercauseseq: str | Unset = UNSET,
+    filtercausesnot_eq: str | Unset = UNSET,
+    filtercausesin: str | Unset = UNSET,
+    filtercausesnot_in: str | Unset = UNSET,
+    filtercause_idseq: str | Unset = UNSET,
+    filtercause_idsnot_eq: str | Unset = UNSET,
+    filtercause_idsin: str | Unset = UNSET,
+    filtercause_idsnot_in: str | Unset = UNSET,
+    filterteamseq: str | Unset = UNSET,
+    filterteamsnot_eq: str | Unset = UNSET,
+    filterteamsin: str | Unset = UNSET,
+    filterteamsnot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
+    filterteam_nameseq: str | Unset = UNSET,
+    filterteam_namesnot_eq: str | Unset = UNSET,
+    filterteam_namesin: str | Unset = UNSET,
+    filterteam_namesnot_in: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["page[after]"] = pageafter
@@ -502,13 +503,13 @@ def _get_kwargs(
 
     params["filter[team_names][not_in]"] = filterteam_namesnot_in
 
-    json_sort: Unset | str = UNSET
+    json_sort: str | Unset = UNSET
     if not isinstance(sort, Unset):
         json_sort = sort
 
     params["sort"] = json_sort
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -558,345 +559,345 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    pageafter: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filterslack_channel_id: Unset | str = UNSET,
-    filtersequential_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterstatuseq: Unset | str = UNSET,
-    filterstatusnot_eq: Unset | str = UNSET,
-    filterstatusin: Unset | str = UNSET,
-    filterstatusnot_in: Unset | str = UNSET,
-    filterprivateeq: Unset | str = UNSET,
-    filterprivatenot_eq: Unset | str = UNSET,
-    filterprivatein: Unset | str = UNSET,
-    filterprivatenot_in: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterseverityeq: Unset | str = UNSET,
-    filterseveritynot_eq: Unset | str = UNSET,
-    filterseverityin: Unset | str = UNSET,
-    filterseveritynot_in: Unset | str = UNSET,
-    filterseverity_ideq: Unset | str = UNSET,
-    filterseverity_idnot_eq: Unset | str = UNSET,
-    filterseverity_idin: Unset | str = UNSET,
-    filterseverity_idnot_in: Unset | str = UNSET,
-    filterlabelseq: Unset | str = UNSET,
-    filterlabelsnot_eq: Unset | str = UNSET,
-    filterlabelsin: Unset | str = UNSET,
-    filterlabelsnot_in: Unset | str = UNSET,
-    filterzendesk_ticket_ideq: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_eq: Unset | str = UNSET,
-    filterzendesk_ticket_idin: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_in: Unset | str = UNSET,
-    filtersequential_ideq: Unset | str = UNSET,
-    filtersequential_idnot_eq: Unset | str = UNSET,
-    filtersequential_idin: Unset | str = UNSET,
-    filtersequential_idnot_in: Unset | str = UNSET,
-    filtertypeseq: Unset | str = UNSET,
-    filtertypesnot_eq: Unset | str = UNSET,
-    filtertypesin: Unset | str = UNSET,
-    filtertypesnot_in: Unset | str = UNSET,
-    filtertype_idseq: Unset | str = UNSET,
-    filtertype_idsnot_eq: Unset | str = UNSET,
-    filtertype_idsin: Unset | str = UNSET,
-    filtertype_idsnot_in: Unset | str = UNSET,
-    filterenvironmentseq: Unset | str = UNSET,
-    filterenvironmentsnot_eq: Unset | str = UNSET,
-    filterenvironmentsin: Unset | str = UNSET,
-    filterenvironmentsnot_in: Unset | str = UNSET,
-    filterenvironment_idseq: Unset | str = UNSET,
-    filterenvironment_idsnot_eq: Unset | str = UNSET,
-    filterenvironment_idsin: Unset | str = UNSET,
-    filterenvironment_idsnot_in: Unset | str = UNSET,
-    filterserviceseq: Unset | str = UNSET,
-    filterservicesnot_eq: Unset | str = UNSET,
-    filterservicesin: Unset | str = UNSET,
-    filterservicesnot_in: Unset | str = UNSET,
-    filterservice_idseq: Unset | str = UNSET,
-    filterservice_idsnot_eq: Unset | str = UNSET,
-    filterservice_idsin: Unset | str = UNSET,
-    filterservice_idsnot_in: Unset | str = UNSET,
-    filterservice_nameseq: Unset | str = UNSET,
-    filterservice_namesnot_eq: Unset | str = UNSET,
-    filterservice_namesin: Unset | str = UNSET,
-    filterservice_namesnot_in: Unset | str = UNSET,
-    filterfunctionalitieseq: Unset | str = UNSET,
-    filterfunctionalitiesnot_eq: Unset | str = UNSET,
-    filterfunctionalitiesin: Unset | str = UNSET,
-    filterfunctionalitiesnot_in: Unset | str = UNSET,
-    filterfunctionality_idseq: Unset | str = UNSET,
-    filterfunctionality_idsnot_eq: Unset | str = UNSET,
-    filterfunctionality_idsin: Unset | str = UNSET,
-    filterfunctionality_idsnot_in: Unset | str = UNSET,
-    filterfunctionality_nameseq: Unset | str = UNSET,
-    filterfunctionality_namesnot_eq: Unset | str = UNSET,
-    filterfunctionality_namesin: Unset | str = UNSET,
-    filterfunctionality_namesnot_in: Unset | str = UNSET,
-    filtercauseseq: Unset | str = UNSET,
-    filtercausesnot_eq: Unset | str = UNSET,
-    filtercausesin: Unset | str = UNSET,
-    filtercausesnot_in: Unset | str = UNSET,
-    filtercause_idseq: Unset | str = UNSET,
-    filtercause_idsnot_eq: Unset | str = UNSET,
-    filtercause_idsin: Unset | str = UNSET,
-    filtercause_idsnot_in: Unset | str = UNSET,
-    filterteamseq: Unset | str = UNSET,
-    filterteamsnot_eq: Unset | str = UNSET,
-    filterteamsin: Unset | str = UNSET,
-    filterteamsnot_in: Unset | str = UNSET,
-    filterteam_idseq: Unset | str = UNSET,
-    filterteam_idsnot_eq: Unset | str = UNSET,
-    filterteam_idsin: Unset | str = UNSET,
-    filterteam_idsnot_in: Unset | str = UNSET,
-    filterteam_nameseq: Unset | str = UNSET,
-    filterteam_namesnot_eq: Unset | str = UNSET,
-    filterteam_namesin: Unset | str = UNSET,
-    filterteam_namesnot_in: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtersequential_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterprivateeq: str | Unset = UNSET,
+    filterprivatenot_eq: str | Unset = UNSET,
+    filterprivatein: str | Unset = UNSET,
+    filterprivatenot_in: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filterseverity_ideq: str | Unset = UNSET,
+    filterseverity_idnot_eq: str | Unset = UNSET,
+    filterseverity_idin: str | Unset = UNSET,
+    filterseverity_idnot_in: str | Unset = UNSET,
+    filterlabelseq: str | Unset = UNSET,
+    filterlabelsnot_eq: str | Unset = UNSET,
+    filterlabelsin: str | Unset = UNSET,
+    filterlabelsnot_in: str | Unset = UNSET,
+    filterzendesk_ticket_ideq: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_eq: str | Unset = UNSET,
+    filterzendesk_ticket_idin: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_in: str | Unset = UNSET,
+    filtersequential_ideq: str | Unset = UNSET,
+    filtersequential_idnot_eq: str | Unset = UNSET,
+    filtersequential_idin: str | Unset = UNSET,
+    filtersequential_idnot_in: str | Unset = UNSET,
+    filtertypeseq: str | Unset = UNSET,
+    filtertypesnot_eq: str | Unset = UNSET,
+    filtertypesin: str | Unset = UNSET,
+    filtertypesnot_in: str | Unset = UNSET,
+    filtertype_idseq: str | Unset = UNSET,
+    filtertype_idsnot_eq: str | Unset = UNSET,
+    filtertype_idsin: str | Unset = UNSET,
+    filtertype_idsnot_in: str | Unset = UNSET,
+    filterenvironmentseq: str | Unset = UNSET,
+    filterenvironmentsnot_eq: str | Unset = UNSET,
+    filterenvironmentsin: str | Unset = UNSET,
+    filterenvironmentsnot_in: str | Unset = UNSET,
+    filterenvironment_idseq: str | Unset = UNSET,
+    filterenvironment_idsnot_eq: str | Unset = UNSET,
+    filterenvironment_idsin: str | Unset = UNSET,
+    filterenvironment_idsnot_in: str | Unset = UNSET,
+    filterserviceseq: str | Unset = UNSET,
+    filterservicesnot_eq: str | Unset = UNSET,
+    filterservicesin: str | Unset = UNSET,
+    filterservicesnot_in: str | Unset = UNSET,
+    filterservice_idseq: str | Unset = UNSET,
+    filterservice_idsnot_eq: str | Unset = UNSET,
+    filterservice_idsin: str | Unset = UNSET,
+    filterservice_idsnot_in: str | Unset = UNSET,
+    filterservice_nameseq: str | Unset = UNSET,
+    filterservice_namesnot_eq: str | Unset = UNSET,
+    filterservice_namesin: str | Unset = UNSET,
+    filterservice_namesnot_in: str | Unset = UNSET,
+    filterfunctionalitieseq: str | Unset = UNSET,
+    filterfunctionalitiesnot_eq: str | Unset = UNSET,
+    filterfunctionalitiesin: str | Unset = UNSET,
+    filterfunctionalitiesnot_in: str | Unset = UNSET,
+    filterfunctionality_idseq: str | Unset = UNSET,
+    filterfunctionality_idsnot_eq: str | Unset = UNSET,
+    filterfunctionality_idsin: str | Unset = UNSET,
+    filterfunctionality_idsnot_in: str | Unset = UNSET,
+    filterfunctionality_nameseq: str | Unset = UNSET,
+    filterfunctionality_namesnot_eq: str | Unset = UNSET,
+    filterfunctionality_namesin: str | Unset = UNSET,
+    filterfunctionality_namesnot_in: str | Unset = UNSET,
+    filtercauseseq: str | Unset = UNSET,
+    filtercausesnot_eq: str | Unset = UNSET,
+    filtercausesin: str | Unset = UNSET,
+    filtercausesnot_in: str | Unset = UNSET,
+    filtercause_idseq: str | Unset = UNSET,
+    filtercause_idsnot_eq: str | Unset = UNSET,
+    filtercause_idsin: str | Unset = UNSET,
+    filtercause_idsnot_in: str | Unset = UNSET,
+    filterteamseq: str | Unset = UNSET,
+    filterteamsnot_eq: str | Unset = UNSET,
+    filterteamsin: str | Unset = UNSET,
+    filterteamsnot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
+    filterteam_nameseq: str | Unset = UNSET,
+    filterteam_namesnot_eq: str | Unset = UNSET,
+    filterteam_namesin: str | Unset = UNSET,
+    filterteam_namesnot_in: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> Response[ErrorsList | IncidentList]:
     """List incidents
 
      List incidents
 
     Args:
-        pageafter (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filterslack_channel_id (Union[Unset, str]):
-        filtersequential_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterstatuseq (Union[Unset, str]):
-        filterstatusnot_eq (Union[Unset, str]):
-        filterstatusin (Union[Unset, str]):
-        filterstatusnot_in (Union[Unset, str]):
-        filterprivateeq (Union[Unset, str]):
-        filterprivatenot_eq (Union[Unset, str]):
-        filterprivatein (Union[Unset, str]):
-        filterprivatenot_in (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterseverityeq (Union[Unset, str]):
-        filterseveritynot_eq (Union[Unset, str]):
-        filterseverityin (Union[Unset, str]):
-        filterseveritynot_in (Union[Unset, str]):
-        filterseverity_ideq (Union[Unset, str]):
-        filterseverity_idnot_eq (Union[Unset, str]):
-        filterseverity_idin (Union[Unset, str]):
-        filterseverity_idnot_in (Union[Unset, str]):
-        filterlabelseq (Union[Unset, str]):
-        filterlabelsnot_eq (Union[Unset, str]):
-        filterlabelsin (Union[Unset, str]):
-        filterlabelsnot_in (Union[Unset, str]):
-        filterzendesk_ticket_ideq (Union[Unset, str]):
-        filterzendesk_ticket_idnot_eq (Union[Unset, str]):
-        filterzendesk_ticket_idin (Union[Unset, str]):
-        filterzendesk_ticket_idnot_in (Union[Unset, str]):
-        filtersequential_ideq (Union[Unset, str]):
-        filtersequential_idnot_eq (Union[Unset, str]):
-        filtersequential_idin (Union[Unset, str]):
-        filtersequential_idnot_in (Union[Unset, str]):
-        filtertypeseq (Union[Unset, str]):
-        filtertypesnot_eq (Union[Unset, str]):
-        filtertypesin (Union[Unset, str]):
-        filtertypesnot_in (Union[Unset, str]):
-        filtertype_idseq (Union[Unset, str]):
-        filtertype_idsnot_eq (Union[Unset, str]):
-        filtertype_idsin (Union[Unset, str]):
-        filtertype_idsnot_in (Union[Unset, str]):
-        filterenvironmentseq (Union[Unset, str]):
-        filterenvironmentsnot_eq (Union[Unset, str]):
-        filterenvironmentsin (Union[Unset, str]):
-        filterenvironmentsnot_in (Union[Unset, str]):
-        filterenvironment_idseq (Union[Unset, str]):
-        filterenvironment_idsnot_eq (Union[Unset, str]):
-        filterenvironment_idsin (Union[Unset, str]):
-        filterenvironment_idsnot_in (Union[Unset, str]):
-        filterserviceseq (Union[Unset, str]):
-        filterservicesnot_eq (Union[Unset, str]):
-        filterservicesin (Union[Unset, str]):
-        filterservicesnot_in (Union[Unset, str]):
-        filterservice_idseq (Union[Unset, str]):
-        filterservice_idsnot_eq (Union[Unset, str]):
-        filterservice_idsin (Union[Unset, str]):
-        filterservice_idsnot_in (Union[Unset, str]):
-        filterservice_nameseq (Union[Unset, str]):
-        filterservice_namesnot_eq (Union[Unset, str]):
-        filterservice_namesin (Union[Unset, str]):
-        filterservice_namesnot_in (Union[Unset, str]):
-        filterfunctionalitieseq (Union[Unset, str]):
-        filterfunctionalitiesnot_eq (Union[Unset, str]):
-        filterfunctionalitiesin (Union[Unset, str]):
-        filterfunctionalitiesnot_in (Union[Unset, str]):
-        filterfunctionality_idseq (Union[Unset, str]):
-        filterfunctionality_idsnot_eq (Union[Unset, str]):
-        filterfunctionality_idsin (Union[Unset, str]):
-        filterfunctionality_idsnot_in (Union[Unset, str]):
-        filterfunctionality_nameseq (Union[Unset, str]):
-        filterfunctionality_namesnot_eq (Union[Unset, str]):
-        filterfunctionality_namesin (Union[Unset, str]):
-        filterfunctionality_namesnot_in (Union[Unset, str]):
-        filtercauseseq (Union[Unset, str]):
-        filtercausesnot_eq (Union[Unset, str]):
-        filtercausesin (Union[Unset, str]):
-        filtercausesnot_in (Union[Unset, str]):
-        filtercause_idseq (Union[Unset, str]):
-        filtercause_idsnot_eq (Union[Unset, str]):
-        filtercause_idsin (Union[Unset, str]):
-        filtercause_idsnot_in (Union[Unset, str]):
-        filterteamseq (Union[Unset, str]):
-        filterteamsnot_eq (Union[Unset, str]):
-        filterteamsin (Union[Unset, str]):
-        filterteamsnot_in (Union[Unset, str]):
-        filterteam_idseq (Union[Unset, str]):
-        filterteam_idsnot_eq (Union[Unset, str]):
-        filterteam_idsin (Union[Unset, str]):
-        filterteam_idsnot_in (Union[Unset, str]):
-        filterteam_nameseq (Union[Unset, str]):
-        filterteam_namesnot_eq (Union[Unset, str]):
-        filterteam_namesin (Union[Unset, str]):
-        filterteam_namesnot_in (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtersequential_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterprivateeq (str | Unset):
+        filterprivatenot_eq (str | Unset):
+        filterprivatein (str | Unset):
+        filterprivatenot_in (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filterseverity_ideq (str | Unset):
+        filterseverity_idnot_eq (str | Unset):
+        filterseverity_idin (str | Unset):
+        filterseverity_idnot_in (str | Unset):
+        filterlabelseq (str | Unset):
+        filterlabelsnot_eq (str | Unset):
+        filterlabelsin (str | Unset):
+        filterlabelsnot_in (str | Unset):
+        filterzendesk_ticket_ideq (str | Unset):
+        filterzendesk_ticket_idnot_eq (str | Unset):
+        filterzendesk_ticket_idin (str | Unset):
+        filterzendesk_ticket_idnot_in (str | Unset):
+        filtersequential_ideq (str | Unset):
+        filtersequential_idnot_eq (str | Unset):
+        filtersequential_idin (str | Unset):
+        filtersequential_idnot_in (str | Unset):
+        filtertypeseq (str | Unset):
+        filtertypesnot_eq (str | Unset):
+        filtertypesin (str | Unset):
+        filtertypesnot_in (str | Unset):
+        filtertype_idseq (str | Unset):
+        filtertype_idsnot_eq (str | Unset):
+        filtertype_idsin (str | Unset):
+        filtertype_idsnot_in (str | Unset):
+        filterenvironmentseq (str | Unset):
+        filterenvironmentsnot_eq (str | Unset):
+        filterenvironmentsin (str | Unset):
+        filterenvironmentsnot_in (str | Unset):
+        filterenvironment_idseq (str | Unset):
+        filterenvironment_idsnot_eq (str | Unset):
+        filterenvironment_idsin (str | Unset):
+        filterenvironment_idsnot_in (str | Unset):
+        filterserviceseq (str | Unset):
+        filterservicesnot_eq (str | Unset):
+        filterservicesin (str | Unset):
+        filterservicesnot_in (str | Unset):
+        filterservice_idseq (str | Unset):
+        filterservice_idsnot_eq (str | Unset):
+        filterservice_idsin (str | Unset):
+        filterservice_idsnot_in (str | Unset):
+        filterservice_nameseq (str | Unset):
+        filterservice_namesnot_eq (str | Unset):
+        filterservice_namesin (str | Unset):
+        filterservice_namesnot_in (str | Unset):
+        filterfunctionalitieseq (str | Unset):
+        filterfunctionalitiesnot_eq (str | Unset):
+        filterfunctionalitiesin (str | Unset):
+        filterfunctionalitiesnot_in (str | Unset):
+        filterfunctionality_idseq (str | Unset):
+        filterfunctionality_idsnot_eq (str | Unset):
+        filterfunctionality_idsin (str | Unset):
+        filterfunctionality_idsnot_in (str | Unset):
+        filterfunctionality_nameseq (str | Unset):
+        filterfunctionality_namesnot_eq (str | Unset):
+        filterfunctionality_namesin (str | Unset):
+        filterfunctionality_namesnot_in (str | Unset):
+        filtercauseseq (str | Unset):
+        filtercausesnot_eq (str | Unset):
+        filtercausesin (str | Unset):
+        filtercausesnot_in (str | Unset):
+        filtercause_idseq (str | Unset):
+        filtercause_idsnot_eq (str | Unset):
+        filtercause_idsin (str | Unset):
+        filtercause_idsnot_in (str | Unset):
+        filterteamseq (str | Unset):
+        filterteamsnot_eq (str | Unset):
+        filterteamsin (str | Unset):
+        filterteamsnot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
+        filterteam_nameseq (str | Unset):
+        filterteam_namesnot_eq (str | Unset):
+        filterteam_namesin (str | Unset):
+        filterteam_namesnot_in (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentList]]
+        Response[ErrorsList | IncidentList]
     """
 
     kwargs = _get_kwargs(
@@ -1075,345 +1076,345 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    pageafter: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filterslack_channel_id: Unset | str = UNSET,
-    filtersequential_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterstatuseq: Unset | str = UNSET,
-    filterstatusnot_eq: Unset | str = UNSET,
-    filterstatusin: Unset | str = UNSET,
-    filterstatusnot_in: Unset | str = UNSET,
-    filterprivateeq: Unset | str = UNSET,
-    filterprivatenot_eq: Unset | str = UNSET,
-    filterprivatein: Unset | str = UNSET,
-    filterprivatenot_in: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterseverityeq: Unset | str = UNSET,
-    filterseveritynot_eq: Unset | str = UNSET,
-    filterseverityin: Unset | str = UNSET,
-    filterseveritynot_in: Unset | str = UNSET,
-    filterseverity_ideq: Unset | str = UNSET,
-    filterseverity_idnot_eq: Unset | str = UNSET,
-    filterseverity_idin: Unset | str = UNSET,
-    filterseverity_idnot_in: Unset | str = UNSET,
-    filterlabelseq: Unset | str = UNSET,
-    filterlabelsnot_eq: Unset | str = UNSET,
-    filterlabelsin: Unset | str = UNSET,
-    filterlabelsnot_in: Unset | str = UNSET,
-    filterzendesk_ticket_ideq: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_eq: Unset | str = UNSET,
-    filterzendesk_ticket_idin: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_in: Unset | str = UNSET,
-    filtersequential_ideq: Unset | str = UNSET,
-    filtersequential_idnot_eq: Unset | str = UNSET,
-    filtersequential_idin: Unset | str = UNSET,
-    filtersequential_idnot_in: Unset | str = UNSET,
-    filtertypeseq: Unset | str = UNSET,
-    filtertypesnot_eq: Unset | str = UNSET,
-    filtertypesin: Unset | str = UNSET,
-    filtertypesnot_in: Unset | str = UNSET,
-    filtertype_idseq: Unset | str = UNSET,
-    filtertype_idsnot_eq: Unset | str = UNSET,
-    filtertype_idsin: Unset | str = UNSET,
-    filtertype_idsnot_in: Unset | str = UNSET,
-    filterenvironmentseq: Unset | str = UNSET,
-    filterenvironmentsnot_eq: Unset | str = UNSET,
-    filterenvironmentsin: Unset | str = UNSET,
-    filterenvironmentsnot_in: Unset | str = UNSET,
-    filterenvironment_idseq: Unset | str = UNSET,
-    filterenvironment_idsnot_eq: Unset | str = UNSET,
-    filterenvironment_idsin: Unset | str = UNSET,
-    filterenvironment_idsnot_in: Unset | str = UNSET,
-    filterserviceseq: Unset | str = UNSET,
-    filterservicesnot_eq: Unset | str = UNSET,
-    filterservicesin: Unset | str = UNSET,
-    filterservicesnot_in: Unset | str = UNSET,
-    filterservice_idseq: Unset | str = UNSET,
-    filterservice_idsnot_eq: Unset | str = UNSET,
-    filterservice_idsin: Unset | str = UNSET,
-    filterservice_idsnot_in: Unset | str = UNSET,
-    filterservice_nameseq: Unset | str = UNSET,
-    filterservice_namesnot_eq: Unset | str = UNSET,
-    filterservice_namesin: Unset | str = UNSET,
-    filterservice_namesnot_in: Unset | str = UNSET,
-    filterfunctionalitieseq: Unset | str = UNSET,
-    filterfunctionalitiesnot_eq: Unset | str = UNSET,
-    filterfunctionalitiesin: Unset | str = UNSET,
-    filterfunctionalitiesnot_in: Unset | str = UNSET,
-    filterfunctionality_idseq: Unset | str = UNSET,
-    filterfunctionality_idsnot_eq: Unset | str = UNSET,
-    filterfunctionality_idsin: Unset | str = UNSET,
-    filterfunctionality_idsnot_in: Unset | str = UNSET,
-    filterfunctionality_nameseq: Unset | str = UNSET,
-    filterfunctionality_namesnot_eq: Unset | str = UNSET,
-    filterfunctionality_namesin: Unset | str = UNSET,
-    filterfunctionality_namesnot_in: Unset | str = UNSET,
-    filtercauseseq: Unset | str = UNSET,
-    filtercausesnot_eq: Unset | str = UNSET,
-    filtercausesin: Unset | str = UNSET,
-    filtercausesnot_in: Unset | str = UNSET,
-    filtercause_idseq: Unset | str = UNSET,
-    filtercause_idsnot_eq: Unset | str = UNSET,
-    filtercause_idsin: Unset | str = UNSET,
-    filtercause_idsnot_in: Unset | str = UNSET,
-    filterteamseq: Unset | str = UNSET,
-    filterteamsnot_eq: Unset | str = UNSET,
-    filterteamsin: Unset | str = UNSET,
-    filterteamsnot_in: Unset | str = UNSET,
-    filterteam_idseq: Unset | str = UNSET,
-    filterteam_idsnot_eq: Unset | str = UNSET,
-    filterteam_idsin: Unset | str = UNSET,
-    filterteam_idsnot_in: Unset | str = UNSET,
-    filterteam_nameseq: Unset | str = UNSET,
-    filterteam_namesnot_eq: Unset | str = UNSET,
-    filterteam_namesin: Unset | str = UNSET,
-    filterteam_namesnot_in: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtersequential_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterprivateeq: str | Unset = UNSET,
+    filterprivatenot_eq: str | Unset = UNSET,
+    filterprivatein: str | Unset = UNSET,
+    filterprivatenot_in: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filterseverity_ideq: str | Unset = UNSET,
+    filterseverity_idnot_eq: str | Unset = UNSET,
+    filterseverity_idin: str | Unset = UNSET,
+    filterseverity_idnot_in: str | Unset = UNSET,
+    filterlabelseq: str | Unset = UNSET,
+    filterlabelsnot_eq: str | Unset = UNSET,
+    filterlabelsin: str | Unset = UNSET,
+    filterlabelsnot_in: str | Unset = UNSET,
+    filterzendesk_ticket_ideq: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_eq: str | Unset = UNSET,
+    filterzendesk_ticket_idin: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_in: str | Unset = UNSET,
+    filtersequential_ideq: str | Unset = UNSET,
+    filtersequential_idnot_eq: str | Unset = UNSET,
+    filtersequential_idin: str | Unset = UNSET,
+    filtersequential_idnot_in: str | Unset = UNSET,
+    filtertypeseq: str | Unset = UNSET,
+    filtertypesnot_eq: str | Unset = UNSET,
+    filtertypesin: str | Unset = UNSET,
+    filtertypesnot_in: str | Unset = UNSET,
+    filtertype_idseq: str | Unset = UNSET,
+    filtertype_idsnot_eq: str | Unset = UNSET,
+    filtertype_idsin: str | Unset = UNSET,
+    filtertype_idsnot_in: str | Unset = UNSET,
+    filterenvironmentseq: str | Unset = UNSET,
+    filterenvironmentsnot_eq: str | Unset = UNSET,
+    filterenvironmentsin: str | Unset = UNSET,
+    filterenvironmentsnot_in: str | Unset = UNSET,
+    filterenvironment_idseq: str | Unset = UNSET,
+    filterenvironment_idsnot_eq: str | Unset = UNSET,
+    filterenvironment_idsin: str | Unset = UNSET,
+    filterenvironment_idsnot_in: str | Unset = UNSET,
+    filterserviceseq: str | Unset = UNSET,
+    filterservicesnot_eq: str | Unset = UNSET,
+    filterservicesin: str | Unset = UNSET,
+    filterservicesnot_in: str | Unset = UNSET,
+    filterservice_idseq: str | Unset = UNSET,
+    filterservice_idsnot_eq: str | Unset = UNSET,
+    filterservice_idsin: str | Unset = UNSET,
+    filterservice_idsnot_in: str | Unset = UNSET,
+    filterservice_nameseq: str | Unset = UNSET,
+    filterservice_namesnot_eq: str | Unset = UNSET,
+    filterservice_namesin: str | Unset = UNSET,
+    filterservice_namesnot_in: str | Unset = UNSET,
+    filterfunctionalitieseq: str | Unset = UNSET,
+    filterfunctionalitiesnot_eq: str | Unset = UNSET,
+    filterfunctionalitiesin: str | Unset = UNSET,
+    filterfunctionalitiesnot_in: str | Unset = UNSET,
+    filterfunctionality_idseq: str | Unset = UNSET,
+    filterfunctionality_idsnot_eq: str | Unset = UNSET,
+    filterfunctionality_idsin: str | Unset = UNSET,
+    filterfunctionality_idsnot_in: str | Unset = UNSET,
+    filterfunctionality_nameseq: str | Unset = UNSET,
+    filterfunctionality_namesnot_eq: str | Unset = UNSET,
+    filterfunctionality_namesin: str | Unset = UNSET,
+    filterfunctionality_namesnot_in: str | Unset = UNSET,
+    filtercauseseq: str | Unset = UNSET,
+    filtercausesnot_eq: str | Unset = UNSET,
+    filtercausesin: str | Unset = UNSET,
+    filtercausesnot_in: str | Unset = UNSET,
+    filtercause_idseq: str | Unset = UNSET,
+    filtercause_idsnot_eq: str | Unset = UNSET,
+    filtercause_idsin: str | Unset = UNSET,
+    filtercause_idsnot_in: str | Unset = UNSET,
+    filterteamseq: str | Unset = UNSET,
+    filterteamsnot_eq: str | Unset = UNSET,
+    filterteamsin: str | Unset = UNSET,
+    filterteamsnot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
+    filterteam_nameseq: str | Unset = UNSET,
+    filterteam_namesnot_eq: str | Unset = UNSET,
+    filterteam_namesin: str | Unset = UNSET,
+    filterteam_namesnot_in: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> ErrorsList | IncidentList | None:
     """List incidents
 
      List incidents
 
     Args:
-        pageafter (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filterslack_channel_id (Union[Unset, str]):
-        filtersequential_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterstatuseq (Union[Unset, str]):
-        filterstatusnot_eq (Union[Unset, str]):
-        filterstatusin (Union[Unset, str]):
-        filterstatusnot_in (Union[Unset, str]):
-        filterprivateeq (Union[Unset, str]):
-        filterprivatenot_eq (Union[Unset, str]):
-        filterprivatein (Union[Unset, str]):
-        filterprivatenot_in (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterseverityeq (Union[Unset, str]):
-        filterseveritynot_eq (Union[Unset, str]):
-        filterseverityin (Union[Unset, str]):
-        filterseveritynot_in (Union[Unset, str]):
-        filterseverity_ideq (Union[Unset, str]):
-        filterseverity_idnot_eq (Union[Unset, str]):
-        filterseverity_idin (Union[Unset, str]):
-        filterseverity_idnot_in (Union[Unset, str]):
-        filterlabelseq (Union[Unset, str]):
-        filterlabelsnot_eq (Union[Unset, str]):
-        filterlabelsin (Union[Unset, str]):
-        filterlabelsnot_in (Union[Unset, str]):
-        filterzendesk_ticket_ideq (Union[Unset, str]):
-        filterzendesk_ticket_idnot_eq (Union[Unset, str]):
-        filterzendesk_ticket_idin (Union[Unset, str]):
-        filterzendesk_ticket_idnot_in (Union[Unset, str]):
-        filtersequential_ideq (Union[Unset, str]):
-        filtersequential_idnot_eq (Union[Unset, str]):
-        filtersequential_idin (Union[Unset, str]):
-        filtersequential_idnot_in (Union[Unset, str]):
-        filtertypeseq (Union[Unset, str]):
-        filtertypesnot_eq (Union[Unset, str]):
-        filtertypesin (Union[Unset, str]):
-        filtertypesnot_in (Union[Unset, str]):
-        filtertype_idseq (Union[Unset, str]):
-        filtertype_idsnot_eq (Union[Unset, str]):
-        filtertype_idsin (Union[Unset, str]):
-        filtertype_idsnot_in (Union[Unset, str]):
-        filterenvironmentseq (Union[Unset, str]):
-        filterenvironmentsnot_eq (Union[Unset, str]):
-        filterenvironmentsin (Union[Unset, str]):
-        filterenvironmentsnot_in (Union[Unset, str]):
-        filterenvironment_idseq (Union[Unset, str]):
-        filterenvironment_idsnot_eq (Union[Unset, str]):
-        filterenvironment_idsin (Union[Unset, str]):
-        filterenvironment_idsnot_in (Union[Unset, str]):
-        filterserviceseq (Union[Unset, str]):
-        filterservicesnot_eq (Union[Unset, str]):
-        filterservicesin (Union[Unset, str]):
-        filterservicesnot_in (Union[Unset, str]):
-        filterservice_idseq (Union[Unset, str]):
-        filterservice_idsnot_eq (Union[Unset, str]):
-        filterservice_idsin (Union[Unset, str]):
-        filterservice_idsnot_in (Union[Unset, str]):
-        filterservice_nameseq (Union[Unset, str]):
-        filterservice_namesnot_eq (Union[Unset, str]):
-        filterservice_namesin (Union[Unset, str]):
-        filterservice_namesnot_in (Union[Unset, str]):
-        filterfunctionalitieseq (Union[Unset, str]):
-        filterfunctionalitiesnot_eq (Union[Unset, str]):
-        filterfunctionalitiesin (Union[Unset, str]):
-        filterfunctionalitiesnot_in (Union[Unset, str]):
-        filterfunctionality_idseq (Union[Unset, str]):
-        filterfunctionality_idsnot_eq (Union[Unset, str]):
-        filterfunctionality_idsin (Union[Unset, str]):
-        filterfunctionality_idsnot_in (Union[Unset, str]):
-        filterfunctionality_nameseq (Union[Unset, str]):
-        filterfunctionality_namesnot_eq (Union[Unset, str]):
-        filterfunctionality_namesin (Union[Unset, str]):
-        filterfunctionality_namesnot_in (Union[Unset, str]):
-        filtercauseseq (Union[Unset, str]):
-        filtercausesnot_eq (Union[Unset, str]):
-        filtercausesin (Union[Unset, str]):
-        filtercausesnot_in (Union[Unset, str]):
-        filtercause_idseq (Union[Unset, str]):
-        filtercause_idsnot_eq (Union[Unset, str]):
-        filtercause_idsin (Union[Unset, str]):
-        filtercause_idsnot_in (Union[Unset, str]):
-        filterteamseq (Union[Unset, str]):
-        filterteamsnot_eq (Union[Unset, str]):
-        filterteamsin (Union[Unset, str]):
-        filterteamsnot_in (Union[Unset, str]):
-        filterteam_idseq (Union[Unset, str]):
-        filterteam_idsnot_eq (Union[Unset, str]):
-        filterteam_idsin (Union[Unset, str]):
-        filterteam_idsnot_in (Union[Unset, str]):
-        filterteam_nameseq (Union[Unset, str]):
-        filterteam_namesnot_eq (Union[Unset, str]):
-        filterteam_namesin (Union[Unset, str]):
-        filterteam_namesnot_in (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtersequential_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterprivateeq (str | Unset):
+        filterprivatenot_eq (str | Unset):
+        filterprivatein (str | Unset):
+        filterprivatenot_in (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filterseverity_ideq (str | Unset):
+        filterseverity_idnot_eq (str | Unset):
+        filterseverity_idin (str | Unset):
+        filterseverity_idnot_in (str | Unset):
+        filterlabelseq (str | Unset):
+        filterlabelsnot_eq (str | Unset):
+        filterlabelsin (str | Unset):
+        filterlabelsnot_in (str | Unset):
+        filterzendesk_ticket_ideq (str | Unset):
+        filterzendesk_ticket_idnot_eq (str | Unset):
+        filterzendesk_ticket_idin (str | Unset):
+        filterzendesk_ticket_idnot_in (str | Unset):
+        filtersequential_ideq (str | Unset):
+        filtersequential_idnot_eq (str | Unset):
+        filtersequential_idin (str | Unset):
+        filtersequential_idnot_in (str | Unset):
+        filtertypeseq (str | Unset):
+        filtertypesnot_eq (str | Unset):
+        filtertypesin (str | Unset):
+        filtertypesnot_in (str | Unset):
+        filtertype_idseq (str | Unset):
+        filtertype_idsnot_eq (str | Unset):
+        filtertype_idsin (str | Unset):
+        filtertype_idsnot_in (str | Unset):
+        filterenvironmentseq (str | Unset):
+        filterenvironmentsnot_eq (str | Unset):
+        filterenvironmentsin (str | Unset):
+        filterenvironmentsnot_in (str | Unset):
+        filterenvironment_idseq (str | Unset):
+        filterenvironment_idsnot_eq (str | Unset):
+        filterenvironment_idsin (str | Unset):
+        filterenvironment_idsnot_in (str | Unset):
+        filterserviceseq (str | Unset):
+        filterservicesnot_eq (str | Unset):
+        filterservicesin (str | Unset):
+        filterservicesnot_in (str | Unset):
+        filterservice_idseq (str | Unset):
+        filterservice_idsnot_eq (str | Unset):
+        filterservice_idsin (str | Unset):
+        filterservice_idsnot_in (str | Unset):
+        filterservice_nameseq (str | Unset):
+        filterservice_namesnot_eq (str | Unset):
+        filterservice_namesin (str | Unset):
+        filterservice_namesnot_in (str | Unset):
+        filterfunctionalitieseq (str | Unset):
+        filterfunctionalitiesnot_eq (str | Unset):
+        filterfunctionalitiesin (str | Unset):
+        filterfunctionalitiesnot_in (str | Unset):
+        filterfunctionality_idseq (str | Unset):
+        filterfunctionality_idsnot_eq (str | Unset):
+        filterfunctionality_idsin (str | Unset):
+        filterfunctionality_idsnot_in (str | Unset):
+        filterfunctionality_nameseq (str | Unset):
+        filterfunctionality_namesnot_eq (str | Unset):
+        filterfunctionality_namesin (str | Unset):
+        filterfunctionality_namesnot_in (str | Unset):
+        filtercauseseq (str | Unset):
+        filtercausesnot_eq (str | Unset):
+        filtercausesin (str | Unset):
+        filtercausesnot_in (str | Unset):
+        filtercause_idseq (str | Unset):
+        filtercause_idsnot_eq (str | Unset):
+        filtercause_idsin (str | Unset):
+        filtercause_idsnot_in (str | Unset):
+        filterteamseq (str | Unset):
+        filterteamsnot_eq (str | Unset):
+        filterteamsin (str | Unset):
+        filterteamsnot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
+        filterteam_nameseq (str | Unset):
+        filterteam_namesnot_eq (str | Unset):
+        filterteam_namesin (str | Unset):
+        filterteam_namesnot_in (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentList]
+        ErrorsList | IncidentList
     """
 
     return sync_detailed(
@@ -1587,345 +1588,345 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    pageafter: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filterslack_channel_id: Unset | str = UNSET,
-    filtersequential_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterstatuseq: Unset | str = UNSET,
-    filterstatusnot_eq: Unset | str = UNSET,
-    filterstatusin: Unset | str = UNSET,
-    filterstatusnot_in: Unset | str = UNSET,
-    filterprivateeq: Unset | str = UNSET,
-    filterprivatenot_eq: Unset | str = UNSET,
-    filterprivatein: Unset | str = UNSET,
-    filterprivatenot_in: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterseverityeq: Unset | str = UNSET,
-    filterseveritynot_eq: Unset | str = UNSET,
-    filterseverityin: Unset | str = UNSET,
-    filterseveritynot_in: Unset | str = UNSET,
-    filterseverity_ideq: Unset | str = UNSET,
-    filterseverity_idnot_eq: Unset | str = UNSET,
-    filterseverity_idin: Unset | str = UNSET,
-    filterseverity_idnot_in: Unset | str = UNSET,
-    filterlabelseq: Unset | str = UNSET,
-    filterlabelsnot_eq: Unset | str = UNSET,
-    filterlabelsin: Unset | str = UNSET,
-    filterlabelsnot_in: Unset | str = UNSET,
-    filterzendesk_ticket_ideq: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_eq: Unset | str = UNSET,
-    filterzendesk_ticket_idin: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_in: Unset | str = UNSET,
-    filtersequential_ideq: Unset | str = UNSET,
-    filtersequential_idnot_eq: Unset | str = UNSET,
-    filtersequential_idin: Unset | str = UNSET,
-    filtersequential_idnot_in: Unset | str = UNSET,
-    filtertypeseq: Unset | str = UNSET,
-    filtertypesnot_eq: Unset | str = UNSET,
-    filtertypesin: Unset | str = UNSET,
-    filtertypesnot_in: Unset | str = UNSET,
-    filtertype_idseq: Unset | str = UNSET,
-    filtertype_idsnot_eq: Unset | str = UNSET,
-    filtertype_idsin: Unset | str = UNSET,
-    filtertype_idsnot_in: Unset | str = UNSET,
-    filterenvironmentseq: Unset | str = UNSET,
-    filterenvironmentsnot_eq: Unset | str = UNSET,
-    filterenvironmentsin: Unset | str = UNSET,
-    filterenvironmentsnot_in: Unset | str = UNSET,
-    filterenvironment_idseq: Unset | str = UNSET,
-    filterenvironment_idsnot_eq: Unset | str = UNSET,
-    filterenvironment_idsin: Unset | str = UNSET,
-    filterenvironment_idsnot_in: Unset | str = UNSET,
-    filterserviceseq: Unset | str = UNSET,
-    filterservicesnot_eq: Unset | str = UNSET,
-    filterservicesin: Unset | str = UNSET,
-    filterservicesnot_in: Unset | str = UNSET,
-    filterservice_idseq: Unset | str = UNSET,
-    filterservice_idsnot_eq: Unset | str = UNSET,
-    filterservice_idsin: Unset | str = UNSET,
-    filterservice_idsnot_in: Unset | str = UNSET,
-    filterservice_nameseq: Unset | str = UNSET,
-    filterservice_namesnot_eq: Unset | str = UNSET,
-    filterservice_namesin: Unset | str = UNSET,
-    filterservice_namesnot_in: Unset | str = UNSET,
-    filterfunctionalitieseq: Unset | str = UNSET,
-    filterfunctionalitiesnot_eq: Unset | str = UNSET,
-    filterfunctionalitiesin: Unset | str = UNSET,
-    filterfunctionalitiesnot_in: Unset | str = UNSET,
-    filterfunctionality_idseq: Unset | str = UNSET,
-    filterfunctionality_idsnot_eq: Unset | str = UNSET,
-    filterfunctionality_idsin: Unset | str = UNSET,
-    filterfunctionality_idsnot_in: Unset | str = UNSET,
-    filterfunctionality_nameseq: Unset | str = UNSET,
-    filterfunctionality_namesnot_eq: Unset | str = UNSET,
-    filterfunctionality_namesin: Unset | str = UNSET,
-    filterfunctionality_namesnot_in: Unset | str = UNSET,
-    filtercauseseq: Unset | str = UNSET,
-    filtercausesnot_eq: Unset | str = UNSET,
-    filtercausesin: Unset | str = UNSET,
-    filtercausesnot_in: Unset | str = UNSET,
-    filtercause_idseq: Unset | str = UNSET,
-    filtercause_idsnot_eq: Unset | str = UNSET,
-    filtercause_idsin: Unset | str = UNSET,
-    filtercause_idsnot_in: Unset | str = UNSET,
-    filterteamseq: Unset | str = UNSET,
-    filterteamsnot_eq: Unset | str = UNSET,
-    filterteamsin: Unset | str = UNSET,
-    filterteamsnot_in: Unset | str = UNSET,
-    filterteam_idseq: Unset | str = UNSET,
-    filterteam_idsnot_eq: Unset | str = UNSET,
-    filterteam_idsin: Unset | str = UNSET,
-    filterteam_idsnot_in: Unset | str = UNSET,
-    filterteam_nameseq: Unset | str = UNSET,
-    filterteam_namesnot_eq: Unset | str = UNSET,
-    filterteam_namesin: Unset | str = UNSET,
-    filterteam_namesnot_in: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtersequential_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterprivateeq: str | Unset = UNSET,
+    filterprivatenot_eq: str | Unset = UNSET,
+    filterprivatein: str | Unset = UNSET,
+    filterprivatenot_in: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filterseverity_ideq: str | Unset = UNSET,
+    filterseverity_idnot_eq: str | Unset = UNSET,
+    filterseverity_idin: str | Unset = UNSET,
+    filterseverity_idnot_in: str | Unset = UNSET,
+    filterlabelseq: str | Unset = UNSET,
+    filterlabelsnot_eq: str | Unset = UNSET,
+    filterlabelsin: str | Unset = UNSET,
+    filterlabelsnot_in: str | Unset = UNSET,
+    filterzendesk_ticket_ideq: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_eq: str | Unset = UNSET,
+    filterzendesk_ticket_idin: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_in: str | Unset = UNSET,
+    filtersequential_ideq: str | Unset = UNSET,
+    filtersequential_idnot_eq: str | Unset = UNSET,
+    filtersequential_idin: str | Unset = UNSET,
+    filtersequential_idnot_in: str | Unset = UNSET,
+    filtertypeseq: str | Unset = UNSET,
+    filtertypesnot_eq: str | Unset = UNSET,
+    filtertypesin: str | Unset = UNSET,
+    filtertypesnot_in: str | Unset = UNSET,
+    filtertype_idseq: str | Unset = UNSET,
+    filtertype_idsnot_eq: str | Unset = UNSET,
+    filtertype_idsin: str | Unset = UNSET,
+    filtertype_idsnot_in: str | Unset = UNSET,
+    filterenvironmentseq: str | Unset = UNSET,
+    filterenvironmentsnot_eq: str | Unset = UNSET,
+    filterenvironmentsin: str | Unset = UNSET,
+    filterenvironmentsnot_in: str | Unset = UNSET,
+    filterenvironment_idseq: str | Unset = UNSET,
+    filterenvironment_idsnot_eq: str | Unset = UNSET,
+    filterenvironment_idsin: str | Unset = UNSET,
+    filterenvironment_idsnot_in: str | Unset = UNSET,
+    filterserviceseq: str | Unset = UNSET,
+    filterservicesnot_eq: str | Unset = UNSET,
+    filterservicesin: str | Unset = UNSET,
+    filterservicesnot_in: str | Unset = UNSET,
+    filterservice_idseq: str | Unset = UNSET,
+    filterservice_idsnot_eq: str | Unset = UNSET,
+    filterservice_idsin: str | Unset = UNSET,
+    filterservice_idsnot_in: str | Unset = UNSET,
+    filterservice_nameseq: str | Unset = UNSET,
+    filterservice_namesnot_eq: str | Unset = UNSET,
+    filterservice_namesin: str | Unset = UNSET,
+    filterservice_namesnot_in: str | Unset = UNSET,
+    filterfunctionalitieseq: str | Unset = UNSET,
+    filterfunctionalitiesnot_eq: str | Unset = UNSET,
+    filterfunctionalitiesin: str | Unset = UNSET,
+    filterfunctionalitiesnot_in: str | Unset = UNSET,
+    filterfunctionality_idseq: str | Unset = UNSET,
+    filterfunctionality_idsnot_eq: str | Unset = UNSET,
+    filterfunctionality_idsin: str | Unset = UNSET,
+    filterfunctionality_idsnot_in: str | Unset = UNSET,
+    filterfunctionality_nameseq: str | Unset = UNSET,
+    filterfunctionality_namesnot_eq: str | Unset = UNSET,
+    filterfunctionality_namesin: str | Unset = UNSET,
+    filterfunctionality_namesnot_in: str | Unset = UNSET,
+    filtercauseseq: str | Unset = UNSET,
+    filtercausesnot_eq: str | Unset = UNSET,
+    filtercausesin: str | Unset = UNSET,
+    filtercausesnot_in: str | Unset = UNSET,
+    filtercause_idseq: str | Unset = UNSET,
+    filtercause_idsnot_eq: str | Unset = UNSET,
+    filtercause_idsin: str | Unset = UNSET,
+    filtercause_idsnot_in: str | Unset = UNSET,
+    filterteamseq: str | Unset = UNSET,
+    filterteamsnot_eq: str | Unset = UNSET,
+    filterteamsin: str | Unset = UNSET,
+    filterteamsnot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
+    filterteam_nameseq: str | Unset = UNSET,
+    filterteam_namesnot_eq: str | Unset = UNSET,
+    filterteam_namesin: str | Unset = UNSET,
+    filterteam_namesnot_in: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> Response[ErrorsList | IncidentList]:
     """List incidents
 
      List incidents
 
     Args:
-        pageafter (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filterslack_channel_id (Union[Unset, str]):
-        filtersequential_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterstatuseq (Union[Unset, str]):
-        filterstatusnot_eq (Union[Unset, str]):
-        filterstatusin (Union[Unset, str]):
-        filterstatusnot_in (Union[Unset, str]):
-        filterprivateeq (Union[Unset, str]):
-        filterprivatenot_eq (Union[Unset, str]):
-        filterprivatein (Union[Unset, str]):
-        filterprivatenot_in (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterseverityeq (Union[Unset, str]):
-        filterseveritynot_eq (Union[Unset, str]):
-        filterseverityin (Union[Unset, str]):
-        filterseveritynot_in (Union[Unset, str]):
-        filterseverity_ideq (Union[Unset, str]):
-        filterseverity_idnot_eq (Union[Unset, str]):
-        filterseverity_idin (Union[Unset, str]):
-        filterseverity_idnot_in (Union[Unset, str]):
-        filterlabelseq (Union[Unset, str]):
-        filterlabelsnot_eq (Union[Unset, str]):
-        filterlabelsin (Union[Unset, str]):
-        filterlabelsnot_in (Union[Unset, str]):
-        filterzendesk_ticket_ideq (Union[Unset, str]):
-        filterzendesk_ticket_idnot_eq (Union[Unset, str]):
-        filterzendesk_ticket_idin (Union[Unset, str]):
-        filterzendesk_ticket_idnot_in (Union[Unset, str]):
-        filtersequential_ideq (Union[Unset, str]):
-        filtersequential_idnot_eq (Union[Unset, str]):
-        filtersequential_idin (Union[Unset, str]):
-        filtersequential_idnot_in (Union[Unset, str]):
-        filtertypeseq (Union[Unset, str]):
-        filtertypesnot_eq (Union[Unset, str]):
-        filtertypesin (Union[Unset, str]):
-        filtertypesnot_in (Union[Unset, str]):
-        filtertype_idseq (Union[Unset, str]):
-        filtertype_idsnot_eq (Union[Unset, str]):
-        filtertype_idsin (Union[Unset, str]):
-        filtertype_idsnot_in (Union[Unset, str]):
-        filterenvironmentseq (Union[Unset, str]):
-        filterenvironmentsnot_eq (Union[Unset, str]):
-        filterenvironmentsin (Union[Unset, str]):
-        filterenvironmentsnot_in (Union[Unset, str]):
-        filterenvironment_idseq (Union[Unset, str]):
-        filterenvironment_idsnot_eq (Union[Unset, str]):
-        filterenvironment_idsin (Union[Unset, str]):
-        filterenvironment_idsnot_in (Union[Unset, str]):
-        filterserviceseq (Union[Unset, str]):
-        filterservicesnot_eq (Union[Unset, str]):
-        filterservicesin (Union[Unset, str]):
-        filterservicesnot_in (Union[Unset, str]):
-        filterservice_idseq (Union[Unset, str]):
-        filterservice_idsnot_eq (Union[Unset, str]):
-        filterservice_idsin (Union[Unset, str]):
-        filterservice_idsnot_in (Union[Unset, str]):
-        filterservice_nameseq (Union[Unset, str]):
-        filterservice_namesnot_eq (Union[Unset, str]):
-        filterservice_namesin (Union[Unset, str]):
-        filterservice_namesnot_in (Union[Unset, str]):
-        filterfunctionalitieseq (Union[Unset, str]):
-        filterfunctionalitiesnot_eq (Union[Unset, str]):
-        filterfunctionalitiesin (Union[Unset, str]):
-        filterfunctionalitiesnot_in (Union[Unset, str]):
-        filterfunctionality_idseq (Union[Unset, str]):
-        filterfunctionality_idsnot_eq (Union[Unset, str]):
-        filterfunctionality_idsin (Union[Unset, str]):
-        filterfunctionality_idsnot_in (Union[Unset, str]):
-        filterfunctionality_nameseq (Union[Unset, str]):
-        filterfunctionality_namesnot_eq (Union[Unset, str]):
-        filterfunctionality_namesin (Union[Unset, str]):
-        filterfunctionality_namesnot_in (Union[Unset, str]):
-        filtercauseseq (Union[Unset, str]):
-        filtercausesnot_eq (Union[Unset, str]):
-        filtercausesin (Union[Unset, str]):
-        filtercausesnot_in (Union[Unset, str]):
-        filtercause_idseq (Union[Unset, str]):
-        filtercause_idsnot_eq (Union[Unset, str]):
-        filtercause_idsin (Union[Unset, str]):
-        filtercause_idsnot_in (Union[Unset, str]):
-        filterteamseq (Union[Unset, str]):
-        filterteamsnot_eq (Union[Unset, str]):
-        filterteamsin (Union[Unset, str]):
-        filterteamsnot_in (Union[Unset, str]):
-        filterteam_idseq (Union[Unset, str]):
-        filterteam_idsnot_eq (Union[Unset, str]):
-        filterteam_idsin (Union[Unset, str]):
-        filterteam_idsnot_in (Union[Unset, str]):
-        filterteam_nameseq (Union[Unset, str]):
-        filterteam_namesnot_eq (Union[Unset, str]):
-        filterteam_namesin (Union[Unset, str]):
-        filterteam_namesnot_in (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtersequential_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterprivateeq (str | Unset):
+        filterprivatenot_eq (str | Unset):
+        filterprivatein (str | Unset):
+        filterprivatenot_in (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filterseverity_ideq (str | Unset):
+        filterseverity_idnot_eq (str | Unset):
+        filterseverity_idin (str | Unset):
+        filterseverity_idnot_in (str | Unset):
+        filterlabelseq (str | Unset):
+        filterlabelsnot_eq (str | Unset):
+        filterlabelsin (str | Unset):
+        filterlabelsnot_in (str | Unset):
+        filterzendesk_ticket_ideq (str | Unset):
+        filterzendesk_ticket_idnot_eq (str | Unset):
+        filterzendesk_ticket_idin (str | Unset):
+        filterzendesk_ticket_idnot_in (str | Unset):
+        filtersequential_ideq (str | Unset):
+        filtersequential_idnot_eq (str | Unset):
+        filtersequential_idin (str | Unset):
+        filtersequential_idnot_in (str | Unset):
+        filtertypeseq (str | Unset):
+        filtertypesnot_eq (str | Unset):
+        filtertypesin (str | Unset):
+        filtertypesnot_in (str | Unset):
+        filtertype_idseq (str | Unset):
+        filtertype_idsnot_eq (str | Unset):
+        filtertype_idsin (str | Unset):
+        filtertype_idsnot_in (str | Unset):
+        filterenvironmentseq (str | Unset):
+        filterenvironmentsnot_eq (str | Unset):
+        filterenvironmentsin (str | Unset):
+        filterenvironmentsnot_in (str | Unset):
+        filterenvironment_idseq (str | Unset):
+        filterenvironment_idsnot_eq (str | Unset):
+        filterenvironment_idsin (str | Unset):
+        filterenvironment_idsnot_in (str | Unset):
+        filterserviceseq (str | Unset):
+        filterservicesnot_eq (str | Unset):
+        filterservicesin (str | Unset):
+        filterservicesnot_in (str | Unset):
+        filterservice_idseq (str | Unset):
+        filterservice_idsnot_eq (str | Unset):
+        filterservice_idsin (str | Unset):
+        filterservice_idsnot_in (str | Unset):
+        filterservice_nameseq (str | Unset):
+        filterservice_namesnot_eq (str | Unset):
+        filterservice_namesin (str | Unset):
+        filterservice_namesnot_in (str | Unset):
+        filterfunctionalitieseq (str | Unset):
+        filterfunctionalitiesnot_eq (str | Unset):
+        filterfunctionalitiesin (str | Unset):
+        filterfunctionalitiesnot_in (str | Unset):
+        filterfunctionality_idseq (str | Unset):
+        filterfunctionality_idsnot_eq (str | Unset):
+        filterfunctionality_idsin (str | Unset):
+        filterfunctionality_idsnot_in (str | Unset):
+        filterfunctionality_nameseq (str | Unset):
+        filterfunctionality_namesnot_eq (str | Unset):
+        filterfunctionality_namesin (str | Unset):
+        filterfunctionality_namesnot_in (str | Unset):
+        filtercauseseq (str | Unset):
+        filtercausesnot_eq (str | Unset):
+        filtercausesin (str | Unset):
+        filtercausesnot_in (str | Unset):
+        filtercause_idseq (str | Unset):
+        filtercause_idsnot_eq (str | Unset):
+        filtercause_idsin (str | Unset):
+        filtercause_idsnot_in (str | Unset):
+        filterteamseq (str | Unset):
+        filterteamsnot_eq (str | Unset):
+        filterteamsin (str | Unset):
+        filterteamsnot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
+        filterteam_nameseq (str | Unset):
+        filterteam_namesnot_eq (str | Unset):
+        filterteam_namesin (str | Unset):
+        filterteam_namesnot_in (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentList]]
+        Response[ErrorsList | IncidentList]
     """
 
     kwargs = _get_kwargs(
@@ -2102,345 +2103,345 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    pageafter: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
-    filtersearch: Unset | str = UNSET,
-    filterkind: Unset | str = UNSET,
-    filterstatus: Unset | str = UNSET,
-    filterprivate: Unset | str = UNSET,
-    filteruser_id: Unset | int = UNSET,
-    filterseverity: Unset | str = UNSET,
-    filterseverity_id: Unset | str = UNSET,
-    filterlabels: Unset | str = UNSET,
-    filtertypes: Unset | str = UNSET,
-    filtertype_ids: Unset | str = UNSET,
-    filterenvironments: Unset | str = UNSET,
-    filterenvironment_ids: Unset | str = UNSET,
-    filterfunctionalities: Unset | str = UNSET,
-    filterfunctionality_ids: Unset | str = UNSET,
-    filterfunctionality_names: Unset | str = UNSET,
-    filterservices: Unset | str = UNSET,
-    filterservice_ids: Unset | str = UNSET,
-    filterservice_names: Unset | str = UNSET,
-    filterteams: Unset | str = UNSET,
-    filterteam_ids: Unset | str = UNSET,
-    filterteam_names: Unset | str = UNSET,
-    filtercause: Unset | str = UNSET,
-    filtercause_ids: Unset | str = UNSET,
-    filtercustom_field_selected_option_ids: Unset | str = UNSET,
-    filterslack_channel_id: Unset | str = UNSET,
-    filtersequential_id: Unset | str = UNSET,
-    filtercreated_atgt: Unset | str = UNSET,
-    filtercreated_atgte: Unset | str = UNSET,
-    filtercreated_atlt: Unset | str = UNSET,
-    filtercreated_atlte: Unset | str = UNSET,
-    filterupdated_atgt: Unset | str = UNSET,
-    filterupdated_atgte: Unset | str = UNSET,
-    filterupdated_atlt: Unset | str = UNSET,
-    filterupdated_atlte: Unset | str = UNSET,
-    filterstarted_atgt: Unset | str = UNSET,
-    filterstarted_atgte: Unset | str = UNSET,
-    filterstarted_atlt: Unset | str = UNSET,
-    filterstarted_atlte: Unset | str = UNSET,
-    filterdetected_atgt: Unset | str = UNSET,
-    filterdetected_atgte: Unset | str = UNSET,
-    filterdetected_atlt: Unset | str = UNSET,
-    filterdetected_atlte: Unset | str = UNSET,
-    filteracknowledged_atgt: Unset | str = UNSET,
-    filteracknowledged_atgte: Unset | str = UNSET,
-    filteracknowledged_atlt: Unset | str = UNSET,
-    filteracknowledged_atlte: Unset | str = UNSET,
-    filtermitigated_atgt: Unset | str = UNSET,
-    filtermitigated_atgte: Unset | str = UNSET,
-    filtermitigated_atlt: Unset | str = UNSET,
-    filtermitigated_atlte: Unset | str = UNSET,
-    filterresolved_atgt: Unset | str = UNSET,
-    filterresolved_atgte: Unset | str = UNSET,
-    filterresolved_atlt: Unset | str = UNSET,
-    filterresolved_atlte: Unset | str = UNSET,
-    filterclosed_atgt: Unset | str = UNSET,
-    filterclosed_atgte: Unset | str = UNSET,
-    filterclosed_atlt: Unset | str = UNSET,
-    filterclosed_atlte: Unset | str = UNSET,
-    filterin_triage_atgt: Unset | str = UNSET,
-    filterin_triage_atgte: Unset | str = UNSET,
-    filterin_triage_atlt: Unset | str = UNSET,
-    filterin_triage_atlte: Unset | str = UNSET,
-    filterkindeq: Unset | str = UNSET,
-    filterkindnot_eq: Unset | str = UNSET,
-    filterkindin: Unset | str = UNSET,
-    filterkindnot_in: Unset | str = UNSET,
-    filterstatuseq: Unset | str = UNSET,
-    filterstatusnot_eq: Unset | str = UNSET,
-    filterstatusin: Unset | str = UNSET,
-    filterstatusnot_in: Unset | str = UNSET,
-    filterprivateeq: Unset | str = UNSET,
-    filterprivatenot_eq: Unset | str = UNSET,
-    filterprivatein: Unset | str = UNSET,
-    filterprivatenot_in: Unset | str = UNSET,
-    filteruser_ideq: Unset | str = UNSET,
-    filteruser_idnot_eq: Unset | str = UNSET,
-    filteruser_idin: Unset | str = UNSET,
-    filteruser_idnot_in: Unset | str = UNSET,
-    filterseverityeq: Unset | str = UNSET,
-    filterseveritynot_eq: Unset | str = UNSET,
-    filterseverityin: Unset | str = UNSET,
-    filterseveritynot_in: Unset | str = UNSET,
-    filterseverity_ideq: Unset | str = UNSET,
-    filterseverity_idnot_eq: Unset | str = UNSET,
-    filterseverity_idin: Unset | str = UNSET,
-    filterseverity_idnot_in: Unset | str = UNSET,
-    filterlabelseq: Unset | str = UNSET,
-    filterlabelsnot_eq: Unset | str = UNSET,
-    filterlabelsin: Unset | str = UNSET,
-    filterlabelsnot_in: Unset | str = UNSET,
-    filterzendesk_ticket_ideq: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_eq: Unset | str = UNSET,
-    filterzendesk_ticket_idin: Unset | str = UNSET,
-    filterzendesk_ticket_idnot_in: Unset | str = UNSET,
-    filtersequential_ideq: Unset | str = UNSET,
-    filtersequential_idnot_eq: Unset | str = UNSET,
-    filtersequential_idin: Unset | str = UNSET,
-    filtersequential_idnot_in: Unset | str = UNSET,
-    filtertypeseq: Unset | str = UNSET,
-    filtertypesnot_eq: Unset | str = UNSET,
-    filtertypesin: Unset | str = UNSET,
-    filtertypesnot_in: Unset | str = UNSET,
-    filtertype_idseq: Unset | str = UNSET,
-    filtertype_idsnot_eq: Unset | str = UNSET,
-    filtertype_idsin: Unset | str = UNSET,
-    filtertype_idsnot_in: Unset | str = UNSET,
-    filterenvironmentseq: Unset | str = UNSET,
-    filterenvironmentsnot_eq: Unset | str = UNSET,
-    filterenvironmentsin: Unset | str = UNSET,
-    filterenvironmentsnot_in: Unset | str = UNSET,
-    filterenvironment_idseq: Unset | str = UNSET,
-    filterenvironment_idsnot_eq: Unset | str = UNSET,
-    filterenvironment_idsin: Unset | str = UNSET,
-    filterenvironment_idsnot_in: Unset | str = UNSET,
-    filterserviceseq: Unset | str = UNSET,
-    filterservicesnot_eq: Unset | str = UNSET,
-    filterservicesin: Unset | str = UNSET,
-    filterservicesnot_in: Unset | str = UNSET,
-    filterservice_idseq: Unset | str = UNSET,
-    filterservice_idsnot_eq: Unset | str = UNSET,
-    filterservice_idsin: Unset | str = UNSET,
-    filterservice_idsnot_in: Unset | str = UNSET,
-    filterservice_nameseq: Unset | str = UNSET,
-    filterservice_namesnot_eq: Unset | str = UNSET,
-    filterservice_namesin: Unset | str = UNSET,
-    filterservice_namesnot_in: Unset | str = UNSET,
-    filterfunctionalitieseq: Unset | str = UNSET,
-    filterfunctionalitiesnot_eq: Unset | str = UNSET,
-    filterfunctionalitiesin: Unset | str = UNSET,
-    filterfunctionalitiesnot_in: Unset | str = UNSET,
-    filterfunctionality_idseq: Unset | str = UNSET,
-    filterfunctionality_idsnot_eq: Unset | str = UNSET,
-    filterfunctionality_idsin: Unset | str = UNSET,
-    filterfunctionality_idsnot_in: Unset | str = UNSET,
-    filterfunctionality_nameseq: Unset | str = UNSET,
-    filterfunctionality_namesnot_eq: Unset | str = UNSET,
-    filterfunctionality_namesin: Unset | str = UNSET,
-    filterfunctionality_namesnot_in: Unset | str = UNSET,
-    filtercauseseq: Unset | str = UNSET,
-    filtercausesnot_eq: Unset | str = UNSET,
-    filtercausesin: Unset | str = UNSET,
-    filtercausesnot_in: Unset | str = UNSET,
-    filtercause_idseq: Unset | str = UNSET,
-    filtercause_idsnot_eq: Unset | str = UNSET,
-    filtercause_idsin: Unset | str = UNSET,
-    filtercause_idsnot_in: Unset | str = UNSET,
-    filterteamseq: Unset | str = UNSET,
-    filterteamsnot_eq: Unset | str = UNSET,
-    filterteamsin: Unset | str = UNSET,
-    filterteamsnot_in: Unset | str = UNSET,
-    filterteam_idseq: Unset | str = UNSET,
-    filterteam_idsnot_eq: Unset | str = UNSET,
-    filterteam_idsin: Unset | str = UNSET,
-    filterteam_idsnot_in: Unset | str = UNSET,
-    filterteam_nameseq: Unset | str = UNSET,
-    filterteam_namesnot_eq: Unset | str = UNSET,
-    filterteam_namesin: Unset | str = UNSET,
-    filterteam_namesnot_in: Unset | str = UNSET,
-    sort: Unset | ListIncidentsSort = UNSET,
-    include: Unset | ListIncidentsInclude = UNSET,
+    pageafter: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
+    filtersearch: str | Unset = UNSET,
+    filterkind: str | Unset = UNSET,
+    filterstatus: str | Unset = UNSET,
+    filterprivate: str | Unset = UNSET,
+    filteruser_id: int | Unset = UNSET,
+    filterseverity: str | Unset = UNSET,
+    filterseverity_id: str | Unset = UNSET,
+    filterlabels: str | Unset = UNSET,
+    filtertypes: str | Unset = UNSET,
+    filtertype_ids: str | Unset = UNSET,
+    filterenvironments: str | Unset = UNSET,
+    filterenvironment_ids: str | Unset = UNSET,
+    filterfunctionalities: str | Unset = UNSET,
+    filterfunctionality_ids: str | Unset = UNSET,
+    filterfunctionality_names: str | Unset = UNSET,
+    filterservices: str | Unset = UNSET,
+    filterservice_ids: str | Unset = UNSET,
+    filterservice_names: str | Unset = UNSET,
+    filterteams: str | Unset = UNSET,
+    filterteam_ids: str | Unset = UNSET,
+    filterteam_names: str | Unset = UNSET,
+    filtercause: str | Unset = UNSET,
+    filtercause_ids: str | Unset = UNSET,
+    filtercustom_field_selected_option_ids: str | Unset = UNSET,
+    filterslack_channel_id: str | Unset = UNSET,
+    filtersequential_id: str | Unset = UNSET,
+    filtercreated_atgt: str | Unset = UNSET,
+    filtercreated_atgte: str | Unset = UNSET,
+    filtercreated_atlt: str | Unset = UNSET,
+    filtercreated_atlte: str | Unset = UNSET,
+    filterupdated_atgt: str | Unset = UNSET,
+    filterupdated_atgte: str | Unset = UNSET,
+    filterupdated_atlt: str | Unset = UNSET,
+    filterupdated_atlte: str | Unset = UNSET,
+    filterstarted_atgt: str | Unset = UNSET,
+    filterstarted_atgte: str | Unset = UNSET,
+    filterstarted_atlt: str | Unset = UNSET,
+    filterstarted_atlte: str | Unset = UNSET,
+    filterdetected_atgt: str | Unset = UNSET,
+    filterdetected_atgte: str | Unset = UNSET,
+    filterdetected_atlt: str | Unset = UNSET,
+    filterdetected_atlte: str | Unset = UNSET,
+    filteracknowledged_atgt: str | Unset = UNSET,
+    filteracknowledged_atgte: str | Unset = UNSET,
+    filteracknowledged_atlt: str | Unset = UNSET,
+    filteracknowledged_atlte: str | Unset = UNSET,
+    filtermitigated_atgt: str | Unset = UNSET,
+    filtermitigated_atgte: str | Unset = UNSET,
+    filtermitigated_atlt: str | Unset = UNSET,
+    filtermitigated_atlte: str | Unset = UNSET,
+    filterresolved_atgt: str | Unset = UNSET,
+    filterresolved_atgte: str | Unset = UNSET,
+    filterresolved_atlt: str | Unset = UNSET,
+    filterresolved_atlte: str | Unset = UNSET,
+    filterclosed_atgt: str | Unset = UNSET,
+    filterclosed_atgte: str | Unset = UNSET,
+    filterclosed_atlt: str | Unset = UNSET,
+    filterclosed_atlte: str | Unset = UNSET,
+    filterin_triage_atgt: str | Unset = UNSET,
+    filterin_triage_atgte: str | Unset = UNSET,
+    filterin_triage_atlt: str | Unset = UNSET,
+    filterin_triage_atlte: str | Unset = UNSET,
+    filterkindeq: str | Unset = UNSET,
+    filterkindnot_eq: str | Unset = UNSET,
+    filterkindin: str | Unset = UNSET,
+    filterkindnot_in: str | Unset = UNSET,
+    filterstatuseq: str | Unset = UNSET,
+    filterstatusnot_eq: str | Unset = UNSET,
+    filterstatusin: str | Unset = UNSET,
+    filterstatusnot_in: str | Unset = UNSET,
+    filterprivateeq: str | Unset = UNSET,
+    filterprivatenot_eq: str | Unset = UNSET,
+    filterprivatein: str | Unset = UNSET,
+    filterprivatenot_in: str | Unset = UNSET,
+    filteruser_ideq: str | Unset = UNSET,
+    filteruser_idnot_eq: str | Unset = UNSET,
+    filteruser_idin: str | Unset = UNSET,
+    filteruser_idnot_in: str | Unset = UNSET,
+    filterseverityeq: str | Unset = UNSET,
+    filterseveritynot_eq: str | Unset = UNSET,
+    filterseverityin: str | Unset = UNSET,
+    filterseveritynot_in: str | Unset = UNSET,
+    filterseverity_ideq: str | Unset = UNSET,
+    filterseverity_idnot_eq: str | Unset = UNSET,
+    filterseverity_idin: str | Unset = UNSET,
+    filterseverity_idnot_in: str | Unset = UNSET,
+    filterlabelseq: str | Unset = UNSET,
+    filterlabelsnot_eq: str | Unset = UNSET,
+    filterlabelsin: str | Unset = UNSET,
+    filterlabelsnot_in: str | Unset = UNSET,
+    filterzendesk_ticket_ideq: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_eq: str | Unset = UNSET,
+    filterzendesk_ticket_idin: str | Unset = UNSET,
+    filterzendesk_ticket_idnot_in: str | Unset = UNSET,
+    filtersequential_ideq: str | Unset = UNSET,
+    filtersequential_idnot_eq: str | Unset = UNSET,
+    filtersequential_idin: str | Unset = UNSET,
+    filtersequential_idnot_in: str | Unset = UNSET,
+    filtertypeseq: str | Unset = UNSET,
+    filtertypesnot_eq: str | Unset = UNSET,
+    filtertypesin: str | Unset = UNSET,
+    filtertypesnot_in: str | Unset = UNSET,
+    filtertype_idseq: str | Unset = UNSET,
+    filtertype_idsnot_eq: str | Unset = UNSET,
+    filtertype_idsin: str | Unset = UNSET,
+    filtertype_idsnot_in: str | Unset = UNSET,
+    filterenvironmentseq: str | Unset = UNSET,
+    filterenvironmentsnot_eq: str | Unset = UNSET,
+    filterenvironmentsin: str | Unset = UNSET,
+    filterenvironmentsnot_in: str | Unset = UNSET,
+    filterenvironment_idseq: str | Unset = UNSET,
+    filterenvironment_idsnot_eq: str | Unset = UNSET,
+    filterenvironment_idsin: str | Unset = UNSET,
+    filterenvironment_idsnot_in: str | Unset = UNSET,
+    filterserviceseq: str | Unset = UNSET,
+    filterservicesnot_eq: str | Unset = UNSET,
+    filterservicesin: str | Unset = UNSET,
+    filterservicesnot_in: str | Unset = UNSET,
+    filterservice_idseq: str | Unset = UNSET,
+    filterservice_idsnot_eq: str | Unset = UNSET,
+    filterservice_idsin: str | Unset = UNSET,
+    filterservice_idsnot_in: str | Unset = UNSET,
+    filterservice_nameseq: str | Unset = UNSET,
+    filterservice_namesnot_eq: str | Unset = UNSET,
+    filterservice_namesin: str | Unset = UNSET,
+    filterservice_namesnot_in: str | Unset = UNSET,
+    filterfunctionalitieseq: str | Unset = UNSET,
+    filterfunctionalitiesnot_eq: str | Unset = UNSET,
+    filterfunctionalitiesin: str | Unset = UNSET,
+    filterfunctionalitiesnot_in: str | Unset = UNSET,
+    filterfunctionality_idseq: str | Unset = UNSET,
+    filterfunctionality_idsnot_eq: str | Unset = UNSET,
+    filterfunctionality_idsin: str | Unset = UNSET,
+    filterfunctionality_idsnot_in: str | Unset = UNSET,
+    filterfunctionality_nameseq: str | Unset = UNSET,
+    filterfunctionality_namesnot_eq: str | Unset = UNSET,
+    filterfunctionality_namesin: str | Unset = UNSET,
+    filterfunctionality_namesnot_in: str | Unset = UNSET,
+    filtercauseseq: str | Unset = UNSET,
+    filtercausesnot_eq: str | Unset = UNSET,
+    filtercausesin: str | Unset = UNSET,
+    filtercausesnot_in: str | Unset = UNSET,
+    filtercause_idseq: str | Unset = UNSET,
+    filtercause_idsnot_eq: str | Unset = UNSET,
+    filtercause_idsin: str | Unset = UNSET,
+    filtercause_idsnot_in: str | Unset = UNSET,
+    filterteamseq: str | Unset = UNSET,
+    filterteamsnot_eq: str | Unset = UNSET,
+    filterteamsin: str | Unset = UNSET,
+    filterteamsnot_in: str | Unset = UNSET,
+    filterteam_idseq: str | Unset = UNSET,
+    filterteam_idsnot_eq: str | Unset = UNSET,
+    filterteam_idsin: str | Unset = UNSET,
+    filterteam_idsnot_in: str | Unset = UNSET,
+    filterteam_nameseq: str | Unset = UNSET,
+    filterteam_namesnot_eq: str | Unset = UNSET,
+    filterteam_namesin: str | Unset = UNSET,
+    filterteam_namesnot_in: str | Unset = UNSET,
+    sort: ListIncidentsSort | Unset = UNSET,
+    include: ListIncidentsInclude | Unset = UNSET,
 ) -> ErrorsList | IncidentList | None:
     """List incidents
 
      List incidents
 
     Args:
-        pageafter (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
-        filtersearch (Union[Unset, str]):
-        filterkind (Union[Unset, str]):
-        filterstatus (Union[Unset, str]):
-        filterprivate (Union[Unset, str]):
-        filteruser_id (Union[Unset, int]):
-        filterseverity (Union[Unset, str]):
-        filterseverity_id (Union[Unset, str]):
-        filterlabels (Union[Unset, str]):
-        filtertypes (Union[Unset, str]):
-        filtertype_ids (Union[Unset, str]):
-        filterenvironments (Union[Unset, str]):
-        filterenvironment_ids (Union[Unset, str]):
-        filterfunctionalities (Union[Unset, str]):
-        filterfunctionality_ids (Union[Unset, str]):
-        filterfunctionality_names (Union[Unset, str]):
-        filterservices (Union[Unset, str]):
-        filterservice_ids (Union[Unset, str]):
-        filterservice_names (Union[Unset, str]):
-        filterteams (Union[Unset, str]):
-        filterteam_ids (Union[Unset, str]):
-        filterteam_names (Union[Unset, str]):
-        filtercause (Union[Unset, str]):
-        filtercause_ids (Union[Unset, str]):
-        filtercustom_field_selected_option_ids (Union[Unset, str]):
-        filterslack_channel_id (Union[Unset, str]):
-        filtersequential_id (Union[Unset, str]):
-        filtercreated_atgt (Union[Unset, str]):
-        filtercreated_atgte (Union[Unset, str]):
-        filtercreated_atlt (Union[Unset, str]):
-        filtercreated_atlte (Union[Unset, str]):
-        filterupdated_atgt (Union[Unset, str]):
-        filterupdated_atgte (Union[Unset, str]):
-        filterupdated_atlt (Union[Unset, str]):
-        filterupdated_atlte (Union[Unset, str]):
-        filterstarted_atgt (Union[Unset, str]):
-        filterstarted_atgte (Union[Unset, str]):
-        filterstarted_atlt (Union[Unset, str]):
-        filterstarted_atlte (Union[Unset, str]):
-        filterdetected_atgt (Union[Unset, str]):
-        filterdetected_atgte (Union[Unset, str]):
-        filterdetected_atlt (Union[Unset, str]):
-        filterdetected_atlte (Union[Unset, str]):
-        filteracknowledged_atgt (Union[Unset, str]):
-        filteracknowledged_atgte (Union[Unset, str]):
-        filteracknowledged_atlt (Union[Unset, str]):
-        filteracknowledged_atlte (Union[Unset, str]):
-        filtermitigated_atgt (Union[Unset, str]):
-        filtermitigated_atgte (Union[Unset, str]):
-        filtermitigated_atlt (Union[Unset, str]):
-        filtermitigated_atlte (Union[Unset, str]):
-        filterresolved_atgt (Union[Unset, str]):
-        filterresolved_atgte (Union[Unset, str]):
-        filterresolved_atlt (Union[Unset, str]):
-        filterresolved_atlte (Union[Unset, str]):
-        filterclosed_atgt (Union[Unset, str]):
-        filterclosed_atgte (Union[Unset, str]):
-        filterclosed_atlt (Union[Unset, str]):
-        filterclosed_atlte (Union[Unset, str]):
-        filterin_triage_atgt (Union[Unset, str]):
-        filterin_triage_atgte (Union[Unset, str]):
-        filterin_triage_atlt (Union[Unset, str]):
-        filterin_triage_atlte (Union[Unset, str]):
-        filterkindeq (Union[Unset, str]):
-        filterkindnot_eq (Union[Unset, str]):
-        filterkindin (Union[Unset, str]):
-        filterkindnot_in (Union[Unset, str]):
-        filterstatuseq (Union[Unset, str]):
-        filterstatusnot_eq (Union[Unset, str]):
-        filterstatusin (Union[Unset, str]):
-        filterstatusnot_in (Union[Unset, str]):
-        filterprivateeq (Union[Unset, str]):
-        filterprivatenot_eq (Union[Unset, str]):
-        filterprivatein (Union[Unset, str]):
-        filterprivatenot_in (Union[Unset, str]):
-        filteruser_ideq (Union[Unset, str]):
-        filteruser_idnot_eq (Union[Unset, str]):
-        filteruser_idin (Union[Unset, str]):
-        filteruser_idnot_in (Union[Unset, str]):
-        filterseverityeq (Union[Unset, str]):
-        filterseveritynot_eq (Union[Unset, str]):
-        filterseverityin (Union[Unset, str]):
-        filterseveritynot_in (Union[Unset, str]):
-        filterseverity_ideq (Union[Unset, str]):
-        filterseverity_idnot_eq (Union[Unset, str]):
-        filterseverity_idin (Union[Unset, str]):
-        filterseverity_idnot_in (Union[Unset, str]):
-        filterlabelseq (Union[Unset, str]):
-        filterlabelsnot_eq (Union[Unset, str]):
-        filterlabelsin (Union[Unset, str]):
-        filterlabelsnot_in (Union[Unset, str]):
-        filterzendesk_ticket_ideq (Union[Unset, str]):
-        filterzendesk_ticket_idnot_eq (Union[Unset, str]):
-        filterzendesk_ticket_idin (Union[Unset, str]):
-        filterzendesk_ticket_idnot_in (Union[Unset, str]):
-        filtersequential_ideq (Union[Unset, str]):
-        filtersequential_idnot_eq (Union[Unset, str]):
-        filtersequential_idin (Union[Unset, str]):
-        filtersequential_idnot_in (Union[Unset, str]):
-        filtertypeseq (Union[Unset, str]):
-        filtertypesnot_eq (Union[Unset, str]):
-        filtertypesin (Union[Unset, str]):
-        filtertypesnot_in (Union[Unset, str]):
-        filtertype_idseq (Union[Unset, str]):
-        filtertype_idsnot_eq (Union[Unset, str]):
-        filtertype_idsin (Union[Unset, str]):
-        filtertype_idsnot_in (Union[Unset, str]):
-        filterenvironmentseq (Union[Unset, str]):
-        filterenvironmentsnot_eq (Union[Unset, str]):
-        filterenvironmentsin (Union[Unset, str]):
-        filterenvironmentsnot_in (Union[Unset, str]):
-        filterenvironment_idseq (Union[Unset, str]):
-        filterenvironment_idsnot_eq (Union[Unset, str]):
-        filterenvironment_idsin (Union[Unset, str]):
-        filterenvironment_idsnot_in (Union[Unset, str]):
-        filterserviceseq (Union[Unset, str]):
-        filterservicesnot_eq (Union[Unset, str]):
-        filterservicesin (Union[Unset, str]):
-        filterservicesnot_in (Union[Unset, str]):
-        filterservice_idseq (Union[Unset, str]):
-        filterservice_idsnot_eq (Union[Unset, str]):
-        filterservice_idsin (Union[Unset, str]):
-        filterservice_idsnot_in (Union[Unset, str]):
-        filterservice_nameseq (Union[Unset, str]):
-        filterservice_namesnot_eq (Union[Unset, str]):
-        filterservice_namesin (Union[Unset, str]):
-        filterservice_namesnot_in (Union[Unset, str]):
-        filterfunctionalitieseq (Union[Unset, str]):
-        filterfunctionalitiesnot_eq (Union[Unset, str]):
-        filterfunctionalitiesin (Union[Unset, str]):
-        filterfunctionalitiesnot_in (Union[Unset, str]):
-        filterfunctionality_idseq (Union[Unset, str]):
-        filterfunctionality_idsnot_eq (Union[Unset, str]):
-        filterfunctionality_idsin (Union[Unset, str]):
-        filterfunctionality_idsnot_in (Union[Unset, str]):
-        filterfunctionality_nameseq (Union[Unset, str]):
-        filterfunctionality_namesnot_eq (Union[Unset, str]):
-        filterfunctionality_namesin (Union[Unset, str]):
-        filterfunctionality_namesnot_in (Union[Unset, str]):
-        filtercauseseq (Union[Unset, str]):
-        filtercausesnot_eq (Union[Unset, str]):
-        filtercausesin (Union[Unset, str]):
-        filtercausesnot_in (Union[Unset, str]):
-        filtercause_idseq (Union[Unset, str]):
-        filtercause_idsnot_eq (Union[Unset, str]):
-        filtercause_idsin (Union[Unset, str]):
-        filtercause_idsnot_in (Union[Unset, str]):
-        filterteamseq (Union[Unset, str]):
-        filterteamsnot_eq (Union[Unset, str]):
-        filterteamsin (Union[Unset, str]):
-        filterteamsnot_in (Union[Unset, str]):
-        filterteam_idseq (Union[Unset, str]):
-        filterteam_idsnot_eq (Union[Unset, str]):
-        filterteam_idsin (Union[Unset, str]):
-        filterteam_idsnot_in (Union[Unset, str]):
-        filterteam_nameseq (Union[Unset, str]):
-        filterteam_namesnot_eq (Union[Unset, str]):
-        filterteam_namesin (Union[Unset, str]):
-        filterteam_namesnot_in (Union[Unset, str]):
-        sort (Union[Unset, ListIncidentsSort]):
-        include (Union[Unset, ListIncidentsInclude]):
+        pageafter (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
+        filtersearch (str | Unset):
+        filterkind (str | Unset):
+        filterstatus (str | Unset):
+        filterprivate (str | Unset):
+        filteruser_id (int | Unset):
+        filterseverity (str | Unset):
+        filterseverity_id (str | Unset):
+        filterlabels (str | Unset):
+        filtertypes (str | Unset):
+        filtertype_ids (str | Unset):
+        filterenvironments (str | Unset):
+        filterenvironment_ids (str | Unset):
+        filterfunctionalities (str | Unset):
+        filterfunctionality_ids (str | Unset):
+        filterfunctionality_names (str | Unset):
+        filterservices (str | Unset):
+        filterservice_ids (str | Unset):
+        filterservice_names (str | Unset):
+        filterteams (str | Unset):
+        filterteam_ids (str | Unset):
+        filterteam_names (str | Unset):
+        filtercause (str | Unset):
+        filtercause_ids (str | Unset):
+        filtercustom_field_selected_option_ids (str | Unset):
+        filterslack_channel_id (str | Unset):
+        filtersequential_id (str | Unset):
+        filtercreated_atgt (str | Unset):
+        filtercreated_atgte (str | Unset):
+        filtercreated_atlt (str | Unset):
+        filtercreated_atlte (str | Unset):
+        filterupdated_atgt (str | Unset):
+        filterupdated_atgte (str | Unset):
+        filterupdated_atlt (str | Unset):
+        filterupdated_atlte (str | Unset):
+        filterstarted_atgt (str | Unset):
+        filterstarted_atgte (str | Unset):
+        filterstarted_atlt (str | Unset):
+        filterstarted_atlte (str | Unset):
+        filterdetected_atgt (str | Unset):
+        filterdetected_atgte (str | Unset):
+        filterdetected_atlt (str | Unset):
+        filterdetected_atlte (str | Unset):
+        filteracknowledged_atgt (str | Unset):
+        filteracknowledged_atgte (str | Unset):
+        filteracknowledged_atlt (str | Unset):
+        filteracknowledged_atlte (str | Unset):
+        filtermitigated_atgt (str | Unset):
+        filtermitigated_atgte (str | Unset):
+        filtermitigated_atlt (str | Unset):
+        filtermitigated_atlte (str | Unset):
+        filterresolved_atgt (str | Unset):
+        filterresolved_atgte (str | Unset):
+        filterresolved_atlt (str | Unset):
+        filterresolved_atlte (str | Unset):
+        filterclosed_atgt (str | Unset):
+        filterclosed_atgte (str | Unset):
+        filterclosed_atlt (str | Unset):
+        filterclosed_atlte (str | Unset):
+        filterin_triage_atgt (str | Unset):
+        filterin_triage_atgte (str | Unset):
+        filterin_triage_atlt (str | Unset):
+        filterin_triage_atlte (str | Unset):
+        filterkindeq (str | Unset):
+        filterkindnot_eq (str | Unset):
+        filterkindin (str | Unset):
+        filterkindnot_in (str | Unset):
+        filterstatuseq (str | Unset):
+        filterstatusnot_eq (str | Unset):
+        filterstatusin (str | Unset):
+        filterstatusnot_in (str | Unset):
+        filterprivateeq (str | Unset):
+        filterprivatenot_eq (str | Unset):
+        filterprivatein (str | Unset):
+        filterprivatenot_in (str | Unset):
+        filteruser_ideq (str | Unset):
+        filteruser_idnot_eq (str | Unset):
+        filteruser_idin (str | Unset):
+        filteruser_idnot_in (str | Unset):
+        filterseverityeq (str | Unset):
+        filterseveritynot_eq (str | Unset):
+        filterseverityin (str | Unset):
+        filterseveritynot_in (str | Unset):
+        filterseverity_ideq (str | Unset):
+        filterseverity_idnot_eq (str | Unset):
+        filterseverity_idin (str | Unset):
+        filterseverity_idnot_in (str | Unset):
+        filterlabelseq (str | Unset):
+        filterlabelsnot_eq (str | Unset):
+        filterlabelsin (str | Unset):
+        filterlabelsnot_in (str | Unset):
+        filterzendesk_ticket_ideq (str | Unset):
+        filterzendesk_ticket_idnot_eq (str | Unset):
+        filterzendesk_ticket_idin (str | Unset):
+        filterzendesk_ticket_idnot_in (str | Unset):
+        filtersequential_ideq (str | Unset):
+        filtersequential_idnot_eq (str | Unset):
+        filtersequential_idin (str | Unset):
+        filtersequential_idnot_in (str | Unset):
+        filtertypeseq (str | Unset):
+        filtertypesnot_eq (str | Unset):
+        filtertypesin (str | Unset):
+        filtertypesnot_in (str | Unset):
+        filtertype_idseq (str | Unset):
+        filtertype_idsnot_eq (str | Unset):
+        filtertype_idsin (str | Unset):
+        filtertype_idsnot_in (str | Unset):
+        filterenvironmentseq (str | Unset):
+        filterenvironmentsnot_eq (str | Unset):
+        filterenvironmentsin (str | Unset):
+        filterenvironmentsnot_in (str | Unset):
+        filterenvironment_idseq (str | Unset):
+        filterenvironment_idsnot_eq (str | Unset):
+        filterenvironment_idsin (str | Unset):
+        filterenvironment_idsnot_in (str | Unset):
+        filterserviceseq (str | Unset):
+        filterservicesnot_eq (str | Unset):
+        filterservicesin (str | Unset):
+        filterservicesnot_in (str | Unset):
+        filterservice_idseq (str | Unset):
+        filterservice_idsnot_eq (str | Unset):
+        filterservice_idsin (str | Unset):
+        filterservice_idsnot_in (str | Unset):
+        filterservice_nameseq (str | Unset):
+        filterservice_namesnot_eq (str | Unset):
+        filterservice_namesin (str | Unset):
+        filterservice_namesnot_in (str | Unset):
+        filterfunctionalitieseq (str | Unset):
+        filterfunctionalitiesnot_eq (str | Unset):
+        filterfunctionalitiesin (str | Unset):
+        filterfunctionalitiesnot_in (str | Unset):
+        filterfunctionality_idseq (str | Unset):
+        filterfunctionality_idsnot_eq (str | Unset):
+        filterfunctionality_idsin (str | Unset):
+        filterfunctionality_idsnot_in (str | Unset):
+        filterfunctionality_nameseq (str | Unset):
+        filterfunctionality_namesnot_eq (str | Unset):
+        filterfunctionality_namesin (str | Unset):
+        filterfunctionality_namesnot_in (str | Unset):
+        filtercauseseq (str | Unset):
+        filtercausesnot_eq (str | Unset):
+        filtercausesin (str | Unset):
+        filtercausesnot_in (str | Unset):
+        filtercause_idseq (str | Unset):
+        filtercause_idsnot_eq (str | Unset):
+        filtercause_idsin (str | Unset):
+        filtercause_idsnot_in (str | Unset):
+        filterteamseq (str | Unset):
+        filterteamsnot_eq (str | Unset):
+        filterteamsin (str | Unset):
+        filterteamsnot_in (str | Unset):
+        filterteam_idseq (str | Unset):
+        filterteam_idsnot_eq (str | Unset):
+        filterteam_idsin (str | Unset):
+        filterteam_idsnot_in (str | Unset):
+        filterteam_nameseq (str | Unset):
+        filterteam_namesnot_eq (str | Unset):
+        filterteam_namesin (str | Unset):
+        filterteam_namesnot_in (str | Unset):
+        sort (ListIncidentsSort | Unset):
+        include (ListIncidentsInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentList]
+        ErrorsList | IncidentList
     """
 
     return (

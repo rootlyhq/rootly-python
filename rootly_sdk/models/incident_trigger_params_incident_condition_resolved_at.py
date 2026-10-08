@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentTriggerParamsIncidentConditionResolvedAt = Literal["SET", "UNSET"]
 
@@ -14,7 +14,7 @@ def check_incident_trigger_params_incident_condition_resolved_at(
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_RESOLVED_AT_VALUES:
-        return cast(IncidentTriggerParamsIncidentConditionResolvedAt, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_TRIGGER_PARAMS_INCIDENT_CONDITION_RESOLVED_AT_VALUES!r}"
     )

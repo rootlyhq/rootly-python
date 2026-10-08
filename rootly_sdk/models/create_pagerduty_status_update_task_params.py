@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -19,12 +21,12 @@ class CreatePagerdutyStatusUpdateTaskParams:
     Attributes:
         pagerduty_incident_id (str): PagerDuty incident id
         message (str): A message outlining the incident's resolution in PagerDuty
-        task_type (Union[Unset, CreatePagerdutyStatusUpdateTaskParamsTaskType]):
+        task_type (CreatePagerdutyStatusUpdateTaskParamsTaskType | Unset):
     """
 
     pagerduty_incident_id: str
     message: str
-    task_type: Unset | CreatePagerdutyStatusUpdateTaskParamsTaskType = UNSET
+    task_type: CreatePagerdutyStatusUpdateTaskParamsTaskType | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +34,7 @@ class CreatePagerdutyStatusUpdateTaskParams:
 
         message = self.message
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -57,7 +59,7 @@ class CreatePagerdutyStatusUpdateTaskParams:
         message = d.pop("message")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreatePagerdutyStatusUpdateTaskParamsTaskType
+        task_type: CreatePagerdutyStatusUpdateTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

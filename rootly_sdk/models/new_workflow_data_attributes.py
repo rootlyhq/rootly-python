@@ -1,8 +1,14 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 
+from ..models.new_workflow_data_attributes_failure_notification_mode import (
+    NewWorkflowDataAttributesFailureNotificationMode,
+    check_new_workflow_data_attributes_failure_notification_mode,
+)
 from ..models.new_workflow_data_attributes_priority import (
     NewWorkflowDataAttributesPriority,
     check_new_workflow_data_attributes_priority,
@@ -17,6 +23,9 @@ if TYPE_CHECKING:
     from ..models.action_item_trigger_params import ActionItemTriggerParams
     from ..models.alert_trigger_params import AlertTriggerParams
     from ..models.incident_trigger_params import IncidentTriggerParams
+    from ..models.new_workflow_data_attributes_failure_notification_channels_item import (
+        NewWorkflowDataAttributesFailureNotificationChannelsItem,
+    )
     from ..models.pulse_trigger_params import PulseTriggerParams
     from ..models.simple_trigger_params import SimpleTriggerParams
 
@@ -29,72 +38,85 @@ class NewWorkflowDataAttributes:
     """
     Attributes:
         name (str): The title of the workflow
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        description (Union[None, Unset, str]): The description of the workflow
-        command (Union[None, Unset, str]): Workflow command
-        command_feedback_enabled (Union[None, Unset, bool]): This will notify you back when the workflow is starting
-        wait (Union[None, Unset, str]): Wait this duration before executing
-        priority (Union[Unset, NewWorkflowDataAttributesPriority]): Priority
-        repeat_every_duration (Union[None, Unset, str]): Repeat workflow every duration
-        repeat_condition_duration_since_first_run (Union[None, Unset, str]): The workflow will stop repeating if its
-            runtime since it's first workflow run exceeds the duration set in this field
-        repeat_condition_number_of_repeats (Union[Unset, int]): The workflow will stop repeating if the number of
-            repeats exceeds the value set in this field
-        continuously_repeat (Union[Unset, bool]): When continuously repeat is true, repeat workflows aren't
-            automatically stopped when conditions aren't met. This setting won't override your conditions set by
+        description (None | str | Unset): The description of the workflow
+        command (None | str | Unset): Workflow command
+        command_feedback_enabled (bool | None | Unset): This will notify you back when the workflow is starting
+        wait (None | str | Unset): Wait this duration before executing
+        priority (NewWorkflowDataAttributesPriority | Unset): Priority
+        repeat_every_duration (None | str | Unset): Repeat workflow every duration
+        repeat_condition_duration_since_first_run (None | str | Unset): The workflow will stop repeating if its runtime
+            since it's first workflow run exceeds the duration set in this field
+        repeat_condition_number_of_repeats (int | Unset): The workflow will stop repeating if the number of repeats
+            exceeds the value set in this field
+        continuously_repeat (bool | Unset): When continuously repeat is true, repeat workflows aren't automatically
+            stopped when conditions aren't met. This setting won't override your conditions set by
             repeat_condition_duration_since_first_run and repeat_condition_number_of_repeats parameters.
-        repeat_on (Union[Unset, list[NewWorkflowDataAttributesRepeatOnItem]]):
-        enabled (Union[Unset, bool]):
-        locked (Union[Unset, bool]): Restricts workflow edits to admins when turned on. Only admins can set this field.
-        position (Union[Unset, int]): The order which the workflow should run with other workflows.
-        workflow_group_id (Union[None, Unset, str]): The group this workflow belongs to.
-        trigger_params (Union['ActionItemTriggerParams', 'AlertTriggerParams', 'IncidentTriggerParams',
-            'PulseTriggerParams', 'SimpleTriggerParams', Unset]):
-        environment_ids (Union[Unset, list[str]]):
-        severity_ids (Union[Unset, list[str]]):
-        incident_type_ids (Union[Unset, list[str]]):
-        incident_role_ids (Union[Unset, list[str]]):
-        service_ids (Union[Unset, list[str]]):
-        functionality_ids (Union[Unset, list[str]]):
-        group_ids (Union[Unset, list[str]]):
-        cause_ids (Union[Unset, list[str]]):
-        sub_status_ids (Union[Unset, list[str]]):
+        run_once_per_resource (bool | Unset): When true, the workflow runs at most once per incident. Later triggers on
+            the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to
+            incident workflows.
+        repeat_on (list[NewWorkflowDataAttributesRepeatOnItem] | Unset):
+        enabled (bool | Unset):
+        locked (bool | Unset): Restricts workflow edits to admins when turned on. Only admins can set this field.
+        position (int | Unset): The order which the workflow should run with other workflows.
+        workflow_group_id (None | str | Unset): The group this workflow belongs to.
+        trigger_params (ActionItemTriggerParams | AlertTriggerParams | IncidentTriggerParams | PulseTriggerParams |
+            SimpleTriggerParams | Unset):
+        environment_ids (list[str] | Unset):
+        severity_ids (list[str] | Unset):
+        incident_type_ids (list[str] | Unset):
+        incident_role_ids (list[str] | Unset):
+        service_ids (list[str] | Unset):
+        functionality_ids (list[str] | Unset):
+        group_ids (list[str] | Unset):
+        group_assignment_ids (list[str] | Unset): Owning team IDs. Requires team-scoped workflows.
+        cause_ids (list[str] | Unset):
+        sub_status_ids (list[str] | Unset):
+        failure_notification_mode (NewWorkflowDataAttributesFailureNotificationMode | Unset): Where failure
+            notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses
+            `failure_notification_channels`, `off` suppresses them.
+        failure_notification_channels (list[NewWorkflowDataAttributesFailureNotificationChannelsItem] | Unset): Slack
+            channels notified when a run of this workflow fails. Used when `failure_notification_mode` is `custom`.
     """
 
     name: str
-    slug: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    command: None | Unset | str = UNSET
-    command_feedback_enabled: None | Unset | bool = UNSET
-    wait: None | Unset | str = UNSET
-    priority: Unset | NewWorkflowDataAttributesPriority = UNSET
-    repeat_every_duration: None | Unset | str = UNSET
-    repeat_condition_duration_since_first_run: None | Unset | str = UNSET
-    repeat_condition_number_of_repeats: Unset | int = UNSET
-    continuously_repeat: Unset | bool = UNSET
-    repeat_on: Unset | list[NewWorkflowDataAttributesRepeatOnItem] = UNSET
-    enabled: Unset | bool = UNSET
-    locked: Unset | bool = UNSET
-    position: Unset | int = UNSET
-    workflow_group_id: None | Unset | str = UNSET
-    trigger_params: Union[
-        "ActionItemTriggerParams",
-        "AlertTriggerParams",
-        "IncidentTriggerParams",
-        "PulseTriggerParams",
-        "SimpleTriggerParams",
-        Unset,
-    ] = UNSET
-    environment_ids: Unset | list[str] = UNSET
-    severity_ids: Unset | list[str] = UNSET
-    incident_type_ids: Unset | list[str] = UNSET
-    incident_role_ids: Unset | list[str] = UNSET
-    service_ids: Unset | list[str] = UNSET
-    functionality_ids: Unset | list[str] = UNSET
-    group_ids: Unset | list[str] = UNSET
-    cause_ids: Unset | list[str] = UNSET
-    sub_status_ids: Unset | list[str] = UNSET
+    slug: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    command: None | str | Unset = UNSET
+    command_feedback_enabled: bool | None | Unset = UNSET
+    wait: None | str | Unset = UNSET
+    priority: NewWorkflowDataAttributesPriority | Unset = UNSET
+    repeat_every_duration: None | str | Unset = UNSET
+    repeat_condition_duration_since_first_run: None | str | Unset = UNSET
+    repeat_condition_number_of_repeats: int | Unset = UNSET
+    continuously_repeat: bool | Unset = UNSET
+    run_once_per_resource: bool | Unset = UNSET
+    repeat_on: list[NewWorkflowDataAttributesRepeatOnItem] | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    locked: bool | Unset = UNSET
+    position: int | Unset = UNSET
+    workflow_group_id: None | str | Unset = UNSET
+    trigger_params: (
+        ActionItemTriggerParams
+        | AlertTriggerParams
+        | IncidentTriggerParams
+        | PulseTriggerParams
+        | SimpleTriggerParams
+        | Unset
+    ) = UNSET
+    environment_ids: list[str] | Unset = UNSET
+    severity_ids: list[str] | Unset = UNSET
+    incident_type_ids: list[str] | Unset = UNSET
+    incident_role_ids: list[str] | Unset = UNSET
+    service_ids: list[str] | Unset = UNSET
+    functionality_ids: list[str] | Unset = UNSET
+    group_ids: list[str] | Unset = UNSET
+    group_assignment_ids: list[str] | Unset = UNSET
+    cause_ids: list[str] | Unset = UNSET
+    sub_status_ids: list[str] | Unset = UNSET
+    failure_notification_mode: NewWorkflowDataAttributesFailureNotificationMode | Unset = UNSET
+    failure_notification_channels: list[NewWorkflowDataAttributesFailureNotificationChannelsItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.action_item_trigger_params import ActionItemTriggerParams
@@ -104,47 +126,47 @@ class NewWorkflowDataAttributes:
 
         name = self.name
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        command: None | Unset | str
+        command: None | str | Unset
         if isinstance(self.command, Unset):
             command = UNSET
         else:
             command = self.command
 
-        command_feedback_enabled: None | Unset | bool
+        command_feedback_enabled: bool | None | Unset
         if isinstance(self.command_feedback_enabled, Unset):
             command_feedback_enabled = UNSET
         else:
             command_feedback_enabled = self.command_feedback_enabled
 
-        wait: None | Unset | str
+        wait: None | str | Unset
         if isinstance(self.wait, Unset):
             wait = UNSET
         else:
             wait = self.wait
 
-        priority: Unset | str = UNSET
+        priority: str | Unset = UNSET
         if not isinstance(self.priority, Unset):
             priority = self.priority
 
-        repeat_every_duration: None | Unset | str
+        repeat_every_duration: None | str | Unset
         if isinstance(self.repeat_every_duration, Unset):
             repeat_every_duration = UNSET
         else:
             repeat_every_duration = self.repeat_every_duration
 
-        repeat_condition_duration_since_first_run: None | Unset | str
+        repeat_condition_duration_since_first_run: None | str | Unset
         if isinstance(self.repeat_condition_duration_since_first_run, Unset):
             repeat_condition_duration_since_first_run = UNSET
         else:
@@ -154,7 +176,9 @@ class NewWorkflowDataAttributes:
 
         continuously_repeat = self.continuously_repeat
 
-        repeat_on: Unset | list[str] = UNSET
+        run_once_per_resource = self.run_once_per_resource
+
+        repeat_on: list[str] | Unset = UNSET
         if not isinstance(self.repeat_on, Unset):
             repeat_on = []
             for repeat_on_item_data in self.repeat_on:
@@ -167,13 +191,13 @@ class NewWorkflowDataAttributes:
 
         position = self.position
 
-        workflow_group_id: None | Unset | str
+        workflow_group_id: None | str | Unset
         if isinstance(self.workflow_group_id, Unset):
             workflow_group_id = UNSET
         else:
             workflow_group_id = self.workflow_group_id
 
-        trigger_params: Unset | dict[str, Any]
+        trigger_params: dict[str, Any] | Unset
         if isinstance(self.trigger_params, Unset):
             trigger_params = UNSET
         elif isinstance(self.trigger_params, IncidentTriggerParams):
@@ -187,41 +211,56 @@ class NewWorkflowDataAttributes:
         else:
             trigger_params = self.trigger_params.to_dict()
 
-        environment_ids: Unset | list[str] = UNSET
+        environment_ids: list[str] | Unset = UNSET
         if not isinstance(self.environment_ids, Unset):
             environment_ids = self.environment_ids
 
-        severity_ids: Unset | list[str] = UNSET
+        severity_ids: list[str] | Unset = UNSET
         if not isinstance(self.severity_ids, Unset):
             severity_ids = self.severity_ids
 
-        incident_type_ids: Unset | list[str] = UNSET
+        incident_type_ids: list[str] | Unset = UNSET
         if not isinstance(self.incident_type_ids, Unset):
             incident_type_ids = self.incident_type_ids
 
-        incident_role_ids: Unset | list[str] = UNSET
+        incident_role_ids: list[str] | Unset = UNSET
         if not isinstance(self.incident_role_ids, Unset):
             incident_role_ids = self.incident_role_ids
 
-        service_ids: Unset | list[str] = UNSET
+        service_ids: list[str] | Unset = UNSET
         if not isinstance(self.service_ids, Unset):
             service_ids = self.service_ids
 
-        functionality_ids: Unset | list[str] = UNSET
+        functionality_ids: list[str] | Unset = UNSET
         if not isinstance(self.functionality_ids, Unset):
             functionality_ids = self.functionality_ids
 
-        group_ids: Unset | list[str] = UNSET
+        group_ids: list[str] | Unset = UNSET
         if not isinstance(self.group_ids, Unset):
             group_ids = self.group_ids
 
-        cause_ids: Unset | list[str] = UNSET
+        group_assignment_ids: list[str] | Unset = UNSET
+        if not isinstance(self.group_assignment_ids, Unset):
+            group_assignment_ids = self.group_assignment_ids
+
+        cause_ids: list[str] | Unset = UNSET
         if not isinstance(self.cause_ids, Unset):
             cause_ids = self.cause_ids
 
-        sub_status_ids: Unset | list[str] = UNSET
+        sub_status_ids: list[str] | Unset = UNSET
         if not isinstance(self.sub_status_ids, Unset):
             sub_status_ids = self.sub_status_ids
+
+        failure_notification_mode: str | Unset = UNSET
+        if not isinstance(self.failure_notification_mode, Unset):
+            failure_notification_mode = self.failure_notification_mode
+
+        failure_notification_channels: list[dict[str, Any]] | Unset = UNSET
+        if not isinstance(self.failure_notification_channels, Unset):
+            failure_notification_channels = []
+            for failure_notification_channels_item_data in self.failure_notification_channels:
+                failure_notification_channels_item = failure_notification_channels_item_data.to_dict()
+                failure_notification_channels.append(failure_notification_channels_item)
 
         field_dict: dict[str, Any] = {}
 
@@ -250,6 +289,8 @@ class NewWorkflowDataAttributes:
             field_dict["repeat_condition_number_of_repeats"] = repeat_condition_number_of_repeats
         if continuously_repeat is not UNSET:
             field_dict["continuously_repeat"] = continuously_repeat
+        if run_once_per_resource is not UNSET:
+            field_dict["run_once_per_resource"] = run_once_per_resource
         if repeat_on is not UNSET:
             field_dict["repeat_on"] = repeat_on
         if enabled is not UNSET:
@@ -276,10 +317,16 @@ class NewWorkflowDataAttributes:
             field_dict["functionality_ids"] = functionality_ids
         if group_ids is not UNSET:
             field_dict["group_ids"] = group_ids
+        if group_assignment_ids is not UNSET:
+            field_dict["group_assignment_ids"] = group_assignment_ids
         if cause_ids is not UNSET:
             field_dict["cause_ids"] = cause_ids
         if sub_status_ids is not UNSET:
             field_dict["sub_status_ids"] = sub_status_ids
+        if failure_notification_mode is not UNSET:
+            field_dict["failure_notification_mode"] = failure_notification_mode
+        if failure_notification_channels is not UNSET:
+            field_dict["failure_notification_channels"] = failure_notification_channels
 
         return field_dict
 
@@ -288,79 +335,82 @@ class NewWorkflowDataAttributes:
         from ..models.action_item_trigger_params import ActionItemTriggerParams
         from ..models.alert_trigger_params import AlertTriggerParams
         from ..models.incident_trigger_params import IncidentTriggerParams
+        from ..models.new_workflow_data_attributes_failure_notification_channels_item import (
+            NewWorkflowDataAttributesFailureNotificationChannelsItem,
+        )
         from ..models.pulse_trigger_params import PulseTriggerParams
         from ..models.simple_trigger_params import SimpleTriggerParams
 
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_command(data: object) -> None | Unset | str:
+        def _parse_command(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         command = _parse_command(d.pop("command", UNSET))
 
-        def _parse_command_feedback_enabled(data: object) -> None | Unset | bool:
+        def _parse_command_feedback_enabled(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         command_feedback_enabled = _parse_command_feedback_enabled(d.pop("command_feedback_enabled", UNSET))
 
-        def _parse_wait(data: object) -> None | Unset | str:
+        def _parse_wait(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         wait = _parse_wait(d.pop("wait", UNSET))
 
         _priority = d.pop("priority", UNSET)
-        priority: Unset | NewWorkflowDataAttributesPriority
+        priority: NewWorkflowDataAttributesPriority | Unset
         if isinstance(_priority, Unset):
             priority = UNSET
         else:
             priority = check_new_workflow_data_attributes_priority(_priority)
 
-        def _parse_repeat_every_duration(data: object) -> None | Unset | str:
+        def _parse_repeat_every_duration(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         repeat_every_duration = _parse_repeat_every_duration(d.pop("repeat_every_duration", UNSET))
 
-        def _parse_repeat_condition_duration_since_first_run(data: object) -> None | Unset | str:
+        def _parse_repeat_condition_duration_since_first_run(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         repeat_condition_duration_since_first_run = _parse_repeat_condition_duration_since_first_run(
             d.pop("repeat_condition_duration_since_first_run", UNSET)
@@ -370,12 +420,16 @@ class NewWorkflowDataAttributes:
 
         continuously_repeat = d.pop("continuously_repeat", UNSET)
 
-        repeat_on = []
-        _repeat_on = d.pop("repeat_on", UNSET)
-        for repeat_on_item_data in _repeat_on or []:
-            repeat_on_item = check_new_workflow_data_attributes_repeat_on_item(repeat_on_item_data)
+        run_once_per_resource = d.pop("run_once_per_resource", UNSET)
 
-            repeat_on.append(repeat_on_item)
+        _repeat_on = d.pop("repeat_on", UNSET)
+        repeat_on: list[NewWorkflowDataAttributesRepeatOnItem] | Unset = UNSET
+        if _repeat_on is not UNSET:
+            repeat_on = []
+            for repeat_on_item_data in _repeat_on:
+                repeat_on_item = check_new_workflow_data_attributes_repeat_on_item(repeat_on_item_data)
+
+                repeat_on.append(repeat_on_item)
 
         enabled = d.pop("enabled", UNSET)
 
@@ -383,25 +437,25 @@ class NewWorkflowDataAttributes:
 
         position = d.pop("position", UNSET)
 
-        def _parse_workflow_group_id(data: object) -> None | Unset | str:
+        def _parse_workflow_group_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         workflow_group_id = _parse_workflow_group_id(d.pop("workflow_group_id", UNSET))
 
         def _parse_trigger_params(
             data: object,
-        ) -> Union[
-            "ActionItemTriggerParams",
-            "AlertTriggerParams",
-            "IncidentTriggerParams",
-            "PulseTriggerParams",
-            "SimpleTriggerParams",
-            Unset,
-        ]:
+        ) -> (
+            ActionItemTriggerParams
+            | AlertTriggerParams
+            | IncidentTriggerParams
+            | PulseTriggerParams
+            | SimpleTriggerParams
+            | Unset
+        ):
             if isinstance(data, Unset):
                 return data
             try:
@@ -410,7 +464,7 @@ class NewWorkflowDataAttributes:
                 trigger_params_type_0 = IncidentTriggerParams.from_dict(data)
 
                 return trigger_params_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -418,7 +472,7 @@ class NewWorkflowDataAttributes:
                 trigger_params_type_1 = ActionItemTriggerParams.from_dict(data)
 
                 return trigger_params_type_1
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -426,7 +480,7 @@ class NewWorkflowDataAttributes:
                 trigger_params_type_2 = AlertTriggerParams.from_dict(data)
 
                 return trigger_params_type_2
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             try:
                 if not isinstance(data, dict):
@@ -434,7 +488,7 @@ class NewWorkflowDataAttributes:
                 trigger_params_type_3 = PulseTriggerParams.from_dict(data)
 
                 return trigger_params_type_3
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -458,9 +512,31 @@ class NewWorkflowDataAttributes:
 
         group_ids = cast(list[str], d.pop("group_ids", UNSET))
 
+        group_assignment_ids = cast(list[str], d.pop("group_assignment_ids", UNSET))
+
         cause_ids = cast(list[str], d.pop("cause_ids", UNSET))
 
         sub_status_ids = cast(list[str], d.pop("sub_status_ids", UNSET))
+
+        _failure_notification_mode = d.pop("failure_notification_mode", UNSET)
+        failure_notification_mode: NewWorkflowDataAttributesFailureNotificationMode | Unset
+        if isinstance(_failure_notification_mode, Unset):
+            failure_notification_mode = UNSET
+        else:
+            failure_notification_mode = check_new_workflow_data_attributes_failure_notification_mode(
+                _failure_notification_mode
+            )
+
+        _failure_notification_channels = d.pop("failure_notification_channels", UNSET)
+        failure_notification_channels: list[NewWorkflowDataAttributesFailureNotificationChannelsItem] | Unset = UNSET
+        if _failure_notification_channels is not UNSET:
+            failure_notification_channels = []
+            for failure_notification_channels_item_data in _failure_notification_channels:
+                failure_notification_channels_item = NewWorkflowDataAttributesFailureNotificationChannelsItem.from_dict(
+                    failure_notification_channels_item_data
+                )
+
+                failure_notification_channels.append(failure_notification_channels_item)
 
         new_workflow_data_attributes = cls(
             name=name,
@@ -474,6 +550,7 @@ class NewWorkflowDataAttributes:
             repeat_condition_duration_since_first_run=repeat_condition_duration_since_first_run,
             repeat_condition_number_of_repeats=repeat_condition_number_of_repeats,
             continuously_repeat=continuously_repeat,
+            run_once_per_resource=run_once_per_resource,
             repeat_on=repeat_on,
             enabled=enabled,
             locked=locked,
@@ -487,8 +564,11 @@ class NewWorkflowDataAttributes:
             service_ids=service_ids,
             functionality_ids=functionality_ids,
             group_ids=group_ids,
+            group_assignment_ids=group_assignment_ids,
             cause_ids=cause_ids,
             sub_status_ids=sub_status_ids,
+            failure_notification_mode=failure_notification_mode,
+            failure_notification_channels=failure_notification_channels,
         )
 
         return new_workflow_data_attributes

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateMicrosoftTeamsMeetingTaskParamsRecordingMode = Literal[
     "audio_only", "gallery_view", "gallery_view_v2", "speaker_view"
@@ -20,7 +20,7 @@ def check_create_microsoft_teams_meeting_task_params_recording_mode(
     if value is None:
         return None
     if value in CREATE_MICROSOFT_TEAMS_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES:
-        return cast(CreateMicrosoftTeamsMeetingTaskParamsRecordingMode, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_MICROSOFT_TEAMS_MEETING_TASK_PARAMS_RECORDING_MODE_VALUES!r}"
     )

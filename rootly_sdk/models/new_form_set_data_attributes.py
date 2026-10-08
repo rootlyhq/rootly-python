@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -21,20 +23,20 @@ class NewFormSetDataAttributes:
             `slack_incident_resolution_form`, `slack_incident_cancellation_form`, `slack_scheduled_incident_form`,
             `slack_update_scheduled_incident_form`, `google_chat_new_incident_form`, `google_chat_update_incident_form`,
             `microsoft_teams_new_incident_form`
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
     """
 
     name: str
     forms: list[str]
-    slug: None | Unset | str = UNSET
+    slug: None | str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         forms = self.forms
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -60,12 +62,12 @@ class NewFormSetDataAttributes:
 
         forms = cast(list[str], d.pop("forms"))
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 

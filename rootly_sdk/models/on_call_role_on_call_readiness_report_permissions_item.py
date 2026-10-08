@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OnCallRoleOnCallReadinessReportPermissionsItem = Literal["read"]
 
@@ -13,7 +13,7 @@ def check_on_call_role_on_call_readiness_report_permissions_item(
     if value is None:
         return None
     if value in ON_CALL_ROLE_ON_CALL_READINESS_REPORT_PERMISSIONS_ITEM_VALUES:
-        return cast(OnCallRoleOnCallReadinessReportPermissionsItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ON_CALL_ROLE_ON_CALL_READINESS_REPORT_PERMISSIONS_ITEM_VALUES!r}"
     )

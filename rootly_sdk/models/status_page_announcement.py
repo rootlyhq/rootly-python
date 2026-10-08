@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -19,7 +21,7 @@ class StatusPageAnnouncement:
         published_at (str): Date the announcement was published
         created_at (str): Date of creation
         updated_at (str): Date of last update
-        user_id (Union[None, Unset, int]): ID of the user who posted the announcement
+        user_id (int | None | Unset): ID of the user who posted the announcement
     """
 
     status_page_id: str
@@ -28,7 +30,7 @@ class StatusPageAnnouncement:
     published_at: str
     created_at: str
     updated_at: str
-    user_id: None | Unset | int = UNSET
+    user_id: int | None | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +46,7 @@ class StatusPageAnnouncement:
 
         updated_at = self.updated_at
 
-        user_id: None | Unset | int
+        user_id: int | None | Unset
         if isinstance(self.user_id, Unset):
             user_id = UNSET
         else:
@@ -82,12 +84,12 @@ class StatusPageAnnouncement:
 
         updated_at = d.pop("updated_at")
 
-        def _parse_user_id(data: object) -> None | Unset | int:
+        def _parse_user_id(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         user_id = _parse_user_id(d.pop("user_id", UNSET))
 

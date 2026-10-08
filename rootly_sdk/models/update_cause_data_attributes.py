@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -16,25 +18,24 @@ T = TypeVar("T", bound="UpdateCauseDataAttributes")
 class UpdateCauseDataAttributes:
     """
     Attributes:
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        name (Union[Unset, str]): The name of the cause
-        description (Union[None, Unset, str]): The description of the cause
-        public_description (Union[None, Unset, str]): The status page description of the cause
-        position (Union[None, Unset, int]): Position of the cause
-        properties (Union[Unset, list['UpdateCauseDataAttributesPropertiesItem']]): Array of property values for this
-            cause.
+        name (str | Unset): The name of the cause
+        description (None | str | Unset): The description of the cause
+        public_description (None | str | Unset): The status page description of the cause
+        position (int | None | Unset): Position of the cause
+        properties (list[UpdateCauseDataAttributesPropertiesItem] | Unset): Array of property values for this cause.
     """
 
-    slug: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    public_description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    properties: Unset | list["UpdateCauseDataAttributesPropertiesItem"] = UNSET
+    slug: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    public_description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    properties: list[UpdateCauseDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -42,25 +43,25 @@ class UpdateCauseDataAttributes:
 
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: None | Unset | str
+        public_description: None | str | Unset
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        properties: Unset | list[dict[str, Any]] = UNSET
+        properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -91,50 +92,52 @@ class UpdateCauseDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> None | Unset | str:
+        def _parse_public_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        properties = []
         _properties = d.pop("properties", UNSET)
-        for properties_item_data in _properties or []:
-            properties_item = UpdateCauseDataAttributesPropertiesItem.from_dict(properties_item_data)
+        properties: list[UpdateCauseDataAttributesPropertiesItem] | Unset = UNSET
+        if _properties is not UNSET:
+            properties = []
+            for properties_item_data in _properties:
+                properties_item = UpdateCauseDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-            properties.append(properties_item)
+                properties.append(properties_item)
 
         update_cause_data_attributes = cls(
             slug=slug,

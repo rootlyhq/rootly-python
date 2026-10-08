@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CommunicationsStageResponseDataType = Literal["communications_stages"]
 
@@ -11,5 +11,5 @@ def check_communications_stage_response_data_type(value: str | None) -> Communic
     if value is None:
         return None
     if value in COMMUNICATIONS_STAGE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(CommunicationsStageResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {COMMUNICATIONS_STAGE_RESPONSE_DATA_TYPE_VALUES!r}")

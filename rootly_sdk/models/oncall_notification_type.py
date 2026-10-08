@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 OncallNotificationType = Literal["audible", "quiet"]
 
@@ -12,5 +12,5 @@ def check_oncall_notification_type(value: str | None) -> OncallNotificationType 
     if value is None:
         return None
     if value in ONCALL_NOTIFICATION_TYPE_VALUES:
-        return cast(OncallNotificationType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ONCALL_NOTIFICATION_TYPE_VALUES!r}")

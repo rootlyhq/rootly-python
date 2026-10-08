@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewIncidentDataAttributesStatus = Literal[
     "acknowledged",
@@ -33,5 +33,5 @@ def check_new_incident_data_attributes_status(value: str | None) -> NewIncidentD
     if value is None:
         return None
     if value in NEW_INCIDENT_DATA_ATTRIBUTES_STATUS_VALUES:
-        return cast(NewIncidentDataAttributesStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_INCIDENT_DATA_ATTRIBUTES_STATUS_VALUES!r}")

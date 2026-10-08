@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertEventDataType = Literal["alert_events"]
 
@@ -11,5 +11,5 @@ def check_update_alert_event_data_type(value: str | None) -> UpdateAlertEventDat
     if value is None:
         return None
     if value in UPDATE_ALERT_EVENT_DATA_TYPE_VALUES:
-        return cast(UpdateAlertEventDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ALERT_EVENT_DATA_TYPE_VALUES!r}")

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -21,7 +23,7 @@ class NewWorkflowData:
     """
 
     type_: NewWorkflowDataType
-    attributes: "NewWorkflowDataAttributes"
+    attributes: NewWorkflowDataAttributes
 
     def to_dict(self) -> dict[str, Any]:
         type_: str = self.type_

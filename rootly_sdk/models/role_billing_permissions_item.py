@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleBillingPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_billing_permissions_item(value: str | None) -> RoleBillingPermiss
     if value is None:
         return None
     if value in ROLE_BILLING_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleBillingPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_BILLING_PERMISSIONS_ITEM_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertFieldResponseDataType = Literal["alert_fields"]
 
@@ -11,5 +11,5 @@ def check_alert_field_response_data_type(value: str | None) -> AlertFieldRespons
     if value is None:
         return None
     if value in ALERT_FIELD_RESPONSE_DATA_TYPE_VALUES:
-        return cast(AlertFieldResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_FIELD_RESPONSE_DATA_TYPE_VALUES!r}")

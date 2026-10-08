@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentPostMortemShowTimelineOrder = Literal["asc", "desc"]
 
@@ -12,5 +12,5 @@ def check_incident_post_mortem_show_timeline_order(value: str | None) -> Inciden
     if value is None:
         return None
     if value in INCIDENT_POST_MORTEM_SHOW_TIMELINE_ORDER_VALUES:
-        return cast(IncidentPostMortemShowTimelineOrder, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_POST_MORTEM_SHOW_TIMELINE_ORDER_VALUES!r}")

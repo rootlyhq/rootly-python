@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator = Literal[
     "contains", "does_not_contain", "is", "is_not"
@@ -20,7 +20,7 @@ def check_update_alerts_source_data_attributes_alert_source_urgency_rules_attrib
     if value is None:
         return None
     if value in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_OPERATOR_VALUES:
-        return cast(UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemOperator, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_OPERATOR_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PagePagerdutyOnCallRespondersTaskParamsUrgency = Literal["auto", "high", "low"]
 
@@ -15,7 +15,7 @@ def check_page_pagerduty_on_call_responders_task_params_urgency(
     if value is None:
         return None
     if value in PAGE_PAGERDUTY_ON_CALL_RESPONDERS_TASK_PARAMS_URGENCY_VALUES:
-        return cast(PagePagerdutyOnCallRespondersTaskParamsUrgency, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {PAGE_PAGERDUTY_ON_CALL_RESPONDERS_TASK_PARAMS_URGENCY_VALUES!r}"
     )

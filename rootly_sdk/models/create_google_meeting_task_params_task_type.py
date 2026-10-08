@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateGoogleMeetingTaskParamsTaskType = Literal["create_google_meeting"]
 
@@ -13,7 +13,7 @@ def check_create_google_meeting_task_params_task_type(
     if value is None:
         return None
     if value in CREATE_GOOGLE_MEETING_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(CreateGoogleMeetingTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_GOOGLE_MEETING_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

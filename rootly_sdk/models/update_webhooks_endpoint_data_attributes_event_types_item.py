@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateWebhooksEndpointDataAttributesEventTypesItem = Literal[
     "alert.created",
@@ -32,6 +32,7 @@ UpdateWebhooksEndpointDataAttributesEventTypesItem = Literal[
     "incident_status_page_event.deleted",
     "incident_status_page_event.updated",
     "pulse.created",
+    "shift.ended",
     "shift.started",
 ]
 
@@ -69,6 +70,7 @@ UPDATE_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES: set[
     "incident_status_page_event.deleted",
     "incident_status_page_event.updated",
     "pulse.created",
+    "shift.ended",
     "shift.started",
 }
 
@@ -79,7 +81,7 @@ def check_update_webhooks_endpoint_data_attributes_event_types_item(
     if value is None:
         return None
     if value in UPDATE_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES:
-        return cast(UpdateWebhooksEndpointDataAttributesEventTypesItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_WEBHOOKS_ENDPOINT_DATA_ATTRIBUTES_EVENT_TYPES_ITEM_VALUES!r}"
     )

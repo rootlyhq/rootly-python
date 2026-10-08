@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,25 +20,25 @@ class UpdateQuipPageTaskParams:
     """
     Attributes:
         file_id (str): The Quip page ID
-        task_type (Union[Unset, UpdateQuipPageTaskParamsTaskType]):
-        title (Union[Unset, str]): The Quip page title
-        content (Union[Unset, str]): The Quip page content
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating page, if desired
-        template_id (Union[Unset, str]): The Quip file ID to use as a template
+        task_type (UpdateQuipPageTaskParamsTaskType | Unset):
+        title (str | Unset): The Quip page title
+        content (str | Unset): The Quip page content
+        post_mortem_template_id (str | Unset): Retrospective template to use when updating page, if desired
+        template_id (str | Unset): The Quip file ID to use as a template
     """
 
     file_id: str
-    task_type: Unset | UpdateQuipPageTaskParamsTaskType = UNSET
-    title: Unset | str = UNSET
-    content: Unset | str = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    template_id: Unset | str = UNSET
+    task_type: UpdateQuipPageTaskParamsTaskType | Unset = UNSET
+    title: str | Unset = UNSET
+    content: str | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    template_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -74,7 +76,7 @@ class UpdateQuipPageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateQuipPageTaskParamsTaskType
+        task_type: UpdateQuipPageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

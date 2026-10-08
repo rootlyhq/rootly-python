@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -27,84 +29,84 @@ class NewFunctionalityDataAttributes:
     """
     Attributes:
         name (str): The name of the functionality
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        description (Union[None, Unset, str]): The description of the functionality
-        public_description (Union[None, Unset, str]): The status page description of the functionality
-        notify_emails (Union[None, Unset, list[str]]): Emails to attach to the functionality
-        color (Union[None, Unset, str]): The hex color of the functionality
-        position (Union[None, Unset, int]): Position of the functionality
-        backstage_id (Union[None, Unset, str]): The Backstage entity id associated to this functionality. eg:
+        description (None | str | Unset): The description of the functionality
+        public_description (None | str | Unset): The status page description of the functionality
+        notify_emails (list[str] | None | Unset): Emails to attach to the functionality
+        color (None | str | Unset): The hex color of the functionality
+        position (int | None | Unset): Position of the functionality
+        backstage_id (None | str | Unset): The Backstage entity id associated to this functionality. eg:
             :namespace/:kind/:entity_name
-        external_id (Union[None, Unset, str]): The external id associated to this functionality
-        pagerduty_id (Union[None, Unset, str]): The PagerDuty service id associated to this functionality
-        opsgenie_id (Union[None, Unset, str]): The Opsgenie service id associated to this functionality
-        opsgenie_team_id (Union[None, Unset, str]): The Opsgenie team id associated to this functionality
-        cortex_id (Union[None, Unset, str]): The Cortex group id associated to this functionality
-        service_now_ci_sys_id (Union[None, Unset, str]): The Service Now CI sys id associated to this functionality
-        show_uptime (Union[None, Unset, bool]): Show uptime
-        show_uptime_last_days (Union[Unset, NewFunctionalityDataAttributesShowUptimeLastDays]): Show uptime over x days
+        external_id (None | str | Unset): The external id associated to this functionality
+        pagerduty_id (None | str | Unset): The PagerDuty service id associated to this functionality
+        opsgenie_id (None | str | Unset): The Opsgenie service id associated to this functionality
+        opsgenie_team_id (None | str | Unset): The Opsgenie team id associated to this functionality
+        cortex_id (None | str | Unset): The Cortex group id associated to this functionality
+        service_now_ci_sys_id (None | str | Unset): The Service Now CI sys id associated to this functionality
+        show_uptime (bool | None | Unset): Show uptime
+        show_uptime_last_days (NewFunctionalityDataAttributesShowUptimeLastDays | Unset): Show uptime over x days
             Default: 60.
-        environment_ids (Union[None, Unset, list[str]]): Environments associated with this functionality
-        service_ids (Union[None, Unset, list[str]]): Services associated with this functionality
-        owner_group_ids (Union[None, Unset, list[str]]): Owner Teams associated with this functionality
-        owner_user_ids (Union[None, Unset, list[int]]): Owner Users associated with this functionality
-        escalation_policy_id (Union[None, Unset, str]): The escalation policy id of the functionality
-        slack_channels (Union[None, Unset, list['NewFunctionalityDataAttributesSlackChannelsType0Item']]): Slack
-            Channels associated with this functionality
-        slack_aliases (Union[None, Unset, list['NewFunctionalityDataAttributesSlackAliasesType0Item']]): Slack Aliases
+        environment_ids (list[str] | None | Unset): Environments associated with this functionality
+        service_ids (list[str] | None | Unset): Services associated with this functionality
+        owner_group_ids (list[str] | None | Unset): Owner Teams associated with this functionality
+        owner_user_ids (list[int] | None | Unset): Owner Users associated with this functionality
+        escalation_policy_id (None | str | Unset): The escalation policy id of the functionality
+        slack_channels (list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset): Slack Channels
             associated with this functionality
-        properties (Union[Unset, list['NewFunctionalityDataAttributesPropertiesItem']]): Array of property values for
-            this functionality.
+        slack_aliases (list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset): Slack Aliases
+            associated with this functionality
+        properties (list[NewFunctionalityDataAttributesPropertiesItem] | Unset): Array of property values for this
+            functionality.
     """
 
     name: str
-    slug: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    public_description: None | Unset | str = UNSET
-    notify_emails: None | Unset | list[str] = UNSET
-    color: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
-    backstage_id: None | Unset | str = UNSET
-    external_id: None | Unset | str = UNSET
-    pagerduty_id: None | Unset | str = UNSET
-    opsgenie_id: None | Unset | str = UNSET
-    opsgenie_team_id: None | Unset | str = UNSET
-    cortex_id: None | Unset | str = UNSET
-    service_now_ci_sys_id: None | Unset | str = UNSET
-    show_uptime: None | Unset | bool = UNSET
-    show_uptime_last_days: Unset | NewFunctionalityDataAttributesShowUptimeLastDays = 60
-    environment_ids: None | Unset | list[str] = UNSET
-    service_ids: None | Unset | list[str] = UNSET
-    owner_group_ids: None | Unset | list[str] = UNSET
-    owner_user_ids: None | Unset | list[int] = UNSET
-    escalation_policy_id: None | Unset | str = UNSET
-    slack_channels: None | Unset | list["NewFunctionalityDataAttributesSlackChannelsType0Item"] = UNSET
-    slack_aliases: None | Unset | list["NewFunctionalityDataAttributesSlackAliasesType0Item"] = UNSET
-    properties: Unset | list["NewFunctionalityDataAttributesPropertiesItem"] = UNSET
+    slug: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    public_description: None | str | Unset = UNSET
+    notify_emails: list[str] | None | Unset = UNSET
+    color: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
+    backstage_id: None | str | Unset = UNSET
+    external_id: None | str | Unset = UNSET
+    pagerduty_id: None | str | Unset = UNSET
+    opsgenie_id: None | str | Unset = UNSET
+    opsgenie_team_id: None | str | Unset = UNSET
+    cortex_id: None | str | Unset = UNSET
+    service_now_ci_sys_id: None | str | Unset = UNSET
+    show_uptime: bool | None | Unset = UNSET
+    show_uptime_last_days: NewFunctionalityDataAttributesShowUptimeLastDays | Unset = 60
+    environment_ids: list[str] | None | Unset = UNSET
+    service_ids: list[str] | None | Unset = UNSET
+    owner_group_ids: list[str] | None | Unset = UNSET
+    owner_user_ids: list[int] | None | Unset = UNSET
+    escalation_policy_id: None | str | Unset = UNSET
+    slack_channels: list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset = UNSET
+    slack_aliases: list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset = UNSET
+    properties: list[NewFunctionalityDataAttributesPropertiesItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        public_description: None | Unset | str
+        public_description: None | str | Unset
         if isinstance(self.public_description, Unset):
             public_description = UNSET
         else:
             public_description = self.public_description
 
-        notify_emails: None | Unset | list[str]
+        notify_emails: list[str] | None | Unset
         if isinstance(self.notify_emails, Unset):
             notify_emails = UNSET
         elif isinstance(self.notify_emails, list):
@@ -113,71 +115,71 @@ class NewFunctionalityDataAttributes:
         else:
             notify_emails = self.notify_emails
 
-        color: None | Unset | str
+        color: None | str | Unset
         if isinstance(self.color, Unset):
             color = UNSET
         else:
             color = self.color
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
             position = self.position
 
-        backstage_id: None | Unset | str
+        backstage_id: None | str | Unset
         if isinstance(self.backstage_id, Unset):
             backstage_id = UNSET
         else:
             backstage_id = self.backstage_id
 
-        external_id: None | Unset | str
+        external_id: None | str | Unset
         if isinstance(self.external_id, Unset):
             external_id = UNSET
         else:
             external_id = self.external_id
 
-        pagerduty_id: None | Unset | str
+        pagerduty_id: None | str | Unset
         if isinstance(self.pagerduty_id, Unset):
             pagerduty_id = UNSET
         else:
             pagerduty_id = self.pagerduty_id
 
-        opsgenie_id: None | Unset | str
+        opsgenie_id: None | str | Unset
         if isinstance(self.opsgenie_id, Unset):
             opsgenie_id = UNSET
         else:
             opsgenie_id = self.opsgenie_id
 
-        opsgenie_team_id: None | Unset | str
+        opsgenie_team_id: None | str | Unset
         if isinstance(self.opsgenie_team_id, Unset):
             opsgenie_team_id = UNSET
         else:
             opsgenie_team_id = self.opsgenie_team_id
 
-        cortex_id: None | Unset | str
+        cortex_id: None | str | Unset
         if isinstance(self.cortex_id, Unset):
             cortex_id = UNSET
         else:
             cortex_id = self.cortex_id
 
-        service_now_ci_sys_id: None | Unset | str
+        service_now_ci_sys_id: None | str | Unset
         if isinstance(self.service_now_ci_sys_id, Unset):
             service_now_ci_sys_id = UNSET
         else:
             service_now_ci_sys_id = self.service_now_ci_sys_id
 
-        show_uptime: None | Unset | bool
+        show_uptime: bool | None | Unset
         if isinstance(self.show_uptime, Unset):
             show_uptime = UNSET
         else:
             show_uptime = self.show_uptime
 
-        show_uptime_last_days: Unset | int = UNSET
+        show_uptime_last_days: int | Unset = UNSET
         if not isinstance(self.show_uptime_last_days, Unset):
             show_uptime_last_days = self.show_uptime_last_days
 
-        environment_ids: None | Unset | list[str]
+        environment_ids: list[str] | None | Unset
         if isinstance(self.environment_ids, Unset):
             environment_ids = UNSET
         elif isinstance(self.environment_ids, list):
@@ -186,7 +188,7 @@ class NewFunctionalityDataAttributes:
         else:
             environment_ids = self.environment_ids
 
-        service_ids: None | Unset | list[str]
+        service_ids: list[str] | None | Unset
         if isinstance(self.service_ids, Unset):
             service_ids = UNSET
         elif isinstance(self.service_ids, list):
@@ -195,7 +197,7 @@ class NewFunctionalityDataAttributes:
         else:
             service_ids = self.service_ids
 
-        owner_group_ids: None | Unset | list[str]
+        owner_group_ids: list[str] | None | Unset
         if isinstance(self.owner_group_ids, Unset):
             owner_group_ids = UNSET
         elif isinstance(self.owner_group_ids, list):
@@ -204,7 +206,7 @@ class NewFunctionalityDataAttributes:
         else:
             owner_group_ids = self.owner_group_ids
 
-        owner_user_ids: None | Unset | list[int]
+        owner_user_ids: list[int] | None | Unset
         if isinstance(self.owner_user_ids, Unset):
             owner_user_ids = UNSET
         elif isinstance(self.owner_user_ids, list):
@@ -213,13 +215,13 @@ class NewFunctionalityDataAttributes:
         else:
             owner_user_ids = self.owner_user_ids
 
-        escalation_policy_id: None | Unset | str
+        escalation_policy_id: None | str | Unset
         if isinstance(self.escalation_policy_id, Unset):
             escalation_policy_id = UNSET
         else:
             escalation_policy_id = self.escalation_policy_id
 
-        slack_channels: None | Unset | list[dict[str, Any]]
+        slack_channels: list[dict[str, Any]] | None | Unset
         if isinstance(self.slack_channels, Unset):
             slack_channels = UNSET
         elif isinstance(self.slack_channels, list):
@@ -231,7 +233,7 @@ class NewFunctionalityDataAttributes:
         else:
             slack_channels = self.slack_channels
 
-        slack_aliases: None | Unset | list[dict[str, Any]]
+        slack_aliases: list[dict[str, Any]] | None | Unset
         if isinstance(self.slack_aliases, Unset):
             slack_aliases = UNSET
         elif isinstance(self.slack_aliases, list):
@@ -243,7 +245,7 @@ class NewFunctionalityDataAttributes:
         else:
             slack_aliases = self.slack_aliases
 
-        properties: Unset | list[dict[str, Any]] = UNSET
+        properties: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.properties, Unset):
             properties = []
             for properties_item_data in self.properties:
@@ -321,34 +323,34 @@ class NewFunctionalityDataAttributes:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_public_description(data: object) -> None | Unset | str:
+        def _parse_public_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         public_description = _parse_public_description(d.pop("public_description", UNSET))
 
-        def _parse_notify_emails(data: object) -> None | Unset | list[str]:
+        def _parse_notify_emails(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -359,104 +361,104 @@ class NewFunctionalityDataAttributes:
                 notify_emails_type_0 = cast(list[str], data)
 
                 return notify_emails_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         notify_emails = _parse_notify_emails(d.pop("notify_emails", UNSET))
 
-        def _parse_color(data: object) -> None | Unset | str:
+        def _parse_color(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         color = _parse_color(d.pop("color", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 
-        def _parse_backstage_id(data: object) -> None | Unset | str:
+        def _parse_backstage_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         backstage_id = _parse_backstage_id(d.pop("backstage_id", UNSET))
 
-        def _parse_external_id(data: object) -> None | Unset | str:
+        def _parse_external_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         external_id = _parse_external_id(d.pop("external_id", UNSET))
 
-        def _parse_pagerduty_id(data: object) -> None | Unset | str:
+        def _parse_pagerduty_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pagerduty_id = _parse_pagerduty_id(d.pop("pagerduty_id", UNSET))
 
-        def _parse_opsgenie_id(data: object) -> None | Unset | str:
+        def _parse_opsgenie_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_id = _parse_opsgenie_id(d.pop("opsgenie_id", UNSET))
 
-        def _parse_opsgenie_team_id(data: object) -> None | Unset | str:
+        def _parse_opsgenie_team_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         opsgenie_team_id = _parse_opsgenie_team_id(d.pop("opsgenie_team_id", UNSET))
 
-        def _parse_cortex_id(data: object) -> None | Unset | str:
+        def _parse_cortex_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         cortex_id = _parse_cortex_id(d.pop("cortex_id", UNSET))
 
-        def _parse_service_now_ci_sys_id(data: object) -> None | Unset | str:
+        def _parse_service_now_ci_sys_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         service_now_ci_sys_id = _parse_service_now_ci_sys_id(d.pop("service_now_ci_sys_id", UNSET))
 
-        def _parse_show_uptime(data: object) -> None | Unset | bool:
+        def _parse_show_uptime(data: object) -> bool | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | bool, data)
+            return cast(bool | None | Unset, data)
 
         show_uptime = _parse_show_uptime(d.pop("show_uptime", UNSET))
 
         _show_uptime_last_days = d.pop("show_uptime_last_days", UNSET)
-        show_uptime_last_days: Unset | NewFunctionalityDataAttributesShowUptimeLastDays
+        show_uptime_last_days: NewFunctionalityDataAttributesShowUptimeLastDays | Unset
         if isinstance(_show_uptime_last_days, Unset):
             show_uptime_last_days = UNSET
         else:
@@ -464,7 +466,7 @@ class NewFunctionalityDataAttributes:
                 _show_uptime_last_days
             )
 
-        def _parse_environment_ids(data: object) -> None | Unset | list[str]:
+        def _parse_environment_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -475,13 +477,13 @@ class NewFunctionalityDataAttributes:
                 environment_ids_type_0 = cast(list[str], data)
 
                 return environment_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         environment_ids = _parse_environment_ids(d.pop("environment_ids", UNSET))
 
-        def _parse_service_ids(data: object) -> None | Unset | list[str]:
+        def _parse_service_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -492,13 +494,13 @@ class NewFunctionalityDataAttributes:
                 service_ids_type_0 = cast(list[str], data)
 
                 return service_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         service_ids = _parse_service_ids(d.pop("service_ids", UNSET))
 
-        def _parse_owner_group_ids(data: object) -> None | Unset | list[str]:
+        def _parse_owner_group_ids(data: object) -> list[str] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -509,13 +511,13 @@ class NewFunctionalityDataAttributes:
                 owner_group_ids_type_0 = cast(list[str], data)
 
                 return owner_group_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[str], data)
+            return cast(list[str] | None | Unset, data)
 
         owner_group_ids = _parse_owner_group_ids(d.pop("owner_group_ids", UNSET))
 
-        def _parse_owner_user_ids(data: object) -> None | Unset | list[int]:
+        def _parse_owner_user_ids(data: object) -> list[int] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -526,24 +528,24 @@ class NewFunctionalityDataAttributes:
                 owner_user_ids_type_0 = cast(list[int], data)
 
                 return owner_user_ids_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list[int], data)
+            return cast(list[int] | None | Unset, data)
 
         owner_user_ids = _parse_owner_user_ids(d.pop("owner_user_ids", UNSET))
 
-        def _parse_escalation_policy_id(data: object) -> None | Unset | str:
+        def _parse_escalation_policy_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         escalation_policy_id = _parse_escalation_policy_id(d.pop("escalation_policy_id", UNSET))
 
         def _parse_slack_channels(
             data: object,
-        ) -> None | Unset | list["NewFunctionalityDataAttributesSlackChannelsType0Item"]:
+        ) -> list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -561,15 +563,15 @@ class NewFunctionalityDataAttributes:
                     slack_channels_type_0.append(slack_channels_type_0_item)
 
                 return slack_channels_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["NewFunctionalityDataAttributesSlackChannelsType0Item"], data)
+            return cast(list[NewFunctionalityDataAttributesSlackChannelsType0Item] | None | Unset, data)
 
         slack_channels = _parse_slack_channels(d.pop("slack_channels", UNSET))
 
         def _parse_slack_aliases(
             data: object,
-        ) -> None | Unset | list["NewFunctionalityDataAttributesSlackAliasesType0Item"]:
+        ) -> list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -587,18 +589,20 @@ class NewFunctionalityDataAttributes:
                     slack_aliases_type_0.append(slack_aliases_type_0_item)
 
                 return slack_aliases_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | list["NewFunctionalityDataAttributesSlackAliasesType0Item"], data)
+            return cast(list[NewFunctionalityDataAttributesSlackAliasesType0Item] | None | Unset, data)
 
         slack_aliases = _parse_slack_aliases(d.pop("slack_aliases", UNSET))
 
-        properties = []
         _properties = d.pop("properties", UNSET)
-        for properties_item_data in _properties or []:
-            properties_item = NewFunctionalityDataAttributesPropertiesItem.from_dict(properties_item_data)
+        properties: list[NewFunctionalityDataAttributesPropertiesItem] | Unset = UNSET
+        if _properties is not UNSET:
+            properties = []
+            for properties_item_data in _properties:
+                properties_item = NewFunctionalityDataAttributesPropertiesItem.from_dict(properties_item_data)
 
-            properties.append(properties_item)
+                properties.append(properties_item)
 
         new_functionality_data_attributes = cls(
             name=name,

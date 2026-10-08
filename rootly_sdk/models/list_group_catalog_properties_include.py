@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListGroupCatalogPropertiesInclude = Literal["catalog"]
 
@@ -11,5 +11,5 @@ def check_list_group_catalog_properties_include(value: str | None) -> ListGroupC
     if value is None:
         return None
     if value in LIST_GROUP_CATALOG_PROPERTIES_INCLUDE_VALUES:
-        return cast(ListGroupCatalogPropertiesInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_GROUP_CATALOG_PROPERTIES_INCLUDE_VALUES!r}")

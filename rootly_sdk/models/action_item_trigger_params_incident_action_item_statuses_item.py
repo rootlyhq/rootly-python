@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ActionItemTriggerParamsIncidentActionItemStatusesItem = Literal["cancelled", "done", "in_progress", "open"]
 
@@ -18,7 +18,7 @@ def check_action_item_trigger_params_incident_action_item_statuses_item(
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_STATUSES_ITEM_VALUES:
-        return cast(ActionItemTriggerParamsIncidentActionItemStatusesItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ACTION_ITEM_TRIGGER_PARAMS_INCIDENT_ACTION_ITEM_STATUSES_ITEM_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogEntityManagedBy = Literal["admin_web", "api", "backstage", "catalog_sync", "pulumi", "terraform", "web"]
 
@@ -17,5 +17,5 @@ def check_catalog_entity_managed_by(value: str | None) -> CatalogEntityManagedBy
     if value is None:
         return None
     if value in CATALOG_ENTITY_MANAGED_BY_VALUES:
-        return cast(CatalogEntityManagedBy, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_ENTITY_MANAGED_BY_VALUES!r}")

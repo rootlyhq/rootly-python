@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,20 +20,20 @@ T = TypeVar("T", bound="ScheduleRotationActiveDayResponse")
 class ScheduleRotationActiveDayResponse:
     """
     Attributes:
-        data (Union[Unset, ScheduleRotationActiveDayResponseData]):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        data (ScheduleRotationActiveDayResponseData | Unset):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: Union[Unset, "ScheduleRotationActiveDayResponseData"] = UNSET
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: ScheduleRotationActiveDayResponseData | Unset = UNSET
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data: Unset | dict[str, Any] = UNSET
+        data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -55,18 +57,20 @@ class ScheduleRotationActiveDayResponse:
 
         d = dict(src_dict)
         _data = d.pop("data", UNSET)
-        data: Unset | ScheduleRotationActiveDayResponseData
+        data: ScheduleRotationActiveDayResponseData | Unset
         if isinstance(_data, Unset):
             data = UNSET
         else:
             data = ScheduleRotationActiveDayResponseData.from_dict(_data)
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         schedule_rotation_active_day_response = cls(
             data=data,

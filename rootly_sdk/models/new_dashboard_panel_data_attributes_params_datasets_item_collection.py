@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardPanelDataAttributesParamsDatasetsItemCollection = Literal[
     "alerts", "incident_action_items", "incident_post_mortems", "incidents", "users"
@@ -21,7 +21,7 @@ def check_new_dashboard_panel_data_attributes_params_datasets_item_collection(
     if value is None:
         return None
     if value in NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES:
-        return cast(NewDashboardPanelDataAttributesParamsDatasetsItemCollection, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_COLLECTION_VALUES!r}"
     )

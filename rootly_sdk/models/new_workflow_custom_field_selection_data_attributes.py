@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -19,16 +21,16 @@ class NewWorkflowCustomFieldSelectionDataAttributes:
         custom_field_id (int): The custom field for this selection
         incident_condition (NewWorkflowCustomFieldSelectionDataAttributesIncidentCondition): The trigger condition
             Default: 'ANY'.
-        workflow_id (Union[Unset, str]): The workflow for this selection
-        values (Union[Unset, list[str]]):
-        selected_option_ids (Union[Unset, list[int]]):
+        workflow_id (str | Unset): The workflow for this selection
+        values (list[str] | Unset):
+        selected_option_ids (list[int] | Unset):
     """
 
     custom_field_id: int
     incident_condition: NewWorkflowCustomFieldSelectionDataAttributesIncidentCondition = "ANY"
-    workflow_id: Unset | str = UNSET
-    values: Unset | list[str] = UNSET
-    selected_option_ids: Unset | list[int] = UNSET
+    workflow_id: str | Unset = UNSET
+    values: list[str] | Unset = UNSET
+    selected_option_ids: list[int] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         custom_field_id = self.custom_field_id
@@ -37,11 +39,11 @@ class NewWorkflowCustomFieldSelectionDataAttributes:
 
         workflow_id = self.workflow_id
 
-        values: Unset | list[str] = UNSET
+        values: list[str] | Unset = UNSET
         if not isinstance(self.values, Unset):
             values = self.values
 
-        selected_option_ids: Unset | list[int] = UNSET
+        selected_option_ids: list[int] | Unset = UNSET
         if not isinstance(self.selected_option_ids, Unset):
             selected_option_ids = self.selected_option_ids
 

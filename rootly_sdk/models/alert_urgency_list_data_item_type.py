@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertUrgencyListDataItemType = Literal["alert_urgencies"]
 
@@ -11,5 +11,5 @@ def check_alert_urgency_list_data_item_type(value: str | None) -> AlertUrgencyLi
     if value is None:
         return None
     if value in ALERT_URGENCY_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(AlertUrgencyListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_URGENCY_LIST_DATA_ITEM_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateAsanaSubtaskTaskParamsTaskType = Literal["create_asana_subtask"]
 
@@ -11,7 +11,7 @@ def check_create_asana_subtask_task_params_task_type(value: str | None) -> Creat
     if value is None:
         return None
     if value in CREATE_ASANA_SUBTASK_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(CreateAsanaSubtaskTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_ASANA_SUBTASK_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

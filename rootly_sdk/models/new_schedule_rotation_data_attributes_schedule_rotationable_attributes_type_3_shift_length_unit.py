@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit = Literal["days", "hours", "weeks"]
 
@@ -17,7 +17,7 @@ def check_new_schedule_rotation_data_attributes_schedule_rotationable_attributes
     if value is None:
         return None
     if value in NEW_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_3_SHIFT_LENGTH_UNIT_VALUES:
-        return cast(NewScheduleRotationDataAttributesScheduleRotationableAttributesType3ShiftLengthUnit, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_SCHEDULE_ROTATION_DATA_ATTRIBUTES_SCHEDULE_ROTATIONABLE_ATTRIBUTES_TYPE_3_SHIFT_LENGTH_UNIT_VALUES!r}"
     )

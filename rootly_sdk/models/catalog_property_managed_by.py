@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogPropertyManagedBy = Literal["admin_web", "api", "backstage", "catalog_sync", "pulumi", "terraform", "web"]
 
@@ -17,5 +17,5 @@ def check_catalog_property_managed_by(value: str | None) -> CatalogPropertyManag
     if value is None:
         return None
     if value in CATALOG_PROPERTY_MANAGED_BY_VALUES:
-        return cast(CatalogPropertyManagedBy, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CATALOG_PROPERTY_MANAGED_BY_VALUES!r}")

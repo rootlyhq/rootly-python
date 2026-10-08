@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy = Literal[
     "alert", "cycle", "default", "random"
@@ -20,7 +20,7 @@ def check_update_escalation_policy_level_data_attributes_paging_strategy_configu
     if value is None:
         return None
     if value in UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_STRATEGY_VALUES:
-        return cast(UpdateEscalationPolicyLevelDataAttributesPagingStrategyConfigurationStrategy, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ESCALATION_POLICY_LEVEL_DATA_ATTRIBUTES_PAGING_STRATEGY_CONFIGURATION_STRATEGY_VALUES!r}"
     )

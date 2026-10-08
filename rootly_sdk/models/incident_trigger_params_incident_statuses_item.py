@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentTriggerParamsIncidentStatusesItem = Literal[
     "acknowledged",
@@ -35,7 +35,7 @@ def check_incident_trigger_params_incident_statuses_item(
     if value is None:
         return None
     if value in INCIDENT_TRIGGER_PARAMS_INCIDENT_STATUSES_ITEM_VALUES:
-        return cast(IncidentTriggerParamsIncidentStatusesItem, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_TRIGGER_PARAMS_INCIDENT_STATUSES_ITEM_VALUES!r}"
     )

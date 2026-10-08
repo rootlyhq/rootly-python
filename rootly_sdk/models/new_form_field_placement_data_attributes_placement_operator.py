@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewFormFieldPlacementDataAttributesPlacementOperator = Literal["and", "or"]
 
@@ -16,7 +16,7 @@ def check_new_form_field_placement_data_attributes_placement_operator(
     if value is None:
         return None
     if value in NEW_FORM_FIELD_PLACEMENT_DATA_ATTRIBUTES_PLACEMENT_OPERATOR_VALUES:
-        return cast(NewFormFieldPlacementDataAttributesPlacementOperator, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_FORM_FIELD_PLACEMENT_DATA_ATTRIBUTES_PLACEMENT_OPERATOR_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentStatusPageEventStatus = Literal[
     "completed", "identified", "in_progress", "investigating", "monitoring", "resolved", "scheduled"
@@ -19,5 +19,5 @@ def check_incident_status_page_event_status(value: str | None) -> IncidentStatus
     if value is None:
         return None
     if value in INCIDENT_STATUS_PAGE_EVENT_STATUS_VALUES:
-        return cast(IncidentStatusPageEventStatus, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_STATUS_PAGE_EVENT_STATUS_VALUES!r}")

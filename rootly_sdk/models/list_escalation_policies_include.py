@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListEscalationPoliciesInclude = Literal["escalation_policy_levels", "escalation_policy_paths", "groups", "services"]
 
@@ -14,5 +14,5 @@ def check_list_escalation_policies_include(value: str | None) -> ListEscalationP
     if value is None:
         return None
     if value in LIST_ESCALATION_POLICIES_INCLUDE_VALUES:
-        return cast(ListEscalationPoliciesInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ESCALATION_POLICIES_INCLUDE_VALUES!r}")

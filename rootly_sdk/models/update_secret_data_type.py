@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateSecretDataType = Literal["secrets"]
 
@@ -11,5 +11,5 @@ def check_update_secret_data_type(value: str | None) -> UpdateSecretDataType | N
     if value is None:
         return None
     if value in UPDATE_SECRET_DATA_TYPE_VALUES:
-        return cast(UpdateSecretDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_SECRET_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 StatusPageComponentListDataItemType = Literal["status_page_components"]
 
@@ -11,5 +11,5 @@ def check_status_page_component_list_data_item_type(value: str | None) -> Status
     if value is None:
         return None
     if value in STATUS_PAGE_COMPONENT_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(StatusPageComponentListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {STATUS_PAGE_COMPONENT_LIST_DATA_ITEM_TYPE_VALUES!r}")

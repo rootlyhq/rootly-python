@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any
 
 import httpx
 
@@ -14,7 +14,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union["BulkDestroyFunctionalitiesType0", "BulkDestroyFunctionalitiesType1"],
+    body: BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,7 +23,6 @@ def _get_kwargs(
         "url": "/v1/functionalities/bulk_delete",
     }
 
-    _kwargs["json"]: dict[str, Any]
     if isinstance(body, BulkDestroyFunctionalitiesType0):
         _kwargs["json"] = body.to_dict()
     else:
@@ -37,7 +36,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"] | None:
+) -> BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList | None:
     if response.status_code == 200:
         response_200 = BulkDestroyFunctionalitiesResponse.from_dict(response.json())
 
@@ -50,14 +49,14 @@ def _parse_response(
 
     if response.status_code == 422:
 
-        def _parse_response_422(data: object) -> Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"]:
+        def _parse_response_422(data: object) -> BulkDestroyFunctionalitiesResponse | ErrorsList:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 response_422_type_0 = ErrorsList.from_dict(data)
 
                 return response_422_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
             if not isinstance(data, dict):
                 raise TypeError()
@@ -77,9 +76,7 @@ def _parse_response(
 
 def _build_response(
     *, client: AuthenticatedClient | Client, response: httpx.Response
-) -> Response[
-    BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"]
-]:
+) -> Response[BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -91,26 +88,24 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union["BulkDestroyFunctionalitiesType0", "BulkDestroyFunctionalitiesType1"],
-) -> Response[
-    BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"]
-]:
+    body: BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1,
+) -> Response[BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList]:
     """Bulk delete Functionalities
 
      Delete functionalities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
 
     Args:
-        body (Union['BulkDestroyFunctionalitiesType0', 'BulkDestroyFunctionalitiesType1']): Two
-            mutually exclusive modes. Pass exactly one of: external_ids (delete specific records) or
-            managed_by (prune all managed records not in keep set).
+        body (BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1): Two mutually
+            exclusive modes. Pass exactly one of: external_ids (delete specific records) or managed_by
+            (prune all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[BulkDestroyFunctionalitiesResponse, ErrorsList, Union['BulkDestroyFunctionalitiesResponse', 'ErrorsList']]]
+        Response[BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -127,24 +122,24 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union["BulkDestroyFunctionalitiesType0", "BulkDestroyFunctionalitiesType1"],
-) -> BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"] | None:
+    body: BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1,
+) -> BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList | None:
     """Bulk delete Functionalities
 
      Delete functionalities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
 
     Args:
-        body (Union['BulkDestroyFunctionalitiesType0', 'BulkDestroyFunctionalitiesType1']): Two
-            mutually exclusive modes. Pass exactly one of: external_ids (delete specific records) or
-            managed_by (prune all managed records not in keep set).
+        body (BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1): Two mutually
+            exclusive modes. Pass exactly one of: external_ids (delete specific records) or managed_by
+            (prune all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[BulkDestroyFunctionalitiesResponse, ErrorsList, Union['BulkDestroyFunctionalitiesResponse', 'ErrorsList']]
+        BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList
     """
 
     return sync_detailed(
@@ -156,26 +151,24 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union["BulkDestroyFunctionalitiesType0", "BulkDestroyFunctionalitiesType1"],
-) -> Response[
-    BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"]
-]:
+    body: BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1,
+) -> Response[BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList]:
     """Bulk delete Functionalities
 
      Delete functionalities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
 
     Args:
-        body (Union['BulkDestroyFunctionalitiesType0', 'BulkDestroyFunctionalitiesType1']): Two
-            mutually exclusive modes. Pass exactly one of: external_ids (delete specific records) or
-            managed_by (prune all managed records not in keep set).
+        body (BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1): Two mutually
+            exclusive modes. Pass exactly one of: external_ids (delete specific records) or managed_by
+            (prune all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[BulkDestroyFunctionalitiesResponse, ErrorsList, Union['BulkDestroyFunctionalitiesResponse', 'ErrorsList']]]
+        Response[BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList]
     """
 
     kwargs = _get_kwargs(
@@ -190,24 +183,24 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union["BulkDestroyFunctionalitiesType0", "BulkDestroyFunctionalitiesType1"],
-) -> BulkDestroyFunctionalitiesResponse | ErrorsList | Union["BulkDestroyFunctionalitiesResponse", "ErrorsList"] | None:
+    body: BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1,
+) -> BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList | None:
     """Bulk delete Functionalities
 
      Delete functionalities by external_id list, or prune by managed_by source. Two mutually exclusive
     modes.
 
     Args:
-        body (Union['BulkDestroyFunctionalitiesType0', 'BulkDestroyFunctionalitiesType1']): Two
-            mutually exclusive modes. Pass exactly one of: external_ids (delete specific records) or
-            managed_by (prune all managed records not in keep set).
+        body (BulkDestroyFunctionalitiesType0 | BulkDestroyFunctionalitiesType1): Two mutually
+            exclusive modes. Pass exactly one of: external_ids (delete specific records) or managed_by
+            (prune all managed records not in keep set).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[BulkDestroyFunctionalitiesResponse, ErrorsList, Union['BulkDestroyFunctionalitiesResponse', 'ErrorsList']]
+        BulkDestroyFunctionalitiesResponse | BulkDestroyFunctionalitiesResponse | ErrorsList | ErrorsList
     """
 
     return (

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -16,20 +18,20 @@ class WorkflowGroup:
     Attributes:
         name (str): The name of the workflow group.
         position (int): The position of the workflow group
-        kind (Union[Unset, WorkflowGroupKind]): The kind of the workflow group
-        slug (Union[Unset, str]): The slug of the workflow group.
-        description (Union[None, Unset, str]): A description of the workflow group.
-        icon (Union[Unset, str]): An emoji icon displayed next to the workflow group.
-        expanded (Union[Unset, bool]): Whether the group is expanded or collapsed.
+        kind (WorkflowGroupKind | Unset): The kind of the workflow group
+        slug (str | Unset): The slug of the workflow group.
+        description (None | str | Unset): A description of the workflow group.
+        icon (str | Unset): An emoji icon displayed next to the workflow group.
+        expanded (bool | Unset): Whether the group is expanded or collapsed.
     """
 
     name: str
     position: int
-    kind: Unset | WorkflowGroupKind = UNSET
-    slug: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    icon: Unset | str = UNSET
-    expanded: Unset | bool = UNSET
+    kind: WorkflowGroupKind | Unset = UNSET
+    slug: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    icon: str | Unset = UNSET
+    expanded: bool | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,13 +39,13 @@ class WorkflowGroup:
 
         position = self.position
 
-        kind: Unset | str = UNSET
+        kind: str | Unset = UNSET
         if not isinstance(self.kind, Unset):
             kind = self.kind
 
         slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -82,7 +84,7 @@ class WorkflowGroup:
         position = d.pop("position")
 
         _kind = d.pop("kind", UNSET)
-        kind: Unset | WorkflowGroupKind
+        kind: WorkflowGroupKind | Unset
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
@@ -90,12 +92,12 @@ class WorkflowGroup:
 
         slug = d.pop("slug", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

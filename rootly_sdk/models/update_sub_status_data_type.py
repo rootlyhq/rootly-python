@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateSubStatusDataType = Literal["sub_statuses"]
 
@@ -11,5 +11,5 @@ def check_update_sub_status_data_type(value: str | None) -> UpdateSubStatusDataT
     if value is None:
         return None
     if value in UPDATE_SUB_STATUS_DATA_TYPE_VALUES:
-        return cast(UpdateSubStatusDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_SUB_STATUS_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertRoutingRuleTargetType0TargetType = Literal["EscalationPolicy", "Functionality", "Group", "Service"]
 
@@ -16,7 +16,7 @@ def check_alert_routing_rule_target_type_0_target_type(
     if value is None:
         return None
     if value in ALERT_ROUTING_RULE_TARGET_TYPE_0_TARGET_TYPE_VALUES:
-        return cast(AlertRoutingRuleTargetType0TargetType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {ALERT_ROUTING_RULE_TARGET_TYPE_0_TARGET_TYPE_VALUES!r}"
     )

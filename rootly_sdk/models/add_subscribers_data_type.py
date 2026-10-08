@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AddSubscribersDataType = Literal["incidents"]
 
@@ -11,5 +11,5 @@ def check_add_subscribers_data_type(value: str | None) -> AddSubscribersDataType
     if value is None:
         return None
     if value in ADD_SUBSCRIBERS_DATA_TYPE_VALUES:
-        return cast(AddSubscribersDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ADD_SUBSCRIBERS_DATA_TYPE_VALUES!r}")

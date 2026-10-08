@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
@@ -5,7 +7,6 @@ from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.ai_chat_session_message_role import AiChatSessionMessageRole, check_ai_chat_session_message_role
 
@@ -59,7 +60,7 @@ class AiChatSessionMessage:
 
         content = d.pop("content")
 
-        created_at = isoparse(d.pop("created_at"))
+        created_at = datetime.datetime.fromisoformat(d.pop("created_at"))
 
         ai_chat_session_message = cls(
             id=id,

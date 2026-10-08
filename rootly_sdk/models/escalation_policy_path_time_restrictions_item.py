@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -21,26 +23,26 @@ T = TypeVar("T", bound="EscalationPolicyPathTimeRestrictionsItem")
 class EscalationPolicyPathTimeRestrictionsItem:
     """
     Attributes:
-        start_day (Union[Unset, EscalationPolicyPathTimeRestrictionsItemStartDay]):
-        start_time (Union[Unset, str]): Formatted as HH:MM
-        end_day (Union[Unset, EscalationPolicyPathTimeRestrictionsItemEndDay]):
-        end_time (Union[Unset, str]): Formatted as HH:MM
+        start_day (EscalationPolicyPathTimeRestrictionsItemStartDay | Unset):
+        start_time (str | Unset): Formatted as HH:MM
+        end_day (EscalationPolicyPathTimeRestrictionsItemEndDay | Unset):
+        end_time (str | Unset): Formatted as HH:MM
     """
 
-    start_day: Unset | EscalationPolicyPathTimeRestrictionsItemStartDay = UNSET
-    start_time: Unset | str = UNSET
-    end_day: Unset | EscalationPolicyPathTimeRestrictionsItemEndDay = UNSET
-    end_time: Unset | str = UNSET
+    start_day: EscalationPolicyPathTimeRestrictionsItemStartDay | Unset = UNSET
+    start_time: str | Unset = UNSET
+    end_day: EscalationPolicyPathTimeRestrictionsItemEndDay | Unset = UNSET
+    end_time: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        start_day: Unset | str = UNSET
+        start_day: str | Unset = UNSET
         if not isinstance(self.start_day, Unset):
             start_day = self.start_day
 
         start_time = self.start_time
 
-        end_day: Unset | str = UNSET
+        end_day: str | Unset = UNSET
         if not isinstance(self.end_day, Unset):
             end_day = self.end_day
 
@@ -64,7 +66,7 @@ class EscalationPolicyPathTimeRestrictionsItem:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _start_day = d.pop("start_day", UNSET)
-        start_day: Unset | EscalationPolicyPathTimeRestrictionsItemStartDay
+        start_day: EscalationPolicyPathTimeRestrictionsItemStartDay | Unset
         if isinstance(_start_day, Unset):
             start_day = UNSET
         else:
@@ -73,7 +75,7 @@ class EscalationPolicyPathTimeRestrictionsItem:
         start_time = d.pop("start_time", UNSET)
 
         _end_day = d.pop("end_day", UNSET)
-        end_day: Unset | EscalationPolicyPathTimeRestrictionsItemEndDay
+        end_day: EscalationPolicyPathTimeRestrictionsItemEndDay | Unset
         if isinstance(_end_day, Unset):
             end_day = UNSET
         else:

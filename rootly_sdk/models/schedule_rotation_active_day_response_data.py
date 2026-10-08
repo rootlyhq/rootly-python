@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,24 +23,24 @@ T = TypeVar("T", bound="ScheduleRotationActiveDayResponseData")
 class ScheduleRotationActiveDayResponseData:
     """
     Attributes:
-        id (Union[Unset, str]): Unique ID of the schedule rotation active time
-        type_ (Union[Unset, ScheduleRotationActiveDayResponseDataType]):
-        attributes (Union[Unset, ScheduleRotationActiveDay]):
+        id (str | Unset): Unique ID of the schedule rotation active time
+        type_ (ScheduleRotationActiveDayResponseDataType | Unset):
+        attributes (ScheduleRotationActiveDay | Unset):
     """
 
-    id: Unset | str = UNSET
-    type_: Unset | ScheduleRotationActiveDayResponseDataType = UNSET
-    attributes: Union[Unset, "ScheduleRotationActiveDay"] = UNSET
+    id: str | Unset = UNSET
+    type_: ScheduleRotationActiveDayResponseDataType | Unset = UNSET
+    attributes: ScheduleRotationActiveDay | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
-        attributes: Unset | dict[str, Any] = UNSET
+        attributes: dict[str, Any] | Unset = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
@@ -62,14 +64,14 @@ class ScheduleRotationActiveDayResponseData:
         id = d.pop("id", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | ScheduleRotationActiveDayResponseDataType
+        type_: ScheduleRotationActiveDayResponseDataType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = check_schedule_rotation_active_day_response_data_type(_type_)
 
         _attributes = d.pop("attributes", UNSET)
-        attributes: Unset | ScheduleRotationActiveDay
+        attributes: ScheduleRotationActiveDay | Unset
         if isinstance(_attributes, Unset):
             attributes = UNSET
         else:

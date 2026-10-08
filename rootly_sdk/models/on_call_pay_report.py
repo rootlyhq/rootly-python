@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.on_call_pay_report_pay_type import OnCallPayReportPayType, check_on_call_pay_report_pay_type
 from ..models.on_call_pay_report_status import OnCallPayReportStatus, check_on_call_pay_report_status
@@ -22,26 +23,26 @@ class OnCallPayReport:
         end_date (datetime.date): The end date of the report period.
         created_at (datetime.datetime):
         updated_at (datetime.datetime):
-        total_duration (Union[Unset, int]): Total on-call duration in seconds.
-        users_count (Union[Unset, int]): Number of users included in the report.
-        currency (Union[Unset, str]): The currency code for monetary values.
-        pay_type (Union[Unset, OnCallPayReportPayType]): The pay calculation type.
-        hourly_rate_cents (Union[Unset, int]): Hourly pay rate in cents.
-        daily_rate_cents (Union[Unset, int]): Daily pay rate in cents.
-        total_pay_cents (Union[Unset, int]): Total pay amount in cents.
-        include_shadow (Union[Unset, bool]): Whether shadow shifts are included.
-        show_individual_shift_data (Union[Unset, bool]): Whether individual shift data is shown.
-        has_single_rate (Union[Unset, bool]): Whether a single rate is applied to all users.
-        enabled_granular_time_breakdown (Union[Unset, bool]): Whether granular time breakdown is enabled.
-        last_generated_at (Union[None, Unset, datetime.datetime]): When the report was last generated.
-        time_zone (Union[None, Unset, str]): The IANA timezone used to compute day and weekend boundaries for this
-            report. Defaults to the team's timezone.
-        use_responders_time_zone (Union[Unset, bool]): When true, each responder's personal timezone is used for their
-            pay calculation; otherwise the report-wide time_zone is used.
-        csv_file_url (Union[None, Unset, str]): Download URL for the generated CSV report. Null until the report is
-            generated.
-        xlsx_file_url (Union[None, Unset, str]): Download URL for the generated XLSX report. Null until the report is
-            generated.
+        total_duration (int | Unset): Total on-call duration in seconds.
+        users_count (int | Unset): Number of users included in the report.
+        currency (str | Unset): The currency code for monetary values.
+        pay_type (OnCallPayReportPayType | Unset): The pay calculation type.
+        hourly_rate_cents (int | Unset): Hourly pay rate in cents.
+        daily_rate_cents (int | Unset): Daily pay rate in cents.
+        total_pay_cents (int | Unset): Total pay amount in cents.
+        include_shadow (bool | Unset): Whether shadow shifts are included.
+        show_individual_shift_data (bool | Unset): Whether individual shift data is shown.
+        has_single_rate (bool | Unset): Whether a single rate is applied to all users.
+        enabled_granular_time_breakdown (bool | Unset): Whether granular time breakdown is enabled.
+        last_generated_at (datetime.datetime | None | Unset): When the report was last generated.
+        time_zone (None | str | Unset): The IANA timezone used to compute day and weekend boundaries for this report.
+            Defaults to the team's timezone.
+        use_responders_time_zone (bool | Unset): When true, each responder's personal timezone is used for their pay
+            calculation; otherwise the report-wide time_zone is used.
+        csv_file_url (None | str | Unset): Short-lived, presigned download URL for the generated CSV report. Fetch the
+            report again if the URL expires. Null until the report is generated.
+        xlsx_file_url (None | str | Unset): Short-lived, presigned download URL for the generated XLSX report. Fetch the
+            report again if the URL expires. Null until the report is generated.
     """
 
     status: OnCallPayReportStatus
@@ -49,22 +50,22 @@ class OnCallPayReport:
     end_date: datetime.date
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    total_duration: Unset | int = UNSET
-    users_count: Unset | int = UNSET
-    currency: Unset | str = UNSET
-    pay_type: Unset | OnCallPayReportPayType = UNSET
-    hourly_rate_cents: Unset | int = UNSET
-    daily_rate_cents: Unset | int = UNSET
-    total_pay_cents: Unset | int = UNSET
-    include_shadow: Unset | bool = UNSET
-    show_individual_shift_data: Unset | bool = UNSET
-    has_single_rate: Unset | bool = UNSET
-    enabled_granular_time_breakdown: Unset | bool = UNSET
-    last_generated_at: None | Unset | datetime.datetime = UNSET
-    time_zone: None | Unset | str = UNSET
-    use_responders_time_zone: Unset | bool = UNSET
-    csv_file_url: None | Unset | str = UNSET
-    xlsx_file_url: None | Unset | str = UNSET
+    total_duration: int | Unset = UNSET
+    users_count: int | Unset = UNSET
+    currency: str | Unset = UNSET
+    pay_type: OnCallPayReportPayType | Unset = UNSET
+    hourly_rate_cents: int | Unset = UNSET
+    daily_rate_cents: int | Unset = UNSET
+    total_pay_cents: int | Unset = UNSET
+    include_shadow: bool | Unset = UNSET
+    show_individual_shift_data: bool | Unset = UNSET
+    has_single_rate: bool | Unset = UNSET
+    enabled_granular_time_breakdown: bool | Unset = UNSET
+    last_generated_at: datetime.datetime | None | Unset = UNSET
+    time_zone: None | str | Unset = UNSET
+    use_responders_time_zone: bool | Unset = UNSET
+    csv_file_url: None | str | Unset = UNSET
+    xlsx_file_url: None | str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -84,7 +85,7 @@ class OnCallPayReport:
 
         currency = self.currency
 
-        pay_type: Unset | str = UNSET
+        pay_type: str | Unset = UNSET
         if not isinstance(self.pay_type, Unset):
             pay_type = self.pay_type
 
@@ -102,7 +103,7 @@ class OnCallPayReport:
 
         enabled_granular_time_breakdown = self.enabled_granular_time_breakdown
 
-        last_generated_at: None | Unset | str
+        last_generated_at: None | str | Unset
         if isinstance(self.last_generated_at, Unset):
             last_generated_at = UNSET
         elif isinstance(self.last_generated_at, datetime.datetime):
@@ -110,7 +111,7 @@ class OnCallPayReport:
         else:
             last_generated_at = self.last_generated_at
 
-        time_zone: None | Unset | str
+        time_zone: None | str | Unset
         if isinstance(self.time_zone, Unset):
             time_zone = UNSET
         else:
@@ -118,13 +119,13 @@ class OnCallPayReport:
 
         use_responders_time_zone = self.use_responders_time_zone
 
-        csv_file_url: None | Unset | str
+        csv_file_url: None | str | Unset
         if isinstance(self.csv_file_url, Unset):
             csv_file_url = UNSET
         else:
             csv_file_url = self.csv_file_url
 
-        xlsx_file_url: None | Unset | str
+        xlsx_file_url: None | str | Unset
         if isinstance(self.xlsx_file_url, Unset):
             xlsx_file_url = UNSET
         else:
@@ -181,13 +182,13 @@ class OnCallPayReport:
         d = dict(src_dict)
         status = check_on_call_pay_report_status(d.pop("status"))
 
-        start_date = isoparse(d.pop("start_date")).date()
+        start_date = datetime.date.fromisoformat(d.pop("start_date"))
 
-        end_date = isoparse(d.pop("end_date")).date()
+        end_date = datetime.date.fromisoformat(d.pop("end_date"))
 
-        created_at = isoparse(d.pop("created_at"))
+        created_at = datetime.datetime.fromisoformat(d.pop("created_at"))
 
-        updated_at = isoparse(d.pop("updated_at"))
+        updated_at = datetime.datetime.fromisoformat(d.pop("updated_at"))
 
         total_duration = d.pop("total_duration", UNSET)
 
@@ -196,7 +197,7 @@ class OnCallPayReport:
         currency = d.pop("currency", UNSET)
 
         _pay_type = d.pop("pay_type", UNSET)
-        pay_type: Unset | OnCallPayReportPayType
+        pay_type: OnCallPayReportPayType | Unset
         if isinstance(_pay_type, Unset):
             pay_type = UNSET
         else:
@@ -216,7 +217,7 @@ class OnCallPayReport:
 
         enabled_granular_time_breakdown = d.pop("enabled_granular_time_breakdown", UNSET)
 
-        def _parse_last_generated_at(data: object) -> None | Unset | datetime.datetime:
+        def _parse_last_generated_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -224,41 +225,41 @@ class OnCallPayReport:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                last_generated_at_type_0 = isoparse(data)
+                last_generated_at_type_0 = datetime.datetime.fromisoformat(data)
 
                 return last_generated_at_type_0
-            except:  # noqa: E722
+            except (TypeError, ValueError, AttributeError, KeyError):
                 pass
-            return cast(None | Unset | datetime.datetime, data)
+            return cast(datetime.datetime | None | Unset, data)
 
         last_generated_at = _parse_last_generated_at(d.pop("last_generated_at", UNSET))
 
-        def _parse_time_zone(data: object) -> None | Unset | str:
+        def _parse_time_zone(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         time_zone = _parse_time_zone(d.pop("time_zone", UNSET))
 
         use_responders_time_zone = d.pop("use_responders_time_zone", UNSET)
 
-        def _parse_csv_file_url(data: object) -> None | Unset | str:
+        def _parse_csv_file_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         csv_file_url = _parse_csv_file_url(d.pop("csv_file_url", UNSET))
 
-        def _parse_xlsx_file_url(data: object) -> None | Unset | str:
+        def _parse_xlsx_file_url(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         xlsx_file_url = _parse_xlsx_file_url(d.pop("xlsx_file_url", UNSET))
 

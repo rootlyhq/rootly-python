@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentActionItemKind = Literal["follow_up", "task"]
 
@@ -12,5 +12,5 @@ def check_incident_action_item_kind(value: str | None) -> IncidentActionItemKind
     if value is None:
         return None
     if value in INCIDENT_ACTION_ITEM_KIND_VALUES:
-        return cast(IncidentActionItemKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {INCIDENT_ACTION_ITEM_KIND_VALUES!r}")

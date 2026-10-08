@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 from ..models.new_on_call_shadow_data_attributes_shadowable_type import (
     NewOnCallShadowDataAttributesShadowableType,
@@ -64,9 +65,9 @@ class NewOnCallShadowDataAttributes:
 
         shadow_user_id = d.pop("shadow_user_id")
 
-        starts_at = isoparse(d.pop("starts_at"))
+        starts_at = datetime.datetime.fromisoformat(d.pop("starts_at"))
 
-        ends_at = isoparse(d.pop("ends_at"))
+        ends_at = datetime.datetime.fromisoformat(d.pop("ends_at"))
 
         new_on_call_shadow_data_attributes = cls(
             shadowable_type=shadowable_type,

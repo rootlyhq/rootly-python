@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleStatusPagesPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_status_pages_permissions_item(value: str | None) -> RoleStatusPag
     if value is None:
         return None
     if value in ROLE_STATUS_PAGES_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleStatusPagesPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_STATUS_PAGES_PERMISSIONS_ITEM_VALUES!r}")

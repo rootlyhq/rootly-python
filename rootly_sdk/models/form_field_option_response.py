@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -19,17 +21,17 @@ class FormFieldOptionResponse:
     """
     Attributes:
         data (FormFieldOptionResponseData):
-        included (Union[Unset, list['JsonapiIncludedResource']]):
+        included (list[JsonapiIncludedResource] | Unset):
     """
 
-    data: "FormFieldOptionResponseData"
-    included: Unset | list["JsonapiIncludedResource"] = UNSET
+    data: FormFieldOptionResponseData
+    included: list[JsonapiIncludedResource] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         data = self.data.to_dict()
 
-        included: Unset | list[dict[str, Any]] = UNSET
+        included: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.included, Unset):
             included = []
             for included_item_data in self.included:
@@ -56,12 +58,14 @@ class FormFieldOptionResponse:
         d = dict(src_dict)
         data = FormFieldOptionResponseData.from_dict(d.pop("data"))
 
-        included = []
         _included = d.pop("included", UNSET)
-        for included_item_data in _included or []:
-            included_item = JsonapiIncludedResource.from_dict(included_item_data)
+        included: list[JsonapiIncludedResource] | Unset = UNSET
+        if _included is not UNSET:
+            included = []
+            for included_item_data in _included:
+                included_item = JsonapiIncludedResource.from_dict(included_item_data)
 
-            included.append(included_item)
+                included.append(included_item)
 
         form_field_option_response = cls(
             data=data,

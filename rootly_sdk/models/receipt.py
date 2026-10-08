@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -16,21 +18,21 @@ class Receipt:
     """
     Attributes:
         state (ReceiptState): Delivery state of the receipt.
-        reason (Union[Unset, ReceiptReason]): Reason a receipt failed. Present when state is failed.
-        resource_type (Union[Unset, str]): Type of the referenced resource (present when set).
-        resource_id (Union[Unset, str]): ID of the referenced resource (present when set).
+        reason (ReceiptReason | Unset): Reason a receipt failed. Present when state is failed.
+        resource_type (str | Unset): Type of the referenced resource (present when set).
+        resource_id (str | Unset): ID of the referenced resource (present when set).
     """
 
     state: ReceiptState
-    reason: Unset | ReceiptReason = UNSET
-    resource_type: Unset | str = UNSET
-    resource_id: Unset | str = UNSET
+    reason: ReceiptReason | Unset = UNSET
+    resource_type: str | Unset = UNSET
+    resource_id: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         state: str = self.state
 
-        reason: Unset | str = UNSET
+        reason: str | Unset = UNSET
         if not isinstance(self.reason, Unset):
             reason = self.reason
 
@@ -60,7 +62,7 @@ class Receipt:
         state = check_receipt_state(d.pop("state"))
 
         _reason = d.pop("reason", UNSET)
-        reason: Unset | ReceiptReason
+        reason: ReceiptReason | Unset
         if isinstance(_reason, Unset):
             reason = UNSET
         else:

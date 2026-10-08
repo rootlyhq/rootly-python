@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -16,15 +18,15 @@ T = TypeVar("T", bound="UpdateCatalogEntityPropertyDataAttributes")
 class UpdateCatalogEntityPropertyDataAttributes:
     """
     Attributes:
-        key (Union[Unset, UpdateCatalogEntityPropertyDataAttributesKey]):
-        value (Union[Unset, str]):
+        key (UpdateCatalogEntityPropertyDataAttributesKey | Unset):
+        value (str | Unset):
     """
 
-    key: Unset | UpdateCatalogEntityPropertyDataAttributesKey = UNSET
-    value: Unset | str = UNSET
+    key: UpdateCatalogEntityPropertyDataAttributesKey | Unset = UNSET
+    value: str | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        key: Unset | str = UNSET
+        key: str | Unset = UNSET
         if not isinstance(self.key, Unset):
             key = self.key
 
@@ -44,7 +46,7 @@ class UpdateCatalogEntityPropertyDataAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _key = d.pop("key", UNSET)
-        key: Unset | UpdateCatalogEntityPropertyDataAttributesKey
+        key: UpdateCatalogEntityPropertyDataAttributesKey | Unset
         if isinstance(_key, Unset):
             key = UNSET
         else:

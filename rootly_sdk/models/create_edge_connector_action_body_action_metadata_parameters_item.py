@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -17,24 +19,24 @@ T = TypeVar("T", bound="CreateEdgeConnectorActionBodyActionMetadataParametersIte
 class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
     """
     Attributes:
-        name (Union[Unset, str]):
-        type_ (Union[Unset, CreateEdgeConnectorActionBodyActionMetadataParametersItemType]):
-        required (Union[Unset, bool]):
-        description (Union[Unset, str]):
-        options (Union[Unset, list[str]]):
+        name (str | Unset):
+        type_ (CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset):
+        required (bool | Unset):
+        description (str | Unset):
+        options (list[str] | Unset):
     """
 
-    name: Unset | str = UNSET
-    type_: Unset | CreateEdgeConnectorActionBodyActionMetadataParametersItemType = UNSET
-    required: Unset | bool = UNSET
-    description: Unset | str = UNSET
-    options: Unset | list[str] = UNSET
+    name: str | Unset = UNSET
+    type_: CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset = UNSET
+    required: bool | Unset = UNSET
+    description: str | Unset = UNSET
+    options: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        type_: Unset | str = UNSET
+        type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_
 
@@ -42,7 +44,7 @@ class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
 
         description = self.description
 
-        options: Unset | list[str] = UNSET
+        options: list[str] | Unset = UNSET
         if not isinstance(self.options, Unset):
             options = self.options
 
@@ -68,7 +70,7 @@ class CreateEdgeConnectorActionBodyActionMetadataParametersItem:
         name = d.pop("name", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Unset | CreateEdgeConnectorActionBodyActionMetadataParametersItemType
+        type_: CreateEdgeConnectorActionBodyActionMetadataParametersItemType | Unset
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:

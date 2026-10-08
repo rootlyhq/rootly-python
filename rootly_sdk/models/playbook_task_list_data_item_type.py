@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PlaybookTaskListDataItemType = Literal["playbook_tasks"]
 
@@ -11,5 +11,5 @@ def check_playbook_task_list_data_item_type(value: str | None) -> PlaybookTaskLi
     if value is None:
         return None
     if value in PLAYBOOK_TASK_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(PlaybookTaskListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {PLAYBOOK_TASK_LIST_DATA_ITEM_TYPE_VALUES!r}")

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -34,53 +36,53 @@ class PagePagerdutyOnCallRespondersTaskParams:
     """
     Attributes:
         service (PagePagerdutyOnCallRespondersTaskParamsService):
-        task_type (Union[Unset, PagePagerdutyOnCallRespondersTaskParamsTaskType]):
-        escalation_policies (Union[Unset, list['PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem']]):
-        users (Union[Unset, list['PagePagerdutyOnCallRespondersTaskParamsUsersItem']]):
-        title (Union[None, Unset, str]): Incident title.
-        message (Union[Unset, str]):
-        urgency (Union[Unset, PagePagerdutyOnCallRespondersTaskParamsUrgency]):  Default: 'high'.
-        priority (Union[Unset, str]): PagerDuty incident priority, selecting auto will let Rootly auto map our incident
+        task_type (PagePagerdutyOnCallRespondersTaskParamsTaskType | Unset):
+        escalation_policies (list[PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem] | Unset):
+        users (list[PagePagerdutyOnCallRespondersTaskParamsUsersItem] | Unset):
+        title (None | str | Unset): Incident title.
+        message (str | Unset):
+        urgency (PagePagerdutyOnCallRespondersTaskParamsUrgency | Unset):  Default: 'high'.
+        priority (str | Unset): PagerDuty incident priority, selecting auto will let Rootly auto map our incident
             severity
-        create_new_incident_on_conflict (Union[Unset, bool]): Rootly only supports linking to a single PagerDuty
-            incident. If this feature is disabled Rootly will add responders from any additional pages to the existing
-            PagerDuty incident that is linked to the Rootly incident. If enabled, Rootly will create a new PagerDuty
-            incident that is not linked to any Rootly incidents Default: False.
+        create_new_incident_on_conflict (bool | Unset): Rootly only supports linking to a single PagerDuty incident. If
+            this feature is disabled Rootly will add responders from any additional pages to the existing PagerDuty incident
+            that is linked to the Rootly incident. If enabled, Rootly will create a new PagerDuty incident that is not
+            linked to any Rootly incidents Default: False.
     """
 
-    service: "PagePagerdutyOnCallRespondersTaskParamsService"
-    task_type: Unset | PagePagerdutyOnCallRespondersTaskParamsTaskType = UNSET
-    escalation_policies: Unset | list["PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem"] = UNSET
-    users: Unset | list["PagePagerdutyOnCallRespondersTaskParamsUsersItem"] = UNSET
-    title: None | Unset | str = UNSET
-    message: Unset | str = UNSET
-    urgency: Unset | PagePagerdutyOnCallRespondersTaskParamsUrgency = "high"
-    priority: Unset | str = UNSET
-    create_new_incident_on_conflict: Unset | bool = False
+    service: PagePagerdutyOnCallRespondersTaskParamsService
+    task_type: PagePagerdutyOnCallRespondersTaskParamsTaskType | Unset = UNSET
+    escalation_policies: list[PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem] | Unset = UNSET
+    users: list[PagePagerdutyOnCallRespondersTaskParamsUsersItem] | Unset = UNSET
+    title: None | str | Unset = UNSET
+    message: str | Unset = UNSET
+    urgency: PagePagerdutyOnCallRespondersTaskParamsUrgency | Unset = "high"
+    priority: str | Unset = UNSET
+    create_new_incident_on_conflict: bool | Unset = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         service = self.service.to_dict()
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policies: Unset | list[dict[str, Any]] = UNSET
+        escalation_policies: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.escalation_policies, Unset):
             escalation_policies = []
             for escalation_policies_item_data in self.escalation_policies:
                 escalation_policies_item = escalation_policies_item_data.to_dict()
                 escalation_policies.append(escalation_policies_item)
 
-        users: Unset | list[dict[str, Any]] = UNSET
+        users: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.users, Unset):
             users = []
             for users_item_data in self.users:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        title: None | Unset | str
+        title: None | str | Unset
         if isinstance(self.title, Unset):
             title = UNSET
         else:
@@ -88,7 +90,7 @@ class PagePagerdutyOnCallRespondersTaskParams:
 
         message = self.message
 
-        urgency: Unset | str = UNSET
+        urgency: str | Unset = UNSET
         if not isinstance(self.urgency, Unset):
             urgency = self.urgency
 
@@ -138,41 +140,45 @@ class PagePagerdutyOnCallRespondersTaskParams:
         service = PagePagerdutyOnCallRespondersTaskParamsService.from_dict(d.pop("service"))
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | PagePagerdutyOnCallRespondersTaskParamsTaskType
+        task_type: PagePagerdutyOnCallRespondersTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_page_pagerduty_on_call_responders_task_params_task_type(_task_type)
 
-        escalation_policies = []
         _escalation_policies = d.pop("escalation_policies", UNSET)
-        for escalation_policies_item_data in _escalation_policies or []:
-            escalation_policies_item = PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem.from_dict(
-                escalation_policies_item_data
-            )
+        escalation_policies: list[PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem] | Unset = UNSET
+        if _escalation_policies is not UNSET:
+            escalation_policies = []
+            for escalation_policies_item_data in _escalation_policies:
+                escalation_policies_item = PagePagerdutyOnCallRespondersTaskParamsEscalationPoliciesItem.from_dict(
+                    escalation_policies_item_data
+                )
 
-            escalation_policies.append(escalation_policies_item)
+                escalation_policies.append(escalation_policies_item)
 
-        users = []
         _users = d.pop("users", UNSET)
-        for users_item_data in _users or []:
-            users_item = PagePagerdutyOnCallRespondersTaskParamsUsersItem.from_dict(users_item_data)
+        users: list[PagePagerdutyOnCallRespondersTaskParamsUsersItem] | Unset = UNSET
+        if _users is not UNSET:
+            users = []
+            for users_item_data in _users:
+                users_item = PagePagerdutyOnCallRespondersTaskParamsUsersItem.from_dict(users_item_data)
 
-            users.append(users_item)
+                users.append(users_item)
 
-        def _parse_title(data: object) -> None | Unset | str:
+        def _parse_title(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         title = _parse_title(d.pop("title", UNSET))
 
         message = d.pop("message", UNSET)
 
         _urgency = d.pop("urgency", UNSET)
-        urgency: Unset | PagePagerdutyOnCallRespondersTaskParamsUrgency
+        urgency: PagePagerdutyOnCallRespondersTaskParamsUrgency | Unset
         if isinstance(_urgency, Unset):
             urgency = UNSET
         else:

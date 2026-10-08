@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewSeverityDataAttributesSeverity = Literal["critical", "high", "low", "medium"]
 
@@ -14,5 +14,5 @@ def check_new_severity_data_attributes_severity(value: str | None) -> NewSeverit
     if value is None:
         return None
     if value in NEW_SEVERITY_DATA_ATTRIBUTES_SEVERITY_VALUES:
-        return cast(NewSeverityDataAttributesSeverity, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_SEVERITY_DATA_ATTRIBUTES_SEVERITY_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardDataAttributesPeriod = Literal["day", "month", "week"]
 
@@ -13,5 +13,5 @@ def check_new_dashboard_data_attributes_period(value: str | None) -> NewDashboar
     if value is None:
         return None
     if value in NEW_DASHBOARD_DATA_ATTRIBUTES_PERIOD_VALUES:
-        return cast(NewDashboardDataAttributesPeriod, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_DATA_ATTRIBUTES_PERIOD_VALUES!r}")

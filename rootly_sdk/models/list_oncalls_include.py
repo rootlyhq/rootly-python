@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListOncallsInclude = Literal["escalation_policy", "schedule", "user"]
 
@@ -13,5 +13,5 @@ def check_list_oncalls_include(value: str | None) -> ListOncallsInclude | None:
     if value is None:
         return None
     if value in LIST_ONCALLS_INCLUDE_VALUES:
-        return cast(ListOncallsInclude, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {LIST_ONCALLS_INCLUDE_VALUES!r}")

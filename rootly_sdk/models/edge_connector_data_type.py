@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EdgeConnectorDataType = Literal["edge_connectors"]
 
@@ -11,5 +11,5 @@ def check_edge_connector_data_type(value: str | None) -> EdgeConnectorDataType |
     if value is None:
         return None
     if value in EDGE_CONNECTOR_DATA_TYPE_VALUES:
-        return cast(EdgeConnectorDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {EDGE_CONNECTOR_DATA_TYPE_VALUES!r}")

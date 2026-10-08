@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior = Literal["execute_path", "re_evaluate"]
 
@@ -16,7 +16,7 @@ def check_update_escalation_policy_path_data_attributes_after_deferral_behavior(
     if value is None:
         return None
     if value in UPDATE_ESCALATION_POLICY_PATH_DATA_ATTRIBUTES_AFTER_DEFERRAL_BEHAVIOR_VALUES:
-        return cast(UpdateEscalationPolicyPathDataAttributesAfterDeferralBehavior, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ESCALATION_POLICY_PATH_DATA_ATTRIBUTES_AFTER_DEFERRAL_BEHAVIOR_VALUES!r}"
     )

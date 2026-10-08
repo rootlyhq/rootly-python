@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewWorkflowDataType = Literal["workflows"]
 
@@ -11,5 +11,5 @@ def check_new_workflow_data_type(value: str | None) -> NewWorkflowDataType | Non
     if value is None:
         return None
     if value in NEW_WORKFLOW_DATA_TYPE_VALUES:
-        return cast(NewWorkflowDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_WORKFLOW_DATA_TYPE_VALUES!r}")

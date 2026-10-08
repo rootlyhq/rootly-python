@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 WorkflowRunResponseDataType = Literal["workflow_runs"]
 
@@ -11,5 +11,5 @@ def check_workflow_run_response_data_type(value: str | None) -> WorkflowRunRespo
     if value is None:
         return None
     if value in WORKFLOW_RUN_RESPONSE_DATA_TYPE_VALUES:
-        return cast(WorkflowRunResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {WORKFLOW_RUN_RESPONSE_DATA_TYPE_VALUES!r}")

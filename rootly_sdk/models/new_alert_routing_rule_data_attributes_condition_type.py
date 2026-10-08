@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertRoutingRuleDataAttributesConditionType = Literal["all", "any"]
 
@@ -14,7 +14,7 @@ def check_new_alert_routing_rule_data_attributes_condition_type(
     if value is None:
         return None
     if value in NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES:
-        return cast(NewAlertRoutingRuleDataAttributesConditionType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERT_ROUTING_RULE_DATA_ATTRIBUTES_CONDITION_TYPE_VALUES!r}"
     )

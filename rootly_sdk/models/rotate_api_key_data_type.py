@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RotateApiKeyDataType = Literal["api_keys"]
 
@@ -11,5 +11,5 @@ def check_rotate_api_key_data_type(value: str | None) -> RotateApiKeyDataType | 
     if value is None:
         return None
     if value in ROTATE_API_KEY_DATA_TYPE_VALUES:
-        return cast(RotateApiKeyDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROTATE_API_KEY_DATA_TYPE_VALUES!r}")

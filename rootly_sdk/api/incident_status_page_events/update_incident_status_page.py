@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -20,7 +21,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "put",
-        "url": f"/v1/status-page-events/{id}",
+        "url": "/v1/status-page-events/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
     }
 
     _kwargs["json"] = body.to_dict()
@@ -43,6 +46,11 @@ def _parse_response(
         response_404 = ErrorsList.from_dict(response.json())
 
         return response_404
+
+    if response.status_code == 422:
+        response_422 = ErrorsList.from_dict(response.json())
+
+        return response_422
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -80,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentStatusPageEventResponse]]
+        Response[ErrorsList | IncidentStatusPageEventResponse]
     """
 
     kwargs = _get_kwargs(
@@ -114,7 +122,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentStatusPageEventResponse]
+        ErrorsList | IncidentStatusPageEventResponse
     """
 
     return sync_detailed(
@@ -143,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, IncidentStatusPageEventResponse]]
+        Response[ErrorsList | IncidentStatusPageEventResponse]
     """
 
     kwargs = _get_kwargs(
@@ -175,7 +183,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, IncidentStatusPageEventResponse]
+        ErrorsList | IncidentStatusPageEventResponse
     """
 
     return (

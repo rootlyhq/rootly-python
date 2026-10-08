@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateFormFieldPlacementConditionDataAttributesConditioned = Literal["placement", "required"]
 
@@ -16,7 +16,7 @@ def check_update_form_field_placement_condition_data_attributes_conditioned(
     if value is None:
         return None
     if value in UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_CONDITIONED_VALUES:
-        return cast(UpdateFormFieldPlacementConditionDataAttributesConditioned, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_FORM_FIELD_PLACEMENT_CONDITION_DATA_ATTRIBUTES_CONDITIONED_VALUES!r}"
     )

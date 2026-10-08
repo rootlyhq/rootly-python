@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -25,42 +27,42 @@ class SnapshotDatadogGraphTaskParams:
     """
     Attributes:
         past_duration (str): in format '1 minute', '30 days', '3 months', etc Example: 1 hour.
-        task_type (Union[Unset, SnapshotDatadogGraphTaskParamsTaskType]):
-        dashboards (Union[Unset, list['SnapshotDatadogGraphTaskParamsDashboardsItem']]):
-        metric_queries (Union[Unset, list[str]]):
-        post_to_incident_timeline (Union[Unset, bool]):
-        post_to_slack_channels (Union[Unset, list['SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem']]):
+        task_type (SnapshotDatadogGraphTaskParamsTaskType | Unset):
+        dashboards (list[SnapshotDatadogGraphTaskParamsDashboardsItem] | Unset):
+        metric_queries (list[str] | Unset):
+        post_to_incident_timeline (bool | Unset):
+        post_to_slack_channels (list[SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem] | Unset):
     """
 
     past_duration: str
-    task_type: Unset | SnapshotDatadogGraphTaskParamsTaskType = UNSET
-    dashboards: Unset | list["SnapshotDatadogGraphTaskParamsDashboardsItem"] = UNSET
-    metric_queries: Unset | list[str] = UNSET
-    post_to_incident_timeline: Unset | bool = UNSET
-    post_to_slack_channels: Unset | list["SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem"] = UNSET
+    task_type: SnapshotDatadogGraphTaskParamsTaskType | Unset = UNSET
+    dashboards: list[SnapshotDatadogGraphTaskParamsDashboardsItem] | Unset = UNSET
+    metric_queries: list[str] | Unset = UNSET
+    post_to_incident_timeline: bool | Unset = UNSET
+    post_to_slack_channels: list[SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         past_duration = self.past_duration
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        dashboards: Unset | list[dict[str, Any]] = UNSET
+        dashboards: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.dashboards, Unset):
             dashboards = []
             for dashboards_item_data in self.dashboards:
                 dashboards_item = dashboards_item_data.to_dict()
                 dashboards.append(dashboards_item)
 
-        metric_queries: Unset | list[str] = UNSET
+        metric_queries: list[str] | Unset = UNSET
         if not isinstance(self.metric_queries, Unset):
             metric_queries = self.metric_queries
 
         post_to_incident_timeline = self.post_to_incident_timeline
 
-        post_to_slack_channels: Unset | list[dict[str, Any]] = UNSET
+        post_to_slack_channels: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.post_to_slack_channels, Unset):
             post_to_slack_channels = []
             for post_to_slack_channels_item_data in self.post_to_slack_channels:
@@ -100,31 +102,35 @@ class SnapshotDatadogGraphTaskParams:
         past_duration = d.pop("past_duration")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | SnapshotDatadogGraphTaskParamsTaskType
+        task_type: SnapshotDatadogGraphTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_snapshot_datadog_graph_task_params_task_type(_task_type)
 
-        dashboards = []
         _dashboards = d.pop("dashboards", UNSET)
-        for dashboards_item_data in _dashboards or []:
-            dashboards_item = SnapshotDatadogGraphTaskParamsDashboardsItem.from_dict(dashboards_item_data)
+        dashboards: list[SnapshotDatadogGraphTaskParamsDashboardsItem] | Unset = UNSET
+        if _dashboards is not UNSET:
+            dashboards = []
+            for dashboards_item_data in _dashboards:
+                dashboards_item = SnapshotDatadogGraphTaskParamsDashboardsItem.from_dict(dashboards_item_data)
 
-            dashboards.append(dashboards_item)
+                dashboards.append(dashboards_item)
 
         metric_queries = cast(list[str], d.pop("metric_queries", UNSET))
 
         post_to_incident_timeline = d.pop("post_to_incident_timeline", UNSET)
 
-        post_to_slack_channels = []
         _post_to_slack_channels = d.pop("post_to_slack_channels", UNSET)
-        for post_to_slack_channels_item_data in _post_to_slack_channels or []:
-            post_to_slack_channels_item = SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem.from_dict(
-                post_to_slack_channels_item_data
-            )
+        post_to_slack_channels: list[SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem] | Unset = UNSET
+        if _post_to_slack_channels is not UNSET:
+            post_to_slack_channels = []
+            for post_to_slack_channels_item_data in _post_to_slack_channels:
+                post_to_slack_channels_item = SnapshotDatadogGraphTaskParamsPostToSlackChannelsItem.from_dict(
+                    post_to_slack_channels_item_data
+                )
 
-            post_to_slack_channels.append(post_to_slack_channels_item)
+                post_to_slack_channels.append(post_to_slack_channels_item)
 
         snapshot_datadog_graph_task_params = cls(
             past_duration=past_duration,

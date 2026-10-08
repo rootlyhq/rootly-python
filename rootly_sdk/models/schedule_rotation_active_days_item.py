@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ScheduleRotationActiveDaysItem = Literal["F", "M", "R", "S", "T", "U", "W"]
 
@@ -17,5 +17,5 @@ def check_schedule_rotation_active_days_item(value: str | None) -> ScheduleRotat
     if value is None:
         return None
     if value in SCHEDULE_ROTATION_ACTIVE_DAYS_ITEM_VALUES:
-        return cast(ScheduleRotationActiveDaysItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {SCHEDULE_ROTATION_ACTIVE_DAYS_ITEM_VALUES!r}")

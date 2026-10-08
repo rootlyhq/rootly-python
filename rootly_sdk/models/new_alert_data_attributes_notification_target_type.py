@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewAlertDataAttributesNotificationTargetType = Literal["EscalationPolicy", "Functionality", "Group", "Service", "User"]
 
@@ -17,7 +17,7 @@ def check_new_alert_data_attributes_notification_target_type(
     if value is None:
         return None
     if value in NEW_ALERT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES:
-        return cast(NewAlertDataAttributesNotificationTargetType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_ALERT_DATA_ATTRIBUTES_NOTIFICATION_TARGET_TYPE_VALUES!r}"
     )

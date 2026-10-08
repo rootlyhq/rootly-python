@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CustomFieldResourceType = Literal["incident", "problem"]
 
@@ -12,5 +12,5 @@ def check_custom_field_resource_type(value: str | None) -> CustomFieldResourceTy
     if value is None:
         return None
     if value in CUSTOM_FIELD_RESOURCE_TYPE_VALUES:
-        return cast(CustomFieldResourceType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CUSTOM_FIELD_RESOURCE_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleWorkflowsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_workflows_permissions_item(value: str | None) -> RoleWorkflowsPer
     if value is None:
         return None
     if value in ROLE_WORKFLOWS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleWorkflowsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_WORKFLOWS_PERMISSIONS_ITEM_VALUES!r}")

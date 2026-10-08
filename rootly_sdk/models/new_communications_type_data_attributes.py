@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -13,18 +15,18 @@ class NewCommunicationsTypeDataAttributes:
     """
     Attributes:
         name (str): The name of the communications type
-        color (Union[None, str]): The color of the communications type
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        color (None | str): The color of the communications type
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        description (Union[None, Unset, str]): The description of the communications type
-        position (Union[None, Unset, int]): Position of the communications type
+        description (None | str | Unset): The description of the communications type
+        position (int | None | Unset): Position of the communications type
     """
 
     name: str
     color: None | str
-    slug: None | Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    position: None | Unset | int = UNSET
+    slug: None | str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    position: int | None | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
@@ -32,19 +34,19 @@ class NewCommunicationsTypeDataAttributes:
         color: None | str
         color = self.color
 
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
             slug = self.slug
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        position: None | Unset | int
+        position: int | None | Unset
         if isinstance(self.position, Unset):
             position = UNSET
         else:
@@ -79,30 +81,30 @@ class NewCommunicationsTypeDataAttributes:
 
         color = _parse_color(d.pop("color"))
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_position(data: object) -> None | Unset | int:
+        def _parse_position(data: object) -> int | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | int, data)
+            return cast(int | None | Unset, data)
 
         position = _parse_position(d.pop("position", UNSET))
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -27,7 +29,7 @@ class StatusPageComponentResponseData:
 
     id: str
     type_: StatusPageComponentResponseDataType
-    attributes: "StatusPageComponent"
+    attributes: StatusPageComponent
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

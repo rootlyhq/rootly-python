@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 BulkUpsertCatalogEntitiesResponseDataItemType = Literal["catalog_entities"]
 
@@ -13,7 +13,7 @@ def check_bulk_upsert_catalog_entities_response_data_item_type(
     if value is None:
         return None
     if value in BULK_UPSERT_CATALOG_ENTITIES_RESPONSE_DATA_ITEM_TYPE_VALUES:
-        return cast(BulkUpsertCatalogEntitiesResponseDataItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {BULK_UPSERT_CATALOG_ENTITIES_RESPONSE_DATA_ITEM_TYPE_VALUES!r}"
     )

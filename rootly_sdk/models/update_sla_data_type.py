@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateSlaDataType = Literal["slas"]
 
@@ -11,5 +11,5 @@ def check_update_sla_data_type(value: str | None) -> UpdateSlaDataType | None:
     if value is None:
         return None
     if value in UPDATE_SLA_DATA_TYPE_VALUES:
-        return cast(UpdateSlaDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_SLA_DATA_TYPE_VALUES!r}")

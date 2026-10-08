@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ActionItemTriggerParamsTriggerType = Literal["action_item"]
 
@@ -11,5 +11,5 @@ def check_action_item_trigger_params_trigger_type(value: str | None) -> ActionIt
     if value is None:
         return None
     if value in ACTION_ITEM_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES:
-        return cast(ActionItemTriggerParamsTriggerType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ACTION_ITEM_TRIGGER_PARAMS_TRIGGER_TYPE_VALUES!r}")

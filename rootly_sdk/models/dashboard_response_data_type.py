@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 DashboardResponseDataType = Literal["dashboards"]
 
@@ -11,5 +11,5 @@ def check_dashboard_response_data_type(value: str | None) -> DashboardResponseDa
     if value is None:
         return None
     if value in DASHBOARD_RESPONSE_DATA_TYPE_VALUES:
-        return cast(DashboardResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {DASHBOARD_RESPONSE_DATA_TYPE_VALUES!r}")

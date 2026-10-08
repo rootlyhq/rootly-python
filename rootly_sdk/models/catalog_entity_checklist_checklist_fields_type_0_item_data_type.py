@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CatalogEntityChecklistChecklistFieldsType0ItemDataType = Literal["catalog_entity_checklist_fields"]
 
@@ -15,7 +15,7 @@ def check_catalog_entity_checklist_checklist_fields_type_0_item_data_type(
     if value is None:
         return None
     if value in CATALOG_ENTITY_CHECKLIST_CHECKLIST_FIELDS_TYPE_0_ITEM_DATA_TYPE_VALUES:
-        return cast(CatalogEntityChecklistChecklistFieldsType0ItemDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CATALOG_ENTITY_CHECKLIST_CHECKLIST_FIELDS_TYPE_0_ITEM_DATA_TYPE_VALUES!r}"
     )

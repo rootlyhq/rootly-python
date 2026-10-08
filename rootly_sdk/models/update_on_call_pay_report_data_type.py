@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateOnCallPayReportDataType = Literal["on_call_pay_reports"]
 
@@ -11,5 +11,5 @@ def check_update_on_call_pay_report_data_type(value: str | None) -> UpdateOnCall
     if value is None:
         return None
     if value in UPDATE_ON_CALL_PAY_REPORT_DATA_TYPE_VALUES:
-        return cast(UpdateOnCallPayReportDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_ON_CALL_PAY_REPORT_DATA_TYPE_VALUES!r}")

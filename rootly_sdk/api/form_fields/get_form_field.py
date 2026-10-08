@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 from uuid import UUID
 
 import httpx
@@ -13,13 +14,14 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    id: UUID | str,
+    id: str | UUID,
     *,
-    include: Unset | GetFormFieldInclude = UNSET,
+    include: GetFormFieldInclude | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_include: Unset | str = UNSET
+    json_include: str | Unset = UNSET
     if not isinstance(include, Unset):
         json_include = include
 
@@ -29,7 +31,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/form_fields/{id}",
+        "url": "/v1/form_fields/{id}".format(
+            id=quote(str(id), safe=""),
+        ),
         "params": params,
     }
 
@@ -67,25 +71,25 @@ def _build_response(
 
 
 def sync_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetFormFieldInclude = UNSET,
+    include: GetFormFieldInclude | Unset = UNSET,
 ) -> Response[ErrorsList | FormFieldResponse]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetFormFieldInclude]):
+        id (str | UUID):
+        include (GetFormFieldInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, FormFieldResponse]]
+        Response[ErrorsList | FormFieldResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,25 +105,25 @@ def sync_detailed(
 
 
 def sync(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetFormFieldInclude = UNSET,
+    include: GetFormFieldInclude | Unset = UNSET,
 ) -> ErrorsList | FormFieldResponse | None:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetFormFieldInclude]):
+        id (str | UUID):
+        include (GetFormFieldInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, FormFieldResponse]
+        ErrorsList | FormFieldResponse
     """
 
     return sync_detailed(
@@ -130,25 +134,25 @@ def sync(
 
 
 async def asyncio_detailed(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetFormFieldInclude = UNSET,
+    include: GetFormFieldInclude | Unset = UNSET,
 ) -> Response[ErrorsList | FormFieldResponse]:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetFormFieldInclude]):
+        id (str | UUID):
+        include (GetFormFieldInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ErrorsList, FormFieldResponse]]
+        Response[ErrorsList | FormFieldResponse]
     """
 
     kwargs = _get_kwargs(
@@ -162,25 +166,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: UUID | str,
+    id: str | UUID,
     *,
     client: AuthenticatedClient,
-    include: Unset | GetFormFieldInclude = UNSET,
+    include: GetFormFieldInclude | Unset = UNSET,
 ) -> ErrorsList | FormFieldResponse | None:
     """Retrieves a Form Field
 
      Retrieves a specific form_field by id
 
     Args:
-        id (Union[UUID, str]):
-        include (Union[Unset, GetFormFieldInclude]):
+        id (str | UUID):
+        include (GetFormFieldInclude | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ErrorsList, FormFieldResponse]
+        ErrorsList | FormFieldResponse
     """
 
     return (

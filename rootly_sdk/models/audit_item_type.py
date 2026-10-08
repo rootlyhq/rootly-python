@@ -1,10 +1,11 @@
-from typing import Literal, cast
+from typing import Literal
 
 AuditItemType = Literal[
     "AlertRoute",
     "AlertRoutingRule",
     "Alerts::Source",
     "ApiKey",
+    "BrowserIpPolicy",
     "Catalog",
     "CatalogEntity",
     "CatalogEntityProperty",
@@ -56,6 +57,7 @@ AuditItemType = Literal[
     "LiveCallRouter",
     "LoginActivity",
     "Membership",
+    "OauthApplication",
     "OnCallRole",
     "Playbook",
     "PlaybookTask",
@@ -72,6 +74,7 @@ AUDIT_ITEM_TYPE_VALUES: set[AuditItemType] = {
     "AlertRoutingRule",
     "Alerts::Source",
     "ApiKey",
+    "BrowserIpPolicy",
     "Catalog",
     "CatalogEntity",
     "CatalogEntityProperty",
@@ -123,6 +126,7 @@ AUDIT_ITEM_TYPE_VALUES: set[AuditItemType] = {
     "LiveCallRouter",
     "LoginActivity",
     "Membership",
+    "OauthApplication",
     "OnCallRole",
     "Playbook",
     "PlaybookTask",
@@ -139,5 +143,5 @@ def check_audit_item_type(value: str | None) -> AuditItemType | None:
     if value is None:
         return None
     if value in AUDIT_ITEM_TYPE_VALUES:
-        return cast(AuditItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {AUDIT_ITEM_TYPE_VALUES!r}")

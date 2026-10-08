@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 HeartbeatListDataItemType = Literal["heartbeats"]
 
@@ -11,5 +11,5 @@ def check_heartbeat_list_data_item_type(value: str | None) -> HeartbeatListDataI
     if value is None:
         return None
     if value in HEARTBEAT_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(HeartbeatListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {HEARTBEAT_LIST_DATA_ITEM_TYPE_VALUES!r}")

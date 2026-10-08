@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
@@ -22,24 +24,23 @@ T = TypeVar("T", bound="UpdateWebhooksEndpointDataAttributes")
 class UpdateWebhooksEndpointDataAttributes:
     """
     Attributes:
-        slug (Union[None, Unset, str]): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
+        slug (None | str | Unset): Deprecated. `slug` is derived from `name`; any submitted value is ignored. This
             property will be removed from the request schema in a future version.
-        name (Union[Unset, str]): The name of the endpoint
-        event_types (Union[Unset, list[UpdateWebhooksEndpointDataAttributesEventTypesItem]]):
-        enabled (Union[Unset, bool]):
-        custom_headers (Union[Unset, list['UpdateWebhooksEndpointDataAttributesCustomHeadersItem']]): Custom HTTP
-            headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are
-            rejected.
+        name (str | Unset): The name of the endpoint
+        event_types (list[UpdateWebhooksEndpointDataAttributesEventTypesItem] | Unset):
+        enabled (bool | Unset):
+        custom_headers (list[UpdateWebhooksEndpointDataAttributesCustomHeadersItem] | Unset): Custom HTTP headers sent
+            with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
     """
 
-    slug: None | Unset | str = UNSET
-    name: Unset | str = UNSET
-    event_types: Unset | list[UpdateWebhooksEndpointDataAttributesEventTypesItem] = UNSET
-    enabled: Unset | bool = UNSET
-    custom_headers: Unset | list["UpdateWebhooksEndpointDataAttributesCustomHeadersItem"] = UNSET
+    slug: None | str | Unset = UNSET
+    name: str | Unset = UNSET
+    event_types: list[UpdateWebhooksEndpointDataAttributesEventTypesItem] | Unset = UNSET
+    enabled: bool | Unset = UNSET
+    custom_headers: list[UpdateWebhooksEndpointDataAttributesCustomHeadersItem] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
-        slug: None | Unset | str
+        slug: None | str | Unset
         if isinstance(self.slug, Unset):
             slug = UNSET
         else:
@@ -47,7 +48,7 @@ class UpdateWebhooksEndpointDataAttributes:
 
         name = self.name
 
-        event_types: Unset | list[str] = UNSET
+        event_types: list[str] | Unset = UNSET
         if not isinstance(self.event_types, Unset):
             event_types = []
             for event_types_item_data in self.event_types:
@@ -56,7 +57,7 @@ class UpdateWebhooksEndpointDataAttributes:
 
         enabled = self.enabled
 
-        custom_headers: Unset | list[dict[str, Any]] = UNSET
+        custom_headers: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.custom_headers, Unset):
             custom_headers = []
             for custom_headers_item_data in self.custom_headers:
@@ -87,34 +88,40 @@ class UpdateWebhooksEndpointDataAttributes:
 
         d = dict(src_dict)
 
-        def _parse_slug(data: object) -> None | Unset | str:
+        def _parse_slug(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         slug = _parse_slug(d.pop("slug", UNSET))
 
         name = d.pop("name", UNSET)
 
-        event_types = []
         _event_types = d.pop("event_types", UNSET)
-        for event_types_item_data in _event_types or []:
-            event_types_item = check_update_webhooks_endpoint_data_attributes_event_types_item(event_types_item_data)
+        event_types: list[UpdateWebhooksEndpointDataAttributesEventTypesItem] | Unset = UNSET
+        if _event_types is not UNSET:
+            event_types = []
+            for event_types_item_data in _event_types:
+                event_types_item = check_update_webhooks_endpoint_data_attributes_event_types_item(
+                    event_types_item_data
+                )
 
-            event_types.append(event_types_item)
+                event_types.append(event_types_item)
 
         enabled = d.pop("enabled", UNSET)
 
-        custom_headers = []
         _custom_headers = d.pop("custom_headers", UNSET)
-        for custom_headers_item_data in _custom_headers or []:
-            custom_headers_item = UpdateWebhooksEndpointDataAttributesCustomHeadersItem.from_dict(
-                custom_headers_item_data
-            )
+        custom_headers: list[UpdateWebhooksEndpointDataAttributesCustomHeadersItem] | Unset = UNSET
+        if _custom_headers is not UNSET:
+            custom_headers = []
+            for custom_headers_item_data in _custom_headers:
+                custom_headers_item = UpdateWebhooksEndpointDataAttributesCustomHeadersItem.from_dict(
+                    custom_headers_item_data
+                )
 
-            custom_headers.append(custom_headers_item)
+                custom_headers.append(custom_headers_item)
 
         update_webhooks_endpoint_data_attributes = cls(
             slug=slug,

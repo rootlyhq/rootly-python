@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
-from attrs import field as _attrs_field
 
 from ..models.new_alert_routing_rule_data_attributes_conditions_item_property_field_condition_type import (
     NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType,
@@ -29,19 +30,17 @@ class NewAlertRoutingRuleDataAttributesConditionsItem:
             field name should be supplied in JSON Path syntax.
         property_field_condition_type (NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType): The
             condition type of the property field
-        property_field_value (Union[Unset, str]): The value of the property field. Can be null if the property field
-            condition type is 'is_one_of' or 'is_not_one_of'
-        property_field_values (Union[Unset, list[str]]): The values of the property field. Need to be passed if the
-            property field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is
-            'alert_urgency'
+        property_field_value (str | Unset): The value of the property field. Can be null if the property field condition
+            type is 'is_one_of' or 'is_not_one_of'
+        property_field_values (list[str] | Unset): The values of the property field. Need to be passed if the property
+            field condition type is 'is_one_of' or 'is_not_one_of' except for when property field name is 'alert_urgency'
     """
 
     property_field_type: NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldType
     property_field_name: str
     property_field_condition_type: NewAlertRoutingRuleDataAttributesConditionsItemPropertyFieldConditionType
-    property_field_value: Unset | str = UNSET
-    property_field_values: Unset | list[str] = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    property_field_value: str | Unset = UNSET
+    property_field_values: list[str] | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         property_field_type: str = self.property_field_type
@@ -52,12 +51,12 @@ class NewAlertRoutingRuleDataAttributesConditionsItem:
 
         property_field_value = self.property_field_value
 
-        property_field_values: Unset | list[str] = UNSET
+        property_field_values: list[str] | Unset = UNSET
         if not isinstance(self.property_field_values, Unset):
             property_field_values = self.property_field_values
 
         field_dict: dict[str, Any] = {}
-        field_dict.update(self.additional_properties)
+
         field_dict.update(
             {
                 "property_field_type": property_field_type,
@@ -99,21 +98,4 @@ class NewAlertRoutingRuleDataAttributesConditionsItem:
             property_field_values=property_field_values,
         )
 
-        new_alert_routing_rule_data_attributes_conditions_item.additional_properties = d
         return new_alert_routing_rule_data_attributes_conditions_item
-
-    @property
-    def additional_keys(self) -> list[str]:
-        return list(self.additional_properties.keys())
-
-    def __getitem__(self, key: str) -> Any:
-        return self.additional_properties[key]
-
-    def __setitem__(self, key: str, value: Any) -> None:
-        self.additional_properties[key] = value
-
-    def __delitem__(self, key: str) -> None:
-        del self.additional_properties[key]
-
-    def __contains__(self, key: str) -> bool:
-        return key in self.additional_properties

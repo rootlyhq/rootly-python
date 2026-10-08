@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewSlaDataAttributesConditionMatchType = Literal["ALL", "ANY"]
 
@@ -14,7 +14,7 @@ def check_new_sla_data_attributes_condition_match_type(
     if value is None:
         return None
     if value in NEW_SLA_DATA_ATTRIBUTES_CONDITION_MATCH_TYPE_VALUES:
-        return cast(NewSlaDataAttributesConditionMatchType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_SLA_DATA_ATTRIBUTES_CONDITION_MATCH_TYPE_VALUES!r}"
     )

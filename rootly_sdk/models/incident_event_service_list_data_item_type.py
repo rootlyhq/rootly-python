@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentEventServiceListDataItemType = Literal["incident_event_services"]
 
@@ -11,7 +11,7 @@ def check_incident_event_service_list_data_item_type(value: str | None) -> Incid
     if value is None:
         return None
     if value in INCIDENT_EVENT_SERVICE_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(IncidentEventServiceListDataItemType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_EVENT_SERVICE_LIST_DATA_ITEM_TYPE_VALUES!r}"
     )

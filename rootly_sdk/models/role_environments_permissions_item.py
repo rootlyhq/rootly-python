@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 RoleEnvironmentsPermissionsItem = Literal["create", "delete", "read", "update"]
 
@@ -14,5 +14,5 @@ def check_role_environments_permissions_item(value: str | None) -> RoleEnvironme
     if value is None:
         return None
     if value in ROLE_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES:
-        return cast(RoleEnvironmentsPermissionsItem, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ROLE_ENVIRONMENTS_PERMISSIONS_ITEM_VALUES!r}")

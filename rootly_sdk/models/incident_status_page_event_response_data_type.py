@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 IncidentStatusPageEventResponseDataType = Literal["incident_status_page_events"]
 
@@ -13,7 +13,7 @@ def check_incident_status_page_event_response_data_type(
     if value is None:
         return None
     if value in INCIDENT_STATUS_PAGE_EVENT_RESPONSE_DATA_TYPE_VALUES:
-        return cast(IncidentStatusPageEventResponseDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {INCIDENT_STATUS_PAGE_EVENT_RESPONSE_DATA_TYPE_VALUES!r}"
     )

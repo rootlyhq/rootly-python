@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -38,22 +40,22 @@ T = TypeVar("T", bound="InviteToSlackChannelRootlyTaskParams")
 class InviteToSlackChannelRootlyTaskParams:
     """
     Attributes:
-        channels (list['InviteToSlackChannelRootlyTaskParamsChannelsItem']):
-        task_type (Union[Unset, InviteToSlackChannelRootlyTaskParamsTaskType]):
-        escalation_policy_target (Union[Unset, InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget]):
-        service_target (Union[Unset, InviteToSlackChannelRootlyTaskParamsServiceTarget]):
-        user_target (Union[Unset, InviteToSlackChannelRootlyTaskParamsUserTarget]):
-        group_target (Union[Unset, InviteToSlackChannelRootlyTaskParamsGroupTarget]):
-        schedule_target (Union[Unset, InviteToSlackChannelRootlyTaskParamsScheduleTarget]):
+        channels (list[InviteToSlackChannelRootlyTaskParamsChannelsItem]):
+        task_type (InviteToSlackChannelRootlyTaskParamsTaskType | Unset):
+        escalation_policy_target (InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget | Unset):
+        service_target (InviteToSlackChannelRootlyTaskParamsServiceTarget | Unset):
+        user_target (InviteToSlackChannelRootlyTaskParamsUserTarget | Unset):
+        group_target (InviteToSlackChannelRootlyTaskParamsGroupTarget | Unset):
+        schedule_target (InviteToSlackChannelRootlyTaskParamsScheduleTarget | Unset):
     """
 
-    channels: list["InviteToSlackChannelRootlyTaskParamsChannelsItem"]
-    task_type: Unset | InviteToSlackChannelRootlyTaskParamsTaskType = UNSET
-    escalation_policy_target: Union[Unset, "InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget"] = UNSET
-    service_target: Union[Unset, "InviteToSlackChannelRootlyTaskParamsServiceTarget"] = UNSET
-    user_target: Union[Unset, "InviteToSlackChannelRootlyTaskParamsUserTarget"] = UNSET
-    group_target: Union[Unset, "InviteToSlackChannelRootlyTaskParamsGroupTarget"] = UNSET
-    schedule_target: Union[Unset, "InviteToSlackChannelRootlyTaskParamsScheduleTarget"] = UNSET
+    channels: list[InviteToSlackChannelRootlyTaskParamsChannelsItem]
+    task_type: InviteToSlackChannelRootlyTaskParamsTaskType | Unset = UNSET
+    escalation_policy_target: InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget | Unset = UNSET
+    service_target: InviteToSlackChannelRootlyTaskParamsServiceTarget | Unset = UNSET
+    user_target: InviteToSlackChannelRootlyTaskParamsUserTarget | Unset = UNSET
+    group_target: InviteToSlackChannelRootlyTaskParamsGroupTarget | Unset = UNSET
+    schedule_target: InviteToSlackChannelRootlyTaskParamsScheduleTarget | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,27 +64,27 @@ class InviteToSlackChannelRootlyTaskParams:
             channels_item = channels_item_data.to_dict()
             channels.append(channels_item)
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
-        escalation_policy_target: Unset | dict[str, Any] = UNSET
+        escalation_policy_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.escalation_policy_target, Unset):
             escalation_policy_target = self.escalation_policy_target.to_dict()
 
-        service_target: Unset | dict[str, Any] = UNSET
+        service_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.service_target, Unset):
             service_target = self.service_target.to_dict()
 
-        user_target: Unset | dict[str, Any] = UNSET
+        user_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.user_target, Unset):
             user_target = self.user_target.to_dict()
 
-        group_target: Unset | dict[str, Any] = UNSET
+        group_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.group_target, Unset):
             group_target = self.group_target.to_dict()
 
-        schedule_target: Unset | dict[str, Any] = UNSET
+        schedule_target: dict[str, Any] | Unset = UNSET
         if not isinstance(self.schedule_target, Unset):
             schedule_target = self.schedule_target.to_dict()
 
@@ -138,14 +140,14 @@ class InviteToSlackChannelRootlyTaskParams:
             channels.append(channels_item)
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | InviteToSlackChannelRootlyTaskParamsTaskType
+        task_type: InviteToSlackChannelRootlyTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:
             task_type = check_invite_to_slack_channel_rootly_task_params_task_type(_task_type)
 
         _escalation_policy_target = d.pop("escalation_policy_target", UNSET)
-        escalation_policy_target: Unset | InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget
+        escalation_policy_target: InviteToSlackChannelRootlyTaskParamsEscalationPolicyTarget | Unset
         if isinstance(_escalation_policy_target, Unset):
             escalation_policy_target = UNSET
         else:
@@ -154,28 +156,28 @@ class InviteToSlackChannelRootlyTaskParams:
             )
 
         _service_target = d.pop("service_target", UNSET)
-        service_target: Unset | InviteToSlackChannelRootlyTaskParamsServiceTarget
+        service_target: InviteToSlackChannelRootlyTaskParamsServiceTarget | Unset
         if isinstance(_service_target, Unset):
             service_target = UNSET
         else:
             service_target = InviteToSlackChannelRootlyTaskParamsServiceTarget.from_dict(_service_target)
 
         _user_target = d.pop("user_target", UNSET)
-        user_target: Unset | InviteToSlackChannelRootlyTaskParamsUserTarget
+        user_target: InviteToSlackChannelRootlyTaskParamsUserTarget | Unset
         if isinstance(_user_target, Unset):
             user_target = UNSET
         else:
             user_target = InviteToSlackChannelRootlyTaskParamsUserTarget.from_dict(_user_target)
 
         _group_target = d.pop("group_target", UNSET)
-        group_target: Unset | InviteToSlackChannelRootlyTaskParamsGroupTarget
+        group_target: InviteToSlackChannelRootlyTaskParamsGroupTarget | Unset
         if isinstance(_group_target, Unset):
             group_target = UNSET
         else:
             group_target = InviteToSlackChannelRootlyTaskParamsGroupTarget.from_dict(_group_target)
 
         _schedule_target = d.pop("schedule_target", UNSET)
-        schedule_target: Unset | InviteToSlackChannelRootlyTaskParamsScheduleTarget
+        schedule_target: InviteToSlackChannelRootlyTaskParamsScheduleTarget | Unset
         if isinstance(_schedule_target, Unset):
             schedule_target = UNSET
         else:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -17,14 +19,14 @@ T = TypeVar("T", bound="UpdateDashboardPanelDataAttributesParamsLegend")
 class UpdateDashboardPanelDataAttributesParamsLegend:
     """
     Attributes:
-        groups (Union[Unset, UpdateDashboardPanelDataAttributesParamsLegendGroups]):  Default: 'all'.
+        groups (UpdateDashboardPanelDataAttributesParamsLegendGroups | Unset):  Default: 'all'.
     """
 
-    groups: Unset | UpdateDashboardPanelDataAttributesParamsLegendGroups = "all"
+    groups: UpdateDashboardPanelDataAttributesParamsLegendGroups | Unset = "all"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        groups: Unset | str = UNSET
+        groups: str | Unset = UNSET
         if not isinstance(self.groups, Unset):
             groups = self.groups
 
@@ -40,7 +42,7 @@ class UpdateDashboardPanelDataAttributesParamsLegend:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _groups = d.pop("groups", UNSET)
-        groups: Unset | UpdateDashboardPanelDataAttributesParamsLegendGroups
+        groups: UpdateDashboardPanelDataAttributesParamsLegendGroups | Unset
         if isinstance(_groups, Unset):
             groups = UNSET
         else:

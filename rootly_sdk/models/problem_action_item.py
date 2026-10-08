@@ -1,0 +1,242 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.problem_action_item_priority import ProblemActionItemPriority, check_problem_action_item_priority
+from ..models.problem_action_item_status import ProblemActionItemStatus, check_problem_action_item_status
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.user_flat_response import UserFlatResponse
+
+
+T = TypeVar("T", bound="ProblemActionItem")
+
+
+@_attrs_define
+class ProblemActionItem:
+    """
+    Attributes:
+        summary (str): The summary of the action item
+        created_at (str): Date of creation
+        updated_at (str): Date of last update
+        problem_id (str | Unset): ID of the problem this action item belongs to
+        description (None | str | Unset): The description of the action item
+        assigned_to_user_id (int | None | Unset): ID of user you wish to assign this action item
+        priority (ProblemActionItemPriority | Unset): The priority of the action item
+        status (ProblemActionItemStatus | Unset): The status of the action item
+        due_date (None | str | Unset): The due date of the action item
+        jira_issue_url (None | str | Unset): The Jira issue URL.
+        assigned_to (UserFlatResponse | Unset): Flat user attributes as returned by UserFlatSerializer (no nested
+            associations)
+        created_by (UserFlatResponse | Unset): Flat user attributes as returned by UserFlatSerializer (no nested
+            associations)
+    """
+
+    summary: str
+    created_at: str
+    updated_at: str
+    problem_id: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    assigned_to_user_id: int | None | Unset = UNSET
+    priority: ProblemActionItemPriority | Unset = UNSET
+    status: ProblemActionItemStatus | Unset = UNSET
+    due_date: None | str | Unset = UNSET
+    jira_issue_url: None | str | Unset = UNSET
+    assigned_to: UserFlatResponse | Unset = UNSET
+    created_by: UserFlatResponse | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        summary = self.summary
+
+        created_at = self.created_at
+
+        updated_at = self.updated_at
+
+        problem_id = self.problem_id
+
+        description: None | str | Unset
+        if isinstance(self.description, Unset):
+            description = UNSET
+        else:
+            description = self.description
+
+        assigned_to_user_id: int | None | Unset
+        if isinstance(self.assigned_to_user_id, Unset):
+            assigned_to_user_id = UNSET
+        else:
+            assigned_to_user_id = self.assigned_to_user_id
+
+        priority: str | Unset = UNSET
+        if not isinstance(self.priority, Unset):
+            priority = self.priority
+
+        status: str | Unset = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status
+
+        due_date: None | str | Unset
+        if isinstance(self.due_date, Unset):
+            due_date = UNSET
+        else:
+            due_date = self.due_date
+
+        jira_issue_url: None | str | Unset
+        if isinstance(self.jira_issue_url, Unset):
+            jira_issue_url = UNSET
+        else:
+            jira_issue_url = self.jira_issue_url
+
+        assigned_to: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.assigned_to, Unset):
+            assigned_to = self.assigned_to.to_dict()
+
+        created_by: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.created_by, Unset):
+            created_by = self.created_by.to_dict()
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "summary": summary,
+                "created_at": created_at,
+                "updated_at": updated_at,
+            }
+        )
+        if problem_id is not UNSET:
+            field_dict["problem_id"] = problem_id
+        if description is not UNSET:
+            field_dict["description"] = description
+        if assigned_to_user_id is not UNSET:
+            field_dict["assigned_to_user_id"] = assigned_to_user_id
+        if priority is not UNSET:
+            field_dict["priority"] = priority
+        if status is not UNSET:
+            field_dict["status"] = status
+        if due_date is not UNSET:
+            field_dict["due_date"] = due_date
+        if jira_issue_url is not UNSET:
+            field_dict["jira_issue_url"] = jira_issue_url
+        if assigned_to is not UNSET:
+            field_dict["assigned_to"] = assigned_to
+        if created_by is not UNSET:
+            field_dict["created_by"] = created_by
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.user_flat_response import UserFlatResponse
+
+        d = dict(src_dict)
+        summary = d.pop("summary")
+
+        created_at = d.pop("created_at")
+
+        updated_at = d.pop("updated_at")
+
+        problem_id = d.pop("problem_id", UNSET)
+
+        def _parse_description(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        description = _parse_description(d.pop("description", UNSET))
+
+        def _parse_assigned_to_user_id(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        assigned_to_user_id = _parse_assigned_to_user_id(d.pop("assigned_to_user_id", UNSET))
+
+        _priority = d.pop("priority", UNSET)
+        priority: ProblemActionItemPriority | Unset
+        if isinstance(_priority, Unset):
+            priority = UNSET
+        else:
+            priority = check_problem_action_item_priority(_priority)
+
+        _status = d.pop("status", UNSET)
+        status: ProblemActionItemStatus | Unset
+        if isinstance(_status, Unset):
+            status = UNSET
+        else:
+            status = check_problem_action_item_status(_status)
+
+        def _parse_due_date(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        due_date = _parse_due_date(d.pop("due_date", UNSET))
+
+        def _parse_jira_issue_url(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        jira_issue_url = _parse_jira_issue_url(d.pop("jira_issue_url", UNSET))
+
+        _assigned_to = d.pop("assigned_to", UNSET)
+        assigned_to: UserFlatResponse | Unset
+        if isinstance(_assigned_to, Unset):
+            assigned_to = UNSET
+        else:
+            assigned_to = UserFlatResponse.from_dict(_assigned_to)
+
+        _created_by = d.pop("created_by", UNSET)
+        created_by: UserFlatResponse | Unset
+        if isinstance(_created_by, Unset):
+            created_by = UNSET
+        else:
+            created_by = UserFlatResponse.from_dict(_created_by)
+
+        problem_action_item = cls(
+            summary=summary,
+            created_at=created_at,
+            updated_at=updated_at,
+            problem_id=problem_id,
+            description=description,
+            assigned_to_user_id=assigned_to_user_id,
+            priority=priority,
+            status=status,
+            due_date=due_date,
+            jira_issue_url=jira_issue_url,
+            assigned_to=assigned_to,
+            created_by=created_by,
+        )
+
+        problem_action_item.additional_properties = d
+        return problem_action_item
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

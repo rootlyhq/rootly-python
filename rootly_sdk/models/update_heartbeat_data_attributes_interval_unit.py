@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateHeartbeatDataAttributesIntervalUnit = Literal["days", "hours", "minutes"]
 
@@ -15,7 +15,7 @@ def check_update_heartbeat_data_attributes_interval_unit(
     if value is None:
         return None
     if value in UPDATE_HEARTBEAT_DATA_ATTRIBUTES_INTERVAL_UNIT_VALUES:
-        return cast(UpdateHeartbeatDataAttributesIntervalUnit, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_HEARTBEAT_DATA_ATTRIBUTES_INTERVAL_UNIT_VALUES!r}"
     )

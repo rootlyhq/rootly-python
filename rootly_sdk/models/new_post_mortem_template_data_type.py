@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewPostMortemTemplateDataType = Literal["post_mortem_templates"]
 
@@ -11,5 +11,5 @@ def check_new_post_mortem_template_data_type(value: str | None) -> NewPostMortem
     if value is None:
         return None
     if value in NEW_POST_MORTEM_TEMPLATE_DATA_TYPE_VALUES:
-        return cast(NewPostMortemTemplateDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_POST_MORTEM_TEMPLATE_DATA_TYPE_VALUES!r}")

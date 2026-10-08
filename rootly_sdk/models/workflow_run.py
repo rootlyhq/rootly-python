@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,33 +24,33 @@ class WorkflowRun:
         workflow_id (str):
         status (WorkflowRunStatus):
         triggered_by (WorkflowRunTriggeredBy):
-        status_message (Union[None, Unset, str]):
-        started_at (Union[None, Unset, str]):
-        completed_at (Union[None, Unset, str]):
-        failed_at (Union[None, Unset, str]):
-        canceled_at (Union[None, Unset, str]):
-        incident_id (Union[None, Unset, str]):
-        post_mortem_id (Union[None, Unset, str]):
-        action_item_id (Union[None, Unset, str]):
-        alert_id (Union[None, Unset, str]):
-        pulse_id (Union[None, Unset, str]):
-        context (Union[Unset, WorkflowRunContext]):
+        status_message (None | str | Unset):
+        started_at (None | str | Unset):
+        completed_at (None | str | Unset):
+        failed_at (None | str | Unset):
+        canceled_at (None | str | Unset):
+        incident_id (None | str | Unset):
+        post_mortem_id (None | str | Unset):
+        action_item_id (None | str | Unset):
+        alert_id (None | str | Unset):
+        pulse_id (None | str | Unset):
+        context (WorkflowRunContext | Unset):
     """
 
     workflow_id: str
     status: WorkflowRunStatus
     triggered_by: WorkflowRunTriggeredBy
-    status_message: None | Unset | str = UNSET
-    started_at: None | Unset | str = UNSET
-    completed_at: None | Unset | str = UNSET
-    failed_at: None | Unset | str = UNSET
-    canceled_at: None | Unset | str = UNSET
-    incident_id: None | Unset | str = UNSET
-    post_mortem_id: None | Unset | str = UNSET
-    action_item_id: None | Unset | str = UNSET
-    alert_id: None | Unset | str = UNSET
-    pulse_id: None | Unset | str = UNSET
-    context: Union[Unset, "WorkflowRunContext"] = UNSET
+    status_message: None | str | Unset = UNSET
+    started_at: None | str | Unset = UNSET
+    completed_at: None | str | Unset = UNSET
+    failed_at: None | str | Unset = UNSET
+    canceled_at: None | str | Unset = UNSET
+    incident_id: None | str | Unset = UNSET
+    post_mortem_id: None | str | Unset = UNSET
+    action_item_id: None | str | Unset = UNSET
+    alert_id: None | str | Unset = UNSET
+    pulse_id: None | str | Unset = UNSET
+    context: WorkflowRunContext | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,67 +60,67 @@ class WorkflowRun:
 
         triggered_by: str = self.triggered_by
 
-        status_message: None | Unset | str
+        status_message: None | str | Unset
         if isinstance(self.status_message, Unset):
             status_message = UNSET
         else:
             status_message = self.status_message
 
-        started_at: None | Unset | str
+        started_at: None | str | Unset
         if isinstance(self.started_at, Unset):
             started_at = UNSET
         else:
             started_at = self.started_at
 
-        completed_at: None | Unset | str
+        completed_at: None | str | Unset
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
         else:
             completed_at = self.completed_at
 
-        failed_at: None | Unset | str
+        failed_at: None | str | Unset
         if isinstance(self.failed_at, Unset):
             failed_at = UNSET
         else:
             failed_at = self.failed_at
 
-        canceled_at: None | Unset | str
+        canceled_at: None | str | Unset
         if isinstance(self.canceled_at, Unset):
             canceled_at = UNSET
         else:
             canceled_at = self.canceled_at
 
-        incident_id: None | Unset | str
+        incident_id: None | str | Unset
         if isinstance(self.incident_id, Unset):
             incident_id = UNSET
         else:
             incident_id = self.incident_id
 
-        post_mortem_id: None | Unset | str
+        post_mortem_id: None | str | Unset
         if isinstance(self.post_mortem_id, Unset):
             post_mortem_id = UNSET
         else:
             post_mortem_id = self.post_mortem_id
 
-        action_item_id: None | Unset | str
+        action_item_id: None | str | Unset
         if isinstance(self.action_item_id, Unset):
             action_item_id = UNSET
         else:
             action_item_id = self.action_item_id
 
-        alert_id: None | Unset | str
+        alert_id: None | str | Unset
         if isinstance(self.alert_id, Unset):
             alert_id = UNSET
         else:
             alert_id = self.alert_id
 
-        pulse_id: None | Unset | str
+        pulse_id: None | str | Unset
         if isinstance(self.pulse_id, Unset):
             pulse_id = UNSET
         else:
             pulse_id = self.pulse_id
 
-        context: Unset | dict[str, Any] = UNSET
+        context: dict[str, Any] | Unset = UNSET
         if not isinstance(self.context, Unset):
             context = self.context.to_dict()
 
@@ -167,98 +169,98 @@ class WorkflowRun:
 
         triggered_by = check_workflow_run_triggered_by(d.pop("triggered_by"))
 
-        def _parse_status_message(data: object) -> None | Unset | str:
+        def _parse_status_message(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         status_message = _parse_status_message(d.pop("status_message", UNSET))
 
-        def _parse_started_at(data: object) -> None | Unset | str:
+        def _parse_started_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         started_at = _parse_started_at(d.pop("started_at", UNSET))
 
-        def _parse_completed_at(data: object) -> None | Unset | str:
+        def _parse_completed_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        def _parse_failed_at(data: object) -> None | Unset | str:
+        def _parse_failed_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         failed_at = _parse_failed_at(d.pop("failed_at", UNSET))
 
-        def _parse_canceled_at(data: object) -> None | Unset | str:
+        def _parse_canceled_at(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         canceled_at = _parse_canceled_at(d.pop("canceled_at", UNSET))
 
-        def _parse_incident_id(data: object) -> None | Unset | str:
+        def _parse_incident_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         incident_id = _parse_incident_id(d.pop("incident_id", UNSET))
 
-        def _parse_post_mortem_id(data: object) -> None | Unset | str:
+        def _parse_post_mortem_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         post_mortem_id = _parse_post_mortem_id(d.pop("post_mortem_id", UNSET))
 
-        def _parse_action_item_id(data: object) -> None | Unset | str:
+        def _parse_action_item_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         action_item_id = _parse_action_item_id(d.pop("action_item_id", UNSET))
 
-        def _parse_alert_id(data: object) -> None | Unset | str:
+        def _parse_alert_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_id = _parse_alert_id(d.pop("alert_id", UNSET))
 
-        def _parse_pulse_id(data: object) -> None | Unset | str:
+        def _parse_pulse_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         pulse_id = _parse_pulse_id(d.pop("pulse_id", UNSET))
 
         _context = d.pop("context", UNSET)
-        context: Unset | WorkflowRunContext
+        context: WorkflowRunContext | Unset
         if isinstance(_context, Unset):
             context = UNSET
         else:

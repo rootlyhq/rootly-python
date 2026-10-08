@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType = Literal["AlertField"]
 
@@ -18,7 +18,7 @@ def check_update_alerts_source_data_attributes_alert_source_urgency_rules_attrib
         value
         in UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES
     ):
-        return cast(UpdateAlertsSourceDataAttributesAlertSourceUrgencyRulesAttributesItemConditionableType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_ALERTS_SOURCE_DATA_ATTRIBUTES_ALERT_SOURCE_URGENCY_RULES_ATTRIBUTES_ITEM_CONDITIONABLE_TYPE_VALUES!r}"
     )

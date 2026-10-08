@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 PostMortemTemplateFormat = Literal["html", "markdown"]
 
@@ -12,5 +12,5 @@ def check_post_mortem_template_format(value: str | None) -> PostMortemTemplateFo
     if value is None:
         return None
     if value in POST_MORTEM_TEMPLATE_FORMAT_VALUES:
-        return cast(PostMortemTemplateFormat, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {POST_MORTEM_TEMPLATE_FORMAT_VALUES!r}")

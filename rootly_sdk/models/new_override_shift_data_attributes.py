@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
-from dateutil.parser import isoparse
 
 T = TypeVar("T", bound="NewOverrideShiftDataAttributes")
 
@@ -43,9 +44,9 @@ class NewOverrideShiftDataAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        starts_at = isoparse(d.pop("starts_at"))
+        starts_at = datetime.datetime.fromisoformat(d.pop("starts_at"))
 
-        ends_at = isoparse(d.pop("ends_at"))
+        ends_at = datetime.datetime.fromisoformat(d.pop("ends_at"))
 
         user_id = d.pop("user_id")
 

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateShortcutStoryTaskParamsTaskType = Literal["update_shortcut_story"]
 
@@ -13,7 +13,7 @@ def check_update_shortcut_story_task_params_task_type(
     if value is None:
         return None
     if value in UPDATE_SHORTCUT_STORY_TASK_PARAMS_TASK_TYPE_VALUES:
-        return cast(UpdateShortcutStoryTaskParamsTaskType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {UPDATE_SHORTCUT_STORY_TASK_PARAMS_TASK_TYPE_VALUES!r}"
     )

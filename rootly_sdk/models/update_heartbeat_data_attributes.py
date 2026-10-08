@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -20,36 +22,36 @@ T = TypeVar("T", bound="UpdateHeartbeatDataAttributes")
 class UpdateHeartbeatDataAttributes:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the heartbeat
-        description (Union[None, Unset, str]): The description of the heartbeat
-        alert_summary (Union[Unset, str]): Summary of alerts triggered when heartbeat expires.
-        alert_description (Union[None, Unset, str]): Description of alerts triggered when heartbeat expires.
-        alert_urgency_id (Union[None, Unset, str]): Urgency of alerts triggered when heartbeat expires.
-        interval (Union[Unset, int]):
-        interval_unit (Union[Unset, UpdateHeartbeatDataAttributesIntervalUnit]):
-        notification_target_id (Union[Unset, str]):
-        notification_target_type (Union[Unset, UpdateHeartbeatDataAttributesNotificationTargetType]): The type of the
+        name (str | Unset): The name of the heartbeat
+        description (None | str | Unset): The description of the heartbeat
+        alert_summary (str | Unset): Summary of alerts triggered when heartbeat expires.
+        alert_description (None | str | Unset): Description of alerts triggered when heartbeat expires.
+        alert_urgency_id (None | str | Unset): Urgency of alerts triggered when heartbeat expires.
+        interval (int | Unset):
+        interval_unit (UpdateHeartbeatDataAttributesIntervalUnit | Unset):
+        notification_target_id (str | Unset):
+        notification_target_type (UpdateHeartbeatDataAttributesNotificationTargetType | Unset): The type of the
             notification target. Please contact support if you encounter issues using `Functionality` as a target type.
-        owner_group_ids (Union[Unset, list[str]]): List of team IDs that own this heartbeat
-        enabled (Union[Unset, bool]): Whether to trigger alerts when heartbeat is expired.
+        owner_group_ids (list[str] | Unset): List of team IDs that own this heartbeat
+        enabled (bool | Unset): Whether to trigger alerts when heartbeat is expired.
     """
 
-    name: Unset | str = UNSET
-    description: None | Unset | str = UNSET
-    alert_summary: Unset | str = UNSET
-    alert_description: None | Unset | str = UNSET
-    alert_urgency_id: None | Unset | str = UNSET
-    interval: Unset | int = UNSET
-    interval_unit: Unset | UpdateHeartbeatDataAttributesIntervalUnit = UNSET
-    notification_target_id: Unset | str = UNSET
-    notification_target_type: Unset | UpdateHeartbeatDataAttributesNotificationTargetType = UNSET
-    owner_group_ids: Unset | list[str] = UNSET
-    enabled: Unset | bool = UNSET
+    name: str | Unset = UNSET
+    description: None | str | Unset = UNSET
+    alert_summary: str | Unset = UNSET
+    alert_description: None | str | Unset = UNSET
+    alert_urgency_id: None | str | Unset = UNSET
+    interval: int | Unset = UNSET
+    interval_unit: UpdateHeartbeatDataAttributesIntervalUnit | Unset = UNSET
+    notification_target_id: str | Unset = UNSET
+    notification_target_type: UpdateHeartbeatDataAttributesNotificationTargetType | Unset = UNSET
+    owner_group_ids: list[str] | Unset = UNSET
+    enabled: bool | Unset = UNSET
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description: None | Unset | str
+        description: None | str | Unset
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -57,13 +59,13 @@ class UpdateHeartbeatDataAttributes:
 
         alert_summary = self.alert_summary
 
-        alert_description: None | Unset | str
+        alert_description: None | str | Unset
         if isinstance(self.alert_description, Unset):
             alert_description = UNSET
         else:
             alert_description = self.alert_description
 
-        alert_urgency_id: None | Unset | str
+        alert_urgency_id: None | str | Unset
         if isinstance(self.alert_urgency_id, Unset):
             alert_urgency_id = UNSET
         else:
@@ -71,17 +73,17 @@ class UpdateHeartbeatDataAttributes:
 
         interval = self.interval
 
-        interval_unit: Unset | str = UNSET
+        interval_unit: str | Unset = UNSET
         if not isinstance(self.interval_unit, Unset):
             interval_unit = self.interval_unit
 
         notification_target_id = self.notification_target_id
 
-        notification_target_type: Unset | str = UNSET
+        notification_target_type: str | Unset = UNSET
         if not isinstance(self.notification_target_type, Unset):
             notification_target_type = self.notification_target_type
 
-        owner_group_ids: Unset | list[str] = UNSET
+        owner_group_ids: list[str] | Unset = UNSET
         if not isinstance(self.owner_group_ids, Unset):
             owner_group_ids = self.owner_group_ids
 
@@ -120,39 +122,39 @@ class UpdateHeartbeatDataAttributes:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> None | Unset | str:
+        def _parse_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         alert_summary = d.pop("alert_summary", UNSET)
 
-        def _parse_alert_description(data: object) -> None | Unset | str:
+        def _parse_alert_description(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_description = _parse_alert_description(d.pop("alert_description", UNSET))
 
-        def _parse_alert_urgency_id(data: object) -> None | Unset | str:
+        def _parse_alert_urgency_id(data: object) -> None | str | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(None | Unset | str, data)
+            return cast(None | str | Unset, data)
 
         alert_urgency_id = _parse_alert_urgency_id(d.pop("alert_urgency_id", UNSET))
 
         interval = d.pop("interval", UNSET)
 
         _interval_unit = d.pop("interval_unit", UNSET)
-        interval_unit: Unset | UpdateHeartbeatDataAttributesIntervalUnit
+        interval_unit: UpdateHeartbeatDataAttributesIntervalUnit | Unset
         if isinstance(_interval_unit, Unset):
             interval_unit = UNSET
         else:
@@ -161,7 +163,7 @@ class UpdateHeartbeatDataAttributes:
         notification_target_id = d.pop("notification_target_id", UNSET)
 
         _notification_target_type = d.pop("notification_target_type", UNSET)
-        notification_target_type: Unset | UpdateHeartbeatDataAttributesNotificationTargetType
+        notification_target_type: UpdateHeartbeatDataAttributesNotificationTargetType | Unset
         if isinstance(_notification_target_type, Unset):
             notification_target_type = UNSET
         else:

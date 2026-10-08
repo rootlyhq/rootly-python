@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation = Literal["average", "count", "sum"]
 
@@ -17,7 +17,7 @@ def check_new_dashboard_panel_data_attributes_params_datasets_item_aggregate_typ
     if value is None:
         return None
     if value in NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_AGGREGATE_TYPE_0_OPERATION_VALUES:
-        return cast(NewDashboardPanelDataAttributesParamsDatasetsItemAggregateType0Operation, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_DASHBOARD_PANEL_DATA_ATTRIBUTES_PARAMS_DATASETS_ITEM_AGGREGATE_TYPE_0_OPERATION_VALUES!r}"
     )

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 EnvironmentListDataItemType = Literal["environments"]
 
@@ -11,5 +11,5 @@ def check_environment_list_data_item_type(value: str | None) -> EnvironmentListD
     if value is None:
         return None
     if value in ENVIRONMENT_LIST_DATA_ITEM_TYPE_VALUES:
-        return cast(EnvironmentListDataItemType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ENVIRONMENT_LIST_DATA_ITEM_TYPE_VALUES!r}")

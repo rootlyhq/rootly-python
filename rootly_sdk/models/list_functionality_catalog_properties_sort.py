@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 ListFunctionalityCatalogPropertiesSort = Literal[
     "-created_at", "-position", "-updated_at", "created_at", "position", "updated_at"
@@ -20,7 +20,7 @@ def check_list_functionality_catalog_properties_sort(
     if value is None:
         return None
     if value in LIST_FUNCTIONALITY_CATALOG_PROPERTIES_SORT_VALUES:
-        return cast(ListFunctionalityCatalogPropertiesSort, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {LIST_FUNCTIONALITY_CATALOG_PROPERTIES_SORT_VALUES!r}"
     )

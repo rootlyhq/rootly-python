@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CauseResponseDataType = Literal["causes"]
 
@@ -11,5 +11,5 @@ def check_cause_response_data_type(value: str | None) -> CauseResponseDataType |
     if value is None:
         return None
     if value in CAUSE_RESPONSE_DATA_TYPE_VALUES:
-        return cast(CauseResponseDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {CAUSE_RESPONSE_DATA_TYPE_VALUES!r}")

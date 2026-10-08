@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewCatalogPropertyDataType = Literal["catalog_properties"]
 
@@ -11,5 +11,5 @@ def check_new_catalog_property_data_type(value: str | None) -> NewCatalogPropert
     if value is None:
         return None
     if value in NEW_CATALOG_PROPERTY_DATA_TYPE_VALUES:
-        return cast(NewCatalogPropertyDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {NEW_CATALOG_PROPERTY_DATA_TYPE_VALUES!r}")

@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdatePlaybookDataType = Literal["playbooks"]
 
@@ -11,5 +11,5 @@ def check_update_playbook_data_type(value: str | None) -> UpdatePlaybookDataType
     if value is None:
         return None
     if value in UPDATE_PLAYBOOK_DATA_TYPE_VALUES:
-        return cast(UpdatePlaybookDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_PLAYBOOK_DATA_TYPE_VALUES!r}")

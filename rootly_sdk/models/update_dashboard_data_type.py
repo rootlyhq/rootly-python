@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateDashboardDataType = Literal["dashboards"]
 
@@ -11,5 +11,5 @@ def check_update_dashboard_data_type(value: str | None) -> UpdateDashboardDataTy
     if value is None:
         return None
     if value in UPDATE_DASHBOARD_DATA_TYPE_VALUES:
-        return cast(UpdateDashboardDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_DASHBOARD_DATA_TYPE_VALUES!r}")

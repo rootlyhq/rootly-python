@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 UpdateUserPhoneNumberDataType = Literal["user_phone_numbers"]
 
@@ -11,5 +11,5 @@ def check_update_user_phone_number_data_type(value: str | None) -> UpdateUserPho
     if value is None:
         return None
     if value in UPDATE_USER_PHONE_NUMBER_DATA_TYPE_VALUES:
-        return cast(UpdateUserPhoneNumberDataType, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {UPDATE_USER_PHONE_NUMBER_DATA_TYPE_VALUES!r}")

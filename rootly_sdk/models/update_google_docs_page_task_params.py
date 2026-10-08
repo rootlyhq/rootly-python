@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import Any, TypeVar
 
@@ -18,31 +20,31 @@ class UpdateGoogleDocsPageTaskParams:
     """
     Attributes:
         file_id (str): The Google Doc file ID
-        task_type (Union[Unset, UpdateGoogleDocsPageTaskParamsTaskType]):
-        title (Union[Unset, str]): The Google Doc title
-        content (Union[Unset, str]): The Google Doc content
-        post_mortem_template_id (Union[Unset, str]): Retrospective template to use when updating page, if desired
-        template_id (Union[Unset, str]): The Google Doc file ID to use as a template.
-        include_overview (Union[Unset, bool]):  Default: True.
-        include_timeline (Union[Unset, bool]):  Default: True.
-        include_follow_ups (Union[Unset, bool]):  Default: True.
+        task_type (UpdateGoogleDocsPageTaskParamsTaskType | Unset):
+        title (str | Unset): The Google Doc title
+        content (str | Unset): The Google Doc content
+        post_mortem_template_id (str | Unset): Retrospective template to use when updating page, if desired
+        template_id (str | Unset): The Google Doc file ID to use as a template.
+        include_overview (bool | Unset):  Default: True.
+        include_timeline (bool | Unset):  Default: True.
+        include_follow_ups (bool | Unset):  Default: True.
     """
 
     file_id: str
-    task_type: Unset | UpdateGoogleDocsPageTaskParamsTaskType = UNSET
-    title: Unset | str = UNSET
-    content: Unset | str = UNSET
-    post_mortem_template_id: Unset | str = UNSET
-    template_id: Unset | str = UNSET
-    include_overview: Unset | bool = True
-    include_timeline: Unset | bool = True
-    include_follow_ups: Unset | bool = True
+    task_type: UpdateGoogleDocsPageTaskParamsTaskType | Unset = UNSET
+    title: str | Unset = UNSET
+    content: str | Unset = UNSET
+    post_mortem_template_id: str | Unset = UNSET
+    template_id: str | Unset = UNSET
+    include_overview: bool | Unset = True
+    include_timeline: bool | Unset = True
+    include_follow_ups: bool | Unset = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_id = self.file_id
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -92,7 +94,7 @@ class UpdateGoogleDocsPageTaskParams:
         file_id = d.pop("file_id")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | UpdateGoogleDocsPageTaskParamsTaskType
+        task_type: UpdateGoogleDocsPageTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

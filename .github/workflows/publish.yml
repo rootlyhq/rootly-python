@@ -64,3 +64,48 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+  release:
+    needs: publish-to-pypi
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Fetch annotated tag message
+        run: git fetch --force origin "refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}"
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_REF="refs/tags/${GITHUB_REF_NAME}"
+          HIGHLIGHTS=""
+          if [ "$(git cat-file -t "$TAG_REF" 2>/dev/null || true)" = "tag" ]; then
+            HIGHLIGHTS=$(git for-each-ref "$TAG_REF" --format='%(contents)' | sed '/^-----BEGIN PGP SIGNATURE-----/,$d')
+            if [ -z "$(printf '%s' "$HIGHLIGHTS" | tr -d '[:space:]')" ]; then
+              HIGHLIGHTS=""
+            fi
+          fi
+
+          RELEASE_ID=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq 'map(select(.draft))[0].id // empty')
+          if [ -n "$RELEASE_ID" ]; then
+            BODY=$(gh api "repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}" --jq '.body // ""')
+            if [ -n "$HIGHLIGHTS" ]; then
+              BODY=$(printf '## Highlights\n\n%s\n\n%s' "$HIGHLIGHTS" "$BODY")
+            fi
+            jq -n \
+              --arg tag_name "$GITHUB_REF_NAME" \
+              --arg name "$GITHUB_REF_NAME" \
+              --arg body "$BODY" \
+              '{tag_name: $tag_name, name: $name, body: $body, draft: false, make_latest: "true"}' \
+              > /tmp/release.json
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}" --input /tmp/release.json
+          elif [ -n "$HIGHLIGHTS" ]; then
+            gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes \
+              --title "$GITHUB_REF_NAME" --latest \
+              --notes "$(printf '## Highlights\n\n%s' "$HIGHLIGHTS")"
+          else
+            gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes \
+              --title "$GITHUB_REF_NAME" --latest
+          fi

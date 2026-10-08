@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 TriggerWorkflowTaskParamsAttributeToQueryBy = Literal[
     "airtable_record_id",
@@ -51,7 +51,7 @@ def check_trigger_workflow_task_params_attribute_to_query_by(
     if value is None:
         return None
     if value in TRIGGER_WORKFLOW_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES:
-        return cast(TriggerWorkflowTaskParamsAttributeToQueryBy, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {TRIGGER_WORKFLOW_TASK_PARAMS_ATTRIBUTE_TO_QUERY_BY_VALUES!r}"
     )

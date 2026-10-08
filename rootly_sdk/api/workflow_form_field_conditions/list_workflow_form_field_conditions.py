@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any
+from urllib.parse import quote
 
 import httpx
 
@@ -12,10 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     workflow_id: str,
     *,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
     params["include"] = include
@@ -28,7 +30,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/v1/workflows/{workflow_id}/form_field_conditions",
+        "url": "/v1/workflows/{workflow_id}/form_field_conditions".format(
+            workflow_id=quote(str(workflow_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -64,9 +68,9 @@ def sync_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[WorkflowFormFieldConditionList]:
     """List workflow form field conditions
 
@@ -74,9 +78,9 @@ def sync_detailed(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -104,9 +108,9 @@ def sync(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> WorkflowFormFieldConditionList | None:
     """List workflow form field conditions
 
@@ -114,9 +118,9 @@ def sync(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,9 +143,9 @@ async def asyncio_detailed(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> Response[WorkflowFormFieldConditionList]:
     """List workflow form field conditions
 
@@ -149,9 +153,9 @@ async def asyncio_detailed(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,9 +181,9 @@ async def asyncio(
     workflow_id: str,
     *,
     client: AuthenticatedClient,
-    include: Unset | str = UNSET,
-    pagenumber: Unset | int = UNSET,
-    pagesize: Unset | int = UNSET,
+    include: str | Unset = UNSET,
+    pagenumber: int | Unset = UNSET,
+    pagesize: int | Unset = UNSET,
 ) -> WorkflowFormFieldConditionList | None:
     """List workflow form field conditions
 
@@ -187,9 +191,9 @@ async def asyncio(
 
     Args:
         workflow_id (str):
-        include (Union[Unset, str]):
-        pagenumber (Union[Unset, int]):
-        pagesize (Union[Unset, int]):
+        include (str | Unset):
+        pagenumber (int | Unset):
+        pagesize (int | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

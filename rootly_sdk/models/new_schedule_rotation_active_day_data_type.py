@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 NewScheduleRotationActiveDayDataType = Literal["schedule_rotation_active_days"]
 
@@ -11,7 +11,7 @@ def check_new_schedule_rotation_active_day_data_type(value: str | None) -> NewSc
     if value is None:
         return None
     if value in NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES:
-        return cast(NewScheduleRotationActiveDayDataType, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {NEW_SCHEDULE_ROTATION_ACTIVE_DAY_DATA_TYPE_VALUES!r}"
     )

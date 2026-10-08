@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 CreateOpenaiChatCompletionTaskParamsReasoningSummary = Literal["auto", "concise", "detailed"]
 
@@ -17,7 +17,7 @@ def check_create_openai_chat_completion_task_params_reasoning_summary(
     if value is None:
         return None
     if value in CREATE_OPENAI_CHAT_COMPLETION_TASK_PARAMS_REASONING_SUMMARY_VALUES:
-        return cast(CreateOpenaiChatCompletionTaskParamsReasoningSummary, value)
+        return value
     raise TypeError(
         f"Unexpected value {value!r}. Expected one of {CREATE_OPENAI_CHAT_COMPLETION_TASK_PARAMS_REASONING_SUMMARY_VALUES!r}"
     )

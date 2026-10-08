@@ -1,4 +1,4 @@
-from typing import Literal, cast
+from typing import Literal
 
 AlertEventKind = Literal[
     "action",
@@ -35,5 +35,5 @@ def check_alert_event_kind(value: str | None) -> AlertEventKind | None:
     if value is None:
         return None
     if value in ALERT_EVENT_KIND_VALUES:
-        return cast(AlertEventKind, value)
+        return value
     raise TypeError(f"Unexpected value {value!r}. Expected one of {ALERT_EVENT_KIND_VALUES!r}")

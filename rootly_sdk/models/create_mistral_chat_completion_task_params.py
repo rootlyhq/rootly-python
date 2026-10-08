@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -23,20 +25,20 @@ class CreateMistralChatCompletionTaskParams:
     Attributes:
         model (CreateMistralChatCompletionTaskParamsModel): The Mistral model. eg: mistral-large-latest
         prompt (str): The prompt to send to Mistral
-        task_type (Union[Unset, CreateMistralChatCompletionTaskParamsTaskType]):
-        system_prompt (Union[Unset, str]): The system prompt to send to Mistral (optional)
-        temperature (Union[Unset, float]): Sampling temperature (0.0-1.5). Higher values make output more random.
-        max_tokens (Union[Unset, int]): Maximum number of tokens to generate
-        top_p (Union[Unset, float]): Nucleus sampling parameter (0.0-1.0)
+        task_type (CreateMistralChatCompletionTaskParamsTaskType | Unset):
+        system_prompt (str | Unset): The system prompt to send to Mistral (optional)
+        temperature (float | Unset): Sampling temperature (0.0-1.5). Higher values make output more random.
+        max_tokens (int | Unset): Maximum number of tokens to generate
+        top_p (float | Unset): Nucleus sampling parameter (0.0-1.0)
     """
 
-    model: "CreateMistralChatCompletionTaskParamsModel"
+    model: CreateMistralChatCompletionTaskParamsModel
     prompt: str
-    task_type: Unset | CreateMistralChatCompletionTaskParamsTaskType = UNSET
-    system_prompt: Unset | str = UNSET
-    temperature: Unset | float = UNSET
-    max_tokens: Unset | int = UNSET
-    top_p: Unset | float = UNSET
+    task_type: CreateMistralChatCompletionTaskParamsTaskType | Unset = UNSET
+    system_prompt: str | Unset = UNSET
+    temperature: float | Unset = UNSET
+    max_tokens: int | Unset = UNSET
+    top_p: float | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +46,7 @@ class CreateMistralChatCompletionTaskParams:
 
         prompt = self.prompt
 
-        task_type: Unset | str = UNSET
+        task_type: str | Unset = UNSET
         if not isinstance(self.task_type, Unset):
             task_type = self.task_type
 
@@ -87,7 +89,7 @@ class CreateMistralChatCompletionTaskParams:
         prompt = d.pop("prompt")
 
         _task_type = d.pop("task_type", UNSET)
-        task_type: Unset | CreateMistralChatCompletionTaskParamsTaskType
+        task_type: CreateMistralChatCompletionTaskParamsTaskType | Unset
         if isinstance(_task_type, Unset):
             task_type = UNSET
         else:

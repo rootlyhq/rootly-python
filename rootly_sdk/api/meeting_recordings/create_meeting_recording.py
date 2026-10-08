@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, cast
+from urllib.parse import quote
 
 import httpx
 
@@ -15,11 +16,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     incident_id: str,
     *,
-    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
 ) -> dict[str, Any]:
+
     params: dict[str, Any] = {}
 
-    json_platform: Unset | str = UNSET
+    json_platform: str | Unset = UNSET
     if not isinstance(platform, Unset):
         json_platform = platform
 
@@ -29,7 +31,9 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/v1/incidents/{incident_id}/meeting_recordings",
+        "url": "/v1/incidents/{incident_id}/meeting_recordings".format(
+            incident_id=quote(str(incident_id), safe=""),
+        ),
         "params": params,
     }
 
@@ -69,7 +73,7 @@ def sync_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Create meeting recording
 
@@ -79,14 +83,14 @@ def sync_detailed(
 
     Args:
         incident_id (str):
-        platform (Union[Unset, CreateMeetingRecordingPlatform]):
+        platform (CreateMeetingRecordingPlatform | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, MeetingRecordingResponse]]
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -105,7 +109,7 @@ def sync(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
 ) -> Any | MeetingRecordingResponse | None:
     """Create meeting recording
 
@@ -115,14 +119,14 @@ def sync(
 
     Args:
         incident_id (str):
-        platform (Union[Unset, CreateMeetingRecordingPlatform]):
+        platform (CreateMeetingRecordingPlatform | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, MeetingRecordingResponse]
+        Any | MeetingRecordingResponse
     """
 
     return sync_detailed(
@@ -136,7 +140,7 @@ async def asyncio_detailed(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
 ) -> Response[Any | MeetingRecordingResponse]:
     """Create meeting recording
 
@@ -146,14 +150,14 @@ async def asyncio_detailed(
 
     Args:
         incident_id (str):
-        platform (Union[Unset, CreateMeetingRecordingPlatform]):
+        platform (CreateMeetingRecordingPlatform | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, MeetingRecordingResponse]]
+        Response[Any | MeetingRecordingResponse]
     """
 
     kwargs = _get_kwargs(
@@ -170,7 +174,7 @@ async def asyncio(
     incident_id: str,
     *,
     client: AuthenticatedClient,
-    platform: Unset | CreateMeetingRecordingPlatform = UNSET,
+    platform: CreateMeetingRecordingPlatform | Unset = UNSET,
 ) -> Any | MeetingRecordingResponse | None:
     """Create meeting recording
 
@@ -180,14 +184,14 @@ async def asyncio(
 
     Args:
         incident_id (str):
-        platform (Union[Unset, CreateMeetingRecordingPlatform]):
+        platform (CreateMeetingRecordingPlatform | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, MeetingRecordingResponse]
+        Any | MeetingRecordingResponse
     """
 
     return (
