@@ -1,6 +1,6 @@
 [project]
 name = "rootly"
-version = "3.0.1"
+version = "3.0.2"
 description = "A client library for accessing Rootly API v1"
 authors = []
 readme = "README.md"
